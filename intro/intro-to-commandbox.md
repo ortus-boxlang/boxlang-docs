@@ -1,0 +1,110 @@
+---
+description: CommandBox is the de facto standard for Boxlang development and execution
+---
+
+# CommandBox CLI
+
+![CommandBox CLI](../assets/CommandBoxLogo.png)
+
+CommandBox is an amalgamation of many different tools and borrows concepts from NPM, Grunt/Gulp, Maven, ANT, Node, and much more. Features include:
+
+* True Command Line for Boxlang
+* Operation System integration for executing commands
+* Ability to create and execute commands built using Boxlang
+* ForgeBox integration for cloud package management and installations
+* ColdBox Platform, TestBox, and ContentBox CMS Integrations
+* Integrated servlet server with rewrite capabilities
+* Ability to create command recipes and execution
+*   REPL (Read-Evaluate-Print-Loop) console for immediate Boxlang
+
+    (Boxlang) interaction
+*   Ability to interact with users via CLI and create workflows and
+
+    installers
+* Ability to execute workflows and tasks
+* Built-in Help system
+
+## Installation
+
+CommandBox is a Java-based executable that will run on the most recent desktop operating systems (Linux, Mac OS X, Windows). Since it is a command line tool that uses a shell interface, it does not require an operating system using a GUI. Below is a simple guideline to get you up and running, but an [in-depth guide](https://commandbox.ortusbooks.com/getting-started-guide) can be found here: [https://commandbox.ortusbooks.com/setup](https://commandbox.ortusbooks.com/setup)
+
+### Requirements
+
+* 256MB+ RAM
+* 250MB+ free hard drive space
+* Multi-core CPU recommended
+* JRE/JDK 8+
+
+### Download
+
+If you already have a Java JRE installed level 8 or higher (and set in your environment variables), you can [download](http://www.ortussolutions.com/products/commandbox#download) the non-JRE version for your Operating System. If you don't have a JRE installed or aren't sure, we recommend downloading the version with a JRE included.
+
+Regardless of where you place the **box** binary, the first time you execute it, a `.CommandBox` folder will be created in your user's home directory, and CommandBox will be extracted into that location. If you delete this directory, it will be replaced the next time the CommandBox executable is run.
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Box Shell</p></figcaption></figure>
+
+#### Windows
+
+Unzip the executable **box.exe** and double-click on it to open the shell. When you are finished running commands, you can close the window or type `exit`.
+
+{% hint style="info" %}
+**Hint:** You can make the `box.exe` available in any Windows terminal by adding its location to the `PATH` system environment variable. See [http://www.computerhope.com/issues/ch000549.htm](http://www.computerhope.com/issues/ch000549.htm)
+{% endhint %}
+
+#### Homebrew (Mac)
+
+[Homebrew](http://brew.sh) is a great Mac package manager; it can easily install and keep your CommandBox installation up to date (even binary releases); just run the following for stable releases:
+
+```bash
+brew install commandbox
+```
+
+To stay with current bleeding edge releases, use the following:
+
+```bash
+brew tap ortus-solutions/boxtap
+brew tap-pin ortus-solutions/boxtap
+brew install --devel commandbox
+```
+
+Then run the `box` binary to begin the one-time unpacking process.
+
+Versions will be installed in `/usr/local/Cellar/commandbox`. To switch between versions, use `brew switch commandbox [version number]`
+
+#### Manual Linux/Mac
+
+Unzip the binary **box** and double-click on it to open the shell terminal. When you are finished running commands, you can close the window or type `exit`.
+
+{% hint style="info" %}
+**Hint** You can place the binary in your `/usr/bin` or `/usr/local/bin` directory so it can be available system-wide via the box command in any terminal window.
+{% endhint %}
+
+#### Linux apt-get
+
+Run the following commands to add the Ortus signing key, register our Debian repo, and install CommandBox.
+
+```bash
+curl -fsSl https://downloads.ortussolutions.com/debs/gpg | sudo apt-key add -
+echo "deb https://downloads.ortussolutions.com/debs/noarch /" | sudo tee -a /etc/apt/sources.list.d/commandbox.list
+sudo apt-get update && sudo apt-get install commandbox
+```
+
+#### Linux yum
+
+Add the following to: `/etc/yum.repos.d/commandbox.repo`
+
+```bash
+[CommandBox]
+name=CommandBox $releasever - $basearch
+failovermethod=priority
+baseurl=http://downloads.ortussolutions.com/RPMS/noarch
+enabled=1
+metadata_expire=7d
+gpgcheck=0
+```
+
+Then run a `sudo yum install commandbox` and be up and running
+
+## Getting Started
+
+We have created a small [getting started guide](https://commandbox.ortusbooks.com/getting-started-guide) that will give you enough skills to move forward with any CommandBox development. You can find it here: [https://commandbox.ortusbooks.com/content/getting\_started\_guide.html](https://commandbox.ortusbooks.com/getting-started-guide)

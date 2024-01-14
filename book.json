@@ -1,0 +1,38 @@
+{
+    "gitbook": ">=2.0.1",
+    "pdf": {
+        "margin": {
+            "bottom": 56,
+            "left": 25,
+            "right": 25,
+            "top": 56
+        }
+    },
+    "plugins": [
+        "richquotes",
+        "edit-link",
+        "github",
+        "advanced-emoji",
+        "sitemap",
+        "collapsible-chapters",
+        "anchors"
+    ],
+    "pluginsConfig": {
+        "edit-link": {
+            "base": "https://github.com/ortus-solutions-private/boxlang-docs/tree/development",    
+            "label": "Edit This Page"
+        },
+        "github": {
+            "url": "https://github.com/ortus-solutions-private/boxlang-docs"
+        },
+        "sitemap": {
+            "hostname": "https://boxlang.ortusbooks.com"
+        }
+    },
+    "links": {
+        "sharing": {
+            "facebook": false,
+            "twitter": false
+        }
+    }
+}
