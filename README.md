@@ -10,7 +10,7 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 
 BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with a number of goals in mind:
 
-1. Be the next evolution of the ColdFusion (CFML) language.
+1. Be the next evolution of the ColdFusion ( CFML ) language.
 2. Be dynamic, modular, lightweight, and fast.
 3. Be 100% interoperable with Java.
 4. Be able to be deployed as a standalone binary with no JVM required (Much like Kotlin)
