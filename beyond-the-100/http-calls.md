@@ -1,10 +1,10 @@
 # HTTP/S Calls
 
-Boxlang makes it really **easy** to interact with **any** HTTP/S endpoint via the `cfhttp` tag/construct \([https://cfdocs.org/cfhttp](https://cfdocs.org/cfhttp)\). The `cfhttp` call will generate an HTTP/S request and parse the response into a nice Boxlang structure. 
+Boxlang makes it really **easy** to interact with **any** HTTP/S endpoint via the `cfhttp` tag/construct \([https://cfdocs.org/cfhttp](https://cfdocs.org/cfhttp)\). The `cfhttp` call will generate an HTTP/S request and parse the response into a nice Boxlang structure.
 
 ```java
 cfhttp( url="https://www.google.com/", result="result" ){
-    cfhttpparam( name="q", type="formfield", value="cfml" )
+    cfhttpparam( name="q", type="formfield", value="test" )
 }
 writeDump( result )
 ```
@@ -91,8 +91,8 @@ Here is another example for you:
 ```java
 cfhttp( url="https://myrestapp.com/user", result="local.result", method="post" ){
         cfhttpparam( name="x-api-token", type="header", value="123" )
-        cfhttpparam( 
-                type="body", 
+        cfhttpparam(
+                type="body",
                 value=serializeJson( '{
                         name : "luis",
                          age : 2
@@ -219,8 +219,3 @@ var hyper = new Hyper.models.HyperBuilder(
 );
 hyper.defaults.withHeaders( { "Authorization" = token } );
 ```
-
-
-
-
-

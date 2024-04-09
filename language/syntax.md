@@ -105,7 +105,7 @@ Lucee and Adobe Boxlang 11+ will allow you to write your Boxlang tags in script 
 
 ```javascript
 cfhttp(method="GET", charset="utf-8", url="https://www.google.com/", result="result") {
-    cfhttpparam(name="q", type="formfield", value="cfml");
+    cfhttpparam(name="q", type="formfield", value="test");
 }
 ```
 
