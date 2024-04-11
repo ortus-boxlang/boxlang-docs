@@ -1,12 +1,12 @@
 # Beyond The 100
 
-We cannot possibly cover all the features of the Boxlang Engines in this book as our focus was more on the core Boxlang language.  However, please note that the engines offer a tremendous middle-ware capabilities that extend beyond normal language features.  There are many areas that make Boxlang one of the most \(if not the most\) **rapid application development \(RAD\)** languages around.
+We cannot possibly cover all the features of the Boxlang Engine in this book as our focus was more on the core Boxlang language. However, please note that the engine offers tremendous middle-ware capabilities that extend beyond normal language features. Many areas make Boxlang one of the most (if not the most) **rapid application development (RAD)** languages.
 
 {% hint style="success" %}
 Check out the [cfdocs](https://cfdocs.org/) and the engine documentation sites for all the different capabilities they can offer.
 {% endhint %}
 
-In our **Beyond The 100** section you will find more in-depth topics of how Boxlang can be used for web applications, database interactions, Java integration, RESTFul services_,_ Image manipulation and much more.  Here is a simple listing of going beyond with Boxlang:
+In our Beyond The 100 section, you will find more in-depth topics on how Boxlang can be used for web applications, database interactions, Java integration, RESTFul services\_,\_ Image manipulation, and more. Here is a simple listing of going beyond with Boxlang:
 
 * PDF Creation
 * PDF Manipulation
@@ -25,12 +25,3 @@ In our **Beyond The 100** section you will find more in-depth topics of how Boxl
 * OSGI Bundle Support
 * Distributed Caching Support
 * Much More!
-
-{% embed url="https://docs.lucee.org/index.html" %}
-
-{% embed url="https://helpx.adobe.com/support/coldfusion.html" %}
-
-
-
-
-
