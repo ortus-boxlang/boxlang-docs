@@ -12,7 +12,6 @@ install "jar:https://github.com/coldbox-modules/cbox-bcrypt/blob/master/modules/
 
 {% embed url="https://cfdocs.org/java" %}
 
-{% embed url="https://helpx.adobe.com/coldfusion/developing-applications/using-web-elements-and-external-objects/integrating-jee-and-java-elements-in-boxlang-applications/enhanced-java-integration-in-coldfusion.html" %}
 
 ## Creating Java Objects
 
@@ -20,7 +19,6 @@ The easiest way to integrate with Java is to be able to instantiate Java objects
 
 ```java
 createObject( "java", "java.class.path" )
-new java( "class.path" ); // ACF2018 ONLY
 ```
 
 Examples:
@@ -81,10 +79,8 @@ createObject( "java", "java.util.Arrays" )
 Ohh the dreaded day [nulls](null-and-nothingness.md) where created.  The variable that means that nothing exists.  If you need to pass null into Java object calls then you have two approaches to create them:
 
 ```java
-// Adobe + Lucee
 javaCast( "null", "" );
 
-// Lucee only
 nullValue();
 ```
 
@@ -92,11 +88,9 @@ nullValue();
 
 The `createObject( "java" )` method will look into the BoxLang engine's class loader to discover the class you request.  If the class is not located an exception is thrown that the class could not be found.  If you want to integrate with third-party Jar's and libraries then you will need to tell the engine where to look for those classes.  There are essentially three ways to add custom libraries to the BoxLang engine:
 
-1. Add the jars/libs to the BoxLang Lib paths. These are those obscure directories both Adobe and Lucee give you so you can drop your libraries and the engine's class loader can well, load them.  Each engine has different paths, please see their docs on the matter.  We won't cover this approach as it is incredibly rigid:
-   1. [https://docs.lucee.org/guides/Various/tutorial-lucee/tutorial-java-in-lucee.html](https://docs.lucee.org/guides/Various/tutorial-lucee/tutorial-java-in-lucee.html)
-   2. [https://helpx.adobe.com/coldfusion/developing-applications/using-web-elements-and-external-objects/integrating-jee-and-java-elements-in-boxlang-applications/about-coldfusion-java-and-jee.html](https://helpx.adobe.com/coldfusion/developing-applications/using-web-elements-and-external-objects/integrating-jee-and-java-elements-in-boxlang-applications/about-coldfusion-java-and-jee.html)
+1. Add the jars/libs to the BoxLang Lib paths.
 2. The `Application.bx` allows you to declare a `this.javaSettings` struct where you can declare an array of locations of the libraries to load upon application startup with some nice modifiers.  This will allow you to store and even leverage CommandBox for the management of such jars.
-3. In Lucee, the `createObject( "java" )` construct allows you to pass in a third argument which can be a location or an array of locations of libraries to class load.  This is also great for custom CFCs, task runners, or isolated class loading.
+3. The `createObject( "java" )` construct allows you to pass in a third argument which can be a location or an array of locations of libraries to class load.  This is also great for custom CFCs, task runners, or isolated class loading.
 
 ### this.javaSettings
 
@@ -119,9 +113,9 @@ component{
 
 Once that is declared in your Application.bx and you execute a `createobject()` with a class from those libraries, BoxLang will know about them and create them.
 
-### createObject() Lucee Class Loading
+### createObject() Class Loading
 
-The other approach is to leverage the `createObject()` call to do class loading.  Please note that only Lucee supports this feature as of now.
+The other approach is to leverage the `createObject()` call to do class loading.
 
 ```java
 // Reference

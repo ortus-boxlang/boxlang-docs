@@ -10,7 +10,7 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 
 BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with a number of goals in mind:
 
-1. Be the next evolution of the ColdFusion ( CFML ) language.
+1. Be a rapid application development (RAD) scripting language and middleware.
 2. Be dynamic, modular, lightweight, and fast.
 3. Be 100% interoperable with Java.
 4. Be able to be deployed as a standalone binary with no JVM required (Much like Kotlin)
@@ -39,7 +39,7 @@ Key features of BoxLang
 
 ## Support Open Source
 
-This book is available free of charge [online](https://boxlang.ortusbooks.com) and commercially as a [downloadable or printed book](https://www.ortussolutions.com/learn/coldfusion). Your support goes a long way to help the development of this book, future book endeavors, and all the open-source projects we work on. To support us, please consider becoming our patron at [patreon.com/ortussolutions](https://patreon.com/ortussolutions) for as little as $10/month.
+This book is available free of charge [online](https://boxlang.ortusbooks.com) and commercially as a [downloadable or printed book](https://www.ortussolutions.com/learn/books). Your support goes a long way to help the development of this book, future book endeavors, and all the open-source projects we work on. To support us, please consider becoming our patron at [patreon.com/ortussolutions](https://patreon.com/ortussolutions) for as little as $10/month.
 
 ## Ortus Solutions, Corp
 

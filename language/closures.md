@@ -117,8 +117,6 @@ if( isClosure( arguments.body ) ){
 
 ## Lambda Expressions or Arrow Functions
 
-Supported only in Lucee and Adobe 2018+.
-
 {% hint style="danger" %}
 Please note that they are not REAL lambdas or pure functions. Pure functions are not supposed to interact with their environment and should have no side effects on their surroundings. However, in BoxLang, they are just implemented using the expression syntax, not the semantic nature of pure functions.
 {% endhint %}

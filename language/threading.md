@@ -10,9 +10,6 @@ BoxLang allows you create asynchronous threads so you can execute a body of code
 
 This approach is very very simplistic, if you want more control of your asynchronous programming aspects then we can move into leveraging BoxLang Future's via the `runAsync()` function or parallel Java streams using the [cbStreams](https://www.forgebox.io/view/cbStreams) project. Please see our [Asynchronous Programming ](../beyond-the-100/asynchronous-programming.md)section for information on advanced asynchronous programming.
 
-{% embed url="https://helpx.adobe.com/coldfusion/developing-applications/developing-boxlang-applications/using-coldfusion-threads/creating-and-managing-coldfusion-threads.html" %}
-
-{% embed url="https://helpx.adobe.com/coldfusion/developing-applications/developing-boxlang-applications/using-coldfusion-threads/working-with-threads.html" %}
 
 ### A Fair Warning
 
@@ -22,12 +19,12 @@ Please note that once you get into concurrency you will start to get many headac
 
 Here are some utility functions to assist with logging:
 
-* `systemOutput( obj, addNewLine:boolean, doErrorStream:boolean)` - Writes the given text or complex objects to the output or error stream.  Complex objects are outputted as JSON. (Lucee-only) [https://cfdocs.org/systemoutput](https://cfdocs.org/systemoutput)
+* `systemOutput( obj, addNewLine:boolean, doErrorStream:boolean)` - Writes the given text or complex objects to the output or error stream.  Complex objects are outputted as JSON. [https://cfdocs.org/systemoutput](https://cfdocs.org/systemoutput)
 * `cfdump( var="text", output="console" )` - Send the variables to the output console, even complex variables. Complex objects are outputted as JSON. [https://cfdocs.org/cfdump](https://cfdocs.org/cfdump)
 * `cflog( text, log, file, type ) or writeLog()` - Leverage the BoxLang engine's logging facilities to send typed messages. [https://cfdocs.org/cflog](https://cfdocs.org/cflog)&#x20;
 
 ```java
-// Lucee Only
+// System Output
 sytemOutput( "Hello from thread land", true );
 sytemOutput( myComplexObject, true );
 

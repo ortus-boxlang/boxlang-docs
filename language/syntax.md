@@ -97,11 +97,11 @@ By default, the return type of every function and/or argument is **any**. Thus, 
 
 ### Semi-Colons
 
-Please note that semi-colons are used to demarcate line endings in BoxLang `;`. However, the Lucee Server engine and Adobe BoxLang 2018+ treat semi-colons as optional, while Adobe BoxLang 2016 or below does not.  Also, note the CommandBox REPL does NOT require semi-colons.
+Please note that semi-colons are used to demarcate line endings in BoxLang `;`. They can be optional, however. Also, note the CommandBox REPL does NOT require semi-colons.
 
 ### Tags In Script
 
-Lucee and Adobe BoxLang 11+ will allow you to write your BoxLang tags in script syntax. You basically eliminate the starting `<` and ending `>` enclosures and create a block by using the `{` and `}` mustaches.
+BoxLang will allow you to write your tags in script syntax. You basically eliminate the starting `<` and ending `>` enclosures and create a block by using the `{` and `}` mustaches.
 
 ```javascript
 cfhttp(method="GET", charset="utf-8", url="https://www.google.com/", result="result") {

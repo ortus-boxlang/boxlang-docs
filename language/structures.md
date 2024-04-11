@@ -168,13 +168,12 @@ In BoxLang, not only can you create case-insensitive unordered structures but al
 
 <table><thead><tr><th width="349">Type</th><th width="129.33333333333331" data-type="checkbox">Adobe 2018</th><th width="135" data-type="checkbox">Adobe 2021</th><th data-type="checkbox">Lucee</th></tr></thead><tbody><tr><td><code>casesensitive</code></td><td>false</td><td>true</td><td>false</td></tr><tr><td><code>normal</code></td><td>true</td><td>true</td><td>true</td></tr><tr><td><code>ordered</code> or <code>linked</code></td><td>true</td><td>true</td><td>true</td></tr><tr><td><code>ordered-casesensitive</code></td><td>false</td><td>true</td><td>false</td></tr><tr><td><code>soft</code></td><td>false</td><td>false</td><td>true</td></tr><tr><td><code>synchronized</code></td><td>false</td><td>false</td><td>true</td></tr><tr><td><code>weak</code></td><td>false</td><td>false</td><td>true</td></tr></tbody></table>
 
-Here is the signature for the `structnew()` function on Adobe engines:
+Here is the signature for the `structnew()` function:
 
 ```javascript
 structNew( [type[[,sortType][,sortOrder][,localeSensitive]|[,callback]]] )
 ```
 
-Here is the signature for Lucee engines ([https://docs.lucee.org/reference/functions/structnew.html](https://docs.lucee.org/reference/functions/structnew.html))
 
 ```
 structNew( [type, [onMissingKey] ] )
@@ -238,7 +237,7 @@ produce.each( function( key, value ){
 
 ### Multi-Threaded Looping
 
-As of now, only Lucee and Adobe 2021 allows you to leverage the `each()` operations in a multi-threaded fashion.  The `structEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
+BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion.  The `structEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
 
 ```java
 structEach( struct, callback, parallel:boolean, maxThreads:numeric );

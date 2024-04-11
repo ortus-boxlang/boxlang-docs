@@ -14,14 +14,14 @@ More on String Builders: [https://www.baeldung.com/java-string-builder-string-bu
 
 ## Character Extractions
 
-In Adobe 2021+ and Lucee server, you can reference characters in a string stream via their position in the string using array syntax: `varname[ position ]`. Please note that string and array positions in BoxLang start at 1 and not 0.
+You can reference characters in a string stream via their position in the string using array syntax: `varname[ position ]`. Please note that string and array positions in BoxLang start at 1 and not 0.
 
 ```javascript
 name = "luis";
 writeoutput( name[ 1 ] ) => will produce l
 ```
 
-Adobe has taken this further, and you can use negative indices to get characters from the end backward:
+You can use negative indices to get characters from the end backward:
 
 ```javascript
 name = "luis";
@@ -30,7 +30,7 @@ writeoutput( name[ -1 ] ) => will produce s
 
 ## Character Extractions by Range
 
-Adobe 2018+ also supports extraction as ranges using the following array syntax:
+BoxLang also supports extraction as ranges using the following array syntax:
 
 ```javascript
 array[ start:stop:step ]
@@ -112,7 +112,7 @@ a = "luis,majano,lucas,alexia,veronica";
 myArray = a.listToArray();
 
 // Multi-character delimiter
-list = "coldfusion,php,|test,java,|sql";
+list = "boxlang,php,|test,java,|sql";
 getArray = listToArray(list,",|",false,true);
 someJSON = serializeJSON(getArray);
 writeOutput(someJSON);

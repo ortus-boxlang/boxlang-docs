@@ -1,6 +1,6 @@
 # Abstract Constructs
 
-The abstract constructs can be both used in Lucee and Adobe 2018.  The main goal of abstraction is to handle complexities by hiding/encapsulating unnecessary details from other users.  Abstraction is implemented in most languages by defining a class that has methods, properties & constructors. &#x20;
+The main goal of abstraction is to handle complexities by hiding/encapsulating unnecessary details from other users.  Abstraction is implemented in most languages by defining a class that has methods, properties & constructors. &#x20;
 
 Abstract will allow you to define two contexts of operation:
 
@@ -27,29 +27,29 @@ In an inheritance hierarchy the first non-abstract class should implement **all*
  * An abstract animal class
  */
 abstract component implements="IAnimal"{
-	
+
 	property animalSize;
 	property animalType;
-	
+
 	function init( animalSize, animalType ){
-		
+
 		variables.animalSize = arguments.animalSize;
 		variables.animalType = arguments.animalType;
-		
+
 		return this;
 	}
-	
+
 	/**
 	 * Shortcut for getting the animal size
 	 */
 	function getSize(){
 		return variables.animalSize;
 	}
-	
+
 	abstract function eat( any prey="" )
 	abstract function makeNoise()
 	abstract function poop()
-	
+
 }
 ```
 {% endcode %}
@@ -61,7 +61,7 @@ As you can see from the example above, abstract functions can be defined ONLY in
 {% code title="AbstractLogger.bx" %}
 ```java
 abstract component implements="ILogger"{
-   
+
     /**
 	 * Min logging level
 	 */
@@ -76,14 +76,14 @@ abstract component implements="ILogger"{
 	 * Appender properties
 	 */
 	property name="properties" type="struct";
-	
+
 	/**
 	 * Write an entry into the appender. You must implement this method yourself.
 	 *
 	 * @logEvent The logging event to log
 	 */
 	abstract function logMessage( required coldbox.system.logging.LogEvent logEvent )
-	
+
 	/**
 	 * Setter for level min
 	 *
@@ -101,8 +101,8 @@ abstract component implements="ILogger"{
 				type    = "AbstractAppender.InvalidLogLevelException"
 			);
 		}
-	} 
-	
+	}
+
 	/**
 	 * Utiliy to send to output to console.
 	 *
@@ -115,7 +115,7 @@ abstract component implements="ILogger"{
 		}
 		createObject( "java", "java.lang.System" ).out.println( arguments.message );
 	}
-            
+
 }
 ```
 {% endcode %}
@@ -123,4 +123,3 @@ abstract component implements="ILogger"{
 {% hint style="info" %}
 Only **abstract** components can contain **abstract** functions.
 {% endhint %}
-

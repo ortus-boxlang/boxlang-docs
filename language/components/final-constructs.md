@@ -1,6 +1,6 @@
 # Final Constructs
 
-Both Adobe 2018 and Lucee Engines support the usage of `final` constructs for three contexts:
+BoxLang supports the usage of `final` constructs for three contexts:
 
 * Components
 * Methods
@@ -42,7 +42,7 @@ component BaseUtil{
 // Throws exception due to final method being overriden.
 component extends="BaseUtil"{
     function getFile(){
-         return "hijacked";   
+         return "hijacked";
     }
 }
 ```

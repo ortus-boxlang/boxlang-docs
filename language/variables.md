@@ -4,14 +4,14 @@ description: name = "Amazing Programmer"
 
 # Variables
 
-In BoxLang, variables are just pointers to a piece of data. They can hold **any** value you like and even change their value or **type** at runtime. In some languages, you need to specify the type of data you want your variable to hold at compile-time. You do not need to assign one in BoxLang, as everything is dynamic or inferred. The Lucee and Adobe 2021 servers infer types according to the initial value you assign to your variable.
+In BoxLang, variables are just pointers to a piece of data. They can hold **any** value you like and even change their value or **type** at runtime. In some languages, you need to specify the type of data you want your variable to hold at compile-time. You do not need to assign one in BoxLang, as everything is dynamic or inferred. It infers types according to the initial value you assign to your variable.
 
 ```javascript
 a = "string"; // string
 b = now(); // datetime
 c = 123; // integer
 d = 1.34; // float
-f = false; // boolean, or a string for Adobe :)
+f = false; // boolean, or a string
 ```
 
 {% hint style="danger" %}
@@ -25,7 +25,7 @@ Open up the CommandBox Shell and go into CommandBox **REPL** mode by typing `rep
 As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), and so much more. No need for types or special assignments.  The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
 
 {% hint style="success" %}
-The CommandBox REPL is based on a Lucee 5 server, which is why semi-colons are optional, and the default syntax is script and not tags.
+In the CommandBox REPL semi-colons are optional, and the default syntax is script and not tags.
 {% endhint %}
 
 ## Case Insensitive
@@ -162,7 +162,7 @@ You can also output or evaluate variables by using the `#` operators and using t
 ```javascript
 a = "Hola Luis"
 writeoutput( "Welcome to BoxLang: #a#" )
-// Echo is the same as writeOutput but LUCEE only
+// Echo is the same as writeOutput
 echo( "Welcome" )
 ```
 
@@ -200,9 +200,6 @@ writeDump( var=arrayOfORM, top=5 );abort;
 
 BoxLang Engines also allow you to turn on/off a debugging template that shows up at the bottom of requests when running in server mode. You can activate this debugging by logging in to the appropriate engine administrator and looking for the **debugging** section. Turn it on and debug like a champ.
 
-{% hint style="danger" %}
-**Important:** Adobe Engines have a very evil setting called _Report Execution Times_, make sure it is always turned **OFF**. If you use it with any application that leverages Components, it will slow down your application tremendously.
-{% endhint %}
 
 ## Paraming Variables
 

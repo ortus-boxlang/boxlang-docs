@@ -26,7 +26,7 @@ person = { name = "Luis Majano", company = "Ortus Solutions", year = 2006};
 writeOutput( serializeJSON( person ) );
 ```
 
-If you are in Lucee, you can even use the `toJSON()` member function:
+You can even use the `toJSON()` member function:
 
 ```javascript
 person = { name = "Luis Majano", company = "Ortus Solutions", year = 2006};
@@ -60,7 +60,7 @@ person = {
 
 ### Possible Casting Issues
 
-Adobe BoxLang may incorrectly serialize some strings if they can be automatically converted into other types, like numbers or booleans. One workaround is to use a CFC with [cfproperty](https://cfdocs.org/cfproperty) to specify types. Another workaround is to prepend `Chr(2)` to the value and it will be forced to a string, however, that is an unofficial/undocumented workaround.  A more formal workaround is to  call `setMetadata()` as a member function on a `struct` to force a type:
+BoxLang may incorrectly serialize some strings if they can be automatically converted into other types, like numbers or booleans. One workaround is to use a CFC with [cfproperty](https://cfdocs.org/cfproperty) to specify types. Another workaround is to prepend `Chr(2)` to the value and it will be forced to a string, however, that is an unofficial/undocumented workaround.  A more formal workaround is to  call `setMetadata()` as a member function on a `struct` to force a type:
 
 ```javascript
 myStruct = { "zip"="00123" };

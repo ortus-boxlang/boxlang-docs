@@ -6,6 +6,9 @@ BoxLang allows you to manipulate, read, upload, etc files via its built in metho
 You can find the file system functions here: [https://cfdocs.org/filesystem-functions](https://cfdocs.org/filesystem-functions).
 {% endhint %}
 
+TODO: REVIEW LINKS BELOW AND UPDATE
+
+
 * [DirectoryCopy](https://docs.lucee.org/reference/functions/directorycopy.html) Copies the contents of a directory to a destination directory.
 * [DirectoryCreate](https://docs.lucee.org/reference/functions/directorycreate.html) Creates new directory for specified path
 * [DirectoryDelete](https://docs.lucee.org/reference/functions/directorydelete.html) Deltes directory for given path

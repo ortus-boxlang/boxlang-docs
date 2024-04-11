@@ -162,7 +162,7 @@ Every component has certain visibility scopes where properties, variables and fu
 
 * `variables` - Private scope, visible internally to the CFC only, where all `properties` are placed in by default.  Public and private function references are place here as well.
 * `this` - Public scope, visible from the outside world \(can break encapsulation\) public function references are placed here.
-* `static` - Same as in Java, ability to staticly declare variables and functions at the blueprint level and not at the instance level.  \(Lucee only\)
+* `static` - Same as in Java, ability to staticly declare variables and functions at the blueprint level and not at the instance level.
 
 ## Component Attributes
 

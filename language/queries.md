@@ -16,9 +16,7 @@ See [Application.bx](../beyond-the-100/applicationcfc.md) for more information o
 
 A datasource is a **named** connection to a specific database with specified credentials. You can define an infinite amount of data sources in your BoxLang applications in the following locations:
 
-* Global BoxLang Engine (Adobe or Lucee) Administrator
-  * **Adobe** : `http://localhost:port/CFIDE/adminstrator`
-  * **Lucee**: `http://localhost:port/lucee/admin/server.bxm`
+
 * The `Application.bx`, which will dictate the data sources for that specific BoxLang application
 * Inline in `cfquery` or `queryexecute` calls
 
@@ -31,10 +29,6 @@ A query is a request to a database representing the results' rows and columns. I
 * Using the `cfquery` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 * Using the `queryExecute()` function. ([https://cfdocs.org/queryexecute](https://cfdocs.org/queryexecute))
 
-{% hint style="info" %}
-In Lucee, a query is backed by the following class: `lucee.runtime.type.QueryImpl`\
-In Adobe, a query is backed by the following class: `coldfusion.sql.QueryTable`
-{% endhint %}
 
 ```javascript
 // Tag syntax
@@ -50,7 +44,7 @@ qItems = queryExecute(
  "SELECT QUANTITY, ITEM FROM CUPBOARD ORDER BY ITEM"
 );
 
-// Lucee datasource inline definition
+// Datasource inline definition
 queryExecute(
   "SELECT * FROM Employees WHERE empid = ? AND country = ?", // sql
   [ 1, "USA" ], // params
@@ -66,7 +60,7 @@ queryExecute(
 ```
 
 {% hint style="success" %}
-If you are using **Lucee**, the datasource can even be defined inline. So instead of giving the name of the `datasource` it can be a `struct` definition of the datasource you want to connect to, just like the struct in `Application.bx`
+The datasource can even be defined inline. So instead of giving the name of the `datasource` it can be a `struct` definition of the datasource you want to connect to, just like the struct in `Application.bx`
 {% endhint %}
 
 ## Default Datasource
@@ -87,14 +81,6 @@ component{
 
 ## Defining Datasources
 
-If you want to use the BoxLang Engine's administrators for registering data sources, you must visit each administrator's interfaces and follow their wizards.
-
-### BoxLang Engine Administrator
-
-{% embed url="https://docs.lucee.org/guides/cookbooks/datasource-define-datasource.html" %}
-
-{% embed url="https://helpx.adobe.com/coldfusion/configuring-administering/data-source-management-for-coldfusion.html" %}
-
 ### `Application.bx`
 
 You can also define the datasources in the `Application.bx`, which is sometimes our preferred approach as the connections are versioned controlled and more visible than in the admin. You will do this by defining a struct called `this.datasources`. Each **key** will be the name of the datasource to register and the **value** of each key a struct of configuration information for the datasource. However, we recommend that you setup environment variables in order to NOT store your passwords in plain-text in your source code.
@@ -103,7 +89,7 @@ You can also define the datasources in the `Application.bx`, which is sometimes 
 ```java
 component{
     this.datasources = {
-        // Adobe Driver Approach
+        // Driver Approach
         mysql = {
             database : "mysql",
             host : "localhost",
@@ -113,22 +99,22 @@ component{
             password : "mysql",
             options : value
         },
-        // Adobe url approach
+        // URL approach
         mysql2 = {
             driver : "mysql",
             url : "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true",
             username : "",
             password : ""
         },
-        // Shorthand Lucee Approach
-        myLuceeDNS = {
+        // Shorthand Approach
+        myDSN = {
             class : "com.mysql.jdbc.Driver",
             connectionString : "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true",
             username : "",
             password : ""
         },
-        // Long Lucee Approach
-        myLuceeDNS = {
+        // Long Approach
+        myDSN = {
             type : "mysql",
             database : "mysql",
             host : "localhost",
@@ -153,7 +139,7 @@ You can also make your data sources portable from application to application or 
 * Data sources
 * Mail servers
 * Request, session, or application timeouts
-* Licensing information (for Adobe)
+* Licensing information
 *   Passwords
 
     \-Template caching settings
@@ -177,7 +163,6 @@ You can easily place a `.bxonfig.json` in the web root of your project, and if y
                 "timeToIdleSeconds":"1800",
                 "timeToLiveSeconds":"3600"
             },
-            "class":"lucee.runtime.cache.ram.RamCache",
             "readOnly":"false"
         }
     },
@@ -251,7 +236,7 @@ As you can see, many ways to iterate over the query exist. Choose the approach t
 
 ### Multi-Threaded Looping
 
-Lucee and Adobe 2021+ allow you to leverage the `each()` operations in a multi-threaded fashion. The `queryEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
+BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion. The `queryEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
 
 ```java
 queryEach( array, callback, parallel:boolean, maxThreads:numeric );
@@ -412,7 +397,7 @@ Please note that using a query of queries can be quite slow sometimes, not all t
 
 ## Returning Arrays of Structs or Struct of Structs
 
-In Lucee and Adobe 2021+, you can also determine the return type of database queries as something other than the BoxLang query object. You can choose an array of structs or a struct of structs. This is fantastic for modern applications that rely on rich JavaScript frameworks and produce JSON.
+You can also determine the return type of database queries as something other than the BoxLang query object. You can choose an array of structs or a struct of structs. This is fantastic for modern applications that rely on rich JavaScript frameworks and produce JSON.
 
 This is achieved by passing the `returntype` attribute within the query options or just an attribute of the `cfquery` tag ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 

@@ -10,14 +10,6 @@ There are two basic kinds of numbers in BoxLang: **integers** (whole numbers) an
 
 <table><thead><tr><th width="120">Type</th><th width="114">Size (bits)</th><th width="147">Significant Bits</th><th width="164">Exponent Bits</th><th>Decimal Digits</th></tr></thead><tbody><tr><td><code>Double</code></td><td>64</td><td>53</td><td>11</td><td>15-16</td></tr></tbody></table>
 
-{% hint style="danger" %}
-Lucee stores all numerical values as Doubles
-{% endhint %}
-
-{% hint style="danger" %}
-Adobe stores integers as Integer and floats as Doubles
-{% endhint %}
-
 {% hint style="success" %}
 **Tip:** If you are dealing with currency or tracking precision, please read about `precisionEvaluate()` to represent big numbers and precision results: [https://cfdocs.org/precisionevaluate](https://cfdocs.org/precisionevaluate)
 {% endhint %}

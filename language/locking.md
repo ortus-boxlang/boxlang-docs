@@ -2,9 +2,6 @@
 
 Locking is an essential piece of software engineering. There are occasions where shared resources must be locked in order to write to them or read from them. This process of locking can be very simple or extremely complex. Sometimes it can lead to deadlocks and serious concurrency issues. Further to say, we will only cover basic usage of the locking constructs in BoxLang.
 
-{% hint style="success" %}
-You can find an in-depth article on locking here: [https://helpx.adobe.com/coldfusion/developing-applications/developing-boxlang-applications/using-persistent-data-and-locking/locking-code-with-cflock.html](https://helpx.adobe.com/coldfusion/developing-applications/developing-boxlang-applications/using-persistent-data-and-locking/locking-code-with-cflock.html)
-
 You can also find great knowledge in the Java Synchronization tutorial: [https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html](https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)
 {% endhint %}
 
@@ -80,8 +77,6 @@ A deadlock is a state in which no request can execute the locked construct. Afte
 The `cflock` tag/construct uses kernel level synchronization objects that are released automatically upon time out and/or the abnormal termination of the thread that owns them. Therefore, while processing a `cflock` , the server never deadlocks for an infinite period. However, large time-outs can block request threads for long periods, and radically decrease throughput.
 
 To. prevent this, always use the minimum time-out value. Another cause of blocked request threads is inconsistent **nesting** of `cflocks` and inconsistent naming of locks. If you nest locks, everyone accessing the locked variables must consistently nest `cflocks` in the same order. Otherwise, a deadlock can occur.
-
-More information can be found here: [https://helpx.adobe.com/coldfusion/boxlang-reference/coldfusion-tags/tags-j-l/cflock.html](https://helpx.adobe.com/coldfusion/boxlang-reference/coldfusion-tags/tags-j-l/cflock.html)
 
 ## Race Conditions: Double Locking
 

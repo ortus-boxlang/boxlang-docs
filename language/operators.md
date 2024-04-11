@@ -172,10 +172,6 @@ event
     .setData( rc.id ?: "" )
 ```
 
-{% hint style="danger" %}
-Please note that we have seen inconsistencies in both Adobe and Lucee engines regarding the implementation of this operator.  I would avoid using it in Adobe 2018 as it is broken in several cases.
-{% endhint %}
-
 ## Function Operators
 
 In BoxLang, functions can act as operators as well, as you can use the results of the function call as the operands.  **Function arguments can also act as expressions, and you can even pass more functions into functions as arguments or even return functions from functions.  Now that's a fun tongue twister.**

@@ -35,7 +35,7 @@ Can be used in any context, used for persisting variables for a period of time.
 
 * `variables` - Private scope, visible internally to the CFC only
 * `this` - Public scope, visible from the outside world
-* `static` - No need for a CFC instance, available as a CFC representation (Lucee only)
+* `static` - No need for a CFC instance, available as a CFC representation
 
 ## Function Scopes
 
