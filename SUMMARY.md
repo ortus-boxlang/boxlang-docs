@@ -7,11 +7,11 @@
 * [Welcome](intro/intro/README.md)
   * [Author](intro/intro/author.md)
   * [About This Book](intro/intro/about-this-book.md)
-* [What is Boxlang](intro/history.md)
+* [What is BoxLang](intro/history.md)
 * [CommandBox CLI](intro/intro-to-commandbox.md)
 * [Instructions & Interpreters](intro/instructions-and-interpreters.md)
 
-## Boxlang Language
+## BoxLang Language
 
 * [Syntax](language/syntax.md)
 * [Comments](language/comments.md)

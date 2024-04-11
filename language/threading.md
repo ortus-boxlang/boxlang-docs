@@ -1,14 +1,14 @@
 # Threading
 
-Boxlang allows you create asynchronous threads so you can execute a body of code in a separate thread. This is achieved via the `cfthread` tag & the `thread` construct. Threads are independent streams of execution, and multiple threads on a page can execute simultaneously and asynchronously, letting you perform asynchronous processing in Boxlang. Boxlang code within the `cfthread` tag body executes on a separate thread while the page request thread continues processing without waiting for the `cfthread` body to finish. You can allow the thread body to continue executing in the background or you can wait for it to finish.
+BoxLang allows you create asynchronous threads so you can execute a body of code in a separate thread. This is achieved via the `cfthread` tag & the `thread` construct. Threads are independent streams of execution, and multiple threads on a page can execute simultaneously and asynchronously, letting you perform asynchronous processing in BoxLang. BoxLang code within the `cfthread` tag body executes on a separate thread while the page request thread continues processing without waiting for the `cfthread` body to finish. You can allow the thread body to continue executing in the background or you can wait for it to finish.
 
 ![](../.gitbook/assets/screen-shot-2019-08-09-at-2.14.00-pm.png)
 
 {% hint style="danger" %}
-**IMPORTANT:** You cannot spawn a thread from within a thread in any of the Boxlang engines.
+**IMPORTANT:** You cannot spawn a thread from within a thread in any of the BoxLang engines.
 {% endhint %}
 
-This approach is very very simplistic, if you want more control of your asynchronous programming aspects then we can move into leveraging Boxlang Future's via the `runAsync()` function or parallel Java streams using the [cbStreams](https://www.forgebox.io/view/cbStreams) project. Please see our [Asynchronous Programming ](../beyond-the-100/asynchronous-programming.md)section for information on advanced asynchronous programming.
+This approach is very very simplistic, if you want more control of your asynchronous programming aspects then we can move into leveraging BoxLang Future's via the `runAsync()` function or parallel Java streams using the [cbStreams](https://www.forgebox.io/view/cbStreams) project. Please see our [Asynchronous Programming ](../beyond-the-100/asynchronous-programming.md)section for information on advanced asynchronous programming.
 
 {% embed url="https://helpx.adobe.com/coldfusion/developing-applications/developing-boxlang-applications/using-coldfusion-threads/creating-and-managing-coldfusion-threads.html" %}
 
@@ -24,7 +24,7 @@ Here are some utility functions to assist with logging:
 
 * `systemOutput( obj, addNewLine:boolean, doErrorStream:boolean)` - Writes the given text or complex objects to the output or error stream.  Complex objects are outputted as JSON. (Lucee-only) [https://cfdocs.org/systemoutput](https://cfdocs.org/systemoutput)
 * `cfdump( var="text", output="console" )` - Send the variables to the output console, even complex variables. Complex objects are outputted as JSON. [https://cfdocs.org/cfdump](https://cfdocs.org/cfdump)
-* `cflog( text, log, file, type ) or writeLog()` - Leverage the Boxlang engine's logging facilities to send typed messages. [https://cfdocs.org/cflog](https://cfdocs.org/cflog)&#x20;
+* `cflog( text, log, file, type ) or writeLog()` - Leverage the BoxLang engine's logging facilities to send typed messages. [https://cfdocs.org/cflog](https://cfdocs.org/cflog)&#x20;
 
 ```java
 // Lucee Only
@@ -37,15 +37,15 @@ writedump( var=myComplexObject, output="console" );
 
 // Cflogs
 writeLog(
-    text = "Logging some info.", 
-    type = "information", 
-    application = "false", 
+    text = "Logging some info.",
+    type = "information",
+    application = "false",
     file = "myLogFile"
 );
 
 // By default, with no file or log type it sends it to the application.log
 writeLog(
-    text = "Logging more info.", 
+    text = "Logging more info.",
     type = "error"
 );
 ```
@@ -72,8 +72,8 @@ Examples:
 
 ```java
 thread action="run" name="myThread" {
-  // do single thread stuff 
-} 
+  // do single thread stuff
+}
 
 // Wait for the myThread and myOtherThread to finish
 thread action="join" name="myThread,myOtherThread";
@@ -114,7 +114,7 @@ thread     name="#thisThreadName#"
 
 ## Thread Data
 
-Because multiple threads can process simultaneously within a single template request, applications must ensure that data from one thread does not pollute or affect data in another thread. Boxlang provides several scopes that you can use to manage thread data, and a request-level lock mechanism that you use to prevent problems caused by threads that access page-level data. Boxlang also provides metadata variables that contain any thread-specific output and information about the thread, such as its status, processing time and much more, which extremely useful.
+Because multiple threads can process simultaneously within a single template request, applications must ensure that data from one thread does not pollute or affect data in another thread. BoxLang provides several scopes that you can use to manage thread data, and a request-level lock mechanism that you use to prevent problems caused by threads that access page-level data. BoxLang also provides metadata variables that contain any thread-specific output and information about the thread, such as its status, processing time and much more, which extremely useful.
 
 ### Thread Scopes
 
@@ -167,7 +167,7 @@ Thread scoped variables are only available to the page that created the thread o
 
 #### Thread Attributes Scope
 
-The thread body executes in isolation, but sometimes you need to be able to pass certain data that the thread body cannot access. In this case, we will pass them via the `thread` construct as a name-value pair. The Boxlang engine will then place those in the thread's `attributes` scope so they can be used for the life of the thread.
+The thread body executes in isolation, but sometimes you need to be able to pass certain data that the thread body cannot access. In this case, we will pass them via the `thread` construct as a name-value pair. The BoxLang engine will then place those in the thread's `attributes` scope so they can be used for the life of the thread.
 
 **WARNING**
 
@@ -211,4 +211,4 @@ thread     name="#thisThreadName#"
 } // end thread
 ```
 
-That's it for threading. Such a simple but powerful construct built right into the Boxlang language. Like mentioned before, if you need much more granular control or advanced ways to do [asynchronous programming](../beyond-the-100/asynchronous-programming.md), go to our section on running async code fluently.
+That's it for threading. Such a simple but powerful construct built right into the BoxLang language. Like mentioned before, if you need much more granular control or advanced ways to do [asynchronous programming](../beyond-the-100/asynchronous-programming.md), go to our section on running async code fluently.

@@ -1,6 +1,6 @@
 # Asynchronous Programming
 
-We already covered basic threading in our core Boxlang section. In this section, we will cover the usage of asynchronous programming via futures and the `runAsync()` function built into Boxlang.
+We already covered basic threading in our core BoxLang section. In this section, we will cover the usage of asynchronous programming via futures and the `runAsync()` function built into BoxLang.
 
 > A Future is an eventual result of an asynchronous operation.
 
@@ -10,7 +10,7 @@ Java Future JDK (Useful Reference)
 
 ## runAsync()
 
-This function returns a **Future** object, an asynchronous operation's eventual result. A representation of what the operation will produce in the future, it takes in two arguments and returns a Boxlang Future object.
+This function returns a **Future** object, an asynchronous operation's eventual result. A representation of what the operation will produce in the future, it takes in two arguments and returns a BoxLang Future object.
 
 * `callback:function` - Closure/Lambda function that returns a result to be resolved
 * `timeout:numeric` - Timeout for the asynchronous process in milliseconds
@@ -32,7 +32,7 @@ writeOutput(result);
 
 ## The Future Object
 
-The return of the `runAsync()` function is a Boxlang Future, not a Java Future. The Future Object has the following functions available:
+The return of the `runAsync()` function is a BoxLang Future, not a Java Future. The Future Object has the following functions available:
 
 | Function                     | ReturnType | Description                                                                                                                                                         |
 | ---------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

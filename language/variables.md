@@ -4,7 +4,7 @@ description: name = "Amazing Programmer"
 
 # Variables
 
-In Boxlang, variables are just pointers to a piece of data. They can hold **any** value you like and even change their value or **type** at runtime. In some languages, you need to specify the type of data you want your variable to hold at compile-time. You do not need to assign one in Boxlang, as everything is dynamic or inferred. The Lucee and Adobe 2021 servers infer types according to the initial value you assign to your variable.
+In BoxLang, variables are just pointers to a piece of data. They can hold **any** value you like and even change their value or **type** at runtime. In some languages, you need to specify the type of data you want your variable to hold at compile-time. You do not need to assign one in BoxLang, as everything is dynamic or inferred. The Lucee and Adobe 2021 servers infer types according to the initial value you assign to your variable.
 
 ```javascript
 a = "string"; // string
@@ -18,11 +18,11 @@ f = false; // boolean, or a string for Adobe :)
 Please note that assignments are evaluated from right to left instead of traditional reading from left to right.
 {% endhint %}
 
-Open up the CommandBox Shell and go into CommandBox **REPL** mode by typing `repl`. Every time you assign a value to a variable, the CommandBox REPL will output or echo the variable for you. Please note that in REPL mode, the termination for a line of code is omitted. A line terminator in Boxlang is the `;`.
+Open up the CommandBox Shell and go into CommandBox **REPL** mode by typing `repl`. Every time you assign a value to a variable, the CommandBox REPL will output or echo the variable for you. Please note that in REPL mode, the termination for a line of code is omitted. A line terminator in BoxLang is the `;`.
 
 ![](<../assets/variables (1).png>)
 
-As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), and so much more. No need for types or special assignments.  The Boxlang engine will determine or infer it and use it accordingly, thus a dynamic language.
+As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), and so much more. No need for types or special assignments.  The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
 
 {% hint style="success" %}
 The CommandBox REPL is based on a Lucee 5 server, which is why semi-colons are optional, and the default syntax is script and not tags.
@@ -30,7 +30,7 @@ The CommandBox REPL is based on a Lucee 5 server, which is why semi-colons are o
 
 ## Case Insensitive
 
-**Boxlang is a case-insensitive language** as well. Meaning if you create a variable `a` and reference it as `A` they are the same. This can be a big gotcha for developers from languages like Java or JavaScript. However, as best practice, we would recommend **ALWAYS** using the same case as when you define the variable:
+**BoxLang is a case-insensitive language** as well. Meaning if you create a variable `a` and reference it as `A` they are the same. This can be a big gotcha for developers from languages like Java or JavaScript. However, as best practice, we would recommend **ALWAYS** using the same case as when you define the variable:
 
 **Don't do this**
 
@@ -48,7 +48,7 @@ writeOutput( a );
 
 ## Naming Requirements
 
-Most Boxlang variables have a few requirements imposed by the Virtual Machine (VM)
+Most BoxLang variables have a few requirements imposed by the Virtual Machine (VM)
 
 * It must begin with a letter, underscore, or Unicode currency symbol.
 * It can contain letters, numbers, underscore characters, and Unicode currency symbols.
@@ -59,7 +59,7 @@ Most Boxlang variables have a few requirements imposed by the Virtual Machine (V
 
 As with any programming language, there are specific names you just can't use, and some you can use, but they can be very confusing for developers or the engine.  Here is a list of some of those:
 
-* The name of any of the internal Boxlang engine scopes: `form, session, cgi, client, url, application, function`
+* The name of any of the internal BoxLang engine scopes: `form, session, cgi, client, url, application, function`
   * Technically you can create the variable by long scoping (`local.form`), but it is confusing and error-prone.  So please be careful.
 
 
@@ -76,16 +76,16 @@ As you can see, the last equality wins! In this case, `a` is now an array.
 
 ## Types
 
-As we are now seeing, Boxlang is a typeless language, but internal types always exist.  Boxlang will automatically cast so you can do flexible typing assignments when evaluating expressions.  It does all the tedious and hard job for you.  If we were to categorize Boxlang variables into categories, these would be:
+As we are now seeing, BoxLang is a typeless language, but internal types always exist.  BoxLang will automatically cast so you can do flexible typing assignments when evaluating expressions.  It does all the tedious and hard job for you.  If we were to categorize BoxLang variables into categories, these would be:
 
 | Category    | Description                                                                                                         |
 | ----------- | ------------------------------------------------------------------------------------------------------------------- |
 | **Binary**  | Raw data from files such as images, pdfs, etc                                                                       |
 | **Complex** | A data container that represents more than one value: structures, arrays, queries, XML document objects, etc.       |
-| **Objects** | Complex constructs representing data and functional operations.  Boxlang Components or Java Objects.             |
+| **Objects** | Complex constructs representing data and functional operations.  BoxLang Components or Java Objects.             |
 | **Simple**  | One value and used directly in expressions. These include numbers, strings, floats, booleans, and date-time values. |
 
-Boxlang also includes many validation functions available to you to test for the type of variable you are working with.  You can also use the `getmetdata()` function to get the metadata about the variable as well.
+BoxLang also includes many validation functions available to you to test for the type of variable you are working with.  You can also use the `getmetdata()` function to get the metadata about the variable as well.
 
 ```javascript
 qData = getMetadata( query )
@@ -121,7 +121,7 @@ writedump( a.getMetadata() )
 
 ### Conversions
 
-You can also in Boxlang convert variables from one type to another.  Here are some functions that will assist you in conversions:
+You can also in BoxLang convert variables from one type to another.  Here are some functions that will assist you in conversions:
 
 * `arrayToList()`
 * `binaryDecode()`
@@ -161,7 +161,7 @@ You can also output or evaluate variables by using the `#` operators and using t
 
 ```javascript
 a = "Hola Luis"
-writeoutput( "Welcome to Boxlang: #a#" )
+writeoutput( "Welcome to BoxLang: #a#" )
 // Echo is the same as writeOutput but LUCEE only
 echo( "Welcome" )
 ```
@@ -173,7 +173,7 @@ Also, note that using the `#` hashes for output on assignments can be redundant 
 ```javascript
 a = "hello luis";
 b = #a#;
-or 
+or
 b = "#a#";
 ```
 
@@ -186,7 +186,7 @@ b = a;
 
 ## Debugging Variables
 
-Boxlang offers one of the most used functions/tags ever: `<cfdump>, writeDump()` and `<cfabort>, abort;`. These are used to dump the entire contents of a variable to the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `top` argument to limit dumping.
+BoxLang offers one of the most used functions/tags ever: `<cfdump>, writeDump()` and `<cfabort>, abort;`. These are used to dump the entire contents of a variable to the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `top` argument to limit dumping.
 
 ```javascript
 writeDump( complex );abort;
@@ -198,7 +198,7 @@ writeDump( var=arrayOfORM, top=5 );abort;
 
 ### Server Debugging Templates
 
-Boxlang Engines also allow you to turn on/off a debugging template that shows up at the bottom of requests when running in server mode. You can activate this debugging by logging in to the appropriate engine administrator and looking for the **debugging** section. Turn it on and debug like a champ.
+BoxLang Engines also allow you to turn on/off a debugging template that shows up at the bottom of requests when running in server mode. You can activate this debugging by logging in to the appropriate engine administrator and looking for the **debugging** section. Turn it on and debug like a champ.
 
 {% hint style="danger" %}
 **Important:** Adobe Engines have a very evil setting called _Report Execution Times_, make sure it is always turned **OFF**. If you use it with any application that leverages Components, it will slow down your application tremendously.
@@ -206,7 +206,7 @@ Boxlang Engines also allow you to turn on/off a debugging template that shows up
 
 ## Paraming Variables
 
-Boxlang allows you to set default values for variables in case you use a variable that doesn't exist. You can use the `<cfparam>` tag or the `param` construct:
+BoxLang allows you to set default values for variables in case you use a variable that doesn't exist. You can use the `<cfparam>` tag or the `param` construct:
 
 ```markup
 <cfparam name="myVariable" default="luis">
@@ -257,18 +257,18 @@ if( structKeyExists( variables, "myVariable" ) ){
 
 ## Java Integration
 
-As we have discussed, Boxlang is a dynamic language built on Java. Thus each variable internally is represented by a native Java data type: `String, Int, Float, Array, Vector, HashMap, etc`. This is important because each variable you create has member functions available to you that delegate or reflect its native Java class.
+As we have discussed, BoxLang is a dynamic language built on Java. Thus each variable internally is represented by a native Java data type: `String, Int, Float, Array, Vector, HashMap, etc`. This is important because each variable you create has member functions available to you that delegate or reflect its native Java class.
 
 ```javascript
 a = "hello";
 writeOutput( a.getClass().getName() );
 ```
 
-If you run the script above in the REPL tool, you will see the output as `java.lang.String`. Therefore, the variable is typed as a `String` and can call on any method that `java.lang.String` implements. You can try this for the many types in Boxlang, like structs, arrays, objects, etc.
+If you run the script above in the REPL tool, you will see the output as `java.lang.String`. Therefore, the variable is typed as a `String` and can call on any method that `java.lang.String` implements. You can try this for the many types in BoxLang, like structs, arrays, objects, etc.
 
 ## Member Functions
 
-Besides the native Java member functions available to you, Boxlang also allows you to call on each variable's data type functions and chain them to create friendly language DSLs. This way, you do not have to pass variables into functions but treat the variables as objects. You can see all the member functions available according to data type here: [https://cfdocs.org/member](https://cfdocs.org/member)
+Besides the native Java member functions available to you, BoxLang also allows you to call on each variable's data type functions and chain them to create friendly language DSLs. This way, you do not have to pass variables into functions but treat the variables as objects. You can see all the member functions available according to data type here: [https://cfdocs.org/member](https://cfdocs.org/member)
 
 Here are some examples:
 
@@ -282,7 +282,7 @@ ArraySort( myArray, "ASC" );
 myArray.append( "objec_new" );
 myArray.sort( "ASC" );
 
-// Java Functions + Boxlang Functions
+// Java Functions + BoxLang Functions
 var myProductObject = createObject( "java", "myJavaclass" );
 myjavaList = myProductObject.getProductList();
 myjavaList.add( "newProduct" ); // Java API
@@ -314,4 +314,4 @@ Please see [https://cfdocs.org/member](https://cfdocs.org/member) for further in
 
 ## Naming Coding Standards
 
-At [Ortus Solutions](https://www.ortussolutions.com), we have developed a set of development standards for many languages. You can find our Boxlang standards here: [https://github.com/Ortus-Solutions/coding-standards](https://github.com/Ortus-Solutions/coding-standards)
+At [Ortus Solutions](https://www.ortussolutions.com), we have developed a set of development standards for many languages. You can find our BoxLang standards here: [https://github.com/Ortus-Solutions/coding-standards](https://github.com/Ortus-Solutions/coding-standards)

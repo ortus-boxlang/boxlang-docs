@@ -4,28 +4,28 @@ description: Script or Tags? Choose wisely!
 
 # Syntax
 
-There are two ways to write Boxlang code: in **tags** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `cfm` files, and the model or business layers will all be done in **script** syntax in `cfc` files. (MVC comes later).  There are no differences in functionality between them; it's pure syntax.
+There are two ways to write BoxLang code: in **tags** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `cfm` files, and the model or business layers will all be done in **script** syntax in `cfc` files. (MVC comes later).  There are no differences in functionality between them; it's pure syntax.
 
 * CFScript Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
 
 ## Syntax Files
 
-Boxlang includes a set of instructions you use on pages (`.bxm`) or components (classes -`cfc`). You will write one or more instructions in a file (`.bxm,.bx`) then run the file through a Boxlang engine or Command Line Interpreter like CommandBox.
+BoxLang includes a set of instructions you use on pages (`.bxm`) or components (classes -`cfc`). You will write one or more instructions in a file (`.bxm,.bx`) then run the file through a BoxLang engine or Command Line Interpreter like CommandBox.
 
-* `cfm` - Boxlang markup file, tag syntax is the default and used for views
-* `cfc` - The default is the Boxlang Component file (Class or Object), script syntax.&#x20;
+* `cfm` - BoxLang markup file, tag syntax is the default and used for views
+* `cfc` - The default is the BoxLang Component file (Class or Object), script syntax.&#x20;
 
 ## Implicit Behavior
 
-Boxlang also gives you a pre-set of defined [tags](https://cfdocs.org/tags) and [functions](https://cfdocs.org/functions) available to you in any file you write your code in. These tags and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation.  They are basically automatic imports.
+BoxLang also gives you a pre-set of defined [tags](https://cfdocs.org/tags) and [functions](https://cfdocs.org/functions) available to you in any file you write your code in. These tags and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation.  They are basically automatic imports.
 
 {% hint style="success" %}
-**Tip:** Please note that the Boxlang built-in functions are also **first-class functions** so that they can be passed around as arguments to other functions or closures or saved as variables.
+**Tip:** Please note that the BoxLang built-in functions are also **first-class functions** so that they can be passed around as arguments to other functions or closures or saved as variables.
 {% endhint %}
 
 ## Exploring Behavior
 
-Three Boxlang instructions we will use in this section are `cfset`, `cfoutput`, and `cfdump`.
+Three BoxLang instructions we will use in this section are `cfset`, `cfoutput`, and `cfdump`.
 
 * `cfset` is used to create a variable and assign it a value.
 * `cfoutput` displays a variable's value to the output stream.
@@ -75,7 +75,7 @@ component{
 {% endtab %}
 {% endtabs %}
 
-Please note that no types and not even any visibility scopes you might be used to are present. Boxlang can also infer variable types on more distinct variables like dates, booleans, or numbers. However, please note that you can fully leverage types if you like:
+Please note that no types and not even any visibility scopes you might be used to are present. BoxLang can also infer variable types on more distinct variables like dates, booleans, or numbers. However, please note that you can fully leverage types if you like:
 
 {% tabs %}
 {% tab title="Sample.bx" %}
@@ -97,11 +97,11 @@ By default, the return type of every function and/or argument is **any**. Thus, 
 
 ### Semi-Colons
 
-Please note that semi-colons are used to demarcate line endings in Boxlang `;`. However, the Lucee Server engine and Adobe Boxlang 2018+ treat semi-colons as optional, while Adobe Boxlang 2016 or below does not.  Also, note the CommandBox REPL does NOT require semi-colons.
+Please note that semi-colons are used to demarcate line endings in BoxLang `;`. However, the Lucee Server engine and Adobe BoxLang 2018+ treat semi-colons as optional, while Adobe BoxLang 2016 or below does not.  Also, note the CommandBox REPL does NOT require semi-colons.
 
 ### Tags In Script
 
-Lucee and Adobe Boxlang 11+ will allow you to write your Boxlang tags in script syntax. You basically eliminate the starting `<` and ending `>` enclosures and create a block by using the `{` and `}` mustaches.
+Lucee and Adobe BoxLang 11+ will allow you to write your BoxLang tags in script syntax. You basically eliminate the starting `<` and ending `>` enclosures and create a block by using the `{` and `}` mustaches.
 
 ```javascript
 cfhttp(method="GET", charset="utf-8", url="https://www.google.com/", result="result") {
@@ -111,7 +111,7 @@ cfhttp(method="GET", charset="utf-8", url="https://www.google.com/", result="res
 
 ## Polyglot References
 
-As we now live in a world of polyglot developers, we have added references below to other languages to see the differences and similarities between Boxlang and other major languages in usage today. Please note that this section is merely academic and to help developers from other language backgrounds to understand the intricacies of the Boxlang syntax.
+As we now live in a world of polyglot developers, we have added references below to other languages to see the differences and similarities between BoxLang and other major languages in usage today. Please note that this section is merely academic and to help developers from other language backgrounds to understand the intricacies of the BoxLang syntax.
 
 ### PHP Syntax
 
@@ -181,7 +181,7 @@ public class MyProgram {
 
 ## Coding Standards
 
-At [Ortus Solutions](https://www.ortussolutions.com), we have developed a set of development standards for many languages. You can find our Boxlang standards here: [https://github.com/Ortus-Solutions/coding-standards](https://github.com/Ortus-Solutions/coding-standards).
+At [Ortus Solutions](https://www.ortussolutions.com), we have developed a set of development standards for many languages. You can find our BoxLang standards here: [https://github.com/Ortus-Solutions/coding-standards](https://github.com/Ortus-Solutions/coding-standards).
 
 {% embed url="https://github.com/Ortus-Solutions/coding-standards" %}
 Coding Standards

@@ -1,12 +1,12 @@
 # Java Integration
 
-,Boxlang is compiled to [Java bytecode](https://en.wikipedia.org/wiki/Java\_bytecode) and runs on the JVM.  This gives Boxlang a unique advantage that not only can you write Boxlang but you can also integrate with the running JDK libraries or any Java library you tell the engine to use.  This is great, because if there is something already written in Java, just drop it in and use it, well most of the time :) Unless Jar loading hell occurs.
+,BoxLang is compiled to [Java bytecode](https://en.wikipedia.org/wiki/Java\_bytecode) and runs on the JVM.  This gives BoxLang a unique advantage that not only can you write BoxLang but you can also integrate with the running JDK libraries or any Java library you tell the engine to use.  This is great, because if there is something already written in Java, just drop it in and use it, well most of the time :) Unless Jar loading hell occurs.
 
 {% hint style="info" %}
 CommandBox even allows you to install jar's from any endpoint into your projects: [https://commandbox.ortusbooks.com/package-management/code-endpoints/jar-via-http](https://commandbox.ortusbooks.com/package-management/code-endpoints/jar-via-http)
 
 ```bash
-install "jar:https://github.com/coldbox-modules/cbox-bcrypt/blob/master/modules/bcrypt/models/lib/jbcrypt.jar?raw=true" 
+install "jar:https://github.com/coldbox-modules/cbox-bcrypt/blob/master/modules/bcrypt/models/lib/jbcrypt.jar?raw=true"
 ```
 {% endhint %}
 
@@ -41,7 +41,7 @@ writeOutput( currentTime );
 
 ## Java Casting
 
-You must remember that Java is a static and typed language.  Boxlang is not!  If you need to pass in arguments to Java functions that require native types you will have to cast them.  We will use the fancy `JavaCast()` function built-in to the language.
+You must remember that Java is a static and typed language.  BoxLang is not!  If you need to pass in arguments to Java functions that require native types you will have to cast them.  We will use the fancy `JavaCast()` function built-in to the language.
 
 ```java
 integerObject = createObject( "java", "java.lang.Integer" );
@@ -90,9 +90,9 @@ nullValue();
 
 ## Loading Custom Jars/Libraries
 
-The `createObject( "java" )` method will look into the Boxlang engine's class loader to discover the class you request.  If the class is not located an exception is thrown that the class could not be found.  If you want to integrate with third-party Jar's and libraries then you will need to tell the engine where to look for those classes.  There are essentially three ways to add custom libraries to the Boxlang engine:
+The `createObject( "java" )` method will look into the BoxLang engine's class loader to discover the class you request.  If the class is not located an exception is thrown that the class could not be found.  If you want to integrate with third-party Jar's and libraries then you will need to tell the engine where to look for those classes.  There are essentially three ways to add custom libraries to the BoxLang engine:
 
-1. Add the jars/libs to the Boxlang Lib paths. These are those obscure directories both Adobe and Lucee give you so you can drop your libraries and the engine's class loader can well, load them.  Each engine has different paths, please see their docs on the matter.  We won't cover this approach as it is incredibly rigid:
+1. Add the jars/libs to the BoxLang Lib paths. These are those obscure directories both Adobe and Lucee give you so you can drop your libraries and the engine's class loader can well, load them.  Each engine has different paths, please see their docs on the matter.  We won't cover this approach as it is incredibly rigid:
    1. [https://docs.lucee.org/guides/Various/tutorial-lucee/tutorial-java-in-lucee.html](https://docs.lucee.org/guides/Various/tutorial-lucee/tutorial-java-in-lucee.html)
    2. [https://helpx.adobe.com/coldfusion/developing-applications/using-web-elements-and-external-objects/integrating-jee-and-java-elements-in-boxlang-applications/about-coldfusion-java-and-jee.html](https://helpx.adobe.com/coldfusion/developing-applications/using-web-elements-and-external-objects/integrating-jee-and-java-elements-in-boxlang-applications/about-coldfusion-java-and-jee.html)
 2. The `Application.bx` allows you to declare a `this.javaSettings` struct where you can declare an array of locations of the libraries to load upon application startup with some nice modifiers.  This will allow you to store and even leverage CommandBox for the management of such jars.
@@ -100,9 +100,9 @@ The `createObject( "java" )` method will look into the Boxlang engine's class lo
 
 ### this.javaSettings
 
-This `Application.bx` structure takes in 3 keys that will allow you to class load any jar/.class libraries into the running Boxlang application:
+This `Application.bx` structure takes in 3 keys that will allow you to class load any jar/.class libraries into the running BoxLang application:
 
-<table data-header-hidden><thead><tr><th width="281">Key</th><th>Description</th></tr></thead><tbody><tr><td>Key</td><td>Description</td></tr><tr><td><code>loadPaths</code></td><td>An array of paths to the directories that contain Java classes or JAR files.You can also provide the path to a JAR or a class. If the paths are not resolved, an error occurs.</td></tr><tr><td><code>loadBoxlangClassPath</code></td><td>Indicates whether to load the classes from the Boxlang lib directory. The default value is false.</td></tr><tr><td><code>reloadOnChange</code></td><td>Indicates whether to reload the updated classes and JARs dynamically, without restarting Boxlang. The default value is false.</td></tr><tr><td><code>watchInterval</code></td><td>Specifies the time interval in seconds after which to verify any change in the class files or JAR files. This attribute is applicable only if the reloadOnChange attribute is set to true. The default value is 60 seconds.</td></tr><tr><td><code>watchExtensions</code></td><td>Specifies the extensions of the files to monitor for changes. By default, only <code>.class and .jar</code> files are monitored.</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="281">Key</th><th>Description</th></tr></thead><tbody><tr><td>Key</td><td>Description</td></tr><tr><td><code>loadPaths</code></td><td>An array of paths to the directories that contain Java classes or JAR files.You can also provide the path to a JAR or a class. If the paths are not resolved, an error occurs.</td></tr><tr><td><code>loadBoxLangClassPath</code></td><td>Indicates whether to load the classes from the BoxLang lib directory. The default value is false.</td></tr><tr><td><code>reloadOnChange</code></td><td>Indicates whether to reload the updated classes and JARs dynamically, without restarting BoxLang. The default value is false.</td></tr><tr><td><code>watchInterval</code></td><td>Specifies the time interval in seconds after which to verify any change in the class files or JAR files. This attribute is applicable only if the reloadOnChange attribute is set to true. The default value is 60 seconds.</td></tr><tr><td><code>watchExtensions</code></td><td>Specifies the extensions of the files to monitor for changes. By default, only <code>.class and .jar</code> files are monitored.</td></tr></tbody></table>
 
 {% code title="Application.bx" %}
 ```java
@@ -117,7 +117,7 @@ component{
 ```
 {% endcode %}
 
-Once that is declared in your Application.bx and you execute a `createobject()` with a class from those libraries, Boxlang will know about them and create them.
+Once that is declared in your Application.bx and you execute a `createobject()` with a class from those libraries, BoxLang will know about them and create them.
 
 ### createObject() Lucee Class Loading
 
@@ -134,13 +134,13 @@ createObject( "java", "org.apache.pdfbox.pdmodel.PDDocument", variables.LIB_PATH
 
 ## Dynamic Proxies
 
-Both Boxlang engines also allows you to create dynamic proxies from existing Boxlang Components (CFCs).  What this means is that a Dynamic proxy lets you pass Boxlang components to Java objects. Java objects can work with the Boxlang components seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as Boxlang components.
+Both BoxLang engines also allows you to create dynamic proxies from existing BoxLang Components (CFCs).  What this means is that a Dynamic proxy lets you pass BoxLang components to Java objects. Java objects can work with the BoxLang components seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang components.
 
 ```java
 createDynamicProxy( cfc, interfaces )
 ```
 
-If you want to leverage a Java library that requires a certain type of Java object as an argument and instead of you creating that object in Java, you can see if that argument adheres to a certain interface and Boxlang will create a dynamic proxy that binds it.
+If you want to leverage a Java library that requires a certain type of Java object as an argument and instead of you creating that object in Java, you can see if that argument adheres to a certain interface and BoxLang will create a dynamic proxy that binds it.
 
 ```java
 createDynamicProxy(

@@ -1,8 +1,8 @@
 # Components
 
-**Boxlang \(Boxlang\) is object-oriented, period!**
+**BoxLang \(BoxLang\) is object-oriented, period!**
 
-Boxlang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Components \(CFCs\). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul webservices.
+BoxLang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Components \(CFCs\). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul webservices.
 
 {% hint style="info" %}
 Remember that objects are not only data but data + behavior.
@@ -10,7 +10,7 @@ Remember that objects are not only data but data + behavior.
 
 For an example of an object, think about **you** as a human being. You have properties/attributes like height, weight, and eye color. You have functions/methods like walk, run, wash dishes, and daydream. Different kinds of objects have different properties and functions. Some might even just be a collection of functions \(utility/static/service objects\) or what are referred to as stateless objects, there is no instance data that they represent.
 
-Boxlang supports not only the traditional avenues for object orientation but many unique constructs and dynamic runtime additions.  Enjoy!
+BoxLang supports not only the traditional avenues for object orientation but many unique constructs and dynamic runtime additions.  Enjoy!
 
 ## Classes and Instances
 
@@ -65,7 +65,7 @@ Please check out the following articles:
 
 ### Notes of Interest
 
-The attribute `accessors` in the component definition denotes that automatic **getters \(**[**accessors**](https://en.wikipedia.org/wiki/Mutator_method)**\)** and **setters \(**[**mutators**](https://en.wikipedia.org/wiki/Mutator_method)**\)** will be created for all defined properties in the object. Also notice that the component and each property can be documented using `/** **/` notation, which is great for automatic documentation generators like [DocBox](https://www.forgebox.io/view/docbox). 
+The attribute `accessors` in the component definition denotes that automatic **getters \(**[**accessors**](https://en.wikipedia.org/wiki/Mutator_method)**\)** and **setters \(**[**mutators**](https://en.wikipedia.org/wiki/Mutator_method)**\)** will be created for all defined properties in the object. Also notice that the component and each property can be documented using `/** **/` notation, which is great for automatic documentation generators like [DocBox](https://www.forgebox.io/view/docbox).
 
 {% hint style="success" %}
 Get into the habit of inline documentation, it can go a long way for automatic generators and make you look like you can document like a machine!
@@ -92,7 +92,7 @@ Please note that the `new` keyword will automatically call an object's construct
 user = createObject( "component", "User" ).init();
 ```
 
-In later chapters we will investigate the concept of [dependency injection](../../extra-credit/dependency-injection.md). Please also note that the `createObject()` function can also be used to create different types of objects in Boxlang like:
+In later chapters we will investigate the concept of [dependency injection](../../extra-credit/dependency-injection.md). Please also note that the `createObject()` function can also be used to create different types of objects in BoxLang like:
 
 * Components
 * Webservices \(WSDL based\)
@@ -137,13 +137,13 @@ var obj = createObject( "component", "Object" ).init();
 
 ### Pseudo-Constructor
 
-The pseudo-constructor can be found in use in Boxlang and it's a unique beast.  Any source code that exists between the `cfcomponent` declaration and the first function is considered to be the pseudo-constructor.  This area of execution will be executed for you implicitly whenever the object is created, even before the implicit `init()` method call.  I know confusing, but here is a simple sequence: `new()/createObject() -> pseudo-constructor -> init()`
+The pseudo-constructor can be found in use in BoxLang and it's a unique beast.  Any source code that exists between the `cfcomponent` declaration and the first function is considered to be the pseudo-constructor.  This area of execution will be executed for you implicitly whenever the object is created, even before the implicit `init()` method call.  I know confusing, but here is a simple sequence: `new()/createObject() -> pseudo-constructor -> init()`
 
 ```java
 component{
     // Pseudo Constructor starts here
-    
-    this.helper = now();   
+
+    this.helper = now();
     static {
         staticVar : 2
     };
@@ -166,7 +166,7 @@ Every component has certain visibility scopes where properties, variables and fu
 
 ## Component Attributes
 
-The `component` construct can also have many attributes or name-value pairs that will give it some extra functionality for SOAP/REST web services and for Hibernate ORM Persistence. Each Boxlang engine provides different capabilities. You can find all of them here: [https://cfdocs.org/cfcomponent](https://cfdocs.org/cfcomponent). Below are the most common ones:
+The `component` construct can also have many attributes or name-value pairs that will give it some extra functionality for SOAP/REST web services and for Hibernate ORM Persistence. Each BoxLang engine provides different capabilities. You can find all of them here: [https://cfdocs.org/cfcomponent](https://cfdocs.org/cfcomponent). Below are the most common ones:
 
 * `accessors` - Enables automatic getters/setters for properties
 * `extends` - Provides inheritance via the path of the Component \(CFC\)
@@ -182,7 +182,7 @@ component accessors="true" serializable="false" extends="BaseUser"{
 component implements="cachebox.system.cache.ICacheProvider"{}
 ```
 
-Please note that in Boxlang you can also declare these attributes via annotations in the comments section, weird, I know!
+Please note that in BoxLang you can also declare these attributes via annotations in the comments section, weird, I know!
 
 ```java
 /**
@@ -196,5 +196,4 @@ component{
 }
 ```
 
-## 
-
+##

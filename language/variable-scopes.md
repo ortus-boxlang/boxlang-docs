@@ -4,12 +4,12 @@ description: They gotta exist somewhere!
 
 # Variable Scopes
 
-In the Boxlang language, there are many persistence and visibility scopes that exist for variables to be placed in. These are differentiated by context: in a CFC, in a function, tag, thread or in a template. All Boxlang scopes are implemented as structures or hash maps of key-value name pairs. The default scope for variable storage is called `variables`. Thus you can refer variables like this in either CFC or Template context:
+In the BoxLang language, there are many persistence and visibility scopes that exist for variables to be placed in. These are differentiated by context: in a CFC, in a function, tag, thread or in a template. All BoxLang scopes are implemented as structures or hash maps of key-value name pairs. The default scope for variable storage is called `variables`. Thus you can refer variables like this in either CFC or Template context:
 
 ```javascript
 a = "hello";
 writeOutput( a );
-or 
+or
 writeOutput( variables.a );
 ```
 
@@ -19,11 +19,11 @@ Can be used in any context, used for persisting variables for a period of time.
 
 * `session` - stored in server RAM or external storages tracked by unique web visitor
 * `client` - stored in cookies, databases, or external storages (simple values only)
-* `application` - stored in server RAM or external storage tracked by the running Boxlang application
+* `application` - stored in server RAM or external storage tracked by the running BoxLang application
 * `cookie` - stored in a visitor's browser
-* `server` - stored in server RAM for ANY application for that Boxlang instance
+* `server` - stored in server RAM for ANY application for that BoxLang instance
 * `request` - stored in RAM for a specific user request ONLY
-* `cgi` - read only scope provided by the servlet container and Boxlang
+* `cgi` - read only scope provided by the servlet container and BoxLang
 * `form` - Variables submitted via HTTP posts
 * `URL` - Variables incoming via HTTP GET operations or the incoming URL
 
@@ -58,7 +58,7 @@ Can be used in any context, used for persisting variables for a period of time.
 
 ## **Evaluating Unscoped Variables**
 
-If you use a variable name **without** a scope prefix, Boxlang checks the scopes in the following order to find the variable:
+If you use a variable name **without** a scope prefix, BoxLang checks the scopes in the following order to find the variable:
 
 1. Local (function-local, UDFs and CFCs only)
 2. Arguments
@@ -74,5 +74,5 @@ If you use a variable name **without** a scope prefix, Boxlang checks the scopes
 12. Client
 
 {% hint style="danger" %}
-**IMPORTANT**: Because Boxlang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables. It can also help you avoid nasty lookups or unexpected results.
+**IMPORTANT**: Because BoxLang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables. It can also help you avoid nasty lookups or unexpected results.
 {% endhint %}

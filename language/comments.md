@@ -4,18 +4,18 @@ description: You shall comment ALL your code!
 
 # Comments
 
-Comments are necessary and essential for any programming language. Boxlang is no different with helping you add code comments in both script and tag syntax.
+Comments are necessary and essential for any programming language. BoxLang is no different with helping you add code comments in both script and tag syntax.
 
 ## Tag Comments
 
-You can use the `<!---` and `--->` Syntax to comment within a Boxlang template (`.bxm`). This is very similar to HTML comments but adding an extra `-` to demarcate it as a Boxlang comment.
+You can use the `<!---` and `--->` Syntax to comment within a BoxLang template (`.bxm`). This is very similar to HTML comments but adding an extra `-` to demarcate it as a BoxLang comment.
 
 ```markup
 HTML Comment
 <!-- I am an HTML Comment -->
 
-Boxlang Comment
-<!---  I am a Boxlang Comment --->
+BoxLang Comment
+<!---  I am a BoxLang Comment --->
 ```
 
 ## Script Comments
@@ -35,7 +35,7 @@ If you are within a CFC or in a `<cfscript>` block you can use an alternate styl
 
 
 /*
-  Multi 
+  Multi
   Line
   Comments
   are
@@ -61,13 +61,13 @@ A multi-line block can affect the metadata of a `component` or `function` if the
 
 ## CFCDoc Style Comments
 
-In the Boxlang world, you can write [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html) comments in what we call **CFCDoc** comments. We leverage the [DocBox](https://github.com/Ortus-Solutions/DocBox) library to generate documentation according to object metadata and comments.  Please check out the [annotating your code ](https://docbox.ortusbooks.com/getting-started/annotating-your-code)section in the DocBox documentation to get a feel for how to document your code: [https://docbox.ortusbooks.com/getting-started/annotating-your-code](https://docbox.ortusbooks.com/getting-started/annotating-your-code)
+In the BoxLang world, you can write [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html) comments in what we call **CFCDoc** comments. We leverage the [DocBox](https://github.com/Ortus-Solutions/DocBox) library to generate documentation according to object metadata and comments.  Please check out the [annotating your code ](https://docbox.ortusbooks.com/getting-started/annotating-your-code)section in the DocBox documentation to get a feel for how to document your code: [https://docbox.ortusbooks.com/getting-started/annotating-your-code](https://docbox.ortusbooks.com/getting-started/annotating-your-code)
 
 {% code title="MyAwesome.bx" %}
 ```java
 /**
  * This is my component
- * 
+ *
  * @author Luis Majano
  */
 component extends="Base" implements="IHello" singleton{

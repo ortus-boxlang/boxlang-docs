@@ -1,6 +1,6 @@
 # File Handling
 
-Boxlang allows you to manipulate, read, upload, etc files via its built in methods which are great and easy to use. It can even help you manipulate zip/jar archives!  We won't go into every single detail of file handling, but below you can find the majority of functions to deal with file handling. 
+BoxLang allows you to manipulate, read, upload, etc files via its built in methods which are great and easy to use. It can even help you manipulate zip/jar archives!  We won't go into every single detail of file handling, but below you can find the majority of functions to deal with file handling.
 
 {% hint style="success" %}
 You can find the file system functions here: [https://cfdocs.org/filesystem-functions](https://cfdocs.org/filesystem-functions).
@@ -95,8 +95,3 @@ stream = streamBuilder.new()
     .parallel()
     .ofFile( absolutePath );
 ```
-
-
-
-
-

@@ -3,11 +3,11 @@
 > Dependency injection is the art of making work come home to you.\
 > Dhanji R. Prasanna
 
-**In Boxlang, WireBox is the standard when it comes to Dependency Injection and Aspect Oriented Programming (AOP).**
+**In BoxLang, WireBox is the standard when it comes to Dependency Injection and Aspect Oriented Programming (AOP).**
 
 ![](../.gitbook/assets/assets\_-la-uvvsc-e1gvkiapq-\_-la-ud03e\_n2seqlc9ls\_-la-urvqwgjvssa\_j5pt\_wirebox.png)
 
-WireBox alleviates the need for custom object factories or manual object creation in your Boxlang applications. It provides a **standardized** approach to object **construction** and **assembling** that will make your code easier to adapt to changes, easier to [test, mock](https://testbox.ortusbooks.com) and extend.
+WireBox alleviates the need for custom object factories or manual object creation in your BoxLang applications. It provides a **standardized** approach to object **construction** and **assembling** that will make your code easier to adapt to changes, easier to [test, mock](https://testbox.ortusbooks.com) and extend.
 
 {% hint style="info" %}
 You can read all about WireBox here: [https://wirebox.ortusbooks.com/](https://wirebox.ortusbooks.com/)
@@ -39,9 +39,9 @@ Compared to manual Dependency Injection (DI), using WireBox can lead to the foll
 Here are a simple listing of features WireBox brings to the table:
 
 * Annotation driven dependency injection
-* 0 configuration mode or a programmatic binder configuration approach via Boxlang (No XML!)
+* 0 configuration mode or a programmatic binder configuration approach via BoxLang (No XML!)
 * Creation and Wiring of or by:
-  * Boxlang Components
+  * BoxLang Components
   * Java Classes
   * RSS Feeds
   * WebService objects
@@ -89,7 +89,7 @@ component singleton{
 
     /**
      * Constructor Injection
-     * 
+     *
      * @myService.inject id:MyAwesomeService
      *
      */
@@ -137,7 +137,7 @@ As you are starting to see, the injection DSL can be very powerful.
 ```java
 /**
  * Constructor Injection
- * 
+ *
  * @myService.inject id:MyAwesomeService
  *
  */
@@ -167,10 +167,10 @@ Available scopes are:
 * `NOSCOPE` : Transient objects
 * `PROTOTYPE` : Transient objects
 * `SINGLETON` : Objects constructed only once and stored in the injector
-* `SESSION` : Boxlang session scoped based objects
-* `APPLICATION` : Boxlang application scope based objects
-* `REQUEST` : Boxlang request scope based objects
-* `SERVER` : Boxlang server scope based objects
+* `SESSION` : BoxLang session scoped based objects
+* `APPLICATION` : BoxLang application scope based objects
+* `REQUEST` : BoxLang request scope based objects
+* `SERVER` : BoxLang server scope based objects
 * `CACHEBOX` : CacheBox scoped objects
 
 ### Usage
@@ -210,11 +210,11 @@ The main method to retrieve objects is called `getInstance()` and you can see th
  * @initArguments.doc_generic struct
  * @targetObject The object requesting the dependency, usually only used by DSL lookups
  **/
-function getInstance( 
-  name, 
-  dsl, 
-  struct initArguments = structNew(), 
-  targetObject="" 
+function getInstance(
+  name,
+  dsl,
+  struct initArguments = structNew(),
+  targetObject=""
 )
 ```
 

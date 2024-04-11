@@ -1,6 +1,6 @@
 # Code Locking
 
-Locking is an essential piece of software engineering. There are occasions where shared resources must be locked in order to write to them or read from them. This process of locking can be very simple or extremely complex. Sometimes it can lead to deadlocks and serious concurrency issues. Further to say, we will only cover basic usage of the locking constructs in Boxlang.
+Locking is an essential piece of software engineering. There are occasions where shared resources must be locked in order to write to them or read from them. This process of locking can be very simple or extremely complex. Sometimes it can lead to deadlocks and serious concurrency issues. Further to say, we will only cover basic usage of the locking constructs in BoxLang.
 
 {% hint style="success" %}
 You can find an in-depth article on locking here: [https://helpx.adobe.com/coldfusion/developing-applications/developing-boxlang-applications/using-persistent-data-and-locking/locking-code-with-cflock.html](https://helpx.adobe.com/coldfusion/developing-applications/developing-boxlang-applications/using-persistent-data-and-locking/locking-code-with-cflock.html)
@@ -10,25 +10,25 @@ You can also find great knowledge in the Java Synchronization tutorial: [https:/
 
 ## cflock
 
-Boxlang gives you the `cflock` tag/construct which you can use to ensure the integrity of shared data and it allows you to have two types of locks:
+BoxLang gives you the `cflock` tag/construct which you can use to ensure the integrity of shared data and it allows you to have two types of locks:
 
-1. **Exclusive** - Allows single-thread access to the Boxlang constructs in its body. The tag body can be executed by **one** request at a time. No other requests can start executing code within the tag while a request has an exclusive lock. Boxlang issues exclusive locks on a first-come, first-served basis.
-2. **ReadOnly** - Allows multiple requests to access Boxlang constructs within the tag body concurrently. Use a read-only lock only when shared data is read and not modified. If another request has an exclusive lock on shared data, the new request waits for the exclusive lock to be released
+1. **Exclusive** - Allows single-thread access to the BoxLang constructs in its body. The tag body can be executed by **one** request at a time. No other requests can start executing code within the tag while a request has an exclusive lock. BoxLang issues exclusive locks on a first-come, first-served basis.
+2. **ReadOnly** - Allows multiple requests to access BoxLang constructs within the tag body concurrently. Use a read-only lock only when shared data is read and not modified. If another request has an exclusive lock on shared data, the new request waits for the exclusive lock to be released
 
 Apart from the type of lock, you can also have two different locking strategies:
 
 1. **Named Locking** : Where a name is used to identify the locking construct
-2. **Scoped Locking**: Where you will lock access to a specific Boxlang scope.
+2. **Scoped Locking**: Where you will lock access to a specific BoxLang scope.
 
 ```java
-lock 
+lock
     type="exclusive|readOnly"
-    timeout="15" 
-    name="mylock" 
+    timeout="15"
+    name="mylock"
     scope="application|server|session|request"
     throwOnTimeout="true|false"
 {
-     // Your code that is synchronized goes here   
+     // Your code that is synchronized goes here
 }
 ```
 
@@ -39,12 +39,12 @@ Here are the attributes to the `cflock` construct
 <table data-header-hidden><thead><tr><th width="196">Attribute</th><th width="106">Type</th><th width="119">Default</th><th>Description</th></tr></thead><tbody><tr><td>Attribute</td><td>Type</td><td>Default</td><td>Description</td></tr><tr><td><code>timeout</code></td><td>numeric</td><td><code>required</code></td><td>Max length in seconds to wait to obtain the lock.  If lock is obtained, tag execution continues. Otherwise, behavior depends on throwOnTimeout attribute value.</td></tr><tr><td><code>scope</code></td><td>string</td><td></td><td>Lock scope. Mutually exclusive with the <code>name</code> attribute. Only one request in the specified scope can execute the code within this tag (or within any other cflock tag with the same lock scope scope) at a time.  Values are: <code>application, request, server, session</code></td></tr><tr><td><code>name</code></td><td>string</td><td></td><td>Lock name. Mutually exclusive with the scope attribute.  Only one request can execute the code within a <code>cflock</code> tag  with a given name at a time. Cannot be an <a href="https://cfdocs.org/empty">empty</a> string.</td></tr><tr><td><code>throwOnTimeout</code></td><td>boolean</td><td>true</td><td>If true and a timeout is reached an exception is thrown, else it is ignored.</td></tr><tr><td><code>type</code></td><td>string</td><td>exclusive</td><td><strong>readOnly</strong>: lets more than one request read shared data. <strong>exclusive</strong>: lets one request read or write shared data.</td></tr></tbody></table>
 
 {% hint style="danger" %}
-**Important**: Please note that when using named locks, the name is shared across the entire Boxlang server, no matter the `cfapplication` it is under. Please be aware of it and use unique enough names. Lock names are global to a Boxlang server. They are shared among applications and user sessions, but not clustered servers.
+**Important**: Please note that when using named locks, the name is shared across the entire BoxLang server, no matter the `cfapplication` it is under. Please be aware of it and use unique enough names. Lock names are global to a BoxLang server. They are shared among applications and user sessions, but not clustered servers.
 {% endhint %}
 
 ## Named Locking
 
-Named locking is the easiest, where access to the construct is by name. Lock names are global to a Boxlang server. They are shared among applications and user sessions, but not clustered servers.
+Named locking is the easiest, where access to the construct is by name. Lock names are global to a BoxLang server. They are shared among applications and user sessions, but not clustered servers.
 
 ```java
 lock name="cache-population-myapp" timeout=10 type="exclusive"{
@@ -55,7 +55,7 @@ lock name="cache-population-myapp" timeout=10 type="exclusive"{
 
 ## Scoped Locking
 
-Scoped locking will allow you to lock access to a specific Boxlang scope like: `application, server, session and request.` You usually do this to synchronize access to variables placed within those scopes. In all essence, scope locking is expensive as it is a BIG lock around the entire scope access. I would suggest to stick to named locks so you can have pin-point accuracy when dealing with code synchronization. Remember that locking can be expensive.
+Scoped locking will allow you to lock access to a specific BoxLang scope like: `application, server, session and request.` You usually do this to synchronize access to variables placed within those scopes. In all essence, scope locking is expensive as it is a BIG lock around the entire scope access. I would suggest to stick to named locks so you can have pin-point accuracy when dealing with code synchronization. Remember that locking can be expensive.
 
 ```java
 lock scope="application" timeout="15"{

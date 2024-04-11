@@ -1,6 +1,6 @@
 # HTTP/S Calls
 
-Boxlang makes it really **easy** to interact with **any** HTTP/S endpoint via the `cfhttp` tag/construct \([https://cfdocs.org/cfhttp](https://cfdocs.org/cfhttp)\). The `cfhttp` call will generate an HTTP/S request and parse the response into a nice Boxlang structure.
+BoxLang makes it really **easy** to interact with **any** HTTP/S endpoint via the `cfhttp` tag/construct \([https://cfdocs.org/cfhttp](https://cfdocs.org/cfhttp)\). The `cfhttp` call will generate an HTTP/S request and parse the response into a nice BoxLang structure.
 
 ```java
 cfhttp( url="https://www.google.com/", result="result" ){
@@ -41,16 +41,16 @@ This construct accepts many arguments with different features you can use when e
 | `method` | string | GET | The http method to use. |
 | `username` | string |  | An optional server username |
 | `password` | string |  | An optional server password |
-| `useragent` | string | Boxlang | The user agent to simulate for the request |
+| `useragent` | string | BoxLang | The user agent to simulate for the request |
 | `charset` | string | utf-8 | The encoding to use |
 | `resolveUrl` | boolean | false | No does not resolve URLs in the response body. As a result, any relative URL links in the response body do not work. Yes resolves URLs in the response body to absolute URLs, including the port number, so that links in a retrieved page remain functional. |
 | `redirect` | boolean | true | If the response header includes a [Location](https://cfdocs.org/location) field, determines whether to redirect execution to the URL specified in the field. |
 | `timeout` | numeric | unlimited | A value in seconds of the max time to take for the request. |
-| `getAsBinary` | string | auto | If **yes**, convert to Boxlang binary type, **No** keep as text, **auto** let Boxlang detect and convert as necessary |
+| `getAsBinary` | string | auto | If **yes**, convert to BoxLang binary type, **No** keep as text, **auto** let BoxLang detect and convert as necessary |
 | `result` | string | cfhttp | The name of the variable you want the result structured returned into |
-| `multipart` | boolean | false | Tells Boxlang to send all data specified by [cfhttpparam](https://cfdocs.org/cfhttpparam) type="formField" tags as multipart form data, with a Content-Type of multipart/form-data. |
+| `multipart` | boolean | false | Tells BoxLang to send all data specified by [cfhttpparam](https://cfdocs.org/cfhttpparam) type="formField" tags as multipart form data, with a Content-Type of multipart/form-data. |
 
-Basically, you can do any type of http/s calls and consume any type of RESTFul webservices with a nice Boxlang syntax!
+Basically, you can do any type of http/s calls and consume any type of RESTFul webservices with a nice BoxLang syntax!
 
 ## CFHTTPParam
 
@@ -68,7 +68,7 @@ cfhttpParam( type="", name="", value="", file="", encoded="", mimetype="" );
 | `body` | Specifies that the `value` is the body of the HTTP request. |
 | `xml` | Identifies the request as having a content-type of  `text/xml` and specifies that the `value` attribute contains the body of the HTTP request. |
 | `cgi` | Same as `header` but URL encodes the `value` by default. |
-| `file` | Tells Boxlang to send the contents of the specified file. |
+| `file` | Tells BoxLang to send the contents of the specified file. |
 | `url` | Specifies a URL query string name-value pair to append to the [cfhttp](https://cfdocs.org/cfhttp) url attribute. URL encodes the value. |
 | `formfield` | Specifies a form field to send. URL encodes the value by default. |
 | `cookie` | Specifies a cookie to send as an HTTP header. URL encodes the value. |

@@ -1,10 +1,10 @@
 ---
-description: Boxlang provides the easiest way to query a database
+description: BoxLang provides the easiest way to query a database
 ---
 
 # Database Queries
 
-Boxlang became famous in its infancy because it was easy to query databases with a simple `cfquery` tag and no verbose ceremonious coding. There is no ceremony, just a plain datasource definition in the administrator, and we could easily query the database.
+BoxLang became famous in its infancy because it was easy to query databases with a simple `cfquery` tag and no verbose ceremonious coding. There is no ceremony, just a plain datasource definition in the administrator, and we could easily query the database.
 
 In modern times, we have many more ways to query the database, and defining data sources can occur not only in the admin but in our web application's `Application.bx` or even define it at runtime programmatically or within the query constructs themselves.
 
@@ -14,19 +14,19 @@ See [Application.bx](../beyond-the-100/applicationcfc.md) for more information o
 
 ## What is a Datasource?
 
-A datasource is a **named** connection to a specific database with specified credentials. You can define an infinite amount of data sources in your Boxlang applications in the following locations:
+A datasource is a **named** connection to a specific database with specified credentials. You can define an infinite amount of data sources in your BoxLang applications in the following locations:
 
-* Global Boxlang Engine (Adobe or Lucee) Administrator
+* Global BoxLang Engine (Adobe or Lucee) Administrator
   * **Adobe** : `http://localhost:port/CFIDE/adminstrator`
   * **Lucee**: `http://localhost:port/lucee/admin/server.bxm`
-* The `Application.bx`, which will dictate the data sources for that specific Boxlang application
+* The `Application.bx`, which will dictate the data sources for that specific BoxLang application
 * Inline in `cfquery` or `queryexecute` calls
 
-The datasource is then used to control the database's connection pool and allow the Boxlang engine to execute JDBC calls against it.
+The datasource is then used to control the database's connection pool and allow the BoxLang engine to execute JDBC calls against it.
 
 ## What is a query?
 
-A query is a request to a database representing the results' rows and columns. It returns a Boxlang `query` object containing a **record set** and other metadata information about the query. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. This can be done in several ways:
+A query is a request to a database representing the results' rows and columns. It returns a BoxLang `query` object containing a **record set** and other metadata information about the query. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. This can be done in several ways:
 
 * Using the `cfquery` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 * Using the `queryExecute()` function. ([https://cfdocs.org/queryexecute](https://cfdocs.org/queryexecute))
@@ -38,15 +38,15 @@ In Adobe, a query is backed by the following class: `coldfusion.sql.QueryTable`
 
 ```javascript
 // Tag syntax
-<cfquery name = "qItems" datasource="pantry"> 
- SELECT QUANTITY, ITEM 
- FROM CUPBOARD 
- ORDER BY ITEM 
-</cfquery> 
+<cfquery name = "qItems" datasource="pantry">
+ SELECT QUANTITY, ITEM
+ FROM CUPBOARD
+ ORDER BY ITEM
+</cfquery>
 
 // script syntax
 
-qItems = queryExecute( 
+qItems = queryExecute(
  "SELECT QUANTITY, ITEM FROM CUPBOARD ORDER BY ITEM"
 );
 
@@ -71,7 +71,7 @@ If you are using **Lucee**, the datasource can even be defined inline. So instea
 
 ## Default Datasource
 
-You can also omit the `datasource` completely from query calls, and Boxlang will use the one defined in `Application.bx` as the **default** datasource connection. This is a great way to encapsulate the datasource in a single location. However, we all know that there could be some applications with multiple data sources; that's ok; at least you can have one by default.
+You can also omit the `datasource` completely from query calls, and BoxLang will use the one defined in `Application.bx` as the **default** datasource connection. This is a great way to encapsulate the datasource in a single location. However, we all know that there could be some applications with multiple data sources; that's ok; at least you can have one by default.
 
 {% code title="Application.bx" %}
 ```java
@@ -87,9 +87,9 @@ component{
 
 ## Defining Datasources
 
-If you want to use the Boxlang Engine's administrators for registering data sources, you must visit each administrator's interfaces and follow their wizards.
+If you want to use the BoxLang Engine's administrators for registering data sources, you must visit each administrator's interfaces and follow their wizards.
 
-### Boxlang Engine Administrator
+### BoxLang Engine Administrator
 
 {% embed url="https://docs.lucee.org/guides/cookbooks/datasource-define-datasource.html" %}
 
@@ -125,7 +125,7 @@ component{
             class : "com.mysql.jdbc.Driver",
             connectionString : "jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true",
             username : "",
-            password : "" 
+            password : ""
         },
         // Long Lucee Approach
         myLuceeDNS = {
@@ -147,7 +147,7 @@ For the inline approach, you will use the struct definition, as you see in the `
 
 ### Portable Datasources
 
-You can also make your data sources portable from application to application or Boxlang engine to engine by using our [CFConfig](https://cfconfig.ortusbooks.com/) project. CFConfig allows you to manage almost every setting that shows up in the web administrator, but instead of logging into a web interface, you can manage it from the command line by hand or as part of a scripted server setup. You can seamlessly transfer config for all the following:
+You can also make your data sources portable from application to application or BoxLang engine to engine by using our [CFConfig](https://cfconfig.ortusbooks.com/) project. CFConfig allows you to manage almost every setting that shows up in the web administrator, but instead of logging into a web interface, you can manage it from the command line by hand or as part of a scripted server setup. You can seamlessly transfer config for all the following:
 
 * CF Mappings
 * Data sources
@@ -160,7 +160,7 @@ You can also make your data sources portable from application to application or 
 
     \-Basically any settings in the web based administrator
 
-You can easily place a `.bxonfig.json` in the web root of your project, and if you start up a CommandBox server on any Boxlang engine, CFConfig will transfer the configuration to the engine's innards:
+You can easily place a `.bxonfig.json` in the web root of your project, and if you start up a CommandBox server on any BoxLang engine, CFConfig will transfer the configuration to the engine's innards:
 
 {% code title=".bxonfig.json" %}
 ```java
@@ -218,7 +218,7 @@ There are #qItems.Quantity# #qItems.Item# in the pantry<br />
 </cfoutput>
 ```
 
-You leverage the `cfoutput` tag by passing the `query` to it.  Then in the block of the tag you use dot/array notation and interpolation to output the column you want.  Boxlang will iterate over all rows in the query for you.
+You leverage the `cfoutput` tag by passing the `query` to it.  Then in the block of the tag you use dot/array notation and interpolation to output the column you want.  BoxLang will iterate over all rows in the query for you.
 
 ```xml
 <cfoutput query = "qItems" encodeFor="html">
@@ -270,7 +270,7 @@ Even though this approach to multi-threaded looping is easy, it is not performan
 
 ### ColdBox Futures Parallel Programming
 
-If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code).  You can use it by installing ColdBox or WireBox into any Boxlang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
+If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code).  You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
 
 {% embed url="https://coldbox.ortusbooks.com/digging-deeper/promises-async-programming/parallel-computations" %}
 ColdBox Futures and Async Programming
@@ -285,7 +285,7 @@ Here are some methods that will allow you to do parallel computations:
 
 ## Using Input
 
-We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL\_Injection) Boxlang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `cfqueryparam` construct/tag ([https://cfdocs.org/cfqueryparam](https://cfdocs.org/cfqueryparam)) and always sanitize your input via the `encode` functions in Boxlang.
+We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL\_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `cfqueryparam` construct/tag ([https://cfdocs.org/cfqueryparam](https://cfdocs.org/cfqueryparam)) and always sanitize your input via the `encode` functions in BoxLang.
 
 ```java
 // Named variable holder
@@ -338,7 +338,7 @@ Please note that the types can be prefixed with `cf_sql_{type}` or just used as 
 
 ## Query Methods
 
-Several query methods are available in Boxlang that can help you manage queries and create them on the fly ([https://cfdocs.org/query-functions](https://cfdocs.org/query-functions)). Please note that you can also use chaining and member functions as well.
+Several query methods are available in BoxLang that can help you manage queries and create them on the fly ([https://cfdocs.org/query-functions](https://cfdocs.org/query-functions)). Please note that you can also use chaining and member functions as well.
 
 * `queryNew()`
 * `queryAddRow()`
@@ -385,7 +385,7 @@ writeDump(news);
 
 users = queryNew( "firstname", "varchar", [{"firstname":"Han"}] );
 subUsers = queryExecute( "select * from users", {}, { dbtype="query" } );
-writedump( subUsers ); 
+writedump( subUsers );
 
 news = queryNew("id,title",
     "integer,varchar",
@@ -412,14 +412,14 @@ Please note that using a query of queries can be quite slow sometimes, not all t
 
 ## Returning Arrays of Structs or Struct of Structs
 
-In Lucee and Adobe 2021+, you can also determine the return type of database queries as something other than the Boxlang query object. You can choose an array of structs or a struct of structs. This is fantastic for modern applications that rely on rich JavaScript frameworks and produce JSON.
+In Lucee and Adobe 2021+, you can also determine the return type of database queries as something other than the BoxLang query object. You can choose an array of structs or a struct of structs. This is fantastic for modern applications that rely on rich JavaScript frameworks and produce JSON.
 
 This is achieved by passing the `returntype` attribute within the query options or just an attribute of the `cfquery` tag ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 
 ```java
 users = queryNew( "firstname", "varchar", [{"firstname":"Han"}] );
 subUsers = queryExecute( "select * from users", {}, { dbtype="query", returntype="array" } );
-writedump( subUsers ); 
+writedump( subUsers );
 
 users = queryNew( "id, firstname", "integer, varchar", [{"id":1, "firstname":"Han"}] );
 subUsers = queryExecute( "select * from users", {}, { dbtype="query", returntype="struct", columnkey="id" } );

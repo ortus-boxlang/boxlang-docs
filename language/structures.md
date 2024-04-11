@@ -15,18 +15,18 @@ myStruct = {}
 ```
 
 {% hint style="success" %}
-**Tip** Underneath the hood, all Boxlang structures are based on the `java.util.Map` interface. So if you come from a Java background, structures are untyped `HashMaps`.
+**Tip** Underneath the hood, all BoxLang structures are based on the `java.util.Map` interface. So if you come from a Java background, structures are untyped `HashMaps`.
 {% endhint %}
 
 As an analogy, think about a refrigerator. If we’re keeping track of the produce inside the fridge, we don’t really care about where the produce is in, or basically: **order doesn’t matter**. Instead, we organize things by name, which are unique, and each name can have any value. The name _grapes_ might have the value 2, then the name _lemons_ might have the value 1, and _eggplants_ the value 6.
 
 {% hint style="info" %}
-All Boxlang structures are passed to functions as memory references, not values. Keep that in mind when working with structures. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
+All BoxLang structures are passed to functions as memory references, not values. Keep that in mind when working with structures. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
 {% endhint %}
 
 ## Key-Value Pairs
 
-A structure is an _unordered collection_ where the data gets organized as a key and value pair. Boxlang syntax for structures follows the following syntax:
+A structure is an _unordered collection_ where the data gets organized as a key and value pair. BoxLang syntax for structures follows the following syntax:
 
 ```javascript
 produce = {
@@ -37,10 +37,10 @@ produce = {
 ```
 
 {% hint style="success" %}
-**Tip** Please note that `=` sign and `:` are interchangeable in Boxlang. So you can use any to define your structures.
+**Tip** Please note that `=` sign and `:` are interchangeable in BoxLang. So you can use any to define your structures.
 {% endhint %}
 
-Since Boxlang is a case-insensitive language, the above structure will store all keys in uppercase. If you want the **exact casing** to be preserved in the structure, then surround the keys with quotes (`"`).
+Since BoxLang is a case-insensitive language, the above structure will store all keys in uppercase. If you want the **exact casing** to be preserved in the structure, then surround the keys with quotes (`"`).
 
 {% hint style="info" %}
 The exact casing is extremely important if you will be converting these structures into JSON in the future.
@@ -94,12 +94,12 @@ However, please be aware that when dealing with native Java hashmaps, we recomme
 {% endhint %}
 
 {% hint style="success" %}
-Boxlang offers also the `structGet()` function which will search for a key or a key path.  If there is no structure or array present in the path, this function creates structures or arrays to make it a valid variable path. [https://cfdocs.org/structget](https://cfdocs.org/structget)
+BoxLang offers also the `structGet()` function which will search for a key or a key path.  If there is no structure or array present in the path, this function creates structures or arrays to make it a valid variable path. [https://cfdocs.org/structget](https://cfdocs.org/structget)
 {% endhint %}
 
 ### Safe Navigation
 
-Boxlang also supports the concept of [safe navigation](operators.md#safe-navigation-operator) when dealing with structures.  Sometimes it can be problematic when using dot notation on nested structures since some keys might not exist or be `null`.  You can avoid this pain by using the safe navigation operator `?.` instead of the traditional `.` , and combine it with the elvis operator `?:` so if null, then returning a value.
+BoxLang also supports the concept of [safe navigation](operators.md#safe-navigation-operator) when dealing with structures.  Sometimes it can be problematic when using dot notation on nested structures since some keys might not exist or be `null`.  You can avoid this pain by using the safe navigation operator `?.` instead of the traditional `.` , and combine it with the elvis operator `?:` so if null, then returning a value.
 
 ```javascript
 user = { age : 40 }
@@ -137,7 +137,7 @@ structUpdate( produce, "carrots", 2 )
 
 ## Checking Contents & Size
 
-Boxlang also offers some useful methods when dealing with structures:
+BoxLang also offers some useful methods when dealing with structures:
 
 | Function          | Member Function |
 | ----------------- | --------------- |
@@ -157,14 +157,14 @@ Here are some great functions that deal with getting all key names, and key valu
 ```javascript
 produce.keyArray()
     .each( (item) => echo( item ) )
-    
+
 writeOutput( "My shopping bag has: #produce.keyList()# " )
 writeOutput( "Do you have carrots? #produce.keyExists( 'carrots' )#" )
 ```
 
 ## Structure Types
 
-In Boxlang, not only can you create case-insensitive unordered structures but also the following types using the `structNew()` function ([https://cfdocs.org/structnew](https://cfdocs.org/structnew))
+In BoxLang, not only can you create case-insensitive unordered structures but also the following types using the `structNew()` function ([https://cfdocs.org/structnew](https://cfdocs.org/structnew))
 
 <table><thead><tr><th width="349">Type</th><th width="129.33333333333331" data-type="checkbox">Adobe 2018</th><th width="135" data-type="checkbox">Adobe 2021</th><th data-type="checkbox">Lucee</th></tr></thead><tbody><tr><td><code>casesensitive</code></td><td>false</td><td>true</td><td>false</td></tr><tr><td><code>normal</code></td><td>true</td><td>true</td><td>true</td></tr><tr><td><code>ordered</code> or <code>linked</code></td><td>true</td><td>true</td><td>true</td></tr><tr><td><code>ordered-casesensitive</code></td><td>false</td><td>true</td><td>false</td></tr><tr><td><code>soft</code></td><td>false</td><td>false</td><td>true</td></tr><tr><td><code>synchronized</code></td><td>false</td><td>false</td><td>true</td></tr><tr><td><code>weak</code></td><td>false</td><td>false</td><td>true</td></tr></tbody></table>
 
@@ -257,7 +257,7 @@ Even though this approach to multi-threaded looping is easy, it is not performan
 
 ### ColdBox Futures Parallel Programming
 
-If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code).  You can use it by installing ColdBox or WireBox into any Boxlang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
+If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code).  You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
 
 {% embed url="https://coldbox.ortusbooks.com/digging-deeper/promises-async-programming/parallel-computations" %}
 ColdBox Futures and Async Programming

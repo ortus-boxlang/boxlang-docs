@@ -2,7 +2,7 @@
 
 > A closure is the combination of a function and the lexical environment within which that function was declared.
 
-Remember that functions (UDFs) in Boxlang are objects, and closures are objects. So, are closures and functions the same? The answer is yes and no. The main difference between a UDF and a closure is that closures have access to the lexical environment in which they are declared. Both functions and closures can be manipulated at runtime and passed around to other functions and closures or returned from other functions and closures. Phew!
+Remember that functions (UDFs) in BoxLang are objects, and closures are objects. So, are closures and functions the same? The answer is yes and no. The main difference between a UDF and a closure is that closures have access to the lexical environment in which they are declared. Both functions and closures can be manipulated at runtime and passed around to other functions and closures or returned from other functions and closures. Phew!
 
 A closure can be used in any of the following ways:
 
@@ -49,14 +49,14 @@ In this case, the `makeAdder` creates a function that will add the passed-in var
 
 ## Passed Closures
 
-Boxlang also has the concept of functional programming using several modern operations, like `map(), reduce(), filter(), each(), etc` you can pass closures into other functions for operating on different data structures.
+BoxLang also has the concept of functional programming using several modern operations, like `map(), reduce(), filter(), each(), etc` you can pass closures into other functions for operating on different data structures.
 
 ```java
 fruitArray = [
-    { fruit='apple', rating=4 }, 
-    { fruit='banana', rating=1 }, 
-    { fruit='orange', rating=5 }, 
-    { fruit='mango', rating=2 }, 
+    { fruit='apple', rating=4 },
+    { fruit='banana', rating=1 },
+    { fruit='orange', rating=5 },
+    { fruit='mango', rating=2 },
     { fruit='kiwi', rating=3 }
 ];
 
@@ -91,7 +91,7 @@ describe( "A spec suite", function(){
 
 ## Closure Scopes
 
-A closure retains a copy of variables visible at its creation. The global variables (like Boxlang specific scopes) and the local variables (including declaring or outer function's local and arguments scope) are retained at the time of a closure creation. Functions are static.
+A closure retains a copy of variables visible at its creation. The global variables (like BoxLang specific scopes) and the local variables (including declaring or outer function's local and arguments scope) are retained at the time of a closure creation. Functions are static.
 
 The following details the scope of closure based on the way they are defined:
 
@@ -103,11 +103,11 @@ In a closure, the following is the order of search for an unscoped variable:
 * Closure's `arguments` scope
 * Outer function' `local` scope if available
 * Owner function's `local` scope if available
-* Boxlang built-in scope
+* BoxLang built-in scope
 
 ## isClosure()
 
-Boxlang has a built-in function called `isClosure()` that allows you to evaluate if a variable is a closure or not:
+BoxLang has a built-in function called `isClosure()` that allows you to evaluate if a variable is a closure or not:
 
 ```java
 if( isClosure( arguments.body ) ){
@@ -120,7 +120,7 @@ if( isClosure( arguments.body ) ){
 Supported only in Lucee and Adobe 2018+.
 
 {% hint style="danger" %}
-Please note that they are not REAL lambdas or pure functions. Pure functions are not supposed to interact with their environment and should have no side effects on their surroundings. However, in Boxlang, they are just implemented using the expression syntax, not the semantic nature of pure functions.
+Please note that they are not REAL lambdas or pure functions. Pure functions are not supposed to interact with their environment and should have no side effects on their surroundings. However, in BoxLang, they are just implemented using the expression syntax, not the semantic nature of pure functions.
 {% endhint %}
 
 Arrow functions reduce much of the syntax around creating closures. In its simplest form, you can eliminate the `function` keywords, curly braces, and `return` statements. Arrow expressions implicitly return the results of the expression body.

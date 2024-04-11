@@ -10,7 +10,7 @@ description: Information about the author
 
 Luis Majano is a Computer Engineer who has been developing and designing software systems since 2000. During economic instability and civil war, he was born in San Salvador, El Salvador, in the late 70s. He lived in El Salvador until 1995 and then moved to Miami, Florida, where he completed his Bachelor of Science in Computer Engineering at [Florida International University](http://fiu.edu).
 
-He is the CEO of [Ortus Solutions](http://www.ortussolutions.com), a consulting firm specializing in web development, Boxlang, Java development, and open-source professional services. He is the creator of ColdBox, ContentBox, CommandBox, WireBox, TestBox, LogBox, and anything "Box," and he contributes to over 250 open-source projects. He has a passion for learning and mentoring developers so they can succeed with sustainable software practices and the usage and development of open-source software. You can read his blog at [www.luismajano.com](http://www.luismajano.com)
+He is the CEO of [Ortus Solutions](http://www.ortussolutions.com), a consulting firm specializing in web development, BoxLang, Java development, and open-source professional services. He is the creator of ColdBox, ContentBox, CommandBox, WireBox, TestBox, LogBox, and anything "Box," and he contributes to over 250 open-source projects. He has a passion for learning and mentoring developers so they can succeed with sustainable software practices and the usage and development of open-source software. You can read his blog at [www.luismajano.com](http://www.luismajano.com)
 
 Luis is passionate about Jesus, tennis, golf, volleyball, and anything electronic. Random Author Facts:
 

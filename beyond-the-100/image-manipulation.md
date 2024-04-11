@@ -1,8 +1,8 @@
 # Image Manipulation
 
-Boxlang has an extensive and awesome image manipulation library that allows you to create and manipulate images with easy syntax. We cannot see every detail about image manipulation, but it is necessary to understand that this functionality is easy in Boxlang and exists.
+BoxLang has an extensive and awesome image manipulation library that allows you to create and manipulate images with easy syntax. We cannot see every detail about image manipulation, but it is necessary to understand that this functionality is easy in BoxLang and exists.
 
-Apart from core image functions, all functions can be applied to an image object as member functions. Yes, Boxlang allows you to deal with image objects natively.
+Apart from core image functions, all functions can be applied to an image object as member functions. Yes, BoxLang allows you to deal with image objects natively.
 
 ```java
 imgObj = imageRead("http://cfdocs.org/apple-touch-icon.png");
@@ -56,7 +56,7 @@ TODO: REVIEW LINKS BELOW AND UPDATE
 * [ImageFormats](https://docs.lucee.org/reference/functions/imageformats.html) return all available readers and writers
 * [ImageGetBlob](https://docs.lucee.org/reference/functions/imagegetblob.html) Retrieves the bytes of the underlying image. The bytes are in the same image format as the source image.
 * [ImageGetBufferedImage](https://docs.lucee.org/reference/functions/imagegetbufferedimage.html) Returns the java.awt.BufferedImage object underlying the current image.
-* [ImageGetEXIFMetadata](https://docs.lucee.org/reference/functions/imagegetexifmetadata.html) Retrieves the Exchangeable Image File Format (EXIF) headers in an image as a Boxlang structure.
+* [ImageGetEXIFMetadata](https://docs.lucee.org/reference/functions/imagegetexifmetadata.html) Retrieves the Exchangeable Image File Format (EXIF) headers in an image as a BoxLang structure.
 * [ImageGetEXIFTag](https://docs.lucee.org/reference/functions/imagegetexiftag.html) Retrieves the specified EXIF tag in an image.
 * [ImageGetHeight](https://docs.lucee.org/reference/functions/imagegetheight.html) Retrieves the height of the image in pixels.
 * [ImageGetIptcMetadata](https://docs.lucee.org/reference/functions/imagegetiptcmetadata.html) Retrieves the International Press Telecommunications Council (IPTC )headers in a image as a struct. The IPTC metadata contains text that describes the image that is stored with it. IPTC metadata includes, but is not limited to, caption, keywords, credit, copyright, object name, created date, byline, headline, and source

@@ -2,7 +2,7 @@
 
 ## Introduction
 
-If you are running Boxlang in a [web server like CommandBox](https://commandbox.ortusbooks.com/embedded-server) and a Boxlang page (.bxm/.bx)  is requested, the engine will look for a special file called `Application.bx` and if found, it will execute it for you **implicitly**.  This file is used to define the following:
+If you are running BoxLang in a [web server like CommandBox](https://commandbox.ortusbooks.com/embedded-server) and a BoxLang page (.bxm/.bx)  is requested, the engine will look for a special file called `Application.bx` and if found, it will execute it for you **implicitly**.  This file is used to define the following:
 
 1. Application-wide settings, default variables, session/client storages, file mappings, datasources, style settings, ORM settings and so much more. These are created by placing them in the `this` scope and in the pseudo-constructor of the object.
 2. Application **life-cycle** event handlers which the engine will execute for you **implicitly** by you just creating the appropriate available methods.
@@ -35,24 +35,24 @@ component{
     this.applicationTimeout = createTimeSpan( 30, 0, 0, 0 ); //30 days
     this.sessionStorage = true;
     this.sessionTimeout = createTimeSpan( 0, 0, 60, 0 ); // 1 hour
-    
+
     function onApplicationStart(){}
     function onApplicationEnd( struct applicationScope ) {}
-    
+
     function onSessionStart() {}
     function onSessionEnd( struct sessionScope, struct applicationScope ) {}
-    
+
     function onRequestStart( string targetPage ) {}
     function onRequest( string targetPage ) {
         include arguments.targetPage;
     }
     function onRequestEnd() {}
-    function onCFCRequest( cfcname, method, struct args) { 
+    function onCFCRequest( cfcname, method, struct args) {
         return;
-    } 
-    
+    }
+
     function onError( any Exception, string EventName ) {}
-    function onAbort( required string targetPage ) {} 
+    function onAbort( required string targetPage ) {}
     function onMissingTemplate( required string targetPage ) {}
 
 }
@@ -65,10 +65,10 @@ You can find all the settings and event handlers defined for `Application.bx` in
 
 ## Life-Cycle Events
 
-The `Application.bx` also acts like a big event listener waiting for the Boxlang server engine to call its methods in callback fashion.  You can listen to when an error occurs to even when a missing template is requested and much more.  If I am missing some here, please refer to the latest documentation for the latest updates: [https://cfdocs.org/application](https://cfdocs.org/application)
+The `Application.bx` also acts like a big event listener waiting for the BoxLang server engine to call its methods in callback fashion.  You can listen to when an error occurs to even when a missing template is requested and much more.  If I am missing some here, please refer to the latest documentation for the latest updates: [https://cfdocs.org/application](https://cfdocs.org/application)
 
 * **onApplicationStart**: The very first time your application is requested, the `onApplicationStart` event is broadcast. It only happens once, until your application times out, the process is restarted, or the computer is restarted.
-* **onSessionStart**: Whenever a NEW user requests any resource in your web application Boxlang will assign them a unique session identifier and call this method for you.
+* **onSessionStart**: Whenever a NEW user requests any resource in your web application BoxLang will assign them a unique session identifier and call this method for you.
 * **onRequestStart**: Executes before every requested resource and receives the targeted page in the arguments.  You can decide to process the page or not by returning a boolean variable.
 * **onRequest**: This callback allows you to actually include the requested page or not. Consider the `onRequestStart()` as a before advice and the `onRequest` as an around advice over the request. You must `include` the requested page or the page will never be processed
 * **onRequestEnd**: Also receives the targetPage and executes after onRequestStart() and onRequest() have fired.
@@ -85,11 +85,11 @@ The `Application.bx` also acts like a big event listener waiting for the Boxlang
 The [ColdBox HMVC Framework](https://www.coldbox.org) builds heavily on top of these life-cycle methods to provide you with a rich event-driven architecture for web applications. You can create an application with CommandBox just by running: `coldbox create app MyApp`
 {% endhint %}
 
-## Boxlang Web Applications
+## BoxLang Web Applications
 
-Boxlang differs from other Java web languages in the sense that there is one Java context application deployed (The Boxlang Engine) with many servlet definitions, but you can create many Boxlang applications within the running context.  All you need is to demarcate them with the `Application.bx`, with a unique name which defines the separate Boxlang applications.  **Anything in that directory and sub-directories will be considered part of the application.**
+BoxLang differs from other Java web languages in the sense that there is one Java context application deployed (The BoxLang Engine) with many servlet definitions, but you can create many BoxLang applications within the running context.  All you need is to demarcate them with the `Application.bx`, with a unique name which defines the separate BoxLang applications.  **Anything in that directory and sub-directories will be considered part of the application.**
 
-Your Boxlang application is nothing more than a memory space reservation using the `this.name` property as the unique name for it.  It can contain the variables scopes like `application`, `session`, and `client` which are unique per this reservation name. This way two Boxlang applications can have different persistence variable scopes and can even be embedded between each other:
+Your BoxLang application is nothing more than a memory space reservation using the `this.name` property as the unique name for it.  It can contain the variables scopes like `application`, `session`, and `client` which are unique per this reservation name. This way two BoxLang applications can have different persistence variable scopes and can even be embedded between each other:
 
 ```
 + webroot
@@ -105,6 +105,3 @@ This is why you can't really kill the `application` scopes. The application is r
 {% hint style="success" %}
 **Tip** You can force the stopping of the Application scope by leveraging the method `applicationStop()`.  Be careful though, as it stops full execution and restarts it. ([https://cfdocs.org/applicationstop](https://cfdocs.org/applicationstop))
 {% endhint %}
-
-
-

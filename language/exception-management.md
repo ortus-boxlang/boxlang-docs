@@ -2,13 +2,13 @@
 
 ## Try/Catch/Finally
 
-The Boxlang language also provides you with a traditional approach to deal with error handling at the code block level.  This is usually a trio of constructs:
+The BoxLang language also provides you with a traditional approach to deal with error handling at the code block level.  This is usually a trio of constructs:
 
 * `try`: The try block allows you to demarcate the code to test if it fails or passes ([https://cfdocs.org/cftry](https://cfdocs.org/cftry))
 * `catch` : The catch block is executed when the try block fails ([https://cfdocs.org/cfcatch](https://cfdocs.org/cfcatch))
 * `finally` : The finally block executes no matter if the try fails or passes. It is guaranteed to always execute. ([https://cfdocs.org/cffinally](https://cfdocs.org/cffinally))
 
-Basically, a try and catch statement attempts some code. If the code fails, Boxlang will do whatever is in the exception to try to handle it without breaking. Of course, many different types of exceptions can occur, which should sometimes be handled in a different manner than the others.
+Basically, a try and catch statement attempts some code. If the code fails, BoxLang will do whatever is in the exception to try to handle it without breaking. Of course, many different types of exceptions can occur, which should sometimes be handled in a different manner than the others.
 
 ```java
 try{
@@ -24,7 +24,7 @@ try{
 
 ## Catch Types
 
-The catch construct can take an `any` or a custom exception type declared by the Boxlang engine, Java code or custom exceptions within your code.  This is a great way to be able to intercept for specific exception types and address them differently.
+The catch construct can take an `any` or a custom exception type declared by the BoxLang engine, Java code or custom exceptions within your code.  This is a great way to be able to intercept for specific exception types and address them differently.
 
 ```java
 try{
@@ -38,11 +38,11 @@ try{
 
 ### Native Exception Types
 
-Some of the exception types found in Boxlang are the following
+Some of the exception types found in BoxLang are the following
 
 * `application`: catches application exceptions
 * `database`: catches database exceptions
-* `template`: catches Boxlang page exceptions
+* `template`: catches BoxLang page exceptions
 * `security`: catches security exceptions
 * `object`: catches object exceptions
 * `missingInclude`: catches missing include file exceptions
@@ -71,7 +71,7 @@ Now that you have seen how to listen to exceptions, let's discover the `throw` o
 
 The `throw()` function or tag has several attributes:
 
-* **Type** : A custom or Boxlang core type
+* **Type** : A custom or BoxLang core type
 * **Message** : Describes the exception event
 * **Detail** : A detailed description of the event
 * **errorCode** : A custom error code&#x20;
@@ -115,4 +115,3 @@ try{
 	rethrow;
 }
 ```
-

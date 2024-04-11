@@ -4,7 +4,7 @@ description: Operate all things++--==!^%/\
 
 # Operators
 
-**Operators** are the foundation of **any** programming language. Operators are symbols that help a programmer to perform specific mathematical, structuring, destructuring, and logical computations on operands (variables or expressions).  We can categorize the Boxlang operators into the following categories:
+**Operators** are the foundation of **any** programming language. Operators are symbols that help a programmer to perform specific mathematical, structuring, destructuring, and logical computations on operands (variables or expressions).  We can categorize the BoxLang operators into the following categories:
 
 1. Arithmetic/Mathematical
 2. Assignment
@@ -18,7 +18,7 @@ description: Operate all things++--==!^%/\
 
 
 {% hint style="info" %}
-You will see that Boxlang does not have native [bitwise](https://en.wikipedia.org/wiki/Bitwise\_operation) operators, but it does implement bitwise operations via functions since functions can also be operators in Boxlang: `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://cfdocs.org/math%2Dfunctions](https://cfdocs.org/math-functions)
+You will see that BoxLang does not have native [bitwise](https://en.wikipedia.org/wiki/Bitwise\_operation) operators, but it does implement bitwise operations via functions since functions can also be operators in BoxLang: `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://cfdocs.org/math%2Dfunctions](https://cfdocs.org/math-functions)
 {% endhint %}
 
 {% hint style="success" %}
@@ -26,12 +26,12 @@ For more information about bitwise operations, you can read more here: [https://
 {% endhint %}
 
 {% hint style="danger" %}
-Boxlang does not offer the capability to overload operators like other languages.
+BoxLang does not offer the capability to overload operators like other languages.
 {% endhint %}
 
 ## Operator Precedence
 
-The order of precedence exists in Boxlang, just like in mathematics.  You can also control the order of precedence by using the grouping operator `()` like in mathematics, the magical ordering parenthesis.
+The order of precedence exists in BoxLang, just like in mathematics.  You can also control the order of precedence by using the grouping operator `()` like in mathematics, the magical ordering parenthesis.
 
 {% code lineNumbers="true" %}
 ```javascript
@@ -178,7 +178,7 @@ Please note that we have seen inconsistencies in both Adobe and Lucee engines re
 
 ## Function Operators
 
-In Boxlang, functions can act as operators as well, as you can use the results of the function call as the operands.  **Function arguments can also act as expressions, and you can even pass more functions into functions as arguments or even return functions from functions.  Now that's a fun tongue twister.**
+In BoxLang, functions can act as operators as well, as you can use the results of the function call as the operands.  **Function arguments can also act as expressions, and you can even pass more functions into functions as arguments or even return functions from functions.  Now that's a fun tongue twister.**
 
 ```javascript
 results = ucase( "this is text " ) & toString( 12 + 50 )
@@ -207,7 +207,7 @@ echo( s?.name )
 
 ### Spread Operator
 
-The spread operator allows an iterable object to expand and merge in certain declarations in code.  These objects in Boxlang are mostly arrays and structures.  This operator can quickly merge all or parts of an existing array or object into another array or object.  This operator is used by leveraging three dots `...` in specific expressions.
+The spread operator allows an iterable object to expand and merge in certain declarations in code.  These objects in BoxLang are mostly arrays and structures.  This operator can quickly merge all or parts of an existing array or object into another array or object.  This operator is used by leveraging three dots `...` in specific expressions.
 
 ```javascript
 // Spread
@@ -290,4 +290,3 @@ function findById( entityName, ...ids ){
 findById( "User", 1 ) // ids is a single value of 1
 findById( "Car", 1, 23, 34, 456 ) // ids is an array of values
 ```
-

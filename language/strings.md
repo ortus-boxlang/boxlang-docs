@@ -1,12 +1,12 @@
 ---
-description: Strings in Boxlang/Java are immutable! Remember that well!
+description: Strings in BoxLang/Java are immutable! Remember that well!
 ---
 
 # Strings
 
-In Boxlang, strings are a type of variable that is used to store collections of letters and numbers. Usually defined within single or double quotes ( `'` or `"` ). Some simple strings would be `"hello"` or `"This sentence is a string!"`. Strings can be anything from `""`, the empty string, to long sets of text.
+In BoxLang, strings are a type of variable that is used to store collections of letters and numbers. Usually defined within single or double quotes ( `'` or `"` ). Some simple strings would be `"hello"` or `"This sentence is a string!"`. Strings can be anything from `""`, the empty string, to long sets of text.
 
-The underlying type for a string in Boxlang is the Java [String](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html), which is immutable, meaning it can never change. Thus, a new string object is always created when concatenating strings together. This is a warning that if you do many string concatenations, you will have to use a Java data type to accelerate the concatenations ([String Builders](https://www.baeldung.com/java-string-builder-string-buffer)).
+The underlying type for a string in BoxLang is the Java [String](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html), which is immutable, meaning it can never change. Thus, a new string object is always created when concatenating strings together. This is a warning that if you do many string concatenations, you will have to use a Java data type to accelerate the concatenations ([String Builders](https://www.baeldung.com/java-string-builder-string-buffer)).
 
 {% hint style="info" %}
 More on String Builders: [https://www.baeldung.com/java-string-builder-string-buffer](https://www.baeldung.com/java-string-builder-string-buffer)
@@ -14,7 +14,7 @@ More on String Builders: [https://www.baeldung.com/java-string-builder-string-bu
 
 ## Character Extractions
 
-In Adobe 2021+ and Lucee server, you can reference characters in a string stream via their position in the string using array syntax: `varname[ position ]`. Please note that string and array positions in Boxlang start at 1 and not 0.
+In Adobe 2021+ and Lucee server, you can reference characters in a string stream via their position in the string using array syntax: `varname[ position ]`. Please note that string and array positions in BoxLang start at 1 and not 0.
 
 ```javascript
 name = "luis";
@@ -39,12 +39,12 @@ array[ start:stop:step ]
 Which is extremely useful for doing character extractions in ranges
 
 ```javascript
- data = "Hello Boxlang. You Rock!";
- 
+ data = "Hello BoxLang. You Rock!";
+
  writeOutput( data[ 1 ] ) // Returns H
  writeOutput( data[ -3 ] ) // Returns c
  writeOutput( data[ 4:10:2 ] ) // Returns l FL
- writeOutput( data[ 4:12 ] ) // Returns lo Boxlang
+ writeOutput( data[ 4:12 ] ) // Returns lo BoxLang
  writeOutput( data[ -10:-4:2]) // Returns o o
 ```
 
@@ -94,7 +94,7 @@ reReplace( "123abc456", "[0-9]+([a-z]+)[0-9]+", "\1" )
 
 ### Mid
 
-The `mid` function extracts a substring from a string. For instance, I could call `Mid("Welcome to Boxlang Jumpstart", 4, 12)` and it would give you back: **come to Boxlang**. [https://cfdocs.org/mid](https://cfdocs.org/mid)
+The `mid` function extracts a substring from a string. For instance, I could call `Mid("Welcome to BoxLang Jumpstart", 4, 12)` and it would give you back: **come to BoxLang**. [https://cfdocs.org/mid](https://cfdocs.org/mid)
 
 ```javascript
 s = "20001122"
@@ -131,7 +131,7 @@ You can also concatenate and assign using the `&=` operator.  Please [check out 
 
 ## Interpolating Strings
 
-Interpolating is where we stick a string within another string. In Boxlang, we use the `#` hashes to output a variable to the stream in context. This means we can interpolate into any string:
+Interpolating is where we stick a string within another string. In BoxLang, we use the `#` hashes to output a variable to the stream in context. This means we can interpolate into any string:
 
 ```javascript
 name = "luis";
@@ -139,7 +139,7 @@ welcome = "Good morning #name#, how are you today?";
 writeoutput( welcome );
 ```
 
-That's it! If you surround any **simple** variable with hashes, Boxlang will interpret the variable. Now try this with a complex variable and see what happens:
+That's it! If you surround any **simple** variable with hashes, BoxLang will interpret the variable. Now try this with a complex variable and see what happens:
 
 ```javascript
 complex = [1,2,3];
@@ -148,12 +148,12 @@ writeoutput( welcome );
 ```
 
 {% hint style="success" %}
-Please note that anything between hashes is interpreted as an expression in Boxlang.
+Please note that anything between hashes is interpreted as an expression in BoxLang.
 {% endhint %}
 
 ## Casting
 
-Boxlang also will try to automatically infer and auto-cast strings for you.  However, there is a built-in function called `toString()` which can be used to try to convert any value to a string.
+BoxLang also will try to automatically infer and auto-cast strings for you.  However, there is a built-in function called `toString()` which can be used to try to convert any value to a string.
 
 ```javascript
 s = {

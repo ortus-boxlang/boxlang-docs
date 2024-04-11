@@ -35,7 +35,7 @@ if( produce.keyExists( "grapes" ) ){
 }
 ```
 
-Also integers can be evaluated as **true** or **false**. In Boxlang, **0 (zero)** is **false** and any other integers are **true**.
+Also integers can be evaluated as **true** or **false**. In BoxLang, **0 (zero)** is **false** and any other integers are **true**.
 
 ```
 <cfif 1>I am true so will show</cfif>
@@ -102,7 +102,7 @@ An `if` block has:
 * Zero or more `else if` statements whose instructions are executed only if the statement is **true**
 * Zero or one `else` statement whose instructions are executed if no `if` nor `else if` statements were **true**
 
-Only one section of the `if / else if / else` structure can have its instructions run. If the if is **true**, for instance, Boxlang will never look at the `else if`. Once one block executes, that’s it.
+Only one section of the `if / else if / else` structure can have its instructions run. If the if is **true**, for instance, BoxLang will never look at the `else if`. Once one block executes, that’s it.
 
 ## Ternary Operator
 
@@ -137,12 +137,12 @@ myName = userName ?: "Anonymous";
 If `userName` does not exist or evaluates to `null` then the default value of the `myName` will be assigned the right part of the `?:` elvis operator -> `Anonymous`
 
 {% hint style="warning" %}
-**Warning:** The elvis operator is incredibly flawed in Adobe Boxlang 10-11-2016 and Lucee 4.5. Just avoid using it if you are using those versions. Unfortunate but true.
+**Warning:** The elvis operator is incredibly flawed in Adobe BoxLang 10-11-2016 and Lucee 4.5. Just avoid using it if you are using those versions. Unfortunate but true.
 {% endhint %}
 
 ## Safe Navigation Operator
 
-The safe navigation operator was introduced in Adobe Boxlang 2016 and Lucee 5.2 and it allows for you to navigate structures by not throwing the dreaded `key not exists` exception but returning an `undefined` or `null` value. You can then combine that with the elvis operator and create nice chainable struct navigation. For example instead of doing things like:
+The safe navigation operator was introduced in Adobe BoxLang 2016 and Lucee 5.2 and it allows for you to navigate structures by not throwing the dreaded `key not exists` exception but returning an `undefined` or `null` value. You can then combine that with the elvis operator and create nice chainable struct navigation. For example instead of doing things like:
 
 ```java
 result = "";

@@ -2,7 +2,7 @@
 
 Functions are the way to interact with objects, with no functions we have no object-oriented behaviors, no [abstractions](https://en.wikipedia.org/wiki/Abstraction) and no [encapsulation](https://en.wikipedia.org/wiki/Encapsulation_%28computer_programming%29). Functions have an automatic return type of `any` which means it can return any type of variable back to a user and an automatic visibility scope of `public`. They also can take in _ANY_ amount of arguments, which don't even have to be defined in the function signature. WOWZA!
 
-Functions in Boxlang are also first-class object citizens.  Meaning that each function can be addressed like an object.  They can be even deleted, renamed or even injected at runtime.  This is one of the most powerful qualities of the Boxlang dynamic language.  You can at runtime manipulate objects and their functions.
+Functions in BoxLang are also first-class object citizens.  Meaning that each function can be addressed like an object.  They can be even deleted, renamed or even injected at runtime.  This is one of the most powerful qualities of the BoxLang dynamic language.  You can at runtime manipulate objects and their functions.
 
 {% hint style="info" %}
 You can find all the different features of functions in the docs: [https://cfdocs.org/cffunction](https://cfdocs.org/cffunction)
@@ -71,7 +71,7 @@ Functions can have different visibility contexts:
 
   web service, this option is required.
 
-Another interesting tidbit in Boxlang is that the visibility determines where the function will exist within the scope of the CFC. Remember that functions in Boxlang are objects themselves. They can be added, removed, renamed even at runtime thanks to Boxlang being a dynamic language.
+Another interesting tidbit in BoxLang is that the visibility determines where the function will exist within the scope of the CFC. Remember that functions in BoxLang are objects themselves. They can be added, removed, renamed even at runtime thanks to BoxLang being a dynamic language.
 
 * `public,remote` - The function reference is placed in both the `this` and `variables` scope
 * `private,package` - The function reference is placed in the `variables` scope
@@ -80,7 +80,7 @@ Does this mean, that I can programmatically change an object at runtime by injec
 
 ## Function Modifiers
 
-Function modifiers allows you to declare special behaviors to functions, from `static` availability to `final` and `abstract` declarations.  The supported modifiers for Boxlang functions by Boxlang engine are the following:
+Function modifiers allows you to declare special behaviors to functions, from `static` availability to `final` and `abstract` declarations.  The supported modifiers for BoxLang functions by BoxLang engine are the following:
 
 | Modifier | Lucee 5+ | Adobe 2016 | Adobe 2018 | Adobe 2021 |
 | ---: | :---: | :---: | :---: | :---: |
@@ -96,7 +96,7 @@ We have created a section for each of these types, so you can read more about th
 
 ## Function Attributes & Metadata
 
-The `function` construct can also have many attributes or name-value pairs that will give it some extra functionality according to Boxlang engine \(metadata\). You can find all of them here: [https://cfdocs.org/cffunction](https://cfdocs.org/cffunction). Below are the most common ones:
+The `function` construct can also have many attributes or name-value pairs that will give it some extra functionality according to BoxLang engine \(metadata\). You can find all of them here: [https://cfdocs.org/cffunction](https://cfdocs.org/cffunction). Below are the most common ones:
 
 * `output` - Will this function send content to the output stream. Try avoiding this to `true` unless you are building libraries of some type, else you are breaking encapsulation
 * `description` - A short text description of the function a part from the hint
@@ -108,7 +108,7 @@ function hello() description="" returnFormat=""{
 }
 ```
 
-Please note that in Boxlang you can also declare these attributes via annotations in the comments section:
+Please note that in BoxLang you can also declare these attributes via annotations in the comments section:
 
 ```java
 /**
@@ -122,7 +122,7 @@ function sayHello(){
 }
 ```
 
-Apart from the name-value pairs of attributes the Boxlang language gives you, you can also add your own. These are called function annotations or custom function metadata.  They can be anything you like and they don't even have to have a value.  The Boxlang engines then gives you the ability to read the metadata out of the functions via the `getMetadata()` or `getComponentMetadata()` functions.
+Apart from the name-value pairs of attributes the BoxLang language gives you, you can also add your own. These are called function annotations or custom function metadata.  They can be anything you like and they don't even have to have a value.  The BoxLang engines then gives you the ability to read the metadata out of the functions via the `getMetadata()` or `getComponentMetadata()` functions.
 
 * [https://cfdocs.org/getmetadata](https://cfdocs.org/getmetadata)
 * [https://cfdocs.org/getcomponentmetadata](https://cfdocs.org/getcomponentmetadata)
@@ -141,7 +141,7 @@ function(
 }
 ```
 
-All Boxlang functions are dynamic, meaning it can take any number of arguments without you even adding the signatures. You can call functions by passing arguments by position or via name-value pairs or even with a structure/array of values, which will be called an `argumentCollection`.
+All BoxLang functions are dynamic, meaning it can take any number of arguments without you even adding the signatures. You can call functions by passing arguments by position or via name-value pairs or even with a structure/array of values, which will be called an `argumentCollection`.
 
 **example**
 
@@ -189,7 +189,7 @@ function init( required wirebox ){
 
 ## Function Returns
 
-Boxlang functions will use the `return` keyword to return a value from the function. A function can be marked `void` in its return type to denote that it does **not** return any value. However, if a function has no return type or `any` and you do not return explicitly a value, then the function will automatically return `null`.
+BoxLang functions will use the `return` keyword to return a value from the function. A function can be marked `void` in its return type to denote that it does **not** return any value. However, if a function has no return type or `any` and you do not return explicitly a value, then the function will automatically return `null`.
 
 ```java
 void function nada(){
@@ -235,7 +235,7 @@ function hello( a, b ){
 }
 ```
 
-Boxlang also has a weird cascading lookup for variables, so if you do not explicitly specify the scope it is in, Boxlang will look for it for you. If you use a variable name without a scope prefix, Boxlang checks the scopes in the following order to find the variable:
+BoxLang also has a weird cascading lookup for variables, so if you do not explicitly specify the scope it is in, BoxLang will look for it for you. If you use a variable name without a scope prefix, BoxLang checks the scopes in the following order to find the variable:
 
 * Local \(function-local, UDFs and CFCs only\)
 * Arguments
@@ -250,7 +250,7 @@ Boxlang also has a weird cascading lookup for variables, so if you do not explic
 * Cookie
 * Client
 
-Because Boxlang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables.
+Because BoxLang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables.
 
 ## Executing Functions
 
@@ -273,4 +273,3 @@ results = calculator.add( argumentCollection=vals );
 vals = { a = 1, b = 2 };
 results = calculator.add( argumentCollection=vals );
 ```
-

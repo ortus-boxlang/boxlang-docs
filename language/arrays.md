@@ -4,7 +4,7 @@ description: An array is a data structure consisting of a collection of elements
 
 # Arrays
 
-Almost every programming language allows you to represent different types of collections. In Boxlang, we have three types of collections: arrays, [structures](structures.md), and [queries](queries.md).
+Almost every programming language allows you to represent different types of collections. In BoxLang, we have three types of collections: arrays, [structures](structures.md), and [queries](queries.md).
 
 An array is a number-indexed list. Imagine you had a blank piece of paper and drew a set of three small boxes in a line:
 
@@ -32,7 +32,7 @@ Then put strings in each box:
        1            2           3
 ```
 
-We have a three-element Array. Boxlang arrays can grow and shrink dynamically at runtime, just like Array Lists or Vectors in Java, so if we added an element, it’d usually go on the end or be appended at the end.
+We have a three-element Array. BoxLang arrays can grow and shrink dynamically at runtime, just like Array Lists or Vectors in Java, so if we added an element, it’d usually go on the end or be appended at the end.
 
 ```
  -------------  ---------  ----------  -----------
@@ -48,12 +48,12 @@ If you asked the array for the element in position two, you’d get back `Lunch`
 Now, have you detected something funny with the ordering of the elements? Come on, look closer....... They start with `1` and not `0`, now isn't that funny. BoxLang is one of the few languages where array indexes start at `1` and not `0`. So if you have a PHP, Ruby, or Java background, remember that `1` is where you start. Is this good or bad? Well, we will refrain from pointing fingers for now.
 
 {% hint style="info" %}
-All arrays in Boxlang are passed by **passed by reference**. Please remember this when working with arrays and passing them to functions. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
+All arrays in BoxLang are passed by **passed by reference**. Please remember this when working with arrays and passing them to functions. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
 {% endhint %}
 
 ## Arrays in Code
 
-Let's go ahead and model some code in Boxlang using our fancy REPL tool CommandBox:
+Let's go ahead and model some code in BoxLang using our fancy REPL tool CommandBox:
 
 ![](../assets/arrays\_in\_code.png)
 
@@ -122,11 +122,11 @@ newArray = arrayMap( complexData, function(item){
 });
 writeDump(newArray);
 
-complexData = [ {a: 4}, {a: 18}, {a: 51} ]; 
- sum = arrayReduce( complexData, function(prev, element) 
- { 
- return prev + element.a; 
- }, 0 ); 
+complexData = [ {a: 4}, {a: 18}, {a: 51} ];
+ sum = arrayReduce( complexData, function(prev, element)
+ {
+ return prev + element.a;
+ }, 0 );
 writeDump(sum);
 ```
 
@@ -344,4 +344,3 @@ function findBy( entityName, ...args ){
 }
 findBy( "Luis", 1, 2, 3, 4, 5 )
 ```
-

@@ -8,7 +8,7 @@ Lucee 5+, and Adobe 2021+ supports it.
 
 ### What is static?
 
-In Boxlang, a static variable is a variable of a component that isn’t associated with an **instance** of a component. Instead, the variable belongs to the component definition itself. As a result, you can access the static variable without first creating the component instance.
+In BoxLang, a static variable is a variable of a component that isn’t associated with an **instance** of a component. Instead, the variable belongs to the component definition itself. As a result, you can access the static variable without first creating the component instance.
 
 ### Why use static?
 
@@ -16,7 +16,7 @@ This allows you to create pure utility objects or stateless services that requir
 
 ### Where can I apply it?
 
-In Boxlang, the `static` keyword can be applied in the pseudo-constructor in order to initialize static variables in a component. This is called the **static constructor**. The keyword can also be applied to functions within a Component in order to declare static functions.
+In BoxLang, the `static` keyword can be applied in the pseudo-constructor in order to initialize static variables in a component. This is called the **static constructor**. The keyword can also be applied to functions within a Component in order to declare static functions.
 
 ## Static Constructor
 
@@ -24,7 +24,7 @@ The static constructor is execute once before the component is loaded for the fi
 
 ```java
 component MyFunkyCalculator{
-    
+
     // Static Constructor
     static {
         CACHE_KEY = "luis",
@@ -40,14 +40,14 @@ Static methods can be used without an instance of the component and can also acc
 
 ```java
 component MyFunkyCalculator{
-    
+
     // Static Constructor
     static {
         CACHE_KEY = "luis",
         multiplier = 4
     }
-    
-    
+
+
     public static function calculate( a ){
         return static.multiplier * a;
     };

@@ -78,7 +78,7 @@ With the introduction of MVC we can hack away our spaghetti hell and at least ha
 
 ![MVC Plus](../.gitbook/assets/mvc-plus.png)
 
-MVC Plus shows us how you can further partition your model layer into more layers.  We can identify now a layer of service CFCs and data access object CFCs.  The main transportation of data between these layers by default is implied to be Boxlang Query objects.
+MVC Plus shows us how you can further partition your model layer into more layers.  We can identify now a layer of service CFCs and data access object CFCs.  The main transportation of data between these layers by default is implied to be BoxLang Query objects.
 
 \---
 
@@ -106,7 +106,7 @@ We have even build a companion package for ColdBox called [**cborm**](https://gi
 
 \---
 
-## MVC Frameworks for Boxlang <a href="#coldbox-mvc" id="coldbox-mvc"></a>
+## MVC Frameworks for BoxLang <a href="#coldbox-mvc" id="coldbox-mvc"></a>
 
 Here are our recommendations:
 
@@ -119,10 +119,10 @@ Here are our recommendations:
 ![ColdBox MVC Platform](../.gitbook/assets/coldbox.png)
 
 {% hint style="info" %}
-ColdBox has become the defacto platform for developing modern MVC Boxlang applications and we are partial to it because we wrote it :)
+ColdBox has become the defacto platform for developing modern MVC BoxLang applications and we are partial to it because we wrote it :)
 {% endhint %}
 
-The ColdBox HMVC Platform is the de-facto enterprise-level HMVC framework for Boxlang developers. It's professionally backed, highly extensible, and productive. Getting started with ColdBox is quick and painless. The only thing you need to begin is [CommandBox](http://www.ortussolutions.com/products/commandbox), a command line tool for Boxlang developers.
+The ColdBox HMVC Platform is the de-facto enterprise-level HMVC framework for BoxLang developers. It's professionally backed, highly extensible, and productive. Getting started with ColdBox is quick and painless. The only thing you need to begin is [CommandBox](http://www.ortussolutions.com/products/commandbox), a command line tool for BoxLang developers.
 
 You can check out our quick learning guides below:
 

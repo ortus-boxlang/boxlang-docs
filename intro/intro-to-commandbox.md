@@ -1,5 +1,5 @@
 ---
-description: CommandBox is the de facto standard for Boxlang development and execution
+description: CommandBox is the de facto standard for BoxLang development and execution
 ---
 
 # CommandBox CLI
@@ -8,16 +8,16 @@ description: CommandBox is the de facto standard for Boxlang development and exe
 
 CommandBox is an amalgamation of many different tools and borrows concepts from NPM, Grunt/Gulp, Maven, ANT, Node, and much more. Features include:
 
-* True Command Line for Boxlang
+* True Command Line for BoxLang
 * Operation System integration for executing commands
-* Ability to create and execute commands built using Boxlang
+* Ability to create and execute commands built using BoxLang
 * ForgeBox integration for cloud package management and installations
 * ColdBox Platform, TestBox, and ContentBox CMS Integrations
 * Integrated servlet server with rewrite capabilities
 * Ability to create command recipes and execution
-*   REPL (Read-Evaluate-Print-Loop) console for immediate Boxlang
+*   REPL (Read-Evaluate-Print-Loop) console for immediate BoxLang
 
-    (Boxlang) interaction
+    (BoxLang) interaction
 *   Ability to interact with users via CLI and create workflows and
 
     installers
