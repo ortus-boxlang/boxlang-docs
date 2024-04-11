@@ -20,7 +20,7 @@ You can find the file system functions here: [https://cfdocs.org/filesystem-func
 * `FileExists` Determines whether a file exists
 * `FileGetMimeType` Returns the mime type of the given file
 * `FileInfo` returns detailed info about the given file.
-* `FileIsEOF` Determines whether Lucee has reached the end of the file while reading it.
+* `FileIsEOF` Determines whether BoxLang has reached the end of the file while reading it.
 * `FileMove` Moves file from source to destination
 * `FileOpen` Opens a file to read, write, or append.
 * `FileRead` Reads an on-disk or in-memory text file or a file object created with the FileOpen function.
