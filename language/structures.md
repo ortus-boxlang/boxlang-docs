@@ -4,7 +4,7 @@ description: Collection of key-value pairs; a data dictionary
 
 # Structures
 
-A structure is a collection of data where each element of data is addressed by a **name or key** and it can hold a value of any type.  Like a dictionary but on steroids:
+A structure is a collection of data where each element of data is addressed by a **name or key** and it can hold a value of any type. Like a dictionary but on steroids:
 
 ```javascript
 // Create a struct via function
@@ -94,12 +94,12 @@ However, please be aware that when dealing with native Java hashmaps, we recomme
 {% endhint %}
 
 {% hint style="success" %}
-BoxLang offers also the `structGet()` function which will search for a key or a key path.  If there is no structure or array present in the path, this function creates structures or arrays to make it a valid variable path. [https://cfdocs.org/structget](https://cfdocs.org/structget)
+BoxLang offers also the `structGet()` function which will search for a key or a key path. If there is no structure or array present in the path, this function creates structures or arrays to make it a valid variable path. [https://cfdocs.org/structget](https://cfdocs.org/structget)
 {% endhint %}
 
 ### Safe Navigation
 
-BoxLang also supports the concept of [safe navigation](operators.md#safe-navigation-operator) when dealing with structures.  Sometimes it can be problematic when using dot notation on nested structures since some keys might not exist or be `null`.  You can avoid this pain by using the safe navigation operator `?.` instead of the traditional `.` , and combine it with the elvis operator `?:` so if null, then returning a value.
+BoxLang also supports the concept of [safe navigation](operators.md#safe-navigation-operator) when dealing with structures. Sometimes it can be problematic when using dot notation on nested structures since some keys might not exist or be `null`. You can avoid this pain by using the safe navigation operator `?.` instead of the traditional `.` , and combine it with the elvis operator `?:` so if null, then returning a value.
 
 ```javascript
 user = { age : 40 }
@@ -112,7 +112,7 @@ echo( user?.salary ?: 0 ) // 0
 
 ## Setting Values
 
-I can also set new or override structure values a la carte.  You can do so via array/dot notation or via the `structInsert(), structUpdate()` functions ([https://cfdocs.org/structinsert](https://cfdocs.org/structinsert), [https://cfdocs.org/structupdate](https://cfdocs.org/structupdate))
+I can also set new or override structure values a la carte. You can do so via array/dot notation or via the `structInsert(), structUpdate()` functions ([https://cfdocs.org/structinsert](https://cfdocs.org/structinsert), [https://cfdocs.org/structupdate](https://cfdocs.org/structupdate))
 
 ```javascript
 // new key using default uppercase notation
@@ -166,14 +166,19 @@ writeOutput( "Do you have carrots? #produce.keyExists( 'carrots' )#" )
 
 In BoxLang, not only can you create case-insensitive unordered structures but also the following types using the `structNew()` function ([https://cfdocs.org/structnew](https://cfdocs.org/structnew))
 
-<table><thead><tr><th width="349">Type</th><th width="129.33333333333331" data-type="checkbox">Adobe 2018</th><th width="135" data-type="checkbox">Adobe 2021</th><th data-type="checkbox">Lucee</th></tr></thead><tbody><tr><td><code>casesensitive</code></td><td>false</td><td>true</td><td>false</td></tr><tr><td><code>normal</code></td><td>true</td><td>true</td><td>true</td></tr><tr><td><code>ordered</code> or <code>linked</code></td><td>true</td><td>true</td><td>true</td></tr><tr><td><code>ordered-casesensitive</code></td><td>false</td><td>true</td><td>false</td></tr><tr><td><code>soft</code></td><td>false</td><td>false</td><td>true</td></tr><tr><td><code>synchronized</code></td><td>false</td><td>false</td><td>true</td></tr><tr><td><code>weak</code></td><td>false</td><td>false</td><td>true</td></tr></tbody></table>
+* case-sensitive
+* normal
+* ordered or linked
+* ordered-case-sensitive
+* soft
+* synchronized
+* weak
 
 Here is the signature for the `structnew()` function:
 
 ```javascript
 structNew( [type[[,sortType][,sortOrder][,localeSensitive]|[,callback]]] )
 ```
-
 
 ```
 structNew( [type, [onMissingKey] ] )
@@ -237,14 +242,14 @@ produce.each( function( key, value ){
 
 ### Multi-Threaded Looping
 
-BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion.  The `structEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
+BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion. The `structEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
 
 ```java
 structEach( struct, callback, parallel:boolean, maxThreads:numeric );
 each( collection, callback, parallel:boolean, maxThreads:numeric );
 ```
 
-This is incredibly awesome as now your callback will be called concurrently!  However, please note that once you enter concurrency land, you should shiver and tremble.  Thread concurrency will be of the utmost importance, and you must ensure that var scoping is done correctly and that appropriate locking strategies are in place.
+This is incredibly awesome as now your callback will be called concurrently! However, please note that once you enter concurrency land, you should shiver and tremble. Thread concurrency will be of the utmost importance, and you must ensure that var scoping is done correctly and that appropriate locking strategies are in place.
 
 ```java
 myStruct.each( function( key, value ){
@@ -252,11 +257,11 @@ myStruct.each( function( key, value ){
 }, true, 20 );
 ```
 
-Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible.  Under the hood, the engines use a single thread executor for each execution, do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it.  This approach can be verbose and error-prone, but it's easy.  You also don't control where the processing thread runs and are at the mercy of the engine. &#x20;
+Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible. Under the hood, the engines use a single thread executor for each execution, do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it. This approach can be verbose and error-prone, but it's easy. You also don't control where the processing thread runs and are at the mercy of the engine.
 
 ### ColdBox Futures Parallel Programming
 
-If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code).  You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
+If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code). You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
 
 {% embed url="https://coldbox.ortusbooks.com/digging-deeper/promises-async-programming/parallel-computations" %}
 ColdBox Futures and Async Programming
@@ -264,7 +269,7 @@ ColdBox Futures and Async Programming
 
 Here are some methods that will allow you to do parallel computations:
 
-* `all( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects,  closures, or an array of closures/futures to execute them in parallel.  When you call on it, it will return a future that will retrieve an array of the results of all the operations.
-* `allApply( items, fn, executor ):array` : This function can accept an array of items or a struct of items of any type and apply a function to each of the items in parallel.  The `fn` argument receives the appropriate item and must return a result.  Consider this a parallel `map()` operation.
+* `all( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures to execute them in parallel. When you call on it, it will return a future that will retrieve an array of the results of all the operations.
+* `allApply( items, fn, executor ):array` : This function can accept an array of items or a struct of items of any type and apply a function to each of the items in parallel. The `fn` argument receives the appropriate item and must return a result. Consider this a parallel `map()` operation.
 * `anyOf( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures and will execute them in parallel. However, instead of returning all of the results in an array like `all()`, this method will return the future that executes the fastest! Race Baby!
-* `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations.  The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
+* `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations. The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
