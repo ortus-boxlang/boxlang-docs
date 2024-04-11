@@ -24,7 +24,7 @@ writeDump(info);
 
 You can find some great samples here: [https://cfdocs.org/cfimage](https://cfdocs.org/cfimage) and a listing of all manipulation functions here: [https://cfdocs.org/image%2Dfunctions](https://cfdocs.org/image-functions)
 
-**TODO: REVIEW LINKS BELOW AND UPDATE**
+TODO: REVIEW LINKS BELOW AND UPDATE
 
 * [GetReadableImageFormats](https://docs.lucee.org/reference/functions/getreadableimageformats.html) Returns a list of image formats that Lucee can read on the operating system where Lucee is deployed.
 * [GetWriteableImageFormats](https://docs.lucee.org/reference/functions/getwriteableimageformats.html) Returns a list of image formats that Lucee can write on the operating system where Lucee is deployed.
