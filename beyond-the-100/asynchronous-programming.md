@@ -1,6 +1,6 @@
 # Asynchronous Programming
 
-We already covered basic threading in our core Boxlang section.  In this section we will cover the usage of asynchronous programming via futures and the `runAsync()` function built-in to Adobe Boxlang 2018+ and Lucee 5.3+.
+We already covered basic threading in our core Boxlang section. In this section, we will cover the usage of asynchronous programming via futures and the `runAsync()` function built into Boxlang.
 
 > A Future is an eventual result of an asynchronous operation.
 
@@ -8,13 +8,9 @@ We already covered basic threading in our core Boxlang section.  In this section
 Java Future JDK (Useful Reference)
 {% endembed %}
 
-{% embed url="https://helpx.adobe.com/coldfusion/using/asynchronous-programming.html" %}
-Adobe Guide on RunAsync()
-{% endembed %}
-
 ## runAsync()
 
-This function returns a **Future** object, which is an eventual result of an asynchronous operation.  Basically a representation of what the operation will produce, well, in the future.  It takes in two arguments and returns a Boxlang Future object.
+This function returns a **Future** object, an asynchronous operation's eventual result. A representation of what the operation will produce in the future, it takes in two arguments and returns a Boxlang Future object.
 
 * `callback:function` - Closure/Lambda function that returns a result to be resolved
 * `timeout:numeric` - Timeout for the asynchronous process in milliseconds
@@ -36,7 +32,7 @@ writeOutput(result);
 
 ## The Future Object
 
-The return of the `runAsync()` function is a Boxlang Future, not a Java Future.  The Future Object has the following functions available:
+The return of the `runAsync()` function is a Boxlang Future, not a Java Future. The Future Object has the following functions available:
 
 | Function                     | ReturnType | Description                                                                                                                                                         |
 | ---------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -44,8 +40,8 @@ The return of the `runAsync()` function is a Boxlang Future, not a Java Future. 
 | `complete( value )`          | value      | Sets a value to return from the future, usually from an empty future operation.                                                                                     |
 | `error( callback, timeout )` | Future     | Register an error callback that will be called if the async operation fails or the timeout is reached                                                               |
 | `error( callback )`          | Future     | Register an error callback that will be called if the async operation fails                                                                                         |
-| `get()`                      | Any        | The value of the async operation once it finalizes.  **Caution: This operation blocks until the async operation finalizes.**                                        |
-| `get( timeout )`             | Any        | The value of the async operation with a timeout in milliseconds.  **Caution: This operation blocks until the async operation finalizes.**                           |
+| `get()`                      | Any        | The value of the async operation once it finalizes. **Caution: This operation blocks until the async operation finalizes.**                                         |
+| `get( timeout )`             | Any        | The value of the async operation with a timeout in milliseconds. **Caution: This operation blocks until the async operation finalizes.**                            |
 | `isCancelled()`              | Boolean    | Verifies if the operation has been cancelled or not                                                                                                                 |
 | `isDone()`                   | Boolean    | Verifies if the operation has finalized or not                                                                                                                      |
 | `then( callback )`           | Future     | Once the first callback operation has finalized, call this secondary callback with the value of the previous operation and return another Future                    |
@@ -55,7 +51,7 @@ The return of the `runAsync()` function is a Boxlang Future, not a Java Future. 
 All timeouts are in milliseconds
 {% endhint %}
 
-With the future you can now create fluent functional programming constructs to deal with your async operation.  You can create different error listeners and even continue processing the value the async operation produced in another asyncronous operation.  Much like a pipeline of never ending futures!
+With the future you can now create fluent functional programming constructs to deal with your async operation. You can create different error listeners and even continue processing the value the async operation produced in another asynchronous operation. It's much like a pipeline of never-ending futures!
 
 ```java
 future = runAsync( function(){
@@ -69,4 +65,4 @@ result = future.get();
 writeOutput(result);
 ```
 
-You can mix and match the callback functions to create a nice asyncronous pipeline.  Just note that if you call the `get()` operation immediately that will BLOCK the execution until the async operation finalizes, which kinda defeats the purpose of the async operation.  If you do not want to block, then use the `then()` approach, where that callback will be called for you with the result of the async operation and then you can do your post-processing.  The alternative is to sit and poll the `isDone()` or `isCancelled()` operations, and YUCK!
+Mix and match the callback functions to create a nice asynchronous pipeline. Just note that if you call the `get()` operation immediately, that will BLOCK the execution until the async operation finalizes, which kind of defeats the purpose of the async operation. If you do not want to block, use the `then()` approach where that callback will be called for you with the result of the async operation, and then you can do your post-processing. The alternative is to sit and poll the `isDone()` or `isCancelled()` operations, and YUCK!
