@@ -1,6 +1,6 @@
 # Sending Emails
 
-Boxlang gives you the `cfmail` tag/construct to easily send email in text or HTML format without any ceremony.  Just register your mail servers in the administrators or the `Application.bx` and you are ready to start sending emails in a jiffy!
+Boxlang gives you the `cfmail` tag/construct to easily send email in text or HTML format without ceremony. Just register your mail servers in the administrators or the `Application.bx` and you are ready to start sending emails in a jiffy!
 
 ```java
 cfmail( 
@@ -40,7 +40,7 @@ cfmail(
 
 ### Sending Attachments
 
-You can also send attachments to your email destinations very easily using the `mimeattach` attribute or via the child `cfmailparam()` construct, which allows you to send multiple attachments, or headers.
+You can also send attachments to your email destinations very easily using the `mimeattach` attribute or via the child `cfmailparam()` construct, which allows you to send multiple attachments or headers.
 
 ```java
 cfmail( 
@@ -61,10 +61,3 @@ cfmail( subject="Attachments", to="you@domain.com", from="me@domain.com" ) {
 	cfmailparam( file="c:\files\logo.gif" );
 }
 ```
-
-{% hint style="success" %}
-More in-depth information can be found here: [https://helpx.adobe.com/coldfusion/developing-applications/using-external-resources/sending-and-receiving-e-mail/sending-e-mail-messages.html](https://helpx.adobe.com/coldfusion/developing-applications/using-external-resources/sending-and-receiving-e-mail/sending-e-mail-messages.html)
-{% endhint %}
-
-
-
