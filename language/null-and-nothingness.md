@@ -10,11 +10,11 @@ What is nothingness? Is there nothingness only in outer space? If a tree falls i
 
 ## Full-Null Support
 
-Please note that full null support is **NOT** the default in the BoxLang engines.  Meaning you will not be able to use the `null` keyword until it is activated or get real `null` values from databases or external services.  In reality, you still could simulate `null` without full null support in both engines, and sometimes you get an empty string, sometimes a full Java `null`.  So basically, the nonfull null support is a partial null support, which makes it hard for developers.  **So as a rule of thumb, we always recommend checking for nullness no matter WHAT!**
+Please note that full null support is **NOT** the default in the BoxLang engines. Meaning you will not be able to use the `null` keyword until it is activated or get real `null` values from databases or external services. In reality, you still could simulate `null` without full null support in both engines, and sometimes you get an empty string, sometimes a full Java `null`. So basically, the nonfull null support is a partial null support, which makes it hard for developers. **So as a rule of thumb, we always recommend checking for nullness no matter WHAT!**
 
-Eventually, this flag should default to true, in our opinion, and offer full-null support out of the box.&#x20;
+Eventually, this flag should default to true, in our opinion, and offer full-null support out of the box.
 
-Ok, back to activating full-null support.  You can do this in the admin or programmatically via the `Application.bx` file, which can be used when building web applications. You can learn more [about it here](../beyond-the-100/applicationcfc.md)
+Ok, back to activating full-null support. You can do this in the admin or programmatically via the `Application.bx` file, which can be used when building web applications. You can learn more [about it here](../beyond-the-100/applicationcfc.md)
 
 {% code title="Application.bx" %}
 ```java
@@ -53,13 +53,13 @@ We would recommend that you use `isNull()` as it expresses coherently its purpos
 
 You can create nulls in different ways in BoxLang. Let's explore these:
 
-<table><thead><tr><th width="268">Approach</th><th width="98.33333333333331" data-type="checkbox">Full Null</th><th>Description</th></tr></thead><tbody><tr><td><code>null</code> keyword</td><td>true</td><td><code>r = null</code></td></tr><tr><td>Non returning function call</td><td>false</td><td>If a function returns nothing, its assignment will produce a null.<br><code>function getNull(){}</code><br><code>r = getNull()</code></td></tr><tr><td><code>nullValue()</code></td><td>false</td><td>Lucee only function.<br><code>r = nullValue()</code></td></tr><tr><td><code>javaCast( "null", "" )</code></td><td>false</td><td><p>Available in all engines</p><p><code>r = javaCast( "null", "" )</code></p></td></tr></tbody></table>
+<table><thead><tr><th width="268">Approach</th><th width="98.33333333333331" data-type="checkbox">Full Null</th><th>Description</th></tr></thead><tbody><tr><td><code>null</code> keyword</td><td>true</td><td><code>r = null</code></td></tr><tr><td>Non returning function call</td><td>false</td><td>If a function returns nothing, its assignment will produce a null.<br><code>function getNull(){}</code><br><code>r = getNull()</code></td></tr><tr><td><code>nullValue()</code></td><td>false</td><td><code>r = nullValue()</code></td></tr><tr><td><code>javaCast( "null", "" )</code></td><td>false</td><td><code>r = javaCast( "null", "" )</code></td></tr></tbody></table>
 
 ## In Practice
 
-If you have three eggs, and eat three eggs, then you might think you have "nothing," but in terms of eggs you have "0". Zero is something, it’s a number, and it’s not nothing.
+If you have three eggs and eat three eggs, then you might think you have "nothing," but in terms of eggs, you have "0". Zero is something, it’s a number, and it’s not nothing.
 
-If you’re working with words and have a string like "hello" then delete the "h", "e", "l"s, and "o" you might think you’d end up with nothing, but you really have "" which is an empty string. It’s still something.
+If you’re working with words and have a string like "hello" then delete the "h", "e", "l"s, and "o" you might think you’d end up with nothing, but you have "" which is an empty string. It’s still something.
 
 Null in BoxLang is usually encountered when you ask for something that doesn’t exist. When looking at arrays, for instance, we created a list with five elements then asked BoxLang to give us the sixth element of that list. There is no sixth element, so BoxLang gave us null. It isn’t that there’s a blank in that sixth spot (""), it’s not a number 0, it’s nothingness – null.
 
@@ -87,4 +87,4 @@ results = returnsNull();
 writeOutput( isNull( results ) );
 ```
 
-Also note that if a function returns **nothing** it will be the same as returning `null`.
+Also note that if a function returns **nothing,** it will be the same as returning `null`.
