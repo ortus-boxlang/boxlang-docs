@@ -18,11 +18,11 @@ f = false; // boolean, or a string
 Please note that assignments are evaluated from right to left instead of traditional reading from left to right.
 {% endhint %}
 
-Open up the CommandBox Shell and go into CommandBox **REPL** mode by typing `repl`. Every time you assign a value to a variable, the CommandBox REPL will output or echo the variable for you. Please note that in REPL mode, the termination for a line of code is omitted. A line terminator in BoxLang is the `;`.
+Open up the CommandBox Shell and go into CommandBox **REPL** mode by typing `repl`. Whenever you assign a value to a variable, the CommandBox REPL will output or echo the variable for you. Please note that in REPL mode, the termination for a line of code is omitted. A line terminator in BoxLang is the `;`.
 
 ![](<../assets/variables (1).png>)
 
-As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), and so much more. No need for types or special assignments.  The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
+As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), and so much more. There is no need for types or special assignments. The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
 
 {% hint style="success" %}
 In the CommandBox REPL semi-colons are optional, and the default syntax is script and not tags.
@@ -57,14 +57,52 @@ Most BoxLang variables have a few requirements imposed by the Virtual Machine (V
 
 #### Reserved Words
 
-As with any programming language, there are specific names you just can't use, and some you can use, but they can be very confusing for developers or the engine.  Here is a list of some of those:
+As with any programming language, there are specific names you can't use, and some you can use, but they can be very confusing for developers or the engine. Here is a list of some of those:
 
 * The name of any of the internal BoxLang engine scopes: `form, session, cgi, client, url, application, function`
-  * Technically you can create the variable by long scoping (`local.form`), but it is confusing and error-prone.  So please be careful.
+  * Technically you can create the variable by long scoping (`local.form`), but it is confusing and error-prone. So please be careful.
 
-
-
-<table><thead><tr><th width="372">Reserved Word</th><th width="176.33333333333331" align="center">Lucee</th><th align="center">Adobe</th></tr></thead><tbody><tr><td><code>abstract</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>and</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>break</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>case</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>catch</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>continue</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>contains</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>default</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>do</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>else</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>eq</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>eqv</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>false</code></td><td align="center">√</td><td align="center">√</td></tr><tr><td><code>finally</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>final</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>for</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>function</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>gt</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>gte</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>import</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>imp</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>in</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>is</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>if</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>interface</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>lt</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>lte</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>local</code> (within a function)</td><td align="center"></td><td align="center">√</td></tr><tr><td><code>neq</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>not</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>null</code> (If null support is on)</td><td align="center">√</td><td align="center">√</td></tr><tr><td><code>pageenconding</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>or</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>return</code></td><td align="center"></td><td align="center">v</td></tr><tr><td><code>switch</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>true</code></td><td align="center">√</td><td align="center">√</td></tr><tr><td><code>try</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>while</code></td><td align="center"></td><td align="center">√</td></tr><tr><td><code>xor</code></td><td align="center"></td><td align="center">√</td></tr></tbody></table>
+| Reserved Word                  |
+| ------------------------------ |
+| `abstract`                     |
+| `and`                          |
+| `break`                        |
+| `case`                         |
+| `catch`                        |
+| `continue`                     |
+| `contains`                     |
+| `default`                      |
+| `do`                           |
+| `else`                         |
+| `eq`                           |
+| `eqv`                          |
+| `false`                        |
+| `finally`                      |
+| `final`                        |
+| `for`                          |
+| `function`                     |
+| `gt`                           |
+| `gte`                          |
+| `import`                       |
+| `imp`                          |
+| `in`                           |
+| `is`                           |
+| `if`                           |
+| `interface`                    |
+| `lt`                           |
+| `lte`                          |
+| `local` (within a function)    |
+| `neq`                          |
+| `not`                          |
+| `null` (If null support is on) |
+| `pageenconding`                |
+| `or`                           |
+| `return`                       |
+| `switch`                       |
+| `true`                         |
+| `try`                          |
+| `while`                        |
+| `xor`                          |
 
 ## Flexible Typing
 
@@ -76,16 +114,16 @@ As you can see, the last equality wins! In this case, `a` is now an array.
 
 ## Types
 
-As we are now seeing, BoxLang is a typeless language, but internal types always exist.  BoxLang will automatically cast so you can do flexible typing assignments when evaluating expressions.  It does all the tedious and hard job for you.  If we were to categorize BoxLang variables into categories, these would be:
+BoxLang is a typeless language, but internal types always exist. BoxLang will automatically cast so you can do flexible typing assignments when evaluating expressions. It does all the tedious and hard job for you. If we were to categorize BoxLang variables into categories, these would be:
 
 | Category    | Description                                                                                                         |
 | ----------- | ------------------------------------------------------------------------------------------------------------------- |
 | **Binary**  | Raw data from files such as images, pdfs, etc                                                                       |
 | **Complex** | A data container that represents more than one value: structures, arrays, queries, XML document objects, etc.       |
-| **Objects** | Complex constructs representing data and functional operations.  BoxLang Components or Java Objects.             |
+| **Objects** | Complex constructs representing data and functional operations. BoxLang Components or Java Objects.                 |
 | **Simple**  | One value and used directly in expressions. These include numbers, strings, floats, booleans, and date-time values. |
 
-BoxLang also includes many validation functions available to you to test for the type of variable you are working with.  You can also use the `getmetdata()` function to get the metadata about the variable as well.
+BoxLang also includes many validation functions that are available to you to test for the type of variable you are working with. You can also use the `getmetdata()` function to get the metadata about the variable as well.
 
 ```javascript
 qData = getMetadata( query )
@@ -117,11 +155,9 @@ writedump( a.getMetadata() )
 * `isXML()`
 * `isXmlDoc()`
 
-
-
 ### Conversions
 
-You can also in BoxLang convert variables from one type to another.  Here are some functions that will assist you in conversions:
+You can also convert variables from one type to another in BoxLang. Here are some functions that will assist you in conversions:
 
 * `arrayToList()`
 * `binaryDecode()`
@@ -152,8 +188,6 @@ You can also in BoxLang convert variables from one type to another.  Here are so
 {% hint style="info" %}
 Please note that some of them can be used as member functions directly on a specific object type. [https://cfdocs.org/conversion%2Dfunctions](https://cfdocs.org/conversion-functions)
 {% endhint %}
-
-
 
 ## Outputting Variables (Interpolation)
 
@@ -186,7 +220,7 @@ b = a;
 
 ## Debugging Variables
 
-BoxLang offers one of the most used functions/tags ever: `<cfdump>, writeDump()` and `<cfabort>, abort;`. These are used to dump the entire contents of a variable to the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `top` argument to limit dumping.
+BoxLang offers one of the most used functions/tags ever: `<cfdump>, writeDump()` and `<cfabort>, abort;`. These are used to dump all the contents of a variable into the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `top` argument to limit dumping.
 
 ```javascript
 writeDump( complex );abort;
@@ -198,12 +232,11 @@ writeDump( var=arrayOfORM, top=5 );abort;
 
 ### Server Debugging Templates
 
-BoxLang Engines also allow you to turn on/off a debugging template that shows up at the bottom of requests when running in server mode. You can activate this debugging by logging in to the appropriate engine administrator and looking for the **debugging** section. Turn it on and debug like a champ.
-
+BoxLang also allows you to turn on/off a debugging template that shows up at the bottom of requests when running in server mode. You can activate this debugging by logging in to the appropriate engine administrator and looking for the **debugging** section. Turn it on and debug like a champ.
 
 ## Paraming Variables
 
-BoxLang allows you to set default values for variables in case you use a variable that doesn't exist. You can use the `<cfparam>` tag or the `param` construct:
+BoxLang allows you to set default values for variables if you use a variable that doesn't exist. You can use the `<cfparam>` tag or the `param` construct:
 
 ```markup
 <cfparam name="myVariable" default="luis">
@@ -221,7 +254,7 @@ You can even assign types to parameterize variables and much more. Check out the
 
 ## Checking For Existence
 
-You can verify if variables exist in many different ways. The following section showcases how variables are stored in visibility and persistence scopes which are all structures or hash maps in Java terms. Meaning you can leverage structure operations for checking for existence and much more. Below are several ways to verify variable existence:
+You can verify if variables exist in many different ways. The following section showcases how variables are stored in visibility and persistence scopes, all of which are structures or hash maps in Java terms. This means you can leverage structure operations to check for existence and much more. Below are several ways to verify variable existence:
 
 *   `isDefined()` - Evaluates a string value to determine whether the variable
 
