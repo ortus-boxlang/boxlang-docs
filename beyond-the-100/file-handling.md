@@ -6,8 +6,6 @@ BoxLang allows you to manipulate, read, upload, and more files via its built-in 
 You can find the file system functions here: [https://cfdocs.org/filesystem-functions](https://cfdocs.org/filesystem-functions).
 {% endhint %}
 
-TODO: REVIEW LINKS BELOW AND UPDATE
-
 * `DirectoryCopy` Copies the contents of a directory to a destination directory.
 * `DirectoryCreate` Creates a new directory for the specified path
 * `DirectoryDelete` Deletes directory for a given path
