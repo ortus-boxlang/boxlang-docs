@@ -169,7 +169,7 @@ The allowed types are:
 * Binary
 * Boolean
 * Component
-* CFC by Name / SubType
+* Class by Name / SubType
 * Date / Datetime
 * Function
 * Numeric

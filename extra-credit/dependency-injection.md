@@ -120,7 +120,7 @@ Let's digest a few examples:
 property name="userService" inject="UserService";
 ```
 
-The `inject="UserService"` will look for an object with that alias if it doesn't find it with the alias, it treats is like a CFC path and tries to create, inject and return that object.
+The `inject="UserService"` will look for an object with that alias if it doesn't find it with the alias, it treats is like a class path and tries to create, inject and return that object.
 
 ```groovy
 property name="log" inject="logbox:logger:{this}";
@@ -204,7 +204,7 @@ The main method to retrieve objects is called `getInstance()` and you can see th
 /**
  * Locates, Creates, Injects and Configures an object model instance
  *
- * @name The mapping name or CFC instance path to try to build up
+ * @name The mapping name or class instance path to try to build up
  * @dsl The dsl string to use to retrieve the instance model object, mutually exclusive with 'name
  * @initArguments The constructor structure of arguments to passthrough when initializing the instance
  * @initArguments.doc_generic struct

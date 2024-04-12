@@ -57,7 +57,7 @@ component MyFunkyCalculator{
 We have seen how to declare the static constructor and static methods, but how in the world do we acces them from outside the component? We leverage the `::` double colon syntax.
 
 ```java
-// Refer to the CFC by path, then use the :: and call a function or variable
+// Refer to the class by path, then use the :: and call a function or variable
 MyFunkyCalculator::CACHE_KEY;
 MyFunkyCalculator::calculateValues( 1 );
 ```

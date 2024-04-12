@@ -138,11 +138,11 @@ If you want to leverage a Java library that requires a certain type of Java obje
 
 ```java
 createDynamicProxy(
-    new proxies.Consumer( arguments.consumer ), // create a Consumer CFC
+    new proxies.Consumer( arguments.consumer ), // create a Consumer Class
     [ "java.util.function.Consumer" ] // match it to this interface
 )
 
-// Here is the Consumer CFC
+// Here is the Consumer Class
 
 /**
  * Functional Interface that maps to java.util.function.Consumer
@@ -173,4 +173,4 @@ component extends="BaseProxy"{
 }
 ```
 
-Basically, your CFC must implement the appropriate methods the interface(s) tell you that it needs. After that, your CFC will be Javafyied, and it can be used like a native Java interface implementing objects!  Enjoy!
+Basically, your class must implement the appropriate methods the interface(s) tell you that it needs. After that, your class will be Java-fide, and it can be used like a native Java interface implementing objects!  Enjoy!

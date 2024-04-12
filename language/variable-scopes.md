@@ -4,7 +4,7 @@ description: They gotta exist somewhere!
 
 # Variable Scopes
 
-In the BoxLang language, there are many persistence and visibility scopes that exist for variables to be placed in. These are differentiated by context: in a CFC, in a function, tag, thread or in a template. All BoxLang scopes are implemented as structures or hash maps of key-value name pairs. The default scope for variable storage is called `variables`. Thus you can refer variables like this in either CFC or Template context:
+In the BoxLang language, there are many persistence and visibility scopes that exist for variables to be placed in. These are differentiated by context: in a class, in a function, tag, thread or in a template. All BoxLang scopes are implemented as structures or hash maps of key-value name pairs. The default scope for variable storage is called `variables`. Thus you can refer variables like this in either class or Template context:
 
 ```javascript
 a = "hello";
@@ -31,11 +31,11 @@ Can be used in any context, used for persisting variables for a period of time.
 
 * `variables` - The default or implicit scope where all variables are assigned to.
 
-## Component Scopes (CFC)
+## Class Scopes (Class)
 
-* `variables` - Private scope, visible internally to the CFC only
+* `variables` - Private scope, visible internally to the class only
 * `this` - Public scope, visible from the outside world
-* `static` - No need for a CFC instance, available as a CFC representation
+* `static` - No need for a class instance, available as a class representation
 
 ## Function Scopes
 

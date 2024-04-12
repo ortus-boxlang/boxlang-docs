@@ -20,7 +20,7 @@ BoxLang Comment
 
 ## Script Comments
 
-If you are within a CFC or in a `<cfscript>` block you can use an alternate style for comments. You can leverage `//` for single line comments and the following for multi-line comments:
+If you are within a class or in a `<cfscript>` block you can use an alternate style for comments. You can leverage `//` for single line comments and the following for multi-line comments:
 
 ```java
 /**
@@ -103,7 +103,7 @@ component extends="Base" implements="IHello" singleton{
 Read about DocBox
 {% endembed %}
 
-You can see some examples of advanced CFC documentation here: [https://apidocs.ortussolutions.com/coldbox/current/](https://apidocs.ortussolutions.com/coldbox/current/)
+You can see some examples of advanced class documentation here: [https://apidocs.ortussolutions.com/coldbox/current/](https://apidocs.ortussolutions.com/coldbox/current/)
 
 {% hint style="success" %}
 **Tip**: VSCode has some great plugins for generating this type of documentation on your CFCs. We recommend the following extensions:

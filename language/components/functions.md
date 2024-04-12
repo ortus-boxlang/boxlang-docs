@@ -69,7 +69,7 @@ Functions can have different visibility contexts:
 
     web service, this option is required.
 
-Another interesting tidbit in BoxLang is that the visibility determines where the function will exist within the scope of the CFC. Remember that functions in BoxLang are objects themselves. They can be added, removed, renamed even at runtime thanks to BoxLang being a dynamic language.
+Another interesting tidbit in BoxLang is that the visibility determines where the function will exist within the scope of the class. Remember that functions in BoxLang are objects themselves. They can be added, removed, renamed even at runtime thanks to BoxLang being a dynamic language.
 
 * `public,remote` - The function reference is placed in both the `this` and `variables` scope
 * `private,package` - The function reference is placed in the `variables` scope

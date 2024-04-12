@@ -160,7 +160,7 @@ component{
 
 Every component has certain visibility scopes where properties, variables and functions are attached to.
 
-* `variables` - Private scope, visible internally to the CFC only, where all `properties` are placed in by default.  Public and private function references are place here as well.
+* `variables` - Private scope, visible internally to the class only, where all `properties` are placed in by default.  Public and private function references are place here as well.
 * `this` - Public scope, visible from the outside world \(can break encapsulation\) public function references are placed here.
 * `static` - Same as in Java, ability to staticly declare variables and functions at the blueprint level and not at the instance level.
 
@@ -169,7 +169,7 @@ Every component has certain visibility scopes where properties, variables and fu
 The `component` construct can also have many attributes or name-value pairs that will give it some extra functionality for SOAP/REST web services and for Hibernate ORM Persistence. Each BoxLang engine provides different capabilities. You can find all of them here: [https://cfdocs.org/cfcomponent](https://cfdocs.org/cfcomponent). Below are the most common ones:
 
 * `accessors` - Enables automatic getters/setters for properties
-* `extends` - Provides inheritance via the path of the Component \(CFC\)
+* `extends` - Provides inheritance via the path of the Class
 * `implements` - Names of the interfaces it implements
 * `persistent` - Makes the object a Hibernate Entity which can be fine tuned through a slew of other attributes.
 * `serializable` - Whether the component can be serialized into a string/binary format or not. Default is `true`.
