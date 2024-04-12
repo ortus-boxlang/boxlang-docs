@@ -43,7 +43,7 @@
 ## Beyond The 100
 
 * [Beyond The 100](beyond-the-100/beyond-the-language.md)
-* [Application.bx](beyond-the-100/applicationcfc.md)
+* [Application.bx](beyond-the-100/applicationbx.md)
 * [File Handling](beyond-the-100/file-handling.md)
 * [Image Manipulation](beyond-the-100/image-manipulation.md)
 * [HTTP/S Calls](beyond-the-100/http-calls.md)

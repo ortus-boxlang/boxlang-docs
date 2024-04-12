@@ -9,7 +9,7 @@ BoxLang became famous in its infancy because it was easy to query databases with
 In modern times, we have many more ways to query the database, and defining data sources can occur not only in the admin but in our web application's `Application.bx` or even define it at runtime programmatically or within the query constructs themselves.
 
 {% hint style="info" %}
-See [Application.bx](../beyond-the-100/applicationcfc.md) for more information on how to leverage it for web development.
+See [Application.bx](../beyond-the-100/applicationbx.md) for more information on how to leverage it for web development.
 {% endhint %}
 
 ## What is a Datasource?
