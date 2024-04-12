@@ -4,18 +4,18 @@ The main goal of abstraction is to handle complexities by hiding/encapsulating u
 
 Abstract will allow you to define two contexts of operation:
 
-1. Components
+1. Classes
 2. Functions
 
 ![](../../.gitbook/assets/abstract-class-vs-interface.png)
 
-## Abstract Components
+## Abstract Classes
 
-An abstract component allows you to make a template or blueprint for a component that will be eventually inherited from, so the inheriting class doesn't have to implement all of the methods.  Therefore, abstract classes cannot be instantiated but only extended.
+An abstract class allows you to make a template or blueprint for a class that will be eventually inherited from, so the inheriting class doesn't have to implement all of the methods.  Therefore, abstract classes cannot be instantiated but only extended.
 
 Abstract classes can have both abstract and concrete methods defined within it.  Abstract methods have no body, they are just declared, much like interfaces.  Usually, you would do this to satisfy an interface declaration.  In my years of experience, abstract classes usually go hand in hand with interfaces and usually implement [strategy patterns](https://en.wikipedia.org/wiki/Strategy\_pattern).
 
-We would suggest that if you define abstract components that you add the prefix `Abstract` to the component name as best practice: `AbstractAnimal, AbstractLogger, AbstractPerson`. This goes a long way to help with readability and standards.
+We would suggest that if you define abstract classes that you add the prefix `Abstract` to the class name as best practice: `AbstractAnimal, AbstractLogger, AbstractPerson`. This goes a long way to help with readability and standards.
 
 {% hint style="info" %}
 In an inheritance hierarchy the first non-abstract class should implement **all** the abstract methods.&#x20;
@@ -26,7 +26,7 @@ In an inheritance hierarchy the first non-abstract class should implement **all*
 /**
  * An abstract animal class
  */
-abstract component implements="IAnimal"{
+abstract class implements="IAnimal"{
 
 	property animalSize;
 	property animalType;
@@ -56,11 +56,11 @@ abstract component implements="IAnimal"{
 
 ## Abstract Functions
 
-As you can see from the example above, abstract functions can be defined ONLY in an abstract component.  These functions are demarcated as abstract so inherited components can implement them.  You can have many abstract functions in your abstract component and you can also have many concrete functions as well:
+As you can see from the example above, abstract functions can be defined ONLY in an abstract class.  These functions are demarcated as abstract so inherited classes can implement them.  You can have many abstract functions in your abstract class and you can also have many concrete functions as well:
 
 {% code title="AbstractLogger.bx" %}
 ```java
-abstract component implements="ILogger"{
+abstract class implements="ILogger"{
 
     /**
 	 * Min logging level
@@ -121,5 +121,5 @@ abstract component implements="ILogger"{
 {% endcode %}
 
 {% hint style="info" %}
-Only **abstract** components can contain **abstract** functions.
+Only **abstract** classes can contain **abstract** functions.
 {% endhint %}

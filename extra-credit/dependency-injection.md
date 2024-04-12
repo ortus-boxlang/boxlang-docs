@@ -41,7 +41,7 @@ Here are a simple listing of features WireBox brings to the table:
 * Annotation driven dependency injection
 * 0 configuration mode or a programmatic binder configuration approach via BoxLang (No XML!)
 * Creation and Wiring of or by:
-  * BoxLang Components
+  * BoxLang Classes
   * Java Classes
   * RSS Feeds
   * WebService objects
@@ -78,10 +78,10 @@ There are three ways that DI frameworks can inject dependencies into object refe
 2. Setter Methods
 3. Property Injections
 
-Each has it's own set of pros and cons. However, the important aspect of the injection types is the order it happens. Please refer back to the list above for order reference. Here is a component leveraging all three styles, what similarities do you notice in all of them?
+Each has it's own set of pros and cons. However, the important aspect of the injection types is the order it happens. Please refer back to the list above for order reference. Here is a class leveraging all three styles, what similarities do you notice in all of them?
 
 ```java
-component singleton{
+class singleton{
 
     // Property injection
     property name="userService" inject="UserService";
@@ -108,7 +108,7 @@ component singleton{
 
 ### Injection Annotation
 
-All the injection styles have a marker called `inject` which can contain a value, this value is called the [Injection DSL](https://wirebox.ortusbooks.com/usage/injection-dsl). This basically tells WireBox what alias to inject into the component. The value of the injection DSL can mean different things to WireBox depending on the environment, registered custom dsl's and so much more. However, at the end of the day, it means, inject something here!!
+All the injection styles have a marker called `inject` which can contain a value, this value is called the [Injection DSL](https://wirebox.ortusbooks.com/usage/injection-dsl). This basically tells WireBox what alias to inject into the class. The value of the injection DSL can mean different things to WireBox depending on the environment, registered custom dsl's and so much more. However, at the end of the day, it means, inject something here!!
 
 {% hint style="info" %}
 Please note that we have shown you the easiest approach to DI by leveraging annotations. If you do not like annotating your code and prefer a configuration approach; No Problem. WireBox offers a [configuration Binder](https://wirebox.ortusbooks.com/configuration/configuring-wirebox) where you can declare all your objects explicitly with all their dependencies and persistence.
@@ -153,13 +153,13 @@ WireBox by default treats all objects it creates as transient objects. Meaning i
 
 ```groovy
 // Transient
-component{}
+class{}
 
 // Singleton
-component singleton{}
+class singleton{}
 
 // Core or Custom Scope
-component scope="cachebox"
+class scope="cachebox"
 ```
 
 Available scopes are:

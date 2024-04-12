@@ -120,7 +120,7 @@ BoxLang is a typeless language, but internal types always exist. BoxLang will au
 | ----------- | ------------------------------------------------------------------------------------------------------------------- |
 | **Binary**  | Raw data from files such as images, pdfs, etc                                                                       |
 | **Complex** | A data container that represents more than one value: structures, arrays, queries, XML document objects, etc.       |
-| **Objects** | Complex constructs representing data and functional operations. BoxLang Components or Java Objects.                 |
+| **Objects** | Complex constructs representing data and functional operations. BoxLang Classes or Java Objects.                 |
 | **Simple**  | One value and used directly in expressions. These include numbers, strings, floats, booleans, and date-time values. |
 
 BoxLang also includes many validation functions that are available to you to test for the type of variable you are working with. You can also use the `getmetdata()` function to get the metadata about the variable as well.

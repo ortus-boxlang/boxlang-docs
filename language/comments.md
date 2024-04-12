@@ -47,7 +47,7 @@ If you are within a class or in a `<cfscript>` block you can use an alternate st
 
 ## Script "Javadoc" style comments
 
-A multi-line block can affect the metadata of a `component` or `function` if the opening line contains 2 asterisks. Also, for readability, some people will start each line of the comment with an asterisk. BoxLang will parse out those starting asterisks and they will not appear in the component or the function metadata.
+A multi-line block can affect the metadata of a `class` or `function` if the opening line contains 2 asterisks. Also, for readability, some people will start each line of the comment with an asterisk. BoxLang will parse out those starting asterisks and they will not appear in the class or the function metadata.
 
 ```javascript
     /**
@@ -66,11 +66,11 @@ In the BoxLang world, you can write [JavaDoc](http://www.oracle.com/technetwork/
 {% code title="MyAwesome.bx" %}
 ```java
 /**
- * This is my component
+ * This is my class
  *
  * @author Luis Majano
  */
-component extends="Base" implements="IHello" singleton{
+class extends="Base" implements="IHello" singleton{
 
     /**
      * The Settings
@@ -86,7 +86,7 @@ component extends="Base" implements="IHello" singleton{
      * @vars The vars I need
      * @vars.generic Array
      *
-     * @return MyComponent
+     * @return MyClass
      * @throws SomethingException
      */
     function init( required wirebox, required vars ){

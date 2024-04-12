@@ -114,10 +114,10 @@ Hyper exists to provide a fluent builder experience for HTTP requests and respon
 
 ### HyperBuilder
 
-The component you will most likely inject is the `HyperBuilder`. This is commonly aliased as `hyper`.
+The class you will most likely inject is the `HyperBuilder`. This is commonly aliased as `hyper`.
 
 ```java
-component {
+class{
     property name="hyper" inject="HyperBuilder@Hyper";
 }
 ```
@@ -131,7 +131,7 @@ Using the `HyperBuilder` lets you easily create requests with defaults while als
 
 ### HyperRequest
 
-Though the `HyperBuilder` is the component you will most likely inject, `HyperRequest` is the component will you interact with the most. `HyperRequest` provides a fluent interface to configure your HTTP call.
+Though the `HyperBuilder` is the class you will most likely inject, `HyperRequest` is the class will you interact with the most. `HyperRequest` provides a fluent interface to configure your HTTP call.
 
 **Example:**
 
@@ -155,7 +155,7 @@ Defaults are set on the `HyperBuilder` instance. The easiest way to do this is t
 
 ```java
 // config/WireBox.bx
-component {
+class{
 
     function configure() {
         map( "StarWarsClient" )
@@ -172,7 +172,7 @@ component {
 Now, you can inject this pre-configured builder wherever you need in your application:
 
 ```java
-component {
+class{
 
     property name="StarWarsClient" inject="id";
 
@@ -187,7 +187,7 @@ You can even create multiple clients using this approach:
 
 ```java
 // config/WireBox.bx
-component {
+class{
 
     function configure() {
         map( "SWAPIClient" )

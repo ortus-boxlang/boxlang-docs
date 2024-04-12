@@ -1,8 +1,8 @@
-# Components
+# Classes
 
 **BoxLang \(BoxLang\) is object-oriented, period!**
 
-BoxLang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Components \(CFCs\). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul webservices.
+BoxLang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Classes \(CFCs\). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul webservices.
 
 {% hint style="info" %}
 Remember that objects are not only data but data + behavior.
@@ -14,7 +14,7 @@ BoxLang supports not only the traditional avenues for object orientation but man
 
 ## Classes and Instances
 
-In Object-Oriented programming we define **classes** which are abstract descriptions of a category or type of thing; a blueprint. In our case, we will call them components and it defines what properties and functions all objects \(instances\) of that type have. You can consider them to be a blueprint of your object representation. They should have a distinct job and a **single** responsibility \(if possible\), try to avoid creating God objects.
+In Object-Oriented programming we define **classes** which are abstract descriptions of a category or type of thing; a blueprint. In our case, we will call them classes and it defines what properties and functions all objects \(instances\) of that type have. You can consider them to be a blueprint of your object representation. They should have a distinct job and a **single** responsibility \(if possible\), try to avoid creating God objects.
 
 > In object-oriented programming, a God object is an object that knows too much or does too much. The God object is an example of an anti-pattern. A common programming technique is to separate a large problem into several smaller problems \(a divide and conquer strategy\) and create solutions for each of them. - [https://en.wikipedia.org/wiki/God\_object](https://en.wikipedia.org/wiki/God_object)
 
@@ -25,7 +25,7 @@ Let's check out an example of a simple Component, `User.bx`
  * I represent a user in the system
  * @author Luis Majano
  */
- component accessors="true"{
+ class accessors="true"{
 
   /**
   * The name of the user
@@ -65,7 +65,7 @@ Please check out the following articles:
 
 ### Notes of Interest
 
-The attribute `accessors` in the component definition denotes that automatic **getters \(**[**accessors**](https://en.wikipedia.org/wiki/Mutator_method)**\)** and **setters \(**[**mutators**](https://en.wikipedia.org/wiki/Mutator_method)**\)** will be created for all defined properties in the object. Also notice that the component and each property can be documented using `/** **/` notation, which is great for automatic documentation generators like [DocBox](https://www.forgebox.io/view/docbox).
+The attribute `accessors` in the class definition denotes that automatic **getters \(**[**accessors**](https://en.wikipedia.org/wiki/Mutator_method)**\)** and **setters \(**[**mutators**](https://en.wikipedia.org/wiki/Mutator_method)**\)** will be created for all defined properties in the object. Also notice that the class and each property can be documented using `/** **/` notation, which is great for automatic documentation generators like [DocBox](https://www.forgebox.io/view/docbox).
 
 {% hint style="success" %}
 Get into the habit of inline documentation, it can go a long way for automatic generators and make you look like you can document like a machine!
@@ -73,9 +73,9 @@ Get into the habit of inline documentation, it can go a long way for automatic g
 
 ### Creating Instances
 
-The _User.bx_ component above is a representation of _any_ user or the _idea_ of a user. In order to bring it to life we will create an [**instance**](https://en.wikipedia.org/wiki/Instance_%28computer_science%29) of it, populate it with instance data and then use it.
+The _User.bx_ class above is a representation of _any_ user or the _idea_ of a user. In order to bring it to life we will create an [**instance**](https://en.wikipedia.org/wiki/Instance_%28computer_science%29) of it, populate it with instance data and then use it.
 
-An instance, is a copy of that blueprint that you are bringing to life that will be stored in memory and used by the language during a set of executions. Usually via a `new` or `createObject()` keyword operation from another file, which can be a template or yet another component.
+An instance, is a copy of that blueprint that you are bringing to life that will be stored in memory and used by the language during a set of executions. Usually via a `new` or `createObject()` keyword operation from another file, which can be a template or yet another class.
 
 ```java
 // Create a new instance of the User class
@@ -89,12 +89,12 @@ user.run();
 Please note that the `new` keyword will automatically call an object's constructor: the `init()` method. The `createObject()` will not, you will have to call the constructor manually:
 
 ```java
-user = createObject( "component", "User" ).init();
+user = createObject( "class", "User" ).init();
 ```
 
 In later chapters we will investigate the concept of [dependency injection](../../extra-credit/dependency-injection.md). Please also note that the `createObject()` function can also be used to create different types of objects in BoxLang like:
 
-* Components
+* Classes
 * Webservices \(WSDL based\)
 * Java Objects
 * .NET assemblies
@@ -132,7 +132,7 @@ By default when using the `new Object()` operator, the Object's `init()` functio
 var obj = new Object();
 
 // Explicit Constructor
-var obj = createObject( "component", "Object" ).init();
+var obj = createObject( "class", "Object" ).init();
 ```
 
 ### Pseudo-Constructor
@@ -140,7 +140,7 @@ var obj = createObject( "component", "Object" ).init();
 The pseudo-constructor can be found in use in BoxLang and it's a unique beast.  Any source code that exists between the `cfcomponent` declaration and the first function is considered to be the pseudo-constructor.  This area of execution will be executed for you implicitly whenever the object is created, even before the implicit `init()` method call.  I know confusing, but here is a simple sequence: `new()/createObject() -> pseudo-constructor -> init()`
 
 ```java
-component{
+class{
     // Pseudo Constructor starts here
 
     this.helper = now();
@@ -158,7 +158,7 @@ component{
 
 ## Component Scopes
 
-Every component has certain visibility scopes where properties, variables and functions are attached to.
+Every class has certain visibility scopes where properties, variables and functions are attached to.
 
 * `variables` - Private scope, visible internally to the class only, where all `properties` are placed in by default.  Public and private function references are place here as well.
 * `this` - Public scope, visible from the outside world \(can break encapsulation\) public function references are placed here.
@@ -166,20 +166,20 @@ Every component has certain visibility scopes where properties, variables and fu
 
 ## Component Attributes
 
-The `component` construct can also have many attributes or name-value pairs that will give it some extra functionality for SOAP/REST web services and for Hibernate ORM Persistence. Each BoxLang engine provides different capabilities. You can find all of them here: [https://cfdocs.org/cfcomponent](https://cfdocs.org/cfcomponent). Below are the most common ones:
+The `class` construct can also have many attributes or name-value pairs that will give it some extra functionality for SOAP/REST web services and for Hibernate ORM Persistence. Each BoxLang engine provides different capabilities. You can find all of them here: [https://cfdocs.org/cfcomponent](https://cfdocs.org/cfcomponent). Below are the most common ones:
 
 * `accessors` - Enables automatic getters/setters for properties
 * `extends` - Provides inheritance via the path of the Class
 * `implements` - Names of the interfaces it implements
 * `persistent` - Makes the object a Hibernate Entity which can be fine tuned through a slew of other attributes.
-* `serializable` - Whether the component can be serialized into a string/binary format or not. Default is `true`.
+* `serializable` - Whether the class can be serialized into a string/binary format or not. Default is `true`.
 
 ```java
-component accessors="true" serializable="false" extends="BaseUser"{
+class accessors="true" serializable="false" extends="BaseUser"{
 
 }
 
-component implements="cachebox.system.cache.ICacheProvider"{}
+class implements="cachebox.system.cache.ICacheProvider"{}
 ```
 
 Please note that in BoxLang you can also declare these attributes via annotations in the comments section, weird, I know!
@@ -191,7 +191,7 @@ Please note that in BoxLang you can also declare these attributes via annotation
 * @accessors true
 * @serializable true
 */
-component{
+class{
 
 }
 ```

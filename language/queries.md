@@ -69,7 +69,7 @@ You can also omit the `datasource` completely from query calls, and BoxLang will
 
 {% code title="Application.bx" %}
 ```java
-component{
+class{
     this.name = "myApp";
 
     // Default Datasource Name
@@ -87,7 +87,7 @@ You can also define the datasources in the `Application.bx`, which is sometimes 
 
 {% code title="Application.bx" %}
 ```java
-component{
+class{
     this.datasources = {
         // Driver Approach
         mysql = {

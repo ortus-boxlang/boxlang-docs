@@ -1,6 +1,6 @@
 # Interfaces
 
-Interfaces are a type of component that have a set of signatures for specific functions and it can even have some implemented functions.  You can basically call an interface a signature map for the type of components you want to create.  In statically typed languages, they make a lot of sense since they can allow you to add/modify behavior of classes that the compiler can understand on how to link and compile.   In a dynamic language, where functions can mutate or even be removed or injected at runtime, interfaces don't make soooo much sense.  However, interfaces are a great way to provide documented signatures for developers to follow.
+Interfaces are a type of class that have a set of signatures for specific functions and it can even have some implemented functions.  You can basically call an interface a signature map for the type of classes you want to create.  In statically typed languages, they make a lot of sense since they can allow you to add/modify behavior of classes that the compiler can understand on how to link and compile.   In a dynamic language, where functions can mutate or even be removed or injected at runtime, interfaces don't make soooo much sense.  However, interfaces are a great way to provide documented signatures for developers to follow.
 
 ![](../../.gitbook/assets/interfaces-vs-abstract-classes-1.png)
 
@@ -29,10 +29,10 @@ interface extends="other_interfaces"{
 
 ## Implementation
 
-Interfaces can extend other interfaces and components that implement them can also implement many interfaces:
+Interfaces can extend other interfaces and classes that implement them can also implement many interfaces:
 
 ```java
-component implements="ILogger,IAdapter"{
+class implements="ILogger,IAdapter"{
     any function returnAny( required numeric obj, boolean why=false ){
         // implementation here.
     }

@@ -50,20 +50,20 @@ Please note that you can use valid JavaDoc syntax and [DocBox](https://github.co
 
 Functions can have different visibility contexts:
 
-* `public` - Available to the component and externally
-*   `private` - Available only to the component that declares the
+* `public` - Available to the class and externally
+*   `private` - Available only to the class that declares the
 
-    method and any components that extend the component in
+    method and any classes that extend the class in
 
     which it is defined
-*   `package` - Available only to the component that declares the
+*   `package` - Available only to the class that declares the
 
-    method, components that extend the component, or any
+    method, classes that extend the class, or any
 
-    other components in the package
+    other classes in the package
 *   `remote` - Available to a locally or remotely executing page
 
-    or component method, or a remote client through a URL,
+    or class method, or a remote client through a URL,
 
     Flash, or a web service. To publish the function as a
 
@@ -244,7 +244,7 @@ Because BoxLang must search for variables when you do not specify the scope, you
 
 ## Executing Functions
 
-You can execute functions once you have an instance or reference of a component. If the function has arguments, you can pass them in three ways: positional, name-value pairs, or using a collection (array, struct) via the `argumentCollection` attribute.
+You can execute functions once you have an instance or reference of a class. If the function has arguments, you can pass them in three ways: positional, name-value pairs, or using a collection (array, struct) via the `argumentCollection` attribute.
 
 ```java
 user = new User( name="luis" );

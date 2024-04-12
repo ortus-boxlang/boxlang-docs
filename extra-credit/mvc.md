@@ -20,7 +20,7 @@ The Model is the heart of your application. Your business logic should mostly li
 
 ### Views
 
-The Views are what the users see and interact with. They are the templates used to render your application out for the web browser. Typically this means cfm/HTML, but it can also be JSON, XML, data views, etc.&#x20;
+The Views are what the users see and interact with. They are the templates used to render your application out for the web browser. Typically this means bxm/HTML, but it can also be JSON, XML, data views, etc.&#x20;
 
 In modern times, your views can even be pure HTML with a combination of a JavaScript MVC framework.  The major players in the MVC front-end world that we would recommend in order of personal preference:
 

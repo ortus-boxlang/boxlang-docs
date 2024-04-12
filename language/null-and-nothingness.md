@@ -18,7 +18,7 @@ Ok, back to activating full-null support. You can do this in the admin or progra
 
 {% code title="Application.bx" %}
 ```java
-component{
+class{
     this.nullSupport = true;
 }
 ```

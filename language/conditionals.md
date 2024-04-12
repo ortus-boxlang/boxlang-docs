@@ -50,7 +50,7 @@ Also integers can be evaluated as **true** or **false**. In BoxLang, **0 (zero)*
 Why do we have conditional statements? Most often it's to control conditional instructions, especially `if` / `else if` / `else` expressions. Let's write an example by adding a method to our `PersonalChef.bx` class:
 
 ```java
-component accessors=true{
+class accessors=true{
 
     property name="status";
 

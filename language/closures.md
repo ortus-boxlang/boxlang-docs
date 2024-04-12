@@ -95,7 +95,7 @@ A closure retains a copy of variables visible at its creation. The global variab
 
 The following details the scope of closure based on the way they are defined:
 
-<table><thead><tr><th width="223">Scenario</th><th>Scope</th></tr></thead><tbody><tr><td>In a class function</td><td>Closure argument scope, enclosing function local scope and argument scope, this scope, variable scope, and super scope</td></tr><tr><td>In a CFM function</td><td>Closure argument scope, enclosing function local scope and argument scope, this scope, variable scope, and super scope</td></tr><tr><td>As function argument</td><td>Closure argument scope, variable scope, and this scope and super scope (if defined in class component).</td></tr></tbody></table>
+<table><thead><tr><th width="223">Scenario</th><th>Scope</th></tr></thead><tbody><tr><td>In a class function</td><td>Closure argument scope, enclosing function local scope and argument scope, this scope, variable scope, and super scope</td></tr><tr><td>In a CFM function</td><td>Closure argument scope, enclosing function local scope and argument scope, this scope, variable scope, and super scope</td></tr><tr><td>As function argument</td><td>Closure argument scope, variable scope, and this scope and super scope (if defined in class).</td></tr></tbody></table>
 
 In a closure, the following is the order of search for an unscoped variable:
 

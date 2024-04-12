@@ -100,7 +100,7 @@ This `Application.bx` structure takes in 3 keys that will allow you to class loa
 
 {% code title="Application.bx" %}
 ```java
-component{
+class{
 
     this.javaSettings = {
         loadPaths = [ "./lib", "./config/java/myjar.jar" ],
@@ -128,7 +128,7 @@ createObject( "java", "org.apache.pdfbox.pdmodel.PDDocument", variables.LIB_PATH
 
 ## Dynamic Proxies
 
-BoxLang also allows you to create dynamic proxies from existing BoxLang Components (CFCs).  What this means is that a Dynamic proxy lets you pass BoxLang components to Java objects. Java objects can work with the BoxLang components seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang components.
+BoxLang also allows you to create dynamic proxies from existing BoxLang Classes (CFCs).  What this means is that a Dynamic proxy lets you pass BoxLang classes to Java objects. Java objects can work with the BoxLang classes seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang components.
 
 ```java
 createDynamicProxy( cfc, interfaces )
@@ -148,7 +148,7 @@ createDynamicProxy(
  * Functional Interface that maps to java.util.function.Consumer
  * See https://docs.oracle.com/javase/8/docs/api/java/util/function/Consumer.html
  */
-component extends="BaseProxy"{
+class extends="BaseProxy"{
 
     /**
      * Constructor

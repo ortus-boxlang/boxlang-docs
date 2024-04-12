@@ -29,7 +29,7 @@ Please note that this file is executed for every request, so make sure it is opt
 
 {% code title="Application.bx" %}
 ```javascript
-component{
+class{
 
     this.name = "My Awesome App";
     this.applicationTimeout = createTimeSpan( 30, 0, 0, 0 ); //30 days

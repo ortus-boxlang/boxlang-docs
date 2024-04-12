@@ -4,16 +4,16 @@ description: Script or Tags? Choose wisely!
 
 # Syntax
 
-There are two ways to write BoxLang code: in **tags** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `cfm` files, and the model or business layers will all be done in **script** syntax in `cfc` files. (MVC comes later).  There are no differences in functionality between them; it's pure syntax.
+There are two ways to write BoxLang code: in **tag** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `bxm` files, and the model or business layers will all be done in **script** syntax in `bx` files. (MVC comes later).  There are no differences in functionality between them; it's pure syntax.
 
 * CFScript Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
 
 ## Syntax Files
 
-BoxLang includes a set of instructions you use on pages (`.bxm`) or components (classes -`cfc`). You will write one or more instructions in a file (`.bxm,.bx`) then run the file through a BoxLang engine or Command Line Interpreter like CommandBox.
+BoxLang includes a set of instructions you use on pages (`.bxm`) or classes (`.bx`). You will write one or more instructions in a file (`.bxm,.bx`) then run the file through a BoxLang engine or Command Line Interpreter like CommandBox.
 
-* `cfm` - BoxLang markup file, tag syntax is the default and used for views
-* `cfc` - The default is the BoxLang Component file (Class or Object), script syntax.&#x20;
+* `bxm` - BoxLang markup file, tag syntax is the default and used for views
+* `bx` - The default is the BoxLang class file (Class or Object), script syntax.&#x20;
 
 ## Implicit Behavior
 
@@ -64,7 +64,7 @@ We might have a file named _myprogram.bxm_ and _Sample.bx_ like this:
 {% tabs %}
 {% tab title="Sample.bx" %}
 ```javascript
-component{
+class{
 
     function hello(){
        return "Hello, World!";
@@ -80,7 +80,7 @@ Please note that no types and not even any visibility scopes you might be used t
 {% tabs %}
 {% tab title="Sample.bx" %}
 ```javascript
-component{
+class{
 
     public string function hello(){
        return "Hello, World!";
