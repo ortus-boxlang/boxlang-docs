@@ -15,7 +15,7 @@ install "jar:https://github.com/coldbox-modules/cbox-bcrypt/blob/master/modules/
 
 ## Creating Java Objects
 
-The easiest way to integrate with Java is to be able to instantiate Java objects or call Java static methods on objects. You will do this via the `createObject()` or the `new` operator approach.  Here is the signatures for  both approaches:
+The easiest way to integrate with Java is to be able to instantiate Java objects or call Java static methods on objects. You will do this via the `createObject()` or the `new` operator approach.  Here is the signatures for both approaches:
 
 ```java
 createObject( "java", "java.class.path" )
@@ -128,7 +128,7 @@ createObject( "java", "org.apache.pdfbox.pdmodel.PDDocument", variables.LIB_PATH
 
 ## Dynamic Proxies
 
-Both BoxLang engines also allows you to create dynamic proxies from existing BoxLang Components (CFCs).  What this means is that a Dynamic proxy lets you pass BoxLang components to Java objects. Java objects can work with the BoxLang components seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang components.
+BoxLang also allows you to create dynamic proxies from existing BoxLang Components (CFCs).  What this means is that a Dynamic proxy lets you pass BoxLang components to Java objects. Java objects can work with the BoxLang components seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang components.
 
 ```java
 createDynamicProxy( cfc, interfaces )

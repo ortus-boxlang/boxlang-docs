@@ -132,7 +132,7 @@ writeDump(sum);
 
 ## Typed Arrays
 
-BoxLang engines also allow you to create strongly typed arrays. This is useful if you want to determine the array's contents specifically. Similar to [generics](https://www.baeldung.com/java-generic-array) in Java.&#x20;
+BoxLang also allow you to create strongly typed arrays. This is useful if you want to determine the array's contents specifically. Similar to [generics](https://www.baeldung.com/java-generic-array) in Java.&#x20;
 
 This syntax will allow you to define an array as being of a certain type and how many dimensions it has.
 
@@ -152,7 +152,7 @@ ArrayNew( dimension, type, synchronized:boolean )
 ```
 
 {% hint style="warning" %}
-Please note that the BoxLang engines will try to cast values automatically into the type defined by the array container.
+Please note that BoxLang will try to cast values automatically into the type defined by the array container.
 {% endhint %}
 
 {% hint style="info" %}
@@ -254,7 +254,7 @@ myArray.each( function( item ){
 }, true, 20 );
 ```
 
-Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible. Under the hood, the engines use a single thread executor for each execution. They do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it. This approach can be verbose and error-prone, but it's easy. You also don't control where the processing thread runs and are at the mercy of the engine.
+Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible. Under the hood, the engine uses a single thread executor for each execution. They do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it. This approach can be verbose and error-prone, but it's easy. You also don't control where the processing thread runs and are at the mercy of the engine.
 
 ### ColdBox Futures Parallel Programming
 

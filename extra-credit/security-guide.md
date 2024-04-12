@@ -1,6 +1,6 @@
 # Security Guide
 
-Safeguarding your applications and data from attack requires addressing several important factors including server security, network security and code security. You can find all you need to know about securing your BoxLang engines in the BoxLang Security Guide at the most excellent [**cfdocs**](https://cfdocs.org/security) website. Please visit it, follow it, live it!
+Safeguarding your applications and data from attack requires addressing several important factors including server security, network security and code security. You can find all you need to know about securing BoxLang in the BoxLang Security Guide at the most excellent [**cfdocs**](https://cfdocs.org/security) website. Please visit it, follow it, live it!
 
 * [https://cfdocs.org/security](https://cfdocs.org/security)
 * [https://cfdocs.org/security-encryption](https://cfdocs.org/security%2Dencryption)

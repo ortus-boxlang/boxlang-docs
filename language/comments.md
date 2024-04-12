@@ -47,7 +47,7 @@ If you are within a CFC or in a `<cfscript>` block you can use an alternate styl
 
 ## Script "Javadoc" style comments
 
-A multi-line block can affect the metadata of a `component` or `function` if the opening line contains 2 asterisks. Also, for readability, some people will start each line of the comment with an asterisk. The CF engines will parse out those starting asterisks and they will not appear in the component or the function metadata.
+A multi-line block can affect the metadata of a `component` or `function` if the opening line contains 2 asterisks. Also, for readability, some people will start each line of the comment with an asterisk. BoxLang will parse out those starting asterisks and they will not appear in the component or the function metadata.
 
 ```javascript
     /**

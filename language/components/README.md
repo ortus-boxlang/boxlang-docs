@@ -107,7 +107,7 @@ Every object in theory should have a constructor method or a method that initial
 
 ```java
 function init(){
- // prepare object state, cache data, start the engines
+ // prepare object state, cache data, start the engine
  return this;
 }
 ```

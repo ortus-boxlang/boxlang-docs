@@ -5,7 +5,7 @@ BoxLang allows you create asynchronous threads so you can execute a body of code
 ![](../.gitbook/assets/screen-shot-2019-08-09-at-2.14.00-pm.png)
 
 {% hint style="danger" %}
-**IMPORTANT:** You cannot spawn a thread from within a thread in any of the BoxLang engines.
+**IMPORTANT:** You cannot spawn a thread from within a thread in BoxLang.
 {% endhint %}
 
 This approach is very very simplistic, if you want more control of your asynchronous programming aspects then we can move into leveraging BoxLang Future's via the `runAsync()` function or parallel Java streams using the [cbStreams](https://www.forgebox.io/view/cbStreams) project. Please see our [Asynchronous Programming ](../beyond-the-100/asynchronous-programming.md)section for information on advanced asynchronous programming.

@@ -10,7 +10,7 @@ What is nothingness? Is there nothingness only in outer space? If a tree falls i
 
 ## Full-Null Support
 
-Please note that full null support is **NOT** the default in the BoxLang engines. Meaning you will not be able to use the `null` keyword until it is activated or get real `null` values from databases or external services. In reality, you still could simulate `null` without full null support in both engines, and sometimes you get an empty string, sometimes a full Java `null`. So basically, the nonfull null support is a partial null support, which makes it hard for developers. **So as a rule of thumb, we always recommend checking for nullness no matter WHAT!**
+Please note that full null support is **NOT** the default in BoxLang. Meaning you will not be able to use the `null` keyword until it is activated or get real `null` values from databases or external services. In reality, you still could simulate `null` without full null support, and sometimes you get an empty string, sometimes a full Java `null`. So basically, the nonfull null support is a partial null support, which makes it hard for developers. **So as a rule of thumb, we always recommend checking for nullness no matter WHAT!**
 
 Eventually, this flag should default to true, in our opinion, and offer full-null support out of the box.
 
