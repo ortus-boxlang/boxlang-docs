@@ -78,7 +78,7 @@ With the introduction of MVC we can hack away our spaghetti hell and at least ha
 
 ![MVC Plus](../.gitbook/assets/mvc-plus.png)
 
-MVC Plus shows us how you can further partition your model layer into more layers.  We can identify now a layer of service CFCs and data access object CFCs.  The main transportation of data between these layers by default is implied to be BoxLang Query objects.
+MVC Plus shows us how you can further partition your model layer into more layers.  We can identify now a layer of service classes and data access object classes.  The main transportation of data between these layers by default is implied to be BoxLang Query objects.
 
 \---
 

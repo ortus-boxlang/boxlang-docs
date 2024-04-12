@@ -60,7 +60,7 @@ Can be used in any context, used for persisting variables for a period of time.
 
 If you use a variable name **without** a scope prefix, BoxLang checks the scopes in the following order to find the variable:
 
-1. Local (function-local, UDFs and CFCs only)
+1. Local (function-local, UDFs and Classes only)
 2. Arguments
 3. Thread local (inside threads only)
 4. Query (not a true scope; variables in query loops)

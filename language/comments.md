@@ -106,7 +106,7 @@ Read about DocBox
 You can see some examples of advanced class documentation here: [https://apidocs.ortussolutions.com/coldbox/current/](https://apidocs.ortussolutions.com/coldbox/current/)
 
 {% hint style="success" %}
-**Tip**: VSCode has some great plugins for generating this type of documentation on your CFCs. We recommend the following extensions:
+**Tip**: VSCode has some great plugins for generating this type of documentation on your classes. We recommend the following extensions:
 
 * **Align** - Helps align everything
 * **AutoCloseTag** - Helps close comment and well all tags

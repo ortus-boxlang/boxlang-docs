@@ -227,7 +227,7 @@ function hello( a, b ){
 
 BoxLang also has a weird cascading lookup for variables, so if you do not explicitly specify its scope, BoxLang will look for it for you. If you use a variable name without a scope prefix, BoxLang checks the scopes in the following order to find the variable:
 
-* Local (function-local, UDFs, and CFCs only)
+* Local (function-local, UDFs, and Classes only)
 * Arguments
 * Thread local (inside threads only)
 * Query (not a true scope; variables in query loops)

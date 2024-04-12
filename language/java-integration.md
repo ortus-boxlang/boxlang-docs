@@ -90,7 +90,7 @@ The `createObject( "java" )` method will look into the BoxLang engine's class lo
 
 1. Add the jars/libs to the BoxLang Lib paths.
 2. The `Application.bx` allows you to declare a `this.javaSettings` struct where you can declare an array of locations of the libraries to load upon application startup with some nice modifiers.  This will allow you to store and even leverage CommandBox for the management of such jars.
-3. The `createObject( "java" )` construct allows you to pass in a third argument which can be a location or an array of locations of libraries to class load.  This is also great for custom CFCs, task runners, or isolated class loading.
+3. The `createObject( "java" )` construct allows you to pass in a third argument which can be a location or an array of locations of libraries to class load.  This is also great for custom classes, task runners, or isolated class loading.
 
 ### this.javaSettings
 
@@ -128,10 +128,10 @@ createObject( "java", "org.apache.pdfbox.pdmodel.PDDocument", variables.LIB_PATH
 
 ## Dynamic Proxies
 
-BoxLang also allows you to create dynamic proxies from existing BoxLang Classes (CFCs).  What this means is that a Dynamic proxy lets you pass BoxLang classes to Java objects. Java objects can work with the BoxLang classes seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang components.
+BoxLang also allows you to create dynamic proxies from existing BoxLang Classes (.bx).  What this means is that a Dynamic proxy lets you pass BoxLang classes to Java objects. Java objects can work with the BoxLang classes seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang classes.
 
 ```java
-createDynamicProxy( cfc, interfaces )
+createDynamicProxy( bx, interfaces )
 ```
 
 If you want to leverage a Java library that requires a certain type of Java object as an argument and instead of you creating that object in Java, you can see if that argument adheres to a certain interface and BoxLang will create a dynamic proxy that binds it.

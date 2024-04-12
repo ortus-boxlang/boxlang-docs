@@ -10,7 +10,7 @@ Final modifiers disallow the modifications to the source code to maintain strict
 
 ## Final Classes
 
-Classes can be declared as final, meaning they cannot be extended (inheritance) by other components. This is the ultimate code reuse blocker! However, a final class CAN extend other components.
+Classes can be declared as final, meaning they cannot be extended (inheritance) by other classes. This is the ultimate code reuse blocker! However, a final class CAN extend other classes.
 
 {% hint style="success" %}
 Final classes can be used to prevent inheritance where it is not allowed. Great for APIs, frameworks, and libraries where the author wants to be strict about the usage of such code templates.
@@ -28,7 +28,7 @@ Unlike `abstract` a function can be `final` even if the class is not `final`.
 
 ## Final Functions
 
-Functions within a class can also be declared as `final`. Final methods cannot be overridden by sub-components. Final methods can be used to limit the extent to which sub-classes redefine the behavior of the parent classes.
+Functions within a class can also be declared as `final`. Final methods cannot be overridden by sub-classes. Final methods can be used to limit the extent to which sub-classes redefine the behavior of the parent classes.
 
 ```java
 class BaseUtil{

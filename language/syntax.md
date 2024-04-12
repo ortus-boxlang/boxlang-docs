@@ -29,7 +29,7 @@ Three BoxLang instructions we will use in this section are `cfset`, `cfoutput`, 
 
 * `cfset` is used to create a variable and assign it a value.
 * `cfoutput` displays a variable's value to the output stream.
-* `cfdump` is used to display the contents of simple and complex variables, objects, components, user-defined functions, and other elements to the output stream.
+* `cfdump` is used to display the contents of simple and complex variables, objects, classes, user-defined functions, and other elements to the output stream.
 
 We might have a file named _myprogram.bxm_ and _Sample.bx_ like this:
 

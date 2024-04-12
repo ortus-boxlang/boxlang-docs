@@ -141,7 +141,7 @@ This syntax will allow you to define an array as being of a certain type and how
 stringArray = arrayNew[ "String" ]( 1 )
 // array of numerics
 numericArray = arrayNew[ "Numeric" ]( 1 )
-// array of User CFCs
+// array of User Classes
 aUsers = arrayNew[ "User" ]( 1 )
 ```
 

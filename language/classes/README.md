@@ -2,7 +2,7 @@
 
 **BoxLang \(BoxLang\) is object-oriented, period!**
 
-BoxLang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Classes \(CFCs\). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul webservices.
+BoxLang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Classes \(.bx\). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul webservices.
 
 {% hint style="info" %}
 Remember that objects are not only data but data + behavior.
@@ -137,7 +137,7 @@ var obj = createObject( "class", "Object" ).init();
 
 ### Pseudo-Constructor
 
-The pseudo-constructor can be found in use in BoxLang and it's a unique beast.  Any source code that exists between the `cfcomponent` declaration and the first function is considered to be the pseudo-constructor.  This area of execution will be executed for you implicitly whenever the object is created, even before the implicit `init()` method call.  I know confusing, but here is a simple sequence: `new()/createObject() -> pseudo-constructor -> init()`
+The pseudo-constructor can be found in use in BoxLang and it's a unique beast.  Any source code that exists between the `class` declaration and the first function is considered to be the pseudo-constructor.  This area of execution will be executed for you implicitly whenever the object is created, even before the implicit `init()` method call.  I know confusing, but here is a simple sequence: `new()/createObject() -> pseudo-constructor -> init()`
 
 ```java
 class{
