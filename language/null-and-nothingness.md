@@ -14,7 +14,7 @@ Please note that full null support is **NOT** the default in BoxLang. Meaning yo
 
 Eventually, this flag should default to true, in our opinion, and offer full-null support out of the box.
 
-Ok, back to activating full-null support. You can do this in the admin or programmatically via the `Application.bx` file, which can be used when building web applications. You can learn more [about it here](../beyond-the-100/applicationbx.md)
+Ok, back to activating full-null support. You can do this in the admin or programmatically via the `Application.bx` file, which can be used when building web applications. You can learn more [about it here](../advanced/applicationbx.md)
 
 {% code title="Application.bx" %}
 ```java

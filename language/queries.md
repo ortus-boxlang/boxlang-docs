@@ -9,13 +9,12 @@ BoxLang became famous in its infancy because it was easy to query databases with
 In modern times, we have many more ways to query the database, and defining data sources can occur not only in the admin but in our web application's `Application.bx` or even define it at runtime programmatically or within the query constructs themselves.
 
 {% hint style="info" %}
-See [Application.bx](../beyond-the-100/applicationbx.md) for more information on how to leverage it for web development.
+See [Application.bx](../advanced/applicationbx.md) for more information on how to leverage it for web development.
 {% endhint %}
 
 ## What is a Datasource?
 
 A datasource is a **named** connection to a specific database with specified credentials. You can define an infinite amount of data sources in your BoxLang applications in the following locations:
-
 
 * The `Application.bx`, which will dictate the data sources for that specific BoxLang application
 * Inline in `cfquery` or `queryexecute` calls
@@ -28,7 +27,6 @@ A query is a request to a database representing the results' rows and columns. I
 
 * Using the `cfquery` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 * Using the `queryExecute()` function. ([https://cfdocs.org/queryexecute](https://cfdocs.org/queryexecute))
-
 
 ```javascript
 // Tag syntax
@@ -189,7 +187,7 @@ You can easily place a `.bxonfig.json` in the web root of your project, and if y
 
 ## Displaying Results
 
-The query object can be iterated on like a normal collection through a `for, cfloop or cfoutput` , `each()`  constructs.
+The query object can be iterated on like a normal collection through a `for, cfloop or cfoutput` , `each()` constructs.
 
 {% embed url="https://cfdocs.org/cfoutput" %}
 
@@ -203,7 +201,7 @@ There are #qItems.Quantity# #qItems.Item# in the pantry<br />
 </cfoutput>
 ```
 
-You leverage the `cfoutput` tag by passing the `query` to it.  Then in the block of the tag you use dot/array notation and interpolation to output the column you want.  BoxLang will iterate over all rows in the query for you.
+You leverage the `cfoutput` tag by passing the `query` to it. Then in the block of the tag you use dot/array notation and interpolation to output the column you want. BoxLang will iterate over all rows in the query for you.
 
 ```xml
 <cfoutput query = "qItems" encodeFor="html">
@@ -251,11 +249,11 @@ myquery.each( function( row ){
 }, true, 20 );
 ```
 
-Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible.  Under the hood, the BoxLang uses a single thread executor for each execution, do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it.  This approach can be verbose and error-prone, but it's easy.  You also don't control where the processing thread runs and are at the mercy of the engine. &#x20;
+Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible. Under the hood, the BoxLang uses a single thread executor for each execution, do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it. This approach can be verbose and error-prone, but it's easy. You also don't control where the processing thread runs and are at the mercy of the engine.
 
 ### ColdBox Futures Parallel Programming
 
-If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code).  You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
+If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code). You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
 
 {% embed url="https://coldbox.ortusbooks.com/digging-deeper/promises-async-programming/parallel-computations" %}
 ColdBox Futures and Async Programming
@@ -263,10 +261,10 @@ ColdBox Futures and Async Programming
 
 Here are some methods that will allow you to do parallel computations:
 
-* `all( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects,  closures, or an array of closures/futures to execute them in parallel.  When you call on it, it will return a future that will retrieve an array of the results of all the operations.
-* `allApply( items, fn, executor ):array` : This function can accept an array of items or a struct of items of any type and apply a function to each of the items in parallel.  The `fn` argument receives the appropriate item and must return a result.  Consider this a parallel `map()` operation.
+* `all( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures to execute them in parallel. When you call on it, it will return a future that will retrieve an array of the results of all the operations.
+* `allApply( items, fn, executor ):array` : This function can accept an array of items or a struct of items of any type and apply a function to each of the items in parallel. The `fn` argument receives the appropriate item and must return a result. Consider this a parallel `map()` operation.
 * `anyOf( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures and will execute them in parallel. However, instead of returning all of the results in an array like `all()`, this method will return the future that executes the fastest! Race Baby!
-* `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations.  The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
+* `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations. The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
 
 ## Using Input
 
@@ -287,7 +285,7 @@ queryExecute(
 );
 ```
 
-You can use the `:varname` notation in your SQL construct to denote a **variable** placeholder or  `?` to denote a **positional** placeholder. The `cfqueryparam` tag or the inline `cfsqltype` construct will bind the value to a specific database type to avoid SQL injection and to further the database explain plan via types. The available SQL binding types are:
+You can use the `:varname` notation in your SQL construct to denote a **variable** placeholder or `?` to denote a **positional** placeholder. The `cfqueryparam` tag or the inline `cfsqltype` construct will bind the value to a specific database type to avoid SQL injection and to further the database explain plan via types. The available SQL binding types are:
 
 * `bigint`
 * `bit`

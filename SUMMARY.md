@@ -40,15 +40,14 @@
 * [Includes](language/includes.md)
 * [Java Integration](language/java-integration.md)
 
-## Beyond The 100
+## Advanced
 
-* [Beyond The 100](beyond-the-100/beyond-the-language.md)
-* [Application.bx](beyond-the-100/applicationbx.md)
-* [File Handling](beyond-the-100/file-handling.md)
-* [Image Manipulation](beyond-the-100/image-manipulation.md)
-* [HTTP/S Calls](beyond-the-100/http-calls.md)
-* [Sending Emails](beyond-the-100/sending-emails.md)
-* [Asynchronous Programming](beyond-the-100/asynchronous-programming.md)
+* [Application.bx](advanced/applicationbx.md)
+* [File Handling](advanced/file-handling.md)
+* [Image Manipulation](advanced/image-manipulation.md)
+* [HTTP/S Calls](advanced/http-calls.md)
+* [Sending Emails](advanced/sending-emails.md)
+* [Asynchronous Programming](advanced/asynchronous-programming.md)
 
 ## Extra Credit
 
