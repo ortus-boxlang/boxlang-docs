@@ -12,7 +12,7 @@ BoxLang is a **compiled** programming language that can’t run on your processo
 
 However, with much power comes greater responsibility. There is a lot more potential for runtime exceptions because these exceptions cannot be caught by a compiler at compilation time, as compilation occurs simultaneously with execution. Thus, unit and integration testing becomes a real asset when building applications under a dynamic language. Wouldn't you know it? We also have a great tool for test-driven and behavior-driven development for BoxLang: [**TestBox**](https://testbox.ortusbooks.com/) ([https://testbox.ortusbooks.com/](https://testbox.ortusbooks.com/))
 
-![TestBox Testing Framework](../.gitbook/assets/testbox-logo.png)
+![TestBox Testing Framework](../../.gitbook/assets/testbox-logo.png)
 
 {% hint style="info" %}
 **TestBox** is a next-generation testing framework for BoxLang based on BDD (Behavior-Driven Development). It provides a clean, obvious syntax for writing tests. It contains a testing framework, runner, assertions, expectations library and ships with a mocking and stubbing library.
@@ -67,7 +67,7 @@ CommandBox sports a BoxLang **R**ead **E**val **P**rint **L**oop interface, comm
 
 Once in the CommandBox prompt, type `repl` and you will be placed in REPL mode:
 
-![CommandBox](../assets/repl.png)
+![CommandBox](../../assets/repl.png)
 
 Please note that the REPL in CommandBox opens in **script** mode, not **tag** mode. This means we must type in instructions that adhere to the BoxLang scripting or ECMA script-like syntax instead of the tag-based syntax. We will discover more about syntax in the next chapter.
 
@@ -77,7 +77,7 @@ For now, let's type the equivalent in Script syntax:
 writeOutput( "Hello from BoxLang Land!" )
 ```
 
-![CommandBox](../assets/repl-hello.png)
+![CommandBox](../../assets/repl-hello.png)
 
 Boom! We get a magical hello from the CommandBox REPL.
 

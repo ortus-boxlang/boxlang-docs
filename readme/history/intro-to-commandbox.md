@@ -4,7 +4,7 @@ description: CommandBox is the de facto standard for BoxLang development and exe
 
 # CommandBox CLI
 
-![CommandBox CLI](../assets/CommandBoxLogo.png)
+![CommandBox CLI](../../assets/CommandBoxLogo.png)
 
 CommandBox is an amalgamation of many different tools and borrows concepts from NPM, Grunt/Gulp, Maven, ANT, Node, and much more. Features include:
 
@@ -41,7 +41,7 @@ If you already have a Java JRE installed level 8 or higher (and set in your envi
 
 Regardless of where you place the **box** binary, the first time you execute it, a `.CommandBox` folder will be created in your user's home directory, and CommandBox will be extracted into that location. If you delete this directory, it will be replaced the next time the CommandBox executable is run.
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Box Shell</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption><p>Box Shell</p></figcaption></figure>
 
 #### Windows
 

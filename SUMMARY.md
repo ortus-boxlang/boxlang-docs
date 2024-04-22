@@ -1,15 +1,18 @@
 # Table of contents
 
 * [⚡ Introduction](README.md)
+  * [What is BoxLang](readme/history/README.md)
+    * [Instructions & Interpreters](readme/history/instructions-and-interpreters.md)
+    * [CommandBox CLI](readme/history/intro-to-commandbox.md)
+  * [Contributing Guide](readme/contributing-guide.md)
+  * [Release History](readme/release-history/README.md)
+    * [What's New With 1.0.0](readme/release-history/whats-new-with-1.0.0.md)
+  * [About This Book](readme/about-this-book/README.md)
+    * [Author](readme/about-this-book/author.md)
 
-## Intro
+## For Newbies
 
-* [Welcome](intro/intro/README.md)
-  * [Author](intro/intro/author.md)
-  * [About This Book](intro/intro/about-this-book.md)
-* [What is BoxLang](intro/history.md)
-* [CommandBox CLI](intro/intro-to-commandbox.md)
-* [Instructions & Interpreters](intro/instructions-and-interpreters.md)
+* [Getting Started Guide](for-newbies/getting-started-guide.md)
 
 ## BoxLang Language
 
