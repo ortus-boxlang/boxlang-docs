@@ -9,11 +9,11 @@
 
 ## Getting Started
 
-* [What is BoxLang](getting-started/history/README.md)
+* [What is BoxLang](readme/history/README.md)
   * [Multi-Runtime](getting-started/history/multi-runtime.md)
-  * [Instructions & Interpreters](getting-started/history/instructions-and-interpreters.md)
-  * [CommandBox CLI](getting-started/history/intro-to-commandbox.md)
-* [Get Started](getting-started/get-started.md)
+  * [Instructions & Interpreters](readme/history/instructions-and-interpreters.md)
+  * [CommandBox CLI](readme/history/intro-to-commandbox.md)
+* [Installation](getting-started/installation.md)
 
 ## BoxLang Language
 
