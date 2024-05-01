@@ -9,10 +9,22 @@
 
 ## Getting Started
 
-* [What is BoxLang](readme/history/README.md)
+* [Overview](readme/history/README.md)
   * [Multi-Runtime](getting-started/history/multi-runtime.md)
   * [Instructions & Interpreters](readme/history/instructions-and-interpreters.md)
   * [CommandBox CLI](readme/history/intro-to-commandbox.md)
+  * [Language Differences](getting-started/history/language-differences/README.md)
+    * [ColdFusion/CFML](getting-started/history/language-differences/coldfusion-cfml.md)
+    * [Java](getting-started/history/language-differences/java.md)
+    * [Groovy](getting-started/history/language-differences/groovy.md)
+  * [Frequently Asked Questions](getting-started/history/frequently-asked-questions/README.md)
+    * [What is BoxLang©?](getting-started/history/frequently-asked-questions/what-is-boxlang-c.md)
+    * [Is BoxLang© open-source?](getting-started/history/frequently-asked-questions/is-boxlang-c-open-source.md)
+    * [What is BoxLang+?](getting-started/history/frequently-asked-questions/what-is-boxlang+.md)
+    * [What type of support is available for BoxLang©?](getting-started/history/frequently-asked-questions/what-type-of-support-is-available-for-boxlang-c.md)
+    * [Can BoxLang run ColdFusion/CFML code?](getting-started/history/frequently-asked-questions/can-boxlang-run-coldfusion-cfml-code.md)
+    * [How is BoxLang+ Licensed?](getting-started/history/frequently-asked-questions/how-is-boxlang+-licensed.md)
+    * [How are BoxLang+ Containers Licensed?](getting-started/history/frequently-asked-questions/how-are-boxlang+-containers-licensed.md)
 * [Installation](getting-started/installation.md)
 
 ## BoxLang Language
