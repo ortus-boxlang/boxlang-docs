@@ -15,8 +15,7 @@
         "advanced-emoji",
         "sitemap",
         "collapsible-chapters",
-        "anchors",
-        "github-embed"
+        "anchors"
     ],
     "pluginsConfig": {
         "edit-link": {
