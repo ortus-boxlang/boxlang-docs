@@ -15,11 +15,12 @@
         "advanced-emoji",
         "sitemap",
         "collapsible-chapters",
-        "anchors"
+        "anchors",
+        "github-embed"
     ],
     "pluginsConfig": {
         "edit-link": {
-            "base": "https://github.com/ortus-solutions-private/boxlang-docs/tree/development",    
+            "base": "https://github.com/ortus-solutions-private/boxlang-docs/tree/development",
             "label": "Edit This Page"
         },
         "github": {
