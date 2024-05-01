@@ -2,13 +2,13 @@
 description: BoxLang Markup Language <BoxLang> is a dynamic web programming language.
 ---
 
-# What is BoxLang
+# Overview
 
 BoxLang Markup Language \<BoxLang> is a dynamic web programming language, which is especially suited for new developers as it was written to make a programmer's job easy and not care if the computer's job is hard. BoxLangs primary goal is to be a rapid application development scripting language and middleware. It integrates with many technologies to provide an out-of-the-box language that makes things **easy**. This brief introduction will examine key language features you need to start.
 
 ## Going Deep
 
-BoxLang is an interpreted and [dynamic ECMA Script-like language](https://en.wikipedia.org/wiki/Dynamic\_programming\_language) that is directly compiled into Java Bytecode. Thus, it runs in the Java Virtual Machine (JVM) and almost every operating system.
+BoxLang is an interpreted and [dynamic ECMA Script-like language](https://en.wikipedia.org/wiki/Dynamic\_programming\_language) directly compiled into Java Bytecode. Thus, it runs in the Java Virtual Machine (JVM) and almost every operating system.
 
 ## Developing with BoxLang
 
