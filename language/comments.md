@@ -20,7 +20,7 @@ BoxLang Comment
 
 ## Script Comments
 
-If you are within a class or in a `<cfscript>` block you can use an alternate style for comments. You can leverage `//` for single line comments and the following for multi-line comments:
+If you are within a class or in a `<bx:script>` block you can use an alternate style for comments. You can leverage `//` for single line comments and the following for multi-line comments:
 
 ```java
 /**

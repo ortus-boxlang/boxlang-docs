@@ -232,7 +232,7 @@ meals.each( function( element, index ){
   systemOutput( "I just had #element#" );
 } );
 
-cfloop( from=1, to=meals.len(), index=x ){
+bx:loop( from=1, to=meals.len(), index=x ){
   systemOutput( "I just had #meals[ x ]#" );
 }
 ```

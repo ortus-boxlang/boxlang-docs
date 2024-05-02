@@ -58,7 +58,7 @@ directoryExists( "/my/path" )
   <button type="submit">Upload</button>
 </form>
 
-<cfscript>
+<bx:script>
   if( structKeyExists( form, "fileInput" )) {
     try {
       uploadedFile = fileUpload( getTempDirectory(), "fileInput", "image/jpeg,image/pjpeg", "MakeUnique" );
@@ -74,7 +74,7 @@ directoryExists( "/my/path" )
       writeOutput( "An error occurred while uploading your file: #e.message#" );
     }
   }
-</cfscript>
+</bx:script>
 
 ```
 

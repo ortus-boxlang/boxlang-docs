@@ -1,6 +1,6 @@
 # Threading
 
-BoxLang allows you create asynchronous threads so you can execute a body of code in a separate thread. This is achieved via the `cfthread` tag & the `thread` construct. Threads are independent streams of execution, and multiple threads on a page can execute simultaneously and asynchronously, letting you perform asynchronous processing in BoxLang. BoxLang code within the `cfthread` tag body executes on a separate thread while the page request thread continues processing without waiting for the `cfthread` body to finish. You can allow the thread body to continue executing in the background or you can wait for it to finish.
+BoxLang allows you create asynchronous threads so you can execute a body of code in a separate thread. This is achieved via the `bx:thread` tag & the `thread` construct. Threads are independent streams of execution, and multiple threads on a page can execute simultaneously and asynchronously, letting you perform asynchronous processing in BoxLang. BoxLang code within the `bx:thread` tag body executes on a separate thread while the page request thread continues processing without waiting for the `bx:thread` body to finish. You can allow the thread body to continue executing in the background or you can wait for it to finish.
 
 ![](../.gitbook/assets/screen-shot-2019-08-09-at-2.14.00-pm.png)
 
@@ -19,7 +19,7 @@ Please note that once you get into concurrency you will start to get many headac
 Here are some utility functions to assist with logging:
 
 * `systemOutput( obj, addNewLine:boolean, doErrorStream:boolean)` - Writes the given text or complex objects to the output or error stream. Complex objects are outputted as JSON. [https://cfdocs.org/systemoutput](https://cfdocs.org/systemoutput)
-* `cfdump( var="text", output="console" )` - Send the variables to the output console, even complex variables. Complex objects are outputted as JSON. [https://cfdocs.org/cfdump](https://cfdocs.org/cfdump)
+* `bx:dump( var="text", output="console" )` - Send the variables to the output console, even complex variables. Complex objects are outputted as JSON. [https://cfdocs.org/cfdump](https://cfdocs.org/cfdump)
 * `cflog( text, log, file, type ) or writeLog()` - Leverage the BoxLang engine's logging facilities to send typed messages. [https://cfdocs.org/cflog](https://cfdocs.org/cflog)
 
 ```java
@@ -48,7 +48,7 @@ writeLog(
 
 ## Thread Construct
 
-Writing `thread` is extremely easy, just use the construct, give it a few attributes an boom you are in multi-threaded land. In tags you can use the `<cfthread>` tag.
+Writing `thread` is extremely easy, just use the construct, give it a few attributes an boom you are in multi-threaded land. In tags you can use the `<bx:thread>` tag.
 
 ```java
 thread

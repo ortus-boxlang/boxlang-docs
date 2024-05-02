@@ -220,12 +220,12 @@ b = a;
 
 ## Debugging Variables
 
-BoxLang offers one of the most used functions/tags ever: `<cfdump>, writeDump()` and `<cfabort>, abort;`. These are used to dump all the contents of a variable into the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `top` argument to limit dumping.
+BoxLang offers one of the most used functions/tags ever: `<bx:dump>, writeDump()` and `<bx:abort>, abort;`. These are used to dump all the contents of a variable into the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `top` argument to limit dumping.
 
 ```javascript
 writeDump( complex );abort;
 
-<cfdump var="#server#" abort=true>
+<bx:dump var="#server#" abort=true>
 
 writeDump( var=arrayOfORM, top=5 );abort;
 ```
@@ -236,10 +236,10 @@ BoxLang also allows you to turn on/off a debugging template that shows up at the
 
 ## Paraming Variables
 
-BoxLang allows you to set default values for variables if you use a variable that doesn't exist. You can use the `<cfparam>` tag or the `param` construct:
+BoxLang allows you to set default values for variables if you use a variable that doesn't exist. You can use the `<bx:param>` tag or the `param` construct:
 
 ```markup
-<cfparam name="myVariable" default="luis">
+<bx:param name="myVariable" default="luis">
 ```
 
 or

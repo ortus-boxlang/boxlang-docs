@@ -6,7 +6,7 @@ description: Script or Tags? Choose wisely!
 
 There are two ways to write BoxLang code: in **tag** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `bxm` files, and the model or business layers will all be done in **script** syntax in `bx` files. (MVC comes later). There are no differences in functionality between them; it's pure syntax.
 
-* CFScript Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
+* bx:script Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
 
 ## Syntax Files
 
@@ -25,11 +25,11 @@ BoxLang also gives you a pre-set of defined [tags](https://cfdocs.org/tags) and 
 
 ## Exploring Behavior
 
-Three BoxLang instructions we will use in this section are `cfset`, `cfoutput`, and `cfdump`.
+Three BoxLang instructions we will use in this section are `bx:set`, `bx:output`, and `bx:dump`.
 
-* `cfset` is used to create a variable and assign it a value.
-* `cfoutput` displays a variable's value to the output stream.
-* `cfdump` is used to display the contents of simple and complex variables, objects, classes, user-defined functions, and other elements to the output stream.
+* `bx:set` is used to create a variable and assign it a value.
+* `bx:output` displays a variable's value to the output stream.
+* `bx:dump` is used to display the contents of simple and complex variables, objects, classes, user-defined functions, and other elements to the output stream.
 
 We might have a file named _myprogram.bxm_ and _Sample.bx_ like this:
 
@@ -58,7 +58,7 @@ We might have a file named _myprogram.bxm_ and _Sample.bx_ like this:
 {% endtabs %}
 
 {% hint style="success" %}
-**Tip:** Please note that if you want to write in script in a tag-based file, you must use an opening and closing `<cfscript>` tag.
+**Tip:** Please note that if you want to write in script in a tag-based file, you must use an opening and closing `<bx:script>` tag.
 {% endhint %}
 
 {% tabs %}

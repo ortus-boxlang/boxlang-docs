@@ -38,11 +38,11 @@ if( produce.keyExists( "grapes" ) ){
 Also integers can be evaluated as **true** or **false**. In BoxLang, **0 (zero)** is **false** and any other integers are **true**.
 
 ```
-<cfif 1>I am true so will show</cfif>
+<bx:if 1>I am true so will show</bx:if>
 
-<cfif -2>I am true so will show</cfif>
+<bx:if -2>I am true so will show</bx:if>
 
-<cfif 0>I am false so will not show</cfif>
+<bx:if 0>I am false so will not show</bx:if>
 ```
 
 ## If, Else If, & Else
@@ -208,7 +208,7 @@ Please note that you can create a body for the `case` statements with curly brac
 
 The `while( conditional )` expression allows you to execute a code block as many times as the `conditional` expression evaluates to **true**. This is a great way to work with queues, stacks or just simple evaluations.
 
-```cfscript
+```bx:script
 testCondition = true;
 count = 0;
 while( testCondition ){

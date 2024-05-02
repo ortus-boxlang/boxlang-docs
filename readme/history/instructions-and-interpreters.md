@@ -48,7 +48,7 @@ This is a durable way to write BoxLang code because you save your instructions i
 We might create a file named `hello.bxm` like this:
 
 ```markup
-<cfoutput>Hello from BoxLang Land!</cfoutput>
+<bx:output>Hello from BoxLang Land!</bx:output>
 ```
 
 Then we could run the program like this `box hello.bxm` and get the following result:

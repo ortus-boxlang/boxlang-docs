@@ -4,7 +4,7 @@ description: BoxLang provides the easiest way to query a database
 
 # Database Queries
 
-BoxLang became famous in its infancy because it was easy to query databases with a simple `cfquery` tag and no verbose ceremonious coding. There is no ceremony, just a plain datasource definition in the administrator, and we could easily query the database.
+BoxLang became famous in its infancy because it was easy to query databases with a simple `bx:query` tag and no verbose ceremonious coding. There is no ceremony, just a plain datasource definition in the administrator, and we could easily query the database.
 
 In modern times, we have many more ways to query the database, and defining data sources can occur not only in the admin but in our web application's `Application.bx` or even define it at runtime programmatically or within the query constructs themselves.
 
@@ -17,7 +17,7 @@ See [Application.bx](../advanced/applicationbx.md) for more information on how t
 A datasource is a **named** connection to a specific database with specified credentials. You can define an infinite amount of data sources in your BoxLang applications in the following locations:
 
 * The `Application.bx`, which will dictate the data sources for that specific BoxLang application
-* Inline in `cfquery` or `queryexecute` calls
+* Inline in `bx:query` or `queryexecute` calls
 
 The datasource is then used to control the database's connection pool and allow the BoxLang engine to execute JDBC calls against it.
 
@@ -25,16 +25,16 @@ The datasource is then used to control the database's connection pool and allow 
 
 A query is a request to a database representing the results' rows and columns. It returns a BoxLang `query` object containing a **record set** and other metadata information about the query. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. This can be done in several ways:
 
-* Using the `cfquery` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
+* Using the `bx:query` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 * Using the `queryExecute()` function. ([https://cfdocs.org/queryexecute](https://cfdocs.org/queryexecute))
 
 ```javascript
 // Tag syntax
-<cfquery name = "qItems" datasource="pantry">
+<bx:query name = "qItems" datasource="pantry">
  SELECT QUANTITY, ITEM
  FROM CUPBOARD
  ORDER BY ITEM
-</cfquery>
+</bx:query>
 
 // script syntax
 
@@ -126,7 +126,7 @@ class{
 {% endcode %}
 
 {% hint style="success" %}
-For the inline approach, you will use the struct definition, as you see in the `Application.bx` above and pass it into the `cfquery` or `queryexecute` call.
+For the inline approach, you will use the struct definition, as you see in the `Application.bx` above and pass it into the `bx:query` or `queryexecute` call.
 {% endhint %}
 
 ### Portable Datasources
@@ -187,7 +187,7 @@ You can easily place a `.bxonfig.json` in the web root of your project, and if y
 
 ## Displaying Results
 
-The query object can be iterated on like a normal collection through a `for, cfloop or cfoutput` , `each()` constructs.
+The query object can be iterated on like a normal collection through a `for, bx:loop or bx:output` , `each()` constructs.
 
 {% embed url="https://cfdocs.org/cfoutput" %}
 
@@ -196,17 +196,17 @@ The query object can be iterated on like a normal collection through a `for, cfl
 **In a CFM Template**
 
 ```xml
-<cfoutput query = "qItems">
+<bx:output query = "qItems">
 There are #qItems.Quantity# #qItems.Item# in the pantry<br />
-</cfoutput>
+</bx:output>
 ```
 
-You leverage the `cfoutput` tag by passing the `query` to it. Then in the block of the tag you use dot/array notation and interpolation to output the column you want. BoxLang will iterate over all rows in the query for you.
+You leverage the `bx:output` tag by passing the `query` to it. Then in the block of the tag you use dot/array notation and interpolation to output the column you want. BoxLang will iterate over all rows in the query for you.
 
 ```xml
-<cfoutput query = "qItems" encodeFor="html">
+<bx:output query = "qItems" encodeFor="html">
 There are #qItems[ 'quantity' ]# #qItems[ 'item' ]# in the pantry<br />
-</cfoutput>
+</bx:output>
 ```
 
 {% hint style="info" %}
@@ -268,7 +268,7 @@ Here are some methods that will allow you to do parallel computations:
 
 ## Using Input
 
-We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL\_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `cfqueryparam` construct/tag ([https://cfdocs.org/cfqueryparam](https://cfdocs.org/cfqueryparam)) and always sanitize your input via the `encode` functions in BoxLang.
+We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL\_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `bx:queryparam` construct/tag ([https://cfdocs.org/cfqueryparam](https://cfdocs.org/cfqueryparam)) and always sanitize your input via the `encode` functions in BoxLang.
 
 ```java
 // Named variable holder
@@ -285,7 +285,7 @@ queryExecute(
 );
 ```
 
-You can use the `:varname` notation in your SQL construct to denote a **variable** placeholder or `?` to denote a **positional** placeholder. The `cfqueryparam` tag or the inline `cfsqltype` construct will bind the value to a specific database type to avoid SQL injection and to further the database explain plan via types. The available SQL binding types are:
+You can use the `:varname` notation in your SQL construct to denote a **variable** placeholder or `?` to denote a **positional** placeholder. The `bx:queryparam` tag or the inline `cfsqltype` construct will bind the value to a specific database type to avoid SQL injection and to further the database explain plan via types. The available SQL binding types are:
 
 * `bigint`
 * `bit`
@@ -397,7 +397,7 @@ Please note that using a query of queries can be quite slow sometimes, not all t
 
 You can also determine the return type of database queries as something other than the BoxLang query object. You can choose an array of structs or a struct of structs. This is fantastic for modern applications that rely on rich JavaScript frameworks and produce JSON.
 
-This is achieved by passing the `returntype` attribute within the query options or just an attribute of the `cfquery` tag ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
+This is achieved by passing the `returntype` attribute within the query options or just an attribute of the `bx:query` tag ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 
 ```java
 users = queryNew( "firstname", "varchar", [{"firstname":"Han"}] );
