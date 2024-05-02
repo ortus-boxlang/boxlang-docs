@@ -9,10 +9,10 @@
 
 ## Getting Started
 
-* [Overview](readme/overview/README.md)
+* [Overview](getting-started/overview/README.md)
   * [Multi-Runtime](getting-started/overview/multi-runtime.md)
-  * [Instructions & Interpreters](readme/overview/instructions-and-interpreters.md)
-  * [CommandBox CLI](readme/overview/intro-to-commandbox.md)
+  * [Instructions & Interpreters](getting-started/overview/instructions-and-interpreters.md)
+  * [CommandBox CLI](getting-started/overview/commandbox-cli.md)
   * [Language Differences](getting-started/overview/language-differences/README.md)
     * [ColdFusion/CFML](getting-started/overview/language-differences/coldfusion-cfml.md)
     * [Java](getting-started/overview/language-differences/java.md)

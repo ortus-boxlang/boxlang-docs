@@ -4,7 +4,7 @@ description: Script or Tags? Choose wisely!
 
 # Syntax
 
-There are two ways to write BoxLang code: in **tag** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `bxm` files, and the model or business layers will all be done in **script** syntax in `bx` files. (MVC comes later).  There are no differences in functionality between them; it's pure syntax.
+There are two ways to write BoxLang code: in **tag** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `bxm` files, and the model or business layers will all be done in **script** syntax in `bx` files. (MVC comes later). There are no differences in functionality between them; it's pure syntax.
 
 * CFScript Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
 
@@ -13,11 +13,11 @@ There are two ways to write BoxLang code: in **tag** or in **script** syntax. Bo
 BoxLang includes a set of instructions you use on pages (`.bxm`) or classes (`.bx`). You will write one or more instructions in a file (`.bxm,.bx`) then run the file through a BoxLang engine or Command Line Interpreter like CommandBox.
 
 * `bxm` - BoxLang markup file, tag syntax is the default and used for views
-* `bx` - The default is the BoxLang class file (Class or Object), script syntax.&#x20;
+* `bx` - The default is the BoxLang class file (Class or Object), script syntax.
 
 ## Implicit Behavior
 
-BoxLang also gives you a pre-set of defined [tags](https://cfdocs.org/tags) and [functions](https://cfdocs.org/functions) available to you in any file you write your code in. These tags and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation.  They are basically automatic imports.
+BoxLang also gives you a pre-set of defined [tags](https://cfdocs.org/tags) and [functions](https://cfdocs.org/functions) available to you in any file you write your code in. These tags and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation. They are basically automatic imports.
 
 {% hint style="success" %}
 **Tip:** Please note that the BoxLang built-in functions are also **first-class functions** so that they can be passed around as arguments to other functions or closures or saved as variables.
@@ -38,8 +38,8 @@ We might have a file named _myprogram.bxm_ and _Sample.bx_ like this:
 {% tabs %}
 {% tab title="myprogram.bxm" %}
 ```markup
-<cfset s = new Sample()>
-<cfoutput>#s.hello()#</cfoutput>
+<bx:set s = new Sample()>
+<bx:output>#s.hello()#</bx:output>
 ```
 {% endtab %}
 {% endtabs %}
@@ -49,10 +49,10 @@ We might have a file named _myprogram.bxm_ and _Sample.bx_ like this:
 {% tabs %}
 {% tab title="myprogram.bxm" %}
 ```java
-<cfscript>
+<bx:script>
     s = new Sample();
     writeOutput( s.hello() );
-</cfscript>
+</bx:script>
 ```
 {% endtab %}
 {% endtabs %}
@@ -183,6 +183,4 @@ public class MyProgram {
 
 At [Ortus Solutions](https://www.ortussolutions.com), we have developed a set of development standards for many languages. You can find our BoxLang standards here: [https://github.com/Ortus-Solutions/coding-standards](https://github.com/Ortus-Solutions/coding-standards).
 
-{% embed url="https://github.com/Ortus-Solutions/coding-standards" %}
-Coding Standards
-{% endembed %}
+{% @github-files/github-code-block url="https://github.com/Ortus-Solutions/coding-standards" %}
