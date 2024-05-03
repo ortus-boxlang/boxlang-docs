@@ -14,9 +14,10 @@ In BoxLang tags start with **bx:** vs **cf**. So instead of `<cfoutput>` use `<b
 
 ## Syntax Files
 
-BoxLang includes a set of instructions you use on pages (`.bxm`) or classes (`.bx`). You will write one or more instructions in a file (`.bxm,.bx`) then run the file through a BoxLang engine or Command Line Interpreter like CommandBox.
+BoxLang includes a set of instructions you use on pages (`.bxm,.bxs`) or classes (`.bx`). You will write one or more instructions in a file (`.bxm,.bxs,.bx`) then run the file through a BoxLang engine or Command Line Interpreter like CommandBox.
 
 * `bxm` - BoxLang markup file, tag syntax is the default and used for views
+* `bxs` - BoxLang script file, script syntax.&#x20;
 * `bx` - The default is the BoxLang class file (Class or Object), script syntax.
 
 ## Implicit Behavior
@@ -107,9 +108,13 @@ Please note that semi-colons are used to demarcate line endings in BoxLang `;`. 
 
 BoxLang will allow you to write your tags in script syntax. You basically eliminate the starting `<` and ending `>` enclosures and create a block by using the `{` and `}` mustaches.
 
+{% hint style="info" %}
+BoxLang uses Lucee's generic tag-in-script syntax
+{% endhint %}
+
 ```javascript
-cfhttp(method="GET", charset="utf-8", url="https://www.google.com/", result="result") {
-    cfhttpparam(name="q", type="formfield", value="test");
+http method="GET" charset="utf-8" url="https://www.google.com/" result="result" {
+    httpparam name="q" type="formfield" value="test";
 }
 ```
 
