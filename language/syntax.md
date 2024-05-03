@@ -6,7 +6,7 @@ description: Script or Tags? Choose wisely!
 
 There are two ways to write BoxLang code: in **tag** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `bxm` files, and the model or business layers will all be done in **script** syntax in `bx` files. (MVC comes later). There are no differences in functionality between them; it's pure syntax.
 
-* bx:script Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
+* CFScript Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
 
 ## Syntax Files
 
