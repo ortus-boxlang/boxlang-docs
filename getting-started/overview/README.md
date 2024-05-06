@@ -2,7 +2,7 @@
 
 ### What is BoxLang?
 
-<figure><img src="https://communitycdn.ortussolutions.com/optimized/2X/1/106fe3acd60114ea5839c7af2ffcc3ee465cd0ae_2_690x395.jpeg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/BoxLang-Runtimes.jpg" alt=""><figcaption></figcaption></figure>
 
 ### Goals <a href="#goals-3" id="goals-3"></a>
 
