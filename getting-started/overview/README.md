@@ -45,5 +45,7 @@ BoxLang+ is our subscription professional license for the language and its runti
 
 We have the **+ subscription** and the **+ premium** levels.
 
+The [Frequently Asked Questions](frequently-asked-questions/) has more information regarding [BoxLang](frequently-asked-questions/what-is-boxlang-c.md), [BoxLang+](frequently-asked-questions/what-is-boxlang+.md), [licensing information](frequently-asked-questions/how-is-boxlang+-licensed.md), [support options](frequently-asked-questions/what-type-of-support-is-available-for-boxlang-c.md), and more.
+
 
 
