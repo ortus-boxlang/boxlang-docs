@@ -63,40 +63,42 @@ In your test project folder you can now right-click on any BoxLang source file a
 ### Features <a href="#features-6" id="features-6"></a>
 
 1.  **Syntax Highlighting**\
-    Using the default theme `Dark+`
+    Using the default theme `Dark+`\
 
-    <figure><img src="https://communitycdn.ortussolutions.com/original/2X/6/65d150bd88e1773c07b84157053a0753f7f4f36a.png" alt=""><figcaption></figcaption></figure>
+
+    <figure><img src="../.gitbook/assets/Syntax-Highlighting.png" alt=""><figcaption></figcaption></figure>
 2.  **Signature Help**\
     Automatically triggers within signature of a function or can be manually triggered. This currently does not work for member functions. It is sometimes unable to work within a string.\
     Win/Linux: `Ctrl`+`Shift`+`Space`; Mac: `Cmd`+`Shift`+`Space`\
 
 
-    <figure><img src="https://communitycdn.ortussolutions.com/original/2X/2/278fc4e84e648ef821a07d6658e98d7132dda478.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/Signature-Help.png" alt=""><figcaption></figcaption></figure>
 3.  **Hover Documentation**\
     Displays documentation for certain entities. Currently applicable to CFML global functions, CFML global tags/attributes, user-defined functions, HTML tags, and CSS properties. Does not always consider context, so for example it may also incorrectly trigger on SQL or JavaScript functions with the same name.\
     Win/Linux: `Ctrl`+`K` `Ctrl`+`I`; Mac: `Cmd`+`K` `Cmd`+`I`\
 
 
-    <figure><img src="https://communitycdn.ortussolutions.com/original/2X/2/2bcb6918e47191cb0e308b7ca956d6434225d13a.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/Hover-Documentation.png" alt=""><figcaption></figcaption></figure>
 4.  **Document Symbols**\
     Search CFML symbols within a document. Also used for outline and breadcrumbs.\
     Win/Linux: `Ctrl`+`Shift`+`O`; Mac: `Cmd`+`Shift`+`O`\
 
 
-    [![cfdocs\_leaderboard\_document-symbols](https://communitycdn.ortussolutions.com/optimized/2X/a/a8780c5990faa814e51a7d0e4e36fd3250901f80\_2\_690x97.png)](https://communitycdn.ortussolutions.com/original/2X/a/a8780c5990faa814e51a7d0e4e36fd3250901f80.png)
+    <figure><img src="../.gitbook/assets/Document-Symbols.png" alt=""><figcaption></figcaption></figure>
 5.  **Workspace Symbols**\
     Search symbols within the workspace. Limited to components and their function declarations.\
-    Win/Linux: `Ctrl`+`T`; Mac: `Cmd`+`T`\
+    Win/Linux: `Ctrl`+`T`; Mac: `Cmd`+`T`
 
 
-    [![cfdocs\_workspace-symbols](https://communitycdn.ortussolutions.com/optimized/2X/b/b592a0c5c5efc4fef88706a60ed9cd3acc19e5c1\_2\_690x97.png)](https://communitycdn.ortussolutions.com/original/2X/b/b592a0c5c5efc4fef88706a60ed9cd3acc19e5c1.png)
+
+    <figure><img src="../.gitbook/assets/Workspace-Symbols.png" alt=""><figcaption></figcaption></figure>
 6.  **Completion Suggestions**\
     Suggestions for global functions, global tags and attributes, enumerated values, user functions, keywords, scopes, component properties, variables, component dot-paths, docblocks, HTML tags and attributes, and CSS properties. Does not always consider context, so it may trigger inappropriately.\
     Win/Linux: `Ctrl`+`Space`; Mac: `Cmd`+`Space`
 
 
 
-    <figure><img src="https://communitycdn.ortussolutions.com/optimized/2X/d/dcca24d7c979c613209adeb6da18bccce5e20f16_2_690x459.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/Completion-Suggestions.png" alt=""><figcaption></figcaption></figure>
 7.  **Definition**\
     Provides a link to the definition of a symbol. Currently only for object creation, function usage, function return types, argument types, property types, component extends, function arguments, function local variables, template variables, and application variables.\
     _Go to Definition:_ Win/Linux: `F12`/`Ctrl`+click; Mac: `F12`\
@@ -105,7 +107,7 @@ In your test project folder you can now right-click on any BoxLang source file a
 
 
 
-    <figure><img src="https://communitycdn.ortussolutions.com/optimized/2X/6/6dab3e6d26b8dbfdae26381b05ac15f43210d3ef_2_690x247.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../.gitbook/assets/Definition.png" alt=""><figcaption></figcaption></figure>
 8. **Type Definition**\
    Provides a link to the definition of the type for a symbol. This only applies to user-defined types within the same workspace.\
    _No default shortcuts_
