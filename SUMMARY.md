@@ -26,7 +26,11 @@
     * [How is BoxLang+ Licensed?](getting-started/overview/frequently-asked-questions/how-is-boxlang+-licensed.md)
     * [How are BoxLang+ Containers Licensed?](getting-started/overview/frequently-asked-questions/how-are-boxlang+-containers-licensed.md)
   * [Try BoxLang!](getting-started/overview/try-boxlang.md)
-* [Installation](getting-started/installation.md)
+* [Installation](getting-started/installation/README.md)
+  * [Binaries](getting-started/installation/binaries.md)
+  * [Modules](getting-started/installation/modules.md)
+  * [Docker](getting-started/installation/docker.md)
+* [Running BoxLang](getting-started/running-boxlang.md)
 
 ## BoxLang Language
 
