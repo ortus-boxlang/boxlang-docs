@@ -31,6 +31,7 @@
   * [Modules](getting-started/installation/modules.md)
   * [Docker](getting-started/installation/docker.md)
 * [Running BoxLang](getting-started/running-boxlang.md)
+* [IDE Tooling](getting-started/ide-tooling.md)
 
 ## BoxLang Language
 
