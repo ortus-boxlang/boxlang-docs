@@ -31,8 +31,8 @@ You can define a datasource in one of three locations:
 
 Here's an example of two different datasource definitions defined in your `boxlang.json`:
 
+{% code title="boxlang.json" %}
 ```js
-// {boxlangHome}/config/boxlang.json
   "datasources": {
       "theDerbyDB": {
       	"driver": "derby",
@@ -52,6 +52,26 @@ Here's an example of two different datasource definitions defined in your `boxla
       }
   },
 ```
+{% endcode %}
+
+## What Database Vendors Are Supported?
+
+The following database vendors are supported and available:
+
+* [Apache Derby](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-derby/bx-derby-1.0.0.zip)
+* [HyperSQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-hypersql/bx-hypersql-1.0.0.zip)
+* [MariaDB](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-mariadb/bx-mariadb-1.0.0.zip)
+* [Microsoft SQL Server](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-mssql/bx-mssql-1.0.0.zip)
+* [MySQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-mysql/bx-mysql-1.0.0.zip)
+* [Oracle](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-oracle/bx-oracle-1.0.0.zip)
+* [PostgreSQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-postgresql/bx-postgresql-1.0.0.zip)
+
+Each database we support comes with an installable BoxLang module which either
+
+1. provides the necessary client dependencies for making JDBC connections to a running database server (MySQL, Postgres, etc.)
+2. OR contains the database vendor itself, as in the case of Apache Derby or HyperSQL, which are both in-memory database.
+
+To use any of these databases you'll need to install its BoxLang module to support JDBC connections to that datasource.
 
 ## What is a query?
 
@@ -60,7 +80,7 @@ A query is a request to a database representing the results' rows and columns. I
 * Using the `bx:query` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 * Using the `queryExecute()` function. ([https://cfdocs.org/queryexecute](https://cfdocs.org/queryexecute))
 
-Here's the tag syntax for a query using a named `"pantry" datasource:
+Here's the tag syntax for a query using a named `"pantry"` datasource:
 
 ```html
 <bx:query name = "qItems" datasource="pantry">
