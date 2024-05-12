@@ -6,7 +6,7 @@ description: BoxLang provides the easiest way to query a database
 
 BoxLang became famous in its infancy because it was easy to query databases with a simple `bx:query` tag and no verbose ceremonious coding. There is no ceremony, just a plain datasource definition in the administrator, and we could easily query the database.
 
-In modern times, we have many more ways to query the database, and defining data sources can occur not only in the admin but in our web application's `Application.bx` or even define it at runtime programmatically or within the query constructs themselves.
+In modern times, we have many more ways to query the database, and defining data sources can occur not only in our web application's `Application.bx`, but also globally across the BoxLang runtime via our `boxlang.json` configuration file, not to mention defining datasources at runtime programmatically or within the query constructs themselves.
 
 {% hint style="info" %}
 See [Application.bx](../advanced/applicationbx.md) for more information on how to leverage it for web development.
@@ -21,6 +21,38 @@ A datasource is a **named** connection to a specific database with specified cre
 
 The datasource is then used to control the database's connection pool and allow the BoxLang engine to execute JDBC calls against it.
 
+## Datasource Definitions
+
+You can define a datasource in one of three locations:
+
+1. Inline, at query time, via the `queryExecute()` BIF, `query` or `dbInfo` component, etc
+2. For web applications, in your `Application.bx` via `this.datasources`
+3. At the boxlang runtime level via your `boxlang.json` config file
+
+Here's an example of two different datasource definitions defined in your `boxlang.json`:
+
+```js
+// {boxlangHome}/config/boxlang.json
+  "datasources": {
+      "theDerbyDB": {
+      	"driver": "derby",
+      	"properties": {
+      		"connectionString": "jdbc:derby:memory:testDB;create=true"
+      	}
+      },
+      "theMysqlDB": {
+      	"driver": "mysql",
+      	"properties": {
+            "host": "${env.MYSQL_HOST:localhost}",
+            "port": "${env.MYSQL_PORT:3306}",
+            "database": "${env.MYSQL_DATABASE:myDB}",
+            "username": "${env.MYSQL_USERNAME:root}",
+            "password": "${env.MYSQL_PASSWORD}"
+      	}
+      }
+  },
+```
+
 ## What is a query?
 
 A query is a request to a database representing the results' rows and columns. It returns a BoxLang `query` object containing a **record set** and other metadata information about the query. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. This can be done in several ways:
@@ -28,42 +60,77 @@ A query is a request to a database representing the results' rows and columns. I
 * Using the `bx:query` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
 * Using the `queryExecute()` function. ([https://cfdocs.org/queryexecute](https://cfdocs.org/queryexecute))
 
-```javascript
-// Tag syntax
+Here's the tag syntax for a query using a named `"pantry" datasource:
+
+```html
 <bx:query name = "qItems" datasource="pantry">
  SELECT QUANTITY, ITEM
  FROM CUPBOARD
  ORDER BY ITEM
 </bx:query>
+```
 
-// script syntax
+Most often you'll be writing queries in script syntax. Here's an example of using the [default datasource](#default-datasource) in a script-syntax query:
 
+```js
 qItems = queryExecute(
  "SELECT QUANTITY, ITEM FROM CUPBOARD ORDER BY ITEM"
 );
+```
 
-// Datasource inline definition
+Finally, for smaller or simpler applications with few queries, you may find it useful to define your datasource at query time. So instead of giving the name of the `datasource`, it can be a `struct` definition of the datasource you want to connect to:
+
+```js
 queryExecute(
   "SELECT * FROM Employees WHERE empid = ? AND country = ?", // sql
   [ 1, "USA" ], // params
   { // options
     datasource : {
-      class : "com.microsoft.sqlserver.jdbc.SQLServerDriver",
-      connectionString : "jdbc:sqlserver://#getSystemSetting("DB_CONNECTIONSTRING")#",
-      username : getSystemSetting("DB_USER"),
-      password : getSystemSetting("DB_PASSWORD")
+      "driver": "mysql",
+      "properties": {
+          "host": "${env.MYSQL_HOST:localhost}",
+          "port": "${env.MYSQL_PORT:3306}",
+          "database": "${env.MYSQL_DATABASE:myDB}",
+          "username": "${env.MYSQL_USERNAME:root}",
+          "password": "${env.MYSQL_PASSWORD}"
+      }
     }
   }
 )
 ```
 
-{% hint style="success" %}
-The datasource can even be defined inline. So instead of giving the name of the `datasource` it can be a `struct` definition of the datasource you want to connect to, just like the struct in `Application.bx`
-{% endhint %}
+The datasource configuration struct should be defined exactly the same whether you are using an inline, ad-hoc datasource or configuring a datasource in your `boxlang.json` or `Application.bx`.
 
 ## Default Datasource
 
-You can also omit the `datasource` completely from query calls, and BoxLang will use the one defined in `Application.bx` as the **default** datasource connection. This is a great way to encapsulate the datasource in a single location. However, we all know that there could be some applications with multiple data sources; that's ok; at least you can have one by default.
+You can also define a default datasource to allow you to omit the `datasource` completely from query calls.
+
+To do this, you'll need to define a default datasource in one of two locations:
+
+1. In your BoxLang runtime's `boxlang.json` config file via the `defaultDatasource` key
+2. or, for web server runtimes, in a `this.datasource` variable in your `Application.bx` file
+
+### Defining a default datasource via boxlang.json
+
+{% code title="boxlang.json" %}
+```json
+   "defaultDatasource: {
+      "driver": "mysql",
+      "properties": {
+          "host": "${env.MYSQL_HOST:localhost}",
+          "port": "${env.MYSQL_PORT:3306}",
+          "database": "${env.MYSQL_DATABASE:myDB}",
+          "username": "${env.MYSQL_USERNAME:root}",
+          "password": "${env.MYSQL_PASSWORD}"
+      }
+    },
+   "datasources": {
+      // You can still define additional datasources here! You're not limited to the default datasource
+   },
+```
+{% endcode %}
+
+### Defining a default datasource via Application.bx
 
 {% code title="Application.bx" %}
 ```java
@@ -76,6 +143,7 @@ class{
 }
 ```
 {% endcode %}
+
 
 ## Defining Datasources
 
