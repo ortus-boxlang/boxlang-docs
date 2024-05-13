@@ -6,7 +6,7 @@ description: BoxLang provides the easiest way to query a database
 
 BoxLang became famous in its infancy because it was easy to query databases with a simple `bx:query` tag and no verbose ceremonious coding. There is no ceremony, just a plain datasource definition in the administrator, and we could easily query the database.
 
-In modern times, we have many more ways to query the database, and defining data sources can occur not only in our web application's `Application.bx`, but also globally across the BoxLang runtime via our `boxlang.json` configuration file, not to mention defining datasources at runtime programmatically or within the query constructs themselves.
+In modern times, we have many more ways to query the database, and defining data sources can occur not only [in our web application's `Application.bx`](#defining-datasources-in-applicationbx), but also [globally across the BoxLang runtime via our `boxlang.json` configuration file](#defining-datasources-in-boxlangjson), not to mention defining datasources at runtime programmatically or [within the query constructs themselves](#defining-inline-datasources).
 
 {% hint style="info" %}
 See [Application.bx](../advanced/applicationbx.md) for more information on how to leverage it for web development.
@@ -14,45 +14,13 @@ See [Application.bx](../advanced/applicationbx.md) for more information on how t
 
 ## What is a Datasource?
 
-A datasource is a **named** connection to a specific database with specified credentials. You can define an infinite amount of data sources in your BoxLang applications in the following locations:
+A datasource is a **named** connection to a specific database with specified credentials. You can define a datasource in one of three locations:
 
-* The `Application.bx`, which will dictate the data sources for that specific BoxLang application
-* Inline in `bx:query` or `queryexecute` calls
+1. [At the boxlang runtime level via your `boxlang.json` config file](#defining-datasources-in-boxlangjson)
+2. For web applications, [in your `Application.bx` via `this.datasources`](#defining-datasources-in-applicationbx)
+3. [Inline, at query time, via the `queryExecute()` BIF, `query` or `dbInfo` component, etc](#defining-inline-datasources)
 
 The datasource is then used to control the database's connection pool and allow the BoxLang engine to execute JDBC calls against it.
-
-## Datasource Definitions
-
-You can define a datasource in one of three locations:
-
-1. Inline, at query time, via the `queryExecute()` BIF, `query` or `dbInfo` component, etc
-2. For web applications, in your `Application.bx` via `this.datasources`
-3. At the boxlang runtime level via your `boxlang.json` config file
-
-Here's an example of two different datasource definitions defined in your `boxlang.json`:
-
-{% code title="boxlang.json" %}
-```js
-  "datasources": {
-      "theDerbyDB": {
-      	"driver": "derby",
-      	"properties": {
-      		"connectionString": "jdbc:derby:memory:testDB;create=true"
-      	}
-      },
-      "theMysqlDB": {
-      	"driver": "mysql",
-      	"properties": {
-            "host": "${env.MYSQL_HOST:localhost}",
-            "port": "${env.MYSQL_PORT:3306}",
-            "database": "${env.MYSQL_DATABASE:myDB}",
-            "username": "${env.MYSQL_USERNAME:root}",
-            "password": "${env.MYSQL_PASSWORD}"
-      	}
-      }
-  },
-```
-{% endcode %}
 
 ## What Database Vendors Are Supported?
 
@@ -98,78 +66,40 @@ qItems = queryExecute(
 );
 ```
 
-Finally, for smaller or simpler applications with few queries, you may find it useful to define your datasource at query time. So instead of giving the name of the `datasource`, it can be a `struct` definition of the datasource you want to connect to:
-
-```js
-queryExecute(
-  "SELECT * FROM Employees WHERE empid = ? AND country = ?", // sql
-  [ 1, "USA" ], // params
-  { // options
-    datasource : {
-      "driver": "mysql",
-      "properties": {
-          "host": "${env.MYSQL_HOST:localhost}",
-          "port": "${env.MYSQL_PORT:3306}",
-          "database": "${env.MYSQL_DATABASE:myDB}",
-          "username": "${env.MYSQL_USERNAME:root}",
-          "password": "${env.MYSQL_PASSWORD}"
-      }
-    }
-  }
-)
-```
+## Defining Datasources
 
 The datasource configuration struct should be defined exactly the same whether you are using an inline, ad-hoc datasource or configuring a datasource in your `boxlang.json` or `Application.bx`.
 
-## Default Datasource
+### Defining Datasources In `boxlang.json`
 
-You can also define a default datasource to allow you to omit the `datasource` completely from query calls.
-
-To do this, you'll need to define a default datasource in one of two locations:
-
-1. In your BoxLang runtime's `boxlang.json` config file via the `defaultDatasource` key
-2. or, for web server runtimes, in a `this.datasource` variable in your `Application.bx` file
-
-### Defining a default datasource via boxlang.json
+You can define a datasource at the BoxLang runtime level by placing it in your `boxlang.json`:
 
 {% code title="boxlang.json" %}
-```json
-   "defaultDatasource: {
-      "driver": "mysql",
-      "properties": {
-          "host": "${env.MYSQL_HOST:localhost}",
-          "port": "${env.MYSQL_PORT:3306}",
-          "database": "${env.MYSQL_DATABASE:myDB}",
-          "username": "${env.MYSQL_USERNAME:root}",
-          "password": "${env.MYSQL_PASSWORD}"
+```js
+  "datasources": {
+      "theDerbyDB": {
+      	"driver": "derby",
+      	"properties": {
+      		"connectionString": "jdbc:derby:memory:testDB;create=true"
+      	}
+      },
+      "theMysqlDB": {
+      	"driver": "mysql",
+      	"properties": {
+            "host": "${env.MYSQL_HOST:localhost}",
+            "port": "${env.MYSQL_PORT:3306}",
+            "database": "${env.MYSQL_DATABASE:myDB}",
+            "username": "${env.MYSQL_USERNAME:root}",
+            "password": "${env.MYSQL_PASSWORD}"
+      	}
       }
-    },
-   "datasources": {
-      // You can still define additional datasources here! You're not limited to the default datasource
-   },
+  },
 ```
 {% endcode %}
 
-### Defining a default datasource via Application.bx
+### Defining Datasources In `Application.bx`
 
-{% code title="Application.bx" %}
-```java
-class{
-    this.name = "myApp";
-
-    // Default Datasource Name
-    this.datasource = "pantry";
-
-}
-```
-{% endcode %}
-
-
-## Defining Datasources
-
-### `Application.bx`
-
-You can also define the datasources in the `Application.bx`, which is sometimes our preferred approach as the connections are versioned controlled and more visible than in the admin. You will do this by defining a struct called `this.datasources`. Each **key** will be the name of the datasource to register and the **value** of each key a struct of configuration information for the datasource. However, we recommend that you setup environment variables in order to NOT store your passwords in plain-text in your source code.
+For web runtimes, you can also define the datasources in the `Application.bx`, which is sometimes our preferred approach as the connections are versioned controlled and more visible than in the admin. You will do this by defining a struct called `this.datasources`. Each **key** will be the name of the datasource to register and the **value** of each key a struct of configuration information for the datasource. However, we recommend that you setup environment variables in order to NOT store your passwords in plain-text in your source code.
 
 {% code title="Application.bx" %}
 ```java
@@ -217,6 +147,72 @@ class{
 For the inline approach, you will use the struct definition, as you see in the `Application.bx` above and pass it into the `bx:query` or `queryexecute` call.
 {% endhint %}
 
+### Defining Inline Datasources
+
+Finally, for smaller or simpler applications with few queries, you may find it useful to define your datasource at query time. So instead of giving the name of the `datasource`, it can be a `struct` definition of the datasource you want to connect to:
+
+```js
+queryExecute(
+  "SELECT * FROM Employees WHERE empid = ? AND country = ?", // sql
+  [ 1, "USA" ], // params
+  { // options
+    datasource : {
+      "driver": "mysql",
+      "properties": {
+          "host": "${env.MYSQL_HOST:localhost}",
+          "port": "${env.MYSQL_PORT:3306}",
+          "database": "${env.MYSQL_DATABASE:myDB}",
+          "username": "${env.MYSQL_USERNAME:root}",
+          "password": "${env.MYSQL_PASSWORD}"
+      }
+    }
+  }
+)
+```
+
+## Default Datasource
+
+You can also define a default datasource to allow you to omit the `datasource` completely from query calls.
+
+To do this, you'll need to define a default datasource in one of two locations:
+
+1. In your BoxLang runtime's `boxlang.json` config file via the `defaultDatasource` key
+2. or, for web server runtimes, in a `this.datasource` variable in your `Application.bx` file
+
+### Defining a default datasource via boxlang.json
+
+{% code title="boxlang.json" %}
+```json
+   "defaultDatasource: {
+      "driver": "mysql",
+      "properties": {
+          "host": "${env.MYSQL_HOST:localhost}",
+          "port": "${env.MYSQL_PORT:3306}",
+          "database": "${env.MYSQL_DATABASE:myDB}",
+          "username": "${env.MYSQL_USERNAME:root}",
+          "password": "${env.MYSQL_PASSWORD}"
+      }
+    },
+   "datasources": {
+      // You can still define additional datasources here! You're not limited to the default datasource
+   },
+```
+{% endcode %}
+
+### Defining a default datasource via Application.bx
+
+{% code title="Application.bx" %}
+```java
+class{
+    this.name = "myApp";
+
+    // Default Datasource Name
+    this.datasource = "pantry";
+
+}
+```
+{% endcode %}
+
 ### Portable Datasources
 
 You can also make your data sources portable from application to application or BoxLang engine to engine by using our [CFConfig](https://cfconfig.ortusbooks.com/) project. CFConfig allows you to manage almost every setting that shows up in the web administrator, but instead of logging into a web interface, you can manage it from the command line by hand or as part of a scripted server setup. You can seamlessly transfer config for all the following:
@@ -226,11 +222,9 @@ You can also make your data sources portable from application to application or 
 * Mail servers
 * Request, session, or application timeouts
 * Licensing information
-*   Passwords
-
-    \-Template caching settings
-
-    \-Basically any settings in the web based administrator
+* Passwords
+* Template caching settings
+* Basically any settings in the web based administrator
 
 You can easily place a `.bxonfig.json` in the web root of your project, and if you start up a CommandBox server on any BoxLang engine, CFConfig will transfer the configuration to the engine's innards:
 
