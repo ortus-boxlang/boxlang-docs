@@ -226,9 +226,9 @@ You can also make your data sources portable from application to application or 
 * Template caching settings
 * Basically any settings in the web based administrator
 
-You can easily place a `.cfonfig.json` in the web root of your project, and if you start up a CommandBox server on any BoxLang engine, CFConfig will transfer the configuration to the engine's innards:
+You can easily place a `.cfconfig.json` in the web root of your project, and if you start up a CommandBox server on any BoxLang engine, CFConfig will transfer the configuration to the engine's innards:
 
-{% code title=".cfonfig.json" %}
+{% code title=".cfconfig.json" %}
 ```java
 {
     "requestTimeoutEnabled":true,
