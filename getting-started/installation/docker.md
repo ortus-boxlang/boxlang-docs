@@ -29,15 +29,15 @@ You can set those credentials with the following commands
 **On Mac / Linux**
 
 ```bash
-export AWS_ACCESS_KEY_ID=AKIATMUWKSVODMK5DHR6
-export AWS_SECRET_ACCESS_KEY=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
+export AWS_ACCESS_KEY_ID=
+export AWS_SECRET_ACCESS_KEY=
 ```
 
 **On Windows**
 
 ```bash
-set AWS_ACCESS_KEY_ID=AKIATMUWKSVODMK5DHR6
-set AWS_SECRET_ACCESS_KEY=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
+set AWS_ACCESS_KEY_ID=
+set AWS_SECRET_ACCESS_KEY=
 
 ```
 
