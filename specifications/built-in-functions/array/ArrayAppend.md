@@ -14,8 +14,7 @@ ArrayAppend(array=[modifiableArray], value=[any], merge=[boolean])
 |----------|------|----------|-------------|---------|
 | `array` | `modifiableArray` | `true` | The array to which the element should be appended. | |
 | `value` | `any` | `true` | The element to append. Can be any type. | |
-| `merge` | `boolean` | `false` | If true, the value is assumed to be an array and the elements of the array are appended to the array. If false, the value is
-                 appended as a single element. | false|
+| `merge` | `boolean` | `false` | If true, the value is assumed to be an array and the elements of the array are appended to the array. If false, the value is appended as a single element. | false|
 |----------|------|----------|-------------|---------|
 
 

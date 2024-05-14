@@ -25,9 +25,7 @@ createPath=[boolean] />
 | `action` | `string` | `true` | The action to perform (list, create, delete, rename) | ``|
 | `directory` | `string` | `true` | The directory to perform the action on | ``|
 | `name` | `string` | `false` | Name for output record set. | ``|
-| `filter` | `string` | `false` | Filter applied to returned names. For example: *.bx You can use a pipe ("|") delimiter to specify multiple filters. For example:
-                   *.bxm|*.bx Filter pattern matches are case-sensitive on UNIX and Linux. Can also be a UDF/Closure which accepts the
-                   file/directory name and returns a Boolean value to indicate whether that item should be included in the result or not. | `*`|
+| `filter` | `string` | `false` | Filter applied to returned names. For example: *.bx You can use a pipe ("|") delimiter to specify multiple filters. For example:  *.bxm|*.bx Filter pattern matches are case-sensitive on UNIX and Linux. Can also be a UDF/Closure which accepts the file/directory name and returns a Boolean value to indicate whether that item should be included in the result or not. | `*`|
 | `mode` | `string` | `false` | Applies only to UNIX and Linux. Permissions. Octal values of Unix chmod command. Assigned to owner, group, and other, respectively.
                  For example: 777 | ``|
 | `sort` | `string` | `false` | Query column(s) by which to sort directory listing. Delimited list of columns from query output. | ``|

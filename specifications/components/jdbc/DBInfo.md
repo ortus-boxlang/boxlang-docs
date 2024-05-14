@@ -27,8 +27,7 @@ filter=[filter] />
 | `dbname` | `string` | `false` |  | ``|
 | `username` | `string` | `false` | Not currently implemented. | ``|
 | `password` | `string` | `false` | Not currently implemented. | ``|
-| `filter` | `filter` | `false` | A lucee-only attribute to perform additional filtering on <code>type="tables"</code> results. Not currently implemented, as this
-                   should be performed by a queryFilter() call. | ``|
+| `filter` | `filter` | `false` | A lucee-only attribute to perform additional filtering on <code>type="tables"</code> results. Not currently implemented, as this should be performed by a queryFilter() call. | ``|
 |----------|------|----------|-------------|---------|
 
 
