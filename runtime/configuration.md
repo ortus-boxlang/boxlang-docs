@@ -2,7 +2,7 @@
 
 BoxLang has an installation-level configuration file which allows developers to adjust a wide range of settings from the compiler to default cache providers and runtime-wide datasources. You can adjust boxlang settings by placing a `config/boxlang.json` file in your BoxLang home directory.
 
-## Where is my BoxLang Home Directory?
+## Runtime Home Directory
 
 By default, the BoxLang home directory is a `.boxlang/` directory inside your user's home directory. For instance, on a Ubuntu machine this might be `/home/elpete/.boxlang/` if you are executing BoxLang under the `elpete` user account.
 

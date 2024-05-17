@@ -10,7 +10,7 @@ Java interoperability in BoxLang is achieved in several ways:
 
 2. **Syntax**: BoxLang's script syntax uses conventions from both Java and ECMA Script ( Javascript ). As such developers coming from both Java and Javascript, will find the language to be easy to learn, and powerful. BoxLang offers additional features, such as closures, builders, and dynamic typing, which can make the code more readable and expressive.  
 
-3. **Interpoperability** BoxLang's seamless interoperability with Java allows developers to enjoy the benefits of a modern, flexible language while still being able to leverage the robustness and enterprise capabilities of Java. This makes BoxLang a powerful tool for both Java development and scripting tasks.
+3. **Interoperability** BoxLang's seamless interoperability with Java allows developers to enjoy the benefits of a modern, flexible language while still being able to leverage the robustness and enterprise capabilities of Java. This makes BoxLang a powerful tool for both Java development and scripting tasks.
 
 
 BoxLang is a scripting language for web development that runs on the JVM, the .NET framework, and Google App Engine. It's known for its simplicity and powerful built-in features, making it a popular choice for rapid web application development. BoxLang offers excellent interoperability with Java, allowing developers to leverage the robustness and versatility of Java within their BoxLang applications.
@@ -20,7 +20,8 @@ Here are some ways BoxLang interoperates with Java:
 1. **Java Objects**: BoxLang can create and manipulate Java objects directly. This means you can instantiate Java classes, call methods, and access properties just like you would in Java, or import them directly in your classes. This allows you to use any Java library in your BoxLang code:
 
 *Imports:*
-```
+
+```js
 class {
     import java:java.lang.String as stringObject;
 
@@ -33,14 +34,14 @@ class {
 
 *Class usage:*
 
-```
+```js
 var stringObject = new java:java.lang.String;
 stringObject.format( "An error occurred.  The message received was %s", e.message );
 ```
 
 *Direct Object Instantiation:*
 
-```
+```js
 return new java:java.lang.String( a ).compareToIgnoreCase( b );
 ```
 
