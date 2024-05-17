@@ -9,7 +9,7 @@ This includes BoxLang and all of its dependencies.
 
 **MiniServer Runtime**
 This is an independent mini web server which can be used for testing or development:
-[boxlang-1.0.0-web.jar](https://downloads.ortussolutions/ortussolutions/boxlang-runtimes/boxlang-miniserver/1.0.0/boxlang-miniserver-1.0.0.zip)
+[boxlang-1.0.0-web.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/1.0.0/boxlang-miniserver-1.0.0.zip)
 (16MB)
 
 **AWS Lambda Runtime**
