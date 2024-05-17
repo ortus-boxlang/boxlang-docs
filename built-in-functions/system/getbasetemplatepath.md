@@ -1,0 +1,72 @@
+# GetBaseTemplatePath
+
+Gets the absolute server file system path of the requested file.
+
+## Method Signature
+
+```
+GetBaseTemplatePath()
+```
+
+### Arguments
+
+This function does not accept any arguments
+
+## Examples
+
+```
+GetBaseTemplatePath()
+```
+
+## Related
+
+* [ApplicationRestart](applicationrestart.md)
+* [ApplicationStartTime](applicationstarttime.md)
+* [ApplicationStop](applicationstop.md)
+* [BoxAnnounce](boxannounce.md)
+* [BoxAnnounceAsync](boxannounceasync.md)
+* [CallStackGet](callstackget.md)
+* [CreateGUID](createguid.md)
+* [CreateObject](createobject.md)
+* [CreateUUID](createuuid.md)
+* [DE](de.md)
+* [DebugBoxContexts](debugboxcontexts.md)
+* [Dump](dump.md)
+* [Duplicate](duplicate.md)
+* [echo](echo.md)
+* [EncodeForHTML](encodeforhtml.md)
+* [GetApplicationMetadata](getapplicationmetadata.md)
+* [GetBoxContext](getboxcontext.md)
+* [GetBoxRuntime](getboxruntime.md)
+* [GetBoxVersionInfo](getboxversioninfo.md)
+* [GetComponentMetadata](getcomponentmetadata.md)
+* [GetContextRoot](getcontextroot.md)
+* [GetCurrentTemplatePath](getcurrenttemplatepath.md)
+* [GetFileFromPath](getfilefrompath.md)
+* [GetFunctionCalledName](getfunctioncalledname.md)
+* [GetFunctionList](getfunctionlist.md)
+* [GetSystemSetting](getsystemsetting.md)
+* [GetTempDirectory](gettempdirectory.md)
+* [GetTickCount](gettickcount.md)
+* [htmlEditFormat](htmleditformat.md)
+* [IIF](iif.md)
+* [Invoke](invoke.md)
+* [IsInstanceOf](isinstanceof.md)
+* [JavaCast](javacast.md)
+* [PagePoolClear](pagepoolclear.md)
+* [Print](print.md)
+* [Println](println.md)
+* [RunThreadInContext](runthreadincontext.md)
+* [SessionInvalidate](sessioninvalidate.md)
+* [SessionRotate](sessionrotate.md)
+* [SessionStartTime](sessionstarttime.md)
+* [Sleep](sleep.md)
+* [SystemExecute](systemexecute.md)
+* [SystemOutput](systemoutput.md)
+* [Test](test.md)
+* [Throw](throw.md)
+* [URLDecode](urldecode.md)
+* [URLEncodedFormat](urlencodedformat.md)
+* [writeDump](writedump.md)
+* [WriteLog](writelog.md)
+* [WriteOutput](writeoutput.md)

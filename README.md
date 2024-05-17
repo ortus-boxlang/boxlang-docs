@@ -43,7 +43,7 @@ This book is available free of charge [online](https://boxlang.ortusbooks.com) a
 
 ## Ortus Solutions, Corp
 
-![](assets/ortus-medium.jpg)
+![](.gitbook/assets/ortus-medium.jpg)
 
 This book was written and maintained by [Luis Majano](https://www.luismajano.com) and the [Ortus Solutions](https://www.ortussolutions.com) Development Team.
 
