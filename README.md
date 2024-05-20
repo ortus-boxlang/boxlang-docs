@@ -6,14 +6,14 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 
 <figure><img src=".gitbook/assets/logo-gradient-dark.png" alt=""><figcaption></figcaption></figure>
 
-**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, ColdFusion, Python, Ruby, Go, and PHP, to provide developers with a modern and expressive syntax.
+**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, ColdFusion, Python, Ruby, Go, and PHP, to provide developers with a modern and expressive syntax.
 
-BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with a number of goals in mind:
+BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with several goals in mind:
 
 1. Be a rapid application development (RAD) scripting language and middleware.
-2. Be dynamic, modular, lightweight, and fast.
-3. Be 100% interoperable with Java.
-4. Be able to be deployed as a standalone binary with no JVM required (Much like Kotlin)
+2. Unstagnate the dynamic language ecosystem in Java.
+3. Be dynamic, modular, lightweight, and fast.
+4. Be 100% interoperable with Java.
 5. Be modern, functional, and fluent (Think mixing CFML, Node, Kotlin, Java, and Clojure)
 6. Be able to support the following runtime environments.
    1. Native OS Binaries (CLI Tooling, compilers, etc.)
@@ -21,7 +21,7 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
    3. Android/iOS Devices
    4. Web assembly
 7. Compile down to Java ByteCode
-8. Allow backwards compatibility with existing CFML templates
+8. Allow backward compatibility with the existing ColdFusion/CFML language
 
 Key features of BoxLang
 
