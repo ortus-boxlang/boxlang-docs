@@ -16,15 +16,12 @@ pattern=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `name` | `string` | `true` | The name of the parameter | ``|
-| `type` | `string` | `false` | The data type of the parameter | ``|
-| `default` | `any` | `false` | The default value of the parameter | ``|
-| `max` | `numeric` | `false` | The maximum value of the parameter | ``|
-| `min` | `numeric` | `false` | The minimum value of the parameter | ``|
-| `pattern` | `string` | `false` | The pattern of the parameter | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `name` | `string` | `true` | The name of the parameter |  |
+| `type` | `string` | `false` | The data type of the parameter |  |
+| `default` | `any` | `false` | The default value of the parameter |  |
+| `max` | `numeric` | `false` | The maximum value of the parameter |  |
+| `min` | `numeric` | `false` | The minimum value of the parameter |  |
+| `pattern` | `string` | `false` | The pattern of the parameter |  |
 
 ## Examples
 

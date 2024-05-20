@@ -1,23 +1,22 @@
-# ListContains
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `ListContains`
 
 Return int position of value in delimited list, case sensitive or case-insenstive variations
 
 ## Method Signature
-
 ```
 ListContains(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
-
 ### Arguments
 
-| Argument                  | Type      | Required   | Description                                   | Default   |
-| ------------------------- | --------- | ---------- | --------------------------------------------- | --------- |
-| `list`                    | `string`  | `true`     | The list to be searched.                      |           |
-| `value`                   | `string`  | `true`     | The value to locale                           |           |
-| `delimiter`               | `string`  | `false`    | The list delimiter(s)                         | ,         |
-| `includeEmptyFields`      | `boolean` | `false`    | Whether to include empty fields in the search | false     |
-| `multiCharacterDelimiter` | `boolean` | `false`    |                                               | false     |
-| ----------                | ------    | ---------- | -------------                                 | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `list` | `string` | `true` | The list to be searched. |  |
+| `value` | `string` | `true` | The value to locale |  |
+| `delimiter` | `string` | `false` | The list delimiter(s) | `,` |
+| `includeEmptyFields` | `boolean` | `false` | Whether to include empty fields in the search | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -26,36 +25,35 @@ ListContains(list=[string], value=[string], delimiter=[string], includeEmptyFiel
 ```
 
 ## Related
-
-* [GetToken](gettoken.md)
-* [ListAppend](listappend.md)
-* [ListAvg](listavg.md)
-* [ListChangeDelims](listchangedelims.md)
-* [ListCompact](listcompact.md)
-* [ListContainsNoCase](listcontainsnocase.md)
-* [ListDeleteAt](listdeleteat.md)
-* [ListEach](listeach.md)
-* [ListEvery](listevery.md)
-* [ListFilter](listfilter.md)
-* [ListFind](listfind.md)
-* [ListFindNoCase](listfindnocase.md)
-* [ListFirst](listfirst.md)
-* [ListGetAt](listgetat.md)
-* [ListIndexExists](listindexexists.md)
-* [ListInsertAt](listinsertat.md)
-* [ListItemTrim](listitemtrim.md)
-* [ListLast](listlast.md)
-* [ListLen](listlen.md)
-* [ListMap](listmap.md)
-* [ListPrepend](listprepend.md)
-* [ListQualify](listqualify.md)
-* [ListReduceRight](listreduceright.md)
-* [ListRemoveDuplicates](listremoveduplicates.md)
-* [ListRest](listrest.md)
-* [ListSetAt](listsetat.md)
-* [ListSome](listsome.md)
-* [ListSort](listsort.md)
-* [ListToArray](listtoarray.md)
-* [ListTrim](listtrim.md)
-* [ListValueCount](listvaluecount.md)
-* [ListValueCountNoCase](listvaluecountnocase.md)
+  * [GetToken](GetToken.md)
+  * [ListAppend](ListAppend.md)
+  * [ListAvg](ListAvg.md)
+  * [ListChangeDelims](ListChangeDelims.md)
+  * [ListCompact](ListCompact.md)
+  * [ListContainsNoCase](ListContainsNoCase.md)
+  * [ListDeleteAt](ListDeleteAt.md)
+  * [ListEach](ListEach.md)
+  * [ListEvery](ListEvery.md)
+  * [ListFilter](ListFilter.md)
+  * [ListFind](ListFind.md)
+  * [ListFindNoCase](ListFindNoCase.md)
+  * [ListFirst](ListFirst.md)
+  * [ListGetAt](ListGetAt.md)
+  * [ListIndexExists](ListIndexExists.md)
+  * [ListInsertAt](ListInsertAt.md)
+  * [ListItemTrim](ListItemTrim.md)
+  * [ListLast](ListLast.md)
+  * [ListLen](ListLen.md)
+  * [ListMap](ListMap.md)
+  * [ListPrepend](ListPrepend.md)
+  * [ListQualify](ListQualify.md)
+  * [ListReduceRight](ListReduceRight.md)
+  * [ListRemoveDuplicates](ListRemoveDuplicates.md)
+  * [ListRest](ListRest.md)
+  * [ListSetAt](ListSetAt.md)
+  * [ListSome](ListSome.md)
+  * [ListSort](ListSort.md)
+  * [ListToArray](ListToArray.md)
+  * [ListTrim](ListTrim.md)
+  * [ListValueCount](ListValueCount.md)
+  * [ListValueCountNoCase](ListValueCountNoCase.md)

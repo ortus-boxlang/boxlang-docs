@@ -14,13 +14,10 @@ argumentCollection=[any] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `class` | `any` | `false` | The Box Class instance or the name of the Box Class to instantiate. | ``|
-| `method` | `string` | `true` | The name of the method to invoke. | ``|
-| `returnVariable` | `string` | `false` | The variable to store the result of the method invocation. | ``|
-| `argumentCollection` | `any` | `false` | An array or struct of arguments to pass to the method. | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `class` | `any` | `false` | The Box Class instance or the name of the Box Class to instantiate. |  |
+| `method` | `string` | `true` | The name of the method to invoke. |  |
+| `returnVariable` | `string` | `false` | The variable to store the result of the method invocation. |  |
+| `argumentCollection` | `any` | `false` | An array or struct of arguments to pass to the method. |  |
 
 ## Examples
 

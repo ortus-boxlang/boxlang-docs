@@ -1,19 +1,18 @@
-# XMLGetNodeType
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `XMLGetNodeType`
 
 Get XML values according to given xPath query
 
 ## Method Signature
-
 ```
 XMLGetNodeType(XMLNode=[XML])
 ```
-
 ### Arguments
 
-| Argument   | Type   | Required   | Description             | Default   |
-| ---------- | ------ | ---------- | ----------------------- | --------- |
-| `XMLNode`  | `XML`  | `true`     | An XML DOM object node. |           |
-| ---------- | ------ | ---------- | -------------           | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `XMLNode` | `XML` | `true` | An XML DOM object node. |  |
 
 ## Examples
 
@@ -22,12 +21,11 @@ XMLGetNodeType(XMLNode=[XML])
 ```
 
 ## Related
-
-* [XMLChildPos](xmlchildpos.md)
-* [XMLElemNew](xmlelemnew.md)
-* [XMLFormat](xmlformat.md)
-* [XMLNew](xmlnew.md)
-* [XMLParse](xmlparse.md)
-* [XMLSearch](xmlsearch.md)
-* [XMLTransform](xmltransform.md)
-* [XMLValidate](xmlvalidate.md)
+  * [XMLChildPos](XMLChildPos.md)
+  * [XMLElemNew](XMLElemNew.md)
+  * [XMLFormat](XMLFormat.md)
+  * [XMLNew](XMLNew.md)
+  * [XMLParse](XMLParse.md)
+  * [XMLSearch](XMLSearch.md)
+  * [XMLTransform](XMLTransform.md)
+  * [XMLValidate](XMLValidate.md)

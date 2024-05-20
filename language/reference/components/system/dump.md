@@ -11,10 +11,7 @@ I create a representation of objects
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `var` | `any` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `var` | `any` | `false` |  |  |
 
 ## Examples
 

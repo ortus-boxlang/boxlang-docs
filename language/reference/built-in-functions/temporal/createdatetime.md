@@ -1,26 +1,25 @@
-# CreateDateTime
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-Describe what the invocation of your bif function does
+# Function: `CreateDateTime`
+
+Creates a date-time object.
 
 ## Method Signature
-
 ```
 CreateDateTime(year=[integer], month=[integer], day=[integer], hour=[integer], minute=[integer], second=[integer], millisecond=[integer], timezone=[string])
 ```
-
 ### Arguments
 
-| Argument      | Type      | Required   | Description   | Default   |
-| ------------- | --------- | ---------- | ------------- | --------- |
-| `year`        | `integer` | `false`    |               | 0         |
-| `month`       | `integer` | `false`    |               | 1         |
-| `day`         | `integer` | `false`    |               | 1         |
-| `hour`        | `integer` | `false`    |               | 0         |
-| `minute`      | `integer` | `false`    |               | 0         |
-| `second`      | `integer` | `false`    |               | 0         |
-| `millisecond` | `integer` | `false`    |               | 0         |
-| `timezone`    | `string`  | `false`    |               |           |
-| ----------    | ------    | ---------- | ------------- | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `year` | `integer` | `false` | The year of the date-time object. | `0` |
+| `month` | `integer` | `false` | The month of the date-time object. | `1` |
+| `day` | `integer` | `false` | The day of the date-time object. | `1` |
+| `hour` | `integer` | `false` | The hour of the date-time object. | `0` |
+| `minute` | `integer` | `false` | The minute of the date-time object. | `0` |
+| `second` | `integer` | `false` | The second of the date-time object. | `0` |
+| `millisecond` | `integer` | `false` |  | `0` |
+| `timezone` | `string` | `false` |  |  |
 
 ## Examples
 
@@ -29,52 +28,51 @@ CreateDateTime(year=[integer], month=[integer], day=[integer], hour=[integer], m
 ```
 
 ## Related
-
-* [ClearTimezone](cleartimezone.md)
-* [CreateDate](createdate.md)
-* [CreateODBCDate](createodbcdate.md)
-* [CreateODBCDateTime](createodbcdatetime.md)
-* [CreateODBCTime](createodbctime.md)
-* [CreateTimeSpan](createtimespan.md)
-* [DateAdd](dateadd.md)
-* [DateCompare](datecompare.md)
-* [DateConvert](dateconvert.md)
-* [DateDiff](datediff.md)
-* [DateFormat](dateformat.md)
-* [DatePart](datepart.md)
-* [DateTimeFormat](datetimeformat.md)
-* [Day](day.md)
-* [DayOfWeek](dayofweek.md)
-* [DayOfWeekAsString](dayofweekasstring.md)
-* [DayOfWeekShortAsString](dayofweekshortasstring.md)
-* [DayOfYear](dayofyear.md)
-* [DaysInMonth](daysinmonth.md)
-* [DaysInYear](daysinyear.md)
-* [FirstDayOfMonth](firstdayofmonth.md)
-* [GetNumericDate](getnumericdate.md)
-* [GetTime](gettime.md)
-* [GetTimezone](gettimezone.md)
-* [GetTimezoneInfo](gettimezoneinfo.md)
-* [Hour](hour.md)
-* [LSDateFormat](lsdateformat.md)
-* [LSDateTimeFormat](lsdatetimeformat.md)
-* [LSDayOfWeek](lsdayofweek.md)
-* [LSIsDate](lsisdate.md)
-* [LSParseDateTime](lsparsedatetime.md)
-* [LSTimeFormat](lstimeformat.md)
-* [LSWeek](lsweek.md)
-* [Millisecond](millisecond.md)
-* [Minute](minute.md)
-* [Month](month.md)
-* [MonthAsString](monthasstring.md)
-* [MonthShortAsString](monthshortasstring.md)
-* [Nanosecond](nanosecond.md)
-* [Now](now.md)
-* [Offset](offset.md)
-* [ParseDateTime](parsedatetime.md)
-* [Quarter](quarter.md)
-* [Second](second.md)
-* [SetTimezone](settimezone.md)
-* [TimeFormat](timeformat.md)
-* [WeekOfYear](weekofyear.md)
-* [Year](year.md)
+  * [ClearTimezone](ClearTimezone.md)
+  * [CreateDate](CreateDate.md)
+  * [CreateODBCDate](CreateODBCDate.md)
+  * [CreateODBCDateTime](CreateODBCDateTime.md)
+  * [CreateODBCTime](CreateODBCTime.md)
+  * [CreateTimeSpan](CreateTimeSpan.md)
+  * [DateAdd](DateAdd.md)
+  * [DateCompare](DateCompare.md)
+  * [DateConvert](DateConvert.md)
+  * [DateDiff](DateDiff.md)
+  * [DateFormat](DateFormat.md)
+  * [DatePart](DatePart.md)
+  * [DateTimeFormat](DateTimeFormat.md)
+  * [Day](Day.md)
+  * [DayOfWeek](DayOfWeek.md)
+  * [DayOfWeekAsString](DayOfWeekAsString.md)
+  * [DayOfWeekShortAsString](DayOfWeekShortAsString.md)
+  * [DayOfYear](DayOfYear.md)
+  * [DaysInMonth](DaysInMonth.md)
+  * [DaysInYear](DaysInYear.md)
+  * [FirstDayOfMonth](FirstDayOfMonth.md)
+  * [GetNumericDate](GetNumericDate.md)
+  * [GetTime](GetTime.md)
+  * [GetTimezone](GetTimezone.md)
+  * [GetTimezoneInfo](GetTimezoneInfo.md)
+  * [Hour](Hour.md)
+  * [LSDateFormat](LSDateFormat.md)
+  * [LSDateTimeFormat](LSDateTimeFormat.md)
+  * [LSDayOfWeek](LSDayOfWeek.md)
+  * [LSIsDate](LSIsDate.md)
+  * [LSParseDateTime](LSParseDateTime.md)
+  * [LSTimeFormat](LSTimeFormat.md)
+  * [LSWeek](LSWeek.md)
+  * [Millisecond](Millisecond.md)
+  * [Minute](Minute.md)
+  * [Month](Month.md)
+  * [MonthAsString](MonthAsString.md)
+  * [MonthShortAsString](MonthShortAsString.md)
+  * [Nanosecond](Nanosecond.md)
+  * [Now](Now.md)
+  * [Offset](Offset.md)
+  * [ParseDateTime](ParseDateTime.md)
+  * [Quarter](Quarter.md)
+  * [Second](Second.md)
+  * [SetTimezone](SetTimezone.md)
+  * [TimeFormat](TimeFormat.md)
+  * [WeekOfYear](WeekOfYear.md)
+  * [Year](Year.md)

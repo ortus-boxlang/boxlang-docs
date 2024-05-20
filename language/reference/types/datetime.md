@@ -17,9 +17,9 @@ different locales have different start days to the week )
  * `compare`: Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
  * `compareTo`: Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
  * `diff`: Returns the numeric difference in the requested date part between two dates
- * `LSDateTimeFormat`: Formats a date in a locale-specific format
- * `LSDateFormat`: Formats a date in a locale-specific format
- * `LSTimeFormat`: Formats a date in a locale-specific format
+ * `lSDateTimeFormat`: Formats a date in a locale-specific format
+ * `lSDateFormat`: Formats a date in a locale-specific format
+ * `lSTimeFormat`: Formats a date in a locale-specific format
  * `add`: Modifies a date object by date part and integer time unit
  * `year`: Provides the BIF and member functions for all time unit request with no arguments
  * `quarter`: Provides the BIF and member functions for all time unit request with no arguments

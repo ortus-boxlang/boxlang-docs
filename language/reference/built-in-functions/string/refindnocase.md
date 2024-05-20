@@ -1,31 +1,22 @@
-# reFindNoCase
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `reFindNoCase`
 
 Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
 
 ## Method Signature
-
 ```
 reFindNoCase(reg_expression=[string], string=[string], start=[integer], returnSubExpressions=[boolean], scope=[string])
 ```
-
 ### Arguments
 
-| Argument               | Type      | Required | Description                                                                                                          | Default |
-| ---------------------- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------- | ------- |
-| `reg_expression`       | `string`  | `true`   | The regular expression to search for                                                                                 |         |
-| `string`               | `string`  | `true`   | The string to serach in                                                                                              |         |
-| `start`                | `integer` | `false`  | The position from which to start searching in the string. Default is 1.                                              | 1       |
-| `returnSubExpressions` | `boolean` | `false`  | True: if the regular expression is found, the first array element contains the length and position, respectively, of |         |
-
-```
-                            the first match. If the regular expression contains parentheses that group subexpressions, each subsequent array
-                            element contains the length and position, respectively, of the first occurrence of each group. If the regular
-                            expression is not found, the arrays each contain one element with the value 0. False: the function returns the
-                            position in the string where the match begins. Default. | false|
-```
-
-| `scope` | `string` | `false` | "one": returns the first value that matches the regex. "all": returns all values that match the regex. | one |
-| ------- | -------- | ------- | ------------------------------------------------------------------------------------------------------ | --- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `reg_expression` | `string` | `true` | The regular expression to search for |  |
+| `string` | `string` | `true` | The string to serach in |  |
+| `start` | `integer` | `false` | The position from which to start searching in the string. Default is 1. | `1` |
+| `returnSubExpressions` | `boolean` | `false` | True: if the regular expression is found, the first array element contains the length and position, respectively, of<br>                                the first match. If the regular expression contains parentheses that group subexpressions, each subsequent array<br>                                element contains the length and position, respectively, of the first occurrence of each group. If the regular<br>                                expression is not found, the arrays each contain one element with the value 0. False: the function returns the<br>                                position in the string where the match begins. Default. | `false` |
+| `scope` | `string` | `false` | "one": returns the first value that matches the regex. "all": returns all values that match the regex. | `one` |
 
 ## Examples
 
@@ -34,55 +25,54 @@ reFindNoCase(reg_expression=[string], string=[string], start=[integer], returnSu
 ```
 
 ## Related
-
-* [Ascii](ascii.md)
-* [Char](char.md)
-* [CharsetDecode](charsetdecode.md)
-* [CharsetEncode](charsetencode.md)
-* [Compare](compare.md)
-* [CompareNoCase](comparenocase.md)
-* [Find](find.md)
-* [FindNoCase](findnocase.md)
-* [FindOneOf](findoneof.md)
-* [Insert](insert.md)
-* [LCase](lcase.md)
-* [Left](left.md)
-* [ListReduce](listreduce.md)
-* [LJustify](ljustify.md)
-* [LTrim](ltrim.md)
-* [Mid](mid.md)
-* [ParagraphFormat](paragraphformat.md)
-* [QueryStringToStruct](querystringtostruct.md)
-* [ReFind](refind.md)
-* [ReMatch](rematch.md)
-* [reMatchNoCase](rematchnocase.md)
-* [RemoveChars](removechars.md)
-* [RepeatString](repeatstring.md)
-* [Replace](replace.md)
-* [ReplaceList](replacelist.md)
-* [ReplaceListNoCase](replacelistnocase.md)
-* [ReplaceNoCase](replacenocase.md)
-* [ReReplace](rereplace.md)
-* [reReplaceNoCase](rereplacenocase.md)
-* [Reverse](reverse.md)
-* [Right](right.md)
-* [RJustify](rjustify.md)
-* [RTrim](rtrim.md)
-* [SpanExcluding](spanexcluding.md)
-* [SpanIncluding](spanincluding.md)
-* [StringEach](stringeach.md)
-* [StringEvery](stringevery.md)
-* [StringFilter](stringfilter.md)
-* [StringMap](stringmap.md)
-* [StringReduce](stringreduce.md)
-* [StringReduceRight](stringreduceright.md)
-* [StringSome](stringsome.md)
-* [StringSort](stringsort.md)
-* [StripCR](stripcr.md)
-* [Trim](trim.md)
-* [TrueFalseFormat](truefalseformat.md)
-* [UCase](ucase.md)
-* [UCFirst](ucfirst.md)
-* [Val](val.md)
-* [Wrap](wrap.md)
-* [YesNoFormat](yesnoformat.md)
+  * [Ascii](Ascii.md)
+  * [Char](Char.md)
+  * [CharsetDecode](CharsetDecode.md)
+  * [CharsetEncode](CharsetEncode.md)
+  * [Compare](Compare.md)
+  * [CompareNoCase](CompareNoCase.md)
+  * [Find](Find.md)
+  * [FindNoCase](FindNoCase.md)
+  * [FindOneOf](FindOneOf.md)
+  * [Insert](Insert.md)
+  * [LCase](LCase.md)
+  * [Left](Left.md)
+  * [ListReduce](ListReduce.md)
+  * [LJustify](LJustify.md)
+  * [LTrim](LTrim.md)
+  * [Mid](Mid.md)
+  * [ParagraphFormat](ParagraphFormat.md)
+  * [QueryStringToStruct](QueryStringToStruct.md)
+  * [ReFind](ReFind.md)
+  * [ReMatch](ReMatch.md)
+  * [reMatchNoCase](reMatchNoCase.md)
+  * [RemoveChars](RemoveChars.md)
+  * [RepeatString](RepeatString.md)
+  * [Replace](Replace.md)
+  * [ReplaceList](ReplaceList.md)
+  * [ReplaceListNoCase](ReplaceListNoCase.md)
+  * [ReplaceNoCase](ReplaceNoCase.md)
+  * [ReReplace](ReReplace.md)
+  * [reReplaceNoCase](reReplaceNoCase.md)
+  * [Reverse](Reverse.md)
+  * [Right](Right.md)
+  * [RJustify](RJustify.md)
+  * [RTrim](RTrim.md)
+  * [SpanExcluding](SpanExcluding.md)
+  * [SpanIncluding](SpanIncluding.md)
+  * [StringEach](StringEach.md)
+  * [StringEvery](StringEvery.md)
+  * [StringFilter](StringFilter.md)
+  * [StringMap](StringMap.md)
+  * [StringReduce](StringReduce.md)
+  * [StringReduceRight](StringReduceRight.md)
+  * [StringSome](StringSome.md)
+  * [StringSort](StringSort.md)
+  * [StripCR](StripCR.md)
+  * [Trim](Trim.md)
+  * [TrueFalseFormat](TrueFalseFormat.md)
+  * [UCase](UCase.md)
+  * [UCFirst](UCFirst.md)
+  * [Val](Val.md)
+  * [Wrap](Wrap.md)
+  * [YesNoFormat](YesNoFormat.md)

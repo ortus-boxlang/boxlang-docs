@@ -13,12 +13,9 @@ maxRows=[numeric] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `name` | `string` | `true` | The variable name to place the result set in. | ``|
-| `resultSet` | `numeric` | `false` | The index of the resultset to access. Required if there is more than one ProcResult component. | ``|
-| `maxRows` | `numeric` | `false` | The maximum number of rows to fetch per resultset. | `-1`|
-|----------|------|----------|-------------|---------|
-
-
+| `name` | `string` | `true` | The variable name to place the result set in. |  |
+| `resultSet` | `numeric` | `false` | The index of the resultset to access. Required if there is more than one ProcResult component. |  |
+| `maxRows` | `numeric` | `false` | The maximum number of rows to fetch per resultset. | `-1` |
 
 ## Examples
 

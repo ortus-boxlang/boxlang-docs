@@ -13,12 +13,9 @@ className=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `name` | `string` | `true` |  | ``|
-| `type` | `string` | `true` |  | ``|
-| `className` | `string` | `true` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `name` | `string` | `true` |  |  |
+| `type` | `string` | `true` |  |  |
+| `className` | `string` | `true` |  |  |
 
 ## Examples
 

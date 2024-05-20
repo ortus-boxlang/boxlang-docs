@@ -1,20 +1,19 @@
-# URLDecode
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `URLDecode`
 
 Decodes a URL-encoded string.
 
 ## Method Signature
-
 ```
 URLDecode(string=[any], charset=[string])
 ```
-
 ### Arguments
 
-| Argument   | Type     | Required   | Description                                                     | Default   |
-| ---------- | -------- | ---------- | --------------------------------------------------------------- | --------- |
-| `string`   | `any`    | `true`     | The URL-encoded string to decode.                               |           |
-| `charset`  | `string` | `false`    | The charset to use when decoding the string. Defaults to UTF-8. | UTF-8     |
-| ---------- | ------   | ---------- | -------------                                                   | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `string` | `any` | `true` | The URL-encoded string to decode. |  |
+| `charset` | `string` | `false` | The charset to use when decoding the string. Defaults to UTF-8. | `UTF-8` |
 
 ## Examples
 
@@ -23,54 +22,54 @@ URLDecode(string=[any], charset=[string])
 ```
 
 ## Related
-
-* [ApplicationRestart](applicationrestart.md)
-* [ApplicationStartTime](applicationstarttime.md)
-* [ApplicationStop](applicationstop.md)
-* [BoxAnnounce](boxannounce.md)
-* [BoxAnnounceAsync](boxannounceasync.md)
-* [CallStackGet](callstackget.md)
-* [CreateGUID](createguid.md)
-* [CreateObject](createobject.md)
-* [CreateUUID](createuuid.md)
-* [DE](de.md)
-* [DebugBoxContexts](debugboxcontexts.md)
-* [Dump](dump.md)
-* [Duplicate](duplicate.md)
-* [echo](echo.md)
-* [EncodeForHTML](encodeforhtml.md)
-* [GetApplicationMetadata](getapplicationmetadata.md)
-* [GetBaseTemplatePath](getbasetemplatepath.md)
-* [GetBoxContext](getboxcontext.md)
-* [GetBoxRuntime](getboxruntime.md)
-* [GetBoxVersionInfo](getboxversioninfo.md)
-* [GetComponentMetadata](getcomponentmetadata.md)
-* [GetContextRoot](getcontextroot.md)
-* [GetCurrentTemplatePath](getcurrenttemplatepath.md)
-* [GetFileFromPath](getfilefrompath.md)
-* [GetFunctionCalledName](getfunctioncalledname.md)
-* [GetFunctionList](getfunctionlist.md)
-* [GetSystemSetting](getsystemsetting.md)
-* [GetTempDirectory](gettempdirectory.md)
-* [GetTickCount](gettickcount.md)
-* [htmlEditFormat](htmleditformat.md)
-* [IIF](iif.md)
-* [Invoke](invoke.md)
-* [IsInstanceOf](isinstanceof.md)
-* [JavaCast](javacast.md)
-* [PagePoolClear](pagepoolclear.md)
-* [Print](print.md)
-* [Println](println.md)
-* [RunThreadInContext](runthreadincontext.md)
-* [SessionInvalidate](sessioninvalidate.md)
-* [SessionRotate](sessionrotate.md)
-* [SessionStartTime](sessionstarttime.md)
-* [Sleep](sleep.md)
-* [SystemExecute](systemexecute.md)
-* [SystemOutput](systemoutput.md)
-* [Test](test.md)
-* [Throw](throw.md)
-* [URLEncodedFormat](urlencodedformat.md)
-* [writeDump](writedump.md)
-* [WriteLog](writelog.md)
-* [WriteOutput](writeoutput.md)
+  * [ApplicationRestart](ApplicationRestart.md)
+  * [ApplicationStartTime](ApplicationStartTime.md)
+  * [ApplicationStop](ApplicationStop.md)
+  * [BoxAnnounce](BoxAnnounce.md)
+  * [BoxAnnounceAsync](BoxAnnounceAsync.md)
+  * [CallStackGet](CallStackGet.md)
+  * [CreateGUID](CreateGUID.md)
+  * [CreateObject](CreateObject.md)
+  * [CreateUUID](CreateUUID.md)
+  * [DE](DE.md)
+  * [DebugBoxContexts](DebugBoxContexts.md)
+  * [Dump](Dump.md)
+  * [Duplicate](Duplicate.md)
+  * [echo](echo.md)
+  * [EncodeForHTML](EncodeForHTML.md)
+  * [GetApplicationMetadata](GetApplicationMetadata.md)
+  * [GetBaseTemplatePath](GetBaseTemplatePath.md)
+  * [GetBoxContext](GetBoxContext.md)
+  * [GetBoxRuntime](GetBoxRuntime.md)
+  * [GetBoxVersionInfo](GetBoxVersionInfo.md)
+  * [GetComponentList](GetComponentList.md)
+  * [GetComponentMetadata](GetComponentMetadata.md)
+  * [GetContextRoot](GetContextRoot.md)
+  * [GetCurrentTemplatePath](GetCurrentTemplatePath.md)
+  * [GetFileFromPath](GetFileFromPath.md)
+  * [GetFunctionCalledName](GetFunctionCalledName.md)
+  * [GetFunctionList](GetFunctionList.md)
+  * [GetSystemSetting](GetSystemSetting.md)
+  * [GetTempDirectory](GetTempDirectory.md)
+  * [GetTickCount](GetTickCount.md)
+  * [htmlEditFormat](htmlEditFormat.md)
+  * [IIF](IIF.md)
+  * [Invoke](Invoke.md)
+  * [IsInstanceOf](IsInstanceOf.md)
+  * [JavaCast](JavaCast.md)
+  * [PagePoolClear](PagePoolClear.md)
+  * [Print](Print.md)
+  * [Println](Println.md)
+  * [RunThreadInContext](RunThreadInContext.md)
+  * [SessionInvalidate](SessionInvalidate.md)
+  * [SessionRotate](SessionRotate.md)
+  * [SessionStartTime](SessionStartTime.md)
+  * [Sleep](Sleep.md)
+  * [SystemExecute](SystemExecute.md)
+  * [SystemOutput](SystemOutput.md)
+  * [Test](Test.md)
+  * [Throw](Throw.md)
+  * [URLEncodedFormat](URLEncodedFormat.md)
+  * [writeDump](writeDump.md)
+  * [WriteLog](WriteLog.md)
+  * [WriteOutput](WriteOutput.md)

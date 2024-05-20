@@ -11,10 +11,7 @@ I include a template into the current template
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `template` | `string` | `true` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `template` | `string` | `true` |  |  |
 
 ## Examples
 

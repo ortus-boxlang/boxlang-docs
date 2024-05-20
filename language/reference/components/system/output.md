@@ -16,15 +16,12 @@ encodefor=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `query` | `any` | `false` |  | ``|
-| `group` | `string` | `false` |  | ``|
-| `groupCaseSensitive` | `boolean` | `false` |  | `false`|
-| `startRow` | `integer` | `false` |  | ``|
-| `maxRows` | `integer` | `false` |  | ``|
-| `encodefor` | `string` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `query` | `any` | `false` |  |  |
+| `group` | `string` | `false` |  |  |
+| `groupCaseSensitive` | `boolean` | `false` |  | `false` |
+| `startRow` | `integer` | `false` |  |  |
+| `maxRows` | `integer` | `false` |  |  |
+| `encodefor` | `string` | `false` |  |  |
 
 ## Examples
 

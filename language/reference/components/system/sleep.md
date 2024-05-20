@@ -11,10 +11,7 @@ Sleep for a specified number of milliseconds
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `time` | `any` | `true` | The number of milliseconds to sleep | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `time` | `any` | `true` | The number of milliseconds to sleep |  |
 
 ## Examples
 

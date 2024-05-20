@@ -16,15 +16,12 @@ null=[boolean] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `type` | `string` | `false` | The type of stored procedure paramter. One of in | out | inout | `in`|
-| `value` | `any` | `false` | The value to pass | ``|
-| `sqltype` | `string` | `false` | The sql type the value | `string`|
-| `maxLength` | `numeric` | `false` |  | ``|
-| `scale` | `numeric` | `false` |  | ``|
-| `null` | `boolean` | `false` | If the value should be counted as null | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `type` | `string` | `false` | The type of stored procedure paramter. One of in | out | inout | `in` |
+| `value` | `any` | `false` | The value to pass |  |
+| `sqltype` | `string` | `false` | The sql type the value | `string` |
+| `maxLength` | `numeric` | `false` |  |  |
+| `scale` | `numeric` | `false` |  |  |
+| `null` | `boolean` | `false` | If the value should be counted as null |  |
 
 ## Examples
 

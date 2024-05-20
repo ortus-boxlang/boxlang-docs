@@ -13,12 +13,9 @@ requestTimeout=[long] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `enableOutputOnly` | `boolean` | `false` |  | ``|
-| `showDebugOutput` | `boolean` | `false` |  | ``|
-| `requestTimeout` | `long` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `enableOutputOnly` | `boolean` | `false` |  |  |
+| `showDebugOutput` | `boolean` | `false` |  |  |
+| `requestTimeout` | `long` | `false` |  |  |
 
 ## Examples
 

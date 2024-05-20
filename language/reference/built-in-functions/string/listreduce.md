@@ -1,24 +1,23 @@
-# ListReduce
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `ListReduce`
 
 Run the provided udf over a delimited list to reduce the values to a single output
 
 ## Method Signature
-
 ```
 ListReduce(list=[string], callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
-
 ### Arguments
 
-| Argument                  | Type       | Required   | Description                                                                                                     | Default   |
-| ------------------------- | ---------- | ---------- | --------------------------------------------------------------------------------------------------------------- | --------- |
-| `list`                    | `string`   | `true`     | The delimited list to perform operations on                                                                     |           |
-| `callback`                | `function` | `true`     | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |           |
-| `initialValue`            | `any`      | `false`    | The initial value of the reduction                                                                              |           |
-| `delimiter`               | `string`   | `false`    | string the list delimiter                                                                                       | ,         |
-| `includeEmptyFields`      | `boolean`  | `false`    | boolean whether to include empty fields in the returned result                                                  | false     |
-| `multiCharacterDelimiter` | `boolean`  | `false`    | boolean whether the delimiter is multi-character                                                                | true      |
-| ----------                | ------     | ---------- | -------------                                                                                                   | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `list` | `string` | `true` | The delimited list to perform operations on |  |
+| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |  |
+| `initialValue` | `any` | `false` | The initial value of the reduction |  |
+| `delimiter` | `string` | `false` | string the list delimiter | `,` |
+| `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `true` |
 
 ## Examples
 
@@ -27,55 +26,54 @@ ListReduce(list=[string], callback=[function], initialValue=[any], delimiter=[st
 ```
 
 ## Related
-
-* [Ascii](ascii.md)
-* [Char](char.md)
-* [CharsetDecode](charsetdecode.md)
-* [CharsetEncode](charsetencode.md)
-* [Compare](compare.md)
-* [CompareNoCase](comparenocase.md)
-* [Find](find.md)
-* [FindNoCase](findnocase.md)
-* [FindOneOf](findoneof.md)
-* [Insert](insert.md)
-* [LCase](lcase.md)
-* [Left](left.md)
-* [LJustify](ljustify.md)
-* [LTrim](ltrim.md)
-* [Mid](mid.md)
-* [ParagraphFormat](paragraphformat.md)
-* [QueryStringToStruct](querystringtostruct.md)
-* [ReFind](refind.md)
-* [reFindNoCase](refindnocase.md)
-* [ReMatch](rematch.md)
-* [reMatchNoCase](rematchnocase.md)
-* [RemoveChars](removechars.md)
-* [RepeatString](repeatstring.md)
-* [Replace](replace.md)
-* [ReplaceList](replacelist.md)
-* [ReplaceListNoCase](replacelistnocase.md)
-* [ReplaceNoCase](replacenocase.md)
-* [ReReplace](rereplace.md)
-* [reReplaceNoCase](rereplacenocase.md)
-* [Reverse](reverse.md)
-* [Right](right.md)
-* [RJustify](rjustify.md)
-* [RTrim](rtrim.md)
-* [SpanExcluding](spanexcluding.md)
-* [SpanIncluding](spanincluding.md)
-* [StringEach](stringeach.md)
-* [StringEvery](stringevery.md)
-* [StringFilter](stringfilter.md)
-* [StringMap](stringmap.md)
-* [StringReduce](stringreduce.md)
-* [StringReduceRight](stringreduceright.md)
-* [StringSome](stringsome.md)
-* [StringSort](stringsort.md)
-* [StripCR](stripcr.md)
-* [Trim](trim.md)
-* [TrueFalseFormat](truefalseformat.md)
-* [UCase](ucase.md)
-* [UCFirst](ucfirst.md)
-* [Val](val.md)
-* [Wrap](wrap.md)
-* [YesNoFormat](yesnoformat.md)
+  * [Ascii](Ascii.md)
+  * [Char](Char.md)
+  * [CharsetDecode](CharsetDecode.md)
+  * [CharsetEncode](CharsetEncode.md)
+  * [Compare](Compare.md)
+  * [CompareNoCase](CompareNoCase.md)
+  * [Find](Find.md)
+  * [FindNoCase](FindNoCase.md)
+  * [FindOneOf](FindOneOf.md)
+  * [Insert](Insert.md)
+  * [LCase](LCase.md)
+  * [Left](Left.md)
+  * [LJustify](LJustify.md)
+  * [LTrim](LTrim.md)
+  * [Mid](Mid.md)
+  * [ParagraphFormat](ParagraphFormat.md)
+  * [QueryStringToStruct](QueryStringToStruct.md)
+  * [ReFind](ReFind.md)
+  * [reFindNoCase](reFindNoCase.md)
+  * [ReMatch](ReMatch.md)
+  * [reMatchNoCase](reMatchNoCase.md)
+  * [RemoveChars](RemoveChars.md)
+  * [RepeatString](RepeatString.md)
+  * [Replace](Replace.md)
+  * [ReplaceList](ReplaceList.md)
+  * [ReplaceListNoCase](ReplaceListNoCase.md)
+  * [ReplaceNoCase](ReplaceNoCase.md)
+  * [ReReplace](ReReplace.md)
+  * [reReplaceNoCase](reReplaceNoCase.md)
+  * [Reverse](Reverse.md)
+  * [Right](Right.md)
+  * [RJustify](RJustify.md)
+  * [RTrim](RTrim.md)
+  * [SpanExcluding](SpanExcluding.md)
+  * [SpanIncluding](SpanIncluding.md)
+  * [StringEach](StringEach.md)
+  * [StringEvery](StringEvery.md)
+  * [StringFilter](StringFilter.md)
+  * [StringMap](StringMap.md)
+  * [StringReduce](StringReduce.md)
+  * [StringReduceRight](StringReduceRight.md)
+  * [StringSome](StringSome.md)
+  * [StringSort](StringSort.md)
+  * [StripCR](StripCR.md)
+  * [Trim](Trim.md)
+  * [TrueFalseFormat](TrueFalseFormat.md)
+  * [UCase](UCase.md)
+  * [UCFirst](UCFirst.md)
+  * [Val](Val.md)
+  * [Wrap](Wrap.md)
+  * [YesNoFormat](YesNoFormat.md)

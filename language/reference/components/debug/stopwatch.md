@@ -13,12 +13,9 @@ variable=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `label` | `string` | `false` | The label to use for the output. | ``|
-| `unit` | `string` | `false` | The unit of time to use for the output. One of `nano`, `micro`, `milli`, or `second`. | `milli`|
-| `variable` | `string` | `false` | The name of the variable to store the result in. | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `label` | `string` | `false` | The label to use for the output. |  |
+| `unit` | `string` | `false` | The unit of time to use for the output. One of `nano`, `micro`, `milli`, or `second`. | `milli` |
+| `variable` | `string` | `false` | The name of the variable to store the result in. |  |
 
 ## Examples
 

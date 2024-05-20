@@ -11,10 +11,7 @@ I define an application
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `name` | `string` | `true` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `name` | `string` | `true` |  |  |
 
 ## Examples
 

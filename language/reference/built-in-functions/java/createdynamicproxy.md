@@ -12,11 +12,8 @@ CreateDynamicProxy(class=[any], interfaces=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `class` | `any` | `true` | The Box Class to create a dynamic proxy of. | |
-| `interfaces` | `any` | `true` | The interfaces that the dynamic proxy should implement. | |
-|----------|------|----------|-------------|---------|
-
-
+| `class` | `any` | `true` | The Box Class to create a dynamic proxy of. |  |
+| `interfaces` | `any` | `true` | The interfaces that the dynamic proxy should implement. |  |
 
 ## Examples
 

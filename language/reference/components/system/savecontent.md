@@ -13,12 +13,9 @@ append=[boolean] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `variable` | `string` | `true` |  | ``|
-| `trim` | `boolean` | `false` |  | `false`|
-| `append` | `boolean` | `false` |  | `false`|
-|----------|------|----------|-------------|---------|
-
-
+| `variable` | `string` | `true` |  |  |
+| `trim` | `boolean` | `false` |  | `false` |
+| `append` | `boolean` | `false` |  | `false` |
 
 ## Examples
 

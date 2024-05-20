@@ -44,43 +44,40 @@ encodeUrl=[boolean] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `URL` | `string` | `true` |  | ``|
-| `port` | `numeric` | `false` |  | ``|
-| `method` | `string` | `true` |  | `GET`|
-| `proxyServer` | `string` | `false` |  | ``|
-| `proxyPort` | `string` | `false` |  | ``|
-| `proxyUser` | `string` | `false` |  | ``|
-| `proxyPassword` | `string` | `false` |  | ``|
-| `username` | `string` | `false` |  | ``|
-| `password` | `string` | `false` |  | ``|
-| `userAgent` | `string` | `false` |  | `BoxLang`|
-| `charset` | `string` | `false` |  | `UTF-8`|
-| `resolveUrl` | `boolean` | `false` |  | `false`|
-| `throwOnError` | `boolean` | `false` |  | `true`|
-| `redirect` | `boolean` | `false` |  | `true`|
-| `timeout` | `numeric` | `false` |  | ``|
-| `getAsBinary` | `string` | `true` |  | `auto`|
-| `result` | `string` | `true` |  | `cfhttp`|
-| `delimiter` | `string` | `false` |  | ``|
-| `name` | `string` | `false` |  | ``|
-| `columns` | `string` | `false` |  | ``|
-| `firstRowAsHeaders` | `boolean` | `false` |  | ``|
-| `textQualifier` | `string` | `false` |  | ``|
-| `file` | `string` | `false` |  | ``|
-| `multipart` | `boolean` | `false` |  | `false`|
-| `multipartType` | `string` | `true` |  | `form-data`|
-| `clientCertPassword` | `string` | `false` |  | ``|
-| `path` | `string` | `false` |  | ``|
-| `clientCert` | `string` | `false` |  | ``|
-| `compression` | `string` | `false` |  | ``|
-| `authType` | `string` | `true` |  | `BASIC`|
-| `domain` | `string` | `false` |  | ``|
-| `workstation` | `string` | `false` |  | ``|
-| `cachedWithin` | `string` | `false` |  | ``|
-| `encodeUrl` | `boolean` | `false` |  | `true`|
-|----------|------|----------|-------------|---------|
-
-
+| `URL` | `string` | `true` |  |  |
+| `port` | `numeric` | `false` |  |  |
+| `method` | `string` | `true` |  | `GET` |
+| `proxyServer` | `string` | `false` |  |  |
+| `proxyPort` | `string` | `false` |  |  |
+| `proxyUser` | `string` | `false` |  |  |
+| `proxyPassword` | `string` | `false` |  |  |
+| `username` | `string` | `false` |  |  |
+| `password` | `string` | `false` |  |  |
+| `userAgent` | `string` | `false` |  | `BoxLang` |
+| `charset` | `string` | `false` |  | `UTF-8` |
+| `resolveUrl` | `boolean` | `false` |  | `false` |
+| `throwOnError` | `boolean` | `false` |  | `true` |
+| `redirect` | `boolean` | `false` |  | `true` |
+| `timeout` | `numeric` | `false` |  |  |
+| `getAsBinary` | `string` | `true` |  | `auto` |
+| `result` | `string` | `true` |  | `cfhttp` |
+| `delimiter` | `string` | `false` |  |  |
+| `name` | `string` | `false` |  |  |
+| `columns` | `string` | `false` |  |  |
+| `firstRowAsHeaders` | `boolean` | `false` |  |  |
+| `textQualifier` | `string` | `false` |  |  |
+| `file` | `string` | `false` |  |  |
+| `multipart` | `boolean` | `false` |  | `false` |
+| `multipartType` | `string` | `true` |  | `form-data` |
+| `clientCertPassword` | `string` | `false` |  |  |
+| `path` | `string` | `false` |  |  |
+| `clientCert` | `string` | `false` |  |  |
+| `compression` | `string` | `false` |  |  |
+| `authType` | `string` | `true` |  | `BASIC` |
+| `domain` | `string` | `false` |  |  |
+| `workstation` | `string` | `false` |  |  |
+| `cachedWithin` | `string` | `false` |  |  |
+| `encodeUrl` | `boolean` | `false` |  | `true` |
 
 ## Examples
 

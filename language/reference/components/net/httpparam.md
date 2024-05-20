@@ -16,15 +16,12 @@ mimetype =[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `type` | `string` | `true` |  | ``|
-| `name` | `string` | `false` |  | ``|
-| `value` | `any` | `false` |  | ``|
-| `file` | `string` | `false` |  | ``|
-| `encoded` | `boolean` | `false` |  | `true`|
-| `mimetype ` | `string` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `type` | `string` | `true` |  |  |
+| `name` | `string` | `false` |  |  |
+| `value` | `any` | `false` |  |  |
+| `file` | `string` | `false` |  |  |
+| `encoded` | `boolean` | `false` |  | `true` |
+| `mimetype ` | `string` | `false` |  |  |
 
 ## Examples
 

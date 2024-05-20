@@ -1,19 +1,18 @@
-# Atn
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `Atn`
 
 Returns the arc tangent (inverse tangent) of a number
 
 ## Method Signature
-
 ```
 Atn(number=[numeric])
 ```
-
 ### Arguments
 
-| Argument   | Type      | Required   | Description                                | Default   |
-| ---------- | --------- | ---------- | ------------------------------------------ | --------- |
-| `number`   | `numeric` | `true`     | The number to calculate the arc tangent of |           |
-| ---------- | ------    | ---------- | -------------                              | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `number` | `numeric` | `true` | The number to calculate the arc tangent of |  |
 
 ## Examples
 
@@ -22,29 +21,28 @@ Atn(number=[numeric])
 ```
 
 ## Related
-
-* [Abs](abs.md)
-* [Acos](acos.md)
-* [Asin](asin.md)
-* [Ceiling](ceiling.md)
-* [Cos](cos.md)
-* [DecrementValue](decrementvalue.md)
-* [Exp](exp.md)
-* [Fix](fix.md)
-* [Floor](floor.md)
-* [FormatBaseN](formatbasen.md)
-* [IncrementValue](incrementvalue.md)
-* [InputBaseN](inputbasen.md)
-* [Int](int.md)
-* [Log](log.md)
-* [Log10](log10.md)
-* [Max](max.md)
-* [Min](min.md)
-* [Pi](pi.md)
-* [Rand](rand.md)
-* [RandRange](randrange.md)
-* [Round](round.md)
-* [Sgn](sgn.md)
-* [Sin](sin.md)
-* [Sqr](sqr.md)
-* [Tan](tan.md)
+  * [Abs](Abs.md)
+  * [Acos](Acos.md)
+  * [Asin](Asin.md)
+  * [Ceiling](Ceiling.md)
+  * [Cos](Cos.md)
+  * [DecrementValue](DecrementValue.md)
+  * [Exp](Exp.md)
+  * [Fix](Fix.md)
+  * [Floor](Floor.md)
+  * [FormatBaseN](FormatBaseN.md)
+  * [IncrementValue](IncrementValue.md)
+  * [InputBaseN](InputBaseN.md)
+  * [Int](Int.md)
+  * [Log](Log.md)
+  * [Log10](Log10.md)
+  * [Max](Max.md)
+  * [Min](Min.md)
+  * [Pi](Pi.md)
+  * [Rand](Rand.md)
+  * [RandRange](RandRange.md)
+  * [Round](Round.md)
+  * [Sgn](Sgn.md)
+  * [Sin](Sin.md)
+  * [Sqr](Sqr.md)
+  * [Tan](Tan.md)

@@ -15,14 +15,11 @@ datasource=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `action` | `string` | `false` |  | `begin`|
-| `isolation` | `string` | `false` |  | ``|
-| `savepoint` | `string` | `false` |  | ``|
-| `nested` | `boolean` | `false` |  | `false`|
-| `datasource` | `string` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `action` | `string` | `false` |  | `begin` |
+| `isolation` | `string` | `false` |  |  |
+| `savepoint` | `string` | `false` |  |  |
+| `nested` | `boolean` | `false` |  | `false` |
+| `datasource` | `string` | `false` |  |  |
 
 ## Examples
 

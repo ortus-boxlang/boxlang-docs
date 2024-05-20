@@ -1,19 +1,18 @@
-# QueryRecordCount
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `QueryRecordCount`
 
 This function returns the number of records in a query
 
 ## Method Signature
-
 ```
 QueryRecordCount(query=[query])
 ```
-
 ### Arguments
 
-| Argument   | Type    | Required   | Description               | Default   |
-| ---------- | ------- | ---------- | ------------------------- | --------- |
-| `query`    | `query` | `true`     | The query to iterate over |           |
-| ---------- | ------  | ---------- | -------------             | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `query` | `query` | `true` | The query to iterate over |  |
 
 ## Examples
 
@@ -22,31 +21,30 @@ QueryRecordCount(query=[query])
 ```
 
 ## Related
-
-* [QueryAddColumn](queryaddcolumn.md)
-* [QueryAddRow](queryaddrow.md)
-* [QueryAppend](queryappend.md)
-* [QueryClear](queryclear.md)
-* [QueryColumnArray](querycolumnarray.md)
-* [QueryColumnCount](querycolumncount.md)
-* [QueryColumnData](querycolumndata.md)
-* [QueryColumnExists](querycolumnexists.md)
-* [QueryCurrentRow](querycurrentrow.md)
-* [QueryDeleteColumn](querydeletecolumn.md)
-* [QueryDeleteRow](querydeleterow.md)
-* [QueryEach](queryeach.md)
-* [QueryEvery](queryevery.md)
-* [QueryFilter](queryfilter.md)
-* [QueryGetCell](querygetcell.md)
-* [QueryGetResult](querygetresult.md)
-* [QueryKeyExists](querykeyexists.md)
-* [QueryMap](querymap.md)
-* [QueryNew](querynew.md)
-* [QueryPrepend](queryprepend.md)
-* [QueryReduce](queryreduce.md)
-* [QueryRowData](queryrowdata.md)
-* [QuerySetCell](querysetcell.md)
-* [QuerySetRow](querysetrow.md)
-* [QuerySlice](queryslice.md)
-* [QuerySome](querysome.md)
-* [QuerySort](querysort.md)
+  * [QueryAddColumn](QueryAddColumn.md)
+  * [QueryAddRow](QueryAddRow.md)
+  * [QueryAppend](QueryAppend.md)
+  * [QueryClear](QueryClear.md)
+  * [QueryColumnArray](QueryColumnArray.md)
+  * [QueryColumnCount](QueryColumnCount.md)
+  * [QueryColumnData](QueryColumnData.md)
+  * [QueryColumnExists](QueryColumnExists.md)
+  * [QueryCurrentRow](QueryCurrentRow.md)
+  * [QueryDeleteColumn](QueryDeleteColumn.md)
+  * [QueryDeleteRow](QueryDeleteRow.md)
+  * [QueryEach](QueryEach.md)
+  * [QueryEvery](QueryEvery.md)
+  * [QueryFilter](QueryFilter.md)
+  * [QueryGetCell](QueryGetCell.md)
+  * [QueryGetResult](QueryGetResult.md)
+  * [QueryKeyExists](QueryKeyExists.md)
+  * [QueryMap](QueryMap.md)
+  * [QueryNew](QueryNew.md)
+  * [QueryPrepend](QueryPrepend.md)
+  * [QueryReduce](QueryReduce.md)
+  * [QueryRowData](QueryRowData.md)
+  * [QuerySetCell](QuerySetCell.md)
+  * [QuerySetRow](QuerySetRow.md)
+  * [QuerySlice](QuerySlice.md)
+  * [QuerySome](QuerySome.md)
+  * [QuerySort](QuerySort.md)

@@ -26,25 +26,22 @@ label=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `false` |  | ``|
-| `item` | `string` | `false` |  | ``|
-| `index` | `string` | `false` |  | ``|
-| `to` | `numeric` | `false` |  | ``|
-| `from` | `numeric` | `false` |  | ``|
-| `file` | `string` | `false` |  | ``|
-| `list` | `string` | `false` |  | ``|
-| `delimiters` | `string` | `false` |  | ``|
-| `collection` | `Struct` | `false` |  | ``|
-| `condition` | `function` | `false` |  | ``|
-| `query` | `any` | `false` |  | ``|
-| `group` | `string` | `false` |  | ``|
-| `groupCaseSensitive` | `boolean` | `false` |  | `false`|
-| `startRow` | `integer` | `false` |  | ``|
-| `endRow` | `integer` | `false` |  | ``|
-| `label` | `string` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `array` | `array` | `false` |  |  |
+| `item` | `string` | `false` |  |  |
+| `index` | `string` | `false` |  |  |
+| `to` | `numeric` | `false` |  |  |
+| `from` | `numeric` | `false` |  |  |
+| `file` | `string` | `false` |  |  |
+| `list` | `string` | `false` |  |  |
+| `delimiters` | `string` | `false` |  |  |
+| `collection` | `Struct` | `false` |  |  |
+| `condition` | `function` | `false` |  |  |
+| `query` | `any` | `false` |  |  |
+| `group` | `string` | `false` |  |  |
+| `groupCaseSensitive` | `boolean` | `false` |  | `false` |
+| `startRow` | `integer` | `false` |  |  |
+| `endRow` | `integer` | `false` |  |  |
+| `label` | `string` | `false` |  |  |
 
 ## Examples
 

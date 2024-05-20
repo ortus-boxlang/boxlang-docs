@@ -12,11 +12,8 @@ type=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `showerror` | `string` | `false` | Whether to show an error | ``|
-| `type` | `string` | `false` | The type of the abort (request or page) | `request`|
-|----------|------|----------|-------------|---------|
-
-
+| `showerror` | `string` | `false` | Whether to show an error |  |
+| `type` | `string` | `false` | The type of the abort (request or page) | `request` |
 
 ## Examples
 

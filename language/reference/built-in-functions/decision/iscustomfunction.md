@@ -1,20 +1,19 @@
-# IsCustomFunction
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `IsCustomFunction`
 
 Determine whether a given object is a custom function.
 
 ## Method Signature
-
 ```
 IsCustomFunction(object=[any], type=[string])
 ```
-
 ### Arguments
 
-| Argument   | Type     | Required   | Description                                                                   | Default   |
-| ---------- | -------- | ---------- | ----------------------------------------------------------------------------- | --------- |
-| `object`   | `any`    | `true`     | The value to test for closure-ness.                                           |           |
-| `type`     | `string` | `false`    | Check for a specific type of custom function - `UDF`, `Lambda`, or `Closure`. |           |
-| ---------- | ------   | ---------- | -------------                                                                 | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `object` | `any` | `true` | The value to test for closure-ness. |  |
+| `type` | `string` | `false` | Check for a specific type of custom function - `UDF`, `Lambda`, or `Closure`. |  |
 
 ## Examples
 
@@ -23,33 +22,32 @@ IsCustomFunction(object=[any], type=[string])
 ```
 
 ## Related
-
-* [ArrayIsEmpty](arrayisempty.md)
-* [IsArray](isarray.md)
-* [IsBinary](isbinary.md)
-* [IsBoolean](isboolean.md)
-* [IsClosure](isclosure.md)
-* [IsDate](isdate.md)
-* [IsDateObject](isdateobject.md)
-* [IsDebugMode](isdebugmode.md)
-* [IsDefined](isdefined.md)
-* [IsEmpty](isempty.md)
-* [IsFileObject](isfileobject.md)
-* [IsIPv6](isipv6.md)
-* [IsJSON](isjson.md)
-* [IsLeapYear](isleapyear.md)
-* [IsLocalHost](islocalhost.md)
-* [IsNull](isnull.md)
-* [IsNumeric](isnumeric.md)
-* [IsObject](isobject.md)
-* [IsQuery](isquery.md)
-* [IsSimpleValue](issimplevalue.md)
-* [IsStruct](isstruct.md)
-* [IsValid](isvalid.md)
-* [IsXML](isxml.md)
-* [IsXmlAttribute](isxmlattribute.md)
-* [IsXMLDoc](isxmldoc.md)
-* [IsXMLElem](isxmlelem.md)
-* [IsXMLNode](isxmlnode.md)
-* [IsXMLRoot](isxmlroot.md)
-* [structIsEmpty](structisempty.md)
+  * [ArrayIsEmpty](ArrayIsEmpty.md)
+  * [IsArray](IsArray.md)
+  * [IsBinary](IsBinary.md)
+  * [IsBoolean](IsBoolean.md)
+  * [IsClosure](IsClosure.md)
+  * [IsDate](IsDate.md)
+  * [IsDateObject](IsDateObject.md)
+  * [IsDebugMode](IsDebugMode.md)
+  * [IsDefined](IsDefined.md)
+  * [IsEmpty](IsEmpty.md)
+  * [IsFileObject](IsFileObject.md)
+  * [IsIPv6](IsIPv6.md)
+  * [IsJSON](IsJSON.md)
+  * [IsLeapYear](IsLeapYear.md)
+  * [IsLocalHost](IsLocalHost.md)
+  * [IsNull](IsNull.md)
+  * [IsNumeric](IsNumeric.md)
+  * [IsObject](IsObject.md)
+  * [IsQuery](IsQuery.md)
+  * [IsSimpleValue](IsSimpleValue.md)
+  * [IsStruct](IsStruct.md)
+  * [IsValid](IsValid.md)
+  * [IsXML](IsXML.md)
+  * [IsXmlAttribute](IsXmlAttribute.md)
+  * [IsXMLDoc](IsXMLDoc.md)
+  * [IsXMLElem](IsXMLElem.md)
+  * [IsXMLNode](IsXMLNode.md)
+  * [IsXMLRoot](IsXMLRoot.md)
+  * [structIsEmpty](structIsEmpty.md)

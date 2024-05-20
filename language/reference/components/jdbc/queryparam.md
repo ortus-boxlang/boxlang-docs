@@ -17,16 +17,13 @@ separator=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `value` | `any` | `false` |  | ``|
-| `sqltype` | `string` | `false` |  | ``|
-| `maxLength` | `numeric` | `false` |  | ``|
-| `scale` | `numeric` | `false` |  | ``|
-| `null` | `boolean` | `false` |  | ``|
-| `list` | `boolean` | `false` |  | ``|
-| `separator` | `string` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `value` | `any` | `false` |  |  |
+| `sqltype` | `string` | `false` |  |  |
+| `maxLength` | `numeric` | `false` |  |  |
+| `scale` | `numeric` | `false` |  |  |
+| `null` | `boolean` | `false` |  |  |
+| `list` | `boolean` | `false` |  |  |
+| `separator` | `string` | `false` |  |  |
 
 ## Examples
 

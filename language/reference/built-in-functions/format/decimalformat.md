@@ -1,20 +1,19 @@
-# DecimalFormat
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-Describe what the invocation of your bif function does
+# Function: `DecimalFormat`
+
+Converts a number to a decimal-formatted string.
 
 ## Method Signature
-
 ```
 DecimalFormat(number=[any], length=[integer])
 ```
-
 ### Arguments
 
-| Argument   | Type      | Required   | Description   | Default   |
-| ---------- | --------- | ---------- | ------------- | --------- |
-| `number`   | `any`     | `true`     |               |           |
-| `length`   | `integer` | `false`    |               | 2         |
-| ---------- | ------    | ---------- | ------------- | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `number` | `any` | `true` | The number to convert to decimal format. |  |
+| `length` | `integer` | `false` | The number of decimal places to include in the formatted string. | `2` |
 
 ## Examples
 
@@ -23,7 +22,6 @@ DecimalFormat(number=[any], length=[integer])
 ```
 
 ## Related
-
-* [BooleanFormat](booleanformat.md)
-* [DollarFormat](dollarformat.md)
-* [NumberFormat](numberformat.md)
+  * [BooleanFormat](BooleanFormat.md)
+  * [DollarFormat](DollarFormat.md)
+  * [NumberFormat](NumberFormat.md)

@@ -12,11 +12,8 @@ datasource=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `procedure` | `string` | `true` | The name of the procedure to execute. | ``|
-| `datasource` | `string` | `false` | The name of the datasource where the stored procedure is registered. | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `procedure` | `string` | `true` | The name of the procedure to execute. |  |
+| `datasource` | `string` | `false` | The name of the datasource where the stored procedure is registered. |  |
 
 ## Examples
 

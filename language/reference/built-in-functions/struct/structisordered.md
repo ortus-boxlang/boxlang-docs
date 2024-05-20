@@ -1,19 +1,18 @@
-# StructIsOrdered
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `StructIsOrdered`
 
 Tests whether a struct is ordered ( e.g.
 
 ## Method Signature
-
 ```
 StructIsOrdered(struct=[structloose])
 ```
-
 ### Arguments
 
-| Argument   | Type          | Required   | Description                          | Default   |
-| ---------- | ------------- | ---------- | ------------------------------------ | --------- |
-| `struct`   | `structloose` | `true`     | The struct to test for a linked type |           |
-| ---------- | ------        | ---------- | -------------                        | --------- |
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `struct` | `structloose` | `true` | The struct to test for a linked type |  |
 
 ## Examples
 
@@ -22,32 +21,31 @@ StructIsOrdered(struct=[structloose])
 ```
 
 ## Related
-
-* [StructAppend](structappend.md)
-* [StructClear](structclear.md)
-* [StructCopy](structcopy.md)
-* [StructDelete](structdelete.md)
-* [StructEach](structeach.md)
-* [StructEquals](structequals.md)
-* [StructEvery](structevery.md)
-* [StructFilter](structfilter.md)
-* [StructFind](structfind.md)
-* [StructFindKey](structfindkey.md)
-* [StructFindValue](structfindvalue.md)
-* [StructGet](structget.md)
-* [StructGetMetadata](structgetmetadata.md)
-* [StructInsert](structinsert.md)
-* [StructIsCaseSensitive](structiscasesensitive.md)
-* [StructKeyArray](structkeyarray.md)
-* [StructKeyExists](structkeyexists.md)
-* [StructKeyList](structkeylist.md)
-* [StructKeyTranslate](structkeytranslate.md)
-* [StructMap](structmap.md)
-* [StructNew](structnew.md)
-* [StructReduce](structreduce.md)
-* [StructSome](structsome.md)
-* [StructSort](structsort.md)
-* [StructToQueryString](structtoquerystring.md)
-* [StructToSorted](structtosorted.md)
-* [StructUpdate](structupdate.md)
-* [StructValueArray](structvaluearray.md)
+  * [StructAppend](StructAppend.md)
+  * [StructClear](StructClear.md)
+  * [StructCopy](StructCopy.md)
+  * [StructDelete](StructDelete.md)
+  * [StructEach](StructEach.md)
+  * [StructEquals](StructEquals.md)
+  * [StructEvery](StructEvery.md)
+  * [StructFilter](StructFilter.md)
+  * [StructFind](StructFind.md)
+  * [StructFindKey](StructFindKey.md)
+  * [StructFindValue](StructFindValue.md)
+  * [StructGet](StructGet.md)
+  * [StructGetMetadata](StructGetMetadata.md)
+  * [StructInsert](StructInsert.md)
+  * [StructIsCaseSensitive](StructIsCaseSensitive.md)
+  * [StructKeyArray](StructKeyArray.md)
+  * [StructKeyExists](StructKeyExists.md)
+  * [StructKeyList](StructKeyList.md)
+  * [StructKeyTranslate](StructKeyTranslate.md)
+  * [StructMap](StructMap.md)
+  * [StructNew](StructNew.md)
+  * [StructReduce](StructReduce.md)
+  * [StructSome](StructSome.md)
+  * [StructSort](StructSort.md)
+  * [StructToQueryString](StructToQueryString.md)
+  * [StructToSorted](StructToSorted.md)
+  * [StructUpdate](StructUpdate.md)
+  * [StructValueArray](StructValueArray.md)

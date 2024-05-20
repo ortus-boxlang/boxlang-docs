@@ -12,11 +12,8 @@ value=[any] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `name` | `string` | `true` | The name of the argument | ``|
-| `value` | `any` | `false` | The value of the argument | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `name` | `string` | `true` | The name of the argument |  |
+| `value` | `any` | `false` | The value of the argument |  |
 
 ## Examples
 

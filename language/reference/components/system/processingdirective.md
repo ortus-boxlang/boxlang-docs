@@ -12,11 +12,8 @@ suppressWhiteSpace=[boolean] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `pageEncoding` | `string` | `false` |  | ``|
-| `suppressWhiteSpace` | `boolean` | `false` |  | ``|
-|----------|------|----------|-------------|---------|
-
-
+| `pageEncoding` | `string` | `false` |  |  |
+| `suppressWhiteSpace` | `boolean` | `false` |  |  |
 
 ## Examples
 
