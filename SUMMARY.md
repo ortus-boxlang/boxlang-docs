@@ -136,7 +136,7 @@
     * [bifs](language/reference/built-in-functions/bifs/README.md)
       * [BoxLangBIFProxy](language/reference/built-in-functions/bifs/BoxLangBIFProxy.md)
       * [stringModernize](language/reference/built-in-functions/bifs/stringModernize.md)
-    * [binary](language/reference/built-in-functions/array/README.md)
+    * [binary](language/reference/built-in-functions/binary/README.md)
       * [BinaryDecode](language/reference/built-in-functions/binary/BinaryDecode.md)
       * [BinaryEncode](language/reference/built-in-functions/binary/BinaryEncode.md)
       * [BitAnd](language/reference/built-in-functions/binary/BitAnd.md)
