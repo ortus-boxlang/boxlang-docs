@@ -8,7 +8,7 @@ Tokens in BoxLang include the following:
 2.  [**Keywords**](keywords.md): These are reserved words that have special meaning in BoxLang. They include control flow keywords like `if`, `else`, `for`, `while`, and many others.
 
     Example: `if`, `component`, `function`
-3.  [**Operators**](operators.md): These are symbols that perform operations on one or more operands. They include arithmetic operators (`+`, `-`, `*`, `/`), comparison operators (`==`, `!=`, `<`, `>`), logical operators (`&&`, `||`), and others.
+3.  [**Operators**](broken-reference): These are symbols that perform operations on one or more operands. They include arithmetic operators (`+`, `-`, `*`, `/`), comparison operators (`==`, `!=`, `<`, `>`), logical operators (`&&`, `||`), and others.
 
     Example: `+`, `==`, `&&`
 4.  [**Literals**](literals.md): These are fixed values that can be numbers, strings, booleans, or null.
