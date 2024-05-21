@@ -54,7 +54,7 @@ produce = {
 };
 ```
 
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.46.02 PM.png>)
+![](<../../.gitbook/assets/Screen Shot 2017-10-05 at 4.46.02 PM.png>)
 
 The _key_ is the address, and the _value_ is the data at that address. Please note that the _value_ can be ANYTHING. It can be an array, an object, a simple value, or even an embedded structure. It doesn't matter.
 
@@ -216,11 +216,11 @@ myStruct = $[=]
 
 Once you create structures, you can use them in many funky ways. Please check out all the [structure functions](https://cfdocs.org/struct-functions) and all the structure modern [member functions](https://cfdocs.org/member) that are available to you.
 
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.57.20 PM.png>)
+![](<../../.gitbook/assets/Screen Shot 2017-10-05 at 4.57.20 PM.png>)
 
 As you can see, there are many cool methods for detecting keys, values, lengths, counts, etc. A very cool method is `keyArray()` which gives you the listing of keys as an array:
 
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.58.09 PM.png>)
+![](<../../.gitbook/assets/Screen Shot 2017-10-05 at 4.58.09 PM.png>)
 
 ## Looping Over Structures
 

@@ -3,7 +3,6 @@
 Locking is an essential piece of software engineering. There are occasions where shared resources must be locked in order to write to them or read from them. This process of locking can be very simple or extremely complex. Sometimes it can lead to deadlocks and serious concurrency issues. Further to say, we will only cover basic usage of the locking constructs in BoxLang.
 
 You can also find great knowledge in the Java Synchronization tutorial: [https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html](https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)
-{% endhint %}
 
 ## cflock
 
@@ -33,7 +32,7 @@ lock
 
 Here are the attributes to the `cflock` construct
 
-<table data-header-hidden><thead><tr><th width="196">Attribute</th><th width="106">Type</th><th width="119">Default</th><th>Description</th></tr></thead><tbody><tr><td>Attribute</td><td>Type</td><td>Default</td><td>Description</td></tr><tr><td><code>timeout</code></td><td>numeric</td><td><code>required</code></td><td>Max length in seconds to wait to obtain the lock.  If lock is obtained, tag execution continues. Otherwise, behavior depends on throwOnTimeout attribute value.</td></tr><tr><td><code>scope</code></td><td>string</td><td></td><td>Lock scope. Mutually exclusive with the <code>name</code> attribute. Only one request in the specified scope can execute the code within this tag (or within any other cflock tag with the same lock scope scope) at a time.  Values are: <code>application, request, server, session</code></td></tr><tr><td><code>name</code></td><td>string</td><td></td><td>Lock name. Mutually exclusive with the scope attribute.  Only one request can execute the code within a <code>cflock</code> tag  with a given name at a time. Cannot be an <a href="https://cfdocs.org/empty">empty</a> string.</td></tr><tr><td><code>throwOnTimeout</code></td><td>boolean</td><td>true</td><td>If true and a timeout is reached an exception is thrown, else it is ignored.</td></tr><tr><td><code>type</code></td><td>string</td><td>exclusive</td><td><strong>readOnly</strong>: lets more than one request read shared data. <strong>exclusive</strong>: lets one request read or write shared data.</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="196">Attribute</th><th width="106">Type</th><th width="119">Default</th><th>Description</th></tr></thead><tbody><tr><td>Attribute</td><td>Type</td><td>Default</td><td>Description</td></tr><tr><td><code>timeout</code></td><td>numeric</td><td><code>required</code></td><td>Max length in seconds to wait to obtain the lock. If lock is obtained, tag execution continues. Otherwise, behavior depends on throwOnTimeout attribute value.</td></tr><tr><td><code>scope</code></td><td>string</td><td></td><td>Lock scope. Mutually exclusive with the <code>name</code> attribute. Only one request in the specified scope can execute the code within this tag (or within any other cflock tag with the same lock scope scope) at a time. Values are: <code>application, request, server, session</code></td></tr><tr><td><code>name</code></td><td>string</td><td></td><td>Lock name. Mutually exclusive with the scope attribute. Only one request can execute the code within a <code>cflock</code> tag with a given name at a time. Cannot be an <a href="https://cfdocs.org/empty">empty</a> string.</td></tr><tr><td><code>throwOnTimeout</code></td><td>boolean</td><td>true</td><td>If true and a timeout is reached an exception is thrown, else it is ignored.</td></tr><tr><td><code>type</code></td><td>string</td><td>exclusive</td><td><strong>readOnly</strong>: lets more than one request read shared data. <strong>exclusive</strong>: lets one request read or write shared data.</td></tr></tbody></table>
 
 {% hint style="danger" %}
 **Important**: Please note that when using named locks, the name is shared across the entire BoxLang server, no matter the `cfapplication` it is under. Please be aware of it and use unique enough names. Lock names are global to a BoxLang server. They are shared among applications and user sessions, but not clustered servers.
@@ -70,7 +69,7 @@ I highly discourage the use of scope locks as it throws a huge locking mechanism
 
 ## Deadlocks
 
-![](../.gitbook/assets/22-2.png)
+![](../../.gitbook/assets/22-2.png)
 
 A deadlock is a state in which no request can execute the locked construct. After a deadlock occurs, neither thread can break it, because all requests to the protected section of the lock are blocked until the deadlock can be resolved by a lock time-out.
 

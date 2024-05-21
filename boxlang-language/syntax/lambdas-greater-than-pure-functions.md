@@ -1,0 +1,2 @@
+# Lambdas -> Pure Functions
+

@@ -1,6 +1,6 @@
-# Java Integration
+# Java Interop
 
-,BoxLang is compiled to [Java bytecode](https://en.wikipedia.org/wiki/Java\_bytecode) and runs on the JVM.  This gives BoxLang a unique advantage that not only can you write BoxLang but you can also integrate with the running JDK libraries or any Java library you tell the engine to use.  This is great, because if there is something already written in Java, just drop it in and use it, well most of the time :) Unless Jar loading hell occurs.
+,BoxLang is compiled to [Java bytecode](https://en.wikipedia.org/wiki/Java\_bytecode) and runs on the JVM. This gives BoxLang a unique advantage that not only can you write BoxLang but you can also integrate with the running JDK libraries or any Java library you tell the engine to use. This is great, because if there is something already written in Java, just drop it in and use it, well most of the time :) Unless Jar loading hell occurs.
 
 {% hint style="info" %}
 CommandBox even allows you to install jar's from any endpoint into your projects: [https://commandbox.ortusbooks.com/package-management/code-endpoints/jar-via-http](https://commandbox.ortusbooks.com/package-management/code-endpoints/jar-via-http)
@@ -12,10 +12,9 @@ install "jar:https://github.com/coldbox-modules/cbox-bcrypt/blob/master/modules/
 
 {% embed url="https://cfdocs.org/java" %}
 
-
 ## Creating Java Objects
 
-The easiest way to integrate with Java is to be able to instantiate Java objects or call Java static methods on objects. You will do this via the `createObject()` or the `new` operator approach.  Here is the signatures for both approaches:
+The easiest way to integrate with Java is to be able to instantiate Java objects or call Java static methods on objects. You will do this via the `createObject()` or the `new` operator approach. Here is the signatures for both approaches:
 
 ```java
 createObject( "java", "java.class.path" )
@@ -39,7 +38,7 @@ writeOutput( currentTime );
 
 ## Java Casting
 
-You must remember that Java is a static and typed language.  BoxLang is not!  If you need to pass in arguments to Java functions that require native types you will have to cast them.  We will use the fancy `JavaCast()` function built-in to the language.
+You must remember that Java is a static and typed language. BoxLang is not! If you need to pass in arguments to Java functions that require native types you will have to cast them. We will use the fancy `JavaCast()` function built-in to the language.
 
 ```java
 integerObject = createObject( "java", "java.lang.Integer" );
@@ -76,7 +75,7 @@ createObject( "java", "java.util.Arrays" )
 
 ### Java Nulls
 
-Ohh the dreaded day [nulls](null-and-nothingness.md) where created.  The variable that means that nothing exists.  If you need to pass null into Java object calls then you have two approaches to create them:
+Ohh the dreaded day [nulls](syntax/null-and-nothingness.md) where created. The variable that means that nothing exists. If you need to pass null into Java object calls then you have two approaches to create them:
 
 ```java
 javaCast( "null", "" );
@@ -86,11 +85,11 @@ nullValue();
 
 ## Loading Custom Jars/Libraries
 
-The `createObject( "java" )` method will look into the BoxLang engine's class loader to discover the class you request.  If the class is not located an exception is thrown that the class could not be found.  If you want to integrate with third-party Jar's and libraries then you will need to tell the engine where to look for those classes.  There are essentially three ways to add custom libraries to the BoxLang engine:
+The `createObject( "java" )` method will look into the BoxLang engine's class loader to discover the class you request. If the class is not located an exception is thrown that the class could not be found. If you want to integrate with third-party Jar's and libraries then you will need to tell the engine where to look for those classes. There are essentially three ways to add custom libraries to the BoxLang engine:
 
 1. Add the jars/libs to the BoxLang Lib paths.
-2. The `Application.bx` allows you to declare a `this.javaSettings` struct where you can declare an array of locations of the libraries to load upon application startup with some nice modifiers.  This will allow you to store and even leverage CommandBox for the management of such jars.
-3. The `createObject( "java" )` construct allows you to pass in a third argument which can be a location or an array of locations of libraries to class load.  This is also great for custom classes, task runners, or isolated class loading.
+2. The `Application.bx` allows you to declare a `this.javaSettings` struct where you can declare an array of locations of the libraries to load upon application startup with some nice modifiers. This will allow you to store and even leverage CommandBox for the management of such jars.
+3. The `createObject( "java" )` construct allows you to pass in a third argument which can be a location or an array of locations of libraries to class load. This is also great for custom classes, task runners, or isolated class loading.
 
 ### this.javaSettings
 
@@ -128,7 +127,7 @@ createObject( "java", "org.apache.pdfbox.pdmodel.PDDocument", variables.LIB_PATH
 
 ## Dynamic Proxies
 
-BoxLang also allows you to create dynamic proxies from existing BoxLang Classes (.bx).  What this means is that a Dynamic proxy lets you pass BoxLang classes to Java objects. Java objects can work with the BoxLang classes seamlessly as if they are native Java objects by implementing the appropriate Java interfaces.  You can even use them to simulate Java lambdas as BoxLang classes.
+BoxLang also allows you to create dynamic proxies from existing BoxLang Classes (.bx). What this means is that a Dynamic proxy lets you pass BoxLang classes to Java objects. Java objects can work with the BoxLang classes seamlessly as if they are native Java objects by implementing the appropriate Java interfaces. You can even use them to simulate Java lambdas as BoxLang classes.
 
 ```java
 createDynamicProxy( bx, interfaces )
@@ -173,4 +172,4 @@ class extends="BaseProxy"{
 }
 ```
 
-Basically, your class must implement the appropriate methods the interface(s) tell you that it needs. After that, your class will be Java-fide, and it can be used like a native Java interface implementing objects!  Enjoy!
+Basically, your class must implement the appropriate methods the interface(s) tell you that it needs. After that, your class will be Java-fide, and it can be used like a native Java interface implementing objects! Enjoy!
