@@ -29,6 +29,10 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 [overview](getting-started/overview/)
 {% endcontent-ref %}
 
+## Launch Video
+
+{% embed url="https://www.youtube.com/watch?v=8M0IdUl7IWg&t=2s" %}
+
 ## License
 
 BoxLang is open source and licensed under the [Apache 2 ](https://www.apache.org/licenses/LICENSE-2.0.html)License.  Copyright and Registered Trademark by Ortus Solutions, Corp.
