@@ -31,16 +31,10 @@ Unzip the module `.zip` file into the location `.boxlang/modules/` located insid
 You can customize the boxlang module directory by changing the `runtime.modulesDirectory` setting in your `config/boxlang.json` file:
 
 {% code title="boxlang.json" %}
-```json
-{
-	"runtime": {
-		// A collection of BoxLang module directories, they must be absolute paths
-		"modulesDirectory": [
-			"${boxlang-home}/modules"
-		],
-		// ...
-	}
-}
 ```
+```
+{% endcode %}
 
-See [Runtime Configuration](/runtime/configuration.md) for more info on using the `boxlang.json` configuration file.
+\`\`\`json { "runtime": { // A collection of BoxLang module directories, they must be absolute paths "modulesDirectory": \[ "${boxlang-home}/modules" ], // ... } } \`\`\`
+
+See [Runtime Configuration](../../boxlang-framework/configuration.md) for more info on using the `boxlang.json` configuration file.

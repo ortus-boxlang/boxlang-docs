@@ -596,20 +596,16 @@
     * [threading](boxlang-language/reference/components/threading/README.md)
       * [Thread](boxlang-language/reference/components/threading/thread.md)
 
-## Runtime
-
-* [Configuration](runtime/configuration.md)
-* [Threads and Resources](runtime/threads-and-resources.md)
-* [Modularity](runtime/modularity.md)
-
 ## BoxLang Framework
 
+* [Runtime Configuration](boxlang-framework/configuration.md)
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [File Handling](boxlang-framework/file-handling.md)
 * [Image Manipulation](boxlang-framework/image-manipulation.md)
 * [HTTP/S Calls](boxlang-framework/http-calls.md)
 * [Sending Emails](boxlang-framework/sending-emails.md)
 * [Asynchronous Programming](boxlang-framework/asynchronous-programming.md)
+* [Modularity](boxlang-framework/modularity.md)
 
 ## Extra Credit
 

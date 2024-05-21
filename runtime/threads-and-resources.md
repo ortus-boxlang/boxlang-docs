@@ -1,2 +1,0 @@
-# Threads and Resources
-
