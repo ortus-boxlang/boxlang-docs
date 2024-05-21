@@ -8,6 +8,8 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 
 **BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, ColdFusion, Python, Ruby, Go, and PHP, to provide developers with a modern and expressive syntax.
 
+<figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
+
 BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with several goals in mind:
 
 1. Be a rapid application development (RAD) scripting language and middleware.
@@ -21,25 +23,63 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
    3. Android/iOS Devices
    4. Web assembly
 7. Compile down to Java ByteCode
-8. Allow backward compatibility with the existing ColdFusion/CFML language
+8. Allow backward compatibility with the existing ColdFusion/CFML language.
 
-Key features of BoxLang
+{% content-ref url="getting-started/overview/" %}
+[overview](getting-started/overview/)
+{% endcontent-ref %}
 
-1. **Dynamic Language**: BoxLang is dynamically typed, meaning you don’t need to declare types if you don’t want to and can do auto-casting and promotions between different types. BoxLang can infer types and also use underlying types for many variables. The language adapts itself to its deployed runtime. It can add/remove/modify methods and properties at runtime. Making it highly flexible and adaptable.
-2. **Low Verbosity Syntax:** BoxLang is a low-verbosity syntax language. It is highly functional, fluent, and human-readable. Our intent with BoxLang is to make it highly expressive and low ceremony.
-3. **Scripting**: BoxLang can be used not only for enterprise modular applications but also for highly reusable and quick scripting on the JVM.
-4. **InvokeDynamic:** BoxLang is built with a solid core foundation based on the InvokeDynamic features of the JVM. This makes the dynamic language extremely fast, predictable, and adaptable.
-5. **Java Interoperability:** BoxLang is 100% interoperable with Java. You can extend and implement Java objects, use annotations, declare classes, import, and more. Thanks to `InvokeDynamic` and our BoxLang `DynamicObject` core, everything in BoxLang is interoperable with Java.
-6. **Pure Functions and Closures:** BoxLang supports the creation and usage of closures as a functional programming aspect. However, it also supports the concept of lambda pure functions that have no surrounding context access. Functions are first-class citizens in BoxLang, you can define them dynamically, pass them around and execute them whenever you want. This allows for BoxLang to be a highly functional language.
-7. **Event Driven Language:** BoxLang has an event bus internally that can be used to extend the capabilities of the language or even your own applications. You can listen to almost every part of the language, parser and even the runtime or collaborate with your own events.
-8. **Modular**: BoxLang has been designed internally to support the concept of BoxLang modules that can enhance every aspect of the language or your applications built with BoxLang. BoxLang is one of the very first languages you can build upon using hierarchical modules. You can add new built-in functions, tags, new/modify functions on existing classes, functionality, AOP aspects, or just listen to events within the language itself.
-9. **Professional Open-Source:** BoxLang is a professional open-source project based on the Apache 2 license. Every aspect of the language is supported by Ortus Solutions and you can get a BoxLang+ subscription to not only get professional support but extended features and modular capabilities.
-10. **Multi-Platform Development:** BoxLang has been designed to run on many different platforms distinctively. This allows you to write adaptive code for any Operating System JVM, a servlet container web server, cloud lambda functions, iOS, Android or even the browser via our web assembly package. BoxLang builds upon it’s language core so it can be deployed on almost any running platform present or future.
-11. **ColdFusion/CFML Compatible:** BoxLang supports a dual parser and compiler that can execute ColdFusion/CFML code natively (maybe more languages later). This means that you can run all your ColdFusion applications within BoxLang natively. We also provide tooling to automatically transpile your ColdFusion code to BoxLang as well.
+## License
+
+BoxLang is open source and licensed under the [Apache 2 ](https://www.apache.org/licenses/LICENSE-2.0.html)License.  Copyright and Registered Trademark by Ortus Solutions, Corp.
+
+## BoxLang Subscriptions
+
+BoxLang can also be enhanced by [purchasing +/++ subscriptions](https://www.boxlang.io/plans) to give you:
+
+* Business Support with SLAs
+* Enhanced builds
+* Custom patches and builds
+* Dedicated Engineer
+* Premium Modules
+* Much More...
+
+{% embed url="https://www.boxlang.io/plans" %}
+
+## Visionary Licenses
+
+A limited number of Visionary Licenses are available for forward-thinking companies and individuals who share our vision.  These subscriptions are first-come first-serve and will power the continued development of the BoxLang eco-system.  Here's what you get:
+
+* One-time purchase, unlimited licenses for 10 years
+* 10 years of premium support
+* Long-term peace of mind
+
+Read more about them here: [https://www.boxlang.io/plans](https://www.boxlang.io/plans)
+
+{% embed url="https://www.boxlang.io/plans" %}
+Visionary Licenses
+{% endembed %}
 
 ## Support Open Source
 
-This book is available free of charge [online](https://boxlang.ortusbooks.com) and commercially as a [downloadable or printed book](https://www.ortussolutions.com/learn/books). Your support goes a long way to help the development of this book, future book endeavors, and all the open-source projects we work on. To support us, please consider becoming our patron at [patreon.com/ortussolutions](https://patreon.com/ortussolutions) for as little as $10/month.
+To support us, please consider becoming our patron at [patreon.com/ortussolutions](https://patreon.com/ortussolutions) for as little as $10/month.
+
+## Discussions & Help
+
+The Ortus Community is how to get help: [https://community.ortussolutions.com/c/boxlang/42](https://community.ortussolutions.com/c/boxlang/42)
+
+{% embed url="https://community.ortussolutions.com/c/boxlang/42" %}
+
+You can also join our Slack Box Team at: [https://boxteam.ortussolutions.com](https://boxteam.ortussolutions.com/)
+
+## Reporting a Bug <a href="#reporting-a-bug" id="reporting-a-bug"></a>
+
+We all make mistakes from time to time :) So why not let us know about it and help us out? We also love 😍 pull requests, so please star us and fork us at [https://github.com/ortus-boxlang/boxlang](https://github.com/ortus-boxlang/boxlang)
+
+### Jira Issue Tracking
+
+* BoxLang: [https://ortussolutions.atlassian.net/browse/BL](https://ortussolutions.atlassian.net/browse/BL)
+* BoxLang IDE: [https://ortussolutions.atlassian.net/browse/BLIDE](https://ortussolutions.atlassian.net/browse/BLIDE)
 
 ## Ortus Solutions, Corp
 
