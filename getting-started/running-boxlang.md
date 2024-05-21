@@ -129,8 +129,8 @@ We also support the following command line args right now.
 * `-c "code here"`—This is used to pass ad-hoc code to execute. Provide code in the next argument, quoted.
 * `--printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
 * `--transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
-* `--home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../boxlang-framework/configuration.md#runtime-home-directory) for more information.
-* `--config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../boxlang-framework/configuration.md) for more information.
+* `--home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](configuration.md#runtime-home-directory) for more information.
+* `--config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](configuration.md) for more information.
 
 So, to give a quiet example of the `-c` flag, here’s running some one-off code.
 

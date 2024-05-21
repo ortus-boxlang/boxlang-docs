@@ -27,10 +27,10 @@
     * [How are BoxLang+ Containers Licensed?](getting-started/overview/frequently-asked-questions/how-are-boxlang+-containers-licensed.md)
   * [Try BoxLang!](getting-started/overview/try-boxlang.md)
 * [Installation](getting-started/installation/README.md)
-  * [Binaries](getting-started/installation/binaries.md)
-  * [Modules](getting-started/installation/modules.md)
   * [Docker](getting-started/installation/docker.md)
+  * [Modules](getting-started/installation/modules.md)
 * [Running BoxLang](getting-started/running-boxlang.md)
+* [Runtime Configuration](getting-started/configuration.md)
 * [IDE Tooling](getting-started/ide-tooling.md)
 
 ## BoxLang Language
@@ -598,7 +598,6 @@
 
 ## BoxLang Framework
 
-* [Runtime Configuration](boxlang-framework/configuration.md)
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [File Handling](boxlang-framework/file-handling.md)
 * [Image Manipulation](boxlang-framework/image-manipulation.md)
