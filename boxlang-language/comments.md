@@ -61,7 +61,7 @@ A multi-line block can affect the metadata of a `class` or `function` if the ope
 
 ## CFCDoc Style Comments
 
-In the BoxLang world, you can write [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html) comments in what we call **CFCDoc** comments. We leverage the [DocBox](https://github.com/Ortus-Solutions/DocBox) library to generate documentation according to object metadata and comments.  Please check out the [annotating your code ](https://docbox.ortusbooks.com/getting-started/annotating-your-code)section in the DocBox documentation to get a feel for how to document your code: [https://docbox.ortusbooks.com/getting-started/annotating-your-code](https://docbox.ortusbooks.com/getting-started/annotating-your-code)
+In the BoxLang world, you can write [JavaDoc](http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html) comments in what we call **CFCDoc** comments. We leverage the [DocBox](https://github.com/Ortus-Solutions/DocBox) library to generate documentation according to object metadata and comments. Please check out the [annotating your code ](https://docbox.ortusbooks.com/getting-started/annotating-your-code)section in the DocBox documentation to get a feel for how to document your code: [https://docbox.ortusbooks.com/getting-started/annotating-your-code](https://docbox.ortusbooks.com/getting-started/annotating-your-code)
 
 {% code title="MyAwesome.bx" %}
 ```java

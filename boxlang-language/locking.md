@@ -69,7 +69,7 @@ I highly discourage the use of scope locks as it throws a huge locking mechanism
 
 ## Deadlocks
 
-![](../../.gitbook/assets/22-2.png)
+![](../.gitbook/assets/22-2.png)
 
 A deadlock is a state in which no request can execute the locked construct. After a deadlock occurs, neither thread can break it, because all requests to the protected section of the lock are blocked until the deadlock can be resolved by a lock time-out.
 

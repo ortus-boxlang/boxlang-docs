@@ -9,7 +9,7 @@ BoxLang became famous in its infancy because it was easy to query databases with
 In modern times, we have many more ways to query the database, and defining data sources can occur not only [in our web application's `Application.bx`](queries.md#defining-datasources-in-applicationbx), but also [globally across the BoxLang runtime via our `boxlang.json` configuration file](queries.md#defining-datasources-in-boxlangjson), not to mention defining datasources at runtime programmatically or [within the query constructs themselves](queries.md#defining-inline-datasources).
 
 {% hint style="info" %}
-See [Application.bx](../../boxlang-framework/applicationbx.md) for more information on how to leverage it for web development.
+See [Application.bx](../boxlang-framework/applicationbx.md) for more information on how to leverage it for web development.
 {% endhint %}
 
 ## What is a Datasource?

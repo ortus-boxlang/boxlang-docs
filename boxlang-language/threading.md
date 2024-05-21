@@ -2,13 +2,13 @@
 
 BoxLang allows you create asynchronous threads so you can execute a body of code in a separate thread. This is achieved via the `bx:thread` tag & the `thread` construct. Threads are independent streams of execution, and multiple threads on a page can execute simultaneously and asynchronously, letting you perform asynchronous processing in BoxLang. BoxLang code within the `bx:thread` tag body executes on a separate thread while the page request thread continues processing without waiting for the `bx:thread` body to finish. You can allow the thread body to continue executing in the background or you can wait for it to finish.
 
-![](../../.gitbook/assets/screen-shot-2019-08-09-at-2.14.00-pm.png)
+![](../.gitbook/assets/screen-shot-2019-08-09-at-2.14.00-pm.png)
 
 {% hint style="danger" %}
 **IMPORTANT:** You cannot spawn a thread from within a thread in BoxLang.
 {% endhint %}
 
-This approach is very very simplistic, if you want more control of your asynchronous programming aspects then we can move into leveraging BoxLang Future's via the `runAsync()` function or parallel Java streams using the [cbStreams](https://www.forgebox.io/view/cbStreams) project. Please see our [Asynchronous Programming ](../../boxlang-framework/asynchronous-programming.md)section for information on advanced asynchronous programming.
+This approach is very very simplistic, if you want more control of your asynchronous programming aspects then we can move into leveraging BoxLang Future's via the `runAsync()` function or parallel Java streams using the [cbStreams](https://www.forgebox.io/view/cbStreams) project. Please see our [Asynchronous Programming ](../boxlang-framework/asynchronous-programming.md)section for information on advanced asynchronous programming.
 
 ### A Fair Warning
 
@@ -207,4 +207,4 @@ thread     name="#thisThreadName#"
 } // end thread
 ```
 
-That's it for threading. Such a simple but powerful construct built right into the BoxLang language. Like mentioned before, if you need much more granular control or advanced ways to do [asynchronous programming](../../boxlang-framework/asynchronous-programming.md), go to our section on running async code fluently.
+That's it for threading. Such a simple but powerful construct built right into the BoxLang language. Like mentioned before, if you need much more granular control or advanced ways to do [asynchronous programming](../boxlang-framework/asynchronous-programming.md), go to our section on running async code fluently.

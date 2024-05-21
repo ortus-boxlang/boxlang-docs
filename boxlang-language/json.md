@@ -60,7 +60,7 @@ person = {
 
 ### Possible Casting Issues
 
-BoxLang may incorrectly serialize some strings if they can be automatically converted into other types, like numbers or booleans. One workaround is to use a class with [cfproperty](https://cfdocs.org/cfproperty) to specify types. Another workaround is to prepend `Chr(2)` to the value and it will be forced to a string, however, that is an unofficial/undocumented workaround.  A more formal workaround is to  call `setMetadata()` as a member function on a `struct` to force a type:
+BoxLang may incorrectly serialize some strings if they can be automatically converted into other types, like numbers or booleans. One workaround is to use a class with [cfproperty](https://cfdocs.org/cfproperty) to specify types. Another workaround is to prepend `Chr(2)` to the value and it will be forced to a string, however, that is an unofficial/undocumented workaround. A more formal workaround is to call `setMetadata()` as a member function on a `struct` to force a type:
 
 ```javascript
 myStruct = { "zip"="00123" };
@@ -70,7 +70,7 @@ writeOutput( serializeJSON(myStruct) );
 
 ## Deserialize
 
-The inverse of serialization is deserialization ([https://cfdocs.org/deserializejson](https://cfdocs.org/deserializejson)).  BoxLang gives you the `deserializeJSON()` function that will take a JSON document and produce native BoxLang data structures for you.
+The inverse of serialization is deserialization ([https://cfdocs.org/deserializejson](https://cfdocs.org/deserializejson)). BoxLang gives you the `deserializeJSON()` function that will take a JSON document and produce native BoxLang data structures for you.
 
 ```javascript
 deserializeJSON(

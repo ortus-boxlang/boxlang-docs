@@ -2,7 +2,7 @@
 
 ## Try/Catch/Finally
 
-The BoxLang language also provides you with a traditional approach to deal with error handling at the code block level.  This is usually a trio of constructs:
+The BoxLang language also provides you with a traditional approach to deal with error handling at the code block level. This is usually a trio of constructs:
 
 * `try`: The try block allows you to demarcate the code to test if it fails or passes ([https://cfdocs.org/cftry](https://cfdocs.org/cftry))
 * `catch` : The catch block is executed when the try block fails ([https://cfdocs.org/cfcatch](https://cfdocs.org/cfcatch))
@@ -24,7 +24,7 @@ try{
 
 ## Catch Types
 
-The catch construct can take an `any` or a custom exception type declared by the BoxLang engine, Java code or custom exceptions within your code.  This is a great way to be able to intercept for specific exception types and address them differently.
+The catch construct can take an `any` or a custom exception type declared by the BoxLang engine, Java code or custom exceptions within your code. This is a great way to be able to intercept for specific exception types and address them differently.
 
 ```java
 try{
@@ -49,13 +49,13 @@ Some of the exception types found in BoxLang are the following
 * `expression`: catches expression exceptions
 * `lock`: catches lock exceptions
 * `custom_type`: catches the specified custom exception type that is defined in a [cfthrow](https://cfdocs.org/cfthrow) tag
-* &#x20;`java.lang.Exception`: catches Java object exceptions
-* &#x20;`searchengine`: catches Verity search engine exceptions
-* &#x20;`any`: catches all exception types
+* `java.lang.Exception`: catches Java object exceptions
+* `searchengine`: catches Verity search engine exceptions
+* `any`: catches all exception types
 
 ### Custom Exception Types
 
-Custom exception types are defined by you the programmer and they can also be intercepted via their defined name.  Let's say that the exception type is "`InvalidInteger`" then you can listen to it like this:
+Custom exception types are defined by you the programmer and they can also be intercepted via their defined name. Let's say that the exception type is "`InvalidInteger`" then you can listen to it like this:
 
 ```java
 try{
@@ -74,7 +74,7 @@ The `throw()` function or tag has several attributes:
 * **Type** : A custom or BoxLang core type
 * **Message** : Describes the exception event
 * **Detail** : A detailed description of the event
-* **errorCode** : A custom error code&#x20;
+* **errorCode** : A custom error code
 * **extendedInfo** : Custom extended information to send in the exception, can be anything
 * **object** : Mutually exclusive with the other attributes, usually another exception object or a raw Java exception type.
 
@@ -90,7 +90,7 @@ try {
 
 ## Rethrowing Exceptions
 
-The `rethrow` or `cfrethrow` construct allows you to well, `rethrow` the active exception by preserving all of the exception information and types.  Usually you use `rethrow` within a catch block after you have done some type of operations on the incoming exception. ([https://cfdocs.org/cfrethrow](https://cfdocs.org/cfrethrow))
+The `rethrow` or `cfrethrow` construct allows you to well, `rethrow` the active exception by preserving all of the exception information and types. Usually you use `rethrow` within a catch block after you have done some type of operations on the incoming exception. ([https://cfdocs.org/cfrethrow](https://cfdocs.org/cfrethrow))
 
 ```java
 try{

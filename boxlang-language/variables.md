@@ -20,7 +20,7 @@ Please note that assignments are evaluated from right to left instead of traditi
 
 Open up the CommandBox Shell and go into CommandBox **REPL** mode by typing `repl`. Whenever you assign a value to a variable, the CommandBox REPL will output or echo the variable for you. Please note that in REPL mode, the termination for a line of code is omitted. A line terminator in BoxLang is the `;`.
 
-![](<../../.gitbook/assets/variables (1).png>)
+![](<../.gitbook/assets/variables (1).png>)
 
 As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), and so much more. There is no need for types or special assignments. The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
 
@@ -108,7 +108,7 @@ As with any programming language, there are specific names you can't use, and so
 
 You can also create a variable with one type and then switch it to another dynamically:
 
-![](<../../.gitbook/assets/flexible-typing (1) (1).png>)
+![](<../.gitbook/assets/flexible-typing (1) (1).png>)
 
 As you can see, the last equality wins! In this case, `a` is now an array.
 

@@ -24,7 +24,7 @@ Also, note that BoxLang will do the auto-casting for you when converting between
 
 ## Numeric Type
 
-Once we start looking at functions/closures and lambdas, you will see that you can also type the incoming arguments and results of functions.  You also won't need to type it with integer or float, just as `numeric:`
+Once we start looking at functions/closures and lambdas, you will see that you can also type the incoming arguments and results of functions. You also won't need to type it with integer or float, just as `numeric:`
 
 ```javascript
 numeric function add( numeric a, numeric b ){
@@ -53,7 +53,7 @@ BoxLang offers tons of mathematical [operators](operators.md#arithmetic-operator
 
 ## Casting/Parsing
 
-BoxLang also has a `toNumeric()` function that you can use to cast a value to a number using different [radixes](https://en.wikipedia.org/wiki/Radix).&#x20;
+BoxLang also has a `toNumeric()` function that you can use to cast a value to a number using different [radixes](https://en.wikipedia.org/wiki/Radix).
 
 ```java
 toNumeric( "29.5" )
@@ -69,7 +69,7 @@ In a [positional numeral system](https://en.wikipedia.org/wiki/Positional\_numer
 
 ## Is it a number?
 
-BoxLang provides the `isNumeric()` function to determine if the passed value can be converted to a numeric value. &#x20;
+BoxLang provides the `isNumeric()` function to determine if the passed value can be converted to a numeric value.
 
 ```java
 isNumeric( 23 ) // yes

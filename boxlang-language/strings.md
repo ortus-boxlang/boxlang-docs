@@ -67,19 +67,19 @@ if( len( message ) ){
 
 ### Trim, LTrim, RTrim
 
-The`Trim` function removes leading and trailing spaces and controls characters from a string.  You can also use the `ltrim()` to do left trimming and `rtrim()` to do right trimming.  [https://cfdocs.org/trim](https://cfdocs.org/trim)
+The`Trim` function removes leading and trailing spaces and controls characters from a string. You can also use the `ltrim()` to do left trimming and `rtrim()` to do right trimming. [https://cfdocs.org/trim](https://cfdocs.org/trim)
 
-For instance, `Trim("Hello ")` would give you back `Hello` (notice the trailing space is removed). Combine this with `Len` for example `Len( Trim( "Hello ") )` and you would get back `5`.  You can also use member functions:
+For instance, `Trim("Hello ")` would give you back `Hello` (notice the trailing space is removed). Combine this with `Len` for example `Len( Trim( "Hello ") )` and you would get back `5`. You can also use member functions:
 
 ```javascript
 a.trim().len()
 ```
 
-### Replace, ReplaceNoCase, REReplace, REReplaceNoCase&#x20;
+### Replace, ReplaceNoCase, REReplace, REReplaceNoCase
 
-The `Replace` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case-sensitive and the scoped default is one.  If you would like the searches to be case-insensitive just use the `noCase()` suffix.  [https://cfdocs.org/replace](https://cfdocs.org/replace)
+The `Replace` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case-sensitive and the scoped default is one. If you would like the searches to be case-insensitive just use the `noCase()` suffix. [https://cfdocs.org/replace](https://cfdocs.org/replace)
 
-For instance, `Replace("Hello", "l", "")` would give you back **Helo** after replacing the _first occurrence of l_, or `Replace("Good Morning!", "o", "e", "All")` would give you **Geed Merning!**&#x20;
+For instance, `Replace("Hello", "l", "")` would give you back **Helo** after replacing the _first occurrence of l_, or `Replace("Good Morning!", "o", "e", "All")` would give you **Geed Merning!**
 
 `REReplace(), REReplaceNoCase()` are the same functions but using regular expressions:
 
@@ -90,7 +90,7 @@ reReplace( "123abc456", "[0-9]+([a-z]+)[0-9]+", "\1" )
 
 ### RemoveChars
 
-`RemoveChars` will remove characters from a string. For instance, `RemoveChars("hello bob", 2, 5)` would give you back **hbob**.  [https://cfdocs.org/removechars](https://cfdocs.org/removechars)
+`RemoveChars` will remove characters from a string. For instance, `RemoveChars("hello bob", 2, 5)` would give you back **hbob**. [https://cfdocs.org/removechars](https://cfdocs.org/removechars)
 
 ### Mid
 
@@ -120,14 +120,14 @@ writeOutput(someJSON);
 
 ## Combining Strings
 
-Combining and interpolating strings is part of any programming language and an integral part. We can do both by building upon some language [operators](operators.md).  If you have two or more strings, you can concatenate them by using the `&` operator:
+Combining and interpolating strings is part of any programming language and an integral part. We can do both by building upon some language [operators](operators.md). If you have two or more strings, you can concatenate them by using the `&` operator:
 
 ```javascript
 name = "Luis";
 a = "Hello " & name & " how are you today?";
 ```
 
-You can also concatenate and assign using the `&=` operator.  Please [check out the operators](operators.md#assignment-operators) section for more on string assignment operators.
+You can also concatenate and assign using the `&=` operator. Please [check out the operators](operators.md#assignment-operators) section for more on string assignment operators.
 
 ## Interpolating Strings
 
@@ -153,7 +153,7 @@ Please note that anything between hashes is interpreted as an expression in BoxL
 
 ## Casting
 
-BoxLang also will try to automatically infer and auto-cast strings for you.  However, there is a built-in function called `toString()` which can be used to try to convert any value to a string.
+BoxLang also will try to automatically infer and auto-cast strings for you. However, there is a built-in function called `toString()` which can be used to try to convert any value to a string.
 
 ```javascript
 s = {

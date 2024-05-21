@@ -55,7 +55,7 @@ All arrays in BoxLang are passed by **passed by reference**. Please remember thi
 
 Let's go ahead and model some code in BoxLang using our fancy REPL tool CommandBox:
 
-![](../../.gitbook/assets/arrays\_in\_code.png)
+![](../.gitbook/assets/arrays\_in\_code.png)
 
 Check it out:
 
