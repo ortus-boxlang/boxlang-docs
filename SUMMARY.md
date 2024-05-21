@@ -25,7 +25,7 @@
     * [Can BoxLang run ColdFusion/CFML code?](getting-started/overview/frequently-asked-questions/can-boxlang-run-coldfusion-cfml-code.md)
     * [How is BoxLang+ Licensed?](getting-started/overview/frequently-asked-questions/how-is-boxlang+-licensed.md)
     * [How are BoxLang+ Containers Licensed?](getting-started/overview/frequently-asked-questions/how-are-boxlang+-containers-licensed.md)
-  * [Try BoxLang!](getting-started/overview/try-boxlang.md)
+* [Try BoxLang!](getting-started/try-boxlang.md)
 * [Installation](getting-started/installation/README.md)
   * [Docker](getting-started/installation/docker.md)
   * [Modules](getting-started/installation/modules.md)

@@ -22,7 +22,7 @@ The quick installer requires the following:
 * Bash or ZSH or SH
 * Any JDK21+
 * `curl, unzip` installed
-* Permissions to copy files to `/usr/local/bin and /usr/local/lib`
+* Permission to copy files to `/usr/local/bin and /usr/local/lib`
 {% endhint %}
 
 Below are the available runtimes:

@@ -1,18 +1,32 @@
+---
+description: A quick overview of the BoxLang Language & Framework
+---
+
 # Overview
 
 ### What is BoxLang?
 
-<figure><img src="../../.gitbook/assets/BoxLang-Runtimes.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption><p>BoxLang</p></figcaption></figure>
 
-### Goals <a href="#goals-3" id="goals-3"></a>
-
-To create the next-generation dynamic language for the JVM. Designed to be modular and multi-runtime.
-
-**BoxLang** is a modern dynamic JVM language that can be deployed on multiple platforms, including all operating systems, web servers, Java application servers, AWS lambda, iOS, Android, web assembly, and more.
+**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes, including all operating systems, web servers, Java application servers, AWS lambda, iOS, Android, web assembly, and more.
 
 BoxLang combines many features from different programming languages, including Java, ColdFusion, Python, Ruby, Go, and PHP, to provide developers with a modern, fluent, and expressive syntax. It has been designed to be a highly modular and dynamic language that takes advantage of all the modern features of the JVM.
 
-Here are some key features of BoxLang
+### Goals <a href="#goals-3" id="goals-3"></a>
+
+* Be dynamic, modular, lightweight and fast
+* Be 100% interoperable with Java
+* Be modern, functional and flluent
+* Modularity at its core
+* Take advantage of the modern JVM
+* TDD/BDD Fully Tested Source
+* Support and adapt to multiple runtimes
+* Multi-Parser design to support running different dynamic languages like CFML (ColdFusion), Groovy and more.
+* Tooling and enhanced IDE
+
+
+
+### Key Features
 
 1. **Dynamic Language**: BoxLang is dynamically typed, meaning you don’t need to declare types if you don’t want to. It can do type inference, auto-casting, and promotions between different types. The language adapts itself to its deployed runtime. It can add/remove/modify methods and properties at runtime, making it highly flexible and adaptable.
 2. **Low Verbosity Syntax:** BoxLang is a low-verbosity syntax language. It is highly functional, fluent, and human-readable. Our intent with BoxLang is to make it highly expressive and low ceremony.
@@ -29,23 +43,21 @@ Here are some key features of BoxLang
 13. **Tooling:** We provide the core language and several tools to help developers do their job easily and efficiently. We provide a Visual Studio Code extension for the language to provide syntax highlighting, debugger, code insight, code documentation, formatting, LSP integration, and more. Our + subscribers get even more tools like enhanced debuggers, ColdFusion/CFML transformers, and more.
 14. **Ecosystem:** Even though BoxLang is a new language, **it** already has an established ecosystem since every Java and ColdFusion/CFML library works with BoxLang. This was our priority when designing BoxLang, and it would automatically be able to integrate and run libraries from the Java and ColdFusion/CFML ecosystems. It ships with [CommandBox](https://www.ortussolutions.com/products/commandbox) as its package manager, server manager, task manager, and REPL tool. Almost any project in [https://central.sonatype.com/ 1](https://central.sonatype.com/) and [https://www.forgebox.io](http://www.forgebox.io/) should work with BoxLang.
 
-### Is it ColdFusion compatible?
+### Is it ColdFusion/CFML compatible?
 
-BoxLang had been designed with dual parsers—one for BoxLang and one for ColdFusion. The CFML parser transpiles to BoxLang at runtime or can be translated to BoxLang via our CLI tools. We try and support as much as we can from CFML. However, we have made very different decisions, and BoxLang is a fresh start for the JVM in a new language. We have introduced a compatibility module to keep old-school CFML working as it is under the BoxLang runtime.
+BoxLang had been designed with multiple parsers—one for BoxLang and one for CFML. The CFML parser transpiles to BoxLang at runtime or can be translated to BoxLang via our CLI tools. We try and support as much as we can from CFML. However, we have made very different decisions, and BoxLang is a fresh start for the JVM in a new language. We have introduced a compatibility module to keep old-school CFML working as it is under the BoxLang runtime.
 
 You will have the choice to continue with CFML-compatible code or come to our new vision with BoxLang. We will support both indefinitely.
 
-### Is BoxLang© open-source? <a href="#is-boxlang-open-source-5" id="is-boxlang-open-source-5"></a>
+{% hint style="success" %}
+We are also in the planning phases for building a [Groovy](https://www.groovy-lang.org/) parser as well.
+{% endhint %}
 
-BoxLang© is a professional open-source project based on the Apache 2 license. Ortus Solutions supports every aspect of the language, and you can get a BoxLang+ subscription for professional support, extended features, and modular capabilities. You can use the BoxLang open-source edition to create and deploy commercial software without paying a single cent. We love open-source; we breathe open-source. We also know that it comes with responsibilities. Your support matters to us and the project. That’s why we offer a BoxLang+ subscription so you can support further language development. You can also become a Patreon and partner with us so we can ALWAYS keep the language accessible and open-source.
+### Release Video
 
-### What are BoxLang + Subscriptions <a href="#what-are-boxlang-subscriptions-6" id="what-are-boxlang-subscriptions-6"></a>
+We launched an open beta of BoxLang at our developer conference, [Into The Box.](https://www.intothebox.org/)
 
-BoxLang+ is our subscription professional license for the language and its runtimes (web, android, web assembly, etc). This gives you world-class support, customizable SLAs (Service Level Agreements), custom patches, security notifications, enhanced features, modules, and more. We have a transparent and no-fuzz licensing model no matter which runtime you use or where you deploy.
-
-We have the **+ subscription** and the **+ premium** levels.
-
-The [Frequently Asked Questions](frequently-asked-questions/) has more information regarding [BoxLang](frequently-asked-questions/what-is-boxlang-c.md), [BoxLang+](frequently-asked-questions/what-is-boxlang+.md), [licensing information](frequently-asked-questions/how-is-boxlang+-licensed.md), [support options](frequently-asked-questions/what-type-of-support-is-available-for-boxlang-c.md), and more.
+{% embed url="https://www.youtube.com/watch?v=8M0IdUl7IWg&t=1s" %}
 
 
 
