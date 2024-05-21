@@ -68,6 +68,7 @@
   * [Abstract Constructs](boxlang-language/classes/abstract-constructs.md)
   * [Interfaces](boxlang-language/classes/interfaces.md)
 * [Java Interop](boxlang-language/java-integration.md)
+* [API Docs](boxlang-language/api-docs.md)
 * [Reference](boxlang-language/reference/README.md)
   * [Lexical Elements](boxlang-language/reference/lexical-elements/README.md)
     * [Scopes and Constants](boxlang-language/reference/lexical-elements/scopes.md)
