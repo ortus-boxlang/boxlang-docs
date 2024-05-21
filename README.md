@@ -85,6 +85,14 @@ We all make mistakes from time to time :) So why not let us know about it and he
 * BoxLang: [https://ortussolutions.atlassian.net/browse/BL](https://ortussolutions.atlassian.net/browse/BL)
 * BoxLang IDE: [https://ortussolutions.atlassian.net/browse/BLIDE](https://ortussolutions.atlassian.net/browse/BLIDE)
 
+## Resources
+
+* Professional Support: [https://www.ortussolutions.com/services/support](https://www.ortussolutions.com/services/support)
+* GitHub Org: [https://github.com/ortus-boxlang](https://github.com/ortus-boxlang)
+* Twitter: [https://x.com/TryBoxLang](https://x.com/TryBoxLang)
+* FaceBook: [https://www.facebook.com/tryboxlang/](https://www.facebook.com/tryboxlang/)
+* LinkedIn: [https://www.linkedin.com/company/tryboxlang](https://www.linkedin.com/company/tryboxlang)
+
 ## Ortus Solutions, Corp
 
 ![](.gitbook/assets/ortus-medium.jpg)

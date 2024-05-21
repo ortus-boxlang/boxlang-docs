@@ -8,7 +8,7 @@ Interested in playing with BoxLang? You can test the syntax in a BoxLang interpr
 
 
 
-<figure><img src="try-boxlang.png" alt=""><figcaption><p>A simple script with functions and string manipulation at try.boxlang.io</p></figcaption></figure>
+<figure><img src="../overview/try-boxlang.png" alt=""><figcaption><p>A simple script with functions and string manipulation at try.boxlang.io</p></figcaption></figure>
 
 {% hint style="success" %}
 Our BoxLang playground was built with our AWS Lambda runtime microservice and our BoxLang Docker Containers.

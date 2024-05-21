@@ -66,39 +66,39 @@ In your test project folder you can now right-click on any BoxLang source file a
     Using the default theme `Dark+`\
 
 
-    <figure><img src="../.gitbook/assets/Syntax-Highlighting.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/Syntax-Highlighting.png" alt=""><figcaption></figcaption></figure>
 2.  **Signature Help**\
     Automatically triggers within signature of a function or can be manually triggered. This currently does not work for member functions. It is sometimes unable to work within a string.\
     Win/Linux: `Ctrl`+`Shift`+`Space`; Mac: `Cmd`+`Shift`+`Space`\
 
 
-    <figure><img src="../.gitbook/assets/Signature-Help.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/Signature-Help.png" alt=""><figcaption></figcaption></figure>
 3.  **Hover Documentation**\
     Displays documentation for certain entities. Currently applicable to CFML global functions, CFML global tags/attributes, user-defined functions, HTML tags, and CSS properties. Does not always consider context, so for example it may also incorrectly trigger on SQL or JavaScript functions with the same name.\
     Win/Linux: `Ctrl`+`K` `Ctrl`+`I`; Mac: `Cmd`+`K` `Cmd`+`I`\
 
 
-    <figure><img src="../.gitbook/assets/Hover-Documentation.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/Hover-Documentation.png" alt=""><figcaption></figcaption></figure>
 4.  **Document Symbols**\
     Search CFML symbols within a document. Also used for outline and breadcrumbs.\
     Win/Linux: `Ctrl`+`Shift`+`O`; Mac: `Cmd`+`Shift`+`O`\
 
 
-    <figure><img src="../.gitbook/assets/Document-Symbols.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/Document-Symbols.png" alt=""><figcaption></figcaption></figure>
 5.  **Workspace Symbols**\
     Search symbols within the workspace. Limited to components and their function declarations.\
     Win/Linux: `Ctrl`+`T`; Mac: `Cmd`+`T`
 
 
 
-    <figure><img src="../.gitbook/assets/Workspace-Symbols.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/Workspace-Symbols.png" alt=""><figcaption></figcaption></figure>
 6.  **Completion Suggestions**\
     Suggestions for global functions, global tags and attributes, enumerated values, user functions, keywords, scopes, component properties, variables, component dot-paths, docblocks, HTML tags and attributes, and CSS properties. Does not always consider context, so it may trigger inappropriately.\
     Win/Linux: `Ctrl`+`Space`; Mac: `Cmd`+`Space`
 
 
 
-    <figure><img src="../.gitbook/assets/Completion-Suggestions.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/Completion-Suggestions.png" alt=""><figcaption></figcaption></figure>
 7.  **Definition**\
     Provides a link to the definition of a symbol. Currently only for object creation, function usage, function return types, argument types, property types, component extends, function arguments, function local variables, template variables, and application variables.\
     _Go to Definition:_ Win/Linux: `F12`/`Ctrl`+click; Mac: `F12`\
@@ -107,7 +107,7 @@ In your test project folder you can now right-click on any BoxLang source file a
 
 
 
-    <figure><img src="../.gitbook/assets/Definition.png" alt=""><figcaption></figcaption></figure>
+    <figure><img src="../../.gitbook/assets/Definition.png" alt=""><figcaption></figcaption></figure>
 8. **Type Definition**\
    Provides a link to the definition of the type for a symbol. This only applies to user-defined types within the same workspace.\
    _No default shortcuts_

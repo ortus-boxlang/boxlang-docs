@@ -97,8 +97,8 @@ This is the servlet edition of BoxLang that you can deploy on any servlet contai
 
 </details>
 
-{% content-ref url="docker.md" %}
-[docker.md](docker.md)
+{% content-ref url="../running-boxlang/docker.md" %}
+[docker.md](../running-boxlang/docker.md)
 {% endcontent-ref %}
 
 {% hint style="success" %}

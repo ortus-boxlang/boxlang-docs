@@ -1,6 +1,12 @@
+---
+description: BoxLang and the Multiverse!
+---
+
 # Running BoxLang
 
-We don’t have installers built yet, so for now, it’s just a single jar that you run via Java directly.
+{% hint style="info" %}
+Please check out our [installation page ](../installation/)to make sure you install the right runtime you want to deploy on.
+{% endhint %}
 
 BoxLang doesn’t “unpack” anything to your hard drive like you may be used to Lucee or CF doing. It will use your Java temp dir to write out class files for disk caching and JSON and Java files for debugging. If you are unsure where Java’s temp dir is, run
 
@@ -129,8 +135,8 @@ We also support the following command line args right now.
 * `-c "code here"`—This is used to pass ad-hoc code to execute. Provide code in the next argument, quoted.
 * `--printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
 * `--transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
-* `--home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](configuration.md#runtime-home-directory) for more information.
-* `--config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](configuration.md) for more information.
+* `--home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
+* `--config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
 
 So, to give a quiet example of the `-c` flag, here’s running some one-off code.
 
