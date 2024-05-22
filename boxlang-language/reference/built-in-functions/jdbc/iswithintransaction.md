@@ -18,8 +18,8 @@ IsWithinTransaction()
 ```
 
 ## Related
-  * [IsInTransaction](IsInTransaction.md)
-  * [QueryExecute](QueryExecute.md)
-  * [TransactionCommit](TransactionCommit.md)
-  * [TransactionRollback](TransactionRollback.md)
-  * [TransactionSetSavepoint](TransactionSetSavepoint.md)
+  * [IsInTransaction](boxlang-language/reference/built-in-functions/IsInTransaction.md)
+  * [QueryExecute](boxlang-language/reference/built-in-functions/QueryExecute.md)
+  * [TransactionCommit](boxlang-language/reference/built-in-functions/TransactionCommit.md)
+  * [TransactionRollback](boxlang-language/reference/built-in-functions/TransactionRollback.md)
+  * [TransactionSetSavepoint](boxlang-language/reference/built-in-functions/TransactionSetSavepoint.md)

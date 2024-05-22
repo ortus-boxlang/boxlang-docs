@@ -24,12 +24,12 @@ serializeJSON(var=[any], queryFormat=[string], useSecureJSONPrefix=[boolean], us
 ```
 
 ## Related
-  * [DataNavigate](DataNavigate.md)
-  * [JSONDeserialize](JSONDeserialize.md)
-  * [JSONSerialize](JSONSerialize.md)
-  * [ParseNumber](ParseNumber.md)
-  * [ToBase64](ToBase64.md)
-  * [ToBinary](ToBinary.md)
-  * [ToNumeric](ToNumeric.md)
-  * [ToScript](ToScript.md)
-  * [ToString](ToString.md)
+  * [DataNavigate](boxlang-language/reference/built-in-functions/DataNavigate.md)
+  * [JSONDeserialize](boxlang-language/reference/built-in-functions/JSONDeserialize.md)
+  * [JSONSerialize](boxlang-language/reference/built-in-functions/JSONSerialize.md)
+  * [ParseNumber](boxlang-language/reference/built-in-functions/ParseNumber.md)
+  * [ToBase64](boxlang-language/reference/built-in-functions/ToBase64.md)
+  * [ToBinary](boxlang-language/reference/built-in-functions/ToBinary.md)
+  * [ToNumeric](boxlang-language/reference/built-in-functions/ToNumeric.md)
+  * [ToScript](boxlang-language/reference/built-in-functions/ToScript.md)
+  * [ToString](boxlang-language/reference/built-in-functions/ToString.md)

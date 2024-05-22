@@ -21,8 +21,8 @@ GetMetaData(object=[any])
 ```
 
 ## Related
-  * [ArrayLen](ArrayLen.md)
-  * [Len](Len.md)
-  * [NullValue](NullValue.md)
-  * [StringLen](StringLen.md)
-  * [StructCount](StructCount.md)
+  * [ArrayLen](boxlang-language/reference/built-in-functions/ArrayLen.md)
+  * [Len](boxlang-language/reference/built-in-functions/Len.md)
+  * [NullValue](boxlang-language/reference/built-in-functions/NullValue.md)
+  * [StringLen](boxlang-language/reference/built-in-functions/StringLen.md)
+  * [StructCount](boxlang-language/reference/built-in-functions/StructCount.md)

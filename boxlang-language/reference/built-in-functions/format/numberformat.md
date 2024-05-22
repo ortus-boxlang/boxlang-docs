@@ -22,6 +22,6 @@ NumberFormat(number=[any], mask=[string])
 ```
 
 ## Related
-  * [BooleanFormat](BooleanFormat.md)
-  * [DecimalFormat](DecimalFormat.md)
-  * [DollarFormat](DollarFormat.md)
+  * [BooleanFormat](boxlang-language/reference/built-in-functions/BooleanFormat.md)
+  * [DecimalFormat](boxlang-language/reference/built-in-functions/DecimalFormat.md)
+  * [DollarFormat](boxlang-language/reference/built-in-functions/DollarFormat.md)

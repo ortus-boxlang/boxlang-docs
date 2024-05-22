@@ -25,5 +25,5 @@ Hmac(input=[any], key=[string], algorithm=[string], encoding=[string], numIterat
 ```
 
 ## Related
-  * [Hash](Hash.md)
-  * [Hash40](Hash40.md)
+  * [Hash](boxlang-language/reference/built-in-functions/Hash.md)
+  * [Hash40](boxlang-language/reference/built-in-functions/Hash40.md)

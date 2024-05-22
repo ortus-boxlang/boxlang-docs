@@ -21,8 +21,8 @@ TransactionRollback(savepoint=[string])
 ```
 
 ## Related
-  * [IsInTransaction](IsInTransaction.md)
-  * [IsWithinTransaction](IsWithinTransaction.md)
-  * [QueryExecute](QueryExecute.md)
-  * [TransactionCommit](TransactionCommit.md)
-  * [TransactionSetSavepoint](TransactionSetSavepoint.md)
+  * [IsInTransaction](boxlang-language/reference/built-in-functions/IsInTransaction.md)
+  * [IsWithinTransaction](boxlang-language/reference/built-in-functions/IsWithinTransaction.md)
+  * [QueryExecute](boxlang-language/reference/built-in-functions/QueryExecute.md)
+  * [TransactionCommit](boxlang-language/reference/built-in-functions/TransactionCommit.md)
+  * [TransactionSetSavepoint](boxlang-language/reference/built-in-functions/TransactionSetSavepoint.md)
