@@ -4,42 +4,42 @@ description: BoxLang and the Multiverse!
 
 # Running BoxLang
 
-{% hint style="info" %}
-Please check out our [installation page ](../installation/)to make sure you install the right runtime you want to deploy on.
+{% hint style="warning" %}
+Please check out our [installation page ](../installation/)to make sure you install the right runtime you want to deploy on.  We are assuming you have it installed and `boxlang` and `boxlang-miniserver` are in your machine's path.
 {% endhint %}
 
-BoxLang doesn’t “unpack” anything to your hard drive like you may be used to Lucee or CF doing. It will use your Java temp dir to write out class files for disk caching and JSON and Java files for debugging. If you are unsure where Java’s temp dir is, run
+{% hint style="info" %}
+The script for \*nix/Mac is `boxlang`
 
-```lua
-java -XshowSettings:properties --version
+The script for Windows is `boxlang.bat`
+{% endhint %}
+
+### BoxLang Home <a href="#start-the-repl-8" id="start-the-repl-8"></a>
+
+By default, once you execute a `boxlang` binary it will look for a `BOXLANG_HOME` environment variable so it can be used as the home for the OS runtime.  If you don't provide one, then by default it will use the currently logged-in user's home folder + `.boxlang`
+
+```
+/Users/myuser/.boxlang
+c:/Windows/users/myuser/.boxlang
 ```
 
-and look in the output for the `java.io.tmpdir` line. When updating to a newer BoxLang jar, you may need to manually wipe the contents of this folder or just run it with the `--debug` flag and it will auto-wipe.
+This is important because inside of the home folder, you can have several folders and files by convention that will be used for the runtime execution.
 
-### Requirements <a href="#requirements-7" id="requirements-7"></a>
+<table><thead><tr><th width="177">Folder/FIle</th><th>Description</th></tr></thead><tbody><tr><td><code>/classes</code></td><td>Where all the compiled classes will be stored</td></tr><tr><td><code>/lib</code></td><td>You can place any *.jar files here, and they will be loaded into the runtime at startup. This is a great place to put third-party jars that will be available at runtime.</td></tr><tr><td><code>/logs</code></td><td>All log files will be stored here</td></tr><tr><td><code>/modules</code></td><td>Here is where the BoxLang modules are installed and will be available for the entire operating system binary.</td></tr><tr><td><code>boxlang.json</code></td><td>The <a href="../configuration.md">runtime configuration file</a>.  Here is where you can configure all the settings, caches, datasources, compiler information, and so much more.</td></tr></tbody></table>
 
-BoxLang is explicitly compiled for Java 17+ right now (it will be 21 soon as our standard). We’re exploring how far back to support, but please download Java 17+ for now. BoxLang is currently compiling Java source on the fly, so it requires a JDK, not a JRE, to run! Eventually, we’ll be generating bytecode directly, but for now, we have a dependency on the JDK’s Java Compiler classes.
+### Start the REPL  <a href="#start-the-repl-8" id="start-the-repl-8"></a>
 
-You should be able to grab the Java 17 JDK for your OS and CPU arch here: [Download Java 17 JDK 5](https://adoptium.net/temurin/releases/?package=jdk\&version=17)
-
-You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Download Java 21 JDK 4](https://adoptium.net/temurin/releases/?package=jdk\&version=21)
-
-You don’t necessarily have to set it as your `java_home` since, for now, the commands I’ll show you can allow you to specify a full path to the `java` binary if you want.
-
-### Start the REPL <a href="#start-the-repl-8" id="start-the-repl-8"></a>
-
-The first thing you can do is start up the BoxLang REPL. Run the jar directly with no arguments for this
+The first thing you can do is start up the BoxLang REPL.
 
 ```bash
-# Execute directly
-java -jar boxlang-1.0.0-all.jar
+# Execute our scripts
+$ boxlang
 
-# Using the distribution version you can execute the bash or bat script
-bin/boxlang.bat
-bin/boxlang
+# Execute directly the jar
+java -jar boxlang-1.0.0-all.jar
 ```
 
-Feel free to specify a full path to the `java` binary if the one in your default path does not point to your Java JDK.
+Feel free to specify a full path to the `Java` binary if the one in your default path does not point to your Java JDK.
 
 ```bash
 /full/path/to/bin/java -jar boxlang-1.0.0-all.jar
@@ -80,80 +80,107 @@ BoxLang> ["luis","gavin","jorge"].map( name->name.ucFirst() )
 
 ```
 
-Press Ctrl-C to exit the REPL.\
-Not all BIFs are supported in the language. We’ll get some documentation what is and isn’t supported soon.
+{% hint style="info" %}
+Press Ctrl-C to exit the REPL.
+{% endhint %}
 
-### Execute a file <a href="#execute-a-file-9" id="execute-a-file-9"></a>
+Please note that the REPL remembers state, so you can use the variables you declare and build a mini-program with it.
 
-We’re focusing on CF compat at the moment, so the BoxLang parser isn’t finsihed yet. Therefore, I recommend using CF extensions for now (`.cfm`, `.cfs`). You can use BL extensions (`.bxm`, `.bxs`) but since those parsers aren’t finished yet, they will just use the CF parser for now.
+### Execute a File <a href="#execute-a-file-9" id="execute-a-file-9"></a>
+
+You can also use the `boxlang` binary to execute BoxLang or even CFML code.  You can pass a second argument to the binary and it can be a relative (to the current directory you are on) or an absolute path to a file.
+
+{% hint style="info" %}
+Allowed files are:
+
+* `*.bx -` A BoxLang class with a `main( args=[] )` method
+* \*.bxs -  A BoxLang script file
+* \*.bxm - A Boxlang markup template file
+* \*.cfs - A CFML script file
+* \*.cfm - A CFML markup template file
+{% endhint %}
 
 Modify the same command you run above to execute the REPL but add a file path to the end. It can be absolute or relative to the current working directory.
 
 ```bash
-java -jar boxlang-1.0.0-all.jar test.cfm
-bin/boxlang test.cfm
-bin/boxlang.bat test.cfm
+# binary
+boxlang task.bx
+boxlang myscript.bxs
+boxlang mytemplate.bxm
+
+# jar
+java -jar boxlang-1.0.0-all.jar task.bx
+
 ```
 
 or
 
 ```bash
-java -jar boxlang-1.0.0-all.jar /full/path/to/test.cfm
-bin/boxlang /full/path/to/test.cfm
-bin/boxlang.bat /full/path/to/test.cfm
+# binary
+boxlang /full/path/to/test.bxs
+boxlang /full/path/to/Task.bx
+
+# jar
+java -jar boxlang-1.0.0-all.jar /full/path/to/test.bxs
+
 ```
 
-Any output written to the buffer with `echo()`, or `writeOutput()` will be output in the console as well as any text printed to the console with `println()` or `systemOutput()`. You’ll have to scroll past the console logging for now. We’ll get that moved to a file eventually.
+Any output written to the buffer with `echo()`, or `writeOutput()` will be output in the console as well as any text printed to the console with `println() or print()`.   So with the example file `test.bxs` containing
 
-So with the example file `test.cfm` containing
-
-```html
-<cfoutput>
-	Time is: #now()#
-</cfoutput>
+```groovy
+println( "Time is #now()#" )
 ```
 
 I get the output:
 
 ```python
-C:\>java -jar boxlang-1.0.0-all.jar test.cfm
-2024-03-13 02:12:03,075 BoxRuntime [INFO]  + Starting up BoxLang Runtime
-... snip ...
-        Time is: {ts '2024-03-13 02:12:04'}
-... snip ...
-2024-03-13 02:12:04,588 BoxRuntime [INFO]  + BoxLang Runtime has been shutdown
+╰─ boxlang test.bxs
+Time is {ts '2024-05-22 22:09:56'}
 ```
 
-There may be a short delay on the first run while the code is JIT compiled, but it should run very fast on subsequent runs, which includes loading up the entire runtime and shutting it down again!
+Hooray!  You have executed your first script using BoxLang.  Now let's build a class with a `main( args=[] )` convention.  This is simliar to Java or Groovy.
 
-### Other Command line args <a href="#other-command-line-args-10" id="other-command-line-args-10"></a>
+```groovy
+class{
 
-We also support the following command line args right now.
+        function main( args=[] ){
 
-* `--debug` - Enable debug mode (moar debug logs!)
-* `--debugger` - Enable debugger (need more info)
-* `-c "code here"`—This is used to pass ad-hoc code to execute. Provide code in the next argument, quoted.
-* `--printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
-* `--transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
-* `--home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
-* `--config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
+                println( "Task called with " & arguments.toString() )
 
-So, to give a quiet example of the `-c` flag, here’s running some one-off code.
+        }
+
+}
+```
+
+You can now call it with zero or more arguments!
 
 ```bash
-java -jar boxlang-1.0.0-all.jar -c "2+2"
-bin/boxlang -c "2+2"
-bin/boxlang.bat -c "2+2"
+╰─ boxlang Task.bx
+Task called with {ARGS=[]}
+
+╰─ boxlang Task.bx boxlang rocks
+Task called with {ARGS=[boxlang, rocks]}
 ```
 
-This assumes script, not tags.
+### One Off Code Execution
+
+So, to give a quiet example of the `-c` flag here’s running some one-off code.
+
+```bash
+boxlang -c "2+2"
+```
+
+{% hint style="warning" %}
+This assumes script, not templating tags.
+{% endhint %}
 
 ### Piping code <a href="#piping-code-11" id="piping-code-11"></a>
 
-You can also pipe statements into the BoxLang jar for execution as well. This assumes script, not tags.
+You can also pipe statements into the BoxLang binary for execution as well. This assumes script, not tags.
 
 ```bash
 echo "2+2" | java -jar boxlang-1.0.0-all.jar
+echo "2+2" | boxlang
 ```
 
 or
@@ -161,47 +188,35 @@ or
 ```bash
 # on *nix
 cat test.cfs | java -jar boxlang-1.0.0-all.jar
+cat test.cfs | boxlang
 
 # on Windows
 type test.cfs | java -jar boxlang-1.0.0-all.jar
+type test.cfs | boxlang.bat
 ```
 
-### Starting a web server <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
+### Other Command Line Arguments <a href="#other-command-line-args-10" id="other-command-line-args-10"></a>
 
-The web server is currently bundled in the core, but it will soon be broken into a separate project, so the BoxLang Core has no web knowledge. There is no servlet container at all; the web server is just a simple proof of concept using a pure Java Undertow server. Our separate main Java class handles this, so the call will look a little different.
+We also support the following command line args right now.
 
-Go to a folder that you want to be the web root and run:
+* `-c "code here"`—This is used to pass ad-hoc code to execute. Provide code in the next argument, quoted.
+* `--config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
+* `--debug` - Enable debug mode (more debug logs!)
+* `--home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
+* `--printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
+* `--transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
+* `--version` - Output  the current runtime's version information
+* `path` - The template, class, or script to execute
+* `module:{name}` - The executable module to execute.  This will execute a Modules' `ModuleConfig.main()` method.
 
-```undefined
-java -jar boxlang-1.0.0-web.jar
-```
+### Environment Variables
 
-This will
+The `boxlang` binary will also scan for several environment variables as overrides to the execution process.
 
-* Use the current working dir as the web root
-* Bind to `localhost:8080`
-* Configures a VERY simple web server with some default welcome files and any CF or BoxLang extensions will get processed by BoxLang.
-
-The BoxLang Core knows nothing of web or HTTP, so the `form`, `url`, `cookie`, and `cgi` scopes will only exist when running the BoxLang web server (but not in the REPL, etc).
-
-#### Web server args <a href="#web-server-args-13" id="web-server-args-13"></a>
-
-There are a few JVM args you can pass to the web server right now:
-
-* `--port 80` - to change the port. You cannot change the host nor the protocol (HTTP) right now
-* `--webroot /var/www` - to specify the web root. This can be absolute or relative to the working dir.
-* `--debug` - to enable debug mode
-
-```bash
-java -jar boxlang-1.0.0-web.jar --port 80 --webroot /var/www
-```
-
-### Using 3rd party jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
-
-If you want to test 3rd part libs with the web server, you’ll need to use a different syntax that uses the `-cp` (classpath) JVM arg and specifies both the boxlang jar AND a semi-colon delimited list of the jars you want to use. It’s a little annoying, but this is how java works. Soon we’ll have BL running inside of CommandBox and this will all go away.
-
-```javascript
-java -cp boxlang-1.0.0-all.jar;/path/to/my.jar;/path/to/another.jar ortus.boxlang.web.Server
-```
-
-\\
+| Env Variable                  | Purpose                      |
+| ----------------------------- | ---------------------------- |
+| `BOXLANG_CONFIG` = PATH       | Override the `boxlang.json`  |
+| `BOXLANG_DEBUG = BOOLEAN`     | Enable or disable debug mode |
+| `BOXLANG_HOME = DIRECTORY`    | Override the HOME directory  |
+| `BOXLANG_PRINTAST = BOOLEAN`  | Print the AST                |
+| `BOXLANG_TRANSPILE = BOOLEAN` | Tranpile the code            |

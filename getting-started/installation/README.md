@@ -8,6 +8,16 @@ description: Getting started with BoxLang is easy!  Choose your path wisely!
 PLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
 {% endhint %}
 
+### Requirements <a href="#requirements-7" id="requirements-7"></a>
+
+BoxLang is explicitly compiled for Java 17+ right now (it will be 21 soon as our standard). We’re exploring how far back to support, but please download Java 17+ for now.&#x20;
+
+BoxLang is currently compiling Java source on the fly, so it requires a JDK, not a JRE, to run! Eventually, we’ll be generating bytecode directly, but for now, we have a dependency on the JDK’s Java Compiler classes.
+
+You should be able to grab the Java 17 JDK for your OS and CPU arch here: [Download Java 17 JDK 5](https://adoptium.net/temurin/releases/?package=jdk\&version=17)
+
+You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Download Java 21 JDK 4](https://adoptium.net/temurin/releases/?package=jdk\&version=21)
+
 ### **Runtime Binaries**
 
 BoxLang has been designed to run on multiple runtimes and adapt itself and the code you write to enhance itself.   If you are on Mac or Unix, you can use our handy quick installer by running the following command:
