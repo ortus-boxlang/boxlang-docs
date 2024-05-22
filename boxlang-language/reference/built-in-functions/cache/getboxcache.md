@@ -21,6 +21,6 @@ GetBoxCache(cacheName=[string])
 ```
 
 ## Related
-  * [GetBoxCacheFilter](boxlang-language/reference/built-in-functions/GetBoxCacheFilter.md)
-  * [GetBoxCacheNames](boxlang-language/reference/built-in-functions/GetBoxCacheNames.md)
-  * [GetBoxCacheProviders](boxlang-language/reference/built-in-functions/GetBoxCacheProviders.md)
+  * [GetBoxCacheFilter](./GetBoxCacheFilter.md)
+  * [GetBoxCacheNames](./GetBoxCacheNames.md)
+  * [GetBoxCacheProviders](./GetBoxCacheProviders.md)

@@ -22,6 +22,6 @@ GetBoxCacheFilter(filter=[string], useRegex=[boolean])
 ```
 
 ## Related
-  * [GetBoxCache](boxlang-language/reference/built-in-functions/GetBoxCache.md)
-  * [GetBoxCacheNames](boxlang-language/reference/built-in-functions/GetBoxCacheNames.md)
-  * [GetBoxCacheProviders](boxlang-language/reference/built-in-functions/GetBoxCacheProviders.md)
+  * [GetBoxCache](./GetBoxCache.md)
+  * [GetBoxCacheNames](./GetBoxCacheNames.md)
+  * [GetBoxCacheProviders](./GetBoxCacheProviders.md)

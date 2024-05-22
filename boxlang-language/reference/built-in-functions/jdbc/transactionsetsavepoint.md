@@ -21,8 +21,8 @@ TransactionSetSavepoint(savepoint=[string])
 ```
 
 ## Related
-  * [IsInTransaction](boxlang-language/reference/built-in-functions/IsInTransaction.md)
-  * [IsWithinTransaction](boxlang-language/reference/built-in-functions/IsWithinTransaction.md)
-  * [QueryExecute](boxlang-language/reference/built-in-functions/QueryExecute.md)
-  * [TransactionCommit](boxlang-language/reference/built-in-functions/TransactionCommit.md)
-  * [TransactionRollback](boxlang-language/reference/built-in-functions/TransactionRollback.md)
+  * [IsInTransaction](./IsInTransaction.md)
+  * [IsWithinTransaction](./IsWithinTransaction.md)
+  * [QueryExecute](./QueryExecute.md)
+  * [TransactionCommit](./TransactionCommit.md)
+  * [TransactionRollback](./TransactionRollback.md)

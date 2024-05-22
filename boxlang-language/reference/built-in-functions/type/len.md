@@ -21,8 +21,8 @@ Len(value=[any])
 ```
 
 ## Related
-  * [ArrayLen](boxlang-language/reference/built-in-functions/ArrayLen.md)
-  * [GetMetaData](boxlang-language/reference/built-in-functions/GetMetaData.md)
-  * [NullValue](boxlang-language/reference/built-in-functions/NullValue.md)
-  * [StringLen](boxlang-language/reference/built-in-functions/StringLen.md)
-  * [StructCount](boxlang-language/reference/built-in-functions/StructCount.md)
+  * [ArrayLen](./ArrayLen.md)
+  * [GetMetaData](./GetMetaData.md)
+  * [NullValue](./NullValue.md)
+  * [StringLen](./StringLen.md)
+  * [StructCount](./StructCount.md)

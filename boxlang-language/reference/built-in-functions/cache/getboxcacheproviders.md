@@ -18,6 +18,6 @@ GetBoxCacheProviders()
 ```
 
 ## Related
-  * [GetBoxCache](boxlang-language/reference/built-in-functions/GetBoxCache.md)
-  * [GetBoxCacheFilter](boxlang-language/reference/built-in-functions/GetBoxCacheFilter.md)
-  * [GetBoxCacheNames](boxlang-language/reference/built-in-functions/GetBoxCacheNames.md)
+  * [GetBoxCache](./GetBoxCache.md)
+  * [GetBoxCacheFilter](./GetBoxCacheFilter.md)
+  * [GetBoxCacheNames](./GetBoxCacheNames.md)

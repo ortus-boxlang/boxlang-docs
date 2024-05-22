@@ -20,4 +20,4 @@ BoxLangBIFProxy()
 
 ## Related
 
-* [stringModernize](boxlang-language/reference/built-in-functions/../../../../language/reference/built-in-functions/bifs/stringModernize.md)
+* [stringModernize](./../../../../language/reference/built-in-functions/bifs/stringModernize.md)

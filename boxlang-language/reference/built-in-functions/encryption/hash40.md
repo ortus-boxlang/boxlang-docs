@@ -24,5 +24,5 @@ Hash40(input=[any], algorithm=[string], encoding=[string], numIterations=[intege
 ```
 
 ## Related
-  * [Hash](boxlang-language/reference/built-in-functions/Hash.md)
-  * [Hmac](boxlang-language/reference/built-in-functions/Hmac.md)
+  * [Hash](./Hash.md)
+  * [Hmac](./Hmac.md)
