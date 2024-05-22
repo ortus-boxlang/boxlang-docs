@@ -1,2 +1,2 @@
-# Struct
+# struct
 
