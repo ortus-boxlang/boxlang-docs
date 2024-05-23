@@ -46,7 +46,7 @@ Below are the available runtimes:
 
 <details>
 
-<summary><img src="../../.gitbook/assets/image (2).png" alt=""></summary>
+<summary><img src="../../.gitbook/assets/image (2) (1).png" alt=""></summary>
 
 This installation is for any operating system (Windows, Unix, Mac OS)
 
@@ -59,7 +59,7 @@ This installation is for any operating system (Windows, Unix, Mac OS)
 
 <details>
 
-<summary><img src="../../.gitbook/assets/image (3).png" alt=""></summary>
+<summary><img src="../../.gitbook/assets/image (3) (1).png" alt=""></summary>
 
 The BoxLang MiniServer includes the BoxLang OS runtime with the addition of our super fast and lightweight web server. &#x20;
 
@@ -70,7 +70,7 @@ The BoxLang MiniServer includes the BoxLang OS runtime with the addition of our 
 
 <details>
 
-<summary><img src="../../.gitbook/assets/image (4).png" alt=""></summary>
+<summary><img src="../../.gitbook/assets/image (4) (1).png" alt=""></summary>
 
 BoxLang can also run on AWS Lambdas. It even powers our entry playground at https://try.boxlang.io. &#x20;
 
@@ -83,7 +83,7 @@ BoxLang can also run on AWS Lambdas. It even powers our entry playground at http
 
 <details>
 
-<summary><img src="../../.gitbook/assets/image (6).png" alt="" data-size="original"></summary>
+<summary><img src="../../.gitbook/assets/image (6) (1).png" alt="" data-size="original"></summary>
 
 BoxLang can also be deployed using [CommandBox](https://www.ortussolutions.com/products/commandbox).  This is our preferred way to deploy web applications using BoxLang.  BoxLang +/++ Subscribers even get access to [CommandBox Pro](https://www.ortussolutions.com/products/commandbox-pro).
 

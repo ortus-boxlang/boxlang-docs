@@ -4,7 +4,7 @@ description: Run BoxLang on containers
 
 # Docker
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption><p>Containerize all Box things!</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>Containerize all Box things!</p></figcaption></figure>
 
 ### Docker Images
 
