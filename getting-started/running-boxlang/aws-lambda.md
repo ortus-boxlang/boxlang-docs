@@ -1,3 +1,7 @@
+---
+description: BoxLang Runtime for AWS Lambda! Serverless for the win!
+---
+
 # AWS Lambda
 
 ## What is AWS Lambda?
@@ -6,7 +10,7 @@ AWS Lambda is a serverless computing service provided by Amazon Web Services (AW
 
 {% embed url="https://docs.aws.amazon.com/lambda/" %}
 
-The BoxLang AWS Runtime allows you to run a `Lambda.bx` function in this ecosystem.  We provide you a nice template so you can work with serverless: [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template)
+The BoxLang AWS Runtime allows you to run a `Lambda.bx` function in this ecosystem.  We provide you a nice template so you can work with serverless: [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template).
 
 {% @github-files/github-code-block url="https://github.com/ortus-boxlang/bx-aws-lambda-template" %}
 
