@@ -1,5 +1,5 @@
 ---
-description: Code with BoxLang on chromebooks!
+description: Learn how to code with BoxLang and your favorite Chromebook!
 ---
 
 # Chromebooks
@@ -178,3 +178,7 @@ It will open the browser for you as well:
 <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
 
 You have now created your very first BoxLang web application. Good for you!  Now keep exploring the language syntax and framework so you can now take it to the next level!  Enjoy!
+
+{% hint style="success" %}
+This entire guide was written in my awesome Lenovo Duet 5 Chromebook!
+{% endhint %}
