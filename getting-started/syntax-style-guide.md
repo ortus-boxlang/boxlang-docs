@@ -43,7 +43,7 @@ All arguments are of `any` type if not specifically typed.  This means that they
 
 ### `Public` by default
 
-All functions and classes are public by default, no need to add the `public` identifier if you don't want to.  This creates a very nice and low-verbosity approach to function declaration:
+All functions and classes are public by default, so there is no need to add the `public` identifier if you don't want to.  This creates a very nice and low-verbosity approach to function declaration:
 
 ```cfscript
 function hello(){
@@ -58,6 +58,22 @@ protected function bindData(){
 
 }
 ```
+
+### Non-required arguments by default
+
+All arguments are NOT required by default and will be defaulted to `null` if not passed.  You can use the `required` identifier to mark them as required.
+
+### Default Arguments
+
+You can create defaults for arguments which can be literals or actual expressions
+
+```java
+function save( transactional = true, data = {}, scope = "#expression#" )
+```
+
+### Expression Interpolation
+
+BoxLang can interpret ANYTHING within `#` as an expression. This can be used for output, assignments and much more.
 
 ### No Semicolons
 
