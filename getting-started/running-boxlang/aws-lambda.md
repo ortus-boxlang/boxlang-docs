@@ -34,7 +34,6 @@ The following are the env variables available in the runtime:
 The BoxLang default template for AWS lambda can be found here: [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template).  It is a Gradle project for now, it will be migrated to CommandBox soon.  The structure of the project is the following
 
 ```
-/.github - Automated actions
 /.vscode - Some useful vscode tasks and settings
 /build - Not in source control, where your build and distributions happen
 /gradle - The gradle runtime, keep in source control
@@ -58,7 +57,7 @@ The BoxLang default template for AWS lambda can be found here: [https://github.c
 /settings.gradle - The project settings
 ```
 
-The BoxLang AWS Lambda runtime will look for a `Lambda.bx` in your project and execute it by default.  Run the following commands to prep for coding
+The BoxLang AWS Lambda runtime will look for a `Lambda.bx` in your project and execute it by default.  Run the following commands to prep for coding:
 
 ```bash
 # Download the runtime, later it will be automatic via maven
@@ -100,7 +99,7 @@ class{
 
 It accepts three arguments:
 
-<table><thead><tr><th width="137">Argument</th><th width="304">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>event</code></td><td><code>Struct</code></td><td>All the incoming JSON as a BoxLang struct</td></tr><tr><td><code>context</code></td><td><code>com.amazonaws.services.lambda.runtime.Context</code></td><td>The AWS context object.  You can find much <a href="https://docs.aws.amazon.com/lambda/latest/dg/java-context.html">more information here.</a></td></tr><tr><td><code>response</code></td><td><code>Struct</code></td><td>A BoxLang struct convention for a response.</td></tr></tbody></table>
+<table><thead><tr><th width="137">Argument</th><th width="264">Type</th><th>Description</th></tr></thead><tbody><tr><td><code>event</code></td><td><code>Struct</code></td><td>All the incoming JSON as a BoxLang struct</td></tr><tr><td><code>context</code></td><td><code>com.amazonaws.services.lambda.runtime.Context</code></td><td>The AWS context object.  You can find much <a href="https://docs.aws.amazon.com/lambda/latest/dg/java-context.html">more information here.</a></td></tr><tr><td><code>response</code></td><td><code>Struct</code></td><td>A BoxLang struct convention for a response.</td></tr></tbody></table>
 
 {% hint style="success" %}
 You can find more information about the AWS Context object here: [https://docs.aws.amazon.com/lambda/latest/dg/java-context.html](https://docs.aws.amazon.com/lambda/latest/dg/java-context.html)
@@ -130,7 +129,18 @@ This is an Amazon Java class that provides extensive information about the reque
 
 #### Response
 
-The `response` argument is our own convention in order to help you build a nice return structure.  However, it is completely optional.  You can easily just return a simple or complex object from your lambda and we will convert it to JSON.
+The `response` argument is our convention to help you build a nice return structure.  However, it is completely optional.  You can easily return a simple or complex object from your lambda, and we will convert it to JSON.
+
+```json
+response : {
+  statusCode : 200,
+  headers : {
+    content-type :  "application/json",
+    access-control-allow-origin : "*",
+  },
+  body : YourLambda.run() results
+}
+```
 
 {% code lineNumbers="true" %}
 ```groovy
@@ -162,7 +172,7 @@ class{
 ```
 {% endcode %}
 
-
+Now you can go ahead and build your function.  You can use TestBox to unit test your `Lambda.bx` or we even include a `src/test` folder in Java, that simulates the full life-cycle of the runtime.  Just run `gradle test` or use VSCode BoxLang IDE to run the tests.  Now we go to production!
 
 ## Deploy to AWS
 
@@ -194,4 +204,6 @@ And make sure you use the following handler address: `ortus.boxlang.runtime.aws.
 
 ### Testing in AWS
 
-Now click on the `Test` tab and an event name `MyTestEvent`.  You can also add anything you like in the `Event JSON` to test the input of your lambda.  Then click on `Test` and watch it do its magic.
+Now click on the `Test` tab and an event name `MyTestEvent`.  You can also add anything you like in the `Event JSON` to test the input of your lambda.  Then click on `Test` and watch it do its magic.  Now go have some good fun!
+
+<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
