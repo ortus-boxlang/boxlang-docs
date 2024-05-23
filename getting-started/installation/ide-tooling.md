@@ -5,9 +5,9 @@ We have an official first-party extension for VSCode. You can find it in the [VS
 ## Features at a Glance
 
 * Language server integration
-    * Inline documentation
-    * Launguage hints
-    * Type information (experimental)
+  * Inline documentation
+  * Launguage hints
+  * Type information (experimental)
 * Built-in debugger
 * Mini BoxLang web server for quick development/testing
 
@@ -18,13 +18,16 @@ The extension bundles a language server based on the BoxLang runtime that gives 
 Some features provided by the language server are
 
 Code outlines
-<figure><img src="../.gitbook/assets/ide-tooling-outline.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/ide-tooling-outline.png" alt=""><figcaption></figcaption></figure>
 
 Function definition
-<figure><img src="../.gitbook/assets/ide-tooling-function-definition.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/ide-tooling-function-definition.png" alt=""><figcaption></figcaption></figure>
 
 Type hinting (experimental - must configure in settings)
-<figure><img src="../.gitbook/assets/ide-tooling-type-hinting.png" alt=""><figcaption></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/ide-tooling-type-hinting.png" alt=""><figcaption></figcaption></figure>
 
 Much functionality is still provided through the old JavaScript API. It is being converted to use the language server ASAP.
 
@@ -34,17 +37,17 @@ The debugger is implemented in Java using the JDP. It provides complete control 
 
 The extension provides quick ways to run your BoxLang programs. Simply right-click within a `.bxs` file or class (`.bx`) that implements a main method and select "BoxLang: Run File".
 
-<figure><img src="../.gitbook/assets/ide-tooling-context-run.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ide-tooling-context-run.png" alt=""><figcaption></figcaption></figure>
 
 You can use it to debug command line scripts or the built-in web server.
-<figure><img src="../.gitbook/assets/ide-tooling-debug.png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../../.gitbook/assets/ide-tooling-debug.png" alt=""><figcaption></figcaption></figure>
 
 ## Mini Web Server
 
 The MinServer provides a lightweight web runtime powered by undertow. Simply hit `ctrl+shift+p` to bring up the command palette and select "BoxLang: Run Web Server". When you run the command it will open up the MinServer on the configured port (defaults to 8085) and open your browser.
 
-<figure><img src="../.gitbook/assets/ide-tooling-minserver.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ide-tooling-context-minserver.png" alt=""><figcaption></figcaption></figure>
 
 The web server will automatically be configured to use your projects directory as the web root. You will be prompted to select your web root if you have more than one folder open in your workspace.
 
