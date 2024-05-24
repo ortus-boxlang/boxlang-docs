@@ -4,7 +4,11 @@ description: Learn how to code with BoxLang and your favorite Chromebook!
 
 # Chromebooks
 
-We love Chromebooks, so this guide is for those who want to run and develop BoxLang applications using Intel-based or ARM-based Chromebooks.  We will install all the pre-requisites, BoxLang, and VSCode to use the BoxLang IDE and create our first application.
+We love Chromebooks, so this guide is for those who want to run and develop BoxLang applications using Intel-based or ARM-based Chromebooks.  We will install all the prerequisites, BoxLang, and VSCode to use the BoxLang IDE and create our first application.
+
+{% embed url="https://www.google.com/chromebook/" %}
+
+<figure><img src="../../.gitbook/assets/CB_Hero_Base.width-1200.format-webp.webp" alt=""><figcaption><p><a href="https://www.google.com/chromebook/">https://www.google.com/chromebook/</a></p></figcaption></figure>
 
 ### Requirements
 
