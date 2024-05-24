@@ -4,6 +4,8 @@ description: Java scripting with BoxLang
 
 # JSR-223 Scripting
 
+<figure><img src="../../.gitbook/assets/jsr-223.png" alt=""><figcaption></figcaption></figure>
+
 ### JSR 223 - Java Scripting
 
 JSR 223, also known as "**Scripting for the Java Platform,**" is a specification that allows Java applications to integrate with scripting languages such as BoxLang, JavaScript, Groovy, Python, and others. It provides a standard API for accessing and embedding these scripting languages within Java code, enabling developers to mix and match Java and scripting languages seamlessly. This flexibility can enhance productivity and facilitate the rapid development of applications that require dynamic scripting capabilities.

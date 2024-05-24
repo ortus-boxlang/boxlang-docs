@@ -1,10 +1,10 @@
 ---
-description: Run BoxLang on containers
+description: Containerize all things with BoxLang
 ---
 
 # Docker
 
-<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>Containerize all Box things!</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/docker.png" alt=""><figcaption></figcaption></figure>
 
 ### Docker Images
 

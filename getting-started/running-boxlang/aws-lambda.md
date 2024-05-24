@@ -4,6 +4,8 @@ description: BoxLang Runtime for AWS Lambda! Serverless for the win!
 
 # AWS Lambda
 
+<figure><img src="../../.gitbook/assets/lambda.png" alt=""><figcaption></figcaption></figure>
+
 ## What is AWS Lambda?
 
 AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS) that lets you run code without provisioning or managing servers. It automatically scales applications by running code in response to events and allocates compute resources as needed, allowing developers to focus on writing code rather than managing infrastructure ([https://docs.aws.amazon.com/lambda/](https://docs.aws.amazon.com/lambda/)).
