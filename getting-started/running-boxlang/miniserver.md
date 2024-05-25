@@ -1,6 +1,14 @@
+---
+description: BoxLang includes a lightning fast web server powered by Undertow!
+---
+
 # MiniServer
 
-### Starting a web server <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
+<figure><img src="../../.gitbook/assets/miniserver.png" alt=""><figcaption></figcaption></figure>
+
+The BoxLang MiniServer runtime is a lightweight and lightning-fast web server powered by Undertow.   We recommend this for non mission critical applications and lightweight traffic or just development.  If you want a more robust server, then please use our [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
+
+### Starting a BoxLang MiniServer <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
 
 The web server is currently bundled in the core, but it will soon be broken into a separate project, so the BoxLang Core has no web knowledge. There is no servlet container at all; the web server is just a simple proof of concept using a pure Java Undertow server. Our separate main Java class handles this, so the call will look a little different.
 
