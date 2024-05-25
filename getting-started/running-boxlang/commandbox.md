@@ -10,7 +10,7 @@ CommandBox is a standalone, native tool for Windows, Mac, and Linux that will pr
 
 It seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or ColdFusion (CFML) project.  We have created a special servlet runtime for CommandBox so you can leverage it to deploy mission-critical and high-traffic web applications.  We go even further with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro) as part of our [BoxLang subscriptions](https://boxlang.io/plans) to give you tons of features like JDK management, Multi-site support, Multi-SSL support, Operating System service manager, SNI support, CAC Support, and so much more.
 
-<figure><img src="../../.gitbook/assets/image.png" alt="" width="156"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt="" width="156"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Find out about CommandBox Pro [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)

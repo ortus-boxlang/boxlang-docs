@@ -16,12 +16,27 @@ The script for Windows is `boxlang.bat`
 
 ### BoxLang Home <a href="#start-the-repl-8" id="start-the-repl-8"></a>
 
-By default, once you execute a `boxlang` binary it will look for a `BOXLANG_HOME` environment variable so it can be used as the home for the OS runtime.  If you don't provide one, then by default it will use the currently logged-in user's home folder + `.boxlang`
+By default, once you execute a `boxlang` binary it will look for a `BOXLANG_HOME` environment variable so it can be used as the home for the OS runtime.  If you don't provide one, then by default, it will use the currently logged-in user's home folder + `.boxlang`
 
+{% tabs %}
+{% tab title="Mac" %}
+```javascript
+/Users/username/.boxlang
 ```
-/Users/myuser/.boxlang
+{% endtab %}
+
+{% tab title="Linux" %}
+```bash
+/home/username/.boxlang
+```
+{% endtab %}
+
+{% tab title="Windows" %}
+```python
 c:/Windows/users/myuser/.boxlang
 ```
+{% endtab %}
+{% endtabs %}
 
 This is important because inside of the home folder, you can have several folders and files by convention that will be used for the runtime execution.
 
@@ -29,31 +44,33 @@ This is important because inside of the home folder, you can have several folder
 
 ### Start the REPL  <a href="#start-the-repl-8" id="start-the-repl-8"></a>
 
-The first thing you can do is start up the BoxLang REPL.
+The first thing you can do is start up the BoxLang REPL, make sure the insaller has added your installation directory to the `PATH` system variable.
 
-```bash
-# Execute our scripts
-$ boxlang
-
-# Execute directly the jar
-java -jar boxlang-1.0.0-all.jar
+{% tabs %}
+{% tab title="Mac/*nix" %}
+```javascript
+boxlang
 ```
+{% endtab %}
 
-Feel free to specify a full path to the `Java` binary if the one in your default path does not point to your Java JDK.
-
-```bash
-/full/path/to/bin/java -jar boxlang-1.0.0-all.jar
+{% tab title="Windows" %}
+```ruby
+boxlang.bat
 ```
+{% endtab %}
+
+{% tab title="Jar" %}
+```
+java -jar path/to/boxlang-1.0.0-all.jar
+```
+{% endtab %}
+{% endtabs %}
+
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 You can run one-off expressions from the REPL like so:
 
 ```shell
-██████   ██████  ██   ██ ██       █████  ███    ██  ██████
-██   ██ ██    ██  ██ ██  ██      ██   ██ ████   ██ ██
-██████  ██    ██   ███   ██      ███████ ██ ██  ██ ██   ███
-██   ██ ██    ██  ██ ██  ██      ██   ██ ██  ██ ██ ██    ██
-██████   ██████  ██   ██ ███████ ██   ██ ██   ████  ██████
-
 Enter an expression, then hit enter.
 Press Ctrl-C to exit.
 
@@ -80,15 +97,15 @@ BoxLang> ["luis","gavin","jorge"].map( name->name.ucFirst() )
 
 ```
 
-{% hint style="info" %}
+{% hint style="success" %}
 Press Ctrl-C to exit the REPL.
 {% endhint %}
 
 Please note that the REPL remembers state, so you can use the variables you declare and build a mini-program with it.
 
-### Execute a File <a href="#execute-a-file-9" id="execute-a-file-9"></a>
+### Executing a File <a href="#execute-a-file-9" id="execute-a-file-9"></a>
 
-You can also use the `boxlang` binary to execute BoxLang or even CFML code.  You can pass a second argument to the binary and it can be a relative (to the current directory you are on) or an absolute path to a file.
+You can also use the `boxlang` binary to execute BoxLang or even CFML code.  You can pass a second argument to the binary and it can be a relative (to the current directory you are on) or an absolute path to a file that you wish to execute.
 
 {% hint style="info" %}
 Allowed files are:
@@ -102,30 +119,41 @@ Allowed files are:
 
 Modify the same command you run above to execute the REPL but add a file path to the end. It can be absolute or relative to the current working directory.
 
+{% tabs %}
+{% tab title="Mac / *Unix" %}
 ```bash
-# binary
 boxlang task.bx
 boxlang myscript.bxs
 boxlang mytemplate.bxm
 
-# jar
-java -jar boxlang-1.0.0-all.jar task.bx
-
-```
-
-or
-
-```bash
-# binary
 boxlang /full/path/to/test.bxs
 boxlang /full/path/to/Task.bx
-
-# jar
-java -jar boxlang-1.0.0-all.jar /full/path/to/test.bxs
-
 ```
+{% endtab %}
 
-Any output written to the buffer with `echo()`, or `writeOutput()` will be output in the console as well as any text printed to the console with `println() or print()`.   So with the example file `test.bxs` containing
+{% tab title="Windows" %}
+```powershell
+boxlang.bat task.bx
+boxlang.bat myscript.bxs
+boxlang.bat mytemplate.bxm
+```
+{% endtab %}
+
+{% tab title="Jar" %}
+```ruby
+java -jar boxlang-1.0.0-all.jar task.bx
+java -jar boxlang-1.0.0-all.jar /full/path/to/test.bxs
+```
+{% endtab %}
+{% endtabs %}
+
+#### Producing Output
+
+As you navigate all the built-in functions and capabilities of BoxLang, let's learn how to produce output to the system console.
+
+* `printLn()` - Print with a line break
+* `print()` - Print with no line break
+* `writeOUtput()` - Writes to the output buffer (Each runtime decides what it's buffer is.  The CLI is the system output, the Web is the HTML response buffer, etc)
 
 ```groovy
 println( "Time is #now()#" )
@@ -200,14 +228,18 @@ type test.cfs | boxlang.bat
 We also support the following command line args right now.
 
 * `-c "code here"`—This is used to pass ad-hoc code to execute. Provide code in the next argument, quoted.
-* `--config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
-* `--debug` - Enable debug mode (more debug logs!)
-* `--home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
-* `--printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
-* `--transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
-* `--version` - Output  the current runtime's version information
+* `--config or -config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
+* `--debug or -d` - Enable debug mode (more debug logs!)
+* `--home or -h` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
+* `--printAST or -p` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
+* `--transpile or -t` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
+* `--version or -v` - Output  the current runtime's version information
 * `path` - The template, class, or script to execute
 * `module:{name}` - The executable module to execute.  This will execute a Modules' `ModuleConfig.main()` method.
+
+### Using 3rd Party Jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
+
+You can load custom third-party JARs at runtime by adding all your `*.jar` to the BOXLANG\_HOME/lib folder. This will be loaded at runtime and available to use and integrate.
 
 ### Environment Variables
 
@@ -220,3 +252,5 @@ The `boxlang` binary will also scan for several environment variables as overrid
 | `BOXLANG_HOME = DIRECTORY`    | Override the HOME directory  |
 | `BOXLANG_PRINTAST = BOOLEAN`  | Print the AST                |
 | `BOXLANG_TRANSPILE = BOOLEAN` | Tranpile the code            |
+
+At this point, you are done getting running with BoxLang.  It's now your turn to write some code and get it running.
