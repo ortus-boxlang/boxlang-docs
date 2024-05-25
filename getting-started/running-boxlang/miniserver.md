@@ -6,25 +6,34 @@ description: BoxLang includes a lightning fast web server powered by Undertow!
 
 <figure><img src="../../.gitbook/assets/miniserver.png" alt=""><figcaption></figcaption></figure>
 
-The BoxLang MiniServer runtime is a lightweight and lightning-fast web server powered by Undertow.   We recommend this for non mission critical applications and lightweight traffic or just development.  If you want a more robust server, then please use our [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
+The BoxLang MiniServer runtime, a symbol of flexibility, is a lightweight and lightning-fast web server powered by Undertow. It's ideal for non-mission-critical applications, lightweight traffic, or development. For those who desire a more robust server, we offer our [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
 
 ### Starting a BoxLang MiniServer <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
 
-The web server is currently bundled in the core, but it will soon be broken into a separate project, so the BoxLang Core has no web knowledge. There is no servlet container at all; the web server is just a simple proof of concept using a pure Java Undertow server. Our separate main Java class handles this, so the call will look a little different.
+The BoxLang core, on its own, doesn't have knowledge about a web application. Our web support runtime provides this functionality, a crucial part of the MiniServer and the Servlet (JEE, Jakarta, CommandBox) runtime.  This runtime enhances the core boxlang runtime, making it multi-runtime and web deployable.
 
-Go to a folder that you want to be the web root and run:
+**There is no servlet container;** the web server is just a simple, fast, and pure Java Undertow server.  Let's start a default server:
 
-```undefined
-java -jar boxlang-1.0.0-web.jar
+```bash
+# Mac / *unix
+boxlang-miniserver
+
+# Windows
+boxlang-miniserver.bat
+
+# Full Jar approach
+java -jar /usr/local/lib/boxlang-miniserver-1.0.0-all.jar
 ```
 
-This will
+This will:
 
-* Use the current working dir as the web root
+* Use the current **working dir** as the web root
 * Bind to `localhost:8080`
-* Configures a VERY simple web server with some default welcome files and any CF or BoxLang extensions will get processed by BoxLang.
+* Configures a VERY simple web server with some default welcome files, and any CFML or BoxLang extensions will get processed by BoxLang.
 
-The BoxLang Core knows nothing of web or HTTP, so the `form`, `url`, `cookie`, and `cgi` scopes will only exist when running the BoxLang web server (but not in the REPL, etc).
+{% hint style="warning" %}
+**ALERT:** The BoxLang Core knows nothing of web or HTTP, so the `form`, `url`, `cookie`, and `cgi` scopes will only exist when running the BoxLang web server (but not in the REPL, etc).
+{% endhint %}
 
 #### Web server args <a href="#web-server-args-13" id="web-server-args-13"></a>
 
