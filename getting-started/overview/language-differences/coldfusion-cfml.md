@@ -191,3 +191,29 @@ Here is some documentation on their differences:
     * finds the CFC relative to the original birthplace of the UDF source in **Adobe**
 
 In BoxLang, this is being simplified and made consistent across the board. In ALL cases the “current template path” and relative lookup directory will tie to the original source path on disk of the file that contains the currently executing code. So, whether it’s an include, a UDF, an injected UDF from another location, or a closure defined elsewhere - whatever original source file for the code in question is what determines the “current template path” and relative lookups.
+
+## JDBC Query Parameter SQL Types
+
+Both Adobe ColdFusion and Lucee Server utilize a `cfsqltype` key on query parameters to denote the type of the value being used in a prepared statement or query:
+
+```js
+queryExecute(
+  "select quantity, item from cupboard where item_id = :itemID"
+  { itemID : { value : arguments.itemID, cfsqltype : "cf_sql_numeric" } }
+);
+```
+
+In BoxLang, you'll need to replace `cfsqltype` with just `sqltype`. In addition, we'd prefer to see all usage of the `cf_sql_`/`CF_SQL` prefixes stripped:
+
+```js
+queryExecute(
+  "select quantity, item from cupboard where item_id = :itemID"
+  { itemID : { value : arguments.itemID, sqltype : "numeric" } }
+);
+```
+
+You will need to use the `bx-compat` module to support `cfsqltype` out of the box.
+
+* `sqltype:"numeric"` - The preferred syntax.
+* `cfsqltype:"cf_sql_numeric"` - will throw an error in BoxLang core unless the `bx-compat` module is installed
+* `sqltype:"cf_sql_numeric"` - is silently treated as `sqltype:"numeric"`. Will work in BoxLang core with or without the `bx-compat` module.
