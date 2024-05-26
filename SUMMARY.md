@@ -13,18 +13,12 @@
   * [Multi-Runtime](getting-started/overview/multi-runtime.md)
   * [Instructions & Interpreters](getting-started/overview/instructions-and-interpreters.md)
   * [CommandBox CLI](getting-started/overview/commandbox-cli.md)
+  * [Quick Syntax Style Guide](getting-started/overview/syntax-style-guide.md)
   * [Language Differences](getting-started/overview/language-differences/README.md)
     * [ColdFusion/CFML](getting-started/overview/language-differences/coldfusion-cfml.md)
     * [Java](getting-started/overview/language-differences/java.md)
     * [Groovy](getting-started/overview/language-differences/groovy.md)
-  * [Frequently Asked Questions](getting-started/overview/frequently-asked-questions/README.md)
-    * [What is BoxLang©?](getting-started/overview/frequently-asked-questions/what-is-boxlang-c.md)
-    * [Is BoxLang© open-source?](getting-started/overview/frequently-asked-questions/is-boxlang-c-open-source.md)
-    * [What is BoxLang+?](getting-started/overview/frequently-asked-questions/what-is-boxlang+.md)
-    * [What type of support is available for BoxLang©?](getting-started/overview/frequently-asked-questions/what-type-of-support-is-available-for-boxlang-c.md)
-    * [Can BoxLang run ColdFusion/CFML code?](getting-started/overview/frequently-asked-questions/can-boxlang-run-coldfusion-cfml-code.md)
-    * [How is BoxLang+ Licensed?](getting-started/overview/frequently-asked-questions/how-is-boxlang+-licensed.md)
-    * [How are BoxLang+ Containers Licensed?](getting-started/overview/frequently-asked-questions/how-are-boxlang+-containers-licensed.md)
+  * [Frequently Asked Questions](getting-started/overview/frequently-asked-questions.md)
 * [Installation](getting-started/installation/README.md)
   * [IDE Tooling](getting-started/installation/ide-tooling.md)
   * [Modules](getting-started/installation/modules.md)
@@ -37,7 +31,6 @@
   * [MiniServer](getting-started/running-boxlang/miniserver.md)
   * [Try BoxLang!](getting-started/running-boxlang/try-boxlang.md)
 * [Runtime Configuration](getting-started/configuration.md)
-* [Syntax Style Guide](getting-started/syntax-style-guide.md)
 
 ## BoxLang Language
 

@@ -1,4 +1,8 @@
-# Syntax Style Guide
+---
+description: Quickly learn what the BoxLang language offers.
+---
+
+# Quick Syntax Style Guide
 
 This guide provides a quick overview of BoxLang syntax styles, operators, and features. It aims to assist developers from other languages in their BoxLang development journey.
 
