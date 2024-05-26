@@ -212,8 +212,8 @@ queryExecute(
 );
 ```
 
-You will need to use the `bx-compat` module to support `cfsqltype` out of the box.
+Here's a full breakdown of the various syntaxes:
 
 * `sqltype:"numeric"` - The preferred syntax.
-* `cfsqltype:"cf_sql_numeric"` - will throw an error in BoxLang core unless the `bx-compat` module is installed
-* `sqltype:"cf_sql_numeric"` - is silently treated as `sqltype:"numeric"`. Will work in BoxLang core with or without the `bx-compat` module.
+* `cfsqltype:"cf_sql_numeric"` - will throw an error in BoxLang core. In CFML syntax files, is transpiled to `sqltype:"cf_sql_numeric"`.
+* `sqltype:"cf_sql_numeric"` - is silently treated as `sqltype:"numeric"`.
