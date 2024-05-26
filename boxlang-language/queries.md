@@ -68,16 +68,13 @@ qItems = queryExecute(
 
 ## Defining Datasources
 
-The datasource configuration struct should be defined exactly the same whether you are using an inline, ad-hoc datasource or configuring a datasource in your `boxlang.json` or `Application.bx`.
-
-For now, be aware that datasource configuration in BoxLang is not backwards-compatible with Lucee datasource structs. Make sure you have a "driver" key defined at the top level, and all other connection properties inside a "properties" struct:
+The datasource configuration struct should be defined exactly the same whether you are using an inline, ad-hoc datasource or configuring a datasource in your `boxlang.json` or `Application.bx`. Make sure you have a "driver" key defined OR the driver clearly denoted in the JDBC url:
 
 ```js
 this.datasources[ "testDB" ] = {
 	"driver": "mysql",
-	"properties": {
-    	// host, port, username, password, timeout settings, etc....
-	}
+	// OR:
+	"url" : "jdbc:mysql://localhost:3306/test"
 };
 ```
 
