@@ -25,7 +25,7 @@ Here is a full reference of the current default `boxlang.json` file:
 ```json
 /**
  * BoxLang Configuration File
- * The Available replacements are managed by the PlacehoderHelper class.
+ * The Available replacements are managed by the PlaceholderHelper class.
  * ${boxlang-home} - The BoxLang home directory
  * ${user-home} - The user's home directory
  * ${user-dir} - The user's current directory
@@ -70,17 +70,13 @@ Here is a full reference of the current default `boxlang.json` file:
         "datasources": {
             // "testDB": {
             // 	"driver": "derby",
-            // 	"properties": {
-            // 		"connectionString": "jdbc:derby:memory:testDB;create=true"
-            // 	}
+            // 	"connectionString": "jdbc:derby:memory:testDB;create=true"
             // }
             // "testdatasource": {
-            // 	"driver": "derby",
-            // 	"properties": {
-            // 		"host": "localhost",
-            // 		"port": 3306,
-            // 		"database": "test"
-            // 	}
+            // 	"driver": "mysql",
+            // 	"host": "localhost",
+            // 	"port": 3306,
+            // 	"database": "test"
             // }
         },
         // The configuration for the BoxLang `default` cache.  If empty, we use the defaults
@@ -127,3 +123,7 @@ Here is a full reference of the current default `boxlang.json` file:
     }
 }
 ```
+
+## Environment Variable Substitution
+
+BoxLang supports environment variable substitution by using the syntax `${env.{environment_variable_name}:default}`. For example, using `${env.MYSQL_HOST:localhost}` will result in the value of the `MYSQL_HOST` environment variable, if found, or fall back to the `localhost` value if the environment variable is not defined.

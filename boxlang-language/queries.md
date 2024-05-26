@@ -90,23 +90,21 @@ You can define a datasource at the BoxLang runtime level by placing it in your `
   "datasources": {
       "theDerbyDB": {
       	"driver": "derby",
-      	"properties": {
-      		"connectionString": "jdbc:derby:memory:testDB;create=true"
-      	}
+    	"connectionString": "jdbc:derby:memory:testDB;create=true"
       },
       "theMysqlDB": {
       	"driver": "mysql",
-      	"properties": {
-            "host": "${env.MYSQL_HOST:localhost}",
-            "port": "${env.MYSQL_PORT:3306}",
-            "database": "${env.MYSQL_DATABASE:myDB}",
-            "username": "${env.MYSQL_USERNAME:root}",
-            "password": "${env.MYSQL_PASSWORD}"
-      	}
+        "host": "${env.MYSQL_HOST:localhost}",
+        "port": "${env.MYSQL_PORT:3306}",
+        "database": "${env.MYSQL_DATABASE:myDB}",
+        "username": "${env.MYSQL_USERNAME:root}",
+        "password": "${env.MYSQL_PASSWORD}"
       }
   },
 ```
 {% endcode %}
+
+Note the use of BoxLang's environment variable replacement syntax for the datasource properties: `${env.MYSQL_HOST:localhost}`. See [Environment Variable Substitution](../getting-started/configuration.md#environment-variable-substitution) for more info.
 
 ### Defining Datasources In `Application.bx`
 
@@ -169,13 +167,11 @@ queryExecute(
   { // options
     datasource : {
       "driver": "mysql",
-      "properties": {
-          "host": "${env.MYSQL_HOST:localhost}",
-          "port": "${env.MYSQL_PORT:3306}",
-          "database": "${env.MYSQL_DATABASE:myDB}",
-          "username": "${env.MYSQL_USERNAME:root}",
-          "password": "${env.MYSQL_PASSWORD}"
-      }
+      "host": "${env.MYSQL_HOST:localhost}",
+      "port": "${env.MYSQL_PORT:3306}",
+      "database": "${env.MYSQL_DATABASE:myDB}",
+      "username": "${env.MYSQL_USERNAME:root}",
+      "password": "${env.MYSQL_PASSWORD}"
     }
   }
 )
@@ -196,13 +192,11 @@ To do this, you'll need to define a default datasource in one of two locations:
 ```json
    "defaultDatasource: {
       "driver": "mysql",
-      "properties": {
-          "host": "${env.MYSQL_HOST:localhost}",
-          "port": "${env.MYSQL_PORT:3306}",
-          "database": "${env.MYSQL_DATABASE:myDB}",
-          "username": "${env.MYSQL_USERNAME:root}",
-          "password": "${env.MYSQL_PASSWORD}"
-      }
+       "host": "${env.MYSQL_HOST:localhost}",
+       "port": "${env.MYSQL_PORT:3306}",
+       "database": "${env.MYSQL_DATABASE:myDB}",
+       "username": "${env.MYSQL_USERNAME:root}",
+       "password": "${env.MYSQL_PASSWORD}"
     },
    "datasources": {
       // You can still define additional datasources here! You're not limited to the default datasource
@@ -368,17 +362,17 @@ We usually won't have the luxury of simple queries; we will need user input to c
 // automatic parameterization via inline struct definitions
 queryExecute(
  "select quantity, item from cupboard where item_id = :itemID"
- { itemID = { value=arguments.itemID, cfsqltype="numeric" } }
+ { itemID = { value=arguments.itemID, sqltype="numeric" } }
 );
 
 // Positional placeholder
 queryExecute(
  "select quantity, item from cupboard where item_id = ?"
- [ { value=arguments.itemID, cfsqltype="varchar" } ]
+ [ { value=arguments.itemID, sqltype="varchar" } ]
 );
 ```
 
-You can use the `:varname` notation in your SQL construct to denote a **variable** placeholder or `?` to denote a **positional** placeholder. The `bx:queryparam` tag or the inline `cfsqltype` construct will bind the value to a specific database type to avoid SQL injection and to further the database explain plan via types. The available SQL binding types are:
+You can use the `:varname` notation in your SQL construct to denote a **variable** placeholder or `?` to denote a **positional** placeholder. The `bx:queryparam` tag or the inline `sqltype` construct will bind the value to a specific database type to avoid SQL injection and to further the database explain plan via types. The available SQL binding types are:
 
 * `bigint`
 * `bit`
