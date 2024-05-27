@@ -8,9 +8,7 @@ description: Containerize all things with BoxLang
 
 ### Docker Images
 
-#### Pull Images from Docker Hub <a href="#pull-images-from-aws-ecr-6" id="pull-images-from-aws-ecr-6"></a>
-
-Two image tags are currently published:
+Two image tags are currently published for BoxLang.
 
 * `ortussolutions/boxlang:cli` - Just the BoxLang CLI in a container - you can pass expressions, or just run the cli itself
 * `ortussolutions/boxlang:miniserver` - This is a webserver - Remember it is not commandbox (yet) so it’s barebones
@@ -20,9 +18,17 @@ docker pull ortussolutions/boxlang:cli
 docker pull ortussolutions/boxlang:miniserver
 ```
 
+### Docker Tags <a href="#docker-compose-for-images-8" id="docker-compose-for-images-8"></a>
+
+Both images are tagged with the following tags:
+
+* `latest` - The latest stable release of BoxLang
+* `snapshot` - The latest snapshot release of BoxLang
+* `alpine-snapshot` - The latest snapshot release of BoxLang on Alpine Linux
+
 ### Docker Compose for Images <a href="#docker-compose-for-images-8" id="docker-compose-for-images-8"></a>
 
-Two example compose files are included below
+Two example compose files are included below.
 
 #### Docker Compose for BoxLang CLI <a href="#docker-compose-for-bx-cli-9" id="docker-compose-for-bx-cli-9"></a>
 
