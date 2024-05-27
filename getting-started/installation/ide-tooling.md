@@ -1,3 +1,7 @@
+---
+description: The BoxLang IDE leverages VSCode!
+---
+
 # IDE Tooling
 
 We have an official first-party extension for VSCode. You can find it in the [VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang).

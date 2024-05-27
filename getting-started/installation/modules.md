@@ -4,11 +4,27 @@ description: The Officially supported BoxLang modules
 
 # Modules
 
-### Core Modules
+## Core Modules
 
-Here are the current BoxLang Modules that are available to you:
+Here is the collection of modules built and supported by the BoxLang team.
 
-* [BoxLang ESAPI](https://forgebox.io/view/bx-esapi) - ESAPI and AntiSamy Sanitizers
+bx-c
+
+### bx-esapi
+
+Leverages ESAPI and AntiSamy to provide your BoxLang applications with security and cleaning concerns.
+
+```
+install bx-esapi
+```
+
+* Dowload: [https://forgebox.io/view/bx-esapi](https://forgebox.io/view/bx-esapi)
+* Instructions: [https://github.com/ortus-boxlang/bx-esapi](https://github.com/ortus-boxlang/bx-esapi)
+
+
+
+
+
 * [BoxLang Compat](https://forgebox.io/view/bx-compat) - Compatibility module so your BoxLang server can work like an Adobe ColdFusion or Lucee server
 * [BoxLang Mail](https://forgebox.io/view/bx-mail) Mail components for BoxLang
 * [BoxLang Image](https://forgebox.io/view/bx-image) - Image manipulation library

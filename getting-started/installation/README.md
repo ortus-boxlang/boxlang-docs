@@ -8,82 +8,88 @@ description: Getting started with BoxLang is easy!  Choose your path wisely!
 PLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
 {% endhint %}
 
-### Requirements <a href="#requirements-7" id="requirements-7"></a>
+## Requirements <a href="#requirements-7" id="requirements-7"></a>
 
-BoxLang is explicitly compiled for Java 17+ right now (it will be 21 soon as our standard). We’re exploring how far back to support, but please download Java 17+ for now.&#x20;
+BoxLang is explicitly compiled for Java 17+ right now (it will be 21 soon as our standard). We’re exploring how far back to support, but please download Java 21+ to remain compatible.
 
-BoxLang is currently compiling Java source on the fly, so it requires a JDK, not a JRE, to run! Eventually, we’ll be generating bytecode directly, but for now, we have a dependency on the JDK’s Java Compiler classes.
-
-You should be able to grab the Java 17 JDK for your OS and CPU arch here: [Download Java 17 JDK 5](https://adoptium.net/temurin/releases/?package=jdk\&version=17)
+{% hint style="warning" %}
+BoxLang is currently compiling Java source on the fly for debugging purposes, so it requires a JDK, not a JRE, to run! Eventually, we’ll be generating bytecode directly, but for now, we have a dependency on the JDK’s Java Compiler classes.
+{% endhint %}
 
 You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Download Java 21 JDK 4](https://adoptium.net/temurin/releases/?package=jdk\&version=21)
 
-### **Runtime Binaries**
+## Mac/\*Unix Quick Installer
 
 BoxLang has been designed to run on multiple runtimes and adapt itself and the code you write to enhance itself.   If you are on Mac or Unix, you can use our handy quick installer by running the following command:
 
 ```bash
+# If you don’t require sudo
 /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
+
+# If you require sudo (Chromebooks, etc)
+sudo /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
 ```
 
 {% hint style="success" %}
 The quick installer requires the following:
 
-* Bash or ZSH or SH
-* Any JDK21+
+* Bash
+* JDK21+
 * `curl, unzip` installed
 * Permission to copy files to `/usr/local/bin and /usr/local/lib`
 {% endhint %}
 
-Below are the available runtimes:
+The quick installer will install the OS binary and the MiniServer for you In the directories mentioned above.  The following scripts will be installed for you
 
-* Any OS
-* MiniServer
-* AWS Lambda
-* CommandBox
-* Servlet Containers
-* Docker
+* `boxlang` - Our BoxLang binary, [learn more](../running-boxlang/)
+* `boxlang-miniserver` - Our BoxLang MiniServer binary, [learn more](../running-boxlang/miniserver.md)
 
-<details>
+Just run `boxlang` and you are ready to rock in our REPL or execute scripts.
 
-<summary><img src="../../.gitbook/assets/image (2) (1).png" alt=""></summary>
+<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-This installation is for any operating system (Windows, Unix, Mac OS)
+{% hint style="success" %}
+To upgrade your installation, just re-run the quick installer and the new binaries will install.
+{% endhint %}
 
-* Windows Installer: [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-snapshot-installer.exe](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-snapshot-installer.exe)
-* Zip (All OSs): [https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip)
+## Binaries
+
+We have a collection of different binaries for the different runtimes we support.  Enjoy!
+
+### Operating System Binaries
+
+Here you can find the installers and binaries for all Operating Systems:
+
+* Windows Installer: \
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-snapshot-installer.exe](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-snapshot-installer.exe)
+* Zip (All OSs): \
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip)
 * Jar: \
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0-all.jar)
 
-</details>
-
-<details>
-
-<summary><img src="../../.gitbook/assets/image (3) (1).png" alt=""></summary>
+### MiniServer Binaries
 
 The BoxLang MiniServer includes the BoxLang OS runtime with the addition of our super fast and lightweight web server. &#x20;
 
 * All OSs:\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/1.0.0/boxlang-miniserver-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/1.0.0/boxlang-miniserver-1.0.0.zip)
 
-</details>
+### AWS Lambda Binaries
 
-<details>
-
-<summary><img src="../../.gitbook/assets/image (4) (1).png" alt=""></summary>
-
-BoxLang can also run on AWS Lambdas. It even powers our entry playground at https://try.boxlang.io. &#x20;
+BoxLang can also run on AWS Lambdas. It even powers our entry playground at [https://try.boxlang.io](https://try.boxlang.io/). &#x20;
 
 * Runtime: \
   [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/1.0.0/boxlang-aws-lambda-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/1.0.0/boxlang-aws-lambda-1.0.0.zip)
 * Template\
   [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template)
 
-</details>
+### CommandBox BoxLang Server
 
-<details>
+<div align="left">
 
-<summary><img src="../../.gitbook/assets/image (6) (1).png" alt="" data-size="original"></summary>
+<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
+
+</div>
 
 BoxLang can also be deployed using [CommandBox](https://www.ortussolutions.com/products/commandbox).  This is our preferred way to deploy web applications using BoxLang.  BoxLang +/++ Subscribers even get access to [CommandBox Pro](https://www.ortussolutions.com/products/commandbox-pro).
 
@@ -92,11 +98,9 @@ box install commandbox-boxlang
 box server start cfengine=boxlang javaVersion=openjdk21_jdk
 ```
 
-</details>
+Learn more in our [CommandBox guide.](../running-boxlang/commandbox.md)
 
-<details>
-
-<summary>Java/Jakarta EE (Servlet) Runtime</summary>
+### Servlet EE Binaries
 
 This is the servlet edition of BoxLang that you can deploy on any servlet container (Jetty, Tomcat, JBoss, etc)
 
@@ -105,21 +109,11 @@ This is the servlet edition of BoxLang that you can deploy on any servlet contai
 * JAR:\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/1.0.0/boxlang-servlet-1.0.0-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/1.0.0/boxlang-servlet-1.0.0-all.jar)
 
-</details>
+### Docker
 
-{% content-ref url="../running-boxlang/docker.md" %}
-[docker.md](../running-boxlang/docker.md)
-{% endcontent-ref %}
+We have a full [Docker guide you can follow here.](../running-boxlang/docker.md)
 
-{% hint style="success" %}
-CommandBox is a standalone, native tool for Windows, Mac, and Linux that will provide you with a Command Line Interface (CLI) for developer productivity, tool interaction, package management, embedded Java/Web server, application scaffolding, and some sweet ASCII art.
-
-It seamlessly integrates to work with any of our \*Box products but it is also open for extensibility for any BoxLang project as it is also written in BoxLang using our concepts of CommandBox Commands. It tightly integrates with our contribution community; [ForgeBox](https://www.forgebox.io/), so developers can share modules world-wide.
-
-[https://www.ortussolutions.com/products/commandbox](https://www.ortussolutions.com/products/commandbox)
-{% endhint %}
-
-### BoxLang IDE
+## BoxLang IDE
 
 <div align="left">
 
@@ -127,15 +121,15 @@ It seamlessly integrates to work with any of our \*Box products but it is also o
 
 </div>
 
-We have also created an IDE for you to code using Microsoft VSCode.  You can find it here:
+The BoxLang IDE is a collection of modules for VSCode. You can find it here:
 
 {% embed url="https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang" %}
 Install Now
 {% endembed %}
 
-### Core Modules
+## Core Modules
 
-BoxLang offers a plethora of modules to enhance itself.  In the following page you will find the core mo, ForgeBox, so d[ebox.io](https://forgebox.io)  to browse core and third-party modules.
+The BoxLang core is lightweight and fast.  Everything that extends the core comes in the form of modules.  We have a collection of core modules that the BoxLang team maintains and curates.  We also have several enterprise modules for our BoxLang +,++ subscribers and the community also can create and share modules in our cloud package manager [FORGEBOX](https://forgebox.io).
 
 We recommend you use CommandBox, Our CLI and Package Manager, to interact, install, and work with any package in BoxLang.
 
@@ -143,13 +137,15 @@ We recommend you use CommandBox, Our CLI and Package Manager, to interact, insta
 [modules.md](modules.md)
 {% endcontent-ref %}
 
-### BoxLang+, ++ Modules
+## BoxLang+, ++ Modules
 
-Our BoxLang+, and ++ subscribers not only get customized support but also new features, and modules.  You can find out more about our subscriptions here: [https://boxlang.io/plans](https://boxlang.io/plans)
+Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get customized support but also new features, and modules.  You can find out more about our subscriptions here: [https://boxlang.io/plans](https://boxlang.io/plans).  Here are the collection of modules that you will get with your subscription.
 
-<table><thead><tr><th width="220">Module</th><th>Description</th></tr></thead><tbody><tr><td>bx-redis</td><td>Native Redis integration for caching, session distribution, and publish-subcribe events.</td></tr><tr><td>bx-mongo</td><td>Native MongoDB integration for caching, session distribution and advanced MongoDB operations.</td></tr><tr><td>bx-couchbase</td><td>Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage.</td></tr><tr><td>bx-pdftools</td><td>Our collection of enhanced PDF tooling.  Includes the ability to extract PDF forms, fill out PDF forms, squash, merge and more.</td></tr></tbody></table>
+<table><thead><tr><th width="220">Module</th><th>Description</th><th width="100">Status<select><option value="7PvmwHzSW7tN" label="In Development" color="blue"></option><option value="KAAYVEqj9HUs" label="Done" color="blue"></option><option value="LZpOL7kx2Gyb" label="In Planning" color="blue"></option></select></th></tr></thead><tbody><tr><td>bx-redis</td><td>Native Redis integration for caching, session distribution, and publish-subcribe events.</td><td></td></tr><tr><td>bx-mongo</td><td>Native MongoDB integration for caching, session distribution and advanced MongoDB operations.</td><td></td></tr><tr><td>bx-couchbase</td><td>Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage.</td><td></td></tr><tr><td>bx-pdftools</td><td>Our collection of enhanced PDF tooling.  Includes the ability to extract PDF forms, fill out PDF forms, squash, merge and more.</td><td></td></tr></tbody></table>
 
-
+{% hint style="danger" %}
+Please note that these modules are still under development, we will publish their status as we complete them.
+{% endhint %}
 
 
 
