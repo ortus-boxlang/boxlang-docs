@@ -1,4 +1,12 @@
+---
+description: A quick guide on key differences and issues when migrating from CFML
+---
+
 # ColdFusion/CFML
+
+{% hint style="danger" %}
+Please note that our CFML Compatibility is still in progress. Please keep this page bookmarked as we continue to make progress to our stable release.
+{% endhint %}
 
 When comparing BoxLang to CFML, here are some of the differences between them.
 

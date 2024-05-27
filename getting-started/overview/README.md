@@ -45,6 +45,10 @@ BoxLang combines many features from different programming languages, including J
 
 ### Is it ColdFusion/CFML compatible?
 
+{% hint style="danger" %}
+This is still a work in progress until we go stable in Fall 2024
+{% endhint %}
+
 BoxLang had been designed with multiple parsers—one for BoxLang and one for CFML. The CFML parser transpiles to BoxLang at runtime or can be translated to BoxLang via our CLI tools. We try and support as much as we can from CFML. However, we have made very different decisions, and BoxLang is a fresh start for the JVM in a new language. We have introduced a compatibility module to keep old-school CFML working as it is under the BoxLang runtime.
 
 You will have the choice to continue with CFML-compatible code or come to our new vision with BoxLang. We will support both indefinitely.

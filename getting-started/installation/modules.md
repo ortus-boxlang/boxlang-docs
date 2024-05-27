@@ -8,7 +8,16 @@ description: The Officially supported BoxLang modules
 
 Here is the collection of modules built and supported by the BoxLang team.
 
-bx-c
+### bx-compat
+
+This module allows your BoxLang engine to run as an Adobe ColdFusion CFML engine or a Lucee CFML engine.  Please note that we will not offer every single feature of the Adobe engines in this single module.  It can be spread out through a collection of modules.
+
+```
+install bx-compat
+```
+
+* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)compat
+* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-compat
 
 ### bx-esapi
 
@@ -18,32 +27,106 @@ Leverages ESAPI and AntiSamy to provide your BoxLang applications with security 
 install bx-esapi
 ```
 
-* Dowload: [https://forgebox.io/view/bx-esapi](https://forgebox.io/view/bx-esapi)
+* Download: [https://forgebox.io/view/bx-esapi](https://forgebox.io/view/bx-esapi)
 * Instructions: [https://github.com/ortus-boxlang/bx-esapi](https://github.com/ortus-boxlang/bx-esapi)
 
+### bx-image
+
+The image module gives you tons of components and bifs that will give you a robust and extensive image manipulation library.
+
+```
+install bx-image
+```
+
+* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)image
+* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-image
+
+### bx-mail
+
+The mail module for BoxLang gives you a robust component and a collection of bifs that you can use to send mail and interact with mail services.
+
+```
+install bx-mail
+```
+
+* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)mail
+* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-mail
+
+### bx-pdf (Coming Soon)
+
+The pdf module will give you the capabilities to create and stream PDF documents from your BoxLang server code.  We also offer the enhanced version in our BoxLang +,++ subscriptions.
+
+```
+coming soon
+```
+
+* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)pdf
+* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-pdf
+
+### bx-unsafe-evaluate
+
+This module will allow you to install an `evaluate()` function that can execute BoxLang and CFML expressions.  Please note that this approach to coding is discouraged and unsafe.
+
+```
+install bx-unsafe-evaluate
+```
+
+* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)unsafe-evaluate
+* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-unsafe-evaluate
 
 
 
+## JDBC Modules
 
-* [BoxLang Compat](https://forgebox.io/view/bx-compat) - Compatibility module so your BoxLang server can work like an Adobe ColdFusion or Lucee server
-* [BoxLang Mail](https://forgebox.io/view/bx-mail) Mail components for BoxLang
-* [BoxLang Image](https://forgebox.io/view/bx-image) - Image manipulation library
-* BoxLang PDF - PDF tooling for BoxLang (Coming Soon)
-* [BoxLang Usafe Evaluate](https://forgebox.io/view/bx-unsafe-evaluate) - Gives you the `evaluate()` function back.
+In addition, we offer a number of JDBC modules which package the appropriate JDBC driver for your database vendor of choice.  You can find all of the modules in [FORGEBOX](https://www.forgebox.io) as well as our GitHub organization: [https://github.com/ortus-boxlang/bx-{modulename}](https://github.com/ortus-boxlang)
 
-### JDBC Modules
+### [Apache Derby](https://forgebox.io/view/bx-derby)
 
-In addition, we offer a number of JDBC modules which package the appropriate JDBC driver for your database vendor of choice:
+```
+install bx-derby
+```
 
-* [PostgreSQL](https://forgebox.io/view/bx-postgresql)
-* [Apache Derby](https://forgebox.io/view/bx-derby)
-* [MySQL](https://forgebox.io/view/bx-mysql)
-* [MariaDB](https://forgebox.io/view/bx-mariadb)
-* [Microsoft SQL Server](https://forgebox.io/view/bx-mssql)
-* [Oracle](https://forgebox.io/view/bx-oracle)
-* [HyperSQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-hypersql/bx-hypersql-1.0.0.zip)
+### [HyperSQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-hypersql/bx-hypersql-1.0.0.zip)
 
-### Module Installation
+```
+install bx-hypersql
+```
+
+### [MySQL](https://forgebox.io/view/bx-mysql)
+
+```
+install bx-mysql
+```
+
+### [MariaDB](https://forgebox.io/view/bx-mariadb)
+
+```
+install bx-mariadb
+```
+
+### [Microsoft SQL Server](https://forgebox.io/view/bx-mssql)
+
+```
+install bx-mssql
+```
+
+### [Oracle](https://forgebox.io/view/bx-oracle)
+
+```
+install bx-oracle
+```
+
+### [PostgreSQL](https://forgebox.io/view/bx-postgresql)
+
+```
+install bx-postgresql
+```
+
+## Module Installation
+
+The fastest way to install modules is with CommandBox and the `install` command.  However, here is the manual approach.
+
+### Operating System Home
 
 Unzip the module `.zip` file into the location `.boxlang/modules/` located inside your user home directory (by default):
 
