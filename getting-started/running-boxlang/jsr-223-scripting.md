@@ -159,7 +159,7 @@ engine.eval( """
 // We need to get the bounded bindings now via the `getBindings()` method
 Bindings resultBindings = engine.getBindings();
 assertThat( result ).isEqualTo( "World" );
-assertThat( modifiedBindings.get( "newAge" ) ).isEqualTo( 2 );
+assertThat( resultBindings.get( "newAge" ) ).isEqualTo( 2 );
 assertThat( engine.getRequestBindings().get( "nameTest" ) ).isEqualTo( "World" );
 assertThat( engine.getServerBindings().get( "nameTest" ) ).isEqualTo( "World" );
 
