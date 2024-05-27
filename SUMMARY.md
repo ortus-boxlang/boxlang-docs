@@ -20,7 +20,6 @@
     * [Groovy](getting-started/overview/language-differences/groovy.md)
   * [Frequently Asked Questions](getting-started/overview/frequently-asked-questions/README.md)
 * [Installation](getting-started/installation/README.md)
-  * [IDE Tooling](getting-started/installation/ide-tooling.md)
   * [Modules](getting-started/installation/modules.md)
 * [Running BoxLang](getting-started/running-boxlang/README.md)
   * [AWS Lambda](getting-started/running-boxlang/aws-lambda.md)
@@ -30,6 +29,10 @@
   * [JSR-223 Scripting](getting-started/running-boxlang/jsr-223-scripting.md)
   * [MiniServer](getting-started/running-boxlang/miniserver.md)
   * [Try BoxLang!](getting-started/running-boxlang/try-boxlang.md)
+* [IDE & Tooling](getting-started/ide-tooling/README.md)
+  * [BoxLang Compiler](getting-started/ide-tooling/boxlang-compiler.md)
+  * [CFML Feature Audit](getting-started/ide-tooling/cfml-feature-audit.md)
+  * [CFML to BoxLang Transpiler](getting-started/ide-tooling/cfml-to-boxlang-transpiler.md)
 * [Runtime Configuration](getting-started/configuration.md)
 
 ## BoxLang Language
