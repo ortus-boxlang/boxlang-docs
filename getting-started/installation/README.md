@@ -60,13 +60,25 @@ sudo yum install curl zip unzip java-21-openjdk
 
 BoxLang has been designed to run on multiple runtimes and adapt itself and the code you write to enhance itself.  Once your requirements are installed, then If you are on Mac or Unix, you can use our handy quick installer by running the following command:
 
-```bash
+{% tabs %}
+{% tab title="Bash" %}
+```javascript
 # If you don’t require sudo
 /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
-
-# If you require sudo (Chromebooks, etc)
-sudo /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
 ```
+{% endtab %}
+
+{% tab title="SH" %}
+```python
+# If you don’t require sudo
+/bin/sh -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="danger" %}
+If your system requires admin privileges (Like Chromebooks), make sure you use `sudo /bin/bash`
+{% endhint %}
 
 {% hint style="success" %}
 The quick installer requires the following:

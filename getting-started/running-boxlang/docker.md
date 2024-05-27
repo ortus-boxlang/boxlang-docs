@@ -8,10 +8,10 @@ description: Containerize all things with BoxLang
 
 ### Docker Images
 
-Two image tags are currently published for BoxLang.
+Two distinct image tags have been published for BoxLang, each serving a specific purpose.
 
-* `ortussolutions/boxlang:cli` - Just the BoxLang CLI in a container - you can pass expressions, or just run the cli itself
-* `ortussolutions/boxlang:miniserver` - This is a webserver - Remember it is not commandbox (yet) so it’s barebones
+* `ortussolutions/boxlang:cli`— This is just the BoxLang CLI in a container. You can pass expressions, run the runtime itself, use it for tooling, cron jobs, and more.
+* `ortussolutions/boxlang:miniserver` - This is the BoxLang [MiniServer](miniserver.md) runtime packaged into a docker container.
 
 ```bash
 docker pull ortussolutions/boxlang:cli
@@ -26,13 +26,9 @@ Both images are tagged with the following tags:
 * `snapshot` - The latest snapshot release of BoxLang
 * `alpine-snapshot` - The latest snapshot release of BoxLang on Alpine Linux
 
-### ARM Processors <a href="#docker-compose-for-images-8" id="docker-compose-for-images-8"></a>
-
-We will be building our arm processor support soon.  In the meantime please use this in your commands if you are using ARM based or Apple Silicone processors:
-
-```bash
---platform linux/amd64
-```
+{% hint style="danger" %}
+We encourage you to use the `snapshot` version of our images until we go stable.
+{% endhint %}
 
 ### **Running Images**
 
@@ -40,18 +36,12 @@ We will be building our arm processor support soon.  In the meantime please use 
 
 ```bash
 docker exec -it CONTAINERID /usr/bin/bx.sh 2+2
-
-# ARM / Apple Silicone
-docker exec --platform linux/amd64 -it CONTAINERID /usr/bin/bx.sh 2+2
 ```
 
 #### **Starting a docker container, run a command, and exit**
 
 <pre class="language-bash"><code class="lang-bash"><strong>docker run ortussolutions/boxlang:cli time /usr/bin/bx.sh 2+2
-</strong>
-# ARM / Apple Silicone
-docker run --platform linux/amd64 ortussolutions/boxlang:cli time /usr/bin/bx.sh 2+2
-</code></pre>
+</strong></code></pre>
 
 #### Starting a MiniServer <a href="#docker-compose-for-images-8" id="docker-compose-for-images-8"></a>
 
