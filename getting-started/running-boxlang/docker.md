@@ -87,6 +87,7 @@ services:
       #- BOXLANG_CONFIG=/path/to/boxlang.json
       # Where to store the boxlang home
       - BOXLANG_HOME=/opt/boxlang
+      # - JAVA_OPTS="-Xmx512m -Xms256m"
     volumes:
       - ./test:/app
       - ./test/.engine:/opt/boxlang

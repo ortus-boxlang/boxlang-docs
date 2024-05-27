@@ -61,6 +61,7 @@ List<ScriptEngineFactory> factories = mgr.getEngineFactories();
 
 To get started, you need to get an instance of the BoxLang Scripting Engine.  You can do so by using the Java `ScriptEngineManager()` class or importing our `BoxScriptingEngine` class.
 
+{% code lineNumbers="true" %}
 ```java
 import javax.script.*;
 
@@ -72,6 +73,7 @@ import ortus.boxlang.runtime.scripting.BoxScriptingFactory;
 
 ScriptEngine engine = new BoxScriptingFactory().getScriptEngine();
 ```
+{% endcode %}
 
 ### Eval() BoxLang Code
 
@@ -141,13 +143,14 @@ public Object eval( String script ) throws ScriptException
 
 Data can be passed into the engine by defining a _Bindings_ object and passing it as a second parameter to the _eval_ function:
 
+{% code lineNumbers="true" %}
 ```java
 Bindings bindings = boxlang.createBindings();
 bindings.put( "count", 3 );
 bindings.put( "name", "luis" );
 bindings.put( "age", 1 );
 
-engine.eval( """
+result = engine.eval( """
   println( 'Hello, ' & name & '!' )
   newAge = age + 1
   totalAge = newAge + 1
@@ -158,13 +161,14 @@ engine.eval( """
 // We cannot use the same bindings, these are just to send
 // We need to get the bounded bindings now via the `getBindings()` method
 Bindings resultBindings = engine.getBindings();
+// The result of the script is the last expression
 assertThat( result ).isEqualTo( "World" );
+// Test the bindings
 assertThat( resultBindings.get( "newAge" ) ).isEqualTo( 2 );
 assertThat( engine.getRequestBindings().get( "nameTest" ) ).isEqualTo( "World" );
 assertThat( engine.getServerBindings().get( "nameTest" ) ).isEqualTo( "World" );
-
-
 ```
+{% endcode %}
 
 {% hint style="warning" %}
 Once you bind the engine with bindings before execution, you must get the modified bindings via the `engine.getBindings()` method.  If you don't do this, you will only have access to the simple hashmap to bind the engine.
@@ -174,6 +178,7 @@ Once you bind the engine with bindings before execution, you must get the modifi
 
 Apart from executing strings, you can also compile BoxLang scripts and evaluate them using the `compileScript( String ) or compileScript( Reader )` methods.  You will get a `Box CompiledScript` class, which you can then use the `eval()` methods and binding methods.
 
+{% code lineNumbers="true" %}
 ```java
 CompiledScript script = engine
 		    .compile( """
@@ -187,6 +192,7 @@ CompiledScript script = engine
 Object results	= script.eval();
 assertThat( ( Array ) results ).containsExactly( Key.of( "test" ), "Doe", "John" );
 ```
+{% endcode %}
 
 Happy Coding!!
 
