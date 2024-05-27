@@ -46,17 +46,28 @@ docker exec -it CONTAINERID /usr/bin/bx.sh 2+2
 docker run ortussolutions/boxlang:cli time /usr/bin/bx.sh 2+2
 ```
 
-#### Docker Compose for bx web server <a href="#docker-compose-for-bx-web-server-12" id="docker-compose-for-bx-web-server-12"></a>
+#### MiniServer <a href="#docker-compose-for-bx-web-server-12" id="docker-compose-for-bx-web-server-12"></a>
 
 ```bash
 version: "2.1"
 
 services:
   bxweb:
-    image: ortussolutions/boxlang:miniserver
+    image: docker pull ortussolutions/boxlang:miniserver
+    environment:
+      - BOXLANG_PORT=8080
+      - BOXLANG_WEBROOT=/app
+      - BOXLANG_DEBUG=false
+      - BOXLANG_HOST=localhost
+      # Path to boxlang.json
+      #- BOXLANG_CONFIG=/path/to/boxlang.json
+      # Where to store the boxlang home
+      - BOXLANG_HOME=/opt/boxlang
     volumes:
-      - ./:/app
+      - ./test:/app
+      - ./test/.engine:/opt/boxlang
       - ./build:/root/build
     ports:
-      - "8080:8080"
+      - "8888:8080"
+
 ```
