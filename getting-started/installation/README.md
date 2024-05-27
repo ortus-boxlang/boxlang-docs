@@ -18,9 +18,47 @@ BoxLang is currently compiling Java source on the fly for debugging purposes, so
 
 You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Download Java 21 JDK 4](https://adoptium.net/temurin/releases/?package=jdk\&version=21)
 
+{% tabs %}
+{% tab title="Mac" %}
+To get started in a Mac with the BoxLang requirements, we recommend you use [homebrew](https://brew.sh/). If not, you will have to download the requirements separaterly from the link above.
+
+```bash
+# Install the latest openjdk 21 and utilities
+brew install curl zip unzip openjdk
+```
+{% endtab %}
+
+{% tab title="*Unix" %}
+Leverage your system‘s package manager to install the needed requirements.
+
+### APT
+
+```bash
+# Update OS first
+sudo apt-get update
+sudo apt-get full-upgrade
+
+# Install requirements
+sudo apt-get install curl zip unzip openjdk-21
+```
+
+### Yum
+
+```bash
+# Update OS first
+sudo yum update
+sudo yum upgrade
+
+# Install requirements
+sudo yum install curl zip unzip java-21-openjdk
+
+```
+{% endtab %}
+{% endtabs %}
+
 ## Mac/\*Unix Quick Installer
 
-BoxLang has been designed to run on multiple runtimes and adapt itself and the code you write to enhance itself.   If you are on Mac or Unix, you can use our handy quick installer by running the following command:
+BoxLang has been designed to run on multiple runtimes and adapt itself and the code you write to enhance itself.  Once your requirements are installed, then If you are on Mac or Unix, you can use our handy quick installer by running the following command:
 
 ```bash
 # If you don’t require sudo
