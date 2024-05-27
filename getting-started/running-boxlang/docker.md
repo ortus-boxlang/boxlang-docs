@@ -55,11 +55,13 @@ docker run --platform linux/amd64 ortussolutions/boxlang:cli time /usr/bin/bx.sh
 
 #### Starting a MiniServer <a href="#docker-compose-for-images-8" id="docker-compose-for-images-8"></a>
 
-<pre><code><strong>docker run -p 8080:8080 \
+<pre><code><strong>docker run -it \
+</strong><strong>   -p 8080:8080 \
 </strong><strong>   ortussolutions/boxlang:miniserver
 </strong>
 # ARM / Apple Silicone
 docker run --platform linux/amd64 \
+   -it
    -p 8080:8080 \
    ortussolutions/boxlang:miniserver
 </code></pre>
