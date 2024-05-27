@@ -42,9 +42,9 @@ The BoxLang scripting package can be found here: `ortus.boxlang.runtime.scriptin
 
 ### Bindings
 
-Bindings are under the hood `HashMaps`.  They are used to bind your Java code to the BoxLang code.  By default in BoxLang, we provide three scopes you can bind bindings to:
+Bindings are under the hood `HashMaps`.  They are used to bind your Java code to the BoxLang code.  By default, in BoxLang, we provide three scopes you can bind bindings to:
 
-* `Global Scope` - The **default** scope which maps to the BoxLang `variables` scope
+* `Engine Scope` - The **default** scope which maps to the BoxLang `variables` scope
 * `Request Scope` - The JSR request scope maps to the BoxLang `request` scope
 * `Global Scope` - The JSR global scope maps to the BoxLang `server` scope
 
