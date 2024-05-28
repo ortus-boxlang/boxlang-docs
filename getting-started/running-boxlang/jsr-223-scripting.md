@@ -35,10 +35,11 @@ The BoxLang scripting package can be found here: `ortus.boxlang.runtime.scriptin
 
 ### Definitions
 
-* Script Factory - creates scripting engines and gets metadata about scripting engines.
-* Script Engine - provides a way to create bindings, scripts, and run statements.
-* Bindings - these are like scopes to BoxLang. The bridge between Java and BoxLang
-* Scripting Context - Like the BoxLang context object, it provides scope lookups and access to bindings.
+* **Script Factory** - creates scripting engines and gets metadata about scripting engines.
+* **Script Engine** - provides a way to create bindings, scripts, and run statements.&#x20;
+* **Invocable** - Our BoxLang engine also implements the scripting `Invocable` [interface](https://docs.oracle.com/en/java/javase/21/docs/api/java.scripting/javax/script/Invocable.html) so you can declare functions and classes (coming soon) and then execute them from the calling language.&#x20;
+* **Bindings** - these are like scopes to BoxLang. The bridge between Java and BoxLang
+* **Scripting Context** - Like the BoxLang context object, it provides scope lookups and access to bindings.
 
 ### Bindings
 
@@ -75,9 +76,15 @@ ScriptEngine engine = new BoxScriptingFactory().getScriptEngine();
 ```
 {% endcode %}
 
+You can also cast it to our class to get enhanced methods and functionality
+
+```java
+BoxScriptingEngine engine = (BoxScriptingEngine) new BoxScriptingFactory().getScriptEngine();
+```
+
 ### Eval() BoxLang Code
 
-Once you get access to the script engine you can use the plethora of `eval()` methods to execute the BoxLang source and binding with specific bindings.  You can execute scripts from strings or reader objects.  You can also compile a script/class into a `CompiledScript` and then execute it.
+Once you access the script engine, you can use the plethora of `eval()` methods to execute the BoxLang source and bind with specific dynamic bindings.  You can execute scripts from strings or reader objects.  You can also compile a script/class into a `CompiledScript` and then execute it at a later point in time via the `compile()` methods.
 
 ```java
 boxlang.eval( "println( 'hello world' )" )
@@ -141,7 +148,7 @@ public Object eval( String script ) throws ScriptException
 
 ### Bindings - Passing Data to the Scripts
 
-Data can be passed into the engine by defining a _Bindings_ object and passing it as a second parameter to the _eval_ function:
+Data can be passed into the engine by defining a _Bindings_ object and passing it as a second parameter to the _eval_ function.  You will do so by using the `createBindings()` method.  If you casted the engine to our `BoxScriptingEngine` class, you will also get a `createBindings( Map m )` so you can quickly create bindings from a map of data.
 
 {% code lineNumbers="true" %}
 ```java
@@ -150,6 +157,10 @@ bindings.put( "count", 3 );
 bindings.put( "name", "luis" );
 bindings.put( "age", 1 );
 
+// Or if you have already a map of data
+Bindings bindings = boxlang.createBindings( myMap );
+
+// Script and evaluate the last result
 result = engine.eval( """
   println( 'Hello, ' & name & '!' )
   newAge = age + 1
@@ -174,9 +185,25 @@ assertThat( engine.getServerBindings().get( "nameTest" ) ).isEqualTo( "World" );
 Once you bind the engine with bindings before execution, you must get the modified bindings via the `engine.getBindings()` method.  If you don't do this, you will only have access to the simple hashmap to bind the engine.
 {% endhint %}
 
+### Calling Functions From Java to BoxLang
+
+You can also use the `eval()` method to define functions, closures, or lambdas in BoxLang and execute them.  We do so by evaluating the script, casting the engine to `Invocable,` and using the `invokeFunction()` method.
+
+```java
+engine.eval( """
+    function sayHello( name ) { 
+        return 'Hello, ' & name & '!'
+    }
+""");
+
+Invocable	invocable	= ( Invocable ) engine;
+Object		result		= invocable.invokeFunction( "sayHello", "World" );
+assertThat( result ).isEqualTo( "Hello, World!" );
+```
+
 ### Compiling Scripts
 
-Apart from executing strings, you can also compile BoxLang scripts and evaluate them using the `compileScript( String ) or compileScript( Reader )` methods.  You will get a `Box CompiledScript` class, which you can then use the `eval()` methods and binding methods.
+Apart from executing strings, you can also compile BoxLang scripts and evaluate them using the `compileScript( String ) or compileScript( Reader )` methods.  You will get a `Box CompiledScript` class, which you can then use the `eval()` methods and binding methods at a later point in time.
 
 {% code lineNumbers="true" %}
 ```java
