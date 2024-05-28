@@ -124,7 +124,17 @@ install bx-postgresql
 
 ## Module Installation
 
-The fastest way to install modules is with CommandBox and the `install` command.  However, here is the manual approach.
+The fastest way to install modules is with CommandBox and the `install` command.  If you used the quick installer, you can use the install-bx-module binary to download the core modules to your OS or MiniServer home.
+
+```bash
+# Install the latest version
+install-bx-module bx-compat
+
+# Install a specific version
+install-bx-module bx-compat 1.0.0
+```
+
+If not, you must download the zip package manually and place it into the home folder.
 
 ### Operating System Home
 
