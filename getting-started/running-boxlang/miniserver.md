@@ -88,14 +88,15 @@ boxlang-miniserver --port 80 --serverHome /var/www/servers/myServer
 
 The `boxlang-miniserver` binary will also scan for several environment variables as overrides to the execution process.
 
-| Env Variable                  | Purpose                                                             |
-| ----------------------------- | ------------------------------------------------------------------- |
-| `BOXLANG_CONFIG` = PATH       | Override the `boxlang.json`                                         |
-| `BOXLANG_DEBUG = BOOLEAN`     | Enable or disable debug mode                                        |
-| `BOXLANG_HOME = DIRECTORY`    | Override the server HOME directory                                  |
-| `BOXLANG_HOST = ip or domain` | Override the `localhost` default to whatever IP or domain you like. |
-| `BOXLANG_PORT = 8080`         | Override the default port                                           |
-| `BOXLANG_WEBROOT = path`      | Override the location of the web root                               |
+| Env Variable                           | Purpose                                                             |
+| -------------------------------------- | ------------------------------------------------------------------- |
+| `BOXLANG_CONFIG` = PATH                | Override the `boxlang.json`                                         |
+| `BOXLANG_DEBUG = BOOLEAN`              | Enable or disable debug mode                                        |
+| `BOXLANG_HOME = DIRECTORY`             | Override the server HOME directory                                  |
+| `BOXLANG_HOST = ip or domain`          | Override the `localhost` default to whatever IP or domain you like. |
+| `BOXLANG_PORT = 8080`                  | Override the default port                                           |
+| `BOXLANG_WEBROOT = path`               | Override the location of the web root                               |
+| `BOXLANG_MINISERVER_OPTS = jvmOptions` | A list of Java options to pass to the startup command               |
 
 **Environment variables are scanned first, then the command arguments.  Thus the command arguments take precedence.**
 
@@ -123,6 +124,15 @@ java -cp boxlang-miniserver-1.0.0-all.jar;/path/to/my.jar;/path/to/another.jar o
 ### Modules
 
 If you would like to use modules for the MiniServer, then you must install them using CommandBox, our Docker image or manually into the `BOXLANG_HOME/modules` folder.  You can ad `debug` true to the arguments or env, so you can see which modules got loaded on startup.
+
+### JVM Options
+
+You can use the `BOXLANG_MINISERVER_OPTS` env variable to seed the Java arguments the miniserver will start with.
+
+```bash
+BOXLANG_MINISERVER_OPTS="-Xmx512m"
+boxlang-miniserver
+```
 
 ### Runtime Source Code
 
