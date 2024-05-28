@@ -80,14 +80,15 @@ services:
     image: docker pull ortussolutions/boxlang:miniserver
     environment:
       - BOXLANG_PORT=8080
-      - BOXLANG_WEBROOT=/app
-      - BOXLANG_DEBUG=false
-      - BOXLANG_HOST=localhost
+      - BOXLANG_DEBUG=true
+      #- BOXLANG_WEBROOT=/app
+      #- BOXLANG_HOST=localhost
       # Path to boxlang.json
       #- BOXLANG_CONFIG=/path/to/boxlang.json
       # Where to store the boxlang home
       - BOXLANG_HOME=/opt/boxlang
-      # - JAVA_OPTS="-Xmx512m -Xms256m"
+      # - JAVA_OPTS=-Xmx512m
+      - BOXLANG_MODULES=bx-compat,bx-esapi,bx-mysql
     volumes:
       - ./test:/app
       - ./test/.engine:/opt/boxlang
@@ -96,9 +97,27 @@ services:
       - "8888:8080"
 ```
 
+### Environment Variables
 
+The docker binary will also scan for several environment variables as overrides to the execution process.
 
-## Runtime Source Code
+| Env Variable                  | Purpose                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `BOXLANG_CONFIG` = PATH       | Override the `boxlang.json`                                                                                  |
+| `BOXLANG_DEBUG = BOOLEAN`     | Enable or disable debug mode                                                                                 |
+| `BOXLANG_HOME = DIRECTORY`    | Override the server HOME directory                                                                           |
+| `BOXLANG_HOST = ip or domain` | Override the `localhost` default to whatever IP or domain you like.                                          |
+| `BOXLANG_PORT = 8080`         | Override the default port                                                                                    |
+| `BOXLANG_WEBROOT = path`      | Override the location of the web root                                                                        |
+| `BOXLANG_MODULES=list`        | You can pass a list of module slugs you want to seed the server with. Example: `bx-mysql,bx-compat,bx-esapi` |
+
+**Environment variables are scanned first, then the command arguments.  Thus the command arguments take precedence.**
+
+### Modules
+
+The image has a module installer built in: `/usr/local/bin/install-bx-module` which can be used via the `BOXLANG_MODULES` env variable.  If it detects it, then it will try to download an install those modules into the runtime's home.  We recommend you do this by warming up the server first.
+
+### Runtime Source Code
 
 The runtime source code can be found here: [https://github.com/ortus-boxlang/boxlang-docker](https://github.com/ortus-boxlang/boxlang-docker)
 

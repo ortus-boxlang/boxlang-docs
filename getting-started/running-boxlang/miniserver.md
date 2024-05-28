@@ -33,7 +33,6 @@ boxlang-miniserver.bat
 
 {% tab title="JAR Execution" %}
 ```bash
-# Full Jar approach
 java -jar /usr/local/lib/boxlang-miniserver-1.0.0-all.jar
 ```
 {% endtab %}
@@ -61,6 +60,7 @@ As you can see from the output, this is the result of the command:
 * Use the current **working dir** as the web root.
 * Bind to `localhost:8080`
 * This configures a very simple web server with some default welcome files. BoxLang will process any CFML or BoxLang extensions.
+* Seed the `BOXLANG_HOME` to `${HOME}/.boxlang` if not set via env
 
 {% hint style="warning" %}
 **ALERT:** The BoxLang Core knows nothing of web or HTTP, so the `form`, `url`, `cookie`, and `cgi` scopes will only exist when running the BoxLang web server (but not in the REPL, etc).
@@ -82,8 +82,22 @@ boxlang-miniserver --port 80 --webroot /var/www
 
 # Custom port and server home
 boxlang-miniserver --port 80 --serverHome /var/www/servers/myServer
-
 ```
+
+### Environment Variables
+
+The `boxlang-miniserver` binary will also scan for several environment variables as overrides to the execution process.
+
+| Env Variable                  | Purpose                                                             |
+| ----------------------------- | ------------------------------------------------------------------- |
+| `BOXLANG_CONFIG` = PATH       | Override the `boxlang.json`                                         |
+| `BOXLANG_DEBUG = BOOLEAN`     | Enable or disable debug mode                                        |
+| `BOXLANG_HOME = DIRECTORY`    | Override the server HOME directory                                  |
+| `BOXLANG_HOST = ip or domain` | Override the `localhost` default to whatever IP or domain you like. |
+| `BOXLANG_PORT = 8080`         | Override the default port                                           |
+| `BOXLANG_WEBROOT = path`      | Override the location of the web root                               |
+
+**Environment variables are scanned first, then the command arguments.  Thus the command arguments take precedence.**
 
 ### Using 3rd Party Jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
 
@@ -106,11 +120,11 @@ java -cp {jarpath;jarpath2} ortus.boxlang.web.MiniServer
 java -cp boxlang-miniserver-1.0.0-all.jar;/path/to/my.jar;/path/to/another.jar ortus.boxlang.web.MiniServer
 ```
 
+### Modules
 
+If you would like to use modules for the MiniServer, then you must install them using CommandBox, our Docker image or manually into the `BOXLANG_HOME/modules` folder.  You can ad `debug` true to the arguments or env, so you can see which modules got loaded on startup.
 
-
-
-## Runtime Source Code
+### Runtime Source Code
 
 The runtime source code can be found here: [https://github.com/ortus-boxlang/boxlang-miniserver](https://github.com/ortus-boxlang/boxlang-miniserver)
 
