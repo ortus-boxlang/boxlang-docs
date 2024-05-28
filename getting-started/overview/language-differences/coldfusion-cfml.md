@@ -200,7 +200,9 @@ Here is some documentation on their differences:
 
 In BoxLang, this is being simplified and made consistent across the board. In ALL cases the “current template path” and relative lookup directory will tie to the original source path on disk of the file that contains the currently executing code. So, whether it’s an include, a UDF, an injected UDF from another location, or a closure defined elsewhere - whatever original source file for the code in question is what determines the “current template path” and relative lookups.
 
-## JDBC Query Parameter SQL Types
+## JDBC Queries
+
+### Parameter SQL Types
 
 Both Adobe ColdFusion and Lucee Server utilize a `cfsqltype` key on query parameters to denote the type of the value being used in a prepared statement or query:
 
@@ -225,3 +227,19 @@ Here's a full breakdown of the various syntaxes:
 * `sqltype:"numeric"` - The preferred syntax.
 * `cfsqltype:"cf_sql_numeric"` - will throw an error in BoxLang core. In CFML syntax files, is transpiled to `sqltype:"cf_sql_numeric"`.
 * `sqltype:"cf_sql_numeric"` - is silently treated as `sqltype:"numeric"`.
+
+### BlockFactor Query Option
+
+The `blockfactor` query option in Adobe CF and Lucee Server is used to set a custom batch size when selecting large numbers of rows:
+
+```js
+queryExecute( "Select * FROM myBigTable", {}, { blockfactor : 100 } ); 
+```
+
+In BoxLang, this is renamed to `fetchSize`:
+
+```js
+queryExecute( "Select * FROM myBigTable", {}, { fetchSize : 100 } ); 
+```
+
+You can use the `blockfactor` nomenclature by installing the `bx-compat` module.

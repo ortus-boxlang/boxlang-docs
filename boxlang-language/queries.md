@@ -517,3 +517,31 @@ q = query.from( 'posts' )
 ```
 
 You can find all the documentation in our Ortus Books docs: [http://qb.ortusbooks.com/](http://qb.ortusbooks.com/)
+
+## BoxLang Query Options
+
+BoxLang supports the following query options:
+
+* `result`
+* `maxRows`
+* `queryTimeout`
+* `returnType`
+* `fetchSize` - Set a custom result set batch size to improve performance on large queries. Is equivalent to `blockfactor` in CFML, but matches the JDBC statement option name.
+* `blockfactor` - Alias for `fetchSize`. Must install the `bx-compat` module to utilize.
+
+The following options are unimplemented, but most have support planned:
+
+* `timezone`
+* `username`
+* `password`
+* `dbtype`
+* `cachedAfter`
+* `cachedWithin`
+* `debug`
+* `cacheID`
+* `cacheRegion`
+* `clientInfo`
+* `fetchClientInfo`
+* `lazy`
+* `psq`
+* `ormoptions`
