@@ -20,7 +20,7 @@ You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Downl
 
 {% tabs %}
 {% tab title="Mac" %}
-To get started in a Mac with the BoxLang requirements, we recommend you use [homebrew](https://brew.sh/). If not, you will have to download the requirements separaterly from the link above.
+To get started in a Mac with the BoxLang requirements, we recommend you use [homebrew](https://brew.sh/). If not, you must download the requirements separately from the link above.
 
 ```bash
 # Install the latest openjdk 21 and utilities
@@ -75,30 +75,42 @@ BoxLang has been designed to run on multiple runtimes and adapt itself, as well 
 {% endtabs %}
 
 {% hint style="danger" %}
-If your system requires admin privileges (Like Chromebooks), make sure you use `sudo /bin/bash`
+If your system requires admin privileges (Like Chromebooks), make sure you use `sudo`&#x20;
 {% endhint %}
 
-{% hint style="success" %}
+{% hint style="info" %}
 The quick installer requires the following:
 
-* Bash
 * JDK21+
 * `curl, unzip` installed
 * Permission to copy files to `/usr/local/bin and /usr/local/lib`
 {% endhint %}
 
-The quick installer will install the OS binary and the MiniServer for you In the directories mentioned above.  The following scripts will be installed for you
+The quick installer will install the **OS** binary and the **MiniServer** In the directories mentioned above.  The following scripts will be installed for you
 
 * `boxlang` - Our BoxLang binary, [learn more](../running-boxlang/)
 * `boxlang-miniserver` - Our BoxLang MiniServer binary, [learn more](../running-boxlang/miniserver.md)
+* `install-boxlang` - The quick installer so you can reuse it to upgrade your installations
+* `install-bx-module` - A module installer. Just pass in the slug of the module and watch it install
 
-Just run `boxlang` and you are ready to rock in our REPL or execute scripts.
+#### REPL
+
+Just run `boxlang` and you are ready to rock in our REPL:
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="success" %}
 To upgrade your installation, just re-run the quick installer and the new binaries will install.
 {% endhint %}
+
+#### Installing Modules
+
+You can use the `install-bx-module` binary to install modules into your boxlang home. Just pass in the name of the slug you want. All of our core modules are available here and in [FORGEBOX](https://forgebox.io/type/boxlang-modules).  Please note that you can only install our core modules from this binary, not any module from FORGEBOX, for that, use CommandBox.
+
+```bash
+install-bx-module bx-compat
+install-bx-module bx-esapi
+```
 
 ## Binaries
 
