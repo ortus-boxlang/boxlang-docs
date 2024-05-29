@@ -10,20 +10,19 @@ PLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
 
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
 
+You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Download Java 21 JDK 4](https://adoptium.net/temurin/releases/?package=jdk\&version=21)
+
 * JDK 21+
 
 {% hint style="warning" %}
 BoxLang is currently compiling Java source on the fly for debugging purposes, so it requires a JDK, not a JRE, to run! Eventually, we’ll be generating bytecode directly, but for now, we have a dependency on the JDK’s Java Compiler classes.
 {% endhint %}
 
-You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Download Java 21 JDK 4](https://adoptium.net/temurin/releases/?package=jdk\&version=21)
-
 {% tabs %}
 {% tab title="Mac" %}
-To get started in a Mac with the BoxLang requirements, we recommend you use [homebrew](https://brew.sh/). If not, you must download the requirements separately from the link above.
+We recommend using homebrew to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
 
 ```bash
-# Install the latest openjdk 21 and utilities
 brew install curl zip unzip openjdk
 ```
 {% endtab %}
@@ -58,10 +57,10 @@ sudo yum install curl zip unzip java-21-openjdk
 
 ## Mac/\*Unix Quick Installer
 
-BoxLang has been designed to run on multiple runtimes and adapt itself, as well as the code you write, to enhance itself.  Once your requirements are installed, then If you are on Mac or Unix, you can use our handy quick installer by running the following command:
+To get started quickly with BoxLang, use our BoxLang Quick Installer:
 
 {% tabs %}
-{% tab title="Bash" %}
+{% tab title="Bash / ZSH" %}
 ```javascript
 /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
 ```
@@ -86,24 +85,32 @@ The quick installer requires the following:
 * Permission to copy files to `/usr/local/bin and /usr/local/lib`
 {% endhint %}
 
-The quick installer will install the **OS** binary and the **MiniServer** In the directories mentioned above.  The following scripts will be installed for you
+The quick installer will install the **OS** binary and the **MiniServer** in the above directories. It will also install the following scripts for you.
 
-* `boxlang` - Our BoxLang binary, [learn more](../running-boxlang/)
-* `boxlang-miniserver` - Our BoxLang MiniServer binary, [learn more](../running-boxlang/miniserver.md)
+* `boxlang` - Our BoxLang binary runner, [learn more](../running-boxlang/)
+* `boxlang-miniserver` - Our BoxLang MiniServer binary runner, [learn more](../running-boxlang/miniserver.md)
 * `install-boxlang` - The quick installer so you can reuse it to upgrade your installations
 * `install-bx-module` - A module installer. Just pass in the slug of the module and watch it install
 
-#### REPL
+### Upgrading Your Install
+
+The `install-boxlang` script will allow you to easily upgrade your OS install as well.  If you call it with no arguments, then it will install the latest release and overriding the local install.  You can also pass a specific version to install as the second argument.
+
+```bash
+# Install / Upgrade to the latest version
+install-boxlang
+
+# Upgrade or Downgrade to a specific version
+install-boxlang 1.0.0
+```
+
+### REPL
 
 Just run `boxlang` and you are ready to rock in our REPL:
 
 <figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
-{% hint style="success" %}
-To upgrade your installation, just re-run the quick installer and the new binaries will install.
-{% endhint %}
-
-#### Installing Modules
+### Installing Modules
 
 You can use the `install-bx-module` binary to install modules into your boxlang home. Just pass in the name of the slug you want. All of our core modules are available here and in [FORGEBOX](https://forgebox.io/type/boxlang-modules).  Please note that you can only install our core modules from this binary, not any module from FORGEBOX, for that, use CommandBox.
 
@@ -114,11 +121,11 @@ install-bx-module bx-esapi
 
 ## Binaries
 
-We have a collection of different binaries for the different runtimes we support.  Enjoy!
+The quick installer is the best and easiest way to get installed on Mac or \*Nix.  However, below, you can find a collection of all our installers and binaries for running BoxLang and each Runtime.
 
 ### Operating System Binaries
 
-Here you can find the installers and binaries for all Operating Systems:
+Here, you can find the installers and binaries for all Operating Systems:
 
 * Windows Installer: \
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-snapshot-installer.exe](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-snapshot-installer.exe)
@@ -126,6 +133,8 @@ Here you can find the installers and binaries for all Operating Systems:
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip)
 * Jar: \
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0-all.jar)
+* Quick Installer (Mac/\*nix)\
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh](https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)
 
 ### MiniServer Binaries
 
@@ -144,12 +153,6 @@ BoxLang can also run on AWS Lambdas. It even powers our entry playground at [htt
   [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template)
 
 ### CommandBox BoxLang Server
-
-<div align="left">
-
-<figure><img src="../../.gitbook/assets/image (6) (1).png" alt=""><figcaption></figcaption></figure>
-
-</div>
 
 BoxLang can also be deployed using [CommandBox](https://www.ortussolutions.com/products/commandbox).  This is our preferred way to deploy web applications using BoxLang.  BoxLang +/++ Subscribers even get access to [CommandBox Pro](https://www.ortussolutions.com/products/commandbox-pro).
 
