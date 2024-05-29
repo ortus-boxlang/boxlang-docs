@@ -5,10 +5,13 @@
 Moves the buffer cursor position forward the number of characters specified by the position argument
 
 ## Method Signature
+
 ```
 FileSkipBytes(file=[any], position=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ FileSkipBytes(file=[any], position=[integer])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

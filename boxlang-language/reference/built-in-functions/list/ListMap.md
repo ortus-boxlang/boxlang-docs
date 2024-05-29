@@ -5,10 +5,13 @@
 Used to iterate over a delimited list and run the function closure for each item in the list and create a new list from the returned values.
 
 ## Method Signature
+
 ```
 ListMap(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -26,6 +29,7 @@ ListMap(list=[string], callback=[function], delimiter=[string], includeEmptyFiel
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

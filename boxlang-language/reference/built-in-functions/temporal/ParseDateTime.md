@@ -5,10 +5,13 @@
 Parses a datetime string or object
 
 ## Method Signature
+
 ```
 ParseDateTime(date=[any], format=[string], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ParseDateTime(date=[any], format=[string], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

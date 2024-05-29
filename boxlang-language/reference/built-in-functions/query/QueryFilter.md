@@ -5,10 +5,13 @@
 Filters query rows specified in filter criteria
 
 ## Method Signature
+
 ```
 QueryFilter(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ QueryFilter(query=[query], callback=[function], parallel=[boolean], maxThreads=[
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

@@ -5,10 +5,13 @@
 Returns the ,{@link java.util.Locale}, display name with an optional display language/locale
 
 ## Method Signature
+
 ```
 GetLocaleDisplayName(locale=[string], dspLocale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,8 @@ GetLocaleDisplayName(locale=[string], dspLocale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)
   * [LSCurrencyFormat](./LSCurrencyFormat.md)

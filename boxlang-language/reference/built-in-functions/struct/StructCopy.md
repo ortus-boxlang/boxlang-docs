@@ -4,11 +4,16 @@
 
 Creates a shallow copy of a struct.
 
+Copies top-level keys, values, and arrays in the structure by value; copies nested structures by reference.
+
 ## Method Signature
+
 ```
 StructCopy(struct=[structloose])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +26,7 @@ StructCopy(struct=[structloose])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructDelete](./StructDelete.md)

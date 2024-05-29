@@ -5,10 +5,13 @@
 No description available.
 
 ## Method Signature
+
 ```
 Wrap(string=[string], limit=[integer], strip=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,7 +26,9 @@ Wrap(string=[string], limit=[integer], strip=[boolean])
 ```
 
 ## Related
+
   * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
   * [Char](./Char.md)
   * [CharsetDecode](./CharsetDecode.md)
   * [CharsetEncode](./CharsetEncode.md)
@@ -33,6 +38,7 @@ Wrap(string=[string], limit=[integer], strip=[boolean])
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)
@@ -40,7 +46,9 @@ Wrap(string=[string], limit=[integer], strip=[boolean])
   * [LTrim](./LTrim.md)
   * [Mid](./Mid.md)
   * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
   * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [ReEscape](./ReEscape.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
   * [ReMatch](./ReMatch.md)
@@ -57,8 +65,11 @@ Wrap(string=[string], limit=[integer], strip=[boolean])
   * [Right](./Right.md)
   * [RJustify](./RJustify.md)
   * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

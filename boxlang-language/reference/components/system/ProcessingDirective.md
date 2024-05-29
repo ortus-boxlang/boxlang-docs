@@ -4,11 +4,14 @@
 This tag does nothing for now.
 
 ## Component Signature
+
 ```
 <bx:ProcessingDirective pageEncoding=[string]
 suppressWhiteSpace=[boolean] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

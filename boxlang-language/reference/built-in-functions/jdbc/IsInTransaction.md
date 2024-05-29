@@ -5,10 +5,13 @@
 Detect whether the current context is executing within a transaction
 
 ## Method Signature
+
 ```
 IsInTransaction()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,7 @@ IsInTransaction()
 ```
 
 ## Related
+
   * [IsWithinTransaction](./IsWithinTransaction.md)
   * [QueryExecute](./QueryExecute.md)
   * [TransactionCommit](./TransactionCommit.md)

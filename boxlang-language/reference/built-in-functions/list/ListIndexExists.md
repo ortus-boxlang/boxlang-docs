@@ -5,10 +5,13 @@
 Checks if a list has a given index
 
 ## Method Signature
+
 ```
 ListIndexExists(list=[string], index=[numeric], delimiter=[string], includeEmptyFields=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ ListIndexExists(list=[string], index=[numeric], delimiter=[string], includeEmpty
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

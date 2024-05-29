@@ -4,11 +4,18 @@
 
 Retrieve a Java System property or environment value by name.
 
+It looks at properties first then environment variables second.
+
+ You can also pass a default value to return if the property or environment variable is not found.
+
 ## Method Signature
+
 ```
 GetSystemSetting(key=[String], defaultValue=[String])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +29,7 @@ GetSystemSetting(key=[String], defaultValue=[String])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -66,7 +74,6 @@ GetSystemSetting(key=[String], defaultValue=[String])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

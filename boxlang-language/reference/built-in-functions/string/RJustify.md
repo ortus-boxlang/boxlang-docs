@@ -5,10 +5,13 @@
 Justifies characters in a string of a specified length, either left or right.
 
 ## Method Signature
+
 ```
 RJustify(string=[string], length=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,7 +25,9 @@ RJustify(string=[string], length=[integer])
 ```
 
 ## Related
+
   * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
   * [Char](./Char.md)
   * [CharsetDecode](./CharsetDecode.md)
   * [CharsetEncode](./CharsetEncode.md)
@@ -32,6 +37,7 @@ RJustify(string=[string], length=[integer])
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)
@@ -39,7 +45,9 @@ RJustify(string=[string], length=[integer])
   * [LTrim](./LTrim.md)
   * [Mid](./Mid.md)
   * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
   * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [ReEscape](./ReEscape.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
   * [ReMatch](./ReMatch.md)
@@ -55,8 +63,11 @@ RJustify(string=[string], length=[integer])
   * [Reverse](./Reverse.md)
   * [Right](./Right.md)
   * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

@@ -5,10 +5,13 @@
 This function maps the query to a new query.
 
 ## Method Signature
+
 ```
 QueryGetCell(query=[query], column_name=[string], row_number=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ QueryGetCell(query=[query], column_name=[string], row_number=[integer])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

@@ -5,10 +5,13 @@
 Formats a datetime, date or time
 
 ## Method Signature
+
 ```
 DateFormat(date=[any], mask=[string], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ DateFormat(date=[any], mask=[string], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

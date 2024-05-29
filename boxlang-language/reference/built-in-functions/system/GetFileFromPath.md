@@ -5,10 +5,13 @@
 Extracts a filename from an absolute path.
 
 ## Method Signature
+
 ```
 GetFileFromPath(path=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ GetFileFromPath(path=[string])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -65,7 +69,6 @@ GetFileFromPath(path=[string])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

@@ -5,10 +5,13 @@
 Inserts a key/value pair in to a struct - with an optional overwrite argument
 
 ## Method Signature
+
 ```
 StructInsert(struct=[modifiableStruct], key=[string], value=[any], overwrite=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ StructInsert(struct=[modifiableStruct], key=[string], value=[any], overwrite=[bo
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

@@ -5,10 +5,13 @@
 Announce a BoxLang event to the system asynchronously
 
 ## Method Signature
+
 ```
 BoxAnnounceAsync(state=[string], data=[struct])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ BoxAnnounceAsync(state=[string], data=[struct])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -66,7 +70,6 @@ BoxAnnounceAsync(state=[string], data=[struct])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

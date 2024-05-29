@@ -5,10 +5,13 @@
 Determine whether a given object is a closure
 
 ## Method Signature
+
 ```
 IsClosure(object=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsClosure(object=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

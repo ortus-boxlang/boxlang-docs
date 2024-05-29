@@ -5,10 +5,13 @@
 Throws a developer-specified exception, which can be caught with a catch block.
 
 ## Method Signature
+
 ```
 Throw(message=[String], type=[String], detail=[String], errorcode=[String], extendedinfo=[any], object=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -26,6 +29,7 @@ Throw(message=[String], type=[String], detail=[String], errorcode=[String], exte
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -71,7 +75,6 @@ Throw(message=[String], type=[String], detail=[String], errorcode=[String], exte
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)
   * [writeDump](./writeDump.md)

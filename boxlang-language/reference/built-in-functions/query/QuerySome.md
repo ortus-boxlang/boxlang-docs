@@ -5,10 +5,13 @@
 This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
 
 ## Method Signature
+
 ```
 QuerySome(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ QuerySome(query=[query], callback=[function], parallel=[boolean], maxThreads=[in
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

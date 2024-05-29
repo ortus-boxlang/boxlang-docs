@@ -5,10 +5,13 @@
 Sorts a delimited list and returns the result
 
 ## Method Signature
+
 ```
 ListSort(list=[string], sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -28,6 +31,7 @@ ListSort(list=[string], sortType=[any], sortOrder=[string], delimiter=[string], 
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

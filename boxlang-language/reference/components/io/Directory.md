@@ -4,6 +4,7 @@
 Allows you to list, create, delete or rename a directory in the server file system.
 
 ## Component Signature
+
 ```
 <bx:Directory action=[string]
 directory=[string]
@@ -18,7 +19,9 @@ type=[string]
 listInfo=[string]
 createPath=[boolean] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

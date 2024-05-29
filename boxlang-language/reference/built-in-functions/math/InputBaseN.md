@@ -5,10 +5,13 @@
 Converts a string, using the base specified by radix, to an integer.
 
 ## Method Signature
+
 ```
 InputBaseN(string=[string], radix=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ InputBaseN(string=[string], radix=[numeric])
 ```
 
 ## Related
+
   * [Abs](./Abs.md)
   * [Acos](./Acos.md)
   * [Asin](./Asin.md)
@@ -40,7 +44,9 @@ InputBaseN(string=[string], radix=[numeric])
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)

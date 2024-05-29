@@ -5,10 +5,13 @@
 Converts a JSON (JavaScript Object Notation) string data representation into data, such as a structure or array.
 
 ## Method Signature
+
 ```
 JSONDeserialize(json=[string], strictMapping=[boolean], useCustomSerializer=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,12 +26,15 @@ JSONDeserialize(json=[string], strictMapping=[boolean], useCustomSerializer=[str
 ```
 
 ## Related
+
   * [DataNavigate](./DataNavigate.md)
+  * [JSONPrettify](./JSONPrettify.md)
   * [JSONSerialize](./JSONSerialize.md)
   * [ParseNumber](./ParseNumber.md)
-  * [serializeJSON](./serializeJSON.md)
   * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)
+  * [ToImmutable](./ToImmutable.md)
+  * [ToMutable](./ToMutable.md)
   * [ToNumeric](./ToNumeric.md)
   * [ToScript](./ToScript.md)
   * [ToString](./ToString.md)

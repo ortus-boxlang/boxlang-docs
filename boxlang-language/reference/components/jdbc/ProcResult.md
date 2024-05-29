@@ -4,12 +4,15 @@
 Register a result set variable for a stored procedure.
 
 ## Component Signature
+
 ```
 <bx:ProcResult name=[string]
 resultSet=[numeric]
 maxRows=[numeric] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

@@ -4,23 +4,31 @@
 
 Removes the first element from an array and returns the removed element.
 
+This method changes the length of the array. If used on an empty array, an
+ exception will be thrown.
+
 ## Method Signature
+
 ```
-ArrayShift(array=[modifiablearray])
+ArrayShift(array=[modifiablearray], defaultValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `modifiablearray` | `true` | The array to shift |  |
+| `defaultValue` | `any` | `false` |  |  |
 
 ## Examples
 
 ```
-ArrayShift(array=[modifiablearray])
+ArrayShift(array=[modifiablearray], defaultValue=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

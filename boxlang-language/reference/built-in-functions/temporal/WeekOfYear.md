@@ -5,10 +5,13 @@
 Returns the numeric week within a year of a date object
 
 ## Method Signature
+
 ```
 WeekOfYear(date=[any], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ WeekOfYear(date=[any], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

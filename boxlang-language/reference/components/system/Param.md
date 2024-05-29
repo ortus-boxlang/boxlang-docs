@@ -4,6 +4,7 @@
 Tests for a parameter's existence, tests its data type, and, if a default value is not assigned, optionally provides one.
 
 ## Component Signature
+
 ```
 <bx:Param name=[string]
 type=[string]
@@ -12,7 +13,9 @@ max=[numeric]
 min=[numeric]
 pattern=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

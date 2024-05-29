@@ -5,10 +5,13 @@
 Iterates all the elements in a string and runs the passed callback on each character
 
 ## Method Signature
+
 ```
 StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -28,7 +31,9 @@ StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyF
 ```
 
 ## Related
+
   * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
   * [Char](./Char.md)
   * [CharsetDecode](./CharsetDecode.md)
   * [CharsetEncode](./CharsetEncode.md)
@@ -38,6 +43,7 @@ StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyF
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)
@@ -45,7 +51,9 @@ StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyF
   * [LTrim](./LTrim.md)
   * [Mid](./Mid.md)
   * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
   * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [ReEscape](./ReEscape.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
   * [ReMatch](./ReMatch.md)
@@ -62,8 +70,11 @@ StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyF
   * [Right](./Right.md)
   * [RJustify](./RJustify.md)
   * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)

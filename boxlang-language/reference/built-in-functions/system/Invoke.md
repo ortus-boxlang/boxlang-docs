@@ -5,10 +5,13 @@
 Invokes an object method and returns the result of the invoked method.
 
 ## Method Signature
+
 ```
 Invoke(instance=[any], methodname=[string], arguments=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ Invoke(instance=[any], methodname=[string], arguments=[any])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -67,7 +71,6 @@ Invoke(instance=[any], methodname=[string], arguments=[any])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

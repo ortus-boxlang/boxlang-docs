@@ -5,10 +5,13 @@
 Returns the absolute value of a number
 
 ## Method Signature
+
 ```
 Abs(value=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ Abs(value=[numeric])
 ```
 
 ## Related
+
   * [Acos](./Acos.md)
   * [Asin](./Asin.md)
   * [Atn](./Atn.md)
@@ -39,7 +43,9 @@ Abs(value=[numeric])
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)

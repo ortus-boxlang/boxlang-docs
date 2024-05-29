@@ -5,10 +5,13 @@
 Finds the first occurrence of a substring in a string, from a specified start position.
 
 ## Method Signature
+
 ```
 Find(substring=[string], string=[string], start=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,7 +26,9 @@ Find(substring=[string], string=[string], start=[integer])
 ```
 
 ## Related
+
   * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
   * [Char](./Char.md)
   * [CharsetDecode](./CharsetDecode.md)
   * [CharsetEncode](./CharsetEncode.md)
@@ -32,6 +37,7 @@ Find(substring=[string], string=[string], start=[integer])
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)
@@ -39,7 +45,9 @@ Find(substring=[string], string=[string], start=[integer])
   * [LTrim](./LTrim.md)
   * [Mid](./Mid.md)
   * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
   * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [ReEscape](./ReEscape.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
   * [ReMatch](./ReMatch.md)
@@ -56,8 +64,11 @@ Find(substring=[string], string=[string], start=[integer])
   * [Right](./Right.md)
   * [RJustify](./RJustify.md)
   * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

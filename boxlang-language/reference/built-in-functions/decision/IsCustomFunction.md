@@ -5,10 +5,13 @@
 Determine whether a given object is a custom function.
 
 ## Method Signature
+
 ```
 IsCustomFunction(object=[any], type=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ IsCustomFunction(object=[any], type=[string])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

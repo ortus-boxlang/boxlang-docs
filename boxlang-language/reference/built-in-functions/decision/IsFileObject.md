@@ -5,10 +5,13 @@
 Determine whether the given object is a BoxLang File object.
 
 ## Method Signature
+
 ```
 IsFileObject(object=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsFileObject(object=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

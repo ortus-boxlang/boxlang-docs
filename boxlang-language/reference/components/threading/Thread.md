@@ -4,6 +4,7 @@
 The thread component enables multithreaded programming in BoxLang.
 
 ## Component Signature
+
 ```
 <bx:Thread name=[string]
 action=[string]
@@ -11,7 +12,9 @@ duration=[integer]
 priority=[string]
 timeout=[integer] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

@@ -5,10 +5,13 @@
 Returns the absolute value of a number
 
 ## Method Signature
+
 ```
 StringLen(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ StringLen(value=[any])
 ```
 
 ## Related
+
   * [ArrayLen](./ArrayLen.md)
   * [GetMetaData](./GetMetaData.md)
   * [Len](./Len.md)

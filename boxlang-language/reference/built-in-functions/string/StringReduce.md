@@ -5,10 +5,13 @@
 Run the provided udf over all characters in a string to reduce the values to a single output
 
 ## Method Signature
+
 ```
 StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -26,7 +29,9 @@ StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[
 ```
 
 ## Related
+
   * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
   * [Char](./Char.md)
   * [CharsetDecode](./CharsetDecode.md)
   * [CharsetEncode](./CharsetEncode.md)
@@ -36,6 +41,7 @@ StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)
@@ -43,7 +49,9 @@ StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[
   * [LTrim](./LTrim.md)
   * [Mid](./Mid.md)
   * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
   * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [ReEscape](./ReEscape.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
   * [ReMatch](./ReMatch.md)
@@ -60,8 +68,11 @@ StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[
   * [Right](./Right.md)
   * [RJustify](./RJustify.md)
   * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

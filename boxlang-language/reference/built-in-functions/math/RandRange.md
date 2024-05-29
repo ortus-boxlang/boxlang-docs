@@ -5,24 +5,28 @@
 Return a random int between number1 and number 2
 
 ## Method Signature
+
 ```
-RandRange(number1=[numeric], number2=[numeric], algorithm=[any])
+RandRange(number1=[numeric], number2=[numeric], algorithm=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `number1` | `numeric` | `true` |  |  |
 | `number2` | `numeric` | `true` |  |  |
-| `algorithm` | `any` | `false` |  |  |
+| `algorithm` | `string` | `false` |  |  |
 
 ## Examples
 
 ```
-RandRange(number1=[numeric], number2=[numeric], algorithm=[any])
+RandRange(number1=[numeric], number2=[numeric], algorithm=[string])
 ```
 
 ## Related
+
   * [Abs](./Abs.md)
   * [Acos](./Acos.md)
   * [Asin](./Asin.md)
@@ -42,7 +46,9 @@ RandRange(number1=[numeric], number2=[numeric], algorithm=[any])
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)
   * [Sin](./Sin.md)

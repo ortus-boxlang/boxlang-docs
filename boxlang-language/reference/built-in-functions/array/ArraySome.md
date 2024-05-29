@@ -5,10 +5,13 @@
 Calls a given closure/function with every element in a given array and returns true if one of the closure calls returns true
 
 ## Method Signature
+
 ```
 ArraySome(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ ArraySome(array=[array], callback=[function], parallel=[boolean], maxThreads=[in
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

@@ -4,11 +4,16 @@
 
 Swaps array values of an array at specified positions.
 
+This function is more efficient than multiple assignment statements
+
 ## Method Signature
+
 ```
 ArraySwap(array=[array], position1=[any], position2=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +28,7 @@ ArraySwap(array=[array], position1=[any], position2=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

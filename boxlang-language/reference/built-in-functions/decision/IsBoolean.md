@@ -5,10 +5,13 @@
 Determine whether a given object is a boolean
 
 ## Method Signature
+
 ```
 IsBoolean(object=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsBoolean(object=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

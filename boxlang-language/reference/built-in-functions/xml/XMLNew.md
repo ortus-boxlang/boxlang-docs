@@ -5,10 +5,13 @@
 Creates a new empty XML Object
 
 ## Method Signature
+
 ```
 XMLNew(caseSensitive=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ XMLNew(caseSensitive=[boolean])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
   * [XMLFormat](./XMLFormat.md)

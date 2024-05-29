@@ -5,10 +5,13 @@
 Return larger of two numbers
 
 ## Method Signature
+
 ```
 Min(number1=[numeric], number2=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ Min(number1=[numeric], number2=[numeric])
 ```
 
 ## Related
+
   * [Abs](./Abs.md)
   * [Acos](./Acos.md)
   * [Asin](./Asin.md)
@@ -40,7 +44,9 @@ Min(number1=[numeric], number2=[numeric])
   * [Log10](./Log10.md)
   * [Max](./Max.md)
   * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)

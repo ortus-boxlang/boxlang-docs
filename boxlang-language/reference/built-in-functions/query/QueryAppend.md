@@ -5,10 +5,13 @@
 This function clears the query
 
 ## Method Signature
+
 ```
 QueryAppend(query1=[query], query2=[query])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryAppend(query1=[query], query2=[query])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryClear](./QueryClear.md)

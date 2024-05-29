@@ -2,13 +2,16 @@
 
 # Function: `SetLocale`
 
-Sets the current request-level locale
+Sets the current request-level locale.
 
 ## Method Signature
+
 ```
 SetLocale(locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,8 @@ SetLocale(locale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)

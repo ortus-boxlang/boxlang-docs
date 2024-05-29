@@ -5,10 +5,13 @@
 Finds and retrieves a top-level key from a string in a struct
 
 ## Method Signature
+
 ```
 StructFind(struct=[structloose], key=[string], defaultValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ StructFind(struct=[structloose], key=[string], defaultValue=[any])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

@@ -5,10 +5,13 @@
 Trims each item in the list.
 
 ## Method Signature
+
 ```
 ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

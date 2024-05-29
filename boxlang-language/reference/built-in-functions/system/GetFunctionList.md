@@ -5,10 +5,13 @@
 Get a collection of all the registered global functions in the runtime.
 
 ## Method Signature
+
 ```
 GetFunctionList()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,7 @@ GetFunctionList()
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -62,7 +66,6 @@ GetFunctionList()
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

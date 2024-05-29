@@ -5,10 +5,13 @@
 Determines whether the function parameter is a ANY node of an XML doc.
 
 ## Method Signature
+
 ```
 IsXMLNode(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsXMLNode(value=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

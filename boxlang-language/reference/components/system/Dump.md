@@ -4,10 +4,13 @@
 I create a representation of objects
 
 ## Component Signature
+
 ```
 <bx:Dump var=[any] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

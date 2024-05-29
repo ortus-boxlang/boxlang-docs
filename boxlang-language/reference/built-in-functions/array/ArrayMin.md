@@ -5,10 +5,13 @@
 Return length of array
 
 ## Method Signature
+
 ```
 ArrayMin(array=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ ArrayMin(array=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

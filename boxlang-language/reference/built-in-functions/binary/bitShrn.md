@@ -5,10 +5,13 @@
 Performs a bitwise shift-left or shift-right, no-rotation operation.
 
 ## Method Signature
+
 ```
 bitShrn(number=[integer], count=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ bitShrn(number=[integer], count=[integer])
 ```
 
 ## Related
+
   * [BinaryDecode](./BinaryDecode.md)
   * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)

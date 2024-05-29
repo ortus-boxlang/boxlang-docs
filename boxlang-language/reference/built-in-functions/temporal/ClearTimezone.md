@@ -5,10 +5,13 @@
 Clears the current timezone in the request
 
 ## Method Signature
+
 ```
 ClearTimezone()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,7 @@ ClearTimezone()
 ```
 
 ## Related
+
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)
   * [CreateODBCDate](./CreateODBCDate.md)

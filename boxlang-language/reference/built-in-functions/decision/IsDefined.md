@@ -4,11 +4,24 @@
 
 Determine whether a given variable reference exists.
 
+<p>,
+ For example:
+ ,<ul>,
+ ,<li>,<code>,isDefined( "luis" ),</code>, will test for the existence of an ,<code>,lmajano,</code>, variable in any accessible scope.,</li>,
+ ,<li>,<code>,isDefined( "variables.foo" ),</code>, will test for the existence of a ,<code>,foo,</code>, variable in the ,<code>,variables,</code>, scope.,</li>,
+ ,<li>,<code>,isDefined( "brad.age" ),</code>, will test for the existence of an ,<code>,age,</code>, key in the ,<code>,brad,</code>, struct, in any accessible
+ scope,</li>,
+ ,</ul>,
+ ,</p>
+
 ## Method Signature
+
 ```
 IsDefined(variable=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +34,7 @@ IsDefined(variable=[string])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

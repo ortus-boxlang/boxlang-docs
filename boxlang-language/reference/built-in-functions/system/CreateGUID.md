@@ -4,11 +4,17 @@
 
 Create a Globally Unique Identifier (UUID).
 
+<p>,
+ Returns an uppercased-but-otherwise-unmodified UUID version 4 string.
+
 ## Method Signature
+
 ```
 CreateGUID()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +24,7 @@ CreateGUID()
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -62,7 +69,6 @@ CreateGUID()
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

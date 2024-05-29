@@ -5,10 +5,13 @@
 Returns the data in a query column.
 
 ## Method Signature
+
 ```
 QueryColumnData(query=[query], columnName=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryColumnData(query=[query], columnName=[string])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

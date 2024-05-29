@@ -5,10 +5,13 @@
 Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
 
 ## Method Signature
+
 ```
 DateCompare(date1=[any], date2=[any], datepart=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ DateCompare(date1=[any], date2=[any], datepart=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

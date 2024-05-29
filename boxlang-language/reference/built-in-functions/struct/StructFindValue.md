@@ -5,10 +5,13 @@
 Searches a struct for a given value and returns an array of results
 
 ## Method Signature
+
 ```
 StructFindValue(struct=[structloose], value=[string], scope=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ StructFindValue(struct=[structloose], value=[string], scope=[string])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

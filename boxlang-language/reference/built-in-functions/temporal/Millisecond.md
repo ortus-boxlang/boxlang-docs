@@ -5,10 +5,13 @@
 Returns the millisecond of a date object
 
 ## Method Signature
+
 ```
 Millisecond(date=[any], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ Millisecond(date=[any], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

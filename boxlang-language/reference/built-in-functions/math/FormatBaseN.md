@@ -5,10 +5,13 @@
 Converts a number to a string representation in the specified base.
 
 ## Method Signature
+
 ```
 FormatBaseN(number=[numeric], radix=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ FormatBaseN(number=[numeric], radix=[integer])
 ```
 
 ## Related
+
   * [Abs](./Abs.md)
   * [Acos](./Acos.md)
   * [Asin](./Asin.md)
@@ -40,7 +44,9 @@ FormatBaseN(number=[numeric], radix=[integer])
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)

@@ -4,14 +4,17 @@
 
 Creates a date-time object.
 
-_Note that the core implementation of this BIF differs from ACF/Lucee in handling of a year value without a century. BoxLang respects that pre-first century years are valid and and will treat `createDate( 20 )` as 20 AD._
-_The behavior modification to emulate ACF/Lucee would require the installation of the `bx-compat` module._
+Note that the core implementation of this BIF differs from ACF/Lucee in handling of a year value without a century. BoxLang respects that pre-first century years are valid and and will treat `createDate( 20 )` as 20 AD.
+ The behavior modification to emulate ACF/Lucee would require the installation of the `bx-compat` module.
 
 ## Method Signature
+
 ```
 CreateDateTime(year=[integer], month=[integer], day=[integer], hour=[integer], minute=[integer], second=[integer], millisecond=[integer], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -31,6 +34,7 @@ CreateDateTime(year=[integer], month=[integer], day=[integer], hour=[integer], m
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateODBCDate](./CreateODBCDate.md)

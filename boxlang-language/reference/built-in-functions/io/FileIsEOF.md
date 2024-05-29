@@ -5,10 +5,13 @@
 Determines whether the end of the file has been reached while reading it.
 
 ## Method Signature
+
 ```
 FileIsEOF(file=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ FileIsEOF(file=[any])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

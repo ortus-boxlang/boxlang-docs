@@ -5,10 +5,13 @@
 Creates a new XML Element which can be appended to an XML document
 
 ## Method Signature
+
 ```
 XMLElemNew(XML=[xml], childname=[string], namespace=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ XMLElemNew(XML=[xml], childname=[string], namespace=[string])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLFormat](./XMLFormat.md)
   * [XMLGetNodeType](./XMLGetNodeType.md)

@@ -4,13 +4,16 @@
 Logs information to the specified log file
 
 ## Component Signature
+
 ```
 <bx:Log text=[string]
 file=[string]
 log=[string]
 type=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

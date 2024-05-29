@@ -4,10 +4,13 @@
 I include a template into the current template
 
 ## Component Signature
+
 ```
 <bx:Flush  />
 ```
+
 ### Attributes
+
 This tag does not accept any attributes
 
 ## Examples

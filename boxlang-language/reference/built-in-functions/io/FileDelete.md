@@ -4,11 +4,16 @@
 
 Deletes the specified file on the server.
 
+Throws an exception if the file doesn't exist.
+
 ## Method Signature
+
 ```
 FileDelete(file=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +26,7 @@ FileDelete(file=[string])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

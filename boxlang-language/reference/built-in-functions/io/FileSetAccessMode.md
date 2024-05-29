@@ -5,10 +5,13 @@
 Sets the Posix permissions on a file
 
 ## Method Signature
+
 ```
 FileSetAccessMode(file=[any], mode=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ FileSetAccessMode(file=[any], mode=[string])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

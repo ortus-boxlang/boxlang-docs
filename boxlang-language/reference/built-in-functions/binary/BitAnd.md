@@ -5,10 +5,13 @@
 Performs a bitwise logical AND operation.
 
 ## Method Signature
+
 ```
 BitAnd(number1=[integer], number2=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ BitAnd(number1=[integer], number2=[integer])
 ```
 
 ## Related
+
   * [BinaryDecode](./BinaryDecode.md)
   * [BinaryEncode](./BinaryEncode.md)
   * [BitMaskClear](./BitMaskClear.md)

@@ -5,10 +5,13 @@
 Returns the mathmatical constant Pi accurate to 15 digits
 
 ## Method Signature
+
 ```
 Pi()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,7 @@ Pi()
 ```
 
 ## Related
+
   * [Abs](./Abs.md)
   * [Acos](./Acos.md)
   * [Asin](./Asin.md)
@@ -36,7 +40,9 @@ Pi()
   * [Log10](./Log10.md)
   * [Max](./Max.md)
   * [Min](./Min.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)

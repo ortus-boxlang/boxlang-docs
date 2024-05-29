@@ -5,10 +5,13 @@
 Append a value to an array
 
 ## Method Signature
+
 ```
 ArrayAppend(array=[modifiableArray], value=[any], merge=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ArrayAppend(array=[modifiableArray], value=[any], merge=[boolean])
 ```
 
 ## Related
+
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)
   * [ArrayContains](./ArrayContains.md)

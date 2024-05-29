@@ -4,6 +4,7 @@
 I add an HTTP param to an HTTP call.
 
 ## Component Signature
+
 ```
 <bx:HTTPParam type=[string]
 name=[string]
@@ -12,7 +13,9 @@ file=[string]
 encoded=[boolean]
 mimetype =[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

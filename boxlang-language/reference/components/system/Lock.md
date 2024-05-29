@@ -4,6 +4,7 @@
 Ensures the integrity of shared data.
 
 ## Component Signature
+
 ```
 <bx:Lock name=[string]
 scope=[string]
@@ -11,7 +12,9 @@ type=[string]
 timeout=[Integer]
 throwOnTimeout=[boolean] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

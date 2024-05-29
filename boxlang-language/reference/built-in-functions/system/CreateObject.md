@@ -5,14 +5,17 @@
 Creates a new object representation
 
 ## Method Signature
+
 ```
 CreateObject(type=[string], className=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `type` | `string` | `true` | The type of object to create |  |
+| `type` | `string` | `true` | The type of object to create: java, bx, or component |  |
 | `className` | `string` | `true` | A classname for a component/class request or the java class to create |  |
 
 ## Examples
@@ -22,6 +25,7 @@ CreateObject(type=[string], className=[string])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -66,7 +70,6 @@ CreateObject(type=[string], className=[string])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

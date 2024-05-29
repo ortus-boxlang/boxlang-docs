@@ -5,10 +5,13 @@
 Used to filter an array to items for which the closure function returns true.
 
 ## Method Signature
+
 ```
 ArrayFilter(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ ArrayFilter(array=[array], callback=[function], parallel=[boolean], maxThreads=[
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

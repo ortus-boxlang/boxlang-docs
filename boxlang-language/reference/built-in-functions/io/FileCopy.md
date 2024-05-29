@@ -5,10 +5,13 @@
 Copies a file from one location to another
 
 ## Method Signature
+
 ```
 FileCopy(source=[string], destination=[string], createPath=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ FileCopy(source=[string], destination=[string], createPath=[boolean])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

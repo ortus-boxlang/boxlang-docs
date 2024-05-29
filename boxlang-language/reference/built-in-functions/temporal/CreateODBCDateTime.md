@@ -5,10 +5,13 @@
 Creates a DateTime object with the format set to ODBC Implicit format
 
 ## Method Signature
+
 ```
 CreateODBCDateTime(date=[any], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ CreateODBCDateTime(date=[any], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

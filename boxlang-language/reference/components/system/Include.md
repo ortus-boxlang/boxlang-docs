@@ -4,10 +4,13 @@
 I include a template into the current template
 
 ## Component Signature
+
 ```
 <bx:Include template=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

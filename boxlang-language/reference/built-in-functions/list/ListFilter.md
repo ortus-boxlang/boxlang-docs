@@ -5,10 +5,13 @@
 Filters a delimted list and returns the values from the callback test
 
 ## Method Signature
+
 ```
 ListFilter(list=[string], filter=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -27,6 +30,7 @@ ListFilter(list=[string], filter=[function], delimiter=[string], includeEmptyFie
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

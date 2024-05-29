@@ -5,10 +5,13 @@
 Converts a struct to a sorted struct - using either a callback comparator or textual directives as the sort option
 
 ## Method Signature
+
 ```
 StructToSorted(struct=[structloose], sortType=[any], sortOrder=[string], path=[string], callback=[function])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ StructToSorted(struct=[structloose], sortType=[any], sortOrder=[string], path=[s
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

@@ -4,11 +4,16 @@
 
 Uses a Document Type Definition (DTD) or XML Schema to validate an XML text document or an XML document object.
 
+Returns keys status (boolean), errors (array), fatalerrors (array) and warnings (array)
+
 ## Method Signature
+
 ```
 XMLValidate(XML=[any], validator=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +27,7 @@ XMLValidate(XML=[any], validator=[string])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
   * [XMLFormat](./XMLFormat.md)

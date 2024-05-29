@@ -5,10 +5,13 @@
 This function returns the column array of a query.
 
 ## Method Signature
+
 ```
 QueryColumnArray(query=[query])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ QueryColumnArray(query=[query])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

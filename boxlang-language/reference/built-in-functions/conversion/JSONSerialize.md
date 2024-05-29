@@ -5,10 +5,13 @@
 Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
 ## Method Signature
+
 ```
 JSONSerialize(var=[any], queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,12 +27,15 @@ JSONSerialize(var=[any], queryFormat=[string], useSecureJSONPrefix=[boolean], us
 ```
 
 ## Related
+
   * [DataNavigate](./DataNavigate.md)
   * [JSONDeserialize](./JSONDeserialize.md)
+  * [JSONPrettify](./JSONPrettify.md)
   * [ParseNumber](./ParseNumber.md)
-  * [serializeJSON](./serializeJSON.md)
   * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)
+  * [ToImmutable](./ToImmutable.md)
+  * [ToMutable](./ToMutable.md)
   * [ToNumeric](./ToNumeric.md)
   * [ToScript](./ToScript.md)
   * [ToString](./ToString.md)

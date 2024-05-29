@@ -4,11 +4,24 @@
 
 Constructs a fluent data navigator based on different types of data.
 
+<p>,
+ Available Input Types:
+ ,<ul>,
+ ,<li>,String: A JSON string,</li>,
+ ,<li>,File Path: A path to a JSON file as a string,</li>,
+ ,<li>,File Path: A path to a JSON file as a Java Path,</li>,
+ ,<li>,Struct: A structure,</li>,
+ ,<li>,Map: A Java map,</li>,
+ ,</ul>
+
 ## Method Signature
+
 ```
 DataNavigate(data=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,12 +34,15 @@ DataNavigate(data=[any])
 ```
 
 ## Related
+
   * [JSONDeserialize](./JSONDeserialize.md)
+  * [JSONPrettify](./JSONPrettify.md)
   * [JSONSerialize](./JSONSerialize.md)
   * [ParseNumber](./ParseNumber.md)
-  * [serializeJSON](./serializeJSON.md)
   * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)
+  * [ToImmutable](./ToImmutable.md)
+  * [ToMutable](./ToMutable.md)
   * [ToNumeric](./ToNumeric.md)
   * [ToScript](./ToScript.md)
   * [ToString](./ToString.md)

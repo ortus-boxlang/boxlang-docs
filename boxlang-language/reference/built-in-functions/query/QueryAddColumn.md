@@ -5,10 +5,13 @@
 Adds a column to a query and populates its rows with the contents of a one-dimensional array.
 
 ## Method Signature
+
 ```
 QueryAddColumn(query=[query], columnName=[string], datatype=[any], array=[array])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ QueryAddColumn(query=[query], columnName=[string], datatype=[any], array=[array]
 ```
 
 ## Related
+
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)
   * [QueryClear](./QueryClear.md)

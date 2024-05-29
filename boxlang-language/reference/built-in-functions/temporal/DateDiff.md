@@ -5,10 +5,13 @@
 Returns the numeric difference in the requested date part between two dates
 
 ## Method Signature
+
 ```
 DateDiff(datepart=[string], date1=[any], date2=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ DateDiff(datepart=[string], date1=[any], date2=[any])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

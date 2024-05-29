@@ -5,10 +5,13 @@
 Retrieves a struct containin info on a locale, with an optional display locale
 
 ## Method Signature
+
 ```
 GetLocaleInfo(locale=[string], dspLocale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,8 @@ GetLocaleInfo(locale=[string], dspLocale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [LSCurrencyFormat](./LSCurrencyFormat.md)

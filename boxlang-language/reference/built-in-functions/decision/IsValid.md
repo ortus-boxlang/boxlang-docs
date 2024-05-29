@@ -5,11 +5,18 @@
 Determine whether the given value is a string, numeric, or date.Arrays, structs, queries, closures, classes and components, and other complex
  structures will return false.
 
+<p>,
+ Note we expressly do not support the `eurodate` type, since date formats vary across EU countries. For this, prefer the `LSIsDate( date, locale )`
+ method instead.
+
 ## Method Signature
+
 ```
 IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -26,6 +33,7 @@ IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

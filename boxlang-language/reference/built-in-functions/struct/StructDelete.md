@@ -5,10 +5,13 @@
 Deletes a key from a struct
 
 ## Method Signature
+
 ```
 StructDelete(struct=[modifiableStruct], key=[string], indicateNotExists=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ StructDelete(struct=[modifiableStruct], key=[string], indicateNotExists=[boolean
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

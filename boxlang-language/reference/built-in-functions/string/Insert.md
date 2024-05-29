@@ -5,10 +5,13 @@
 Inserts a substring into another string at a specified position.
 
 ## Method Signature
+
 ```
 Insert(substring=[string], string=[string], position=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,7 +26,9 @@ Insert(substring=[string], string=[string], position=[integer])
 ```
 
 ## Related
+
   * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
   * [Char](./Char.md)
   * [CharsetDecode](./CharsetDecode.md)
   * [CharsetEncode](./CharsetEncode.md)
@@ -32,6 +37,7 @@ Insert(substring=[string], string=[string], position=[integer])
   * [Find](./Find.md)
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
+  * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)
@@ -39,7 +45,9 @@ Insert(substring=[string], string=[string], position=[integer])
   * [LTrim](./LTrim.md)
   * [Mid](./Mid.md)
   * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
   * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [ReEscape](./ReEscape.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
   * [ReMatch](./ReMatch.md)
@@ -56,8 +64,11 @@ Insert(substring=[string], string=[string], position=[integer])
   * [Right](./Right.md)
   * [RJustify](./RJustify.md)
   * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

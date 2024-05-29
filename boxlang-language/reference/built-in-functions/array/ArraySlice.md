@@ -5,10 +5,13 @@
 Extracts a sub array from an existing array.
 
 ## Method Signature
+
 ```
 ArraySlice(array=[array], start=[integer], length=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ArraySlice(array=[array], start=[integer], length=[integer])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

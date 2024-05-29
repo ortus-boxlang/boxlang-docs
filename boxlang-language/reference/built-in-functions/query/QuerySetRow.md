@@ -5,10 +5,13 @@
 Adds or updates a row in a query based on the provided row data and position.
 
 ## Method Signature
+
 ```
 QuerySetRow(query=[query], rowNumber=[integer], rowData=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ QuerySetRow(query=[query], rowNumber=[integer], rowData=[any])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

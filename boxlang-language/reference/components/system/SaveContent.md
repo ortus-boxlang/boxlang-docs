@@ -4,12 +4,15 @@
 I capture the generated content from the body statements and save it into a variable
 
 ## Component Signature
+
 ```
 <bx:SaveContent variable=[string]
 trim=[boolean]
 append=[boolean] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

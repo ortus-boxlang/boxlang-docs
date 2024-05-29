@@ -5,10 +5,13 @@
 Returns the canonical path of a file, resolving all relative path elements and symlinks
 
 ## Method Signature
+
 ```
 GetCanonicalPath(path=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ GetCanonicalPath(path=[string])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

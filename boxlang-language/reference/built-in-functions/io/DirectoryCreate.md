@@ -5,10 +5,13 @@
 Creates a directory
 
 ## Method Signature
+
 ```
 DirectoryCreate(path=[string], createPath=[boolean], ignoreExists=[boolean], mode=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ DirectoryCreate(path=[string], createPath=[boolean], ignoreExists=[boolean], mod
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

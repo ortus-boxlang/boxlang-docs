@@ -5,10 +5,13 @@
 Deletes a column within a query object.
 
 ## Method Signature
+
 ```
 QueryDeleteColumn(query=[query], column=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryDeleteColumn(query=[query], column=[string])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

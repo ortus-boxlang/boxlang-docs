@@ -5,10 +5,13 @@
 This function returns true if the key exists in the query
 
 ## Method Signature
+
 ```
 QueryKeyExists(query=[query], key=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryKeyExists(query=[query], key=[string])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

@@ -5,10 +5,13 @@
 Converts a delimited list to an array
 
 ## Method Signature
+
 ```
 ListToArray(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ ListToArray(list=[string], delimiter=[string], includeEmptyFields=[boolean], mul
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

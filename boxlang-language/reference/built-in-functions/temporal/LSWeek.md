@@ -4,11 +4,16 @@
 
 Provides the Localized BIF and member functions for time units ( e.g.
 
+different locales have different start days to the week )
+
 ## Method Signature
+
 ```
 LSWeek(date=[any], locale=[string], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +28,7 @@ LSWeek(date=[any], locale=[string], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

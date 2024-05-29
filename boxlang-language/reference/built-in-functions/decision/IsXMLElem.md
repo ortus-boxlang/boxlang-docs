@@ -5,10 +5,13 @@
 Determines whether the function parameter is an ELEMENT node of an XML doc.
 
 ## Method Signature
+
 ```
 IsXMLElem(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsXMLElem(value=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

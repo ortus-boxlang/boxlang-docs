@@ -5,10 +5,13 @@
 Determines whether an array contains data.
 
 ## Method Signature
+
 ```
 ArrayIsEmpty(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ ArrayIsEmpty(value=[any])
 ```
 
 ## Related
+
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)

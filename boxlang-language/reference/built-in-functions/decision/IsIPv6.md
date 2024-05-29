@@ -5,10 +5,13 @@
 Determine whether the given hostname supports IPv6.
 
 ## Method Signature
+
 ```
 IsIPv6(hostname=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsIPv6(hostname=[string])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

@@ -5,10 +5,13 @@
 Opens a file for reading or writing and returns a file object for future operations
 
 ## Method Signature
+
 ```
 FileOpen(file=[string], mode=[string], charset=[string], seekable=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ FileOpen(file=[string], mode=[string], charset=[string], seekable=[boolean])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

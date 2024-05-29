@@ -5,10 +5,13 @@
 Returns a subset of rows from an existing query
 
 ## Method Signature
+
 ```
 QuerySlice(query=[query], offset=[integer], length=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ QuerySlice(query=[query], offset=[integer], length=[integer])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

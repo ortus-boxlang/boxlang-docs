@@ -4,11 +4,17 @@
 
 Delay evaluation of a string as an expression, when it is passed as a parameter to the IIf or Evaluate functions.
 
+Escapes any double quotation
+ marks in the parameter and wraps the result in double quotation marks. It does not escape # so the string could still be evaluated in some cases.
+
 ## Method Signature
+
 ```
 DE(string=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +27,7 @@ DE(string=[string])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -65,7 +72,6 @@ DE(string=[string])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

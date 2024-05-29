@@ -5,10 +5,13 @@
 No description available.
 
 ## Method Signature
+
 ```
 LSCurrencyFormat(number=[any], type=[string], locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,8 @@ LSCurrencyFormat(number=[any], type=[string], locale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)

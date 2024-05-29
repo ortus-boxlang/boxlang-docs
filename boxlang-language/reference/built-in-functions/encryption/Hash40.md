@@ -5,10 +5,13 @@
 Creates an algorithmic hash of an object
 
 ## Method Signature
+
 ```
 Hash40(input=[any], algorithm=[string], encoding=[string], numIterations=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,5 +27,6 @@ Hash40(input=[any], algorithm=[string], encoding=[string], numIterations=[intege
 ```
 
 ## Related
+
   * [Hash](./Hash.md)
   * [Hmac](./Hmac.md)

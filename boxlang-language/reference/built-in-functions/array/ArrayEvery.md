@@ -5,10 +5,13 @@
 Returns true if every closure returns true, otherwise false
 
 ## Method Signature
+
 ```
 ArrayEvery(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ ArrayEvery(array=[array], callback=[function], parallel=[boolean], maxThreads=[i
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

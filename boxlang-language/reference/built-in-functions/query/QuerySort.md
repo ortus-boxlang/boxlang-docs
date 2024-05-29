@@ -5,10 +5,13 @@
 Sorts array elements.
 
 ## Method Signature
+
 ```
 QuerySort(query=[query], sortFunc=[function])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QuerySort(query=[query], sortFunc=[function])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

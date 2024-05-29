@@ -5,10 +5,13 @@
 Tests whether a value is numeric, according to a given or the default
 
 ## Method Signature
+
 ```
 LSIsNumeric(number=[string], locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,8 @@ LSIsNumeric(number=[string], locale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)

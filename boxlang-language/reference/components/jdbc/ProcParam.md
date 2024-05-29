@@ -4,6 +4,7 @@
 Provide a paramater to a stored procudure.
 
 ## Component Signature
+
 ```
 <bx:ProcParam type=[string]
 value=[any]
@@ -12,7 +13,9 @@ maxLength=[numeric]
 scale=[numeric]
 null=[boolean] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

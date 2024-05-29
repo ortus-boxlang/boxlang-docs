@@ -4,10 +4,13 @@
 Suppresses output produced by code within the body of the component.
 
 ## Component Signature
+
 ```
 <bx:Silent  />
 ```
+
 ### Attributes
+
 This tag does not accept any attributes
 
 ## Examples

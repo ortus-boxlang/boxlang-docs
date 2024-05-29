@@ -4,11 +4,17 @@
 
 Converts a struct to a query string using the specified delimiter.
 
+<p>,
+ The default delimiter is ,{@code "&"}
+
 ## Method Signature
+
 ```
 StructToQueryString(struct=[structloose], delimiter=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +28,7 @@ StructToQueryString(struct=[structloose], delimiter=[string])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

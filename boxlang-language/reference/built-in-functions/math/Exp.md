@@ -5,10 +5,13 @@
 Calculates the exponent whose base is e that represents a number.
 
 ## Method Signature
+
 ```
 Exp(number=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ Exp(number=[numeric])
 ```
 
 ## Related
+
   * [Abs](./Abs.md)
   * [Acos](./Acos.md)
   * [Asin](./Asin.md)
@@ -39,7 +43,9 @@ Exp(number=[numeric])
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)

@@ -5,10 +5,13 @@
 Used to iterate over an array and run the function closure for each item in the array.
 
 ## Method Signature
+
 ```
 ArrayToList(array=[array], delimiter=[String], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ArrayToList(array=[array], delimiter=[String], initialValue=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

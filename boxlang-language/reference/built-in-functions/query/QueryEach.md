@@ -5,10 +5,13 @@
 Iterates over query rows and passes each row per iteration to a callback function
 
 ## Method Signature
+
 ```
 QueryEach(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ QueryEach(query=[query], callback=[function], parallel=[boolean], maxThreads=[in
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

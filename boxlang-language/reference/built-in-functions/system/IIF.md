@@ -4,11 +4,17 @@
 
 A boolean condition or value is passed into the first argument.
 
+If the condition is true the second argument is evaluated and returned, if false
+ the third argument is evaluated and returned.
+
 ## Method Signature
+
 ```
 IIF(condition=[boolean], expression1=[string], expression2=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +29,7 @@ IIF(condition=[boolean], expression1=[string], expression2=[string])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -67,7 +74,6 @@ IIF(condition=[boolean], expression1=[string], expression2=[string])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

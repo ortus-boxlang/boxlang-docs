@@ -5,10 +5,13 @@
 Used to iterate over an array and run the function closure for each item in the array.
 
 ## Method Signature
+
 ```
 ArrayEach(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -26,6 +29,7 @@ ArrayEach(array=[array], callback=[function], parallel=[boolean], maxThreads=[in
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

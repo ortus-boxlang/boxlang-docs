@@ -5,10 +5,13 @@
 Tests equality between two structs
 
 ## Method Signature
+
 ```
 StructEquals(struct1=[structloose], struct2=[structloose])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ StructEquals(struct1=[structloose], struct2=[structloose])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

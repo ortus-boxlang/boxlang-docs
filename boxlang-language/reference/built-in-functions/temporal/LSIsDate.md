@@ -5,10 +5,13 @@
 Determines whether a string is avalid date/time string with either a specific locale or within the current system/application locale
 
 ## Method Signature
+
 ```
 LSIsDate(date=[any], locale=[string], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ LSIsDate(date=[any], locale=[string], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

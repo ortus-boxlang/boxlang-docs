@@ -5,10 +5,13 @@
 Appends new contents to a file starting at the last character in the file
 
 ## Method Signature
+
 ```
 FileAppend(file=[any], data=[any], charset=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ FileAppend(file=[any], data=[any], charset=[string])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

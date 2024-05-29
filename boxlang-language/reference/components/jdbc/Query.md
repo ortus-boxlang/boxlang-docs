@@ -4,6 +4,7 @@
 No description available.
 
 ## Component Signature
+
 ```
 <bx:Query name=[string]
 datasource=[string]
@@ -13,6 +14,7 @@ username=[string]
 password=[string]
 maxRows=[numeric]
 blockfactor=[numeric]
+fetchsize=[numeric]
 timeout=[numeric]
 cachedAfter=[date]
 cachedWithin=[numeric]
@@ -28,7 +30,9 @@ psq=[boolean]
 returnType=[string]
 columnKey=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -39,7 +43,8 @@ columnKey=[string] />
 | `username` | `string` | `false` |  |  |
 | `password` | `string` | `false` |  |  |
 | `maxRows` | `numeric` | `false` |  | `-1` |
-| `blockfactor` | `numeric` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Min@62ee1c89, ortus.boxlang.runtime.validation.dynamic.Max@2ab7f649]` |
+| `blockfactor` | `numeric` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Min@20c283b4, ortus.boxlang.runtime.validation.dynamic.Max@366b4a7b]` |
+| `fetchsize` | `numeric` | `false` |  |  |
 | `timeout` | `numeric` | `false` |  |  |
 | `cachedAfter` | `date` | `false` |  |  |
 | `cachedWithin` | `numeric` | `false` |  |  |
@@ -66,6 +71,7 @@ username=[string]
 password=[string]
 maxRows=[numeric]
 blockfactor=[numeric]
+fetchsize=[numeric]
 timeout=[numeric]
 cachedAfter=[date]
 cachedWithin=[numeric]

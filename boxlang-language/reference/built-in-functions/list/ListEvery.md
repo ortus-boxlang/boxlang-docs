@@ -5,10 +5,13 @@
 Tests whether all items in a list meet the specified callback
 
 ## Method Signature
+
 ```
 ListEvery(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -27,6 +30,7 @@ ListEvery(list=[string], callback=[function], delimiter=[string], includeEmptyFi
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

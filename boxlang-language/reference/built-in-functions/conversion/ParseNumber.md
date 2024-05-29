@@ -5,10 +5,13 @@
 Converts a string to a number in the specified numeral system
 
 ## Method Signature
+
 ```
 ParseNumber(number=[string], radix=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,12 +25,15 @@ ParseNumber(number=[string], radix=[string])
 ```
 
 ## Related
+
   * [DataNavigate](./DataNavigate.md)
   * [JSONDeserialize](./JSONDeserialize.md)
+  * [JSONPrettify](./JSONPrettify.md)
   * [JSONSerialize](./JSONSerialize.md)
-  * [serializeJSON](./serializeJSON.md)
   * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)
+  * [ToImmutable](./ToImmutable.md)
+  * [ToMutable](./ToMutable.md)
   * [ToNumeric](./ToNumeric.md)
   * [ToScript](./ToScript.md)
   * [ToString](./ToString.md)

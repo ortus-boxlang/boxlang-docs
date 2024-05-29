@@ -4,11 +4,16 @@
 
 Deletes an element from a list.
 
+Returns a copy of the list, without the specified element.
+
 ## Method Signature
+
 ```
 ListDeleteAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +30,7 @@ ListDeleteAt(list=[string], position=[numeric], delimiter=[string], includeEmpty
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

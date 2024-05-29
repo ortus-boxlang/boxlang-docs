@@ -5,10 +5,13 @@
 Return an array containing the indexes of matched values
 
 ## Method Signature
+
 ```
 ArrayFindAll(array=[array], value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ ArrayFindAll(array=[array], value=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

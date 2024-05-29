@@ -5,10 +5,13 @@
 Updates or sets a key/value pair in to a struct
 
 ## Method Signature
+
 ```
 StructUpdate(struct=[modifiableStruct], key=[string], value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ StructUpdate(struct=[modifiableStruct], key=[string], value=[any])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

@@ -4,11 +4,17 @@
 
 Iterates over every entry of the array and calls the closure function to work on the element of the array.
 
+The returned value will be set at the
+ same index in a new array and the new array will be returned
+
 ## Method Signature
+
 ```
 ArrayMap(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +31,7 @@ ArrayMap(array=[array], callback=[function], parallel=[boolean], maxThreads=[int
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

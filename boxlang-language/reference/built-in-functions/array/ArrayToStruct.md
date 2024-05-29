@@ -5,10 +5,13 @@
 Transform the array to a struct, the index of the array is the key of the struct
 
 ## Method Signature
+
 ```
 ArrayToStruct(array=[array])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ ArrayToStruct(array=[array])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

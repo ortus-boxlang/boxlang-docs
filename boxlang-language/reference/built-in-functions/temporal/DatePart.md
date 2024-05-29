@@ -5,10 +5,13 @@
 Extracts a part from a datetime value as a numeric.
 
 ## Method Signature
+
 ```
 DatePart(datepart=[string], date=[any], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ DatePart(datepart=[string], date=[any], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

@@ -5,10 +5,13 @@
 Returns the sum of all values in an array
 
 ## Method Signature
+
 ```
 ArraySum(array=[array])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ ArraySum(array=[array])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

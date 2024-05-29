@@ -5,10 +5,13 @@
 returns a count of the number of occurrences of a value in a list
 
 ## Method Signature
+
 ```
 ListValueCount(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ ListValueCount(list=[string], value=[string], delimiter=[string], includeEmptyFi
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

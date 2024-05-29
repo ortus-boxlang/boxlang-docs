@@ -5,10 +5,13 @@
 Retrieves the value from a struct using a path based expression
 
 ## Method Signature
+
 ```
 StructGet(path=[string], object=[structloose])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ StructGet(path=[string], object=[structloose])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

@@ -6,10 +6,13 @@ Determine whether the given value is a string, numeric, or date.Arrays, structs,
  structures will return false.
 
 ## Method Signature
+
 ```
 IsSimpleValue(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ IsSimpleValue(value=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

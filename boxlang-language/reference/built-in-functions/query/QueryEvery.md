@@ -5,10 +5,13 @@
 Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
 
 ## Method Signature
+
 ```
 QueryEvery(query=[query], closure=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ QueryEvery(query=[query], closure=[function], parallel=[boolean], maxThreads=[in
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

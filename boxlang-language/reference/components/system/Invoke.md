@@ -4,13 +4,16 @@
 Invokes a method from within a template or class.
 
 ## Component Signature
+
 ```
 <bx:Invoke class=[any]
 method=[string]
 returnVariable=[string]
 argumentCollection=[any] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

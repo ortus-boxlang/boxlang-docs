@@ -5,10 +5,13 @@
 Determines whether the function parameter is an Extended Markup language (XML) document object.
 
 ## Method Signature
+
 ```
 IsXMLDoc(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsXMLDoc(value=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

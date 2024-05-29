@@ -5,10 +5,13 @@
 Writes a line of data to a file
 
 ## Method Signature
+
 ```
 FileWriteLine(file=[any], data=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ FileWriteLine(file=[any], data=[string])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

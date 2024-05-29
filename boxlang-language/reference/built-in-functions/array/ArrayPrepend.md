@@ -5,10 +5,13 @@
 Append a value to the start an array
 
 ## Method Signature
+
 ```
 ArrayPrepend(array=[modifiableArray], value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ ArrayPrepend(array=[modifiableArray], value=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

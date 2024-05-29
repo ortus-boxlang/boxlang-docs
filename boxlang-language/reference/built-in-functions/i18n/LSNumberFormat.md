@@ -5,10 +5,13 @@
 Localized Number formatting
 
 ## Method Signature
+
 ```
 LSNumberFormat(number=[any], mask=[string], locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,8 @@ LSNumberFormat(number=[any], mask=[string], locale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)

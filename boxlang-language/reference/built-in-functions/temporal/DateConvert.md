@@ -4,11 +4,16 @@
 
 Converts local time to Coordinated Universal Time (UTC), or UTC to local time.
 
+The function uses the daylight savings settings in the executing computer to compute daylight savings time, if required.
+
 ## Method Signature
+
 ```
 DateConvert(conversionType=[string], date=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +27,7 @@ DateConvert(conversionType=[string], date=[any])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

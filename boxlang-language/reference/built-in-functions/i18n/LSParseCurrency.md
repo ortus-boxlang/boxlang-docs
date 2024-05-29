@@ -5,10 +5,13 @@
 Parses a currency value in to a numeric using the specified or context locale
 
 ## Method Signature
+
 ```
 LSParseCurrency(string=[string], locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,8 @@ LSParseCurrency(string=[string], locale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)

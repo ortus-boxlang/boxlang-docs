@@ -5,10 +5,13 @@
 Performs a bitwise logical XOR operation.
 
 ## Method Signature
+
 ```
 BitXor(number1=[integer], number2=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ BitXor(number1=[integer], number2=[integer])
 ```
 
 ## Related
+
   * [BinaryDecode](./BinaryDecode.md)
   * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)

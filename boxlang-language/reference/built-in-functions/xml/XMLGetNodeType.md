@@ -5,10 +5,13 @@
 Get XML values according to given xPath query
 
 ## Method Signature
+
 ```
 XMLGetNodeType(XMLNode=[XML])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ XMLGetNodeType(XMLNode=[XML])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
   * [XMLFormat](./XMLFormat.md)

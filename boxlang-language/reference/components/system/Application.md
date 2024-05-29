@@ -4,10 +4,13 @@
 I define an application
 
 ## Component Signature
+
 ```
 <bx:Application name=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

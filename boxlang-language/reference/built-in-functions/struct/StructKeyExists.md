@@ -5,10 +5,13 @@
 Tests whether a key exists in a struct and returns a boolean value
 
 ## Method Signature
+
 ```
 StructKeyExists(struct=[structloose], key=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ StructKeyExists(struct=[structloose], key=[string])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

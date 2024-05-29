@@ -5,10 +5,13 @@
 Determines whether a directory exists
 
 ## Method Signature
+
 ```
 DirectoryExists(path=[string], allowRealPath=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ DirectoryExists(path=[string], allowRealPath=[boolean])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

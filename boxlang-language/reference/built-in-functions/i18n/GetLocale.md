@@ -5,10 +5,13 @@
 Retrieves the the string representation of the current locale
 
 ## Method Signature
+
 ```
 GetLocale()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,8 @@ GetLocale()
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)
   * [LSCurrencyFormat](./LSCurrencyFormat.md)

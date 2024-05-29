@@ -5,10 +5,13 @@
 Tests whether any item in a list meets the specified callback
 
 ## Method Signature
+
 ```
 ListSome(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -27,6 +30,7 @@ ListSome(list=[string], callback=[function], delimiter=[string], includeEmptyFie
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

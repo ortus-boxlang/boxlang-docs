@@ -5,10 +5,13 @@
 Determines whether a file exists
 
 ## Method Signature
+
 ```
 FileExists(source=[string], allowRealPath=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ FileExists(source=[string], allowRealPath=[boolean])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

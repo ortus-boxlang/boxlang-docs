@@ -4,6 +4,7 @@
 Component which provides caching functionality, including content, individual entries, and HTTP headers
 
 ## Component Signature
+
 ```
 <bx:Cache action=[string]
 key=[string]
@@ -27,7 +28,9 @@ useQueryString=[boolean]
 username=[string]
 dependsOn=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

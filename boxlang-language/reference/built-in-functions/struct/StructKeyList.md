@@ -5,10 +5,13 @@
 Get keys of a struct as a string list
 
 ## Method Signature
+
 ```
 StructKeyList(structure=[structloose], delimiter=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ StructKeyList(structure=[structloose], delimiter=[string])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

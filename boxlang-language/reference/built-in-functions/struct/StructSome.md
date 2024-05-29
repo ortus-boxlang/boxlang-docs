@@ -5,10 +5,13 @@
 Used to iterate over a struct and test whether any items meet the test callback.
 
 ## Method Signature
+
 ```
 StructSome(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ StructSome(struct=[structloose], callback=[function], parallel=[boolean], maxThr
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

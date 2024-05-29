@@ -5,10 +5,13 @@
 Converts a string that is a valid numeric representation in the current locale into a formatted number.
 
 ## Method Signature
+
 ```
 LSParseNumber(number=[string], locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,8 @@ LSParseNumber(number=[string], locale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)

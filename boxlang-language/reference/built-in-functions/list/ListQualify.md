@@ -5,10 +5,13 @@
 Inserts a string at the beginning and end of list elements.
 
 ## Method Signature
+
 ```
 ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[string], includeEmptyFields=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[str
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

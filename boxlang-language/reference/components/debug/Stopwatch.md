@@ -4,12 +4,15 @@
 Used to time a block of code and assigns the result to a variable
 
 ## Component Signature
+
 ```
 <bx:Stopwatch label=[string]
 unit=[string]
 variable=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

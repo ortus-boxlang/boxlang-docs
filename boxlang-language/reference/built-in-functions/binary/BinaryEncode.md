@@ -5,10 +5,13 @@
 Encodes binary data to a string with the specified algorithm
 
 ## Method Signature
+
 ```
 BinaryEncode(binary=[any], encoding=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ BinaryEncode(binary=[any], encoding=[string])
 ```
 
 ## Related
+
   * [BinaryDecode](./BinaryDecode.md)
   * [BitAnd](./BitAnd.md)
   * [BitMaskClear](./BitMaskClear.md)

@@ -5,10 +5,13 @@
 Delete item at specified index in array
 
 ## Method Signature
+
 ```
 ArrayDeleteAt(array=[modifiableArray], index=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ ArrayDeleteAt(array=[modifiableArray], index=[integer])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

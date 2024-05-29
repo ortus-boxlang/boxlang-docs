@@ -4,11 +4,17 @@
 
 Creates an absolute, platform-appropriate path that is equivalent to the value of 'path', appended to the base path.
 
+This function (despite its
+ name) can accept an absolute or relative path in the 'path' attribute.
+
 ## Method Signature
+
 ```
 ExpandPath(path=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +27,7 @@ ExpandPath(path=[string])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

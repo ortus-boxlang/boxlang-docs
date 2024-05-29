@@ -5,10 +5,13 @@
 Returns the metadata of a query.
 
 ## Method Signature
+
 ```
 QueryGetResult(query=[query])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ QueryGetResult(query=[query])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

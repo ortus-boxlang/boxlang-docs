@@ -5,10 +5,13 @@
 Appends an element to a list
 
 ## Method Signature
+
 ```
 ListAppend(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ ListAppend(list=[string], value=[string], delimiter=[string], includeEmptyFields
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAvg](./ListAvg.md)
   * [ListChangeDelims](./ListChangeDelims.md)

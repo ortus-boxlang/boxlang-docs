@@ -4,11 +4,17 @@
 
 Generates a URL-encoded string.
 
+For example, it replaces spaces with %20, and non-alphanumeric characters with equivalent hexadecimal escape
+ sequences. Passes arbitrary strings within a URL. *
+
 ## Method Signature
+
 ```
 URLEncodedFormat(string=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +27,7 @@ URLEncodedFormat(string=[any])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -66,7 +73,6 @@ URLEncodedFormat(string=[any])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [writeDump](./writeDump.md)

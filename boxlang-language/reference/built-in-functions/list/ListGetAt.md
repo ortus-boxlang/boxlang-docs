@@ -5,10 +5,13 @@
 Retrieves an item from a delimited list at the specified position
 
 ## Method Signature
+
 ```
 ListGetAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ ListGetAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFie
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

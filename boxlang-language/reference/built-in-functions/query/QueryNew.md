@@ -5,10 +5,13 @@
 Return new query
 
 ## Method Signature
+
 ```
 QueryNew(columnList=[any], columnTypeList=[string], rowData=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ QueryNew(columnList=[any], columnTypeList=[string], rowData=[any])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

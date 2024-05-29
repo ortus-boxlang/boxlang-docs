@@ -4,11 +4,16 @@
 
 Returns a struct of file information.
 
+Different values are returned for FileInfo and GetFileInfo
+
 ## Method Signature
+
 ```
 FileInfo(file=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +26,7 @@ FileInfo(file=[any])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

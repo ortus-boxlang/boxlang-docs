@@ -4,11 +4,24 @@
 
 Convert a query string to a struct.
 
+Each key-value pair in the query string is separated by a delimiter.
+ The default delimiter is ,{@code "&"},
+ ,<p>,
+ Example:
+
+ ,<pre>,
+ queryStringToStruct( "foo=bar,&amp;,baz=qux" );
+ "foo=bar,&amp;,baz=qux".toStruct();
+ ,</pre>
+
 ## Method Signature
+
 ```
 QueryStringToStruct(target=[string], delimiter=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,7 +35,9 @@ QueryStringToStruct(target=[string], delimiter=[string])
 ```
 
 ## Related
+
   * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
   * [Char](./Char.md)
   * [CharsetDecode](./CharsetDecode.md)
   * [CharsetEncode](./CharsetEncode.md)
@@ -32,6 +47,7 @@ QueryStringToStruct(target=[string], delimiter=[string])
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)
@@ -39,6 +55,8 @@ QueryStringToStruct(target=[string], delimiter=[string])
   * [LTrim](./LTrim.md)
   * [Mid](./Mid.md)
   * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
+  * [ReEscape](./ReEscape.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
   * [ReMatch](./ReMatch.md)
@@ -55,8 +73,11 @@ QueryStringToStruct(target=[string], delimiter=[string])
   * [Right](./Right.md)
   * [RJustify](./RJustify.md)
   * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

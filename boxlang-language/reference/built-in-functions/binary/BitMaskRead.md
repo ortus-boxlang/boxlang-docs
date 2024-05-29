@@ -5,10 +5,13 @@
 Performs a bitwise mask read operation.
 
 ## Method Signature
+
 ```
 BitMaskRead(number=[integer], start=[integer], length=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ BitMaskRead(number=[integer], start=[integer], length=[integer])
 ```
 
 ## Related
+
   * [BinaryDecode](./BinaryDecode.md)
   * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)

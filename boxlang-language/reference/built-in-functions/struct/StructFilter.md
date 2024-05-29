@@ -5,10 +5,13 @@
 Used to filter a struct and return a new struct containing the result
 
 ## Method Signature
+
 ```
 StructFilter(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ StructFilter(struct=[structloose], callback=[function], parallel=[boolean], maxT
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

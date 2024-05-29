@@ -5,10 +5,13 @@
 Reads the contents of a file and returns it as a string or binary object
 
 ## Method Signature
+
 ```
 FileReadBinary(filepath=[string], charsetOrBufferSize=[string], charset=[string], buffersize=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ FileReadBinary(filepath=[string], charsetOrBufferSize=[string], charset=[string]
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

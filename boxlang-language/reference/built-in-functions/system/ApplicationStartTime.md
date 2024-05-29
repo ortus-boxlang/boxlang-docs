@@ -5,10 +5,13 @@
 Get the start date/time of the running application
 
 ## Method Signature
+
 ```
 ApplicationStartTime()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,7 @@ ApplicationStartTime()
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
@@ -62,7 +66,6 @@ ApplicationStartTime()
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

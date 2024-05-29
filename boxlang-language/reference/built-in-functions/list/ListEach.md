@@ -5,10 +5,13 @@
 Used to iterate over a delimited list and run the function closure for each item in the list.
 
 ## Method Signature
+
 ```
 ListEach(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -28,6 +31,7 @@ ListEach(list=[string], callback=[function], delimiter=[string], includeEmptyFie
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

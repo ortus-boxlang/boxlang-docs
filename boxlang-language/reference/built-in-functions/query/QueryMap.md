@@ -5,10 +5,13 @@
 This function maps the query to a new query.
 
 ## Method Signature
+
 ```
 QueryMap(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ QueryMap(query=[query], callback=[function], parallel=[boolean], maxThreads=[int
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

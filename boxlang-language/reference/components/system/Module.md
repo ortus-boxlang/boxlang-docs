@@ -4,11 +4,14 @@
 Invokes a custom tag.
 
 ## Component Signature
+
 ```
 <bx:Module template=[string]
 name=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

@@ -4,11 +4,17 @@
 
 Returns an array of structs by default of the current tag context.
 
+Each struct contains template name, line number, and function name (if applicable).
+ This is a snapshot of all function calls or invocations.
+
 ## Method Signature
+
 ```
 CallStackGet(maxFrames=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +27,7 @@ CallStackGet(maxFrames=[numeric])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -65,7 +72,6 @@ CallStackGet(maxFrames=[numeric])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

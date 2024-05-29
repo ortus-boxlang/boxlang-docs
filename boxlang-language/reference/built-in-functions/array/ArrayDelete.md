@@ -5,23 +5,28 @@
 Delete first occurance of item in array case sensitive
 
 ## Method Signature
+
 ```
-ArrayDelete(array=[modifiableArray], value=[any])
+ArrayDelete(array=[modifiableArray], value=[any], scope=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `modifiableArray` | `true` | The array to be deleted from. |  |
 | `value` | `any` | `true` | The value to deleted. |  |
+| `scope` | `string` | `false` |  | `one` |
 
 ## Examples
 
 ```
-ArrayDelete(array=[modifiableArray], value=[any])
+ArrayDelete(array=[modifiableArray], value=[any], scope=[string])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

@@ -5,10 +5,13 @@
 Get XML values according to given xPath query
 
 ## Method Signature
+
 ```
 XMLSearch(XMLNode=[XML], xpath=[String], params=[Struct])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ XMLSearch(XMLNode=[XML], xpath=[String], params=[Struct])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
   * [XMLFormat](./XMLFormat.md)

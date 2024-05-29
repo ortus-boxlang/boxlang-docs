@@ -5,10 +5,13 @@
 Gets metadata for items of an array and indicates the array type.
 
 ## Method Signature
+
 ```
 ArrayGetMetadata(array=[array])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ ArrayGetMetadata(array=[array])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

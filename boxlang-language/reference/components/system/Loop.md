@@ -4,6 +4,7 @@
 Different items are required based on loop type.
 
 ## Component Signature
+
 ```
 <bx:Loop array=[array]
 item=[string]
@@ -22,7 +23,9 @@ startRow=[integer]
 endRow=[integer]
 label=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

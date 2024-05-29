@@ -4,11 +4,17 @@
 
 Modifies an array by removing elements and adding new elements.
 
+It starts from the index, removes as many elements as specified by
+ elementCountForRemoval, and puts the replacements starting from index position.
+
 ## Method Signature
+
 ```
 ArraySplice(array=[modifiablearray], index=[numeric], elementCountForRemoval=[numeric], replacements=[array])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +30,7 @@ ArraySplice(array=[modifiablearray], index=[numeric], elementCountForRemoval=[nu
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

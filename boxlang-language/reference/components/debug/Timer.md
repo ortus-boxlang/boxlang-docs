@@ -4,13 +4,16 @@
 Times a block of code and outputs the result in a specified format.
 
 ## Component Signature
+
 ```
 <bx:Timer type=[string]
 label=[string]
 unit=[string]
 variable=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

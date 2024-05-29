@@ -5,10 +5,13 @@
 Determines whether the function parameter is a root element node of an XML doc.
 
 ## Method Signature
+
 ```
 IsXMLRoot(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsXMLRoot(value=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

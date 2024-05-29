@@ -5,10 +5,13 @@
 Performs a bitwise mask clear operation.
 
 ## Method Signature
+
 ```
 BitMaskClear(number=[integer], start=[integer], length=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ BitMaskClear(number=[integer], start=[integer], length=[integer])
 ```
 
 ## Related
+
   * [BinaryDecode](./BinaryDecode.md)
   * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)

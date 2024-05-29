@@ -5,10 +5,13 @@
 Deletes a directory
 
 ## Method Signature
+
 ```
 DirectoryDelete(path=[string], recursive=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ DirectoryDelete(path=[string], recursive=[boolean])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

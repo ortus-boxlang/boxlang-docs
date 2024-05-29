@@ -5,10 +5,13 @@
 Evaluates whether a string is in valid JSON (JavaScript Object Notation) data interchange format.
 
 ## Method Signature
+
 ```
 IsJSON(var=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsJSON(var=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

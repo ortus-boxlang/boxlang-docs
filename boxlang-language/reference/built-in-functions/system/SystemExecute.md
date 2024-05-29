@@ -4,11 +4,24 @@
 
 Executes a system process/command on the underlying OS.
 
+Returns a struct with the following keys:
+
+ {
+ output : [ the command output ]
+ error : [ any errors emitted by the command ]
+ timeout : [ boolean value as to whether a timeout was reached ]
+ terminated : [ boolean value as to whether the process was terminated ]
+ pid : the PID of the process
+ }
+
 ## Method Signature
+
 ```
 SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout=[boolean], directory=[string], output=[string], error=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -27,6 +40,7 @@ SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -71,7 +85,6 @@ SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout
   * [SessionStartTime](./SessionStartTime.md)
   * [Sleep](./Sleep.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

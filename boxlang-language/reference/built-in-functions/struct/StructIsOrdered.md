@@ -4,11 +4,16 @@
 
 Tests whether a struct is ordered ( e.g.
 
+linked )
+
 ## Method Signature
+
 ```
 StructIsOrdered(struct=[structloose])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +26,7 @@ StructIsOrdered(struct=[structloose])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

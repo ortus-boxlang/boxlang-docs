@@ -5,10 +5,13 @@
 Compacts a list by removing empty items from the start and end of the list
 
 ## Method Signature
+
 ```
 ListTrim(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ListTrim(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

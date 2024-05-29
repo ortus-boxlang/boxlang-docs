@@ -4,12 +4,15 @@
 Creates a new object representation
 
 ## Component Signature
+
 ```
 <bx:Object name=[string]
 type=[string]
 className=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

@@ -5,10 +5,13 @@
 Returns the remainder of a list after removing the first item
 
 ## Method Signature
+
 ```
 ListRest(list=[string], delimiter=[string], includeEmptyFields=[boolean], offset=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ ListRest(list=[string], delimiter=[string], includeEmptyFields=[boolean], offset
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

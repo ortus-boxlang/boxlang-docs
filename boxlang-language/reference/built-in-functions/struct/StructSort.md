@@ -5,10 +5,13 @@
 Sorts a struct according to the specified arguments and returns an array of struct keys
 
 ## Method Signature
+
 ```
 StructSort(struct=[structloose], sortType=[any], sortOrder=[string], path=[string], callback=[function])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ StructSort(struct=[structloose], sortType=[any], sortOrder=[string], path=[strin
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

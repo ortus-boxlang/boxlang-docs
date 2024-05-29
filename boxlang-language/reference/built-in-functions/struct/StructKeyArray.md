@@ -5,10 +5,13 @@
 Get keys of a struct as an array
 
 ## Method Signature
+
 ```
 StructKeyArray(structure=[structloose])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ StructKeyArray(structure=[structloose])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

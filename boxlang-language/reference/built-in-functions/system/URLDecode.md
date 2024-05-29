@@ -5,10 +5,13 @@
 Decodes a URL-encoded string.
 
 ## Method Signature
+
 ```
 URLDecode(string=[any], charset=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ URLDecode(string=[any], charset=[string])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -67,7 +71,6 @@ URLDecode(string=[any], charset=[string])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)
   * [writeDump](./writeDump.md)

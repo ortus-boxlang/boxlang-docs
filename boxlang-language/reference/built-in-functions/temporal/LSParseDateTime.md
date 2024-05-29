@@ -5,10 +5,13 @@
 Parses a locale-specific datetime string or object
 
 ## Method Signature
+
 ```
 LSParseDateTime(date=[any], locale=[string], timezone=[string], format=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ LSParseDateTime(date=[any], locale=[string], timezone=[string], format=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

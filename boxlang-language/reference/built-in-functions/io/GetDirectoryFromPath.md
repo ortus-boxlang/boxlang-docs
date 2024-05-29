@@ -5,10 +5,13 @@
 Retrieves the directory parent of a path
 
 ## Method Signature
+
 ```
 GetDirectoryFromPath(path=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ GetDirectoryFromPath(path=[string])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

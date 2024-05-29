@@ -5,10 +5,13 @@
 Formats a string so that special XML characters can be used as text in XML
 
 ## Method Signature
+
 ```
 XMLFormat(string=[string], escapeChars=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ XMLFormat(string=[string], escapeChars=[boolean])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
   * [XMLGetNodeType](./XMLGetNodeType.md)

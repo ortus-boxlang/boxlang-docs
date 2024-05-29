@@ -5,10 +5,13 @@
 Used to iterate over a struct and run the function closure for each key/value pair.
 
 ## Method Signature
+
 ```
 StructEach(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ StructEach(struct=[structloose], callback=[function], parallel=[boolean], maxThr
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

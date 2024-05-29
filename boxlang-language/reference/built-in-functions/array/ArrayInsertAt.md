@@ -5,10 +5,13 @@
 Append a value to an array
 
 ## Method Signature
+
 ```
 ArrayInsertAt(array=[modifiableArray], position=[integer], value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ArrayInsertAt(array=[modifiableArray], position=[integer], value=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

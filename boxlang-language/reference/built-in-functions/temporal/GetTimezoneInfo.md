@@ -5,10 +5,13 @@
 Retrieves a struct of information about the timezone
 
 ## Method Signature
+
 ```
 GetTimezoneInfo(timezone=[string], locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ GetTimezoneInfo(timezone=[string], locale=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

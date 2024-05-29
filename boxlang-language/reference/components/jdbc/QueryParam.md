@@ -4,6 +4,7 @@
 No description available.
 
 ## Component Signature
+
 ```
 <bx:QueryParam value=[any]
 sqltype=[string]
@@ -13,7 +14,9 @@ null=[boolean]
 list=[boolean]
 separator=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

@@ -5,10 +5,13 @@
 Returns the current row number
 
 ## Method Signature
+
 ```
 QueryCurrentRow(query=[query])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ QueryCurrentRow(query=[query])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

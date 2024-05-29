@@ -5,10 +5,13 @@
 Gets Struct-specific metadata of the requested struct.
 
 ## Method Signature
+
 ```
 StructGetMetadata(struct=[structloose])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ StructGetMetadata(struct=[structloose])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

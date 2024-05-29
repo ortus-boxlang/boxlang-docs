@@ -5,10 +5,13 @@
 Determine whether a value is an array
 
 ## Method Signature
+
 ```
 IsArray(value=[any], number=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ IsArray(value=[any], number=[numeric])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)

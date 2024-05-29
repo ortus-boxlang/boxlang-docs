@@ -5,10 +5,13 @@
 Appends the contents of a second struct to the first struct either with or without overwrite
 
 ## Method Signature
+
 ```
 StructAppend(struct1=[structloose], struct2=[structloose], overwrite=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ StructAppend(struct1=[structloose], struct2=[structloose], overwrite=[boolean])
 ```
 
 ## Related
+
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)
   * [StructDelete](./StructDelete.md)

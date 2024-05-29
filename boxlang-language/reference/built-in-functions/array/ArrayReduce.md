@@ -5,10 +5,13 @@
 Run the provided udf over the array to reduce the values to a single output
 
 ## Method Signature
+
 ```
 ArrayReduce(array=[array], callback=[function], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ArrayReduce(array=[array], callback=[function], initialValue=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

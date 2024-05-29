@@ -5,11 +5,17 @@
 In a one-dimensional array, sets the elements in a specified
  index range to a value.
 
+Useful for initializing an array after
+ a call to arrayNew.
+
 ## Method Signature
+
 ```
 ArraySet(array=[modifiablearray], start=[any], end=[any], value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +31,7 @@ ArraySet(array=[modifiablearray], start=[any], end=[any], value=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

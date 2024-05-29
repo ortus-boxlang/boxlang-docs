@@ -5,10 +5,13 @@
 De-duplicates a delimited list - either case-sensitively or case-insenstively
 
 ## Method Signature
+
 ```
 ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean])
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

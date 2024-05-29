@@ -5,10 +5,13 @@
 Converts the delimiters of a list to the new delimiter.
 
 ## Method Signature
+
 ```
 ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], includeEmptyFields=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], inclu
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

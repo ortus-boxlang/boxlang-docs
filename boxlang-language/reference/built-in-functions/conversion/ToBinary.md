@@ -5,10 +5,13 @@
 Calculates the binary representation of Base64-encoded data.
 
 ## Method Signature
+
 ```
 ToBinary(base64_or_object =[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,12 +24,15 @@ ToBinary(base64_or_object =[any])
 ```
 
 ## Related
+
   * [DataNavigate](./DataNavigate.md)
   * [JSONDeserialize](./JSONDeserialize.md)
+  * [JSONPrettify](./JSONPrettify.md)
   * [JSONSerialize](./JSONSerialize.md)
   * [ParseNumber](./ParseNumber.md)
-  * [serializeJSON](./serializeJSON.md)
   * [ToBase64](./ToBase64.md)
+  * [ToImmutable](./ToImmutable.md)
+  * [ToMutable](./ToMutable.md)
   * [ToNumeric](./ToNumeric.md)
   * [ToScript](./ToScript.md)
   * [ToString](./ToString.md)

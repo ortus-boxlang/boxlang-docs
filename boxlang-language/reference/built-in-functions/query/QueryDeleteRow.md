@@ -5,10 +5,13 @@
 This function deletes a row from the query
 
 ## Method Signature
+
 ```
 QueryDeleteRow(query=[query], row=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryDeleteRow(query=[query], row=[integer])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

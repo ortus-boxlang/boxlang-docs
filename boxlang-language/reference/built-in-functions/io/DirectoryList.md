@@ -4,11 +4,16 @@
 
 List the contents of a directory.
 
+Returns either an array, or a query.
+
 ## Method Signature
+
 ```
 DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[string], sort=[string], type=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -26,6 +31,7 @@ DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[strin
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

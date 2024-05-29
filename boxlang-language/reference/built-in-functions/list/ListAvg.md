@@ -5,10 +5,13 @@
 Gets the average of all values in a list
 
 ## Method Signature
+
 ```
 ListAvg(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ListAvg(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListChangeDelims](./ListChangeDelims.md)

@@ -5,10 +5,13 @@
 Returns whether there exists an item in the array at the selected index.
 
 ## Method Signature
+
 ```
 ArrayIsDefined(array=[array], index=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ ArrayIsDefined(array=[array], index=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

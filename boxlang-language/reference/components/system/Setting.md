@@ -4,12 +4,15 @@
 Tests for a parameter's existence, tests its data type, and, if a default value is not assigned, optionally provides one.
 
 ## Component Signature
+
 ```
 <bx:Setting enableOutputOnly=[boolean]
 showDebugOutput=[boolean]
 requestTimeout=[long] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

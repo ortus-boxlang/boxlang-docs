@@ -5,10 +5,13 @@
 Determine whether a given string value represents a loopback IP address, like `localhost`, `127.0.0.1` or `::1`.
 
 ## Method Signature
+
 ```
 IsLocalHost(ip=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsLocalHost(ip=[string])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

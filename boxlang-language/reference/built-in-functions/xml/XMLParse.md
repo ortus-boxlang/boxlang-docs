@@ -5,10 +5,13 @@
 Return new array
 
 ## Method Signature
+
 ```
 XMLParse(XML=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ XMLParse(XML=[string])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
   * [XMLFormat](./XMLFormat.md)

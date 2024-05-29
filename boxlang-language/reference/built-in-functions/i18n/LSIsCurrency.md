@@ -5,10 +5,13 @@
 Determines whether a value can be parsed to numeric in the given or default locale
 
 ## Method Signature
+
 ```
 LSIsCurrency(number=[any], locale=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,8 @@ LSIsCurrency(number=[any], locale=[string])
 ```
 
 ## Related
+
+  * [ClearLocale](./ClearLocale.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)

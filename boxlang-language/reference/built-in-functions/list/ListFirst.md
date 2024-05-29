@@ -5,10 +5,13 @@
 Returns the first or last item in a delimited list, according to the specified function name
 
 ## Method Signature
+
 ```
 ListFirst(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ ListFirst(list=[string], delimiter=[string], includeEmptyFields=[boolean], multi
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

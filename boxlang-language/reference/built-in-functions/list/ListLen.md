@@ -5,10 +5,13 @@
 Calculates the length of a list separated by the specified delimiter
 
 ## Method Signature
+
 ```
 ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

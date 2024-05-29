@@ -2,26 +2,33 @@
 
 # Function: `ArrayFind`
 
-Return int position of value in array, case sensitive
+Array finders and contains functions with and without case sensitivity.
+
+Please note that "contain" methods return a boolean, while "find" methods return an index.
 
 ## Method Signature
+
 ```
-ArrayFind(array=[array], value=[any])
+ArrayFind(array=[array], value=[any], substringMatch=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to be searched. |  |
-| `value` | `any` | `true` | The value to found. |  |
+| `value` | `any` | `true` | The value to find or a closure to be used as a search function. |  |
+| `substringMatch` | `boolean` | `false` | If true, the search will be a substring match. Default is false. This only works on simple values, not complex ones. For<br>                          that just use a function filter. | `false` |
 
 ## Examples
 
 ```
-ArrayFind(array=[array], value=[any])
+ArrayFind(array=[array], value=[any], substringMatch=[boolean])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

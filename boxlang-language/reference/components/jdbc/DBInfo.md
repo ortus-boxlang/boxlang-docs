@@ -4,6 +4,7 @@
 Retrieve database metadata for a given datasource.
 
 ## Component Signature
+
 ```
 <bx:DBInfo type=[string]
 name=[string]
@@ -15,7 +16,9 @@ username=[string]
 password=[string]
 filter=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

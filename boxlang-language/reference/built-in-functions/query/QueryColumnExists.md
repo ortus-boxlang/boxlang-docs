@@ -5,10 +5,13 @@
 This function returns true if the column exists in the query
 
 ## Method Signature
+
 ```
 QueryColumnExists(query=[query], column=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryColumnExists(query=[query], column=[string])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

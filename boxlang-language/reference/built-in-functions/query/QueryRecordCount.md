@@ -5,10 +5,13 @@
 This function returns the number of records in a query
 
 ## Method Signature
+
 ```
 QueryRecordCount(query=[query])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ QueryRecordCount(query=[query])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

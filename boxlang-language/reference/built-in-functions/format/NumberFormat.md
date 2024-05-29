@@ -5,10 +5,13 @@
 Formats a number with an optional format mask
 
 ## Method Signature
+
 ```
 NumberFormat(number=[any], mask=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ NumberFormat(number=[any], mask=[string])
 ```
 
 ## Related
+
   * [BooleanFormat](./BooleanFormat.md)
   * [DecimalFormat](./DecimalFormat.md)
   * [DollarFormat](./DollarFormat.md)

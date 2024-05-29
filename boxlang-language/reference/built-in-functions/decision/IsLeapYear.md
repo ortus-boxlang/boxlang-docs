@@ -5,10 +5,13 @@
 Determine whether a given integer value represents a leap year.
 
 ## Method Signature
+
 ```
 IsLeapYear(year=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsLeapYear(year=[numeric])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

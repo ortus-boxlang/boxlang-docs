@@ -5,10 +5,13 @@
 Copies a directory from one location to another
 
 ## Method Signature
+
 ```
 DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[string], createPath=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCreate](./DirectoryCreate.md)

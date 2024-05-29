@@ -4,11 +4,14 @@
 Passes the name and value of an argument to a method.
 
 ## Component Signature
+
 ```
 <bx:InvokeArgument name=[string]
 value=[any] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

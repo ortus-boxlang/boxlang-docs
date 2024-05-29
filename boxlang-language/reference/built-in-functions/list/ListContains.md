@@ -5,15 +5,18 @@
 Return int position of value in delimited list, case sensitive or case-insenstive variations
 
 ## Method Signature
+
 ```
 ListContains(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` | The list to be searched. |  |
-| `value` | `string` | `true` | The value to locale |  |
+| `value` | `string` | `true` | The value to locate in the list or a function to filter the list |  |
 | `delimiter` | `string` | `false` | The list delimiter(s) | `,` |
 | `includeEmptyFields` | `boolean` | `false` | Whether to include empty fields in the search | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
@@ -25,6 +28,7 @@ ListContains(list=[string], value=[string], delimiter=[string], includeEmptyFiel
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

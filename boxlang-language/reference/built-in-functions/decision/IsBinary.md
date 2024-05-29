@@ -5,10 +5,13 @@
 Determines whether a value is stored as binary data.
 
 ## Method Signature
+
 ```
 IsBinary(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ IsBinary(value=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBoolean](./IsBoolean.md)

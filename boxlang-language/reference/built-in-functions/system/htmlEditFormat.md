@@ -4,11 +4,17 @@
 
 Encodes the input string for safe output in the body of a HTML tag.
 
+The encoding in meant to mitigate Cross Site Scripting (XSS) attacks. This
+ function can provide more protection from XSS than the HTMLEditFormat or XMLFormat functions do.
+
 ## Method Signature
+
 ```
 htmlEditFormat(string=[string], canonicalize=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +28,7 @@ htmlEditFormat(string=[string], canonicalize=[boolean])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -66,7 +73,6 @@ htmlEditFormat(string=[string], canonicalize=[boolean])
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

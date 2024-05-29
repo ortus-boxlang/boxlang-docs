@@ -4,11 +4,16 @@
 
 Determines whether the function parameter is an ATTRIBUTE node of an XML doc.
 
+Will return false for values refernced through the XMLAttributes struct. Useful for the results of XMLSearch()
+
 ## Method Signature
+
 ```
 IsXmlAttribute(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +26,7 @@ IsXmlAttribute(value=[any])
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

@@ -4,6 +4,7 @@
 Manages interactions with server files.
 
 ## Component Signature
+
 ```
 <bx:File action=[string]
 file=[string]
@@ -22,7 +23,9 @@ result=[string]
 fixnewline=[boolean]
 cachedwithin=[numeric] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

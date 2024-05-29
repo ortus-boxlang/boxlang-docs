@@ -5,10 +5,13 @@
 Returns the cells of a query row as a structure
 
 ## Method Signature
+
 ```
 QueryRowData(query=[query], rowNumber=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryRowData(query=[query], rowNumber=[integer])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

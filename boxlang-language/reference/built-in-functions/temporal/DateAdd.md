@@ -5,10 +5,13 @@
 Modifies a date object by date part and integer time unit
 
 ## Method Signature
+
 ```
 DateAdd(datepart=[string], number=[long], date=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ DateAdd(datepart=[string], number=[long], date=[any])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

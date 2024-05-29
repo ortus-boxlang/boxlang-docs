@@ -5,10 +5,13 @@
 Performs a bitwise mask set operation.
 
 ## Method Signature
+
 ```
 BitMaskSet(number=[integer], mask=[integer], start=[integer], length=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ BitMaskSet(number=[integer], mask=[integer], start=[integer], length=[integer])
 ```
 
 ## Related
+
   * [BinaryDecode](./BinaryDecode.md)
   * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)

@@ -5,10 +5,13 @@
 Run the provided udf over a reversed delimited list to reduce the values to a single output
 
 ## Method Signature
+
 ```
 ListReduceRight(list=[string], callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -26,6 +29,7 @@ ListReduceRight(list=[string], callback=[function], initialValue=[any], delimite
 ```
 
 ## Related
+
   * [GetToken](./GetToken.md)
   * [ListAppend](./ListAppend.md)
   * [ListAvg](./ListAvg.md)

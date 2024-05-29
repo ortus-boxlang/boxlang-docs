@@ -5,10 +5,13 @@
 Sorts array elements.
 
 ## Method Signature
+
 ```
 ArraySort(array=[modifiablearray], sortType=[any], sortOrder=[string], localeSensitive=[boolean], callback=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +28,7 @@ ArraySort(array=[modifiablearray], sortType=[any], sortOrder=[string], localeSen
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

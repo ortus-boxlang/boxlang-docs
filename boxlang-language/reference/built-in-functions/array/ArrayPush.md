@@ -5,10 +5,13 @@
 Adds an element or an object to the end of an array, then returns the size of the modified array.
 
 ## Method Signature
+
 ```
 ArrayPush(array=[modifiableArray], value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ ArrayPush(array=[modifiableArray], value=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

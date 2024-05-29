@@ -5,10 +5,13 @@
 Writes the contents of a string or binary data to a file
 
 ## Method Signature
+
 ```
 FileWrite(file=[string], data=[any], charset=[string], createPath=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ FileWrite(file=[string], data=[any], charset=[string], createPath=[boolean])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

@@ -4,11 +4,16 @@
 
 Return the median value of an array.
 
+Will only work on arrays that contain only numeric values.
+
 ## Method Signature
+
 ```
 ArrayMedian(array=[array])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +26,7 @@ ArrayMedian(array=[array])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

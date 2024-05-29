@@ -5,10 +5,13 @@
 Formats a date in a locale-specific format
 
 ## Method Signature
+
 ```
 LSDateTimeFormat(date=[any], mask=[string], locale=[string], timezone=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ LSDateTimeFormat(date=[any], mask=[string], locale=[string], timezone=[string])
 ```
 
 ## Related
+
   * [ClearTimezone](./ClearTimezone.md)
   * [CreateDate](./CreateDate.md)
   * [CreateDateTime](./CreateDateTime.md)

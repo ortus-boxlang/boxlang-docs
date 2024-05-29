@@ -5,10 +5,13 @@
 Restarts the currently running application
 
 ## Method Signature
+
 ```
 ApplicationRestart()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,7 @@ ApplicationRestart()
 ```
 
 ## Related
+
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
@@ -62,7 +66,6 @@ ApplicationRestart()
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

@@ -5,10 +5,13 @@
 Remove last item in array and return it
 
 ## Method Signature
+
 ```
 ArrayPop(array=[modifiablearray], defaultValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ ArrayPop(array=[modifiablearray], defaultValue=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

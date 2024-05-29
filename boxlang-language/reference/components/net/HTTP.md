@@ -4,6 +4,7 @@
 I make an HTTP call
 
 ## Component Signature
+
 ```
 <bx:HTTP URL=[string]
 port=[numeric]
@@ -40,7 +41,9 @@ workstation=[string]
 cachedWithin=[string]
 encodeUrl=[boolean] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

@@ -4,11 +4,17 @@
 
 Sets a savepoint in the current transaction.
 
+This savepoint can then be a rollback point when executing a rollback via `transactionRollback(
+ "mySavepointName" )`.
+
 ## Method Signature
+
 ```
 TransactionSetSavepoint(savepoint=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +27,7 @@ TransactionSetSavepoint(savepoint=[string])
 ```
 
 ## Related
+
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
   * [QueryExecute](./QueryExecute.md)

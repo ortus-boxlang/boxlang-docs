@@ -5,10 +5,13 @@
 Clear all items from array
 
 ## Method Signature
+
 ```
 ArrayClear(array=[modifiableArray])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ ArrayClear(array=[modifiableArray])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayContains](./ArrayContains.md)

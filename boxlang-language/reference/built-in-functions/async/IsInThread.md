@@ -5,10 +5,13 @@
 Verifies if the calling execution code is running in a thread or not.
 
 ## Method Signature
+
 ```
 IsInThread()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,4 +21,5 @@ IsInThread()
 ```
 
 ## Related
+
 

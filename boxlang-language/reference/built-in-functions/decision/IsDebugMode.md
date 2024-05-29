@@ -5,10 +5,13 @@
 Determine whether the current BoxLang instance is running in debug mode.
 
 ## Method Signature
+
 ```
 IsDebugMode()
 ```
+
 ### Arguments
+
 This function does not accept any arguments
 
 ## Examples
@@ -18,6 +21,7 @@ IsDebugMode()
 ```
 
 ## Related
+
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)

@@ -5,10 +5,13 @@
 Returns the value formatted as a boolean string
 
 ## Method Signature
+
 ```
 BooleanFormat(value=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ BooleanFormat(value=[any])
 ```
 
 ## Related
+
   * [DecimalFormat](./DecimalFormat.md)
   * [DollarFormat](./DollarFormat.md)
   * [NumberFormat](./NumberFormat.md)

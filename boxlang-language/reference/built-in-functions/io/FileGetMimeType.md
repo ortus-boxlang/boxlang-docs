@@ -5,10 +5,13 @@
 Gets the MIME type for the file path/file object you have specified.
 
 ## Method Signature
+
 ```
 FileGetMimeType(file=[string], strict=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ FileGetMimeType(file=[string], strict=[boolean])
 ```
 
 ## Related
+
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

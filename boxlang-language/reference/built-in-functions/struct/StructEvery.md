@@ -5,10 +5,13 @@
 Used to iterate over a struct and test whether every item in the struct meets the test.
 
 ## Method Signature
+
 ```
 StructEvery(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ StructEvery(struct=[structloose], callback=[function], parallel=[boolean], maxTh
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

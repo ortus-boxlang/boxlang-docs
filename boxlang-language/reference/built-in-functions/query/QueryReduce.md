@@ -5,10 +5,13 @@
 This function reduces the query to a single value.
 
 ## Method Signature
+
 ```
 QueryReduce(query=[query], callback=[function], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ QueryReduce(query=[query], callback=[function], initialValue=[any])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

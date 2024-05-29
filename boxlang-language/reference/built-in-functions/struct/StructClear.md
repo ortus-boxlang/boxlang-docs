@@ -5,10 +5,13 @@
 Clear all items from struct
 
 ## Method Signature
+
 ```
 StructClear(structure=[modifiableStruct])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ StructClear(structure=[modifiableStruct])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructCopy](./StructCopy.md)
   * [StructDelete](./StructDelete.md)

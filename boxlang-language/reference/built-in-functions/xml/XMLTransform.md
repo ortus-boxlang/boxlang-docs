@@ -5,10 +5,13 @@
 Get XML values according to given xPath query
 
 ## Method Signature
+
 ```
 XMLTransform(XML=[any], XSL=[String], parameters=[Struct])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ XMLTransform(XML=[any], XSL=[String], parameters=[Struct])
 ```
 
 ## Related
+
   * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
   * [XMLFormat](./XMLFormat.md)

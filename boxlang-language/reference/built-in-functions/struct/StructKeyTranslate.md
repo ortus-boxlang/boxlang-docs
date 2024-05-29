@@ -5,10 +5,13 @@
 Converts a struct with dot-notated keys in to an unflattened version
 
 ## Method Signature
+
 ```
 StructKeyTranslate(struct=[structloose], deep=[boolean], retainKeys=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ StructKeyTranslate(struct=[structloose], deep=[boolean], retainKeys=[boolean])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

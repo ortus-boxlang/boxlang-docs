@@ -5,10 +5,13 @@
 Converts a number to a decimal-formatted string.
 
 ## Method Signature
+
 ```
 DecimalFormat(number=[any], length=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ DecimalFormat(number=[any], length=[integer])
 ```
 
 ## Related
+
   * [BooleanFormat](./BooleanFormat.md)
   * [DollarFormat](./DollarFormat.md)
   * [NumberFormat](./NumberFormat.md)

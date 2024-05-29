@@ -4,6 +4,7 @@
 I capture the generated content from the body statements and save it into a variable
 
 ## Component Signature
+
 ```
 <bx:Output query=[any]
 group=[string]
@@ -12,7 +13,9 @@ startRow=[integer]
 maxRows=[integer]
 encodefor=[string] />
 ```
+
 ### Attributes
+
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|

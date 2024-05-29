@@ -5,10 +5,13 @@
 Converts a value to a string.
 
 ## Method Signature
+
 ```
 ToString(value=[any], encoding=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,12 +25,15 @@ ToString(value=[any], encoding=[string])
 ```
 
 ## Related
+
   * [DataNavigate](./DataNavigate.md)
   * [JSONDeserialize](./JSONDeserialize.md)
+  * [JSONPrettify](./JSONPrettify.md)
   * [JSONSerialize](./JSONSerialize.md)
   * [ParseNumber](./ParseNumber.md)
-  * [serializeJSON](./serializeJSON.md)
   * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)
+  * [ToImmutable](./ToImmutable.md)
+  * [ToMutable](./ToMutable.md)
   * [ToNumeric](./ToNumeric.md)
   * [ToScript](./ToScript.md)

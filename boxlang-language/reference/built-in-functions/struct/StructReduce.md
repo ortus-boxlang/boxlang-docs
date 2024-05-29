@@ -5,10 +5,13 @@
 Run the provided udf against struct to reduce the values to a single output
 
 ## Method Signature
+
 ```
 StructReduce(struct=[structloose], callback=[function], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ StructReduce(struct=[structloose], callback=[function], initialValue=[any])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

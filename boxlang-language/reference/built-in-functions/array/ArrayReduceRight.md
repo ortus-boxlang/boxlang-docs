@@ -4,11 +4,17 @@
 
 This function iterates over every element of the array and calls the closure to work on that element.
 
+It will reduce the array to a single value,
+ from the right to the left, and return it.
+
 ## Method Signature
+
 ```
 ArrayReduceRight(array=[array], callback=[function], initialValue=[any])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +29,7 @@ ArrayReduceRight(array=[array], callback=[function], initialValue=[any])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
   * [ArrayClear](./ArrayClear.md)

@@ -5,10 +5,13 @@
 Adds a query to the beginning of another query
 
 ## Method Signature
+
 ```
 QueryPrepend(query1=[query], query2=[query])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -22,6 +25,7 @@ QueryPrepend(query1=[query], query2=[query])
 ```
 
 ## Related
+
   * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryAddRow](./QueryAddRow.md)
   * [QueryAppend](./QueryAppend.md)

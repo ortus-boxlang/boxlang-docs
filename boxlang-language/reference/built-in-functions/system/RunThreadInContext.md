@@ -5,11 +5,16 @@
 Executes the code in the callback with a speciec parent context so a specific application name
  is visible and an optional sessionID, or a specific context can be provided from another request.
 
+If context is provided, application name and sessionID are not allowed.
+
 ## Method Signature
+
 ```
 RunThreadInContext(applicationName=[string], sessionId=[string], context=[any], callback=[function])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -25,6 +30,7 @@ RunThreadInContext(applicationName=[string], sessionId=[string], context=[any], 
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -69,7 +75,6 @@ RunThreadInContext(applicationName=[string], sessionId=[string], context=[any], 
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

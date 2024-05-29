@@ -5,10 +5,13 @@
 Returns an array of all values of top level keys in a struct
 
 ## Method Signature
+
 ```
 StructValueArray(struct=[structloose])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ StructValueArray(struct=[structloose])
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

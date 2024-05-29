@@ -5,10 +5,13 @@
 Execute an SQL query and returns the results.
 
 ## Method Signature
+
 ```
 QueryExecute(sql=[String], params=[any], options=[struct])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ QueryExecute(sql=[String], params=[any], options=[struct])
 ```
 
 ## Related
+
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
   * [TransactionCommit](./TransactionCommit.md)

@@ -5,10 +5,13 @@
 Return length of array
 
 ## Method Signature
+
 ```
 ArrayAvg(array=[Array])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ ArrayAvg(array=[Array])
 ```
 
 ## Related
+
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayClear](./ArrayClear.md)
   * [ArrayContains](./ArrayContains.md)

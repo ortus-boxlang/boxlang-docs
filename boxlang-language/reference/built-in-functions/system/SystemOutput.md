@@ -5,10 +5,13 @@
 Writes the given object to the output stream
 
 ## Method Signature
+
 ```
 SystemOutput(obj=[any], addNewLine=[boolean], doErrorStream=[boolean])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -23,6 +26,7 @@ SystemOutput(obj=[any], addNewLine=[boolean], doErrorStream=[boolean])
 ```
 
 ## Related
+
   * [ApplicationRestart](./ApplicationRestart.md)
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
@@ -67,7 +71,6 @@ SystemOutput(obj=[any], addNewLine=[boolean], doErrorStream=[boolean])
   * [SessionStartTime](./SessionStartTime.md)
   * [Sleep](./Sleep.md)
   * [SystemExecute](./SystemExecute.md)
-  * [Test](./Test.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)
   * [URLEncodedFormat](./URLEncodedFormat.md)

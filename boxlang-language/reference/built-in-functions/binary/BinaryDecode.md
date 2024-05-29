@@ -5,15 +5,18 @@
 Encodes binary data to a string with the specified algorithm
 
 ## Method Signature
+
 ```
 BinaryDecode(string=[string], encoding=[string])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `string` | `string` | `true` |  |  |
-| `encoding` | `string` | `true` |  |  |
+| `string` | `string` | `true` | The string to decode that has binary encoded data |  |
+| `encoding` | `string` | `true` | The encoding type to use for decoding the binary data. Valid values are: Hex, UU, Base64, Base64Url |  |
 
 ## Examples
 
@@ -22,6 +25,7 @@ BinaryDecode(string=[string], encoding=[string])
 ```
 
 ## Related
+
   * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)
   * [BitMaskClear](./BitMaskClear.md)

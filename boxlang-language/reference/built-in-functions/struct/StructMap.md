@@ -5,10 +5,13 @@
 Used to map a struct to a new struct of the same type containing the result
 
 ## Method Signature
+
 ```
 StructMap(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +27,7 @@ StructMap(struct=[structloose], callback=[function], parallel=[boolean], maxThre
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

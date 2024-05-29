@@ -2,13 +2,25 @@
 
 # Function: `StructNew`
 
-Creates a new struct of the specified type
+Creates a new struct of the specified type.
+
+The available types are:
+ - casesensitive
+ - default
+ - ordered-casesensitive
+ - ordered
+ - soft
+ - sorted
+ - weak
 
 ## Method Signature
+
 ```
 StructNew(type=[string], sortType=[string], sortOrder=[string], callback=[function])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -24,6 +36,7 @@ StructNew(type=[string], sortType=[string], sortOrder=[string], callback=[functi
 ```
 
 ## Related
+
   * [StructAppend](./StructAppend.md)
   * [StructClear](./StructClear.md)
   * [StructCopy](./StructCopy.md)

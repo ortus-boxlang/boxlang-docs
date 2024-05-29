@@ -5,10 +5,13 @@
 Returns the arccosine (inverse cosine) of a number
 
 ## Method Signature
+
 ```
 Acos(number=[numeric])
 ```
+
 ### Arguments
+
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
@@ -21,6 +24,7 @@ Acos(number=[numeric])
 ```
 
 ## Related
+
   * [Abs](./Abs.md)
   * [Asin](./Asin.md)
   * [Atn](./Atn.md)
@@ -39,7 +43,9 @@ Acos(number=[numeric])
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)
   * [Sgn](./Sgn.md)
