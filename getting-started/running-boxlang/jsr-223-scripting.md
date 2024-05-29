@@ -221,7 +221,28 @@ assertThat( ( Array ) results ).containsExactly( Key.of( "test" ), "Doe", "John"
 ```
 {% endcode %}
 
-Happy Coding!!
+
+
+### Dynamic Interfaces
+
+JSR223 also allows you to dynamically create interface proxies for any functions or classes you map in the dynamic language.  Let's say you want to create a nice BoxLang function that maps to a Java Runnable.
+
+```java
+engine.eval("""
+	function run() {
+		print('Hello, world! I am running from a thread.');
+	}
+""");
+
+Invocable invocable = ( Invocable ) engine;
+// Map our function to a Runnable class
+Runnable runnable = invocable.getInterface( Runnable.class );
+runnable.run();
+```
+
+As you can see from the sample above, you can use the `getInterface( class<?> )` method to map the evaluated code to any interface of your choosing.  Here are the two methods you can use for interfaces:
+
+* `getInterface( 0`&#x20;
 
 
 
