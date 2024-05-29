@@ -68,7 +68,7 @@ import javax.script.*;
 
 ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
 
-// Or by Class
+// Or directly via our BoxScriptingFactory class
 
 import ortus.boxlang.runtime.scripting.BoxScriptingFactory;
 
@@ -81,6 +81,18 @@ You can also cast it to our class to get enhanced methods and functionality
 ```java
 BoxScriptingEngine engine = (BoxScriptingEngine) new BoxScriptingFactory().getScriptEngine();
 ```
+
+#### Debug Mode
+
+If you ever need to send debugging information to the console from the BoxRuntime in the scripting engine, you can create a new script engine and pass the `debug` flag to it.
+
+```java
+import ortus.boxlang.runtime.scripting.BoxScriptingFactory;
+
+ScriptEngine engine = new BoxScriptingFactory().getScriptEngine( true );
+```
+
+This will start up the `BoxRuntime` in debug mode.
 
 ### Eval() BoxLang Code
 
@@ -187,7 +199,7 @@ Once you bind the engine with bindings before execution, you must get the modifi
 
 ### Calling Functions From Java to BoxLang
 
-You can also use the `eval()` method to define functions, closures, or lambdas in BoxLang and execute them.  We do so by evaluating the script, casting the engine to `Invocable,` and using the `invokeFunction()` method.
+You can also use the `eval()` method to define functions, closures, or lambdas in BoxLang and execute them in your host language.  We do so by evaluating the script, casting the engine to `Invocable,` and using the `invokeFunction()` method.
 
 ```java
 engine.eval( """
@@ -200,6 +212,22 @@ Invocable	invocable	= ( Invocable ) engine;
 Object		result		= invocable.invokeFunction( "sayHello", "World" );
 assertThat( result ).isEqualTo( "Hello, World!" );
 ```
+
+### Objects, Functions, Closures, Lambdas, Member Methods, Oh My!
+
+You can also use the `invokeMethod( object, name, args )` function, which allows you to target a specific object, such as a BoxLang class, member method, struct, lambda, closure or collection of functions.
+
+```java
+// Create a struct
+engine.eval( "myStr = { foo : 'bar' }" );
+// Make it invocable
+Invocable invocable = ( Invocable ) engine;
+// Invoke the struct's count() member method
+Object result = invocable.invokeMethod( engine.get( "myStr" ), "count" );
+assertThat( result ).isEqualTo( 1 );
+```
+
+This is indeed truly powerful as you can not only invoke functions on objects, but also member methods in any valid BoxLang type.
 
 ### Compiling Scripts
 
@@ -221,11 +249,9 @@ assertThat( ( Array ) results ).containsExactly( Key.of( "test" ), "Doe", "John"
 ```
 {% endcode %}
 
-
-
 ### Dynamic Interfaces
 
-JSR223 also allows you to dynamically create interface proxies for any functions or classes you map in the dynamic language.  Let's say you want to create a nice BoxLang function that maps to a Java Runnable.
+JSR223 also allows you to dynamically create interface proxies for any functions or classes you map in the dynamic language.  Let's say you want to create a nice BoxLang function that maps to a Java Runnable.  In our example, we will create the `run` function and then map that via JSR223 to the `Runnable` interface so we can execute it as a runnable object.
 
 ```java
 engine.eval("""
@@ -242,11 +268,56 @@ runnable.run();
 
 As you can see from the sample above, you can use the `getInterface( class<?> )` method to map the evaluated code to any interface of your choosing.  Here are the two methods you can use for interfaces:
 
-* `getInterface( 0`&#x20;
+* `getInterface( Class<T> )` - Build a dynamic proxy from the evaluated function and the passed in class
+* `getInterface( Object, Class<T> )` - Build a dynamic proxy from the passed in `Object` and the passed in class.&#x20;
 
+Let's finish this section with another example. Using a struct and anonymous functions, let's build a BoxLang virtual object and treat it as a `Runnable` interface.
 
+```java
+// Define a BoxLang struct with a `run` key that points to an
+// anonymous function
+engine.eval("""
+  methods = {
+    run : function() {
+	print('Hello, world!');
+    }
+  }
+""");
+// cast it to invocable
+Invocable invocable = ( Invocable ) engine;
+// Get the interface from that object that map to a Runnable
+Runnable runnable = invocable.getInterface( engine.get( "methods" ), Runnable.class );
+// Run Forest Run!
+runnable.run();
+```
 
-## Runtime Source Code
+### Capturing Output
+
+We have also added the capability for your host language to seed your own String Writers into the engine so you can capture output.  BoxLang can produce two types of output
+
+1. **System output** - Bifs and components that send output to the `System.out`
+2. **Buffer output -** A BoxLang request has an output String buffer that can be used to produce output which can be sent to console, web, etc.
+
+```java
+Writer oldWriter = engine.getContext().getWriter();
+// Create my own writer
+StringWriter	stringWriter	= new StringWriter();
+// Talk to the engine's context and seed in the new writer
+engine.getContext().setWriter( stringWriter );
+
+// Execute some code that outputs to the system out
+engine.eval("""
+  println('Hello, world!')
+""");
+
+// Now let's get that output!
+assertThat( stringWriter.toString().trim() ).isEqualTo( "Hello, world!" );
+
+// Replace the old writer back!
+engine.getContext().setWriter( oldWriter );
+```
+
+### Runtime Source Code
 
 The runtime source code can be found here: [https://github.com/ortus-boxlang/BoxLang/tree/development/src/main/java/ortus/boxlang/runtime/scripting](https://github.com/ortus-boxlang/BoxLang/tree/development/src/main/java/ortus/boxlang/runtime/scripting)
 
