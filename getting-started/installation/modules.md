@@ -10,6 +10,8 @@ Here is the collection of modules built and supported by the BoxLang team.
 
 ### bx-compat
 
+`Category: cfml`
+
 This module allows your BoxLang engine to run as an Adobe ColdFusion CFML engine or a Lucee CFML engine.  Please note that we will not offer every single feature of the Adobe engines in this single module.  It can be spread out through a collection of modules.
 
 ```
@@ -20,6 +22,8 @@ install bx-compat
 * Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-compat
 
 ### bx-esapi
+
+`Category: Security`
 
 Leverages ESAPI and AntiSamy to provide your BoxLang applications with security and cleaning concerns.
 
@@ -32,6 +36,8 @@ install bx-esapi
 
 ### bx-image
 
+`Category: Image Processing`
+
 The image module gives you tons of components and bifs that will give you a robust and extensive image manipulation library.
 
 ```
@@ -42,6 +48,8 @@ install bx-image
 * Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-image
 
 ### bx-mail
+
+`Category: Communication`
 
 The mail module for BoxLang gives you a robust component and a collection of bifs that you can use to send mail and interact with mail services.
 
@@ -54,6 +62,8 @@ install bx-mail
 
 ### bx-pdf (Coming Soon)
 
+`Category: Document Services`
+
 The pdf module will give you the capabilities to create and stream PDF documents from your BoxLang server code.  We also offer the enhanced version in our BoxLang +,++ subscriptions.
 
 ```
@@ -64,6 +74,8 @@ coming soon
 * Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-pdf
 
 ### bx-unsafe-evaluate
+
+`Security: Compiler`
 
 This module will allow you to install an `evaluate()` function that can execute BoxLang and CFML expressions.  Please note that this approach to coding is discouraged and unsafe.
 
