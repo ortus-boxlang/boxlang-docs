@@ -18,8 +18,8 @@ This module allows your BoxLang engine to run as an Adobe ColdFusion CFML engine
 install bx-compat
 ```
 
-* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)compat
-* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-compat
+* Download: [https://forgebox.io/view/bx-compat](https://forgebox.io/view/bx-compat)
+* Instructions: [https://github.com/ortus-boxlang/bx-compat](https://github.com/ortus-boxlang/bx-compat)
 
 ### bx-esapi
 
@@ -44,8 +44,8 @@ The image module gives you tons of components and bifs that will give you a robu
 install bx-image
 ```
 
-* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)image
-* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-image
+* Download: [https://forgebox.io/view/bx-image](https://forgebox.io/view/bx-image)
+* Instructions: [https://github.com/ortus-boxlang/bx-image](https://github.com/ortus-boxlang/bx-image)
 
 ### bx-mail
 
@@ -57,8 +57,8 @@ The mail module for BoxLang gives you a robust component and a collection of bif
 install bx-mail
 ```
 
-* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)mail
-* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-mail
+* Download: [https://forgebox.io/view/bx-mail](https://forgebox.io/view/bx-mail)
+* Instructions: [https://github.com/ortus-boxlang/bx-mail](https://github.com/ortus-boxlang/bx-mail)
 
 ### bx-pdf (Coming Soon)
 
@@ -70,8 +70,8 @@ The pdf module will give you the capabilities to create and stream PDF documents
 coming soon
 ```
 
-* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)pdf
-* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-pdf
+* Download: [https://forgebox.io/view/bx-pdf](https://forgebox.io/view/bx-pdf)
+* Instructions: [https://github.com/ortus-boxlang/bx-pdf](https://github.com/ortus-boxlang/bx-pdf)
 
 ### bx-unsafe-evaluate
 
@@ -83,8 +83,8 @@ This module will allow you to install an `evaluate()` function that can execute 
 install bx-unsafe-evaluate
 ```
 
-* Download: [https://forgebox.io/view/bx-](https://forgebox.io/view/bx-esapi)unsafe-evaluate
-* Instructions: [https://github.com/ortus-boxlang/](https://github.com/ortus-boxlang/bx-esapi)bx-unsafe-evaluate
+* Download: [https://forgebox.io/view/bx-unsafe-evaluate](https://forgebox.io/view/bx-unsafe-evaluate)
+* Instructions: [https://github.com/ortus-boxlang/bx-unsafe-evaluate](https://github.com/ortus-boxlang/bx-unsafe-evaluate)
 
 
 
