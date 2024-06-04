@@ -10,7 +10,7 @@ This guide provides a quick overview of BoxLang syntax styles, intricacies, oper
 We also offer different [language differences](overview/language-differences/) guides (in progress).
 {% endhint %}
 
-### Dynamic & Loose Typing
+## Dynamic & Loose Typing
 
 BoxLang variables are **dynamic** and **type-inferred**.  We try our best to infer which type you are trying to set for variables at compile-time, but they can completely change at runtime.  You use the `var` keyword to specify a variable within functions or declare them inline if you are in a `bxs` or `bxm` script file.
 
@@ -63,11 +63,20 @@ add( "1", 345, "true" )
 
 This is handy as we really really try to match your incoming data to functional arguments.
 
-### `Any` by default
+## `Any` by default
 
-If they are not specifically typed, all arguments are of `any` type. This means they will be inferred at runtime and can change from one type to another.
+If they are not specifically typed, all arguments and variable declarations are of `any` type. This means they will be inferred at runtime and can change from one type to another.
 
-### Case Insensitive Functionality
+```cfscript
+// Variables declared in a script are of any type and inferred
+name = "luis"
+
+function hello( name ){
+    // argument name can be anything
+}
+```
+
+## Case Insensitive Functionality
 
 Most things in BoxLang can be done with **no** case sensitivity by default.  You can enable case sensitivity in many functions and components, but we try to be insensitive as much as possible :). Here are a few observations where access is case-insensitive by nature:
 
@@ -76,15 +85,143 @@ Most things in BoxLang can be done with **no** case sensitivity by default.  You
 * function arguments, even on Java classes
 * class creation, even on Java classes
 
-### Functional
+```cfscript
+name = "luis"
+// Name can be outputted in any case
+println( "Hi, my name is #NamE#" )
+
+// Even maps or arrays
+myMap = { name : "luis", age : 12 }
+println( "My name is #mymap.NAME# and my age is #mymap.age#" )
+```
+
+{% hint style="info" %}
+Internally we leverage a `Key` class that provides us with case insensitivity.  Each map has a `Key` as the, well, key.
+{% endhint %}
+
+## Expression Interpolation
+
+BoxLang can interpret ANYTHING within `#` as an expression. This can be used for output, assignments, and much more.
+
+```cfscript
+"#now()# is a bif, and this #12 % 2# is a math expression, and more!"
+```
+
+## Multi-Variable Assignments
+
+BoxLang supports the concept of multi-variable declaration and assignments by just cascading variables using the `=` operator.
+
+```cfscript
+name = threadname = taskName = "I am Spartacus!"
+```
+
+This will create the 3 variables in the `variables` scope with the name "I am Spartacus!"
+
+## No Semicolons
+
+As you can see, semicolons are completely optional. We prefer no semicolons unless you really, really need to demarcate a beginning and an end.
+
+## Scopes
+
+BoxLang offers many different persistence and variable scopes depending on where and what you are. All scopes in BoxLang are backed by the Map interface, which in BoxLang land are called Structures.  They are case-insensitive by default; you can pass them around as much as you like.
+
+#### Scripts (`bxm, bxs`)
+
+Scripts can be written in full script (`bxs`) or using our templating language (`bxm`).
+
+* `variables` - Where all variables are stored
+* Unscoped variables go to the `variables` scope in a script
+
+#### Classes
+
+BoxLang supports all Object-oriented constructs know in several languages.  We expand on the areas of metaprogramming and dynamic typing.
+
+* `variables` - The private scope of the class
+* `this` - The public scope of the class and also represents the instance
+* `static` - The same as Java, a static scope bound to the blueprint of the class
+* Unscoped variables go to the `variables` scope in a class
+
+#### Functions/Lambdas/Closures
+
+BoxLang supports 3 types of Functions.
+
+* `local` - A local scope available only to the function
+* `arguments` - The incoming arguments
+* `variables` - Access to the script or class private scope
+* `this` - Access to the class public scope
+* Unscoped variables go to the `local` scope in a function by default
+
+#### Persistence Scopes
+
+BoxLang and some of it's runtimes also offer out of the box scopes for persistence.
+
+* `session` - stored in server RAM or external storage tracked by a unique visitor
+* `client` - stored in cookies, databases, or external storages (simple values only)
+* `application` - stored in server RAM or external storage tracked by the running BoxLang application
+* `cookie` - stored in a visitor's browser (Web Only)
+* `server` - stored in server RAM for ANY application for that BoxLang instance
+* `request` - stored in RAM for a specific request ONLY
+* `cgi` - read-only scope provided by the servlet container and BoxLang (Web Only)
+* `form` - Variables submitted via HTTP posts (Web Only)
+* `URL` - Variables incoming via HTTP GET operations or the incoming URL (Web Only)
+
+{% hint style="info" %}
+Please visit our [scopes](../boxlang-language/variable-scopes.md) section to find out much more about scopes in BoxLang.
+{% endhint %}
+
+### Scope Hunting
+
+When you access a variable without specific scope access, BoxLang will try to find the variable for you in its nearest scope.  This is done internally via a context object, which can be decorated at runtime depending on WHERE the code is being executed (CLI, web, lambda, android, etc)  Example:
+
+```cfscript
+function( name ){
+    
+    // add to data, which has no scope and no arguments exist
+    // so it looks for it in the variables scope
+    data.append( name )
+
+    // Looks in arguments first
+    return name;
+}
+```
+
+Check out our [Scopes](../boxlang-language/variable-scopes.md) section to learn more about scope hunting.
+
+## Full Null Support
+
+`null` is a real thing! It's nothing but real!  We support the `null` keyword, assignments, and usage just like Java.  It follows the same rules.
+
+## Data Types
+
+All Java types can be used alongside the core BoxLang types:
+
+* `any`&#x20;
+* `array`
+* `immutableArray`
+* `binary`
+* `boolean`
+* `class`
+* `date`
+* `guid`
+* `function`
+* `integer`
+* `numeric`
+* `number`
+* `query`
+* `string`
+* `struct`
+* `immutableStruct`
+* `uuid`
+
+## Functional
 
 BoxLang functions are first-class citizens.  That means you can pass them around, execute them, dynamically define them, inject them, remove them, and so much more.
 
 It has 3 major functional types:
 
-* **UDF:** **User Defined Function -**  Can be created on any scripting template or within Classes
+* **UDF—User-Defined Function**—Can be created on any scripting template or within Classes. They carry no context with them.
 * **Closures** are _named_ or _anonymous_ functions that carry with them their surrounding scope and context. It uses the fat arrow `=>` syntax.
-* **Lambdas** are _pure_ functions that can be _named_ or _anonymous_ and carry **NO** enclosing scope.  They are meant to be pure functions and produce no side efffect.  Data in, Data out. It uses the skinny arrow `->` Syntax.
+* **Lambdas** are _pure_ functions that can be _named_ or _anonymous_ and carry **NO** enclosing scope.  They are meant to be pure functions and produce no side effect.  Data in, Data out. It uses the skinny arrow `->` Syntax.
 
 {% code title="hola.bxs" %}
 ```cfscript
@@ -148,21 +285,43 @@ protected function bindData(){}
 
 All arguments are NOT required by default and will be defaulted to `null` if not passed.  You can use the `required` identifier to mark them as required.
 
+```cfscript
+function save( required user, boolean transactional = false, Logger logger ){
+
+}
+```
+
 ### Default Arguments
 
 You can create defaults for arguments, which can be literal or actual expressions:
 
-```java
-function save( transactional = true, data = {}, scope = "#expression#" )
+```cfscript
+function save( transactional = true, data = {}, scope = "#expression#" ){
+}
+
+function hello( name = variables.defaultName ){
+    println( "Hola #arguments.name#" )
+}
 ```
 
-### Expression Interpolation
+### Argument Collections
 
-BoxLang can interpret ANYTHING within `#` as an expression. This can be used for output, assignments, and much more.
+Similar to var arguments in Java, BoxLang allows the `arguments` scope to be completely be variable. meaning you can declare the arguments, but you can pass as many as you like and they will all be added into the `arguments` scope.
+
+Another feature is that you can bind and apply these arguments at function execution time from any map or structure via the `argumentCollection` special argument.  This allows you to collect arguments and dispatch the function call, and BoxLang will match the argument names for you.  This can be great for dynamic argument collection, form collection, JSON packets, etc.
 
 ```cfscript
-"#now()# is a bif, and this #12 % 2# is a math expression, and more!"
+function save( name, age, isActive, logIt=false ){
+    .. Do your thing here!!
+}
+
+// Call the save using a map/struct
+myMap = { name: "test", age: 40, isActive: true }
+// Use the special argumentCollection designator
+save( argumentCollection : myMap )
 ```
+
+This is a great time saver.
 
 ### BIFs = Built-In Functions
 
@@ -178,91 +337,31 @@ To get a sense of all the BIFs registered in your runtime, do a&#x20;
 writedump( getFunctionList() ) or println( getFunctionList() )
 {% endhint %}
 
-### No Semicolons
+### Member Functions
 
-As you can see, semicolons are completely optional. We prefer no semicolons unless you really, really need to demarcate a beginning and an end.
-
-### Scopes
-
-BoxLang offers many different persistence and variable scopes depending on where and what you are. All scopes in BoxLang are backed by the Map interface, which in BoxLang land are called Structures.  They are case-insensitive by default, and you can pass them around as much as you like.
-
-#### Scripts
-
-* `variables` - Where all variables are stored
-* Unscoped variables go to the `variables` scope in a script
-
-#### Classes
-
-* `variables` - The private scope of the class
-* `this` - The public scope of the class and also represents the instance
-* `static` - The same as Java, a static scope bound to the blueprint of the class
-* Unscoped variables go to the `variables` scope in a class
-
-#### Functions/Lambdas/Closures
-
-* `local` - A local scope available only to the function
-* `arguments` - The incoming arguments
-* `variables` - Access to the script or class private scope
-* `this` - Access to the class public scope
-* Unscoped variables go to the `local` scope in a function by default
-
-#### Persistence Scopes
-
-* `session` - stored in server RAM or external storage tracked by a unique visitor
-* `client` - stored in cookies, databases, or external storages (simple values only)
-* `application` - stored in server RAM or external storage tracked by the running BoxLang application
-* `cookie` - stored in a visitor's browser (Web Only)
-* `server` - stored in server RAM for ANY application for that BoxLang instance
-* `request` - stored in RAM for a specific request ONLY
-* `cgi` - read-only scope provided by the servlet container and BoxLang (Web Only)
-* `form` - Variables submitted via HTTP posts (Web Only)
-* `URL` - Variables incoming via HTTP GET operations or the incoming URL (Web Only)
-
-### Scope Hunting
-
-When you access a variable without specific scope access, BoxLang will try to find the variable for you in its nearest scope, depending on the context it finds itself.  Example:
+Member functions are special functions attached to all data types in BoxLang, whether they are structs, arrays, strings, numbers, dates, Java objects, classes, etc. We provide tons of member functions, but developers can also contribute their own via BoxLang modules.  All member functions map back to built-in functions.
 
 ```cfscript
-function( name ){
-    
-    // add to data, which has no scope and no arguments exist
-    // so it looks for it in the variables scope
-    data.append( name )
+myArray = [1,2,3,4]
+println( myArray.count() )
 
-    // Looks in arguments first
-    return name;
-}
+fruitArray = [
+    {'fruit'='apple', 'rating'=4}, 
+    {'fruit'='banana', 'rating'=1}, 
+    {'fruit'='orange', 'rating'=5}, 
+    {'fruit'='mango', 'rating'=2}, 
+    {'fruit'='kiwi', 'rating'=3}
+]
+favoriteFruites = fruitArray.filter( item -> item.rating >= 3 )
 ```
 
-Check out our [Scopes](../boxlang-language/variable-scopes.md) section to learn more about scope hunting.
+{% hint style="info" %}
+You can find all the collection of member functions in our [types](../boxlang-language/reference/types/) section.
+{% endhint %}
 
-### Full Null Support
 
-`null` is a real thing! It's nothing but real!  We support the `null` keyword, assignments, and usage just like Java.  It follows the same rules.
 
-### Data Types
-
-All Java types can be used alongside the core BoxLang types:
-
-* `any`&#x20;
-* `array`
-* `immutableArray`
-* `binary`
-* `boolean`
-* `class`
-* `date`
-* `guid`
-* `function`
-* `integer`
-* `numeric`
-* `number`
-* `query`
-* `string`
-* `struct`
-* `immutableStruct`
-* `uuid`
-
-### BoxLang Classes
+## BoxLang Classes
 
 BoxLang classes are enhanced in many capabilities compared to Java, but they are similar to Groovy and CFML.
 
