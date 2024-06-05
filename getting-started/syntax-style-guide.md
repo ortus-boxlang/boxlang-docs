@@ -381,9 +381,9 @@ class extends="java:ortus.boxlang.runtime.types.Struct"{
 }
 ```
 
-## Elvis Operator
+## Null Coalescing aka Elvis Operator
 
-BoxLang supports the Elvis operator `?:` to allow you to evaluate if values are empty or null.
+BoxLang supports the null coalescing operator `?:` to allow you to evaluate if values are empty or null. This is **not** a shortened ternary as other languages.
 
 ```
 ( expression ) ?: 'value or expression'
@@ -396,9 +396,9 @@ This tests the left-hand side of the `?:` and if its `null` then it will evaluat
 BoxLang supports safety navigation on ANY object that can be dereferenced: structs, maps, classes, etc.  This basically allows you to test if the value exists or not and continue dereferencing or return null
 
 ```cfscript
-age = form.userdata?.age ?: 0;
+age = form.userdata?.age;
 
-fullName = userClass?.getFullName() ?: "none"
+fullName = userClass?.getFullName()
 ```
 
 Imagine how tedious this code is
@@ -418,7 +418,7 @@ if( order ){
 Now let's transform this code:
 
 ```java
-println( order?.getCustomer()?.getAddress() ?: "no address defined" )
+println( order?.getCustomer()?.getAddress() )
 ```
 
 ## Assert
