@@ -15,14 +15,6 @@ description: Operate all things++--==!^%/\
 7. Function
 8. Collections
 
-{% hint style="info" %}
-You will see that BoxLang does not have native [bitwise](https://en.wikipedia.org/wiki/Bitwise\_operation) operators, but it does implement bitwise operations via functions since functions can also be operators in BoxLang: `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://cfdocs.org/math%2Dfunctions](https://cfdocs.org/math-functions)
-{% endhint %}
-
-{% hint style="success" %}
-For more information about bitwise operations, you can read more here: [https://en.wikipedia.org/wiki/Bitwise\_operation](https://en.wikipedia.org/wiki/Bitwise\_operation)
-{% endhint %}
-
 {% hint style="danger" %}
 BoxLang does not offer the capability to overload operators like other languages.
 {% endhint %}
@@ -71,6 +63,22 @@ These operators are used to perform arithmetic/mathematical operations on operan
 | `-`      | Negate              | `a = -b` Negate the value of b                                                                                                                                                                  |
 | `+`      | Positive            | `a = +b` Make the value of b a positive number                                                                                                                                                  |
 | `()`     | Grouping            | <p>The grouping operator is used just like in mathematics, to give precedence to operations.<br><code>result = 3 * (2+3)</code> which is not the same as<br><code>result = 3 * 2 + 3</code></p> |
+
+## Bitwise Operators
+
+{% hint style="info" %}
+BoxLang has native [bitwise](https://en.wikipedia.org/wiki/Bitwise\_operation) operators and it also implements bitwise operations via functions (since functions can also be operators in BoxLang): `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://cfdocs.org/math%2Dfunctions](https://cfdocs.org/math-functions)
+{% endhint %}
+
+These operators are used to perform bitwise operations on operands.
+
+The bitwise operators look a bit different in BoxLang vs other languages like Java since the normal bitwise operators are already used for other purposes in BoxLang.
+
+<table><thead><tr><th width="125">Operator</th><th width="147">Name</th><th>Description</th></tr></thead><tbody><tr><td><code>b|</code></td><td>Bitwise OR</td><td><code>a = 12 b| 25</code></td></tr><tr><td><code>b&#x26;</code></td><td>Bitwise AND</td><td><code>a = 5 b&#x26; 9</code></td></tr><tr><td><code>b^</code></td><td>Bitwise XOR</td><td><code>a = 10 b^ 12</code></td></tr><tr><td><code>b~</code></td><td>Bitwise Complement</td><td><code>a = b~ 35</code></td></tr><tr><td><code>b&#x3C;&#x3C;</code></td><td>Bitwise Signed Left Shift</td><td><code>a = 14 b&#x3C;&#x3C; 4</code></td></tr><tr><td><code>b>></code></td><td>Bitwise Signed Right Shift</td><td><code>a = 4 b>> 2</code></td></tr><tr><td><code>b>>></code></td><td>Bitwise Unsigned Right Shift</td><td><code>a = 25 b>>> 3</code></td></tr></tbody></table>
+
+{% hint style="success" %}
+For more information about bitwise operations, you can read more here: [https://en.wikipedia.org/wiki/Bitwise\_operation](https://en.wikipedia.org/wiki/Bitwise\_operation)
+{% endhint %}
 
 ## Assignment Operators
 
