@@ -367,11 +367,20 @@ BoxLang classes are enhanced in many capabilities compared to Java, but they are
 
 * Automatic `package` definition
 * Automatic Hash Code and Equals
-* Implement by default `IClassRunnable, IReferenceable, IType, Serializable`
+* Implements by default `IClassRunnable, IReferenceable, IType, Serializable`
 * Automatic getters and setters for any `property` definition
+* Allows for pseudo constructor blocks for initializations and more (Space between last property and first function)
 * Output is **false** by default for pseudo-constructors and functions
 * You can activate Implicit property accessors and mutators
-* Automatic metadata registration
+* Automatic metadata registration into the `$bx` BoxMeta programming object
+* Allows for single inheritance
+* Allows for interfaces
+* Allows for `static` blocks, functions, and properties
+* Allows for `final` properties (coming soon)
+* Allows for `lazy` properties (coming soon)
+* Allows for property observers (coming soon)
+* Allows for scope observers (coming soon)
+* Functions in a class can have different visibilities: `private, public, protected, remote`
 
 Check out our [Classes](syntax-style-guide.md#classes) section for further information
 
