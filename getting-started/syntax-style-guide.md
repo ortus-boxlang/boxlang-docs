@@ -246,6 +246,15 @@ class{
     }
 
 }
+
+myClass = new MyClass()
+
+// Let's create an alias to the function
+myClass.hola = myClass.sayHello
+// Let's remove the sayHello function
+myClass.sayHello = null
+
+println( myClass.hola() )
 ```
 {% endcode %}
 
@@ -263,6 +272,27 @@ myLambda( 1 )
 
 // Anonymous Lambda
 [1,2,3].filter( item -> item > 2 )
+```
+
+### Elvis Operator
+
+BoxLang supports the Elvis operator `?:` to allow you to evaluate if values are empty or null.
+
+```
+( expression ) ?: 'value or expression'
+```
+
+This tests the left-hand side of the `?:` and if its `null` then it will evaluate the rigth expression or value.  This can be used on if statements, assignments, loops, etc.
+
+### Safe Navigation Operator
+
+BoxLang supports safety navigation on ANY object that can be dereferenced: structs, maps, classes, etc.  This basically allows you to test if the value exists or not and continue dereferencing or return null
+
+```cfscript
+age = form.userdata?.age ?: 0;
+
+fullName = userClass?.getFullName() ?: "none"
+
 ```
 
 ### `Public` by default
@@ -367,6 +397,8 @@ BoxLang classes are enhanced in many capabilities compared to Java, but they are
 
 * Automatic `package` definition
 * Automatic Hash Code and Equals
+* Automatic constructor created for you
+* No need to add a name to the `class` definition, we use the filename
 * Implements by default `IClassRunnable, IReferenceable, IType, Serializable`
 * Automatic getters and setters for any `property` definition
 * Allows for pseudo constructor blocks for initializations and more (Space between last property and first function)
@@ -386,9 +418,9 @@ Check out our [Classes](syntax-style-guide.md#classes) section for further infor
 
 ### Properties, not Fields
 
-BoxLang classes can define properties as data members, they are not called fields.  You can define them in short or long format.  Please note that properties do require a semi-colon, as they can be very ambiguous.
+BoxLang classes can define properties as data members; they are not called fields and are always `private` meaning they will be stored in the `variables` scope.  You can define them in short or long format.  Please note that properties do require a semi-colon, as they can be very ambiguous.
 
-All properties are stored in the `variaables` scope.
+All properties are stored in the `variables` scope.
 
 #### Short Form
 
@@ -439,6 +471,36 @@ BoxLang also advertises Class creations, so modules can collaborate with extra m
 Our dependency injection framework does this.
 {% endhint %}
 
+### Automatic Constructor
+
+Constructors in classes for BoxLang are not overloads but a single `init()` method.  However, by default we create one for you.  It can also take in named parameters or an `argumentCollection` to initialize all properties.
+
+{% code title="User.bx" lineNumbers="true" %}
+```cfscript
+class{
+
+	property name;
+	property email;
+	property isActive;
+
+}
+
+// Create a new user with no data
+user = new User()
+
+// Create one with named params
+user = new User( name: "BoxLang", email: "info@boxlang.io", isActive: true )
+
+// Create one with an arg collection
+myArgs = { name: "BoxLang", email: "info@boxlang.io", isActive: true }
+user = new User( argumentCollection: myArgs )
+```
+{% endcode %}
+
+{% hint style="danger" %}
+If you create your own `init()` then it's your job to initialize your class :)
+{% endhint %}
+
 ### Annotations
 
 BoxLang annotations can be added to `properties`, `functions`, and `classes`.  Using the following pattern:
@@ -464,20 +526,36 @@ class{
 }
 
 myClass = new MyClass()
-writedump( myClass.$bx ) or println( myClass.$bx )
+writeOutput( myClass.$bx.meta ) or println( myClass.$bx.meta )
 ```
 
-The `$bx` object is the BoxLang meta object. It contains all the necessary metadata information about an object.  From it's Java Class, to functions, properties, data, etc.  It can be used on ANY BoxLang Type.
+The `$bx` object is the BoxLang meta object. It contains all the necessary metadata information about an object.  From it's Java Class, to functions, properties, data, etc.  It can be used on ANY BoxLang Type.  Here are the properties in the `$bx` object available to you. It also contains many methods that exist in the `BoxMeta` object.
+
+* `meta` - A struct of metadata about the class
+* `$class` - The Java `Class` that represents your class
 
 ### Getter and Setters
 
-Automatic getters and setters for properties are by default.  You can disable them all for the class or one-by-one.  All the setters return an instance of `this` .  You can also override them as you see fit.
+By default, automatic **getters** and **setters** for properties are enabled. You can disable them all for the class or one by one. All the setters return an instance of `this`. You can also override them as you see fit.
 
 ```cfscript
 class{
     
     property name="firstName" type="string" default="boxlang";
     property name="age" type="numeric"
+    
+    // Override the getter
+    function getAge(){
+        // log it
+        return variables.age
+    }
+    
+    // Override the setter
+    function setFirstName( firstName ){
+        // Log here
+        variables.firstname = arguments.firstName;
+        return this;
+    }
 
 }
 
