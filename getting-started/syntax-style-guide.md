@@ -149,6 +149,20 @@ switch( expression ) {
 }
 ```
 
+## Catch \`any\` exception
+
+BoxLang allows you to catch `any` exception using our `any` operator
+
+```
+try{
+    .. funky code here
+} catch( any e ){
+    
+    // We just caught every single exception known to man!
+
+}
+```
+
 ## Multi-Catch Exceptions
 
 In BoxLang you can catch multiple exceptions by using the pipe | operator.  They can be both BoxLang exceptions or Java exception types:
@@ -385,6 +399,43 @@ BoxLang supports safety navigation on ANY object that can be dereferenced: struc
 age = form.userdata?.age ?: 0;
 
 fullName = userClass?.getFullName() ?: "none"
+```
+
+Imagine how tedious this code is
+
+```java
+if( order ){
+
+    if( order.hasCustomer() ){
+        if( order.getCustomer().hasAddress() ){
+            println( order.getCustomer().getAddress() )
+        }
+    }
+    
+}
+```
+
+Now let's transform this code:
+
+```java
+println( order?.getCustomer()?.getAddress() ?: "no address defined" )
+```
+
+## Assert
+
+BoxLang offers an `assert` operators that will evaluate an expression and if the expression is falsey it will throw an assert exceptions.
+
+```groovy
+// Asserts that the name is truthy
+assert name
+
+// Assert an expression
+assert myService.hasData()
+assert name.length() > 3
+
+// Assert a lambda/closure result.
+assert ()-> { do something }
+assert ()=> { do something }
 
 ```
 
