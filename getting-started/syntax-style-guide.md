@@ -107,6 +107,24 @@ BoxLang can interpret ANYTHING within `#` as an expression. This can be used for
 "#now()# is a bif, and this #12 % 2# is a math expression, and more!"
 ```
 
+## Multi-Line Strings
+
+You can declare multi-line strings by using the `"""` start and end operators.  You can also use any interpolation in between.
+
+```java
+myLargeContent = """
+    Hi,
+    
+    How are you today #name#!
+    
+    This is a very nice email with merged data!
+    
+    Thanks for purchasing #item#!
+"""
+
+mailService.send( myLargeContent )
+```
+
 ## Multi-Variable Assignments
 
 BoxLang supports the concept of multi-variable declaration and assignments by just cascading variables using the `=` operator.
@@ -116,6 +134,28 @@ name = threadname = taskName = "I am Spartacus!"
 ```
 
 This will create the 3 variables in the `variables` scope with the name "I am Spartacus!"
+
+## Switch Statements
+
+The BoxLang switch statements can work on any literal but also on any expression
+
+```cfscript
+switch( expression ) {
+    case value : case value2 :{
+        break;
+    }
+    
+    default : nothing
+}
+```
+
+## Multi-Catch Exceptions
+
+In BoxLang you can catch multiple exceptions by using the pipe | operator.  They can be both BoxLang exceptions or Java exception types:
+
+```cfscript
+catch( foo.com | brad | com.luis.majano e ) {}
+```
 
 ## No Semicolons
 
@@ -191,6 +231,41 @@ Check out our [Scopes](../boxlang-language/variable-scopes.md) section to learn 
 
 `null` is a real thing! It's nothing but real!  We support the `null` keyword, assignments, and usage just like Java.  It follows the same rules.
 
+## CastAs Operator
+
+BoxLang has a natural casting operator that is fluent and readable.
+
+```java
+myJavaClass( value castAs "long" )
+
+return {
+    age : value castAs "int",
+    tags : value castAs "String[]",
+    isActive : "#value#" castAs "Boolean"
+}
+```
+
+You can also use our handy `javaCast()` bif if you needed to.
+
+### Human Operators
+
+We have several fluent operators using english instead of symbols.
+
+
+
+### InstanceOf Operator
+
+Like other languages, we also offer an `instanceOf` operator alongside a nice BIF: `isInstanceOf()`.  You can also use negation using our lovely `not` operator.
+
+```java
+isInstanceOf( obj, "Map" )
+
+if( obj instanceOf "String" )
+if( obj instanceOf "MyUser" )
+if( obj not instanceOf "Integer" )
+
+```
+
 ## Data Types
 
 All Java types can be used alongside the core BoxLang types:
@@ -212,6 +287,106 @@ All Java types can be used alongside the core BoxLang types:
 * `struct`
 * `immutableStruct`
 * `uuid`
+
+## Truthy/Falsey
+
+BoxLang Truthy and Falsey are concepts used in programming to determine the "truth" of a value in a Boolean context. In many programming languages, values other than true and false can be evaluated for their truthiness. Understanding truthy and falsey values is crucial for writing effective and accurate code when evaluating conditions or performing logical operations.
+
+### **Truthy values**
+
+* positive numbers (or strings which can be parsed as numbers)
+* boolean true
+* string “true”
+* string “yes”
+* array with at least one item
+* query with at least one row
+* struct with at least one key
+
+### **Falsey values:**
+
+* A `null` value
+* The number 0 or string “0”
+* boolean false
+* string “false”
+* string “no”
+* empty arrays
+* empty queries
+* empty structs
+
+## Imports & Class Locators
+
+BoxLang offers the ability to import both BoxLang and Java classes natively into scripts or classes.
+
+```java
+// Import java classes
+import java:java.io.IOException
+import java:java.nio.file.FileSystems
+import java:java.nio.file.Path
+
+// Import BoxLang classes
+import models.User
+import models.cborm.MyService
+```
+
+Works just like Java. However, you will notice a nice `java:` prefix.  This is called an class locator prefix.  BoxLang supports these out of the box:
+
+* `java:` - Java classes to import or instantiate
+* `bx:` - BoxLang classes to import or instantiate (Default, not required)
+
+{% hint style="warning" %}
+You can also remove the `java:` prefix and BoxLang will try to locate the class for you.  Careful, as it will scan all locations.
+{% endhint %}
+
+#### Import Aliases
+
+You can also alias imports to provide less ambiguity when dealing with classes with the same name:
+
+```java
+// Import java classes
+import java:java.nio.file.Path as jPath
+import models.utils.Path
+
+myJavaPath = new jPath()
+myBxPath = new Path()
+```
+
+All the object resolvers prefixes can be used anywhere a class or path is expected:
+
+* Creating classes and instances: `createObject(), new`&#x20;
+* Using `imports`&#x20;
+* Extending classes
+* Implementing interfaces
+
+```java
+class implements="java:java.util.List" {
+
+}
+
+class extends="java:ortus.boxlang.runtime.types.Struct"{
+
+}
+```
+
+## Elvis Operator
+
+BoxLang supports the Elvis operator `?:` to allow you to evaluate if values are empty or null.
+
+```
+( expression ) ?: 'value or expression'
+```
+
+This tests the left-hand side of the `?:` and if its `null` then it will evaluate the rigth expression or value.  This can be used on if statements, assignments, loops, etc.
+
+## Safe Navigation Operator
+
+BoxLang supports safety navigation on ANY object that can be dereferenced: structs, maps, classes, etc.  This basically allows you to test if the value exists or not and continue dereferencing or return null
+
+```cfscript
+age = form.userdata?.age ?: 0;
+
+fullName = userClass?.getFullName() ?: "none"
+
+```
 
 ## Functional
 
@@ -274,27 +449,6 @@ myLambda( 1 )
 [1,2,3].filter( item -> item > 2 )
 ```
 
-### Elvis Operator
-
-BoxLang supports the Elvis operator `?:` to allow you to evaluate if values are empty or null.
-
-```
-( expression ) ?: 'value or expression'
-```
-
-This tests the left-hand side of the `?:` and if its `null` then it will evaluate the rigth expression or value.  This can be used on if statements, assignments, loops, etc.
-
-### Safe Navigation Operator
-
-BoxLang supports safety navigation on ANY object that can be dereferenced: structs, maps, classes, etc.  This basically allows you to test if the value exists or not and continue dereferencing or return null
-
-```cfscript
-age = form.userdata?.age ?: 0;
-
-fullName = userClass?.getFullName() ?: "none"
-
-```
-
 ### `Public` by default
 
 All functions and classes are `public` by default, so there is no need to add the `public` identifier if you don't want to.  This creates a very nice and low-verbosity approach to function declaration:
@@ -352,6 +506,24 @@ save( argumentCollection : myMap )
 ```
 
 This is a great time saver.
+
+### Auto-casting Arguments & Return Values <a href="#auto-casting-argument-and-return-value-types" id="auto-casting-argument-and-return-value-types"></a>
+
+In BoxLang, we actively cast the incoming argument value to the specified declared argument.&#x20;
+
+```cfscript
+function setAge( numeric age )
+```
+
+BoxLang will try to auto cast the incoming argument to the `numeric` type in this instance.
+
+It will also auto cast the outgoing return value for you.  So if your function specifies that the return value is a boolean, but you return a string, it will auto cast it to boolean for you.
+
+```cfscript
+function Boolean isAlive(){
+    return "yes"
+}
+```
 
 ### BIFs = Built-In Functions
 
