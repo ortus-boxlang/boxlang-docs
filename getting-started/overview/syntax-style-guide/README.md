@@ -7,7 +7,7 @@ description: Quickly learn what the BoxLang language offers.
 This guide provides a quick overview of BoxLang syntax styles, intricacies, operators, and features. It aims to assist developers from other languages in their BoxLang development journey. BoxLang has been heavily inspired by many different languages, including Java, CFML, Groovy, Kotlin, Ruby, PHP, and more.
 
 {% hint style="success" %}
-We also offer different [language differences](overview/language-differences/) guides (in progress).
+We also offer different [language differences](broken-reference) guides (in progress).
 {% endhint %}
 
 ## Dynamic & Loose Typing
@@ -220,7 +220,7 @@ BoxLang and some of it's runtimes also offer out of the box scopes for persisten
 * `URL` - Variables incoming via HTTP GET operations or the incoming URL (Web Only)
 
 {% hint style="info" %}
-Please visit our [scopes](../boxlang-language/variable-scopes.md) section to find out much more about scopes in BoxLang.
+Please visit our [scopes](../../../boxlang-language/variable-scopes.md) section to find out much more about scopes in BoxLang.
 {% endhint %}
 
 ### Scope Hunting
@@ -239,7 +239,7 @@ function( name ){
 }
 ```
 
-Check out our [Scopes](../boxlang-language/variable-scopes.md) section to learn more about scope hunting.
+Check out our [Scopes](../../../boxlang-language/variable-scopes.md) section to learn more about scope hunting.
 
 ## Full Null Support
 
@@ -290,10 +290,14 @@ All Java types can be used alongside the core BoxLang types:
 * `binary`
 * `boolean`
 * `class`
+* `closure`
 * `date`
+* `double`
 * `guid`
 * `function`
+* `float`
 * `integer`
+* `lambda`
 * `numeric`
 * `number`
 * `query`
@@ -301,6 +305,26 @@ All Java types can be used alongside the core BoxLang types:
 * `struct`
 * `immutableStruct`
 * `uuid`
+
+## Arrays are Human
+
+Arrays in BoxLang start at 1, not 0. End of story!
+
+## Array/Struct Initializers
+
+Arrays and Structs in BoxLang can be created using literal constructs. Please note that values within the literal declarations can also be expressions.
+
+```cfscript
+// empty array
+array = []
+// array with data
+array = [ 1, 23, 234 ]
+
+// empty struct
+myMap = {}
+// struct with data
+myMap = { age:1, test: now() }
+```
 
 ## Truthy/Falsey
 
@@ -578,7 +602,7 @@ function Boolean isAlive(){
 
 ### BIFs = Built-In Functions
 
-BoxLang is inspired by many languages, and it offers [built-in functions](../boxlang-language/reference/built-in-functions/) you can call from anywhere in your code.  They are automatically registered by the core language and any collaborating module.
+BoxLang is inspired by many languages, and it offers [built-in functions](../../../boxlang-language/reference/built-in-functions/) you can call from anywhere in your code.  They are automatically registered by the core language and any collaborating module.
 
 ```cfscript
 println( "Hola from #now()#" )
@@ -609,7 +633,7 @@ favoriteFruites = fruitArray.filter( item -> item.rating >= 3 )
 ```
 
 {% hint style="info" %}
-You can find all the collection of member functions in our [types](../boxlang-language/reference/types/) section.
+You can find all the collection of member functions in our [types](../../../boxlang-language/reference/types/) section.
 {% endhint %}
 
 
@@ -637,7 +661,7 @@ BoxLang classes are enhanced in many capabilities compared to Java, but they are
 * Allows for scope observers (coming soon)
 * Functions in a class can have different visibilities: `private, public, protected, remote`
 
-Check out our [Classes](syntax-style-guide.md#classes) section for further information
+Check out our [Classes](./#classes) section for further information
 
 ### Properties, not Fields
 
@@ -679,7 +703,7 @@ class{
 }
 ```
 
-Check out our [properties](../boxlang-language/classes/properties.md) section for all valid attributes.  Here are a few common ones
+Check out our [properties](../../../boxlang-language/classes/properties.md) section for all valid attributes.  Here are a few common ones
 
 * `default` - The property's default value
 * `name` - The property's name
