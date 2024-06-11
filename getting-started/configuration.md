@@ -127,3 +127,22 @@ Here is a full reference of the current default `boxlang.json` file:
 ## Environment Variable Substitution
 
 BoxLang supports environment variable substitution by using the syntax `${env.{environment_variable_name}:default}`. For example, using `${env.MYSQL_HOST:localhost}` will result in the value of the `MYSQL_HOST` environment variable, if found, or fall back to the `localhost` value if the environment variable is not defined.
+
+Inside your `boxlang.json` configuration file, you can use this to populate datasource credential secrets:
+
+```json
+{
+    "runtime": {
+        // ...
+        "datasources": {
+            "mySqlServerDB": {
+                driver: "mssql",
+                host: "localhost",
+                port: "${env.MSSQL_PORT:1433}",
+                database: "myDB",
+                username: "${env.MSSQL_USERNAME:sa}",
+                password: "${env.MSSQL_PASSWORD:123456Password}"
+            }
+        },
+    }
+```
