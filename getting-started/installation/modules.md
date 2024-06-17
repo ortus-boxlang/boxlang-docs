@@ -12,7 +12,7 @@ Here is the collection of modules built and supported by the BoxLang team.
 
 `Category: cfml`
 
-This module allows your BoxLang engine to run as an Adobe ColdFusion CFML engine or a Lucee CFML engine.  Please note that we will not offer every single feature of the Adobe engines in this single module.  It can be spread out through a collection of modules.
+This module allows your BoxLang engine to run as an Adobe ColdFusion CFML engine or a Lucee CFML engine. Please note that we will not offer every single feature of the Adobe engines in this single module. It can be spread out through a collection of modules.
 
 ```
 install bx-compat
@@ -47,6 +47,19 @@ install bx-image
 * Download: [https://forgebox.io/view/bx-image](https://forgebox.io/view/bx-image)
 * Instructions: [https://github.com/ortus-boxlang/bx-image](https://github.com/ortus-boxlang/bx-image)
 
+### bx-jython
+
+`Category: Scripting`
+
+This module allows you to script in Python within BoxLang.  It can also execute python scripts and modules.
+
+```
+install bx-jython
+```
+
+* Download: [https://forgebox.io/view/bx-jython](https://forgebox.io/view/bx-jython)
+* Instructions: [https://github.com/ortus-boxlang/bx-jython](https://github.com/ortus-boxlang/bx-jython)
+
 ### bx-mail
 
 `Category: Communication`
@@ -64,7 +77,7 @@ install bx-mail
 
 `Category: Document Services`
 
-The pdf module will give you the capabilities to create and stream PDF documents from your BoxLang server code.  We also offer the enhanced version in our BoxLang +,++ subscriptions.
+The pdf module will give you the capabilities to create and stream PDF documents from your BoxLang server code. We also offer the enhanced version in our BoxLang +,++ subscriptions.
 
 ```
 coming soon
@@ -77,7 +90,7 @@ coming soon
 
 `Security: Compiler`
 
-This module will allow you to install an `evaluate()` function that can execute BoxLang and CFML expressions.  Please note that this approach to coding is discouraged and unsafe.
+This module will allow you to install an `evaluate()` function that can execute BoxLang and CFML expressions. Please note that this approach to coding is discouraged and unsafe.
 
 ```
 install bx-unsafe-evaluate
@@ -86,11 +99,22 @@ install bx-unsafe-evaluate
 * Download: [https://forgebox.io/view/bx-unsafe-evaluate](https://forgebox.io/view/bx-unsafe-evaluate)
 * Instructions: [https://github.com/ortus-boxlang/bx-unsafe-evaluate](https://github.com/ortus-boxlang/bx-unsafe-evaluate)
 
+### bx-wddx
 
+`Security: Conversion`
+
+The WDDX module provides the bridge between the WDDX exchange format and BoxLang. It involves reading and parsing XML, converting data types, handling errors, and ensuring performance and compatibility. The module enables the integration of legacy systems with new applications.
+
+```
+install bx-wddx
+```
+
+* Download: [https://forgebox.io/view/bx-wddx](https://forgebox.io/view/bx-wddx)
+* Instructions: [https://github.com/ortus-boxlang/bx-wddx](https://github.com/ortus-boxlang/bx-wddx)
 
 ## JDBC Modules
 
-In addition, we offer a number of JDBC modules which package the appropriate JDBC driver for your database vendor of choice.  You can find all of the modules in [FORGEBOX](https://www.forgebox.io) as well as our GitHub organization: [https://github.com/ortus-boxlang/bx-{modulename}](https://github.com/ortus-boxlang)
+In addition, we offer a number of JDBC modules which package the appropriate JDBC driver for your database vendor of choice. You can find all of the modules in [FORGEBOX](https://www.forgebox.io) as well as our GitHub organization: [https://github.com/ortus-boxlang/bx-{modulename}](https://github.com/ortus-boxlang)
 
 ### [Apache Derby](https://forgebox.io/view/bx-derby)
 
@@ -136,7 +160,7 @@ install bx-postgresql
 
 ## Module Installation
 
-The fastest way to install modules is with CommandBox and the `install` command.  If you used the quick installer, you can use the install-bx-module binary to download the core modules to your OS or MiniServer home.
+The fastest way to install modules is with CommandBox and the `install` command. If you used the quick installer, you can use the install-bx-module binary to download the core modules to your OS or MiniServer home.
 
 ```bash
 # Install the latest version
