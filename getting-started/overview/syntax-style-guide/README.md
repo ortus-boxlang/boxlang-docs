@@ -7,7 +7,7 @@ description: Quickly learn what the BoxLang language offers.
 This guide provides a quick overview of BoxLang syntax styles, intricacies, operators, and features. It aims to assist developers from other languages in their BoxLang development journey. BoxLang has been heavily inspired by many different languages, including Java, CFML, Groovy, Kotlin, Ruby, PHP, and more.
 
 {% hint style="success" %}
-We also offer different [language differences](broken-reference) guides (in progress).
+If you are a ColdFusion/CFML developer, check out also our [CFML Guide.](coldfusion-cfml.md)
 {% endhint %}
 
 ## Dynamic & Loose Typing

@@ -5,7 +5,7 @@ description: Getting started with BoxLang is easy!  Choose your path wisely!
 # Installation
 
 {% hint style="danger" %}
-PLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
+; wePLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
 {% endhint %}
 
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
@@ -94,7 +94,7 @@ The quick installer will install the **OS** binary and the **MiniServer** in the
 
 ### Upgrading Your Install
 
-The `install-boxlang` script will allow you to easily upgrade your OS install as well.  If you call it with no arguments, then it will install the latest release and overriding the local install.  You can also pass a specific version to install as the second argument.
+The `install-boxlang` script will allow you to easily upgrade your OS install as well.  If you call it with no arguments, then it will install the latest release and override the local install.  You can also pass a specific version to install as the second argument.
 
 ```bash
 # Install / Upgrade to the latest version
@@ -202,12 +202,12 @@ We recommend you use CommandBox, Our CLI and Package Manager, to interact, insta
 
 ## BoxLang+, ++ Modules
 
-Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get customized support but also new features, and modules.  You can find out more about our subscriptions here: [https://boxlang.io/plans](https://boxlang.io/plans).  Here are the collection of modules that you will get with your subscription.
+Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get customized support but also new features, and modules.  You can find out more about our subscriptions here: [https://boxlang.io/plans](https://boxlang.io/plans).  Here is the collection of modules that you will get with your subscription.
 
-<table><thead><tr><th width="160">Module</th><th width="424">Description</th><th width="158">Status<select><option value="7PvmwHzSW7tN" label="In Development" color="blue"></option><option value="KAAYVEqj9HUs" label="Done" color="blue"></option><option value="LZpOL7kx2Gyb" label="In Planning" color="blue"></option></select></th></tr></thead><tbody><tr><td>bx-redis</td><td>Native Redis integration for caching, session distribution, and publish-subcribe events.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td>bx-mongo</td><td>Native MongoDB integration for caching, session distribution and advanced MongoDB operations.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td>bx-couchbase</td><td>Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td>bx-pdftools</td><td>Our collection of enhanced PDF tooling.  Includes the ability to extract PDF forms, fill out PDF forms, squash, merge and more.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr></tbody></table>
+<table><thead><tr><th width="160">Module</th><th width="424">Description</th><th width="158">Status<select><option value="7PvmwHzSW7tN" label="In Development" color="blue"></option><option value="KAAYVEqj9HUs" label="Done" color="blue"></option><option value="LZpOL7kx2Gyb" label="In Planning" color="blue"></option></select></th></tr></thead><tbody><tr><td><strong>bx-redis</strong></td><td>Native Redis integration for caching, session distribution, and publish-subcribe events.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-mongo</strong></td><td>Native MongoDB integration for caching, session distribution and advanced MongoDB operations.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-couchbase</strong></td><td>Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-pdftools</strong></td><td>Our collection of enhanced PDF tooling.  Includes the ability to extract PDF forms, fill out PDF forms, squash, merge and more.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr></tbody></table>
 
 {% hint style="danger" %}
-Please note that these modules are still under development, we will publish their status as we complete them.
+Please note that these modules are still under development; we will publish their status as we complete them.
 {% endhint %}
 
 
