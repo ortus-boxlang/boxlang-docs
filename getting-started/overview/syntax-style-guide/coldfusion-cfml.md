@@ -2,21 +2,45 @@
 description: A quick guide on key differences and issues when migrating from CFML
 ---
 
-# ColdFusion/CFML
+# Migrating From ColdFusion/CFML
 
 {% hint style="danger" %}
-Please note that our CFML Compatibility is still in progress. Please keep this page bookmarked as we continue to make progress to our stable release.
+Please note that our CFML Compatibility is still in progress. Please keep this page bookmarked as we progress to our stable release.
 {% endhint %}
 
-When comparing BoxLang to CFML, here are some of the differences between them.
+BoxLang is a new language with a dual parser to support the ColdFusion/CFML ecosystem.  It also has a compatibility module (`bx-compat`) that will allow the BoxLang runtime to behave like an Adobe ColdFusion or Lucee Server.  We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
+
+### File Types
+
+BoxLang can parse and run all of the traditional ColdFusion/CFML file types
+
+* `.cfc` - Components
+* `.cfs` - Scripts
+* `.cfm` - Templates
 
 ### Components are Classes
 
-ColdFusion Components (CFCs) are now called BoxLang classes, like any other language. You can also use the `class` declaration for them.
+ColdFusion Components (CFCs) are now called BoxLang classes, like any other language. You can also use the `class` declaration for them.  You can continue to write components if you like, but if you use our `.bx` extensions, they are now classes.
+
+```java
+class{
+    
+    property name=¨firstName¨
+
+}
+```
 
 ### Tags are Components
 
-Since BoxLang is not a tag-based language but a dynamic language offering a templating language. There are no concepts of tags but of BoxLang components that can be accessed via our templating language or script.
+Since BoxLang is not a tag-based language but a dynamic language offering a templating language. There are no concepts of tags but of BoxLang components that can be accessed via our templating language or script.  In CFML the templating language uses a `<cf` prefix, in BoxLang we use a `<bx:` prefix.
+
+```xml
+<bx:if expression>
+
+<bx:else>
+
+</bx:if>
+```
 
 ### Default assignment scope
 
@@ -24,7 +48,7 @@ In CFML, the default assignment scope is always `variables`, but in BL it can di
 
 ### CastAs operator
 
-BL has a new `castAs` binary operator
+BoxLang has a new `castAs` binary operator that you can use instead of the `javaCast()` bif.
 
 ```jsx
 expression castAs "type"
@@ -34,7 +58,7 @@ No transpilation changes are needed since this is a BL-only feature.
 
 ### Multiple catch types
 
-BL supports
+BoxLang supports
 
 ```jsx
 catch( foo.com | brad | com.luis.majano e ) {}
@@ -44,7 +68,7 @@ No transpilation changes are needed since this is a BL-only feature.
 
 ### Annotations
 
-BL will allow for actual proper annotations before UDF declarations, properties and classes. The value of the annotation can be a string, struct literals or array literals. You can also use multi-spaced or indentation.
+BoxLang will allow for proper annotations before UDF declarations, properties, and classes. The annotation's value can be a string, struct literal, or array literal. You can also use multi-spaced or indentation.
 
 ```jsx
 @foo
@@ -199,6 +223,26 @@ Here is some documentation on their differences:
     * finds the CFC relative to the original birthplace of the UDF source in **Adobe**
 
 In BoxLang, this is being simplified and made consistent across the board. In ALL cases the “current template path” and relative lookup directory will tie to the original source path on disk of the file that contains the currently executing code. So, whether it’s an include, a UDF, an injected UDF from another location, or a closure defined elsewhere - whatever original source file for the code in question is what determines the “current template path” and relative lookups.
+
+## BIF Renaming
+
+Some bifs have been renamed in BoxLang.
+
+| CFML                 | BoxLang          |
+| -------------------- | ---------------- |
+| serializeJSON        | jsonSerialize    |
+| deserializeJSON      | jsonDeserialize  |
+| chr                  | char             |
+| asc                  | ascii            |
+| getComponentMetadata | getClassMetadata |
+
+## CreateObject Types
+
+The `component` type for create object becomes `class` in BoxLang
+
+```
+createObject( ¨class¨, path )
+```
 
 ## JDBC Queries
 
