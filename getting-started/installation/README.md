@@ -5,7 +5,7 @@ description: Getting started with BoxLang is easy!  Choose your path wisely!
 # Installation
 
 {% hint style="danger" %}
-; wePLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
+PLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
 {% endhint %}
 
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
