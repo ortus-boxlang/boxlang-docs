@@ -3,7 +3,7 @@
 * [⚡ Introduction](README.md)
   * [Contributing Guide](readme/contributing-guide.md)
   * [Release History](readme/release-history/README.md)
-    * [What's New With 1.0.0](readme/release-history/whats-new-with-1.0.0.md)
+    * [1.0.0-Beta2](readme/release-history/1.0.0-beta2.md)
   * [About This Book](readme/about-this-book/README.md)
     * [Author](readme/about-this-book/author.md)
 

@@ -21,6 +21,27 @@ install bx-compat
 * Download: [https://forgebox.io/view/bx-compat](https://forgebox.io/view/bx-compat)
 * Instructions: [https://github.com/ortus-boxlang/bx-compat](https://github.com/ortus-boxlang/bx-compat)
 
+### bx-password-encrypt
+
+`Category: security`
+
+This module provides password encryption and hashing functionality to Boxlang.&#x20;
+
+* `ArgonHash`: Returns a secure input hash of the given string using the Argon2 hashing algorithm. ( Alias: `GenerateArgon2Hash` )
+* `ArgonVerify`: Performs a Argon2 verification on the given string against the hashed value. ( Alias: `Argon2CheckHash` )
+* `BCryptHash`: Returns a secure input hash of the given string using the BCrypt hashing algorithm.( Alias: `GenerateBCryptHash` )
+* `BCryptVerify`: Performs a BCrypt verification on the given string against the hashed value. ( Alias: `BCryptCheckHash` )
+* `SCryptHash`: Returns a secure input hash of the given string using the SCrypt hashing algorithm.( Alias: `GenerateSCryptHash` )
+* `SCryptVerify`: Performs a SCrypt verification on the given string against the hashed value. ( Alias: `SCryptCheckHash` )
+* `GeneratePBKDFKey`: Generates a PDFK key from the given password and salt.
+
+```
+install bx-password-encrypt
+```
+
+* Download: [https://forgebox.io/view/bx-password-encrypt](https://forgebox.io/view/bx-password-encrypt)
+* Instructions: [https://github.com/ortus-boxlang/bx-password-encrypt](https://github.com/ortus-boxlang/bx-password-encrypt)
+
 ### bx-esapi
 
 `Category: Security`
