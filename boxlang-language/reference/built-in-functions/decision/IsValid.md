@@ -20,11 +20,11 @@ IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `type` | `string` | `true` |  |  |
+| `type` | `string` | `true` | The type to validate the value against |  |
 | `value` | `any` | `true` | Value to test for validaty on a given type |  |
-| `min` | `any` | `false` |  |  |
-| `max` | `any` | `false` |  |  |
-| `pattern` | `any` | `false` |  |  |
+| `min` | `any` | `false` | The minimum value for the range type or a pattern to validate the value against |  |
+| `max` | `any` | `false` | The maximum value for the range type |  |
+| `pattern` | `any` | `false` | The pattern to validate the value against |  |
 
 ## Examples
 
@@ -35,6 +35,7 @@ IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
@@ -62,4 +63,5 @@ IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [structIsEmpty](./structIsEmpty.md)

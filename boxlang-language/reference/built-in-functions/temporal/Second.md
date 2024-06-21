@@ -15,7 +15,7 @@ Second(date=[any], timezone=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `date` | `any` | `true` | The date object to be evaluated |  |
+| `date` | `any` | `false` | The date object to be evaluated. If not provided the current date and time is used |  |
 | `timezone` | `string` | `false` | An optional timezone which to convert the date object to |  |
 
 ## Examples

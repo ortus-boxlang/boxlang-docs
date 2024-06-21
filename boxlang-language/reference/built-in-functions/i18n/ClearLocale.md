@@ -22,13 +22,13 @@ ClearLocale()
 
 ## Related
 
+  * [CurrencyFormat](./CurrencyFormat.md)
   * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)
+  * [IsCurrency](./IsCurrency.md)
   * [LSCurrencyFormat](./LSCurrencyFormat.md)
   * [LSIsCurrency](./LSIsCurrency.md)
-  * [LSIsNumeric](./LSIsNumeric.md)
-  * [LSNumberFormat](./LSNumberFormat.md)
   * [LSParseCurrency](./LSParseCurrency.md)
-  * [LSParseNumber](./LSParseNumber.md)
+  * [ParseCurrency](./ParseCurrency.md)
   * [SetLocale](./SetLocale.md)

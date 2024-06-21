@@ -27,6 +27,7 @@ IsCustomFunction(object=[any], type=[string])
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
@@ -54,4 +55,5 @@ IsCustomFunction(object=[any], type=[string])
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [structIsEmpty](./structIsEmpty.md)

@@ -26,5 +26,5 @@ BooleanFormat(value=[any])
 ## Related
 
   * [DecimalFormat](./DecimalFormat.md)
-  * [DollarFormat](./DollarFormat.md)
+  * [LSNumberFormat](./LSNumberFormat.md)
   * [NumberFormat](./NumberFormat.md)

@@ -26,6 +26,7 @@ IsIPv6(hostname=[string])
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
@@ -53,4 +54,5 @@ IsIPv6(hostname=[string])
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [structIsEmpty](./structIsEmpty.md)

@@ -30,6 +30,7 @@ JSONDeserialize(json=[string], strictMapping=[boolean], useCustomSerializer=[str
   * [DataNavigate](./DataNavigate.md)
   * [JSONPrettify](./JSONPrettify.md)
   * [JSONSerialize](./JSONSerialize.md)
+  * [LSParseNumber](./LSParseNumber.md)
   * [ParseNumber](./ParseNumber.md)
   * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)

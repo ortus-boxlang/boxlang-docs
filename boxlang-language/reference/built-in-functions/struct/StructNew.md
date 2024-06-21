@@ -16,7 +16,7 @@ The available types are:
 ## Method Signature
 
 ```
-StructNew(type=[string], sortType=[string], sortOrder=[string], callback=[function])
+StructNew(type=[string], sortType=[string], sortOrder=[string], localeSensitive=[any], callback=[function])
 ```
 
 ### Arguments
@@ -27,12 +27,13 @@ StructNew(type=[string], sortType=[string], sortOrder=[string], callback=[functi
 | `type` | `string` | `false` | The struct type | `default` |
 | `sortType` | `string` | `false` | An optional sort type to apply to that type |  |
 | `sortOrder` | `string` | `false` | The sort order applicable to the sortType argument | `asc` |
+| `localeSensitive` | `any` | `false` |  | `false` |
 | `callback` | `function` | `false` | An optional callback to use as the sorting function |  |
 
 ## Examples
 
 ```
-StructNew(type=[string], sortType=[string], sortOrder=[string], callback=[function])
+StructNew(type=[string], sortType=[string], sortOrder=[string], localeSensitive=[any], callback=[function])
 ```
 
 ## Related

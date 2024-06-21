@@ -29,5 +29,10 @@ Hmac(input=[any], key=[string], algorithm=[string], encoding=[string], numIterat
 
 ## Related
 
+  * [Decrypt](./Decrypt.md)
+  * [Encrypt](./Encrypt.md)
+  * [EncryptBinary](./EncryptBinary.md)
+  * [GeneratePDBKDFKey](./GeneratePDBKDFKey.md)
+  * [GenerateSecretKey](./GenerateSecretKey.md)
   * [Hash](./Hash.md)
   * [Hash40](./Hash40.md)

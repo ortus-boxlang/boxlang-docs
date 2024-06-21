@@ -16,7 +16,7 @@ QueryAddRow(query=[query], rowData=[any])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `query` | `query` | `true` | The query to add the row(s) to. |  |
-| `rowData` | `any` | `true` | Data to populate the query. Can be a struct (with keys matching column names), an array of structs, or an array of arrays (in<br>                   same order as columnList) |  |
+| `rowData` | `any` | `false` | Data to populate the query. Can be a struct (with keys matching column names), an array of structs, or an array of arrays (in<br>                   same order as columnList) |  |
 
 ## Examples
 

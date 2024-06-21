@@ -4,13 +4,12 @@
 
 Gets metadata (the methods, properties, and parameters of a component) associated with an object.
 
-This only exists for backwards compat with Adobe and Lucee and this BIF should be moved to a compat module
- at a later date. In BoxLang, use the obj.$bx.meta object instead.
+This returns the ,<code>,$bx.meta,</code>, object for the object.
 
 ## Method Signature
 
 ```
-GetMetaData(object=[any])
+GetMetaData(value=[any])
 ```
 
 ### Arguments
@@ -18,12 +17,12 @@ GetMetaData(object=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `object` | `any` | `true` | The object to get metadata for. |  |
+| `value` | `any` | `true` | The object to get metadata for. |  |
 
 ## Examples
 
 ```
-GetMetaData(object=[any])
+GetMetaData(value=[any])
 ```
 
 ## Related

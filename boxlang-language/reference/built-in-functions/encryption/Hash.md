@@ -28,5 +28,10 @@ Hash(input=[any], algorithm=[string], encoding=[string], numIterations=[integer]
 
 ## Related
 
+  * [Decrypt](./Decrypt.md)
+  * [Encrypt](./Encrypt.md)
+  * [EncryptBinary](./EncryptBinary.md)
+  * [GeneratePDBKDFKey](./GeneratePDBKDFKey.md)
+  * [GenerateSecretKey](./GenerateSecretKey.md)
   * [Hash40](./Hash40.md)
   * [Hmac](./Hmac.md)

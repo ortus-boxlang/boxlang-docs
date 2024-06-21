@@ -23,6 +23,7 @@ IsDebugMode()
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
@@ -50,4 +51,5 @@ IsDebugMode()
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [structIsEmpty](./structIsEmpty.md)

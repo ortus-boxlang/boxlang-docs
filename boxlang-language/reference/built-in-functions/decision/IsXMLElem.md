@@ -26,6 +26,7 @@ IsXMLElem(value=[any])
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
@@ -53,4 +54,5 @@ IsXMLElem(value=[any])
   * [IsXMLDoc](./IsXMLDoc.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [structIsEmpty](./structIsEmpty.md)

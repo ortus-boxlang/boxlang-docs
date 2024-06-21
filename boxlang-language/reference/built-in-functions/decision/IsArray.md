@@ -27,6 +27,7 @@ IsArray(value=[any], number=[numeric])
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
   * [IsClosure](./IsClosure.md)
@@ -54,4 +55,5 @@ IsArray(value=[any], number=[numeric])
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [structIsEmpty](./structIsEmpty.md)

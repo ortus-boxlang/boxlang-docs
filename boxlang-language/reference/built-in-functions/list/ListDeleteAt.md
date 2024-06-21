@@ -4,7 +4,8 @@
 
 Deletes an element from a list.
 
-Returns a copy of the list, without the specified element.
+Returns a copy of the list, without the
+ specified element.
 
 ## Method Signature
 
@@ -21,7 +22,7 @@ ListDeleteAt(list=[string], position=[numeric], delimiter=[string], includeEmpty
 | `position` | `numeric` | `true` | The one-based index position of the element to delete. |  |
 | `delimiter` | `string` | `false` | The delimiter used in the list. | `,` |
 | `includeEmptyFields` | `boolean` | `false` | Whether to include empty fields in the list. | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` | Whether the delimiter is a multi-character delimiter. | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | Whether the delimiter is a multi-character<br>                                   delimiter. | `false` |
 
 ## Examples
 

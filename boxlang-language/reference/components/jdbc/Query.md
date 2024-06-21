@@ -43,7 +43,7 @@ columnKey=[string] />
 | `username` | `string` | `false` |  |  |
 | `password` | `string` | `false` |  |  |
 | `maxRows` | `numeric` | `false` |  | `-1` |
-| `blockfactor` | `numeric` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Min@20c283b4, ortus.boxlang.runtime.validation.dynamic.Max@366b4a7b]` |
+| `blockfactor` | `numeric` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Min@6987b74e, ortus.boxlang.runtime.validation.dynamic.Max@22e95960]` |
 | `fetchsize` | `numeric` | `false` |  |  |
 | `timeout` | `numeric` | `false` |  |  |
 | `cachedAfter` | `date` | `false` |  |  |

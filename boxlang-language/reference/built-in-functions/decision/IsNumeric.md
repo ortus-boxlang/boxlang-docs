@@ -2,12 +2,12 @@
 
 # Function: `IsNumeric`
 
-Determine whether a given value can be casted to numeric.
+Tests whether a value is numeric
 
 ## Method Signature
 
 ```
-IsNumeric(string=[any])
+IsNumeric(string=[any], locale=[string])
 ```
 
 ### Arguments
@@ -15,17 +15,19 @@ IsNumeric(string=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `string` | `any` | `true` | Value to test for date-ness |  |
+| `string` | `any` | `true` |  |  |
+| `locale` | `string` | `false` | Optional locale string, otherwise the context locale default is used when parsing string values |  |
 
 ## Examples
 
 ```
-IsNumeric(string=[any])
+IsNumeric(string=[any], locale=[string])
 ```
 
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
@@ -53,4 +55,5 @@ IsNumeric(string=[any])
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [structIsEmpty](./structIsEmpty.md)

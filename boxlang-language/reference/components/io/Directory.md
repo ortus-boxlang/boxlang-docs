@@ -25,7 +25,7 @@ createPath=[boolean] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `action` | `string` | `true` | The action to perform (list, create, delete, rename) |  |
+| `action` | `string` | `true` | The action to perform (list, create, delete, rename) | `list` |
 | `directory` | `string` | `true` | The directory to perform the action on |  |
 | `name` | `string` | `false` | Name for output record set. |  |
 | `filter` | `string` | `false` | Filter applied to returned names. For example: *.bx You can use a pipe ("|") delimiter to specify multiple filters. For example:<br>                   *.bxm|*.bx Filter pattern matches are case-sensitive on UNIX and Linux. Can also be a UDF/Closure which accepts the<br>                   file/directory name and returns a Boolean value to indicate whether that item should be included in the result or not. | `*` |

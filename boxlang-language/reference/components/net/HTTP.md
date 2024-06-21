@@ -63,7 +63,7 @@ encodeUrl=[boolean] />
 | `redirect` | `boolean` | `false` |  | `true` |
 | `timeout` | `numeric` | `false` |  |  |
 | `getAsBinary` | `string` | `true` |  | `auto` |
-| `result` | `string` | `true` |  | `cfhttp` |
+| `result` | `string` | `true` |  | `bxhttp` |
 | `delimiter` | `string` | `false` |  |  |
 | `name` | `string` | `false` |  |  |
 | `columns` | `string` | `false` |  |  |

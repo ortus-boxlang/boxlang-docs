@@ -7,7 +7,13 @@ Execute a stored procedure.
 
 ```
 <bx:StoredProc procedure=[string]
-datasource=[string] />
+datasource=[string]
+username=[string]
+password=[string]
+blockfactor=[numeric]
+debug=[boolean]
+returnCode=[boolean]
+result=[string] />
 ```
 
 ### Attributes
@@ -17,10 +23,22 @@ datasource=[string] />
 |----------|------|----------|-------------|---------|
 | `procedure` | `string` | `true` | The name of the procedure to execute. |  |
 | `datasource` | `string` | `false` | The name of the datasource where the stored procedure is registered. |  |
+| `username` | `string` | `false` |  |  |
+| `password` | `string` | `false` |  |  |
+| `blockfactor` | `numeric` | `false` |  |  |
+| `debug` | `boolean` | `false` |  | `false` |
+| `returnCode` | `boolean` | `false` |  | `false` |
+| `result` | `string` | `false` |  |  |
 
 ## Examples
 
 ```
 <bx:StoredProc procedure=[string]
-datasource=[string] />
+datasource=[string]
+username=[string]
+password=[string]
+blockfactor=[numeric]
+debug=[boolean]
+returnCode=[boolean]
+result=[string] />
 ```

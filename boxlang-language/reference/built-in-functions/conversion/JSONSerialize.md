@@ -31,6 +31,7 @@ JSONSerialize(var=[any], queryFormat=[string], useSecureJSONPrefix=[boolean], us
   * [DataNavigate](./DataNavigate.md)
   * [JSONDeserialize](./JSONDeserialize.md)
   * [JSONPrettify](./JSONPrettify.md)
+  * [LSParseNumber](./LSParseNumber.md)
   * [ParseNumber](./ParseNumber.md)
   * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)

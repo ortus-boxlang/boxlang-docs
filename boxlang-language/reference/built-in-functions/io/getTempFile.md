@@ -15,7 +15,7 @@ getTempFile(directory=[string], prefix=[string], suffix=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `directory` | `string` | `false` | The directory in which to create the temp file, we default to the system temp directory | `/var/folders/np/njp7qwjs38zbd9v6x9wbpdc00000gn/T/` |
+| `directory` | `string` | `false` | The directory in which to create the temp file, we default to the system temp directory | `/var/folders/sh/yq09rnbj48764cvf2k4nhcxh0000gn/T/` |
 | `prefix` | `string` | `false` | The prefix string to be used in generating the file's name; may be empty |  |
 | `suffix` | `string` | `false` | The suffix string to be used in generating the file's name; may be empty, in which case ".tmp" is used |  |
 

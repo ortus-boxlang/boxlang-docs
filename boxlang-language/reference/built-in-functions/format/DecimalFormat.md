@@ -27,5 +27,5 @@ DecimalFormat(number=[any], length=[integer])
 ## Related
 
   * [BooleanFormat](./BooleanFormat.md)
-  * [DollarFormat](./DollarFormat.md)
+  * [LSNumberFormat](./LSNumberFormat.md)
   * [NumberFormat](./NumberFormat.md)

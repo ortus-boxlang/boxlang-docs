@@ -15,8 +15,8 @@ CreateObject(type=[string], className=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `type` | `string` | `true` | The type of object to create: java, bx, or component |  |
-| `className` | `string` | `true` | A classname for a component/class request or the java class to create |  |
+| `type` | `string` | `false` | The type of object to create: java, bx, or component | `class` |
+| `className` | `string` | `false` | A classname for a component/class request or the java class to create |  |
 
 ## Examples
 
@@ -31,6 +31,8 @@ CreateObject(type=[string], className=[string])
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
+  * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)
   * [CreateGUID](./CreateGUID.md)
   * [CreateUUID](./CreateUUID.md)
@@ -45,8 +47,8 @@ CreateObject(type=[string], className=[string])
   * [GetBoxContext](./GetBoxContext.md)
   * [GetBoxRuntime](./GetBoxRuntime.md)
   * [GetBoxVersionInfo](./GetBoxVersionInfo.md)
+  * [GetClassMetadata](./GetClassMetadata.md)
   * [GetComponentList](./GetComponentList.md)
-  * [GetComponentMetadata](./GetComponentMetadata.md)
   * [GetContextRoot](./GetContextRoot.md)
   * [GetCurrentTemplatePath](./GetCurrentTemplatePath.md)
   * [GetFileFromPath](./GetFileFromPath.md)

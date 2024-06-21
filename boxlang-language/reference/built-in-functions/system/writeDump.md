@@ -2,12 +2,14 @@
 
 # Function: `writeDump`
 
-Pretty print a variable to the buffer
+Outputs the contents of a variable of any type for debugging purposes.
+
+The variable can be as simple as a string or as complex as a class or struct.
 
 ## Method Signature
 
 ```
-writeDump(var=[any])
+writeDump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
 ```
 
 ### Arguments
@@ -15,12 +17,16 @@ writeDump(var=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `var` | `any` | `true` | The variable to dump |  |
+| `var` | `any` | `false` | The variable to dump |  |
+| `label` | `string` | `false` | A label to display above the dump |  |
+| `top` | `numeric` | `false` | The number of levels to display | `0` |
+| `expand` | `boolean` | `false` | Whether to expand the dump | `true` |
+| `abort` | `boolean` | `false` | Whether to abort the request after dumping | `false` |
 
 ## Examples
 
 ```
-writeDump(var=[any])
+writeDump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
 ```
 
 ## Related
@@ -30,6 +36,8 @@ writeDump(var=[any])
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
+  * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)
   * [CreateGUID](./CreateGUID.md)
   * [CreateObject](./CreateObject.md)
@@ -45,8 +53,8 @@ writeDump(var=[any])
   * [GetBoxContext](./GetBoxContext.md)
   * [GetBoxRuntime](./GetBoxRuntime.md)
   * [GetBoxVersionInfo](./GetBoxVersionInfo.md)
+  * [GetClassMetadata](./GetClassMetadata.md)
   * [GetComponentList](./GetComponentList.md)
-  * [GetComponentMetadata](./GetComponentMetadata.md)
   * [GetContextRoot](./GetContextRoot.md)
   * [GetCurrentTemplatePath](./GetCurrentTemplatePath.md)
   * [GetFileFromPath](./GetFileFromPath.md)
