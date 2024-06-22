@@ -15,19 +15,16 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `childname` | `string` | `true` | `null` |
 | `n` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>getNodeType()</code></summary>
 
 Get XML values according to given xPath query
-
 </details>
 <details>
 <summary><code>search(xpath=[String], params=[Struct])</code></summary>
@@ -36,12 +33,10 @@ Get XML values according to given xPath query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `xpath` | `String` | `true` | `null` |
 | `params` | `Struct` | `false` | `{}` |
-
 
 </details>
 <details>
@@ -51,11 +46,9 @@ Converts a value to a string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -65,12 +58,10 @@ Get XML values according to given xPath query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `XSL` | `String` | `true` | `null` |
 | `parameters` | `Struct` | `false` | `{}` |
-
 
 </details>
 

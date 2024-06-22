@@ -15,13 +15,11 @@ Adds a column to a query and populates its rows with the contents of a one-dimen
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `columnName` | `string` | `true` | `null` |
 | `datatype` | `any` | `false` | `Varchar` |
 | `array` | `array` | `false` | `[]` |
-
 
 </details>
 <details>
@@ -31,11 +29,9 @@ Return new query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `rowData` | `any` | `false` | `null` |
-
 
 </details>
 <details>
@@ -45,30 +41,25 @@ This function clears the query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `query2` | `query` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>clear()</code></summary>
 
 This function clears the query
-
 </details>
 <details>
 <summary><code>columnArray()</code></summary>
 
 This function returns the column array of a query.
-
 </details>
 <details>
 <summary><code>columnCount()</code></summary>
 
 This function returns the number of columns in a query
-
 </details>
 <details>
 <summary><code>columnData(columnName=[string])</code></summary>
@@ -77,11 +68,9 @@ Returns the data in a query column.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `columnName` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -91,18 +80,15 @@ This function returns true if the column exists in the query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `column` | `string` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>currentRow()</code></summary>
 
 Returns the current row number
-
 </details>
 <details>
 <summary><code>deleteColumn(column=[string])</code></summary>
@@ -111,11 +97,9 @@ Deletes a column within a query object.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `column` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -125,11 +109,9 @@ This function deletes a row from the query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `row` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
@@ -139,13 +121,11 @@ Iterates over query rows and passes each row per iteration to a callback functio
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -155,13 +135,11 @@ Executes a callback/closure against every row in a query and returns true if the
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `closure` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -171,13 +149,11 @@ Filters query rows specified in filter criteria
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -187,19 +163,16 @@ This function maps the query to a new query.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `column_name` | `string` | `true` | `null` |
 | `row_number` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
 <summary><code>getResult()</code></summary>
 
 Returns the metadata of a query.
-
 </details>
 <details>
 <summary><code>keyExists(key=[string])</code></summary>
@@ -208,11 +181,9 @@ This function returns true if the key exists in the query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -222,13 +193,11 @@ This function maps the query to a new query.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -238,18 +207,15 @@ Adds a query to the beginning of another query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `query2` | `query` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>recordCount()</code></summary>
 
 This function returns the number of records in a query
-
 </details>
 <details>
 <summary><code>reduce(callback=[function], initialValue=[any])</code></summary>
@@ -258,12 +224,10 @@ This function reduces the query to a single value.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `initialValue` | `any` | `true` | `null` |
-
 
 </details>
 <details>
@@ -273,11 +237,9 @@ Returns the cells of a query row as a structure
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `rowNumber` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
@@ -287,13 +249,11 @@ Sets a cell to a value.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `column` | `string` | `true` | `null` |
 | `value` | `any` | `true` | `null` |
 | `row` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -303,12 +263,10 @@ Adds or updates a row in a query based on the provided row data and position.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `rowNumber` | `integer` | `false` | `0` |
 | `rowData` | `any` | `true` | `null` |
-
 
 </details>
 <details>
@@ -318,12 +276,10 @@ Returns a subset of rows from an existing query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `offset` | `integer` | `true` | `null` |
 | `length` | `integer` | `false` | `0` |
-
 
 </details>
 <details>
@@ -333,14 +289,12 @@ This function calls a given closure/function with every element in a given query
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `initialValue` | `any` | `false` | `null` |
-
 
 </details>
 <details>
@@ -350,18 +304,15 @@ Sorts array elements.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `sortFunc` | `function` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>toImmutable()</code></summary>
 
 Convert an array, struct or query to its immutable counterpart.
-
 </details>
 <details>
 <summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
@@ -370,20 +321,17 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>toMutable()</code></summary>
 
 Convert an array, struct or query to its mutable counterpart.
-
 </details>
 
 

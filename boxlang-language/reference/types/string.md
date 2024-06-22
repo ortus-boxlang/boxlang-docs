@@ -13,13 +13,11 @@ Parses a locale-specific datetime string or object
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `locale` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
 | `format` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -29,12 +27,10 @@ Parses a datetime string or object
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `format` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -44,12 +40,10 @@ Parses a datetime string or object
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `format` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -59,13 +53,11 @@ Creates an algorithmic hash of an object
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `algorithm` | `string` | `false` | `MD5` |
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
-
 
 </details>
 <details>
@@ -75,14 +67,12 @@ Creates an algorithmic hash of an object
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
 | `algorithm` | `string` | `false` | `HmacMD5` |
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
-
 
 </details>
 <details>
@@ -92,11 +82,9 @@ Converts a string, using the base specified by radix, to an integer.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `radix` | `numeric` | `true` | `null` |
-
 
 </details>
 <details>
@@ -106,11 +94,9 @@ Formats a string so that special XML characters can be used as text in XML
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `escapeChars` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -120,13 +106,11 @@ Generates a URL-encoded string.
 
 For example, it replaces spaces with %20, and non-alphanumeric characters with equivalent hexadecimal escape
  sequences. Passes arbitrary strings within a URL. *
-
 </details>
 <details>
 <summary><code>len()</code></summary>
 
 Returns the absolute value of a number
-
 </details>
 <details>
 <summary><code>listSome(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
@@ -134,7 +118,6 @@ Returns the absolute value of a number
 Tests whether any item in a list meets the specified callback
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -144,7 +127,6 @@ Tests whether any item in a list meets the specified callback
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -154,7 +136,6 @@ Run the provided udf over a reversed delimited list to reduce the values to a si
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
@@ -162,7 +143,6 @@ Run the provided udf over a reversed delimited list to reduce the values to a si
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
-
 
 </details>
 <details>
@@ -172,14 +152,12 @@ Filters a delimted list and returns the values from the callback test
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
-
 
 </details>
 <details>
@@ -189,13 +167,11 @@ Returns the first or last item in a delimited list, according to the specified f
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -205,13 +181,11 @@ Returns the first or last item in a delimited list, according to the specified f
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -221,13 +195,11 @@ Checks if a list has a given index
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `index` | `numeric` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -237,7 +209,6 @@ Filters a delimted list and returns the values from the callback test
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `position` | `integer` | `true` | `null` |
@@ -245,7 +216,6 @@ Filters a delimted list and returns the values from the callback test
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
-
 
 </details>
 <details>
@@ -255,13 +225,11 @@ Converts the delimiters of a list to the new delimiter.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `newDelimiter` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -271,14 +239,12 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -288,14 +254,12 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -305,14 +269,12 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -322,14 +284,12 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -339,12 +299,10 @@ Compacts a list by removing empty items from the start and end of the list
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -354,12 +312,10 @@ Compacts a list by removing empty items from the start and end of the list
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -369,7 +325,6 @@ Used to iterate over a delimited list and run the function closure for each item
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
@@ -377,7 +332,6 @@ Used to iterate over a delimited list and run the function closure for each item
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -390,14 +344,12 @@ Returns a copy of the list, without the
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `position` | `numeric` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -407,12 +359,10 @@ De-duplicates a delimited list - either case-sensitively or case-insenstively
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `ignoreCase` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -422,13 +372,11 @@ Converts a delimited list to an array
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -438,14 +386,12 @@ Inserts a string at the beginning and end of list elements.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `qualifier` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `elements` | `string` | `false` | `all` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -455,14 +401,12 @@ Appends an element to a list
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
-
 
 </details>
 <details>
@@ -472,13 +416,11 @@ returns a count of the number of occurrences of a value in a list
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -488,13 +430,11 @@ returns a count of the number of occurrences of a value in a list
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -504,12 +444,10 @@ Gets the average of all values in a list
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -519,12 +457,10 @@ Calculates the length of a list separated by the specified delimiter
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -534,13 +470,11 @@ Returns the remainder of a list after removing the first item
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `offset` | `integer` | `false` | `0` |
-
 
 </details>
 <details>
@@ -550,14 +484,12 @@ Retrieves an item from a delimited list at the specified position
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `position` | `numeric` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -566,7 +498,6 @@ Retrieves an item from a delimited list at the specified position
 Tests whether all items in a list meet the specified callback
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -577,7 +508,6 @@ Tests whether all items in a list meet the specified callback
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>listEach(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
@@ -585,7 +515,6 @@ Tests whether all items in a list meet the specified callback
 Used to iterate over a delimited list and run the function closure for each item in the list.
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -597,7 +526,6 @@ Used to iterate over a delimited list and run the function closure for each item
 | `maxThreads` | `integer` | `false` | `null` |
 | `ordered` | `boolean` | `false` | `false` |
 
-
 </details>
 <details>
 <summary><code>listSort(sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])</code></summary>
@@ -605,7 +533,6 @@ Used to iterate over a delimited list and run the function closure for each item
 Sorts a delimited list and returns the result
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -617,7 +544,6 @@ Sorts a delimited list and returns the result
 | `localeSensitive` | `boolean` | `false` | `null` |
 | `callback` | `any` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>listSetAt(position=[integer], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
@@ -625,7 +551,6 @@ Sorts a delimited list and returns the result
 Retrieves an item in to a delimited list at the specified position
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -635,7 +560,6 @@ Retrieves an item in to a delimited list at the specified position
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-
 </details>
 <details>
 <summary><code>listFilter(filter=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
@@ -643,7 +567,6 @@ Retrieves an item in to a delimited list at the specified position
 Filters a delimted list and returns the values from the callback test
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -653,7 +576,6 @@ Filters a delimted list and returns the values from the callback test
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -666,12 +588,10 @@ Returns the token found at position index of the string, as a string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `index` | `integer` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
-
 
 </details>
 <details>
@@ -681,19 +601,16 @@ Trims each item in the list.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
 <summary><code>prettifyJSON()</code></summary>
 
 Prettifies a JSON string.
-
 </details>
 <details>
 <summary><code>jSONDeserialize(strictMapping=[boolean], useCustomSerializer=[string])</code></summary>
@@ -702,12 +619,10 @@ Converts a JSON (JavaScript Object Notation) string data representation into dat
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `strictMapping` | `boolean` | `false` | `true` |
 | `useCustomSerializer` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -720,18 +635,15 @@ The Base64 format uses printable characters, allowing binary data to be sent in
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `UTF-8` |
-
 
 </details>
 <details>
 <summary><code>toBinary()</code></summary>
 
 Calculates the binary representation of Base64-encoded data.
-
 </details>
 <details>
 <summary><code>to(encoding=[string])</code></summary>
@@ -740,11 +652,9 @@ Converts a value to a string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -754,13 +664,11 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
-
 
 </details>
 <details>
@@ -770,26 +678,22 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>booleanFormat()</code></summary>
 
 Returns the value formatted as a boolean string
-
 </details>
 <details>
 <summary><code>isEmpty()</code></summary>
 
 Determine whether a given value is empty
-
 </details>
 <details>
 <summary><code>spanIncluding(set=[string])</code></summary>
@@ -800,11 +704,9 @@ The search is case-sensitive.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `set` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -817,14 +719,12 @@ The search is case-sensitive.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `reg_expression` | `string` | `true` | `null` |
 | `start` | `integer` | `false` | `1` |
 | `returnSubExpressions` | `boolean` | `false` | `false` |
 | `scope` | `string` | `false` | `one` |
-
 
 </details>
 <details>
@@ -837,7 +737,6 @@ The search is case-sensitive.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `reg_expression` | `string` | `true` | `null` |
@@ -845,19 +744,16 @@ The search is case-sensitive.
 | `returnSubExpressions` | `boolean` | `false` | `false` |
 | `scope` | `string` | `false` | `one` |
 
-
 </details>
 <details>
 <summary><code>kebabCase()</code></summary>
 
 Convert a string to kebab case
-
 </details>
 <details>
 <summary><code>ascii()</code></summary>
 
 Determine the ASCII value of a character
-
 </details>
 <details>
 <summary><code>val()</code></summary>
@@ -866,7 +762,6 @@ Converts numeric characters and the first period found that occur at the beginni
 
 A period not accompianied by at least
  one numeric digit will be ignored. If no numeric digits are found at the start of the string, zero will be returned.
-
 </details>
 <details>
 <summary><code>compare(string2=[any])</code></summary>
@@ -879,18 +774,15 @@ Performs a case-sensitive comparison of two strings.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `string2` | `any` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>trueFalseFormat()</code></summary>
 
 Return Yes/No based on whether the input is true/false
-
 </details>
 <details>
 <summary><code>reReplace(regex=[string], substring=[string], scope=[string])</code></summary>
@@ -901,13 +793,11 @@ The search is case-sensitive.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `regex` | `string` | `true` | `null` |
 | `substring` | `string` | `true` | `null` |
 | `scope` | `string` | `true` | `one` |
-
 
 </details>
 <details>
@@ -919,20 +809,17 @@ The search is case-sensitive.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `regex` | `string` | `true` | `null` |
 | `substring` | `string` | `true` | `null` |
 | `scope` | `string` | `true` | `one` |
 
-
 </details>
 <details>
 <summary><code>stripCR()</code></summary>
 
 Deletes return characters from a string.
-
 </details>
 <details>
 <summary><code>insert(substring=[string], position=[integer])</code></summary>
@@ -941,25 +828,21 @@ Inserts a substring into another string at a specified position.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `substring` | `string` | `true` | `null` |
 | `position` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>camelCase()</code></summary>
 
 Convert a string to camel case
-
 </details>
 <details>
 <summary><code>snakeCase()</code></summary>
 
 Convert a string to snake case
-
 </details>
 <details>
 <summary><code>right(count=[integer])</code></summary>
@@ -968,11 +851,9 @@ Extract the rightmost count characters from a string
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `count` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
@@ -982,12 +863,10 @@ Finds the first occurrence of any character in a set of characters, from a speci
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `set` | `string` | `true` | `null` |
 | `start` | `integer` | `false` | `1` |
-
 
 </details>
 <details>
@@ -999,11 +878,9 @@ The search is case-sensitive.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `set` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -1017,11 +894,9 @@ Performs a case-insensitive comparison of two strings.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `string2` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -1031,7 +906,6 @@ Run the provided udf over a reversed string to reduce the values to a single out
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
@@ -1040,13 +914,11 @@ Run the provided udf over a reversed string to reduce the values to a single out
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-
 </details>
 <details>
 <summary><code>reverse()</code></summary>
 
 Reverse the order of characters in a string
-
 </details>
 <details>
 <summary><code>replace(substring1=[string], obj=[string], scope=[string])</code></summary>
@@ -1058,13 +930,11 @@ The search is case-sensitive. Function returns original string with
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `substring1` | `string` | `true` | `null` |
 | `obj` | `string` | `true` | `null` |
 | `scope` | `string` | `true` | `once` |
-
 
 </details>
 <details>
@@ -1074,7 +944,6 @@ Replaces occurrences of the elements from a delimited list, in a string with cor
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `list1` | `string` | `true` | `null` |
@@ -1082,7 +951,6 @@ Replaces occurrences of the elements from a delimited list, in a string with cor
 | `delimiter_list1` | `string` | `false` | `,` |
 | `delimiter_list2` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -1092,7 +960,6 @@ Replaces occurrences of the elements from a delimited list, in a string with cor
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `list1` | `string` | `true` | `null` |
@@ -1100,7 +967,6 @@ Replaces occurrences of the elements from a delimited list, in a string with cor
 | `delimiter_list1` | `string` | `false` | `,` |
 | `delimiter_list2` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -1110,12 +976,10 @@ Slugify a string for URL safety
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `maxLength` | `numeric` | `false` | `0` |
 | `allow` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -1125,19 +989,16 @@ null
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `limit` | `integer` | `true` | `null` |
 | `strip` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
 <summary><code>pascalCase()</code></summary>
 
 Convert a string to pascal case
-
 </details>
 <details>
 <summary><code>stringSort(sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])</code></summary>
@@ -1145,7 +1006,6 @@ Convert a string to pascal case
 Sorts a string and returns the result
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1157,19 +1017,16 @@ Sorts a string and returns the result
 | `localeSensitive` | `boolean` | `false` | `null` |
 | `callback` | `any` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>trim()</code></summary>
 
 Trim whitespace from the beginning and end of a string
-
 </details>
 <details>
 <summary><code>lTrim()</code></summary>
 
 Trim leading whitespace from a string
-
 </details>
 <details>
 <summary><code>uCFirst(doAll=[boolean], doLowerIfAllUppercase=[boolean])</code></summary>
@@ -1178,12 +1035,10 @@ Transform the first letter of a string to uppercase or the first letter of each 
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `doAll` | `boolean` | `false` | `false` |
 | `doLowerIfAllUppercase` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -1193,12 +1048,10 @@ Finds the first occurrence of a substring in a string, from a specified start po
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `substring` | `string` | `true` | `null` |
 | `start` | `integer` | `false` | `1` |
-
 
 </details>
 <details>
@@ -1208,12 +1061,10 @@ Finds the first occurrence of a substring in a string, from a specified start po
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `substring` | `string` | `true` | `null` |
 | `start` | `integer` | `false` | `1` |
-
 
 </details>
 <details>
@@ -1223,11 +1074,9 @@ Uses a regular expression (RE) to search a string for a pattern, starting from a
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `reg_expression` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -1237,11 +1086,9 @@ Uses a regular expression (RE) to search a string for a pattern, starting from a
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `reg_expression` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -1251,11 +1098,9 @@ Justifies characters in a string of a specified length, either left or right.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `length` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
@@ -1265,11 +1110,9 @@ Justifies characters in a string of a specified length, either left or right.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `length` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
@@ -1279,18 +1122,15 @@ Extract the leftmost count characters from a string
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `count` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>uCase()</code></summary>
 
 Uppercase a string
-
 </details>
 <details>
 <summary><code>listReduce(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
@@ -1298,7 +1138,6 @@ Uppercase a string
 Run the provided udf over a delimited list to reduce the values to a single output
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1308,13 +1147,11 @@ Run the provided udf over a delimited list to reduce the values to a single outp
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-
 </details>
 <details>
 <summary><code>yesNoFormat()</code></summary>
 
 Return Yes/No based on whether the input is true/false
-
 </details>
 <details>
 <summary><code>replaceNoCase(substring1=[string], obj=[string], scope=[string])</code></summary>
@@ -1326,13 +1163,11 @@ The search is case-sensitive. Function returns original string with
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `substring1` | `string` | `true` | `null` |
 | `obj` | `string` | `true` | `null` |
 | `scope` | `string` | `true` | `once` |
-
 
 </details>
 <details>
@@ -1342,19 +1177,16 @@ Removes characters from a string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `start` | `integer` | `true` | `null` |
 | `count` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>rTrim()</code></summary>
 
 Trim trailing whitespace from a string
-
 </details>
 <details>
 <summary><code>charsetDecode(encoding=[string])</code></summary>
@@ -1363,11 +1195,9 @@ Encodes a string to a binary representation
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `utf-8` |
-
 
 </details>
 <details>
@@ -1376,7 +1206,6 @@ Encodes a string to a binary representation
 Tests whether any item in a string meets the specified callback
 
  Arguments:
-
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1387,13 +1216,11 @@ Tests whether any item in a string meets the specified callback
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>sQLPrettify()</code></summary>
 
 Prettify a SQL string
-
 </details>
 <details>
 <summary><code>toStruct(delimiter=[string])</code></summary>
@@ -1412,11 +1239,9 @@ Each key-value pair in the query string is separated by a delimiter.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `&` |
-
 
 </details>
 <details>
@@ -1426,25 +1251,21 @@ Extract a substring from a string
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `start` | `integer` | `true` | `null` |
 | `count` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>lCase()</code></summary>
 
 Uppercase a string
-
 </details>
 <details>
 <summary><code>paragraphFormat()</code></summary>
 
 Replaces characters in a string: Single newline characters (CR/LF sequences) with spaces and double newline characters with HTML paragraph tags
-
 </details>
 
 

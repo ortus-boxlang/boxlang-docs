@@ -89,19 +89,16 @@ animals.dump( label="Updated animals" );
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `struct2` | `struct` | `true` | `null` |
 | `overwrite` | `boolean` | `false` | `true` |
-
 
 </details>
 <details>
 <summary><code>clear()</code></summary>
 
 Clear all items from struct
-
 </details>
 <details>
 <summary><code>copy()</code></summary>
@@ -109,13 +106,11 @@ Clear all items from struct
 Creates a shallow copy of a struct.
 
 Copies top-level keys, values, and arrays in the structure by value; copies nested structures by reference.
-
 </details>
 <details>
 <summary><code>count()</code></summary>
 
 Returns the absolute value of a number
-
 </details>
 <details>
 <summary><code>delete(key=[string], indicateNotExists=[boolean])</code></summary>
@@ -124,12 +119,10 @@ Deletes a key from a struct
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
 | `indicateNotExists` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -139,14 +132,12 @@ Used to iterate over a struct and run the function closure for each key/value pa
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `ordered` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -156,11 +147,9 @@ Tests equality between two structs
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `struct2` | `struct` | `true` | `null` |
-
 
 </details>
 <details>
@@ -170,13 +159,11 @@ Used to iterate over a struct and test whether every item in the struct meets th
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -186,13 +173,11 @@ Used to filter a struct and return a new struct containing the result
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -202,12 +187,10 @@ Finds and retrieves a top-level key from a string in a struct
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
 | `defaultValue` | `any` | `false` | `null` |
-
 
 </details>
 <details>
@@ -217,12 +200,10 @@ Searches a struct for a given key and returns an array of values
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
 | `scope` | `string` | `false` | `one` |
-
 
 </details>
 <details>
@@ -232,12 +213,10 @@ Searches a struct for a given value and returns an array of results
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `value` | `string` | `true` | `null` |
 | `scope` | `string` | `false` | `one` |
-
 
 </details>
 <details>
@@ -247,18 +226,15 @@ Retrieves the value from a struct using a path based expression
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `path` | `string` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>getMetadata()</code></summary>
 
 Gets Struct-specific metadata of the requested struct.
-
 </details>
 <details>
 <summary><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></summary>
@@ -267,13 +243,11 @@ Creates an algorithmic hash of an object
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `algorithm` | `string` | `false` | `MD5` |
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
-
 
 </details>
 <details>
@@ -283,26 +257,22 @@ Inserts a key/value pair in to a struct - with an optional overwrite argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
 | `value` | `any` | `true` | `null` |
 | `overwrite` | `boolean` | `false` | `false` |
 
-
 </details>
 <details>
 <summary><code>isCaseSensitive()</code></summary>
 
 Returns whether the give struct is case sensitive
-
 </details>
 <details>
 <summary><code>isEmpty()</code></summary>
 
 Determine whether a given value is empty
-
 </details>
 <details>
 <summary><code>isOrdered()</code></summary>
@@ -310,13 +280,11 @@ Determine whether a given value is empty
 Tests whether a struct is ordered ( e.g.
 
 linked )
-
 </details>
 <details>
 <summary><code>keyArray()</code></summary>
 
 Get keys of a struct as an array
-
 </details>
 <details>
 <summary><code>keyExists(key=[string])</code></summary>
@@ -325,11 +293,9 @@ Tests whether a key exists in a struct and returns a boolean value
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -339,18 +305,15 @@ Get keys of a struct as a string list
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
-
 
 </details>
 <details>
 <summary><code>len()</code></summary>
 
 Returns the absolute value of a number
-
 </details>
 <details>
 <summary><code>map(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
@@ -359,13 +322,11 @@ Used to map a struct to a new struct of the same type containing the result
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -375,12 +336,10 @@ Run the provided udf against struct to reduce the values to a single output
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `initialValue` | `any` | `false` | `null` |
-
 
 </details>
 <details>
@@ -390,13 +349,11 @@ Used to iterate over a struct and test whether any items meet the test callback.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-
 
 </details>
 <details>
@@ -406,7 +363,6 @@ Sorts a struct according to the specified arguments and returns an array of stru
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `sortType` | `any` | `false` | `text` |
@@ -414,13 +370,11 @@ Sorts a struct according to the specified arguments and returns an array of stru
 | `path` | `string` | `false` | `null` |
 | `callback` | `function` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>toImmutable()</code></summary>
 
 Convert an array, struct or query to its immutable counterpart.
-
 </details>
 <details>
 <summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
@@ -429,20 +383,17 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
 
-
 </details>
 <details>
 <summary><code>toMutable()</code></summary>
 
 Convert an array, struct or query to its mutable counterpart.
-
 </details>
 <details>
 <summary><code>toQueryString(delimiter=[string])</code></summary>
@@ -454,11 +405,9 @@ Converts a struct to a query string using the specified delimiter.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `&` |
-
 
 </details>
 <details>
@@ -468,14 +417,12 @@ Converts a struct to a sorted struct - using either a callback comparator or tex
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `sortType` | `any` | `false` | `text` |
 | `sortOrder` | `string` | `false` | `asc` |
 | `localeSensitive` | `any` | `false` | `false` |
 | `callback` | `function` | `false` | `null` |
-
 
 </details>
 <details>
@@ -485,12 +432,10 @@ Converts a struct with dot-notated keys in to an unflattened version
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `deep` | `boolean` | `false` | `false` |
 | `retainKeys` | `boolean` | `false` | `false` |
-
 
 </details>
 <details>
@@ -500,19 +445,16 @@ Updates or sets a key/value pair in to a struct
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
 | `value` | `any` | `true` | `null` |
-
 
 </details>
 <details>
 <summary><code>valueArray()</code></summary>
 
 Returns an array of all values of top level keys in a struct
-
 </details>
 
 

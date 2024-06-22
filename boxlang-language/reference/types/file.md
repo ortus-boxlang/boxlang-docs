@@ -10,13 +10,11 @@
 <summary><code>close()</code></summary>
 
 Closes either the read or write stream
-
 </details>
 <details>
 <summary><code>getLastModifedTime()</code></summary>
 
 Retrieves the last modified time of a file
-
 </details>
 <details>
 <summary><code>info()</code></summary>
@@ -24,13 +22,11 @@ Retrieves the last modified time of a file
 Returns a struct of file information.
 
 Different values are returned for FileInfo and GetFileInfo
-
 </details>
 <details>
 <summary><code>readLine()</code></summary>
 
 Returns the next line from the file object stream
-
 </details>
 <details>
 <summary><code>seek(position=[integer])</code></summary>
@@ -39,11 +35,9 @@ Moves the buffer cursor position forward the number of characters specified by t
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `position` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
@@ -53,11 +47,9 @@ Sets the Posix permissions on a file
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mode` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -67,11 +59,9 @@ Sets a file access attribute
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `attribute` | `string` | `true` | `null` |
-
 
 </details>
 <details>
@@ -81,11 +71,9 @@ Sets the last modified time of a file
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `date` | `any` | `true` | `null` |
-
 
 </details>
 <details>
@@ -95,11 +83,9 @@ Moves the buffer cursor position forward the number of characters specified by t
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `position` | `integer` | `true` | `null` |
-
 
 </details>
 <details>
@@ -109,11 +95,9 @@ Writes a line of data to a file
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `data` | `string` | `true` | `null` |
-
 
 </details>
 

@@ -13,13 +13,11 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
-
 
 </details>
 

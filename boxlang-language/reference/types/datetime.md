@@ -15,17 +15,14 @@ Modifies a date object by date part and integer time unit
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `datepart` | `string` | `true` | `null` |
 | `number` | `long` | `true` | `null` |
 
-
 </details>
 <details>
 <summary><code>clone()</code></summary>
-
 
 
 </details>
@@ -36,12 +33,10 @@ Compares the difference between two dates - returning 0 if equal, -1 if date2 is
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `date2` | `any` | `true` | `null` |
 | `datepart` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -51,12 +46,10 @@ Compares the difference between two dates - returning 0 if equal, -1 if date2 is
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `date2` | `any` | `true` | `null` |
 | `datepart` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -66,12 +59,10 @@ Formats a datetime, date or time
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -81,12 +72,10 @@ Formats a datetime, date or time
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -96,11 +85,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -110,11 +97,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -124,11 +109,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -138,11 +121,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -152,11 +133,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -166,11 +145,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -180,11 +157,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -194,12 +169,10 @@ Returns the numeric difference in the requested date part between two dates
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `datepart` | `string` | `true` | `null` |
 | `date2` | `any` | `true` | `null` |
-
 
 </details>
 <details>
@@ -209,11 +182,9 @@ Indicates whether some other object is "equal to" this one.
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `obj` | `any` | `true` | `null` |
-
 
 </details>
 <details>
@@ -223,11 +194,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -237,12 +206,10 @@ Formats a datetime, date or time
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -252,11 +219,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -266,13 +231,11 @@ Creates an algorithmic hash of an object
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `algorithm` | `string` | `false` | `MD5` |
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
-
 
 </details>
 <details>
@@ -282,11 +245,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -296,13 +257,11 @@ Formats a date in a locale-specific format
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -312,13 +271,11 @@ Formats a date in a locale-specific format
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -330,12 +287,10 @@ different locales have different start days to the week )
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `locale` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -345,13 +300,11 @@ Formats a date in a locale-specific format
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -363,12 +316,10 @@ different locales have different start days to the week )
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `locale` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -378,11 +329,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -392,11 +341,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -406,11 +353,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -420,11 +365,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -434,11 +377,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -448,11 +389,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -462,11 +401,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -476,11 +413,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -490,11 +425,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -504,12 +437,10 @@ Formats a datetime, date or time
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -519,28 +450,23 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
 <summary><code>toEpoch()</code></summary>
 
 Returns this date time in epoch time ( seconds )
-
 </details>
 <details>
 <summary><code>toEpochMillis()</code></summary>
 
 Returns this date time in epoch milliseconds
-
 </details>
 <details>
 <summary><code>toEpochSecond()</code></summary>
-
 
 
 </details>
@@ -548,7 +474,6 @@ Returns this date time in epoch milliseconds
 <summary><code>toISOString()</code></summary>
 
 Returns the date time representation as a string in the specified format mask
-
 </details>
 <details>
 <summary><code>toODBCDate(timezone=[string])</code></summary>
@@ -557,11 +482,9 @@ Creates a DateTime object with the format set to ODBC Implicit format
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -571,11 +494,9 @@ Creates a DateTime object with the format set to ODBC Implicit format
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -585,11 +506,9 @@ Creates a DateTime object with the format set to ODBC Implicit format
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -599,11 +518,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 <details>
@@ -613,11 +530,9 @@ Provides the BIF and member functions for all time unit request with no argument
 
  Arguments:
 
-
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
 
 </details>
 
