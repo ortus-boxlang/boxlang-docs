@@ -73,6 +73,27 @@
 <details>
 <summary><code>formatBaseN(radix=[integer])</code></summary>
 <p>Converts a number to a string representation in the specified base.
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`radix`</td>
+<td>`integer`</td>
+<td>`true`</td>
+<td>``</td>
+</tr></tbody>
+</table>
+
 </p></details>
 <details>
 <summary><code>tan()</code></summary>
@@ -89,6 +110,27 @@
 <details>
 <summary><code>decimalFormat(length=[integer])</code></summary>
 <p>Converts a number to a decimal-formatted string.
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`length`</td>
+<td>`integer`</td>
+<td>`false`</td>
+<td>`2`</td>
+</tr></tbody>
+</table>
+
 </p></details>
 <details>
 <summary><code>booleanFormat()</code></summary>
@@ -97,10 +139,66 @@
 <details>
 <summary><code>numberFormat(mask=[string], locale=[string])</code></summary>
 <p>Formats a number with an optional format mask
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`mask`</td>
+<td>`string`</td>
+<td>`false`</td>
+<td>``</td>
+</tr>
+
+<tr>
+<td>`locale`</td>
+<td>`string`</td>
+<td>`false`</td>
+<td>``</td>
+</tr></tbody>
+</table>
+
 </p></details>
 <details>
 <summary><code>currencyFormat(type=[string], locale=[string])</code></summary>
 <p>null
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`type`</td>
+<td>`string`</td>
+<td>`false`</td>
+<td>``</td>
+</tr>
+
+<tr>
+<td>`locale`</td>
+<td>`string`</td>
+<td>`false`</td>
+<td>``</td>
+</tr></tbody>
+</table>
+
 </p></details>
 
 

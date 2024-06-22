@@ -11,6 +11,34 @@ This type represents an XML Object in BoxLang
 <p>Gets the position of a child element within an XML document object.
 
 The position, in an XmlChildren array, of the Nth child that has the specified name.
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`childname`</td>
+<td>`string`</td>
+<td>`true`</td>
+<td>``</td>
+</tr>
+
+<tr>
+<td>`n`</td>
+<td>`integer`</td>
+<td>`true`</td>
+<td>``</td>
+</tr></tbody>
+</table>
+
 </p></details>
 <details>
 <summary><code>getNodeType()</code></summary>
@@ -19,14 +47,91 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 <details>
 <summary><code>search(xpath=[String], params=[Struct])</code></summary>
 <p>Get XML values according to given xPath query
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`xpath`</td>
+<td>`String`</td>
+<td>`true`</td>
+<td>``</td>
+</tr>
+
+<tr>
+<td>`params`</td>
+<td>`Struct`</td>
+<td>`false`</td>
+<td>`{}`</td>
+</tr></tbody>
+</table>
+
 </p></details>
 <details>
 <summary><code>toString(encoding=[string])</code></summary>
 <p>Converts a value to a string.
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`encoding`</td>
+<td>`string`</td>
+<td>`false`</td>
+<td>``</td>
+</tr></tbody>
+</table>
+
 </p></details>
 <details>
 <summary><code>transform(XSL=[String], parameters=[Struct])</code></summary>
 <p>Get XML values according to given xPath query
+
+ Arguments:
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Type</th>
+<th>Required</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+
+<tr>
+<td>`XSL`</td>
+<td>`String`</td>
+<td>`true`</td>
+<td>``</td>
+</tr>
+
+<tr>
+<td>`parameters`</td>
+<td>`Struct`</td>
+<td>`false`</td>
+<td>`{}`</td>
+</tr></tbody>
+</table>
+
 </p></details>
 
 
