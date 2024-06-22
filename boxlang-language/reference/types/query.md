@@ -10,7 +10,7 @@ It provides language specific methods to access columnar data, both as value lis
 
 <details>
 <summary><code>addColumn(columnName=[string], datatype=[any], array=[array])</code></summary>
-Adds a column to a query and populates its rows with the contents of a one-dimensional array.
+<p>Adds a column to a query and populates its rows with the contents of a one-dimensional array.
 
  Arguments:
 
@@ -20,11 +20,10 @@ Adds a column to a query and populates its rows with the contents of a one-dimen
 | `datatype` | `any` | `false` | `Varchar` |
 | `array` | `array` | `false` | `[]` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>addRow(rowData=[any])</code></summary>
-Return new query
+<p>Return new query
 
  Arguments:
 
@@ -32,11 +31,10 @@ Return new query
 |----------|------|----------|---------|
 | `rowData` | `any` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>append(query2=[query])</code></summary>
-This function clears the query
+<p>This function clears the query
 
  Arguments:
 
@@ -44,23 +42,22 @@ This function clears the query
 |----------|------|----------|---------|
 | `query2` | `query` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>clear()</code></summary>
-This function clears the query
-</details>
+<p>This function clears the query
+</p></details>
 <details>
 <summary><code>columnArray()</code></summary>
-This function returns the column array of a query.
-</details>
+<p>This function returns the column array of a query.
+</p></details>
 <details>
 <summary><code>columnCount()</code></summary>
-This function returns the number of columns in a query
-</details>
+<p>This function returns the number of columns in a query
+</p></details>
 <details>
 <summary><code>columnData(columnName=[string])</code></summary>
-Returns the data in a query column.
+<p>Returns the data in a query column.
 
  Arguments:
 
@@ -68,11 +65,10 @@ Returns the data in a query column.
 |----------|------|----------|---------|
 | `columnName` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>columnExists(column=[string])</code></summary>
-This function returns true if the column exists in the query
+<p>This function returns true if the column exists in the query
 
  Arguments:
 
@@ -80,15 +76,14 @@ This function returns true if the column exists in the query
 |----------|------|----------|---------|
 | `column` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>currentRow()</code></summary>
-Returns the current row number
-</details>
+<p>Returns the current row number
+</p></details>
 <details>
 <summary><code>deleteColumn(column=[string])</code></summary>
-Deletes a column within a query object.
+<p>Deletes a column within a query object.
 
  Arguments:
 
@@ -96,11 +91,10 @@ Deletes a column within a query object.
 |----------|------|----------|---------|
 | `column` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>deleteRow(row=[integer])</code></summary>
-This function deletes a row from the query
+<p>This function deletes a row from the query
 
  Arguments:
 
@@ -108,11 +102,10 @@ This function deletes a row from the query
 |----------|------|----------|---------|
 | `row` | `integer` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>each(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-Iterates over query rows and passes each row per iteration to a callback function
+<p>Iterates over query rows and passes each row per iteration to a callback function
 
  Arguments:
 
@@ -122,11 +115,10 @@ Iterates over query rows and passes each row per iteration to a callback functio
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>every(closure=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
+<p>Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
 
  Arguments:
 
@@ -136,11 +128,10 @@ Executes a callback/closure against every row in a query and returns true if the
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>filter(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-Filters query rows specified in filter criteria
+<p>Filters query rows specified in filter criteria
 
  Arguments:
 
@@ -150,11 +141,10 @@ Filters query rows specified in filter criteria
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>getCell(column_name=[string], row_number=[integer])</code></summary>
-This function maps the query to a new query.
+<p>This function maps the query to a new query.
 
  Arguments:
 
@@ -163,15 +153,14 @@ This function maps the query to a new query.
 | `column_name` | `string` | `true` | `` |
 | `row_number` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>getResult()</code></summary>
-Returns the metadata of a query.
-</details>
+<p>Returns the metadata of a query.
+</p></details>
 <details>
 <summary><code>keyExists(key=[string])</code></summary>
-This function returns true if the key exists in the query
+<p>This function returns true if the key exists in the query
 
  Arguments:
 
@@ -179,11 +168,10 @@ This function returns true if the key exists in the query
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>map(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-This function maps the query to a new query.
+<p>This function maps the query to a new query.
 
  Arguments:
 
@@ -193,11 +181,10 @@ This function maps the query to a new query.
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>prepend(query2=[query])</code></summary>
-Adds a query to the beginning of another query
+<p>Adds a query to the beginning of another query
 
  Arguments:
 
@@ -205,15 +192,14 @@ Adds a query to the beginning of another query
 |----------|------|----------|---------|
 | `query2` | `query` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>recordCount()</code></summary>
-This function returns the number of records in a query
-</details>
+<p>This function returns the number of records in a query
+</p></details>
 <details>
 <summary><code>reduce(callback=[function], initialValue=[any])</code></summary>
-This function reduces the query to a single value.
+<p>This function reduces the query to a single value.
 
  Arguments:
 
@@ -222,11 +208,10 @@ This function reduces the query to a single value.
 | `callback` | `function` | `true` | `` |
 | `initialValue` | `any` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>rowData(rowNumber=[integer])</code></summary>
-Returns the cells of a query row as a structure
+<p>Returns the cells of a query row as a structure
 
  Arguments:
 
@@ -234,11 +219,10 @@ Returns the cells of a query row as a structure
 |----------|------|----------|---------|
 | `rowNumber` | `integer` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>setCell(column=[string], value=[any], row=[integer])</code></summary>
-Sets a cell to a value.
+<p>Sets a cell to a value.
 
  Arguments:
 
@@ -248,11 +232,10 @@ Sets a cell to a value.
 | `value` | `any` | `true` | `` |
 | `row` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>setRow(rowNumber=[integer], rowData=[any])</code></summary>
-Adds or updates a row in a query based on the provided row data and position.
+<p>Adds or updates a row in a query based on the provided row data and position.
 
  Arguments:
 
@@ -261,11 +244,10 @@ Adds or updates a row in a query based on the provided row data and position.
 | `rowNumber` | `integer` | `false` | `0` |
 | `rowData` | `any` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>slice(offset=[integer], length=[integer])</code></summary>
-Returns a subset of rows from an existing query
+<p>Returns a subset of rows from an existing query
 
  Arguments:
 
@@ -274,11 +256,10 @@ Returns a subset of rows from an existing query
 | `offset` | `integer` | `true` | `` |
 | `length` | `integer` | `false` | `0` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>some(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
-This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
+<p>This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
 
  Arguments:
 
@@ -289,11 +270,10 @@ This function calls a given closure/function with every element in a given query
 | `maxThreads` | `integer` | `false` | `` |
 | `initialValue` | `any` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>sort(sortFunc=[function])</code></summary>
-Sorts array elements.
+<p>Sorts array elements.
 
  Arguments:
 
@@ -301,15 +281,14 @@ Sorts array elements.
 |----------|------|----------|---------|
 | `sortFunc` | `function` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>toImmutable()</code></summary>
-Convert an array, struct or query to its immutable counterpart.
-</details>
+<p>Convert an array, struct or query to its immutable counterpart.
+</p></details>
 <details>
 <summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
-Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+<p>Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
@@ -319,12 +298,11 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>toMutable()</code></summary>
-Convert an array, struct or query to its mutable counterpart.
-</details>
+<p>Convert an array, struct or query to its mutable counterpart.
+</p></details>
 
 
 ## Examples

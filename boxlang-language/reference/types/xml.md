@@ -8,7 +8,7 @@ This type represents an XML Object in BoxLang
 
 <details>
 <summary><code>childPos(childname=[string], n=[integer])</code></summary>
-Gets the position of a child element within an XML document object.
+<p>Gets the position of a child element within an XML document object.
 
 The position, in an XmlChildren array, of the Nth child that has the specified name.
 
@@ -19,15 +19,14 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 | `childname` | `string` | `true` | `` |
 | `n` | `integer` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>getNodeType()</code></summary>
-Get XML values according to given xPath query
-</details>
+<p>Get XML values according to given xPath query
+</p></details>
 <details>
 <summary><code>search(xpath=[String], params=[Struct])</code></summary>
-Get XML values according to given xPath query
+<p>Get XML values according to given xPath query
 
  Arguments:
 
@@ -36,11 +35,10 @@ Get XML values according to given xPath query
 | `xpath` | `String` | `true` | `` |
 | `params` | `Struct` | `false` | `{}` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>toString(encoding=[string])</code></summary>
-Converts a value to a string.
+<p>Converts a value to a string.
 
  Arguments:
 
@@ -48,11 +46,10 @@ Converts a value to a string.
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>transform(XSL=[String], parameters=[Struct])</code></summary>
-Get XML values according to given xPath query
+<p>Get XML values according to given xPath query
 
  Arguments:
 
@@ -61,8 +58,7 @@ Get XML values according to given xPath query
 | `XSL` | `String` | `true` | `` |
 | `parameters` | `Struct` | `false` | `{}` |
 
-
-</details>
+</p></details>
 
 
 ## Examples

@@ -8,71 +8,71 @@
 
 <details>
 <summary><code>sqr()</code></summary>
-Returns the square root of a number
-</details>
+<p>Returns the square root of a number
+</p></details>
 <details>
 <summary><code>asin()</code></summary>
-Returns the arcsine (inverse sine) of a number
-</details>
+<p>Returns the arcsine (inverse sine) of a number
+</p></details>
 <details>
 <summary><code>sgn()</code></summary>
-Determine the sign of a number
-</details>
+<p>Determine the sign of a number
+</p></details>
 <details>
 <summary><code>decrementValue()</code></summary>
-Decrement the integer part of a number
-</details>
+<p>Decrement the integer part of a number
+</p></details>
 <details>
 <summary><code>round()</code></summary>
-Rounds a number to the closest integer.
-</details>
+<p>Rounds a number to the closest integer.
+</p></details>
 <details>
 <summary><code>cos()</code></summary>
-Returns the cosine of an angle entered in radians
-</details>
+<p>Returns the cosine of an angle entered in radians
+</p></details>
 <details>
 <summary><code>int()</code></summary>
-Returns the closest integer that is smaller than the number
-</details>
+<p>Returns the closest integer that is smaller than the number
+</p></details>
 <details>
 <summary><code>exp()</code></summary>
-Calculates the exponent whose base is e that represents a number.
-</details>
+<p>Calculates the exponent whose base is e that represents a number.
+</p></details>
 <details>
 <summary><code>ceiling()</code></summary>
-Determines the closest integer that is greater than a specified floating point number.
-</details>
+<p>Determines the closest integer that is greater than a specified floating point number.
+</p></details>
 <details>
 <summary><code>atn()</code></summary>
-Returns the arc tangent (inverse tangent) of a number
-</details>
+<p>Returns the arc tangent (inverse tangent) of a number
+</p></details>
 <details>
 <summary><code>fix()</code></summary>
-Converts a real number to an integer
-</details>
+<p>Converts a real number to an integer
+</p></details>
 <details>
 <summary><code>abs()</code></summary>
-Returns the absolute value of a number
-</details>
+<p>Returns the absolute value of a number
+</p></details>
 <details>
 <summary><code>log()</code></summary>
-Returns the natural logarithm of a number.
-</details>
+<p>Returns the natural logarithm of a number.
+</p></details>
 <details>
 <summary><code>log10()</code></summary>
-Returns the logarithm of a number to base 10.
-</details>
+<p>Returns the logarithm of a number to base 10.
+</p></details>
 <details>
 <summary><code>acos()</code></summary>
-Returns the arccosine (inverse cosine) of a number
-</details>
+<p>Returns the arccosine (inverse cosine) of a number
+</p></details>
 <details>
 <summary><code>floor()</code></summary>
-Returns the absolute value of a number
-</details>
+<p>Returns the absolute value of a number
+</p></details>
 <details>
 <summary><code>formatBaseN(radix=[integer])</code></summary>
-Converts a number to a string representation in the specified base.
+<p>Converts a number to a string representation in the specified base.
 
  Arguments:
 
@@ -80,23 +80,22 @@ Converts a number to a string representation in the specified base.
 |----------|------|----------|---------|
 | `radix` | `integer` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>tan()</code></summary>
-Returns the tangent of an angle that is entered in radians.
-</details>
+<p>Returns the tangent of an angle that is entered in radians.
+</p></details>
 <details>
 <summary><code>sin()</code></summary>
-Returns the sine of a number
-</details>
+<p>Returns the sine of a number
+</p></details>
 <details>
 <summary><code>incrementValue()</code></summary>
-Increment the integer part of a number
-</details>
+<p>Increment the integer part of a number
+</p></details>
 <details>
 <summary><code>decimalFormat(length=[integer])</code></summary>
-Converts a number to a decimal-formatted string.
+<p>Converts a number to a decimal-formatted string.
 
  Arguments:
 
@@ -104,15 +103,14 @@ Converts a number to a decimal-formatted string.
 |----------|------|----------|---------|
 | `length` | `integer` | `false` | `2` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>booleanFormat()</code></summary>
-Returns the value formatted as a boolean string
-</details>
+<p>Returns the value formatted as a boolean string
+</p></details>
 <details>
 <summary><code>numberFormat(mask=[string], locale=[string])</code></summary>
-Formats a number with an optional format mask
+<p>Formats a number with an optional format mask
 
  Arguments:
 
@@ -121,11 +119,10 @@ Formats a number with an optional format mask
 | `mask` | `string` | `false` | `` |
 | `locale` | `string` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>currencyFormat(type=[string], locale=[string])</code></summary>
-null
+<p>null
 
  Arguments:
 
@@ -134,8 +131,7 @@ null
 | `type` | `string` | `false` | `` |
 | `locale` | `string` | `false` | `` |
 
-
-</details>
+</p></details>
 
 
 ## Examples

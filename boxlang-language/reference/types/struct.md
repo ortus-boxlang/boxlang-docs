@@ -60,7 +60,7 @@ orderedAnimals = [
 
 <details>
 <summary><code>append(struct2=[structloose], overwrite=[boolean])</code></summary>
-Appends the contents of a second struct to the first struct either with or without overwrite
+<p>Appends the contents of a second struct to the first struct either with or without overwrite
 
  Examples:
 *Append One Struct to Another:*
@@ -93,25 +93,24 @@ animals.dump( label="Updated animals" );
 | `struct2` | `structloose` | `true` | `` |
 | `overwrite` | `boolean` | `false` | `true` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>clear()</code></summary>
-Clear all items from struct
-</details>
+<p>Clear all items from struct
+</p></details>
 <details>
 <summary><code>copy()</code></summary>
-Creates a shallow copy of a struct.
+<p>Creates a shallow copy of a struct.
 
 Copies top-level keys, values, and arrays in the structure by value; copies nested structures by reference.
-</details>
+</p></details>
 <details>
 <summary><code>count()</code></summary>
-Returns the absolute value of a number
-</details>
+<p>Returns the absolute value of a number
+</p></details>
 <details>
 <summary><code>delete(key=[string], indicateNotExists=[boolean])</code></summary>
-Deletes a key from a struct
+<p>Deletes a key from a struct
 
  Arguments:
 
@@ -120,11 +119,10 @@ Deletes a key from a struct
 | `key` | `string` | `true` | `` |
 | `indicateNotExists` | `boolean` | `false` | `false` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>each(callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
-Used to iterate over a struct and run the function closure for each key/value pair.
+<p>Used to iterate over a struct and run the function closure for each key/value pair.
 
  Arguments:
 
@@ -135,11 +133,10 @@ Used to iterate over a struct and run the function closure for each key/value pa
 | `maxThreads` | `integer` | `false` | `` |
 | `ordered` | `boolean` | `false` | `false` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>equals(struct2=[structloose])</code></summary>
-Tests equality between two structs
+<p>Tests equality between two structs
 
  Arguments:
 
@@ -147,11 +144,10 @@ Tests equality between two structs
 |----------|------|----------|---------|
 | `struct2` | `structloose` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>every(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-Used to iterate over a struct and test whether every item in the struct meets the test.
+<p>Used to iterate over a struct and test whether every item in the struct meets the test.
 
  Arguments:
 
@@ -161,11 +157,10 @@ Used to iterate over a struct and test whether every item in the struct meets th
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>filter(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-Used to filter a struct and return a new struct containing the result
+<p>Used to filter a struct and return a new struct containing the result
 
  Arguments:
 
@@ -175,11 +170,10 @@ Used to filter a struct and return a new struct containing the result
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>find(key=[string], defaultValue=[any])</code></summary>
-Finds and retrieves a top-level key from a string in a struct
+<p>Finds and retrieves a top-level key from a string in a struct
 
  Arguments:
 
@@ -188,11 +182,10 @@ Finds and retrieves a top-level key from a string in a struct
 | `key` | `string` | `true` | `` |
 | `defaultValue` | `any` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>findKey(key=[string], scope=[string])</code></summary>
-Searches a struct for a given key and returns an array of values
+<p>Searches a struct for a given key and returns an array of values
 
  Arguments:
 
@@ -201,11 +194,10 @@ Searches a struct for a given key and returns an array of values
 | `key` | `string` | `true` | `` |
 | `scope` | `string` | `false` | `one` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>findValue(value=[string], scope=[string])</code></summary>
-Searches a struct for a given value and returns an array of results
+<p>Searches a struct for a given value and returns an array of results
 
  Arguments:
 
@@ -214,11 +206,10 @@ Searches a struct for a given value and returns an array of results
 | `value` | `string` | `true` | `` |
 | `scope` | `string` | `false` | `one` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>getFromPath(path=[string])</code></summary>
-Retrieves the value from a struct using a path based expression
+<p>Retrieves the value from a struct using a path based expression
 
  Arguments:
 
@@ -226,15 +217,14 @@ Retrieves the value from a struct using a path based expression
 |----------|------|----------|---------|
 | `path` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>getMetadata()</code></summary>
-Gets Struct-specific metadata of the requested struct.
-</details>
+<p>Gets Struct-specific metadata of the requested struct.
+</p></details>
 <details>
 <summary><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></summary>
-Creates an algorithmic hash of an object
+<p>Creates an algorithmic hash of an object
 
  Arguments:
 
@@ -244,11 +234,10 @@ Creates an algorithmic hash of an object
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>insert(key=[string], value=[any], overwrite=[boolean])</code></summary>
-Inserts a key/value pair in to a struct - with an optional overwrite argument
+<p>Inserts a key/value pair in to a struct - with an optional overwrite argument
 
  Arguments:
 
@@ -258,29 +247,28 @@ Inserts a key/value pair in to a struct - with an optional overwrite argument
 | `value` | `any` | `true` | `` |
 | `overwrite` | `boolean` | `false` | `false` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>isCaseSensitive()</code></summary>
-Returns whether the give struct is case sensitive
-</details>
+<p>Returns whether the give struct is case sensitive
+</p></details>
 <details>
 <summary><code>isEmpty()</code></summary>
-Determine whether a given value is empty
-</details>
+<p>Determine whether a given value is empty
+</p></details>
 <details>
 <summary><code>isOrdered()</code></summary>
-Tests whether a struct is ordered ( e.g.
+<p>Tests whether a struct is ordered ( e.g.
 
 linked )
-</details>
+</p></details>
 <details>
 <summary><code>keyArray()</code></summary>
-Get keys of a struct as an array
-</details>
+<p>Get keys of a struct as an array
+</p></details>
 <details>
 <summary><code>keyExists(key=[string])</code></summary>
-Tests whether a key exists in a struct and returns a boolean value
+<p>Tests whether a key exists in a struct and returns a boolean value
 
  Arguments:
 
@@ -288,11 +276,10 @@ Tests whether a key exists in a struct and returns a boolean value
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>keyList(delimiter=[string])</code></summary>
-Get keys of a struct as a string list
+<p>Get keys of a struct as a string list
 
  Arguments:
 
@@ -300,15 +287,14 @@ Get keys of a struct as a string list
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `,` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>len()</code></summary>
-Returns the absolute value of a number
-</details>
+<p>Returns the absolute value of a number
+</p></details>
 <details>
 <summary><code>map(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-Used to map a struct to a new struct of the same type containing the result
+<p>Used to map a struct to a new struct of the same type containing the result
 
  Arguments:
 
@@ -318,11 +304,10 @@ Used to map a struct to a new struct of the same type containing the result
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>reduce(callback=[function], initialValue=[any])</code></summary>
-Run the provided udf against struct to reduce the values to a single output
+<p>Run the provided udf against struct to reduce the values to a single output
 
  Arguments:
 
@@ -331,11 +316,10 @@ Run the provided udf against struct to reduce the values to a single output
 | `callback` | `function` | `true` | `` |
 | `initialValue` | `any` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>some(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
-Used to iterate over a struct and test whether any items meet the test callback.
+<p>Used to iterate over a struct and test whether any items meet the test callback.
 
  Arguments:
 
@@ -345,11 +329,10 @@ Used to iterate over a struct and test whether any items meet the test callback.
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>sort(sortType=[any], sortOrder=[string], path=[string], callback=[function])</code></summary>
-Sorts a struct according to the specified arguments and returns an array of struct keys
+<p>Sorts a struct according to the specified arguments and returns an array of struct keys
 
  Arguments:
 
@@ -360,15 +343,14 @@ Sorts a struct according to the specified arguments and returns an array of stru
 | `path` | `string` | `false` | `` |
 | `callback` | `function` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>toImmutable()</code></summary>
-Convert an array, struct or query to its immutable counterpart.
-</details>
+<p>Convert an array, struct or query to its immutable counterpart.
+</p></details>
 <details>
 <summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
-Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+<p>Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
@@ -378,15 +360,14 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>toMutable()</code></summary>
-Convert an array, struct or query to its mutable counterpart.
-</details>
+<p>Convert an array, struct or query to its mutable counterpart.
+</p></details>
 <details>
 <summary><code>toQueryString(delimiter=[string])</code></summary>
-Converts a struct to a query string using the specified delimiter.
+<p>Converts a struct to a query string using the specified delimiter.
 
 <p>,
  The default delimiter is ,{@code "&"}
@@ -397,11 +378,10 @@ Converts a struct to a query string using the specified delimiter.
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `&` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>toSorted(sortType=[any], sortOrder=[string], localeSensitive=[any], callback=[function])</code></summary>
-Converts a struct to a sorted struct - using either a callback comparator or textual directives as the sort option
+<p>Converts a struct to a sorted struct - using either a callback comparator or textual directives as the sort option
 
  Arguments:
 
@@ -412,11 +392,10 @@ Converts a struct to a sorted struct - using either a callback comparator or tex
 | `localeSensitive` | `any` | `false` | `false` |
 | `callback` | `function` | `false` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>translateKeys(deep=[boolean], retainKeys=[boolean])</code></summary>
-Converts a struct with dot-notated keys in to an unflattened version
+<p>Converts a struct with dot-notated keys in to an unflattened version
 
  Arguments:
 
@@ -425,11 +404,10 @@ Converts a struct with dot-notated keys in to an unflattened version
 | `deep` | `boolean` | `false` | `false` |
 | `retainKeys` | `boolean` | `false` | `false` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>update(key=[string], value=[any])</code></summary>
-Updates or sets a key/value pair in to a struct
+<p>Updates or sets a key/value pair in to a struct
 
  Arguments:
 
@@ -438,12 +416,11 @@ Updates or sets a key/value pair in to a struct
 | `key` | `string` | `true` | `` |
 | `value` | `any` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>valueArray()</code></summary>
-Returns an array of all values of top level keys in a struct
-</details>
+<p>Returns an array of all values of top level keys in a struct
+</p></details>
 
 
 ## Examples

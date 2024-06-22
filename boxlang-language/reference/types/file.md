@@ -8,25 +8,25 @@
 
 <details>
 <summary><code>close()</code></summary>
-Closes either the read or write stream
-</details>
+<p>Closes either the read or write stream
+</p></details>
 <details>
 <summary><code>getLastModifedTime()</code></summary>
-Retrieves the last modified time of a file
-</details>
+<p>Retrieves the last modified time of a file
+</p></details>
 <details>
 <summary><code>info()</code></summary>
-Returns a struct of file information.
+<p>Returns a struct of file information.
 
 Different values are returned for FileInfo and GetFileInfo
-</details>
+</p></details>
 <details>
 <summary><code>readLine()</code></summary>
-Returns the next line from the file object stream
-</details>
+<p>Returns the next line from the file object stream
+</p></details>
 <details>
 <summary><code>seek(position=[integer])</code></summary>
-Moves the buffer cursor position forward the number of characters specified by the position argument
+<p>Moves the buffer cursor position forward the number of characters specified by the position argument
 
  Arguments:
 
@@ -34,11 +34,10 @@ Moves the buffer cursor position forward the number of characters specified by t
 |----------|------|----------|---------|
 | `position` | `integer` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>setAccessMode(mode=[string])</code></summary>
-Sets the Posix permissions on a file
+<p>Sets the Posix permissions on a file
 
  Arguments:
 
@@ -46,11 +45,10 @@ Sets the Posix permissions on a file
 |----------|------|----------|---------|
 | `mode` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>setAttribute(attribute=[string])</code></summary>
-Sets a file access attribute
+<p>Sets a file access attribute
 
  Arguments:
 
@@ -58,11 +56,10 @@ Sets a file access attribute
 |----------|------|----------|---------|
 | `attribute` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>setLastModified(date=[any])</code></summary>
-Sets the last modified time of a file
+<p>Sets the last modified time of a file
 
  Arguments:
 
@@ -70,11 +67,10 @@ Sets the last modified time of a file
 |----------|------|----------|---------|
 | `date` | `any` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>skipBytes(position=[integer])</code></summary>
-Moves the buffer cursor position forward the number of characters specified by the position argument
+<p>Moves the buffer cursor position forward the number of characters specified by the position argument
 
  Arguments:
 
@@ -82,11 +78,10 @@ Moves the buffer cursor position forward the number of characters specified by t
 |----------|------|----------|---------|
 | `position` | `integer` | `true` | `` |
 
-
-</details>
+</p></details>
 <details>
 <summary><code>writeLine(data=[string])</code></summary>
-Writes a line of data to a file
+<p>Writes a line of data to a file
 
  Arguments:
 
@@ -94,8 +89,7 @@ Writes a line of data to a file
 |----------|------|----------|---------|
 | `data` | `string` | `true` | `` |
 
-
-</details>
+</p></details>
 
 
 ## Examples

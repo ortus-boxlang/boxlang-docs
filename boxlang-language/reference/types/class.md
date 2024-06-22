@@ -8,7 +8,7 @@
 
 <details>
 <summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
-Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+<p>Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
@@ -18,8 +18,7 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `` |
 
-
-</details>
+</p></details>
 
 
 ## Examples
