@@ -15,7 +15,7 @@ StructKeyList(structure=[structloose], delimiter=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `structure` | `structloose` | `true` |  |  |
+| `structure` | `struct` | `true` |  |  |
 | `delimiter` | `string` | `false` |  | `,` |
 
 ## Examples

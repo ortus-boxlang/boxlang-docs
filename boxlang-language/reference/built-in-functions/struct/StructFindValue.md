@@ -15,7 +15,7 @@ StructFindValue(struct=[structloose], value=[string], scope=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to search |  |
+| `struct` | `struct` | `true` | The struct to search |  |
 | `value` | `string` | `true` | The value to search for |  |
 | `scope` | `string` | `false` | Either one (default), which finds the first instance or all to return all values | `one` |
 

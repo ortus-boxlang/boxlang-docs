@@ -15,8 +15,8 @@ StructAppend(struct1=[structloose], struct2=[structloose], overwrite=[boolean])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct1` | `structloose` | `true` | The target struct which will be the recipient of the appending |  |
-| `struct2` | `structloose` | `true` | The struct containing the values to be appended |  |
+| `struct1` | `struct` | `true` | The target struct which will be the recipient of the appending |  |
+| `struct2` | `struct` | `true` | The struct containing the values to be appended |  |
 | `overwrite` | `boolean` | `false` | Default true. Whether to overwrite existing values found in struct1 from the values in struct2 | `true` |
 
 ## Examples

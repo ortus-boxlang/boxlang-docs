@@ -15,7 +15,7 @@ StructGetMetadata(struct=[structloose])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct from which to retrieve the metadata |  |
+| `struct` | `struct` | `true` | The struct from which to retrieve the metadata |  |
 
 ## Examples
 

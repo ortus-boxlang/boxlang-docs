@@ -15,7 +15,7 @@ StructValueArray(struct=[structloose])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The target struct from which to retrieve values |  |
+| `struct` | `struct` | `true` | The target struct from which to retrieve values |  |
 
 ## Examples
 

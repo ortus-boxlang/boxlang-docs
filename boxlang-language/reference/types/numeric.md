@@ -8,198 +8,126 @@
 
 <details>
 <summary><code>sqr()</code></summary>
-<p>Returns the square root of a number
-</p></details>
+Returns the square root of a number
+</details>
 <details>
 <summary><code>asin()</code></summary>
-<p>Returns the arcsine (inverse sine) of a number
-</p></details>
+Returns the arcsine (inverse sine) of a number
+</details>
 <details>
 <summary><code>sgn()</code></summary>
-<p>Determine the sign of a number
-</p></details>
+Determine the sign of a number
+</details>
 <details>
 <summary><code>decrementValue()</code></summary>
-<p>Decrement the integer part of a number
-</p></details>
+Decrement the integer part of a number
+</details>
 <details>
 <summary><code>round()</code></summary>
-<p>Rounds a number to the closest integer.
-</p></details>
+Rounds a number to the closest integer.
+</details>
 <details>
 <summary><code>cos()</code></summary>
-<p>Returns the cosine of an angle entered in radians
-</p></details>
+Returns the cosine of an angle entered in radians
+</details>
 <details>
 <summary><code>int()</code></summary>
-<p>Returns the closest integer that is smaller than the number
-</p></details>
+Returns the closest integer that is smaller than the number
+</details>
 <details>
 <summary><code>exp()</code></summary>
-<p>Calculates the exponent whose base is e that represents a number.
-</p></details>
+Calculates the exponent whose base is e that represents a number.
+</details>
 <details>
 <summary><code>ceiling()</code></summary>
-<p>Determines the closest integer that is greater than a specified floating point number.
-</p></details>
+Determines the closest integer that is greater than a specified floating point number.
+</details>
 <details>
 <summary><code>atn()</code></summary>
-<p>Returns the arc tangent (inverse tangent) of a number
-</p></details>
+Returns the arc tangent (inverse tangent) of a number
+</details>
 <details>
 <summary><code>fix()</code></summary>
-<p>Converts a real number to an integer
-</p></details>
+Converts a real number to an integer
+</details>
 <details>
 <summary><code>abs()</code></summary>
-<p>Returns the absolute value of a number
-</p></details>
+Returns the absolute value of a number
+</details>
 <details>
 <summary><code>log()</code></summary>
-<p>Returns the natural logarithm of a number.
-</p></details>
+Returns the natural logarithm of a number.
+</details>
 <details>
 <summary><code>log10()</code></summary>
-<p>Returns the logarithm of a number to base 10.
-</p></details>
+Returns the logarithm of a number to base 10.
+</details>
 <details>
 <summary><code>acos()</code></summary>
-<p>Returns the arccosine (inverse cosine) of a number
-</p></details>
+Returns the arccosine (inverse cosine) of a number
+</details>
 <details>
 <summary><code>floor()</code></summary>
-<p>Returns the absolute value of a number
-</p></details>
+Returns the absolute value of a number
+</details>
 <details>
 <summary><code>formatBaseN(radix=[integer])</code></summary>
-<p>Converts a number to a string representation in the specified base.
-
+Converts a number to a string representation in the specified base.
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`radix`</td>
-<td>`integer`</td>
-<td>`true`</td>
-<td>``</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `radix` | `integer` | `true` | `null` |
 
-</p></details>
+</details>
 <details>
 <summary><code>tan()</code></summary>
-<p>Returns the tangent of an angle that is entered in radians.
-</p></details>
+Returns the tangent of an angle that is entered in radians.
+</details>
 <details>
 <summary><code>sin()</code></summary>
-<p>Returns the sine of a number
-</p></details>
+Returns the sine of a number
+</details>
 <details>
 <summary><code>incrementValue()</code></summary>
-<p>Increment the integer part of a number
-</p></details>
+Increment the integer part of a number
+</details>
 <details>
 <summary><code>decimalFormat(length=[integer])</code></summary>
-<p>Converts a number to a decimal-formatted string.
-
+Converts a number to a decimal-formatted string.
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`length`</td>
-<td>`integer`</td>
-<td>`false`</td>
-<td>`2`</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `length` | `integer` | `false` | `2` |
 
-</p></details>
+</details>
 <details>
 <summary><code>booleanFormat()</code></summary>
-<p>Returns the value formatted as a boolean string
-</p></details>
+Returns the value formatted as a boolean string
+</details>
 <details>
 <summary><code>numberFormat(mask=[string], locale=[string])</code></summary>
-<p>Formats a number with an optional format mask
-
+Formats a number with an optional format mask
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`mask`</td>
-<td>`string`</td>
-<td>`false`</td>
-<td>``</td>
-</tr>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `mask` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
-<tr>
-<td>`locale`</td>
-<td>`string`</td>
-<td>`false`</td>
-<td>``</td>
-</tr></tbody>
-</table>
-
-</p></details>
+</details>
 <details>
 <summary><code>currencyFormat(type=[string], locale=[string])</code></summary>
-<p>null
-
+null
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`type`</td>
-<td>`string`</td>
-<td>`false`</td>
-<td>``</td>
-</tr>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `type` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
-<tr>
-<td>`locale`</td>
-<td>`string`</td>
-<td>`false`</td>
-<td>``</td>
-</tr></tbody>
-</table>
-
-</p></details>
+</details>
 
 
 ## Examples

@@ -15,7 +15,7 @@ StructIsCaseSensitive(struct=[structloose])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to test for type |  |
+| `struct` | `struct` | `true` | The struct to test for type |  |
 
 ## Examples
 

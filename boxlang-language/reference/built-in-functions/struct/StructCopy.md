@@ -17,7 +17,7 @@ StructCopy(struct=[structloose])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to copy |  |
+| `struct` | `struct` | `true` | The struct to copy |  |
 
 ## Examples
 

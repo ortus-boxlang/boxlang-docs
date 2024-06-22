@@ -15,7 +15,7 @@ StructReduce(struct=[structloose], callback=[function], initialValue=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to reduce |  |
+| `struct` | `struct` | `true` | The struct to reduce |  |
 | `callback` | `function` | `true` | The function to invoke for each entry in the struct. The function will be passed 4 arguments: the accumulator, they entry key,<br>                    the<br>                    current index, and the original struct. The function should return the new accumulator value. |  |
 | `initialValue` | `any` | `false` | The initial value of the accumulator |  |
 

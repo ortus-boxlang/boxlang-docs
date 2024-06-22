@@ -15,7 +15,7 @@ StructKeyExists(struct=[structloose], key=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to test |  |
+| `struct` | `struct` | `true` | The struct to test |  |
 | `key` | `string` | `true` | The key within the struct to test for existence |  |
 
 ## Examples

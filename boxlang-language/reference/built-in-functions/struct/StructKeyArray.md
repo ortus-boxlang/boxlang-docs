@@ -15,7 +15,7 @@ StructKeyArray(structure=[structloose])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `structure` | `structloose` | `true` |  |  |
+| `structure` | `struct` | `true` |  |  |
 
 ## Examples
 

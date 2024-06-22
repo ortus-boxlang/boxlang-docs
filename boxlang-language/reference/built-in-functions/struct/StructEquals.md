@@ -15,8 +15,8 @@ StructEquals(struct1=[structloose], struct2=[structloose])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct1` | `structloose` | `true` | The reference struct |  |
-| `struct2` | `structloose` | `true` | The struct to test for equality |  |
+| `struct1` | `struct` | `true` | The reference struct |  |
+| `struct2` | `struct` | `true` | The struct to test for equality |  |
 
 ## Examples
 

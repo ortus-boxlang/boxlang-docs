@@ -15,7 +15,7 @@ StructKeyTranslate(struct=[structloose], deep=[boolean], retainKeys=[boolean])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to unflatten |  |
+| `struct` | `struct` | `true` | The struct to unflatten |  |
 | `deep` | `boolean` | `false` | Whether to recurse in to nested keys - default false | `false` |
 | `retainKeys` | `boolean` | `false` | Whether to retain the original dot-notated keys - default false | `false` |
 

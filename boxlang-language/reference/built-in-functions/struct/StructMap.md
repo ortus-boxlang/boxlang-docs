@@ -15,7 +15,7 @@ StructMap(struct=[structloose], callback=[function], parallel=[boolean], maxThre
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The target struct to test |  |
+| `struct` | `struct` | `true` | The target struct to test |  |
 | `callback` | `function` | `true` | The function used to produce the right-hand value assignment in the new struct |  |
 | `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
 | `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |

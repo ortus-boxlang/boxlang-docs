@@ -16,7 +16,7 @@ StructGet(path=[string], object=[structloose])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `path` | `string` | `true` | The string path to the object requested in the struct |  |
-| `object` | `structloose` | `false` |  |  |
+| `object` | `struct` | `false` |  |  |
 
 ## Examples
 

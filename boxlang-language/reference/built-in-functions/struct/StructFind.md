@@ -15,7 +15,7 @@ StructFind(struct=[structloose], key=[string], defaultValue=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct object |  |
+| `struct` | `struct` | `true` | The struct object |  |
 | `key` | `string` | `true` | The key to search |  |
 | `defaultValue` | `any` | `false` | An optional value to be returned if the struct does not contain the key |  |
 

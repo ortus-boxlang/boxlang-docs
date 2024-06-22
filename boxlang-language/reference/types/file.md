@@ -8,172 +8,82 @@
 
 <details>
 <summary><code>close()</code></summary>
-<p>Closes either the read or write stream
-</p></details>
+Closes either the read or write stream
+</details>
 <details>
 <summary><code>getLastModifedTime()</code></summary>
-<p>Retrieves the last modified time of a file
-</p></details>
+Retrieves the last modified time of a file
+</details>
 <details>
 <summary><code>info()</code></summary>
-<p>Returns a struct of file information.
+Returns a struct of file information.
 
 Different values are returned for FileInfo and GetFileInfo
-</p></details>
+</details>
 <details>
 <summary><code>readLine()</code></summary>
-<p>Returns the next line from the file object stream
-</p></details>
+Returns the next line from the file object stream
+</details>
 <details>
 <summary><code>seek(position=[integer])</code></summary>
-<p>Moves the buffer cursor position forward the number of characters specified by the position argument
-
+Moves the buffer cursor position forward the number of characters specified by the position argument
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`position`</td>
-<td>`integer`</td>
-<td>`true`</td>
-<td>``</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `position` | `integer` | `true` | `null` |
 
-</p></details>
+</details>
 <details>
 <summary><code>setAccessMode(mode=[string])</code></summary>
-<p>Sets the Posix permissions on a file
-
+Sets the Posix permissions on a file
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`mode`</td>
-<td>`string`</td>
-<td>`true`</td>
-<td>``</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `mode` | `string` | `true` | `null` |
 
-</p></details>
+</details>
 <details>
 <summary><code>setAttribute(attribute=[string])</code></summary>
-<p>Sets a file access attribute
-
+Sets a file access attribute
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`attribute`</td>
-<td>`string`</td>
-<td>`true`</td>
-<td>``</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `attribute` | `string` | `true` | `null` |
 
-</p></details>
+</details>
 <details>
 <summary><code>setLastModified(date=[any])</code></summary>
-<p>Sets the last modified time of a file
-
+Sets the last modified time of a file
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`date`</td>
-<td>`any`</td>
-<td>`true`</td>
-<td>``</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `date` | `any` | `true` | `null` |
 
-</p></details>
+</details>
 <details>
 <summary><code>skipBytes(position=[integer])</code></summary>
-<p>Moves the buffer cursor position forward the number of characters specified by the position argument
-
+Moves the buffer cursor position forward the number of characters specified by the position argument
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`position`</td>
-<td>`integer`</td>
-<td>`true`</td>
-<td>``</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `position` | `integer` | `true` | `null` |
 
-</p></details>
+</details>
 <details>
 <summary><code>writeLine(data=[string])</code></summary>
-<p>Writes a line of data to a file
-
+Writes a line of data to a file
  Arguments:
-<table>
-<thead>
-<tr>
-<th>Argument</th>
-<th>Type</th>
-<th>Required</th>
-<th>Default</th>
-</tr>
-</thead>
-<tbody>
 
-<tr>
-<td>`data`</td>
-<td>`string`</td>
-<td>`true`</td>
-<td>``</td>
-</tr></tbody>
-</table>
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `data` | `string` | `true` | `null` |
 
-</p></details>
+</details>
 
 
 ## Examples

@@ -15,7 +15,7 @@ StructToSorted(struct=[structloose], sortType=[any], sortOrder=[string], localeS
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to sort |  |
+| `struct` | `struct` | `true` | The struct to sort |  |
 | `sortType` | `any` | `false` | An optional sort type to apply to that type - if a callback is given in this position it will be used as that argument | `text` |
 | `sortOrder` | `string` | `false` | The sort order applicable to the sortType argument | `asc` |
 | `localeSensitive` | `any` | `false` |  | `false` |

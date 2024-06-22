@@ -18,7 +18,7 @@ StructToQueryString(struct=[structloose], delimiter=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The struct to convert |  |
+| `struct` | `struct` | `true` | The struct to convert |  |
 | `delimiter` | `string` | `false` | The delimiter to use in the query string. Default is "&" | `&` |
 
 ## Examples

@@ -15,7 +15,7 @@ StructSome(struct=[structloose], callback=[function], parallel=[boolean], maxThr
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `struct` | `structloose` | `true` | The target struct to test |  |
+| `struct` | `struct` | `true` | The target struct to test |  |
 | `callback` | `function` | `true` | The function used to test. The function will be passed 3 arguments: the key, the value, the struct. |  |
 | `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
 | `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
