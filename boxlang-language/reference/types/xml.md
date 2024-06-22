@@ -13,7 +13,7 @@ Gets the position of a child element within an XML document object.
 
 The position, in an XmlChildren array, of the Nth child that has the specified name.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -31,7 +31,7 @@ Get XML values according to given xPath query
 
 Get XML values according to given xPath query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -44,7 +44,7 @@ Get XML values according to given xPath query
 
 Converts a value to a string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -56,7 +56,7 @@ Converts a value to a string.
 
 Get XML values according to given xPath query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

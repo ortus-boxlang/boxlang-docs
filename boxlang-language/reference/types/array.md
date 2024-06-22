@@ -15,7 +15,7 @@ This class wraps a Java List and provides additional functionality for BoxLang.
 
 Append a value to an array
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -40,7 +40,7 @@ Array finders and contains functions with and without case sensitivity.
 
 Please note that "contain" methods return a boolean, while "find" methods return an index.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -55,7 +55,7 @@ Array finders and contains functions with and without case sensitivity.
 
 Please note that "contain" methods return a boolean, while "find" methods return an index.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -68,7 +68,7 @@ Please note that "contain" methods return a boolean, while "find" methods return
 
 Create a new Array from a list of values.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -80,7 +80,7 @@ Create a new Array from a list of values.
 
 Delete first occurance of item in array case sensitive
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -93,7 +93,7 @@ Delete first occurance of item in array case sensitive
 
 Delete item at specified index in array
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -105,7 +105,7 @@ Delete item at specified index in array
 
 Delete first occurance of item in array case sensitive
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -118,7 +118,7 @@ Delete first occurance of item in array case sensitive
 
 Used to iterate over an array and run the function closure for each item in the array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -136,7 +136,7 @@ Verifies equality with the following rules:
  - Same object
  - Super class
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -148,7 +148,7 @@ Verifies equality with the following rules:
 
 Returns true if every closure returns true, otherwise false
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -163,7 +163,7 @@ Returns true if every closure returns true, otherwise false
 
 Used to filter an array to items for which the closure function returns true.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -179,7 +179,7 @@ Used to filter an array to items for which the closure function returns true.
 This function searches the array for the specified value. Returns the index in the array of the first match, or 0 if there is
                      no match.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -192,7 +192,7 @@ This function searches the array for the specified value. Returns the index in t
 
 Return an array containing the indexes of matched values
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -204,7 +204,7 @@ Return an array containing the indexes of matched values
 
 Return an array containing the indexes of matched values
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -218,7 +218,7 @@ Array finders and contains functions with and without case sensitivity.
 
 Please note that "contain" methods return a boolean, while "find" methods return an index.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -241,7 +241,7 @@ Gets metadata for items of an array and indicates the array type.
 
 Creates an algorithmic hash of an object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -255,7 +255,7 @@ Creates an algorithmic hash of an object
 
 Returns whether there exists an item in the array at the selected index.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -267,7 +267,7 @@ Returns whether there exists an item in the array at the selected index.
 
 Append a value to an array
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -280,7 +280,7 @@ Append a value to an array
 
 Returns whether there exists an item in the array at the selected index.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -297,7 +297,7 @@ Determine whether a given value is empty
 
 Used to iterate over an array and run the function closure for each item in the array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -323,7 +323,7 @@ Iterates over every entry of the array and calls the closure function to work on
 The returned value will be set at the
  same index in a new array and the new array will be returned
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -353,7 +353,7 @@ This function creates a new array with data from the two passed arrays.
 To add all the data from one array into another without creating a new
  array see the built in function ArrayAppend(arr1, arr2, true).
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -366,7 +366,7 @@ To add all the data from one array into another without creating a new
 
 Extracts a sub array from an existing array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -386,7 +386,7 @@ Create an Array from a list of values.
 
 Each value is passed in as a separate argument
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -403,7 +403,7 @@ Returns a parallel stream of the array
 
 Remove last item in array and return it
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -415,7 +415,7 @@ Remove last item in array and return it
 
 Append a value to the start an array
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -427,7 +427,7 @@ Append a value to the start an array
 
 Adds an element or an object to the end of an array, then returns the size of the modified array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -439,7 +439,7 @@ Adds an element or an object to the end of an array, then returns the size of th
 
 Run the provided udf over the array to reduce the values to a single output
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -455,7 +455,7 @@ This function iterates over every element of the array and calls the closure to 
 It will reduce the array to a single value,
  from the right to the left, and return it.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -472,7 +472,7 @@ This can improve performance, if used to size an array to its
  expected maximum. For more than 500 elements, use arrayResize
  immediately after using the ArrayNew BIF.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -496,7 +496,7 @@ In a one-dimensional array, sets the elements in a specified
 Useful for initializing an array after
  a call to arrayNew.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -513,7 +513,7 @@ Removes the first element from an array and returns the removed element.
 This method changes the length of the array. If used on an empty array, an
  exception will be thrown.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -525,7 +525,7 @@ This method changes the length of the array. If used on an empty array, an
 
 Extracts a sub array from an existing array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -538,7 +538,7 @@ Extracts a sub array from an existing array.
 
 Calls a given closure/function with every element in a given array and returns true if one of the closure calls returns true
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -553,7 +553,7 @@ Calls a given closure/function with every element in a given array and returns t
 
 Sorts array elements.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -571,7 +571,7 @@ Modifies an array by removing elements and adding new elements.
 It starts from the index, removes as many elements as specified by
  elementCountForRemoval, and puts the replacements starting from index position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -597,7 +597,7 @@ Swaps array values of an array at specified positions.
 
 This function is more efficient than multiple assignment statements
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -615,7 +615,7 @@ Convert an array, struct or query to its immutable counterpart.
 
 Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -629,7 +629,7 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
 Used to iterate over an array and run the function closure for each item in the array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -652,7 +652,7 @@ Transform the array to a struct, the index of the array is the key of the struct
 
 This function adds one or more elements to the beginning of the original array and returns the length of the modified array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

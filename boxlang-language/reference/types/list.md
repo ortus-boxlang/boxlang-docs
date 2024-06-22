@@ -11,7 +11,7 @@
 
 Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

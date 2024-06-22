@@ -13,7 +13,7 @@ It provides language specific methods to access columnar data, both as value lis
 
 Adds a column to a query and populates its rows with the contents of a one-dimensional array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -27,7 +27,7 @@ Adds a column to a query and populates its rows with the contents of a one-dimen
 
 Return new query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -39,7 +39,7 @@ Return new query
 
 This function clears the query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -66,7 +66,7 @@ This function returns the number of columns in a query
 
 Returns the data in a query column.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -78,7 +78,7 @@ Returns the data in a query column.
 
 This function returns true if the column exists in the query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -95,7 +95,7 @@ Returns the current row number
 
 Deletes a column within a query object.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -107,7 +107,7 @@ Deletes a column within a query object.
 
 This function deletes a row from the query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -119,7 +119,7 @@ This function deletes a row from the query
 
 Iterates over query rows and passes each row per iteration to a callback function
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -133,7 +133,7 @@ Iterates over query rows and passes each row per iteration to a callback functio
 
 Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -147,7 +147,7 @@ Executes a callback/closure against every row in a query and returns true if the
 
 Filters query rows specified in filter criteria
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -161,7 +161,7 @@ Filters query rows specified in filter criteria
 
 This function maps the query to a new query.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -179,7 +179,7 @@ Returns the metadata of a query.
 
 This function returns true if the key exists in the query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -191,7 +191,7 @@ This function returns true if the key exists in the query
 
 This function maps the query to a new query.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -205,7 +205,7 @@ This function maps the query to a new query.
 
 Adds a query to the beginning of another query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -222,7 +222,7 @@ This function returns the number of records in a query
 
 This function reduces the query to a single value.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -235,7 +235,7 @@ This function reduces the query to a single value.
 
 Returns the cells of a query row as a structure
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -247,7 +247,7 @@ Returns the cells of a query row as a structure
 
 Sets a cell to a value.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -261,7 +261,7 @@ Sets a cell to a value.
 
 Adds or updates a row in a query based on the provided row data and position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -274,7 +274,7 @@ Adds or updates a row in a query based on the provided row data and position.
 
 Returns a subset of rows from an existing query
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -287,7 +287,7 @@ Returns a subset of rows from an existing query
 
 This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -302,7 +302,7 @@ This function calls a given closure/function with every element in a given query
 
 Sorts array elements.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -319,7 +319,7 @@ Convert an array, struct or query to its immutable counterpart.
 
 Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

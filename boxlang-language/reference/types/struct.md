@@ -63,6 +63,14 @@ orderedAnimals = [
 
 Appends the contents of a second struct to the first struct either with or without overwrite
 
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `struct2` | `struct` | `true` | `null` |
+| `overwrite` | `boolean` | `false` | `true` |
+
+
 Examples:
 *Append One Struct to Another:*
 
@@ -85,14 +93,6 @@ animals.append( newAnimal );
 
 animals.dump( label="Updated animals" );
 ```
-
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `struct2` | `struct` | `true` | `null` |
-| `overwrite` | `boolean` | `false` | `true` |
 
 </details>
 <details>
@@ -117,7 +117,7 @@ Returns the absolute value of a number
 
 Deletes a key from a struct
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -130,7 +130,7 @@ Deletes a key from a struct
 
 Used to iterate over a struct and run the function closure for each key/value pair.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -145,7 +145,7 @@ Used to iterate over a struct and run the function closure for each key/value pa
 
 Tests equality between two structs
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -157,7 +157,7 @@ Tests equality between two structs
 
 Used to iterate over a struct and test whether every item in the struct meets the test.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -171,7 +171,7 @@ Used to iterate over a struct and test whether every item in the struct meets th
 
 Used to filter a struct and return a new struct containing the result
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -185,7 +185,7 @@ Used to filter a struct and return a new struct containing the result
 
 Finds and retrieves a top-level key from a string in a struct
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -198,7 +198,7 @@ Finds and retrieves a top-level key from a string in a struct
 
 Searches a struct for a given key and returns an array of values
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -211,7 +211,7 @@ Searches a struct for a given key and returns an array of values
 
 Searches a struct for a given value and returns an array of results
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -224,7 +224,7 @@ Searches a struct for a given value and returns an array of results
 
 Retrieves the value from a struct using a path based expression
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -241,7 +241,7 @@ Gets Struct-specific metadata of the requested struct.
 
 Creates an algorithmic hash of an object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -255,7 +255,7 @@ Creates an algorithmic hash of an object
 
 Inserts a key/value pair in to a struct - with an optional overwrite argument
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -291,7 +291,7 @@ Get keys of a struct as an array
 
 Tests whether a key exists in a struct and returns a boolean value
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -303,7 +303,7 @@ Tests whether a key exists in a struct and returns a boolean value
 
 Get keys of a struct as a string list
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -320,7 +320,7 @@ Returns the absolute value of a number
 
 Used to map a struct to a new struct of the same type containing the result
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -334,7 +334,7 @@ Used to map a struct to a new struct of the same type containing the result
 
 Run the provided udf against struct to reduce the values to a single output
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -347,7 +347,7 @@ Run the provided udf against struct to reduce the values to a single output
 
 Used to iterate over a struct and test whether any items meet the test callback.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -361,7 +361,7 @@ Used to iterate over a struct and test whether any items meet the test callback.
 
 Sorts a struct according to the specified arguments and returns an array of struct keys
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -381,7 +381,7 @@ Convert an array, struct or query to its immutable counterpart.
 
 Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -403,7 +403,7 @@ Converts a struct to a query string using the specified delimiter.
 <p>,
  The default delimiter is ,{@code "&"}
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -415,7 +415,7 @@ Converts a struct to a query string using the specified delimiter.
 
 Converts a struct to a sorted struct - using either a callback comparator or textual directives as the sort option
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -430,7 +430,7 @@ Converts a struct to a sorted struct - using either a callback comparator or tex
 
 Converts a struct with dot-notated keys in to an unflattened version
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -443,7 +443,7 @@ Converts a struct with dot-notated keys in to an unflattened version
 
 Updates or sets a key/value pair in to a struct
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

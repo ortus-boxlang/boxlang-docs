@@ -13,7 +13,7 @@ The primary DateTime class that represents a date and time object in BoxLang
 
 Modifies a date object by date part and integer time unit
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -31,7 +31,7 @@ Modifies a date object by date part and integer time unit
 
 Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -44,7 +44,7 @@ Compares the difference between two dates - returning 0 if equal, -1 if date2 is
 
 Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -57,7 +57,7 @@ Compares the difference between two dates - returning 0 if equal, -1 if date2 is
 
 Formats a datetime, date or time
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -70,7 +70,7 @@ Formats a datetime, date or time
 
 Formats a datetime, date or time
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -83,7 +83,7 @@ Formats a datetime, date or time
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -95,7 +95,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -107,7 +107,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -119,7 +119,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -131,7 +131,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -143,7 +143,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -155,7 +155,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -167,7 +167,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Returns the numeric difference in the requested date part between two dates
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -180,7 +180,7 @@ Returns the numeric difference in the requested date part between two dates
 
 Indicates whether some other object is "equal to" this one.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -192,7 +192,7 @@ Indicates whether some other object is "equal to" this one.
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -204,7 +204,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Formats a datetime, date or time
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -217,7 +217,7 @@ Formats a datetime, date or time
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -229,7 +229,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Creates an algorithmic hash of an object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -243,7 +243,7 @@ Creates an algorithmic hash of an object
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -255,7 +255,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Formats a date in a locale-specific format
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -269,7 +269,7 @@ Formats a date in a locale-specific format
 
 Formats a date in a locale-specific format
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -285,7 +285,7 @@ Provides the Localized BIF and member functions for time units ( e.g.
 
 different locales have different start days to the week )
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -298,7 +298,7 @@ different locales have different start days to the week )
 
 Formats a date in a locale-specific format
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -314,7 +314,7 @@ Provides the Localized BIF and member functions for time units ( e.g.
 
 different locales have different start days to the week )
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -327,7 +327,7 @@ different locales have different start days to the week )
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -339,7 +339,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -351,7 +351,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -363,7 +363,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -375,7 +375,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -387,7 +387,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -399,7 +399,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -411,7 +411,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -423,7 +423,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -435,7 +435,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Formats a datetime, date or time
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -448,7 +448,7 @@ Formats a datetime, date or time
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -480,7 +480,7 @@ Returns the date time representation as a string in the specified format mask
 
 Creates a DateTime object with the format set to ODBC Implicit format
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -492,7 +492,7 @@ Creates a DateTime object with the format set to ODBC Implicit format
 
 Creates a DateTime object with the format set to ODBC Implicit format
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -504,7 +504,7 @@ Creates a DateTime object with the format set to ODBC Implicit format
 
 Creates a DateTime object with the format set to ODBC Implicit format
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -516,7 +516,7 @@ Creates a DateTime object with the format set to ODBC Implicit format
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -528,7 +528,7 @@ Provides the BIF and member functions for all time unit request with no argument
 
 Provides the BIF and member functions for all time unit request with no arguments
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

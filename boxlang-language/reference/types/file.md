@@ -33,7 +33,7 @@ Returns the next line from the file object stream
 
 Moves the buffer cursor position forward the number of characters specified by the position argument
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -45,7 +45,7 @@ Moves the buffer cursor position forward the number of characters specified by t
 
 Sets the Posix permissions on a file
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -57,7 +57,7 @@ Sets the Posix permissions on a file
 
 Sets a file access attribute
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -69,7 +69,7 @@ Sets a file access attribute
 
 Sets the last modified time of a file
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -81,7 +81,7 @@ Sets the last modified time of a file
 
 Moves the buffer cursor position forward the number of characters specified by the position argument
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -93,7 +93,7 @@ Moves the buffer cursor position forward the number of characters specified by t
 
 Writes a line of data to a file
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

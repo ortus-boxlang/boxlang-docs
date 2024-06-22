@@ -91,7 +91,7 @@ Returns the absolute value of a number
 
 Converts a number to a string representation in the specified base.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -118,7 +118,7 @@ Increment the integer part of a number
 
 Converts a number to a decimal-formatted string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -135,7 +135,7 @@ Returns the value formatted as a boolean string
 
 Formats a number with an optional format mask
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -146,9 +146,7 @@ Formats a number with an optional format mask
 <details>
 <summary><code>currencyFormat(type=[string], locale=[string])</code></summary>
 
-null
-
- Arguments:
+nullArguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|

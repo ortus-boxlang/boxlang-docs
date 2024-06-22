@@ -11,7 +11,7 @@
 
 Parses a locale-specific datetime string or object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -25,7 +25,7 @@ Parses a locale-specific datetime string or object
 
 Parses a datetime string or object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -38,7 +38,7 @@ Parses a datetime string or object
 
 Parses a datetime string or object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -51,7 +51,7 @@ Parses a datetime string or object
 
 Creates an algorithmic hash of an object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -65,7 +65,7 @@ Creates an algorithmic hash of an object
 
 Creates an algorithmic hash of an object
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -80,7 +80,7 @@ Creates an algorithmic hash of an object
 
 Converts a string, using the base specified by radix, to an integer.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -92,7 +92,7 @@ Converts a string, using the base specified by radix, to an integer.
 
 Formats a string so that special XML characters can be used as text in XML
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -117,7 +117,7 @@ Returns the absolute value of a number
 
 Tests whether any item in a list meets the specified callback
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -134,7 +134,7 @@ Tests whether any item in a list meets the specified callback
 
 Run the provided udf over a reversed delimited list to reduce the values to a single output
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -150,7 +150,7 @@ Run the provided udf over a reversed delimited list to reduce the values to a si
 
 Filters a delimted list and returns the values from the callback test
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -165,7 +165,7 @@ Filters a delimted list and returns the values from the callback test
 
 Returns the first or last item in a delimited list, according to the specified function name
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -179,7 +179,7 @@ Returns the first or last item in a delimited list, according to the specified f
 
 Returns the first or last item in a delimited list, according to the specified function name
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -193,7 +193,7 @@ Returns the first or last item in a delimited list, according to the specified f
 
 Checks if a list has a given index
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -207,7 +207,7 @@ Checks if a list has a given index
 
 Filters a delimted list and returns the values from the callback test
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -223,7 +223,7 @@ Filters a delimted list and returns the values from the callback test
 
 Converts the delimiters of a list to the new delimiter.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -237,7 +237,7 @@ Converts the delimiters of a list to the new delimiter.
 
 Return int position of value in delimited list, case sensitive or case-insenstive variations
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -252,7 +252,7 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
 Return int position of value in delimited list, case sensitive or case-insenstive variations
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -267,7 +267,7 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
 Return int position of value in delimited list, case sensitive or case-insenstive variations
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -282,7 +282,7 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
 Return int position of value in delimited list, case sensitive or case-insenstive variations
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -297,7 +297,7 @@ Return int position of value in delimited list, case sensitive or case-insenstiv
 
 Compacts a list by removing empty items from the start and end of the list
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -310,7 +310,7 @@ Compacts a list by removing empty items from the start and end of the list
 
 Compacts a list by removing empty items from the start and end of the list
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -323,7 +323,7 @@ Compacts a list by removing empty items from the start and end of the list
 
 Used to iterate over a delimited list and run the function closure for each item in the list and create a new list from the returned values.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -342,7 +342,7 @@ Deletes an element from a list.
 Returns a copy of the list, without the
  specified element.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -357,7 +357,7 @@ Returns a copy of the list, without the
 
 De-duplicates a delimited list - either case-sensitively or case-insenstively
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -370,7 +370,7 @@ De-duplicates a delimited list - either case-sensitively or case-insenstively
 
 Converts a delimited list to an array
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -384,7 +384,7 @@ Converts a delimited list to an array
 
 Inserts a string at the beginning and end of list elements.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -399,7 +399,7 @@ Inserts a string at the beginning and end of list elements.
 
 Appends an element to a list
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -414,7 +414,7 @@ Appends an element to a list
 
 returns a count of the number of occurrences of a value in a list
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -428,7 +428,7 @@ returns a count of the number of occurrences of a value in a list
 
 returns a count of the number of occurrences of a value in a list
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -442,7 +442,7 @@ returns a count of the number of occurrences of a value in a list
 
 Gets the average of all values in a list
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -455,7 +455,7 @@ Gets the average of all values in a list
 
 Calculates the length of a list separated by the specified delimiter
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -468,7 +468,7 @@ Calculates the length of a list separated by the specified delimiter
 
 Returns the remainder of a list after removing the first item
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -482,7 +482,7 @@ Returns the remainder of a list after removing the first item
 
 Retrieves an item from a delimited list at the specified position
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -497,7 +497,7 @@ Retrieves an item from a delimited list at the specified position
 
 Tests whether all items in a list meet the specified callback
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -514,7 +514,7 @@ Tests whether all items in a list meet the specified callback
 
 Used to iterate over a delimited list and run the function closure for each item in the list.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -532,7 +532,7 @@ Used to iterate over a delimited list and run the function closure for each item
 
 Sorts a delimited list and returns the result
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -550,7 +550,7 @@ Sorts a delimited list and returns the result
 
 Retrieves an item in to a delimited list at the specified position
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -566,7 +566,7 @@ Retrieves an item in to a delimited list at the specified position
 
 Filters a delimted list and returns the values from the callback test
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -586,7 +586,7 @@ Determines whether a token of the list in the delimiters parameter is present in
 Returns the token found at position index of the string, as a string.
  If index is greater than the number of tokens in the string, returns an empty string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -599,7 +599,7 @@ Returns the token found at position index of the string, as a string.
 
 Trims each item in the list.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -617,7 +617,7 @@ Prettifies a JSON string.
 
 Converts a JSON (JavaScript Object Notation) string data representation into data, such as a structure or array.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -633,7 +633,7 @@ Calculates the Base64 representation of a string or binary object.
 The Base64 format uses printable characters, allowing binary data to be sent in
  forms and e-mail, and stored in a database or file.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -650,7 +650,7 @@ Calculates the binary representation of Base64-encoded data.
 
 Converts a value to a string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -662,7 +662,7 @@ Converts a value to a string.
 
 Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -676,7 +676,7 @@ Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
 Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -702,7 +702,7 @@ Gets characters from a string, from the beginning to a character that is NOT in 
 
 The search is case-sensitive.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -717,7 +717,7 @@ Uses a regular expression (RE) to search a string for a pattern, starting from a
 The search is case-sensitive.
  It will return numeric if returnsubexpressions is false and a struct of arrays named "len", "match" and "pos" when returnsubexpressions is true.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -735,7 +735,7 @@ Uses a regular expression (RE) to search a string for a pattern, starting from a
 The search is case-sensitive.
  It will return numeric if returnsubexpressions is false and a struct of arrays named "len", "match" and "pos" when returnsubexpressions is true.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -772,7 +772,7 @@ Performs a case-sensitive comparison of two strings.
  0, if string1 is equal to string2
  1, if string1 is greater than string2
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -791,7 +791,7 @@ Uses a regular expression (regex) to search a string for a string pattern and re
 
 The search is case-sensitive.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -807,7 +807,7 @@ Uses a regular expression (regex) to search a string for a string pattern and re
 
 The search is case-sensitive.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -826,7 +826,7 @@ Deletes return characters from a string.
 
 Inserts a substring into another string at a specified position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -849,7 +849,7 @@ Convert a string to snake case
 
 Extract the rightmost count characters from a string
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -861,7 +861,7 @@ Extract the rightmost count characters from a string
 
 Finds the first occurrence of any character in a set of characters, from a specified start position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -876,7 +876,7 @@ Get characters from a string, from the beginning to a character that is in a spe
 
 The search is case-sensitive.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -892,7 +892,7 @@ Performs a case-insensitive comparison of two strings.
  0, if string1 is equal to string2
  1, if string1 is greater than string2
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -904,7 +904,7 @@ Performs a case-insensitive comparison of two strings.
 
 Run the provided udf over a reversed string to reduce the values to a single output
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -928,7 +928,7 @@ Replaces occurrences of substring1 in a string with obj, in a specified scope.
 The search is case-sensitive. Function returns original string with
  replacements made
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -942,7 +942,7 @@ The search is case-sensitive. Function returns original string with
 
 Replaces occurrences of the elements from a delimited list, in a string with corresponding elements from another delimited list.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -958,7 +958,7 @@ Replaces occurrences of the elements from a delimited list, in a string with cor
 
 Replaces occurrences of the elements from a delimited list, in a string with corresponding elements from another delimited list.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -974,7 +974,7 @@ Replaces occurrences of the elements from a delimited list, in a string with cor
 
 Slugify a string for URL safety
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -985,9 +985,7 @@ Slugify a string for URL safety
 <details>
 <summary><code>wrap(limit=[integer], strip=[boolean])</code></summary>
 
-null
-
- Arguments:
+nullArguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1005,7 +1003,7 @@ Convert a string to pascal case
 
 Sorts a string and returns the result
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1033,7 +1031,7 @@ Trim leading whitespace from a string
 
 Transform the first letter of a string to uppercase or the first letter of each word, and optionally lowercase uppercase characters.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1046,7 +1044,7 @@ Transform the first letter of a string to uppercase or the first letter of each 
 
 Finds the first occurrence of a substring in a string, from a specified start position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1059,7 +1057,7 @@ Finds the first occurrence of a substring in a string, from a specified start po
 
 Finds the first occurrence of a substring in a string, from a specified start position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1072,7 +1070,7 @@ Finds the first occurrence of a substring in a string, from a specified start po
 
 Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1084,7 +1082,7 @@ Uses a regular expression (RE) to search a string for a pattern, starting from a
 
 Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1096,7 +1094,7 @@ Uses a regular expression (RE) to search a string for a pattern, starting from a
 
 Justifies characters in a string of a specified length, either left or right.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1108,7 +1106,7 @@ Justifies characters in a string of a specified length, either left or right.
 
 Justifies characters in a string of a specified length, either left or right.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1120,7 +1118,7 @@ Justifies characters in a string of a specified length, either left or right.
 
 Extract the leftmost count characters from a string
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1137,7 +1135,7 @@ Uppercase a string
 
 Run the provided udf over a delimited list to reduce the values to a single output
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1161,7 +1159,7 @@ Replaces occurrences of substring1 in a string with obj, in a specified scope.
 The search is case-sensitive. Function returns original string with
  replacements made
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1175,7 +1173,7 @@ The search is case-sensitive. Function returns original string with
 
 Removes characters from a string.
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1193,7 +1191,7 @@ Trim trailing whitespace from a string
 
 Encodes a string to a binary representation
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1205,7 +1203,7 @@ Encodes a string to a binary representation
 
 Tests whether any item in a string meets the specified callback
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1237,7 +1235,7 @@ Each key-value pair in the query string is separated by a delimiter.
  "foo=bar,&amp;,baz=qux".toStruct();
  ,</pre>
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
@@ -1249,7 +1247,7 @@ Each key-value pair in the query string is separated by a delimiter.
 
 Extract a substring from a string
 
- Arguments:
+Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
