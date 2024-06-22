@@ -20,9 +20,7 @@ BinaryDecode(string=[string], encoding=[string])
 
 ## Examples
 
-```
-BinaryDecode(string=[string], encoding=[string])
-```
+
 
 ## Related
 

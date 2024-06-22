@@ -19,9 +19,7 @@ SnakeCase(string=[string])
 
 ## Examples
 
-```
-SnakeCase(string=[string])
-```
+
 
 ## Related
 

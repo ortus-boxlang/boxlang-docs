@@ -20,9 +20,7 @@ ToString(value=[any], encoding=[string])
 
 ## Examples
 
-```
-ToString(value=[any], encoding=[string])
-```
+
 
 ## Related
 

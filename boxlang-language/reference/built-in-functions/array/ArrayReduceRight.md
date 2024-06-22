@@ -24,9 +24,7 @@ ArrayReduceRight(array=[array], callback=[function], initialValue=[any])
 
 ## Examples
 
-```
-ArrayReduceRight(array=[array], callback=[function], initialValue=[any])
-```
+
 
 ## Related
 

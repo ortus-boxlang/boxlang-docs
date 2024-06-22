@@ -21,9 +21,7 @@ StructFindValue(struct=[structloose], value=[string], scope=[string])
 
 ## Examples
 
-```
-StructFindValue(struct=[structloose], value=[string], scope=[string])
-```
+
 
 ## Related
 

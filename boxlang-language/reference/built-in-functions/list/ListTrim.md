@@ -21,9 +21,7 @@ ListTrim(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
 
 ## Examples
 
-```
-ListTrim(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 
 ## Examples
 
-```
-ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

@@ -23,9 +23,7 @@ ListFindNoCase(list=[string], value=[string], delimiter=[string], includeEmptyFi
 
 ## Examples
 
-```
-ListFindNoCase(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

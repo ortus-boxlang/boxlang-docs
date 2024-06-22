@@ -20,9 +20,7 @@ IsArray(value=[any], number=[numeric])
 
 ## Examples
 
-```
-IsArray(value=[any], number=[numeric])
-```
+
 
 ## Related
 

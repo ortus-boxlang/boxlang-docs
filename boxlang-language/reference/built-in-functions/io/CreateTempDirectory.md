@@ -20,9 +20,7 @@ CreateTempDirectory(directory=[string], prefix=[string])
 
 ## Examples
 
-```
-CreateTempDirectory(directory=[string], prefix=[string])
-```
+
 
 ## Related
 

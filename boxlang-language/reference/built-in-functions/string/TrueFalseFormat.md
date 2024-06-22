@@ -19,9 +19,7 @@ TrueFalseFormat(value=[any])
 
 ## Examples
 
-```
-TrueFalseFormat(value=[any])
-```
+
 
 ## Related
 

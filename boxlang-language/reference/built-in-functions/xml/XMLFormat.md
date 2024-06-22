@@ -20,9 +20,7 @@ XMLFormat(string=[string], escapeChars=[boolean])
 
 ## Examples
 
-```
-XMLFormat(string=[string], escapeChars=[boolean])
-```
+
 
 ## Related
 

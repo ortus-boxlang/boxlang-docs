@@ -25,9 +25,7 @@ StringEvery(list=[string], callback=[function], delimiter=[string], includeEmpty
 
 ## Examples
 
-```
-StringEvery(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

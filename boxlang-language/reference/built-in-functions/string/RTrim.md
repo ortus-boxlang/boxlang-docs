@@ -19,9 +19,7 @@ RTrim(string=[string])
 
 ## Examples
 
-```
-RTrim(string=[string])
-```
+
 
 ## Related
 

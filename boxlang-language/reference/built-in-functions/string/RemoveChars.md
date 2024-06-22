@@ -21,9 +21,7 @@ RemoveChars(string=[string], start=[integer], count=[integer])
 
 ## Examples
 
-```
-RemoveChars(string=[string], start=[integer], count=[integer])
-```
+
 
 ## Related
 

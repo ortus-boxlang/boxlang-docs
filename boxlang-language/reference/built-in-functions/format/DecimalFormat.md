@@ -20,9 +20,7 @@ DecimalFormat(number=[any], length=[integer])
 
 ## Examples
 
-```
-DecimalFormat(number=[any], length=[integer])
-```
+
 
 ## Related
 

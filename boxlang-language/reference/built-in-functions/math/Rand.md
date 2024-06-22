@@ -19,9 +19,7 @@ Rand(algorithm=[string])
 
 ## Examples
 
-```
-Rand(algorithm=[string])
-```
+
 
 ## Related
 

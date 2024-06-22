@@ -21,9 +21,7 @@ QueryNew(columnList=[any], columnTypeList=[string], rowData=[any])
 
 ## Examples
 
-```
-QueryNew(columnList=[any], columnTypeList=[string], rowData=[any])
-```
+
 
 ## Related
 

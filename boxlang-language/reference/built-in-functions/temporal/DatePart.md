@@ -21,9 +21,7 @@ DatePart(datepart=[string], date=[any], timezone=[string])
 
 ## Examples
 
-```
-DatePart(datepart=[string], date=[any], timezone=[string])
-```
+
 
 ## Related
 

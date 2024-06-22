@@ -22,9 +22,7 @@ ReEscape(string=[string])
 
 ## Examples
 
-```
-ReEscape(string=[string])
-```
+
 
 ## Related
 

@@ -25,9 +25,7 @@ GetBoxCache(cacheName=[string])
 
 ## Examples
 
-```
-GetBoxCache(cacheName=[string])
-```
+
 
 ## Related
 

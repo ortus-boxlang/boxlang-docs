@@ -20,9 +20,7 @@ IsInstanceOf(object=[any], typename=[string])
 
 ## Examples
 
-```
-IsInstanceOf(object=[any], typename=[string])
-```
+
 
 ## Related
 

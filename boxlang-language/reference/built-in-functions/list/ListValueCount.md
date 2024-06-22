@@ -22,9 +22,7 @@ ListValueCount(list=[string], value=[string], delimiter=[string], includeEmptyFi
 
 ## Examples
 
-```
-ListValueCount(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

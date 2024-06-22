@@ -19,9 +19,7 @@ Trim(string=[string])
 
 ## Examples
 
-```
-Trim(string=[string])
-```
+
 
 ## Related
 

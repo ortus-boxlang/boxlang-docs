@@ -22,9 +22,7 @@ ListFirst(list=[string], delimiter=[string], includeEmptyFields=[boolean], multi
 
 ## Examples
 
-```
-ListFirst(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

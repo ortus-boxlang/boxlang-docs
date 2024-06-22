@@ -19,9 +19,7 @@ IsIPv6(hostname=[string])
 
 ## Examples
 
-```
-IsIPv6(hostname=[string])
-```
+
 
 ## Related
 

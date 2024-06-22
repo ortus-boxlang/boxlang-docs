@@ -20,9 +20,7 @@ FormatBaseN(number=[numeric], radix=[integer])
 
 ## Examples
 
-```
-FormatBaseN(number=[numeric], radix=[integer])
-```
+
 
 ## Related
 

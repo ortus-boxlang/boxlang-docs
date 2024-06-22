@@ -21,9 +21,7 @@ ArrayReduce(array=[array], callback=[function], initialValue=[any])
 
 ## Examples
 
-```
-ArrayReduce(array=[array], callback=[function], initialValue=[any])
-```
+
 
 ## Related
 

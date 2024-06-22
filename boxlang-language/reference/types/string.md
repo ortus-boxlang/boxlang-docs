@@ -6,8 +6,9 @@
 
 ## String Methods
 
-<dl>
-<dt><code>lSParseDateTime(locale=[string], timezone=[string], format=[string])</code></dt><dd>Parses a locale-specific datetime string or object
+<details>
+<summary><code>lSParseDateTime(locale=[string], timezone=[string], format=[string])</code></summary>
+Parses a locale-specific datetime string or object
 
  Arguments:
 
@@ -17,8 +18,11 @@
 | `timezone` | `string` | `false` | `` |
 | `format` | `string` | `false` | `` |
 
-</dd>
-<dt><code>parseDateTime(format=[string], timezone=[string])</code></dt><dd>Parses a datetime string or object
+
+</details>
+<details>
+<summary><code>parseDateTime(format=[string], timezone=[string])</code></summary>
+Parses a datetime string or object
 
  Arguments:
 
@@ -27,8 +31,11 @@
 | `format` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>toDateTime(format=[string], timezone=[string])</code></dt><dd>Parses a datetime string or object
+
+</details>
+<details>
+<summary><code>toDateTime(format=[string], timezone=[string])</code></summary>
+Parses a datetime string or object
 
  Arguments:
 
@@ -37,8 +44,11 @@
 | `format` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></dt><dd>Creates an algorithmic hash of an object
+
+</details>
+<details>
+<summary><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></summary>
+Creates an algorithmic hash of an object
 
  Arguments:
 
@@ -48,8 +58,11 @@
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
 
-</dd>
-<dt><code>hmac(key=[string], algorithm=[string], encoding=[string], numIterations=[integer])</code></dt><dd>Creates an algorithmic hash of an object
+
+</details>
+<details>
+<summary><code>hmac(key=[string], algorithm=[string], encoding=[string], numIterations=[integer])</code></summary>
+Creates an algorithmic hash of an object
 
  Arguments:
 
@@ -60,8 +73,11 @@
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
 
-</dd>
-<dt><code>inputBaseN(radix=[numeric])</code></dt><dd>Converts a string, using the base specified by radix, to an integer.
+
+</details>
+<details>
+<summary><code>inputBaseN(radix=[numeric])</code></summary>
+Converts a string, using the base specified by radix, to an integer.
 
  Arguments:
 
@@ -69,8 +85,11 @@
 |----------|------|----------|---------|
 | `radix` | `numeric` | `true` | `` |
 
-</dd>
-<dt><code>xMLFormat(escapeChars=[boolean])</code></dt><dd>Formats a string so that special XML characters can be used as text in XML
+
+</details>
+<details>
+<summary><code>xMLFormat(escapeChars=[boolean])</code></summary>
+Formats a string so that special XML characters can be used as text in XML
 
  Arguments:
 
@@ -78,13 +97,22 @@
 |----------|------|----------|---------|
 | `escapeChars` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>uRLEncodedFormat()</code></dt><dd>Generates a URL-encoded string.
+
+</details>
+<details>
+<summary><code>uRLEncodedFormat()</code></summary>
+Generates a URL-encoded string.
 
 For example, it replaces spaces with %20, and non-alphanumeric characters with equivalent hexadecimal escape
- sequences. Passes arbitrary strings within a URL. *</dd>
-<dt><code>len()</code></dt><dd>Returns the absolute value of a number</dd>
-<dt><code>listSome(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Tests whether any item in a list meets the specified callback
+ sequences. Passes arbitrary strings within a URL. *
+</details>
+<details>
+<summary><code>len()</code></summary>
+Returns the absolute value of a number
+</details>
+<details>
+<summary><code>listSome(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+Tests whether any item in a list meets the specified callback
 
  Arguments:
 
@@ -97,8 +125,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>reduceRight(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Run the provided udf over a reversed delimited list to reduce the values to a single output
+
+</details>
+<details>
+<summary><code>reduceRight(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Run the provided udf over a reversed delimited list to reduce the values to a single output
 
  Arguments:
 
@@ -110,8 +141,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-</dd>
-<dt><code>listPrepend(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Filters a delimted list and returns the values from the callback test
+
+</details>
+<details>
+<summary><code>listPrepend(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Filters a delimted list and returns the values from the callback test
 
  Arguments:
 
@@ -122,8 +156,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-</dd>
-<dt><code>listFirst(delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Returns the first or last item in a delimited list, according to the specified function name
+
+</details>
+<details>
+<summary><code>listFirst(delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Returns the first or last item in a delimited list, according to the specified function name
 
  Arguments:
 
@@ -133,8 +170,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listLast(delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Returns the first or last item in a delimited list, according to the specified function name
+
+</details>
+<details>
+<summary><code>listLast(delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Returns the first or last item in a delimited list, according to the specified function name
 
  Arguments:
 
@@ -144,8 +184,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listIndexExists(index=[numeric], delimiter=[string], includeEmptyFields=[boolean])</code></dt><dd>Checks if a list has a given index
+
+</details>
+<details>
+<summary><code>listIndexExists(index=[numeric], delimiter=[string], includeEmptyFields=[boolean])</code></summary>
+Checks if a list has a given index
 
  Arguments:
 
@@ -155,8 +198,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listInsertAt(position=[integer], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Filters a delimted list and returns the values from the callback test
+
+</details>
+<details>
+<summary><code>listInsertAt(position=[integer], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Filters a delimted list and returns the values from the callback test
 
  Arguments:
 
@@ -168,8 +214,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-</dd>
-<dt><code>listChangeDelims(newDelimiter=[string], delimiter=[string], includeEmptyFields=[boolean])</code></dt><dd>Converts the delimiters of a list to the new delimiter.
+
+</details>
+<details>
+<summary><code>listChangeDelims(newDelimiter=[string], delimiter=[string], includeEmptyFields=[boolean])</code></summary>
+Converts the delimiters of a list to the new delimiter.
 
  Arguments:
 
@@ -179,8 +228,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listFind(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Return int position of value in delimited list, case sensitive or case-insenstive variations
+
+</details>
+<details>
+<summary><code>listFind(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Return int position of value in delimited list, case sensitive or case-insenstive variations
 
  Arguments:
 
@@ -191,8 +243,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listFindNoCase(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Return int position of value in delimited list, case sensitive or case-insenstive variations
+
+</details>
+<details>
+<summary><code>listFindNoCase(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Return int position of value in delimited list, case sensitive or case-insenstive variations
 
  Arguments:
 
@@ -203,8 +258,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listContains(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Return int position of value in delimited list, case sensitive or case-insenstive variations
+
+</details>
+<details>
+<summary><code>listContains(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Return int position of value in delimited list, case sensitive or case-insenstive variations
 
  Arguments:
 
@@ -215,8 +273,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listContainsNoCase(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Return int position of value in delimited list, case sensitive or case-insenstive variations
+
+</details>
+<details>
+<summary><code>listContainsNoCase(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Return int position of value in delimited list, case sensitive or case-insenstive variations
 
  Arguments:
 
@@ -227,8 +288,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listCompact(delimiter=[string], multiCharacterDelimiter=[boolean])</code></dt><dd>Compacts a list by removing empty items from the start and end of the list
+
+</details>
+<details>
+<summary><code>listCompact(delimiter=[string], multiCharacterDelimiter=[boolean])</code></summary>
+Compacts a list by removing empty items from the start and end of the list
 
  Arguments:
 
@@ -237,8 +301,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `delimiter` | `string` | `false` | `,` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listTrim(delimiter=[string], multiCharacterDelimiter=[boolean])</code></dt><dd>Compacts a list by removing empty items from the start and end of the list
+
+</details>
+<details>
+<summary><code>listTrim(delimiter=[string], multiCharacterDelimiter=[boolean])</code></summary>
+Compacts a list by removing empty items from the start and end of the list
 
  Arguments:
 
@@ -247,8 +314,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `delimiter` | `string` | `false` | `,` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listMap(callback=[function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Used to iterate over a delimited list and run the function closure for each item in the list and create a new list from the returned values.
+
+</details>
+<details>
+<summary><code>listMap(callback=[function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+Used to iterate over a delimited list and run the function closure for each item in the list and create a new list from the returned values.
 
  Arguments:
 
@@ -260,8 +330,11 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>listDeleteAt(position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Deletes an element from a list.
+
+</details>
+<details>
+<summary><code>listDeleteAt(position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Deletes an element from a list.
 
 Returns a copy of the list, without the
  specified element.
@@ -275,8 +348,11 @@ Returns a copy of the list, without the
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listRemoveDuplicates(delimiter=[string], ignoreCase=[boolean])</code></dt><dd>De-duplicates a delimited list - either case-sensitively or case-insenstively
+
+</details>
+<details>
+<summary><code>listRemoveDuplicates(delimiter=[string], ignoreCase=[boolean])</code></summary>
+De-duplicates a delimited list - either case-sensitively or case-insenstively
 
  Arguments:
 
@@ -285,8 +361,11 @@ Returns a copy of the list, without the
 | `delimiter` | `string` | `false` | `,` |
 | `ignoreCase` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listToArray(delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Converts a delimited list to an array
+
+</details>
+<details>
+<summary><code>listToArray(delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Converts a delimited list to an array
 
  Arguments:
 
@@ -296,8 +375,11 @@ Returns a copy of the list, without the
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listQualify(qualifier=[string], delimiter=[string], elements=[string], includeEmptyFields=[boolean])</code></dt><dd>Inserts a string at the beginning and end of list elements.
+
+</details>
+<details>
+<summary><code>listQualify(qualifier=[string], delimiter=[string], elements=[string], includeEmptyFields=[boolean])</code></summary>
+Inserts a string at the beginning and end of list elements.
 
  Arguments:
 
@@ -308,8 +390,11 @@ Returns a copy of the list, without the
 | `elements` | `string` | `false` | `all` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listAppend(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Appends an element to a list
+
+</details>
+<details>
+<summary><code>listAppend(value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Appends an element to a list
 
  Arguments:
 
@@ -320,8 +405,11 @@ Returns a copy of the list, without the
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-</dd>
-<dt><code>listValueCount(value=[string], delimiter=[string], includeEmptyFields=[boolean])</code></dt><dd>returns a count of the number of occurrences of a value in a list
+
+</details>
+<details>
+<summary><code>listValueCount(value=[string], delimiter=[string], includeEmptyFields=[boolean])</code></summary>
+returns a count of the number of occurrences of a value in a list
 
  Arguments:
 
@@ -331,8 +419,11 @@ Returns a copy of the list, without the
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listValueCountNoCase(value=[string], delimiter=[string], includeEmptyFields=[boolean])</code></dt><dd>returns a count of the number of occurrences of a value in a list
+
+</details>
+<details>
+<summary><code>listValueCountNoCase(value=[string], delimiter=[string], includeEmptyFields=[boolean])</code></summary>
+returns a count of the number of occurrences of a value in a list
 
  Arguments:
 
@@ -342,8 +433,11 @@ Returns a copy of the list, without the
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listAvg(delimiter=[string], multiCharacterDelimiter=[boolean])</code></dt><dd>Gets the average of all values in a list
+
+</details>
+<details>
+<summary><code>listAvg(delimiter=[string], multiCharacterDelimiter=[boolean])</code></summary>
+Gets the average of all values in a list
 
  Arguments:
 
@@ -352,8 +446,11 @@ Returns a copy of the list, without the
 | `delimiter` | `string` | `false` | `,` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listLen(delimiter=[string], includeEmptyFields=[boolean])</code></dt><dd>Calculates the length of a list separated by the specified delimiter
+
+</details>
+<details>
+<summary><code>listLen(delimiter=[string], includeEmptyFields=[boolean])</code></summary>
+Calculates the length of a list separated by the specified delimiter
 
  Arguments:
 
@@ -362,8 +459,11 @@ Returns a copy of the list, without the
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listRest(delimiter=[string], includeEmptyFields=[boolean], offset=[integer])</code></dt><dd>Returns the remainder of a list after removing the first item
+
+</details>
+<details>
+<summary><code>listRest(delimiter=[string], includeEmptyFields=[boolean], offset=[integer])</code></summary>
+Returns the remainder of a list after removing the first item
 
  Arguments:
 
@@ -373,8 +473,11 @@ Returns a copy of the list, without the
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `offset` | `integer` | `false` | `0` |
 
-</dd>
-<dt><code>listGetAt(position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Retrieves an item from a delimited list at the specified position
+
+</details>
+<details>
+<summary><code>listGetAt(position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Retrieves an item from a delimited list at the specified position
 
  Arguments:
 
@@ -385,8 +488,11 @@ Returns a copy of the list, without the
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listEvery(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Tests whether all items in a list meet the specified callback
+
+</details>
+<details>
+<summary><code>listEvery(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+Tests whether all items in a list meet the specified callback
 
  Arguments:
 
@@ -399,8 +505,11 @@ Returns a copy of the list, without the
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>listEach(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></dt><dd>Used to iterate over a delimited list and run the function closure for each item in the list.
+
+</details>
+<details>
+<summary><code>listEach(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
+Used to iterate over a delimited list and run the function closure for each item in the list.
 
  Arguments:
 
@@ -414,8 +523,11 @@ Returns a copy of the list, without the
 | `maxThreads` | `integer` | `false` | `` |
 | `ordered` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>listSort(sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])</code></dt><dd>Sorts a delimited list and returns the result
+
+</details>
+<details>
+<summary><code>listSort(sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])</code></summary>
+Sorts a delimited list and returns the result
 
  Arguments:
 
@@ -429,8 +541,11 @@ Returns a copy of the list, without the
 | `localeSensitive` | `boolean` | `false` | `` |
 | `callback` | `any` | `false` | `` |
 
-</dd>
-<dt><code>listSetAt(position=[integer], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Retrieves an item in to a delimited list at the specified position
+
+</details>
+<details>
+<summary><code>listSetAt(position=[integer], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Retrieves an item in to a delimited list at the specified position
 
  Arguments:
 
@@ -442,8 +557,11 @@ Returns a copy of the list, without the
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-</dd>
-<dt><code>listFilter(filter=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Filters a delimted list and returns the values from the callback test
+
+</details>
+<details>
+<summary><code>listFilter(filter=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+Filters a delimted list and returns the values from the callback test
 
  Arguments:
 
@@ -456,8 +574,11 @@ Returns a copy of the list, without the
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>getToken(index=[integer], delimiter=[string])</code></dt><dd>Determines whether a token of the list in the delimiters parameter is present in a string.
+
+</details>
+<details>
+<summary><code>getToken(index=[integer], delimiter=[string])</code></summary>
+Determines whether a token of the list in the delimiters parameter is present in a string.
 
 Returns the token found at position index of the string, as a string.
  If index is greater than the number of tokens in the string, returns an empty string.
@@ -469,8 +590,11 @@ Returns the token found at position index of the string, as a string.
 | `index` | `integer` | `true` | `` |
 | `delimiter` | `string` | `false` | `,` |
 
-</dd>
-<dt><code>listItemTrim(delimiter=[string], includeEmptyFields=[boolean])</code></dt><dd>Trims each item in the list.
+
+</details>
+<details>
+<summary><code>listItemTrim(delimiter=[string], includeEmptyFields=[boolean])</code></summary>
+Trims each item in the list.
 
  Arguments:
 
@@ -479,9 +603,15 @@ Returns the token found at position index of the string, as a string.
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>prettifyJSON()</code></dt><dd>Prettifies a JSON string.</dd>
-<dt><code>jSONDeserialize(strictMapping=[boolean], useCustomSerializer=[string])</code></dt><dd>Converts a JSON (JavaScript Object Notation) string data representation into data, such as a structure or array.
+
+</details>
+<details>
+<summary><code>prettifyJSON()</code></summary>
+Prettifies a JSON string.
+</details>
+<details>
+<summary><code>jSONDeserialize(strictMapping=[boolean], useCustomSerializer=[string])</code></summary>
+Converts a JSON (JavaScript Object Notation) string data representation into data, such as a structure or array.
 
  Arguments:
 
@@ -490,8 +620,11 @@ Returns the token found at position index of the string, as a string.
 | `strictMapping` | `boolean` | `false` | `true` |
 | `useCustomSerializer` | `string` | `false` | `` |
 
-</dd>
-<dt><code>toBase64(encoding=[string])</code></dt><dd>Calculates the Base64 representation of a string or binary object.
+
+</details>
+<details>
+<summary><code>toBase64(encoding=[string])</code></summary>
+Calculates the Base64 representation of a string or binary object.
 
 The Base64 format uses printable characters, allowing binary data to be sent in
  forms and e-mail, and stored in a database or file.
@@ -502,9 +635,15 @@ The Base64 format uses printable characters, allowing binary data to be sent in
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `UTF-8` |
 
-</dd>
-<dt><code>toBinary()</code></dt><dd>Calculates the binary representation of Base64-encoded data.</dd>
-<dt><code>to(encoding=[string])</code></dt><dd>Converts a value to a string.
+
+</details>
+<details>
+<summary><code>toBinary()</code></summary>
+Calculates the binary representation of Base64-encoded data.
+</details>
+<details>
+<summary><code>to(encoding=[string])</code></summary>
+Converts a value to a string.
 
  Arguments:
 
@@ -512,8 +651,11 @@ The Base64 format uses printable characters, allowing binary data to be sent in
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `` |
 
-</dd>
-<dt><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></dt><dd>Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+
+</details>
+<details>
+<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
+Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
@@ -523,8 +665,11 @@ The Base64 format uses printable characters, allowing binary data to be sent in
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `` |
 
-</dd>
-<dt><code>listToJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></dt><dd>Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+
+</details>
+<details>
+<summary><code>listToJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
+Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
@@ -534,10 +679,19 @@ The Base64 format uses printable characters, allowing binary data to be sent in
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `` |
 
-</dd>
-<dt><code>booleanFormat()</code></dt><dd>Returns the value formatted as a boolean string</dd>
-<dt><code>isEmpty()</code></dt><dd>Determine whether a given value is empty</dd>
-<dt><code>spanIncluding(set=[string])</code></dt><dd>Gets characters from a string, from the beginning to a character that is NOT in a specified set of characters.
+
+</details>
+<details>
+<summary><code>booleanFormat()</code></summary>
+Returns the value formatted as a boolean string
+</details>
+<details>
+<summary><code>isEmpty()</code></summary>
+Determine whether a given value is empty
+</details>
+<details>
+<summary><code>spanIncluding(set=[string])</code></summary>
+Gets characters from a string, from the beginning to a character that is NOT in a specified set of characters.
 
 The search is case-sensitive.
 
@@ -547,8 +701,11 @@ The search is case-sensitive.
 |----------|------|----------|---------|
 | `set` | `string` | `true` | `` |
 
-</dd>
-<dt><code>reFind(reg_expression=[string], start=[integer], returnSubExpressions=[boolean], scope=[string])</code></dt><dd>Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
+
+</details>
+<details>
+<summary><code>reFind(reg_expression=[string], start=[integer], returnSubExpressions=[boolean], scope=[string])</code></summary>
+Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
 
 The search is case-sensitive.
  It will return numeric if returnsubexpressions is false and a struct of arrays named "len", "match" and "pos" when returnsubexpressions is true.
@@ -562,8 +719,11 @@ The search is case-sensitive.
 | `returnSubExpressions` | `boolean` | `false` | `false` |
 | `scope` | `string` | `false` | `one` |
 
-</dd>
-<dt><code>reFindNoCase(reg_expression=[string], start=[integer], returnSubExpressions=[boolean], scope=[string])</code></dt><dd>Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
+
+</details>
+<details>
+<summary><code>reFindNoCase(reg_expression=[string], start=[integer], returnSubExpressions=[boolean], scope=[string])</code></summary>
+Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
 
 The search is case-sensitive.
  It will return numeric if returnsubexpressions is false and a struct of arrays named "len", "match" and "pos" when returnsubexpressions is true.
@@ -577,14 +737,26 @@ The search is case-sensitive.
 | `returnSubExpressions` | `boolean` | `false` | `false` |
 | `scope` | `string` | `false` | `one` |
 
-</dd>
-<dt><code>kebabCase()</code></dt><dd>Convert a string to kebab case</dd>
-<dt><code>ascii()</code></dt><dd>Determine the ASCII value of a character</dd>
-<dt><code>val()</code></dt><dd>Converts numeric characters and the first period found that occur at the beginning of a string to a number.
+
+</details>
+<details>
+<summary><code>kebabCase()</code></summary>
+Convert a string to kebab case
+</details>
+<details>
+<summary><code>ascii()</code></summary>
+Determine the ASCII value of a character
+</details>
+<details>
+<summary><code>val()</code></summary>
+Converts numeric characters and the first period found that occur at the beginning of a string to a number.
 
 A period not accompianied by at least
- one numeric digit will be ignored. If no numeric digits are found at the start of the string, zero will be returned.</dd>
-<dt><code>compare(string2=[any])</code></dt><dd>Performs a case-sensitive comparison of two strings.
+ one numeric digit will be ignored. If no numeric digits are found at the start of the string, zero will be returned.
+</details>
+<details>
+<summary><code>compare(string2=[any])</code></summary>
+Performs a case-sensitive comparison of two strings.
 
 -1, if string1 is less than string2
  0, if string1 is equal to string2
@@ -596,9 +768,15 @@ A period not accompianied by at least
 |----------|------|----------|---------|
 | `string2` | `any` | `true` | `` |
 
-</dd>
-<dt><code>trueFalseFormat()</code></dt><dd>Return Yes/No based on whether the input is true/false</dd>
-<dt><code>reReplace(regex=[string], substring=[string], scope=[string])</code></dt><dd>Uses a regular expression (regex) to search a string for a string pattern and replace it with another.
+
+</details>
+<details>
+<summary><code>trueFalseFormat()</code></summary>
+Return Yes/No based on whether the input is true/false
+</details>
+<details>
+<summary><code>reReplace(regex=[string], substring=[string], scope=[string])</code></summary>
+Uses a regular expression (regex) to search a string for a string pattern and replace it with another.
 
 The search is case-sensitive.
 
@@ -610,8 +788,11 @@ The search is case-sensitive.
 | `substring` | `string` | `true` | `` |
 | `scope` | `string` | `true` | `one` |
 
-</dd>
-<dt><code>reReplaceNoCase(regex=[string], substring=[string], scope=[string])</code></dt><dd>Uses a regular expression (regex) to search a string for a string pattern and replace it with another.
+
+</details>
+<details>
+<summary><code>reReplaceNoCase(regex=[string], substring=[string], scope=[string])</code></summary>
+Uses a regular expression (regex) to search a string for a string pattern and replace it with another.
 
 The search is case-sensitive.
 
@@ -623,9 +804,15 @@ The search is case-sensitive.
 | `substring` | `string` | `true` | `` |
 | `scope` | `string` | `true` | `one` |
 
-</dd>
-<dt><code>stripCR()</code></dt><dd>Deletes return characters from a string.</dd>
-<dt><code>insert(substring=[string], position=[integer])</code></dt><dd>Inserts a substring into another string at a specified position.
+
+</details>
+<details>
+<summary><code>stripCR()</code></summary>
+Deletes return characters from a string.
+</details>
+<details>
+<summary><code>insert(substring=[string], position=[integer])</code></summary>
+Inserts a substring into another string at a specified position.
 
  Arguments:
 
@@ -634,10 +821,19 @@ The search is case-sensitive.
 | `substring` | `string` | `true` | `` |
 | `position` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>camelCase()</code></dt><dd>Convert a string to camel case</dd>
-<dt><code>snakeCase()</code></dt><dd>Convert a string to snake case</dd>
-<dt><code>right(count=[integer])</code></dt><dd>Extract the rightmost count characters from a string
+
+</details>
+<details>
+<summary><code>camelCase()</code></summary>
+Convert a string to camel case
+</details>
+<details>
+<summary><code>snakeCase()</code></summary>
+Convert a string to snake case
+</details>
+<details>
+<summary><code>right(count=[integer])</code></summary>
+Extract the rightmost count characters from a string
 
  Arguments:
 
@@ -645,8 +841,11 @@ The search is case-sensitive.
 |----------|------|----------|---------|
 | `count` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>findOneOf(set=[string], start=[integer])</code></dt><dd>Finds the first occurrence of any character in a set of characters, from a specified start position.
+
+</details>
+<details>
+<summary><code>findOneOf(set=[string], start=[integer])</code></summary>
+Finds the first occurrence of any character in a set of characters, from a specified start position.
 
  Arguments:
 
@@ -655,8 +854,11 @@ The search is case-sensitive.
 | `set` | `string` | `true` | `` |
 | `start` | `integer` | `false` | `1` |
 
-</dd>
-<dt><code>spanExcluding(set=[string])</code></dt><dd>Get characters from a string, from the beginning to a character that is in a specified set of characters.
+
+</details>
+<details>
+<summary><code>spanExcluding(set=[string])</code></summary>
+Get characters from a string, from the beginning to a character that is in a specified set of characters.
 
 The search is case-sensitive.
 
@@ -666,8 +868,11 @@ The search is case-sensitive.
 |----------|------|----------|---------|
 | `set` | `string` | `true` | `` |
 
-</dd>
-<dt><code>compareNoCase(string2=[string])</code></dt><dd>Performs a case-insensitive comparison of two strings.
+
+</details>
+<details>
+<summary><code>compareNoCase(string2=[string])</code></summary>
+Performs a case-insensitive comparison of two strings.
 
 -1, if string1 is less than string2
  0, if string1 is equal to string2
@@ -679,8 +884,11 @@ The search is case-sensitive.
 |----------|------|----------|---------|
 | `string2` | `string` | `true` | `` |
 
-</dd>
-<dt><code>stringReduceRight(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Run the provided udf over a reversed string to reduce the values to a single output
+
+</details>
+<details>
+<summary><code>stringReduceRight(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Run the provided udf over a reversed string to reduce the values to a single output
 
  Arguments:
 
@@ -692,9 +900,15 @@ The search is case-sensitive.
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-</dd>
-<dt><code>reverse()</code></dt><dd>Reverse the order of characters in a string</dd>
-<dt><code>replace(substring1=[string], obj=[string], scope=[string])</code></dt><dd>Replaces occurrences of substring1 in a string with obj, in a specified scope.
+
+</details>
+<details>
+<summary><code>reverse()</code></summary>
+Reverse the order of characters in a string
+</details>
+<details>
+<summary><code>replace(substring1=[string], obj=[string], scope=[string])</code></summary>
+Replaces occurrences of substring1 in a string with obj, in a specified scope.
 
 The search is case-sensitive. Function returns original string with
  replacements made
@@ -707,8 +921,11 @@ The search is case-sensitive. Function returns original string with
 | `obj` | `string` | `true` | `` |
 | `scope` | `string` | `true` | `once` |
 
-</dd>
-<dt><code>replaceList(list1=[string], list2=[string], delimiter_list1=[string], delimiter_list2=[string], includeEmptyFields=[boolean])</code></dt><dd>Replaces occurrences of the elements from a delimited list, in a string with corresponding elements from another delimited list.
+
+</details>
+<details>
+<summary><code>replaceList(list1=[string], list2=[string], delimiter_list1=[string], delimiter_list2=[string], includeEmptyFields=[boolean])</code></summary>
+Replaces occurrences of the elements from a delimited list, in a string with corresponding elements from another delimited list.
 
  Arguments:
 
@@ -720,8 +937,11 @@ The search is case-sensitive. Function returns original string with
 | `delimiter_list2` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>replaceListNoCase(list1=[string], list2=[string], delimiter_list1=[string], delimiter_list2=[string], includeEmptyFields=[boolean])</code></dt><dd>Replaces occurrences of the elements from a delimited list, in a string with corresponding elements from another delimited list.
+
+</details>
+<details>
+<summary><code>replaceListNoCase(list1=[string], list2=[string], delimiter_list1=[string], delimiter_list2=[string], includeEmptyFields=[boolean])</code></summary>
+Replaces occurrences of the elements from a delimited list, in a string with corresponding elements from another delimited list.
 
  Arguments:
 
@@ -733,8 +953,11 @@ The search is case-sensitive. Function returns original string with
 | `delimiter_list2` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>slugify(maxLength=[numeric], allow=[string])</code></dt><dd>Slugify a string for URL safety
+
+</details>
+<details>
+<summary><code>slugify(maxLength=[numeric], allow=[string])</code></summary>
+Slugify a string for URL safety
 
  Arguments:
 
@@ -743,8 +966,11 @@ The search is case-sensitive. Function returns original string with
 | `maxLength` | `numeric` | `false` | `0` |
 | `allow` | `string` | `false` | `` |
 
-</dd>
-<dt><code>wrap(limit=[integer], strip=[boolean])</code></dt><dd>null
+
+</details>
+<details>
+<summary><code>wrap(limit=[integer], strip=[boolean])</code></summary>
+null
 
  Arguments:
 
@@ -753,9 +979,15 @@ The search is case-sensitive. Function returns original string with
 | `limit` | `integer` | `true` | `` |
 | `strip` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>pascalCase()</code></dt><dd>Convert a string to pascal case</dd>
-<dt><code>stringSort(sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])</code></dt><dd>Sorts a string and returns the result
+
+</details>
+<details>
+<summary><code>pascalCase()</code></summary>
+Convert a string to pascal case
+</details>
+<details>
+<summary><code>stringSort(sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])</code></summary>
+Sorts a string and returns the result
 
  Arguments:
 
@@ -769,10 +1001,19 @@ The search is case-sensitive. Function returns original string with
 | `localeSensitive` | `boolean` | `false` | `` |
 | `callback` | `any` | `false` | `` |
 
-</dd>
-<dt><code>trim()</code></dt><dd>Trim whitespace from the beginning and end of a string</dd>
-<dt><code>lTrim()</code></dt><dd>Trim leading whitespace from a string</dd>
-<dt><code>uCFirst(doAll=[boolean], doLowerIfAllUppercase=[boolean])</code></dt><dd>Transform the first letter of a string to uppercase or the first letter of each word, and optionally lowercase uppercase characters.
+
+</details>
+<details>
+<summary><code>trim()</code></summary>
+Trim whitespace from the beginning and end of a string
+</details>
+<details>
+<summary><code>lTrim()</code></summary>
+Trim leading whitespace from a string
+</details>
+<details>
+<summary><code>uCFirst(doAll=[boolean], doLowerIfAllUppercase=[boolean])</code></summary>
+Transform the first letter of a string to uppercase or the first letter of each word, and optionally lowercase uppercase characters.
 
  Arguments:
 
@@ -781,8 +1022,11 @@ The search is case-sensitive. Function returns original string with
 | `doAll` | `boolean` | `false` | `false` |
 | `doLowerIfAllUppercase` | `boolean` | `false` | `false` |
 
-</dd>
-<dt><code>find(substring=[string], start=[integer])</code></dt><dd>Finds the first occurrence of a substring in a string, from a specified start position.
+
+</details>
+<details>
+<summary><code>find(substring=[string], start=[integer])</code></summary>
+Finds the first occurrence of a substring in a string, from a specified start position.
 
  Arguments:
 
@@ -791,8 +1035,11 @@ The search is case-sensitive. Function returns original string with
 | `substring` | `string` | `true` | `` |
 | `start` | `integer` | `false` | `1` |
 
-</dd>
-<dt><code>findNoCase(substring=[string], start=[integer])</code></dt><dd>Finds the first occurrence of a substring in a string, from a specified start position.
+
+</details>
+<details>
+<summary><code>findNoCase(substring=[string], start=[integer])</code></summary>
+Finds the first occurrence of a substring in a string, from a specified start position.
 
  Arguments:
 
@@ -801,8 +1048,11 @@ The search is case-sensitive. Function returns original string with
 | `substring` | `string` | `true` | `` |
 | `start` | `integer` | `false` | `1` |
 
-</dd>
-<dt><code>reMatch(reg_expression=[string])</code></dt><dd>Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
+
+</details>
+<details>
+<summary><code>reMatch(reg_expression=[string])</code></summary>
+Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
 
  Arguments:
 
@@ -810,8 +1060,11 @@ The search is case-sensitive. Function returns original string with
 |----------|------|----------|---------|
 | `reg_expression` | `string` | `true` | `` |
 
-</dd>
-<dt><code>reMatchNoCase(reg_expression=[string])</code></dt><dd>Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
+
+</details>
+<details>
+<summary><code>reMatchNoCase(reg_expression=[string])</code></summary>
+Uses a regular expression (RE) to search a string for a pattern, starting from a specified position.
 
  Arguments:
 
@@ -819,8 +1072,11 @@ The search is case-sensitive. Function returns original string with
 |----------|------|----------|---------|
 | `reg_expression` | `string` | `true` | `` |
 
-</dd>
-<dt><code>lJustify(length=[integer])</code></dt><dd>Justifies characters in a string of a specified length, either left or right.
+
+</details>
+<details>
+<summary><code>lJustify(length=[integer])</code></summary>
+Justifies characters in a string of a specified length, either left or right.
 
  Arguments:
 
@@ -828,8 +1084,11 @@ The search is case-sensitive. Function returns original string with
 |----------|------|----------|---------|
 | `length` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>rJustify(length=[integer])</code></dt><dd>Justifies characters in a string of a specified length, either left or right.
+
+</details>
+<details>
+<summary><code>rJustify(length=[integer])</code></summary>
+Justifies characters in a string of a specified length, either left or right.
 
  Arguments:
 
@@ -837,8 +1096,11 @@ The search is case-sensitive. Function returns original string with
 |----------|------|----------|---------|
 | `length` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>left(count=[integer])</code></dt><dd>Extract the leftmost count characters from a string
+
+</details>
+<details>
+<summary><code>left(count=[integer])</code></summary>
+Extract the leftmost count characters from a string
 
  Arguments:
 
@@ -846,9 +1108,15 @@ The search is case-sensitive. Function returns original string with
 |----------|------|----------|---------|
 | `count` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>uCase()</code></dt><dd>Uppercase a string</dd>
-<dt><code>listReduce(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></dt><dd>Run the provided udf over a delimited list to reduce the values to a single output
+
+</details>
+<details>
+<summary><code>uCase()</code></summary>
+Uppercase a string
+</details>
+<details>
+<summary><code>listReduce(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+Run the provided udf over a delimited list to reduce the values to a single output
 
  Arguments:
 
@@ -860,9 +1128,15 @@ The search is case-sensitive. Function returns original string with
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
 
-</dd>
-<dt><code>yesNoFormat()</code></dt><dd>Return Yes/No based on whether the input is true/false</dd>
-<dt><code>replaceNoCase(substring1=[string], obj=[string], scope=[string])</code></dt><dd>Replaces occurrences of substring1 in a string with obj, in a specified scope.
+
+</details>
+<details>
+<summary><code>yesNoFormat()</code></summary>
+Return Yes/No based on whether the input is true/false
+</details>
+<details>
+<summary><code>replaceNoCase(substring1=[string], obj=[string], scope=[string])</code></summary>
+Replaces occurrences of substring1 in a string with obj, in a specified scope.
 
 The search is case-sensitive. Function returns original string with
  replacements made
@@ -875,8 +1149,11 @@ The search is case-sensitive. Function returns original string with
 | `obj` | `string` | `true` | `` |
 | `scope` | `string` | `true` | `once` |
 
-</dd>
-<dt><code>removeChars(start=[integer], count=[integer])</code></dt><dd>Removes characters from a string.
+
+</details>
+<details>
+<summary><code>removeChars(start=[integer], count=[integer])</code></summary>
+Removes characters from a string.
 
  Arguments:
 
@@ -885,9 +1162,15 @@ The search is case-sensitive. Function returns original string with
 | `start` | `integer` | `true` | `` |
 | `count` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>rTrim()</code></dt><dd>Trim trailing whitespace from a string</dd>
-<dt><code>charsetDecode(encoding=[string])</code></dt><dd>Encodes a string to a binary representation
+
+</details>
+<details>
+<summary><code>rTrim()</code></summary>
+Trim trailing whitespace from a string
+</details>
+<details>
+<summary><code>charsetDecode(encoding=[string])</code></summary>
+Encodes a string to a binary representation
 
  Arguments:
 
@@ -895,8 +1178,11 @@ The search is case-sensitive. Function returns original string with
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `utf-8` |
 
-</dd>
-<dt><code>stringSome(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Tests whether any item in a string meets the specified callback
+
+</details>
+<details>
+<summary><code>stringSome(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+Tests whether any item in a string meets the specified callback
 
  Arguments:
 
@@ -909,9 +1195,15 @@ The search is case-sensitive. Function returns original string with
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>sQLPrettify()</code></dt><dd>Prettify a SQL string</dd>
-<dt><code>toStruct(delimiter=[string])</code></dt><dd>Convert a query string to a struct.
+
+</details>
+<details>
+<summary><code>sQLPrettify()</code></summary>
+Prettify a SQL string
+</details>
+<details>
+<summary><code>toStruct(delimiter=[string])</code></summary>
+Convert a query string to a struct.
 
 Each key-value pair in the query string is separated by a delimiter.
  The default delimiter is ,{@code "&"},
@@ -929,8 +1221,11 @@ Each key-value pair in the query string is separated by a delimiter.
 |----------|------|----------|---------|
 | `delimiter` | `string` | `false` | `&` |
 
-</dd>
-<dt><code>mid(start=[integer], count=[integer])</code></dt><dd>Extract a substring from a string
+
+</details>
+<details>
+<summary><code>mid(start=[integer], count=[integer])</code></summary>
+Extract a substring from a string
 
  Arguments:
 
@@ -939,10 +1234,16 @@ Each key-value pair in the query string is separated by a delimiter.
 | `start` | `integer` | `true` | `` |
 | `count` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>lCase()</code></dt><dd>Uppercase a string</dd>
-<dt><code>paragraphFormat()</code></dt><dd>Replaces characters in a string: Single newline characters (CR/LF sequences) with spaces and double newline characters with HTML paragraph tags</dd>
 
-</dl>
+</details>
+<details>
+<summary><code>lCase()</code></summary>
+Uppercase a string
+</details>
+<details>
+<summary><code>paragraphFormat()</code></summary>
+Replaces characters in a string: Single newline characters (CR/LF sequences) with spaces and double newline characters with HTML paragraph tags
+</details>
+
 
 ## Examples

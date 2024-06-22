@@ -22,9 +22,7 @@ QueryEach(query=[query], callback=[function], parallel=[boolean], maxThreads=[in
 
 ## Examples
 
-```
-QueryEach(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

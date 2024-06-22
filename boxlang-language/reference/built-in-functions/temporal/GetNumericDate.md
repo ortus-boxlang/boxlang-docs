@@ -20,9 +20,7 @@ GetNumericDate(date=[any], timezone=[string])
 
 ## Examples
 
-```
-GetNumericDate(date=[any], timezone=[string])
-```
+
 
 ## Related
 

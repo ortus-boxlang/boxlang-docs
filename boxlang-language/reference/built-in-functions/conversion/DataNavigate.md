@@ -29,9 +29,7 @@ DataNavigate(data=[any])
 
 ## Examples
 
-```
-DataNavigate(data=[any])
-```
+
 
 ## Related
 

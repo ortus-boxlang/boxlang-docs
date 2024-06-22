@@ -16,9 +16,7 @@ This function does not accept any arguments
 
 ## Examples
 
-```
-ClearLocale()
-```
+
 
 ## Related
 

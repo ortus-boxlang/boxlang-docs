@@ -25,9 +25,7 @@ Decrypt(string=[string], key=[string], algorithm=[string], encoding=[string], IV
 
 ## Examples
 
-```
-Decrypt(string=[string], key=[string], algorithm=[string], encoding=[string], IVorSalt=[any], iterations=[integer], precise=[boolean])
-```
+
 
 ## Related
 

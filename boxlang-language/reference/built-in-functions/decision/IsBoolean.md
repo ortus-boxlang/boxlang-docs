@@ -19,9 +19,7 @@ IsBoolean(object=[any])
 
 ## Examples
 
-```
-IsBoolean(object=[any])
-```
+
 
 ## Related
 

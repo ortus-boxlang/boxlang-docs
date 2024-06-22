@@ -22,9 +22,7 @@ XMLValidate(XML=[any], validator=[string])
 
 ## Examples
 
-```
-XMLValidate(XML=[any], validator=[string])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ Floor(number=[numeric])
 
 ## Examples
 
-```
-Floor(number=[numeric])
-```
+
 
 ## Related
 

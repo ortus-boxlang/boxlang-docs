@@ -20,9 +20,7 @@ BitOr(number1=[integer], number2=[integer])
 
 ## Examples
 
-```
-BitOr(number1=[integer], number2=[integer])
-```
+
 
 ## Related
 

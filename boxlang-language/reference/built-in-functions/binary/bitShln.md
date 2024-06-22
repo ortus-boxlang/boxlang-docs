@@ -20,9 +20,7 @@ bitShln(number=[integer], count=[integer])
 
 ## Examples
 
-```
-bitShln(number=[integer], count=[integer])
-```
+
 
 ## Related
 

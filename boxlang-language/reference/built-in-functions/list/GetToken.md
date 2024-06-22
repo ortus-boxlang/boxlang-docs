@@ -24,9 +24,7 @@ GetToken(string=[string], index=[integer], delimiter=[string])
 
 ## Examples
 
-```
-GetToken(string=[string], index=[integer], delimiter=[string])
-```
+
 
 ## Related
 

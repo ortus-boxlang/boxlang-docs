@@ -20,9 +20,7 @@ LSIsNumeric(string=[any], locale=[string])
 
 ## Examples
 
-```
-LSIsNumeric(string=[any], locale=[string])
-```
+
 
 ## Related
 

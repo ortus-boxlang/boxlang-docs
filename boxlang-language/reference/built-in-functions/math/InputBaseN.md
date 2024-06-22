@@ -20,9 +20,7 @@ InputBaseN(string=[string], radix=[numeric])
 
 ## Examples
 
-```
-InputBaseN(string=[string], radix=[numeric])
-```
+
 
 ## Related
 

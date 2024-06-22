@@ -24,9 +24,7 @@ Compare(string1=[any], string2=[any])
 
 ## Examples
 
-```
-Compare(string1=[any], string2=[any])
-```
+
 
 ## Related
 

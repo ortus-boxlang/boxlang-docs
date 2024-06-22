@@ -20,9 +20,7 @@ ToScript(cfvar=[any], javascriptvar=[string])
 
 ## Examples
 
-```
-ToScript(cfvar=[any], javascriptvar=[string])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ DateConvert(conversionType=[string], date=[any])
 
 ## Examples
 
-```
-DateConvert(conversionType=[string], date=[any])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ LSDateTimeFormat(date=[any], mask=[string], locale=[string], timezone=[string])
 
 ## Examples
 
-```
-LSDateTimeFormat(date=[any], mask=[string], locale=[string], timezone=[string])
-```
+
 
 ## Related
 

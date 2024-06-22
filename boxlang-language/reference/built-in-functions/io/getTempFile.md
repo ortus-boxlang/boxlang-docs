@@ -21,9 +21,7 @@ getTempFile(directory=[string], prefix=[string], suffix=[string])
 
 ## Examples
 
-```
-getTempFile(directory=[string], prefix=[string], suffix=[string])
-```
+
 
 ## Related
 

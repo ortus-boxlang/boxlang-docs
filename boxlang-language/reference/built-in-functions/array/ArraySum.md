@@ -19,9 +19,7 @@ ArraySum(array=[array])
 
 ## Examples
 
-```
-ArraySum(array=[array])
-```
+
 
 ## Related
 

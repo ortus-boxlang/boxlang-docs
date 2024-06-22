@@ -24,9 +24,7 @@ CompareNoCase(string1=[string], string2=[string])
 
 ## Examples
 
-```
-CompareNoCase(string1=[string], string2=[string])
-```
+
 
 ## Related
 

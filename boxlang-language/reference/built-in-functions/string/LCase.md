@@ -19,9 +19,7 @@ LCase(string=[string])
 
 ## Examples
 
-```
-LCase(string=[string])
-```
+
 
 ## Related
 

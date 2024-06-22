@@ -21,9 +21,7 @@ Invoke(instance=[any], methodname=[string], arguments=[any])
 
 ## Examples
 
-```
-Invoke(instance=[any], methodname=[string], arguments=[any])
-```
+
 
 ## Related
 

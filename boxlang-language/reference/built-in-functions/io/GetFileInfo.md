@@ -21,9 +21,7 @@ GetFileInfo(file=[any])
 
 ## Examples
 
-```
-GetFileInfo(file=[any])
-```
+
 
 ## Related
 

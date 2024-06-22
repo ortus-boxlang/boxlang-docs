@@ -20,9 +20,7 @@ FileMove(source=[string], destination=[string])
 
 ## Examples
 
-```
-FileMove(source=[string], destination=[string])
-```
+
 
 ## Related
 

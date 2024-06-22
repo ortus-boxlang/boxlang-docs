@@ -21,9 +21,7 @@ XMLElemNew(XML=[xml], childname=[string], namespace=[string])
 
 ## Examples
 
-```
-XMLElemNew(XML=[xml], childname=[string], namespace=[string])
-```
+
 
 ## Related
 

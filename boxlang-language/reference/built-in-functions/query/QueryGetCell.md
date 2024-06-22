@@ -21,9 +21,7 @@ QueryGetCell(query=[query], column_name=[string], row_number=[integer])
 
 ## Examples
 
-```
-QueryGetCell(query=[query], column_name=[string], row_number=[integer])
-```
+
 
 ## Related
 

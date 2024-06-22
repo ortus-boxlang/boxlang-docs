@@ -22,9 +22,7 @@ FileOpen(file=[string], mode=[string], charset=[string], seekable=[boolean])
 
 ## Examples
 
-```
-FileOpen(file=[string], mode=[string], charset=[string], seekable=[boolean])
-```
+
 
 ## Related
 

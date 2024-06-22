@@ -22,9 +22,7 @@ SpanIncluding(string=[string], set=[string])
 
 ## Examples
 
-```
-SpanIncluding(string=[string], set=[string])
-```
+
 
 ## Related
 

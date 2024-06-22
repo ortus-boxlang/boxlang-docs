@@ -19,9 +19,7 @@ UCase(string=[string])
 
 ## Examples
 
-```
-UCase(string=[string])
-```
+
 
 ## Related
 

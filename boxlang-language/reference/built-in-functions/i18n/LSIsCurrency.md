@@ -20,9 +20,7 @@ LSIsCurrency(number=[any], locale=[string])
 
 ## Examples
 
-```
-LSIsCurrency(number=[any], locale=[string])
-```
+
 
 ## Related
 

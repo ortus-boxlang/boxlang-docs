@@ -6,8 +6,9 @@
 
 ## Class Methods
 
-<dl>
-<dt><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></dt><dd>Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+<details>
+<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
+Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
@@ -17,8 +18,8 @@
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `` |
 
-</dd>
 
-</dl>
+</details>
+
 
 ## Examples

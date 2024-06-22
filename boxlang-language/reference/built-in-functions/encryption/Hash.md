@@ -22,9 +22,7 @@ Hash(input=[any], algorithm=[string], encoding=[string], numIterations=[integer]
 
 ## Examples
 
-```
-Hash(input=[any], algorithm=[string], encoding=[string], numIterations=[integer])
-```
+
 
 ## Related
 

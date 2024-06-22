@@ -21,9 +21,7 @@ NumberFormat(number=[any], mask=[string], locale=[string])
 
 ## Examples
 
-```
-NumberFormat(number=[any], mask=[string], locale=[string])
-```
+
 
 ## Related
 

@@ -25,9 +25,7 @@ ReplaceNoCase(string=[string], substring1=[string], obj=[string], scope=[string]
 
 ## Examples
 
-```
-ReplaceNoCase(string=[string], substring1=[string], obj=[string], scope=[string])
-```
+
 
 ## Related
 

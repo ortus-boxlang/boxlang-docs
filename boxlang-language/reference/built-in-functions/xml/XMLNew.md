@@ -19,9 +19,7 @@ XMLNew(caseSensitive=[boolean])
 
 ## Examples
 
-```
-XMLNew(caseSensitive=[boolean])
-```
+
 
 ## Related
 

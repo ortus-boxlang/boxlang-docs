@@ -20,9 +20,7 @@ ReMatch(reg_expression=[string], string=[string])
 
 ## Examples
 
-```
-ReMatch(reg_expression=[string], string=[string])
-```
+
 
 ## Related
 

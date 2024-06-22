@@ -21,9 +21,7 @@ ListCompact(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean]
 
 ## Examples
 
-```
-ListCompact(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

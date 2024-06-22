@@ -19,9 +19,7 @@ IsClosure(object=[any])
 
 ## Examples
 
-```
-IsClosure(object=[any])
-```
+
 
 ## Related
 

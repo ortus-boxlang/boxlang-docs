@@ -30,9 +30,7 @@ QueryStringToStruct(target=[string], delimiter=[string])
 
 ## Examples
 
-```
-QueryStringToStruct(target=[string], delimiter=[string])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ XMLGetNodeType(XMLNode=[XML])
 
 ## Examples
 
-```
-XMLGetNodeType(XMLNode=[XML])
-```
+
 
 ## Related
 

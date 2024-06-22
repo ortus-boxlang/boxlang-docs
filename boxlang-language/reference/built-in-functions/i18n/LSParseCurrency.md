@@ -20,9 +20,7 @@ LSParseCurrency(string=[string], locale=[string])
 
 ## Examples
 
-```
-LSParseCurrency(string=[string], locale=[string])
-```
+
 
 ## Related
 

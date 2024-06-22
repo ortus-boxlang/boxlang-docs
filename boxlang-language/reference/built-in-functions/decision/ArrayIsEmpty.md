@@ -19,9 +19,7 @@ ArrayIsEmpty(value=[any])
 
 ## Examples
 
-```
-ArrayIsEmpty(value=[any])
-```
+
 
 ## Related
 

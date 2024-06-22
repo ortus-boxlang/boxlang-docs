@@ -20,9 +20,7 @@ BoxRegisterRequestInterceptor(interceptor=[any], states=[any])
 
 ## Examples
 
-```
-BoxRegisterRequestInterceptor(interceptor=[any], states=[any])
-```
+
 
 ## Related
 

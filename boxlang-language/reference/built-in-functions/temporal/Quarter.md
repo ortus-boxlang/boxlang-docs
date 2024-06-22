@@ -20,9 +20,7 @@ Quarter(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Quarter(date=[any], timezone=[string])
-```
+
 
 ## Related
 

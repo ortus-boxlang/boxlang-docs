@@ -21,9 +21,7 @@ StructKeyTranslate(struct=[structloose], deep=[boolean], retainKeys=[boolean])
 
 ## Examples
 
-```
-StructKeyTranslate(struct=[structloose], deep=[boolean], retainKeys=[boolean])
-```
+
 
 ## Related
 

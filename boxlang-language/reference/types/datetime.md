@@ -8,8 +8,9 @@ The primary DateTime class that represents a date and time object in BoxLang
 
 ## Datetime Methods
 
-<dl>
-<dt><code>add(datepart=[string], number=[long])</code></dt><dd>Modifies a date object by date part and integer time unit
+<details>
+<summary><code>add(datepart=[string], number=[long])</code></summary>
+Modifies a date object by date part and integer time unit
 
  Arguments:
 
@@ -18,9 +19,15 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `datepart` | `string` | `true` | `` |
 | `number` | `long` | `true` | `` |
 
-</dd>
-<dt><code>clone()</code></dt><dd></dd>
-<dt><code>compare(date2=[any], datepart=[string])</code></dt><dd>Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
+
+</details>
+<details>
+<summary><code>clone()</code></summary>
+
+</details>
+<details>
+<summary><code>compare(date2=[any], datepart=[string])</code></summary>
+Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
 
  Arguments:
 
@@ -29,8 +36,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `date2` | `any` | `true` | `` |
 | `datepart` | `string` | `false` | `` |
 
-</dd>
-<dt><code>compareTo(date2=[any], datepart=[string])</code></dt><dd>Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
+
+</details>
+<details>
+<summary><code>compareTo(date2=[any], datepart=[string])</code></summary>
+Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
 
  Arguments:
 
@@ -39,8 +49,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `date2` | `any` | `true` | `` |
 | `datepart` | `string` | `false` | `` |
 
-</dd>
-<dt><code>dateFormat(mask=[string], timezone=[string])</code></dt><dd>Formats a datetime, date or time
+
+</details>
+<details>
+<summary><code>dateFormat(mask=[string], timezone=[string])</code></summary>
+Formats a datetime, date or time
 
  Arguments:
 
@@ -49,8 +62,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `mask` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>dateTimeFormat(mask=[string], timezone=[string])</code></dt><dd>Formats a datetime, date or time
+
+</details>
+<details>
+<summary><code>dateTimeFormat(mask=[string], timezone=[string])</code></summary>
+Formats a datetime, date or time
 
  Arguments:
 
@@ -59,8 +75,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `mask` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>day(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>day(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -68,8 +87,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>dayOfWeek(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>dayOfWeek(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -77,8 +99,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>dayOfWeekAsString(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>dayOfWeekAsString(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -86,8 +111,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>dayOfWeekShortAsString(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>dayOfWeekShortAsString(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -95,8 +123,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>dayOfYear(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>dayOfYear(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -104,8 +135,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>daysInMonth(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>daysInMonth(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -113,8 +147,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>daysInYear(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>daysInYear(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -122,8 +159,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>diff(datepart=[string], date2=[any])</code></dt><dd>Returns the numeric difference in the requested date part between two dates
+
+</details>
+<details>
+<summary><code>diff(datepart=[string], date2=[any])</code></summary>
+Returns the numeric difference in the requested date part between two dates
 
  Arguments:
 
@@ -132,8 +172,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `datepart` | `string` | `true` | `` |
 | `date2` | `any` | `true` | `` |
 
-</dd>
-<dt><code>equals(obj=[any])</code></dt><dd>Indicates whether some other object is "equal to" this one.
+
+</details>
+<details>
+<summary><code>equals(obj=[any])</code></summary>
+Indicates whether some other object is "equal to" this one.
 
  Arguments:
 
@@ -141,8 +184,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `obj` | `any` | `true` | null |
 
-</dd>
-<dt><code>firstDayOfMonth(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>firstDayOfMonth(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -150,8 +196,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>format(mask=[string], timezone=[string])</code></dt><dd>Formats a datetime, date or time
+
+</details>
+<details>
+<summary><code>format(mask=[string], timezone=[string])</code></summary>
+Formats a datetime, date or time
 
  Arguments:
 
@@ -160,8 +209,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `mask` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>getTime(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>getTime(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -169,8 +221,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></dt><dd>Creates an algorithmic hash of an object
+
+</details>
+<details>
+<summary><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></summary>
+Creates an algorithmic hash of an object
 
  Arguments:
 
@@ -180,8 +235,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `encoding` | `string` | `false` | `utf-8` |
 | `numIterations` | `integer` | `false` | `1` |
 
-</dd>
-<dt><code>hour(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>hour(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -189,19 +247,11 @@ The primary DateTime class that represents a date and time object in BoxLang
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>lSDateFormat(mask=[string], locale=[string], timezone=[string])</code></dt><dd>Formats a date in a locale-specific format
 
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `mask` | `string` | `false` | `` |
-| `locale` | `string` | `false` | `` |
-| `timezone` | `string` | `false` | `` |
-
-</dd>
-<dt><code>lSDateTimeFormat(mask=[string], locale=[string], timezone=[string])</code></dt><dd>Formats a date in a locale-specific format
+</details>
+<details>
+<summary><code>lSDateFormat(mask=[string], locale=[string], timezone=[string])</code></summary>
+Formats a date in a locale-specific format
 
  Arguments:
 
@@ -211,8 +261,25 @@ The primary DateTime class that represents a date and time object in BoxLang
 | `locale` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>lsDayOfWeek(locale=[string], timezone=[string])</code></dt><dd>Provides the Localized BIF and member functions for time units ( e.g.
+
+</details>
+<details>
+<summary><code>lSDateTimeFormat(mask=[string], locale=[string], timezone=[string])</code></summary>
+Formats a date in a locale-specific format
+
+ Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `mask` | `string` | `false` | `` |
+| `locale` | `string` | `false` | `` |
+| `timezone` | `string` | `false` | `` |
+
+
+</details>
+<details>
+<summary><code>lsDayOfWeek(locale=[string], timezone=[string])</code></summary>
+Provides the Localized BIF and member functions for time units ( e.g.
 
 different locales have different start days to the week )
 
@@ -223,8 +290,11 @@ different locales have different start days to the week )
 | `locale` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>lSTimeFormat(mask=[string], locale=[string], timezone=[string])</code></dt><dd>Formats a date in a locale-specific format
+
+</details>
+<details>
+<summary><code>lSTimeFormat(mask=[string], locale=[string], timezone=[string])</code></summary>
+Formats a date in a locale-specific format
 
  Arguments:
 
@@ -234,8 +304,11 @@ different locales have different start days to the week )
 | `locale` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>lsWeek(locale=[string], timezone=[string])</code></dt><dd>Provides the Localized BIF and member functions for time units ( e.g.
+
+</details>
+<details>
+<summary><code>lsWeek(locale=[string], timezone=[string])</code></summary>
+Provides the Localized BIF and member functions for time units ( e.g.
 
 different locales have different start days to the week )
 
@@ -246,8 +319,11 @@ different locales have different start days to the week )
 | `locale` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>millisecond(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>millisecond(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -255,8 +331,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>minute(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>minute(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -264,8 +343,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>month(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>month(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -273,8 +355,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>monthAsString(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>monthAsString(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -282,8 +367,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>monthShortAsString(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>monthShortAsString(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -291,8 +379,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>nanosecond(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>nanosecond(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -300,8 +391,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>offset(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>offset(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -309,8 +403,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>quarter(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>quarter(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -318,8 +415,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>second(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>second(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -327,8 +427,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>timeFormat(mask=[string], timezone=[string])</code></dt><dd>Formats a datetime, date or time
+
+</details>
+<details>
+<summary><code>timeFormat(mask=[string], timezone=[string])</code></summary>
+Formats a datetime, date or time
 
  Arguments:
 
@@ -337,8 +440,11 @@ different locales have different start days to the week )
 | `mask` | `string` | `false` | `` |
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>timezone(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>timezone(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -346,12 +452,27 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>toEpoch()</code></dt><dd>Returns this date time in epoch time ( seconds )</dd>
-<dt><code>toEpochMillis()</code></dt><dd>Returns this date time in epoch milliseconds</dd>
-<dt><code>toEpochSecond()</code></dt><dd></dd>
-<dt><code>toISOString()</code></dt><dd>Returns the date time representation as a string in the specified format mask</dd>
-<dt><code>toODBCDate(timezone=[string])</code></dt><dd>Creates a DateTime object with the format set to ODBC Implicit format
+
+</details>
+<details>
+<summary><code>toEpoch()</code></summary>
+Returns this date time in epoch time ( seconds )
+</details>
+<details>
+<summary><code>toEpochMillis()</code></summary>
+Returns this date time in epoch milliseconds
+</details>
+<details>
+<summary><code>toEpochSecond()</code></summary>
+
+</details>
+<details>
+<summary><code>toISOString()</code></summary>
+Returns the date time representation as a string in the specified format mask
+</details>
+<details>
+<summary><code>toODBCDate(timezone=[string])</code></summary>
+Creates a DateTime object with the format set to ODBC Implicit format
 
  Arguments:
 
@@ -359,8 +480,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>toODBCDateTime(timezone=[string])</code></dt><dd>Creates a DateTime object with the format set to ODBC Implicit format
+
+</details>
+<details>
+<summary><code>toODBCDateTime(timezone=[string])</code></summary>
+Creates a DateTime object with the format set to ODBC Implicit format
 
  Arguments:
 
@@ -368,8 +492,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>toODBCTime(timezone=[string])</code></dt><dd>Creates a DateTime object with the format set to ODBC Implicit format
+
+</details>
+<details>
+<summary><code>toODBCTime(timezone=[string])</code></summary>
+Creates a DateTime object with the format set to ODBC Implicit format
 
  Arguments:
 
@@ -377,8 +504,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>weekOfYear(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>weekOfYear(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -386,8 +516,11 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
-<dt><code>year(timezone=[string])</code></dt><dd>Provides the BIF and member functions for all time unit request with no arguments
+
+</details>
+<details>
+<summary><code>year(timezone=[string])</code></summary>
+Provides the BIF and member functions for all time unit request with no arguments
 
  Arguments:
 
@@ -395,8 +528,8 @@ different locales have different start days to the week )
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `` |
 
-</dd>
 
-</dl>
+</details>
+
 
 ## Examples

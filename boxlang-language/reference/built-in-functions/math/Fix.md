@@ -19,9 +19,7 @@ Fix(number=[numeric])
 
 ## Examples
 
-```
-Fix(number=[numeric])
-```
+
 
 ## Related
 

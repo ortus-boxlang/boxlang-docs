@@ -21,9 +21,7 @@ XMLSearch(XMLNode=[XML], xpath=[String], params=[Struct])
 
 ## Examples
 
-```
-XMLSearch(XMLNode=[XML], xpath=[String], params=[Struct])
-```
+
 
 ## Related
 

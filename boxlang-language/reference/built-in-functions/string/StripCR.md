@@ -19,9 +19,7 @@ StripCR(string=[string])
 
 ## Examples
 
-```
-StripCR(string=[string])
-```
+
 
 ## Related
 

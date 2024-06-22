@@ -19,9 +19,7 @@ CamelCase(string=[string])
 
 ## Examples
 
-```
-CamelCase(string=[string])
-```
+
 
 ## Related
 

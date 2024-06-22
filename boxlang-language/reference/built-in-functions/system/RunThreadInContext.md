@@ -25,9 +25,7 @@ RunThreadInContext(applicationName=[string], sessionId=[string], context=[any], 
 
 ## Examples
 
-```
-RunThreadInContext(applicationName=[string], sessionId=[string], context=[any], callback=[function])
-```
+
 
 ## Related
 

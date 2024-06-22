@@ -20,9 +20,7 @@ BitXor(number1=[integer], number2=[integer])
 
 ## Examples
 
-```
-BitXor(number1=[integer], number2=[integer])
-```
+
 
 ## Related
 

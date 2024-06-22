@@ -21,9 +21,7 @@ BitMaskClear(number=[integer], start=[integer], length=[integer])
 
 ## Examples
 
-```
-BitMaskClear(number=[integer], start=[integer], length=[integer])
-```
+
 
 ## Related
 

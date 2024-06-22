@@ -6,14 +6,27 @@
 
 ## File Methods
 
-<dl>
-<dt><code>close()</code></dt><dd>Closes either the read or write stream</dd>
-<dt><code>getLastModifedTime()</code></dt><dd>Retrieves the last modified time of a file</dd>
-<dt><code>info()</code></dt><dd>Returns a struct of file information.
+<details>
+<summary><code>close()</code></summary>
+Closes either the read or write stream
+</details>
+<details>
+<summary><code>getLastModifedTime()</code></summary>
+Retrieves the last modified time of a file
+</details>
+<details>
+<summary><code>info()</code></summary>
+Returns a struct of file information.
 
-Different values are returned for FileInfo and GetFileInfo</dd>
-<dt><code>readLine()</code></dt><dd>Returns the next line from the file object stream</dd>
-<dt><code>seek(position=[integer])</code></dt><dd>Moves the buffer cursor position forward the number of characters specified by the position argument
+Different values are returned for FileInfo and GetFileInfo
+</details>
+<details>
+<summary><code>readLine()</code></summary>
+Returns the next line from the file object stream
+</details>
+<details>
+<summary><code>seek(position=[integer])</code></summary>
+Moves the buffer cursor position forward the number of characters specified by the position argument
 
  Arguments:
 
@@ -21,8 +34,11 @@ Different values are returned for FileInfo and GetFileInfo</dd>
 |----------|------|----------|---------|
 | `position` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>setAccessMode(mode=[string])</code></dt><dd>Sets the Posix permissions on a file
+
+</details>
+<details>
+<summary><code>setAccessMode(mode=[string])</code></summary>
+Sets the Posix permissions on a file
 
  Arguments:
 
@@ -30,8 +46,11 @@ Different values are returned for FileInfo and GetFileInfo</dd>
 |----------|------|----------|---------|
 | `mode` | `string` | `true` | `` |
 
-</dd>
-<dt><code>setAttribute(attribute=[string])</code></dt><dd>Sets a file access attribute
+
+</details>
+<details>
+<summary><code>setAttribute(attribute=[string])</code></summary>
+Sets a file access attribute
 
  Arguments:
 
@@ -39,8 +58,11 @@ Different values are returned for FileInfo and GetFileInfo</dd>
 |----------|------|----------|---------|
 | `attribute` | `string` | `true` | `` |
 
-</dd>
-<dt><code>setLastModified(date=[any])</code></dt><dd>Sets the last modified time of a file
+
+</details>
+<details>
+<summary><code>setLastModified(date=[any])</code></summary>
+Sets the last modified time of a file
 
  Arguments:
 
@@ -48,8 +70,11 @@ Different values are returned for FileInfo and GetFileInfo</dd>
 |----------|------|----------|---------|
 | `date` | `any` | `true` | `` |
 
-</dd>
-<dt><code>skipBytes(position=[integer])</code></dt><dd>Moves the buffer cursor position forward the number of characters specified by the position argument
+
+</details>
+<details>
+<summary><code>skipBytes(position=[integer])</code></summary>
+Moves the buffer cursor position forward the number of characters specified by the position argument
 
  Arguments:
 
@@ -57,8 +82,11 @@ Different values are returned for FileInfo and GetFileInfo</dd>
 |----------|------|----------|---------|
 | `position` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>writeLine(data=[string])</code></dt><dd>Writes a line of data to a file
+
+</details>
+<details>
+<summary><code>writeLine(data=[string])</code></summary>
+Writes a line of data to a file
 
  Arguments:
 
@@ -66,8 +94,8 @@ Different values are returned for FileInfo and GetFileInfo</dd>
 |----------|------|----------|---------|
 | `data` | `string` | `true` | `` |
 
-</dd>
 
-</dl>
+</details>
+
 
 ## Examples

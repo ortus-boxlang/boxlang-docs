@@ -23,9 +23,7 @@ CreateTimeSpan(days=[long], hours=[long], minutes=[long], seconds=[long], millis
 
 ## Examples
 
-```
-CreateTimeSpan(days=[long], hours=[long], minutes=[long], seconds=[long], milliseconds=[long])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ ArrayGetMetadata(array=[array])
 
 ## Examples
 
-```
-ArrayGetMetadata(array=[array])
-```
+
 
 ## Related
 

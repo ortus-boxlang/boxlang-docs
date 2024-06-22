@@ -22,9 +22,7 @@ FileWrite(file=[string], data=[any], charset=[string], createPath=[boolean])
 
 ## Examples
 
-```
-FileWrite(file=[string], data=[any], charset=[string], createPath=[boolean])
-```
+
 
 ## Related
 

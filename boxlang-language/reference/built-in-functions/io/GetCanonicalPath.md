@@ -19,9 +19,7 @@ GetCanonicalPath(path=[string])
 
 ## Examples
 
-```
-GetCanonicalPath(path=[string])
-```
+
 
 ## Related
 

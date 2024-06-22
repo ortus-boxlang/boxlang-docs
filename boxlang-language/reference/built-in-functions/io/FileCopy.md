@@ -21,9 +21,7 @@ FileCopy(source=[string], destination=[string], createPath=[boolean])
 
 ## Examples
 
-```
-FileCopy(source=[string], destination=[string], createPath=[boolean])
-```
+
 
 ## Related
 

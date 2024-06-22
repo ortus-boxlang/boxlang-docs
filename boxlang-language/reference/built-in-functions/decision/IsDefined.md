@@ -29,9 +29,7 @@ IsDefined(variable=[string])
 
 ## Examples
 
-```
-IsDefined(variable=[string])
-```
+
 
 ## Related
 

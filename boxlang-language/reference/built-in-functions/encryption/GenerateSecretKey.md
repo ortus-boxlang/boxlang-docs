@@ -21,9 +21,7 @@ GenerateSecretKey(algorithm=[string], keySize=[numeric])
 
 ## Examples
 
-```
-GenerateSecretKey(algorithm=[string], keySize=[numeric])
-```
+
 
 ## Related
 

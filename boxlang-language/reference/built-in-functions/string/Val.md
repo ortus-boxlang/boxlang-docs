@@ -22,9 +22,7 @@ Val(string=[string])
 
 ## Examples
 
-```
-Val(string=[string])
-```
+
 
 ## Related
 

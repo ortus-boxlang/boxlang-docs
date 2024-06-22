@@ -20,9 +20,7 @@ ArrayFindAll(array=[array], value=[any])
 
 ## Examples
 
-```
-ArrayFindAll(array=[array], value=[any])
-```
+
 
 ## Related
 

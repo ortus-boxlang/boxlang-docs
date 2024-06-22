@@ -20,9 +20,7 @@ ArrayPop(array=[modifiablearray], defaultValue=[any])
 
 ## Examples
 
-```
-ArrayPop(array=[modifiablearray], defaultValue=[any])
-```
+
 
 ## Related
 

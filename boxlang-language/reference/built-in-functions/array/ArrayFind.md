@@ -23,9 +23,7 @@ ArrayFind(array=[array], value=[any], substringMatch=[boolean])
 
 ## Examples
 
-```
-ArrayFind(array=[array], value=[any], substringMatch=[boolean])
-```
+
 
 ## Related
 

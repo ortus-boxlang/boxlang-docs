@@ -20,9 +20,7 @@ FileSkipBytes(file=[any], position=[integer])
 
 ## Examples
 
-```
-FileSkipBytes(file=[any], position=[integer])
-```
+
 
 ## Related
 

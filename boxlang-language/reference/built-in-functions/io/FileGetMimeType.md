@@ -20,9 +20,7 @@ FileGetMimeType(file=[string], strict=[boolean])
 
 ## Examples
 
-```
-FileGetMimeType(file=[string], strict=[boolean])
-```
+
 
 ## Related
 

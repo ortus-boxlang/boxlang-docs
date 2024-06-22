@@ -19,9 +19,7 @@ GetDirectoryFromPath(path=[string])
 
 ## Examples
 
-```
-GetDirectoryFromPath(path=[string])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ StructUpdate(struct=[modifiableStruct], key=[string], value=[any])
 
 ## Examples
 
-```
-StructUpdate(struct=[modifiableStruct], key=[string], value=[any])
-```
+
 
 ## Related
 

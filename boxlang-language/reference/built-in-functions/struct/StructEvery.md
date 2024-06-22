@@ -22,9 +22,7 @@ StructEvery(struct=[structloose], callback=[function], parallel=[boolean], maxTh
 
 ## Examples
 
-```
-StructEvery(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

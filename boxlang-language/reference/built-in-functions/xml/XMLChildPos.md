@@ -23,9 +23,7 @@ XMLChildPos(elem=[XML], childname=[string], n=[integer])
 
 ## Examples
 
-```
-XMLChildPos(elem=[XML], childname=[string], n=[integer])
-```
+
 
 ## Related
 

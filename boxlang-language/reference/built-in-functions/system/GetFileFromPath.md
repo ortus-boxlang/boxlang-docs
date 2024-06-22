@@ -19,9 +19,7 @@ GetFileFromPath(path=[string])
 
 ## Examples
 
-```
-GetFileFromPath(path=[string])
-```
+
 
 ## Related
 

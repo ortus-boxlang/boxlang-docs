@@ -6,8 +6,9 @@ This type represents an XML Object in BoxLang
 
 ## Xml Methods
 
-<dl>
-<dt><code>childPos(childname=[string], n=[integer])</code></dt><dd>Gets the position of a child element within an XML document object.
+<details>
+<summary><code>childPos(childname=[string], n=[integer])</code></summary>
+Gets the position of a child element within an XML document object.
 
 The position, in an XmlChildren array, of the Nth child that has the specified name.
 
@@ -18,9 +19,15 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 | `childname` | `string` | `true` | `` |
 | `n` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>getNodeType()</code></dt><dd>Get XML values according to given xPath query</dd>
-<dt><code>search(xpath=[String], params=[Struct])</code></dt><dd>Get XML values according to given xPath query
+
+</details>
+<details>
+<summary><code>getNodeType()</code></summary>
+Get XML values according to given xPath query
+</details>
+<details>
+<summary><code>search(xpath=[String], params=[Struct])</code></summary>
+Get XML values according to given xPath query
 
  Arguments:
 
@@ -29,8 +36,11 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 | `xpath` | `String` | `true` | `` |
 | `params` | `Struct` | `false` | `{}` |
 
-</dd>
-<dt><code>toString(encoding=[string])</code></dt><dd>Converts a value to a string.
+
+</details>
+<details>
+<summary><code>toString(encoding=[string])</code></summary>
+Converts a value to a string.
 
  Arguments:
 
@@ -38,8 +48,11 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 |----------|------|----------|---------|
 | `encoding` | `string` | `false` | `` |
 
-</dd>
-<dt><code>transform(XSL=[String], parameters=[Struct])</code></dt><dd>Get XML values according to given xPath query
+
+</details>
+<details>
+<summary><code>transform(XSL=[String], parameters=[Struct])</code></summary>
+Get XML values according to given xPath query
 
  Arguments:
 
@@ -48,8 +61,8 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 | `XSL` | `String` | `true` | `` |
 | `parameters` | `Struct` | `false` | `{}` |
 
-</dd>
 
-</dl>
+</details>
+
 
 ## Examples

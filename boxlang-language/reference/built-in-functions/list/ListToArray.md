@@ -22,9 +22,7 @@ ListToArray(list=[string], delimiter=[string], includeEmptyFields=[boolean], mul
 
 ## Examples
 
-```
-ListToArray(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

@@ -23,9 +23,7 @@ Hmac(input=[any], key=[string], algorithm=[string], encoding=[string], numIterat
 
 ## Examples
 
-```
-Hmac(input=[any], key=[string], algorithm=[string], encoding=[string], numIterations=[integer])
-```
+
 
 ## Related
 

@@ -26,9 +26,7 @@ ListDeleteAt(list=[string], position=[numeric], delimiter=[string], includeEmpty
 
 ## Examples
 
-```
-ListDeleteAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

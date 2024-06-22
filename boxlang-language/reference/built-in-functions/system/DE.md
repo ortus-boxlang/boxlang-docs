@@ -22,9 +22,7 @@ DE(string=[string])
 
 ## Examples
 
-```
-DE(string=[string])
-```
+
 
 ## Related
 

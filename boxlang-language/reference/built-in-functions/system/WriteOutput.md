@@ -19,9 +19,7 @@ WriteOutput(message=[any])
 
 ## Examples
 
-```
-WriteOutput(message=[any])
-```
+
 
 ## Related
 

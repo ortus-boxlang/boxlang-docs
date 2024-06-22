@@ -19,9 +19,7 @@ ArrayLen(value=[any])
 
 ## Examples
 
-```
-ArrayLen(value=[any])
-```
+
 
 ## Related
 

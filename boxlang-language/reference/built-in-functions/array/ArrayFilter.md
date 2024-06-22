@@ -23,9 +23,7 @@ ArrayFilter(array=[array], callback=[function], parallel=[boolean], maxThreads=[
 
 ## Examples
 
-```
-ArrayFilter(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
-```
+
 
 ## Related
 

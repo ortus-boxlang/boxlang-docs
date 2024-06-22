@@ -19,9 +19,7 @@ Round(number=[numeric])
 
 ## Examples
 
-```
-Round(number=[numeric])
-```
+
 
 ## Related
 

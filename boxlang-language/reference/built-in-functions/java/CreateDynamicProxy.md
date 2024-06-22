@@ -25,9 +25,7 @@ CreateDynamicProxy(class=[any], interfaces=[any])
 
 ## Examples
 
-```
-CreateDynamicProxy(class=[any], interfaces=[any])
-```
+
 
 ## Related
 

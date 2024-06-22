@@ -20,9 +20,7 @@ DaysInMonth(date=[any], timezone=[string])
 
 ## Examples
 
-```
-DaysInMonth(date=[any], timezone=[string])
-```
+
 
 ## Related
 

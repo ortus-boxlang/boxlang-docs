@@ -21,9 +21,7 @@ Find(substring=[string], string=[string], start=[integer])
 
 ## Examples
 
-```
-Find(substring=[string], string=[string], start=[integer])
-```
+
 
 ## Related
 

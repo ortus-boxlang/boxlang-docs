@@ -21,9 +21,7 @@ Randomize(seed=[numeric], algorithm=[string])
 
 ## Examples
 
-```
-Randomize(seed=[numeric], algorithm=[string])
-```
+
 
 ## Related
 

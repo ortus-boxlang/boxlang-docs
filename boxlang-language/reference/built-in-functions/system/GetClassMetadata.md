@@ -19,9 +19,7 @@ GetClassMetadata(path=[any])
 
 ## Examples
 
-```
-GetClassMetadata(path=[any])
-```
+
 
 ## Related
 

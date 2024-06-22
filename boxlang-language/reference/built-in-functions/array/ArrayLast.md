@@ -19,9 +19,7 @@ ArrayLast(array=[array])
 
 ## Examples
 
-```
-ArrayLast(array=[array])
-```
+
 
 ## Related
 

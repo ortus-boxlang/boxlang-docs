@@ -21,9 +21,7 @@ ArraySlice(array=[array], start=[integer], length=[integer])
 
 ## Examples
 
-```
-ArraySlice(array=[array], start=[integer], length=[integer])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ Tan(number=[numeric])
 
 ## Examples
 
-```
-Tan(number=[numeric])
-```
+
 
 ## Related
 

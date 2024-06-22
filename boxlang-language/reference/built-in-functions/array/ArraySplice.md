@@ -25,9 +25,7 @@ ArraySplice(array=[modifiablearray], index=[numeric], elementCountForRemoval=[nu
 
 ## Examples
 
-```
-ArraySplice(array=[modifiablearray], index=[numeric], elementCountForRemoval=[numeric], replacements=[array])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ FileDelete(file=[string])
 
 ## Examples
 
-```
-FileDelete(file=[string])
-```
+
 
 ## Related
 

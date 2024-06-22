@@ -19,9 +19,7 @@ IsNull(object=[any])
 
 ## Examples
 
-```
-IsNull(object=[any])
-```
+
 
 ## Related
 

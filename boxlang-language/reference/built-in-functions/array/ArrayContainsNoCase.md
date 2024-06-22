@@ -23,9 +23,7 @@ ArrayContainsNoCase(array=[array], value=[any], substringMatch=[boolean])
 
 ## Examples
 
-```
-ArrayContainsNoCase(array=[array], value=[any], substringMatch=[boolean])
-```
+
 
 ## Related
 

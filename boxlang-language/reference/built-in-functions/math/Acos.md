@@ -19,9 +19,7 @@ Acos(number=[numeric])
 
 ## Examples
 
-```
-Acos(number=[numeric])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ ArrayIsDefined(array=[array], index=[any])
 
 ## Examples
 
-```
-ArrayIsDefined(array=[array], index=[any])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ IsLeapYear(year=[numeric])
 
 ## Examples
 
-```
-IsLeapYear(year=[numeric])
-```
+
 
 ## Related
 

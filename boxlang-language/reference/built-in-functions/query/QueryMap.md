@@ -22,9 +22,7 @@ QueryMap(query=[query], callback=[function], parallel=[boolean], maxThreads=[int
 
 ## Examples
 
-```
-QueryMap(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

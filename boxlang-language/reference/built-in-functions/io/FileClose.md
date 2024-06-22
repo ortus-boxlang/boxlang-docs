@@ -19,9 +19,7 @@ FileClose(file=[any])
 
 ## Examples
 
-```
-FileClose(file=[any])
-```
+
 
 ## Related
 

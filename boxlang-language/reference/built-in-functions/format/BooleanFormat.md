@@ -19,9 +19,7 @@ BooleanFormat(value=[any])
 
 ## Examples
 
-```
-BooleanFormat(value=[any])
-```
+
 
 ## Related
 

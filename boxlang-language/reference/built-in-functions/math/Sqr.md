@@ -19,9 +19,7 @@ Sqr(value=[numeric])
 
 ## Examples
 
-```
-Sqr(value=[numeric])
-```
+
 
 ## Related
 

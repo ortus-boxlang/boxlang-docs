@@ -20,9 +20,7 @@ GetTimezoneInfo(timezone=[string], locale=[string])
 
 ## Examples
 
-```
-GetTimezoneInfo(timezone=[string], locale=[string])
-```
+
 
 ## Related
 

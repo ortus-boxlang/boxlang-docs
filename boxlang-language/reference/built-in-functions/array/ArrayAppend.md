@@ -21,9 +21,7 @@ ArrayAppend(array=[modifiableArray], value=[any], merge=[boolean])
 
 ## Examples
 
-```
-ArrayAppend(array=[modifiableArray], value=[any], merge=[boolean])
-```
+
 
 ## Related
 

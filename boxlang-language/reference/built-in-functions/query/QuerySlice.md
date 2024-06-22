@@ -21,9 +21,7 @@ QuerySlice(query=[query], offset=[integer], length=[integer])
 
 ## Examples
 
-```
-QuerySlice(query=[query], offset=[integer], length=[integer])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ QuerySetCell(query=[query], column=[string], value=[any], row=[integer])
 
 ## Examples
 
-```
-QuerySetCell(query=[query], column=[string], value=[any], row=[integer])
-```
+
 
 ## Related
 

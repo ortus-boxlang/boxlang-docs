@@ -21,9 +21,7 @@ Mid(string=[string], start=[integer], count=[integer])
 
 ## Examples
 
-```
-Mid(string=[string], start=[integer], count=[integer])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ Wrap(string=[string], limit=[integer], strip=[boolean])
 
 ## Examples
 
-```
-Wrap(string=[string], limit=[integer], strip=[boolean])
-```
+
 
 ## Related
 

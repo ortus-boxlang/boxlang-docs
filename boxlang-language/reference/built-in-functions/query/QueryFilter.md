@@ -22,9 +22,7 @@ QueryFilter(query=[query], callback=[function], parallel=[boolean], maxThreads=[
 
 ## Examples
 
-```
-QueryFilter(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

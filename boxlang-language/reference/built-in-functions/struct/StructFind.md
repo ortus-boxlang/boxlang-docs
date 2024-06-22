@@ -21,9 +21,7 @@ StructFind(struct=[structloose], key=[string], defaultValue=[any])
 
 ## Examples
 
-```
-StructFind(struct=[structloose], key=[string], defaultValue=[any])
-```
+
 
 ## Related
 

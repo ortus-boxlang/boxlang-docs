@@ -21,9 +21,7 @@ ParseDateTime(date=[any], format=[string], timezone=[string])
 
 ## Examples
 
-```
-ParseDateTime(date=[any], format=[string], timezone=[string])
-```
+
 
 ## Related
 

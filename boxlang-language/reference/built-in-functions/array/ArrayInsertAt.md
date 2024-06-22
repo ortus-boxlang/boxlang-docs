@@ -21,9 +21,7 @@ ArrayInsertAt(array=[modifiableArray], position=[integer], value=[any])
 
 ## Examples
 
-```
-ArrayInsertAt(array=[modifiableArray], position=[integer], value=[any])
-```
+
 
 ## Related
 

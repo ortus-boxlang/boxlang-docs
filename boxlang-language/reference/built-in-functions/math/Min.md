@@ -20,9 +20,7 @@ Min(number1=[numeric], number2=[numeric])
 
 ## Examples
 
-```
-Min(number1=[numeric], number2=[numeric])
-```
+
 
 ## Related
 

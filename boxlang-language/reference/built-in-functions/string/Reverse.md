@@ -19,9 +19,7 @@ Reverse(string=[string])
 
 ## Examples
 
-```
-Reverse(string=[string])
-```
+
 
 ## Related
 

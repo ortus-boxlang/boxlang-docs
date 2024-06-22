@@ -21,9 +21,7 @@ ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 
 ## Examples
 
-```
-ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

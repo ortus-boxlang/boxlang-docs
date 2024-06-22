@@ -24,9 +24,7 @@ IIF(condition=[boolean], expression1=[string], expression2=[string])
 
 ## Examples
 
-```
-IIF(condition=[boolean], expression1=[string], expression2=[string])
-```
+
 
 ## Related
 

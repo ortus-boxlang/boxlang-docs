@@ -20,9 +20,7 @@ QueryAddRow(query=[query], rowData=[any])
 
 ## Examples
 
-```
-QueryAddRow(query=[query], rowData=[any])
-```
+
 
 ## Related
 

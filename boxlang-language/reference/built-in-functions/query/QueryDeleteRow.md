@@ -20,9 +20,7 @@ QueryDeleteRow(query=[query], row=[integer])
 
 ## Examples
 
-```
-QueryDeleteRow(query=[query], row=[integer])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ ToImmutable(value=[any])
 
 ## Examples
 
-```
-ToImmutable(value=[any])
-```
+
 
 ## Related
 

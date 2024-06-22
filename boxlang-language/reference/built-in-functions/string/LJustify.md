@@ -20,9 +20,7 @@ LJustify(string=[string], length=[integer])
 
 ## Examples
 
-```
-LJustify(string=[string], length=[integer])
-```
+
 
 ## Related
 

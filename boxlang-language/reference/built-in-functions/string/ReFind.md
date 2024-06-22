@@ -26,9 +26,7 @@ ReFind(reg_expression=[string], string=[string], start=[integer], returnSubExpre
 
 ## Examples
 
-```
-ReFind(reg_expression=[string], string=[string], start=[integer], returnSubExpressions=[boolean], scope=[string])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ JSONPrettify(var=[string])
 
 ## Examples
 
-```
-JSONPrettify(var=[string])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ StructIsOrdered(struct=[structloose])
 
 ## Examples
 
-```
-StructIsOrdered(struct=[structloose])
-```
+
 
 ## Related
 

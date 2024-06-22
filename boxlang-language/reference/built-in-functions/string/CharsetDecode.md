@@ -20,9 +20,7 @@ CharsetDecode(encoded_binary=[string], encoding=[string])
 
 ## Examples
 
-```
-CharsetDecode(encoded_binary=[string], encoding=[string])
-```
+
 
 ## Related
 

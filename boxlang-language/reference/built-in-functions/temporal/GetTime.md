@@ -20,9 +20,7 @@ GetTime(date=[any], timezone=[string])
 
 ## Examples
 
-```
-GetTime(date=[any], timezone=[string])
-```
+
 
 ## Related
 

@@ -24,9 +24,7 @@ PrecisionEvaluate(expressions=[string])
 
 ## Examples
 
-```
-PrecisionEvaluate(expressions=[string])
-```
+
 
 ## Related
 

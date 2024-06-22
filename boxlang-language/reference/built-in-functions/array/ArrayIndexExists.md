@@ -20,9 +20,7 @@ ArrayIndexExists(array=[array], index=[any])
 
 ## Examples
 
-```
-ArrayIndexExists(array=[array], index=[any])
-```
+
 
 ## Related
 

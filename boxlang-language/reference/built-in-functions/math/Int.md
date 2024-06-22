@@ -19,9 +19,7 @@ Int(number=[numeric])
 
 ## Examples
 
-```
-Int(number=[numeric])
-```
+
 
 ## Related
 

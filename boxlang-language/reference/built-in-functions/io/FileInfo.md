@@ -21,9 +21,7 @@ FileInfo(file=[any])
 
 ## Examples
 
-```
-FileInfo(file=[any])
-```
+
 
 ## Related
 

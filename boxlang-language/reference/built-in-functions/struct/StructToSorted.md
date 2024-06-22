@@ -23,9 +23,7 @@ StructToSorted(struct=[structloose], sortType=[any], sortOrder=[string], localeS
 
 ## Examples
 
-```
-StructToSorted(struct=[structloose], sortType=[any], sortOrder=[string], localeSensitive=[any], callback=[function])
-```
+
 
 ## Related
 

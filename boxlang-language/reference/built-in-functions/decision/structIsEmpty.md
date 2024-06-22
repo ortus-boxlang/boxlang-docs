@@ -19,9 +19,7 @@ structIsEmpty(value=[any])
 
 ## Examples
 
-```
-structIsEmpty(value=[any])
-```
+
 
 ## Related
 

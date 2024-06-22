@@ -21,9 +21,7 @@ FindOneOf(set=[string], string=[string], start=[integer])
 
 ## Examples
 
-```
-FindOneOf(set=[string], string=[string], start=[integer])
-```
+
 
 ## Related
 

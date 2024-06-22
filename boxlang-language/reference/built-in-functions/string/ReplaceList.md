@@ -24,9 +24,7 @@ ReplaceList(string=[string], list1=[string], list2=[string], delimiter_list1=[st
 
 ## Examples
 
-```
-ReplaceList(string=[string], list1=[string], list2=[string], delimiter_list1=[string], delimiter_list2=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

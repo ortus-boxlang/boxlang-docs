@@ -21,9 +21,7 @@ DateCompare(date1=[any], date2=[any], datepart=[string])
 
 ## Examples
 
-```
-DateCompare(date1=[any], date2=[any], datepart=[string])
-```
+
 
 ## Related
 

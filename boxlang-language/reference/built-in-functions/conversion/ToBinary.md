@@ -19,9 +19,7 @@ ToBinary(base64_or_object =[any])
 
 ## Examples
 
-```
-ToBinary(base64_or_object =[any])
-```
+
 
 ## Related
 

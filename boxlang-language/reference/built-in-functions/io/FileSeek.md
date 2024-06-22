@@ -20,9 +20,7 @@ FileSeek(file=[any], position=[integer])
 
 ## Examples
 
-```
-FileSeek(file=[any], position=[integer])
-```
+
 
 ## Related
 

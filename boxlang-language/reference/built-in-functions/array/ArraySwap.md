@@ -23,9 +23,7 @@ ArraySwap(array=[array], position1=[any], position2=[any])
 
 ## Examples
 
-```
-ArraySwap(array=[array], position1=[any], position2=[any])
-```
+
 
 ## Related
 

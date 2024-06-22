@@ -21,9 +21,7 @@ LSIsDate(date=[any], locale=[string], timezone=[string])
 
 ## Examples
 
-```
-LSIsDate(date=[any], locale=[string], timezone=[string])
-```
+
 
 ## Related
 

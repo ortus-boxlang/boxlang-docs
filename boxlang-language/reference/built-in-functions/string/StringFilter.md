@@ -25,9 +25,7 @@ StringFilter(list=[string], filter=[function], delimiter=[string], includeEmptyF
 
 ## Examples
 
-```
-StringFilter(list=[string], filter=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

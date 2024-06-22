@@ -21,9 +21,7 @@ DirectoryMove(oldPath=[string], newPath=[string], createPath=[boolean])
 
 ## Examples
 
-```
-DirectoryMove(oldPath=[string], newPath=[string], createPath=[boolean])
-```
+
 
 ## Related
 

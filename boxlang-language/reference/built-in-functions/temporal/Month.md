@@ -20,9 +20,7 @@ Month(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Month(date=[any], timezone=[string])
-```
+
 
 ## Related
 

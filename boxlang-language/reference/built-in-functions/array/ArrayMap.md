@@ -26,9 +26,7 @@ ArrayMap(array=[array], callback=[function], parallel=[boolean], maxThreads=[int
 
 ## Examples
 
-```
-ArrayMap(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
-```
+
 
 ## Related
 

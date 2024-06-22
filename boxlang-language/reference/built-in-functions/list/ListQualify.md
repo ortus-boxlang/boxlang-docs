@@ -23,9 +23,7 @@ ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[str
 
 ## Examples
 
-```
-ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

@@ -23,9 +23,7 @@ ArraySome(array=[array], callback=[function], parallel=[boolean], maxThreads=[in
 
 ## Examples
 
-```
-ArraySome(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
-```
+
 
 ## Related
 

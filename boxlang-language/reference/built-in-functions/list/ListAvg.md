@@ -21,9 +21,7 @@ ListAvg(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
 
 ## Examples
 
-```
-ListAvg(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

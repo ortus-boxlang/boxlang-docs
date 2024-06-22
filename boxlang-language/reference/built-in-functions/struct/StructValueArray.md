@@ -19,9 +19,7 @@ StructValueArray(struct=[structloose])
 
 ## Examples
 
-```
-StructValueArray(struct=[structloose])
-```
+
 
 ## Related
 

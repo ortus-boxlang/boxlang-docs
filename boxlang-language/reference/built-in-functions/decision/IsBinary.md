@@ -19,9 +19,7 @@ IsBinary(value=[any])
 
 ## Examples
 
-```
-IsBinary(value=[any])
-```
+
 
 ## Related
 

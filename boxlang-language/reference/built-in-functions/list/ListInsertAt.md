@@ -24,9 +24,7 @@ ListInsertAt(list=[string], position=[integer], value=[string], delimiter=[strin
 
 ## Examples
 
-```
-ListInsertAt(list=[string], position=[integer], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ reMatchNoCase(reg_expression=[string], string=[string])
 
 ## Examples
 
-```
-reMatchNoCase(reg_expression=[string], string=[string])
-```
+
 
 ## Related
 

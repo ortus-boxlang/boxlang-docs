@@ -21,9 +21,7 @@ ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean])
 
 ## Examples
 
-```
-ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ ExpandPath(path=[string])
 
 ## Examples
 
-```
-ExpandPath(path=[string])
-```
+
 
 ## Related
 

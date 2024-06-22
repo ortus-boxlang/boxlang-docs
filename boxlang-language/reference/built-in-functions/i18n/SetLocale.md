@@ -19,9 +19,7 @@ SetLocale(locale=[string])
 
 ## Examples
 
-```
-SetLocale(locale=[string])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ BitMaskRead(number=[integer], start=[integer], length=[integer])
 
 ## Examples
 
-```
-BitMaskRead(number=[integer], start=[integer], length=[integer])
-```
+
 
 ## Related
 

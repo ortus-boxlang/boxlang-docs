@@ -21,9 +21,7 @@ CreateTempFile(directory=[string], prefix=[string], suffix=[string])
 
 ## Examples
 
-```
-CreateTempFile(directory=[string], prefix=[string], suffix=[string])
-```
+
 
 ## Related
 

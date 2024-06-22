@@ -19,9 +19,7 @@ StructCount(value=[any])
 
 ## Examples
 
-```
-StructCount(value=[any])
-```
+
 
 ## Related
 

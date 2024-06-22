@@ -23,9 +23,7 @@ LSDayOfWeek(date=[any], locale=[string], timezone=[string])
 
 ## Examples
 
-```
-LSDayOfWeek(date=[any], locale=[string], timezone=[string])
-```
+
 
 ## Related
 

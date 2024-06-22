@@ -23,9 +23,7 @@ StructSort(struct=[structloose], sortType=[any], sortOrder=[string], path=[strin
 
 ## Examples
 
-```
-StructSort(struct=[structloose], sortType=[any], sortOrder=[string], path=[string], callback=[function])
-```
+
 
 ## Related
 

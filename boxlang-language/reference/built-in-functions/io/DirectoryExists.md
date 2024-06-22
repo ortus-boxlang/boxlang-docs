@@ -20,9 +20,7 @@ DirectoryExists(path=[string], allowRealPath=[boolean])
 
 ## Examples
 
-```
-DirectoryExists(path=[string], allowRealPath=[boolean])
-```
+
 
 ## Related
 

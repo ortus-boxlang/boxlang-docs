@@ -20,9 +20,7 @@ Day(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Day(date=[any], timezone=[string])
-```
+
 
 ## Related
 

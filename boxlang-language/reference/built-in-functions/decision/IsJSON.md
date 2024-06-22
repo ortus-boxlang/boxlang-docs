@@ -19,9 +19,7 @@ IsJSON(var=[any])
 
 ## Examples
 
-```
-IsJSON(var=[any])
-```
+
 
 ## Related
 

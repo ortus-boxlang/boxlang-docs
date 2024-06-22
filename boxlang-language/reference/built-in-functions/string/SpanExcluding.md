@@ -22,9 +22,7 @@ SpanExcluding(string=[string], set=[string])
 
 ## Examples
 
-```
-SpanExcluding(string=[string], set=[string])
-```
+
 
 ## Related
 

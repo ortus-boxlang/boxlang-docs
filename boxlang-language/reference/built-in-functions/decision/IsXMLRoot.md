@@ -19,9 +19,7 @@ IsXMLRoot(value=[any])
 
 ## Examples
 
-```
-IsXMLRoot(value=[any])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ CharsetEncode(binary=[any], encoding=[string])
 
 ## Examples
 
-```
-CharsetEncode(binary=[any], encoding=[string])
-```
+
 
 ## Related
 

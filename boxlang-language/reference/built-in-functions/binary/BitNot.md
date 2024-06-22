@@ -19,9 +19,7 @@ BitNot(number=[integer])
 
 ## Examples
 
-```
-BitNot(number=[integer])
-```
+
 
 ## Related
 

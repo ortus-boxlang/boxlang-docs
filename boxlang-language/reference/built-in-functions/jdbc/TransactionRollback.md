@@ -24,9 +24,7 @@ TransactionRollback(savepoint=[string])
 
 ## Examples
 
-```
-TransactionRollback(savepoint=[string])
-```
+
 
 ## Related
 

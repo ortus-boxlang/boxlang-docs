@@ -21,9 +21,7 @@ Slugify(string=[string], maxLength=[numeric], allow=[string])
 
 ## Examples
 
-```
-Slugify(string=[string], maxLength=[numeric], allow=[string])
-```
+
 
 ## Related
 

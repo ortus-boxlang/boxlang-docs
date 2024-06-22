@@ -22,9 +22,7 @@ IsObject(value=[any])
 
 ## Examples
 
-```
-IsObject(value=[any])
-```
+
 
 ## Related
 

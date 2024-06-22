@@ -20,9 +20,7 @@ StructEquals(struct1=[structloose], struct2=[structloose])
 
 ## Examples
 
-```
-StructEquals(struct1=[structloose], struct2=[structloose])
-```
+
 
 ## Related
 

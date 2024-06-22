@@ -20,9 +20,7 @@ QueryRowData(query=[query], rowNumber=[integer])
 
 ## Examples
 
-```
-QueryRowData(query=[query], rowNumber=[integer])
-```
+
 
 ## Related
 

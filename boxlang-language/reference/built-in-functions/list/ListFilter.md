@@ -25,9 +25,7 @@ ListFilter(list=[string], filter=[function], delimiter=[string], includeEmptyFie
 
 ## Examples
 
-```
-ListFilter(list=[string], filter=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

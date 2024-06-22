@@ -23,9 +23,7 @@ ArrayShift(array=[modifiablearray], defaultValue=[any])
 
 ## Examples
 
-```
-ArrayShift(array=[modifiablearray], defaultValue=[any])
-```
+
 
 ## Related
 

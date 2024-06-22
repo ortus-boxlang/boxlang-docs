@@ -24,9 +24,7 @@ ArrayEach(array=[array], callback=[function], parallel=[boolean], maxThreads=[in
 
 ## Examples
 
-```
-ArrayEach(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean], initialValue=[any])
-```
+
 
 ## Related
 

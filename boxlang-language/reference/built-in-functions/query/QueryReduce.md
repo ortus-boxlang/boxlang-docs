@@ -21,9 +21,7 @@ QueryReduce(query=[query], callback=[function], initialValue=[any])
 
 ## Examples
 
-```
-QueryReduce(query=[query], callback=[function], initialValue=[any])
-```
+
 
 ## Related
 

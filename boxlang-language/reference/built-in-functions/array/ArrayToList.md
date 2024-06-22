@@ -21,9 +21,7 @@ ArrayToList(array=[array], delimiter=[String], initialValue=[any])
 
 ## Examples
 
-```
-ArrayToList(array=[array], delimiter=[String], initialValue=[any])
-```
+
 
 ## Related
 

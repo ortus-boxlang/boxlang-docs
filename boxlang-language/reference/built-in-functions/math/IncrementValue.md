@@ -19,9 +19,7 @@ IncrementValue(number=[numeric])
 
 ## Examples
 
-```
-IncrementValue(number=[numeric])
-```
+
 
 ## Related
 

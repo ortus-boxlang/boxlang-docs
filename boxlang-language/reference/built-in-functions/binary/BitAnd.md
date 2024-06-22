@@ -20,9 +20,7 @@ BitAnd(number1=[integer], number2=[integer])
 
 ## Examples
 
-```
-BitAnd(number1=[integer], number2=[integer])
-```
+
 
 ## Related
 

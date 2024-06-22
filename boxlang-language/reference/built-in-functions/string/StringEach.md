@@ -26,9 +26,7 @@ StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyF
 
 ## Examples
 
-```
-StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
-```
+
 
 ## Related
 

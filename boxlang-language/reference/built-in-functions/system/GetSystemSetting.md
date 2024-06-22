@@ -24,9 +24,7 @@ GetSystemSetting(key=[String], defaultValue=[String])
 
 ## Examples
 
-```
-GetSystemSetting(key=[String], defaultValue=[String])
-```
+
 
 ## Related
 

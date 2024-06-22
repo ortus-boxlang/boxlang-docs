@@ -20,9 +20,7 @@ BinaryEncode(binary=[any], encoding=[string])
 
 ## Examples
 
-```
-BinaryEncode(binary=[any], encoding=[string])
-```
+
 
 ## Related
 

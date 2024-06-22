@@ -23,9 +23,7 @@ ListPrepend(list=[string], value=[string], delimiter=[string], includeEmptyField
 
 ## Examples
 
-```
-ListPrepend(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ XMLParse(XML=[string])
 
 ## Examples
 
-```
-XMLParse(XML=[string])
-```
+
 
 ## Related
 

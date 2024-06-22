@@ -20,9 +20,7 @@ RepeatString(string=[string], count=[integer])
 
 ## Examples
 
-```
-RepeatString(string=[string], count=[integer])
-```
+
 
 ## Related
 

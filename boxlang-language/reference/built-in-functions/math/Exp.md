@@ -19,9 +19,7 @@ Exp(number=[numeric])
 
 ## Examples
 
-```
-Exp(number=[numeric])
-```
+
 
 ## Related
 

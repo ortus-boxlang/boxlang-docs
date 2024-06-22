@@ -25,9 +25,7 @@ EncryptBinary(object=[any], key=[string], algorithm=[string], encoding=[string],
 
 ## Examples
 
-```
-EncryptBinary(object=[any], key=[string], algorithm=[string], encoding=[string], IVorSalt=[any], iterations=[integer], precise=[boolean])
-```
+
 
 ## Related
 

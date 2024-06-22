@@ -20,9 +20,7 @@ ParseCurrency(string=[string], locale=[string])
 
 ## Examples
 
-```
-ParseCurrency(string=[string], locale=[string])
-```
+
 
 ## Related
 

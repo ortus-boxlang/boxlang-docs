@@ -25,9 +25,7 @@ writeDump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boo
 
 ## Examples
 
-```
-writeDump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
-```
+
 
 ## Related
 

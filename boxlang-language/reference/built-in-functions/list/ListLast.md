@@ -22,9 +22,7 @@ ListLast(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiC
 
 ## Examples
 
-```
-ListLast(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ FindNoCase(substring=[string], string=[string], start=[integer])
 
 ## Examples
 
-```
-FindNoCase(substring=[string], string=[string], start=[integer])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ URLEncodedFormat(string=[any])
 
 ## Examples
 
-```
-URLEncodedFormat(string=[any])
-```
+
 
 ## Related
 

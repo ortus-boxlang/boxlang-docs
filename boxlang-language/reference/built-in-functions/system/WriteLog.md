@@ -22,9 +22,7 @@ WriteLog(text=[string], file=[string], log=[string], type=[string])
 
 ## Examples
 
-```
-WriteLog(text=[string], file=[string], log=[string], type=[string])
-```
+
 
 ## Related
 

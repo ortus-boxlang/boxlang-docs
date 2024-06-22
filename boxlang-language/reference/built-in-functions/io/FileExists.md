@@ -20,9 +20,7 @@ FileExists(source=[string], allowRealPath=[boolean])
 
 ## Examples
 
-```
-FileExists(source=[string], allowRealPath=[boolean])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ BoxAnnounce(state=[string], data=[struct])
 
 ## Examples
 
-```
-BoxAnnounce(state=[string], data=[struct])
-```
+
 
 ## Related
 

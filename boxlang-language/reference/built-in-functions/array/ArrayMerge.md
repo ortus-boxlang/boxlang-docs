@@ -24,9 +24,7 @@ ArrayMerge(array1=[array], array2=[array], leaveIndex=[boolean])
 
 ## Examples
 
-```
-ArrayMerge(array1=[array], array2=[array], leaveIndex=[boolean])
-```
+
 
 ## Related
 

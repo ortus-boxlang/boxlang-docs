@@ -21,9 +21,7 @@ DateDiff(datepart=[string], date1=[any], date2=[any])
 
 ## Examples
 
-```
-DateDiff(datepart=[string], date1=[any], date2=[any])
-```
+
 
 ## Related
 

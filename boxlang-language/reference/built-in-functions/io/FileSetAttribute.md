@@ -20,9 +20,7 @@ FileSetAttribute(file=[any], attribute=[string])
 
 ## Examples
 
-```
-FileSetAttribute(file=[any], attribute=[string])
-```
+
 
 ## Related
 

@@ -29,9 +29,7 @@ CreateDate(year=[integer], month=[integer], day=[integer], hour=[integer], minut
 
 ## Examples
 
-```
-CreateDate(year=[integer], month=[integer], day=[integer], hour=[integer], minute=[integer], second=[integer], millisecond=[integer], timezone=[string])
-```
+
 
 ## Related
 

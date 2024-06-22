@@ -21,9 +21,7 @@ DirectoryRename(oldPath=[string], newPath=[string], createPath=[boolean])
 
 ## Examples
 
-```
-DirectoryRename(oldPath=[string], newPath=[string], createPath=[boolean])
-```
+
 
 ## Related
 

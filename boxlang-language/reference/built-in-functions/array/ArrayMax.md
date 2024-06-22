@@ -19,9 +19,7 @@ ArrayMax(array=[array])
 
 ## Examples
 
-```
-ArrayMax(array=[array])
-```
+
 
 ## Related
 

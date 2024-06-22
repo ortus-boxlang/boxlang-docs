@@ -20,9 +20,7 @@ MonthAsString(date=[any], timezone=[string])
 
 ## Examples
 
-```
-MonthAsString(date=[any], timezone=[string])
-```
+
 
 ## Related
 

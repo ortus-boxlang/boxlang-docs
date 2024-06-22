@@ -19,9 +19,7 @@ Sgn(number=[numeric])
 
 ## Examples
 
-```
-Sgn(number=[numeric])
-```
+
 
 ## Related
 

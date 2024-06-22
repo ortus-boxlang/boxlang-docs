@@ -21,9 +21,7 @@ CurrencyFormat(number=[any], type=[string], locale=[string])
 
 ## Examples
 
-```
-CurrencyFormat(number=[any], type=[string], locale=[string])
-```
+
 
 ## Related
 

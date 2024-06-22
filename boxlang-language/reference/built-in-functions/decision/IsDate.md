@@ -19,9 +19,7 @@ IsDate(value=[any])
 
 ## Examples
 
-```
-IsDate(value=[any])
-```
+
 
 ## Related
 

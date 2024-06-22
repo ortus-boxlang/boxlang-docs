@@ -20,9 +20,7 @@ Attempt(value=[any])
 
 ## Examples
 
-```
-Attempt(value=[any])
-```
+
 
 ## Related
 

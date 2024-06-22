@@ -19,9 +19,7 @@ QueryColumnCount(query=[query])
 
 ## Examples
 
-```
-QueryColumnCount(query=[query])
-```
+
 
 ## Related
 

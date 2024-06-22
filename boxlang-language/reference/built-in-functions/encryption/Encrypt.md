@@ -25,9 +25,7 @@ Encrypt(object=[any], key=[string], algorithm=[string], encoding=[string], IVorS
 
 ## Examples
 
-```
-Encrypt(object=[any], key=[string], algorithm=[string], encoding=[string], IVorSalt=[any], iterations=[integer], precise=[boolean])
-```
+
 
 ## Related
 

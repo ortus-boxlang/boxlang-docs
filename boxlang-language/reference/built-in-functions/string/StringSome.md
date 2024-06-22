@@ -25,9 +25,7 @@ StringSome(list=[string], callback=[function], delimiter=[string], includeEmptyF
 
 ## Examples
 
-```
-StringSome(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

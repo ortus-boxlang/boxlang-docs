@@ -21,9 +21,7 @@ FileAppend(file=[any], data=[any], charset=[string])
 
 ## Examples
 
-```
-FileAppend(file=[any], data=[any], charset=[string])
-```
+
 
 ## Related
 

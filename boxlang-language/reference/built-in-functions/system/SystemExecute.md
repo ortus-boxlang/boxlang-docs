@@ -35,9 +35,7 @@ SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout
 
 ## Examples
 
-```
-SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout=[boolean], directory=[string], output=[string], error=[string])
-```
+
 
 ## Related
 

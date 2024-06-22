@@ -20,9 +20,7 @@ URLDecode(string=[any], charset=[string])
 
 ## Examples
 
-```
-URLDecode(string=[any], charset=[string])
-```
+
 
 ## Related
 

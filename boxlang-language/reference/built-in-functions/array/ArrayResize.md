@@ -24,9 +24,7 @@ ArrayResize(array=[modifiablearray], size=[any])
 
 ## Examples
 
-```
-ArrayResize(array=[modifiablearray], size=[any])
-```
+
 
 ## Related
 

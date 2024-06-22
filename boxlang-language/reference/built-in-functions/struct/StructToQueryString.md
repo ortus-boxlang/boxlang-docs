@@ -23,9 +23,7 @@ StructToQueryString(struct=[structloose], delimiter=[string])
 
 ## Examples
 
-```
-StructToQueryString(struct=[structloose], delimiter=[string])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ Len(value=[any])
 
 ## Examples
 
-```
-Len(value=[any])
-```
+
 
 ## Related
 

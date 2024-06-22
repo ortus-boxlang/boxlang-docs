@@ -19,9 +19,7 @@ DecrementValue(number=[numeric])
 
 ## Examples
 
-```
-DecrementValue(number=[numeric])
-```
+
 
 ## Related
 

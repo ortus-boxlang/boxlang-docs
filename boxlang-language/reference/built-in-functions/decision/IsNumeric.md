@@ -20,9 +20,7 @@ IsNumeric(string=[any], locale=[string])
 
 ## Examples
 
-```
-IsNumeric(string=[any], locale=[string])
-```
+
 
 ## Related
 

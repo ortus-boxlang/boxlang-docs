@@ -22,9 +22,7 @@ JSONSerialize(var=[any], queryFormat=[string], useSecureJSONPrefix=[boolean], us
 
 ## Examples
 
-```
-JSONSerialize(var=[any], queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])
-```
+
 
 ## Related
 

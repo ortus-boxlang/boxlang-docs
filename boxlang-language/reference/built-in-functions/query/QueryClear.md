@@ -19,9 +19,7 @@ QueryClear(query=[query])
 
 ## Examples
 
-```
-QueryClear(query=[query])
-```
+
 
 ## Related
 

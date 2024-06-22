@@ -22,9 +22,7 @@ StructSome(struct=[structloose], callback=[function], parallel=[boolean], maxThr
 
 ## Examples
 
-```
-StructSome(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

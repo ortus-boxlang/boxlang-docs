@@ -20,9 +20,7 @@ ArrayFindAllNoCase(array=[array], value=[any])
 
 ## Examples
 
-```
-ArrayFindAllNoCase(array=[array], value=[any])
-```
+
 
 ## Related
 

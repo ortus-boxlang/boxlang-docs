@@ -21,9 +21,7 @@ StructAppend(struct1=[structloose], struct2=[structloose], overwrite=[boolean])
 
 ## Examples
 
-```
-StructAppend(struct1=[structloose], struct2=[structloose], overwrite=[boolean])
-```
+
 
 ## Related
 

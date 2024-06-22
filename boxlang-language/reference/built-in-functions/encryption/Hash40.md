@@ -22,9 +22,7 @@ Hash40(input=[any], algorithm=[string], encoding=[string], numIterations=[intege
 
 ## Examples
 
-```
-Hash40(input=[any], algorithm=[string], encoding=[string], numIterations=[integer])
-```
+
 
 ## Related
 

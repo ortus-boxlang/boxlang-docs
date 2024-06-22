@@ -21,9 +21,7 @@ ParseNumber(number=[string], locale=[string], radix=[string])
 
 ## Examples
 
-```
-ParseNumber(number=[string], locale=[string], radix=[string])
-```
+
 
 ## Related
 

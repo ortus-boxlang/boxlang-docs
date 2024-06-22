@@ -24,9 +24,7 @@ ReReplace(string=[string], regex=[string], substring=[string], scope=[string])
 
 ## Examples
 
-```
-ReReplace(string=[string], regex=[string], substring=[string], scope=[string])
-```
+
 
 ## Related
 

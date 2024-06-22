@@ -28,9 +28,7 @@ IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
 
 ## Examples
 
-```
-IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
-```
+
 
 ## Related
 

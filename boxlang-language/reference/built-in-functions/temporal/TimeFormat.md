@@ -21,9 +21,7 @@ TimeFormat(date=[any], mask=[string], timezone=[string])
 
 ## Examples
 
-```
-TimeFormat(date=[any], mask=[string], timezone=[string])
-```
+
 
 ## Related
 

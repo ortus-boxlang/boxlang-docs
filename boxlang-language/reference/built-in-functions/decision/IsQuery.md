@@ -19,9 +19,7 @@ IsQuery(value=[any])
 
 ## Examples
 
-```
-IsQuery(value=[any])
-```
+
 
 ## Related
 

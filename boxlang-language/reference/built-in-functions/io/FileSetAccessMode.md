@@ -20,9 +20,7 @@ FileSetAccessMode(file=[any], mode=[string])
 
 ## Examples
 
-```
-FileSetAccessMode(file=[any], mode=[string])
-```
+
 
 ## Related
 

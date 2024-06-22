@@ -21,9 +21,7 @@ RandRange(number1=[numeric], number2=[numeric], algorithm=[string])
 
 ## Examples
 
-```
-RandRange(number1=[numeric], number2=[numeric], algorithm=[string])
-```
+
 
 ## Related
 

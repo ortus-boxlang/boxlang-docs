@@ -24,9 +24,7 @@ ListSetAt(list=[string], position=[integer], value=[string], delimiter=[string],
 
 ## Examples
 
-```
-ListSetAt(list=[string], position=[integer], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

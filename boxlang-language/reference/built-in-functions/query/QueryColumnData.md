@@ -20,9 +20,7 @@ QueryColumnData(query=[query], columnName=[string])
 
 ## Examples
 
-```
-QueryColumnData(query=[query], columnName=[string])
-```
+
 
 ## Related
 

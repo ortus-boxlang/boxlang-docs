@@ -19,9 +19,7 @@ FileIsEOF(file=[any])
 
 ## Examples
 
-```
-FileIsEOF(file=[any])
-```
+
 
 ## Related
 

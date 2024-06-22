@@ -21,9 +21,7 @@ IsXmlAttribute(value=[any])
 
 ## Examples
 
-```
-IsXmlAttribute(value=[any])
-```
+
 
 ## Related
 

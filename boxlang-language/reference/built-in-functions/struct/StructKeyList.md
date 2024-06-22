@@ -20,9 +20,7 @@ StructKeyList(structure=[structloose], delimiter=[string])
 
 ## Examples
 
-```
-StructKeyList(structure=[structloose], delimiter=[string])
-```
+
 
 ## Related
 

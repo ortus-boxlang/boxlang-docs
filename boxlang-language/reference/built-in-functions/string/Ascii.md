@@ -19,9 +19,7 @@ Ascii(string=[string])
 
 ## Examples
 
-```
-Ascii(string=[string])
-```
+
 
 ## Related
 

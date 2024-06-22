@@ -21,9 +21,7 @@ QuerySetRow(query=[query], rowNumber=[integer], rowData=[any])
 
 ## Examples
 
-```
-QuerySetRow(query=[query], rowNumber=[integer], rowData=[any])
-```
+
 
 ## Related
 

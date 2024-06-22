@@ -21,9 +21,7 @@ GetMetaData(value=[any])
 
 ## Examples
 
-```
-GetMetaData(value=[any])
-```
+
 
 ## Related
 

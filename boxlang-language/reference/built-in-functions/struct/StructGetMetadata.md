@@ -19,9 +19,7 @@ StructGetMetadata(struct=[structloose])
 
 ## Examples
 
-```
-StructGetMetadata(struct=[structloose])
-```
+
 
 ## Related
 

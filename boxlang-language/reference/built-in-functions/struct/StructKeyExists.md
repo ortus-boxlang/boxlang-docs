@@ -20,9 +20,7 @@ StructKeyExists(struct=[structloose], key=[string])
 
 ## Examples
 
-```
-StructKeyExists(struct=[structloose], key=[string])
-```
+
 
 ## Related
 

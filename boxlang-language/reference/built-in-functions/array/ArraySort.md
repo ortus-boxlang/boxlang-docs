@@ -23,9 +23,7 @@ ArraySort(array=[modifiablearray], sortType=[any], sortOrder=[string], localeSen
 
 ## Examples
 
-```
-ArraySort(array=[modifiablearray], sortType=[any], sortOrder=[string], localeSensitive=[boolean], callback=[any])
-```
+
 
 ## Related
 

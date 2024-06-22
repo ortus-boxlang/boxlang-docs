@@ -21,9 +21,7 @@ DateAdd(datepart=[string], number=[long], date=[any])
 
 ## Examples
 
-```
-DateAdd(datepart=[string], number=[long], date=[any])
-```
+
 
 ## Related
 

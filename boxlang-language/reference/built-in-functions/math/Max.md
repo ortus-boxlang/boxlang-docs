@@ -20,9 +20,7 @@ Max(number1=[numeric], number2=[numeric])
 
 ## Examples
 
-```
-Max(number1=[numeric], number2=[numeric])
-```
+
 
 ## Related
 

@@ -26,9 +26,7 @@ ArraySet(array=[modifiablearray], start=[any], end=[any], value=[any])
 
 ## Examples
 
-```
-ArraySet(array=[modifiablearray], start=[any], end=[any], value=[any])
-```
+
 
 ## Related
 

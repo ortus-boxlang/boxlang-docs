@@ -8,8 +8,9 @@ It provides language specific methods to access columnar data, both as value lis
 
 ## Query Methods
 
-<dl>
-<dt><code>addColumn(columnName=[string], datatype=[any], array=[array])</code></dt><dd>Adds a column to a query and populates its rows with the contents of a one-dimensional array.
+<details>
+<summary><code>addColumn(columnName=[string], datatype=[any], array=[array])</code></summary>
+Adds a column to a query and populates its rows with the contents of a one-dimensional array.
 
  Arguments:
 
@@ -19,8 +20,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `datatype` | `any` | `false` | `Varchar` |
 | `array` | `array` | `false` | `[]` |
 
-</dd>
-<dt><code>addRow(rowData=[any])</code></dt><dd>Return new query
+
+</details>
+<details>
+<summary><code>addRow(rowData=[any])</code></summary>
+Return new query
 
  Arguments:
 
@@ -28,8 +32,11 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `rowData` | `any` | `false` | `` |
 
-</dd>
-<dt><code>append(query2=[query])</code></dt><dd>This function clears the query
+
+</details>
+<details>
+<summary><code>append(query2=[query])</code></summary>
+This function clears the query
 
  Arguments:
 
@@ -37,11 +44,23 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `query2` | `query` | `true` | `` |
 
-</dd>
-<dt><code>clear()</code></dt><dd>This function clears the query</dd>
-<dt><code>columnArray()</code></dt><dd>This function returns the column array of a query.</dd>
-<dt><code>columnCount()</code></dt><dd>This function returns the number of columns in a query</dd>
-<dt><code>columnData(columnName=[string])</code></dt><dd>Returns the data in a query column.
+
+</details>
+<details>
+<summary><code>clear()</code></summary>
+This function clears the query
+</details>
+<details>
+<summary><code>columnArray()</code></summary>
+This function returns the column array of a query.
+</details>
+<details>
+<summary><code>columnCount()</code></summary>
+This function returns the number of columns in a query
+</details>
+<details>
+<summary><code>columnData(columnName=[string])</code></summary>
+Returns the data in a query column.
 
  Arguments:
 
@@ -49,8 +68,11 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `columnName` | `string` | `true` | `` |
 
-</dd>
-<dt><code>columnExists(column=[string])</code></dt><dd>This function returns true if the column exists in the query
+
+</details>
+<details>
+<summary><code>columnExists(column=[string])</code></summary>
+This function returns true if the column exists in the query
 
  Arguments:
 
@@ -58,9 +80,15 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `column` | `string` | `true` | `` |
 
-</dd>
-<dt><code>currentRow()</code></dt><dd>Returns the current row number</dd>
-<dt><code>deleteColumn(column=[string])</code></dt><dd>Deletes a column within a query object.
+
+</details>
+<details>
+<summary><code>currentRow()</code></summary>
+Returns the current row number
+</details>
+<details>
+<summary><code>deleteColumn(column=[string])</code></summary>
+Deletes a column within a query object.
 
  Arguments:
 
@@ -68,8 +96,11 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `column` | `string` | `true` | `` |
 
-</dd>
-<dt><code>deleteRow(row=[integer])</code></dt><dd>This function deletes a row from the query
+
+</details>
+<details>
+<summary><code>deleteRow(row=[integer])</code></summary>
+This function deletes a row from the query
 
  Arguments:
 
@@ -77,8 +108,11 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `row` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>each(callback=[function], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Iterates over query rows and passes each row per iteration to a callback function
+
+</details>
+<details>
+<summary><code>each(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+Iterates over query rows and passes each row per iteration to a callback function
 
  Arguments:
 
@@ -88,8 +122,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>every(closure=[function], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
+
+</details>
+<details>
+<summary><code>every(closure=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
 
  Arguments:
 
@@ -99,8 +136,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>filter(callback=[function], parallel=[boolean], maxThreads=[integer])</code></dt><dd>Filters query rows specified in filter criteria
+
+</details>
+<details>
+<summary><code>filter(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+Filters query rows specified in filter criteria
 
  Arguments:
 
@@ -110,8 +150,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>getCell(column_name=[string], row_number=[integer])</code></dt><dd>This function maps the query to a new query.
+
+</details>
+<details>
+<summary><code>getCell(column_name=[string], row_number=[integer])</code></summary>
+This function maps the query to a new query.
 
  Arguments:
 
@@ -120,9 +163,15 @@ It provides language specific methods to access columnar data, both as value lis
 | `column_name` | `string` | `true` | `` |
 | `row_number` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>getResult()</code></dt><dd>Returns the metadata of a query.</dd>
-<dt><code>keyExists(key=[string])</code></dt><dd>This function returns true if the key exists in the query
+
+</details>
+<details>
+<summary><code>getResult()</code></summary>
+Returns the metadata of a query.
+</details>
+<details>
+<summary><code>keyExists(key=[string])</code></summary>
+This function returns true if the key exists in the query
 
  Arguments:
 
@@ -130,8 +179,11 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `` |
 
-</dd>
-<dt><code>map(callback=[function], parallel=[boolean], maxThreads=[integer])</code></dt><dd>This function maps the query to a new query.
+
+</details>
+<details>
+<summary><code>map(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+This function maps the query to a new query.
 
  Arguments:
 
@@ -141,8 +193,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>prepend(query2=[query])</code></dt><dd>Adds a query to the beginning of another query
+
+</details>
+<details>
+<summary><code>prepend(query2=[query])</code></summary>
+Adds a query to the beginning of another query
 
  Arguments:
 
@@ -150,9 +205,15 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `query2` | `query` | `true` | `` |
 
-</dd>
-<dt><code>recordCount()</code></dt><dd>This function returns the number of records in a query</dd>
-<dt><code>reduce(callback=[function], initialValue=[any])</code></dt><dd>This function reduces the query to a single value.
+
+</details>
+<details>
+<summary><code>recordCount()</code></summary>
+This function returns the number of records in a query
+</details>
+<details>
+<summary><code>reduce(callback=[function], initialValue=[any])</code></summary>
+This function reduces the query to a single value.
 
  Arguments:
 
@@ -161,8 +222,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `callback` | `function` | `true` | `` |
 | `initialValue` | `any` | `true` | `` |
 
-</dd>
-<dt><code>rowData(rowNumber=[integer])</code></dt><dd>Returns the cells of a query row as a structure
+
+</details>
+<details>
+<summary><code>rowData(rowNumber=[integer])</code></summary>
+Returns the cells of a query row as a structure
 
  Arguments:
 
@@ -170,8 +234,11 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `rowNumber` | `integer` | `true` | `` |
 
-</dd>
-<dt><code>setCell(column=[string], value=[any], row=[integer])</code></dt><dd>Sets a cell to a value.
+
+</details>
+<details>
+<summary><code>setCell(column=[string], value=[any], row=[integer])</code></summary>
+Sets a cell to a value.
 
  Arguments:
 
@@ -181,8 +248,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `value` | `any` | `true` | `` |
 | `row` | `integer` | `false` | `` |
 
-</dd>
-<dt><code>setRow(rowNumber=[integer], rowData=[any])</code></dt><dd>Adds or updates a row in a query based on the provided row data and position.
+
+</details>
+<details>
+<summary><code>setRow(rowNumber=[integer], rowData=[any])</code></summary>
+Adds or updates a row in a query based on the provided row data and position.
 
  Arguments:
 
@@ -191,8 +261,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `rowNumber` | `integer` | `false` | `0` |
 | `rowData` | `any` | `true` | `` |
 
-</dd>
-<dt><code>slice(offset=[integer], length=[integer])</code></dt><dd>Returns a subset of rows from an existing query
+
+</details>
+<details>
+<summary><code>slice(offset=[integer], length=[integer])</code></summary>
+Returns a subset of rows from an existing query
 
  Arguments:
 
@@ -201,8 +274,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `offset` | `integer` | `true` | `` |
 | `length` | `integer` | `false` | `0` |
 
-</dd>
-<dt><code>some(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></dt><dd>This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
+
+</details>
+<details>
+<summary><code>some(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
 
  Arguments:
 
@@ -213,8 +289,11 @@ It provides language specific methods to access columnar data, both as value lis
 | `maxThreads` | `integer` | `false` | `` |
 | `initialValue` | `any` | `false` | `` |
 
-</dd>
-<dt><code>sort(sortFunc=[function])</code></dt><dd>Sorts array elements.
+
+</details>
+<details>
+<summary><code>sort(sortFunc=[function])</code></summary>
+Sorts array elements.
 
  Arguments:
 
@@ -222,9 +301,15 @@ It provides language specific methods to access columnar data, both as value lis
 |----------|------|----------|---------|
 | `sortFunc` | `function` | `true` | `` |
 
-</dd>
-<dt><code>toImmutable()</code></dt><dd>Convert an array, struct or query to its immutable counterpart.</dd>
-<dt><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></dt><dd>Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+
+</details>
+<details>
+<summary><code>toImmutable()</code></summary>
+Convert an array, struct or query to its immutable counterpart.
+</details>
+<details>
+<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
+Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
 
  Arguments:
 
@@ -234,9 +319,12 @@ It provides language specific methods to access columnar data, both as value lis
 | `useSecureJSONPrefix` | `boolean` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `` |
 
-</dd>
-<dt><code>toMutable()</code></dt><dd>Convert an array, struct or query to its mutable counterpart.</dd>
 
-</dl>
+</details>
+<details>
+<summary><code>toMutable()</code></summary>
+Convert an array, struct or query to its mutable counterpart.
+</details>
+
 
 ## Examples

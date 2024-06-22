@@ -25,9 +25,7 @@ ListSome(list=[string], callback=[function], delimiter=[string], includeEmptyFie
 
 ## Examples
 
-```
-ListSome(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

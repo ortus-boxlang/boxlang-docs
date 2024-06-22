@@ -19,9 +19,7 @@ Atn(number=[numeric])
 
 ## Examples
 
-```
-Atn(number=[numeric])
-```
+
 
 ## Related
 

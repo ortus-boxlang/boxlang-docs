@@ -20,9 +20,7 @@ Second(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Second(date=[any], timezone=[string])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ RJustify(string=[string], length=[integer])
 
 ## Examples
 
-```
-RJustify(string=[string], length=[integer])
-```
+
 
 ## Related
 

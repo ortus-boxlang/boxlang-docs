@@ -21,9 +21,7 @@ StructCopy(struct=[structloose])
 
 ## Examples
 
-```
-StructCopy(struct=[structloose])
-```
+
 
 ## Related
 

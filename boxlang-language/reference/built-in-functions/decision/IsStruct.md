@@ -19,9 +19,7 @@ IsStruct(variable=[any])
 
 ## Examples
 
-```
-IsStruct(variable=[any])
-```
+
 
 ## Related
 

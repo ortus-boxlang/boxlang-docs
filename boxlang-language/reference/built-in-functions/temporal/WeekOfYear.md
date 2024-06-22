@@ -20,9 +20,7 @@ WeekOfYear(date=[any], timezone=[string])
 
 ## Examples
 
-```
-WeekOfYear(date=[any], timezone=[string])
-```
+
 
 ## Related
 

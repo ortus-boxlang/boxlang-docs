@@ -20,9 +20,7 @@ FirstDayOfMonth(date=[any], timezone=[string])
 
 ## Examples
 
-```
-FirstDayOfMonth(date=[any], timezone=[string])
-```
+
 
 ## Related
 

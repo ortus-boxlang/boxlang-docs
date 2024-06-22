@@ -19,9 +19,7 @@ Asin(number=[numeric])
 
 ## Examples
 
-```
-Asin(number=[numeric])
-```
+
 
 ## Related
 

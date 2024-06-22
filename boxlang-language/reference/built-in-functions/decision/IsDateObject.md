@@ -22,9 +22,7 @@ IsDateObject(value=[any])
 
 ## Examples
 
-```
-IsDateObject(value=[any])
-```
+
 
 ## Related
 

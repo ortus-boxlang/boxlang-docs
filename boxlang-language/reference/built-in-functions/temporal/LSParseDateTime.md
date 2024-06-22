@@ -22,9 +22,7 @@ LSParseDateTime(date=[any], locale=[string], timezone=[string], format=[string])
 
 ## Examples
 
-```
-LSParseDateTime(date=[any], locale=[string], timezone=[string], format=[string])
-```
+
 
 ## Related
 

@@ -23,9 +23,7 @@ htmlEditFormat(string=[string], canonicalize=[boolean])
 
 ## Examples
 
-```
-htmlEditFormat(string=[string], canonicalize=[boolean])
-```
+
 
 ## Related
 

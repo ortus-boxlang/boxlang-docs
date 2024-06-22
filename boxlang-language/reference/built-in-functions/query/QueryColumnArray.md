@@ -19,9 +19,7 @@ QueryColumnArray(query=[query])
 
 ## Examples
 
-```
-QueryColumnArray(query=[query])
-```
+
 
 ## Related
 

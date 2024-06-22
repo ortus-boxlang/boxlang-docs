@@ -20,9 +20,7 @@ QueryColumnExists(query=[query], column=[string])
 
 ## Examples
 
-```
-QueryColumnExists(query=[query], column=[string])
-```
+
 
 ## Related
 

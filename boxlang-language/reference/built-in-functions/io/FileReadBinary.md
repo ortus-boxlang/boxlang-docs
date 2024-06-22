@@ -22,9 +22,7 @@ FileReadBinary(filepath=[string], charsetOrBufferSize=[string], charset=[string]
 
 ## Examples
 
-```
-FileReadBinary(filepath=[string], charsetOrBufferSize=[string], charset=[string], buffersize=[string])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ IsXMLNode(value=[any])
 
 ## Examples
 
-```
-IsXMLNode(value=[any])
-```
+
 
 ## Related
 

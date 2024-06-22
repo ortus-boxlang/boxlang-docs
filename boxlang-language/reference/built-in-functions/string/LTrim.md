@@ -19,9 +19,7 @@ LTrim(string=[string])
 
 ## Examples
 
-```
-LTrim(string=[string])
-```
+
 
 ## Related
 

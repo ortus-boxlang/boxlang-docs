@@ -21,9 +21,7 @@ JSONDeserialize(json=[string], strictMapping=[boolean], useCustomSerializer=[str
 
 ## Examples
 
-```
-JSONDeserialize(json=[string], strictMapping=[boolean], useCustomSerializer=[string])
-```
+
 
 ## Related
 

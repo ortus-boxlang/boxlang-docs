@@ -22,9 +22,7 @@ ArrayReverse(array=[array])
 
 ## Examples
 
-```
-ArrayReverse(array=[array])
-```
+
 
 ## Related
 

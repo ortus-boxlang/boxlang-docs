@@ -19,9 +19,7 @@ StructKeyArray(structure=[structloose])
 
 ## Examples
 
-```
-StructKeyArray(structure=[structloose])
-```
+
 
 ## Related
 

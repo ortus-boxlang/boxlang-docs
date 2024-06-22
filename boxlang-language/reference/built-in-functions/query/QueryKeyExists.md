@@ -20,9 +20,7 @@ QueryKeyExists(query=[query], key=[string])
 
 ## Examples
 
-```
-QueryKeyExists(query=[query], key=[string])
-```
+
 
 ## Related
 

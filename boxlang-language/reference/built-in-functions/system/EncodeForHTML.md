@@ -23,9 +23,7 @@ EncodeForHTML(string=[string], canonicalize=[boolean])
 
 ## Examples
 
-```
-EncodeForHTML(string=[string], canonicalize=[boolean])
-```
+
 
 ## Related
 

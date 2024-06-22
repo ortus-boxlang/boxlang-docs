@@ -19,9 +19,7 @@ ArrayClear(array=[modifiableArray])
 
 ## Examples
 
-```
-ArrayClear(array=[modifiableArray])
-```
+
 
 ## Related
 

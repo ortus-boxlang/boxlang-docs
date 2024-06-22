@@ -19,9 +19,7 @@ StructIsCaseSensitive(struct=[structloose])
 
 ## Examples
 
-```
-StructIsCaseSensitive(struct=[structloose])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ QueryGetResult(query=[query])
 
 ## Examples
 
-```
-QueryGetResult(query=[query])
-```
+
 
 ## Related
 

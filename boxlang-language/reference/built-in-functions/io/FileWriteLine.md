@@ -20,9 +20,7 @@ FileWriteLine(file=[any], data=[string])
 
 ## Examples
 
-```
-FileWriteLine(file=[any], data=[string])
-```
+
 
 ## Related
 

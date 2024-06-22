@@ -19,9 +19,7 @@ IsEmpty(value=[any])
 
 ## Examples
 
-```
-IsEmpty(value=[any])
-```
+
 
 ## Related
 

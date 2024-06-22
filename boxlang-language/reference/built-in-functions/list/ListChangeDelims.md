@@ -22,9 +22,7 @@ ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], inclu
 
 ## Examples
 
-```
-ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

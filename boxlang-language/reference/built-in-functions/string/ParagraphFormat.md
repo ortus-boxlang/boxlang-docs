@@ -19,9 +19,7 @@ ParagraphFormat(string=[string])
 
 ## Examples
 
-```
-ParagraphFormat(string=[string])
-```
+
 
 ## Related
 

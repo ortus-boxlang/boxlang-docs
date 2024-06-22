@@ -22,9 +22,7 @@ ListValueCountNoCase(list=[string], value=[string], delimiter=[string], includeE
 
 ## Examples
 
-```
-ListValueCountNoCase(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

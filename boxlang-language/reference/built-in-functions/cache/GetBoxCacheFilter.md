@@ -42,9 +42,7 @@ GetBoxCacheFilter(filter=[string], useRegex=[boolean])
 
 ## Examples
 
-```
-GetBoxCacheFilter(filter=[string], useRegex=[boolean])
-```
+
 
 ## Related
 

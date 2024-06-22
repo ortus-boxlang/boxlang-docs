@@ -21,9 +21,7 @@ StructDelete(struct=[modifiableStruct], key=[string], indicateNotExists=[boolean
 
 ## Examples
 
-```
-StructDelete(struct=[modifiableStruct], key=[string], indicateNotExists=[boolean])
-```
+
 
 ## Related
 

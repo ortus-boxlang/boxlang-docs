@@ -22,9 +22,7 @@ BitMaskSet(number=[integer], mask=[integer], start=[integer], length=[integer])
 
 ## Examples
 
-```
-BitMaskSet(number=[integer], mask=[integer], start=[integer], length=[integer])
-```
+
 
 ## Related
 

@@ -23,9 +23,7 @@ ArrayContains(array=[array], value=[any], substringMatch=[boolean])
 
 ## Examples
 
-```
-ArrayContains(array=[array], value=[any], substringMatch=[boolean])
-```
+
 
 ## Related
 

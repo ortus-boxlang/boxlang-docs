@@ -21,9 +21,7 @@ LSCurrencyFormat(number=[any], type=[string], locale=[string])
 
 ## Examples
 
-```
-LSCurrencyFormat(number=[any], type=[string], locale=[string])
-```
+
 
 ## Related
 

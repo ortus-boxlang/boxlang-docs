@@ -19,9 +19,7 @@ KebabCase(string=[string])
 
 ## Examples
 
-```
-KebabCase(string=[string])
-```
+
 
 ## Related
 

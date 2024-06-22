@@ -21,9 +21,7 @@ ArrayMid(array=[array], start=[integer], length=[integer])
 
 ## Examples
 
-```
-ArrayMid(array=[array], start=[integer], length=[integer])
-```
+
 
 ## Related
 

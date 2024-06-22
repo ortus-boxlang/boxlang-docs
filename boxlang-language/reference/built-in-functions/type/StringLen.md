@@ -19,9 +19,7 @@ StringLen(value=[any])
 
 ## Examples
 
-```
-StringLen(value=[any])
-```
+
 
 ## Related
 

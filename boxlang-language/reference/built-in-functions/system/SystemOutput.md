@@ -21,9 +21,7 @@ SystemOutput(obj=[any], addNewLine=[boolean], doErrorStream=[boolean])
 
 ## Examples
 
-```
-SystemOutput(obj=[any], addNewLine=[boolean], doErrorStream=[boolean])
-```
+
 
 ## Related
 

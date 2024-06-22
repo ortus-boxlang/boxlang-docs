@@ -19,9 +19,7 @@ ArrayFirst(array=[array])
 
 ## Examples
 
-```
-ArrayFirst(array=[array])
-```
+
 
 ## Related
 

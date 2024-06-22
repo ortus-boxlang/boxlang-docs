@@ -19,9 +19,7 @@ IsXMLDoc(value=[any])
 
 ## Examples
 
-```
-IsXMLDoc(value=[any])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ StructFilter(struct=[structloose], callback=[function], parallel=[boolean], maxT
 
 ## Examples
 
-```
-StructFilter(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

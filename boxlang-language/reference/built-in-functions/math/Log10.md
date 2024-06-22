@@ -19,9 +19,7 @@ Log10(number=[numeric])
 
 ## Examples
 
-```
-Log10(number=[numeric])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ Cos(number=[numeric])
 
 ## Examples
 
-```
-Cos(number=[numeric])
-```
+
 
 ## Related
 

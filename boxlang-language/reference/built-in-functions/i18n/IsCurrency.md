@@ -20,9 +20,7 @@ IsCurrency(number=[any], locale=[string])
 
 ## Examples
 
-```
-IsCurrency(number=[any], locale=[string])
-```
+
 
 ## Related
 

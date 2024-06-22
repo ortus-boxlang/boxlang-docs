@@ -19,9 +19,7 @@ QueryCurrentRow(query=[query])
 
 ## Examples
 
-```
-QueryCurrentRow(query=[query])
-```
+
 
 ## Related
 

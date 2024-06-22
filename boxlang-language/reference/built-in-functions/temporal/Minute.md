@@ -20,9 +20,7 @@ Minute(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Minute(date=[any], timezone=[string])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ IsXML(value=[any])
 
 ## Examples
 
-```
-IsXML(value=[any])
-```
+
 
 ## Related
 

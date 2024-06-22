@@ -19,9 +19,7 @@ Abs(value=[numeric])
 
 ## Examples
 
-```
-Abs(value=[numeric])
-```
+
 
 ## Related
 

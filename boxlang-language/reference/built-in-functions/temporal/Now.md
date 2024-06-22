@@ -19,9 +19,7 @@ Now(timezone=[string])
 
 ## Examples
 
-```
-Now(timezone=[string])
-```
+
 
 ## Related
 

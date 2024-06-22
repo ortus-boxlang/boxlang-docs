@@ -20,9 +20,7 @@ ArrayDeleteAt(array=[modifiableArray], index=[integer])
 
 ## Examples
 
-```
-ArrayDeleteAt(array=[modifiableArray], index=[integer])
-```
+
 
 ## Related
 

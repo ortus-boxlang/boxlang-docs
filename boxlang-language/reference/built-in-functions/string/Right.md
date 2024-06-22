@@ -20,9 +20,7 @@ Right(string=[string], count=[integer])
 
 ## Examples
 
-```
-Right(string=[string], count=[integer])
-```
+
 
 ## Related
 

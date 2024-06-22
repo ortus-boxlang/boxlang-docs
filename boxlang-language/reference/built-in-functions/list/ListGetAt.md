@@ -23,9 +23,7 @@ ListGetAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFie
 
 ## Examples
 
-```
-ListGetAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

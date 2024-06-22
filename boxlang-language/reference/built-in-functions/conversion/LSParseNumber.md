@@ -21,9 +21,7 @@ LSParseNumber(number=[string], locale=[string], radix=[string])
 
 ## Examples
 
-```
-LSParseNumber(number=[string], locale=[string], radix=[string])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ DayOfWeekAsString(date=[any], timezone=[string])
 
 ## Examples
 
-```
-DayOfWeekAsString(date=[any], timezone=[string])
-```
+
 
 ## Related
 

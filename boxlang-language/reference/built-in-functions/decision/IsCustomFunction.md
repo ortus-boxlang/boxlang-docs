@@ -20,9 +20,7 @@ IsCustomFunction(object=[any], type=[string])
 
 ## Examples
 
-```
-IsCustomFunction(object=[any], type=[string])
-```
+
 
 ## Related
 

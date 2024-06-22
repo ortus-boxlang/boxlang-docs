@@ -21,9 +21,7 @@ Insert(substring=[string], string=[string], position=[integer])
 
 ## Examples
 
-```
-Insert(substring=[string], string=[string], position=[integer])
-```
+
 
 ## Related
 

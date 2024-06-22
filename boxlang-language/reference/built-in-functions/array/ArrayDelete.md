@@ -21,9 +21,7 @@ ArrayDelete(array=[modifiableArray], value=[any], scope=[string])
 
 ## Examples
 
-```
-ArrayDelete(array=[modifiableArray], value=[any], scope=[string])
-```
+
 
 ## Related
 

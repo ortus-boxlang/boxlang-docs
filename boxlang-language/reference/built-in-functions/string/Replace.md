@@ -25,9 +25,7 @@ Replace(string=[string], substring1=[string], obj=[string], scope=[string])
 
 ## Examples
 
-```
-Replace(string=[string], substring1=[string], obj=[string], scope=[string])
-```
+
 
 ## Related
 

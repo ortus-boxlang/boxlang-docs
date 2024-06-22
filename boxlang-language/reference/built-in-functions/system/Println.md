@@ -19,9 +19,7 @@ Println(message=[any])
 
 ## Examples
 
-```
-Println(message=[any])
-```
+
 
 ## Related
 

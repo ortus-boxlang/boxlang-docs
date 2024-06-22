@@ -23,9 +23,7 @@ ToBase64(string_or_object=[any], encoding=[string])
 
 ## Examples
 
-```
-ToBase64(string_or_object=[any], encoding=[string])
-```
+
 
 ## Related
 

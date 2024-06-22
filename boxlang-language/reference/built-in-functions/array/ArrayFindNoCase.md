@@ -23,9 +23,7 @@ ArrayFindNoCase(array=[array], value=[any], substringMatch=[boolean])
 
 ## Examples
 
-```
-ArrayFindNoCase(array=[array], value=[any], substringMatch=[boolean])
-```
+
 
 ## Related
 

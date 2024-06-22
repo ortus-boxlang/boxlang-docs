@@ -20,9 +20,7 @@ DirectoryDelete(path=[string], recursive=[boolean])
 
 ## Examples
 
-```
-DirectoryDelete(path=[string], recursive=[boolean])
-```
+
 
 ## Related
 

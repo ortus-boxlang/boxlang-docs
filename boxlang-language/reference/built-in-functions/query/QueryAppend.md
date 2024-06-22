@@ -20,9 +20,7 @@ QueryAppend(query1=[query], query2=[query])
 
 ## Examples
 
-```
-QueryAppend(query1=[query], query2=[query])
-```
+
 
 ## Related
 

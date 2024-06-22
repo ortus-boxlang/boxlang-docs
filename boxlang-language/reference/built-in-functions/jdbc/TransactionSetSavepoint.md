@@ -22,9 +22,7 @@ TransactionSetSavepoint(savepoint=[string])
 
 ## Examples
 
-```
-TransactionSetSavepoint(savepoint=[string])
-```
+
 
 ## Related
 

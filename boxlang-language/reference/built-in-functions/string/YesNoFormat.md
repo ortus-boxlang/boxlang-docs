@@ -19,9 +19,7 @@ YesNoFormat(value=[boolean])
 
 ## Examples
 
-```
-YesNoFormat(value=[boolean])
-```
+
 
 ## Related
 

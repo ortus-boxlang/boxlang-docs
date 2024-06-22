@@ -20,9 +20,7 @@ IsSimpleValue(value=[any])
 
 ## Examples
 
-```
-IsSimpleValue(value=[any])
-```
+
 
 ## Related
 

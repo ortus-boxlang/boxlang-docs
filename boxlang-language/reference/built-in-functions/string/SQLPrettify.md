@@ -19,9 +19,7 @@ SQLPrettify(sql=[string])
 
 ## Examples
 
-```
-SQLPrettify(sql=[string])
-```
+
 
 ## Related
 

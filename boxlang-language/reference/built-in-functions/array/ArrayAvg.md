@@ -19,9 +19,7 @@ ArrayAvg(array=[Array])
 
 ## Examples
 
-```
-ArrayAvg(array=[Array])
-```
+
 
 ## Related
 

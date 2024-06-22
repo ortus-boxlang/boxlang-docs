@@ -23,9 +23,7 @@ ListFind(list=[string], value=[string], delimiter=[string], includeEmptyFields=[
 
 ## Examples
 
-```
-ListFind(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

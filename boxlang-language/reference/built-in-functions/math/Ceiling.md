@@ -19,9 +19,7 @@ Ceiling(number=[numeric])
 
 ## Examples
 
-```
-Ceiling(number=[numeric])
-```
+
 
 ## Related
 

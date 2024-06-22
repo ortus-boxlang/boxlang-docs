@@ -23,9 +23,7 @@ ListContains(list=[string], value=[string], delimiter=[string], includeEmptyFiel
 
 ## Examples
 
-```
-ListContains(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

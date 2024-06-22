@@ -19,9 +19,7 @@ Sleep(duration=[long])
 
 ## Examples
 
-```
-Sleep(duration=[long])
-```
+
 
 ## Related
 

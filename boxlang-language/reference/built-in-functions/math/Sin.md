@@ -19,9 +19,7 @@ Sin(number=[numeric])
 
 ## Examples
 
-```
-Sin(number=[numeric])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ QueryAddColumn(query=[query], columnName=[string], datatype=[any], array=[array]
 
 ## Examples
 
-```
-QueryAddColumn(query=[query], columnName=[string], datatype=[any], array=[array])
-```
+
 
 ## Related
 

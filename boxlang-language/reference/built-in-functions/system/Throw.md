@@ -24,9 +24,7 @@ Throw(message=[String], type=[String], detail=[String], errorcode=[String], exte
 
 ## Examples
 
-```
-Throw(message=[String], type=[String], detail=[String], errorcode=[String], extendedinfo=[any], object=[any])
-```
+
 
 ## Related
 

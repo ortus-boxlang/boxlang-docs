@@ -19,9 +19,7 @@ Log(number=[numeric])
 
 ## Examples
 
-```
-Log(number=[numeric])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ UCFirst(string=[string], doAll=[boolean], doLowerIfAllUppercase=[boolean])
 
 ## Examples
 
-```
-UCFirst(string=[string], doAll=[boolean], doLowerIfAllUppercase=[boolean])
-```
+
 
 ## Related
 

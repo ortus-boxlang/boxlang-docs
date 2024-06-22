@@ -22,9 +22,7 @@ FileRead(filepath=[string], charsetOrBufferSize=[string], charset=[string], buff
 
 ## Examples
 
-```
-FileRead(filepath=[string], charsetOrBufferSize=[string], charset=[string], buffersize=[string])
-```
+
 
 ## Related
 

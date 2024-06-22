@@ -20,9 +20,7 @@ QuerySort(query=[query], sortFunc=[function])
 
 ## Examples
 
-```
-QuerySort(query=[query], sortFunc=[function])
-```
+
 
 ## Related
 

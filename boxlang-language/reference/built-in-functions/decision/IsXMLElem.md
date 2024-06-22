@@ -19,9 +19,7 @@ IsXMLElem(value=[any])
 
 ## Examples
 
-```
-IsXMLElem(value=[any])
-```
+
 
 ## Related
 

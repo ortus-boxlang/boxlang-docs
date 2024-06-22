@@ -21,9 +21,7 @@ GeneratePDBKDFKey(algorithm=[string], keySize=[numeric])
 
 ## Examples
 
-```
-GeneratePDBKDFKey(algorithm=[string], keySize=[numeric])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ ListRest(list=[string], delimiter=[string], includeEmptyFields=[boolean], offset
 
 ## Examples
 
-```
-ListRest(list=[string], delimiter=[string], includeEmptyFields=[boolean], offset=[integer])
-```
+
 
 ## Related
 

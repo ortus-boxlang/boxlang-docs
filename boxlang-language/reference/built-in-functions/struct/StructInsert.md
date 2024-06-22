@@ -22,9 +22,7 @@ StructInsert(struct=[modifiableStruct], key=[string], value=[any], overwrite=[bo
 
 ## Examples
 
-```
-StructInsert(struct=[modifiableStruct], key=[string], value=[any], overwrite=[boolean])
-```
+
 
 ## Related
 

@@ -23,9 +23,7 @@ QuerySome(query=[query], callback=[function], parallel=[boolean], maxThreads=[in
 
 ## Examples
 
-```
-QuerySome(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
-```
+
 
 ## Related
 

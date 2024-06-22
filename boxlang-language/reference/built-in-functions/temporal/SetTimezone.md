@@ -19,9 +19,7 @@ SetTimezone(timezone=[string])
 
 ## Examples
 
-```
-SetTimezone(timezone=[string])
-```
+
 
 ## Related
 

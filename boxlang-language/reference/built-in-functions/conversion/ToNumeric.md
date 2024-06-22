@@ -20,9 +20,7 @@ ToNumeric(value=[any], radix=[any])
 
 ## Examples
 
-```
-ToNumeric(value=[any], radix=[any])
-```
+
 
 ## Related
 

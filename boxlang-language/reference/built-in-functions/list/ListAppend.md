@@ -23,9 +23,7 @@ ListAppend(list=[string], value=[string], delimiter=[string], includeEmptyFields
 
 ## Examples
 
-```
-ListAppend(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ ArrayToStruct(array=[array])
 
 ## Examples
 
-```
-ArrayToStruct(array=[array])
-```
+
 
 ## Related
 

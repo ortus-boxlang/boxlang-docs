@@ -25,9 +25,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
 
 ## Examples
 
-```
-Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
-```
+
 
 ## Related
 

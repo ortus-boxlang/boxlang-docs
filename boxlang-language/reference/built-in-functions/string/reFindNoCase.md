@@ -26,9 +26,7 @@ reFindNoCase(reg_expression=[string], string=[string], start=[integer], returnSu
 
 ## Examples
 
-```
-reFindNoCase(reg_expression=[string], string=[string], start=[integer], returnSubExpressions=[boolean], scope=[string])
-```
+
 
 ## Related
 

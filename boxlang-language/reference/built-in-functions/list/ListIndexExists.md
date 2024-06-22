@@ -22,9 +22,7 @@ ListIndexExists(list=[string], index=[numeric], delimiter=[string], includeEmpty
 
 ## Examples
 
-```
-ListIndexExists(list=[string], index=[numeric], delimiter=[string], includeEmptyFields=[boolean])
-```
+
 
 ## Related
 

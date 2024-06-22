@@ -24,9 +24,7 @@ StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[
 
 ## Examples
 
-```
-StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

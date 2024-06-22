@@ -19,9 +19,7 @@ StructClear(structure=[modifiableStruct])
 
 ## Examples
 
-```
-StructClear(structure=[modifiableStruct])
-```
+
 
 ## Related
 

@@ -19,9 +19,7 @@ PascalCase(string=[string])
 
 ## Examples
 
-```
-PascalCase(string=[string])
-```
+
 
 ## Related
 

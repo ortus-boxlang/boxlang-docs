@@ -21,9 +21,7 @@ XMLTransform(XML=[any], XSL=[String], parameters=[Struct])
 
 ## Examples
 
-```
-XMLTransform(XML=[any], XSL=[String], parameters=[Struct])
-```
+
 
 ## Related
 

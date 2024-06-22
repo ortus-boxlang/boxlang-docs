@@ -20,9 +20,7 @@ Duplicate(object=[any], deep=[boolean])
 
 ## Examples
 
-```
-Duplicate(object=[any], deep=[boolean])
-```
+
 
 ## Related
 

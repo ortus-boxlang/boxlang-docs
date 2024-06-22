@@ -19,9 +19,7 @@ IsFileObject(object=[any])
 
 ## Examples
 
-```
-IsFileObject(object=[any])
-```
+
 
 ## Related
 

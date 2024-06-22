@@ -20,9 +20,7 @@ Offset(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Offset(date=[any], timezone=[string])
-```
+
 
 ## Related
 

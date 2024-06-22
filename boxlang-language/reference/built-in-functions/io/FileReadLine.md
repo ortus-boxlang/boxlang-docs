@@ -19,9 +19,7 @@ FileReadLine(file=[any])
 
 ## Examples
 
-```
-FileReadLine(file=[any])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ DayOfYear(date=[any], timezone=[string])
 
 ## Examples
 
-```
-DayOfYear(date=[any], timezone=[string])
-```
+
 
 ## Related
 

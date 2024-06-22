@@ -20,9 +20,7 @@ GetLocaleDisplayName(locale=[string], dspLocale=[string])
 
 ## Examples
 
-```
-GetLocaleDisplayName(locale=[string], dspLocale=[string])
-```
+
 
 ## Related
 

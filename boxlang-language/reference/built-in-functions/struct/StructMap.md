@@ -22,9 +22,7 @@ StructMap(struct=[structloose], callback=[function], parallel=[boolean], maxThre
 
 ## Examples
 
-```
-StructMap(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

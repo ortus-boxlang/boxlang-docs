@@ -19,9 +19,7 @@ ArrayMin(array=[any])
 
 ## Examples
 
-```
-ArrayMin(array=[any])
-```
+
 
 ## Related
 

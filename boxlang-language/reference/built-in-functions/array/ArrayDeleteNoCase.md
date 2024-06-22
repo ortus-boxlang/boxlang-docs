@@ -21,9 +21,7 @@ ArrayDeleteNoCase(array=[modifiableArray], value=[any], scope=[string])
 
 ## Examples
 
-```
-ArrayDeleteNoCase(array=[modifiableArray], value=[any], scope=[string])
-```
+
 
 ## Related
 

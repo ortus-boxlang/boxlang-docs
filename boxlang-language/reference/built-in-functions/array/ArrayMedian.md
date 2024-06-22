@@ -21,9 +21,7 @@ ArrayMedian(array=[array])
 
 ## Examples
 
-```
-ArrayMedian(array=[array])
-```
+
 
 ## Related
 

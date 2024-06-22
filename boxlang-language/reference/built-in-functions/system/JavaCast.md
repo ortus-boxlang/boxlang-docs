@@ -20,9 +20,7 @@ JavaCast(type=[string], variable=[any])
 
 ## Examples
 
-```
-JavaCast(type=[string], variable=[any])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ Left(string=[string], count=[integer])
 
 ## Examples
 
-```
-Left(string=[string], count=[integer])
-```
+
 
 ## Related
 

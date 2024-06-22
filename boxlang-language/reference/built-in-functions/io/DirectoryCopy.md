@@ -23,9 +23,7 @@ DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[
 
 ## Examples
 
-```
-DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[string], createPath=[boolean])
-```
+
 
 ## Related
 

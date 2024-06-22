@@ -24,9 +24,7 @@ ListMap(list=[string], callback=[function], delimiter=[string], includeEmptyFiel
 
 ## Examples
 
-```
-ListMap(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

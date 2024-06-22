@@ -23,9 +23,7 @@ ArrayEvery(array=[array], callback=[function], parallel=[boolean], maxThreads=[i
 
 ## Examples
 
-```
-ArrayEvery(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
-```
+
 
 ## Related
 

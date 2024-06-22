@@ -19,9 +19,7 @@ IsLocalHost(ip=[string])
 
 ## Examples
 
-```
-IsLocalHost(ip=[string])
-```
+
 
 ## Related
 

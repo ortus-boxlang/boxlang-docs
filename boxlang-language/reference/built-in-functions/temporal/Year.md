@@ -20,9 +20,7 @@ Year(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Year(date=[any], timezone=[string])
-```
+
 
 ## Related
 

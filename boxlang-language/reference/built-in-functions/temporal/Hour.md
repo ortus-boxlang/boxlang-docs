@@ -20,9 +20,7 @@ Hour(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Hour(date=[any], timezone=[string])
-```
+
 
 ## Related
 

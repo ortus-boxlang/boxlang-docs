@@ -20,9 +20,7 @@ DaysInYear(date=[any], timezone=[string])
 
 ## Examples
 
-```
-DaysInYear(date=[any], timezone=[string])
-```
+
 
 ## Related
 

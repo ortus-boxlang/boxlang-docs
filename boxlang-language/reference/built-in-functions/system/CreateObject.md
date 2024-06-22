@@ -20,9 +20,7 @@ CreateObject(type=[string], className=[string])
 
 ## Examples
 
-```
-CreateObject(type=[string], className=[string])
-```
+
 
 ## Related
 

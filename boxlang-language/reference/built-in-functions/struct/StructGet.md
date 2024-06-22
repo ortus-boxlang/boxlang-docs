@@ -20,9 +20,7 @@ StructGet(path=[string], object=[structloose])
 
 ## Examples
 
-```
-StructGet(path=[string], object=[structloose])
-```
+
 
 ## Related
 

@@ -23,9 +23,7 @@ StructEach(struct=[structloose], callback=[function], parallel=[boolean], maxThr
 
 ## Examples
 
-```
-StructEach(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
-```
+
 
 ## Related
 

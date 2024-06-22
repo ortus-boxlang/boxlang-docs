@@ -20,9 +20,7 @@ BoxAnnounceAsync(state=[string], data=[struct])
 
 ## Examples
 
-```
-BoxAnnounceAsync(state=[string], data=[struct])
-```
+
 
 ## Related
 

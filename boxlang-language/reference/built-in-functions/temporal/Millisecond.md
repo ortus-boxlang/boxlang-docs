@@ -20,9 +20,7 @@ Millisecond(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Millisecond(date=[any], timezone=[string])
-```
+
 
 ## Related
 

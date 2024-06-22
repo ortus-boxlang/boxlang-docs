@@ -20,9 +20,7 @@ ArrayPush(array=[modifiableArray], value=[any])
 
 ## Examples
 
-```
-ArrayPush(array=[modifiableArray], value=[any])
-```
+
 
 ## Related
 

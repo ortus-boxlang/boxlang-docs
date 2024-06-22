@@ -20,9 +20,7 @@ Nanosecond(date=[any], timezone=[string])
 
 ## Examples
 
-```
-Nanosecond(date=[any], timezone=[string])
-```
+
 
 ## Related
 

@@ -20,9 +20,7 @@ ArrayPrepend(array=[modifiableArray], value=[any])
 
 ## Examples
 
-```
-ArrayPrepend(array=[modifiableArray], value=[any])
-```
+
 
 ## Related
 

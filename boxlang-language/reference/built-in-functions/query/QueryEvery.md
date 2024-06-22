@@ -22,9 +22,7 @@ QueryEvery(query=[query], closure=[function], parallel=[boolean], maxThreads=[in
 
 ## Examples
 
-```
-QueryEvery(query=[query], closure=[function], parallel=[boolean], maxThreads=[integer])
-```
+
 
 ## Related
 

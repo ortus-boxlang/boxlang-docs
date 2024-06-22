@@ -24,9 +24,7 @@ reReplaceNoCase(string=[string], regex=[string], substring=[string], scope=[stri
 
 ## Examples
 
-```
-reReplaceNoCase(string=[string], regex=[string], substring=[string], scope=[string])
-```
+
 
 ## Related
 

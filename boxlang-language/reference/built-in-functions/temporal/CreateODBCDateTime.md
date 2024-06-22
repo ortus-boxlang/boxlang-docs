@@ -20,9 +20,7 @@ CreateODBCDateTime(date=[any], timezone=[string])
 
 ## Examples
 
-```
-CreateODBCDateTime(date=[any], timezone=[string])
-```
+
 
 ## Related
 

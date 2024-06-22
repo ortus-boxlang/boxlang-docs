@@ -19,9 +19,7 @@ Print(message=[any])
 
 ## Examples
 
-```
-Print(message=[any])
-```
+
 
 ## Related
 

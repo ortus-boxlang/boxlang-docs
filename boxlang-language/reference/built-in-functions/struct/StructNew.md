@@ -32,9 +32,7 @@ StructNew(type=[string], sortType=[string], sortOrder=[string], localeSensitive=
 
 ## Examples
 
-```
-StructNew(type=[string], sortType=[string], sortOrder=[string], localeSensitive=[any], callback=[function])
-```
+
 
 ## Related
 

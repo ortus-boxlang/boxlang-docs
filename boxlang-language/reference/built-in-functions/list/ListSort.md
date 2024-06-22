@@ -26,9 +26,7 @@ ListSort(list=[string], sortType=[any], sortOrder=[string], delimiter=[string], 
 
 ## Examples
 
-```
-ListSort(list=[string], sortType=[any], sortOrder=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], localeSensitive=[boolean], callback=[any])
-```
+
 
 ## Related
 

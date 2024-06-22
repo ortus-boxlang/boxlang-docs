@@ -23,9 +23,7 @@ ListContainsNoCase(list=[string], value=[string], delimiter=[string], includeEmp
 
 ## Examples
 
-```
-ListContainsNoCase(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ StructFindKey(struct=[structloose], key=[string], scope=[string])
 
 ## Examples
 
-```
-StructFindKey(struct=[structloose], key=[string], scope=[string])
-```
+
 
 ## Related
 

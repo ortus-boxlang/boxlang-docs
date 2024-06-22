@@ -23,9 +23,7 @@ LSWeek(date=[any], locale=[string], timezone=[string])
 
 ## Examples
 
-```
-LSWeek(date=[any], locale=[string], timezone=[string])
-```
+
 
 ## Related
 

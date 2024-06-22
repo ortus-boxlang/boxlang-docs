@@ -19,9 +19,7 @@ QueryRecordCount(query=[query])
 
 ## Examples
 
-```
-QueryRecordCount(query=[query])
-```
+
 
 ## Related
 

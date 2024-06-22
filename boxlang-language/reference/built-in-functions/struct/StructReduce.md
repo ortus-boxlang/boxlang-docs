@@ -21,9 +21,7 @@ StructReduce(struct=[structloose], callback=[function], initialValue=[any])
 
 ## Examples
 
-```
-StructReduce(struct=[structloose], callback=[function], initialValue=[any])
-```
+
 
 ## Related
 

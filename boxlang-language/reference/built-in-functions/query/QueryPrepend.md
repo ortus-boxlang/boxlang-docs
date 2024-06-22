@@ -20,9 +20,7 @@ QueryPrepend(query1=[query], query2=[query])
 
 ## Examples
 
-```
-QueryPrepend(query1=[query], query2=[query])
-```
+
 
 ## Related
 

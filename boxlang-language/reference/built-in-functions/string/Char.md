@@ -19,9 +19,7 @@ Char(number=[integer])
 
 ## Examples
 
-```
-Char(number=[integer])
-```
+
 
 ## Related
 

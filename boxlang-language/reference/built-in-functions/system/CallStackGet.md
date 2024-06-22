@@ -22,9 +22,7 @@ CallStackGet(maxFrames=[numeric])
 
 ## Examples
 
-```
-CallStackGet(maxFrames=[numeric])
-```
+
 
 ## Related
 

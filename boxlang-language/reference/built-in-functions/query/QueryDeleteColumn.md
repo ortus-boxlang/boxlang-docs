@@ -20,9 +20,7 @@ QueryDeleteColumn(query=[query], column=[string])
 
 ## Examples
 
-```
-QueryDeleteColumn(query=[query], column=[string])
-```
+
 
 ## Related
 

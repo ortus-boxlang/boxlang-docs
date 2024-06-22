@@ -26,9 +26,7 @@ DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[strin
 
 ## Examples
 
-```
-DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[string], sort=[string], type=[string])
-```
+
 
 ## Related
 

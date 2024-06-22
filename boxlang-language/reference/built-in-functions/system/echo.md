@@ -19,9 +19,7 @@ echo(message=[any])
 
 ## Examples
 
-```
-echo(message=[any])
-```
+
 
 ## Related
 

@@ -21,9 +21,7 @@ LSNumberFormat(number=[any], mask=[string], locale=[string])
 
 ## Examples
 
-```
-LSNumberFormat(number=[any], mask=[string], locale=[string])
-```
+
 
 ## Related
 

@@ -22,9 +22,7 @@ DirectoryCreate(path=[string], createPath=[boolean], ignoreExists=[boolean], mod
 
 ## Examples
 
-```
-DirectoryCreate(path=[string], createPath=[boolean], ignoreExists=[boolean], mode=[string])
-```
+
 
 ## Related
 
