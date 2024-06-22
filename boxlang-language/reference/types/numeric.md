@@ -73,13 +73,6 @@
 <details>
 <summary><code>formatBaseN(radix=[integer])</code></summary>
 <p>Converts a number to a string representation in the specified base.
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `radix` | `integer` | `true` | `` |
-
 </p></details>
 <details>
 <summary><code>tan()</code></summary>
@@ -96,13 +89,6 @@
 <details>
 <summary><code>decimalFormat(length=[integer])</code></summary>
 <p>Converts a number to a decimal-formatted string.
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `length` | `integer` | `false` | `2` |
-
 </p></details>
 <details>
 <summary><code>booleanFormat()</code></summary>
@@ -111,26 +97,10 @@
 <details>
 <summary><code>numberFormat(mask=[string], locale=[string])</code></summary>
 <p>Formats a number with an optional format mask
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `mask` | `string` | `false` | `` |
-| `locale` | `string` | `false` | `` |
-
 </p></details>
 <details>
 <summary><code>currencyFormat(type=[string], locale=[string])</code></summary>
 <p>null
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `type` | `string` | `false` | `` |
-| `locale` | `string` | `false` | `` |
-
 </p></details>
 
 

@@ -11,14 +11,6 @@ This type represents an XML Object in BoxLang
 <p>Gets the position of a child element within an XML document object.
 
 The position, in an XmlChildren array, of the Nth child that has the specified name.
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `childname` | `string` | `true` | `` |
-| `n` | `integer` | `true` | `` |
-
 </p></details>
 <details>
 <summary><code>getNodeType()</code></summary>
@@ -27,37 +19,14 @@ The position, in an XmlChildren array, of the Nth child that has the specified n
 <details>
 <summary><code>search(xpath=[String], params=[Struct])</code></summary>
 <p>Get XML values according to given xPath query
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `xpath` | `String` | `true` | `` |
-| `params` | `Struct` | `false` | `{}` |
-
 </p></details>
 <details>
 <summary><code>toString(encoding=[string])</code></summary>
 <p>Converts a value to a string.
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `encoding` | `string` | `false` | `` |
-
 </p></details>
 <details>
 <summary><code>transform(XSL=[String], parameters=[Struct])</code></summary>
 <p>Get XML values according to given xPath query
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `XSL` | `String` | `true` | `` |
-| `parameters` | `Struct` | `false` | `{}` |
-
 </p></details>
 
 

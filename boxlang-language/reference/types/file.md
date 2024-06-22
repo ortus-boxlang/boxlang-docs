@@ -27,68 +27,26 @@ Different values are returned for FileInfo and GetFileInfo
 <details>
 <summary><code>seek(position=[integer])</code></summary>
 <p>Moves the buffer cursor position forward the number of characters specified by the position argument
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `position` | `integer` | `true` | `` |
-
 </p></details>
 <details>
 <summary><code>setAccessMode(mode=[string])</code></summary>
 <p>Sets the Posix permissions on a file
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `mode` | `string` | `true` | `` |
-
 </p></details>
 <details>
 <summary><code>setAttribute(attribute=[string])</code></summary>
 <p>Sets a file access attribute
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `attribute` | `string` | `true` | `` |
-
 </p></details>
 <details>
 <summary><code>setLastModified(date=[any])</code></summary>
 <p>Sets the last modified time of a file
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `date` | `any` | `true` | `` |
-
 </p></details>
 <details>
 <summary><code>skipBytes(position=[integer])</code></summary>
 <p>Moves the buffer cursor position forward the number of characters specified by the position argument
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `position` | `integer` | `true` | `` |
-
 </p></details>
 <details>
 <summary><code>writeLine(data=[string])</code></summary>
 <p>Writes a line of data to a file
-
- Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `data` | `string` | `true` | `` |
-
 </p></details>
 
 
