@@ -5,19 +5,19 @@ BoxLang has an extensive and awesome image manipulation library that allows you 
 Apart from core image functions, all functions can be applied to an image object as member functions. Yes, BoxLang allows you to deal with image objects natively.
 
 ```java
-imgObj = imageRead("http://cfdocs.org/apple-touch-icon.png");
+imgObj = imageRead("https://cfdocs.org/apple-touch-icon.png");
 imgObj.resize(50,50);
 cfimage(action="writeToBrowser", source=imgObj);
 
-imgObj = imageRead("http://cfdocs.org/apple-touch-icon.png");
+imgObj = imageRead("https://cfdocs.org/apple-touch-icon.png");
 imgObj.blur(5);
 cfimage(action="writeToBrowser", source=imgObj);
 
-imgObj = imageRead("http://cfdocs.org/apple-touch-icon.png");
+imgObj = imageRead("https://cfdocs.org/apple-touch-icon.png");
 imgObj.rotate(90);
 cfimage(action="writeToBrowser", source=imgObj);
 
-imgObj = imageRead("http://cfdocs.org/apple-touch-icon.png");
+imgObj = imageRead("https://cfdocs.org/apple-touch-icon.png");
 info = imgObj.info();
 writeDump(info);
 ```
