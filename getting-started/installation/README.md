@@ -5,7 +5,7 @@ description: Getting started with BoxLang is easy!  Choose your path wisely!
 # Installation
 
 {% hint style="danger" %}
-; wePLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
+PLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
 {% endhint %}
 
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
@@ -20,7 +20,7 @@ BoxLang is currently compiling Java source on the fly for debugging purposes, so
 
 {% tabs %}
 {% tab title="Mac" %}
-We recommend using homebrew to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
+We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
 
 ```bash
 brew install curl zip unzip openjdk
