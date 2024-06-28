@@ -1,15 +1,16 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `Dump`
+# Function: `GetModuleInfo`
 
-Outputs the contents of a variable of any type for debugging purposes.
+Get the module record for a loaded module in BoxLang.
 
-The variable can be as simple as a string or as complex as a class or struct.
+If the module
+ doesn't exist, an empty struct is returned.
 
 ## Method Signature
 
 ```
-Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
+GetModuleInfo(module=[string])
 ```
 
 ### Arguments
@@ -17,11 +18,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `var` | `any` | `false` | The variable to dump |  |
-| `label` | `string` | `false` | A label to display above the dump |  |
-| `top` | `numeric` | `false` | The number of levels to display | `0` |
-| `expand` | `boolean` | `false` | Whether to expand the dump | `true` |
-| `abort` | `boolean` | `false` | Whether to abort the request after dumping | `false` |
+| `module` | `string` | `true` | The name of the module to get the record for. |  |
 
 ## Examples
 
@@ -42,6 +39,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [CreateUUID](./CreateUUID.md)
   * [DE](./DE.md)
   * [DebugBoxContexts](./DebugBoxContexts.md)
+  * [Dump](./Dump.md)
   * [Duplicate](./Duplicate.md)
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
@@ -57,7 +55,6 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [GetFileFromPath](./GetFileFromPath.md)
   * [GetFunctionCalledName](./GetFunctionCalledName.md)
   * [GetFunctionList](./GetFunctionList.md)
-  * [GetModuleInfo](./GetModuleInfo.md)
   * [GetModuleList](./GetModuleList.md)
   * [GetSystemSetting](./GetSystemSetting.md)
   * [GetTempDirectory](./GetTempDirectory.md)

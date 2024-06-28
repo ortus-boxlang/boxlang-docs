@@ -557,7 +557,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `sortType` | `any` | `false` | `null` |
+| `sortType` | `any` | `false` | `textnocase` |
 | `sortOrder` | `string` | `false` | `asc` |
 | `localeSensitive` | `boolean` | `false` | `null` |
 | `callback` | `any` | `false` | `null` |

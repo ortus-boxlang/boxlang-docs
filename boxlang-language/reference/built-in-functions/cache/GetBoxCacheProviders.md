@@ -23,3 +23,4 @@ This function does not accept any arguments
   * [GetBoxCache](./GetBoxCache.md)
   * [GetBoxCacheFilter](./GetBoxCacheFilter.md)
   * [GetBoxCacheNames](./GetBoxCacheNames.md)
+  * [GetBoxCacheService](./GetBoxCacheService.md)

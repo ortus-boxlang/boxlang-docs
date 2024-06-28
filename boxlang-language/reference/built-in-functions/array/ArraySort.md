@@ -16,7 +16,7 @@ ArraySort(array=[modifiablearray], sortType=[any], sortOrder=[string], localeSen
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `modifiablearray` | `true` | The array to sort |  |
-| `sortType` | `any` | `false` | Options are text, numeric, or textnocase |  |
+| `sortType` | `any` | `false` | Options are text, numeric, or textnocase | `textnocase` |
 | `sortOrder` | `string` | `false` | Options are asc or desc | `asc` |
 | `localeSensitive` | `boolean` | `false` | Sort based on local rules |  |
 | `callback` | `any` | `false` | Function to sort by |  |

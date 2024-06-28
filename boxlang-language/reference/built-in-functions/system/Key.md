@@ -1,15 +1,16 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `Dump`
+# Function: `Key`
 
-Outputs the contents of a variable of any type for debugging purposes.
+Delay evaluation of a string as an expression, when it is passed as a parameter to the IIf or Evaluate functions.
 
-The variable can be as simple as a string or as complex as a class or struct.
+Escapes any double quotation
+ marks in the parameter and wraps the result in double quotation marks. It does not escape # so the string could still be evaluated in some cases.
 
 ## Method Signature
 
 ```
-Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
+Key(string=[string])
 ```
 
 ### Arguments
@@ -17,11 +18,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `var` | `any` | `false` | The variable to dump |  |
-| `label` | `string` | `false` | A label to display above the dump |  |
-| `top` | `numeric` | `false` | The number of levels to display | `0` |
-| `expand` | `boolean` | `false` | Whether to expand the dump | `true` |
-| `abort` | `boolean` | `false` | Whether to abort the request after dumping | `false` |
+| `string` | `string` | `true` | The string to delay evaluation of. |  |
 
 ## Examples
 
@@ -42,6 +39,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [CreateUUID](./CreateUUID.md)
   * [DE](./DE.md)
   * [DebugBoxContexts](./DebugBoxContexts.md)
+  * [Dump](./Dump.md)
   * [Duplicate](./Duplicate.md)
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
@@ -67,7 +65,6 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [Invoke](./Invoke.md)
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
-  * [Key](./Key.md)
   * [PagePoolClear](./PagePoolClear.md)
   * [Print](./Print.md)
   * [Println](./Println.md)

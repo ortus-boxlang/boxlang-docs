@@ -1,13 +1,13 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `GetBoxCacheNames`
+# Function: `GetBoxCacheService`
 
-Get an array of all the registered caches in BoxLang
+Get access to the Box Cache services.
 
 ## Method Signature
 
 ```
-GetBoxCacheNames()
+GetBoxCacheService()
 ```
 
 ### Arguments
@@ -22,5 +22,5 @@ This function does not accept any arguments
 
   * [GetBoxCache](./GetBoxCache.md)
   * [GetBoxCacheFilter](./GetBoxCacheFilter.md)
+  * [GetBoxCacheNames](./GetBoxCacheNames.md)
   * [GetBoxCacheProviders](./GetBoxCacheProviders.md)
-  * [GetBoxCacheService](./GetBoxCacheService.md)

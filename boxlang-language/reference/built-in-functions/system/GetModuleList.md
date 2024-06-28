@@ -1,27 +1,18 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `Dump`
+# Function: `GetModuleList`
 
-Outputs the contents of a variable of any type for debugging purposes.
-
-The variable can be as simple as a string or as complex as a class or struct.
+Get a collection of all the registered global functions in the runtime.
 
 ## Method Signature
 
 ```
-Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
+GetModuleList()
 ```
 
 ### Arguments
 
-
-| Argument | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `var` | `any` | `false` | The variable to dump |  |
-| `label` | `string` | `false` | A label to display above the dump |  |
-| `top` | `numeric` | `false` | The number of levels to display | `0` |
-| `expand` | `boolean` | `false` | Whether to expand the dump | `true` |
-| `abort` | `boolean` | `false` | Whether to abort the request after dumping | `false` |
+This function does not accept any arguments
 
 ## Examples
 
@@ -42,6 +33,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [CreateUUID](./CreateUUID.md)
   * [DE](./DE.md)
   * [DebugBoxContexts](./DebugBoxContexts.md)
+  * [Dump](./Dump.md)
   * [Duplicate](./Duplicate.md)
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
@@ -58,7 +50,6 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [GetFunctionCalledName](./GetFunctionCalledName.md)
   * [GetFunctionList](./GetFunctionList.md)
   * [GetModuleInfo](./GetModuleInfo.md)
-  * [GetModuleList](./GetModuleList.md)
   * [GetSystemSetting](./GetSystemSetting.md)
   * [GetTempDirectory](./GetTempDirectory.md)
   * [GetTickCount](./GetTickCount.md)
