@@ -6,7 +6,7 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 
 <figure><img src=".gitbook/assets/logo-gradient-dark.png" alt=""><figcaption></figcaption></figure>
 
-**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, ColdFusion, Python, Ruby, Go, and PHP, to provide developers with a modern and expressive syntax.
+**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern and expressive syntax.
 
 {% hint style="danger" %}
 Please note that we are in **open beta** and still have many things to complete before the stable release. Please be patient with us as we strive to achieve our goals.
@@ -27,7 +27,7 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
    3. Android/iOS Devices
    4. Web assembly
 7. Compile down to Java ByteCode
-8. Allow backward compatibility with the existing ColdFusion/CFML language.
+8. Allow backward compatibility with the existing CFML language.
 
 {% content-ref url="getting-started/overview/" %}
 [overview](getting-started/overview/)
