@@ -10,7 +10,7 @@ We have an official first-party extension for VSCode. You can find it in the [VS
 
 * Language server integration
   * Inline documentation
-  * Launguage hints
+  * Language hints
   * Type information (experimental)
 * Built-in debugger
 * Mini BoxLang web server for quick development/testing

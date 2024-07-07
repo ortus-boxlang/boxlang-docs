@@ -660,7 +660,7 @@ Arguments:
 <details>
 <summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
 
-Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+Converts a BoxLang variable into a JSON (JavaScript Object Notation) string.
 
 Arguments:
 
@@ -674,7 +674,7 @@ Arguments:
 <details>
 <summary><code>listToJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
 
-Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+Converts a BoxLang variable into a JSON (JavaScript Object Notation) string.
 
 Arguments:
 

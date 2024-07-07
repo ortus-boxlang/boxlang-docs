@@ -63,7 +63,7 @@ directoryExists( "/my/path" )
     try {
       uploadedFile = fileUpload( getTempDirectory(), "fileInput", "image/jpeg,image/pjpeg", "MakeUnique" );
       // check the file extension of the uploaded file; mime types can be spoofed
-      if (not listFindNoCase("jpg,jpeg", cffile.serverFileExt)) {
+      if (not listFindNoCase("jpg,jpeg", uploadedFile.serverFileExt)) {
       throw("The uploaded file is not of type JPG.");
       }
       // do stuff with uploadedFile...

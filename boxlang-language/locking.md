@@ -4,9 +4,9 @@ Locking is an essential piece of software engineering. There are occasions where
 
 You can also find great knowledge in the Java Synchronization tutorial: [https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html](https://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)
 
-## cflock
+## lock
 
-BoxLang gives you the `cflock` tag/construct which you can use to ensure the integrity of shared data and it allows you to have two types of locks:
+BoxLang gives you the `lock` tag/construct which you can use to ensure the integrity of shared data and it allows you to have two types of locks:
 
 1. **Exclusive** - Allows single-thread access to the BoxLang constructs in its body. The tag body can be executed by **one** request at a time. No other requests can start executing code within the tag while a request has an exclusive lock. BoxLang issues exclusive locks on a first-come, first-served basis.
 2. **ReadOnly** - Allows multiple requests to access BoxLang constructs within the tag body concurrently. Use a read-only lock only when shared data is read and not modified. If another request has an exclusive lock on shared data, the new request waits for the exclusive lock to be released
@@ -30,9 +30,9 @@ lock
 
 ### Attributes
 
-Here are the attributes to the `cflock` construct
+Here are the attributes to the `lock` construct
 
-<table data-header-hidden><thead><tr><th width="196">Attribute</th><th width="106">Type</th><th width="119">Default</th><th>Description</th></tr></thead><tbody><tr><td>Attribute</td><td>Type</td><td>Default</td><td>Description</td></tr><tr><td><code>timeout</code></td><td>numeric</td><td><code>required</code></td><td>Max length in seconds to wait to obtain the lock. If lock is obtained, tag execution continues. Otherwise, behavior depends on throwOnTimeout attribute value.</td></tr><tr><td><code>scope</code></td><td>string</td><td></td><td>Lock scope. Mutually exclusive with the <code>name</code> attribute. Only one request in the specified scope can execute the code within this tag (or within any other cflock tag with the same lock scope scope) at a time. Values are: <code>application, request, server, session</code></td></tr><tr><td><code>name</code></td><td>string</td><td></td><td>Lock name. Mutually exclusive with the scope attribute. Only one request can execute the code within a <code>cflock</code> tag with a given name at a time. Cannot be an <a href="https://cfdocs.org/empty">empty</a> string.</td></tr><tr><td><code>throwOnTimeout</code></td><td>boolean</td><td>true</td><td>If true and a timeout is reached an exception is thrown, else it is ignored.</td></tr><tr><td><code>type</code></td><td>string</td><td>exclusive</td><td><strong>readOnly</strong>: lets more than one request read shared data. <strong>exclusive</strong>: lets one request read or write shared data.</td></tr></tbody></table>
+<table data-header-hidden><thead><tr><th width="196">Attribute</th><th width="106">Type</th><th width="119">Default</th><th>Description</th></tr></thead><tbody><tr><td>Attribute</td><td>Type</td><td>Default</td><td>Description</td></tr><tr><td><code>timeout</code></td><td>numeric</td><td><code>required</code></td><td>Max length in seconds to wait to obtain the lock. If lock is obtained, tag execution continues. Otherwise, behavior depends on throwOnTimeout attribute value.</td></tr><tr><td><code>scope</code></td><td>string</td><td></td><td>Lock scope. Mutually exclusive with the <code>name</code> attribute. Only one request in the specified scope can execute the code within this tag (or within any other lock tag with the same lock scope scope) at a time. Values are: <code>application, request, server, session</code></td></tr><tr><td><code>name</code></td><td>string</td><td></td><td>Lock name. Mutually exclusive with the scope attribute. Only one request can execute the code within a <code>lock</code> tag with a given name at a time. Cannot be an <a href="https://cfdocs.org/empty">empty</a> string.</td></tr><tr><td><code>throwOnTimeout</code></td><td>boolean</td><td>true</td><td>If true and a timeout is reached an exception is thrown, else it is ignored.</td></tr><tr><td><code>type</code></td><td>string</td><td>exclusive</td><td><strong>readOnly</strong>: lets more than one request read shared data. <strong>exclusive</strong>: lets one request read or write shared data.</td></tr></tbody></table>
 
 {% hint style="danger" %}
 **Important**: Please note that when using named locks, the name is shared across the entire BoxLang server, no matter the `cfapplication` it is under. Please be aware of it and use unique enough names. Lock names are global to a BoxLang server. They are shared among applications and user sessions, but not clustered servers.
@@ -73,9 +73,9 @@ I highly discourage the use of scope locks as it throws a huge locking mechanism
 
 A deadlock is a state in which no request can execute the locked construct. After a deadlock occurs, neither thread can break it, because all requests to the protected section of the lock are blocked until the deadlock can be resolved by a lock time-out.
 
-The `cflock` tag/construct uses kernel level synchronization objects that are released automatically upon time out and/or the abnormal termination of the thread that owns them. Therefore, while processing a `cflock` , the server never deadlocks for an infinite period. However, large time-outs can block request threads for long periods, and radically decrease throughput.
+The `lock` tag/construct uses kernel level synchronization objects that are released automatically upon time out and/or the abnormal termination of the thread that owns them. Therefore, while processing a `lock` , the server never deadlocks for an infinite period. However, large time-outs can block request threads for long periods, and radically decrease throughput.
 
-To. prevent this, always use the minimum time-out value. Another cause of blocked request threads is inconsistent **nesting** of `cflocks` and inconsistent naming of locks. If you nest locks, everyone accessing the locked variables must consistently nest `cflocks` in the same order. Otherwise, a deadlock can occur.
+To. prevent this, always use the minimum time-out value. Another cause of blocked request threads is inconsistent **nesting** of `locks` and inconsistent naming of locks. If you nest locks, everyone accessing the locked variables must consistently nest `locks` in the same order. Otherwise, a deadlock can occur.
 
 ## Race Conditions: Double Locking
 

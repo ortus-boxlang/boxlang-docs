@@ -12,7 +12,7 @@ description: CommandBox is the de facto standard for BoxLang development and exe
 
 CommandBox is an amalgamation of many different tools and borrows concepts from NPM, Grunt/Gulp, Maven, ANT, Node, and much more. Features include:
 
-* True Command Line for ColdFusion (CFML) and BoxLang
+* True Command Line for BoxLang and CFML
 * Operation System integration for executing commands
 * Ability to create and execute commands built using BoxLang and CFML
 * ForgeBox integration for cloud package management and installations
@@ -34,7 +34,7 @@ CommandBox is a Java-based executable that will run on the most recent desktop o
 * 256MB+ RAM
 * 250MB+ free hard drive space
 * Multi-core CPU recommended
-* JRE/JDK 11+
+* JRE/JDK 21+
 
 ## Getting Started
 

@@ -2,17 +2,17 @@
 description: A quick guide on key differences and issues when migrating from CFML
 ---
 
-# Migrating From ColdFusion/CFML
+# Migrating From CFML
 
 {% hint style="danger" %}
 Please note that our CFML Compatibility is still in progress. Please keep this page bookmarked as we progress to our stable release.
 {% endhint %}
 
-BoxLang is a new language with a dual parser to support the ColdFusion/CFML ecosystem.  It also has a compatibility module (`bx-compat`) that will allow the BoxLang runtime to behave like an Adobe ColdFusion or Lucee Server.  We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
+BoxLang is a new language with a dual parser to support the CFML ecosystem.  It also has a compatibility module (`bx-compat`) that will allow the BoxLang runtime to behave like an Adobe or Lucee Server.  We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
 
 ### File Types
 
-BoxLang can parse and run all of the traditional ColdFusion/CFML file types
+BoxLang can parse and run all of the traditional CFML file types
 
 * `.cfc` - Components
 * `.cfs` - Scripts
@@ -20,11 +20,11 @@ BoxLang can parse and run all of the traditional ColdFusion/CFML file types
 
 ### Components are Classes
 
-ColdFusion Components (CFCs) are now called BoxLang classes, like any other language. You can also use the `class` declaration for them.  You can continue to write components if you like, but if you use our `.bx` extensions, they are now classes.
+CFML Components (CFCs) are called classes in BoxLang, like any other language. You can also use the `class` declaration for them.  You can continue to write components if you like, but if you use our `.bx` extensions, they are now classes.
 
 ```java
 class{
-    
+
     property name=¨firstName¨
 
 }
@@ -94,7 +94,7 @@ So the CFML
 * @brad wood
 *
 * @myService my hint here for the arg
-* @myService.inject 
+* @myService.inject
 */
 function foo( required any myService ) {}
 ```
@@ -104,12 +104,12 @@ would turn into this BoxLang
 ```jsx
 /**
 * My function hint
-* 
+*
 * @myService my hint here for the arg
 */
 @output false
 @brad wood
-@myService.inject 
+@myService.inject
 function foo( required any myService ) {}
 ```
 
@@ -127,7 +127,7 @@ you will get a blank page with no output!
 
 ### Import keyword
 
-CFML has the cfimport tag, but there doesn’t seem to be any special script version of it, ours looks like this:
+CFML has the import tag, but there doesn’t seem to be any special script version of it, ours looks like this:
 
 ```jsx
 import taglib="/relative/path/customTags" prefix="tags";
@@ -277,13 +277,13 @@ Here's a full breakdown of the various syntaxes:
 The `blockfactor` query option in Adobe CF and Lucee Server is used to set a custom batch size when selecting large numbers of rows:
 
 ```js
-queryExecute( "Select * FROM myBigTable", {}, { blockfactor : 100 } ); 
+queryExecute( "Select * FROM myBigTable", {}, { blockfactor : 100 } );
 ```
 
 In BoxLang, this is renamed to `fetchSize`:
 
 ```js
-queryExecute( "Select * FROM myBigTable", {}, { fetchSize : 100 } ); 
+queryExecute( "Select * FROM myBigTable", {}, { fetchSize : 100 } );
 ```
 
 You can use the `blockfactor` nomenclature by installing the `bx-compat` module.
