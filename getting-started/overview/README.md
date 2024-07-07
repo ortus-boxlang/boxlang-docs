@@ -16,7 +16,7 @@ BoxLang combines many features from different programming languages, including J
 
 * Be dynamic, modular, lightweight and fast
 * Be 100% interoperable with Java
-* Be modern, functional and flluent
+* Be modern, functional and fluent
 * Modularity at its core
 * Take advantage of the modern JVM
 * TDD/BDD Fully Tested Source
@@ -41,7 +41,7 @@ BoxLang combines many features from different programming languages, including J
 11. **Portable, Fluent, Human Scheduled Tasks:** BoxLang Scheduled Tasks Framework provides a centralized and portable way to define and manage scheduled tasks on your servers and applications. Source control your tasking with our scheduling DSL.
 12. **CFML Compatible:** BoxLang supports a dual parser and transpiler to execute CFML code natively (maybe more languages later). This means that you can run all your applications written in CFML within BoxLang natively. We also provide tooling to automatically transpile your CFML code to BoxLang.© if you have a + Subscription.
 13. **Tooling:** We provide the core language and several tools to help developers do their job easily and efficiently. We provide a Visual Studio Code extension for the language to provide syntax highlighting, debugger, code insight, code documentation, formatting, LSP integration, and more. Our + subscribers get even more tools like enhanced debuggers, CFML transformers, and more.
-14. **Ecosystem:** Even though BoxLang is a new language, **it** already has an established ecosystem since every Java and CFML library works with BoxLang. This was our priority when designing BoxLang, and it would automatically be able to integrate and run libraries from the Java and CFML ecosystems. It ships with [CommandBox](https://www.ortussolutions.com/products/commandbox) as its package manager, server manager, task manager, and REPL tool. Almost any project in [https://central.sonatype.com/ 1](https://central.sonatype.com/) and [https://www.forgebox.io](http://www.forgebox.io/) should work with BoxLang.
+14. **Ecosystem:** Even though BoxLang is a new language, **it already has an established ecosystem** since every Java and CFML library works with BoxLang. This was our priority when designing BoxLang, and it would automatically be able to integrate and run libraries from the Java and CFML ecosystems. It ships with [CommandBox](https://www.ortussolutions.com/products/commandbox) as its package manager, server manager, task manager, and REPL tool. Almost any project in [https://central.sonatype.com/ 1](https://central.sonatype.com/) and [https://www.forgebox.io](http://www.forgebox.io/) should work with BoxLang.
 
 ### Is it CFML compatible?
 
