@@ -127,7 +127,7 @@ you will get a blank page with no output!
 
 ### Import keyword
 
-CFML has the cfimport tag, but there doesn’t seem to be any special script version of it, ours looks like this:
+CFML has the import tag, but there doesn’t seem to be any special script version of it, ours looks like this:
 
 ```jsx
 import taglib="/relative/path/customTags" prefix="tags";
