@@ -2,7 +2,7 @@
 
 # Function: `JSONSerialize`
 
-Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+Converts a BoxLang variable into a JSON (JavaScript Object Notation) string.
 
 ## Method Signature
 

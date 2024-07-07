@@ -8,7 +8,7 @@ description: Power your mission-critical and enterprise applications with Comman
 
 CommandBox is a standalone, native tool for Windows, Mac, and Linux that provides a Command-Line Interface (CLI) for developer productivity, tool interaction, package management, embedded JEE server, application scaffolding, and sweet ASCII art.&#x20;
 
-It seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or ColdFusion (CFML) project.  We have created a special servlet runtime for CommandBox so you can leverage it to deploy mission-critical and high-traffic web applications.  We go even further with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro) as part of our [BoxLang subscriptions](https://boxlang.io/plans) to give you tons of features like JDK management, Multi-site support, Multi-SSL support, Operating System service manager, SNI support, CAC Support, and so much more.
+It seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or CFML project.  We have created a special servlet runtime for CommandBox so you can leverage it to deploy mission-critical and high-traffic web applications.  We go even further with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro) as part of our [BoxLang subscriptions](https://boxlang.io/plans) to give you tons of features like JDK management, Multi-site support, Multi-SSL support, Operating System service manager, SNI support, CAC Support, and so much more.
 
 <figure><img src="../../.gitbook/assets/image (1) (1).png" alt="" width="156"><figcaption></figcaption></figure>
 
@@ -57,7 +57,7 @@ You can also make your CommandBox BoxLang server portable with a `server.json` f
 ```json
 {
     "name":"MyBoxLang-Server",
-    
+
     "app":{
         // The BoxLang Engine
         "cfengine":"boxlang",
@@ -65,20 +65,20 @@ You can also make your CommandBox BoxLang server portable with a `server.json` f
         // CommandBox Home
         "serverHomeDirectory":".boxlang"
     },
-    
+
     "openBrowser":true,
-    
+
     "web":{
         "rewrites":{
             "enable":true
         },
     },
-    
+
     // Any Environment variables
     "env":{
         // "BOXLANG_DEBUG" : true
     },
-    
+
     // Install these modules on installation
     "scripts" : {
  	"onServerInitialInstall":"install bx-mail,bx-mysql,bx-derby,bx-compat"

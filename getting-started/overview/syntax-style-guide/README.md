@@ -7,7 +7,7 @@ description: Quickly learn what the BoxLang language offers.
 This guide provides a quick overview of BoxLang syntax styles, intricacies, operators, and features. It aims to assist developers from other languages in their BoxLang development journey. BoxLang has been heavily inspired by many different languages, including Java, CFML, Groovy, Kotlin, Ruby, PHP, and more.
 
 {% hint style="success" %}
-If you are a ColdFusion/CFML developer, check out also our [CFML Guide.](coldfusion-cfml.md)
+If you are a CFML developer, check out also our [CFML Guide.](cfml.md)
 {% endhint %}
 
 ## Dynamic & Loose Typing
@@ -27,12 +27,12 @@ File Types:
 name = "boxlang"
 
 // Inferred as Double
-age = 1 
+age = 1
 // But I can redeclare it to a string if I need to
 age = "one"
 
 // Inferred as Double
-isActive = false 
+isActive = false
 
 // Inferred as Date
 today = now()
@@ -114,11 +114,11 @@ You can declare multi-line strings by using the `"""` start and end operators.  
 ```java
 myLargeContent = """
     Hi,
-    
+
     How are you today #name#!
-    
+
     This is a very nice email with merged data!
-    
+
     Thanks for purchasing #item#!
 """
 
@@ -144,7 +144,7 @@ switch( expression ) {
     case value : case value2 :{
         break;
     }
-    
+
     default : nothing
 }
 ```
@@ -157,7 +157,7 @@ BoxLang allows you to catch `any` exception using our `any` operator
 try{
     .. funky code here
 } catch( any e ){
-    
+
     // We just caught every single exception known to man!
 
 }
@@ -229,7 +229,7 @@ When you access a variable without specific scope access, BoxLang will try to fi
 
 ```cfscript
 function( name ){
-    
+
     // add to data, which has no scope and no arguments exist
     // so it looks for it in the variables scope
     data.append( name )
@@ -435,7 +435,7 @@ if( order ){
             println( order.getCustomer().getAddress() )
         }
     }
-    
+
 }
 ```
 
@@ -490,7 +490,7 @@ class{
     function init(){
         return this
     }
-    
+
     function sayHello(){
         return "Hola!"
     }
@@ -623,10 +623,10 @@ myArray = [1,2,3,4]
 println( myArray.count() )
 
 fruitArray = [
-    {'fruit'='apple', 'rating'=4}, 
-    {'fruit'='banana', 'rating'=1}, 
-    {'fruit'='orange', 'rating'=5}, 
-    {'fruit'='mango', 'rating'=2}, 
+    {'fruit'='apple', 'rating'=4},
+    {'fruit'='banana', 'rating'=1},
+    {'fruit'='orange', 'rating'=5},
+    {'fruit'='mango', 'rating'=2},
     {'fruit'='kiwi', 'rating'=3}
 ]
 favoriteFruites = fruitArray.filter( item -> item.rating >= 3 )
@@ -675,7 +675,7 @@ The short form allows for `property [type=any] name [default=expression];`
 
 ```cfscript
 class{
-    
+
     // No type means `any`, no default means null
     property firstName;
     // A numeric age with a default value of 1
@@ -695,7 +695,7 @@ class{
 
     property name="firstName" type="string" default="boxlang";
     property name="age" type="numeric";
-    
+
     property name="data"
         type="struct"
         default={ name:"this", age : 3, whatever : now() };
@@ -787,16 +787,16 @@ By default, automatic **getters** and **setters** for properties are enabled. Yo
 
 ```cfscript
 class{
-    
+
     property name="firstName" type="string" default="boxlang";
     property name="age" type="numeric"
-    
+
     // Override the getter
     function getAge(){
         // log it
         return variables.age
     }
-    
+
     // Override the setter
     function setFirstName( firstName ){
         // Log here

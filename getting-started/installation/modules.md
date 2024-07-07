@@ -12,7 +12,7 @@ Here is the collection of modules built and supported by the BoxLang team.
 
 `Category: cfml`
 
-This module allows your BoxLang engine to run as an Adobe ColdFusion CFML engine or a Lucee CFML engine. Please note that we will not offer every single feature of the Adobe engines in this single module. It can be spread out through a collection of modules.
+This module allows your BoxLang engine to run as an Adobe CFML engine or a Lucee CFML engine. Please note that we will not offer every single feature of the Adobe engines in this single module. It can be spread out through a collection of modules.
 
 ```
 install bx-compat
@@ -207,14 +207,14 @@ You can customize the boxlang module directory by changing the `runtime.modulesD
 ```json
 {
   "runtime" : {
-    
-    
+
+
     // A collection of BoxLang module directories, they must be absolute paths
     "modulesDirectory": [
       "${boxlang-home}/modules"
     ],
-    
-    
+
+
   }
 }
 ```

@@ -10,7 +10,7 @@ description: A quick overview of the BoxLang Language & Framework
 
 **BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes, including all operating systems, web servers, Java application servers, AWS lambda, iOS, Android, web assembly, and more.
 
-BoxLang combines many features from different programming languages, including Java, ColdFusion, Python, Ruby, Go, and PHP, to provide developers with a modern, fluent, and expressive syntax. It has been designed to be a highly modular and dynamic language that takes advantage of all the modern features of the JVM.
+BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern, fluent, and expressive syntax. It has been designed to be a highly modular and dynamic language that takes advantage of all the modern features of the JVM.
 
 ### Goals <a href="#goals-3" id="goals-3"></a>
 
@@ -21,7 +21,7 @@ BoxLang combines many features from different programming languages, including J
 * Take advantage of the modern JVM
 * TDD/BDD Fully Tested Source
 * Support and adapt to multiple runtimes
-* Multi-Parser design to support running different dynamic languages like CFML (ColdFusion), Groovy and more.
+* Multi-Parser design to support running different dynamic languages like CFML, Groovy and more.
 * Tooling and enhanced IDE
 
 
@@ -39,11 +39,11 @@ BoxLang combines many features from different programming languages, including J
 9. **Professional Open-Source:** BoxLang is a professional open-source project based on the Apache 2 license. Ortus Solutions supports every aspect of the language, and you can get a BoxLang+ subscription for professional support, extended features, and modular capabilities.
 10. **Multi-Platform Development:** BoxLang has been designed to run on multiple platforms. This allows you to write adaptive code for any Operating System JVM, a servlet container web server, cloud lambda functions, iOS, Android, or even the browser via our web assembly package. BoxLang© builds upon its language core to be deployed on almost any running platform, present or future.
 11. **Portable, Fluent, Human Scheduled Tasks:** BoxLang Scheduled Tasks Framework provides a centralized and portable way to define and manage scheduled tasks on your servers and applications. Source control your tasking with our scheduling DSL.
-12. **ColdFusion/CFML Compatible:** BoxLang supports a dual parser and transpiler to execute ColdFusion/CFML code natively (maybe more languages later). This means that you can run all your ColdFusion applications within BoxLang natively. We also provide tooling to automatically transpile your ColdFusion code to BoxLang.© if you have a + Subscription.
-13. **Tooling:** We provide the core language and several tools to help developers do their job easily and efficiently. We provide a Visual Studio Code extension for the language to provide syntax highlighting, debugger, code insight, code documentation, formatting, LSP integration, and more. Our + subscribers get even more tools like enhanced debuggers, ColdFusion/CFML transformers, and more.
-14. **Ecosystem:** Even though BoxLang is a new language, **it** already has an established ecosystem since every Java and ColdFusion/CFML library works with BoxLang. This was our priority when designing BoxLang, and it would automatically be able to integrate and run libraries from the Java and ColdFusion/CFML ecosystems. It ships with [CommandBox](https://www.ortussolutions.com/products/commandbox) as its package manager, server manager, task manager, and REPL tool. Almost any project in [https://central.sonatype.com/ 1](https://central.sonatype.com/) and [https://www.forgebox.io](http://www.forgebox.io/) should work with BoxLang.
+12. **CFML Compatible:** BoxLang supports a dual parser and transpiler to execute CFML code natively (maybe more languages later). This means that you can run all your applications written in CFML within BoxLang natively. We also provide tooling to automatically transpile your CFML code to BoxLang.© if you have a + Subscription.
+13. **Tooling:** We provide the core language and several tools to help developers do their job easily and efficiently. We provide a Visual Studio Code extension for the language to provide syntax highlighting, debugger, code insight, code documentation, formatting, LSP integration, and more. Our + subscribers get even more tools like enhanced debuggers, CFML transformers, and more.
+14. **Ecosystem:** Even though BoxLang is a new language, **it** already has an established ecosystem since every Java and CFML library works with BoxLang. This was our priority when designing BoxLang, and it would automatically be able to integrate and run libraries from the Java and CFML ecosystems. It ships with [CommandBox](https://www.ortussolutions.com/products/commandbox) as its package manager, server manager, task manager, and REPL tool. Almost any project in [https://central.sonatype.com/ 1](https://central.sonatype.com/) and [https://www.forgebox.io](http://www.forgebox.io/) should work with BoxLang.
 
-### Is it ColdFusion/CFML compatible?
+### Is it CFML compatible?
 
 {% hint style="danger" %}
 This is still a work in progress until we go stable in Fall 2024
@@ -62,6 +62,3 @@ We are also in the planning phases for building a [Groovy](https://www.groovy-la
 We launched an open beta of BoxLang at our developer conference, [Into The Box.](https://www.intothebox.org/)
 
 {% embed url="https://www.youtube.com/watch?v=8M0IdUl7IWg&t=1s" %}
-
-
-

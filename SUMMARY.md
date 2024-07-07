@@ -16,7 +16,7 @@
   * [Instructions & Interpreters](getting-started/overview/instructions-and-interpreters.md)
   * [CommandBox CLI](getting-started/overview/commandbox-cli.md)
   * [Quick Syntax Style Guide](getting-started/overview/syntax-style-guide/README.md)
-    * [Migrating From ColdFusion/CFML](getting-started/overview/syntax-style-guide/coldfusion-cfml.md)
+    * [Migrating From CFML](getting-started/overview/syntax-style-guide/cfml.md)
   * [Frequently Asked Questions](getting-started/overview/frequently-asked-questions/README.md)
 * [Installation](getting-started/installation/README.md)
   * [Modules](getting-started/installation/modules.md)

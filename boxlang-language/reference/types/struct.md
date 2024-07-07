@@ -30,7 +30,7 @@ myStruct = structNew( "casesenstive" );
 myStruct[ "cat" ] = "pet";
 myStruct[ "Cat" ] = "wild";
 
-// Create a sorted struct 
+// Create a sorted struct
 myStruct = structNew( "sorted", "textAsc" )
 ```
 
@@ -379,7 +379,7 @@ Convert an array, struct or query to its immutable counterpart.
 <details>
 <summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[boolean], useCustomSerializer=[boolean])</code></summary>
 
-Converts a ColdFusion variable into a JSON (JavaScript Object Notation) string.
+Converts a BoxLang variable into a JSON (JavaScript Object Notation) string.
 
 Arguments:
 
