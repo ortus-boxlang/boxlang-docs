@@ -34,7 +34,7 @@ CommandBox is a Java-based executable that will run on the most recent desktop o
 * 256MB+ RAM
 * 250MB+ free hard drive space
 * Multi-core CPU recommended
-* JRE/JDK 11+
+* JRE/JDK 21+
 
 ## Getting Started
 
