@@ -50,11 +50,11 @@ Which is extremely useful for doing character extractions in ranges
 
 ## Common String Functions
 
-You can find all the available string functions here: [https://cfdocs.org/string-functions](https://cfdocs.org/string-functions). Below are some common ones that are handy to memorize:
+You can find all the available string functions here: [https://boxlang.ortusbooks.com/boxlang-language/reference/types/string](https://boxlang.ortusbooks.com/boxlang-language/reference/types/string). Below are some common ones that are handy to memorize:
 
 ### Len
 
-Call `len()` on a string to get back the number of characters in the string. For instance `Len( "Hello ")` would give you back **6** (notice the trailing space is counted). You can also use member functions: `a.len()`. [https://cfdocs.org/len](https://cfdocs.org/len)
+Call `len()` on a string to get back the number of characters in the string. For instance `Len( "Hello ")` would give you back **6** (notice the trailing space is counted). You can also use member functions: `a.len()`. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/type/len](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/type/len)
 
 ```javascript
 message = "Hola Luis"
@@ -67,7 +67,7 @@ if( len( message ) ){
 
 ### Trim, LTrim, RTrim
 
-The`Trim` function removes leading and trailing spaces and controls characters from a string. You can also use the `ltrim()` to do left trimming and `rtrim()` to do right trimming. [https://cfdocs.org/trim](https://cfdocs.org/trim)
+The`Trim` function removes leading and trailing spaces and controls characters from a string. You can also use the `ltrim()` to do left trimming and `rtrim()` to do right trimming. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/trim](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/trim)
 
 For instance, `Trim("Hello ")` would give you back `Hello` (notice the trailing space is removed). Combine this with `Len` for example `Len( Trim( "Hello ") )` and you would get back `5`. You can also use member functions:
 
@@ -77,7 +77,7 @@ a.trim().len()
 
 ### Replace, ReplaceNoCase, REReplace, REReplaceNoCase
 
-The `Replace` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case-sensitive and the scoped default is one. If you would like the searches to be case-insensitive just use the `noCase()` suffix. [https://cfdocs.org/replace](https://cfdocs.org/replace)
+The `Replace` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case-sensitive and the scoped default is one. If you would like the searches to be case-insensitive just use the `noCase()` suffix. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/replace](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/replace)
 
 For instance, `Replace("Hello", "l", "")` would give you back **Helo** after replacing the _first occurrence of l_, or `Replace("Good Morning!", "o", "e", "All")` would give you **Geed Merning!**
 
@@ -90,11 +90,11 @@ reReplace( "123abc456", "[0-9]+([a-z]+)[0-9]+", "\1" )
 
 ### RemoveChars
 
-`RemoveChars` will remove characters from a string. For instance, `RemoveChars("hello bob", 2, 5)` would give you back **hbob**. [https://cfdocs.org/removechars](https://cfdocs.org/removechars)
+`RemoveChars` will remove characters from a string. For instance, `RemoveChars("hello bob", 2, 5)` would give you back **hbob**. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/removechars](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/removechars)
 
 ### Mid
 
-The `mid` function extracts a substring from a string. For instance, I could call `Mid("Welcome to BoxLang Jumpstart", 4, 12)` and it would give you back: **come to BoxLang**. [https://cfdocs.org/mid](https://cfdocs.org/mid)
+The `mid` function extracts a substring from a string. For instance, I could call `Mid("Welcome to BoxLang Jumpstart", 4, 12)` and it would give you back: **come to BoxLang**. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/mid](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/mid)
 
 ```javascript
 s = "20001122"
@@ -105,7 +105,7 @@ writedump( s[ 5:6 ] )
 
 ### ListToArray
 
-Another great function is `listToArray()` which can take any string and convert it to an array according to a delimiter, empty fields, and even multi-character delimiters. The default delimiter is a comma `,`, but you can use any one or a combination of characters. [https://cfdocs.org/listtoarray](https://cfdocs.org/listtoarray)
+Another great function is `listToArray()` which can take any string and convert it to an array according to a delimiter, empty fields, and even multi-character delimiters. The default delimiter is a comma `,`, but you can use any one or a combination of characters. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/list/listtoarray](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/list/listtoarray)
 
 ```javascript
 a = "luis,majano,lucas,alexia,veronica";

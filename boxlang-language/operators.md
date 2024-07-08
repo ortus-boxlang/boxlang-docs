@@ -67,7 +67,7 @@ These operators are used to perform arithmetic/mathematical operations on operan
 ## Bitwise Operators
 
 {% hint style="info" %}
-BoxLang has native [bitwise](https://en.wikipedia.org/wiki/Bitwise\_operation) operators and it also implements bitwise operations via functions (since functions can also be operators in BoxLang): `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://cfdocs.org/math%2Dfunctions](https://cfdocs.org/math-functions)
+BoxLang has native [bitwise](https://en.wikipedia.org/wiki/Bitwise\_operation) operators and it also implements bitwise operations via functions (since functions can also be operators in BoxLang): `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math)
 {% endhint %}
 
 These operators are used to perform bitwise operations on operands.

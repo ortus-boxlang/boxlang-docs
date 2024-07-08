@@ -8,7 +8,7 @@ BoxLang supports native JSON support via several key functions and some member f
 
 ## Serialize
 
-BoxLang gives us the `jsonSerialize()` function to convert any piece of data to its JSON representation ([https://cfdocs.org/serializejson](https://cfdocs.org/serializejson))
+BoxLang gives us the `jsonSerialize()` function to convert any piece of data to its JSON representation ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsonserialize](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsonserialize))
 
 ```javascript
 jsonSerialize(
@@ -60,7 +60,7 @@ person = {
 
 ### Possible Casting Issues
 
-BoxLang may incorrectly serialize some strings if they can be automatically converted into other types, like numbers or booleans. One workaround is to use a class with [cfproperty](https://cfdocs.org/cfproperty) to specify types. Another workaround is to prepend `Chr(2)` to the value and it will be forced to a string, however, that is an unofficial/undocumented workaround. A more formal workaround is to call `setMetadata()` as a member function on a `struct` to force a type:
+BoxLang may incorrectly serialize some strings if they can be automatically converted into other types, like numbers or booleans. One workaround is to use a class with [property](https://boxlang.ortusbooks.com/boxlang-language/classes/properties) to specify types. Another workaround is to prepend `Chr(2)` to the value and it will be forced to a string, however, that is an unofficial/undocumented workaround. A more formal workaround is to call `setMetadata()` as a member function on a `struct` to force a type:
 
 ```javascript
 myStruct = { "zip"="00123" };
@@ -70,7 +70,7 @@ writeOutput( jsonSerialize(myStruct) );
 
 ## Deserialize
 
-The inverse of serialization is deserialization ([https://cfdocs.org/deserializejson](https://cfdocs.org/deserializejson)). BoxLang gives you the `jsonDeserialize()` function that will take a JSON document and produce native BoxLang data structures for you.
+The inverse of serialization is deserialization ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsondeserialize](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsondeserialize)). BoxLang gives you the `jsonDeserialize()` function that will take a JSON document and produce native BoxLang data structures for you.
 
 ```javascript
 jsonDeserialize(
@@ -100,7 +100,7 @@ var data = '[]'.jsonDeserialize();
 
 ## Is this JSON?
 
-BoxLang has a function to test if the incoming string is valid JSON ([https://cfdocs.org/isjson](https://cfdocs.org/isjson)) or not: `isJSON()`
+BoxLang has a function to test if the incoming string is valid JSON ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/decision/isjson](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/decision/isjson)) or not: `isJSON()`
 
 ```javascript
 isJSON( "[ 1, 2, 3 ]" )

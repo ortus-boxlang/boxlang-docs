@@ -18,9 +18,9 @@ All examples in this book will leverage CommandBox as the de-facto standard for 
 
 ## Docs Reference
 
-The best way to discover the BoxLang language's methods, tags, and functionality is to leverage [cfdocs.org](https://cfdocs.org/). Make sure you open it and bookmark it.
+The best way to discover the BoxLang language's methods, tags, and functionality is to leverage [https://boxlang.ortusbooks.com/boxlang-language/reference](https://boxlang.ortusbooks.com/boxlang-language/reference). Make sure you open it and bookmark it.
 
-{% embed url="https://cfdocs.org/" %}
+{% embed url="https://boxlang.ortusbooks.com/boxlang-language/reference" %}
 
 ## IDE - Editors
 
@@ -50,7 +50,7 @@ You can find the sublime package manager link here: [https://packagecontrol.io/]
 
 ### **VSCode Packages**
 
-* BoxLang - TODO: Add URL when its available
+* BoxLang - [https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang)
 * ColdBox Support - [https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-coldbox](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-coldbox)
 * CommandBox Support - [https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-commandbox](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-commandbox)
 * TestBox Support - [https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-testbox](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-testbox)

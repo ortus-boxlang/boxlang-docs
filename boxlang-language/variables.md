@@ -186,7 +186,7 @@ You can also convert variables from one type to another in BoxLang. Here are som
 * `XMLTransform()`
 
 {% hint style="info" %}
-Please note that some of them can be used as member functions directly on a specific object type. [https://cfdocs.org/conversion%2Dfunctions](https://cfdocs.org/conversion-functions)
+Please note that some of them can be used as member functions directly on a specific object type. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion)
 {% endhint %}
 
 ## Outputting Variables (Interpolation)
@@ -249,7 +249,7 @@ param myVariable = "luis";
 ```
 
 {% hint style="success" %}
-You can even assign types to parameterize variables and much more. Check out the docs for it: [https://cfdocs.org/cfparam](https://cfdocs.org/cfparam)
+You can even assign types to parameterize variables and much more. Check out the docs for it: [https://boxlang.ortusbooks.com/boxlang-language/reference/components/system/param](https://boxlang.ortusbooks.com/boxlang-language/reference/components/system/param)
 {% endhint %}
 
 ## Checking For Existence
@@ -298,7 +298,7 @@ If you run the script above in the REPL tool, you will see the output as `java.l
 
 ## Member Functions
 
-Besides the native Java member functions available to you, BoxLang also allows you to call on each variable's data type functions and chain them to create friendly language DSLs. This way, you do not have to pass variables into functions but treat the variables as objects. You can see all the member functions available according to data type here: [https://cfdocs.org/member](https://cfdocs.org/member)
+Besides the native Java member functions available to you, BoxLang also allows you to call on each variable's data type functions and chain them to create friendly language DSLs. This way, you do not have to pass variables into functions but treat the variables as objects. You can see all the member functions available according to data type here: [https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions)
 
 Here are some examples:
 
@@ -340,7 +340,7 @@ s = s.listAppend("quick brown fox", " ")
 * Query
 * Image
 
-Please see [https://cfdocs.org/member](https://cfdocs.org/member) for further information on member functions.
+Please see [https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) for further information on member functions.
 
 ## Naming Coding Standards
 

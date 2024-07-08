@@ -45,8 +45,8 @@ To use any of these databases you'll need to install its BoxLang module to suppo
 
 A query is a request to a database representing the results' rows and columns. It returns a BoxLang `query` object containing a **record set** and other metadata information about the query. The query can ask for information from the database, write new data to the database, update existing information in the database, or delete records from the database. This can be done in several ways:
 
-* Using the `bx:query` tag. ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
-* Using the `queryExecute()` function. ([https://cfdocs.org/queryexecute](https://cfdocs.org/queryexecute))
+* Using the `bx:query` tag. ([https://boxlang.ortusbooks.com/boxlang-language/reference/types/query](https://boxlang.ortusbooks.com/boxlang-language/reference/types/query))
+* Using the `queryExecute()` function. ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/queryexecute](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/queryexecute))
 
 Here's the tag syntax for a query using a named `"pantry"` datasource:
 
@@ -273,9 +273,9 @@ You can easily place a `.cfconfig.json` in the web root of your project, and if 
 
 The query object can be iterated on like a normal collection through a `for, bx:loop or bx:output` , `each()` constructs.
 
-{% embed url="https://cfdocs.org/cfoutput" %}
+{% embed url="https://boxlang.ortusbooks.com/boxlang-language/reference/components/system/output" %}
 
-{% embed url="https://cfdocs.org/cfloop" %}
+{% embed url="https://boxlang.ortusbooks.com/boxlang-language/reference/components/system/loop" %}
 
 **In a CFM Template**
 
@@ -352,7 +352,7 @@ Here are some methods that will allow you to do parallel computations:
 
 ## Using Input
 
-We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL\_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `bx:queryparam` construct/tag ([https://cfdocs.org/cfqueryparam](https://cfdocs.org/cfqueryparam)) and always sanitize your input via the `encode` functions in BoxLang.
+We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL\_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `bx:queryparam` construct/tag ([https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam](https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam)) and always sanitize your input via the `encode` functions in BoxLang.
 
 ```java
 // Named variable holder
@@ -405,7 +405,7 @@ Please note that the types can be prefixed with `cf_sql_{type}` or just used as 
 
 ## Query Methods
 
-Several query methods are available in BoxLang that can help you manage queries and create them on the fly ([https://cfdocs.org/query-functions](https://cfdocs.org/query-functions)). Please note that you can also use chaining and member functions as well.
+Several query methods are available in BoxLang that can help you manage queries and create them on the fly ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/query](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/query)). Please note that you can also use chaining and member functions as well.
 
 * `queryNew()`
 * `queryAddRow()`
@@ -481,7 +481,7 @@ Please note that using a query of queries can be quite slow sometimes, not all t
 
 You can also determine the return type of database queries as something other than the BoxLang query object. You can choose an array of structs or a struct of structs. This is fantastic for modern applications that rely on rich JavaScript frameworks and produce JSON.
 
-This is achieved by passing the `returntype` attribute within the query options or just an attribute of the `bx:query` tag ([https://cfdocs.org/cfquery](https://cfdocs.org/cfquery))
+This is achieved by passing the `returntype` attribute within the query options or just an attribute of the `bx:query` tag ([https://boxlang.ortusbooks.com/boxlang-language/reference/types/query](https://boxlang.ortusbooks.com/boxlang-language/reference/types/query))
 
 ```java
 users = queryNew( "firstname", "varchar", [{"firstname":"Han"}] );

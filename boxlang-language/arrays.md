@@ -65,7 +65,7 @@ Check it out:
 * We retrieved the size of the array by using the member function `len()`
 * We searched the contents of the array using the member function `findNoCase()` , and it gave us the index position of the element in the array.
 
-Please note that all member functions can also be used as traditional [array functions](https://cfdocs.org/array-functions). However, [member functions](https://cfdocs.org/member) look much better for readability.
+Please note that all member functions can also be used as traditional [array functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array). However, [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) look much better for readability.
 
 {% hint style="success" %}
 **Tip:** You can use the `toString()` call on any array to get a string representation of its values: `grid.toString()`
@@ -89,7 +89,7 @@ grid[ 1 ][ 2 ] = 'Screw';
 
 ## Common Methods
 
-The best way to learn about using arrays is to check out the available [member functions](https://cfdocs.org/member) and [array functions](https://cfdocs.org/array-functions).
+The best way to learn about using arrays is to check out the available [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) and [array functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array).
 
 ```javascript
 // Sort an array
@@ -209,7 +209,7 @@ writedump( numbers[ -6 ] ) // EXCEPTION!!! Array index out of range
 
 ## Array Slices
 
-BoxLang supports the [slicing](https://cfdocs.org/arrayslice) of an array via the `arraySlice()` method or the `slice()` member function, respectively.
+BoxLang supports the [slicing](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array/arrayslice) of an array via the `arraySlice()` method or the `slice()` member function, respectively.
 
 ## Looping Over Arrays
 
