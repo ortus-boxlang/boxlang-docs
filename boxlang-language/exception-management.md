@@ -38,20 +38,7 @@ try{
 
 ### Native Exception Types
 
-Some of the exception types found in BoxLang are the following
-
-* `application`: catches application exceptions
-* `database`: catches database exceptions
-* `template`: catches BoxLang page exceptions
-* `security`: catches security exceptions
-* `object`: catches object exceptions
-* `missingInclude`: catches missing include file exceptions
-* `expression`: catches expression exceptions
-* `lock`: catches lock exceptions
-* `custom_type`: catches the specified custom exception type that is defined in a [cfthrow](https://cfdocs.org/cfthrow) tag
-* `java.lang.Exception`: catches Java object exceptions
-* `searchengine`: catches Verity search engine exceptions
-* `any`: catches all exception types
+[See the reference documentation](https://boxlang.ortusbooks.com/boxlang-language/reference/exceptions) for a list of native exceptions thrown by the BoxLang Core Runtime.  Modules and additional runtimes may also contribute their own native exceptions.
 
 ### Custom Exception Types
 
