@@ -30,7 +30,7 @@ myStruct = structNew( "casesenstive" );
 myStruct[ "cat" ] = "pet";
 myStruct[ "Cat" ] = "wild";
 
-// Create a sorted struct
+// Create a sorted struct 
 myStruct = structNew( "sorted", "textAsc" )
 ```
 
