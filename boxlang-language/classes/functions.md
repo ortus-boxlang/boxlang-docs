@@ -5,7 +5,7 @@ Functions are the way to interact with objects, with no functions we have no obj
 Functions in BoxLang are also first-class object citizens. Meaning that each function can be addressed like an object. They can be even deleted, renamed or even injected at runtime. This is one of the most powerful qualities of the BoxLang dynamic language. You can at runtime manipulate objects and their functions.
 
 {% hint style="info" %}
-You can find all the different features of functions in the docs: [https://cfdocs.org/cffunction](https://cfdocs.org/cffunction)
+You can find all the different features of functions in the docs: [https://boxlang.ortusbooks.com/boxlang-language/classes/functions](https://boxlang.ortusbooks.com/boxlang-language/classes/functions)
 {% endhint %}
 
 ### **Declaration**
@@ -86,7 +86,7 @@ Function modifiers allow you to declare special behaviors to functions, from `st
 
 ## Function Attributes & Metadata
 
-The `function` construct can also have many attributes or name-value pairs that will give it extra functionality according to the BoxLang engine (metadata). You can find all of them here: [https://cfdocs.org/cffunction](https://cfdocs.org/cffunction). Below are the most common ones:
+The `function` construct can also have many attributes or name-value pairs that will give it extra functionality according to the BoxLang engine (metadata). You can find all of them here: [https://boxlang.ortusbooks.com/boxlang-language/classes/functions](https://boxlang.ortusbooks.com/boxlang-language/classes/functions). Below are the most common ones:
 
 * `output` - Will this function send content to the output stream. Try avoiding this to `true` unless you are building libraries of some type, else you are breaking encapsulation
 * `description` - A short text description of the function a part from the hint
@@ -112,10 +112,10 @@ function sayHello(){
 }
 ```
 
-Apart from the name-value pairs of attributes the BoxLang language gives you, you can also add your own. These are called function annotations or custom function metadata. They can be anything you like and they don't even have to have a value. BoxLang then allows you to read the metadata out of the functions via the `getMetadata()` or `getComponentMetadata()` functions.
+Apart from the name-value pairs of attributes the BoxLang language gives you, you can also add your own. These are called function annotations or custom function metadata. They can be anything you like and they don't even have to have a value. BoxLang then allows you to read the metadata out of the functions via the `getMetadata()` or `getClassMetadata()` functions.
 
-* [https://cfdocs.org/getmetadata](https://cfdocs.org/getmetadata)
-* [https://cfdocs.org/getcomponentmetadata](https://cfdocs.org/getcomponentmetadata)
+* [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/type/getmetadata](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/type/getmetadata)
+* [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/system/getclassmetadata](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/system/getclassmetadata)
 
 ## Function Arguments
 

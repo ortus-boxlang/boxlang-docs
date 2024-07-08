@@ -14,7 +14,7 @@ Now, even though doing includes/mixins are easy to do in BoxLang, let me give yo
 
 ## Implementation
 
-BoxLang provides the `<bx:include>` tag and the `include` construct for including files in script - [https://cfdocs.org/cfinclude](https://cfdocs.org/cfinclude).
+BoxLang provides the `<bx:include>` tag and the `include` construct for including files in script - [https://boxlang.ortusbooks.com/boxlang-language/syntax/includes](https://boxlang.ortusbooks.com/boxlang-language/syntax/includes).
 
 ```javascript
 <bx:include template="" runonce="true|false">

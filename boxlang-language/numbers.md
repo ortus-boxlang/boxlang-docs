@@ -11,7 +11,7 @@ There are two basic kinds of numbers in BoxLang: **integers** (whole numbers) an
 <table><thead><tr><th width="120">Type</th><th width="114">Size (bits)</th><th width="147">Significant Bits</th><th width="164">Exponent Bits</th><th>Decimal Digits</th></tr></thead><tbody><tr><td><code>Double</code></td><td>64</td><td>53</td><td>11</td><td>15-16</td></tr></tbody></table>
 
 {% hint style="success" %}
-**Tip:** If you are dealing with currency or tracking precision, please read about `precisionEvaluate()` to represent big numbers and precision results: [https://cfdocs.org/precisionevaluate](https://cfdocs.org/precisionevaluate)
+**Tip:** If you are dealing with currency or tracking precision, please read about `precisionEvaluate()` to represent big numbers and precision results: [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math/precisionevaluate](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math/precisionevaluate)
 {% endhint %}
 
 ```javascript
@@ -34,7 +34,7 @@ numeric function add( numeric a, numeric b ){
 
 ## Operators & Functions
 
-BoxLang offers tons of mathematical [operators](operators.md#arithmetic-operators) and functions: [https://cfdocs.org/math%2Dfunctions](https://cfdocs.org/math-functions)
+BoxLang offers tons of mathematical [operators](operators.md#arithmetic-operators) and functions: [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math)
 
 | abs               | aCos           | arrayAvg       |
 | ----------------- | -------------- | -------------- |
@@ -61,7 +61,7 @@ toNumeric( "FF0011", "hex" )
 toNumeric( "1010", "bin" )
 ```
 
-The `parseNumber()` is also used to convert a string number into a numeral system ([https://cfdocs.org/parsenumber](https://cfdocs.org/parsenumber))
+The `parseNumber()` is also used to convert a string number into a numeral system ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/parsenumber](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/parsenumber))
 
 {% hint style="info" %}
 In a [positional numeral system](https://en.wikipedia.org/wiki/Positional\_numeral\_system), the radix or base is the number of unique [digits](https://en.wikipedia.org/wiki/Numerical\_digit), including the digit zero, used to represent numbers. For example, for the [decimal system](https://en.wikipedia.org/wiki/Decimal) (the most common system in use today) the radix is ten, because it uses the ten digits from 0 through 9.
@@ -95,5 +95,5 @@ while( i <= 10 ){
 {% hint style="info" %}
 Please note that the syntax varies from tag to script, so refer to the docs for subtle differences. Please also note that you can iterate over structures, arrays, queries, and objects in BoxLang; we will see this in later sections.
 
-See [https://cfdocs.org/cfloop](https://cfdocs.org/cfloop), [https://cfdocs.org/cfwhile](https://cfdocs.org/cfwhile) for more information
+See [https://boxlang.ortusbooks.com/boxlang-language/reference/components/system/loop](https://boxlang.ortusbooks.com/boxlang-language/reference/components/system/loop) for more information
 {% endhint %}

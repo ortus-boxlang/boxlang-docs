@@ -54,7 +54,7 @@ try{
 
 ## Throwing Exceptions
 
-Now that you have seen how to listen to exceptions, let's discover the `throw` or `cfthrow` constructs used to throw a developer-specific exception. ([https://cfdocs.org/cfthrow](https://cfdocs.org/cfthrow))
+Now that you have seen how to listen to exceptions, let's discover the `throw` construct used to throw a developer-specific exception. ([https://cfdocs.org/cfthrow](https://cfdocs.org/cfthrow))
 
 The `throw()` function or tag has several attributes:
 
@@ -77,7 +77,7 @@ try {
 
 ## Rethrowing Exceptions
 
-The `rethrow` or `cfrethrow` construct allows you to well, `rethrow` the active exception by preserving all of the exception information and types. Usually you use `rethrow` within a catch block after you have done some type of operations on the incoming exception. ([https://cfdocs.org/cfrethrow](https://cfdocs.org/cfrethrow))
+The `rethrow` construct allows you to well, `rethrow` the active exception by preserving all of the exception information and types. Usually you use `rethrow` within a catch block after you have done some type of operations on the incoming exception. ([https://cfdocs.org/cfrethrow](https://cfdocs.org/cfrethrow))
 
 ```java
 try{

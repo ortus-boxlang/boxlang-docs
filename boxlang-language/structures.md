@@ -78,7 +78,7 @@ writeOutput( "I have #produce.eggplants# eggplants in my fridge!" );
 
 ### structFind( structure, key, \[defaultValue ] )
 
-[https://cfdocs.org/structfind](https://cfdocs.org/structfind)
+[https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structfind](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structfind)
 
 <pre class="language-javascript"><code class="lang-javascript"><strong>// Member Function
 </strong><strong>writeOutput( "I have #produce.find( "grapes" )# grapes in my fridge!" );
@@ -94,7 +94,7 @@ However, please be aware that when dealing with native Java hashmaps, we recomme
 {% endhint %}
 
 {% hint style="success" %}
-BoxLang offers also the `structGet()` function which will search for a key or a key path. If there is no structure or array present in the path, this function creates structures or arrays to make it a valid variable path. [https://cfdocs.org/structget](https://cfdocs.org/structget)
+BoxLang offers also the `structGet()` function which will search for a key or a key path. If there is no structure or array present in the path, this function creates structures or arrays to make it a valid variable path. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structget](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structget)
 {% endhint %}
 
 ### Safe Navigation
@@ -112,7 +112,7 @@ echo( user?.salary ?: 0 ) // 0
 
 ## Setting Values
 
-I can also set new or override structure values a la carte. You can do so via array/dot notation or via the `structInsert(), structUpdate()` functions ([https://cfdocs.org/structinsert](https://cfdocs.org/structinsert), [https://cfdocs.org/structupdate](https://cfdocs.org/structupdate))
+I can also set new or override structure values a la carte. You can do so via array/dot notation or via the `structInsert(), structUpdate()` functions ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structinsert](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structinsert), [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structupdate](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structupdate))
 
 ```javascript
 // new key using default uppercase notation
@@ -164,7 +164,7 @@ writeOutput( "Do you have carrots? #produce.keyExists( 'carrots' )#" )
 
 ## Structure Types
 
-In BoxLang, not only can you create case-insensitive unordered structures but also the following types using the `structNew()` function ([https://cfdocs.org/structnew](https://cfdocs.org/structnew))
+In BoxLang, not only can you create case-insensitive unordered structures but also the following types using the `structNew()` function ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structnew](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structnew))
 
 * case-sensitive
 * normal
@@ -214,7 +214,7 @@ myStruct = $[=]
 
 ## Common Methods
 
-Once you create structures, you can use them in many funky ways. Please check out all the [structure functions](https://cfdocs.org/struct-functions) and all the structure modern [member functions](https://cfdocs.org/member) that are available to you.
+Once you create structures, you can use them in many funky ways. Please check out all the [structure functions](https://boxlang.ortusbooks.com/boxlang-language/reference/types/struct) and all the structure modern [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) that are available to you.
 
 ![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.57.20 PM.png>)
 

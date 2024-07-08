@@ -22,7 +22,7 @@ BoxLang includes a set of instructions you use on pages (`.bxm,.bxs`) or classes
 
 ## Implicit Behavior
 
-BoxLang also gives you a pre-set of defined [tags](https://cfdocs.org/tags) and [functions](https://cfdocs.org/functions) available to you in any file you write your code in. These tags and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation. They are basically automatic imports.
+BoxLang also gives you a pre-set of defined [components](https://boxlang.ortusbooks.com/boxlang-language/reference/components) and [functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions) available to you in any file you write your code in. These tags and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation. They are basically automatic imports.
 
 {% hint style="success" %}
 **Tip:** Please note that the BoxLang built-in functions are also **first-class functions** so that they can be passed around as arguments to other functions or closures or saved as variables.

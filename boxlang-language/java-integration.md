@@ -10,7 +10,7 @@ install "jar:https://github.com/coldbox-modules/cbox-bcrypt/blob/master/modules/
 ```
 {% endhint %}
 
-{% embed url="https://cfdocs.org/java" %}
+{% embed url="https://boxlang.ortusbooks.com/boxlang-language/java-integration" %}
 
 ## Creating Java Objects
 
