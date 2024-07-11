@@ -30,7 +30,7 @@ brew install curl zip unzip openjdk
 {% tab title="*Unix" %}
 Leverage your system‘s package manager to install the needed requirements.
 
-#### APT
+**APT**
 
 ```bash
 # Update OS first
@@ -41,7 +41,7 @@ sudo apt-get full-upgrade
 sudo apt-get install curl zip unzip openjdk-21
 ```
 
-#### Yum
+**Yum**
 
 ```bash
 # Update OS first
@@ -108,7 +108,6 @@ install-boxlang 1.0.0
 You can get the version information of the current Box Runtime with `GetBoxVersionInfo()`
 {% endhint %}
 
-
 ### REPL
 
 Just run `boxlang` and you are ready to rock in our REPL:
@@ -128,6 +127,10 @@ install-bx-module bx-esapi
 
 The quick installer is the best and easiest way to get installed on Mac or \*Nix. However, below, you can find a collection of all our installers and binaries for running BoxLang and each Runtime.
 
+{% hint style="warning" %}
+Please note that the binaries here are the latest beta builds, not the bleeding edge builds.
+{% endhint %}
+
 ### Operating System Binaries
 
 Here, you can find the installers and binaries for all Operating Systems:
@@ -135,9 +138,9 @@ Here, you can find the installers and binaries for all Operating Systems:
 * Windows Installer:\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-installer.exe](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-installer.exe)
 * Zip (All OSs):\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0.zip)
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest.zip)
 * Jar:\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang/1.0.0/boxlang-1.0.0-all.jar)
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest-all.jar)
 * Quick Installer (Mac/\*nix)\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh](https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)
 
@@ -146,14 +149,14 @@ Here, you can find the installers and binaries for all Operating Systems:
 The BoxLang MiniServer includes the BoxLang OS runtime with the addition of our super fast and lightweight web server.
 
 * All OSs:\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/1.0.0/boxlang-miniserver-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/1.0.0/boxlang-miniserver-1.0.0.zip)
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/boxlang-miniserver-latest.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/boxlang-miniserver-latest.zip)
 
 ### AWS Lambda Binaries
 
 BoxLang can also run on AWS Lambdas. It even powers our entry playground at [https://try.boxlang.io](https://try.boxlang.io/).
 
 * Runtime:\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/1.0.0/boxlang-aws-lambda-1.0.0.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/1.0.0/boxlang-aws-lambda-1.0.0.zip)
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/boxlang-aws-lambda-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/boxlang-aws-lambda-latest-all.jar)
 * Template\
   [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template)
 
@@ -173,9 +176,9 @@ Learn more in our [CommandBox guide.](../running-boxlang/commandbox.md)
 This is the servlet edition of BoxLang that you can deploy on any servlet container (Jetty, Tomcat, JBoss, etc)
 
 * WAR:\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/1.0.0/boxlang-servlet-1.0.0.war](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/1.0.0/boxlang-servlet-1.0.0.war)
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest.war](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest.war)
 * JAR:\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/1.0.0/boxlang-servlet-1.0.0-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/1.0.0/boxlang-servlet-1.0.0-all.jar)
+  s[https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar)
 
 ### Docker
 

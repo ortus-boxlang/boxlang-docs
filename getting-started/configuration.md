@@ -25,103 +25,120 @@ Here is a full reference of the current default `boxlang.json` file:
 ```json
 /**
  * BoxLang Configuration File
- * The Available replacements are managed by the PlaceholderHelper class.
+ *
+ * Here are some of the available variables you can use in this file:
  * ${boxlang-home} - The BoxLang home directory
  * ${user-home} - The user's home directory
  * ${user-dir} - The user's current directory
  * ${java-temp} - The java temp directory
- * ${env.{variablename}:defaultValue} - The value of a valid environment variable or the default value
+ * ${env.variablename:defaultValue} - The value of a valid environment variable or the default value. Example: ${env.CFCONFIG_HOME:/etc/cfconfig}
  */
 {
-    // This puts the entire runtime in debug mode
-    // Which will produce lots of debug output and metrics
-    "debugMode": false,
-    // The BoxPiler settings
-    "compiler": {
-        // Where all generated classes will be placed
-        "classGenerationDirectory": "${boxlang-home}/classes"
-    },
-    // The runtime settings
-    "runtime": {
-        // The default timezone for the runtime; defaults to the JVM timezone if empty
-        // Please use the IANA timezone database values
-        "timezone": "",
-        // The default locale for the runtime; defaults to the JVM locale if empty
-        // Please use the IETF BCP 47 language tag values
-        "locale": "",
-        // The request timeout for a request in milliseconds; 0 means no timeout
-        "requestTimeout": 0,
-        // A collection of BoxLang mappings, the key is the prefix and the value is the directory
-        "mappings": {
-            "/": "${user-dir}"
-        },
-        // A collection of BoxLang module directories, they must be absolute paths
-        "modulesDirectory": [
-            "${boxlang-home}/modules"
-        ],
-        // A collection of BoxLang custom tag directories, they must be absolute paths
-        "customTagsDirectory": [
-            "${boxlang-home}/customTags"
-        ],
-        // You can assign a global default datasource to be used in the language
-        "defaultDasource": "",
-        // The registered global datasources in the language
-        // The key is the name of the datasource and the value is a struct of the datasource settings
-        "datasources": {
-            // "testDB": {
-            // 	"driver": "derby",
-            // 	"connectionString": "jdbc:derby:memory:testDB;create=true"
-            // }
-            // "testdatasource": {
-            // 	"driver": "mysql",
-            // 	"host": "localhost",
-            // 	"port": 3306,
-            // 	"database": "test"
-            // }
-        },
-        // The configuration for the BoxLang `default` cache.  If empty, we use the defaults
-        "defaultCache": {},
-        /**
-		 * Register any named caches here.
-		 * The key is the name of the cache and the value is the cache configuration.
-		 * A `provder` property is required and the value is the name of the cache provider or the fully qualified class name.
-		 * The `properties` property is optional and is a struct of properties that are specific to the cache provider.
-		 */
-        "caches": {
-            "imports": {
-                "provider": "BoxCacheProvider",
-                "properties": {
-                    "evictCount": 1,
-                    "evictionPolicy": "LRU",
-                    "freeMemoryPercentageThreshold": 0,
-                    "maxObjects": 200,
-                    "defaultLastAccessTimeout": 1800,
-                    "defaultTimeout": 3600,
-                    "objectStore": "ConcurrentStore",
-                    "reapFrequency": 120,
-                    "resetTimeoutOnAccess": false,
-                    "useLastAccessTimeouts": true
-                }
-            }
-        }
-    },
-    /**
-	 * The BoxLang module settings
-	 * The key is the module name and the value is a struct of settings for that specific module
-	 * The `disabled` property is a boolean that determines if the module should be enabled or not
-	 * The `settings` property is a struct of settings that are specific to the module and will be override the module settings
-	 */
-    "modules": {
-        // The Compat Module
-        "compat": {
-            "disabled": false,
-            "settings": {
-                "isLucee": true,
-                "isAdobe": true
-            }
-        }
-    }
+// Where all generated classes will be placed
+"classGenerationDirectory": "${boxlang-home}/classes",
+// This puts the entire runtime in debug mode
+// Which will produce lots of debug output and metrics
+// Also the debugging error template will be used if turned on
+"debugMode": false,
+// The default timezone for the runtime; defaults to the JVM timezone if empty
+// Please use the IANA timezone database values
+"timezone": "",
+// The default locale for the runtime; defaults to the JVM locale if empty
+// Please use the IETF BCP 47 language tag values
+"locale": "",
+// If true, you can call implicit accessors/mutators on object properties. By default it is enabled
+// You can turn it on here for all applications or in the Application.cfc
+"invokeImplicitAccessor": true,
+// The application timeout in minutes, 0 means no timeout
+"applicationTimeout": 0,
+// The request timeout for a request in seconds; 0 means no timeout
+"requestTimeout": 0,
+// The session timeout in seconds: 30 minutes
+"sessionTimeout": 1800,
+// Where sessions will be stored by default.  This has to be a name of a registered cache
+// or the keyword "memory" to indicate our auto-created cache.
+// This will apply to ALL applications unless overridden in the Application.cfc
+"sessionStorage": "memory",
+// A collection of BoxLang mappings, the key is the prefix and the value is the directory
+"mappings": {
+	"/": "${user-dir}"
+},
+// A collection of BoxLang module directories, they must be absolute paths
+"modulesDirectory": [
+	"${boxlang-home}/modules"
+],
+// A collection of BoxLang custom tag directories, they must be absolute paths
+"customTagsDirectory": [
+	"${boxlang-home}/customTags"
+],
+// A collection of directories we will class load all Java *.jar files from
+"javaLibraryPaths": [
+	"${boxlang-home}/lib"
+],
+// The location of the log files the runtime will produce
+"logsDirectory": "${boxlang-home}/logs",
+// You can assign a global default datasource to be used in the language
+"defaultDasource": "",
+// The registered global datasources in the language
+// The key is the name of the datasource and the value is a struct of the datasource settings
+"datasources": {
+	// "testDB": {
+	// 	  "driver": "derby",
+	//    "connectionString": "jdbc:derby:memory:testDB;create=true"
+	// }
+	// "testdatasource": {
+	// 	  "driver": "derby",
+	// 	  "host": "localhost",
+	// 	  "port": 3306,
+	// 	  "database": "test"
+	// }
+},
+// The configuration for the BoxLang `default` cache.  If empty, we use the defaults
+// See the ortus.boxlang.runtime.config.segments.CacheConfig for all the available settings
+// This is used by query caching, template caching, and other internal caching, unless you override it
+"defaultCache": {},
+/**
+* Register any named caches here.
+* The key is the name of the cache and the value is the cache configuration.
+*
+* A `provider` property is required and the value is the name of the cache provider or the fully qualified class name.
+* The `properties` property is optional and is a struct of properties that are specific to the cache provider.
+*/
+"caches": {
+	"imports": {
+		"provider": "BoxCacheProvider",
+		"properties": {
+			"evictCount": 1,
+			"evictionPolicy": "LRU",
+			"freeMemoryPercentageThreshold": 0,
+			"maxObjects": 200,
+			"defaultLastAccessTimeout": 1800,
+			"defaultTimeout": 3600,
+			"objectStore": "ConcurrentStore",
+			"reapFrequency": 120,
+			"resetTimeoutOnAccess": false,
+			"useLastAccessTimeouts": true
+		}
+	}
+},
+/**
+ * The BoxLang module settings
+ * The key is the module name and the value is a struct of settings for that specific module
+ * The `disabled` property is a boolean that determines if the module should be enabled or not
+ * The `settings` property is a struct of settings that are specific to the module and will be override the module settings
+ */
+"modules": {
+	// The Compat Module
+	// "compat": {
+	// 	"disabled": false,
+	// 	"settings": {
+	// 		"isLucee": true,
+	// 		"isAdobe": true
+	// 	}
+	// }
 }
+}
+
 ```
 
 ## Environment Variable Substitution
@@ -132,17 +149,17 @@ Inside your `boxlang.json` configuration file, you can use this to populate data
 
 ```json
 {
-    "runtime": {
-        // ...
-        "datasources": {
-            "mySqlServerDB": {
-                driver: "mssql",
-                host: "localhost",
-                port: "${env.MSSQL_PORT:1433}",
-                database: "myDB",
-                username: "${env.MSSQL_USERNAME:sa}",
-                password: "${env.MSSQL_PASSWORD:123456Password}"
-            }
-        },
-    }
+    // ...
+    "datasources": {
+        "mySqlServerDB": {
+            driver: "mssql",
+            host: "localhost",
+            port: "${env.MSSQL_PORT:1433}",
+            database: "myDB",
+            username: "${env.MSSQL_USERNAME:sa}",
+            password: "${env.MSSQL_PASSWORD:123456Password}"
+        }
+    },
+    
+}
 ```
