@@ -104,6 +104,11 @@ install-boxlang
 install-boxlang 1.0.0
 ```
 
+{% hint style="info" %}
+You can get the version information of the current Box Runtime with `GetBoxVersionInfo()`
+{% endhint %}
+
+
 ### REPL
 
 Just run `boxlang` and you are ready to rock in our REPL:
