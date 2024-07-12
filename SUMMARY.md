@@ -50,6 +50,8 @@
   * [Structures](boxlang-language/structures.md)
   * [Queries](boxlang-language/queries.md)
   * [Conditionals](boxlang-language/conditionals.md)
+  * [Attempts](boxlang-language/syntax/attempts.md)
+  * [Data Navigators](boxlang-language/syntax/data-navigators.md)
   * [Exception Management](boxlang-language/exception-management.md)
   * [Code Locking](boxlang-language/locking.md)
   * [Closures => Context Aware](boxlang-language/closures.md)
