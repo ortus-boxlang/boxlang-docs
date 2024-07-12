@@ -18,7 +18,7 @@ Find out about CommandBox Pro [https://www.ortussolutions.com/products/commandbo
 
 ### Install the Module <a href="#versioning" id="versioning"></a>
 
-CommandBox neds (for the moment) the `commandbox-boxlang` module to start BoxLang servers.  So let's go ahead and install it:
+CommandBox needs (for the moment) the `commandbox-boxlang` module to start BoxLang servers.  So let's go ahead and install it:
 
 ```bash
 install commandbox-boxlang
