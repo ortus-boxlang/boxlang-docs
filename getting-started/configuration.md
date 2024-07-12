@@ -1,15 +1,27 @@
+---
+description: Configure it your way!
+---
+
 # Runtime Configuration
 
-BoxLang has an installation-level configuration file which allows developers to adjust a wide range of settings from the compiler to default cache providers and runtime-wide datasources. You can adjust boxlang settings by placing a `config/boxlang.json` file in your BoxLang home directory.
+BoxLang has an installation-level configuration file that allows developers to adjust various settings from the compiler to default cache providers and runtime-wide data sources. You can adjust boxlang settings by placing a `config/boxlang.json` file in your BoxLang home directory.  By default, we create one for you once your execute the runtime for the first time.
+
+{% hint style="info" %}
+If you are running BoxLang within CommandBox, then the configuration file will be inside the server directory inside of CommandBox under `WEB-INF/boxlang/`.  You can also run the following command to see the server home directory:
+
+```
+server status property=serverHome
+```
+{% endhint %}
 
 ## Runtime Home Directory
 
-By default, the BoxLang home directory is a `.boxlang/` directory inside your user's home directory. For instance, on a Ubuntu machine this might be `/home/elpete/.boxlang/` if you are executing BoxLang under the `elpete` user account.
+By default, the BoxLang home directory is a `.boxlang/` directory inside your user's home directory. For instance, on a Ubuntu machine, this might be `/home/elpete/.boxlang/` if you are executing BoxLang under the `elpete` user account.
 
-The BoxLang home can be adjusted on startup via a `--home` flag:
+ℹ️ The BoxLang home can be adjusted on startup via a `--home` flag:
 
 ```bash
-java -jar boxlang-1.0.0-all.jar --home /path/to/boxlang-home
+boxlang --home /path/to/boxlang-home
 ```
 
 By allowing a custom home directory, you can manage multiple BoxLang runtimes and allow:
@@ -141,9 +153,20 @@ Here is a full reference of the current default `boxlang.json` file:
 
 ```
 
+## Internal Variables
+
+The following are the internal variable substitutions you can use in any value:
+
+```
+ * ${boxlang-home} - The BoxLang home directory
+ * ${user-home} - The user's home directory
+ * ${user-dir} - The user's current directory
+ * ${java-temp} - The java temp directory
+```
+
 ## Environment Variable Substitution
 
-BoxLang supports environment variable substitution by using the syntax `${env.{environment_variable_name}:default}`. For example, using `${env.MYSQL_HOST:localhost}` will result in the value of the `MYSQL_HOST` environment variable, if found, or fall back to the `localhost` value if the environment variable is not defined.
+BoxLang supports environment variable substitution using the syntax `${env.environment_variable_name}:default}`. For example, using `${env.MYSQL_HOST:localhost}` will result in the value of the `MYSQL_HOST` environment variable, if found, or fall back to the `localhost` value if the environment variable is not defined.
 
 Inside your `boxlang.json` configuration file, you can use this to populate datasource credential secrets:
 
