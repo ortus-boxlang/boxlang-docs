@@ -25,7 +25,7 @@ install bx-compat
 
 `Category: security`
 
-This module provides password encryption and hashing functionality to Boxlang.&#x20;
+This module provides password encryption and hashing functionality to Boxlang.
 
 * `ArgonHash`: Returns a secure input hash of the given string using the Argon2 hashing algorithm. ( Alias: `GenerateArgon2Hash` )
 * `ArgonVerify`: Performs a Argon2 verification on the given string against the hashed value. ( Alias: `Argon2CheckHash` )
@@ -72,7 +72,7 @@ install bx-image
 
 `Category: Scripting`
 
-This module allows you to script in Python within BoxLang.  It can also execute python scripts and modules.
+This module allows you to script in Python within BoxLang. It can also execute python scripts and modules.
 
 ```
 install bx-jython
@@ -93,6 +93,19 @@ install bx-mail
 
 * Download: [https://forgebox.io/view/bx-mail](https://forgebox.io/view/bx-mail)
 * Instructions: [https://github.com/ortus-boxlang/bx-mail](https://github.com/ortus-boxlang/bx-mail)
+
+### bx-oshi
+
+`Category: Hardware`
+
+You can use this module to get information about the operating system and hardware of your machine. This is a great way to get sensor or embedded system information like batteries, Raspberry Pi, etc.
+
+```
+install bx-oshi
+```
+
+* Download: [https://forgebox.io/view/bx-oshi](https://forgebox.io/view/bx-oshi)
+* Instructions: [https://github.com/ortus-boxlang/bx-oshi](https://github.com/ortus-boxlang/bx-oshi)
 
 ### bx-pdf (Coming Soon)
 
