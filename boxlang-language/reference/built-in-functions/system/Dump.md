@@ -67,7 +67,6 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [Invoke](./Invoke.md)
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
-  * [Key](./Key.md)
   * [PagePoolClear](./PagePoolClear.md)
   * [Print](./Print.md)
   * [Println](./Println.md)

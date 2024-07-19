@@ -113,7 +113,7 @@ For example, it replaces spaces with %20, and non-alphanumeric characters with e
 Returns the absolute value of a number
 </details>
 <details>
-<summary><code>listSome(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>listSome(callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Tests whether any item in a list meets the specified callback
 
@@ -121,7 +121,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
@@ -130,7 +130,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>reduceRight(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+<summary><code>listReduceRight(callback=[function:BiFunction], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
 
 Run the provided udf over a reversed delimited list to reduce the values to a single output
 
@@ -138,7 +138,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiFunction` | `true` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
@@ -319,7 +319,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>listMap(callback=[function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>listMap(callback=[function:Function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Used to iterate over a delimited list and run the function closure for each item in the list and create a new list from the returned values.
 
@@ -327,7 +327,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Function` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `parallel` | `boolean` | `false` | `false` |
@@ -493,7 +493,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>listEvery(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>listEvery(callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Tests whether all items in a list meet the specified callback
 
@@ -501,7 +501,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
@@ -510,7 +510,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>listEach(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
+<summary><code>listEach(callback=[function:Consumer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
 
 Used to iterate over a delimited list and run the function closure for each item in the list.
 
@@ -518,7 +518,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Consumer` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
@@ -562,7 +562,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>listFilter(filter=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>listFilter(filter=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Filters a delimted list and returns the values from the callback test
 
@@ -570,7 +570,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `filter` | `function` | `true` | `null` |
+| `filter` | `function:Predicate` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |
@@ -840,6 +840,21 @@ Arguments:
 Convert a string to camel case
 </details>
 <details>
+<summary><code>bind(placeholders=[structloose])</code></summary>
+
+This BIF allows you to bind a string with placeholders to a set of values.
+
+Each placeholder is defined as ,{@code ${placeholder-name}}, and can be used anywhere
+ and multiple times in the string.
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `placeholders` | `struct` | `true` | `null` |
+
+</details>
+<details>
 <summary><code>snakeCase()</code></summary>
 
 Convert a string to snake case
@@ -900,7 +915,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>stringReduceRight(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+<summary><code>stringReduceRight(callback=[function:BiFunction], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
 
 Run the provided udf over a reversed string to reduce the values to a single output
 
@@ -908,7 +923,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiFunction` | `true` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
@@ -1131,7 +1146,7 @@ Arguments:
 Uppercase a string
 </details>
 <details>
-<summary><code>listReduce(callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+<summary><code>listReduce(callback=[function:BiFunction], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
 
 Run the provided udf over a delimited list to reduce the values to a single output
 
@@ -1139,7 +1154,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiFunction` | `true` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
@@ -1199,7 +1214,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>stringSome(callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>stringSome(callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Tests whether any item in a string meets the specified callback
 
@@ -1207,7 +1222,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `true` |

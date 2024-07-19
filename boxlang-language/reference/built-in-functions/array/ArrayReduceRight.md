@@ -10,7 +10,7 @@ It will reduce the array to a single value,
 ## Method Signature
 
 ```
-ArrayReduceRight(array=[array], callback=[function], initialValue=[any])
+ArrayReduceRight(array=[array], callback=[function:BiFunction], initialValue=[any])
 ```
 
 ### Arguments
@@ -19,7 +19,7 @@ ArrayReduceRight(array=[array], callback=[function], initialValue=[any])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to reduce |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the accumulator, the current item, and the<br>                    current index. The function should return the new accumulator value. |  |
+| `callback` | `function:BiFunction` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the accumulator, the current item, and the<br>                    current index. You can alternatively pass a Java BiFunction which will only receive the first 2 args. The function should return the new accumulator value. |  |
 | `initialValue` | `any` | `false` | The initial value of the accumulator |  |
 
 ## Examples
@@ -59,6 +59,7 @@ ArrayReduceRight(array=[array], callback=[function], initialValue=[any])
   * [ArrayPop](./ArrayPop.md)
   * [ArrayPrepend](./ArrayPrepend.md)
   * [ArrayPush](./ArrayPush.md)
+  * [ArrayRange](./ArrayRange.md)
   * [ArrayReduce](./ArrayReduce.md)
   * [ArrayResize](./ArrayResize.md)
   * [ArrayReverse](./ArrayReverse.md)

@@ -7,7 +7,7 @@ Filters query rows specified in filter criteria
 ## Method Signature
 
 ```
-QueryFilter(query=[query], callback=[function], parallel=[boolean], maxThreads=[integer])
+QueryFilter(query=[query], callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ QueryFilter(query=[query], callback=[function], parallel=[boolean], maxThreads=[
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `query` | `query` | `true` | The query to get filtered |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |  |
+| `callback` | `function:Predicate` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the query row as a struct, the row number, the query. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
 | `parallel` | `boolean` | `false` |  | `false` |
 | `maxThreads` | `integer` | `false` |  |  |
 
@@ -41,13 +41,16 @@ QueryFilter(query=[query], callback=[function], parallel=[boolean], maxThreads=[
   * [QueryEvery](./QueryEvery.md)
   * [QueryGetCell](./QueryGetCell.md)
   * [QueryGetResult](./QueryGetResult.md)
+  * [QueryInsertAt](./QueryInsertAt.md)
   * [QueryKeyExists](./QueryKeyExists.md)
   * [QueryMap](./QueryMap.md)
   * [QueryNew](./QueryNew.md)
   * [QueryPrepend](./QueryPrepend.md)
   * [QueryRecordCount](./QueryRecordCount.md)
   * [QueryReduce](./QueryReduce.md)
+  * [QueryReverse](./QueryReverse.md)
   * [QueryRowData](./QueryRowData.md)
+  * [QueryRowSwap](./QueryRowSwap.md)
   * [QuerySetCell](./QuerySetCell.md)
   * [QuerySetRow](./QuerySetRow.md)
   * [QuerySlice](./QuerySlice.md)

@@ -7,7 +7,7 @@ Tests a string that all elements meet the specified criteria
 ## Method Signature
 
 ```
-StringEvery(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
+StringEvery(list=[string], callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ StringEvery(list=[string], callback=[function], delimiter=[string], includeEmpty
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` |  |  |
-| `callback` | `function` | `true` | The callback to use for the test |  |
+| `callback` | `function:Predicate` | `true` | The callback to use for the test |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` |  | `true` |
@@ -72,6 +72,7 @@ StringEvery(list=[string], callback=[function], delimiter=[string], includeEmpty
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
   * [SQLPrettify](./SQLPrettify.md)
+  * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)

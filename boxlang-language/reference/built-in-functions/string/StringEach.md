@@ -7,7 +7,7 @@ Iterates all the elements in a string and runs the passed callback on each chara
 ## Method Signature
 
 ```
-StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
+StringEach(list=[string], callback=[function:Consumer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyF
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` |  |  |
-| `callback` | `function` | `true` | The callback to execute |  |
+| `callback` | `function:Consumer` | `true` | The callback to execute |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` |  | `true` |
@@ -73,6 +73,7 @@ StringEach(list=[string], callback=[function], delimiter=[string], includeEmptyF
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
   * [SQLPrettify](./SQLPrettify.md)
+  * [StringBind](./StringBind.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)

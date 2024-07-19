@@ -7,7 +7,7 @@ Run the provided udf over a reversed string to reduce the values to a single out
 ## Method Signature
 
 ```
-StringReduceRight(list=[string], callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
+StringReduceRight(list=[string], callback=[function:BiFunction], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ StringReduceRight(list=[string], callback=[function], initialValue=[any], delimi
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` |  |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |  |
+| `callback` | `function:BiFunction` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |  |
 | `initialValue` | `any` | `false` | The initial value of the reduction |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
@@ -71,6 +71,7 @@ StringReduceRight(list=[string], callback=[function], initialValue=[any], delimi
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
   * [SQLPrettify](./SQLPrettify.md)
+  * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

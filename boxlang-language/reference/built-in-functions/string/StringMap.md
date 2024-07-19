@@ -7,7 +7,7 @@ Iterates over all elements in a string and returns a new mapped string
 ## Method Signature
 
 ```
-StringMap(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])
+StringMap(list=[string], callback=[function:Function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ StringMap(list=[string], callback=[function], delimiter=[string], includeEmptyFi
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` |  |  |
-| `callback` | `function` | `true` | The callback which returns a boolean and filters the string |  |
+| `callback` | `function:Function` | `true` | The callback which returns a boolean and filters the string |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
 | `parallel` | `boolean` | `false` |  | `false` |
@@ -71,6 +71,7 @@ StringMap(list=[string], callback=[function], delimiter=[string], includeEmptyFi
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
   * [SQLPrettify](./SQLPrettify.md)
+  * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

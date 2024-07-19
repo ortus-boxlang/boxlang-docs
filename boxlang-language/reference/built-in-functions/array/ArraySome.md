@@ -7,7 +7,7 @@ Calls a given closure/function with every element in a given array and returns t
 ## Method Signature
 
 ```
-ArraySome(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
+ArraySome(array=[array], callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ ArraySome(array=[array], callback=[function], parallel=[boolean], maxThreads=[in
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to reduce |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |  |
+| `callback` | `function:Predicate` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
 | `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
 | `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
 | `initialValue` | `any` | `false` |  |  |
@@ -58,6 +58,7 @@ ArraySome(array=[array], callback=[function], parallel=[boolean], maxThreads=[in
   * [ArrayPop](./ArrayPop.md)
   * [ArrayPrepend](./ArrayPrepend.md)
   * [ArrayPush](./ArrayPush.md)
+  * [ArrayRange](./ArrayRange.md)
   * [ArrayReduce](./ArrayReduce.md)
   * [ArrayReduceRight](./ArrayReduceRight.md)
   * [ArrayResize](./ArrayResize.md)

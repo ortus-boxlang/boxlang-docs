@@ -115,7 +115,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>each(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>each(callback=[function:Consumer], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Iterates over query rows and passes each row per iteration to a callback function
 
@@ -123,13 +123,13 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Consumer` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>every(closure=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>every(closure=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
 
@@ -137,13 +137,13 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `closure` | `function` | `true` | `null` |
+| `closure` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>filter(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>filter(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Filters query rows specified in filter criteria
 
@@ -151,7 +151,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
@@ -175,6 +175,19 @@ Arguments:
 Returns the metadata of a query.
 </details>
 <details>
+<summary><code>insertAt(value=[query], position=[numeric])</code></summary>
+
+Inserts a query data into another query at a specific position
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `value` | `query` | `true` | `null` |
+| `position` | `numeric` | `true` | `null` |
+
+</details>
+<details>
 <summary><code>keyExists(key=[string])</code></summary>
 
 This function returns true if the key exists in the query
@@ -187,7 +200,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>map(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>map(callback=[function:Function], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 This function maps the query to a new query.
 
@@ -195,7 +208,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
@@ -218,7 +231,7 @@ Arguments:
 This function returns the number of records in a query
 </details>
 <details>
-<summary><code>reduce(callback=[function], initialValue=[any])</code></summary>
+<summary><code>reduce(callback=[function:BiFunction], initialValue=[any])</code></summary>
 
 This function reduces the query to a single value.
 
@@ -226,9 +239,14 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiFunction` | `true` | `null` |
 | `initialValue` | `any` | `true` | `null` |
 
+</details>
+<details>
+<summary><code>reverse()</code></summary>
+
+This function reverses the query data
 </details>
 <details>
 <summary><code>rowData(rowNumber=[integer])</code></summary>
@@ -240,6 +258,19 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `rowNumber` | `integer` | `true` | `null` |
+
+</details>
+<details>
+<summary><code>rowSwap(source=[numeric], destination=[numeric])</code></summary>
+
+In a query object, swap the record in the sourceRow with the record from the destinationRow.
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `source` | `numeric` | `true` | `null` |
+| `destination` | `numeric` | `true` | `null` |
 
 </details>
 <details>
@@ -283,7 +314,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>some(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>some(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
 
 This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
 
@@ -291,14 +322,14 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>sort(sortFunc=[function])</code></summary>
+<summary><code>sort(sortFunc=[function:Comparator])</code></summary>
 
 Sorts array elements.
 
@@ -306,7 +337,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `sortFunc` | `function` | `true` | `null` |
+| `sortFunc` | `function:Comparator` | `true` | `null` |
 
 </details>
 <details>

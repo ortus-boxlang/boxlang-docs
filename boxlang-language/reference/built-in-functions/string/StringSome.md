@@ -7,7 +7,7 @@ Tests whether any item in a string meets the specified callback
 ## Method Signature
 
 ```
-StringSome(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
+StringSome(list=[string], callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ StringSome(list=[string], callback=[function], delimiter=[string], includeEmptyF
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` |  |  |
-| `callback` | `function` | `true` |  |  |
+| `callback` | `function:Predicate` | `true` |  |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` |  | `true` |
@@ -72,6 +72,7 @@ StringSome(list=[string], callback=[function], delimiter=[string], includeEmptyF
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
   * [SQLPrettify](./SQLPrettify.md)
+  * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

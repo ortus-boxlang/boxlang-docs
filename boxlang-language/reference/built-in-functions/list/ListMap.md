@@ -7,7 +7,7 @@ Used to iterate over a delimited list and run the function closure for each item
 ## Method Signature
 
 ```
-ListMap(list=[string], callback=[function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])
+ListMap(list=[string], callback=[function:Function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ ListMap(list=[string], callback=[function], delimiter=[string], includeEmptyFiel
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` | The delimited list to perform operations on |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |  |
+| `callback` | `function:Function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Function which will only receive the 1st arg. |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
 | `parallel` | `boolean` | `false` |  | `false` |

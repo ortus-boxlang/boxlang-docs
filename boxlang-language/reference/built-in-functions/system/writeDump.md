@@ -68,7 +68,6 @@ writeDump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boo
   * [Invoke](./Invoke.md)
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
-  * [Key](./Key.md)
   * [PagePoolClear](./PagePoolClear.md)
   * [Print](./Print.md)
   * [Println](./Println.md)

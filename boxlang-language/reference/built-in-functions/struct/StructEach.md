@@ -7,7 +7,7 @@ Used to iterate over a struct and run the function closure for each key/value pa
 ## Method Signature
 
 ```
-StructEach(struct=[structloose], callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
+StructEach(struct=[structloose], callback=[function:BiConsumer], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ StructEach(struct=[structloose], callback=[function], parallel=[boolean], maxThr
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `struct` | `struct` | `true` | The target struct to iterate |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the key, the value, the struct. |  |
+| `callback` | `function:BiConsumer` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the key, the value, the struct. You can alternatively pass a Java BiConsumer which will only receive the first 2 args. |  |
 | `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
 | `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
 | `ordered` | `boolean` | `false` | (BoxLang only) whether parallel operations should execute and maintain order | `false` |

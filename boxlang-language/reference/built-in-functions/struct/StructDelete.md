@@ -7,7 +7,7 @@ Deletes a key from a struct
 ## Method Signature
 
 ```
-StructDelete(struct=[modifiableStruct], key=[string], indicateNotExists=[boolean])
+StructDelete(struct=[modifiableStruct], key=[string])
 ```
 
 ### Arguments
@@ -17,7 +17,6 @@ StructDelete(struct=[modifiableStruct], key=[string], indicateNotExists=[boolean
 |----------|------|----------|-------------|---------|
 | `struct` | `modifiableStruct` | `true` | The struct target |  |
 | `key` | `string` | `true` | The key to delete |  |
-| `indicateNotExists` | `boolean` | `false` |  | `false` |
 
 ## Examples
 

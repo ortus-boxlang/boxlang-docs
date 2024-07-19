@@ -10,7 +10,7 @@ The returned value will be set at the
 ## Method Signature
 
 ```
-ArrayMap(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
+ArrayMap(array=[array], callback=[function:Function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
 
 ### Arguments
@@ -19,7 +19,7 @@ ArrayMap(array=[array], callback=[function], parallel=[boolean], maxThreads=[int
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to reduce |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the current item, and the<br>                    current index, and the original array. The function should return the value that will be set at the same index in the new array. |  |
+| `callback` | `function:Function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the current item, and the<br>                    current index, and the original array. You can alternatively pass a Java Function which will only receive the 1st arg. The function should return the value that will be set at the same index in the new array. |  |
 | `parallel` | `boolean` | `false` |  | `false` |
 | `maxThreads` | `integer` | `false` |  |  |
 | `initialValue` | `any` | `false` |  |  |
@@ -60,6 +60,7 @@ ArrayMap(array=[array], callback=[function], parallel=[boolean], maxThreads=[int
   * [ArrayPop](./ArrayPop.md)
   * [ArrayPrepend](./ArrayPrepend.md)
   * [ArrayPush](./ArrayPush.md)
+  * [ArrayRange](./ArrayRange.md)
   * [ArrayReduce](./ArrayReduce.md)
   * [ArrayReduceRight](./ArrayReduceRight.md)
   * [ArrayResize](./ArrayResize.md)

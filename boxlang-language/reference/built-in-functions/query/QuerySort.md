@@ -7,7 +7,7 @@ Sorts array elements.
 ## Method Signature
 
 ```
-QuerySort(query=[query], sortFunc=[function])
+QuerySort(query=[query], sortFunc=[function:Comparator])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ QuerySort(query=[query], sortFunc=[function])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `query` | `query` | `true` | Query to sort |  |
-| `sortFunc` | `function` | `true` | Sort function to use |  |
+| `sortFunc` | `function:Comparator` | `true` | Sort function to use. You can alternatively pass a Java Comparator. |  |
 
 ## Examples
 
@@ -40,13 +40,16 @@ QuerySort(query=[query], sortFunc=[function])
   * [QueryFilter](./QueryFilter.md)
   * [QueryGetCell](./QueryGetCell.md)
   * [QueryGetResult](./QueryGetResult.md)
+  * [QueryInsertAt](./QueryInsertAt.md)
   * [QueryKeyExists](./QueryKeyExists.md)
   * [QueryMap](./QueryMap.md)
   * [QueryNew](./QueryNew.md)
   * [QueryPrepend](./QueryPrepend.md)
   * [QueryRecordCount](./QueryRecordCount.md)
   * [QueryReduce](./QueryReduce.md)
+  * [QueryReverse](./QueryReverse.md)
   * [QueryRowData](./QueryRowData.md)
+  * [QueryRowSwap](./QueryRowSwap.md)
   * [QuerySetCell](./QuerySetCell.md)
   * [QuerySetRow](./QuerySetRow.md)
   * [QuerySlice](./QuerySlice.md)

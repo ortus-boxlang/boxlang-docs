@@ -16,7 +16,7 @@ The available types are:
 ## Method Signature
 
 ```
-StructNew(type=[string], sortType=[string], sortOrder=[string], localeSensitive=[any], callback=[function])
+StructNew(type=[string], sortType=[any], sortOrder=[string], localeSensitive=[any], callback=[function:Comparator])
 ```
 
 ### Arguments
@@ -25,10 +25,10 @@ StructNew(type=[string], sortType=[string], sortOrder=[string], localeSensitive=
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `type` | `string` | `false` | The struct type | `default` |
-| `sortType` | `string` | `false` | An optional sort type to apply to that type |  |
+| `sortType` | `any` | `false` | An optional sort type to apply to that type |  |
 | `sortOrder` | `string` | `false` | The sort order applicable to the sortType argument | `asc` |
 | `localeSensitive` | `any` | `false` |  | `false` |
-| `callback` | `function` | `false` | An optional callback to use as the sorting function |  |
+| `callback` | `function:Comparator` | `false` | An optional callback to use as the sorting function. You can alternatively pass a Java Comparator. |  |
 
 ## Examples
 

@@ -50,6 +50,7 @@ This function does not accept any arguments
   * [ArrayPop](./ArrayPop.md)
   * [ArrayPrepend](./ArrayPrepend.md)
   * [ArrayPush](./ArrayPush.md)
+  * [ArrayRange](./ArrayRange.md)
   * [ArrayReduce](./ArrayReduce.md)
   * [ArrayReduceRight](./ArrayReduceRight.md)
   * [ArrayResize](./ArrayResize.md)

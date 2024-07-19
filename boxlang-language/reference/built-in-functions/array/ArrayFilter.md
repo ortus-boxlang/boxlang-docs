@@ -7,7 +7,7 @@ Used to filter an array to items for which the closure function returns true.
 ## Method Signature
 
 ```
-ArrayFilter(array=[array], callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])
+ArrayFilter(array=[array], callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ ArrayFilter(array=[array], callback=[function], parallel=[boolean], maxThreads=[
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to reduce |  |
-| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. |  |
+| `callback` | `function:Predicate` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
 | `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
 | `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
 | `initialValue` | `any` | `false` |  |  |
@@ -57,6 +57,7 @@ ArrayFilter(array=[array], callback=[function], parallel=[boolean], maxThreads=[
   * [ArrayPop](./ArrayPop.md)
   * [ArrayPrepend](./ArrayPrepend.md)
   * [ArrayPush](./ArrayPush.md)
+  * [ArrayRange](./ArrayRange.md)
   * [ArrayReduce](./ArrayReduce.md)
   * [ArrayReduceRight](./ArrayReduceRight.md)
   * [ArrayResize](./ArrayResize.md)

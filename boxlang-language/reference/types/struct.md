@@ -113,7 +113,7 @@ Copies top-level keys, values, and arrays in the structure by value; copies nest
 Returns the absolute value of a number
 </details>
 <details>
-<summary><code>delete(key=[string], indicateNotExists=[boolean])</code></summary>
+<summary><code>delete(key=[string])</code></summary>
 
 Deletes a key from a struct
 
@@ -122,11 +122,10 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `key` | `string` | `true` | `null` |
-| `indicateNotExists` | `boolean` | `false` | `false` |
 
 </details>
 <details>
-<summary><code>each(callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
+<summary><code>each(callback=[function:BiConsumer], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
 
 Used to iterate over a struct and run the function closure for each key/value pair.
 
@@ -134,7 +133,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiConsumer` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `ordered` | `boolean` | `false` | `false` |
@@ -153,7 +152,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>every(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>every(callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Used to iterate over a struct and test whether every item in the struct meets the test.
 
@@ -161,13 +160,13 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiPredicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>filter(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>filter(callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Used to filter a struct and return a new struct containing the result
 
@@ -175,7 +174,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiPredicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
@@ -316,7 +315,7 @@ Arguments:
 Returns the absolute value of a number
 </details>
 <details>
-<summary><code>map(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>map(callback=[function:BiFunction], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Used to map a struct to a new struct of the same type containing the result
 
@@ -324,7 +323,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiFunction` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
@@ -343,7 +342,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>some(callback=[function], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>some(callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Used to iterate over a struct and test whether any items meet the test callback.
 
@@ -351,13 +350,13 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiPredicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>sort(sortType=[any], sortOrder=[string], path=[string], callback=[function])</code></summary>
+<summary><code>sort(sortType=[any], sortOrder=[string], path=[string], callback=[function:Comparator])</code></summary>
 
 Sorts a struct according to the specified arguments and returns an array of struct keys
 
@@ -368,7 +367,7 @@ Arguments:
 | `sortType` | `any` | `false` | `text` |
 | `sortOrder` | `string` | `false` | `asc` |
 | `path` | `string` | `false` | `null` |
-| `callback` | `function` | `false` | `null` |
+| `callback` | `function:Comparator` | `false` | `null` |
 
 </details>
 <details>
@@ -411,7 +410,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>toSorted(sortType=[any], sortOrder=[string], localeSensitive=[any], callback=[function])</code></summary>
+<summary><code>toSorted(sortType=[any], sortOrder=[string], localeSensitive=[any], callback=[function:Comparator])</code></summary>
 
 Converts a struct to a sorted struct - using either a callback comparator or textual directives as the sort option
 
@@ -422,7 +421,7 @@ Arguments:
 | `sortType` | `any` | `false` | `text` |
 | `sortOrder` | `string` | `false` | `asc` |
 | `localeSensitive` | `any` | `false` | `false` |
-| `callback` | `function` | `false` | `null` |
+| `callback` | `function:Comparator` | `false` | `null` |
 
 </details>
 <details>

@@ -7,7 +7,7 @@ Run the provided udf over all characters in a string to reduce the values to a s
 ## Method Signature
 
 ```
-StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
+StringReduce(list=[string], callback=[function:BiFunction], initialValue=[any], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` |  |  |
-| `callback` | `function` | `true` | The callback to use for the test |  |
+| `callback` | `function:BiFunction` | `true` | The callback to use for the test |  |
 | `initialValue` | `any` | `false` | The initial value of the reduction |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
@@ -71,6 +71,7 @@ StringReduce(list=[string], callback=[function], initialValue=[any], delimiter=[
   * [SpanExcluding](./SpanExcluding.md)
   * [SpanIncluding](./SpanIncluding.md)
   * [SQLPrettify](./SQLPrettify.md)
+  * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)

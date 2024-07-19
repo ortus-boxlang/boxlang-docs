@@ -114,7 +114,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>each(callback=[function], parallel=[boolean], maxThreads=[integer], ordered=[boolean], initialValue=[any])</code></summary>
+<summary><code>each(callback=[function:Consumer], parallel=[boolean], maxThreads=[integer], ordered=[boolean], initialValue=[any])</code></summary>
 
 Used to iterate over an array and run the function closure for each item in the array.
 
@@ -122,7 +122,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Consumer` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `ordered` | `boolean` | `false` | `false` |
@@ -144,7 +144,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>every(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>every(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
 
 Returns true if every closure returns true, otherwise false
 
@@ -152,14 +152,14 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>filter(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>filter(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
 
 Used to filter an array to items for which the closure function returns true.
 
@@ -167,7 +167,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `initialValue` | `any` | `false` | `null` |
@@ -316,7 +316,7 @@ Return first item in array
 Returns the absolute value of a number
 </details>
 <details>
-<summary><code>map(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>map(callback=[function:Function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
 
 Iterates over every entry of the array and calls the closure function to work on the element of the array.
 
@@ -327,7 +327,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `initialValue` | `any` | `false` | `null` |
@@ -435,7 +435,30 @@ Arguments:
 
 </details>
 <details>
-<summary><code>reduce(callback=[function], initialValue=[any])</code></summary>
+<summary><code>range(to=[numeric])</code></summary>
+
+Build an array out of a range of numbers or using our range syntax: {start}..{end}
+ or using the from and to arguments
+
+<p>,
+ You can also build negative ranges
+ ,<p>,
+
+ ,<pre>,
+ arrayRange( "1..5" )
+ arrayRange( "-10..5" )
+ arrayRange( 1, 500 )
+ ,</pre>
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `to` | `numeric` | `false` | `null` |
+
+</details>
+<details>
+<summary><code>reduce(callback=[function:BiFunction], initialValue=[any])</code></summary>
 
 Run the provided udf over the array to reduce the values to a single output
 
@@ -443,12 +466,12 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiFunction` | `true` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>reduceRight(callback=[function], initialValue=[any])</code></summary>
+<summary><code>reduceRight(callback=[function:BiFunction], initialValue=[any])</code></summary>
 
 This function iterates over every element of the array and calls the closure to work on that element.
 
@@ -459,7 +482,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:BiFunction` | `true` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 
 </details>
@@ -534,7 +557,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>some(callback=[function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>some(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
 
 Calls a given closure/function with every element in a given array and returns true if one of the closure calls returns true
 
@@ -542,14 +565,14 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `callback` | `function` | `true` | `null` |
+| `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>sort(sortType=[any], sortOrder=[string], localeSensitive=[boolean], callback=[any])</code></summary>
+<summary><code>sort(sortType=[any], sortOrder=[string], localeSensitive=[boolean], callback=[function:Comparator])</code></summary>
 
 Sorts array elements.
 
@@ -560,7 +583,7 @@ Arguments:
 | `sortType` | `any` | `false` | `textnocase` |
 | `sortOrder` | `string` | `false` | `asc` |
 | `localeSensitive` | `boolean` | `false` | `null` |
-| `callback` | `any` | `false` | `null` |
+| `callback` | `function:Comparator` | `false` | `null` |
 
 </details>
 <details>

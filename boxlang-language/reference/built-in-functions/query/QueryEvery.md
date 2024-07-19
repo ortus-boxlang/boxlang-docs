@@ -7,7 +7,7 @@ Executes a callback/closure against every row in a query and returns true if the
 ## Method Signature
 
 ```
-QueryEvery(query=[query], closure=[function], parallel=[boolean], maxThreads=[integer])
+QueryEvery(query=[query], closure=[function:Predicate], parallel=[boolean], maxThreads=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ QueryEvery(query=[query], closure=[function], parallel=[boolean], maxThreads=[in
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `query` | `query` | `true` | The query to iterate over |  |
-| `closure` | `function` | `true` | The function to invoke for each item. The function will be passed 1 argument: the row. |  |
+| `closure` | `function:Predicate` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the row, the currentRow, the query. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
 | `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
 | `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
 
@@ -41,13 +41,16 @@ QueryEvery(query=[query], closure=[function], parallel=[boolean], maxThreads=[in
   * [QueryFilter](./QueryFilter.md)
   * [QueryGetCell](./QueryGetCell.md)
   * [QueryGetResult](./QueryGetResult.md)
+  * [QueryInsertAt](./QueryInsertAt.md)
   * [QueryKeyExists](./QueryKeyExists.md)
   * [QueryMap](./QueryMap.md)
   * [QueryNew](./QueryNew.md)
   * [QueryPrepend](./QueryPrepend.md)
   * [QueryRecordCount](./QueryRecordCount.md)
   * [QueryReduce](./QueryReduce.md)
+  * [QueryReverse](./QueryReverse.md)
   * [QueryRowData](./QueryRowData.md)
+  * [QueryRowSwap](./QueryRowSwap.md)
   * [QuerySetCell](./QuerySetCell.md)
   * [QuerySetRow](./QuerySetRow.md)
   * [QuerySlice](./QuerySlice.md)
