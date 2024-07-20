@@ -30,7 +30,7 @@ By allowing a custom home directory, you can manage multiple BoxLang runtimes an
 
 1. custom, per-runtime configuration
 2. a custom set of BoxLang modules
-3. etc, etc.
+3. etc
 
 ## Boxlang.json Reference
 
@@ -171,11 +171,15 @@ Here is a full reference of the current default `boxlang.json` file:
 
 ```
 
+{% hint style="success" %}
+Please note that JSON support in BoxLang allows you to use comments inline.
+{% endhint %}
+
 ### Internal Variables
 
 The following are the internal variable substitutions you can use in any value:
 
-```
+```json
  * ${boxlang-home} - The BoxLang home directory
  * ${user-home} - The user's home directory
  * ${user-dir} - The user's current directory
@@ -243,12 +247,18 @@ This is the default locale for the runtime.  By default, we use the JVM locale. 
 ```json
 // The default locale for the runtime; defaults to the JVM locale if empty
 // Please use the IETF BCP 47 language tag values
-"locale": "",
+"locale": "es_sv",
+
+// You can also use hypens
+"locale": "es-sv",
+
+// Or just the first part
+"locale": "es",
 ```
 
-### invoke Implicit Accessor
+### Invoke Implicit Accessors
 
-In BoxLang, the default for implicit accessors is `true`. This means that properties on a class can be accessed externally, like field properties for mutation or for accessing.
+In BoxLang, the default for implicit accessors is `true`. This means that properties on a class can be accessed externally, like field properties for mutation or access.
 
 ```json
 "invokeImplicitAccessor" : true
@@ -257,7 +267,7 @@ In BoxLang, the default for implicit accessors is `true`. This means that proper
 Simple example:
 
 ```cfscript
-// Class has implicit accessors and mutators
+// Class has implicit accessors and mutators by default in BoxLang
 class{
     property firstName
     property lastName
@@ -267,14 +277,17 @@ class{
 
 // Example
 p = new Person()
+// This calls the generated setters in the class
 p.firstName = "luis"
 p.lastname = "majano"
 p.email = "info@boxlang.io"
+// This calls the generated getters in the class
+println( p.firstName );
 ```
 
 ### Application Timeout
 
-The default timeout for applications in BoxLang.  The default is 0 = never expire.  The value must be a string timespan.
+The default timeout for applications in BoxLang.  The default is **0 = never expires**.  The value must be a string timespan using the syntax shown:
 
 ```json
 // Use Timespan syntax: "days, hours, minutes, seconds"
@@ -283,7 +296,7 @@ The default timeout for applications in BoxLang.  The default is 0 = never expir
 
 ### Request Timeout
 
-The default timeout for requests in BoxLang.  The default is 0 = never expire.  The value must be a string timespan.
+The default timeout for requests in BoxLang.  The default is 0 = never expire.  The value must be a string timespan using the syntax shown:
 
 ```json
 // Use Timespan syntax: "days, hours, minutes, seconds"
@@ -292,7 +305,7 @@ The default timeout for requests in BoxLang.  The default is 0 = never expire.  
 
 ### Session Timeout
 
-The default timeout for sessions in BoxLang.  The default is 30 minutes.  The value must be a string timespan.
+The default timeout for sessions in BoxLang.  The default is 30 minutes.  The value must be a string timespan using the syntax shown:
 
 ```json
 // Use Timespan syntax: "days, hours, minutes, seconds"
@@ -301,7 +314,7 @@ The default timeout for sessions in BoxLang.  The default is 30 minutes.  The va
 
 ### Session Storage
 
-In BoxLang, you can configure for your sessions to be stored in `memory` by default in a BoxLang sessions cache, or you can give it a custom cache name to store them in.  If it's not `memory`\` then it must be a valid registered cache.
+In BoxLang, you can configure your user sessions to be stored in `memory` by default in a BoxLang sessions cache, or you can give it a custom cache name to store them in.  If it's not `memory`\` then it must be a valid registered cache. (See [Caches](configuration.md#caches))
 
 ```json
 // Where sessions will be stored by default.  This has to be a name of a registered cache
@@ -312,23 +325,26 @@ In BoxLang, you can configure for your sessions to be stored in `memory` by defa
 
 ### Mappings
 
-Here is where you can create global class mappings in BoxLang.  The value is a JSON object where the key is the name of the mapping and the value is the absolute path location of the mapping.
+Here is where you can create global class mappings in BoxLang.  The value is a JSON object where the key is the name of the mapping, and the value is the absolute path location of the mapping.  You can prefix the name of the mapping with `/` or not.  Ultimately, we will add it for you as well.
 
 ```json
 // A collection of BoxLang mappings, the key is the prefix and the value is the directory
 "mappings": {
-	"/": "${user-dir}"
+	"/": "${user-dir}",
+	"/core" : "/opt/core"
 },
 ```
 
+Mappings are used to discover BoxLang classes, files and more.
+
 ### Modules Directory
 
-BoxLang will search your home for a `modules` folder and register the modules found.  However, you can add an array of locations to search for BoxLang modules.
+BoxLang will search your home for a `modules` folder and register the modules found.  However, you can add multiple locations to search for BoxLang modules.  Each entry must be an absolute location.
 
 ```json
 // A collection of BoxLang module directories, they must be absolute paths
 "modulesDirectory": [
-	"${boxlang-home}/modules"
+    "${boxlang-home}/modules"
 ],
 ```
 
