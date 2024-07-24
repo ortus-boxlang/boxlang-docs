@@ -4,6 +4,8 @@ description: Discover the BoxLang language
 
 # Syntax & Semantics
 
+BoxLang is a dynamic language that is fluent with a low verbosity syntax.  It will feel like a very lean Java syntax.  Check out our quick [style guide](../getting-started/overview/syntax-style-guide/) if you are a Java/Kotlin/Python/PHP/Ruby/CFML/Rust developer, this will give you a first-hand look at the major semantics of the language.
+
 ## Syntax Files
 
 BoxLang can be written in either templates, scripts, or classes. You will write one or more instructions in a file (`.bxm,.bxs,.bx`), then run the file through a BoxLang engine or Command Line Interpreter like our REPL.
@@ -56,7 +58,9 @@ today = now()
 println( "Today is #today#" )
 // Print out the array and structure
 println( a )
+println( "array has" & a.len() & " elements" )
 println( user )
+println( user.name & " has an id of #user.id#" )
 
 ```
 {% endtab %}
@@ -97,9 +101,9 @@ today = now()
 <bx:output>
 Today is #today#
 <br>
-My array is #a#
+My array is #a# and it has #a.len()# elements
 <br>
-My user struct is #user#
+My user struct is #user# and has #a.len()# keys
 </bx:output>
 ```
 
