@@ -1,70 +1,109 @@
 ---
-description: Script or Tags? Choose wisely!
+description: Discover the BoxLang language
 ---
 
 # Syntax & Semantics
 
-There are two ways to write BoxLang code: in **tag** or in **script** syntax. BoxLang will dictate that your view or presentation layers will utilize the **tag** syntax in `bxm` files and the **script** syntax in `bxs` and `bx` files.  Please note `bx` files are specifically for Box Classes, this is where model or business layers should all be done. (MVC comes later). There are no differences in functionality between them; it's pure syntax.
-
-* script Syntax Guide - [https://cfdocs.org/script](https://cfdocs.org/script)
-
-{% hint style="info" %}
-In BoxLang tags start with **bx:** vs **cf**. So instead of `<cfoutput>` use `<bx:output>`.
-{% endhint %}
-
 ## Syntax Files
 
-BoxLang includes a set of instructions you use on pages (`.bxm,.bxs`) or classes (`.bx`). You will write one or more instructions in a file (`.bxm,.bxs,.bx`) then run the file through a BoxLang engine or Command Line Interpreter like CommandBox.
+BoxLang can be written in either templates, scripts, or classes. You will write one or more instructions in a file (`.bxm,.bxs,.bx`), then run the file through a BoxLang engine or Command Line Interpreter like our REPL.
 
-* `bxm` - BoxLang markup file, tag syntax is the default and used for views
-* `bxs` - BoxLang script file, script syntax.&#x20;
-* `bx` - The default is the BoxLang class file (Class or Object), script syntax.
+<figure><img src="../.gitbook/assets/image (21).png" alt="" width="375"><figcaption><p>BoxLang File Types</p></figcaption></figure>
+
+* `bxm` - BoxLang markup file, tag syntax is the default and used for creating rich views and templating
+* `bxs` - BoxLang scripting file, for a-la-carte scripting
+* `bx` - A BoxLang class
 
 ## Implicit Behavior
 
-BoxLang also gives you a pre-set of defined [components](https://boxlang.ortusbooks.com/boxlang-language/reference/components) and [functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions) available to you in any file you write your code in. These tags and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation. They are basically automatic imports.
+BoxLang also gives you a pre-set of defined headless [components](https://boxlang.ortusbooks.com/boxlang-language/reference/components) and [functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions) available to you in any file in which you write your code. These components and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation.&#x20;
+
+Also, note that you can use all the BoxLang types naturally with no imports:
+
+* Structs - (Maps)
+* Arrays - (Starting with an index of 1, not 0)
+* Strings
+* Dates
+* Numerics (Floats, shorts, integers, longs, etc)
+* XML
+* Queries
+* Functions
 
 {% hint style="success" %}
-**Tip:** Please note that the BoxLang built-in functions are also **first-class functions** so that they can be passed around as arguments to other functions or closures or saved as variables.
+**Tip:** Please note that the BoxLang built-in functions (BIFs) are also **first-class functions** so that they can be passed around as arguments to other functions or closures or saved as variables.
 {% endhint %}
 
 ## Exploring Behavior
 
-Three BoxLang instructions we will use in this section are `bx:set`, `bx:output`, and `bx:dump`.
+Let's start by exploring some behavior in these types of files.  Ensure you are using the [BoxLang IDE](../getting-started/ide-tooling/) Write the code; remember you can execute any BoxLang file within your editor by right-clicking the file and saying **"BoxLang: Run File"**
 
-* `bx:set` is used to create a variable and assign it a value.
-* `bx:output` displays a variable's value to the output stream.
-* `bx:dump` is used to display the contents of simple and complex variables, objects, classes, user-defined functions, and other elements to the output stream.
+<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>Run a File</p></figcaption></figure>
 
-We might have a file named _myprogram.bxm_ and _Sample.bx_ like this:
+### Scripting
 
-### Tag Syntax
+Let's write a simple scripting file that declares and uses a few boxlang types, and then you can print them on the console.  You can run the script via your REPL or via [https://try.boxlang.io](https://try.boxlang.io)
+
+{% tabs %}
+{% tab title="myscript.bxs" %}
+```java
+// let's define an array
+a = [ 1,2,3 ]
+// A structure of data
+user = { name : "boxlang", id : createUUID(), age : 3 }
+// create a variable using a BIF
+today = now()
+// Print out some code
+println( "Today is #today#" )
+// Print out the array and structure
+println( a )
+println( user )
+
+```
+{% endtab %}
+{% endtabs %}
+
+Now you can run it in the REPL: `boxlang myscript.bxs`
+
+### Templating
+
+I can also use the templating language and build this in an HTML-enabled application. &#x20;
+
+{% hint style="info" %}
+If you want to see HTML being produced, then you will need to run the file in our [MiniServer](../getting-started/running-boxlang/miniserver.md) or [CommandBox](../getting-started/running-boxlang/commandbox.md) server.  If not, just run the templating file via the REPL `boxlang` binary.
+{% endhint %}
 
 {% tabs %}
 {% tab title="myprogram.bxm" %}
 ```markup
-<bx:set s = new Sample()>
-<bx:output>#s.hello()#</bx:output>
+<bx:set a = [1,2,3,4]>
+<bx:set user = { name : "boxlang", id : createUUID(), age : 3 }>
+<bx:set today = now()>
+<bx:output>Today is #today#</bx:output>
+<bx:output>#a#</bx:output>
+<bx:output>#user#</bx:output>
 ```
 {% endtab %}
 {% endtabs %}
 
-### Script Syntax
+Run this in the MiniServer or CommandBox or the REPL tool: `boxlang myprogram.bxm`.  You can also leverage scripting in templates by using the `<bx:script>` template:
 
-{% tabs %}
-{% tab title="myprogram.bxm" %}
-```java
+```markup
 <bx:script>
-    s = new Sample();
-    writeOutput( s.hello() );
+a = [ 1,2,3 ]
+user = { name : "boxlang", id : createUUID(), age : 3 }
+today = now()
 </bx:script>
-```
-{% endtab %}
-{% endtabs %}
 
-{% hint style="success" %}
-**Tip:** Please note that if you want to write in script in a tag-based file, you must use an opening and closing `<bx:script>` tag.
-{% endhint %}
+<bx:output>
+Today is #today#
+<br>
+My array is #a#
+<br>
+My user struct is #user#
+</bx:output>
+```
+
+### Classes
 
 {% tabs %}
 {% tab title="Sample.bx" %}
@@ -74,13 +113,24 @@ class{
     function hello(){
        return "Hello, World!";
     }
+    
+    function main( args = [] ){
+       return new Sample().hello();
+    }
 
 }
 ```
 {% endtab %}
 {% endtabs %}
 
-Please note that no types and not even any visibility scopes you might be used to are present. BoxLang can also infer variable types on more distinct variables like dates, booleans, or numbers. However, please note that you can fully leverage types if you like:
+Please note that no types or visibility scopes you might be used to are present. BoxLang can also infer variable types on more distinct variables like dates, booleans, or numbers.   It also can include a `main()` method that can be invoked for you if you run the class via our REPL tool:
+
+```bash
+$> boxlang Sample
+Hello, World!
+```
+
+However, please note that you can fully leverage types if you like:
 
 {% tabs %}
 {% tab title="Sample.bx" %}
@@ -102,21 +152,7 @@ By default, the return type of every function and/or argument is **any**. Thus, 
 
 ### Semi-Colons
 
-Please note that semi-colons are used to demarcate line endings in BoxLang `;`. They can be optional, however. Also, note the CommandBox REPL does NOT require semi-colons.
-
-### Tags In Script
-
-BoxLang will allow you to write your tags in script syntax. You basically eliminate the starting `<` and ending `>` enclosures and create a block by using the `{` and `}` mustaches.
-
-{% hint style="info" %}
-BoxLang uses Lucee's generic tag-in-script syntax
-{% endhint %}
-
-```javascript
-http method="GET" charset="utf-8" url="https://www.google.com/" result="result" {
-    httpparam name="q" type="formfield" value="test";
-}
-```
+Please note that semi-colons are used to demarcate line endings in BoxLang `;`. They can be optional, however.
 
 ## Polyglot References
 
@@ -188,8 +224,3 @@ public class MyProgram {
 {% endtab %}
 {% endtabs %}
 
-## Coding Standards
-
-At [Ortus Solutions](https://www.ortussolutions.com), we have developed a set of development standards for many languages. You can find our BoxLang standards here: [https://github.com/Ortus-Solutions/coding-standards](https://github.com/Ortus-Solutions/coding-standards).
-
-{% @github-files/github-code-block url="https://github.com/Ortus-Solutions/coding-standards" %}
