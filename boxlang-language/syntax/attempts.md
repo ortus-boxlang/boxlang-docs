@@ -44,6 +44,7 @@ The rules for evaluating that we have a value **present** are:
 
 * The value is not `null`
 * If the value is castable to BoxLang Boolean, is it `true`
+  * Queries, structs, strings, arrays are castable to boolean. So if they are empty, the attempt is false.
 * If not castable, we have a value, so it's **present**.
 
 We also have another method called `isNull(),` which specifically checks whether the value is `null` only!
@@ -57,6 +58,13 @@ attempt( null )
     
 attempt( "hello" )
     .isPresent() // true
+    
+attempt( [] )
+    .isPresent() // false : the array is empty
+attempt( {} )
+    .isPresent() // false : the struct is empty
+attempt( queryNew() )
+    .isPresent() // false : the query is empty
 ```
 
 ## Creation
