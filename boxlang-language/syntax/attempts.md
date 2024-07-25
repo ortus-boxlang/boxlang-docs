@@ -9,7 +9,7 @@ Attempts in BoxLang are an enhanced Java [Optional](https://www.developer.com/ja
 Attempts are also immutable, so you can chain methods to handle the value more functionally, but it never mutates the original value.  It can also be seeded with validation information to create validation pipelines.
 
 ```java
-attempt( userService.get( rc.id ).isLoaded() )
+attempt( userService.get( rc.id ) )
     .ifPresent( user -> populate( user ).save() )
     .orThrow( "UserNotFoundException" )
 ```
@@ -48,7 +48,7 @@ The rules for evaluating that we have a value **present** are:
 
 We also have another method called `isNull(),` which specifically checks whether the value is `null` only!
 
-```cfscript
+```java
 attempt( null )
     .isEmpty() // true
     
@@ -67,7 +67,7 @@ You can create attempts using our BIF `attempt()`.
 
 To create empty attempts, don't pass anything:
 
-```cfscript
+```java
 emptyAttempt = attempt()
 ```
 
@@ -77,7 +77,7 @@ Remember that this is an empty attempt, you can change it's value.
 
 If you pass a value into the BIF, that value will be stored in the attempt, which can later be evaluated for existence.  You can pass a value or an expression that could be `null`.
 
-```cfscript
+```java
 attempt( userService.get( rc.id ) )
 attempt( userService.get( rc.id ).isLoaded() )
 attempt( getBoxCache().get( "my-cache-value" ) )
@@ -92,7 +92,7 @@ We can interact with it now that we have created an attempt or received one.  He
 
 This allows you to compare if two attempts are equal.
 
-```cfscript
+```java
 if( attempt1.equals( attempt2 ) ){
     .. do this
 }
@@ -102,7 +102,7 @@ if( attempt1.equals( attempt2 ) ){
 
 If a value is present and matches the given closure/lambda, it returns an Attempt describing the value; otherwise, it returns an empty Attempt.
 
-```cfscript
+```java
 attempt( userService.findById( 25 ) )
     .filter( u -> u.getAge() >= 21 )
     .ifPresentOrElse( 
@@ -115,7 +115,8 @@ attempt( userService.findById( 25 ) )
 
 If a value is present, it returns the result of applying the given `Attempt`-bearing mapping function to the value; otherwise, it returns an empty `Attempt`.  Using `flatMap` allows you to avoid nested attempt objects and directly get the transformed result.  The `getEmail()` method returns an attempt, not a value.
 
-```cfscript
+{% code title="User.bx" %}
+```java
 class User{
     property email
     
@@ -125,22 +126,37 @@ class User{
         return attempt( email )
     }
 }
+```
+{% endcode %}
 
-// Use flatMap to retrieve and transform the email if present
-attempt( userService.getUserByEmail( "alice@example.com" ) )
+<pre class="language-java"><code class="lang-java">// written without attempts
+var user = userService.findUserById( userId )
+if( isNull( user ) ){
+    throw( "Unable to find user" );
+}
+var email = user.getEmail();
+if( isNull( email ) ){
+    throw( "Email not present" );
+}
+var domain = email.getToken( 2, "@" );
+println( "Email domain: " + domain);
+
+
+<strong>// Written with Attempts
+</strong>attempt( userService.getUserByEmail( "alice@example.com" ) )
     .flatMap( .getEmail )
     .map( .getToken( 2, "@" ) )
     .ifPresentOrElse(
         domain -> println( "Email domain: " + domain),
         () -> println("Email not present")
     );
-```
+</code></pre>
 
 ### get():any
 
 Get the value of the attempt. If the attempt is empty it will throw an exception.
 
-```cfscript
+```java
 user = attempt( userService.findById( rc.id ) ).get()
 myData = getBoxCache().get( "my-id" )
 
@@ -153,7 +169,7 @@ if( myData.exists() ){
 
 If a value is present, returns the value, otherwise returns the other passed value passed.  You can use the `getOrDefaul() , orElse()` function according to your readability needs.
 
-```cfscript
+```java
 myData = getBoxCache()
     .get( "my-id" )
     .getOrDefault( "not available" );
@@ -167,7 +183,7 @@ myData = getBoxCache()
 
 If the attempt is NOT present, run the consumer. This returns the same attempt.  Please note that you can use the `ifEmpty() or the ifFailed()` alias, in order to improve your readability.
 
-```cfscript
+```java
 user = attempt( userService.findById( rc.id ) )
     .ifEmpty( () -> println( "The user with id [#rc.id#] was not found" ) )
     
@@ -182,7 +198,7 @@ attempt( apiService.getUserData( rc.id ) )
 
 If a value is present, performs the given action with the value, otherwise does nothing.  You can use either `ifPresent() or ifSuccessful()` depending on your fluency
 
-```cfscript
+```java
 attempt( apiService.getUserData( rc.id ) )
     // store the data in my rc scope
     .ifPresent( data -> rc.user = data )
@@ -200,7 +216,7 @@ attempt( apiService.getUserData( rc.id ) )
 
 If a value is present, performs the given action with the value, otherwise performs the given empty-based action.
 
-```cfscript
+```java
 attempt( apiService.getUserData( rc.id ) )
     .ifPresentOrElse( 
         data -> rc.user = data,
@@ -212,7 +228,7 @@ attempt( apiService.getUserData( rc.id ) )
 
 Map the attempt to a new value with a supplier if it exists, else it's ignored and returns the same attempt.
 
-```cfscript
+```java
 attempt( user.getEmail() )
     .map( .toUpperCase )
     ifPresent( email -> println( "The email is [#email#]" ) )
@@ -226,10 +242,10 @@ attempt( userService.findById( rc.id ) )
 
 If a value is present, returns the Attempt, otherwise returns an Attempt produced by the supplying function.  This is great for doing n-tier level lookups.
 
-```cfscript
+```java
 attempt( dataService.findGlobally() )
     // If the previous api call produced nothing, try our backup server
-    .or( dataService.findLocally() )
+    .or( () -> dataService.findLocally() )
     .orThrow( "Data not found anywhere" )
 ```
 
@@ -237,27 +253,23 @@ attempt( dataService.findGlobally() )
 
 This is similar to the `getOrDefault(), orElse()` methods, but with the caveat that this method calls the supplier closure/lambda, and whatever that produces is used.  This is great for dynamically producing the result.
 
-```cfscript
+```java
 attempt( dataService.findGlobally() )
     // If the previous api call produced nothing, try our backup server
-    .or( dataService.findLocally() )
+    .or( () -> dataService.findLocally() )
     // If still not found, then produce it
     .orElseGet( () -> dataService.produceData() )
 ```
 
 ### orThrow( \[throwable|message] ):any
 
-If a value is present, returns the value, otherwise throws a `NoElementException` if no exception is passed.
+If a value is present, returns the value, otherwise throws a `NoElementException` if no exception is passed.  If you pass in a **message**, it will throw an exception with that **message.**  If you pass in your own **Exception** object, it will throw that exception object.
 
-If you pass in a message, it will throw an exception with that message
-
-If you pass in your own Exception object, it will throw that exception object
-
-```cfscript
+```java
 function getData(){
     return attempt( dataService.findGlobally() )
     // If the previous api call produced nothing, try our backup server
-    .or( dataService.findLocally() )
+    .or( () -> dataService.findLocally() )
     .orThrow()
 }
 
@@ -271,7 +283,7 @@ function getUser( required id ){
 
 If a value is present, returns a sequential Stream containing only that value, otherwise returns an empty Stream.  Let's say we have a list of `Person` objects, each with an optional `Address` field. We want to extract a list of all city names from those persons who actually have an address.
 
-```cfscript
+```java
 people = [
     new Person( "Luis", attempt( new Address( "New York" ) ),
     new Person( "Jaime", attempt() ),
@@ -299,7 +311,7 @@ cities = people
 
 Returns the string representation of the value, if any.
 
-```cfscript
+```java
 println( attempt().toString() ) // Attempt.empty
 println( attempt( "hello" ).toString() ) // Attempt[hello]
 ```
@@ -327,7 +339,7 @@ The available matchers are:
 
 The matcher registration can happen at any time as long as it is before an `isValid()` call.
 
-```cfscript
+```java
 attempt( "luis" ).toBe( "luis" ).isValid()
 
 attempt( getCreditScore() )
