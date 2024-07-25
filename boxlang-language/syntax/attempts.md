@@ -8,7 +8,7 @@ Attempts in BoxLang are an enhanced Java [Optional](https://www.developer.com/ja
 
 Attempts are also immutable, so you can chain methods to handle the value more functionally, but it never mutates the original value.  It can also be seeded with validation information to create validation pipelines.
 
-```cfscript
+```groovy
 attempt( userService.get( rc.id ).isLoaded() )
     .ifPresent( user -> populate( user ).save() )
     .orThrow( "UserNotFoundException" )
