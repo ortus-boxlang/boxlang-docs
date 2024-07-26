@@ -1,18 +1,13 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `ExecutorShutdown`
+# Function: `ThreadNew`
 
-Shuts down an executor by name.
-
-By default
- the executors are shutdown gracefully. However, if you want to force the shutdown
- you can set the force argument to true. If you want to wait for the executor to shutdown
- you can set the timeout argument to the number of milliseconds to wait.
+Creates a new thread of execution based on the passed closure/lambda.
 
 ## Method Signature
 
 ```
-ExecutorShutdown(name=[string], force=[boolean], timeout=[numeric])
+ThreadNew(runnable=[function], attributes=[struct], name=[string], priority=[string])
 ```
 
 ### Arguments
@@ -20,9 +15,10 @@ ExecutorShutdown(name=[string], force=[boolean], timeout=[numeric])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `name` | `string` | `true` | The name of the executor to shutdown |  |
-| `force` | `boolean` | `true` | Whether to force the shutdown, default is false | `false` |
-| `timeout` | `numeric` | `true` | The number of milliseconds to wait for the executor to shutdown | `0` |
+| `runnable` | `function` | `true` | The closure/lambda to execute in the new thread. |  |
+| `attributes` | `struct` | `false` | A struct of data to bind into the thread's scope. | `{}` |
+| `name` | `string` | `false` |  |  |
+| `priority` | `string` | `false` | The priority of the thread. Possible values are "high", "low", and "normal". Default is "normal". | `normal` |
 
 ## Examples
 
@@ -34,10 +30,10 @@ ExecutorShutdown(name=[string], force=[boolean], timeout=[numeric])
   * [ExecutorHas](./ExecutorHas.md)
   * [ExecutorList](./ExecutorList.md)
   * [ExecutorNew](./ExecutorNew.md)
+  * [ExecutorShutdown](./ExecutorShutdown.md)
   * [ExecutorStatus](./ExecutorStatus.md)
   * [FutureNew](./FutureNew.md)
   * [IsInThread](./IsInThread.md)
   * [RunAsync](./RunAsync.md)
   * [ThreadJoin](./ThreadJoin.md)
-  * [ThreadNew](./ThreadNew.md)
   * [ThreadTerminate](./ThreadTerminate.md)

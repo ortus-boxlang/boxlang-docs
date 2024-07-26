@@ -29,4 +29,5 @@ This function does not accept any arguments
   * [IsInThread](./IsInThread.md)
   * [RunAsync](./RunAsync.md)
   * [ThreadJoin](./ThreadJoin.md)
+  * [ThreadNew](./ThreadNew.md)
   * [ThreadTerminate](./ThreadTerminate.md)
