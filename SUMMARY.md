@@ -657,6 +657,8 @@
 * [File Handling](boxlang-framework/file-handling.md)
 * [HTTP/S Calls](boxlang-framework/http-calls.md)
 * [Modules](boxlang-framework/modularity/README.md)
+  * [ESAPI](boxlang-framework/modularity/esapi.md)
+  * [Evaluating Code](boxlang-framework/modularity/evaluating-code.md)
   * [Encryption & Decryption](boxlang-framework/modularity/encryption-and-decryption.md)
   * [Hardware & System Info](boxlang-framework/modularity/hardware-and-system-info.md)
   * [Image Manipulation](boxlang-framework/modularity/image-manipulation.md)
