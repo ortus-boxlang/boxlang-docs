@@ -6,11 +6,11 @@ description: Power your mission-critical and enterprise applications with Comman
 
 <figure><img src="../../.gitbook/assets/commandbox.png" alt=""><figcaption></figcaption></figure>
 
-CommandBox is a standalone, native tool for Windows, Mac, and Linux that provides a Command-Line Interface (CLI) for developer productivity, tool interaction, package management, embedded JEE server, application scaffolding, and sweet ASCII art.&#x20;
+CommandBox is a standalone, native tool for Windows, Mac, and Linux that provides a Command-Line Interface (CLI) for developer productivity, tool interaction, package management, embedded JEE server, application scaffolding, and sweet ASCII art.
 
-It seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or CFML project.  We have created a special servlet runtime for CommandBox so you can leverage it to deploy mission-critical and high-traffic web applications.  We go even further with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro) as part of our [BoxLang subscriptions](https://boxlang.io/plans) to give you tons of features like JDK management, Multi-site support, Multi-SSL support, Operating System service manager, SNI support, CAC Support, and so much more.
+It seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or CFML project. We have created a special servlet runtime for CommandBox so you can leverage it to deploy mission-critical and high-traffic web applications. We go even further with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro) as part of our [BoxLang subscriptions](https://boxlang.io/plans) to give you tons of features like JDK management, Multi-site support, Multi-SSL support, Operating System service manager, SNI support, CAC Support, and so much more.
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt="" width="156"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt="" width="156"><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Find out about CommandBox Pro [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)
@@ -18,7 +18,7 @@ Find out about CommandBox Pro [https://www.ortussolutions.com/products/commandbo
 
 ### Install the Module <a href="#versioning" id="versioning"></a>
 
-CommandBox needs (for the moment) the `commandbox-boxlang` module to start BoxLang servers.  So let's go ahead and install it:
+CommandBox needs (for the moment) the `commandbox-boxlang` module to start BoxLang servers. So let's go ahead and install it:
 
 ```bash
 install commandbox-boxlang
@@ -28,7 +28,7 @@ This will add the right file types and handlers to CommandBox for BoxLang.
 
 ### Start up a Server
 
-This guide is short and sweet.  The hard part has been done.  Now, you can start a BoxLang server like any other CommandBox server.  So go to the webroot of your choosing and run:
+This guide is short and sweet. The hard part has been done. Now, you can start a BoxLang server like any other CommandBox server. So go to the webroot of your choosing and run:
 
 ```bash
 server start cfengine=boxlang javaVersion=openjdk21_jdk
@@ -88,7 +88,7 @@ You can also make your CommandBox BoxLang server portable with a `server.json` f
 
 ### Environment Variables
 
-The servlet/CommandBox runtime uses the same [env variables](./#environment-variables) as the core OS. You can find them here. &#x20;
+The servlet/CommandBox runtime uses the same [env variables](./#environment-variables) as the core OS. You can find them here.
 
 {% content-ref url="./" %}
 [.](./)
@@ -96,6 +96,6 @@ The servlet/CommandBox runtime uses the same [env variables](./#environment-vari
 
 ### Runtime Source Code
 
-The runtime source code can be found here: [https://github.com/ortus-boxlang/boxlang-servlet](https://github.com/ortus-boxlang/boxlang-servlet)[ ](https://github.com/ortus-boxlang/boxlang-servlet)
+The runtime source code can be found here: [https://github.com/ortus-boxlang/boxlang-servlet](https://github.com/ortus-boxlang/boxlang-servlet)
 
 We welcome any pull requests, testing, docs, etc.

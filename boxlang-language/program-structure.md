@@ -4,13 +4,53 @@ description: This section covers the basics of the program structures of BoxLang
 
 # Program Structure
 
-As we saw in the [syntax](syntax.md) section, BoxLang can be written in 3 types of files:
+## File Types
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
+BoxLang can be written in 3 types of files:
 
 1. Scripts (\*.bxs, or in compat mode \*.cfs)
 2. Templates (\*.bxm, or in compat mode \*.cfm)
 3. Classes (\*.bx or in compat mode \*.cfc)
 
 Each of these files follow the same program structure with different syntaxes.  The only one of these that you will write using our templating language is the `templates (*.bxm)`.
+
+## Scripts/Templates
+
+Scripts and templates in BoxLang do not require a class definition and can be executed via the CLI binary directly: `boxlang {script|template|` or ran by the MiniServer/CommandBox/Servlet/Etc.
+
+Templates will use the templating language but can also use scripts via opening and closing `<bx:script></bx:script>` tags.
+
+Scripts are in script notation, but you can also use the templating language by using opening and closing tag island notations: ` ``` `
+
+````java
+println( "I am a script" )
+
+```
+<!--- Now I can do templating --->
+<bx:output>
+    <h1>hello</h1>
+</bx:output>
+```
+
+// Now I am back in scripts
+println( "scripts again" )
+````
+
+## Classes
+
+Classes have a `.bx` extension and can be executed via the CLI if they have a `main()` method by convention.  Unlike Java or other languages, the `main()` method does NOT have to be static, it can be an instance method or a static method, you chose.
+
+```java
+class{
+
+    function main( args = [] ){
+        println( "BoxLang Rulez!" )
+    }
+
+}
+```
 
 ## Package Names
 
@@ -123,7 +163,7 @@ caseInsensitiveKey = new java:Key( "luis" )
 
 ## Star Imports
 
-Boxlang, like Java, allows you to import all classes from a package using the `*` after the last package path.  All classes within that package/folder will be available for shorthand usage.
+Boxlang, like Java, allows you to import all classes from a package using the `*` after the last package path.  All classes within that package/folder will be available for shorthand usage and reserved.
 
 ```java
  // Without star imports
@@ -173,3 +213,15 @@ caseInsensitiveKey = new Key( "luis" )
 javaKey = new jKey( "java" )
 ```
 
+Here is another example:
+
+```java
+import java.util.Date
+import java.sql.Date as SQLDate
+
+d1 = new Date( 1000 )
+d2 = new SQLDate( 1000 )
+
+assert d1 instanceof "java.util.Date"
+assert d2 instanceof "java.sql.Date"
+```

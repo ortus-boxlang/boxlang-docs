@@ -39,6 +39,7 @@
 
 ## BoxLang Language
 
+* [Program Structure](boxlang-language/program-structure.md)
 * [Syntax & Semantics](boxlang-language/syntax.md)
   * [Comments](boxlang-language/comments.md)
   * [Variables](boxlang-language/variables.md)
@@ -53,6 +54,7 @@
   * [Queries](boxlang-language/queries.md)
   * [Conditionals](boxlang-language/conditionals.md)
   * [Attempts](boxlang-language/syntax/attempts.md)
+  * [Java Interop](boxlang-language/syntax/java-integration.md)
   * [Data Navigators](boxlang-language/syntax/data-navigators.md)
   * [Exception Management](boxlang-language/exception-management.md)
   * [Code Locking](boxlang-language/locking.md)
@@ -60,7 +62,6 @@
   * [Lambdas -> Pure Functions](boxlang-language/syntax/lambdas-greater-than-pure-functions.md)
   * [Includes](boxlang-language/includes.md)
   * [Threading](boxlang-language/threading.md)
-* [Program Structure](boxlang-language/program-structure.md)
 * [Classes & OO](boxlang-language/classes/README.md)
   * [Properties](boxlang-language/classes/properties.md)
   * [Functions](boxlang-language/classes/functions.md)
@@ -68,9 +69,8 @@
   * [Final Constructs](boxlang-language/classes/final-constructs.md)
   * [Abstract Constructs](boxlang-language/classes/abstract-constructs.md)
   * [Interfaces](boxlang-language/classes/interfaces.md)
-* [Java Interop](boxlang-language/java-integration.md)
-* [API Docs](boxlang-language/api-docs.md)
 * [Reference](boxlang-language/reference/README.md)
+  * [API Docs](boxlang-language/reference/api-docs.md)
   * [Lexical Elements](boxlang-language/reference/lexical-elements/README.md)
     * [Scopes and Constants](boxlang-language/reference/lexical-elements/scopes.md)
     * [Keywords](boxlang-language/reference/lexical-elements/keywords.md)
@@ -656,9 +656,11 @@
 * [Asynchronous Programming](boxlang-framework/asynchronous-programming.md)
 * [File Handling](boxlang-framework/file-handling.md)
 * [HTTP/S Calls](boxlang-framework/http-calls.md)
-* [Image Manipulation](boxlang-framework/image-manipulation.md)
-* [Modules](boxlang-framework/modularity.md)
-* [Sending Emails](boxlang-framework/sending-emails.md)
+* [Modules](boxlang-framework/modularity/README.md)
+  * [Encryption & Decryption](boxlang-framework/modularity/encryption-and-decryption.md)
+  * [Hardware & System Info](boxlang-framework/modularity/hardware-and-system-info.md)
+  * [Image Manipulation](boxlang-framework/modularity/image-manipulation.md)
+  * [Sending Emails](boxlang-framework/modularity/sending-emails.md)
 
 ## Extra Credit
 
