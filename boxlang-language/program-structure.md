@@ -10,11 +10,11 @@ As we saw in the [syntax](syntax.md) section, BoxLang can be written in 3 types 
 2. Templates (\*.bxm, or in compat mode \*.cfm)
 3. Classes (\*.bx or in compat mode \*.cfc)
 
-Each of these files follow the same program structure with different syntaxes.
+Each of these files follow the same program structure with different syntaxes.  The only one of these that you will write using our templating language is the `templates (*.bxm)`.
 
 ## Package Names
 
-Package names are not necessary for these types of files as BoxLang will automatically create them for you.  You will refer to these scripts or templates by path location.
+Package names are not necessary for these types of files as BoxLang will automatically create them for you.  You will refer to these scripts or templates by path location or via mappings.
 
 ## Path Imports
 
@@ -24,6 +24,10 @@ BoxLang allows you to access any BoxLang class or script/template by location co
 * `createObject( "class", path )`
 * `include template="path"`
 * `Any BIF that requires a path`
+
+{% hint style="info" %}
+The discovery is done by looking at your global, application mappings and then relative pathing.
+{% endhint %}
 
 ```
 script.bxs
@@ -48,7 +52,7 @@ include template="scripts/data/bxs"
 
 These work great but the caveat is that when searching for those files and templates, BoxLang will try to discover them:
 
-* Is there a location mapping
+* Is there a location mapping (globally or in the application)
 * does the file exist
 * use it
 
@@ -56,7 +60,7 @@ Works great, but yes, some lookup is done, but cached.
 
 ## Simple Imports
 
-Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates.  This allows you to fully define the location of a class or template.  This is also used not only for BoxLang classes but for any Java class:
+Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates.  This allows you to fully define the location of a class or template explicitly.  This is also used not only for BoxLang classes but for any Java class:
 
 ```java
 import java.math.BigInteger
@@ -117,7 +121,7 @@ import java:ortus.boxlang.runtime.scopes.Key
 caseInsensitiveKey = new java:Key( "luis" )
 ```
 
-### Star Imports
+## Star Imports
 
 Boxlang, like Java, allows you to import all classes from a package using the `*` after the last package path.  All classes within that package/folder will be available for shorthand usage.
 
@@ -149,4 +153,23 @@ Now let's use start imports
 ```
 
 This can be for both Java and BoxLang class paths.
+
+## Import Aliases
+
+BoxLang allows you to alias your imports in order to break ambiguity and to be able to import classes with the same name but with different aliases.
+
+```java
+import java.math.BigInteger as jBigInt
+import models.User as BXUser
+import models.util.Key
+import ortus.boxlang.runtime.scopes.Key as jKey
+
+a = jBigInt.valueOf( 54 )
+result = a.add( 444 )
+
+user = new BXUser()
+
+caseInsensitiveKey = new Key( "luis" )
+javaKey = new jKey( "java" )
+```
 
