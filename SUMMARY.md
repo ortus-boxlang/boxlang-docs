@@ -52,6 +52,7 @@
   * [Arrays](boxlang-language/arrays.md)
   * [Structures](boxlang-language/structures.md)
   * [Queries](boxlang-language/queries.md)
+  * [Transactions](boxlang-language/transactions.md)
   * [Conditionals](boxlang-language/conditionals.md)
   * [Attempts](boxlang-language/syntax/attempts.md)
   * [Java Interop](boxlang-language/syntax/java-integration.md)
