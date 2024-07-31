@@ -37,23 +37,14 @@ To improve expectations around this behavior, BoxLang supports a `datasource` at
 
 ```js
 transaction datasource="carDB" {
-    queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'Ford', 'Fusion' )", {} );
+    // this query will run inside the transaction because its datasource matches the transaction 'datasource' attribute
+    queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'Ford', 'Fusion' )", { datasource : "carDB" } );
+    // this query will NOT run inside the transaction because its datasource does NOT match the transaction 'datasource' attribute
     queryExecute( "UPDATE users SET datedModifies=GETDATE() )", {}, { datasource : "adminDB" } );
 }
 ```
 
-Setting the datasource at the transaction block makes it much more obvious which datasource the transaction will operate upon. In addition to this, the transaction datasource now serves as the "default datasource" for queries which do not specify a datasource.
-
-For example:
-
-```js
-// OUTSIDE the transaction, this query will execute upon the default datasource defined at the Application or Runtime level:
-// queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'Ford', 'Fusion' )", {} );
-transaction datasource="carDB" {
-    // INSIDE the transaction, this query will execute upon the 'CarDB' transaction
-    queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'Ford', 'Fusion' )", {} );
-}
-```
+Setting the datasource at the transaction block makes it much more obvious which datasource the transaction will operate upon.
 
 ## Transactional Events
 
