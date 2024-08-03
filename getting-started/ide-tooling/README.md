@@ -2,7 +2,25 @@
 description: The BoxLang IDE leverages VSCode!
 ---
 
-# IDE Tooling
+# IDE & Tooling
+
+## CLI Tools
+
+We have a collection of CLI tools available to every OS installation:
+
+{% content-ref url="boxlang-compiler.md" %}
+[boxlang-compiler.md](boxlang-compiler.md)
+{% endcontent-ref %}
+
+{% content-ref url="cfml-feature-audit.md" %}
+[cfml-feature-audit.md](cfml-feature-audit.md)
+{% endcontent-ref %}
+
+{% content-ref url="cfml-to-boxlang-transpiler.md" %}
+[cfml-to-boxlang-transpiler.md](cfml-to-boxlang-transpiler.md)
+{% endcontent-ref %}
+
+## BoxLang IDE
 
 We have an official first-party extension for VSCode. You can find it in the [VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang).
 

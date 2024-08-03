@@ -40,11 +40,18 @@ and can be
 
 ### Usage <a href="#usage-1" id="usage-1"></a>
 
-Like the other CLI tools, this is implemented as a separate Main class.  Pretty wrappers are coming soon.
+Make sure you have the OS version of BoxLang installed as this will install the suite of tools for you including the `bxFeatureAudit` script.
 
-The main syntax for calling the feature audit tool is
+* `bxFeatureAudit` : \*nix/mac script
+* `bxFeatureAudit.bat` : Windows script
+
+You can call the tool using our script or the full path to the jar.
 
 ```bash
+// Using the script
+bxFeatureAudit <options here>
+
+// Using the full path to the jar
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit  <options here>
 ```
 
@@ -65,23 +72,39 @@ java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit  <options her
 Get a full report of all BIFs and Components used in a file
 
 ```bash
+// Using the script
+bxFeatureAudit --source includes/myFile.cfm
+
+// Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source includes/myFile.cfm
 ```
 
 Scan all your models for missing BIFs and Components
 
 ```bash
+// Using the script
+bxFeatureAudit --source ./models/ --missing
+
+// Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source ./models/ --missing
 ```
 
 Same as above, but aggregate results per file and write results to a CSV report
 
 ```css
+// Using the script
+bxFeatureAudit --source ./models/ --missing --aggregate --quiet --reportFile /path/to/models-missing-features.csv
+
+// Uisng the Full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source ./models/ --missing --aggregate --quiet --reportFile /path/to/models-missing-features.csv
 ```
 
 Get a summary level aggregate report of all missing features in ColdBox output to the console
 
 ```css
+// Using the script
+bxFeatureAudit --source ./coldbox/ --missing --aggregate summary 
+
+// Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source ./coldbox/ --missing --aggregate summary 
 ```

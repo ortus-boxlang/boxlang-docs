@@ -8,7 +8,30 @@ This CLI tool will allow you to transpile your CFML code into BoxLang native cod
 
 ### Usage
 
+Make sure you have the OS version of BoxLang installed as this will install the suite of tools for you including the `bxCFTranspiler` script.
+
+* `bxCFTranspiler` : \*nix/mac script
+* `bxCFTranspiler.bat` : Windows script
+
+You can call the tool using our script or the full path to the jar.
+
 ```bash
+// Using the script
+bxCFTranspiler <options here>
+
+// Using the full path to the jar
+java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.CFTranspiler  <options here>
+```
+
+### Examples
+
+```bash
+// Using the script
+bxCFTranspiler 
+    --source /path/to/file.cfc 
+    --target /path/to/file.bx
+
+// Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.CFTranspiler 
 --source /path/to/file.cfc 
 --target /path/to/file.bx
@@ -17,6 +40,13 @@ java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.CFTranspiler
 (If you leave off the target file extension, the tool will automatically append the correct one based on the source file type).  You can also convert an entire folder like so:
 
 ```bash
+// Using the script
+bxCFTranspiler
+    --source /path/to/CF/code 
+    --target /path/to/BL/code 
+    --stopOnError
+
+// Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.CFTranspiler 
 --source /path/to/CF/code 
 --target /path/to/BL/code 

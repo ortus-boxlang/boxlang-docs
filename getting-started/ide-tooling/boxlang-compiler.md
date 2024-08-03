@@ -14,9 +14,21 @@ This tool will compile and place (by default) your BoxLang files into Java bytec
 
 ## Usage
 
+Make sure you have installed the OS version of [BoxLang](../installation/) so you get all the tools installed as well.  This will place the compiler scripts in the installation folder.
+
+* `bxCompiler` : \*nix/mac script
+* `bxCompiler.bat` : Windows script
+
 ### A single file:
 
-```css
+```bash
+// Using the script
+bxCompiler
+    --source /path/to/webroot/index.cfm 
+    --target /path/to/compiled-webroot/index.cfm 
+    --basePath /path/to/webroot
+
+// Using the full path to jar
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.BXCompiler 
 --source /path/to/webroot/index.cfm 
 --target /path/to/compiled-webroot/index.cfm 
@@ -29,7 +41,14 @@ Note, for the code to run, the compiled file needs to have the exact same path o
 
 And an entire directory like so:
 
-```css
+```bash
+// Using the script
+bxCompiler
+    --source /path/to/webroot/ 
+    --target /path/to/compiled-webroot/ 
+    --basePath /path/to/webroot
+
+// Using the full path to the jar
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.BXCompiler 
 --source /path/to/webroot/ 
 --target /path/to/compiled-webroot/ 
