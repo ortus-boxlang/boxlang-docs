@@ -25,6 +25,7 @@ DirectoryRename(oldPath=[string], newPath=[string], createPath=[boolean])
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

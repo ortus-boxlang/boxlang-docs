@@ -26,6 +26,7 @@ DirectoryCreate(path=[string], createPath=[boolean], ignoreExists=[boolean], mod
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

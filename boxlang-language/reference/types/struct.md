@@ -310,6 +310,19 @@ Arguments:
 
 </details>
 <details>
+<summary><code>keyTranslate(deep=[boolean], retainKeys=[boolean])</code></summary>
+
+Converts a struct with dot-notated keys in to an unflattened version
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `deep` | `boolean` | `false` | `false` |
+| `retainKeys` | `boolean` | `false` | `false` |
+
+</details>
+<details>
 <summary><code>len()</code></summary>
 
 Returns the absolute value of a number
@@ -422,19 +435,6 @@ Arguments:
 | `sortOrder` | `string` | `false` | `asc` |
 | `localeSensitive` | `any` | `false` | `false` |
 | `callback` | `function:Comparator` | `false` | `null` |
-
-</details>
-<details>
-<summary><code>translateKeys(deep=[boolean], retainKeys=[boolean])</code></summary>
-
-Converts a struct with dot-notated keys in to an unflattened version
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `deep` | `boolean` | `false` | `false` |
-| `retainKeys` | `boolean` | `false` | `false` |
 
 </details>
 <details>

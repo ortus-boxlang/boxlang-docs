@@ -26,6 +26,7 @@ ExpandPath(path=[string])
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

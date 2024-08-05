@@ -26,6 +26,7 @@ FileReadBinary(filepath=[string], charsetOrBufferSize=[string], charset=[string]
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

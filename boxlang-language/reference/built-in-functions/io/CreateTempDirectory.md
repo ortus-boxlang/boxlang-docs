@@ -24,6 +24,7 @@ CreateTempDirectory(directory=[string], prefix=[string])
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)
   * [DirectoryCreate](./DirectoryCreate.md)

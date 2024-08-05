@@ -38,6 +38,8 @@ This function does not accept any arguments
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
   * [GetApplicationMetadata](./GetApplicationMetadata.md)
+  * [GetBaseTagData](./GetBaseTagData.md)
+  * [GetBaseTagList](./GetBaseTagList.md)
   * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
   * [GetBoxContext](./GetBoxContext.md)
   * [GetBoxRuntime](./GetBoxRuntime.md)

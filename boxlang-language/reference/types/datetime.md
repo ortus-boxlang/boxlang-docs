@@ -213,6 +213,18 @@ Arguments:
 
 </details>
 <details>
+<summary><code>getnumericdate(timezone=[string])</code></summary>
+
+Provides the BIF and member functions for all time unit request with no arguments
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `timezone` | `string` | `false` | `null` |
+
+</details>
+<details>
 <summary><code>getTime(timezone=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments

@@ -608,7 +608,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>prettifyJSON()</code></summary>
+<summary><code>jSONPrettify()</code></summary>
 
 Prettifies a JSON string.
 </details>
@@ -1234,28 +1234,6 @@ Arguments:
 <summary><code>sQLPrettify()</code></summary>
 
 Prettify a SQL string
-</details>
-<details>
-<summary><code>toStruct(delimiter=[string])</code></summary>
-
-Convert a query string to a struct.
-
-Each key-value pair in the query string is separated by a delimiter.
- The default delimiter is ,{@code "&"},
- ,<p>,
- Example:
-
- ,<pre>,
- queryStringToStruct( "foo=bar,&amp;,baz=qux" );
- "foo=bar,&amp;,baz=qux".toStruct();
- ,</pre>
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `delimiter` | `string` | `false` | `&` |
-
 </details>
 <details>
 <summary><code>mid(start=[integer], count=[integer])</code></summary>

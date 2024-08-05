@@ -30,6 +30,7 @@ DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[strin
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

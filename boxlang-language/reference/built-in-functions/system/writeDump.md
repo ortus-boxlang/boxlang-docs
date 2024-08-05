@@ -47,6 +47,8 @@ writeDump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boo
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
   * [GetApplicationMetadata](./GetApplicationMetadata.md)
+  * [GetBaseTagData](./GetBaseTagData.md)
+  * [GetBaseTagList](./GetBaseTagList.md)
   * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
   * [GetBoxContext](./GetBoxContext.md)
   * [GetBoxRuntime](./GetBoxRuntime.md)

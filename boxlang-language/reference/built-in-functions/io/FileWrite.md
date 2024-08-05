@@ -26,6 +26,7 @@ FileWrite(file=[string], data=[any], charset=[string], createPath=[boolean])
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)

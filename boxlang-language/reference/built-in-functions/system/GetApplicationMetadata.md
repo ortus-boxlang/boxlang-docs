@@ -37,6 +37,8 @@ This function does not accept any arguments
   * [Duplicate](./Duplicate.md)
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
+  * [GetBaseTagData](./GetBaseTagData.md)
+  * [GetBaseTagList](./GetBaseTagList.md)
   * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
   * [GetBoxContext](./GetBoxContext.md)
   * [GetBoxRuntime](./GetBoxRuntime.md)

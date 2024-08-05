@@ -1,13 +1,15 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `DirectoryCopy`
+# Function: `ContractPath`
 
-Copies a directory from one location to another
+Does the opposite of expandPath.
+
+Tries to match a given absolute path to mappings in the environment and will return a path that is contracted by the shortest matched mapping. If there are no matches, returns the absolute path it was given.
 
 ## Method Signature
 
 ```
-DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[string], createPath=[boolean])
+ContractPath(path=[string])
 ```
 
 ### Arguments
@@ -15,11 +17,7 @@ DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `source` | `string` | `true` | The source directory |  |
-| `destination` | `string` | `true` | The destination directory |  |
-| `recurse` | `boolean` | `false` | [ false ] whether to recurse in to sub-directories and create paths | `false` |
-| `filter` | `string` | `false` | [ "*" ] a file or directory filter to pass | `*` |
-| `createPath` | `boolean` | `false` | [ true ] whether to create any nested paths required to the new directory | `true` |
+| `path` | `string` | `true` | The absolute path to contract. |  |
 
 ## Examples
 
@@ -27,9 +25,9 @@ DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[
 
 ## Related
 
-  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
+  * [DirectoryCopy](./DirectoryCopy.md)
   * [DirectoryCreate](./DirectoryCreate.md)
   * [DirectoryDelete](./DirectoryDelete.md)
   * [DirectoryExists](./DirectoryExists.md)

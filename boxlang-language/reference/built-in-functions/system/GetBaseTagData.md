@@ -1,18 +1,24 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `DebugBoxContexts`
+# Function: `GetBaseTagData`
 
-A debug BIF that dumps out the current context hierarchy
+Used within a custom tag.
+
+Finds calling (ancestor) tag by name and accesses its data.
 
 ## Method Signature
 
 ```
-DebugBoxContexts()
+GetBaseTagData(tagName=[string], ancestorLevels=[integer])
 ```
 
 ### Arguments
 
-This function does not accept any arguments
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `tagName` | `string` | `true` |  |  |
+| `ancestorLevels` | `integer` | `true` |  | `1` |
 
 ## Examples
 
@@ -32,12 +38,12 @@ This function does not accept any arguments
   * [CreateObject](./CreateObject.md)
   * [CreateUUID](./CreateUUID.md)
   * [DE](./DE.md)
+  * [DebugBoxContexts](./DebugBoxContexts.md)
   * [Dump](./Dump.md)
   * [Duplicate](./Duplicate.md)
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
   * [GetApplicationMetadata](./GetApplicationMetadata.md)
-  * [GetBaseTagData](./GetBaseTagData.md)
   * [GetBaseTagList](./GetBaseTagList.md)
   * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
   * [GetBoxContext](./GetBoxContext.md)

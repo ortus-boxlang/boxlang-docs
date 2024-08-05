@@ -21,7 +21,8 @@ group=[string]
 groupCaseSensitive=[boolean]
 startRow=[integer]
 endRow=[integer]
-label=[string] />
+label=[string]
+times=[integer] />
 ```
 
 ### Attributes
@@ -45,6 +46,7 @@ label=[string] />
 | `startRow` | `integer` | `false` |  |  |
 | `endRow` | `integer` | `false` |  |  |
 | `label` | `string` | `false` |  |  |
+| `times` | `integer` | `false` |  |  |
 
 ## Examples
 
@@ -64,5 +66,6 @@ group=[string]
 groupCaseSensitive=[boolean]
 startRow=[integer]
 endRow=[integer]
-label=[string] />
+label=[string]
+times=[integer] />
 ```

@@ -46,6 +46,8 @@ Throw(message=[String], type=[String], detail=[String], errorcode=[String], exte
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)
   * [GetApplicationMetadata](./GetApplicationMetadata.md)
+  * [GetBaseTagData](./GetBaseTagData.md)
+  * [GetBaseTagList](./GetBaseTagList.md)
   * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
   * [GetBoxContext](./GetBoxContext.md)
   * [GetBoxRuntime](./GetBoxRuntime.md)

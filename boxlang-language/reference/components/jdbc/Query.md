@@ -42,7 +42,7 @@ psq=[boolean] />
 | `returnType` | `string` | `false` |  | `query` |
 | `columnKey` | `string` | `false` |  |  |
 | `maxRows` | `numeric` | `false` |  | `-1` |
-| `blockfactor` | `numeric` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Min@7fdf7359, ortus.boxlang.runtime.validation.dynamic.Max@4a36a35d]` |
+| `blockfactor` | `numeric` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Min@5ab3f611, ortus.boxlang.runtime.validation.dynamic.Max@33425171]` |
 | `fetchsize` | `numeric` | `false` |  |  |
 | `timeout` | `numeric` | `false` |  |  |
 | `cache` | `boolean` | `false` |  | `false` |

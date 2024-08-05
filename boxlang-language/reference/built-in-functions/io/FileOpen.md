@@ -26,6 +26,7 @@ FileOpen(file=[string], mode=[string], charset=[string], seekable=[boolean])
 
 ## Related
 
+  * [ContractPath](./ContractPath.md)
   * [CreateTempDirectory](./CreateTempDirectory.md)
   * [CreateTempFile](./CreateTempFile.md)
   * [DirectoryCopy](./DirectoryCopy.md)
