@@ -91,6 +91,9 @@ Here is a full reference of the current default `boxlang.json` file:
 	],
 	// The location of the log files the runtime will produce
 	"logsDirectory": "${boxlang-home}/logs",
+	// This is the experimental features flags.
+	// Please see the documentation to see which flags are available
+	"experimental": {},
 	// Global Executors for the runtime
 	// These are managed by the AsyncService and registered upon startup
 	// The name of the executor is the key and the value is a struct of executor settings
@@ -107,6 +110,81 @@ Here is a full reference of the current default `boxlang.json` file:
 			"threads": 20
 		}
 	},
+	// An explicit whitelist of file extensions that are allowed to be uploaded - overrides any values in the disallowedWriteExtensions
+	"allowedFileOperationExtensions": [],
+	// The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move )
+	"disallowedFileOperationExtensions": [
+		"bat",
+		"exe",
+		"cmd",
+		"cfm",
+		"cfc",
+		"cfs",
+		"bx",
+		"bxm",
+		"bxs",
+		"sh",
+		"php",
+		"pl",
+		"cgi",
+		"386",
+		"dll",
+		"com",
+		"torrent",
+		"js",
+		"app",
+		"jar",
+		"pif",
+		"vb",
+		"vbscript",
+		"wsf",
+		"asp",
+		"cer",
+		"csr",
+		"jsp",
+		"drv",
+		"sys",
+		"ade",
+		"adp",
+		"bas",
+		"chm",
+		"cpl",
+		"crt",
+		"csh",
+		"fxp",
+		"hlp",
+		"hta",
+		"inf",
+		"ins",
+		"isp",
+		"jse",
+		"htaccess",
+		"htpasswd",
+		"ksh",
+		"lnk",
+		"mdb",
+		"mde",
+		"mdt",
+		"mdw",
+		"msc",
+		"msi",
+		"msp",
+		"mst",
+		"ops",
+		"pcd",
+		"prg",
+		"reg",
+		"scr",
+		"sct",
+		"shb",
+		"shs",
+		"url",
+		"vbe",
+		"vbs",
+		"wsc",
+		"wsf",
+		"wsh"
+	],
 	// You can assign a global default datasource to be used in the language
 	"defaultDasource": "",
 	// The registered global datasources in the language
@@ -212,6 +290,93 @@ Inside your `boxlang.json` configuration file, you can use this to populate data
 ## Configuration Segments
 
 Here you will find each segment and its configuration details.
+
+### Allowed File Operation Extensions
+
+An explicit whitelist of file extensions that are allowed to be uploaded - overrides any values in the `disallowedWriteExtensions`
+
+```json
+"allowedFileOperationExtensions": [],
+```
+
+### Disallowed File Operation Extensions
+
+The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move )
+
+```json
+"disallowedFileOperationExtensions": [
+		"bat",
+		"exe",
+		"cmd",
+		"cfm",
+		"cfc",
+		"cfs",
+		"bx",
+		"bxm",
+		"bxs",
+		"sh",
+		"php",
+		"pl",
+		"cgi",
+		"386",
+		"dll",
+		"com",
+		"torrent",
+		"js",
+		"app",
+		"jar",
+		"pif",
+		"vb",
+		"vbscript",
+		"wsf",
+		"asp",
+		"cer",
+		"csr",
+		"jsp",
+		"drv",
+		"sys",
+		"ade",
+		"adp",
+		"bas",
+		"chm",
+		"cpl",
+		"crt",
+		"csh",
+		"fxp",
+		"hlp",
+		"hta",
+		"inf",
+		"ins",
+		"isp",
+		"jse",
+		"htaccess",
+		"htpasswd",
+		"ksh",
+		"lnk",
+		"mdb",
+		"mde",
+		"mdt",
+		"mdw",
+		"msc",
+		"msi",
+		"msp",
+		"mst",
+		"ops",
+		"pcd",
+		"prg",
+		"reg",
+		"scr",
+		"sct",
+		"shb",
+		"shs",
+		"url",
+		"vbe",
+		"vbs",
+		"wsc",
+		"wsf",
+		"wsh"
+	],
+```
 
 ### Class Generation Directory
 
@@ -379,6 +544,16 @@ This is the folder where BoxLang will store it's log files.
 ```json
 // The location of the log files the runtime will produce
 "logsDirectory": "${boxlang-home}/logs",
+```
+
+### Experimental
+
+This block is used to have experimental feature flags for BoxLang.  Every experimental flag will be documented here once we have them.
+
+```json
+// This is the experimental features flags.
+// Please see the documentation to see which flags are available
+"experimental": {},
 ```
 
 ### Executors
