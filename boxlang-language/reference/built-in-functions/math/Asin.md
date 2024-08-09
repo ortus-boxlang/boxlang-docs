@@ -7,7 +7,7 @@ Returns the arcsine (inverse sine) of a number
 ## Method Signature
 
 ```
-Asin(number=[numeric])
+Asin(number=[double])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ Asin(number=[numeric])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `numeric` | `true` | The number to calculate the arcsine of |  |
+| `number` | `double` | `true` | The number to calculate the arcsine of |  |
 
 ## Examples
 

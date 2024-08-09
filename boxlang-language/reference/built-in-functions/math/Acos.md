@@ -7,7 +7,7 @@ Returns the arccosine (inverse cosine) of a number
 ## Method Signature
 
 ```
-Acos(number=[numeric])
+Acos(number=[double])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ Acos(number=[numeric])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `numeric` | `true` | The number to calculate the arccosine of |  |
+| `number` | `double` | `true` | The number to calculate the arccosine of |  |
 
 ## Examples
 

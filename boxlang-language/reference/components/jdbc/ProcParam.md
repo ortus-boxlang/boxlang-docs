@@ -9,8 +9,8 @@ Provide a paramater to a stored procudure.
 <bx:ProcParam type=[string]
 value=[any]
 sqltype=[string]
-maxLength=[numeric]
-scale=[numeric]
+maxLength=[integer]
+scale=[integer]
 null=[boolean] />
 ```
 
@@ -22,8 +22,8 @@ null=[boolean] />
 | `type` | `string` | `false` | The type of stored procedure paramter. One of in | out | inout | `in` |
 | `value` | `any` | `false` | The value to pass |  |
 | `sqltype` | `string` | `false` | The sql type the value | `string` |
-| `maxLength` | `numeric` | `false` |  |  |
-| `scale` | `numeric` | `false` |  |  |
+| `maxLength` | `integer` | `false` |  |  |
+| `scale` | `integer` | `false` |  |  |
 | `null` | `boolean` | `false` | If the value should be counted as null |  |
 
 ## Examples
@@ -32,7 +32,7 @@ null=[boolean] />
 <bx:ProcParam type=[string]
 value=[any]
 sqltype=[string]
-maxLength=[numeric]
-scale=[numeric]
+maxLength=[integer]
+scale=[integer]
 null=[boolean] />
 ```

@@ -10,7 +10,7 @@ It starts from the index, removes as many elements as specified by
 ## Method Signature
 
 ```
-ArraySplice(array=[modifiablearray], index=[numeric], elementCountForRemoval=[numeric], replacements=[array])
+ArraySplice(array=[modifiablearray], index=[Integer], elementCountForRemoval=[Integer], replacements=[array])
 ```
 
 ### Arguments
@@ -19,8 +19,8 @@ ArraySplice(array=[modifiablearray], index=[numeric], elementCountForRemoval=[nu
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `modifiablearray` | `true` | The array to splice |  |
-| `index` | `numeric` | `true` | The initial position to remove or insert from |  |
-| `elementCountForRemoval` | `numeric` | `false` | The number of elemetns to remove | `0` |
+| `index` | `Integer` | `true` | The initial position to remove or insert from |  |
+| `elementCountForRemoval` | `Integer` | `false` | The number of elemetns to remove | `0` |
 | `replacements` | `array` | `false` | An array of elements to insert |  |
 
 ## Examples

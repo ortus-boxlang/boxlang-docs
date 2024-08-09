@@ -7,7 +7,7 @@ Checks if a list has a given index
 ## Method Signature
 
 ```
-ListIndexExists(list=[string], index=[numeric], delimiter=[string], includeEmptyFields=[boolean])
+ListIndexExists(list=[string], index=[integer], delimiter=[string], includeEmptyFields=[boolean])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ ListIndexExists(list=[string], index=[numeric], delimiter=[string], includeEmpty
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` | string list to check for an index |  |
-| `index` | `numeric` | `true` | numeric The index to check for |  |
+| `index` | `integer` | `true` | numeric The index to check for |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
 

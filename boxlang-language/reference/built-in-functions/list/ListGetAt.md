@@ -7,7 +7,7 @@ Retrieves an item from a delimited list at the specified position
 ## Method Signature
 
 ```
-ListGetAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
+ListGetAt(list=[string], position=[integer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ ListGetAt(list=[string], position=[numeric], delimiter=[string], includeEmptyFie
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `list` | `string` | `true` | string list to filter entries from |  |
-| `position` | `numeric` | `true` | numeric the one-based index position to retrieve the value at |  |
+| `position` | `integer` | `true` | numeric the one-based index position to retrieve the value at |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |

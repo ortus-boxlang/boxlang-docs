@@ -2,7 +2,7 @@
 
 # Function: `ArrayMax`
 
-Return length of array
+Get the max value from an array
 
 ## Method Signature
 

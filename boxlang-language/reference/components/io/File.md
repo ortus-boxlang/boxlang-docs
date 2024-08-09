@@ -21,7 +21,8 @@ nameconflict=[string]
 accept=[string]
 result=[string]
 fixnewline=[boolean]
-cachedwithin=[numeric] />
+cachedwithin=[numeric]
+result=[string] />
 ```
 
 ### Attributes
@@ -40,11 +41,12 @@ cachedwithin=[numeric] />
 | `destination` | `string` | `false` | The destination file |  |
 | `variable` | `string` | `false` | The variable to store the result in |  |
 | `filefield` | `string` | `false` | The file field to use |  |
-| `nameconflict` | `string` | `false` | What to do if there is a name conflict |  |
+| `nameconflict` | `string` | `false` | What to do if there is a name conflict | `error` |
 | `accept` | `string` | `false` | The accept header |  |
 | `result` | `string` | `false` | The result of the action |  |
 | `fixnewline` | `boolean` | `false` | Fix newlines | `false` |
 | `cachedwithin` | `numeric` | `false` | The time to cache the file within |  |
+| `result` | `string` | `false` | The result of the action |  |
 
 ## Examples
 
@@ -64,5 +66,6 @@ nameconflict=[string]
 accept=[string]
 result=[string]
 fixnewline=[boolean]
-cachedwithin=[numeric] />
+cachedwithin=[numeric]
+result=[string] />
 ```

@@ -10,7 +10,7 @@ Each struct contains template name, line number, and function name (if applicabl
 ## Method Signature
 
 ```
-CallStackGet(maxFrames=[numeric])
+CallStackGet(maxFrames=[integer])
 ```
 
 ### Arguments
@@ -18,7 +18,7 @@ CallStackGet(maxFrames=[numeric])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `maxFrames` | `numeric` | `false` |  | `-1` |
+| `maxFrames` | `integer` | `false` |  | `-1` |
 
 ## Examples
 
@@ -66,6 +66,8 @@ CallStackGet(maxFrames=[numeric])
   * [Invoke](./Invoke.md)
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
+  * [ObjectDeserialize](./ObjectDeserialize.md)
+  * [ObjectSerialize](./ObjectSerialize.md)
   * [PagePoolClear](./PagePoolClear.md)
   * [Print](./Print.md)
   * [Println](./Println.md)

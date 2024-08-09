@@ -63,6 +63,8 @@ This function does not accept any arguments
   * [Invoke](./Invoke.md)
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
+  * [ObjectDeserialize](./ObjectDeserialize.md)
+  * [ObjectSerialize](./ObjectSerialize.md)
   * [Print](./Print.md)
   * [Println](./Println.md)
   * [RunThreadInContext](./RunThreadInContext.md)

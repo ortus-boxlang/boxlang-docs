@@ -69,6 +69,8 @@ Throw(message=[String], type=[String], detail=[String], errorcode=[String], exte
   * [Invoke](./Invoke.md)
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
+  * [ObjectDeserialize](./ObjectDeserialize.md)
+  * [ObjectSerialize](./ObjectSerialize.md)
   * [PagePoolClear](./PagePoolClear.md)
   * [Print](./Print.md)
   * [Println](./Println.md)

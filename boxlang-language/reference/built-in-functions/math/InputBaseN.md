@@ -7,7 +7,7 @@ Converts a string, using the base specified by radix, to an integer.
 ## Method Signature
 
 ```
-InputBaseN(string=[string], radix=[numeric])
+InputBaseN(string=[string], radix=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ InputBaseN(string=[string], radix=[numeric])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `string` | `string` | `true` | The string to convert to an integer. |  |
-| `radix` | `numeric` | `true` | Base of the number represented by string, in the range 2-36. |  |
+| `radix` | `integer` | `true` | Base of the number represented by string, in the range 2-36. |  |
 
 ## Examples
 

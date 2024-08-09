@@ -1,16 +1,13 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `GetModuleInfo`
+# Function: `ObjectSerialize`
 
-Get the module record for a loaded module in BoxLang.
-
-If the module
- doesn't exist, an empty struct is returned.
+Serialize an object to file or convert it to binary format using Java Serialization
 
 ## Method Signature
 
 ```
-GetModuleInfo(module=[string])
+ObjectSerialize(object=[any], file=[string])
 ```
 
 ### Arguments
@@ -18,7 +15,8 @@ GetModuleInfo(module=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `module` | `string` | `true` | The name of the module to get the record for. |  |
+| `object` | `any` | `true` | The object to serialize |  |
+| `file` | `string` | `false` | The file path to save the serialized object to, if not provided, the binary representation of the object is returned |  |
 
 ## Examples
 
@@ -57,6 +55,7 @@ GetModuleInfo(module=[string])
   * [GetFileFromPath](./GetFileFromPath.md)
   * [GetFunctionCalledName](./GetFunctionCalledName.md)
   * [GetFunctionList](./GetFunctionList.md)
+  * [GetModuleInfo](./GetModuleInfo.md)
   * [GetModuleList](./GetModuleList.md)
   * [GetSystemSetting](./GetSystemSetting.md)
   * [GetTempDirectory](./GetTempDirectory.md)
@@ -67,7 +66,6 @@ GetModuleInfo(module=[string])
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
   * [ObjectDeserialize](./ObjectDeserialize.md)
-  * [ObjectSerialize](./ObjectSerialize.md)
   * [PagePoolClear](./PagePoolClear.md)
   * [Print](./Print.md)
   * [Println](./Println.md)

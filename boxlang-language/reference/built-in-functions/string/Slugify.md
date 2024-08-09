@@ -7,7 +7,7 @@ Slugify a string for URL safety
 ## Method Signature
 
 ```
-Slugify(string=[string], maxLength=[numeric], allow=[string])
+Slugify(string=[string], maxLength=[integer], allow=[string])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ Slugify(string=[string], maxLength=[numeric], allow=[string])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `string` | `string` | `true` | The target string |  |
-| `maxLength` | `numeric` | `false` | The maximum number of chracters to allow, 0 is all | `0` |
+| `maxLength` | `integer` | `false` | The maximum number of chracters to allow, 0 is all | `0` |
 | `allow` | `string` | `false` | A regex safe list of additional characters to allow. The default is <code>[^a-z0-9]</code> |  |
 
 ## Examples

@@ -74,7 +74,7 @@ Returns the natural logarithm of a number.
 <details>
 <summary><code>log10()</code></summary>
 
-Returns the logarithm of a number to base 10.
+No description available
 </details>
 <details>
 <summary><code>acos()</code></summary>

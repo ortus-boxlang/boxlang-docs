@@ -9,8 +9,8 @@ Different items are required based on loop type.
 <bx:Loop array=[array]
 item=[string]
 index=[string]
-to=[numeric]
-from=[numeric]
+to=[double]
+from=[double]
 file=[string]
 list=[string]
 delimiters=[string]
@@ -33,8 +33,8 @@ times=[integer] />
 | `array` | `array` | `false` |  |  |
 | `item` | `string` | `false` |  |  |
 | `index` | `string` | `false` |  |  |
-| `to` | `numeric` | `false` |  |  |
-| `from` | `numeric` | `false` |  |  |
+| `to` | `double` | `false` |  |  |
+| `from` | `double` | `false` |  |  |
 | `file` | `string` | `false` |  |  |
 | `list` | `string` | `false` |  |  |
 | `delimiters` | `string` | `false` |  |  |
@@ -54,8 +54,8 @@ times=[integer] />
 <bx:Loop array=[array]
 item=[string]
 index=[string]
-to=[numeric]
-from=[numeric]
+to=[double]
+from=[double]
 file=[string]
 list=[string]
 delimiters=[string]

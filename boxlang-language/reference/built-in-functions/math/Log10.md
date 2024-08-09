@@ -2,7 +2,7 @@
 
 # Function: `Log10`
 
-Returns the logarithm of a number to base 10.
+No description available.
 
 ## Method Signature
 
@@ -15,7 +15,7 @@ Log10(number=[numeric])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `numeric` | `true` | The number to calculate the logarithm of |  |
+| `number` | `numeric` | `true` |  |  |
 
 ## Examples
 

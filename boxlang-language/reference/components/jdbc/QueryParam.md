@@ -8,8 +8,8 @@ No description available.
 ```
 <bx:QueryParam value=[any]
 sqltype=[string]
-maxLength=[numeric]
-scale=[numeric]
+maxLength=[integer]
+scale=[integer]
 null=[boolean]
 list=[boolean]
 separator=[string] />
@@ -22,8 +22,8 @@ separator=[string] />
 |----------|------|----------|-------------|---------|
 | `value` | `any` | `false` |  |  |
 | `sqltype` | `string` | `false` |  |  |
-| `maxLength` | `numeric` | `false` |  |  |
-| `scale` | `numeric` | `false` |  |  |
+| `maxLength` | `integer` | `false` |  |  |
+| `scale` | `integer` | `false` |  |  |
 | `null` | `boolean` | `false` |  |  |
 | `list` | `boolean` | `false` |  |  |
 | `separator` | `string` | `false` |  |  |
@@ -33,8 +33,8 @@ separator=[string] />
 ```
 <bx:QueryParam value=[any]
 sqltype=[string]
-maxLength=[numeric]
-scale=[numeric]
+maxLength=[integer]
+scale=[integer]
 null=[boolean]
 list=[boolean]
 separator=[string] />

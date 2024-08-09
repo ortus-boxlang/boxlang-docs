@@ -36,9 +36,7 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `xpath` | `String` | `true` | `null` |
-| `params` | `Struct` | `false` | `{
-  
-}` |
+| `params` | `Struct` | `false` | `{}` |
 
 </details>
 <details>
@@ -63,9 +61,7 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `XSL` | `String` | `true` | `null` |
-| `parameters` | `Struct` | `false` | `{
-  
-}` |
+| `parameters` | `Struct` | `false` | `{}` |
 
 </details>
 

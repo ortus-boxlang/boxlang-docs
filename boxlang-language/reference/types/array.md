@@ -336,7 +336,7 @@ Arguments:
 <details>
 <summary><code>max()</code></summary>
 
-Return length of array
+Get the max value from an array
 </details>
 <details>
 <summary><code>median()</code></summary>
@@ -587,7 +587,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>splice(index=[numeric], elementCountForRemoval=[numeric], replacements=[array])</code></summary>
+<summary><code>splice(index=[Integer], elementCountForRemoval=[Integer], replacements=[array])</code></summary>
 
 Modifies an array by removing elements and adding new elements.
 
@@ -598,8 +598,8 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `index` | `numeric` | `true` | `null` |
-| `elementCountForRemoval` | `numeric` | `false` | `0` |
+| `index` | `Integer` | `true` | `null` |
+| `elementCountForRemoval` | `Integer` | `false` | `0` |
 | `replacements` | `array` | `false` | `null` |
 
 </details>

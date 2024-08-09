@@ -10,7 +10,7 @@ Execute a stored procedure.
 datasource=[string]
 username=[string]
 password=[string]
-blockfactor=[numeric]
+blockfactor=[integer]
 debug=[boolean]
 returnCode=[boolean]
 result=[string] />
@@ -25,7 +25,7 @@ result=[string] />
 | `datasource` | `string` | `false` | The name of the datasource where the stored procedure is registered. |  |
 | `username` | `string` | `false` |  |  |
 | `password` | `string` | `false` |  |  |
-| `blockfactor` | `numeric` | `false` |  |  |
+| `blockfactor` | `integer` | `false` |  |  |
 | `debug` | `boolean` | `false` |  | `false` |
 | `returnCode` | `boolean` | `false` |  | `false` |
 | `result` | `string` | `false` |  |  |
@@ -37,7 +37,7 @@ result=[string] />
 datasource=[string]
 username=[string]
 password=[string]
-blockfactor=[numeric]
+blockfactor=[integer]
 debug=[boolean]
 returnCode=[boolean]
 result=[string] />

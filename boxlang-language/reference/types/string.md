@@ -76,7 +76,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>inputBaseN(radix=[numeric])</code></summary>
+<summary><code>inputBaseN(radix=[integer])</code></summary>
 
 Converts a string, using the base specified by radix, to an integer.
 
@@ -84,7 +84,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `radix` | `numeric` | `true` | `null` |
+| `radix` | `integer` | `true` | `null` |
 
 </details>
 <details>
@@ -189,7 +189,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>listIndexExists(index=[numeric], delimiter=[string], includeEmptyFields=[boolean])</code></summary>
+<summary><code>listIndexExists(index=[integer], delimiter=[string], includeEmptyFields=[boolean])</code></summary>
 
 Checks if a list has a given index
 
@@ -197,7 +197,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `index` | `numeric` | `true` | `null` |
+| `index` | `integer` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 
@@ -335,7 +335,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>listDeleteAt(position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+<summary><code>listDeleteAt(position=[integer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
 
 Deletes an element from a list.
 
@@ -346,7 +346,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `position` | `numeric` | `true` | `null` |
+| `position` | `integer` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
@@ -478,7 +478,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>listGetAt(position=[numeric], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
+<summary><code>listGetAt(position=[integer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])</code></summary>
 
 Retrieves an item from a delimited list at the specified position
 
@@ -486,7 +486,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `position` | `numeric` | `true` | `null` |
+| `position` | `integer` | `true` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 | `includeEmptyFields` | `boolean` | `false` | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | `false` |
@@ -985,7 +985,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>slugify(maxLength=[numeric], allow=[string])</code></summary>
+<summary><code>slugify(maxLength=[integer], allow=[string])</code></summary>
 
 Slugify a string for URL safety
 
@@ -993,7 +993,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `maxLength` | `numeric` | `false` | `0` |
+| `maxLength` | `integer` | `false` | `0` |
 | `allow` | `string` | `false` | `null` |
 
 </details>

@@ -10,10 +10,10 @@ No description available.
 datasource=[string]
 returnType=[string]
 columnKey=[string]
-maxRows=[numeric]
-blockfactor=[numeric]
-fetchsize=[numeric]
-timeout=[numeric]
+maxRows=[integer]
+blockfactor=[integer]
+fetchsize=[integer]
+timeout=[integer]
 cache=[boolean]
 cacheTimeout=[duration]
 cacheLastAccessTimeout=[duration]
@@ -41,10 +41,10 @@ psq=[boolean] />
 | `datasource` | `string` | `false` |  |  |
 | `returnType` | `string` | `false` |  | `query` |
 | `columnKey` | `string` | `false` |  |  |
-| `maxRows` | `numeric` | `false` |  | `-1` |
-| `blockfactor` | `numeric` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Min@5ab3f611, ortus.boxlang.runtime.validation.dynamic.Max@33425171]` |
-| `fetchsize` | `numeric` | `false` |  |  |
-| `timeout` | `numeric` | `false` |  |  |
+| `maxRows` | `integer` | `false` |  | `-1` |
+| `blockfactor` | `integer` | `false` |  | `[ortus.boxlang.runtime.validation.dynamic.Max@4ed5492c, ortus.boxlang.runtime.validation.dynamic.Min@5ec06e97]` |
+| `fetchsize` | `integer` | `false` |  |  |
+| `timeout` | `integer` | `false` |  |  |
 | `cache` | `boolean` | `false` |  | `false` |
 | `cacheTimeout` | `duration` | `false` |  |  |
 | `cacheLastAccessTimeout` | `duration` | `false` |  |  |
@@ -69,10 +69,10 @@ psq=[boolean] />
 datasource=[string]
 returnType=[string]
 columnKey=[string]
-maxRows=[numeric]
-blockfactor=[numeric]
-fetchsize=[numeric]
-timeout=[numeric]
+maxRows=[integer]
+blockfactor=[integer]
+fetchsize=[integer]
+timeout=[integer]
 cache=[boolean]
 cacheTimeout=[duration]
 cacheLastAccessTimeout=[duration]
