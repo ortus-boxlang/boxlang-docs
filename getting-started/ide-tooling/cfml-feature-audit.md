@@ -40,16 +40,13 @@ and can be
 
 ### Usage <a href="#usage-1" id="usage-1"></a>
 
-Make sure you have the OS version of BoxLang installed as this will install the suite of tools for you including the `bxFeatureAudit` script.
-
-* `bxFeatureAudit` : \*nix/mac script
-* `bxFeatureAudit.bat` : Windows script
+Make sure you have installed the OS version of [BoxLang](../installation/) so you get all the tools installed as well.  Please note that the action command funnels through the `boxlang` binary, so you can use all the [CLI arguments](../running-boxlang/#other-command-line-args-10) for `boxlang` runner.
 
 You can call the tool using our script or the full path to the jar.
 
 ```bash
 // Using the script
-bxFeatureAudit <options here>
+boxlang featureAudit <options here>
 
 // Using the full path to the jar
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit  <options here>
@@ -73,7 +70,7 @@ Get a full report of all BIFs and Components used in a file
 
 ```bash
 // Using the script
-bxFeatureAudit --source includes/myFile.cfm
+boxlang featureAudit --source includes/myFile.cfm
 
 // Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source includes/myFile.cfm
@@ -83,7 +80,7 @@ Scan all your models for missing BIFs and Components
 
 ```bash
 // Using the script
-bxFeatureAudit --source ./models/ --missing
+boxlang featureAudit --source ./models/ --missing
 
 // Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source ./models/ --missing
@@ -93,7 +90,7 @@ Same as above, but aggregate results per file and write results to a CSV report
 
 ```css
 // Using the script
-bxFeatureAudit --source ./models/ --missing --aggregate --quiet --reportFile /path/to/models-missing-features.csv
+boxlang featureAudit --source ./models/ --missing --aggregate --quiet --reportFile /path/to/models-missing-features.csv
 
 // Uisng the Full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source ./models/ --missing --aggregate --quiet --reportFile /path/to/models-missing-features.csv
@@ -103,7 +100,7 @@ Get a summary level aggregate report of all missing features in ColdBox output t
 
 ```css
 // Using the script
-bxFeatureAudit --source ./coldbox/ --missing --aggregate summary 
+boxlang featureAudit --source ./coldbox/ --missing --aggregate summary 
 
 // Using the full path
 java -cp boxlang-1.0.0-all.jar ortus.boxlang.compiler.FeatureAudit --source ./coldbox/ --missing --aggregate summary 

@@ -14,16 +14,11 @@ This tool will compile and place (by default) your BoxLang files into Java bytec
 
 ## Usage
 
-Make sure you have installed the OS version of [BoxLang](../installation/) so you get all the tools installed as well.  This will place the compiler scripts in the installation folder.
-
-* `bxCompiler` : \*nix/mac script
-* `bxCompiler.bat` : Windows script
-
-### A single file:
+Make sure you have installed the OS version of [BoxLang](../installation/) so you get all the tools installed as well.  Please note that the action command funnels through the `boxlang` binary, so you can use all the [CLI arguments](../running-boxlang/#other-command-line-args-10) for `boxlang` runner.
 
 ```bash
 // Using the script
-bxCompiler
+boxlang compile
     --source /path/to/webroot/index.cfm 
     --target /path/to/compiled-webroot/index.cfm 
     --basePath /path/to/webroot
@@ -43,7 +38,7 @@ And an entire directory like so:
 
 ```bash
 // Using the script
-bxCompiler
+boxlang compile
     --source /path/to/webroot/ 
     --target /path/to/compiled-webroot/ 
     --basePath /path/to/webroot
