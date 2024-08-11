@@ -63,6 +63,9 @@ Here is a full reference of the current default `boxlang.json` file:
 	// If true, you can call implicit accessors/mutators on object properties. By default it is enabled
 	// You can turn it on here for all applications or in the Application.cfc
 	"invokeImplicitAccessor": true,
+	// By default BoxLang uses high-precision mathematics via BigDecimal operations
+	// You can turn this off here for all applications
+	"useHighPrecisionMath": true,
 	// Use Timespan syntax: "days, hours, minutes, seconds"
 	"applicationTimeout": "0,0,0,0",
 	// The request timeout for a request in seconds; 0 means no timeout
@@ -448,6 +451,16 @@ p.lastname = "majano"
 p.email = "info@boxlang.io"
 // This calls the generated getters in the class
 println( p.firstName );
+```
+
+### Use High Precision Math
+
+By default BoxLang uses high-precision mathematics via `BigDecimal` operations.  It analyses your operations and determines the precision accordingly. You can turn this off here for all applications and use Double based operations.  If you disable this feature, then if you want high precision you will have to use the `precisionEvaluate( expression )` [BIF instead](../boxlang-language/reference/built-in-functions/math/PrecisionEvaluate.md).
+
+```json
+// By default BoxLang uses high-precision mathematics via BigDecimal operations
+// You can turn this off here for all applications
+"useHighPrecisionMath": true,
 ```
 
 ### Application Timeout
