@@ -4,29 +4,67 @@ description: name = "Amazing Programmer"
 
 # Variables
 
-In BoxLang, variables are just pointers to a piece of data. They can hold **any** value you like and even change their value or **type** at runtime. In some languages, you need to specify the type of data you want your variable to hold at compile-time. You do not need to assign one in BoxLang, as everything is dynamic or inferred. It infers types according to the initial value you assign to your variable.
+In BoxLang, variables are just pointers to a piece of data. They can hold **any** value you like and even change their value or **type** at runtime since BoxLang is a dynamic language. In some languages, you need to specify the type of data you want your variable to hold at compile-time and it can never change. You do not need to assign one in BoxLang, as everything is dynamic and/or inferred. It infers types according to the initial value you assign to your variable.
 
 ```javascript
-a = "string"; // string
-b = now(); // datetime
-c = 123; // integer
-d = 1.34; // float
-f = false; // boolean, or a string
+a = "string" // string
+b = now() // datetime
+c = 123 // integer
+d = 1.34 // float
+d2 = 12312377324234234234 // BigDecimal
+f = false // boolean
+g = [] // array
+h = { name : "luis", isActive : true } // struct
 ```
 
 {% hint style="danger" %}
 Please note that assignments are evaluated from right to left instead of traditional reading from left to right.
 {% endhint %}
 
-Open up the CommandBox Shell and go into CommandBox **REPL** mode by typing `repl`. Whenever you assign a value to a variable, the CommandBox REPL will output or echo the variable for you. Please note that in REPL mode, the termination for a line of code is omitted. A line terminator in BoxLang is the `;`.
+Why don't you open the BoxLang REPL: `boxlang` or go to [try.boxlang.io](https://try.boxlang.io) and try some stuff out.
 
-![](<../.gitbook/assets/variables (1).png>)
+```bash
+> hello = "world"
+world
 
-As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), and so much more. There is no need for types or special assignments. The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
+> a = 5
+5
 
-{% hint style="success" %}
-In the CommandBox REPL semi-colons are optional, and the default syntax is script and not tags.
-{% endhint %}
+> b = 10 + a
+15
+
+> c = 15 + a + b
+35
+
+> b = c * a
+175
+
+> d = [ 1, 2, 3, 4, 5 ]
+[ 1, 2, 3, 4, 5 ]
+
+> myStruct = { key = "hola", today = now(), id = createUUID() }
+{
+  id : "B634D0D9-A32F-4781-A9F519258ED4B73D",
+  today : {ts '2024-08-10 19:43:01'},
+  key : "hola"
+}
+
+> println( a + b + c )
+215
+```
+
+As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), uses headless functions (BIFS) and more. There is no need for types or special assignments. The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
+
+### BIF
+
+BoxLang leverages several headless built-in functions that are available anywhere you code.  These will be referred to you as BIFs.  You can see our [reference guide](reference/built-in-functions/) to check them out.  Here are some we used:
+
+```java
+print() // print to the out stream
+println() // print with a line break
+now() // get today's date time
+createUUID() // generate a unique id
+```
 
 ## Case Insensitive
 
@@ -36,14 +74,14 @@ In the CommandBox REPL semi-colons are optional, and the default syntax is scrip
 
 ```javascript
 a = "Hola Luis";
-writeOutput( A );
+println( A );
 ```
 
 **Do this**
 
 ```javascript
 a = "Hola Luis";
-writeOutput( a );
+println( a );
 ```
 
 ## Naming Requirements
@@ -55,78 +93,70 @@ Most BoxLang variables have a few requirements imposed by the Virtual Machine (V
 * NO SPACES!
 * Not case-sensitive
 
-#### Reserved Words
+### Reserved Words
 
 As with any programming language, there are specific names you can't use, and some you can use, but they can be very confusing for developers or the engine. Here is a list of some of those:
 
 * The name of any of the internal BoxLang engine scopes: `form, session, cgi, client, url, application, function`
   * Technically you can create the variable by long scoping (`local.form`), but it is confusing and error-prone. So please be careful.
 
-| Reserved Word                  |
-| ------------------------------ |
-| `abstract`                     |
-| `and`                          |
-| `break`                        |
-| `case`                         |
-| `catch`                        |
-| `continue`                     |
-| `contains`                     |
-| `default`                      |
-| `do`                           |
-| `else`                         |
-| `eq`                           |
-| `eqv`                          |
-| `false`                        |
-| `finally`                      |
-| `final`                        |
-| `for`                          |
-| `function`                     |
-| `gt`                           |
-| `gte`                          |
-| `import`                       |
-| `imp`                          |
-| `in`                           |
-| `is`                           |
-| `if`                           |
-| `interface`                    |
-| `lt`                           |
-| `lte`                          |
-| `local` (within a function)    |
-| `neq`                          |
-| `not`                          |
-| `null` (If null support is on) |
-| `pageenconding`                |
-| `or`                           |
-| `return`                       |
-| `switch`                       |
-| `true`                         |
-| `try`                          |
-| `while`                        |
-| `xor`                          |
+| Reserved Word               |
+| --------------------------- |
+| `eq`                        |
+| `eqv`                       |
+| `false`                     |
+| `finally`                   |
+| `final`                     |
+| `for`                       |
+| `function`                  |
+| `gt`                        |
+| `gte`                       |
+| `import`                    |
+| `in`                        |
+| `is`                        |
+| `if`                        |
+| `interface`                 |
+| `lt`                        |
+| `lte`                       |
+| `local` (within a function) |
+| `neq`                       |
+| `not`                       |
+| `null`                      |
+| `or`                        |
+| `return`                    |
+| `switch`                    |
+| `true`                      |
+| `try`                       |
+| `while`                     |
+| `xor`                       |
 
 ## Flexible Typing
 
 You can also create a variable with one type and then switch it to another dynamically:
 
-![](<../.gitbook/assets/flexible-typing (1) (1).png>)
+```bash
+a = "hello"
+hello
+a = 123
+123
+a = now()
+{ts '2024-08-10 19:51:24'}
+a = [1,2,3]
+[1,2,3]
+```
 
 As you can see, the last equality wins! In this case, `a` is now an array.
 
 ## Types
 
-BoxLang is a typeless language, but internal types always exist. BoxLang will automatically cast so you can do flexible typing assignments when evaluating expressions. It does all the tedious and hard job for you. If we were to categorize BoxLang variables into categories, these would be:
+BoxLang is a typeless language, but internal types always exist which can be inferred or declared. BoxLang will automatically cast so you can do flexible typing assignments when evaluating expressions. It does all the tedious and hard job for you. If we were to categorize BoxLang variables into categories, these would be:
 
-| Category    | Description                                                                                                         |
-| ----------- | ------------------------------------------------------------------------------------------------------------------- |
-| **Binary**  | Raw data from files such as images, pdfs, etc                                                                       |
-| **Complex** | A data container that represents more than one value: structures, arrays, queries, XML document objects, etc.       |
-| **Objects** | Complex constructs representing data and functional operations. BoxLang Classes or Java Objects.                    |
-| **Simple**  | One value and used directly in expressions. These include numbers, strings, floats, booleans, and date-time values. |
+<table><thead><tr><th width="259">Category</th><th>Description</th></tr></thead><tbody><tr><td><strong>Binary</strong></td><td>Raw data from files such as images, pdfs, etc</td></tr><tr><td><strong>Complex</strong></td><td>A data container that represents more than one value: structures, arrays, queries, XML document objects, etc.</td></tr><tr><td><strong>Objects</strong></td><td>Complex constructs representing data and functional operations. BoxLang Classes or Java Objects.</td></tr><tr><td><strong>Simple</strong></td><td>One value and used directly in expressions. These include numbers, strings, floats, booleans, and date-time values.</td></tr></tbody></table>
 
 BoxLang also includes many validation functions that are available to you to test for the type of variable you are working with. You can also use the `getmetdata()` function to get the metadata about the variable as well.
 
 ```javascript
-qData = getMetadata( query )
+qData = query.getMetadata()
 a = now()
 writedump( a.getMetadata() )
 ```
@@ -138,22 +168,26 @@ writedump( a.getMetadata() )
 * `isClosure()`
 * `isDate()`
 * `isDateObject()`
-* `isDDX()`
+* `isFileObject()`
 * `isJSON()`
+* `isIPv6()`
+* `isLeapYear()`
 * `isNumeric()`
 * `isNumericDate()`
 * `isObject()`
+* `isLocalHost()`
 * `isNull()`
 * `isPDFFile()`
 * `isPDFObject()`
 * `isQuery()`
 * `isSimpleValue()`
-* `isSpreadsheetFile()`
-* `isSpreadsheetObject()`
 * `isStruct()`
-* `isWDDX()`
+* `isValid( type, value )`
 * `isXML()`
 * `isXmlDoc()`
+* `isXMLElem()`
+* `isXMLNode()`
+* `ixXMLRoot()`
 
 ### Conversions
 
