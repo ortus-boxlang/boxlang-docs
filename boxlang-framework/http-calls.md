@@ -3,8 +3,8 @@
 BoxLang makes it really **easy** to interact with **any** HTTP/S endpoint via the `http` tag/construct. The `http` call will generate an HTTP/S request and parse the response into a nice BoxLang structure.
 
 ```java
-http( url="https://www.google.com/", result="result" ){
-    httpparam( name="q", type="formfield", value="test" )
+http url="https://www.google.com/" result="result" {
+    httpparam name="q" type="formfield" value="test";
 }
 writeDump( result )
 ```
@@ -57,7 +57,7 @@ Basically, you can do any type of http/s calls and consume any type of RESTFul w
 As mentioned before in our example we can use the `httpparam` construct to pass parameters to the http/s endpoint.  The parameters can be of different types as we can see in the following table.
 
 ```java
-httpParam( type="", name="", value="", file="", encoded="", mimetype="" );
+httpParam type=""  name=""  value=""  file=""  encoded=""  mimetype="";
 ```
 
 ### Param Types
@@ -89,15 +89,15 @@ The available param arguments to the httpparam construct are:
 Here is another example for you:
 
 ```java
-http( url="https://myrestapp.com/user", result="local.result", method="post" ){
-        httpparam( name="x-api-token", type="header", value="123" )
-        httpparam(
-                type="body",
+http url="https://myrestapp.com/user" result="local.result", method="post" {
+        httpparam name="x-api-token" type="header" value="123";
+        httpparam
+                type="body"
                 value=serializeJson( '{
                         name : "luis",
                          age : 2
-                }' )
-        )
+                }' );
+        
 }
 writeDump( result )
 ```
