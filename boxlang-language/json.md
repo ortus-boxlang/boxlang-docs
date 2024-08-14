@@ -58,16 +58,6 @@ person = {
 { "Name" : "Luis Majano", "company" : "Ortus Solutions", "year" : 2006 }
 ```
 
-### Possible Casting Issues
-
-BoxLang may incorrectly serialize some strings if they can be automatically converted into other types, like numbers or booleans. One workaround is to use a class with [property](https://boxlang.ortusbooks.com/boxlang-language/classes/properties) to specify types. Another workaround is to prepend `Chr(2)` to the value and it will be forced to a string, however, that is an unofficial/undocumented workaround. A more formal workaround is to call `setMetadata()` as a member function on a `struct` to force a type:
-
-```javascript
-myStruct = { "zip"="00123" };
-myStruct.setMetadata( { "zip": "string" } );
-writeOutput( jsonSerialize(myStruct) );
-```
-
 ## Deserialize
 
 The inverse of serialization is deserialization ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsondeserialize](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsondeserialize)). BoxLang gives you the `jsonDeserialize()` function that will take a JSON document and produce native BoxLang data structures for you.
