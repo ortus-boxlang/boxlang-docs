@@ -35,27 +35,14 @@ writeOutput( person.toJSON() );
 
 ### Key Casing
 
-By default BoxLang will convert the keys in a struct to uppercase in the result JSON document:
+By default BoxLang will keep the keys in a struct in their original casing in the resulting JSON document:
 
 ```javascript
 person = { name = "Luis Majano", company = "Ortus Solutions", year = 2006};
 writeOutput( jsonSerialize( person ) );
 
 // Will become
-{ "NAME" : "Luis Majano", "COMPANY" : "Ortus Solutions", "YEAR" : 2006 }
-```
-
-If you want to preserve the key casing then wrap them in double/single quotes and define the case:
-
-```javascript
-person = {
-    'Name' = "Luis Majano",
-    'company' = "Ortus Solutions",
-    'year' = 2006
-};
-
-// Will become
-{ "Name" : "Luis Majano", "company" : "Ortus Solutions", "year" : 2006 }
+{ "name" : "Luis Majano", "company" : "Ortus Solutions", "year" : 2006 }
 ```
 
 ### Possible Casting Issues
