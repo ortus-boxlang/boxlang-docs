@@ -119,7 +119,7 @@ import ortus.boxlang.runtime.scopes.Key
 a = BigInteger.valueOf( 54 )
 result = a.add( 444 )
 
-user = new User()
+account = new User()
 
 caseInsensitiveKey = new Key( "luis" )
 ```
@@ -149,7 +149,7 @@ import models.User
 a = BigInteger.valueOf( 54 )
 result = a.add( 444 )
 
-user = new User()
+account = new User()
 
 caseInsensitiveKey = new java:Key( "luis" )
 ```
@@ -164,7 +164,7 @@ a = BigInteger.valueOf( 54 )
 result = a.add( 444 )
 
 import models.User
-user = new User()
+account = new User()
 
 import java:ortus.boxlang.runtime.scopes.Key
 caseInsensitiveKey = new java:Key( "luis" )
