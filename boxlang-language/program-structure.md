@@ -112,14 +112,14 @@ Works great, but yes, some lookup is done, but cached.
 Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates.  This allows you to fully define the location of a class or template explicitly.  This is also used not only for BoxLang classes but for any Java class:
 
 ```java
-import java.math.BigInteger
+import java.time.Instant
 import models.User
 import ortus.boxlang.runtime.scopes.Key
 
-a = BigInteger.valueOf( 54 )
-result = a.add( 444 )
+today = Instant.now()
+println( today )
 
-user = new User()
+myUser = new User()
 
 caseInsensitiveKey = new Key( "luis" )
 ```
@@ -140,16 +140,14 @@ BoxLang ships with two object resolver prefixes:
 This is useful to disambiguiate paths and make them explicit.  You can use it in the import or in the `new() or createObject()` syntax.
 
 ```java
-import java:java.math.BigInteger
+import java:java.time.Instant
 import java:ortus.boxlang.runtime.scopes.Key
 
 import models.User
 
 
-a = BigInteger.valueOf( 54 )
-result = a.add( 444 )
-
-user = new User()
+a = Instant.now()
+myUser = new User()
 
 caseInsensitiveKey = new java:Key( "luis" )
 ```
@@ -159,12 +157,11 @@ caseInsensitiveKey = new java:Key( "luis" )
 In box templates and scripts you can add the `import/<bx:import>` statements ANYWHERE in the file.  We will collect them internally for you.
 
 ```java
-import java:java.math.BigInteger
-a = BigInteger.valueOf( 54 )
-result = a.add( 444 )
+import java:java.time.Instant
+a = Instant.now()
 
 import models.User
-user = new User()
+myUser = new User()
 
 import java:ortus.boxlang.runtime.scopes.Key
 caseInsensitiveKey = new java:Key( "luis" )
@@ -208,13 +205,12 @@ This can be for both Java and BoxLang class paths.
 BoxLang allows you to alias your imports in order to break ambiguity and to be able to import classes with the same name but with different aliases.
 
 ```java
-import java.math.BigInteger as jBigInt
+import java.time.Instant as jInstant
 import models.User as BXUser
 import models.util.Key
 import ortus.boxlang.runtime.scopes.Key as jKey
 
-a = jBigInt.valueOf( 54 )
-result = a.add( 444 )
+result = jInstant.now()
 
 user = new BXUser()
 
