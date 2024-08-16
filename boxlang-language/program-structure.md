@@ -6,7 +6,7 @@ description: This section covers the basics of the program structures of BoxLang
 
 ## File Types
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 BoxLang can be written in 3 types of files:
 

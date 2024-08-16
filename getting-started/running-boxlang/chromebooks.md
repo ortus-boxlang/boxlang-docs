@@ -110,7 +110,7 @@ sudo /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussoluti
 
 This will run the BoxLang installer.  Once you are done, just type `boxlang` and boom! We have BoxLang installed!
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This opens the REPL and you can start coding away, running BoxLang files, starting servers and so much more.
 
@@ -118,7 +118,7 @@ This opens the REPL and you can start coding away, running BoxLang files, starti
 
 Now that we have BoxLang installed, let's get VSCode so you can use this awesome editor for BoxLang coding!
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Choose the debian according to your processor and download the package.  Then double click it and run the installer.  Once done, you will have a new icon in your apps called `Visual Studio Code`. Click it and open it.
 

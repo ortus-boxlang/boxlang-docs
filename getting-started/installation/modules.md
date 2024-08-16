@@ -6,7 +6,15 @@ description: The Officially supported BoxLang modules
 
 ## Core Modules
 
-Here is the collection of modules built and supported by the BoxLang team.
+Here is the collection of modules built and supported by the BoxLang team.  We show you the way to install them using CommandBox via `install {module_name}` .  However, if you are using the operating system installer shipped with BoxLang: `install-bx-module`.  Then use that instead:
+
+```bash
+// CommandBox
+install {module_name}
+
+// BoxLang OS Binary
+install-bx-module {module_name}
+```
 
 ### bx-compat
 
@@ -44,7 +52,7 @@ install bx-password-encrypt
 
 ### bx-esapi
 
-`Category: Security`
+`Category: security`
 
 Leverages ESAPI and AntiSamy to provide your BoxLang applications with security and cleaning concerns.
 
@@ -81,6 +89,19 @@ install bx-jython
 * Download: [https://forgebox.io/view/bx-jython](https://forgebox.io/view/bx-jython)
 * Instructions: [https://github.com/ortus-boxlang/bx-jython](https://github.com/ortus-boxlang/bx-jython)
 
+### bx-ini
+
+`Category: Operating System`
+
+This module allows you to interact with `ini` files.
+
+```
+install bx-ini
+```
+
+* Download: [https://forgebox.io/view/bx-ini](https://forgebox.io/view/bx-ini)
+* Instructions: [https://github.com/ortus-boxlang/bx-ini](https://github.com/ortus-boxlang/bx-ini)
+
 ### bx-mail
 
 `Category: Communication`
@@ -107,14 +128,14 @@ install bx-oshi
 * Download: [https://forgebox.io/view/bx-oshi](https://forgebox.io/view/bx-oshi)
 * Instructions: [https://github.com/ortus-boxlang/bx-oshi](https://github.com/ortus-boxlang/bx-oshi)
 
-### bx-pdf (Coming Soon)
+### bx-pdf
 
 `Category: Document Services`
 
 The pdf module will give you the capabilities to create and stream PDF documents from your BoxLang server code. We also offer the enhanced version in our BoxLang +,++ subscriptions.
 
 ```
-coming soon
+install bx-pdf
 ```
 
 * Download: [https://forgebox.io/view/bx-pdf](https://forgebox.io/view/bx-pdf)
