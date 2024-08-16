@@ -46,6 +46,7 @@ In this example, the UPDATE will be rolled back while the INSERT statement will 
 
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
+  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [QueryExecute](./QueryExecute.md)
   * [TransactionCommit](./TransactionCommit.md)
   * [TransactionRollback](./TransactionRollback.md)

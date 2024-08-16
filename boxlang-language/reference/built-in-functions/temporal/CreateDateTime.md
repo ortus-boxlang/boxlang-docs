@@ -79,5 +79,5 @@ CreateDateTime(year=[integer], month=[integer], day=[integer], hour=[integer], m
   * [Second](./Second.md)
   * [SetTimezone](./SetTimezone.md)
   * [TimeFormat](./TimeFormat.md)
-  * [WeekOfYear](./WeekOfYear.md)
+  * [Week](./Week.md)
   * [Year](./Year.md)

@@ -40,6 +40,7 @@ Note that the rollback cannot affect the INSERT statement, since it has already 
 
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
+  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [QueryExecute](./QueryExecute.md)
   * [TransactionRollback](./TransactionRollback.md)
   * [TransactionSetSavepoint](./TransactionSetSavepoint.md)

@@ -63,6 +63,7 @@ qryResult = queryExecute(
 
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
+  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [TransactionCommit](./TransactionCommit.md)
   * [TransactionRollback](./TransactionRollback.md)
   * [TransactionSetSavepoint](./TransactionSetSavepoint.md)

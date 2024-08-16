@@ -73,5 +73,5 @@ CreateTimeSpan(days=[long], hours=[long], minutes=[long], seconds=[long], millis
   * [Second](./Second.md)
   * [SetTimezone](./SetTimezone.md)
   * [TimeFormat](./TimeFormat.md)
-  * [WeekOfYear](./WeekOfYear.md)
+  * [Week](./Week.md)
   * [Year](./Year.md)

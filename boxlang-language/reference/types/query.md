@@ -175,6 +175,18 @@ Arguments:
 Returns the metadata of a query.
 </details>
 <details>
+<summary><code>getRow(rowNumber=[integer])</code></summary>
+
+Returns the cells of a query row as a structure
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `rowNumber` | `integer` | `true` | `null` |
+
+</details>
+<details>
 <summary><code>insertAt(value=[query], position=[numeric])</code></summary>
 
 Inserts a query data into another query at a specific position
@@ -186,6 +198,11 @@ Arguments:
 | `value` | `query` | `true` | `null` |
 | `position` | `numeric` | `true` | `null` |
 
+</details>
+<details>
+<summary><code>isEmpty()</code></summary>
+
+Determine whether a given value is empty
 </details>
 <details>
 <summary><code>keyExists(key=[string])</code></summary>

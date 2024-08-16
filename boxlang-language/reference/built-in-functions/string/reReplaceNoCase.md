@@ -39,6 +39,7 @@ reReplaceNoCase(string=[string], regex=[string], substring=[string], scope=[stri
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [JSStringFormat](./JSStringFormat.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

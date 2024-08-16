@@ -41,6 +41,7 @@ ReFind(reg_expression=[string], string=[string], start=[integer], returnSubExpre
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [JSStringFormat](./JSStringFormat.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

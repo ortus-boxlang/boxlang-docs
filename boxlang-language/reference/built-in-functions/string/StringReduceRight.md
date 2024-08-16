@@ -39,6 +39,7 @@ StringReduceRight(list=[string], callback=[function:BiFunction], initialValue=[a
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [JSStringFormat](./JSStringFormat.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

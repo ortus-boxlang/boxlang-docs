@@ -524,7 +524,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>weekOfYear(timezone=[string])</code></summary>
+<summary><code>week(timezone=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 

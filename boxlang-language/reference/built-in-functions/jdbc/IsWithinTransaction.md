@@ -21,6 +21,7 @@ This function does not accept any arguments
 ## Related
 
   * [IsInTransaction](./IsInTransaction.md)
+  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [QueryExecute](./QueryExecute.md)
   * [TransactionCommit](./TransactionCommit.md)
   * [TransactionRollback](./TransactionRollback.md)

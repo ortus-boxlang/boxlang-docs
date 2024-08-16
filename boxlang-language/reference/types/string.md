@@ -1202,6 +1202,11 @@ Arguments:
 Trim trailing whitespace from a string
 </details>
 <details>
+<summary><code>jsFormat()</code></summary>
+
+Escapes special JavaScript characters, such as single quotation mark, double quotation mark, and newline
+</details>
+<details>
 <summary><code>charsetDecode(encoding=[string])</code></summary>
 
 Encodes a string to a binary representation

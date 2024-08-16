@@ -66,5 +66,5 @@ This function does not accept any arguments
   * [Second](./Second.md)
   * [SetTimezone](./SetTimezone.md)
   * [TimeFormat](./TimeFormat.md)
-  * [WeekOfYear](./WeekOfYear.md)
+  * [Week](./Week.md)
   * [Year](./Year.md)

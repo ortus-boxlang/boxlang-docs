@@ -61,6 +61,7 @@ Multiple savepoints can be set or referenced.
 
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
+  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [QueryExecute](./QueryExecute.md)
   * [TransactionCommit](./TransactionCommit.md)
   * [TransactionSetSavepoint](./TransactionSetSavepoint.md)

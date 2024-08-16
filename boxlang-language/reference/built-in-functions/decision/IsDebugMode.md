@@ -38,6 +38,7 @@ This function does not accept any arguments
   * [IsLocalHost](./IsLocalHost.md)
   * [IsNull](./IsNull.md)
   * [IsNumeric](./IsNumeric.md)
+  * [IsNumericDate](./IsNumericDate.md)
   * [IsObject](./IsObject.md)
   * [IsQuery](./IsQuery.md)
   * [IsSimpleValue](./IsSimpleValue.md)
