@@ -34,7 +34,7 @@ Templates will use the templating language but can also use scripts via opening 
 Scripts are in script notation, but you can also use the templating language by using opening and closing tag island notations: ` ``` `
 
 ````java
-println( "I am a script" )
+echo( "I am a script" )
 
 ```
 <!--- Now I can do templating --->
@@ -44,7 +44,7 @@ println( "I am a script" )
 ```
 
 // Now I am back in scripts
-println( "scripts again" )
+echo( "scripts again" )
 ````
 
 ## Classes
