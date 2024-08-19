@@ -4,7 +4,8 @@ description: Learn more about this book
 
 # About This Book
 
-The source code for this book is hosted on GitHub: [https://github.com/ortus-solutions-private/boxlang-docs](https://github.com/ortus-solutions-private/boxlang-docs). You can freely contribute to it and submit pull requests. Ortus Solutions, Corp copyrights the contents of this book and cannot be altered or reproduced without the author's consent. All content is provided _"As-Is"_ and can be freely distributed.‌
+The source code for this book is hosted on GitHub: 
+[https://github.com/ortus-boxlang/boxlang-docs](https://github.com/ortus-boxlang/boxlang-docs). You can freely contribute to it and submit pull requests. Ortus Solutions, Corp copyrights the contents of this book and cannot be altered or reproduced without the author's consent. All content is provided _"As-Is"_ and can be freely distributed.‌
 
 * The majority of code examples in this book are done in `bx:script`.
 * The majority of code generation and running of examples are done via **CommandBox**: The BoxLang CLI, Package Manager, REPL - [https://www.ortussolutions.com/products/commandbox](https://www.ortussolutions.com/products/commandbox)​
