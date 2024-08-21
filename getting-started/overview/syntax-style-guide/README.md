@@ -12,7 +12,7 @@ If you are a CFML developer, check out also our [CFML Guide.](cfml.md)
 
 ## Dynamic & Loose Typing
 
-BoxLang variables are **dynamic** and **type-inferred**.  We try our best to infer which type you are trying to set for variables at compile-time, but they can completely change at runtime.  You use the `var` keyword to specify a variable within functions or declare them inline if you are in a `bxs` or `bxm` script file.
+BoxLang variables are **dynamic** and **type-inferred**. We try our best to infer which type you are trying to set for variables at compile-time, but they can completely change at runtime. You use the `var` keyword to specify a variable within functions or declare them inline if you are in a `bxs` or `bxm` script file.
 
 {% hint style="info" %}
 File Types:
@@ -52,9 +52,9 @@ function add( required numeric a, required numeric b, boolean print = false ){
 }
 ```
 
-As you can see, not only can we make arguments **required** or not, but we can also add **default** values to arguments.  BoxLang does not allow method overrides since basically, every method can take an infinite nubmer of arguments, defined or even NOT defined.
+As you can see, not only can we make arguments **required** or not, but we can also add **default** values to arguments. BoxLang does not allow method overrides since basically, every method can take an infinite nubmer of arguments, defined or even NOT defined.
 
-We can also do type promotions and auto-casting from types that can be castable to other types.  So, if we call our function like this:
+We can also do type promotions and auto-casting from types that can be castable to other types. So, if we call our function like this:
 
 ```groovy
 // we auto cast 1 to numeric, "true" to boolean
@@ -78,7 +78,7 @@ function hello( name ){
 
 ## Case Insensitive Functionality
 
-Most things in BoxLang can be done with **no** case sensitivity by default.  You can enable case sensitivity in many functions and components, but we try to be insensitive as much as possible :). Here are a few observations where access is case-insensitive by nature:
+Most things in BoxLang can be done with **no** case sensitivity by default. You can enable case sensitivity in many functions and components, but we try to be insensitive as much as possible :). Here are a few observations where access is case-insensitive by nature:
 
 * variable access in any scope
 * function calls, even to Java classes
@@ -96,7 +96,7 @@ println( "My name is #mymap.NAME# and my age is #mymap.age#" )
 ```
 
 {% hint style="info" %}
-Internally we leverage a `Key` class that provides us with case insensitivity.  Each map has a `Key` as the, well, key.
+Internally we leverage a `Key` class that provides us with case insensitivity. Each map has a `Key` as the, well, key.
 {% endhint %}
 
 ## Expression Interpolation
@@ -105,6 +105,31 @@ BoxLang can interpret ANYTHING within `#` as an expression. This can be used for
 
 ```cfscript
 "#now()# is a bif, and this #12 % 2# is a math expression, and more!"
+```
+
+## Multi-Line Strings
+
+In Java, you can declare a multi-line string easily (JKD15+) by using the triple (`"""`) quote marks. &#x20;
+
+<pre class="language-java"><code class="lang-java">public String getText(){
+<strong>   return """
+</strong>   My text block
+      with nice identation
+      
+      -- Luis Majano""";
+}
+</code></pre>
+
+It is by far the most convenient way to declare a multiline string as you dont have to deal with line separators or indentation spaces.  In BoxLang, you only need 1 quote (`"`), we will take care of the rest!
+
+```javascript
+function getText(){
+   return "
+   My text block
+      with nice identation
+      
+      -- Luis Majano";
+}
 ```
 
 ## Multi-Variable Assignments
@@ -147,7 +172,7 @@ try{
 
 ## Multi-Catch Exceptions
 
-In BoxLang you can catch multiple exceptions by using the pipe | operator.  They can be both BoxLang exceptions or Java exception types:
+In BoxLang you can catch multiple exceptions by using the pipe | operator. They can be both BoxLang exceptions or Java exception types:
 
 ```cfscript
 catch( foo.com | brad | com.luis.majano e ) {}
@@ -159,7 +184,7 @@ As you can see, semicolons are completely optional. We prefer no semicolons unle
 
 ## Scopes
 
-BoxLang offers many different persistence and variable scopes depending on where and what you are. All scopes in BoxLang are backed by the Map interface, which in BoxLang land are called Structures.  They are case-insensitive by default; you can pass them around as much as you like.
+BoxLang offers many different persistence and variable scopes depending on where and what you are. All scopes in BoxLang are backed by the Map interface, which in BoxLang land are called Structures. They are case-insensitive by default; you can pass them around as much as you like.
 
 #### Scripts (`bxm, bxs`)
 
@@ -170,7 +195,7 @@ Scripts can be written in full script (`bxs`) or using our templating language (
 
 #### Classes
 
-BoxLang supports all Object-oriented constructs know in several languages.  We expand on the areas of metaprogramming and dynamic typing.
+BoxLang supports all Object-oriented constructs know in several languages. We expand on the areas of metaprogramming and dynamic typing.
 
 * `variables` - The private scope of the class
 * `this` - The public scope of the class and also represents the instance
@@ -207,7 +232,7 @@ Please visit our [scopes](../../../boxlang-language/variable-scopes.md) section 
 
 ### Scope Hunting
 
-When you access a variable without specific scope access, BoxLang will try to find the variable for you in its nearest scope.  This is done internally via a context object, which can be decorated at runtime depending on WHERE the code is being executed (CLI, web, lambda, android, etc)  Example:
+When you access a variable without specific scope access, BoxLang will try to find the variable for you in its nearest scope. This is done internally via a context object, which can be decorated at runtime depending on WHERE the code is being executed (CLI, web, lambda, android, etc) Example:
 
 ```cfscript
 function( name ){
@@ -225,7 +250,7 @@ Check out our [Scopes](../../../boxlang-language/variable-scopes.md) section to 
 
 ## Full Null Support
 
-`null` is a real thing! It's nothing but real!  We support the `null` keyword, assignments, and usage just like Java.  It follows the same rules.
+`null` is a real thing! It's nothing but real! We support the `null` keyword, assignments, and usage just like Java. It follows the same rules.
 
 ## CastAs Operator
 
@@ -247,11 +272,9 @@ You can also use our handy `javaCast()` bif if you needed to.
 
 We have several fluent operators using english instead of symbols.
 
-
-
 ### InstanceOf Operator
 
-Like other languages, we also offer an `instanceOf` operator alongside a nice BIF: `isInstanceOf()`.  You can also use negation using our lovely `not` operator.
+Like other languages, we also offer an `instanceOf` operator alongside a nice BIF: `isInstanceOf()`. You can also use negation using our lovely `not` operator.
 
 ```java
 isInstanceOf( obj, "Map" )
@@ -266,7 +289,7 @@ if( obj not instanceOf "Integer" )
 
 All Java types can be used alongside the core BoxLang types:
 
-* `any`&#x20;
+* `any`
 * `array`
 * `immutableArray`
 * `binary`
@@ -348,13 +371,13 @@ import models.User
 import models.cborm.MyService
 ```
 
-Works just like Java. However, you will notice a nice `java:` prefix.  This is called an class locator prefix.  BoxLang supports these out of the box:
+Works just like Java. However, you will notice a nice `java:` prefix. This is called an class locator prefix. BoxLang supports these out of the box:
 
 * `java:` - Java classes to import or instantiate
 * `bx:` - BoxLang classes to import or instantiate (Default, not required)
 
 {% hint style="warning" %}
-You can also remove the `java:` prefix and BoxLang will try to locate the class for you.  Careful, as it will scan all locations.
+You can also remove the `java:` prefix and BoxLang will try to locate the class for you. Careful, as it will scan all locations.
 {% endhint %}
 
 #### Import Aliases
@@ -372,8 +395,8 @@ myBxPath = new Path()
 
 All the object resolvers prefixes can be used anywhere a class or path is expected:
 
-* Creating classes and instances: `createObject(), new`&#x20;
-* Using `imports`&#x20;
+* Creating classes and instances: `createObject(), new`
+* Using `imports`
 * Extending classes
 * Implementing interfaces
 
@@ -395,11 +418,11 @@ BoxLang supports the null coalescing operator `?:` to allow you to evaluate if v
 ( expression ) ?: 'value or expression'
 ```
 
-This tests the left-hand side of the `?:` and if its `null` then it will evaluate the rigth expression or value.  This can be used on if statements, assignments, loops, etc.
+This tests the left-hand side of the `?:` and if its `null` then it will evaluate the rigth expression or value. This can be used on if statements, assignments, loops, etc.
 
 ## Safe Navigation Operator
 
-BoxLang supports safety navigation on ANY object that can be dereferenced: structs, maps, classes, etc.  This basically allows you to test if the value exists or not and continue dereferencing or return null
+BoxLang supports safety navigation on ANY object that can be dereferenced: structs, maps, classes, etc. This basically allows you to test if the value exists or not and continue dereferencing or return null
 
 ```cfscript
 age = form.userdata?.age;
@@ -447,13 +470,13 @@ assert ()=> { do something }
 
 ## Functional
 
-BoxLang functions are first-class citizens.  That means you can pass them around, execute them, dynamically define them, inject them, remove them, and so much more.
+BoxLang functions are first-class citizens. That means you can pass them around, execute them, dynamically define them, inject them, remove them, and so much more.
 
 It has 3 major functional types:
 
 * **UDF—User-Defined Function**—Can be created on any scripting template or within Classes. They carry no context with them.
 * **Closures** are _named_ or _anonymous_ functions that carry with them their surrounding scope and context. It uses the fat arrow `=>` syntax.
-* **Lambdas** are _pure_ functions that can be _named_ or _anonymous_ and carry **NO** enclosing scope.  They are meant to be pure functions and produce no side effect.  Data in, Data out. It uses the skinny arrow `->` Syntax.
+* **Lambdas** are _pure_ functions that can be _named_ or _anonymous_ and carry **NO** enclosing scope. They are meant to be pure functions and produce no side effect. Data in, Data out. It uses the skinny arrow `->` Syntax.
 
 {% code title="hola.bxs" %}
 ```cfscript
@@ -508,7 +531,7 @@ myLambda( 1 )
 
 ### `Public` by default
 
-All functions and classes are `public` by default, so there is no need to add the `public` identifier if you don't want to.  This creates a very nice and low-verbosity approach to function declaration:
+All functions and classes are `public` by default, so there is no need to add the `public` identifier if you don't want to. This creates a very nice and low-verbosity approach to function declaration:
 
 ```cfscript
 function hello(){}
@@ -524,7 +547,7 @@ protected function bindData(){}
 
 ### Non-required arguments by default
 
-All arguments are NOT required by default and will be defaulted to `null` if not passed.  You can use the `required` identifier to mark them as required.
+All arguments are NOT required by default and will be defaulted to `null` if not passed. You can use the `required` identifier to mark them as required.
 
 ```cfscript
 function save( required user, boolean transactional = false, Logger logger ){
@@ -549,7 +572,7 @@ function hello( name = variables.defaultName ){
 
 Similar to var arguments in Java, BoxLang allows the `arguments` scope to be completely be variable. meaning you can declare the arguments, but you can pass as many as you like and they will all be added into the `arguments` scope.
 
-Another feature is that you can bind and apply these arguments at function execution time from any map or structure via the `argumentCollection` special argument.  This allows you to collect arguments and dispatch the function call, and BoxLang will match the argument names for you.  This can be great for dynamic argument collection, form collection, JSON packets, etc.
+Another feature is that you can bind and apply these arguments at function execution time from any map or structure via the `argumentCollection` special argument. This allows you to collect arguments and dispatch the function call, and BoxLang will match the argument names for you. This can be great for dynamic argument collection, form collection, JSON packets, etc.
 
 ```cfscript
 function save( name, age, isActive, logIt=false ){
@@ -566,7 +589,7 @@ This is a great time saver.
 
 ### Auto-casting Arguments & Return Values <a href="#auto-casting-argument-and-return-value-types" id="auto-casting-argument-and-return-value-types"></a>
 
-In BoxLang, we actively cast the incoming argument value to the specified declared argument.&#x20;
+In BoxLang, we actively cast the incoming argument value to the specified declared argument.
 
 ```cfscript
 function setAge( numeric age )
@@ -574,7 +597,7 @@ function setAge( numeric age )
 
 BoxLang will try to auto cast the incoming argument to the `numeric` type in this instance.
 
-It will also auto cast the outgoing return value for you.  So if your function specifies that the return value is a boolean, but you return a string, it will auto cast it to boolean for you.
+It will also auto cast the outgoing return value for you. So if your function specifies that the return value is a boolean, but you return a string, it will auto cast it to boolean for you.
 
 ```cfscript
 function Boolean isAlive(){
@@ -584,21 +607,21 @@ function Boolean isAlive(){
 
 ### BIFs = Built-In Functions
 
-BoxLang is inspired by many languages, and it offers [built-in functions](../../../boxlang-language/reference/built-in-functions/) you can call from anywhere in your code.  They are automatically registered by the core language and any collaborating module.
+BoxLang is inspired by many languages, and it offers [built-in functions](../../../boxlang-language/reference/built-in-functions/) you can call from anywhere in your code. They are automatically registered by the core language and any collaborating module.
 
 ```cfscript
 println( "Hola from #now()#" )
 ```
 
 {% hint style="info" %}
-To get a sense of all the BIFs registered in your runtime, do a&#x20;
+To get a sense of all the BIFs registered in your runtime, do a
 
 writedump( getFunctionList() ) or println( getFunctionList() )
 {% endhint %}
 
 ### Member Functions
 
-Member functions are special functions attached to all data types in BoxLang, whether they are structs, arrays, strings, numbers, dates, Java objects, classes, etc. We provide tons of member functions, but developers can also contribute their own via BoxLang modules.  All member functions map back to built-in functions.
+Member functions are special functions attached to all data types in BoxLang, whether they are structs, arrays, strings, numbers, dates, Java objects, classes, etc. We provide tons of member functions, but developers can also contribute their own via BoxLang modules. All member functions map back to built-in functions.
 
 ```cfscript
 myArray = [1,2,3,4]
@@ -617,8 +640,6 @@ favoriteFruites = fruitArray.filter( item -> item.rating >= 3 )
 {% hint style="info" %}
 You can find all the collection of member functions in our [types](../../../boxlang-language/reference/types/) section.
 {% endhint %}
-
-
 
 ## BoxLang Classes
 
@@ -647,7 +668,7 @@ Check out our [Classes](./#classes) section for further information
 
 ### Properties, not Fields
 
-BoxLang classes can define properties as data members; they are not called fields and are always `private` meaning they will be stored in the `variables` scope.  You can define them in short or long format.  Please note that properties do require a semi-colon, as they can be very ambiguous.
+BoxLang classes can define properties as data members; they are not called fields and are always `private` meaning they will be stored in the `variables` scope. You can define them in short or long format. Please note that properties do require a semi-colon, as they can be very ambiguous.
 
 All properties are stored in the `variables` scope.
 
@@ -685,7 +706,7 @@ class{
 }
 ```
 
-Check out our [properties](../../../boxlang-language/classes/properties.md) section for all valid attributes.  Here are a few common ones
+Check out our [properties](../../../boxlang-language/classes/properties.md) section for all valid attributes. Here are a few common ones
 
 * `default` - The property's default value
 * `name` - The property's name
@@ -702,7 +723,7 @@ Our dependency injection framework does this.
 
 ### Automatic Constructor
 
-Constructors in classes for BoxLang are not overloads but a single `init()` method.  However, by default we create one for you.  It can also take in named parameters or an `argumentCollection` to initialize all properties.
+Constructors in classes for BoxLang are not overloads but a single `init()` method. However, by default we create one for you. It can also take in named parameters or an `argumentCollection` to initialize all properties.
 
 {% code title="User.bx" lineNumbers="true" %}
 ```cfscript
@@ -732,17 +753,17 @@ If you create your own `init()` then it's your job to initialize your class :)
 
 ### Annotations
 
-BoxLang annotations can be added to `properties`, `functions`, and `classes`.  Using the following pattern:
+BoxLang annotations can be added to `properties`, `functions`, and `classes`. Using the following pattern:
 
 ```
 @annonationName [AnyLiteralExpression=null]
 ```
 
-You can add as many as you like to the target locations without creating annotation classes or boilerplate.  The annotation's value is completely optional and can be a literal express, which can be a string, list, array, struct, JSON, etc.
+You can add as many as you like to the target locations without creating annotation classes or boilerplate. The annotation's value is completely optional and can be a literal express, which can be a string, list, array, struct, JSON, etc.
 
 ### Metadata: $bx
 
-All of these annotations and metadata can be retrieved at runtime by using the `getMetadata()` or `getClassMetadata()` bifs.  You can also look at the `.$bx` property in every boxlang object.  Which contains not only the metadata about each object, but ways to do meta-programming with it.  Like adding/modifying/removing properties/functions/annotations.
+All of these annotations and metadata can be retrieved at runtime by using the `getMetadata()` or `getClassMetadata()` bifs. You can also look at the `.$bx` property in every boxlang object. Which contains not only the metadata about each object, but ways to do meta-programming with it. Like adding/modifying/removing properties/functions/annotations.
 
 Extra metadata can be added to functions, properties, classes, or annotations.
 
@@ -758,7 +779,7 @@ myClass = new MyClass()
 writeOutput( myClass.$bx.meta ) or println( myClass.$bx.meta )
 ```
 
-The `$bx` object is the BoxLang meta object. It contains all the necessary metadata information about an object.  From it's Java Class, to functions, properties, data, etc.  It can be used on ANY BoxLang Type.  Here are the properties in the `$bx` object available to you. It also contains many methods that exist in the `BoxMeta` object.
+The `$bx` object is the BoxLang meta object. It contains all the necessary metadata information about an object. From it's Java Class, to functions, properties, data, etc. It can be used on ANY BoxLang Type. Here are the properties in the `$bx` object available to you. It also contains many methods that exist in the `BoxMeta` object.
 
 * `meta` - A struct of metadata about the class
 * `$class` - The Java `Class` that represents your class
