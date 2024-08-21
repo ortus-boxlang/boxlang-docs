@@ -107,24 +107,6 @@ BoxLang can interpret ANYTHING within `#` as an expression. This can be used for
 "#now()# is a bif, and this #12 % 2# is a math expression, and more!"
 ```
 
-## Multi-Line Strings
-
-You can declare multi-line strings by using the `"""` start and end operators.  You can also use any interpolation in between.
-
-```java
-myLargeContent = """
-    Hi,
-
-    How are you today #name#!
-
-    This is a very nice email with merged data!
-
-    Thanks for purchasing #item#!
-"""
-
-mailService.send( myLargeContent )
-```
-
 ## Multi-Variable Assignments
 
 BoxLang supports the concept of multi-variable declaration and assignments by just cascading variables using the `=` operator.
