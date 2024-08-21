@@ -39,7 +39,7 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 
 ## License
 
-BoxLang is open source and licensed under the [Apache 2 ](https://www.apache.org/licenses/LICENSE-2.0.html)License.  Copyright and Registered Trademark by Ortus Solutions, Corp.
+BoxLang is open source and licensed under the [Apache 2 ](https://www.apache.org/licenses/LICENSE-2.0.html)License. Copyright and Registered Trademark by Ortus Solutions, Corp.
 
 ## BoxLang Subscriptions
 
@@ -56,10 +56,10 @@ BoxLang can also be enhanced by [purchasing +/++ subscriptions](https://www.boxl
 
 ## Visionary Licenses
 
-A limited number of Visionary Licenses are available for forward-thinking companies and individuals who share our vision.  These subscriptions are first-come first-serve and will power the continued development of the BoxLang eco-system.  Here's what you get:
+A limited number of Visionary Licenses are available for forward-thinking companies and individuals who share our vision. These subscriptions are first-come first-serve and will power the continued development of the BoxLang eco-system. Here's what you get:
 
 * One-time purchase, unlimited licenses for 10 years
-* 10 years of premium support
+* 5 years of premium support
 * Long-term peace of mind
 
 Read more about them here: [https://www.boxlang.io/plans](https://www.boxlang.io/plans)
