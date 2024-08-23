@@ -1,5 +1,6 @@
 ---
 description: A quick overview of the BoxLang Language & Framework
+icon: crosshairs-simple
 ---
 
 # Overview
@@ -23,8 +24,6 @@ BoxLang combines many features from different programming languages, including J
 * Support and adapt to multiple runtimes
 * Multi-Parser design to support running different dynamic languages like CFML, Groovy and more.
 * Tooling and enhanced IDE
-
-
 
 ### Key Features
 

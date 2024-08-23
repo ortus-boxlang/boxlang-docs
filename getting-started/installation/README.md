@@ -1,5 +1,6 @@
 ---
 description: Getting started with BoxLang is easy!  Choose your path wisely!
+icon: sign-posts-wrench
 ---
 
 # Installation

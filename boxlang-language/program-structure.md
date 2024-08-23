@@ -1,5 +1,6 @@
 ---
 description: This section covers the basics of the program structures of BoxLang
+icon: folder-tree
 ---
 
 # Program Structure
@@ -14,7 +15,7 @@ BoxLang can be written in 3 types of files:
 2. Templates (\*.bxm, or in compat mode \*.cfm)
 3. Classes (\*.bx or in compat mode \*.cfc)
 
-Each of these files follow the same program structure with different syntaxes.  The only one of these that you will write using our templating language is the `templates (*.bxm)`.
+Each of these files follow the same program structure with different syntaxes. The only one of these that you will write using our templating language is the `templates (*.bxm)`.
 
 ## Scripts/Templates
 
@@ -49,7 +50,7 @@ echo( "scripts again" )
 
 ## Classes
 
-Classes have a `.bx` extension and can be executed via the CLI if they have a `main()` method by convention.  Unlike Java or other languages, the `main()` method does NOT have to be static, it can be an instance method or a static method, you chose.
+Classes have a `.bx` extension and can be executed via the CLI if they have a `main()` method by convention. Unlike Java or other languages, the `main()` method does NOT have to be static, it can be an instance method or a static method, you chose.
 
 ```java
 class{
@@ -63,11 +64,11 @@ class{
 
 ## Package Names
 
-Package names are not necessary for these types of files as BoxLang will automatically create them for you.  You will refer to these scripts or templates by path location or via mappings.
+Package names are not necessary for these types of files as BoxLang will automatically create them for you. You will refer to these scripts or templates by path location or via mappings.
 
 ## Path Imports
 
-BoxLang allows you to access any BoxLang class or script/template by location convention first with no need of imports explicitly.  The following approaches can be used via path imports:
+BoxLang allows you to access any BoxLang class or script/template by location convention first with no need of imports explicitly. The following approaches can be used via path imports:
 
 * `new class_path()`
 * `createObject( "class", path )`
@@ -109,7 +110,7 @@ Works great, but yes, some lookup is done, but cached.
 
 ## Simple Imports
 
-Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates.  This allows you to fully define the location of a class or template explicitly.  This is also used not only for BoxLang classes but for any Java class:
+Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates. This allows you to fully define the location of a class or template explicitly. This is also used not only for BoxLang classes but for any Java class:
 
 ```java
 import java.time.Instant
@@ -124,10 +125,10 @@ myUser = new User()
 caseInsensitiveKey = new Key( "luis" )
 ```
 
-From the example above I made no distinction on what was a Java class or what was a Boxlang class.  By convention BoxLang will auto-discover the class for you according to it's package path.  However, you can also use object resolver notation to disambiguiate the location and define it explicitly.&#x20;
+From the example above I made no distinction on what was a Java class or what was a Boxlang class. By convention BoxLang will auto-discover the class for you according to it's package path. However, you can also use object resolver notation to disambiguiate the location and define it explicitly.
 
 {% hint style="info" %}
-The implicit resolver is `bx` meaning a Boxlang class.  You don't need to use it if you don't want to.
+The implicit resolver is `bx` meaning a Boxlang class. You don't need to use it if you don't want to.
 {% endhint %}
 
 ### Object Resolver Imports
@@ -137,7 +138,7 @@ BoxLang ships with two object resolver prefixes:
 * `java:` - To demarcate a Java class path
 * `bx:` - To demarcate a BoxLang class path
 
-This is useful to disambiguiate paths and make them explicit.  You can use it in the import or in the `new() or createObject()` syntax.
+This is useful to disambiguiate paths and make them explicit. You can use it in the import or in the `new() or createObject()` syntax.
 
 ```java
 import java:java.time.Instant
@@ -154,7 +155,7 @@ caseInsensitiveKey = new java:Key( "luis" )
 
 ### Location of Imports
 
-In box templates and scripts you can add the `import/<bx:import>` statements ANYWHERE in the file.  We will collect them internally for you.
+In box templates and scripts you can add the `import/<bx:import>` statements ANYWHERE in the file. We will collect them internally for you.
 
 ```java
 import java:java.time.Instant
@@ -169,7 +170,7 @@ caseInsensitiveKey = new java:Key( "luis" )
 
 ## Star Imports
 
-Boxlang, like Java, allows you to import all classes from a package using the `*` after the last package path.  All classes within that package/folder will be available for shorthand usage and reserved.
+Boxlang, like Java, allows you to import all classes from a package using the `*` after the last package path. All classes within that package/folder will be available for shorthand usage and reserved.
 
 ```java
  // Without star imports

@@ -1,5 +1,6 @@
 ---
 description: CommandBox is the de facto standard for BoxLang development and execution.
+icon: square-terminal
 ---
 
 # CommandBox CLI

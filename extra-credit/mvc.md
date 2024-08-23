@@ -1,3 +1,7 @@
+---
+icon: rectangles-mixed
+---
+
 # MVC
 
 ## Intro to MVC
@@ -8,7 +12,7 @@
 
 MVC is a popular design pattern called [Model View Controller](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) which seeks to promote good maintainable software design by separating your code into 3 main tiers:
 
-* **Model**  - Business Logic, Data, Queries, Etc
+* **Model** - Business Logic, Data, Queries, Etc
 * **View** - Representation of your models, queries, data.
 * **Controller** - Orchestrator of client request to the appropriate models and views
 
@@ -20,9 +24,9 @@ The Model is the heart of your application. Your business logic should mostly li
 
 ### Views
 
-The Views are what the users see and interact with. They are the templates used to render your application out for the web browser. Typically this means bxm/HTML, but it can also be JSON, XML, data views, etc.&#x20;
+The Views are what the users see and interact with. They are the templates used to render your application out for the web browser. Typically this means bxm/HTML, but it can also be JSON, XML, data views, etc.
 
-In modern times, your views can even be pure HTML with a combination of a JavaScript MVC framework.  The major players in the MVC front-end world that we would recommend in order of personal preference:
+In modern times, your views can even be pure HTML with a combination of a JavaScript MVC framework. The major players in the MVC front-end world that we would recommend in order of personal preference:
 
 * **VueJS** - [https://vuejs.org/](https://vuejs.org/)
 * **Angular** - [https://angular.io/](https://angular.io/)
@@ -35,23 +39,23 @@ Controllers are the traffic cops of your application. They direct flow control, 
 
 ## Benefits of MVC
 
-By implementing an MVC Framework to your applications you will gain several benefits that come inherent to the MVC design pattern.  The most important benefit of MVC is that you will be **separating the presentation** from the model.  This is a very important heuristic of software development as [**separation of concerns**](https://en.wikipedia.org/wiki/Separation\_of\_concerns) is applied and responsibilities are delegated upon the layers.
+By implementing an MVC Framework to your applications you will gain several benefits that come inherent to the MVC design pattern. The most important benefit of MVC is that you will be **separating the presentation** from the model. This is a very important heuristic of software development as [**separation of concerns**](https://en.wikipedia.org/wiki/Separation\_of\_concerns) is applied and responsibilities are delegated upon the layers.
 
 ### Separation of Concerns
 
-The model and the view layers have different concerns about their implementations.  A view layer is concerned with how to render the data, the type of browser, or remote rendering, etc.  While the model is more concerned with the business rules of the application, how to store data and even database operations.  You use different development approaches to each layer.
+The model and the view layers have different concerns about their implementations. A view layer is concerned with how to render the data, the type of browser, or remote rendering, etc. While the model is more concerned with the business rules of the application, how to store data and even database operations. You use different development approaches to each layer.
 
 ### Multiple GUI’s
 
-Due to this separation, you can easily create multiple views for the same model data without affecting how the model works or is coded.  The view layers can adapt to the model by coding their own implementations.  This makes it really easy to create multiple GUI’s for applications.
+Due to this separation, you can easily create multiple views for the same model data without affecting how the model works or is coded. The view layers can adapt to the model by coding their own implementations. This makes it really easy to create multiple GUI’s for applications.
 
 ### Unit and Behavioral Testing
 
-Non-visual objects are easier to test than visual objects, in theory.  With the introduction of Selenium, integration and visual UI testing has become rather simple.  However, the key benefit here is that testing can be done separately.  Frameworks like ColdBox even give you the ability to do UI and integration testing within its domain.
+Non-visual objects are easier to test than visual objects, in theory. With the introduction of Selenium, integration and visual UI testing has become rather simple. However, the key benefit here is that testing can be done separately. Frameworks like ColdBox even give you the ability to do UI and integration testing within its domain.
 
 ### Dependency
 
-The most important benefit that we can arise out of the MVC pattern, is the direction of the dependencies.  A view depends on its model data and controller, but the model itself does not depend on the view or controllers.  This is how you want to build your business logic, encapsulated and providing a good API.
+The most important benefit that we can arise out of the MVC pattern, is the direction of the dependencies. A view depends on its model data and controller, but the model itself does not depend on the view or controllers. This is how you want to build your business logic, encapsulated and providing a good API.
 
 ## Evolution of MVC Architecture <a href="#coldbox-mvc" id="coldbox-mvc"></a>
 
@@ -62,7 +66,7 @@ There are many types of MVC architectures and hopefully the following diagrams c
 ![Spaghetti Hell](../.gitbook/assets/spaghetti-hell.png)
 
 \
-As you can see from the spaghetti hell diagram above, everything is linear and can become extremely convoluted.  Tracking bugs are difficult, maintenance suffers and reusability is not efficient.  Everything is in the same bowl of soup.
+As you can see from the spaghetti hell diagram above, everything is linear and can become extremely convoluted. Tracking bugs are difficult, maintenance suffers and reusability is not efficient. Everything is in the same bowl of soup.
 
 \---
 
@@ -70,7 +74,7 @@ As you can see from the spaghetti hell diagram above, everything is linear and c
 
 ![](../.gitbook/assets/mvc.png)
 
-With the introduction of MVC we can hack away our spaghetti hell and at least have three distinct and separate layers of logic.  Ahh much better.  However, we can get even more complex.
+With the introduction of MVC we can hack away our spaghetti hell and at least have three distinct and separate layers of logic. Ahh much better. However, we can get even more complex.
 
 \---
 
@@ -78,7 +82,7 @@ With the introduction of MVC we can hack away our spaghetti hell and at least ha
 
 ![MVC Plus](../.gitbook/assets/mvc-plus.png)
 
-MVC Plus shows us how you can further partition your model layer into more layers.  We can identify now a layer of service classes and data access object classes.  The main transportation of data between these layers by default is implied to be BoxLang Query objects.
+MVC Plus shows us how you can further partition your model layer into more layers. We can identify now a layer of service classes and data access object classes. The main transportation of data between these layers by default is implied to be BoxLang Query objects.
 
 \---
 
@@ -87,7 +91,7 @@ MVC Plus shows us how you can further partition your model layer into more layer
 ![MVC Plus Objects](../.gitbook/assets/mvc-plus-objects.png)
 
 \
-In this architecture approach, we have replaced (mostly) queries as our data structure of preference and converted to the usage of business objects.  We are approaching a more object oriented architectural style.  Remember that data is just data, objects are data plus behavior.  We can encapsulate more features and abstract more behavior into actual objects now, which we could not do with queries.
+In this architecture approach, we have replaced (mostly) queries as our data structure of preference and converted to the usage of business objects. We are approaching a more object oriented architectural style. Remember that data is just data, objects are data plus behavior. We can encapsulate more features and abstract more behavior into actual objects now, which we could not do with queries.
 
 \---
 
@@ -96,10 +100,10 @@ In this architecture approach, we have replaced (mostly) queries as our data str
 ![MVC Plus ORM](../.gitbook/assets/mvc-plus-orm.png)
 
 \
-In this architecture approach we have replaced business objects for ORM entities and replaced our data access layer to be controlled now by the ORM.  This takes us very deep into object oriented land where the majority of our model is now modeled vi relational objects. &#x20;
+In this architecture approach we have replaced business objects for ORM entities and replaced our data access layer to be controlled now by the ORM. This takes us very deep into object oriented land where the majority of our model is now modeled vi relational objects.
 
 {% hint style="danger" %}
-**Stern Warning:** ORMs are NOT silver bullets.  They are an incredible tool that must be used for the right reasons and at the right time.  Do not be confused in that you must ONLY use the ORM.  No, you can still use DAOs and queries for certain things that matter.  You do not need to retrieve entire object graph collections if NOT needed.
+**Stern Warning:** ORMs are NOT silver bullets. They are an incredible tool that must be used for the right reasons and at the right time. Do not be confused in that you must ONLY use the ORM. No, you can still use DAOs and queries for certain things that matter. You do not need to retrieve entire object graph collections if NOT needed.
 
 We have even build a companion package for ColdBox called [**cborm**](https://github.com/coldbox-modules/cbox-cborm) that will help you build more pragmatic and enjoyable ORM applications.
 {% endhint %}

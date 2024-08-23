@@ -1,5 +1,6 @@
 ---
 description: Discover the BoxLang language
+icon: brackets-curly
 ---
 
 # Syntax & Semantics

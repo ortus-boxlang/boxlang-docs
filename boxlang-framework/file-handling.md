@@ -1,3 +1,7 @@
+---
+icon: cabinet-filing
+---
+
 # File Handling
 
 BoxLang allows you to manipulate, read, upload, and more files via its built-in methods, which are great and easy to use. It can even help you manipulate zip/jar archives! We won't go into every single detail of file handling, but below, you can find the majority of functions to handle file handling.

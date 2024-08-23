@@ -1,5 +1,6 @@
 ---
 description: Quickly learn what the BoxLang language offers.
+icon: vest
 ---
 
 # Quick Syntax Style Guide
@@ -75,6 +76,90 @@ function hello( name ){
     // argument name can be anything
 }
 ```
+
+## High Precision Mathematics
+
+By deafult, BoxLang will use high-precision mathematics by evaluting your numbers and determining the right type for them.  If the numbers are short, they will be `integer,` If they contain decimals they wil be `Doubles` and if you do math on them, we will use `BigDecimals.`  You don't have to be knowing or addressing the numerical types, we will do that for you. &#x20;
+
+{% hint style="warning" %}
+You can change this [setting in the configuration to false](../../configuration.md#use-high-precision-math) and it will use basic Double mathematics and it will be up to you when to use high precision evaluations.
+{% endhint %}
+
+You can store a larger number like:
+
+```undefined
+123123123123123123123123123
+```
+
+in a `Double`, but behind the scenes, not all of that is actually stored. All Java actually tracks is
+
+```undefined
+1.2312312312312312 E 26
+```
+
+which means some digits of the original number are gone. So if you run the math equation
+
+```undefined
+11111111111111111111 + 22222222222222222222
+```
+
+you get:
+
+* Windows calculator: `33333333333333333333`
+* BoxLang: `33333333333333333333`
+
+You may not be too worried about the use case of very large numbers, but the floating point math has bitten every single developer who’s been around long enough, and can wreak havoc on the simplest of math calculations.&#x20;
+
+### Level of Precision
+
+Furthermore, Java’s BigDecimal class allows you to choose the level of precision you want to use. Java 21 defaults to “unlimited” precision, but we’ve dialed that back to the IEEE 754-2019 decimal128 format, which has 34 digits of precision, and uses a rounding mode of HALF\_EVEN. You can change the amount of precision BoxLang uses for BigDecimal operations at any time like so:
+
+```cpp
+import ortus.boxlang.runtime.types.util.MathUtil;
+MathUtil.setPrecision( 100 );
+```
+
+### Only When Needed
+
+BoxLang has a smart parser, which will always store a number in the smallest package possible, opting to promote the type only when actually necessary.
+
+```ini
+n = 1;  // smaller than 10 digits stores in an Integer
+n = 11111111111111; // Smaller than 20 digits stores in a Long
+n = 111111111111111111111111111; // Anything larger stores in a BigDecimal
+n = 12.34;  // All floating point values, store in a BigDecimal  
+```
+
+The “bigger” types are contagious. So if you add together an `Integer` and a `Long`, we store the result in a `Long`. If you add a `Long` and a `BigDecimal` together, we store the result in a `BigDecimal`. The idea is always to keep things small and fast until we can’t any longer.
+
+## Numeric Literal Separators
+
+Numeric placeholders allow you to place underscore characters (`_`) inside of a numeric literal for readability. Take a number like this
+
+```ini
+n = 1000000000
+```
+
+That’s 1 billion. Or was it 1 million? Or maybe it was 100 million… _pauses to re-count_.\
+With numeric place holders, your code can look like this:
+
+```ini
+n = 1_000_000_000
+```
+
+Ahh, so it _was_ 1 billion! There’s no rules on where you can place the underscores, so long as they are INSIDE the number and not leading or trailing.  You can also place numeric separators in decimals:
+
+```ini
+n = 3.141_592_653_59
+```
+
+and in the exponent of scientific notation
+
+```undefined
+1e2_345
+```
+
+These underscores are simply thrown away at compile time. They are not represented in the bytecode and will not appear anywhere in your running app. They are purely for readability in your source code.
 
 ## Case Insensitive Functionality
 

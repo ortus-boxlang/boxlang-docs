@@ -1,5 +1,6 @@
 ---
 description: BoxLang and the Multiverse!
+icon: plug-circle-bolt
 ---
 
 # Running BoxLang

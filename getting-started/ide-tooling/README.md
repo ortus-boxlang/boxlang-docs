@@ -1,5 +1,6 @@
 ---
 description: The BoxLang IDE leverages VSCode!
+icon: gear-complex-code
 ---
 
 # IDE & Tooling

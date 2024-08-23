@@ -1,5 +1,6 @@
 ---
 description: Configure it your way!
+icon: wrench-simple
 ---
 
 # Runtime Configuration

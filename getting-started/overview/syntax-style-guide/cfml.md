@@ -1,5 +1,6 @@
 ---
 description: A quick guide on key differences and issues when migrating from CFML
+icon: bolt-lightning
 ---
 
 # Migrating From CFML
@@ -8,7 +9,7 @@ description: A quick guide on key differences and issues when migrating from CFM
 Please note that our CFML Compatibility is still in progress. Please keep this page bookmarked as we progress to our stable release.
 {% endhint %}
 
-BoxLang is a new language with a dual parser to support the CFML ecosystem.  It also has a compatibility module (`bx-compat`) that will allow the BoxLang runtime to behave like an Adobe or Lucee Server.  We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
+BoxLang is a new language with a dual parser to support the CFML ecosystem. It also has a compatibility module (`bx-compat`) that will allow the BoxLang runtime to behave like an Adobe or Lucee Server. We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
 
 ### File Types
 
@@ -20,7 +21,7 @@ BoxLang can parse and run all of the traditional CFML file types
 
 ### Components are Classes
 
-CFML Components (CFCs) are called classes in BoxLang, like any other language. You can also use the `class` declaration for them.  You can continue to write components if you like, but if you use our `.bx` extensions, they are now classes.
+CFML Components (CFCs) are called classes in BoxLang, like any other language. You can also use the `class` declaration for them. You can continue to write components if you like, but if you use our `.bx` extensions, they are now classes.
 
 ```java
 class{
@@ -32,7 +33,7 @@ class{
 
 ### Tags are Components
 
-Since BoxLang is not a tag-based language but a dynamic language offering a templating language. There are no concepts of tags but of BoxLang components that can be accessed via our templating language or script.  In CFML the templating language uses a `<cf` prefix, in BoxLang we use a `<bx:` prefix.
+Since BoxLang is not a tag-based language but a dynamic language offering a templating language. There are no concepts of tags but of BoxLang components that can be accessed via our templating language or script. In CFML the templating language uses a `<cf` prefix, in BoxLang we use a `<bx:` prefix.
 
 ```xml
 <bx:if expression>

@@ -1,3 +1,7 @@
+---
+icon: waves-sine
+---
+
 # Asynchronous Programming
 
 We already covered basic threading in our core BoxLang section. In this section, we will cover the usage of asynchronous programming via futures and the `runAsync()` function built into BoxLang.

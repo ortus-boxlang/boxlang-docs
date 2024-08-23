@@ -1,12 +1,13 @@
 ---
 description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
+icon: house-window
 ---
 
-# ⚡ Introduction
+# Introduction
 
 <figure><img src=".gitbook/assets/logo-gradient-dark.png" alt=""><figcaption></figcaption></figure>
 
-**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern and expressive syntax.
+**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern, functional and expressive syntax.
 
 {% hint style="danger" %}
 Please note that we are in **open beta** and still have many things to complete before the stable release. Please be patient with us as we strive to achieve our goals.
@@ -21,13 +22,18 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 3. Be dynamic, modular, lightweight, and fast.
 4. Be 100% interoperable with Java.
 5. Be modern, functional, and fluent (Think mixing CFML, Node, Kotlin, Java, and Clojure)
-6. Be able to support the following runtime environments.
+6. Extend via Modules
+7. Be able to support multiple runtime environments:
    1. Native OS Binaries (CLI Tooling, compilers, etc.)
-   2. Servlet Containers - CommandBox/Tomcat/Jetty/JBoss
-   3. Android/iOS Devices
-   4. Web assembly
-7. Compile down to Java ByteCode
-8. Allow backward compatibility with the existing CFML language.
+   2. Serverless Computing (AWS Lambda, Azure Functions, etc)
+   3. Servlet Containers - CommandBox/Tomcat/Jetty/JBoss/Undertow
+   4. Docker Containers
+   5. Android/iOS Devices
+   6. Web assembly
+   7. Etc
+8. Compile down to Java ByteCode
+9. Framework Capabilities (Scheduling, applications, events, async computing, tasks, queues, modules)
+10. [Professional Open-Source Support](https://boxlang.io/plans)
 
 {% content-ref url="getting-started/overview/" %}
 [overview](getting-started/overview/)
@@ -56,17 +62,17 @@ BoxLang can also be enhanced by [purchasing +/++ subscriptions](https://www.boxl
 
 ## Visionary Licenses
 
-A limited number of Visionary Licenses are available for forward-thinking companies and individuals who share our vision. These subscriptions are first-come first-serve and will power the continued development of the BoxLang eco-system. Here's what you get:
+{% hint style="warning" %}
+A limited number of Visionary Licenses are available for forward-thinking companies and individuals who share our vision. These subscriptions are first-come first-serve and will power the continued development of the BoxLang eco-system.  They will cease to exist after stable launch.
+{% endhint %}
 
-* One-time purchase, unlimited licenses for 10 years
+Here's what you get:
+
+* One-time purchase, unlimited licenses for unlimited servers/machines for 10 years
 * 5 years of premium support
 * Long-term peace of mind
 
 Read more about them here: [https://www.boxlang.io/plans](https://www.boxlang.io/plans)
-
-{% embed url="https://www.boxlang.io/plans" %}
-Visionary Licenses
-{% endembed %}
 
 ## Support Open Source
 

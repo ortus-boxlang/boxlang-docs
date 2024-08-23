@@ -1,5 +1,6 @@
 ---
 description: The mail module adds the ability to send mail to the BoxLang runtime
+icon: at
 ---
 
 # Sending Emails

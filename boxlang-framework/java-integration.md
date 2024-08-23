@@ -1,3 +1,7 @@
+---
+icon: java
+---
+
 # Java Interop
 
 ,BoxLang is compiled to [Java bytecode](https://en.wikipedia.org/wiki/Java\_bytecode) and runs on the JVM. This gives BoxLang a unique advantage that not only can you write BoxLang but you can also integrate with the running JDK libraries or any Java library you tell the engine to use. This is great, because if there is something already written in Java, just drop it in and use it, well most of the time :) Unless Jar loading hell occurs.

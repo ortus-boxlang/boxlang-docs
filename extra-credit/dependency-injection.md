@@ -1,3 +1,7 @@
+---
+icon: syringe
+---
+
 # Dependency Injection
 
 > Dependency injection is the art of making work come home to you.\

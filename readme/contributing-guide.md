@@ -1,5 +1,6 @@
 ---
 description: The best way to contribute to BoxLang!
+icon: code-compare
 ---
 
 # Contributing Guide

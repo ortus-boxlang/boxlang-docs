@@ -1,2 +1,6 @@
-# Modularity
+---
+icon: chart-tree-map
+---
+
+# Modules
 

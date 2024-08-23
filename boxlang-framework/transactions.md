@@ -1,10 +1,14 @@
+---
+icon: database
+---
+
 # JDBC Transactions
 
 ## Transaction Behavior
 
 ### Connections
 
-In BoxLang transactions, *no connection is acquired until the first JDBC query is executed*. Consider this transaction block:
+In BoxLang transactions, _no connection is acquired until the first JDBC query is executed_. Consider this transaction block:
 
 ```js
 transaction{
@@ -55,10 +59,10 @@ BoxLang emits events during the lifecycle of a JDBC transaction which can be use
 * onTransactionCommit
 * onTransactionRollback
 * onTransactionSetSavepoint
-* onTransactionAcquire*
-* onTransactionRelease*
+* onTransactionAcquire\*
+* onTransactionRelease\*
 
-Note that all these events (with the exception of `onTransactionAcquire` and `onTransactionRelease`) have the potential to be acting upon a no-op transaction, with a null `connection` parameter since no connection was ever obtained. ( Read more in [Transaction Behavior](#transaction-behavior) for a description of how transactions work. )
+Note that all these events (with the exception of `onTransactionAcquire` and `onTransactionRelease`) have the potential to be acting upon a no-op transaction, with a null `connection` parameter since no connection was ever obtained. ( Read more in [Transaction Behavior](transactions.md#transaction-behavior) for a description of how transactions work. )
 
 With this in mind, you'll want to do null checks against the `connection` parameter in case no connection has yet been acquired:
 
@@ -70,18 +74,17 @@ function onTransactionSetSavepoint( struct data ){
 }
 ```
 
-The two exceptions, as mentioned above, are `onTransactionAcquire` and `onTransactionRelease`, which *only* emit once a connection has been acquired, and is being released, respectively. Most of the time you'll want to listen for these events instead of their `onTransactionBegin`/`onTransactionEnd` counterparts.
+The two exceptions, as mentioned above, are `onTransactionAcquire` and `onTransactionRelease`, which _only_ emit once a connection has been acquired, and is being released, respectively. Most of the time you'll want to listen for these events instead of their `onTransactionBegin`/`onTransactionEnd` counterparts.
 
 ## `onTransactionBegin`
 
-This event fires when the transaction block is first opened and before the body begins processing. 
+This event fires when the transaction block is first opened and before the body begins processing.
 
-Note that in BoxLang transactions, *no connection is acquired until the first JDBC query is executed*. This means that the `onTransactionBegin` will not have any connection to operate on. Most of the time, you will want to use [`onTransactionAcquire`](#onTransactionAcquire) in place of `onTransactionBegin`.
+Note that in BoxLang transactions, _no connection is acquired until the first JDBC query is executed_. This means that the `onTransactionBegin` will not have any connection to operate on. Most of the time, you will want to use [`onTransactionAcquire`](transactions.md#onTransactionAcquire) in place of `onTransactionBegin`.
 
-
-| Parameter   | Parameter type | Description                                                                   |
-|-------------|----------------|-------------------------------------------------------------------------------|
-| transaction | Java class     | Instance of the Transaction object                                            |
+| Parameter   | Parameter type | Description                        |
+| ----------- | -------------- | ---------------------------------- |
+| transaction | Java class     | Instance of the Transaction object |
 
 Example:
 
@@ -93,11 +96,11 @@ function onTransactionBegin( struct data ){}
 
 This event fires when the transaction block is closed after the body has finished processing.
 
-Consider using [`onTransactionRelease`](#onTransactionRelease) as an alternative to `onTransactionEnd` if you only want to listen for transactions that have done work.
+Consider using [`onTransactionRelease`](transactions.md#onTransactionRelease) as an alternative to `onTransactionEnd` if you only want to listen for transactions that have done work.
 
-| Parameter   | Parameter type | Description                                                                   |
-|-------------|----------------|-------------------------------------------------------------------------------|
-| transaction | Java class     | Instance of the Transaction object                                            |
+| Parameter   | Parameter type | Description                                                                                                                                            |
+| ----------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| transaction | Java class     | Instance of the Transaction object                                                                                                                     |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon. May be `null` if no JDBC queries have executed inside this transaction. |
 
 Example:
@@ -111,7 +114,7 @@ function onTransactionEnd( struct data ){}
 This event fires when the transaction first acquires a connection due to a JDBC query being executed within the body. You should prefer this over `onTransactionBegin`.
 
 | Parameter   | Parameter type | Description                                                                   |
-|-------------|----------------|-------------------------------------------------------------------------------|
+| ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
 
@@ -126,7 +129,7 @@ function onTransactionAcquire( struct data ){}
 This event fires when the transaction releases its connection. You should prefer this over `onTransactionEnd`.
 
 | Parameter   | Parameter type | Description                                                                   |
-|-------------|----------------|-------------------------------------------------------------------------------|
+| ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
 
@@ -141,7 +144,7 @@ function onTransactionRelease( struct data ){}
 This event fires when a transaction commit action occurs. Can occur multiple times (or never) within a single transaction.
 
 | Parameter   | Parameter type | Description                                                                   |
-|-------------|----------------|-------------------------------------------------------------------------------|
+| ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
 
@@ -156,7 +159,7 @@ function onTransactionCommit( struct data ){}
 This event fires when a transaction rollback action occurs. Can occur multiple times (or never) within a single transaction.
 
 | Parameter   | Parameter type | Description                                                                   |
-|-------------|----------------|-------------------------------------------------------------------------------|
+| ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
 | savepoint   | String         | Savepoint name to roll back to. May be `null`.                                |
@@ -172,7 +175,7 @@ function onTransactionRollback( struct data ){}
 This event fires when a transaction savepoint is set.
 
 | Parameter   | Parameter type | Description                                                                   |
-|-------------|----------------|-------------------------------------------------------------------------------|
+| ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
 | savepoint   | String         | Savepoint name to set.                                                        |
@@ -192,7 +195,7 @@ To achieve all this, BoxLang transactions are savepoint-driven. All savepoints c
 Other behavioral notes:
 
 * Rolling back the child transaction will roll back to the `CHILD_{UUID}_BEGIN` savepoint.
-* A transaction commit in the child transaction *does not commit the transaction*, but instead creates a `CHILD_{UUID}_COMMIT` savepoint.
+* A transaction commit in the child transaction _does not commit the transaction_, but instead creates a `CHILD_{UUID}_COMMIT` savepoint.
 * Rolling back the (entire) parent transaction will roll back the child transaction.
 * Rolling back the parent transaction to a pre-child savepoint will roll back the entire child transaction.
 
@@ -213,7 +216,7 @@ transaction{
 In this example, the 'BMW X3' insert is rolled back by the unqualified `transactionRollback()` call, but the 'Ford Fusion' insert in the parent transaction is still committed to the database when the parent transaction completes:
 
 | Make | Model  |
-|------|--------|
+| ---- | ------ |
 | Ford | Fusion |
 
 Note that we would get the same result if the child transaction threw an exception instead of rolling back:
@@ -229,7 +232,7 @@ transaction{
 ```
 
 | Make | Model  |
-|------|--------|
+| ---- | ------ |
 | Ford | Fusion |
 
 Let's run this same one again, but replace the child rollback with a commit, and add a rollback to the parent transaction:
@@ -246,9 +249,6 @@ transaction{
 ```
 
 You can see that regardless of the `transactionCommit()` in the child transaction, **both** inserts are rolled back:
-
-| Make | Model  |
-|------|--------|
 
 ## Transactional BIFs
 

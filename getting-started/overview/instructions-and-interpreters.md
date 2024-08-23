@@ -1,5 +1,6 @@
 ---
 description: BoxLang is a dynamic JSR-223 language that runs on the JVM
+icon: file-binary
 ---
 
 # Instructions & Interpreters
