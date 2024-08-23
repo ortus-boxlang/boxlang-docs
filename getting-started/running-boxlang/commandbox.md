@@ -1,5 +1,6 @@
 ---
 description: Power your mission-critical and enterprise applications with CommandBox
+icon: square-code
 ---
 
 # CommandBox

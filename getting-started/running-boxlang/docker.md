@@ -1,5 +1,6 @@
 ---
 description: Containerize all things with BoxLang
+icon: docker
 ---
 
 # Docker

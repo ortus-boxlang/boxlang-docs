@@ -1,5 +1,6 @@
 ---
 description: Discover if your application is compatible with BoxLang.
+icon: clipboard-check
 ---
 
 # CFML Feature Audit

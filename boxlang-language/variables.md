@@ -55,7 +55,7 @@ world
 
 As you can see, we can create [strings](strings.md), [numerics](numbers.md), [arrays](arrays.md), [structs](structures.md), uses headless functions (BIFS) and more. There is no need for types or special assignments. The BoxLang engine will determine or infer it and use it accordingly, thus a dynamic language.
 
-### BIF
+### BIFs
 
 BoxLang leverages several headless built-in functions that are available anywhere you code.  These will be referred to you as BIFs.  You can see our [reference guide](reference/built-in-functions/) to check them out.  Here are some we used:
 

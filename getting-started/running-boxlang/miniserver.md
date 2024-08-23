@@ -1,5 +1,6 @@
 ---
 description: BoxLang includes a lightning fast web server powered by Undertow!
+icon: jet-fighter-up
 ---
 
 # MiniServer

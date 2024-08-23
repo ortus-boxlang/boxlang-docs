@@ -1,5 +1,6 @@
 ---
 description: https://try.boxlang.io
+icon: split
 ---
 
 # Try BoxLang!

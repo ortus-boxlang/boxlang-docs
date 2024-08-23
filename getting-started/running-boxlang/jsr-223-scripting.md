@@ -1,5 +1,6 @@
 ---
 description: Java scripting with BoxLang
+icon: scroll
 ---
 
 # JSR-223 Scripting

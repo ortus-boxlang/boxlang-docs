@@ -1,5 +1,6 @@
 ---
 description: Sourceless deployments for all
+icon: laptop-binary
 ---
 
 # BoxLang Compiler

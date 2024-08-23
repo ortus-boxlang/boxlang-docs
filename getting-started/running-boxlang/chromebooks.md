@@ -1,5 +1,6 @@
 ---
 description: Learn how to code with BoxLang and your favorite Chromebook!
+icon: chrome
 ---
 
 # Chromebooks

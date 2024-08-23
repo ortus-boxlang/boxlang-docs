@@ -1,5 +1,6 @@
 ---
 description: BoxLang Runtime for AWS Lambda! Serverless for the win!
+icon: aws
 ---
 
 # AWS Lambda
