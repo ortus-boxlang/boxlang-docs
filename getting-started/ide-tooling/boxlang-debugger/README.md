@@ -1,6 +1,6 @@
 ---
-description: Learn how to debug with BoxLang and the BoxLang IDE
 icon: spider
+description: Learn how to debug with BoxLang and the BoxLang IDE
 ---
 
 # BoxLang Debugger
@@ -104,6 +104,14 @@ Finally, we get to the debugger controls. These controls are the unsung hero of 
 * `Stop` - Stop debugging
 
 The controls mostly speak for themselves. The best way to get familiar with them is to jump in and play around. After just a few minutes of playing around with them, using them as part of your debug process will become second nature.
+
+## Further Debugging
+
+You can also debug your web applications easily by running the BoxLang debugger on either the MiniServer or CommandBox Runtimes:
+
+[miniserver-debugging.md](miniserver-debugging.md "mention")
+
+[commandbox-debugging.md](commandbox-debugging.md "mention")
 
 ## Conclusion
 
