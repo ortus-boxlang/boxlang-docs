@@ -21,7 +21,7 @@ EncryptBinary(object=[any], key=[string], algorithm=[string], encoding=[string],
 | `encoding` | `string` | `false` | The encoding type to use for encoding the encrypted data. Default is Base64 | `UU` |
 | `IVorSalt` | `any` | `false` | The initialization vector or salt to use for encryption. |  |
 | `iterations` | `integer` | `false` | The number of iterations to use for encryption. Default is 1000 | `1000` |
-| `precise` | `boolean` | `false` | If set to true, the string and key will be validated before encryption to ensure conformity to the algorithm. Default is false | `false` |
+| `precise` | `boolean` | `false` | If set to true, the string and key will be validated before encryption to ensure conformity to the algorithm. Default is false | `true` |
 
 ## Examples
 

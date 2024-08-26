@@ -15,9 +15,9 @@ DateAdd(datepart=[string], number=[long], date=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `datepart` | `string` | `true` |  |  |
-| `number` | `long` | `true` |  |  |
-| `date` | `any` | `true` |  |  |
+| `datepart` | `string` | `true` | The date part to modify |  |
+| `number` | `long` | `true` | The number of units to modify by |  |
+| `date` | `any` | `true` | The date object to modify |  |
 
 ## Examples
 

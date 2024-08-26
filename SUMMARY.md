@@ -617,6 +617,8 @@
       * [XMLTransform](boxlang-language/reference/built-in-functions/xml/XMLTransform.md)
       * [XMLValidate](boxlang-language/reference/built-in-functions/xml/XMLValidate.md)
     * [zip](boxlang-language/reference/built-in-functions/zip/README.md)
+      * [Compress](boxlang-language/reference/built-in-functions/zip/Compress.md)
+      * [Extract](boxlang-language/reference/built-in-functions/zip/Extract.md)
       * [IsZipFile](boxlang-language/reference/built-in-functions/zip/IsZipFile.md)
   * [Components](boxlang-language/reference/components/README.md)
     * [async](boxlang-language/reference/components/async/README.md)

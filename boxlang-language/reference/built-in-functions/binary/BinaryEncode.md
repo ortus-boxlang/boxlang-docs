@@ -15,8 +15,8 @@ BinaryEncode(binary=[any], encoding=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `binary` | `any` | `true` |  |  |
-| `encoding` | `string` | `true` |  |  |
+| `binary` | `any` | `true` | The binary data to encode |  |
+| `encoding` | `string` | `true` | The encoding to use |  |
 
 ## Examples
 

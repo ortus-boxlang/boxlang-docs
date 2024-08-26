@@ -949,7 +949,7 @@ Arguments:
 |----------|------|----------|---------|
 | `substring1` | `string` | `true` | `null` |
 | `obj` | `string` | `true` | `null` |
-| `scope` | `string` | `true` | `once` |
+| `scope` | `string` | `true` | `one` |
 
 </details>
 <details>
@@ -1180,7 +1180,7 @@ Arguments:
 |----------|------|----------|---------|
 | `substring1` | `string` | `true` | `null` |
 | `obj` | `string` | `true` | `null` |
-| `scope` | `string` | `true` | `once` |
+| `scope` | `string` | `true` | `one` |
 
 </details>
 <details>

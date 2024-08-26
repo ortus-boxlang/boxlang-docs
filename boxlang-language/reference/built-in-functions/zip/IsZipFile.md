@@ -23,4 +23,5 @@ IsZipFile(path=[string])
 
 ## Related
 
-
+  * [Compress](./Compress.md)
+  * [Extract](./Extract.md)
