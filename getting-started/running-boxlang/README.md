@@ -1,6 +1,6 @@
 ---
-description: BoxLang and the Multiverse!
 icon: plug-circle-bolt
+description: BoxLang and the Multiverse!
 ---
 
 # Running BoxLang
@@ -41,7 +41,11 @@ c:/Windows/users/myuser/.boxlang
 
 This is important because inside of the home folder, you can have several folders and files by convention that will be used for the runtime execution.
 
-<table><thead><tr><th width="177">Folder/FIle</th><th>Description</th></tr></thead><tbody><tr><td><code>/classes</code></td><td>Where all the compiled classes will be stored</td></tr><tr><td><code>/lib</code></td><td>You can place any *.jar files here, and they will be loaded into the runtime at startup. This is a great place to put third-party jars that will be available at runtime.</td></tr><tr><td><code>/logs</code></td><td>All log files will be stored here</td></tr><tr><td><code>/modules</code></td><td>Here is where the BoxLang modules are installed and will be available for the entire operating system binary.</td></tr><tr><td><code>boxlang.json</code></td><td>The <a href="../configuration.md">runtime configuration file</a>.  Here is where you can configure all the settings, caches, datasources, compiler information, and so much more.</td></tr></tbody></table>
+{% hint style="danger" %}
+Please note that each runtime can have a different location for the BoxLang home.  So make sure you read each of the runtime's docs to see where each goes.
+{% endhint %}
+
+<table><thead><tr><th width="257">Folder/FIle</th><th>Description</th></tr></thead><tbody><tr><td><code>/classes</code></td><td>Where all the compiled classes will be stored</td></tr><tr><td><code>/config</code></td><td>Where configuration files are stored for the runtime</td></tr><tr><td><code>/config/boxlang.json</code></td><td>The <a href="../configuration.md">runtime configuration file</a>.  Here is where you can configure all the settings, caches, datasources, compiler information, and so much more.</td></tr><tr><td><code>/global</code></td><td>Where global BoxLang classes and component templates can be stored for the entire runtime</td></tr><tr><td><code>/lib</code></td><td>You can place any *.jar files here, and they will be loaded into the runtime at startup. This is a great place to put third-party jars that will be available at runtime.</td></tr><tr><td><code>/logs</code></td><td>All log files will be stored here</td></tr><tr><td><code>/modules</code></td><td>Here is where the BoxLang modules are installed and will be available for the entire operating system binary.</td></tr><tr><td><code>version.properties</code></td><td>The version information of the installed runtime.</td></tr></tbody></table>
 
 ### Start the REPL  <a href="#start-the-repl-8" id="start-the-repl-8"></a>
 
@@ -99,7 +103,7 @@ BoxLang> ["luis","gavin","jorge"].map( name->name.ucFirst() )
 ```
 
 {% hint style="success" %}
-Press Ctrl-C to exit the REPL.
+Press Ctrl-C to exit the REPL or type `exit` or `quit`
 {% endhint %}
 
 Please note that the REPL remembers state, so you can use the variables you declare and build a mini-program with it.
@@ -114,6 +118,9 @@ Allowed files are:
 * `*.bx -` A BoxLang class with a `main( args=[] )` method
 * \*.bxs -  A BoxLang script file
 * \*.bxm - A Boxlang markup template file
+
+If you are using the `bx-compat` module for CFML Support:
+
 * \*.cfs - A CFML script file
 * \*.cfm - A CFML markup template file
 {% endhint %}
@@ -162,7 +169,7 @@ println( "Time is #now()#" )
 
 I get the output:
 
-```python
+```bash
 ╰─ boxlang test.bxs
 Time is {ts '2024-05-22 22:09:56'}
 ```
@@ -224,7 +231,7 @@ type test.cfs | java -jar boxlang-1.0.0-all.jar
 type test.cfs | boxlang.bat
 ```
 
-### Other Command Line Arguments <a href="#other-command-line-args-10" id="other-command-line-args-10"></a>
+### Command Line Arguments <a href="#other-command-line-args-10" id="other-command-line-args-10"></a>
 
 We also support the following command line args right now.
 
@@ -240,7 +247,7 @@ We also support the following command line args right now.
 
 ### Using 3rd Party Jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
 
-You can load custom third-party JARs at runtime by adding all your `*.jar` to the BOXLANG\_HOME/lib folder. This will be loaded at runtime and available to use and integrate.
+You can load custom third-party JARs at runtime by adding all your `*.jar` to the `BOXLANG_HOME/lib` folder. This will be loaded at runtime and available to use and integrate.
 
 ### Environment Variables
 
