@@ -5,6 +5,8 @@ description: Learn how to debug with BoxLang and the BoxLang IDE
 
 # BoxLang Debugger
 
+<figure><img src="../../../.gitbook/assets/BL-Debugger.png" alt=""><figcaption></figcaption></figure>
+
 ## What is a Debugger?
 
 Have you used a debugger before? Have you used one regularly? If you have great! Hopefully, BoxLang’s debugger will make you feel at home. Let me introduce the concept if you are unfamiliar with using a debugger as part of your development process.

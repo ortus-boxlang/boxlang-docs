@@ -31,6 +31,7 @@
   * [AWS Lambda](getting-started/running-boxlang/aws-lambda.md)
   * [CommandBox](getting-started/running-boxlang/commandbox.md)
   * [Chromebooks](getting-started/running-boxlang/chromebooks.md)
+  * [CLI Scripting](getting-started/running-boxlang/cli-scripting.md)
   * [Docker](getting-started/running-boxlang/docker.md)
   * [JSR-223 Scripting](getting-started/running-boxlang/jsr-223-scripting.md)
   * [MiniServer](getting-started/running-boxlang/miniserver.md)
