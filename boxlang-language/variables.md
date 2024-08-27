@@ -95,40 +95,93 @@ Most BoxLang variables have a few requirements imposed by the Virtual Machine (V
 
 ### Reserved Words
 
-As with any programming language, there are specific names you can't use, and some you can use, but they can be very confusing for developers or the engine. Here is a list of some of those:
+As with any programming language, there are specific names you can't use, and some you can use.  Here are the rules:
 
-* The name of any of the internal BoxLang engine scopes: `form, session, cgi, client, url, application, function`
+* The name of any of the internal BoxLang persistent scopes: `form, session, cgi, client, url, application, function`
   * Technically you can create the variable by long scoping (`local.form`), but it is confusing and error-prone. So please be careful.
-
-| Reserved Word               |
-| --------------------------- |
-| `eq`                        |
-| `eqv`                       |
-| `false`                     |
-| `finally`                   |
-| `final`                     |
-| `for`                       |
-| `function`                  |
-| `gt`                        |
-| `gte`                       |
-| `import`                    |
-| `in`                        |
-| `is`                        |
-| `if`                        |
-| `interface`                 |
-| `lt`                        |
-| `lte`                       |
-| `local` (within a function) |
-| `neq`                       |
-| `not`                       |
-| `null`                      |
-| `or`                        |
-| `return`                    |
-| `switch`                    |
-| `true`                      |
-| `try`                       |
-| `while`                     |
-| `xor`                       |
+* Reserved Operators
+  * `AND`
+  * `EQ`
+  * `EQUAL`
+  * `EQV`
+  * `GE`
+  * `GREATER`
+  * `GT`
+  * `GTE`
+  * `IMP`
+  * `IS`
+  * `LE`
+  * `LESS`
+  * `LT`
+  * `LTE`
+  * `MOD`
+  * `NEQ`
+  * `NOT`
+  * `OR`
+  * `THAN`
+  * `XOR`
+* Reserved Keywords
+  * `ABSTRACT`
+  * `ANY`
+  * `ARRAY`
+  * `AS`
+  * `ASSERT`
+  * `BOOLEAN`
+  * `BREAK`
+  * `CASE`
+  * `CASTAS`
+  * `CATCH`
+  * `CLASS`
+  * `CONTAIN`
+  * `CONTAINS`
+  * `CONTINUE`
+  * `DEFAULT`
+  * `DO`
+  * `DOES`
+  * `ELIF`
+  * `ELSE`
+  * `FALSE`
+  * `FINAL`
+  * `FINALLY`
+  * `FOR`
+  * `FUNCTION`
+  * `IF`
+  * `IMPORT`
+  * `IN`
+  * `INCLUDE`
+  * `INSTANCEOF`
+  * `INTERFACE`
+  * `JAVA`
+  * `MESSAGE`
+  * `NEW`
+  * `NULL`
+  * `NUMERIC`
+  * `PACKAGE`
+  * `PARAM`
+  * `PRIVATE`
+  * `PROPERTY`
+  * `PUBLIC`
+  * `QUERY`
+  * `REMOTE`
+  * `REQUEST`
+  * `REQUIRED`
+  * `RETHROW`
+  * `RETURN`
+  * `SERVER`
+  * `SETTING`
+  * `STATIC`
+  * `STRING`
+  * `STRUCT`
+  * `SWITCH --> Could possibly be a var name, but not a function/method name`
+  * `THROW`
+  * `TO`
+  * `TRUE`
+  * `TRY`
+  * `TYPE`
+  * `VARIABLES`
+  * `VAR`
+  * `WHEN`
+  * `WHILE`
 
 ## Flexible Typing
 
