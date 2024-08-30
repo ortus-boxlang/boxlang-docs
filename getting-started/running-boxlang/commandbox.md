@@ -7,9 +7,9 @@ icon: square-code
 
 <figure><img src="../../.gitbook/assets/commandbox.png" alt=""><figcaption></figcaption></figure>
 
-CommandBox is a standalone, native tool for Windows, Mac, and Linux that provides a Command-Line Interface (CLI) for developer productivity, tool interaction, package management, embedded JEE server, application scaffolding, and sweet ASCII art.
+[CommandBox](https://commandbox.ortusbooks.com/) is a standalone, native tool for Windows, Mac, and Linux that provides a Command-Line Interface (CLI) for developer productivity, tool interaction, package management, embedded JEE server, application scaffolding, and sweet ASCII art.
 
-It seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or CFML project. We have created a special servlet runtime for CommandBox so you can leverage it to deploy mission-critical and high-traffic web applications. We go even further with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro) as part of our [BoxLang subscriptions](https://boxlang.io/plans) to give you tons of features like JDK management, Multi-site support, Multi-SSL support, Operating System service manager, SNI support, CAC Support, and so much more.
+CommandBox seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or CFML project. We have created a special servlet runtime for CommandBox so you can leverage it to deploy mission-critical and high-traffic web applications. We go even further with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro) as part of our [BoxLang subscriptions](https://boxlang.io/plans) to give you tons of features like JDK management, Multi-site support, Multi-SSL support, Operating System service manager, SNI support, CAC Support, and so much more.
 
 <figure><img src="../../.gitbook/assets/image (1) (1) (1) (1).png" alt="" width="156"><figcaption></figcaption></figure>
 
@@ -17,9 +17,11 @@ It seamlessly integrates to work with any of [Ortus Solutions](http://www.ortuss
 Find out about CommandBox Pro [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)
 {% endhint %}
 
+You can find out more about getting started with CommandBox or CommandBox Pro in our [CommandBox documentation](https://commandbox.ortusbooks.com/getting-started-guide).
+
 ### Install the Module <a href="#versioning" id="versioning"></a>
 
-CommandBox needs (for the moment) the `commandbox-boxlang` module to start BoxLang servers. So let's go ahead and install it:
+Once installed, CommandBox needs (for the moment) the `commandbox-boxlang` module to start BoxLang servers. So let's go ahead and install it:
 
 ```bash
 install commandbox-boxlang
