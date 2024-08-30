@@ -11,6 +11,16 @@ Please note that our CFML Compatibility is still in progress. Please keep this p
 
 BoxLang is a new language with a dual parser to support the CFML ecosystem. It also has a compatibility module (`bx-compat`) that will allow the BoxLang runtime to behave like an Adobe or Lucee Server. We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
 
+You can install the compatibility module using `box install bx-compat` or if you have a `server.json` you can add the following:
+
+```java
+    "scripts":{
+        "onServerInitialInstall":"install bx-compat"
+    }
+```
+
+Even if you forget the server, when you start it up, it’ll get the compatibility module automatically.
+
 ### File Types
 
 BoxLang can parse and run all of the traditional CFML file types
