@@ -18,7 +18,7 @@ Compress the source file or folder to the destination file or folder using
 ## Method Signature
 
 ```
-Compress(format=[string], source=[string], destination=[string], includeBaseFolder=[boolean], overwrite=[boolean])
+Compress(format=[string], source=[string], destination=[string], includeBaseFolder=[boolean], overwrite=[boolean], prefix=[string], filter=[any], recurse=[boolean])
 ```
 
 ### Arguments
@@ -31,6 +31,9 @@ Compress(format=[string], source=[string], destination=[string], includeBaseFold
 | `destination` | `string` | `true` | The absolute path with a file name to save as the compressed file. Extension is optional. |  |
 | `includeBaseFolder` | `boolean` | `false` | Whether to include the base folder as the root of the compressed file. Default is true. | `true` |
 | `overwrite` | `boolean` | `false` | Whether to overwrite the destination file if it already exists. Default is false. | `false` |
+| `prefix` | `string` | `false` | The prefix directory to store the compressed files under. Default is empty. |  |
+| `filter` | `any` | `false` | A regular expression to filter the files to compress or a function that receives the file name and returns a boolean. |  |
+| `recurse` | `boolean` | `false` | Whether to compress the files recursively. Default is true. | `true` |
 
 ## Examples
 

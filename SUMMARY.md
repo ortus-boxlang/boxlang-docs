@@ -544,6 +544,7 @@
       * [SessionRotate](boxlang-language/reference/built-in-functions/system/SessionRotate.md)
       * [SessionStartTime](boxlang-language/reference/built-in-functions/system/SessionStartTime.md)
       * [Sleep](boxlang-language/reference/built-in-functions/system/Sleep.md)
+      * [SystemCacheClear](boxlang-language/reference/built-in-functions/system/SystemCacheClear.md)
       * [SystemExecute](boxlang-language/reference/built-in-functions/system/SystemExecute.md)
       * [SystemOutput](boxlang-language/reference/built-in-functions/system/SystemOutput.md)
       * [Throw](boxlang-language/reference/built-in-functions/system/Throw.md)
@@ -671,6 +672,8 @@
       * [Throw](boxlang-language/reference/components/system/Throw.md)
     * [xml](boxlang-language/reference/components/xml/README.md)
       * [XML](boxlang-language/reference/components/xml/XML.md)
+    * [zip](boxlang-language/reference/components/zip/README.md)
+      * [Zip](boxlang-language/reference/components/zip/Zip.md)
   * [Exceptions](boxlang-language/reference/Exceptions.md)
 
 ## BoxLang Framework

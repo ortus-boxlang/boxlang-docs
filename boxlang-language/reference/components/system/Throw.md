@@ -11,7 +11,7 @@ type=[String]
 detail=[String]
 errorcode=[String]
 extendedinfo=[any]
-object=[any] />
+object=[Throwable] />
 ```
 
 ### Attributes
@@ -24,7 +24,7 @@ object=[any] />
 | `detail` | `String` | `false` | Description of the event |  |
 | `errorcode` | `String` | `false` | A custom error code that you supply |  |
 | `extendedinfo` | `any` | `false` | Additional custom error data that you supply |  |
-| `object` | `any` | `false` | An instance of an exception object. If there is no message provided, this object will be thrown directly. If there is a message, a<br>                   CustomException will be thrown and this object will be used as the cause. |  |
+| `object` | `Throwable` | `false` | An instance of an exception object. If there is no message provided, this object will be thrown directly. If there is a message, a<br>                   CustomException will be thrown and this object will be used as the cause. |  |
 
 ## Examples
 
@@ -34,5 +34,5 @@ type=[String]
 detail=[String]
 errorcode=[String]
 extendedinfo=[any]
-object=[any] />
+object=[Throwable] />
 ```

@@ -7,7 +7,7 @@ Cast a value to a number.
 ## Method Signature
 
 ```
-ToNumeric(value=[any], radix=[any])
+ToNumeric(value=[string], radix=[any])
 ```
 
 ### Arguments
@@ -15,8 +15,8 @@ ToNumeric(value=[any], radix=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `value` | `any` | `true` | The value to cast. |  |
-| `radix` | `any` | `false` | The radix to use when casting the value. Valid values are "bin", "oct", "dec", and "hex". |  |
+| `value` | `string` | `true` | The value to cast. |  |
+| `radix` | `any` | `false` | The radix to use when casting the value. Valid values are 2-36, "bin", "oct", "dec", and "hex". |  |
 
 ## Examples
 

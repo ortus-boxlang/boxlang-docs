@@ -73,6 +73,7 @@ This function does not accept any arguments
   * [SessionRotate](./SessionRotate.md)
   * [SessionStartTime](./SessionStartTime.md)
   * [Sleep](./Sleep.md)
+  * [SystemCacheClear](./SystemCacheClear.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
   * [Throw](./Throw.md)

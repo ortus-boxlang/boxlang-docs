@@ -2,14 +2,21 @@
 
 # Function: `Dump`
 
-Outputs the contents of a variable of any type for debugging purposes.
+Outputs the contents of a variable (simple or complex) of any type for debugging purposes to a specific output location.
 
-The variable can be as simple as a string or as complex as a class or struct.
+<p>,
+ The available ,{@code output}, locations are:
+ - ,<strong>,buffer,<strong>,: The output is written to the buffer, which is the default location. If running on a web server, the output is written to the browser.
+ - ,<strong>,console,</strong>,: The output is printed to the System console.
+ - ,<strong>,{absolute_file_path},</strong>, The output is written to a file with the specified filename path.
+ ,<p>,
+ The output ,{@code format}, can be either HTML or plain text.
+ The default format is HTML if the output location is the buffer or a web server or a file, otherwise it is plain text for the console.
 
 ## Method Signature
 
 ```
-Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean])
+Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean], output=[string], format=[string], showUDFs=[boolean])
 ```
 
 ### Arguments
@@ -17,11 +24,14 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `var` | `any` | `false` | The variable to dump |  |
-| `label` | `string` | `false` | A label to display above the dump |  |
-| `top` | `numeric` | `false` | The number of levels to display | `0` |
-| `expand` | `boolean` | `false` | Whether to expand the dump | `true` |
-| `abort` | `boolean` | `false` | Whether to abort the request after dumping | `false` |
+| `var` | `any` | `false` | The variable to dump, can be any type |  |
+| `label` | `string` | `false` | A custom label to display above the dump (Only in HTML output) |  |
+| `top` | `numeric` | `false` | The number of levels to display when dumping collections. Great to avoid dumping the entire world! Default is inifinity. (Only in HTML output) | `0` |
+| `expand` | `boolean` | `false` | Whether to expand the dump. Be default, we try to expand as much as possible. (Only in HTML output) |  |
+| `abort` | `boolean` | `false` | Whether to do a hard abort the request after dumping. Default is false | `false` |
+| `output` | `string` | `false` | The output format which can be "buffer", "console", or "{absolute file path}". The default is "buffer". | `buffer` |
+| `format` | `string` | `false` | The format of the output to a <strong>filename</strong>. Can be "html" or "text". The default is according to the output location. |  |
+| `showUDFs` | `boolean` | `false` | Show UDFs or not. Default is true. (Only in HTML output) | `true` |
 
 ## Examples
 
@@ -79,6 +89,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [SessionRotate](./SessionRotate.md)
   * [SessionStartTime](./SessionStartTime.md)
   * [Sleep](./Sleep.md)
+  * [SystemCacheClear](./SystemCacheClear.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
   * [Throw](./Throw.md)

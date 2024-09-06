@@ -90,6 +90,7 @@ SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout
   * [SessionRotate](./SessionRotate.md)
   * [SessionStartTime](./SessionStartTime.md)
   * [Sleep](./Sleep.md)
+  * [SystemCacheClear](./SystemCacheClear.md)
   * [SystemOutput](./SystemOutput.md)
   * [Throw](./Throw.md)
   * [URLDecode](./URLDecode.md)

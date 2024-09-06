@@ -7,7 +7,7 @@ Formats a number with an optional format mask
 ## Method Signature
 
 ```
-NumberFormat(number=[any], mask=[string], locale=[string])
+NumberFormat(number=[number], mask=[string], locale=[string])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ NumberFormat(number=[any], mask=[string], locale=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `any` | `true` | The number to be formatted |  |
+| `number` | `number` | `true` | The number to be formatted |  |
 | `mask` | `string` | `false` | The formatting mask to apply |  |
 | `locale` | `string` | `false` | An optional locale string to apply to the format |  |
 

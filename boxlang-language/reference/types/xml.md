@@ -40,18 +40,6 @@ Arguments:
 
 </details>
 <details>
-<summary><code>toString(encoding=[string])</code></summary>
-
-Converts a value to a string.
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `encoding` | `string` | `false` | `null` |
-
-</details>
-<details>
 <summary><code>transform(XSL=[String], parameters=[Struct])</code></summary>
 
 Get XML values according to given xPath query

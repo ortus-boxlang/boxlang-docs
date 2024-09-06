@@ -70,6 +70,7 @@ This function does not accept any arguments
   * [SessionInvalidate](./SessionInvalidate.md)
   * [SessionStartTime](./SessionStartTime.md)
   * [Sleep](./Sleep.md)
+  * [SystemCacheClear](./SystemCacheClear.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
   * [Throw](./Throw.md)

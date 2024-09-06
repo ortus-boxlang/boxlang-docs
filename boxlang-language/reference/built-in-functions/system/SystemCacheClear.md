@@ -1,13 +1,15 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `Invoke`
+# Function: `SystemCacheClear`
 
-Invokes an object method and returns the result of the invoked method.
+For Lucee compat right now.
+
+We'll see if we need to do anything else.
 
 ## Method Signature
 
 ```
-Invoke(instance=[any], methodname=[string], arguments=[any])
+SystemCacheClear(cacheName=[string])
 ```
 
 ### Arguments
@@ -15,9 +17,7 @@ Invoke(instance=[any], methodname=[string], arguments=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `instance` | `any` | `true` | Instance of a Box Class or name of one to instantiate. If an empty string is provided, the method will be invoked within the<br>                    same template or Box Class. |  |
-| `methodname` | `string` | `true` | The name of the method to invoke |  |
-| `arguments` | `any` | `false` | An array of positional arguments or a struct of named arguments to pass into the method. |  |
+| `cacheName` | `string` | `false` |  |  |
 
 ## Examples
 
@@ -63,6 +63,7 @@ Invoke(instance=[any], methodname=[string], arguments=[any])
   * [GetTickCount](./GetTickCount.md)
   * [htmlEditFormat](./htmlEditFormat.md)
   * [IIF](./IIF.md)
+  * [Invoke](./Invoke.md)
   * [IsInstanceOf](./IsInstanceOf.md)
   * [JavaCast](./JavaCast.md)
   * [ObjectDeserialize](./ObjectDeserialize.md)
@@ -75,7 +76,6 @@ Invoke(instance=[any], methodname=[string], arguments=[any])
   * [SessionRotate](./SessionRotate.md)
   * [SessionStartTime](./SessionStartTime.md)
   * [Sleep](./Sleep.md)
-  * [SystemCacheClear](./SystemCacheClear.md)
   * [SystemExecute](./SystemExecute.md)
   * [SystemOutput](./SystemOutput.md)
   * [Throw](./Throw.md)

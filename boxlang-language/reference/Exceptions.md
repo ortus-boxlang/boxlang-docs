@@ -115,6 +115,12 @@ Most often it is seen when strongly typed arguments or attributes are used in a 
 </details>
 
 <details>
+<summary><code>AbstractClassException</code></summary>
+
+This exception is thrown when an abstract class is instantiated.
+</details>
+
+<details>
 <summary><code>NoElementException</code></summary>
 
 This exception is thrown when a variable is accessed that does not exist

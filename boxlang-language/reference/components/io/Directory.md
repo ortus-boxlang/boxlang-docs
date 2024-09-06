@@ -35,7 +35,7 @@ createPath=[boolean] />
 | `destination` | `string` | `false` |  |  |
 | `recurse` | `boolean` | `false` | Recurse into subdirectories. | `false` |
 | `type` | `string` | `true` | Type of directory listing to return (dir, file, all). | `all` |
-| `listInfo` | `string` | `true` | Information to return in the listing (name, all). | `query` |
+| `listInfo` | `string` | `true` | Information to return in the listing (name, all). | `all` |
 | `createPath` | `boolean` | `false` | Whether to create all paths necessary to create the directory path. | `true` |
 
 ## Examples
