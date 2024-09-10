@@ -1,5 +1,6 @@
 ---
 description: The Officially supported BoxLang modules
+icon: atom-simple
 ---
 
 # Modules

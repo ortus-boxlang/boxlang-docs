@@ -71,7 +71,7 @@
   * [Lambdas -> Pure Functions](boxlang-language/syntax/lambdas-greater-than-pure-functions.md)
   * [Includes](boxlang-language/includes.md)
   * [Threading](boxlang-language/threading.md)
-* [Classes & OO](boxlang-language/classes/README.md)
+* [Classes & O.O.](boxlang-language/classes/README.md)
   * [Properties](boxlang-language/classes/properties.md)
   * [Functions](boxlang-language/classes/functions.md)
   * [Static Constructs](boxlang-language/classes/static-constructs.md)

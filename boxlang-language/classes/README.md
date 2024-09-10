@@ -1,40 +1,52 @@
 ---
 icon: codepen
+description: BoxLang speaks O.O. and functional tongues.
 ---
 
-# Classes & OO
+# Classes & O.O.
 
-**BoxLang (BoxLang) is object-oriented, period!**
+BoxLang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Classes (`.bx`). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul web services.
 
-BoxLang is an Object-Oriented programming language which means that all the things we interact with inside the virtual machine are objects, which in our case we will call Classes (.bx). Objects can hold data, called **properties**, and they can perform actions, called **methods** or **functions,** they can inherit from other objects, they can implement interfaces, they can contain metadata, and even act as RESTFul webservices.
+```java
+@DisplayName "Cat"
+class extends="Animal"{
+
+    property boolean tail;
+    property string name;
+
+}
+```
 
 {% hint style="info" %}
-Remember that objects are not only data but data + behavior.
+Remember that objects are not only data but **data + behavior.**
 {% endhint %}
 
 For an example of an object, think about **you** as a human being. You have properties/attributes like height, weight, and eye color. You have functions/methods like walk, run, wash dishes, and daydream. Different kinds of objects have different properties and functions. Some might even just be a collection of functions (utility/static/service objects) or what are referred to as stateless objects, there is no instance data that they represent.
 
-BoxLang supports not only the traditional avenues for object orientation but many unique constructs and dynamic runtime additions. Enjoy!
+BoxLang supports not only the traditional avenues for object orientation but also many unique constructs and dynamic runtime additions. Enjoy!
 
 ## Classes and Instances
 
-In Object-Oriented programming we define **classes** which are abstract descriptions of a category or type of thing; a blueprint. In our case, we will call them classes and it defines what properties and functions all objects (instances) of that type have. You can consider them to be a blueprint of your object representation. They should have a distinct job and a **single** responsibility (if possible), try to avoid creating God objects.
+In Object-Oriented programming, we define **classes** which are abstract descriptions of a category or type of thing; a blueprint. In our case, we will call them classes and it defines what properties and functions all objects (instances) of that type have. You can consider them to be a blueprint of your object representation. They should have a distinct job and a **single** responsibility (if possible), try to avoid creating God objects.
 
-> In object-oriented programming, a God object is an object that knows too much or does too much. The God object is an example of an anti-pattern. A common programming technique is to separate a large problem into several smaller problems (a divide and conquer strategy) and create solutions for each of them. - [https://en.wikipedia.org/wiki/God\_object](https://en.wikipedia.org/wiki/God\_object)
+{% hint style="info" %}
+In object-oriented programming, a God object is an object that knows too much or does too much. The God object is an example of an anti-pattern. A common programming technique is to separate a large problem into several smaller problems (a divide and conquer strategy) and create solutions for each of them. - [https://en.wikipedia.org/wiki/God\_object](https://en.wikipedia.org/wiki/God\_object)
+{% endhint %}
 
 Let's check out an example of a simple Component, `User.bx`
 
 ```java
  /**
  * I represent a user in the system
+ * Remember that in BoxLang all properties have automatic getters/setters
  * @author Luis Majano
  */
- class accessors="true"{
+ class{
 
   /**
   * The name of the user
   */
-  property name="name";
+  property fullName;
 
   /**
   * The age of the user
@@ -42,16 +54,11 @@ Let's check out an example of a simple Component, `User.bx`
   property name="age" type="numeric";
 
   /**
-  * Constructor
+  * Automatic Constructor if none provided.
   */
-  function init( required name ){
-   variables.name = arguments.name;
 
-   return this;
-  }
-
-  function run(){
-   // run baby, run!
+  function main(){
+     // run baby, run!
   }
 
  }
