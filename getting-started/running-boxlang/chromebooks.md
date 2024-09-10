@@ -1,6 +1,6 @@
 ---
-description: Learn how to code with BoxLang and your favorite Chromebook!
 icon: chrome
+description: Learn how to code with BoxLang and your favorite Chromebook!
 ---
 
 # Chromebooks
@@ -73,7 +73,8 @@ gunzip OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.3_9.tar.gz
 # Untar it
 tar -xvf OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.3_9.tar
 # Move it to the /usr/lib/jvm folder
-mv jdk-21.0.3+9/ /usr/lib/jvm/
+mkdir /usr/lib/jvm
+mv jdk-21.0.3+9 /usr/lib/jvm/
 ```
 
 Now add the `JAVA_HOME` and the path to the jvm in your `PATH` using your bash profile
@@ -81,9 +82,17 @@ Now add the `JAVA_HOME` and the path to the jvm in your `PATH` using your bash p
 ```bash
 edit .bashrc
 
-export JAVA_HOME=/usr/lib/jvm/jdk-11.0.3_9
-export PATH=$PATH:/usr/lib/jvm/jdk-11.0.3_9/bin
+export JAVA_HOME=/usr/lib/jvm/jdk-21.0.3+9
+export PATH=$PATH:/usr/lib/jvm/jdk-21.0.3+9/bin
 ```
+
+We also need to add it to the `sudo` profile.&#x20;
+
+Type `sudo visudo` and add `:/usr/lib/jvm/jdk-21.0.3+9/bin` to the end of&#x20;
+
+`Defaults     secure_path="other/items/"`
+
+
 
 Once you add this to your bash profile, either source your shell or type `bash` or close and startup again
 
@@ -92,9 +101,9 @@ Once you add this to your bash profile, either source your shell or type `bash` 
 $ source .bashrc
 
 $ java -version
-openjdk version "17.0.11" 2024-04-16
-OpenJDK Runtime Environment (build 17.0.11+9-Debian-1deb12u1)
-OpenJDK 64-Bit Server VM (build 17.0.11+9-Debian-1deb12u1, mixed mode, sharing)
+openjdk version "21.0.3" 2024-04-16 LTS
+OpenJDK Runtime Environment Temurin-21.0.3+9 (build 21.0.3+9-Debian-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.3+9 (build 21.0.3+9-Debian-LTS, mixed mode, sharing)
 ```
 
 {% hint style="info" %}
@@ -121,7 +130,7 @@ Now that we have BoxLang installed, let's get VSCode so you can use this awesome
 
 <figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
-Choose the debian according to your processor and download the package.  Then double click it and run the installer.  Once done, you will have a new icon in your apps called `Visual Studio Code`. Click it and open it.
+Choose the debian according to your processor and download the package. If you are unsure about your Chromebook's processor, type `dpkg --print-architecture` in the Linux terminal for verification.  Then double click it and run the installer.  Once done, you will have a new icon in your apps called `Visual Studio Code`. Click it and open it.
 
 <figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
