@@ -1,6 +1,6 @@
 ---
-description: Getting started with BoxLang is easy!  Choose your path wisely!
 icon: sign-posts-wrench
+description: Getting started with BoxLang is easy!  Choose your path wisely!
 ---
 
 # Installation
@@ -16,7 +16,7 @@ You should be able to grab the Java 21 JDK for your OS and CPU arch here: [Downl
 * JDK 21+
 
 {% hint style="warning" %}
-BoxLang is currently compiling Java source on the fly for debugging purposes, so it requires a JDK, not a JRE, to run! Eventually, we’ll be generating bytecode directly, but for now, we have a dependency on the JDK’s Java Compiler classes.
+BoxLang is currently compiling Java source on the fly for debugging purposes, so it requires a JDK, not a JRE, to run! Once we go stable, JRE will be the requirement.
 {% endhint %}
 
 {% tabs %}
@@ -24,7 +24,7 @@ BoxLang is currently compiling Java source on the fly for debugging purposes, so
 We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
 
 ```bash
-brew install curl zip unzip openjdk
+brew install curl zip unzip openjdk@21
 ```
 {% endtab %}
 
@@ -54,11 +54,50 @@ sudo yum install curl zip unzip java-21-openjdk
 
 ```
 {% endtab %}
+
+{% tab title="Windows" %}
+### Powershell Script
+
+```powershell
+# Set the JDK version and download URL
+$jdkVersion = "21"
+# UPDATE AS NEEDED
+$jdkUrl = "https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_windows-x64_bin.zip"
+$installPath = "C:\Program Files\Java\jdk$jdkVersion"
+
+# Download the JDK zip file
+Write-Host "Downloading OpenJDK $jdkVersion..."
+Invoke-WebRequest -Uri $jdkUrl -OutFile "$env:TEMP\openjdk-$jdkVersion.zip"
+
+# Create the installation directory if it doesn't exist
+if (-Not (Test-Path -Path $installPath)) {
+    New-Item -ItemType Directory -Path $installPath
+}
+
+# Extract the downloaded zip file to the installation path
+Write-Host "Extracting OpenJDK $jdkVersion..."
+Expand-Archive -Path "$env:TEMP\openjdk-$jdkVersion.zip" -DestinationPath $installPath
+
+# Set the JAVA_HOME environment variable
+Write-Host "Setting JAVA_HOME..."
+[System.Environment]::SetEnvironmentVariable("JAVA_HOME", $installPath, [System.EnvironmentVariableTarget]::Machine)
+
+# Update the PATH environment variable
+$path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
+if ($path -notlike "*$installPath\bin*") {
+    Write-Host "Updating PATH..."
+    $newPath = "$installPath\bin;$path"
+    [System.Environment]::SetEnvironmentVariable("Path", $newPath, [System.EnvironmentVariableTarget]::Machine)
+}
+
+Write-Host "OpenJDK $jdkVersion installation completed."
+```
+{% endtab %}
 {% endtabs %}
 
-## Mac/\*Unix Quick Installer
+## Quick Installer
 
-To get started quickly with BoxLang, use our BoxLang Quick Installer:
+To get started quickly with BoxLang, use our BoxLang Quick Installer for Mac/Linux/\*Nix/Windows
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}
@@ -72,17 +111,22 @@ To get started quickly with BoxLang, use our BoxLang Quick Installer:
 /bin/sh -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
 ```
 {% endtab %}
+
+{% tab title="Windows PowerShell" %}
+```powershell
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ortus-boxlang/boxlang-quick-installer/main/src/Run-InstallBoxLang.ps1'))
+```
+{% endtab %}
 {% endtabs %}
 
 {% hint style="danger" %}
-If your system requires admin privileges (Like Chromebooks), make sure you use `sudo`
+If your system requires admin privileges (Like Chromebooks), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
 {% endhint %}
 
 {% hint style="info" %}
 The quick installer requires the following:
 
 * JDK21+
-* `curl, unzip` installed
 * Permission to copy files to `/usr/local/bin and /usr/local/lib`
 {% endhint %}
 
@@ -103,10 +147,13 @@ install-boxlang
 
 # Upgrade or Downgrade to a specific version
 install-boxlang 1.0.0
+
+# Use the latest snapshot
+install-boxlang snapshot
 ```
 
-{% hint style="info" %}
-You can get the version information of the current Box Runtime with `GetBoxVersionInfo()`
+{% hint style="success" %}
+You can get the version of the current BoxLang Runtime by running `boxlang --version`
 {% endhint %}
 
 ### REPL
