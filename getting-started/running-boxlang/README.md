@@ -200,10 +200,10 @@ Task called with {ARGS=[boxlang, rocks]}
 
 ### One Off Code Execution
 
-So, to give a quiet example of the `-c` flag here’s running some one-off code.
+So, to give a quiet example of the `--bx-code` flag here’s running some one-off code.
 
 ```bash
-boxlang -c "2+2"
+boxlang --bx-code "2+2"
 ```
 
 {% hint style="warning" %}
@@ -233,17 +233,24 @@ type test.cfs | boxlang.bat
 
 ### Command Line Arguments <a href="#other-command-line-args-10" id="other-command-line-args-10"></a>
 
-We also support the following command line args right now.
+If you interact with the `boxlang` binary then you will be executing the `BoxRunner` class in BoxLang.  You can use several options and positional arguments to our runtime.  Let's explore them.
 
-* `-c "code here"`—This is used to pass ad-hoc code to execute. Provide code in the next argument, quoted.
-* `--config or -config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
-* `--debug or -d` - Enable debug mode (more debug logs!)
-* `--home or -h` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
-* `--printAST or -p` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
-* `--transpile or -t` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
-* `--version or -v` - Output  the current runtime's version information
-* `path` - The template, class, or script to execute
-* `module:{name}` - The executable module to execute.  This will execute a Modules' `ModuleConfig.main()` method.
+#### Options
+
+* `--bx-code "code here"`—This is used to pass ad-hoc code to execute. Provide code in the next argument, quoted.
+* `--bx-config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
+* `--bx-debug` - Enable debug mode (more debug logs!)
+* `--bx-home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
+* `--bx-printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
+* `--bx-transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
+* `--version` - Output  the current runtime's version information
+
+#### Positionals
+
+* `script_path | class_path` - The template, class, or script to execute
+  * If it's a class, it must have a `main( args )` method.
+* `module:{name}` - The executable module to execute.  This will execute a Modules' `ModuleConfig.main( args )` method.
+* `{actionCommand: compile,featureAudit, cftranspile}` - If you send any of those action commands, we will execute those CLI tools
 
 ### Using 3rd Party Jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
 
