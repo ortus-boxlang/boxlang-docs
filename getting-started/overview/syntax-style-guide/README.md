@@ -1,6 +1,6 @@
 ---
-description: Quickly learn what the BoxLang language offers.
 icon: vest
+description: Quickly learn what the BoxLang language offers.
 ---
 
 # Quick Syntax Style Guide
@@ -391,6 +391,7 @@ All Java types can be used alongside the core BoxLang types:
 * `numeric`
 * `number`
 * `query`
+* `immutableQuery`
 * `string`
 * `struct`
 * `immutableStruct`
