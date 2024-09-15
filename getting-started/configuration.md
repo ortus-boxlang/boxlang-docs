@@ -244,8 +244,7 @@ Here is a full reference of the current default `boxlang.json` file:
 		// "compat": {
 		// 	"disabled": false,
 		// 	"settings": {
-		// 		"isLucee": true,
-		// 		"isAdobe": true
+		// 		"engine" : "adobe"
 		// 	}
 		// }
 	}
