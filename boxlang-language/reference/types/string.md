@@ -7,21 +7,21 @@
 ## String Methods
 
 <details>
-<summary><code>lSParseDateTime(locale=[string], timezone=[string], format=[string])</code></summary>
+<summary><code>parseDateTime(format=[string], timezone=[string], locale=[string])</code></summary>
 
-Parses a locale-specific datetime string or object
+Parses a datetime string or object
 
 Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
+| `format` | `string` | `false` | `null` |
+| `timezone` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
-| `timezone` | `string` | `false` | `null` |
-| `format` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>parseDateTime(format=[string], timezone=[string])</code></summary>
+<summary><code>toDateTime(format=[string], timezone=[string], locale=[string])</code></summary>
 
 Parses a datetime string or object
 
@@ -31,19 +31,7 @@ Arguments:
 |----------|------|----------|---------|
 | `format` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
-
-</details>
-<details>
-<summary><code>toDateTime(format=[string], timezone=[string])</code></summary>
-
-Parses a datetime string or object
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `format` | `string` | `false` | `null` |
-| `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
@@ -936,7 +924,7 @@ Arguments:
 Reverse the order of characters in a string
 </details>
 <details>
-<summary><code>replace(substring1=[string], obj=[string], scope=[string])</code></summary>
+<summary><code>replace(substring1=[string], obj=[any], scope=[string])</code></summary>
 
 Replaces occurrences of substring1 in a string with obj, in a specified scope.
 
@@ -948,7 +936,7 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `substring1` | `string` | `true` | `null` |
-| `obj` | `string` | `true` | `null` |
+| `obj` | `any` | `true` | `null` |
 | `scope` | `string` | `true` | `one` |
 
 </details>
@@ -1167,7 +1155,7 @@ Arguments:
 Return Yes/No based on whether the input is true/false
 </details>
 <details>
-<summary><code>replaceNoCase(substring1=[string], obj=[string], scope=[string])</code></summary>
+<summary><code>replaceNoCase(substring1=[string], obj=[any], scope=[string], start=[string])</code></summary>
 
 Replaces occurrences of substring1 in a string with obj, in a specified scope.
 
@@ -1179,8 +1167,9 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `substring1` | `string` | `true` | `null` |
-| `obj` | `string` | `true` | `null` |
+| `obj` | `any` | `true` | `null` |
 | `scope` | `string` | `true` | `one` |
+| `start` | `string` | `false` | `1` |
 
 </details>
 <details>

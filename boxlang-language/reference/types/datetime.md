@@ -53,7 +53,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>dateFormat(mask=[string], timezone=[string])</code></summary>
+<summary><code>dateFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
 
 Formats a datetime, date or time
 
@@ -63,10 +63,11 @@ Arguments:
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>dateTimeFormat(mask=[string], timezone=[string])</code></summary>
+<summary><code>dateTimeFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
 
 Formats a datetime, date or time
 
@@ -76,10 +77,11 @@ Arguments:
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>day(timezone=[string])</code></summary>
+<summary><code>day(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -88,10 +90,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>dayOfWeek(timezone=[string])</code></summary>
+<summary><code>dayOfWeek(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -100,10 +103,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>dayOfWeekAsString(timezone=[string])</code></summary>
+<summary><code>dayOfWeekAsString(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -112,10 +116,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>dayOfWeekShortAsString(timezone=[string])</code></summary>
+<summary><code>dayOfWeekShortAsString(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -124,10 +129,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>dayOfYear(timezone=[string])</code></summary>
+<summary><code>dayOfYear(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -136,10 +142,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>daysInMonth(timezone=[string])</code></summary>
+<summary><code>daysInMonth(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -148,10 +155,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>daysInYear(timezone=[string])</code></summary>
+<summary><code>daysInYear(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -160,6 +168,7 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
@@ -188,7 +197,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>firstDayOfMonth(timezone=[string])</code></summary>
+<summary><code>firstDayOfMonth(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -197,10 +206,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>format(mask=[string], timezone=[string])</code></summary>
+<summary><code>format(mask=[string], timezone=[string], locale=[string])</code></summary>
 
 Formats a datetime, date or time
 
@@ -210,10 +220,11 @@ Arguments:
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>getnumericdate(timezone=[string])</code></summary>
+<summary><code>getnumericdate(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -222,10 +233,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>getTime(timezone=[string])</code></summary>
+<summary><code>getTime(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -234,6 +246,7 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
@@ -251,7 +264,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>hour(timezone=[string])</code></summary>
+<summary><code>hour(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -260,82 +273,63 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
-
-</details>
-<details>
-<summary><code>lSDateFormat(mask=[string], locale=[string], timezone=[string])</code></summary>
-
-Formats a date in a locale-specific format
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `mask` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
-| `timezone` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>lSDateTimeFormat(mask=[string], locale=[string], timezone=[string])</code></summary>
+<summary><code>millisecond(timezone=[string], locale=[string])</code></summary>
 
-Formats a date in a locale-specific format
+Provides the BIF and member functions for all time unit request with no arguments
 
 Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `mask` | `string` | `false` | `null` |
+| `timezone` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
-| `timezone` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>lsDayOfWeek(locale=[string], timezone=[string])</code></summary>
+<summary><code>minute(timezone=[string], locale=[string])</code></summary>
 
-Provides the Localized BIF and member functions for time units ( e.g.
-
-different locales have different start days to the week )
+Provides the BIF and member functions for all time unit request with no arguments
 
 Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
+| `timezone` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
-| `timezone` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>lSTimeFormat(mask=[string], locale=[string], timezone=[string])</code></summary>
+<summary><code>month(timezone=[string], locale=[string])</code></summary>
 
-Formats a date in a locale-specific format
+Provides the BIF and member functions for all time unit request with no arguments
 
 Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `mask` | `string` | `false` | `null` |
+| `timezone` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
-| `timezone` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>lsWeek(locale=[string], timezone=[string])</code></summary>
+<summary><code>monthAsString(timezone=[string], locale=[string])</code></summary>
 
-Provides the Localized BIF and member functions for time units ( e.g.
-
-different locales have different start days to the week )
+Provides the BIF and member functions for all time unit request with no arguments
 
 Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
+| `timezone` | `string` | `false` | `null` |
 | `locale` | `string` | `false` | `null` |
-| `timezone` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>millisecond(timezone=[string])</code></summary>
+<summary><code>monthShortAsString(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -344,10 +338,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>minute(timezone=[string])</code></summary>
+<summary><code>nanosecond(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -356,10 +351,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>month(timezone=[string])</code></summary>
+<summary><code>offset(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -368,10 +364,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>monthAsString(timezone=[string])</code></summary>
+<summary><code>quarter(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -380,10 +377,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>monthShortAsString(timezone=[string])</code></summary>
+<summary><code>second(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -392,58 +390,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>nanosecond(timezone=[string])</code></summary>
-
-Provides the BIF and member functions for all time unit request with no arguments
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `timezone` | `string` | `false` | `null` |
-
-</details>
-<details>
-<summary><code>offset(timezone=[string])</code></summary>
-
-Provides the BIF and member functions for all time unit request with no arguments
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `timezone` | `string` | `false` | `null` |
-
-</details>
-<details>
-<summary><code>quarter(timezone=[string])</code></summary>
-
-Provides the BIF and member functions for all time unit request with no arguments
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `timezone` | `string` | `false` | `null` |
-
-</details>
-<details>
-<summary><code>second(timezone=[string])</code></summary>
-
-Provides the BIF and member functions for all time unit request with no arguments
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `timezone` | `string` | `false` | `null` |
-
-</details>
-<details>
-<summary><code>timeFormat(mask=[string], timezone=[string])</code></summary>
+<summary><code>timeFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
 
 Formats a datetime, date or time
 
@@ -453,10 +404,11 @@ Arguments:
 |----------|------|----------|---------|
 | `mask` | `string` | `false` | `null` |
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>timezone(timezone=[string])</code></summary>
+<summary><code>timezone(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -465,6 +417,7 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
@@ -524,7 +477,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>week(timezone=[string])</code></summary>
+<summary><code>week(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -533,10 +486,11 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>year(timezone=[string])</code></summary>
+<summary><code>year(timezone=[string], locale=[string])</code></summary>
 
 Provides the BIF and member functions for all time unit request with no arguments
 
@@ -545,6 +499,7 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
 
 </details>
 

@@ -10,7 +10,7 @@ The search is case-sensitive. Function returns original string with
 ## Method Signature
 
 ```
-ReplaceNoCase(string=[string], substring1=[string], obj=[string], scope=[string])
+ReplaceNoCase(string=[string], substring1=[string], obj=[any], scope=[string], start=[string])
 ```
 
 ### Arguments
@@ -20,8 +20,9 @@ ReplaceNoCase(string=[string], substring1=[string], obj=[string], scope=[string]
 |----------|------|----------|-------------|---------|
 | `string` | `string` | `true` | The string to search |  |
 | `substring1` | `string` | `true` | The substring to search for |  |
-| `obj` | `string` | `true` | The string to replace substring1 with |  |
+| `obj` | `any` | `true` | The string to replace substring1 with |  |
 | `scope` | `string` | `true` | The scope to search in | `one` |
+| `start` | `string` | `false` |  | `1` |
 
 ## Examples
 

@@ -7,7 +7,7 @@ Tests whether the given value is a numeric representation of a date
 ## Method Signature
 
 ```
-IsNumericDate(value=[any])
+IsNumericDate(date=[any], locale=[string], timezone=[string])
 ```
 
 ### Arguments
@@ -15,7 +15,9 @@ IsNumericDate(value=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `value` | `any` | `true` | Value to test for date-ness |  |
+| `date` | `any` | `true` | Value to test for date-ness |  |
+| `locale` | `string` | `false` | Optional ISO locale string to use for parsing the date/time string. |  |
+| `timezone` | `string` | `false` | Optional timezone to use for parsing the date/time string. |  |
 
 ## Examples
 

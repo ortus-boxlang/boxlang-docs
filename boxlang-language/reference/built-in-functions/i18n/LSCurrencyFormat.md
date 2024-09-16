@@ -16,7 +16,7 @@ LSCurrencyFormat(number=[any], type=[string], locale=[string])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `number` | `any` | `true` |  |  |
-| `type` | `string` | `false` |  |  |
+| `type` | `string` | `false` |  | `local` |
 | `locale` | `string` | `false` |  |  |
 
 ## Examples

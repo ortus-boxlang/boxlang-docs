@@ -150,7 +150,7 @@ nullArguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `type` | `string` | `false` | `null` |
+| `type` | `string` | `false` | `local` |
 | `locale` | `string` | `false` | `null` |
 
 </details>

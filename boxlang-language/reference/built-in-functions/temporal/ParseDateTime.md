@@ -7,7 +7,7 @@ Parses a datetime string or object
 ## Method Signature
 
 ```
-ParseDateTime(date=[any], format=[string], timezone=[string])
+ParseDateTime(date=[any], format=[string], timezone=[string], locale=[string])
 ```
 
 ### Arguments
@@ -18,6 +18,7 @@ ParseDateTime(date=[any], format=[string], timezone=[string])
 | `date` | `any` | `true` | the date, datetime string or an object |  |
 | `format` | `string` | `false` | the format mask to use in parsing |  |
 | `timezone` | `string` | `false` | the timezone to apply to the parsed datetime |  |
+| `locale` | `string` | `false` | optional ISO locale string ( e.g. en-US, en_US, es-SA, es_ES, ru-RU, etc ) used to parse localized formats |  |
 
 ## Examples
 
@@ -52,13 +53,6 @@ ParseDateTime(date=[any], format=[string], timezone=[string])
   * [GetTimezone](./GetTimezone.md)
   * [GetTimezoneInfo](./GetTimezoneInfo.md)
   * [Hour](./Hour.md)
-  * [LSDateFormat](./LSDateFormat.md)
-  * [LSDateTimeFormat](./LSDateTimeFormat.md)
-  * [LSDayOfWeek](./LSDayOfWeek.md)
-  * [LSIsDate](./LSIsDate.md)
-  * [LSParseDateTime](./LSParseDateTime.md)
-  * [LSTimeFormat](./LSTimeFormat.md)
-  * [LSWeek](./LSWeek.md)
   * [Millisecond](./Millisecond.md)
   * [Minute](./Minute.md)
   * [Month](./Month.md)

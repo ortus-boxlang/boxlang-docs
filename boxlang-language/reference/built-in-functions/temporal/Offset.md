@@ -7,7 +7,7 @@ Returns the timezone offset of a date object
 ## Method Signature
 
 ```
-Offset(date=[any], timezone=[string])
+Offset(date=[any], timezone=[string], locale=[string])
 ```
 
 ### Arguments
@@ -17,6 +17,7 @@ Offset(date=[any], timezone=[string])
 |----------|------|----------|-------------|---------|
 | `date` | `any` | `false` | The date object to be evaluated. If not provided the current date and time is used |  |
 | `timezone` | `string` | `false` | An optional timezone which to convert the date object to |  |
+| `locale` | `string` | `false` | An optional ISO locale string which will return the specified time unit with a locale-specific result ( e.g. month name, or starting day of week as Monday vs Sunda ) |  |
 
 ## Examples
 
@@ -51,13 +52,6 @@ Offset(date=[any], timezone=[string])
   * [GetTimezone](./GetTimezone.md)
   * [GetTimezoneInfo](./GetTimezoneInfo.md)
   * [Hour](./Hour.md)
-  * [LSDateFormat](./LSDateFormat.md)
-  * [LSDateTimeFormat](./LSDateTimeFormat.md)
-  * [LSDayOfWeek](./LSDayOfWeek.md)
-  * [LSIsDate](./LSIsDate.md)
-  * [LSParseDateTime](./LSParseDateTime.md)
-  * [LSTimeFormat](./LSTimeFormat.md)
-  * [LSWeek](./LSWeek.md)
   * [Millisecond](./Millisecond.md)
   * [Minute](./Minute.md)
   * [Month](./Month.md)
