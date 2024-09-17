@@ -136,6 +136,15 @@ The quick installer will install the **OS** binary and the **MiniServer** in the
 * `boxlang-miniserver` - Our BoxLang MiniServer binary runner, [learn more](../running-boxlang/miniserver.md)
 * `install-boxlang` - The quick installer so you can reuse it to upgrade your installations
 * `install-bx-module` - A module installer. Just pass in the slug of the module and watch it install
+* `install-bx-modules` - A way to install multiple modules asynchronously. Just pass a space delimited list
+
+```bash
+# Install a single module
+install-bx-module bx-compat
+
+# Install multiple async modules
+install-bx-modules bx-compat bx-esapi bx-pdf
+```
 
 ### Upgrading Your Install
 

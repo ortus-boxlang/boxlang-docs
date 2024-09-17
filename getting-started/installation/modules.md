@@ -1,6 +1,6 @@
 ---
-description: The Officially supported BoxLang modules
 icon: atom-simple
+description: The Officially supported BoxLang modules
 ---
 
 # Modules
@@ -15,6 +15,9 @@ install {module_name}
 
 // BoxLang OS Binary
 install-bx-module {module_name}
+
+// Install Multiple modules
+install-bx-modules module1 module2 moduley
 ```
 
 ### bx-compat
@@ -167,6 +170,19 @@ install bx-wddx
 
 * Download: [https://forgebox.io/view/bx-wddx](https://forgebox.io/view/bx-wddx)
 * Instructions: [https://github.com/ortus-boxlang/bx-wddx](https://github.com/ortus-boxlang/bx-wddx)
+
+### bx-web-support
+
+`Security: Web`
+
+This module provides the CLI runtime with all the web server BIFS, components and utilities.  It also provides with testing facilities to mock a web server and interact with it.  This is great for doing CLI based testing on a web application or running the feature audit commands.
+
+```
+install bx-web-support
+```
+
+* Download: [https://forgebox.io/view/bx-web-support](https://forgebox.io/view/bx-web-support)
+* Instructions: [https://github.com/ortus-boxlang/bx-web-support](https://github.com/ortus-boxlang/bx-web-support)
 
 ## JDBC Modules
 

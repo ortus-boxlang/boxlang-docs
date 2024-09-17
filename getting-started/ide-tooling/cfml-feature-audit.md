@@ -1,15 +1,26 @@
 ---
-description: Discover if your application is compatible with BoxLang.
 icon: clipboard-check
+description: Discover if your application is compatible with BoxLang.
 ---
 
 # CFML Feature Audit
 
-the The BoxLang CFML Feature audit tool is a CLI tool that will scan your source code and give you a compatibility report.  This will allow you to see if your CFML code will run natively in BoxLang or if any BIFs or Components are required.   Like the other tools, this is based on our BL AST (BoxLang Abstract Syntax Tree), so it should be accurate and not require anything like regex. It’s using the actual BL ANTLR parsers.  **Before you run the tool, install the appropriate BoxLang modules so our tell can also account for those module collaborations.**
+the The BoxLang CFML Feature audit tool is a CLI tool that will scan your source code and give you a compatibility report.  This will allow you to see if your CFML code will run natively in BoxLang or if any BIFs or Components are required.   Like the other tools, this is based on our BL AST (BoxLang Abstract Syntax Tree), so it should be accurate and not require anything like regex. It’s using the actual BL ANTLR parsers. &#x20;
+
+### Install the Compatibility Modules
+
+Before you run the tool, install the appropriate BoxLang modules so our tell can also account for those module collaborations.  We recommend the following to simulate a CFML server:
+
+```bash
+# Install the modules to simulate a CFML server (Adobe, Lucee)
+install-bx-modules bx-compat bx-password-encrypt bx-esapi bx-image bx-ini bx-mail bx-pdf bx-unsafe-evaluate bx-wddx bx-web-server
+```
 
 {% hint style="info" %}
 Remember, as you read below, tags are now called “components” in BoxLang. This tool will parse tag-based and script-based code alike.
 {% endhint %}
+
+### Features
 
 This CLI tool will scan
 
