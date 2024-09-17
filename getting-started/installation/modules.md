@@ -173,7 +173,7 @@ install bx-wddx
 
 ### bx-web-support
 
-`Security: Web`
+`Security: Testing`
 
 This module provides the CLI runtime with all the web server BIFS, components and utilities need for mocking, testing and feature auditing.  It also provides with testing facilities to mock a web server and interact with it.  This is great for doing CLI based testing on a web application or running the feature audit commands.
 
