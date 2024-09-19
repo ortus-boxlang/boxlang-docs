@@ -119,7 +119,7 @@ Allowed files are:
 * \*.bxs -  A BoxLang script file
 * \*.bxm - A Boxlang markup template file
 
-If you are using the `bx-compat` module for CFML Support:
+If you are using the `bx-compat-cfml` module for CFML Support:
 
 * \*.cfs - A CFML script file
 * \*.cfm - A CFML markup template file

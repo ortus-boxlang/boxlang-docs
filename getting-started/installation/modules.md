@@ -240,10 +240,10 @@ The fastest way to install modules is with CommandBox and the `install` command.
 
 ```bash
 # Install the latest version
-install-bx-module bx-compat
+install-bx-module bx-compat-cfml
 
 # Install a specific version
-install-bx-module bx-compat 1.0.0
+install-bx-module bx-compat-cfml 1.0.0
 ```
 
 If not, you must download the zip package manually and place it into the home folder.

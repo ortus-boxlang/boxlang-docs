@@ -140,10 +140,10 @@ The quick installer will install the **OS** binary and the **MiniServer** in the
 
 ```bash
 # Install a single module
-install-bx-module bx-compat
+install-bx-module bx-compat-cfml
 
 # Install multiple async modules
-install-bx-modules bx-compat bx-esapi bx-pdf
+install-bx-modules bx-compat-cfml bx-esapi bx-pdf
 ```
 
 ### Upgrading Your Install
@@ -176,7 +176,7 @@ Just run `boxlang` and you are ready to rock in our REPL:
 You can use the `install-bx-module` binary to install modules into your boxlang home. Just pass in the name of the slug you want. All of our core modules are available here and in [FORGEBOX](https://forgebox.io/type/boxlang-modules). Please note that you can only install our core modules from this binary, not any module from FORGEBOX, for that, use CommandBox.
 
 ```bash
-install-bx-module bx-compat
+install-bx-module bx-compat-cfml
 install-bx-module bx-esapi
 ```
 

@@ -9,13 +9,13 @@ icon: bolt-lightning
 Please note that our CFML Compatibility is still in progress. Please keep this page bookmarked as we progress to our stable release.
 {% endhint %}
 
-BoxLang is a new language with a dual parser to support the CFML ecosystem. It also has a compatibility module (`bx-compat`) that will allow the BoxLang runtime to behave like an Adobe or Lucee Server. We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
+BoxLang is a new language with a dual parser to support the CFML ecosystem. It also has a compatibility module (`bx-compat-cfml`) that will allow the BoxLang runtime to behave like an Adobe or Lucee Server. We also recommend you read the [Quick Syntax Style Guide](./) to give you an understanding of all the new features of BoxLang.
 
-You can install the compatibility module using `box install bx-compat` or if you have a `server.json` you can add the following:
+You can install the compatibility module using `box install bx-compat-cfml` or if you have a `server.json` you can add the following:
 
 ```java
     "scripts":{
-        "onServerInitialInstall":"install bx-compat"
+        "onServerInitialInstall":"install bx-compat-cfml"
     }
 ```
 
@@ -297,4 +297,4 @@ In BoxLang, this is renamed to `fetchSize`:
 queryExecute( "Select * FROM myBigTable", {}, { fetchSize : 100 } );
 ```
 
-You can use the `blockfactor` nomenclature by installing the `bx-compat` module.
+You can use the `blockfactor` nomenclature by installing the `bx-compat-cfml` module.

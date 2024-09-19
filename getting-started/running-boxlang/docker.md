@@ -81,7 +81,7 @@ services:
     image: docker pull ortussolutions/boxlang:miniserver
     environment:
       - BOXLANG_DEBUG=true
-      - BOXLANG_MODULES=bx-compat,bx-esapi,bx-mysql
+      - BOXLANG_MODULES=bx-compat-cfml,bx-esapi,bx-mysql
     volumes:
       - .:/app
     ports:

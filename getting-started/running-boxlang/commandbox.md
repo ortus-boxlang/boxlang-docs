@@ -84,7 +84,7 @@ You can also make your CommandBox BoxLang server portable with a `server.json` f
 
     // Install these modules on installation
     "scripts" : {
- 	"onServerInitialInstall":"install bx-mail,bx-mysql,bx-derby,bx-compat"
+ 	"onServerInitialInstall":"install bx-mail,bx-mysql,bx-derby,bx-compat-cfml"
    }
 }
 ```
