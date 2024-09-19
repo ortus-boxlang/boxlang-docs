@@ -20,18 +20,18 @@ install-bx-module {module_name}
 install-bx-modules module1 module2 moduley
 ```
 
-### bx-compat
+### bx-compat-cfml
 
 `Category: cfml`
 
 This module allows your BoxLang engine to run as an Adobe CFML engine or a Lucee CFML engine. Please note that we will not offer every single feature of the Adobe engines in this single module. It can be spread out through a collection of modules.
 
 ```
-install bx-compat
+install bx-compat-cfml
 ```
 
-* Download: [https://forgebox.io/view/bx-compat](https://forgebox.io/view/bx-compat)
-* Instructions: [https://github.com/ortus-boxlang/bx-compat](https://github.com/ortus-boxlang/bx-compat)
+* Download: [https://forgebox.io/view/bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml)
+* Instructions: [https://github.com/ortus-boxlang/bx-compat-cfml](https://github.com/ortus-boxlang/bx-compat-cfml)
 
 ### bx-password-encrypt
 
