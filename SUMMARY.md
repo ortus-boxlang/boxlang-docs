@@ -3,6 +3,7 @@
 * [Introduction](README.md)
   * [Contributing Guide](readme/contributing-guide.md)
   * [Release History](readme/release-history/README.md)
+    * [1.0.0-Beta15](readme/release-history/1.0.0-beta15.md)
     * [1.0.0-Beta14](readme/release-history/1.0.0-beta14.md)
     * [1.0.0-Beta13](readme/release-history/1.0.0-beta13.md)
     * [1.0.0-Beta12](readme/release-history/1.0.0-beta12.md)
