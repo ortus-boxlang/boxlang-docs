@@ -1,6 +1,6 @@
 ---
-description: Power your mission-critical and enterprise applications with CommandBox
 icon: square-code
+description: Power your mission-critical and enterprise applications with CommandBox
 ---
 
 # CommandBox
@@ -28,6 +28,10 @@ install commandbox-boxlang
 ```
 
 This will add the right file types and handlers to CommandBox for BoxLang.
+
+{% hint style="danger" %}
+This will no longer be needed on CommandBox 6.1+
+{% endhint %}
 
 ### Start up a Server
 
@@ -102,3 +106,72 @@ The servlet/CommandBox runtime uses the same [env variables](./#environment-vari
 The runtime source code can be found here: [https://github.com/ortus-boxlang/boxlang-servlet](https://github.com/ortus-boxlang/boxlang-servlet)
 
 We welcome any pull requests, testing, docs, etc.
+
+### Custom boxlang.json
+
+You can use your own custom `boxlang.json` file to startup the engine by using the `app.engineConfigFile` setting in your `server.json`
+
+```json
+{
+    "name":"MyBoxLang-Server",
+
+    "app":{
+        // The BoxLang Engine
+        "cfengine":"boxlang",
+        // Portable Home if you want, or ignore it to place it under the
+        // CommandBox Home
+        "serverHomeDirectory":".engine/boxlang",
+        // Custom boxlang.json file
+        "engineConfigFile" : ".boxlang.json"
+    },
+
+    "openBrowser":true,
+
+    "web":{
+        "rewrites":{
+            "enable":true
+        },
+    },
+
+    // Any Environment variables
+    "env":{
+        // "BOXLANG_DEBUG" : true
+    },
+
+    // Install these modules on installation
+    "scripts" : {
+ 	"onServerInitialInstall":"install bx-mail,bx-mysql,bx-compat-cfml"
+   }
+}
+```
+
+### Debug Mode
+
+You can set the runtime into debug mode via a few approaches:
+
+#### `--debug` flag via the `server start` command
+
+```bash
+server start --debug
+```
+
+#### `env.BOXLANG_DEBUGMODE` env variable
+
+```json
+"env":{
+   "BOXLANG_DEBUG" : true
+},
+```
+
+#### `.cfconfig.json` `debugMode` setting
+
+```json
+{
+    "debugMode" : true
+}
+```
+
+#### Custom `boxlang.json` file
+
+Use the `app.engineConfigFile` to seed a custom `boxlang.json` file into the engine and use the normal settings in the `boxlang.json`.
+
