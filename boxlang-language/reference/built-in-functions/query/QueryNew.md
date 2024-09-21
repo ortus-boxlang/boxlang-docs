@@ -2,7 +2,27 @@
 
 # Function: `QueryNew`
 
-Return new query
+Return new query based on the provided column list, column types, and/or row data.
+
+<p>,
+ Available column types are:
+ ,<ul>,
+ ,<li>,bigint,</li>,
+ ,<li>,binary,</li>,
+ ,<li>,bit,</li>,
+ ,<li>,date,</li>,
+ ,<li>,decimal,</li>,
+ ,<li>,double,</li>,
+ ,<li>,integer,</li>,
+ ,<li>,null,</li>,
+ ,<li>,object,</li>,
+ ,<li>,other,</li>,
+ ,<li>,time,</li>,
+ ,<li>,timestamp,</li>,
+ ,<li>,varchar,</li>,
+ ,</ul>,
+ ,<p>,
+ If ,<code>,columnTypeList,</code>, is empty, all columns will be of type "object".
 
 ## Method Signature
 
@@ -15,9 +35,9 @@ QueryNew(columnList=[any], columnTypeList=[string], rowData=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `columnList` | `any` | `true` | The column list to be used in the query. Delimited list of column names, or an empty string. |  |
-| `columnTypeList` | `string` | `false` | Comma-delimited list specifying column data types. |  |
-| `rowData` | `any` | `false` | Data to populate the query. Can be a struct (with keys matching column names), an array of structs, or an array of arrays (in<br>                   same order as columnList) |  |
+| `columnList` | `any` | `true` | The column list to be used in the query, Ex: "name, age, dob". It can also be an array of structs that will be used as the row data. |  |
+| `columnTypeList` | `string` | `false` | Comma-delimited list specifying column data types. If empty, all columns will be of type "object". Ex: "varchar, integer, date" |  |
+| `rowData` | `any` | `false` | Data to populate the query. Can be a struct (with keys matching column names), an array of structs, or an array of arrays (in<br>                   same order as columnList). Ex: [{name: "John", age: 30}, {name: "Jane", age: 25}] |  |
 
 ## Examples
 

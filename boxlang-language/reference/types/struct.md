@@ -61,7 +61,8 @@ orderedAnimals = [
 <details>
 <summary><code>append(struct2=[structloose], overwrite=[boolean])</code></summary>
 
-Appends the contents of a second struct to the first struct either with or without overwrite
+Appends the contents of a second struct to the first struct either with or
+ without overwrite
 
 Arguments:
 
