@@ -13,7 +13,7 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 Please note that we are in **open beta** and still have many things to complete before the stable release. Please be patient with us as we strive to achieve our goals.
 {% endhint %}
 
-<figure><img src=".gitbook/assets/image (24).png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
 
 BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with several goals in mind:
 

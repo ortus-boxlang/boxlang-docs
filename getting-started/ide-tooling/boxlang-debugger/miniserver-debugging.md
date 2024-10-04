@@ -12,7 +12,7 @@ One convenient feature of our official BoxLang VS Code extension is the [built-i
 
 After installing the BoxLang extension, you should see a new icon featuring the BoxLang logo in the sidebar. Clicking this icon brings up the BoxLang Server Panel. Here you will see a list of the servers you are currently using for the workspace you are currently in. To start configuring a server click the “+” icon at the top right-hand corner.
 
-<figure><img src="../../../.gitbook/assets/image (42).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (27).png" alt="" width="563"><figcaption></figcaption></figure>
 
 When you click the “+” icon, you will be prompted with a series of inputs to help configure your server. After filling out the prompts, your new MiniServer will start-up automatically. Once running, a browser window should open to the port the server configures.
 
@@ -20,7 +20,7 @@ When you click the “+” icon, you will be prompted with a series of inputs to
 
 Now that your server is configured, it should show up in the list of available servers. You will see information about the status of your server here as well as some icons to be able to interact with it. Hover your mouse over the server to see what options are available.  When the server is stopped you will see something like this:
 
-<figure><img src="../../../.gitbook/assets/image (43).png" alt="" width="563"><figcaption><p>Stopped Controls</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (28).png" alt="" width="563"><figcaption><p>Stopped Controls</p></figcaption></figure>
 
 * Delete
 * Edit (The name)
@@ -28,7 +28,7 @@ Now that your server is configured, it should show up in the list of available s
 
 When the server is running you will see something like this:
 
-<figure><img src="../../../.gitbook/assets/image (44).png" alt="" width="563"><figcaption><p>Running controls</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (29).png" alt="" width="563"><figcaption><p>Running controls</p></figcaption></figure>
 
 * Debug
 * Open Browser
@@ -40,7 +40,7 @@ The BoxLang MiniServer is a real life BoxLang runtime. That means you can config
 
 Another advantage of the MiniServer is that it makes debugging your web app very easy. You can spin up a webserver and start debugging your templates almost instantly.  Just go add breakpoints wherever you want, hit your code in the browser and voila! You are now debuging your live MiniServer BoxLang application!
 
-<figure><img src="../../../.gitbook/assets/image (45).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
 
 ## Wrapping Up
 

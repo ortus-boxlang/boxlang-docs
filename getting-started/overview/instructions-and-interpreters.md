@@ -88,6 +88,6 @@ Hello from BoxLang, printed on: {ts '2024-05-21 22:07:19'}
 
 BoxLang ships with a memory REPL (Read Eval Print Loop) interface that you can use to test out the language.  Just run the `boxlang` binary, and you are ready to roll:
 
-<figure><img src="../../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 Keep reading our guides as you learn more about BoxLang.

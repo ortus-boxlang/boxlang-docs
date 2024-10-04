@@ -7,7 +7,7 @@ description: A quick overview of the BoxLang Language & Framework
 
 ### What is BoxLang?
 
-<figure><img src="../../.gitbook/assets/image (25).png" alt=""><figcaption><p>BoxLang</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption><p>BoxLang</p></figcaption></figure>
 
 **BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes, including all operating systems, web servers, Java application servers, AWS lambda, iOS, Android, web assembly, and more.
 

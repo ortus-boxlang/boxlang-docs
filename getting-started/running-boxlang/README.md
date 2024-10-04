@@ -71,7 +71,7 @@ java -jar path/to/boxlang-1.0.0-all.jar
 {% endtab %}
 {% endtabs %}
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 You can run one-off expressions from the REPL like so:
 

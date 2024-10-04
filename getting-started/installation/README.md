@@ -169,7 +169,7 @@ You can get the version of the current BoxLang Runtime by running `boxlang --ver
 
 Just run `boxlang` and you are ready to rock in our REPL:
 
-<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 ### Installing Modules
 
@@ -245,7 +245,7 @@ We have a full [Docker guide you can follow here.](../running-boxlang/docker.md)
 
 <div align="left">
 
-<figure><img src="../../.gitbook/assets/image (23).png" alt=""><figcaption><p>BoxLang IDE</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>BoxLang IDE</p></figcaption></figure>
 
 </div>
 

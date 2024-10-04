@@ -341,7 +341,7 @@ The available matchers are:
 
 * `toBe( other )` - Stores a value to explicitly match against
 * `toBeBetween( min, max )` - Validates the attempt to be between a range of numbers This assumes the value is a number or castable to a number.  The range is inclusive/boxed.
-* `toBeType( type )` - Validates the attempt to be a specific BoxLang type that you can pass to the `isValid` function.  Check out the [isValid](../reference/built-in-functions/decision/isvalid.md) function
+* `toBeType( type )` - Validates the attempt to be a specific BoxLang type that you can pass to the `isValid` function.  Check out the [isValid](../reference/built-in-functions/decision/IsValid.md) function
 * `toMatchRegex( pattern, [caseSensitive=true] )` - Validates the attempt to match a regex pattern with case sensitivity This assumes the value is a string or castable to a string
 * `toSatisfy( predicate )` - Register a validation function to the attempt. This function will be executed when the attempt is evaluated It must return TRUE for the attempt to be valid.  This is the most flexible approach as your closure/lambda will validate the incoming result attempt as it sees fit.
 

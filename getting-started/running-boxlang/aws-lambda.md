@@ -185,7 +185,7 @@ Now you can go ahead and build your function.  You can use TestBox to unit test 
 
 Log in to the Lambda Console and click on `Create function` button.
 
-<figure><img src="../../.gitbook/assets/image (29).png" alt=""><figcaption><p>AWS Lambda Console</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption><p>AWS Lambda Console</p></figcaption></figure>
 
 Now let's add the basic information about our deployment:
 
@@ -193,19 +193,19 @@ Now let's add the basic information about our deployment:
 * Choose `Java 21` as your runtime
 * Choose `x86_64` as your architecture
 
-<figure><img src="../../.gitbook/assets/image (30).png" alt=""><figcaption><p>Create a function</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption><p>Create a function</p></figcaption></figure>
 
 Now, let's upload our test code. You can choose a zip/jar or s3 location. We will do a simple zip from our template:
 
-<figure><img src="../../.gitbook/assets/image (31).png" alt=""><figcaption><p>Upload Test Code</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (16).png" alt=""><figcaption><p>Upload Test Code</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (33).png" alt=""><figcaption><p>Code Uploaded</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (18).png" alt=""><figcaption><p>Code Uploaded</p></figcaption></figure>
 
 Now important, let's choose the AWS Lambda Runtime Handler in the `Edit runtime settings`
 
-<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
 
 And make sure you use the following handler address: `ortus.boxlang.runtime.aws.LambdaRunner::handleRequest` This is inside the runtime to execute our `Lambda.bx` function.
 
@@ -213,7 +213,7 @@ And make sure you use the following handler address: `ortus.boxlang.runtime.aws.
 
 Now click on the `Test` tab and an event name `MyTestEvent`.  You can also add anything you like in the `Event JSON` to test the input of your lambda.  Then click on `Test` and watch it do its magic.  Now go have some good fun!
 
-<figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>
 
 ## Runtime Source Code
 

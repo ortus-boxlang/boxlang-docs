@@ -7,7 +7,7 @@ description: CommandBox is the de facto standard for BoxLang development and exe
 
 <div align="center">
 
-<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 

@@ -11,7 +11,7 @@ description: Learn how to debug with BoxLang and the BoxLang IDE
 
 Have you used a debugger before? Have you used one regularly? If you have great! Hopefully, BoxLang’s debugger will make you feel at home. Let me introduce the concept if you are unfamiliar with using a debugger as part of your development process.
 
-<figure><img src="../../../.gitbook/assets/image (47).png" alt="The BoxLang Debugger"><figcaption><p>The BoxLang Debugger</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (32).png" alt="The BoxLang Debugger"><figcaption><p>The BoxLang Debugger</p></figcaption></figure>
 
 Debuggers are a program that runs and controls the execution of the software you are developing. As the debugger is in control of the execution of every instruction, it can freeze the program and provide the developer a chance to inspect the state of their software as if they could freeze time. Often, debuggers will give the developer the power to inspect and change variables within their program and move execution back and forth.
 
@@ -40,7 +40,7 @@ println( result );
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
 
 You can also run `bx` files which are BoxLang classes, as long as they have a `main()` method on them, in the same manner as above:
 
@@ -71,7 +71,7 @@ class inject hello="word"{
 ```
 {% endcode %}
 
-<figure><img src="../../../.gitbook/assets/image (48).png" alt=""><figcaption><p>Command Pallete</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (33).png" alt=""><figcaption><p>Command Pallete</p></figcaption></figure>
 
 Once you click the `BoxLang: Run Script` option. Your program will execute. The debug console will auto-focus and you will see the console output of your program. “Great!” You might say, “But what about debugging! Fair enough! Let’s look at that next.
 
@@ -85,19 +85,19 @@ Now that we are debugging, what special actions can we take? We’ll briefly loo
 
 The Variables Panel gives you information about the state of your program. You can view and even edit variables by looking at the data presented by this panel. This is where much of the value of the debugger comes from. At every breakpoint you hit you will see an up-to-date snapshot of your application state.
 
-<figure><img src="../../../.gitbook/assets/image (39).png" alt=""><figcaption><p>Variables</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (24).png" alt=""><figcaption><p>Variables</p></figcaption></figure>
 
 #### Call Stack
 
 The Call Stack Panel lets you see the entire call stack of your current location in the code. This feature is a little more advanced than the variables panel but can provide vital information that helps you understand the flow of code in your app.
 
-<figure><img src="../../../.gitbook/assets/image (40).png" alt="" width="375"><figcaption><p>Call Stack</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (25).png" alt="" width="375"><figcaption><p>Call Stack</p></figcaption></figure>
 
 #### Controls
 
 Finally, we get to the debugger controls. These controls are the unsung hero of every debug session, you’ll use them often as you incorporate the debugger into your workflow.
 
-<figure><img src="../../../.gitbook/assets/image (41).png" alt="" width="375"><figcaption><p>Controls</p></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (26).png" alt="" width="375"><figcaption><p>Controls</p></figcaption></figure>
 
 * `Play/Pause` - Resume execution if paused/pause execution of a running program.
 * `Step Over` - Move to the next pausable location without moving down the call stack

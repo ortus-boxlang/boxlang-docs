@@ -79,7 +79,7 @@ createObject( "java", "java.util.Arrays" )
 
 ### Java Nulls
 
-Ohh the dreaded day [nulls](../boxlang-language/syntax/null-and-nothingness.md) where created. The variable that means that nothing exists. If you need to pass null into Java object calls then you have two approaches to create them:
+Ohh the dreaded day [nulls](../boxlang-language/null-and-nothingness.md) where created. The variable that means that nothing exists. If you need to pass null into Java object calls then you have two approaches to create them:
 
 ```java
 javaCast( "null", "" );
