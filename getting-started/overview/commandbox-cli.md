@@ -1,13 +1,13 @@
 ---
-description: CommandBox is the de facto standard for BoxLang development and execution.
 icon: square-terminal
+description: CommandBox is the de facto standard for BoxLang development and execution.
 ---
 
 # CommandBox CLI
 
 <div align="center">
 
-<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (28).png" alt=""><figcaption></figcaption></figure>
 
 </div>
 

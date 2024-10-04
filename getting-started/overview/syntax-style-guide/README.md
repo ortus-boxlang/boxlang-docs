@@ -312,7 +312,7 @@ BoxLang and some of it's runtimes also offer out of the box scopes for persisten
 * `URL` - Variables incoming via HTTP GET operations or the incoming URL (Web Only)
 
 {% hint style="info" %}
-Please visit our [scopes](../../../boxlang-language/variable-scopes.md) section to find out much more about scopes in BoxLang.
+Please visit our [scopes](../../../boxlang-language/syntax/variable-scopes.md) section to find out much more about scopes in BoxLang.
 {% endhint %}
 
 ### Scope Hunting
@@ -331,7 +331,7 @@ function( name ){
 }
 ```
 
-Check out our [Scopes](../../../boxlang-language/variable-scopes.md) section to learn more about scope hunting.
+Check out our [Scopes](../../../boxlang-language/syntax/variable-scopes.md) section to learn more about scope hunting.
 
 ## Full Null Support
 

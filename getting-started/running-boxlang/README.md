@@ -6,7 +6,7 @@ description: BoxLang and the Multiverse!
 # Running BoxLang
 
 {% hint style="warning" %}
-Please check out our [installation page ](../installation/)to make sure you install the right runtime you want to deploy on.  We are assuming you have it installed and `boxlang` and `boxlang-miniserver` are in your machine's path.
+Please check out our [installation page ](../installation/)to make sure you install the right runtime you want to deploy on. We are assuming you have it installed and `boxlang` and `boxlang-miniserver` are in your machine's path.
 {% endhint %}
 
 {% hint style="info" %}
@@ -17,7 +17,7 @@ The script for Windows is `boxlang.bat`
 
 ### BoxLang Home <a href="#start-the-repl-8" id="start-the-repl-8"></a>
 
-By default, once you execute a `boxlang` binary it will look for a `BOXLANG_HOME` environment variable so it can be used as the home for the OS runtime.  If you don't provide one, then by default, it will use the currently logged-in user's home folder + `.boxlang`
+By default, once you execute a `boxlang` binary it will look for a `BOXLANG_HOME` environment variable so it can be used as the home for the OS runtime. If you don't provide one, then by default, it will use the currently logged-in user's home folder + `.boxlang`
 
 {% tabs %}
 {% tab title="Mac" %}
@@ -42,12 +42,12 @@ c:/Windows/users/myuser/.boxlang
 This is important because inside of the home folder, you can have several folders and files by convention that will be used for the runtime execution.
 
 {% hint style="danger" %}
-Please note that each runtime can have a different location for the BoxLang home.  So make sure you read each of the runtime's docs to see where each goes.
+Please note that each runtime can have a different location for the BoxLang home. So make sure you read each of the runtime's docs to see where each goes.
 {% endhint %}
 
-<table><thead><tr><th width="257">Folder/FIle</th><th>Description</th></tr></thead><tbody><tr><td><code>/classes</code></td><td>Where all the compiled classes will be stored</td></tr><tr><td><code>/config</code></td><td>Where configuration files are stored for the runtime</td></tr><tr><td><code>/config/boxlang.json</code></td><td>The <a href="../configuration.md">runtime configuration file</a>.  Here is where you can configure all the settings, caches, datasources, compiler information, and so much more.</td></tr><tr><td><code>/global</code></td><td>Where global BoxLang classes and component templates can be stored for the entire runtime</td></tr><tr><td><code>/lib</code></td><td>You can place any *.jar files here, and they will be loaded into the runtime at startup. This is a great place to put third-party jars that will be available at runtime.</td></tr><tr><td><code>/logs</code></td><td>All log files will be stored here</td></tr><tr><td><code>/modules</code></td><td>Here is where the BoxLang modules are installed and will be available for the entire operating system binary.</td></tr><tr><td><code>version.properties</code></td><td>The version information of the installed runtime.</td></tr></tbody></table>
+<table><thead><tr><th width="257">Folder/FIle</th><th>Description</th></tr></thead><tbody><tr><td><code>/classes</code></td><td>Where all the compiled classes will be stored</td></tr><tr><td><code>/config</code></td><td>Where configuration files are stored for the runtime</td></tr><tr><td><code>/config/boxlang.json</code></td><td>The <a href="../configuration.md">runtime configuration file</a>. Here is where you can configure all the settings, caches, datasources, compiler information, and so much more.</td></tr><tr><td><code>/global</code></td><td>Where global BoxLang classes and component templates can be stored for the entire runtime</td></tr><tr><td><code>/lib</code></td><td>You can place any *.jar files here, and they will be loaded into the runtime at startup. This is a great place to put third-party jars that will be available at runtime.</td></tr><tr><td><code>/logs</code></td><td>All log files will be stored here</td></tr><tr><td><code>/modules</code></td><td>Here is where the BoxLang modules are installed and will be available for the entire operating system binary.</td></tr><tr><td><code>version.properties</code></td><td>The version information of the installed runtime.</td></tr></tbody></table>
 
-### Start the REPL  <a href="#start-the-repl-8" id="start-the-repl-8"></a>
+### Start the REPL <a href="#start-the-repl-8" id="start-the-repl-8"></a>
 
 The first thing you can do is start up the BoxLang REPL, make sure the insaller has added your installation directory to the `PATH` system variable.
 
@@ -71,7 +71,7 @@ java -jar path/to/boxlang-1.0.0-all.jar
 {% endtab %}
 {% endtabs %}
 
-<figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 You can run one-off expressions from the REPL like so:
 
@@ -110,13 +110,13 @@ Please note that the REPL remembers state, so you can use the variables you decl
 
 ### Executing a File <a href="#execute-a-file-9" id="execute-a-file-9"></a>
 
-You can also use the `boxlang` binary to execute BoxLang or even CFML code.  You can pass a second argument to the binary and it can be a relative (to the current directory you are on) or an absolute path to a file that you wish to execute.
+You can also use the `boxlang` binary to execute BoxLang or even CFML code. You can pass a second argument to the binary and it can be a relative (to the current directory you are on) or an absolute path to a file that you wish to execute.
 
 {% hint style="info" %}
 Allowed files are:
 
 * `*.bx -` A BoxLang class with a `main( args=[] )` method
-* \*.bxs -  A BoxLang script file
+* \*.bxs - A BoxLang script file
 * \*.bxm - A Boxlang markup template file
 
 If you are using the `bx-compat-cfml` module for CFML Support:
@@ -161,7 +161,7 @@ As you navigate all the built-in functions and capabilities of BoxLang, let's le
 
 * `printLn()` - Print with a line break
 * `print()` - Print with no line break
-* `writeOUtput()` - Writes to the output buffer (Each runtime decides what it's buffer is.  The CLI is the system output, the Web is the HTML response buffer, etc)
+* `writeOUtput()` - Writes to the output buffer (Each runtime decides what it's buffer is. The CLI is the system output, the Web is the HTML response buffer, etc)
 
 ```groovy
 println( "Time is #now()#" )
@@ -174,7 +174,7 @@ I get the output:
 Time is {ts '2024-05-22 22:09:56'}
 ```
 
-Hooray!  You have executed your first script using BoxLang.  Now let's build a class with a `main( args=[] )` convention.  This is simliar to Java or Groovy.
+Hooray! You have executed your first script using BoxLang. Now let's build a class with a `main( args=[] )` convention. This is simliar to Java or Groovy.
 
 ```groovy
 class{
@@ -233,7 +233,7 @@ type test.cfs | boxlang.bat
 
 ### Command Line Arguments <a href="#other-command-line-args-10" id="other-command-line-args-10"></a>
 
-If you interact with the `boxlang` binary then you will be executing the `BoxRunner` class in BoxLang.  You can use several options and positional arguments to our runtime.  Let's explore them.
+If you interact with the `boxlang` binary then you will be executing the `BoxRunner` class in BoxLang. You can use several options and positional arguments to our runtime. Let's explore them.
 
 #### Options
 
@@ -243,13 +243,13 @@ If you interact with the `boxlang` binary then you will be executing the `BoxRun
 * `--bx-home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
 * `--bx-printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
 * `--bx-transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
-* `--version` - Output  the current runtime's version information
+* `--version` - Output the current runtime's version information
 
 #### Positionals
 
 * `script_path | class_path` - The template, class, or script to execute
   * If it's a class, it must have a `main( args )` method.
-* `module:{name}` - The executable module to execute.  This will execute a Modules' `ModuleConfig.main( args )` method.
+* `module:{name}` - The executable module to execute. This will execute a Modules' `ModuleConfig.main( args )` method.
 * `{actionCommand: compile,featureAudit, cftranspile}` - If you send any of those action commands, we will execute those CLI tools
 
 ### Using 3rd Party Jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
@@ -268,4 +268,4 @@ The `boxlang` binary will also scan for several environment variables as overrid
 | `BOXLANG_PRINTAST = BOOLEAN`  | Print the AST                |
 | `BOXLANG_TRANSPILE = BOOLEAN` | Tranpile the code            |
 
-At this point, you are done getting running with BoxLang.  It's now your turn to write some code and get it running.
+At this point, you are done getting running with BoxLang. It's now your turn to write some code and get it running.

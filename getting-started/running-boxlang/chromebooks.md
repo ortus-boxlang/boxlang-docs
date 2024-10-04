@@ -120,7 +120,7 @@ sudo /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussoluti
 
 This will run the BoxLang installer.  Once you are done, just type `boxlang` and boom! We have BoxLang installed!
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
 This opens the REPL and you can start coding away, running BoxLang files, starting servers and so much more.
 
@@ -128,15 +128,15 @@ This opens the REPL and you can start coding away, running BoxLang files, starti
 
 Now that we have BoxLang installed, let's get VSCode so you can use this awesome editor for BoxLang coding!
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
 Choose the debian according to your processor and download the package. If you are unsure about your Chromebook's processor, type `dpkg --print-architecture` in the Linux terminal for verification.  Then double click it and run the installer.  Once done, you will have a new icon in your apps called `Visual Studio Code`. Click it and open it.
 
-<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
 
 Now go to the Extensions Marketplace and search for `BoxLang`.  Then install the extension
 
-<figure><img src="../../.gitbook/assets/image (3) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
 
 Now we are cooking.  Create a file using the editor and call it `Hello.bx`
 
@@ -152,7 +152,7 @@ class{
 }
 ```
 
-<figure><img src="../../.gitbook/assets/image (4) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
 Now right-click on the editor and say `BoxLang: Run File`
 
@@ -170,7 +170,7 @@ Hello from Chromebook land #now()#
 
 This uses the `<bx:output>` component to produce output on the website.  Then we reuse the `now()` built-in function to spit out the date.  You can find all about our templating syntax in the language section.  Now let's run our BoxLang MiniServer!  Open a command palette in VSCode and search for `BoxLang`
 
-<figure><img src="../../.gitbook/assets/image (5) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
 
 Now click the `Run Web Server`. You will get the following in the debug console:
 
@@ -191,7 +191,7 @@ Press Ctrl+C to stop the server.
 
 It will open the browser for you as well:
 
-<figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
 You have now created your very first BoxLang web application. Good for you!  Now keep exploring the language syntax and framework so you can now take it to the next level!  Enjoy!
 

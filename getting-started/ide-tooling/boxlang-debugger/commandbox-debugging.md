@@ -65,6 +65,6 @@ That's it.  Now VSCode will know to what port to connect to your debugger runnin
 
 At this point your server is configured, it’s running, and you have just added a launch configuration. The next step is to run the debugger. All we need to do is open up the debug tab in our side-panel and select the correct configuration, which is the one we just added `Debug CommandBox`
 
-<figure><img src="../../../.gitbook/assets/image (31).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (46).png" alt="" width="563"><figcaption></figcaption></figure>
 
 Now that we have everything setup all we need to do is press “play” or hit `f5` and VS Code will fire up the BoxLang debugger and attach to your BoxLang server.  That's it!  Go add some breakpoints, go create some bugs and then fix them!
