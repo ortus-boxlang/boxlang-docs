@@ -5,15 +5,28 @@
 Compress the source file or folder to the destination file or folder using
  the specified format:
 
-<p>,
+<p>
+
  - zip
  - gzip (It will all files separately to the destination folder)
- ,<p>,
- The ,{@code includeBaseFolder}, argument is used to include the base folder as the root
- of the compressed file. The default is ,{@code true},.
- ,<p>,
- The ,{@code overwrite}, argument is used to overwrite the destination
- file if it already exists, else it will throw an exception. The default is ,{@code false},.
+ 
+<p>
+
+ The 
+{@code includeBaseFolder}
+ argument is used to include the base folder as the root
+ of the compressed file. The default is 
+{@code true}
+.
+ 
+<p>
+
+ The 
+{@code overwrite}
+ argument is used to overwrite the destination
+ file if it already exists, else it will throw an exception. The default is 
+{@code false}
+.
 
 ## Method Signature
 

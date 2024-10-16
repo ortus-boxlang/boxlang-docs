@@ -4,7 +4,8 @@
 
 Create a Globally Unique Identifier (UUID).
 
-<p>,
+<p>
+
  Returns an uppercased-but-otherwise-unmodified UUID version 4 string.
 
 ## Method Signature

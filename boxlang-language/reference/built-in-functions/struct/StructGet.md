@@ -7,7 +7,7 @@ Retrieves the value from a struct using a path based expression
 ## Method Signature
 
 ```
-StructGet(path=[string], object=[structloose])
+StructGet(path=[string])
 ```
 
 ### Arguments
@@ -16,7 +16,6 @@ StructGet(path=[string], object=[structloose])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `path` | `string` | `true` | The string path to the object requested in the struct |  |
-| `object` | `struct` | `false` |  |  |
 
 ## Examples
 

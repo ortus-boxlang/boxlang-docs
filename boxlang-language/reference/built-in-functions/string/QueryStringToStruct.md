@@ -5,14 +5,25 @@
 Convert a query string to a struct.
 
 Each key-value pair in the query string is separated by a delimiter.
- The default delimiter is ,{@code "&"},
- ,<p>,
+ The default delimiter is 
+{@code "&"}
+
+ 
+<p>
+
  Example:
 
- ,<pre>,
- queryStringToStruct( "foo=bar,&amp;,baz=qux" );
- "foo=bar,&amp;,baz=qux".toStruct();
- ,</pre>
+ 
+<pre>
+
+ queryStringToStruct( "foo=bar
+&amp;
+baz=qux" );
+ "foo=bar
+&amp;
+baz=qux".toStruct();
+ 
+</pre>
 
 ## Method Signature
 

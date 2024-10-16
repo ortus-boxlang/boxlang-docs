@@ -4,25 +4,88 @@
 
 Return new query based on the provided column list, column types, and/or row data.
 
-<p>,
+<p>
+
  Available column types are:
- ,<ul>,
- ,<li>,bigint,</li>,
- ,<li>,binary,</li>,
- ,<li>,bit,</li>,
- ,<li>,date,</li>,
- ,<li>,decimal,</li>,
- ,<li>,double,</li>,
- ,<li>,integer,</li>,
- ,<li>,null,</li>,
- ,<li>,object,</li>,
- ,<li>,other,</li>,
- ,<li>,time,</li>,
- ,<li>,timestamp,</li>,
- ,<li>,varchar,</li>,
- ,</ul>,
- ,<p>,
- If ,<code>,columnTypeList,</code>, is empty, all columns will be of type "object".
+ 
+<ul>
+
+ 
+<li>
+bigint
+</li>
+
+ 
+<li>
+binary
+</li>
+
+ 
+<li>
+bit
+</li>
+
+ 
+<li>
+date
+</li>
+
+ 
+<li>
+decimal
+</li>
+
+ 
+<li>
+double
+</li>
+
+ 
+<li>
+integer
+</li>
+
+ 
+<li>
+null
+</li>
+
+ 
+<li>
+object
+</li>
+
+ 
+<li>
+other
+</li>
+
+ 
+<li>
+time
+</li>
+
+ 
+<li>
+timestamp
+</li>
+
+ 
+<li>
+varchar
+</li>
+
+ 
+</ul>
+
+ 
+<p>
+
+ If 
+<code>
+columnTypeList
+</code>
+ is empty, all columns will be of type "object".
 
 ## Method Signature
 

@@ -5,15 +5,21 @@
 Build an array out of a range of numbers or using our range syntax: {start}..{end}
  or using the from and to arguments
 
-<p>,
- You can also build negative ranges
- ,<p>,
+<p>
 
- ,<pre>,
+ You can also build negative ranges
+ 
+<p>
+
+
+ 
+<pre>
+
  arrayRange( "1..5" )
  arrayRange( "-10..5" )
  arrayRange( 1, 500 )
- ,</pre>
+ 
+</pre>
 
 ## Method Signature
 

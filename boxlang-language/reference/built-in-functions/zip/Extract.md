@@ -4,21 +4,44 @@
 
 Extract the source file or folder to the destination folder using the specified format:
 
-<p>,
+<p>
+
  - zip
  - gzip
- ,<p>,
- The ,{@code overwrite}, argument is used to overwrite the destination
- file if it already exists, else it will throw an exception. The default is ,{@code false},.
- ,<p>,
- The ,{@code recurse}, argument is used to extract the files recursively. The default is ,{@code true},.
- ,<p>,
- The ,{@code filter}, argument is used to filter the files to extract. It can be:
- ,<p>,
+ 
+<p>
+
+ The 
+{@code overwrite}
+ argument is used to overwrite the destination
+ file if it already exists, else it will throw an exception. The default is 
+{@code false}
+.
+ 
+<p>
+
+ The 
+{@code recurse}
+ argument is used to extract the files recursively. The default is 
+{@code true}
+.
+ 
+<p>
+
+ The 
+{@code filter}
+ argument is used to filter the files to extract. It can be:
+ 
+<p>
+
  - A string with a regular expression to match the file names. Example: ".*\\.txt"
  - A Function/Lambda that receives the file name and returns a boolean. Example: (name) => name.endsWith(".txt")
- ,<p>,
- The ,{@code entryPaths}, argument is used to extract only the files that match the given paths. It can be a string
+ 
+<p>
+
+ The 
+{@code entryPaths}
+ argument is used to extract only the files that match the given paths. It can be a string
  or an array of strings with the paths to extract. Example: "folder1/file1.txt" or ["folder1/file1.txt", "folder2/file2.txt"]
 
 ## Method Signature

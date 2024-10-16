@@ -114,7 +114,7 @@ Copies top-level keys, values, and arrays in the structure by value; copies nest
 Returns the absolute value of a number
 </details>
 <details>
-<summary><code>delete(key=[string])</code></summary>
+<summary><code>delete(key=[any])</code></summary>
 
 Deletes a key from a struct
 
@@ -122,7 +122,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `key` | `string` | `true` | `null` |
+| `key` | `any` | `true` | `null` |
 
 </details>
 <details>

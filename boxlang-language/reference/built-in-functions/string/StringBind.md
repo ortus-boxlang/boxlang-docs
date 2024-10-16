@@ -4,7 +4,9 @@
 
 This BIF allows you to bind a string with placeholders to a set of values.
 
-Each placeholder is defined as ,{@code ${placeholder-name}}, and can be used anywhere
+Each placeholder is defined as 
+{@code ${placeholder-name}}
+ and can be used anywhere
  and multiple times in the string.
 
 ## Method Signature

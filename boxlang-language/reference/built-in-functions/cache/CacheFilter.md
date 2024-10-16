@@ -6,25 +6,34 @@ This method creates a cache filter that can be used to operate on a cache instan
 
 The filter can be used to clear, get, or remove keys from the cache.
 
- All filters must be adhere to the ,{@link ICacheKeyFilter}, interface.
+ All filters must be adhere to the 
+{@link ICacheKeyFilter}
+ interface.
 
  Example:
 
- ,<pre>,
+ 
+<pre>
+
  cache().clear( cacheFilter( "foo*" ) );
  cache().clear( cacheFilter( ".*foo.*", true ) );
 
  You can also create your own custom cache filter by using a closure/lambda that
- accepts a ,{@code
+ accepts a 
+{@code
  Key
- }, and returns a boolean.
+ }
+ and returns a boolean.
 
  Example:
 
- ,<pre>,
+ 
+<pre>
+
  cache().clear( key -> key.getName().startsWith( "foo" ) );
  cache().clear( key -> key.getName().matches( ".*foo.*" ) );
- ,</pre>
+ 
+</pre>
 
 ## Method Signature
 
