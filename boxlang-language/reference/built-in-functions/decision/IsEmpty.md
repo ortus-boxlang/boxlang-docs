@@ -2,7 +2,10 @@
 
 # Function: `IsEmpty`
 
-Determine whether a given value is empty
+Determine whether a given value is empty.
+
+We check for emptiness of
+ anything that can be casted to: Array, Struct, Query, or String.
 
 ## Method Signature
 
@@ -15,7 +18,7 @@ IsEmpty(value=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `value` | `any` | `true` | The value to test for emptiness. |  |
+| `value` | `any` | `true` | The value/object to check for emptiness. |  |
 
 ## Examples
 

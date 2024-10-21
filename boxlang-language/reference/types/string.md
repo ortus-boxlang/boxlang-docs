@@ -1022,7 +1022,10 @@ Returns the value formatted as a boolean string
 <details>
 <summary><code>isEmpty()</code></summary>
 
-Determine whether a given value is empty
+Determine whether a given value is empty.
+
+We check for emptiness of
+ anything that can be casted to: Array, Struct, Query, or String.
 </details>
 <details>
 <summary><code>spanIncluding(set=[string])</code></summary>

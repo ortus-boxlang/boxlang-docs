@@ -7,7 +7,7 @@ Encodes a binary string representation to an encoded string
 ## Method Signature
 
 ```
-CharsetEncode(binary=[any], encoding=[string])
+CharsetEncode(binary=[byte[]], encoding=[string])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ CharsetEncode(binary=[any], encoding=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `binary` | `any` | `true` | The binary data to encode to a string |  |
+| `binary` | `byte[]` | `true` | The binary data to encode to a string |  |
 | `encoding` | `string` | `false` | The charset encoding to use (default: utf-8 ) | `utf-8` |
 
 ## Examples
