@@ -127,7 +127,7 @@ BoxLang has a smart parser, which will always store a number in the smallest pac
 n = 1;  // smaller than 10 digits stores in an Integer
 n = 11111111111111; // Smaller than 20 digits stores in a Long
 n = 111111111111111111111111111; // Anything larger stores in a BigDecimal
-n = 12.34;  // All floating point values, store in a BigDecimal  
+n = 12.34;  // All floating point values, store in a BigDecimal
 ```
 
 The “bigger” types are contagious. So if you add together an `Integer` and a `Long`, we store the result in a `Long`. If you add a `Long` and a `BigDecimal` together, we store the result in a `BigDecimal`. The idea is always to keep things small and fast until we can’t any longer.
@@ -200,7 +200,7 @@ In Java, you can declare a multi-line string easily (JKD15+) by using the triple
 <strong>   return """
 </strong>   My text block
       with nice identation
-      
+
       -- Luis Majano""";
 }
 </code></pre>
@@ -212,7 +212,7 @@ function getText(){
    return "
    My text block
       with nice identation
-      
+
       -- Luis Majano";
 }
 ```
@@ -376,7 +376,7 @@ All Java types can be used alongside the core BoxLang types:
 
 * `any`
 * `array`
-* `immutableArray`
+* `UnmodifiableArray`
 * `binary`
 * `boolean`
 * `class`
@@ -391,10 +391,10 @@ All Java types can be used alongside the core BoxLang types:
 * `numeric`
 * `number`
 * `query`
-* `immutableQuery`
+* `UnmodifiableQuery`
 * `string`
 * `struct`
-* `immutableStruct`
+* `UnmodifiableStruct`
 * `uuid`
 
 ## Arrays are Human

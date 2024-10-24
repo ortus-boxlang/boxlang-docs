@@ -6,7 +6,7 @@ description: A Dynamic holder of a potential value
 
 Attempts in BoxLang are an enhanced Java [Optional](https://www.developer.com/java/java-optional-object/).  It acts as a fluent container of a value or expression that can be null, truthy, falsey, or exist.  It then provides fluent methods to interact with the potential value or expression.
 
-Attempts are also immutable, so you can chain methods to handle the value more functionally, but it never mutates the original value.  It can also be seeded with validation information to create validation pipelines.
+Attempts are also unmodifiable, so you can chain methods to handle the value more functionally, but it never mutates the original value.  It can also be seeded with validation information to create validation pipelines.
 
 ```java
 attempt( userService.get( rc.id ) )
@@ -52,13 +52,13 @@ We also have another method called `isNull(),` which specifically checks whether
 ```java
 attempt( null )
     .isEmpty() // true
-    
+
 attempt( null )
     .isPresent() // false
-    
+
 attempt( "hello" )
     .isPresent() // true
-    
+
 attempt( [] )
     .isPresent() // false : the array is empty
 attempt( {} )
@@ -113,7 +113,7 @@ If a value is present and matches the given closure/lambda, it returns an Attemp
 ```java
 attempt( userService.findById( 25 ) )
     .filter( u -> u.getAge() >= 21 )
-    .ifPresentOrElse( 
+    .ifPresentOrElse(
         u -> println( "The user is of legal drinking age" ),
         println( "The user is not of legal drinking age" )
     )
@@ -127,9 +127,9 @@ If a value is present, it returns the result of applying the given `Attempt`-bea
 ```java
 class User{
     property email
-    
+
     ...
-    
+
     Attempt getEmail(){
         return attempt( email )
     }
@@ -181,7 +181,7 @@ If a value is present, returns the value, otherwise returns the other passed val
 myData = getBoxCache()
     .get( "my-id" )
     .getOrDefault( "not available" );
-    
+
 myData = getBoxCache()
     .get( "my-id" )
     .orElse( "not found" );
@@ -194,10 +194,10 @@ If the attempt is NOT present, run the consumer. This returns the same attempt. 
 ```java
 user = attempt( userService.findById( rc.id ) )
     .ifEmpty( () -> println( "The user with id [#rc.id#] was not found" ) )
-    
+
 attempt( dataService.saveData( data ) )
     .ifFailed( () -> log.error( "the data was not saved correctly" ) )
-    
+
 attempt( apiService.getUserData( rc.id ) )
     .ifFailed( () -> println( "The data call failed" ) )
 ```
@@ -212,7 +212,7 @@ attempt( apiService.getUserData( rc.id ) )
     .ifPresent( data -> rc.user = data )
     // show an error message
     .ifFailed( () -> println( "The data call failed" ) )
-    
+
 attempt( apiService.getUserData( rc.id ) )
     // store the data in my rc scope
     .ifSuccessful( data -> rc.user = data )
@@ -226,7 +226,7 @@ If a value is present, performs the given action with the value, otherwise perfo
 
 ```java
 attempt( apiService.getUserData( rc.id ) )
-    .ifPresentOrElse( 
+    .ifPresentOrElse(
         data -> rc.user = data,
         () -> println( "The data call failed" )
     )
@@ -240,7 +240,7 @@ Map the attempt to a new value with a supplier if it exists, else it's ignored a
 attempt( user.getEmail() )
     .map( .toUpperCase )
     ifPresent( email -> println( "The email is [#email#]" ) )
-    
+
 attempt( userService.findById( rc.id ) )
     .map( .getMemento )
     .getOrDefault( {} )
@@ -354,18 +354,17 @@ attempt( getCreditScore() )
     .toBeBetween( 700, 800 )
     .ifValid( score -> processApplication( score ) )
     .ifInvalid( denyApplication() )
-    
-    
+
+
 attempt( getUserData() )
     .toBeType( "struct" )
-    
+
 attempt( getHTTPCall().error )
     .toMatchRegex( "^status\:200" )
     .ifInvalid( () -> throw( "exception" ) )
-    
+
 attempt( getUser() )
     .toSatisfy( user -> user.age > 4 && user.age < 10 )
     .ifValid( user -> processRequest( user ) )
 
 ```
-
