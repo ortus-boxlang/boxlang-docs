@@ -32,7 +32,7 @@ age = 1
 // But I can redeclare it to a string if I need to
 age = "one"
 
-// Inferred as Double
+// Inferred as Boolean
 isActive = false
 
 // Inferred as Date
