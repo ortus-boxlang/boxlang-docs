@@ -9,10 +9,6 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 
 **BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern, functional and expressive syntax.
 
-{% hint style="danger" %}
-Please note that we are in **open beta** and still have many things to complete before the stable release. Please be patient with us as we strive to achieve our goals.
-{% endhint %}
-
 <figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
 
 BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with several goals in mind:
@@ -34,6 +30,11 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 8. Compile down to Java ByteCode
 9. Framework Capabilities (Scheduling, applications, events, async computing, tasks, queues, modules)
 10. [Professional Open-Source Support](https://boxlang.io/plans)
+11. Drop-in Replacement for Adobe ColdFusion and Lucee CFML
+
+{% hint style="danger" %}
+**BoxLang can also be used as a drop-in replacement for Adobe ColdFusion or Lucee CFML Engines by leveraging our `bx-compat-cfml`module.  NO CODE CHANGES, FASTER, MODERN AND SAVE MONEY.**
+{% endhint %}
 
 {% content-ref url="getting-started/overview/" %}
 [overview](getting-started/overview/)
@@ -60,20 +61,6 @@ BoxLang can also be enhanced by [purchasing subscriptions](https://www.boxlang.i
 
 {% embed url="https://www.boxlang.io/plans" %}
 
-## Visionary Licenses
-
-{% hint style="warning" %}
-A limited number of Visionary Licenses are available for forward-thinking companies and individuals who share our vision. These subscriptions are first-come first-serve and will power the continued development of the BoxLang eco-system.  They will cease to exist after stable launch.
-{% endhint %}
-
-Here's what you get:
-
-* One-time purchase, unlimited licenses for unlimited servers/machines for 10 years
-* 5 years of premium support
-* Long-term peace of mind
-
-Read more about them here: [https://www.boxlang.io/plans](https://www.boxlang.io/plans)
-
 ## Support Open Source
 
 To support us, please consider becoming our patron at [patreon.com/ortussolutions](https://patreon.com/ortussolutions) for as little as $10/month.
@@ -94,6 +81,7 @@ We all make mistakes from time to time :) So why not let us know about it and he
 
 * BoxLang: [https://ortussolutions.atlassian.net/browse/BL](https://ortussolutions.atlassian.net/browse/BL)
 * BoxLang IDE: [https://ortussolutions.atlassian.net/browse/BLIDE](https://ortussolutions.atlassian.net/browse/BLIDE)
+* BoxLang Modules: [https://ortussolutions.atlassian.net/browse/BLMODULES](https://ortussolutions.atlassian.net/browse/BLMODULES)
 
 ## Resources
 

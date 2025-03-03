@@ -25,8 +25,7 @@ For all BoxLang releases, updates are provided for 12 months, and security fixes
 
 | Version | Release | Updates | Security Fixes |
 | ------- | ------- | ------- | -------------- |
-| **1.x** | 2024    | 2025    | 2027           |
-| **2.x** | 2025    | 2026    | ???            |
+| **1.x** | 2025    | 2026    | 2028           |
 
 ### Releases
 

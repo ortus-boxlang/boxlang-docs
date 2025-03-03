@@ -1,6 +1,6 @@
 ---
-description: The best way to contribute to BoxLang!
 icon: code-compare
+description: The best way to contribute to BoxLang!
 ---
 
 # Contributing Guide
@@ -45,12 +45,11 @@ If you have questions about usage, professional support, or ideas to bounce off 
 
 ### Security Vulnerabilities
 
-If you discover a security vulnerability, please email the development team at [security@ortussolutions.com](mailto:security@ortussolutions.com?subject=security. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability, please email the development team at [security@ortussolutions.com](mailto:security@ortussolutions.com). All security vulnerabilities will be promptly addressed.
 
+### JRE Compatibility
 
-### JDK Compatibility
-
-Please make sure your code runs on JDK 21+
+Please make sure your code runs on JRE 21+
 
 ### Financial Contributions <a href="#financial-contributions" id="financial-contributions"></a>
 

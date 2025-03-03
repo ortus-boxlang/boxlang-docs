@@ -5,10 +5,6 @@ description: Getting started with BoxLang is easy!  Choose your path wisely!
 
 # Installation
 
-{% hint style="danger" %}
-PLEASE NOTE THAT WE ARE STILL IN OPEN BETA. ANYTHING CAN CHANGE
-{% endhint %}
-
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
 
 You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21)
@@ -58,7 +54,7 @@ Note that you may need to tell the system to use the correct JDK version. This c
 {% endtab %}
 
 {% tab title="Windows" %}
-#### Powershell Script
+**Powershell Script**
 
 ```powershell
 # Set the JDK version and download URL
@@ -171,12 +167,11 @@ You can get the version of the current BoxLang Runtime by running `boxlang --ver
 
 ### Installing Core OS Modules
 
-You can use the `install-bx-module` binary to install modules into your boxlang home. Just pass in the name of the slug you want.  You can use the `install bx-modules`to install multiple modules at once as well.
+You can use the `install-bx-module` binary to install modules into your boxlang home. Just pass in the name of the slug you want. You can use the `install bx-modules`to install multiple modules at once as well.
 
 {% hint style="info" %}
-All our modules are available in the cloud software directory [FORGEBOX](https://forgebox.io/type/boxlang-modules).  You can also register and collaborate with modules of your own :person\_raising\_hand:.
+All our modules are available in the cloud software directory [FORGEBOX](https://forgebox.io/type/boxlang-modules). You can also register and collaborate with modules of your own :person\_raising\_hand:.
 {% endhint %}
-
 
 ```bash
 # install individual modules
@@ -193,7 +188,7 @@ install-bx-module bx-compat-cfml bx-esapi
 
 A REPL, or Read-Evaluate-Print Loop, is an interactive programming environment that takes single user inputs, executes them, and returns the result to the user. This is particularly useful for testing code snippets and debugging in real time. In the context of BoxLang, running `boxlang` will start the REPL, allowing you to write and test code quickly within the BoxLang environment.
 
-The REPL will also remember state, so you can define variables and use them in your testing and explorations.  Code away :rocket:
+The REPL will also remember state, so you can define variables and use them in your testing and explorations. Code away :rocket:
 
 <figure><img src="../../.gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
@@ -248,7 +243,7 @@ This is the servlet edition of BoxLang that you can deploy on any servlet contai
 * WAR:\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest.war](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest.war)
 * JAR:\
-  s[https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar)
+  [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar)
 
 ### Docker
 
@@ -268,8 +263,6 @@ Install Now
 
 The BoxLang core is lightweight and fast. Everything that extends the core comes as modules or individual runtimes. We have a collection of core modules that the BoxLang team maintains and curates. We also have several enterprise modules for our **BoxLang +, ++** subscribers, and the community can create and share modules in our cloud package manager [FORGEBOX](https://forgebox.io).
 
-We recommend you use [CommandBox](https://www.ortussolutions.com/products/commandbox), Our CLI and Package Manager, to interact, install, and work with any package in BoxLang.
-
 {% content-ref url="modules.md" %}
 [modules.md](modules.md)
 {% endcontent-ref %}
@@ -278,4 +271,4 @@ We recommend you use [CommandBox](https://www.ortussolutions.com/products/comman
 
 Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get professional/customized support but also new features, and modules. You can find out more about our subscriptions here: [https://boxlang.io/plans](https://boxlang.io/plans). Here is the collection of modules that you will get with your subscription which are not part of the open source edition.
 
-<table><thead><tr><th width="160">Module</th><th width="424">Description</th><th width="158">Status<select><option value="7PvmwHzSW7tN" label="In Development" color="blue"></option><option value="KAAYVEqj9HUs" label="Done" color="blue"></option><option value="LZpOL7kx2Gyb" label="In Planning" color="blue"></option></select></th></tr></thead><tbody><tr><td><strong>bx-redis</strong></td><td>Native Redis integration for caching, session distribution, and publish-subcribe events.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-mongo</strong></td><td>Native MongoDB integration for caching, session distribution and advanced MongoDB operations.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-couchbase</strong></td><td>Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-pdftools</strong></td><td>Our collection of enhanced PDF tooling. Includes the ability to extract PDF forms, fill out PDF forms, squash, merge and more.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr></tbody></table>
+<table><thead><tr><th width="160">Module</th><th width="424">Description</th><th width="158">Status<select><option value="7PvmwHzSW7tN" label="In Development" color="blue"></option><option value="KAAYVEqj9HUs" label="Done" color="blue"></option><option value="LZpOL7kx2Gyb" label="In Planning" color="blue"></option></select></th></tr></thead><tbody><tr><td><strong>bx-redis</strong></td><td>Native Redis integration is used for caching, session distribution, and publish-subscribe events.<br><br><code>install-bx-module bx-redis</code></td><td><span data-option="KAAYVEqj9HUs">Done</span></td></tr><tr><td><strong>bx-mongo</strong></td><td>Native MongoDB integration for caching, session distribution and advanced MongoDB operations.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-couchbase</strong></td><td>Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-pdftools</strong></td><td>Our collection of enhanced PDF tooling. Includes the ability to extract PDF forms, fill out PDF forms, squash, merge and more.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr></tbody></table>
