@@ -137,15 +137,17 @@ The quick installer will install the latest stable **OS** binary and the **MiniS
 * `boxlang` - Our BoxLang binary runner, [learn more](../running-boxlang/)
 * `boxlang-miniserver` - Our BoxLang MiniServer binary runner, [learn more](../running-boxlang/miniserver.md)
 * `install-boxlang` - The quick installer so you can reuse it to upgrade your installations
-* `install-bx-module` - A module installer. Just pass in the slug of the module and watch it install
-* `install-bx-modules` - A way to install multiple modules asynchronously. Just pass a space-delimited list
+* `install-bx-module` - A module installer. Just pass in the slug of the module, an optional version or a list of modules.
 
 ```bash
 # Install a single module
 install-bx-module bx-compat-cfml
 
+# Install a specific verision of a module
+install-bx-module bx-compat-cfml@1.11.0
+
 # Install multiple async modules
-install-bx-modules bx-compat-cfml bx-esapi bx-pdf
+install-bx-module bx-compat-cfml bx-esapi bx-pdf
 ```
 
 ### Upgrading Your Install
@@ -176,14 +178,13 @@ All our modules are available in the cloud software directory [FORGEBOX](https:/
 {% endhint %}
 
 
-
 ```bash
 # install individual modules
 install-bx-module bx-compat-cfml
 install-bx-module bx-esapi
 
 # install multiple modules
-install-bx-modules bx-compat-cfml bx-esapi
+install-bx-module bx-compat-cfml bx-esapi
 ```
 
 ## R.E.P.L.

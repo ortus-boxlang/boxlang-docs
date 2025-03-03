@@ -5,20 +5,63 @@ description: The Officially supported BoxLang modules
 
 # Modules
 
-## Core Modules
+## Module Installation
 
-Here is the collection of modules built and supported by the BoxLang team. We show you the way to install them using CommandBox via `install {module_name}` . However, if you are using the operating system installer shipped with BoxLang: `install-bx-module`. Then use that instead:
+The fastest way to install modules is with CommandBox for web runtimes and the `install-bx-module` CLI command for OS runtimes.
+
+{% code title="Operating System" %}
+```bash
+# Install os-wide modules
+install-bx-module bx-compat-cfml
+
+# Install os-wide modules with a specific version
+install-bx-module bx-compat-cfml@1.0.0
+
+# Install multiple modules
+install-bx-module bx-compat-cfml bx-esapi bx-orm
+```
+{% endcode %}
+
+The CommandBox CLI is used to install BoxLang modules into web runtimes, not the operating system home.
+
+{% code title="CommandBox" %}
+```bash
+box install bx-compat-cfml bx-esapi
+```
+{% endcode %}
+
+### Operating System Home
+
+Unzip the module `.zip` file into the location `.boxlang/modules/` located inside your user home directory (by default):
 
 ```bash
-// CommandBox
-install {module_name}
-
-// BoxLang OS Binary
-install-bx-module {module_name}
-
-// Install Multiple modules
-install-bx-modules module1 module2 moduley
+.boxlang/modules/bx-derby/ModuleConfig.bx ...
 ```
+
+You can customize the boxlang module directory by changing the `runtime.modulesDirectory` setting in your `config/boxlang.json` file:
+
+{% code title="boxlang.json" %}
+```json
+{
+  "runtime" : {
+
+
+    // A collection of BoxLang module directories, they must be absolute paths
+    "modulesDirectory": [
+      "${boxlang-home}/modules"
+    ],
+
+
+  }
+}
+```
+{% endcode %}
+
+See [Runtime Configuration](../configuration.md) for more info on using the `boxlang.json` configuration file.
+
+## Core Modules
+
+Here is the collection of modules built and supported by the BoxLang team that are completely open-source.
 
 ### bx-compat-cfml
 
@@ -26,7 +69,7 @@ install-bx-modules module1 module2 moduley
 
 This module allows your BoxLang engine to run as an Adobe CFML engine or a Lucee CFML engine. Please note that we will not offer every single feature of the Adobe engines in this single module. It can be spread out through a collection of modules.
 
-```
+```bash
 install bx-compat-cfml
 ```
 
@@ -227,6 +270,31 @@ install bx-yaml
 * Download: [https://forgebox.io/view/bx-yaml](https://forgebox.io/view/bx-yaml)
 * Instructions: [https://github.com/ortus-boxlang/bx-yaml](https://github.com/ortus-boxlang/bx-yaml)
 
+## +/++ Modules
+
+These modules are available for our +/++ subscribers only.  However, you can install them free of charge and try them out.
+
+### bx-redis
+
+`Category: Caching`
+
+This module will enhance your language by having the ability to connect to Redis instances, clusters, or sentinel instances.  Here are some features:
+
+* Add native Redis functionality to the language
+* Connect to a Redis server or a Redis cluster or Redis Sentinel
+* Store session variables in a distributed Redis cluster
+* Leverage the Redis publish/subscribe features to create real-time messaging
+* Get rid of sticky session load balancers, come to the round-robin world!
+* Session variable persistence even after server restarts
+* Cache connection capabilities for providing distributed & highly scalable query, object, template, function caching
+* Much more
+
+```
+install bx-redis
+```
+
+* Download: [https://forgebox.io/view/bx-redis](https://forgebox.io/view/bx-redis)
+
 ## JDBC Modules
 
 In addition, we offer a number of JDBC modules which package the appropriate JDBC driver for your database vendor of choice. You can find all of the modules in [FORGEBOX](https://www.forgebox.io) as well as our GitHub organization: [https://github.com/ortus-boxlang/bx-{modulename}](https://github.com/ortus-boxlang)
@@ -272,54 +340,3 @@ install bx-oracle
 ```
 install bx-postgresql
 ```
-
-## Module Installation
-
-The fastest way to install modules is with CommandBox for web runtimes and the `install-bx-module(s)` command for OS runtimes.
-
-{% code title="Operating System" %}
-```bash
-# Install os-wide modules
-install-bx-module bx-compat-cfml
-
-# Install os-wide modules
-install-bx-module bx-compat-cfml 1.0.0
-```
-{% endcode %}
-
-You can also visit FORGEBOX and download the binaries manually, but that's so 90's.  Below, you can see us installing modules using the same module name but using CommandBox for installation.  CommandBox is used to install modules into web runtimes, not the operating system home.
-
-{% code title="CommandBox" %}
-```bash
-box install bx-compat-cfml bx-esapi
-```
-{% endcode %}
-
-### Operating System Home
-
-Unzip the module `.zip` file into the location `.boxlang/modules/` located inside your user home directory (by default):
-
-```bash
-.boxlang/modules/bx-derby/ModuleConfig.bx ...
-```
-
-You can customize the boxlang module directory by changing the `runtime.modulesDirectory` setting in your `config/boxlang.json` file:
-
-{% code title="boxlang.json" %}
-```json
-{
-  "runtime" : {
-
-
-    // A collection of BoxLang module directories, they must be absolute paths
-    "modulesDirectory": [
-      "${boxlang-home}/modules"
-    ],
-
-
-  }
-}
-```
-{% endcode %}
-
-See [Runtime Configuration](../configuration.md) for more info on using the `boxlang.json` configuration file.
