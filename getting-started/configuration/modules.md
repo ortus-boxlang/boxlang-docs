@@ -19,10 +19,28 @@ BoxLang is a modular language. Each module can have a configuration structure fo
  */
 "modules": {
 	// The Compat Module
-	"compat": {
+	"compat-cfml": {
 	 	"settings": {
 	 		"engine" : "Adobe"
 	 	}
+	},
+	// The Mail module
+	"mail" : {
+		"spoolEnable" : true,
+		// Spool interval, in minutes
+		"spoolInterval" : 1.5,
+		"mailServers" : [
+			{
+				"tls": false,
+				"password": "",
+				"idleTimeout": "10000",
+				"lifeTimeout": "60000",
+				"port": "25",
+				"username": "",
+				"ssl": false,
+				"smtp": "127.0.0.1"
+			}
+		]
 	}
 }
 ```
