@@ -4,6 +4,8 @@
 
 Determine the ASCII value of a character
 
+`asc` is transpiled to `ascii` in CFML files.
+
 ## Method Signature
 
 ```
