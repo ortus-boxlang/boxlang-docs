@@ -5,7 +5,21 @@ description: These are the global configuration settings for the runtime
 
 # Directives
 
-Below you can find all the configuration directives the language supports.
+Below, you can find all the configuration directives the language supports.
+
+{% hint style="warning" %}
+These directives will be placed in the `boxlang.json`file at the root level:
+
+{% code title="boxlang.json" %}
+```
+{
+    "directive": value
+}
+```
+{% endcode %}
+{% endhint %}
+
+
 
 ### Application Timeout
 

@@ -1,12 +1,13 @@
 ---
-description: Here you can configure the global thread executors in BoxLang.
 icon: list-tree
+description: Here you can configure the global thread executors in BoxLang.
 ---
 
 # Executors
 
 BoxLang allows you to register named executors globally. The JSON object key is the name of the executor and the value is another object with the `type` and a `threads` property, which is optional.  By default, BoxLang pre-configures two executors for you:
 
+{% code title="boxlang.json" %}
 ```json
 // Global Executors for the runtime
 // These are managed by the AsyncService and registered upon startup
@@ -25,6 +26,7 @@ BoxLang allows you to register named executors globally. The JSON object key is 
 	}
 },
 ```
+{% endcode %}
 
 {% hint style="warning" %}
 If you omit the `threads`on the executors, we will use the default of 20 threads.

@@ -4,9 +4,9 @@ description: A Dynamic holder of a potential value
 
 # Attempts
 
-Attempts in BoxLang are an enhanced Java [Optional](https://www.developer.com/java/java-optional-object/).  It acts as a fluent container of a value or expression that can be null, truthy, falsey, or exist.  It then provides fluent methods to interact with the potential value or expression.
+Attempts in BoxLang are an enhanced Java [Optional](https://www.developer.com/java/java-optional-object/). It acts as a fluent container of a value or expression that can be null, truthy, falsey, or exist. It then provides fluent methods to interact with the potential value or expression.
 
-Attempts are also unmodifiable, so you can chain methods to handle the value more functionally, but it never mutates the original value.  It can also be seeded with validation information to create validation pipelines.
+Attempts are also unmodifiable, so you can chain methods to handle the value more functionally, but it never mutates the original value. It can also be seeded with validation information to create validation pipelines.
 
 ```java
 attempt( userService.get( rc.id ) )
@@ -14,7 +14,7 @@ attempt( userService.get( rc.id ) )
     .orThrow( "UserNotFoundException" )
 ```
 
-In this example, you can see that the expression creates a value to check if the user requested exists and is loaded.  Then, you can fluently populate and save the user if the user is present or throw an exception. &#x20;
+In this example, you can see that the expression creates a value to check if the user requested exists and is loaded. Then, you can fluently populate and save the user if the user is present or throw an exception.
 
 {% hint style="success" %}
 BoxLang internally will return `Attempts` in many BIFS and internal operations.
@@ -22,7 +22,7 @@ BoxLang internally will return `Attempts` in many BIFS and internal operations.
 
 ## Why
 
-Attempts will allow you to use more declarative and functional programming techniques than dealing with nulls or falsey values.  It provides a better API for developers to follow and absorb. You will ultimately write concise and more readable code that is easier to maintain and test.
+Attempts will allow you to use more declarative and functional programming techniques than dealing with nulls or falsey values. It provides a better API for developers to follow and absorb. You will ultimately write concise and more readable code that is easier to maintain and test.
 
 ## States
 
@@ -35,19 +35,20 @@ stateDiagram
     [*] --> Present
 ```
 
-An attempt can only have two states:  **present** or **empty**.  They can be retrieved with two methods:
+An attempt can only have two states: **present** or **empty**. They can be retrieved with two methods:
 
-* `isEmpty():boolean`&#x20;
+* `isEmpty():boolean`
 * `isPresent():boolean`
 
 The rules for evaluating that we have a value **present** are:
 
 * The value is not `null`
-* If the value is castable to BoxLang Boolean, is it `true`
-  * Queries, structs, strings, arrays are castable to boolean. So if they are empty, the attempt is false.
-* If not castable, we have a value, so it's **present**.
 
-We also have another method called `isNull(),` which specifically checks whether the value is `null` only!
+We also have some fluent aliased methods to create readable chains:
+
+* `isNull():boolean`
+* `hasFailed():boolean`
+* `wasSuccessful():boolean`
 
 ```java
 attempt( null )
@@ -58,13 +59,6 @@ attempt( null )
 
 attempt( "hello" )
     .isPresent() // true
-
-attempt( [] )
-    .isPresent() // false : the array is empty
-attempt( {} )
-    .isPresent() // false : the struct is empty
-attempt( queryNew() )
-    .isPresent() // false : the query is empty
 ```
 
 ## Creation
@@ -83,7 +77,7 @@ Remember that this is an empty attempt, you can change it's value.
 
 ### With Potential Value
 
-If you pass a value into the BIF, that value will be stored in the attempt, which can later be evaluated for existence.  You can pass a value or an expression that could be `null`.
+If you pass a value into the BIF, that value will be stored in the attempt, which can later be evaluated for existence. You can pass a value or an expression that could be `null`.
 
 ```java
 attempt( userService.get( rc.id ) )
@@ -94,7 +88,7 @@ attempt( getStudentWithName( "majano" ) )
 
 ## Usage
 
-We can interact with it now that we have created an attempt or received one.  Here is the arsenal of methods available to create fluent execution chains.&#x20;
+We can interact with it now that we have created an attempt or received one. Here is the arsenal of methods available to create fluent execution chains.
 
 ### equals( object ):boolean
 
@@ -121,7 +115,7 @@ attempt( userService.findById( 25 ) )
 
 ### flatMap( function ):attempt
 
-If a value is present, it returns the result of applying the given `Attempt`-bearing mapping function to the value; otherwise, it returns an empty `Attempt`.  Using `flatMap` allows you to avoid nested attempt objects and directly get the transformed result.  The `getEmail()` method returns an attempt, not a value.
+If a value is present, it returns the result of applying the given `Attempt`-bearing mapping function to the value; otherwise, it returns an empty `Attempt`. Using `flatMap` allows you to avoid nested attempt objects and directly get the transformed result. The `getEmail()` method returns an attempt, not a value.
 
 {% code title="User.bx" %}
 ```java
@@ -175,7 +169,7 @@ if( myData.exists() ){
 
 ### getOrDefault( other ):any / orElse( other )
 
-If a value is present, returns the value, otherwise returns the other passed value passed.  You can use the `getOrDefaul() , orElse()` function according to your readability needs.
+If a value is present, returns the value, otherwise returns the other passed value passed. You can use the `getOrDefaul() , orElse()` function according to your readability needs.
 
 ```java
 myData = getBoxCache()
@@ -187,9 +181,17 @@ myData = getBoxCache()
     .orElse( "not found" );
 ```
 
-### ifEmpty( consumer ):attempt / ifFailed()
+### getOrSupply( supplier ):any
 
-If the attempt is NOT present, run the consumer. This returns the same attempt.  Please note that you can use the `ifEmpty() or the ifFailed()` alias, in order to improve your readability.
+If a value is present, returns the value; otherwise returns the result from the passed function/closure/lambda.
+
+```java
+myData = getBoxCache().get( "my-id" ).getOrSupply( () -> createIt() )
+```
+
+### ifEmpty( consumer ):attempt / ifFailed( consumer )
+
+If the attempt is NOT present, run the consumer. This returns the same attempt.
 
 ```java
 user = attempt( userService.findById( rc.id ) )
@@ -204,7 +206,7 @@ attempt( apiService.getUserData( rc.id ) )
 
 ### ifPresent( action ):attempt / ifSuccessful()
 
-If a value is present, performs the given action with the value, otherwise does nothing.  You can use either `ifPresent() or ifSuccessful()` depending on your fluency
+If a value is present, performs the given action with the value, otherwise does nothing. You can use either `ifPresent() or ifSuccessful()` depending on your fluency
 
 ```java
 attempt( apiService.getUserData( rc.id ) )
@@ -248,7 +250,7 @@ attempt( userService.findById( rc.id ) )
 
 ### or( supplier ):attempt
 
-If a value is present, returns the Attempt, otherwise returns an Attempt produced by the supplying function.  This is great for doing n-tier level lookups.
+If a value is present, returns the Attempt, otherwise returns an Attempt produced by the supplying function. This is great for doing n-tier level lookups.
 
 ```java
 attempt( dataService.findGlobally() )
@@ -259,7 +261,7 @@ attempt( dataService.findGlobally() )
 
 ### orElseGet( supplier ):any
 
-This is similar to the `getOrDefault(), orElse()` methods, but with the caveat that this method calls the supplier closure/lambda, and whatever that produces is used.  This is great for dynamically producing the result.
+This is similar to the `getOrDefault(), orElse()` methods, but with the caveat that this method calls the supplier closure/lambda, and whatever that produces is used. This is great for dynamically producing the result.
 
 ```java
 attempt( dataService.findGlobally() )
@@ -271,7 +273,7 @@ attempt( dataService.findGlobally() )
 
 ### orThrow( \[throwable|message] ):any
 
-If a value is present, returns the value, otherwise throws a `NoElementException` if no exception is passed.  If you pass in a **message**, it will throw an exception with that **message.**  If you pass in your own **Exception** object, it will throw that exception object.
+If a value is present, returns the value, otherwise throws a `NoElementException` if no exception is passed. If you pass in a **message**, it will throw an exception with that **message.** If you pass in your own **Exception** object, it will throw that exception object.
 
 ```java
 function getData(){
@@ -289,7 +291,7 @@ function getUser( required id ){
 
 ### stream()
 
-If a value is present, returns a sequential Stream containing only that value, otherwise returns an empty Stream.  Let's say we have a list of `Person` objects, each with an optional `Address` field. We want to extract a list of all city names from those persons who actually have an address.
+If a value is present, returns a sequential Stream containing only that value, otherwise returns an empty Stream. Let's say we have a list of `Person` objects, each with an optional `Address` field. We want to extract a list of all city names from those persons who actually have an address.
 
 ```java
 people = [
@@ -326,26 +328,26 @@ println( attempt( "hello" ).toString() ) // Attempt[hello]
 
 ## Validation Usage
 
-The usage section focused on traditional usage for the attempt class.  In this section, we will expand the usage to also include custom validation.  The process of validation is:
+The usage section focused on traditional usage for the attempt class. In this section, we will expand the usage to also include custom validation. The process of validation is:
 
 1. Use the `to{Method}()` matchers to register what the value should match against.
 2. Validate using `isValid():boolean` to see if the value matches your validation matcher.
 3. Use the `ifValid( consumer )` that if the attempt is valid it will call your closure/lambda with the value of the attempt.
 4. Use the `ifInvalid( action )` that if the attempt is invalid it will call the action
 
-If the state of the attempt is empty, then `isValid()` will always be empty.
+If the state of the attempt is empty, then `isValid()` will always be **false**.
 
 ### Matchers
 
 The available matchers are:
 
-* `toBe( other )` - Stores a value to explicitly match against
-* `toBeBetween( min, max )` - Validates the attempt to be between a range of numbers This assumes the value is a number or castable to a number.  The range is inclusive/boxed.
-* `toBeType( type )` - Validates the attempt to be a specific BoxLang type that you can pass to the `isValid` function.  Check out the [isValid](../reference/built-in-functions/decision/IsValid.md) function
+* `toBe( otherValue )` - Stores a value to explicitly match against the `otherValue`
+* `toBeBetween( min, max )` - Validates the attempt to be between a range of numbers This assumes the value is a number or castable to a number. The range is inclusive/boxed.
+* `toBeType( type )` - Validates the attempt to be a specific BoxLang type that you can pass to the `isValid` function. Check out the [isValid](../reference/built-in-functions/decision/IsValid.md) function
 * `toMatchRegex( pattern, [caseSensitive=true] )` - Validates the attempt to match a regex pattern with case sensitivity This assumes the value is a string or castable to a string
-* `toSatisfy( predicate )` - Register a validation function to the attempt. This function will be executed when the attempt is evaluated It must return TRUE for the attempt to be valid.  This is the most flexible approach as your closure/lambda will validate the incoming result attempt as it sees fit.
+* `toSatisfy( predicate )` - Register a validation function to the attempt. This function will be executed when the attempt is evaluated It must return TRUE for the attempt to be valid. This is the most flexible approach as your closure/lambda will validate the incoming result attempt as it sees fit.
 
-The matcher registration can happen at any time as long as it is before an `isValid()` call.
+The matcher registration can happen anytime as long as it is before an `isValid()` call.
 
 ```java
 attempt( "luis" ).toBe( "luis" ).isValid()

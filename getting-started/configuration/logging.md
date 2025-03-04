@@ -1,6 +1,6 @@
 ---
-description: Configure the logging framework in BoxLang
 icon: timeline-arrow
+description: Configure the logging framework in BoxLang
 ---
 
 # Logging
@@ -13,6 +13,7 @@ The `logging`section is divided into global log settings and a `loggers`section 
 Please also note that in BoxLang, you can log data as **text** or as **JSON**.
 {% endhint %}
 
+{% code title="boxlang.json" %}
 ```json
 // Logging Settings for the runtime
 "logging": {
@@ -110,6 +111,7 @@ Please also note that in BoxLang, you can log data as **text** or as **JSON**.
 	}
 },
 ```
+{% endcode %}
 
 ## Global Properties
 

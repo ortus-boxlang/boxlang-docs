@@ -1,6 +1,6 @@
 ---
-description: This configures the caches in the runtime
 icon: server
+description: This configures the caches in the runtime
 ---
 
 # Caches
@@ -15,6 +15,7 @@ Every BoxLang runtime comes pre-configured with the following caches that are ma
 
 <table><thead><tr><th width="180">Cache</th><th>Hint</th></tr></thead><tbody><tr><td><code>default</code></td><td>The default cache in BoxLang that's used for queries, templates, and many more internal usages.</td></tr><tr><td><code>bxSessions</code></td><td>If you are activating session management in your web or client applications, then here is where user session information  will be stored.</td></tr><tr><td><code>bxRegex</code></td><td>This is where all dynamic regular expressions are compiled and kept.</td></tr></tbody></table>
 
+{% code title="boxlang.json" %}
 ```json
 "caches": {
 	// The configuration for the BoxLang `default` cache.  If empty, we use the defaults
@@ -107,6 +108,7 @@ Every BoxLang runtime comes pre-configured with the following caches that are ma
 	}
 },
 ```
+{% endcode %}
 
 ### Providers
 

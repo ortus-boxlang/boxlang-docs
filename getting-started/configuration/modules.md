@@ -1,6 +1,6 @@
 ---
-description: Configure how modules are loaded and work in BoxLang
 icon: chart-tree-map
+description: Configure how modules are loaded and work in BoxLang
 ---
 
 # Modules
@@ -10,6 +10,7 @@ BoxLang is a modular language. Each module can have a configuration structure fo
 * `enabled` : Boolean indicator to disable or eanble the module from loading. Defaults to \`true\`
 * `settings` : A structure of configuration settings each module exposes
 
+{% code title="boxlang.json" %}
 ```json
 /**
  * The BoxLang module settings
@@ -44,6 +45,4 @@ BoxLang is a modular language. Each module can have a configuration structure fo
 	}
 }
 ```
-
-
-
+{% endcode %}

@@ -1,12 +1,13 @@
 ---
-description: Here you can enable/disable experimental flags in BoxLang.
 icon: flask-vial
+description: Here you can enable/disable experimental flags in BoxLang.
 ---
 
 # Experimental
 
 This block is used to have experimental feature flags for BoxLang. Every experimental flag will be documented here once we have them.
 
+{% code title="boxlang.json" %}
 ```json
 "experimental": {
     // This choose the compiler to use for the runtime
@@ -16,6 +17,7 @@ This block is used to have experimental feature flags for BoxLang. Every experim
     "ASTCapture": false
 },
 ```
+{% endcode %}
 
 ### Compiler
 
