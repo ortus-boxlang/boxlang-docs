@@ -1,6 +1,6 @@
 ---
-description: These are the global configuration settings for the runtime
 icon: bolt-lightning
+description: These are the global configuration settings for the runtime
 ---
 
 # Directives
@@ -46,7 +46,7 @@ This is a powerful setting. It puts the runtime into debug mode, where more verb
 "debugMode": false,
 ```
 
-###
+
 
 ### Default Remote Method Return Format
 
