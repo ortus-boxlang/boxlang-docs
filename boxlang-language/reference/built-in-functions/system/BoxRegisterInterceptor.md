@@ -16,7 +16,7 @@ BoxRegisterInterceptor(interceptor=[any], states=[any])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `interceptor` | `any` | `true` | This can be a class or a closure/lambda that will listen to global events |  |
-| `states` | `any` | `false` |  | `[]` |
+| `states` | `any` | `false` | An array of events to listen to along side the points discovered in the incoming interceptor | `[]` |
 
 ## Examples
 
@@ -29,6 +29,7 @@ BoxRegisterInterceptor(interceptor=[any], states=[any])
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)
   * [CreateGUID](./CreateGUID.md)

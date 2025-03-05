@@ -24,6 +24,7 @@ This function does not accept any arguments
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
   * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)

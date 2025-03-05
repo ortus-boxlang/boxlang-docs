@@ -2,12 +2,27 @@
 
 # Function: `BoxAnnounceAsync`
 
-Announce a BoxLang event to the system asynchronously
+Announce a BoxLang event to the global system interceptor service asynchronously.
+
+By default, the event is announced to the global interception service.
+ The return value is a BoxLang CompletableFuture that will be completed when the event has been announced.
+ Available pools are "global" and "request".
+ The request pool is tied to the application listener and is only available during the request lifecycle.
+
+ Example:
+
+ <pre>
+ // Announce globally
+ var future = announceAsync( "onRequestStart", { request = request } )
+
+ // Announce to the application request
+ var future = announceAsync( "myRequestEvent", { data : myData }, "request" )
+ </pre>
 
 ## Method Signature
 
 ```
-BoxAnnounceAsync(state=[string], data=[struct])
+BoxAnnounceAsync(state=[string], data=[struct], poolname=[string])
 ```
 
 ### Arguments
@@ -15,8 +30,9 @@ BoxAnnounceAsync(state=[string], data=[struct])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `state` | `string` | `true` | The event to announce |  |
-| `data` | `struct` | `false` | The data to send with the event | `{}` |
+| `state` | `string` | `true` | The interceptor event to announce: Ex: "onRequestStart", "onRequestEnd", "onError" |  |
+| `data` | `struct` | `false` | The data struct to send with the event | `{}` |
+| `poolname` | `string` | `false` | The name of the interceptor pool to announce the event to. Default is "global". Available pools are "global" and "request". | `global` |
 
 ## Examples
 
@@ -28,6 +44,7 @@ BoxAnnounceAsync(state=[string], data=[struct])
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
+  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
   * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)

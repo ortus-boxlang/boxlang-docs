@@ -1,22 +1,20 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `Dump`
+# Function: `BoxRegisterInterceptionPoints`
 
-Outputs the contents of a variable (simple or complex) of any type for debugging purposes to a specific output location.
+You can use this BIF to register custom interception points into either the "global" or the "request" interceptor pools.
 
-<p>
- The available {@code output} locations are:
- - <strong>buffer<strong>: The output is written to the buffer, which is the default location. If running on a web server, the output is written to the browser.
- - <strong>console</strong>: The output is printed to the System console.
- - <strong>{absolute_file_path}</strong> The output is written to a file with the specified filename path.
- <p>
- The output {@code format} can be either HTML or plain text.
- The default format is HTML if the output location is the buffer or a web server or a file, otherwise it is plain text for the console.
+Example:
+
+ <pre>
+ boxRegisterInterceptionPoints( "onOrderComplete" )
+ boxRegisterInterceptionPoints( [ "onOrderComplete", "preOrder" ] )
+ </pre>
 
 ## Method Signature
 
 ```
-Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean], output=[string], format=[string], showUDFs=[boolean])
+BoxRegisterInterceptionPoints(states=[any], poolname=[string])
 ```
 
 ### Arguments
@@ -24,14 +22,8 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `var` | `any` | `false` | The variable to dump, can be any type |  |
-| `label` | `string` | `false` | A custom label to display above the dump (Only in HTML output) |  |
-| `top` | `numeric` | `false` | The number of levels to display when dumping collections. Great to avoid dumping the entire world! Default is inifinity. (Only in HTML output) |  |
-| `expand` | `boolean` | `false` | Whether to expand the dump. Be default, we try to expand as much as possible. (Only in HTML output) | `true` |
-| `abort` | `boolean` | `false` | Whether to do a hard abort the request after dumping. Default is false | `false` |
-| `output` | `string` | `false` | The output format which can be "buffer", "console", or "{absolute file path}". The default is "buffer". |  |
-| `format` | `string` | `false` | The format of the output to a <strong>filename</strong>. Can be "html" or "text". The default is according to the output location. |  |
-| `showUDFs` | `boolean` | `false` | Show UDFs or not. Default is true. (Only in HTML output) | `true` |
+| `states` | `any` | `false` | The states to register the interception points for. | `[]` |
+| `poolname` | `string` | `false` | The name of the interceptor pool to register the event to. Default is "global". Available pools are "global" and "request". | `global` |
 
 ## Examples
 
@@ -44,7 +36,6 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
-  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
   * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)
@@ -53,6 +44,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
   * [CreateUUID](./CreateUUID.md)
   * [DE](./DE.md)
   * [DebugBoxContexts](./DebugBoxContexts.md)
+  * [Dump](./Dump.md)
   * [Duplicate](./Duplicate.md)
   * [echo](./echo.md)
   * [EncodeForHTML](./EncodeForHTML.md)

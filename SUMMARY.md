@@ -534,6 +534,7 @@
       * [ApplicationStop](boxlang-language/reference/built-in-functions/system/ApplicationStop.md)
       * [BoxAnnounce](boxlang-language/reference/built-in-functions/system/BoxAnnounce.md)
       * [BoxAnnounceAsync](boxlang-language/reference/built-in-functions/system/BoxAnnounceAsync.md)
+      * [BoxRegisterInterceptionPoints](boxlang-language/reference/built-in-functions/system/BoxRegisterInterceptionPoints.md)
       * [BoxRegisterInterceptor](boxlang-language/reference/built-in-functions/system/BoxRegisterInterceptor.md)
       * [BoxRegisterRequestInterceptor](boxlang-language/reference/built-in-functions/system/BoxRegisterRequestInterceptor.md)
       * [CallStackGet](boxlang-language/reference/built-in-functions/system/CallStackGet.md)
@@ -599,6 +600,7 @@
       * [CreateODBCDate](boxlang-language/reference/built-in-functions/temporal/CreateODBCDate.md)
       * [CreateODBCDateTime](boxlang-language/reference/built-in-functions/temporal/CreateODBCDateTime.md)
       * [CreateODBCTime](boxlang-language/reference/built-in-functions/temporal/CreateODBCTime.md)
+      * [CreateTime](boxlang-language/reference/built-in-functions/temporal/CreateTime.md)
       * [CreateTimeSpan](boxlang-language/reference/built-in-functions/temporal/CreateTimeSpan.md)
       * [DateAdd](boxlang-language/reference/built-in-functions/temporal/DateAdd.md)
       * [DateCompare](boxlang-language/reference/built-in-functions/temporal/DateCompare.md)
@@ -682,6 +684,7 @@
       * [Abort](boxlang-language/reference/components/system/Abort.md)
       * [Application](boxlang-language/reference/components/system/Application.md)
       * [Associate](boxlang-language/reference/components/system/Associate.md)
+      * [Component](boxlang-language/reference/components/system/Component.md)
       * [Dump](boxlang-language/reference/components/system/Dump.md)
       * [Execute](boxlang-language/reference/components/system/Execute.md)
       * [Exit](boxlang-language/reference/components/system/Exit.md)
@@ -692,7 +695,6 @@
       * [Lock](boxlang-language/reference/components/system/Lock.md)
       * [Log](boxlang-language/reference/components/system/Log.md)
       * [Loop](boxlang-language/reference/components/system/Loop.md)
-      * [Module](boxlang-language/reference/components/system/Module.md)
       * [Object](boxlang-language/reference/components/system/Object.md)
       * [Output](boxlang-language/reference/components/system/Output.md)
       * [Param](boxlang-language/reference/components/system/Param.md)
@@ -706,7 +708,8 @@
     * [xml](boxlang-language/reference/components/xml/README.md)
       * [XML](boxlang-language/reference/components/xml/XML.md)
     * [zip](boxlang-language/reference/components/zip/README.md)
-      * [Zip](boxlang-language/reference/components/zip/Zip.md)
+      * [Zip](boxlang-language/reference/components/zip/Zip.md)  
+  * [Exceptions](boxlang-language/reference/Exceptions.md)
 
 ## BoxLang Framework
 

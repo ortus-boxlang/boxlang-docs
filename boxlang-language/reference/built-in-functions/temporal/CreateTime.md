@@ -1,15 +1,13 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `DateConvert`
+# Function: `CreateTime`
 
-Converts local time to Coordinated Universal Time (UTC), or UTC to local time.
-
-The function uses the daylight savings settings in the executing computer to compute daylight savings time, if required.
+Creates a time-only datetime object using the epoch date ( 1970-1-1 ) as the date reference.
 
 ## Method Signature
 
 ```
-DateConvert(conversionType=[string], date=[any])
+CreateTime(hour=[integer], minute=[integer], second=[integer], millisecond=[integer], timezone=[string])
 ```
 
 ### Arguments
@@ -17,8 +15,11 @@ DateConvert(conversionType=[string], date=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `conversionType` | `string` | `true` | The conversion type. Valid values are "utc2Local" and "local2Utc". |  |
-| `date` | `any` | `true` | The date to convert. |  |
+| `hour` | `integer` | `false` | The hour of the date-time object. | `0` |
+| `minute` | `integer` | `false` | The minute of the date-time object. | `0` |
+| `second` | `integer` | `false` | The second of the date-time object. | `0` |
+| `millisecond` | `integer` | `false` | The millisecond of the date-time object. | `0` |
+| `timezone` | `string` | `false` |  |  |
 
 ## Examples
 
@@ -32,10 +33,10 @@ DateConvert(conversionType=[string], date=[any])
   * [CreateODBCDate](./CreateODBCDate.md)
   * [CreateODBCDateTime](./CreateODBCDateTime.md)
   * [CreateODBCTime](./CreateODBCTime.md)
-  * [CreateTime](./CreateTime.md)
   * [CreateTimeSpan](./CreateTimeSpan.md)
   * [DateAdd](./DateAdd.md)
   * [DateCompare](./DateCompare.md)
+  * [DateConvert](./DateConvert.md)
   * [DateDiff](./DateDiff.md)
   * [DateFormat](./DateFormat.md)
   * [DatePart](./DatePart.md)

@@ -4,8 +4,14 @@
 
 Determines whether a value is an object.
 
-True, if the value represents a object. False if the value is any other type of data, such as an
- integer, string, date, or struct.
+<p>
+ True conditions are:
+ <ul>
+ <li>Box Class instances are "objects"</li>
+ <li>All other classes that represent a Boxlang type are NOT "objects" (query, array, struct, XML, etc)</li>
+ <li>These JDK classes which are used for "simple" BoxLang types are also not "objects" (String, Number, Boolean)</li>
+ <li>Every other Java class is an "object"</li>
+ </ul>
 
 ## Method Signature
 

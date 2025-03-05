@@ -7,7 +7,7 @@ Modifies a date object by date part and integer time unit
 ## Method Signature
 
 ```
-DateAdd(datepart=[string], number=[long], date=[any])
+DateAdd(datepart=[string], number=[number], date=[any])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ DateAdd(datepart=[string], number=[long], date=[any])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `datepart` | `string` | `true` | The date part to modify |  |
-| `number` | `long` | `true` | The number of units to modify by |  |
+| `number` | `number` | `true` | The number of units to modify by |  |
 | `date` | `any` | `true` | The date object to modify |  |
 
 ## Examples
@@ -31,6 +31,7 @@ DateAdd(datepart=[string], number=[long], date=[any])
   * [CreateODBCDate](./CreateODBCDate.md)
   * [CreateODBCDateTime](./CreateODBCDateTime.md)
   * [CreateODBCTime](./CreateODBCTime.md)
+  * [CreateTime](./CreateTime.md)
   * [CreateTimeSpan](./CreateTimeSpan.md)
   * [DateCompare](./DateCompare.md)
   * [DateConvert](./DateConvert.md)

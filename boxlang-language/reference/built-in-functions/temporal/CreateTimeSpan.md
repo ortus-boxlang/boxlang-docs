@@ -33,6 +33,7 @@ CreateTimeSpan(days=[long], hours=[long], minutes=[long], seconds=[long], millis
   * [CreateODBCDate](./CreateODBCDate.md)
   * [CreateODBCDateTime](./CreateODBCDateTime.md)
   * [CreateODBCTime](./CreateODBCTime.md)
+  * [CreateTime](./CreateTime.md)
   * [DateAdd](./DateAdd.md)
   * [DateCompare](./DateCompare.md)
   * [DateConvert](./DateConvert.md)

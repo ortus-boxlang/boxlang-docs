@@ -14,7 +14,7 @@ Retrieve a Java System property or environment value by name.
 ## Method Signature
 
 ```
-GetSystemSetting(key=[String], defaultValue=[String])
+GetSystemSetting(key=[String], defaultValue=[Any])
 ```
 
 ### Arguments
@@ -23,7 +23,7 @@ GetSystemSetting(key=[String], defaultValue=[String])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `key` | `String` | `true` | The name of the system property or environment variable to retrieve |  |
-| `defaultValue` | `String` | `false` | The default value to return if the property or environment variable is not found |  |
+| `defaultValue` | `Any` | `false` | The default value to return if the property or environment variable is not found |  |
 
 ## Examples
 
@@ -36,6 +36,7 @@ GetSystemSetting(key=[String], defaultValue=[String])
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
   * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)

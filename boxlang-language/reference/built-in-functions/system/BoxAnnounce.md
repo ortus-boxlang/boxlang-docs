@@ -2,12 +2,26 @@
 
 # Function: `BoxAnnounce`
 
-Announce a BoxLang event to the system
+Announce a BoxLang event to a specific interceptor pool.
+
+By default, the event is announced to the global interception service.
+ Available pools are "global" and "request".
+ The request pool is tied to the application listener and is only available during the request lifecycle.
+
+ Example:
+
+ <pre>
+ // Announce globally
+ boxAnnounce( "onRequestStart", { request = request } )
+
+ // Announce to the application request
+ boxAnnounce( "myRequestEvent", { data : myData }, "request" )
+ </pre>
 
 ## Method Signature
 
 ```
-BoxAnnounce(state=[string], data=[struct])
+BoxAnnounce(state=[string], data=[struct], poolname=[string])
 ```
 
 ### Arguments
@@ -15,8 +29,9 @@ BoxAnnounce(state=[string], data=[struct])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `state` | `string` | `true` | The event to announce |  |
-| `data` | `struct` | `false` | The data to send with the event | `{}` |
+| `state` | `string` | `true` | The interceptor event to announce: Ex: "onRequestStart", "onRequestEnd", "onError" |  |
+| `data` | `struct` | `false` | The data struct to send with the event | `{}` |
+| `poolname` | `string` | `false` | The name of the interceptor pool to announce the event to. Default is "global". Available pools are "global" and "request". | `global` |
 
 ## Examples
 
@@ -28,6 +43,7 @@ BoxAnnounce(state=[string], data=[struct])
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
   * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
   * [CallStackGet](./CallStackGet.md)

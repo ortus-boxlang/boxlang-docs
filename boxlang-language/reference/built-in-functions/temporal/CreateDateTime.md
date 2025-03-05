@@ -38,6 +38,7 @@ CreateDateTime(year=[integer], month=[integer], day=[integer], hour=[integer], m
   * [CreateODBCDate](./CreateODBCDate.md)
   * [CreateODBCDateTime](./CreateODBCDateTime.md)
   * [CreateODBCTime](./CreateODBCTime.md)
+  * [CreateTime](./CreateTime.md)
   * [CreateTimeSpan](./CreateTimeSpan.md)
   * [DateAdd](./DateAdd.md)
   * [DateCompare](./DateCompare.md)

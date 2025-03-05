@@ -2,12 +2,55 @@
 
 # Function: `IsValid`
 
-Determine whether the given value is a string, numeric, or date.Arrays, structs, queries, closures, classes and components, and other complex
- structures will return false.
+Validates the incoming <code>value</code> against the given
+ <code>type</code>.
 
-<p>
- Note we expressly do not support the `eurodate` type, since date formats vary across EU countries. For this, prefer the `LSIsDate( date, locale )`
+If the type is a range, the value is
+ validated against the range. If the type is a pattern, the value is validated
+ against the pattern. If the type is a
+ date, the value is validated against the date format. If the type is a locale
+ date, the value is validated against the
+ locale date format. If the type is a regular expression, the value is
+ validated against the regular expression.
+ <p>
+ <strong>
+ Note we expressly do not support the `eurodate` type, since date formats vary
+ across EU countries. For this, prefer the `LSIsDate( date, locale )`
  method instead.
+ </strong>
+ <p>
+ <h2>Valid Types</h2>
+ <ul>
+ <li>array</li>
+ <li>binary</li>
+ <li>boolean</li>
+ <li>component</li>
+ <li>creditcard</li>
+ <li>date</li>
+ <li>email</li>
+ <li>float</li>
+ <li>function</li>
+ <li>guid</li>
+ <li>integer</li>
+ <li>numeric</li>
+ <li>query</li>
+ <li>range</li>
+ <li>regex</li>
+ <li>regular_expression</li>
+ <li>social_security_number</li>
+ <li>ssn</li>
+ <li>string</li>
+ <li>struct</li>
+ <li>telephone</li>
+ <li>time</li>
+ <li>time</li>
+ <li>url</li>
+ <li>usdate</li>
+ <li>uuid</li>
+ <li>variablename</li>
+ <li>xml</li>
+ <li>zipcode</li>
+ </ul>
 
 ## Method Signature
 
@@ -22,7 +65,7 @@ IsValid(type=[string], value=[any], min=[any], max=[any], pattern=[any])
 |----------|------|----------|-------------|---------|
 | `type` | `string` | `true` | The type to validate the value against |  |
 | `value` | `any` | `true` | Value to test for validaty on a given type |  |
-| `min` | `any` | `false` | The minimum value for the range type or a pattern to validate the value against |  |
+| `min` | `any` | `false` | The minimum value for the range type or a pattern to validate<br>               the value against |  |
 | `max` | `any` | `false` | The maximum value for the range type |  |
 | `pattern` | `any` | `false` | The pattern to validate the value against |  |
 

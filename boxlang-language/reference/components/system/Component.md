@@ -6,7 +6,7 @@ Invokes a custom tag.
 ## Component Signature
 
 ```
-<bx:component template=[string]
+<bx:Component template=[string]
 name=[string] />
 ```
 
@@ -21,6 +21,6 @@ name=[string] />
 ## Examples
 
 ```
-<bx:component template=[string]
+<bx:Component template=[string]
 name=[string] />
 ```

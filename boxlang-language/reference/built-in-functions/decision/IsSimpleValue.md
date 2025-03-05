@@ -2,8 +2,7 @@
 
 # Function: `IsSimpleValue`
 
-Determine whether the given value is a string, numeric, or date.Arrays, structs, queries, closures, classes and components, and other complex
- structures will return false.
+Determine whether the given value is a string, boolean, numeric, or date value.
 
 ## Method Signature
 

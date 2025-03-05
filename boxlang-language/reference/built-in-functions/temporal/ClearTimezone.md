@@ -25,6 +25,7 @@ This function does not accept any arguments
   * [CreateODBCDate](./CreateODBCDate.md)
   * [CreateODBCDateTime](./CreateODBCDateTime.md)
   * [CreateODBCTime](./CreateODBCTime.md)
+  * [CreateTime](./CreateTime.md)
   * [CreateTimeSpan](./CreateTimeSpan.md)
   * [DateAdd](./DateAdd.md)
   * [DateCompare](./DateCompare.md)
