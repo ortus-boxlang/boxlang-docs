@@ -7,10 +7,10 @@ icon: globe-wifi
 BoxLang makes it really **easy** to interact with **any** HTTP/S endpoint via the `http` tag/construct. The `http` call will generate an HTTP/S request and parse the response into a nice BoxLang structure.
 
 ```java
-http url="https://www.google.com/" result="result" {
-    httpparam name="q" type="formfield" value="test";
+bx:http url="https://www.google.com/" result="result" {
+    bx:httpparam name="q" type="url" value="test";
 }
-writeDump( result )
+dump( result )
 ```
 
 {% hint style="info" %}
@@ -93,15 +93,15 @@ The available param arguments to the httpparam construct are:
 Here is another example for you:
 
 ```java
-http url="https://myrestapp.com/user" result="local.result", method="post" {
-        httpparam name="x-api-token" type="header" value="123";
-        httpparam
+bx:http url="https://myrestapp.com/user" result="result" method="post" {
+        bx:httpparam name="x-api-token" type="header" value="123";
+        bx:httpparam
                 type="body"
                 value=serializeJson( '{
                         name : "luis",
                          age : 2
                 }' );
-        
+
 }
-writeDump( result )
+dump( result )
 ```
