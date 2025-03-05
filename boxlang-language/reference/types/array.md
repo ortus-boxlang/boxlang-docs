@@ -102,18 +102,6 @@ Arguments:
 
 </details>
 <details>
-<summary><code>copyOf(arr=[any])</code></summary>
-
-Create a new Array from a list of values.
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `arr` | `any` | `true` | `null` |
-
-</details>
-<details>
 <summary><code>delete(value=[any], scope=[string])</code></summary>
 
 Delete first occurance of item in array case sensitive
@@ -450,20 +438,6 @@ Arguments:
 <summary><code>min()</code></summary>
 
 Return length of array
-</details>
-<details>
-<summary><code>of(values=[any])</code></summary>
-
-Create an Array from a list of values.
-
-Each value is passed in as a separate argument
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `values` | `any` | `true` | `null` |
-
 </details>
 <details>
 <summary><code>parallelStream()</code></summary>
