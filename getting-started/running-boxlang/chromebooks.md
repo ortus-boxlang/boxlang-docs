@@ -56,8 +56,8 @@ Right now, some distros do not have OpenJDK 21 yet.  If not, it would be as easy
 
 You can download the OpenJDK 21 For your current architecture from here: [https://adoptium.net/temurin/releases/?os=linux](https://adoptium.net/temurin/releases/?os=linux)
 
-* ARM - [https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk\_aarch64\_linux\_hotspot\_21.0.3\_9.tar.gz](https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk\_aarch64\_linux\_hotspot\_21.0.3\_9.tar.gz)
-* x64 - [https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk\_x64\_linux\_hotspot\_21.0.3\_9.tar.gz](https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk\_x64\_linux\_hotspot\_21.0.3\_9.tar.gz)
+* ARM - [https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk\_aarch64\_linux\_hotspot\_21.0.3\_9.tar.gz](https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.3_9.tar.gz)
+* x64 - [https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk\_x64\_linux\_hotspot\_21.0.3\_9.tar.gz](https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.3%2B9/OpenJDK21U-jdk_x64_linux_hotspot_21.0.3_9.tar.gz)
 
 You can use the following in your CLI to do it easier:
 
@@ -120,7 +120,7 @@ sudo /bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussoluti
 
 This will run the BoxLang installer.  Once you are done, just type `boxlang` and boom! We have BoxLang installed!
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 This opens the REPL and you can start coding away, running BoxLang files, starting servers and so much more.
 
@@ -128,7 +128,7 @@ This opens the REPL and you can start coding away, running BoxLang files, starti
 
 Now that we have BoxLang installed, let's get VSCode so you can use this awesome editor for BoxLang coding!
 
-<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 Choose the debian according to your processor and download the package. If you are unsure about your Chromebook's processor, type `dpkg --print-architecture` in the Linux terminal for verification.  Then double click it and run the installer.  Once done, you will have a new icon in your apps called `Visual Studio Code`. Click it and open it.
 
