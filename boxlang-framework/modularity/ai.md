@@ -1,6 +1,6 @@
 ---
-description: The official AI module for BoxLang
 icon: brain-circuit
+description: The official AI module for BoxLang
 ---
 
 # AI
@@ -12,6 +12,7 @@ Welcome to the BoxLang AI Module. This module is a BoxLang module that provides 
 The following AI providers are supported:
 
 * [OpenAI](https://www.openai.com/)
+* [DeepSeek](https://www.deepseek.com/)
 
 > More coming soon.
 
