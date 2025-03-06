@@ -63,6 +63,19 @@ See [Runtime Configuration](../configuration.md) for more info on using the `box
 
 Here is the collection of modules built and supported by the BoxLang team that are completely open-source.
 
+### bx-ai
+
+`Category: ai`
+
+Welcome to the BoxLang AI Module. This module is a BoxLang module that provides AI capabilities to your BoxLang applications.
+
+```bash
+install bx-ai
+```
+
+* Download: [https://forgebox.io/view/bx-ai](https://forgebox.io/view/bx-ai)
+* Instructions: [https://github.com/ortus-boxlang/bx-ai](https://github.com/ortus-boxlang/bx-ai)
+
 ### bx-compat-cfml
 
 `Category: cfml`
@@ -272,13 +285,13 @@ install bx-yaml
 
 ## +/++ Modules
 
-These modules are available for our +/++ subscribers only.  However, you can install them free of charge and try them out.
+These modules are available for our +/++ subscribers only. However, you can install them free of charge and try them out.
 
 ### bx-redis
 
 `Category: Caching`
 
-This module will enhance your language by having the ability to connect to Redis instances, clusters, or sentinel instances.  Here are some features:
+This module will enhance your language by having the ability to connect to Redis instances, clusters, or sentinel instances. Here are some features:
 
 * Add native Redis functionality to the language
 * Connect to a Redis server or a Redis cluster or Redis Sentinel
