@@ -22,6 +22,21 @@ install-bx-module bx-compat-cfml bx-esapi bx-orm
 ```
 {% endcode %}
 
+You can also install to your local directory and when you run your application, BoxLang will load these modules first and then the BoxLang home ones:
+
+{% code title="myAppDirectory" %}
+```bash
+# Install locally
+install-bx-module bx-compat-cfml --local
+
+# Install locally
+install-bx-module bx-compat-cfml@1.0.0 --local
+
+# Install multiple modules locally
+install-bx-module bx-compat-cfml bx-esapi bx-orm --local
+```
+{% endcode %}
+
 The CommandBox CLI is used to install BoxLang modules into web runtimes, not the operating system home.
 
 {% code title="CommandBox" %}

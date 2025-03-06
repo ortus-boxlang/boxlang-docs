@@ -7,7 +7,7 @@ description: The core runtime allows you to build CLI scripting applications
 
 <figure><img src="../../.gitbook/assets/BL-CLI.png" alt=""><figcaption></figcaption></figure>
 
-BoxLang is a modern, dynamic scripting language built for more than just simple automation—it empowers you to create full-fledged, high-performance CLI applications with ease. Designed to run seamlessly on the JVM, BoxLang provides powerful scripting capabilities, a rich standard library, and first-class support for modular development.&#x20;
+BoxLang is a modern, dynamic scripting language built for more than just simple automation—it empowers you to create full-fledged, high-performance CLI applications with ease. Designed to run seamlessly on the JVM, BoxLang provides powerful scripting capabilities, a rich standard library, and first-class support for modular development.
 
 Whether you're automating repetitive tasks, building interactive command-line tools, or developing complex CLI-driven workflows, BoxLang offers the flexibility, expressiveness, and performance you need. With intuitive syntax, robust error handling, and seamless integration with Java and other JVM-based technologies, BoxLang makes CLI scripting more efficient and enjoyable.
 
@@ -21,7 +21,7 @@ With BoxLang, you can execute a few types of files right from any OS CLI by addi
 Please note that you will need the `bx-compat-cfml`module if you want to execute CFML scripts
 {% endhint %}
 
-Here are some examples of executing the files.  Just pass in the file by relative or absolute path location.
+Here are some examples of executing the files. Just pass in the file by relative or absolute path location.
 
 {% tabs %}
 {% tab title="Mac / *Unix" %}
@@ -58,11 +58,11 @@ Please note that you have access to other persistent scopes when building CLI ap
 * `application`- This scope lives as long as your application lives as well, but it is technically attached to an `Application.bx`file that activates framework capabilities for your application.
 * `request`- A scope that matches a specific request for your application. We also get one per CLI app since there is no concept of sessions or user state. There is always only one request.
 
-For CLI applications, we recommend you use the `server`or `request` scope for singleton persistence.  Also note that you can use all the [caches](../configuration/caches.md) as well for persistence.  You can use `application`scope if you have an `Application.bx.`
+For CLI applications, we recommend you use the `server`or `request` scope for singleton persistence. Also note that you can use all the [caches](../configuration/caches.md) as well for persistence. You can use `application`scope if you have an `Application.bx.`
 
 ## Executing Classes
 
-BoxLang allows you to execute any `*.bx`class as long as it has a method called `main()`by convention.  All the arguments passed into the file execution will be collected and passed into the function via the `args`argument.
+BoxLang allows you to execute any `*.bx`class as long as it has a method called `main()`by convention. All the arguments passed into the file execution will be collected and passed into the function via the `args`argument.
 
 {% code title="task.bx" %}
 ```java
@@ -96,11 +96,11 @@ The passed args are:
 ]
 ```
 
-Class executions are a great way to build tasks that have a deterministic approach to execution.  We parse the arguments for you, and you can focus on building your task.
+Class executions are a great way to build tasks that have a deterministic approach to execution. We parse the arguments for you, and you can focus on building your task.
 
 ## Executing Scripts / Templates
 
-In addition to executing classes, you can execute `*.bxs`scripts that can do your bidding.  The difference is that this is a flat source code script that executes from the top down.  It can contain functions, scope usage, imports, and create any class.
+In addition to executing classes, you can execute `*.bxs`scripts that can do your bidding. The difference is that this is a flat source code script that executes from the top down. It can contain functions, scope usage, imports, and create any class.
 
 {% code title="hello.bxs" %}
 ```groovy
@@ -129,7 +129,7 @@ The passed args are:
 }
 ```
 
-What do you see that's different? We don't have the incoming arguments as an argument since it's a script.  However, we can use the `CLIGetArgs()`BIF, and it will give you a structure of two keys:
+What do you see that's different? We don't have the incoming arguments as an argument since it's a script. However, we can use the `CLIGetArgs()`BIF, and it will give you a structure of two keys:
 
 * `positionals`- An array of positional values passed to the script
 * `options`- Name value pairs detected as options
@@ -167,11 +167,9 @@ The passed args are:
 Please note that executing templates is the same as scripts, but your template uses templating language instead, which can be helpful if you produce some markup (HTML, Markdown, etc.)
 {% endhint %}
 
-
-
 ## SheBang Scripts
 
-SheBang scripts are text files containing a sequence of commands for a computer operating system. The term "shebang" refers to the `#!` characters at the beginning of the script, which specify the interpreter that should be used to execute the script. These scripts are commonly used in Unix-like operating systems to automate tasks. You can run scripts directly from the command line using a shebang line without explicitly invoking the interpreter.  BoxLang supports these scripts, so the OS sees them as just pure shell scripts, but you are coding in BoxLang scripting.
+SheBang scripts are text files containing a sequence of commands for a computer operating system. The term "shebang" refers to the `#!` characters at the beginning of the script, which specify the interpreter that should be used to execute the script. These scripts are commonly used in Unix-like operating systems to automate tasks. You can run scripts directly from the command line using a shebang line without explicitly invoking the interpreter. BoxLang supports these scripts, so the OS sees them as just pure shell scripts, but you are coding in BoxLang scripting.
 
 {% hint style="success" %}
 A SheBang script is just basically a `*.bxs`script.
@@ -186,7 +184,7 @@ println( CLIGetArgs() );
 ```
 {% endcode %}
 
-As you can see from the sample above, the first line is what makes it a SheBang script the operating system can use.  It passes it to the `boxlang`binary for interpretation.  Also, note that you can pass arguments to these scripts like any other script and the `CLIGetArgs()`or the `server.cli.parsed` variables will be there for you to use.
+As you can see from the sample above, the first line is what makes it a SheBang script the operating system can use. It passes it to the `boxlang`binary for interpretation. Also, note that you can pass arguments to these scripts like any other script and the `CLIGetArgs()`or the `server.cli.parsed` variables will be there for you to use.
 
 ```bash
 # Execute the script
@@ -195,8 +193,6 @@ As you can see from the sample above, the first line is what makes it a SheBang 
 # Execute it with a name argument and a simple option
 ./hola.sh --name=luis -d
 ```
-
-
 
 ## CLI Built-In Functions
 
@@ -209,8 +205,6 @@ BoxLang also gives you several built-in functions for interacting with the CLI:
 {% hint style="warning" %}
 Please note that you have a wealth of built-in functions and components that you can use to build your scripts.
 {% endhint %}
-
-
 
 ## Parsed Arguments
 
@@ -259,11 +253,9 @@ Will be parsed into the following struct:
 * Values can be quoted with single or double quotes
 * Repeated options will override the previous value
 
-
-
 ## Reading Input
 
-You can easily read input from users by using our handy `CLIRead()`bif.  You can also pass in a `prompt`as part of the method call.
+You can easily read input from users by using our handy `CLIRead()`bif. You can also pass in a `prompt`as part of the method call.
 
 ```groovy
 var exit = cliRead( "Do you want to continue? (Y/N)" ).trueFalseFormat()
@@ -272,8 +264,6 @@ if( exit ){
 }
 ```
 
-
-
 ## Producing Output
 
 As you navigate all the built-in functions and capabilities of BoxLang, let's learn how to produce output to the system console.
@@ -281,7 +271,7 @@ As you navigate all the built-in functions and capabilities of BoxLang, let's le
 * `printLn()` - Print with a line break to System out
 * `print()` - Print with no line break to System out
 * `writeOutput(), echo()` - Writes to the output buffer (Each runtime decides what its buffer is. The CLI is the system output, the Web is the HTML response buffer, etc)
-* `writeDump()`- Takes any incoming output and will serialize to a nice string output representation.  This will also do complex objects deeply.
+* `writeDump()`- Takes any incoming output and will serialize to a nice string output representation. This will also do complex objects deeply.
 
 ```groovy
 println( "Time is #now()#" )
@@ -320,8 +310,6 @@ Task called with {ARGS=[]}
 Task called with {ARGS=[boxlang, rocks]}
 ```
 
-
-
 ## Piping code <a href="#piping-code-11" id="piping-code-11"></a>
 
 You can also pipe statements into the BoxLang binary for execution as well. This assumes script, not tags.
@@ -343,7 +331,15 @@ type test.cfs | java -jar boxlang-1.0.0.jar
 type test.cfs | boxlang.bat
 ```
 
+## CLI App Modules
 
+If you want to package your own or core BoxLang modules into your CLI app you can use the convention of `boxlang_modules`and install the modules there using the `--local`flag of the `install-bx-module`installer script.
+
+```bash
+install-bx-module bx-pdf bx-image --local
+```
+
+This is incredibly useful as BoxLang will check this convention folder first and then the OS home modules.
 
 ## Dad Joke Script
 

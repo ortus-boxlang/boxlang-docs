@@ -165,13 +165,15 @@ install-boxlang snapshot
 You can get the version of the current BoxLang Runtime by running `boxlang --version`
 {% endhint %}
 
-### Installing Core OS Modules
+### Installing Modules
 
 You can use the `install-bx-module` binary to install modules into your boxlang home. Just pass in the name of the slug you want. You can use the `install bx-modules`to install multiple modules at once as well.
 
 {% hint style="info" %}
 All our modules are available in the cloud software directory [FORGEBOX](https://forgebox.io/type/boxlang-modules). You can also register and collaborate with modules of your own :person\_raising\_hand:.
 {% endhint %}
+
+#### Install to BoxLang Home
 
 ```bash
 # install individual modules
@@ -180,6 +182,19 @@ install-bx-module bx-esapi
 
 # install multiple modules
 install-bx-module bx-compat-cfml bx-esapi
+```
+
+#### Install Locally
+
+You can also install modules to the running application (CLI, web) by using the `--local`option in the command. This will create a `boxlang_modules`folder from where you ran the command and install the modules locally.
+
+```bash
+# install individual modules
+install-bx-module bx-compat-cfml --local
+install-bx-module bx-esapi --local
+
+# install multiple modules
+install-bx-module bx-compat-cfml bx-esapi --local
 ```
 
 ## R.E.P.L.
