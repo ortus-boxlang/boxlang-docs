@@ -708,7 +708,7 @@
     * [xml](boxlang-language/reference/components/xml/README.md)
       * [XML](boxlang-language/reference/components/xml/XML.md)
     * [zip](boxlang-language/reference/components/zip/README.md)
-      * [Zip](boxlang-language/reference/components/zip/Zip.md)  
+      * [Zip](boxlang-language/reference/components/zip/Zip.md)
   * [Exceptions](boxlang-language/reference/Exceptions.md)
 
 ## BoxLang Framework
@@ -720,6 +720,7 @@
 * [Java Interop](boxlang-framework/java-integration.md)
 * [JDBC Transactions](boxlang-framework/transactions.md)
 * [Modules](boxlang-framework/modularity/README.md)
+  * [AI](boxlang-framework/modularity/ai.md)
   * [Compat CFML](boxlang-framework/modularity/compat-cfml.md)
   * [ESAPI](boxlang-framework/modularity/esapi.md)
   * [Evaluating Code](boxlang-framework/modularity/evaluating-code.md)
