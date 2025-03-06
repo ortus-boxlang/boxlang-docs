@@ -112,7 +112,7 @@ To get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac
 
 {% tab title="Windows PowerShell" %}
 ```powershell
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ortus-boxlang/boxlang-quick-installer/main/src/Run-InstallBoxLang.ps1'))
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/ortus-boxlang/boxlang-quick-installer/main/src/install-boxlang.ps1'))
 ```
 {% endtab %}
 {% endtabs %}
