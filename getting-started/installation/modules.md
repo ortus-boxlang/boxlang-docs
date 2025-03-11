@@ -1,6 +1,6 @@
 ---
-icon: atom-simple
 description: The Officially supported BoxLang modules
+icon: atom-simple
 ---
 
 # Modules
@@ -85,7 +85,7 @@ Here is the collection of modules built and supported by the BoxLang team that a
 Welcome to the BoxLang AI Module. This module is a BoxLang module that provides AI capabilities to your BoxLang applications.
 
 ```bash
-install bx-ai
+install-bx-module bx-ai
 ```
 
 * Download: [https://forgebox.io/view/bx-ai](https://forgebox.io/view/bx-ai)
@@ -98,7 +98,7 @@ install bx-ai
 This module allows your BoxLang engine to run as an Adobe CFML engine or a Lucee CFML engine. Please note that we will not offer every single feature of the Adobe engines in this single module. It can be spread out through a collection of modules.
 
 ```bash
-install bx-compat-cfml
+install-bx-module bx-compat-cfml
 ```
 
 * Download: [https://forgebox.io/view/bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml)
@@ -119,7 +119,7 @@ This module provides password encryption and hashing functionality to Boxlang.
 * `GeneratePBKDFKey`: Generates a PDFK key from the given password and salt.
 
 ```
-install bx-password-encrypt
+install-bx-module bx-password-encrypt
 ```
 
 * Download: [https://forgebox.io/view/bx-password-encrypt](https://forgebox.io/view/bx-password-encrypt)
@@ -132,7 +132,7 @@ install bx-password-encrypt
 Leverages ESAPI and AntiSamy to provide your BoxLang applications with security and cleaning concerns.
 
 ```
-install bx-esapi
+install-bx-module bx-esapi
 ```
 
 * Download: [https://forgebox.io/view/bx-esapi](https://forgebox.io/view/bx-esapi)
@@ -145,7 +145,7 @@ install bx-esapi
 The FTP module allows you to perform various operations against an FTP or SFTP servers.
 
 ```
-install bx-ftp
+install-bx-module bx-ftp
 ```
 
 * Download: [https://forgebox.io/view/bx-ftp](https://forgebox.io/view/bx-ftp)
@@ -158,7 +158,7 @@ install bx-ftp
 The image module gives you tons of components and BIFs that will provide you with a robust and extensive image manipulation library.
 
 ```
-install bx-image
+install-bx-module bx-image
 ```
 
 * Download: [https://forgebox.io/view/bx-image](https://forgebox.io/view/bx-image)
@@ -171,7 +171,7 @@ install bx-image
 This module allows you to script in Python within BoxLang. It can also execute python scripts and modules.
 
 ```
-install bx-jython
+install-bx-module bx-jython
 ```
 
 * Download: [https://forgebox.io/view/bx-jython](https://forgebox.io/view/bx-jython)
@@ -184,7 +184,7 @@ install bx-jython
 This module allows you to interact with `ini` files.
 
 ```
-install bx-ini
+install-bx-module bx-ini
 ```
 
 * Download: [https://forgebox.io/view/bx-ini](https://forgebox.io/view/bx-ini)
@@ -197,7 +197,7 @@ install bx-ini
 The mail module for BoxLang gives you a robust component and a collection of bifs that you can use to send mail and interact with mail services.
 
 ```
-install bx-mail
+install-bx-module bx-mail
 ```
 
 * Download: [https://forgebox.io/view/bx-mail](https://forgebox.io/view/bx-mail)
@@ -210,7 +210,7 @@ install bx-mail
 You can use this module to get information about the operating system and hardware of your machine. This is a great way to get sensor or embedded system information like batteries, Raspberry Pi, etc.
 
 ```
-install bx-oshi
+install-bx-module bx-oshi
 ```
 
 * Download: [https://forgebox.io/view/bx-oshi](https://forgebox.io/view/bx-oshi)
@@ -223,7 +223,7 @@ install bx-oshi
 The pdf module will give you the capabilities to create and stream PDF documents from your BoxLang server code. We also offer the enhanced version in our BoxLang +,++ subscriptions.
 
 ```
-install bx-pdf
+install-bx-module bx-pdf
 ```
 
 * Download: [https://forgebox.io/view/bx-pdf](https://forgebox.io/view/bx-pdf)
@@ -236,7 +236,7 @@ install bx-pdf
 This module contributes several semantic UI components using the BoxLang templating language.
 
 ```
-install bx-ui-forms
+install-bx-module bx-ui-forms
 ```
 
 * Download: [https://forgebox.io/view/bx-ui-forms](https://forgebox.io/view/bx-ui-forms)
@@ -249,7 +249,7 @@ install bx-ui-forms
 This module will allow you to install an `evaluate()` function that can execute BoxLang and CFML expressions. Please note that this approach to coding is discouraged and unsafe.
 
 ```
-install bx-unsafe-evaluate
+install-bx-module bx-unsafe-evaluate
 ```
 
 * Download: [https://forgebox.io/view/bx-unsafe-evaluate](https://forgebox.io/view/bx-unsafe-evaluate)
@@ -262,7 +262,7 @@ install bx-unsafe-evaluate
 The WDDX module provides the bridge between the WDDX exchange format and BoxLang. It involves reading and parsing XML, converting data types, handling errors, and ensuring performance and compatibility. The module enables the integration of legacy systems with new applications.
 
 ```
-install bx-wddx
+install-bx-module bx-wddx
 ```
 
 * Download: [https://forgebox.io/view/bx-wddx](https://forgebox.io/view/bx-wddx)
@@ -279,7 +279,7 @@ THIS MODULE IS NOT NEEDED FOR COMMANDBOX OR THE MINISERVER. IT'S PURELY FOR TEST
 {% endhint %}
 
 ```
-install bx-web-support
+install-bx-module bx-web-support
 ```
 
 * Download: [https://forgebox.io/view/bx-web-support](https://forgebox.io/view/bx-web-support)
@@ -292,7 +292,7 @@ install bx-web-support
 This module will serialize BoxLang native types to YAML and YAML to BoxLang Types.
 
 ```
-install bx-yaml
+install-bx-module bx-yaml
 ```
 
 * Download: [https://forgebox.io/view/bx-yaml](https://forgebox.io/view/bx-yaml)
@@ -318,7 +318,7 @@ This module will enhance your language by having the ability to connect to Redis
 * Much more
 
 ```
-install bx-redis
+install-bx-module bx-redis
 ```
 
 * Download: [https://forgebox.io/view/bx-redis](https://forgebox.io/view/bx-redis)
@@ -330,41 +330,41 @@ In addition, we offer a number of JDBC modules which package the appropriate JDB
 ### [Apache Derby](https://forgebox.io/view/bx-derby)
 
 ```
-install bx-derby
+install-bx-module bx-derby
 ```
 
 ### [HyperSQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-hypersql/bx-hypersql-1.0.0.zip)
 
 ```
-install bx-hypersql
+install-bx-module bx-hypersql
 ```
 
 ### [MySQL](https://forgebox.io/view/bx-mysql)
 
 ```
-install bx-mysql
+install-bx-module bx-mysql
 ```
 
 ### [MariaDB](https://forgebox.io/view/bx-mariadb)
 
 ```
-install bx-mariadb
+install-bx-module bx-mariadb
 ```
 
 ### [Microsoft SQL Server](https://forgebox.io/view/bx-mssql)
 
 ```
-install bx-mssql
+install-bx-module bx-mssql
 ```
 
 ### [Oracle](https://forgebox.io/view/bx-oracle)
 
 ```
-install bx-oracle
+install-bx-module bx-oracle
 ```
 
 ### [PostgreSQL](https://forgebox.io/view/bx-postgresql)
 
 ```
-install bx-postgresql
+install-bx-module bx-postgresql
 ```
