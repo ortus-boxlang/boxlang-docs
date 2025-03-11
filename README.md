@@ -1,6 +1,6 @@
 ---
-icon: house-window
 description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
+icon: house-window
 ---
 
 # Introduction
@@ -9,7 +9,7 @@ description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
 
 **BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, lambda, iOS, android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern, functional and expressive syntax.
 
-<figure><img src=".gitbook/assets/image (9).png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
+<figure><img src=".gitbook/assets/BL-multi-runtime.png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
 
 BoxLang has been designed to be a highly adaptable and dynamic language to take advantage of all the modern features of the JVM and was designed with several goals in mind:
 
