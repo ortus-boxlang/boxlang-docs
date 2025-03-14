@@ -13,6 +13,14 @@ This module will allow your ColdFusion (CFML) applications under Adobe or Lucee 
 
 If there are any issues, please report them to the [BoxLang JIRA](https://ortussolutions.atlassian.net/browse/BL/issues) or the [Module Issues](https://github.com/ortus-boxlang/bx-compat-cfml/issues) repository.
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-compat-cfml
+
+# Using CommandBox to install for web servers.
+box install bx-compat-cfml
+```
+
 ## Settings
 
 Here are the available settings for the compat module:

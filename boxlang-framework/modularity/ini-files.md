@@ -5,7 +5,15 @@ icon: sliders-up
 
 # INI Files
 
-This module allows you to read and write INI files very easily.
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-ini
+
+# Using CommandBox to install for web servers.
+box install bx-ini
+```
+
+
 
 ```ini
 [General]

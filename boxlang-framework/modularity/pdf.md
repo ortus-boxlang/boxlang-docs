@@ -7,6 +7,14 @@ icon: file-pdf
 
 This module provides PDF generation functionality to Boxlang
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-pdf
+
+# Using CommandBox to install for web servers.
+box install bx-pdf
+```
+
 ### Components
 
 This module contributes the following Components to the language:

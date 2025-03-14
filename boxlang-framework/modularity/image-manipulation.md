@@ -8,6 +8,14 @@ BoxLang has an extensive and awesome image manipulation library that allows you 
 
 Apart from core image functions, all functions can be applied to an image object as member functions. Yes, BoxLang allows you to deal with image objects natively.
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-image
+
+# Using CommandBox to install for web servers.
+box install bx-image
+```
+
 ```java
 imgObj = imageRead("https://example.com/company-logo.png");
 imgObj.resize(50,50);

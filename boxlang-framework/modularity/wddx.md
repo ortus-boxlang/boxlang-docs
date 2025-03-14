@@ -9,6 +9,14 @@ The WDDX module provides the bridge between the WDDX exchange format and BoxLang
 
 It provides the `wddx` component along with its actions of `bx2wddx`, `wddx2bx`, `bx2js` and `wddx2js`. Note that if the compatibility module is installed in the BoxLang runtime, the usage of `bx` in the action changes to `cfml`.
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-wddx
+
+# Using CommandBox to install for web servers.
+box install bx-wddx
+```
+
 {% hint style="danger" %}
 _Important Note: WDDX is, effectively, no longer supported for new development, and its continued use as a data interchange format is highly discouraged. This module should only be used to maintain compatibility with legacy code, and developers should be encouraged to sunset its usage._
 {% endhint %}

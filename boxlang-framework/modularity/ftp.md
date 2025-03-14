@@ -1,14 +1,22 @@
 ---
-icon: globe
 description: >-
   The FTP module allows you perform various operations against an FTP or SFTP
   server.
+icon: globe
 ---
 
 # FTP
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-ftp
+
+# Using CommandBox to install for web servers.
+box install bx-ftp
+```
+
 ```javascript
- Open connection to FTP server, calling it 'conn'
+Open connection to FTP server, calling it 'conn'
 bx:ftp
     action="open"
     connection="conn"

@@ -8,17 +8,11 @@ icon: yammer
 
 This module provides a YAML parser and emitter for BoxLang. It is based on the [SnakeYAML](https://bitbucket.org/asomov/snakeyaml) library and provides a simple way to parse and emit YAML content in BoxLang.
 
-### Installation
-
-You can install it via the BoxLang CLI:
-
-```bash
-install-bx-module bx-yaml
 ```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-yaml
 
-Or you can install it into a CommandBox server:
-
-```bash
+# Using CommandBox to install for web servers.
 box install boxlang-yaml
 ```
 

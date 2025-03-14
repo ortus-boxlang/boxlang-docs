@@ -11,6 +11,14 @@ This module provides web support for the BoxLang core OS runtime without needing
 
 This means that it will add all the necessary web support to the BoxLang runtime so you can test, simulate, and mock web requests and responses from the CLI. This is a great way to test your web applications without the need for a web server.
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-web-support
+
+# Using CommandBox to install for web servers.
+box install bx-web-support
+```
+
 {% hint style="danger" %}
 THIS MODULE IS NOT NEEDED FOR COMMANDBOX OR THE MINISERVER. IT'S PURELY FOR TESTING, MOCKING AND AUDITING.
 {% endhint %}

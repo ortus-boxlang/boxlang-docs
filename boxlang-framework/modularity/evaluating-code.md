@@ -1,11 +1,19 @@
 ---
-icon: circle-play
 description: This module incorporates a unsafe evaluation of code BIF.
+icon: circle-play
 ---
 
 # Evaluating Code
 
 This module implements the `evaluate()` function for usage in your applications. Please note that this UNSAFE function can be a security risk if not used properly. Please use it with caution.  It's powerful but can be nasty if misused.
+
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-unsafe-evaluate
+
+# Using CommandBox to install for web servers.
+box install bx-unsafe-evaluate
+```
 
 {% hint style="danger" %}
 DISCOURAGED

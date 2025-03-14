@@ -7,6 +7,14 @@ icon: binary-lock
 
 # Password Encryption
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-password-encrypt
+
+# Using CommandBox to install for web servers.
+box install bx-password-encrypt
+```
+
 The password encryption module ( `bx-password-encrypt` ) provides password encryption and hashing functionality to Boxlang.
 
 It contributes the following Built-in-Functions to the language:

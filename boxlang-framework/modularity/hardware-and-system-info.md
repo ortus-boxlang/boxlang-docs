@@ -1,6 +1,6 @@
 ---
-icon: microchip
 description: This module allows you to interact with hardware and the operating system.
+icon: microchip
 ---
 
 # OSHI - Operating System + Hardware
@@ -14,6 +14,14 @@ This module is based on the great work of the `oshi` library https://github.com/
 {% @github-files/github-code-block url="https://github.com/oshi/oshi" %}
 
 {% embed url="https://www.oshi.ooo/oshi-core-java11/apidocs/com.github.oshi/oshi/package-summary.html" %}
+
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-oshi
+
+# Using CommandBox to install for web servers.
+box install bx-oshi
+```
 
 ### Supported Features
 

@@ -1,9 +1,17 @@
 ---
-description: This module provides mail sending functionality to BoxLang
+description: This module provides mail sending functionality to BoxLang.
 icon: envelope-open
 ---
 
 # Mail
+
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-mail
+
+# Using CommandBox to install for web servers.
+box install bx-mail
+```
 
 ### Components
 

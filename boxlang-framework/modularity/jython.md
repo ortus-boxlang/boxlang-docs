@@ -7,6 +7,14 @@ icon: python
 
 This module allows you to execute python in BoxLang via Jython. This is a very powerful feature that allows you to execute python code in your BoxLang scripts. It also allows you to create python modules and classes that can be used in your BoxLang scripts by using the `jythonEvalFile( path )` function.
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-jython
+
+# Using CommandBox to install for web servers.
+box install bx-jython
+```
+
 ### Usage
 
 You can execute python code in your BoxLang scripts by using the `jythonEval( code )` function. Here is an example:

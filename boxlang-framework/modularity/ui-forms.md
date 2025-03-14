@@ -8,6 +8,14 @@ icon: html5
 
 # UI Forms
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-ui-forms
+
+# Using CommandBox to install for web servers.
+box install bx-ui-forms
+```
+
 ## Components
 
 This module contributes the following Components to the language:
