@@ -55,7 +55,7 @@ All arrays in BoxLang are passed by **passed by reference**. Please remember thi
 
 Let's go ahead and model some code in BoxLang using our fancy REPL tool CommandBox:
 
-![](../.gitbook/assets/arrays\_in\_code.png)
+![](../.gitbook/assets/arrays_in_code.png)
 
 Check it out:
 
@@ -147,7 +147,24 @@ writedump( numbers[ -6 ] ) // EXCEPTION!!! Array index out of range
 
 ## Array Slices
 
-BoxLang supports the [slicing](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array/arrayslice) of an array via the `arraySlice()` method or the `slice()` member function, respectively.
+BoxLang supports the [slicing](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array/arrayslice) of an array via the `arraySlice()` method or the `slice()` member function, respectively.  Slicing allows you to return a **new** array from the start position up to the count of elements you want.
+
+```java
+// Signature
+arraySlice( array, offset, length )
+// Member method
+array.slice( offset, length )
+```
+
+{% hint style="success" %}
+Tip: You can also use negative offsets.
+{% endhint %}
+
+```java
+array = [ 1, 2, 3, 4, 5, 6, 7, 8 ]
+newArray = array.slice( 2, 3 )
+println( newArray ) // [ 2, 3, 4 ]
+```
 
 ## Looping Over Arrays
 
@@ -239,6 +256,10 @@ function index( event, rc, prc ){
 
 ## Spread Operator
 
+{% hint style="danger" %}
+Coming soon, still in development
+{% endhint %}
+
 Arrays also allow the usage of the spread operator syntax to quickly copy all or part of an existing array or object into another array or object. This operator is used by leveraging three dots `...` in specific expressions.
 
 The Spread syntax allows an iterable such as an array expression or string, to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected. Here are some examples to help you understand this operator:
@@ -269,6 +290,10 @@ myArray2 = [ ...numbers, 4, 66 ]
 
 ## Rest Operator
 
+{% hint style="danger" %}
+Coming soon, still in development
+{% endhint %}
+
 The rest operator is similar to the spread operator but behaves oppositely. Instead of expanding the literals, it contracts them into an array you designate via the `...{name}` syntax. You can use this to define endless arguments for a function, for example. In this case, I can create a dynamic `findBy` function that takes in multiple criteria name-value pairs.
 
 ```javascript
@@ -282,3 +307,25 @@ function findBy( entityName, ...args ){
 }
 findBy( "Luis", 1, 2, 3, 4, 5 )
 ```
+
+## Trailing Commas
+
+BoxLang supports trailing commas when defining array and struct literals. Just in case you miss a dangling comma, we won't shout at you!
+
+```groovy
+myArray = [
+    "BoxLang",
+    "ColdBox",
+    "TestBox",
+    "CommandBox",
+]
+println( myArray )
+
+myStruct = {
+    name: "BoxLang",
+    type: "JVM Dynamic Language",
+    version: "1.0.0",
+}
+println( myStruct )
+```
+

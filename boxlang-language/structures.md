@@ -266,3 +266,24 @@ Here are some methods that will allow you to do parallel computations:
 * `allApply( items, fn, executor ):array` : This function can accept an array of items or a struct of items of any type and apply a function to each of the items in parallel. The `fn` argument receives the appropriate item and must return a result. Consider this a parallel `map()` operation.
 * `anyOf( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures and will execute them in parallel. However, instead of returning all of the results in an array like `all()`, this method will return the future that executes the fastest! Race Baby!
 * `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations. The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
+
+## Trailing Commas
+
+BoxLang supports trailing commas when defining array and struct literals. Just in case you miss a dangling comma, we won't shout at you!
+
+```groovy
+myArray = [
+    "BoxLang",
+    "ColdBox",
+    "TestBox",
+    "CommandBox",
+]
+println( myArray )
+
+myStruct = {
+    name: "BoxLang",
+    type: "JVM Dynamic Language",
+    version: "1.0.0",
+}
+println( myStruct )
+```

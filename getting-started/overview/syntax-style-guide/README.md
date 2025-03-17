@@ -1,6 +1,6 @@
 ---
-icon: vest
 description: Quickly learn what the BoxLang language offers.
+icon: vest
 ---
 
 # Quick Syntax Guide
@@ -563,7 +563,7 @@ All Java types can be used alongside the core BoxLang types:
 
 Arrays in BoxLang start at 1, not 0. End of story!
 
-## Array/Struct Initializers
+## Array/Struct Literal Initializers
 
 Arrays and Structs in BoxLang can be created using literal constructs. Please note that values within the literal declarations can also be expressions.
 
@@ -575,8 +575,62 @@ array = [ 1, 23, 234 ]
 
 // empty struct
 myMap = {}
+
 // struct with data
 myMap = { age:1, test: now() }
+
+// ordered struct with data
+myMap = [ age:1, test: now(), anotherKey: "name" ]
+myMap.each( ::println )
+
+// Nesting
+myArray = [
+    {
+        name: "BoxLang",
+        type: "JVM Dynamic Language",
+        version: "1.0.0",
+        tags: ["dynamic", "JVM", "scripting", "modern"],
+    },
+    {
+        name: "ColdBox",
+        type: "MVC Framework",
+        version: "7.0.0",
+        tags: ["framework", "MVC", "CFML", "enterprise"],
+    },
+    {
+        name: "TestBox",
+        type: "BDD Testing Framework",
+        version: "6.1.0",
+        tags: ["testing", "BDD", "TDD", "automation"],
+    },
+];
+
+println( myArray );
+```
+
+{% hint style="success" %}
+**Tip:** Also remember you can nest arrays into structs and structs into arrays
+{% endhint %}
+
+### Trailing Commas
+
+BoxLang supports trailing commas when defining array and struct literals. If you miss a dangling comma, we won't shout at you!
+
+```groovy
+myArray = [
+    "BoxLang",
+    "ColdBox",
+    "TestBox",
+    "CommandBox",
+]
+println( myArray )
+
+myStruct = {
+    name: "BoxLang",
+    type: "JVM Dynamic Language",
+    version: "1.0.0",
+}
+println( myStruct )
 ```
 
 ## Truthy/Falsey
