@@ -1,5 +1,5 @@
 ---
-description: The official AI module for BoxLang
+description: One Fluent/Functional API to access Large Language Models in BoxLang
 icon: brain-circuit
 ---
 
