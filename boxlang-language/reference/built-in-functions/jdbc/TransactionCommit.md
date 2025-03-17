@@ -1,11 +1,8 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
-
-# Function: `TransactionCommit`
+# TransactionCommit
 
 Commit the current transaction and persist all stored queries.
 
-You can continue to use the transaction after a `transactionCommit()` call, but you will not be able to roll back past (before) this
- point since the changes are fully persisted to the database.
+You can continue to use the transaction after a `transactionCommit()` call, but you will not be able to roll back past (before) this point since the changes are fully persisted to the database.
 
 ## Method Signature
 
@@ -37,9 +34,9 @@ Note that the rollback cannot affect the INSERT statement, since it has already 
 
 ## Related
 
-  * [IsInTransaction](./IsInTransaction.md)
-  * [IsWithinTransaction](./IsWithinTransaction.md)
-  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
-  * [QueryExecute](./QueryExecute.md)
-  * [TransactionRollback](./TransactionRollback.md)
-  * [TransactionSetSavepoint](./TransactionSetSavepoint.md)
+* [IsInTransaction](IsInTransaction.md)
+* [IsWithinTransaction](IsWithinTransaction.md)
+* [PreserveSingleQuotes](PreserveSingleQuotes.md)
+* [QueryExecute](QueryExecute.md)
+* [TransactionRollback](TransactionRollback.md)
+* [TransactionSetSavepoint](TransactionSetSavepoint.md)

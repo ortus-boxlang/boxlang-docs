@@ -10,8 +10,7 @@ Single-line comments in BoxLang start with two forward slashes `//`. Everything 
 // This is a single-line comment in BoxLang
 ```
 
-BoxLang
-Multi-line comments, on the other hand, are enclosed between `/*` and `*/`. Everything within these symbols is considered part of the comment, regardless of how many lines it spans. For example:
+BoxLang Multi-line comments, on the other hand, are enclosed between `/*` and `*/`. Everything within these symbols is considered part of the comment, regardless of how many lines it spans. For example:
 
 ```
 /*

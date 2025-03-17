@@ -50,10 +50,11 @@ The following are the AI providers supported by this module. **Please note that 
 Here are some of the features of this module:
 
 * Integration with multiple AI providers
-* Compose raw chat requests
-* Build message objects
+* Easily generate AI promts
+* Advanced prompts via chat requests
+* Build complex message objects
 * Create AI service objects
-* Create AI tool objects
+* Enable models to fetch data and take actions
 * Fluent API
 * Asynchronous chat requests
 * Global defaults
@@ -431,9 +432,15 @@ response = service.invoke(
 )
 ```
 
-### aiTool() - Create a Tool Object
+### aiTool() - Function Calling
 
-This function allows you to create a tool object that you can use to add to a chat request for real-time system processing. This is useful if you want to create a tool that can be used in multiple chat requests against localized resources. You can then pass in the tool to the `aiChat()` or `aiChatRequest()` functions.
+Function calling is one of the most powerful features of an AI chat model.  It allows you to connect the chat to a localized service that you can call and interface with real-time systems.  You can combine the power of the LLM with your own systems to bring further intelligence and context.
+
+The `aiTool()` function allows you to create a tool object that you can use to add to a chat request for real-time system processing. This is useful if you want to create a tool that can be used in multiple chat requests against localized/externalized resources. You can then pass in the tool to the `aiChat()` or `aiChatRequest()` functions.
+
+{% hint style="success" %}
+**Function calling** provides a powerful and flexible way for AI models to interface with your code or external services.  [https://platform.openai.com/docs/guides/function-calling?api-mode=chat#overview](https://platform.openai.com/docs/guides/function-calling?api-mode=chat#overview)
+{% endhint %}
 
 The `aiTool()` function has the following signature:
 
@@ -445,7 +452,23 @@ Here are the parameters:
 
 * `name` : The name of the tool sent to the AI provider
 * `description` : Describe the function. This is used by the AI to communicate the purpose of the function.
-* `callable` : A closure/lambda to call when the tool is invoked.
+* `callable` : A closure/lambda to call when the tool is invoked that talks to your real-time system.
+
+{% hint style="warning" %}
+The arguments you designate in your closure/lambda will be used to build an automatic schema for you.
+{% endhint %}
+
+```java
+tool1 = aiTool(
+	"myTool",
+	// I will expect a name and age arguments
+	( name, age ) -> {
+		return "Hello World";
+	} )
+	.describe( "My Tool Function" )
+	.describeName( "The name of the person" )
+	.describeAge( "The age of the person" )
+```
 
 Once a tool object is made, you can pass them into a chat's or chat request's `params` via the `tools` array.
 
@@ -458,7 +481,7 @@ result = aiChat( messages = "How hot is it in Kansas City? What about San Salvad
 
 #### Tool Properties
 
-The `Tool` object has several properties that you can use to interact with the tool.
+The `Tool` object has several properties that you can use to interact with once built.  Each of the properies has a getter/setter.
 
 * `name:string` : The name of the tool
 * `description:string` : The description of the tool
@@ -466,11 +489,9 @@ The `Tool` object has several properties that you can use to interact with the t
 * `schema:struct` : The schema of the tool
 * `argDescriptions:struc` : The argument descriptions of the tool
 
-Each of them have a getter and a setter.
-
 #### Tool Methods
 
-The `Tool` object has several methods that you can use to interact with the tool.
+The `Tool` object has several methods that you can use to interact with once built.
 
 * `describeFunction( description ):Tool` : Describe the function of the tool
 * `describeArg( name, description ):Tool` : Describe an argument of the tool
@@ -480,26 +501,29 @@ The `Tool` object has several methods that you can use to interact with the tool
 
 The `Tool` object also listens to dynamic methods so you can build fluent descriptions of the function or arguments using the `describe{argument}()` methods.
 
-```java
-aiTool(
-	"myTool",
+<pre class="language-java"><code class="lang-java"><strong>aiTool(
+</strong>	"myTool",
 	( args ) -> {
 		return "Hello World";
 	} )
 	.describe( "My Tool Function" )
 	.describeName( "The name of the person" )
 	.describeAge( "The age of the person" )
-```
+</code></pre>
 
 #### Examples
+
+<figure><img src="../../.gitbook/assets/image (39).png" alt="" width="563"><figcaption></figcaption></figure>
+
+
 
 Let's build a sample AI tool that can be used in a chat request and talk to our local runtime to get realtime weather information.
 
 ```java
-tool = aiTool(
+weatherTool = aiTool(
 	"get_weather",
 	"Get current temperature for a given location.",
-	location => {
+	( location ) -> {
 	if( location contains "Kansas City" ) {
 		return "85"
 	}
@@ -509,12 +533,15 @@ tool = aiTool(
 	}
 
 	return "unknown";
-}).describeLocation( "City and country e.g. Bogotá, Colombia" )
+	} )
+	.describeLocation( "City and country e.g. Bogotá, Colombia" )
 
-result = aiChat( "How hot is it in Kansas City? What about San Salvador? Answer with only the name of the warmer city, nothing else.", {
-	tools: [ tool ],
-	seed: 27
-} )
+result = aiChat( 
+  "How hot is it in Kansas City? What about San Salvador? Answer with only the name of the warmer city, nothing else.", 
+  {
+    tools: [ weatherTool ],
+    seed: 27
+  } )
 
 println( result )
 ```
