@@ -732,7 +732,6 @@
   * [Jython](boxlang-framework/modularity/jython.md)
   * [Password Encryption](boxlang-framework/modularity/encryption-and-decryption.md)
   * [PDF](boxlang-framework/modularity/pdf.md)
-  * [Sending Emails](boxlang-framework/modularity/sending-emails.md)
   * [UI Forms](boxlang-framework/modularity/ui-forms.md)
   * [WDDX](boxlang-framework/modularity/wddx.md)
   * [Web Support](boxlang-framework/modularity/web-support.md)
