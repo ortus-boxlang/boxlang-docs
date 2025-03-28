@@ -1,6 +1,6 @@
 ---
-icon: folder-tree
 description: This section covers the basics of the program structures of BoxLang
+icon: folder-tree
 ---
 
 # Program Structure
@@ -50,7 +50,9 @@ Templates have a `bxm` file extension and will use the templating language but c
 ```markup
 <bx:set a = [1,2,3,4]>
 <bx:set user = { name : "boxlang", id : createUUID(), age : 3 }>
-<bx:set today = now()>
+<bx:script>
+today = now();
+</bx:script>
 <bx:output>
   Today is #today#<br>
   #a.toString()#<br>
