@@ -1,19 +1,21 @@
 ---
-icon: server
 description: This configures the caches in the runtime
+icon: server
 ---
 
 # Caches
 
 <figure><img src="../../.gitbook/assets/BxCache Overview.png" alt=""><figcaption><p>Overview</p></figcaption></figure>
 
-BoxLang comes bundled with an enterprise caching engine that can be configured with different settings and backend object stores.  It is also can give you the ability to register caches that adhere to our BoxCache interface to create an implementation agnostic API.  A part from the core providers we create, we also have several in our + subscriptions and anybody can build custom providers as well.
+BoxLang comes bundled with an enterprise caching engine that can be configured with different settings and backend object stores.  It is also can give you the ability to register caches that adhere to our BoxCache interface (`ICacheProvider`) to create an implementation agnostic API.  Apart from the core providers we create, we also have several in our + subscriptions and anybody can build custom providers as well.
+
+You can also define [per-application caches](../../boxlang-framework/applicationbx.md) by defining them in the `Application.bx` file in your applications.
 
 ### Default Caches
 
 Every BoxLang runtime comes pre-configured with the following caches that are mandatory for operation:
 
-<table><thead><tr><th width="180">Cache</th><th>Hint</th></tr></thead><tbody><tr><td><code>default</code></td><td>The default cache in BoxLang that's used for queries, templates, and many more internal usages.</td></tr><tr><td><code>bxSessions</code></td><td>If you are activating session management in your web or client applications, then here is where user session information  will be stored.</td></tr><tr><td><code>bxRegex</code></td><td>This is where all dynamic regular expressions are compiled and kept.</td></tr></tbody></table>
+<table><thead><tr><th width="180">Cache</th><th>Hint</th></tr></thead><tbody><tr><td><code>default</code></td><td>The default cache in BoxLang is used for queries, templates, and many more internal usages.</td></tr><tr><td><code>bxSessions</code></td><td>If you activate session management in your web or client applications, user session information will be stored here.</td></tr><tr><td><code>bxRegex</code></td><td>This is where all dynamic regular expressions are compiled and kept.</td></tr></tbody></table>
 
 {% code title="boxlang.json" %}
 ```json
@@ -112,15 +114,15 @@ Every BoxLang runtime comes pre-configured with the following caches that are ma
 
 ### Providers
 
-Here are the available providers for BoxLang.  The table shows the status of completion of each provider and it's availability for the open-source version of BoxLang, or if you are a +/++ subscriber.
+Here are the available providers for BoxLang.  The table shows the status of completion of each provider and its availability for the open-source version of BoxLang, or if you are a +/++ subscriber.
 
-<table><thead><tr><th width="218">Provider</th><th width="275">Description</th><th>Status<select><option value="bl4hmf4yFdhg" label="Done" color="blue"></option><option value="WfqzsFQb9K23" label="In Progress" color="blue"></option></select></th><th width="58" data-type="checkbox">OS</th><th data-type="checkbox">+/++</th></tr></thead><tbody><tr><td><strong>BoxCacheProvider</strong></td><td>The enterprise BoxLang cache that can leverage many different object stores.</td><td><span data-option="bl4hmf4yFdhg">Done</span></td><td>true</td><td>true</td></tr><tr><td><strong>RedisProvider</strong></td><td>A Redis based provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>MongoProvider</strong></td><td>A Mong DB based Provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>CouchbaseProvider</strong></td><td>A Couchbase based provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>ElasticSearchProvider</strong></td><td>An Elastic Search provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th width="218">Provider</th><th width="275">Description</th><th>Status<select><option value="bl4hmf4yFdhg" label="Done" color="blue"></option><option value="WfqzsFQb9K23" label="In Progress" color="blue"></option></select></th><th width="58" data-type="checkbox">OS</th><th data-type="checkbox">+/++</th></tr></thead><tbody><tr><td><strong>BoxCacheProvider</strong></td><td>The enterprise BoxLang cache can leverage many different object stores.</td><td><span data-option="bl4hmf4yFdhg">Done</span></td><td>true</td><td>true</td></tr><tr><td><strong>RedisProvider</strong></td><td>A Redis based provider</td><td><span data-option="bl4hmf4yFdhg">Done</span></td><td>false</td><td>true</td></tr><tr><td><strong>MongoProvider</strong></td><td>A Mong DB based Provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>CouchbaseProvider</strong></td><td>A Couchbase based provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>ElasticSearchProvider</strong></td><td>An Elastic Search provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr></tbody></table>
 
 ### Configuration
 
 Every cache must be placed inside the `caches`object with a unique name key.  The value of that key contains:
 
-* `provider` - The name of a core provider or a full class path to use. Ex: `BoxCacheProvider` which is the core one, or a module collaborated class or class path class: `ortus.boxlang.modules.redis.RedisCache`
+* `provider` - The name of a core provider or a full classpath to use. Ex: `BoxCacheProvider` which is the core one, or a module collaborated class or class path class: `ortus.boxlang.modules.redis.RedisCache`
 * `properties` - An object of configuration for the provider.
 
 ```json
@@ -138,9 +140,9 @@ Our `BoxCacheProvider`is an enterprise-level cache designed to be fast and event
 
 ### Object Stores
 
-Here are the avialable object stores for our BoxCache providers.  The table shows the status of completion of each provider and it's availability for the open-source version of BoxLang, or if you are a +/++ subscriber.
+Here are the available object stores for our BoxCache providers.&#x20;
 
-<table><thead><tr><th width="287">Type</th><th width="307">Description</th><th width="61" data-type="checkbox">OS</th><th data-type="checkbox">+/++</th></tr></thead><tbody><tr><td><strong>BlackHoleStore</strong></td><td>Mocking store, just simulates a store, nothing is stored.</td><td>true</td><td>true</td></tr><tr><td><strong>ConcurrentSoftReferenceStore</strong></td><td>Memory-sensitive storage leveraging Java Soft References.</td><td>true</td><td>true</td></tr><tr><td><strong>ConcurrentStore</strong></td><td>Leverages concurrent hashmaps for storage.</td><td>true</td><td>true</td></tr><tr><td><strong>FileSystemStore</strong></td><td>Stores the cache items in a serialized fashion on disk</td><td>true</td><td>true</td></tr><tr><td><strong>JDCBStore</strong></td><td>Stores caches in JDBC Databases</td><td>false</td><td>true</td></tr></tbody></table>
+<table><thead><tr><th width="287">Type</th><th width="307">Description</th></tr></thead><tbody><tr><td><strong>BlackHoleStore</strong></td><td>Mocking store, just simulates a store, nothing is stored.</td></tr><tr><td><strong>ConcurrentSoftReferenceStore</strong></td><td>Memory-sensitive storage leveraging Java Soft References.</td></tr><tr><td><strong>ConcurrentStore</strong></td><td>Leverages concurrent hashmaps for storage.</td></tr><tr><td><strong>FileSystemStore</strong></td><td>Stores the cache items in a serialized fashion on disk</td></tr><tr><td><strong>JDCBStore</strong></td><td>Stores caches in JDBC Databases</td></tr></tbody></table>
 
 Each store can have different configuration properties as well.
 
@@ -150,7 +152,7 @@ Here are the global properties for all object stores.
 
 #### evictCount
 
-How many to evict at a time once a policy is triggered.  The default is 1.
+How many objects can be evicted once a policy is triggered?  The default is **1.**
 
 ```json
 "evictCount" : 1
@@ -160,11 +162,11 @@ How many to evict at a time once a policy is triggered.  The default is 1.
 
 The eviction policy to use.  The available policies are:
 
-* LRU (default)
-* LFU
-* FIFO
-* LIFO
-* RANDOM
+* **LRU** (default): Least Recently Used
+* **LFU**: Least Frequently Used
+* **FIFO**: First in First out
+* **LIFO**: Last in Last Out
+* **RANDOM**: Randomly evict objects
 
 ```json
 "evictionPolicy" : "Random"
@@ -172,7 +174,7 @@ The eviction policy to use.  The available policies are:
 
 #### freeMemoryPercentageThreshold
 
-The free memory percentage threshold to trigger eviction 0 = disabled, 1-100 = percentage of available free memory in heap.   If the threadhold is reached, the eviction policy is triggered.  The default is 0.
+The free memory percentage threshold to trigger eviction 0 = disabled, 1-100 = percentage of available free memory in heap.   If the threshold is reached, the eviction policy is triggered.  The default is 0.
 
 ```json
 "freeMemoryPercentageThreshold" : 10
@@ -188,7 +190,7 @@ The maximum number of objects to store in the cache. The default is 1000
 
 #### defaultLastAccessTimeout
 
-The maximum in seconds to keep an object in the cache since it's last access.  So if an object is not accessed in this time or greater, it will be removed from the cache.  The default is 1800 seconds or 30 minutes.
+The maximum number of seconds an object can be kept in the cache since its last access. If an object is not accessed at this time or greater, it will be removed from the cache. The default is 1800 seconds or 30 minutes.
 
 ```json
 "defaultLastAccessTimeout" : 1800
