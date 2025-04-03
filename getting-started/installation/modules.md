@@ -203,6 +203,18 @@ install-bx-module bx-mail
 * Download: [https://forgebox.io/view/bx-mail](https://forgebox.io/view/bx-mail)
 * Instructions: [https://github.com/ortus-boxlang/bx-mail](https://github.com/ortus-boxlang/bx-mail)
 
+### bx-orm
+
+`Category: ORM`
+
+This module enables tight integration with JPA/Hibernate into your BoxLang applications.
+
+```
+install-bx-module bx-orm
+```
+
+* Download: [https://forgebox.io/view/bx-orm](https://forgebox.io/view/bx-orm)
+
 ### bx-oshi
 
 `Category: Hardware`
