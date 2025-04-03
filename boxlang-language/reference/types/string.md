@@ -1075,7 +1075,7 @@ Prettifies a JSON string.
 
 <details>
 
-<summary><code>jSONDeserialize(strictMapping=[boolean], useCustomSerializer=[string])</code></summary>
+<summary><code>fromJSON(strictMapping=[boolean], useCustomSerializer=[string])</code></summary>
 
 Converts a JSON (JavaScript Object Notation) string data representation into data, such as a structure or array.
 
