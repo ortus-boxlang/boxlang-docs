@@ -7,7 +7,7 @@ icon: microchip
 
 ### Welcome to BoxLang OSHI
 
-This module is based on the great work of the `oshi` library https://github.com/oshi/oshi?tab=readme-ov-file#documentation. You can use this module to get information about the operating system and hardware of your machine. This is a great way to get sensor or embedded system information like batteries, Raspberry Pi, etc.
+This module is based on the great work of the [`oshi` library](https://github.com/oshi/oshi?tab=readme-ov-file#documentation). You can use this module to get information about the operating system and hardware of your machine. This is a great way to get sensor or embedded system information like batteries, Raspberry Pi, etc.
 
 > OSHI is a free JNA-based (native) Operating System and Hardware Information library for Java. It does not require the installation of any additional native libraries and aims to provide a cross-platform implementation to retrieve system information, such as OS version, processes, memory and CPU usage, disks and partitions, devices, sensors, etc.
 
