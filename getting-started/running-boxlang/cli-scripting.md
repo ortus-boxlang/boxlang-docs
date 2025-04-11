@@ -1,6 +1,6 @@
 ---
-icon: rectangle-terminal
 description: The core runtime allows you to build CLI scripting applications
+icon: rectangle-terminal
 ---
 
 # CLI Scripting
@@ -90,9 +90,9 @@ If you execute this function above, the output will be:
 Hola from my task! {ts '2025-02-11 22:15:44'}
 The passed args are:
 [
-  hello,
-  luis,
-  from=test
+  hola,
+  --many,
+  options=test
 ]
 ```
 
