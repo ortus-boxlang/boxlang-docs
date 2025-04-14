@@ -5,11 +5,11 @@ description: Discover if your application is compatible with BoxLang.
 
 # CFML Feature Audit
 
-the The BoxLang CFML Feature audit tool is a CLI tool that will scan your source code and give you a compatibility report.  This will allow you to see if your CFML code will run natively in BoxLang or if any BIFs or Components are required.   Like the other tools, this is based on our BL AST (BoxLang Abstract Syntax Tree), so it should be accurate and not require anything like regex. It’s using the actual BL ANTLR parsers. &#x20;
+The BoxLang CFML Feature audit tool is a CLI tool that will scan your source code and give you a compatibility report.  This will allow you to see if your CFML code will run natively in BoxLang or if any BIFs or Components are required.   Like the other tools, this is based on our BL AST (BoxLang Abstract Syntax Tree), so it should be accurate and not require anything like regex. It’s using the actual BL ANTLR parsers. &#x20;
 
 ### Install the Compatibility Modules
 
-Before you run the tool, install the appropriate BoxLang modules so our tell can also account for those module collaborations.  We recommend the following to simulate a CFML server:
+Before you run the tool, install the appropriate BoxLang modules so our tool can also account for those module collaborations.  We recommend the following to simulate a CFML server:
 
 ```bash
 # Install the modules to simulate a CFML server (Adobe, Lucee)
@@ -41,7 +41,7 @@ including the
 
 Data tracked can be
 
-* Every occurrence of a component or BIF
+* every occurrence of a component or BIF
 * aggregate of what BIFs/components were used per file
 * aggregate summary of what BIFs/components were used across all files
 
@@ -67,7 +67,7 @@ java -cp boxlang-1.0.0.jar ortus.boxlang.compiler.FeatureAudit  <options here>
 ### CLI Options
 
 * `--source` - Defaults to working directory. If supplied, it must be followed by an absolute path or a path relative to the working directory.
-* `--missing` - Filter results to only show BIFs and Components which are missing from BoxLang
+* `--missing` - Filter results to only show BIFs and Components which are missing from BoxLang.
 * `--aggregate` - Instead of showing every usage instance, roll-up counts at the file level by default.
 * `--aggregate summary` - If the arg “summary” is passed after the aggregate flag, we will roll the results up even further to include all files processed. In “summary” mode, the total number of files processed will also be output to the console, along with a breakdown of the number of file extensions encountered.
 * `--quiet` - Do not output the details of what was found on the console. Use in conjunction with the report path arg if you want to write out a report file. Even in quiet mode, each file processed will be output.
