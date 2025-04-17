@@ -1,6 +1,6 @@
 ---
-icon: aws
 description: BoxLang Runtime for AWS Lambda! Serverless for the win!
+icon: aws
 ---
 
 # AWS Lambda
@@ -13,9 +13,7 @@ description: BoxLang Runtime for AWS Lambda! Serverless for the win!
 
 AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS) that lets you run code without provisioning or managing servers. It automatically scales applications by running code in response to events and allocates compute resources as needed, allowing developers to focus on writing code rather than managing infrastructure ([https://docs.aws.amazon.com/lambda/](https://docs.aws.amazon.com/lambda/)).
 
-{% embed url="https://docs.aws.amazon.com/lambda/" %}
-
-The **BoxLang AWS Runtime** allows you to code in BoxLang and create Lambda function in this ecosystem.  We provide you a nice template so you can work with serverless: [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template). This template will give you a turnkey application with features like:
+The **BoxLang AWS Runtime** allows you to code in BoxLang and create Lambda functions in this ecosystem.  We provide you a nice template so you can work with serverless: [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template). This template will give you a turnkey application with features like:
 
 * Unit and Integration Testing
 * Java dependency management
@@ -37,7 +35,7 @@ Our BoxLang AWS Handler acts as a front controller to all incoming Lambda execut
 * Automatic error management
 * Automatic response management and serialization
 
-The BoxLang AWS runtime provides a pre-built Java handler for lambda already configured to accept JSON in as a BoxLang Struct and then output either by returning a simple or complex object or using our `response` convention struct.  Our runtime will automatically convert your results to JSON. &#x20;
+The BoxLang AWS runtime provides a pre-built Java handler for Lambda already configured to accept JSON in as a BoxLang Struct and then output either by returning a simple or complex object or using our `response` convention struct.  Our runtime will automatically convert your results to JSON. &#x20;
 
 The default handler you configure your lambda with is:
 
