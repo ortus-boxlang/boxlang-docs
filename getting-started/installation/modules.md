@@ -5,9 +5,15 @@ icon: atom-simple
 
 # Modules
 
-## Module Installation
+Our official modules can be found in the BoxLang Software Directory: **FORGEBOX**: [www.forgebox.io](https://www.forgebox.io).
 
-The fastest way to install modules is with CommandBox for web runtimes and the `install-bx-module` CLI command for OS runtimes.
+{% hint style="success" %}
+Every runtime can use modules, and the installation process can differ. So, make sure you review each of the sections on Running BoxLang and adapt your installation process accordingly.
+{% endhint %}
+
+For web runtimes running on CommandBox, our servlet server, then use the `box` CommandBox CLI for installation and `server.json` for tracking dependencies.  For our operating system runtime, use our `install-bx-module` binary.
+
+### Operating System Modules
 
 {% code title="Operating System" %}
 ```bash
@@ -22,7 +28,9 @@ install-bx-module bx-compat-cfml bx-esapi bx-orm
 ```
 {% endcode %}
 
-You can also install to your local directory and when you run your application, BoxLang will load these modules first and then the BoxLang home ones:
+#### Local CLI Application Modules
+
+BoxLang also supports the concept of local loading. Meaning, if you have a `boxlang_modules` folder in the root of where you run your CLI applications, then BoxLang will load those modules first and then fall back to the user's home directory for the operating system.
 
 {% code title="myAppDirectory" %}
 ```bash
@@ -37,7 +45,13 @@ install-bx-module bx-compat-cfml bx-esapi bx-orm --local
 ```
 {% endcode %}
 
-The CommandBox CLI is used to install BoxLang modules into web runtimes, not the operating system home.
+### CommandBox Runtimes
+
+The CommandBox CLI installs BoxLang modules into web runtimes.
+
+{% hint style="warning" %}
+Eventually, CommandBox will be the de-facto standard of installation once it's migrated to BoxLang.
+{% endhint %}
 
 {% code title="CommandBox" %}
 ```bash
@@ -45,34 +59,24 @@ box install bx-compat-cfml bx-esapi
 ```
 {% endcode %}
 
-### Operating System Home
-
-Unzip the module `.zip` file into the location `.boxlang/modules/` located inside your user home directory (by default):
-
-```bash
-.boxlang/modules/bx-derby/ModuleConfig.bx ...
-```
+### Configuration
 
 You can customize the boxlang module directory by changing the `runtime.modulesDirectory` setting in your `config/boxlang.json` file:
 
 {% code title="boxlang.json" %}
 ```json
 {
-  "runtime" : {
-
 
     // A collection of BoxLang module directories, they must be absolute paths
     "modulesDirectory": [
       "${boxlang-home}/modules"
     ],
 
-
-  }
 }
 ```
 {% endcode %}
 
-See [Runtime Configuration](../configuration.md) for more info on using the `boxlang.json` configuration file.
+
 
 ## Core Modules
 
@@ -104,19 +108,24 @@ install-bx-module bx-compat-cfml
 * Download: [https://forgebox.io/view/bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml)
 * Instructions: [https://github.com/ortus-boxlang/bx-compat-cfml](https://github.com/ortus-boxlang/bx-compat-cfml)
 
+### bx-csrf
+
+`Category: security`
+
+The CSRF module provides the functionality to generate and verify [Cross-Site Request Forgery](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html) tokens for Boxlang Web Runtimes.
+
+```bash
+install-bx-module bx-csrf
+```
+
+* Download: [https://forgebox.io/view/bx-csrf](https://forgebox.io/view/bx-csrf)
+* Instructions: [https://github.com/ortus-boxlang/bx-csrf](https://github.com/ortus-boxlang/bx-csrf)
+
 ### bx-password-encrypt
 
 `Category: security`
 
-This module provides password encryption and hashing functionality to Boxlang.
-
-* `ArgonHash`: Returns a secure input hash of the given string using the Argon2 hashing algorithm. ( Alias: `GenerateArgon2Hash` )
-* `ArgonVerify`: Performs a Argon2 verification on the given string against the hashed value. ( Alias: `Argon2CheckHash` )
-* `BCryptHash`: Returns a secure input hash of the given string using the BCrypt hashing algorithm.( Alias: `GenerateBCryptHash` )
-* `BCryptVerify`: Performs a BCrypt verification on the given string against the hashed value. ( Alias: `BCryptCheckHash` )
-* `SCryptHash`: Returns a secure input hash of the given string using the SCrypt hashing algorithm.( Alias: `GenerateSCryptHash` )
-* `SCryptVerify`: Performs a SCrypt verification on the given string against the hashed value. ( Alias: `SCryptCheckHash` )
-* `GeneratePBKDFKey`: Generates a PDFK key from the given password and salt.
+This module provides password encryption and hashing functionality to Boxlang.  Includes bcrypt, argon, and Scrypt.
 
 ```
 install-bx-module bx-password-encrypt
@@ -312,21 +321,21 @@ install-bx-module bx-yaml
 
 ## +/++ Modules
 
-These modules are available for our +/++ subscribers only. However, you can install them free of charge and try them out.
+These modules are available for our [+/++ subscribers only](https://ww.boxlang.io/plans). However, you can install them free of charge and try them out.
 
 ### bx-redis
 
 `Category: Caching`
 
-This module will enhance your language by having the ability to connect to Redis instances, clusters, or sentinel instances. Here are some features:
+This module will enhance your language by allowing you to connect to Redis instances, clusters, or sentinel instances. Here are some features:
 
 * Add native Redis functionality to the language
-* Connect to a Redis server or a Redis cluster or Redis Sentinel
+* Connect to a Redis server or a Redis cluster, or Redis Sentinel
 * Store session variables in a distributed Redis cluster
 * Leverage the Redis publish/subscribe features to create real-time messaging
 * Get rid of sticky session load balancers, come to the round-robin world!
 * Session variable persistence even after server restarts
-* Cache connection capabilities for providing distributed & highly scalable query, object, template, function caching
+* Cache connection capabilities for providing distributed & highly scalable query, object, template, and function caching
 * Much more
 
 ```
@@ -337,7 +346,7 @@ install-bx-module bx-redis
 
 ## JDBC Modules
 
-In addition, we offer a number of JDBC modules which package the appropriate JDBC driver for your database vendor of choice. You can find all of the modules in [FORGEBOX](https://www.forgebox.io) as well as our GitHub organization: [https://github.com/ortus-boxlang/bx-{modulename}](https://github.com/ortus-boxlang)
+In addition, we offer several JDBC modules that package the appropriate JDBC driver for your database vendor of choice. You can find all of the modules in [FORGEBOX](https://www.forgebox.io) as well as our GitHub organization: [https://github.com/ortus-boxlang/bx-{modulename}](https://github.com/ortus-boxlang)
 
 ### [Apache Derby](https://forgebox.io/view/bx-derby)
 
