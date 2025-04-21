@@ -212,6 +212,19 @@ install-bx-module bx-mail
 * Download: [https://forgebox.io/view/bx-mail](https://forgebox.io/view/bx-mail)
 * Instructions: [https://github.com/ortus-boxlang/bx-mail](https://github.com/ortus-boxlang/bx-mail)
 
+### bx-markdown
+
+`Category: Conversion`
+
+This module provides you with native markdown parsing support in your BoxLang applications.
+
+```
+install-bx-module bx-markdown
+```
+
+* Download: [https://forgebox.io/view/bx-markdown](https://forgebox.io/view/bx-markdown)
+* Instructions: [https://github.com/ortus-boxlang/bx-markdown](https://github.com/ortus-boxlang/bx-markdown)
+
 ### bx-orm
 
 `Category: ORM`
