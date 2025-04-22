@@ -720,7 +720,7 @@ BoxLang supports the null coalescing operator `?:` to allow you to evaluate if v
 ( expression ) ?: 'value or expression'
 ```
 
-This tests the left-hand side of the `?:` and if its `null` then it will evaluate the rigth expression or value. This can be used on if statements, assignments, loops, etc.
+This tests the left-hand side of the `?:` and if its `null` then it will evaluate the right expression or value. This can be used on if statements, assignments, loops, etc.
 
 ## Safe Navigation Operator
 
