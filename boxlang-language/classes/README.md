@@ -1,6 +1,6 @@
 ---
-icon: codepen
 description: BoxLang speaks O.O. and functional tongues.
+icon: codepen
 ---
 
 # Classes & O.O.
@@ -189,7 +189,7 @@ class accessors="true" serializable="false" extends="BaseUser"{
 class implements="cachebox.system.cache.ICacheProvider"{}
 ```
 
-Please note that in BoxLang you can also declare these attributes via annotations in the comments section, weird, I know!s
+Please note that in BoxLang you can also declare these attributes via annotations in the comments section.
 
 ```java
 /**
