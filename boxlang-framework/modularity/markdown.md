@@ -7,6 +7,14 @@ icon: file-code
 
 Welcome to the BoxLang Markdown module. This provides native support for Markdown in BoxLang based on the popular Flexmark library.
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-markdown
+
+# Using CommandBox to install for web servers.
+box install bx-markdown
+```
+
 ### Built In Functions (BIFs)
 
 The following BIFs are available for use in your BoxLang code:
