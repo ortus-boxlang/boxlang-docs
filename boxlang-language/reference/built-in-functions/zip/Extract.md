@@ -22,15 +22,15 @@ Extract(format=[string], source=[string], destination=[string], overwrite=[boole
 
 ### Arguments
 
-| Argument      | Type      | Required | Description                                                                               | Default |
-| ------------- | --------- | -------- | ----------------------------------------------------------------------------------------- | ------- |
-| `format`      | `string`  | `true`   | The format to use for the compression: zip or gzip.                                       |         |
-| `source`      | `string`  | `true`   | The absolute path to the source file or folder to compress.                               |         |
-| `destination` | `string`  | `true`   | The absolute path with a file name to save as the compressed file. Extension is optional. |         |
-| `overwrite`   | `boolean` | `false`  | Whether to overwrite the destination file if it already exists. Default is false.         | `false` |
-| `recurse`     | `boolean` | `false`  | Whether to extract the files recursively. Default is true.                                | `true`  |
-| `filter`      | `any`     | `false`  | A regular expression or a Function/Lambda to filter the files to extract.                 |         |
-| `entryPaths`  | `any`     | `false`  | The paths to extract. It can be a string or an array of strings.                          |         |
+| Argument      | Type      | Required | Description                                                                       | Default |
+| ------------- | --------- | -------- | --------------------------------------------------------------------------------- | ------- |
+| `format`      | `string`  | `true`   | The format of the file being extracted: zip or gzip.                              |         |
+| `source`      | `string`  | `true`   | The absolute path of the file to extract.                                         |         |
+| `destination` | `string`  | `true`   | The absolute path of the directory where files will be extracted.                 |         |
+| `overwrite`   | `boolean` | `false`  | Whether to overwrite the destination path if it already exists. Default is false. | `false` |
+| `recurse`     | `boolean` | `false`  | Whether to extract the files recursively. Default is true.                        | `true`  |
+| `filter`      | `any`     | `false`  | A regular expression or a Function/Lambda to filter the files to extract.         |         |
+| `entryPaths`  | `any`     | `false`  | The paths to extract. It can be a string or an array of strings.                  |         |
 
 ## Examples
 
