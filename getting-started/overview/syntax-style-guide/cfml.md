@@ -1,6 +1,6 @@
 ---
-icon: bolt-lightning
 description: A quick guide on key differences and issues when migrating from CFML
+icon: bolt-lightning
 ---
 
 # Differences From CFML
@@ -298,3 +298,25 @@ queryExecute( "Select * FROM myBigTable", {}, { fetchSize : 100 } );
 ```
 
 You can use the `blockfactor` nomenclature by installing the `bx-compat-cfml` module.
+
+## Date and Time Handling
+
+Legacy CFML engines use the `java.util.Date` class as a backing object for their date and time handling.  BoxLang uses the `java.time` [classes](https://app.gitbook.com/s/w0xLWagNejhYiMyofb0V/readme/about-this-book/author), more specifically the [ZonedDateTime class](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZonedDateTime.html) as the backing date object.  This offers greater precision and localization/internationalization capabilities than the Timezone-unaware `java.util` classes  can provide.\
+\
+If interacting with Java classes which use `java.util.Date`, Boxlang will automatically coerce the runtime date object to the correct type.  In some circumstances you may need to retrieve the object manually.  You may do so with the `toLegacyDate( myDate )`  method which will return the legacy Date class.
+
+### Date Modification and Addition Operations
+
+In BoxLang dates operation and comparison precision is to the millisecond level, compared to the legacy behavior of precision to the second.   With the CFML compat module, date comparison functions will revert to using second-level precision.
+
+In addition rounding behavior of date addition may be different than other CFML engines, but in a good way.\
+\
+The following code, when executed in non-BoxLang engines:
+
+```
+epochDate = parseDateTime( "1970-01-01T00:00:00.000Z" );
+updatedDate = dateAdd( "s", 500/1000, epochDate );
+result = dateTimeFormat( updatedDate, "yyyy-MM-dd'T'HH:mm:ss.SSSX", "UTC" );
+```
+
+will produce an incorrect rounding to the minute ( e.g. `1970-01-01T00:01:00.000Z` ).  In BoxLang, the addition of ½ second produces a correctly rounded result to the second of `1970-01-01T00:00:01.000Z`&#x20;
