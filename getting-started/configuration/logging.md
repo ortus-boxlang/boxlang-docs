@@ -7,7 +7,7 @@ description: Configure the logging framework in BoxLang
 
 This section configures the logging framework in BoxLang.  Please note that BoxLang leverages `RollingFileAppenders` for most of its loggers.  This provides consistency for the language and a consistent destination.  You can customize it as you see fit, but this provides uniformity to the core and modules.
 
-The `logging`section is divided into global log settings and a `loggers`section where you can configure named loggers in the runtime.
+The `logging`section is divided into global log settings and a `loggers` section where you can configure named loggers in the runtime.
 
 {% hint style="success" %}
 Please also note that in BoxLang, you can log data as **text** or as **JSON**.
@@ -117,7 +117,7 @@ Please also note that in BoxLang, you can log data as **text** or as **JSON**.
 
 #### Logs Directory
 
-This is the folder where BoxLang will store it's log files.  By default we use the following:
+This is the folder where BoxLang will store its log files.  By default we use the following:
 
 ```json
 // The location of the log files the runtime will produce
@@ -203,5 +203,5 @@ Every logger has the following configuration properties:
 
 Each logger will have the following configuration items:
 
-<table><thead><tr><th width="205">Property</th><th width="129">Default</th><th width="121">Type</th><th>Description</th></tr></thead><tbody><tr><td><strong>additive</strong></td><td><code>true</code></td><td><code>boolean</code></td><td><strong>true</strong> means that this logger will inherit the appenders from the root logger and log through all of them.  <code>false</code> means it doesn't buble up log messages.</td></tr><tr><td><strong>appender</strong></td><td><code>file</code></td><td><code>string</code></td><td>The type of appender to use for this logger. By default we use the rolling file appender.  <br><br>Valid values are:<br>- file<br>- console<br><br>Coming soon values:<br>- smtp<br>- socket<br>- db<br>- syslog<br>- class name</td></tr><tr><td><strong>appenderArguments</strong></td><td>---</td><td><code>object</code></td><td>Name-value pairs that configure the appender.  Each appender can have different arguments.</td></tr><tr><td><strong>encoder</strong></td><td><code>logging > defaultEncoder</code></td><td><code>text</code> or <code>json</code></td><td>The encoder to use for logging. By default it levereages what was defined in the <code>logging.defaultEncoder</code> configuration.</td></tr><tr><td><strong>level</strong></td><td><code>TRACE</code></td><td><code>logLevel</code></td><td>The log level is to be assigned to the appender.  By default, each appender is wide open to the maximum level of <code>TRACE</code></td></tr></tbody></table>
+<table><thead><tr><th width="205">Property</th><th width="129">Default</th><th width="121">Type</th><th>Description</th></tr></thead><tbody><tr><td><strong>additive</strong></td><td><code>true</code></td><td><code>boolean</code></td><td><strong>true</strong> means that this logger will inherit the appenders from the root logger and log through all of them.  <code>false</code> means it doesn't bubble up log messages.</td></tr><tr><td><strong>appender</strong></td><td><code>file</code></td><td><code>string</code></td><td>The type of appender to use for this logger. By default we use the rolling file appender.  <br><br>Valid values are:<br>- file<br>- console<br><br>Coming soon values:<br>- smtp<br>- socket<br>- db<br>- syslog<br>- class name</td></tr><tr><td><strong>appenderArguments</strong></td><td>---</td><td><code>object</code></td><td>Name-value pairs that configure the appender.  Each appender can have different arguments.</td></tr><tr><td><strong>encoder</strong></td><td><code>logging > defaultEncoder</code></td><td><code>text</code> or <code>json</code></td><td>The encoder to use for logging. By default it leverages what was defined in the <code>logging.defaultEncoder</code> configuration.</td></tr><tr><td><strong>level</strong></td><td><code>TRACE</code></td><td><code>logLevel</code></td><td>The log level is to be assigned to the appender.  By default, each appender is wide open to the maximum level of <code>TRACE</code></td></tr></tbody></table>
 
