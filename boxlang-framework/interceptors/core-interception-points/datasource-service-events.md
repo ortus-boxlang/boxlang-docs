@@ -2,9 +2,9 @@
 
 These events occur around the lifecycle of datasources and the datasource service.
 
-* onDatasourceServiceStartup
-* onDatasourceServiceShutdown
-* onDatasourceStartup
+* [`onDatasourceServiceStartup`](#onDatasourceServiceStartup)
+* [`onDatasourceServiceShutdown`](#onDatasourceServiceShutdown)
+* [`onDatasourceStartup`](#onDatasourceStartup)
 
 ## onDatasourceServiceStartup
 
