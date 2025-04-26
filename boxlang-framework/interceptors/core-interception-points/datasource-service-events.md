@@ -60,8 +60,8 @@ This event is triggered immediately prior to datasource startup. You can listen 
 ```js
 class myDatasourceListener {
     function onDatasourceStartup( struct data ) {
-        println("Datasource is starting up!");
-        println( data.datasourceService.getNames() );
+        println("Datasource [#data.name#] is starting up!");
+        println( data.properties );
     }
 }
 ```
