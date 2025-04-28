@@ -52,7 +52,7 @@ Setting the datasource at the transaction block makes it much more obvious which
 
 ## Transaction Events
 
-See [transaction events](/boxlang-framework/interceptors/core-interception-points/transaction-events) for a list of events that are triggered during transaction lifecycles such as begin, commit, rollback, and savepoint operations.
+See [transaction events](interceptors/core-interception-points/transaction-events.md) for a list of events that are triggered during transaction lifecycles such as begin, commit, rollback, and savepoint operations.
 
 ## Nested Transactions
 
