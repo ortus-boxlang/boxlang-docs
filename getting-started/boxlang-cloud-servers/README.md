@@ -7,7 +7,7 @@ icon: cloud-bolt
 
 Setting up BoxLang servers on various cloud platforms involves a series of steps to ensure efficient deployment and management. Below is a brief introduction to setting up BoxLang servers on AWS, Azure, Google Cloud, and IBM Cloud.
 
-## AWS
+### AWS
 
 AWS offers Elastic Compute Cloud (EC2) instances for running BoxLang servers. To deploy:
 
@@ -15,7 +15,7 @@ AWS offers Elastic Compute Cloud (EC2) instances for running BoxLang servers. To
 2. Choose an appropriate instance type (e.g., t2.micro for low traffic).
 3. Configure security groups to allow relevant traffic on required ports (e.g., HTTP, HTTPS).
 
-## Azure
+### Azure
 
 Azure provides Virtual Machines (VMs) for hosting BoxLang:
 
@@ -23,7 +23,7 @@ Azure provides Virtual Machines (VMs) for hosting BoxLang:
 2. Select an appropriate VM size based on your needs.
 3. Set up network security groups to manage inbound and outbound traffic.
 
-## Google Cloud
+### Google Cloud
 
 Google Cloud offers Compute Engine virtual machines for BoxLang deployment:
 
@@ -31,7 +31,7 @@ Google Cloud offers Compute Engine virtual machines for BoxLang deployment:
 2. Choose machine type and region accordingly.
 3. Set firewall rules for your server requests.
 
-## IBM Cloud
+### IBM Cloud
 
 With IBM Cloud, use Virtual Servers to host your BoxLang application:
 
