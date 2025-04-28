@@ -28,7 +28,7 @@ The two exceptions, as mentioned above, are `onTransactionAcquire` and `onTransa
 
 This event fires when the transaction block is first opened and before the body begins processing.
 
-Note that in BoxLang transactions, _no connection is acquired until the first JDBC query is executed_. This means that the `onTransactionBegin` will not have any connection to operate on. Most of the time, you will want to use [`ontransactionacquire`](#onTransactionAcquire) in place of `onTransactionBegin`.
+Note that in BoxLang transactions, _no connection is acquired until the first JDBC query is executed_. This means that the `onTransactionBegin` will not have any connection to operate on. Most of the time, you will want to use [`onTransactionAcquire`](#ontransactionacquire) in place of `onTransactionBegin`.
 
 | Parameter   | Parameter type | Description                        |
 | ----------- | -------------- | ---------------------------------- |
@@ -44,7 +44,7 @@ function onTransactionBegin( struct data ){}
 
 This event fires when the transaction block is closed after the body has finished processing.
 
-Consider using [`ontransactionrelease`](#onTransactionRelease) as an alternative to `onTransactionEnd` if you only want to listen for transactions that have done work.
+Consider using [`onTransactionRelease`](#ontransactionrelease) as an alternative to `onTransactionEnd` if you only want to listen for transactions that have done work.
 
 | Parameter   | Parameter type | Description                                                                                                                                            |
 | ----------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
