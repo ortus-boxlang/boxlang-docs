@@ -12,7 +12,9 @@ This event is triggered immediately after the datasource service has started. Yo
 
 ### Data Elements
 
-- `DatasourceService`: Instance - The BoxLang datasource service.
+| Parameter         | Parameter type | Description                               |
+| ----------------- | -------------- | ----------------------------------------- |
+| DatasourceService | Java class     | Instance of the BoxLang DatasourceService |
 
 ### Example
 
@@ -31,7 +33,9 @@ This event is triggered immediately prior to datasource service shutdown. You co
 
 ### Data Elements
 
-- `DatasourceService`: The BoxLang datasource service.
+| Parameter         | Parameter type | Description                               |
+| ----------------- | -------------- | ----------------------------------------- |
+| DatasourceService | Java class     | Instance of the BoxLang DatasourceService |
 
 ### Example
 
@@ -51,9 +55,11 @@ This event is triggered immediately prior to datasource startup. You can listen 
 
 ### Data Elements
 
-- `name` - String - Name
-- `properties` - Struct - Datasource configuration properties
-- `config` - Instance - Datasource configuration object
+| Parameter         | Parameter type | Description                                                                                           |
+| ----------------- | -------------- | ----------------------------------------------------------------------------------------------------- |
+| `name`            | String         | Datasource name                                                                                       |
+| `properties`      | Struct         | Datasource configuration properties                                                                   |
+| `config`          | Java class     | Instance of the DatasourceConfig class, which stores all configuration for this datasource.           |
 
 ### Example
 
