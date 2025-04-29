@@ -10,9 +10,7 @@ These events occur around the lifecycle of datasources and the datasource servic
 
 This event is triggered immediately after the datasource service has started. You could use this event to register custom datasources after the service has started, for example. 
 
-### Data Elements
-
-| Parameter         | Parameter type | Description                               |
+| Data Key          | Type           | Description                               |
 | ----------------- | -------------- | ----------------------------------------- |
 | DatasourceService | Java class     | Instance of the BoxLang DatasourceService |
 
@@ -31,9 +29,7 @@ class myDatasourceListener {
 
 This event is triggered immediately prior to datasource service shutdown. You could use this event to perform any cleanup on custom datasources, for example.
 
-### Data Elements
-
-| Parameter         | Parameter type | Description                               |
+| Data Key          | Type           | Description                               |
 | ----------------- | -------------- | ----------------------------------------- |
 | DatasourceService | Java class     | Instance of the BoxLang DatasourceService |
 
@@ -53,9 +49,7 @@ class myDatasourceListener {
 
 This event is triggered immediately prior to datasource startup. You can listen to this event to perform any last-minute configuration tweaks on the datasource before it is started.
 
-### Data Elements
-
-| Parameter         | Parameter type | Description                                                                                           |
+| Data Key          | Type           | Description                                                                                           |
 | ----------------- | -------------- | ----------------------------------------------------------------------------------------------------- |
 | `name`            | String         | Datasource name                                                                                       |
 | `properties`      | Struct         | Datasource configuration properties                                                                   |
