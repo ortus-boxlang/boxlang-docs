@@ -130,17 +130,17 @@ Comparison operators are used when comparing two values, expressions, or variabl
 | `does not contain, nct`                                              | Negated contains     | <p>Returns true if the left operand does NOT contain the right one.<br><code>'hello' does not contain 'pio'</code></p>                 |
 | `assert`                                                             | Assert an expression | Evaluate an expression and if the expression is falsey it will throw an assert exceptions.                                             |
 
-## Assert Operator <a href="#assert" id="assert"></a>
+## Assert Statement <a href="#assert" id="assert"></a>
 
-BoxLang offers an `assert` operators that will evaluate an expression, and if the expression is falsey, it will throw an assert exception.
+BoxLang offers an `assert` statement that will evaluate an expression, and if the expression is falsey, it will throw an assert exception.
 
 ```java
 // Asserts that the name is truthy
-assert name
+assert name;
 
 // Assert an expression
-assert myService.hasData()
-assert name.length() > 3
+assert myService.hasData();
+assert name.length() > 3;
 
 // Assert a lambda/closure result.
 assert ()-> { do something }
