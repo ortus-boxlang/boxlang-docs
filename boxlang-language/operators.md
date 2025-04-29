@@ -192,13 +192,17 @@ event
     .setData( rc.id ?: "" )
 ```
 
-## Function Operators
+## Function Expressions
 
-In BoxLang, functions can act as operators as well, as you can use the results of the function call as the operands. **Function arguments can also act as expressions, and you can even pass more functions into functions as arguments or even return functions from functions. Now that's a fun tongue twister.**
+In BoxLang, a function invocation can be used as an expression, where the results of the function call is the effective value used. 
 
 ```javascript
 results = ucase( "this is text " ) & toString( 12 + 50 )
+```
 
+`Function` is also a proper type, allowing a reference to a function to be passed as an argument to another function or returned from another function as the return value.  Functions which accept or return other functions are called higher order functions**.   
+
+```javascript
 // I can also pass lambdas or anonymous functions as arguments
 results = listener( 2 * 3, (result) => result + 1 )
 ```
@@ -284,6 +288,10 @@ writeDump( mergedUsers )
 ```
 
 ### Rest Operator
+
+{% hint style="warning" %}
+Feature coming soon
+{% endhint %}
 
 The Rest function operator is similar to the Spread Operator but behaves oppositely. The spread syntax expands the iterable constructs into individual elements, and the Rest syntax collects and condenses them into a single construct, usually an array.&#x20;
 
