@@ -109,7 +109,7 @@ attempt( userService.findById( 25 ) )
     .filter( u -> u.getAge() >= 21 )
     .ifPresentOrElse(
         u -> println( "The user is of legal drinking age" ),
-        println( "The user is not of legal drinking age" )
+        () -> println( "The user is not of legal drinking age" )
     )
 ```
 
