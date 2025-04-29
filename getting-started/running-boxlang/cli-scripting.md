@@ -198,6 +198,7 @@ As you can see from the sample above, the first line is what makes it a SheBang 
 
 BoxLang also gives you several built-in functions for interacting with the CLI:
 
+* `CLIClear():void` - Clears the console
 * `CLIGetArgs():struct` - Return a structure of the parsed incoming arguments
 * `CLIRead( [prompt] ):any`- Read input from the CLI and return the value
 * `CLIExit( [exitCode=0] )`- Do a `System.exit()`with the passed-in exit code
