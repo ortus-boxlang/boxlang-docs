@@ -1,6 +1,6 @@
 ---
-icon: bolt-lightning
 description: These are the global configuration settings for the runtime
+icon: bolt-lightning
 ---
 
 # Directives
@@ -216,18 +216,10 @@ This is an array of all the extensions that will be processed as BoxLang classes
 
 ### Valid Template Extensions
 
-This is an array of all the extensions that will be processed as BoxLang templates. Meaning you can execute them and include them.
+This is an array of all the extensions that will be processed as BoxLang templates. Meaning you can execute them and include them.  The core template extensions are `bxm, bxs, bxml, cfml, cfm, cfs` and are always available.  Here you can add other extensions that will process as templates.
 
 ```json
 // Extensions BoxLang will process as templates.
 // This is used by the RunnableLoader
-"validTemplateExtensions": [
-	"bxs",
-	"bxm",
-	"bxml",
-	// Moving to compat at final release
-	"cfm",
-	"cfml",
-	"cfs"
-],
+"validTemplateExtensions": [],
 ```
