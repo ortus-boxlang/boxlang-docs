@@ -633,6 +633,20 @@ myStruct = {
 println( myStruct )
 ```
 
+## Unmodifiable Objects
+
+BoxLang supports the concept of unmodifiable objects: arrays, structures or queries.  These are objects that cannot be modified once they are created.  You can also use two BIFs for working with these types:
+
+* `toUnmodifiable( array or structure or query)` - Make an array or structure unmodifiable
+* `toModifiable( array or structure or query )` - Make an array or structure modifiable
+
+These are also available on the types as member methods
+
+```java
+myArray = [ 1, 2, 3, 4, 5].toUnmodifiable()
+myData = { id: 1, when: now() }.toUnmodifiable()
+```
+
 ## Truthy/Falsey
 
 BoxLang Truthy and Falsey are concepts used in programming to determine the "truth" of a value in a Boolean context. In many programming languages, values other than true and false can be evaluated for their truthiness. Understanding truthy and falsey values is crucial for writing effective and accurate code when evaluating conditions or performing logical operations.
