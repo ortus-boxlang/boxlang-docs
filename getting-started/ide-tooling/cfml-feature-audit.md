@@ -1,19 +1,19 @@
 ---
-icon: clipboard-check
 description: Discover if your application is compatible with BoxLang.
+icon: clipboard-check
 ---
 
 # CFML Feature Audit
 
-The BoxLang CFML Feature audit tool is a CLI tool that will scan your source code and give you a compatibility report.  This will allow you to see if your CFML code will run natively in BoxLang or if any BIFs or Components are required.   Like the other tools, this is based on our BL AST (BoxLang Abstract Syntax Tree), so it should be accurate and not require anything like regex. It’s using the actual BL ANTLR parsers. &#x20;
+The BoxLang CFML Feature audit tool is a CLI tool that will scan your source code and give you a compatibility report. This will allow you to see if your CFML code will run natively in BoxLang or if any BIFs or Components are required. Like the other tools, this is based on our BL AST (BoxLang Abstract Syntax Tree), so it should be accurate and not require anything like regex. It’s using the actual BL ANTLR parsers.
 
 ### Install the Compatibility Modules
 
-Before you run the tool, install the appropriate BoxLang modules so our tool can also account for those module collaborations.  We recommend the following to simulate a CFML server:
+Before you run the tool, install the appropriate BoxLang modules so our tool can also account for those module collaborations. We recommend the following to simulate a CFML server:
 
 ```bash
 # Install the modules to simulate a CFML server (Adobe, Lucee)
-install-bx-module bx-compat-cfml bx-password-encrypt bx-esapi bx-image bx-ini bx-mail bx-pdf bx-unsafe-evaluate bx-wddx bx-web-server
+install-bx-module bx-compat-cfml bx-password-encrypt bx-esapi bx-image bx-ini bx-mail bx-pdf bx-unsafe-evaluate bx-wddx bx-web-support
 ```
 
 {% hint style="info" %}
@@ -52,7 +52,7 @@ and can be
 
 ### Usage <a href="#usage-1" id="usage-1"></a>
 
-Make sure you have installed the OS version of [BoxLang](../installation/) so you get all the tools installed as well.  Please note that the action command funnels through the `boxlang` binary, so you can use all the [CLI arguments](../running-boxlang/#other-command-line-args-10) for `boxlang` runner.
+Make sure you have installed the OS version of [BoxLang](../installation/) so you get all the tools installed as well. Please note that the action command funnels through the `boxlang` binary, so you can use all the [CLI arguments](../running-boxlang/#other-command-line-args-10) for `boxlang` runner.
 
 You can call the tool using our script or the full path to the jar.
 

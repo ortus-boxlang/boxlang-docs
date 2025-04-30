@@ -88,7 +88,7 @@ That's practically it. This is a very lightweight server that can get the job do
 
 <figure><img src="../../.gitbook/assets/ide-tooling-context-minserver.png" alt=""><figcaption><p>Command Palette</p></figcaption></figure>
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption><p>Manage your Servers</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption><p>Manage your Servers</p></figcaption></figure>
 
 ### Arguments <a href="#web-server-args-13" id="web-server-args-13"></a>
 
