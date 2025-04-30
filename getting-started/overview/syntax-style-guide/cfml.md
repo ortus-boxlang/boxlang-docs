@@ -21,7 +21,7 @@ You can install the compatibility module using `box install bx-compat-cfml` or i
 
 Even if you forget the server, when you start it up, it’ll get the compatibility module automatically.
 
-### File Types
+## File Types
 
 BoxLang can parse and run all of the traditional CFML file types
 
@@ -29,7 +29,7 @@ BoxLang can parse and run all of the traditional CFML file types
 * `.cfs` - Scripts
 * `.cfm` - Templates
 
-### Components are Classes
+## Components are Classes
 
 CFML Components (CFCs) are called classes in BoxLang, like any other language. You can also use the `class` declaration for them. You can continue to write components if you like, but if you use our `.bx` extensions, they are now classes.
 
@@ -41,7 +41,7 @@ class{
 }
 ```
 
-### Tags are Components
+## Tags are Components
 
 Since BoxLang is not a tag-based language but a dynamic language offering a templating language. There are no concepts of tags but of BoxLang components that can be accessed via our templating language or script. In CFML the templating language uses a `<cf` prefix, in BoxLang we use a `<bx:` prefix.
 
@@ -53,11 +53,11 @@ Since BoxLang is not a tag-based language but a dynamic language offering a temp
 </bx:if>
 ```
 
-### Default assignment scope
+## Default assignment scope
 
 In CFML, the default assignment scope is always `variables`, but in BL it can differ based on the context. For Functions, it will be `local`. The BoxLang runtime will toggle this behavior based on the type of the compiled source code. So for `.cfm` or `.cfc` source files, the default assignment scope in functions will remain `variables` but for code compiled from `.bx`, `.bxs` or `.bxm` files, the default assignment scope in functions will be `local`.
 
-### CastAs operator
+## CastAs operator
 
 BoxLang has a new `castAs` binary operator that you can use instead of the `javaCast()` bif.
 
@@ -67,7 +67,7 @@ expression castAs type
 
 No transpilation changes are needed since this is a BL-only feature.
 
-### Multiple catch types
+## Multiple catch types
 
 BoxLang supports
 
@@ -77,7 +77,7 @@ catch( foo.com | brad | com.luis.majano e ) {}
 
 No transpilation changes are needed since this is a BL-only feature.
 
-### Annotations
+## Annotations
 
 BoxLang will allow for proper annotations before UDF declarations, properties, and classes. The annotation's value can be a string, struct literal, or array literal. You can also use multi-spaced or indentation.
 
@@ -91,7 +91,7 @@ function myFunc() {
 
 No transpilation changes are needed since this is a BL-only feature.
 
-### Documentation Comments (Javadoc style)
+## Documentation Comments (Javadoc style)
 
 BL will support documentation comments like CF, but will NOT allow them to actually influence the function’s behavior. When transpiling CFML to BL, any annotations set in a doc comment modifying the function or any arguments need to be moved to proper annotations in BL.
 
@@ -126,7 +126,7 @@ would turn into this BoxLang
 function foo( required any myService ) {}
 ```
 
-### Function output defaults to false
+## Function output defaults to false
 
 The `output` of functions will be false in BL. The BoxLang runtime will toggle this behavior based on the type of the compiled source code. So for `.cfm` or `.cfc` source files, default value of the `output` annotation on classes and functions will remain `true` but for code compiled from `.bx`, `.bxs` or `.bxm` files, the default value of the `output` annotation on classes and functions will be `false`.
 
@@ -138,7 +138,43 @@ Note, if your `Application.cfc` and `onRequestStart()` method do not specify
 
 you will get a blank page with no output!
 
-### Import keyword
+## Accessors True
+
+Accessors in BoxLang are automatically `true` for all classes by default.  This is `false` for CFML.  You can also disable as normal if needed.
+
+```groovy
+@displayName( “user” )
+class{
+
+    Property name=“fullName”;
+    
+}
+
+// Accessors are on by default
+user = new User()
+user.setFullName( “Luis” )
+println( user.getFullName() )
+```
+
+## Invoke Implicit Accessors True
+
+We also default invoking of implicit accessors by default to `true` .  You can also disable this at the class level or at the runtime level in the configuration.  This is a syntactic sugar to make a delegated call to the accessor/mutator by making it look like if they are property access.
+
+```groovy
+@displayName( “user” )
+class{
+
+    Property name=“fullName”;
+    
+}
+
+// Accessors and invoke implicit are on by default
+user = new User()
+user.fullName = “Luis Majano”
+println( user.fullName )
+```
+
+## Import keyword
 
 CFML has the import tag, but there doesn’t seem to be any special script version of it, ours looks like this:
 
@@ -147,10 +183,10 @@ import taglib="/relative/path/customTags" prefix="tags";
 ```
 
 ```jsx
-import package.Class as alias;
+import package.Class as alias
 ```
 
-### Import Aliases
+## Import Aliases
 
 You can also import classes from any resolver and attach an alias to remove any ambiguity.
 
@@ -162,7 +198,7 @@ var oUser = new jUser()
 var testUser = new User()
 ```
 
-### Object Resolvers
+## Object Resolvers
 
 Any `import` or `new` can be prefixed with an object resolvers prefix. A resolver adheres to our resolver interface to provide access into any type of object or filesystem. By default we ship with two resolvers:
 
@@ -200,7 +236,7 @@ class extends="java:ortus.boxlang.runtime.types.Struct"{
 
 In CF an argument or return value of Numeric will allow a String through untouched so long as that string can be cast to a number. In BoxLang, we are actively casting the value to a “real” number. In theory, this is seamless, but could affect if you are checking the underlying Java type or passing to a Java method. There is no transpilation that can undo this, unless we add some setting or runtime configuration to disable the “feature”.
 
-### GetCurrentTemplatePath() and relative includes
+## GetCurrentTemplatePath() and relative includes
 
 Both Adobe and Lucee do not agree with each other and are inconsistent even within themselves regarding
 
