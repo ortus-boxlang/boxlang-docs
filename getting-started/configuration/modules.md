@@ -1,6 +1,6 @@
 ---
-icon: chart-tree-map
 description: Configure how modules are loaded and work in BoxLang
+icon: chart-tree-map
 ---
 
 # Modules
@@ -19,30 +19,32 @@ BoxLang is a modular language. Each module can have a configuration structure fo
  * The `settings` property is a struct of settings that are specific to the module and will be override the module settings
  */
 "modules": {
-	// The Compat Module
-	"compat-cfml": {
-	 	"settings": {
-	 		"engine" : "Adobe"
-	 	}
-	},
-	// The Mail module
-	"mail" : {
-		"spoolEnable" : true,
-		// Spool interval, in minutes
-		"spoolInterval" : 1.5,
-		"mailServers" : [
-			{
-				"tls": false,
-				"password": "",
-				"idleTimeout": "10000",
-				"lifeTimeout": "60000",
-				"port": "25",
-				"username": "",
-				"ssl": false,
-				"smtp": "127.0.0.1"
-			}
-		]
-	}
+    // The Compat Module
+    "compat-cfml": {
+        "settings": {
+            "engine" : "Adobe"
+        }
+    },
+    // The Mail module
+    "mail" : {
+        "settings" : {
+            "spoolEnable" : true,
+            // Spool interval, in minutes
+            "spoolInterval" : 1.5,
+            "mailServers" : [
+                {
+                    "tls": false,
+                    "password": "",
+                    "idleTimeout": "10000",
+                    "lifeTimeout": "60000",
+                    "port": "25",
+                    "username": "",
+                    "ssl": false,
+                    "smtp": "127.0.0.1"
+                }
+            ]
+        }
+    }
 }
 ```
 {% endcode %}
