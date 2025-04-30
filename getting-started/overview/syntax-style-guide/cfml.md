@@ -103,6 +103,7 @@ So the CFML
 *
 * @output false
 * @brad wood
+* @name Luis
 *
 * @myService my hint here for the arg
 * @myService.inject
@@ -118,8 +119,9 @@ would turn into this BoxLang
 *
 * @myService my hint here for the arg
 */
-@output false
-@brad wood
+@output( false)
+@brad( wood ) // Strings can use quotes or no quotes
+@name( “Luis” )
 @myService.inject
 function foo( required any myService ) {}
 ```
@@ -131,7 +133,7 @@ The `output` of functions will be false in BL. The BoxLang runtime will toggle t
 Note, if your `Application.cfc` and `onRequestStart()` method do not specify
 
 ```html
-@output true
+@output( true )
 ```
 
 you will get a blank page with no output!
@@ -251,8 +253,8 @@ Some bifs have been renamed in BoxLang.
 
 The `component` type for create object becomes `class` in BoxLang
 
-```
-createObject( ¨class¨, path )
+```groovy
+createObject( ”class”, path )
 ```
 
 ## JDBC Queries
