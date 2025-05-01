@@ -42,7 +42,7 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 
 ## Launch Video
 
-{% embed url="https://www.youtube.com/watch?v=8M0IdUl7IWg&t=2s" %}
+{% embed url="https://www.youtube.com/live/Bn3gzjzjtuc?si=ahCHxXKqg7_CASkO" %}
 
 ## License
 
