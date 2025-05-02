@@ -1,6 +1,6 @@
 ---
-icon: sign-posts-wrench
 description: Getting started with BoxLang is easy!  Choose your path wisely!
+icon: sign-posts-wrench
 ---
 
 # Installation
@@ -57,24 +57,39 @@ Note that you may need to tell the system to use the correct JDK version. This c
 **Powershell Script**
 
 ```powershell
-# Set the JDK version and download URL
-$jdkVersion = "21"
-# UPDATE AS NEEDED
-$jdkUrl = "https://download.java.net/java/GA/jdk21.0.2/f2283984656d49d69e91c558476027ac/13/GPL/openjdk-21.0.2_windows-x64_bin.zip"
-$installPath = "C:\Program Files\Java\jdk$jdkVersion"
+# Suppress progress bar for Invoke-WebRequest
+$ProgressPreference = 'SilentlyContinue'
 
-# Download the JDK zip file
-Write-Host "Downloading OpenJDK $jdkVersion..."
-Invoke-WebRequest -Uri $jdkUrl -OutFile "$env:TEMP\openjdk-$jdkVersion.zip"
+# Set the JRE version and download URL
+$jreVersion = "21"
+# UPDATE AS NEEDED
+$jreURL = "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.7%2B6/OpenJDK21U-jre_x64_windows_hotspot_21.0.7_6.zip"
+$installPath = "C:\Program Files\Java\jdk$jreVersion"
+
+# Download the JRE
+Write-Host "Downloading JRE $jreVersion..."
+try{
+    Invoke-WebRequest -Uri $jreURL -OutFile "$env:TEMP\openjdk-$jreVersion.zip"
+} catch {
+    Write-Host "Failed to download JRE. Please check the URL."
+    exit 1
+}
 
 # Create the installation directory if it doesn't exist
 if (-Not (Test-Path -Path $installPath)) {
     New-Item -ItemType Directory -Path $installPath
 }
 
+# Check if the installation path  already exists and overwrite it
+if (Test-Path -Path $installPath) {
+    Write-Host "Clearing existing JRE installation..."
+    Remove-Item -Path $installPath -Recurse -Force
+    New-Item -ItemType Directory -Path $installPath
+}
+
 # Extract the downloaded zip file to the installation path
-Write-Host "Extracting OpenJDK $jdkVersion..."
-Expand-Archive -Path "$env:TEMP\openjdk-$jdkVersion.zip" -DestinationPath $installPath
+Write-Host "Extracting OpenJDK $jreVersion..."
+Expand-Archive -Path "$env:TEMP\openjdk-$jreVersion.zip" -DestinationPath $installPath
 
 # Set the JAVA_HOME environment variable
 Write-Host "Setting JAVA_HOME..."
@@ -82,13 +97,17 @@ Write-Host "Setting JAVA_HOME..."
 
 # Update the PATH environment variable
 $path = [System.Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::Machine)
-if ($path -notlike "*$installPath\bin*") {
+if ( $path -notmatch [regex]::Escape("$installPath\bin") ) {
     Write-Host "Updating PATH..."
-    $newPath = "$installPath\bin;$path"
+    $newPath = "$path;$installPath\bin"
     [System.Environment]::SetEnvironmentVariable("Path", $newPath, [System.EnvironmentVariableTarget]::Machine)
 }
 
-Write-Host "OpenJDK $jdkVersion installation completed."
+# Clean up the downloaded zip file
+Write-Host "Cleaning up..."
+Remove-Item "$env:TEMP\openjdk-$jreVersion.zip" -Force
+
+Write-Host "OpenJDK $jreVersion installation completed."
 ```
 {% endtab %}
 {% endtabs %}
