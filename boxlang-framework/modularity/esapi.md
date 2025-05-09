@@ -1,6 +1,6 @@
 ---
-icon: vault
 description: ESAPI & Antisamy Module
+icon: vault
 ---
 
 # ESAPI
@@ -152,3 +152,7 @@ This module contributes these remaining ESAPI BIFs:
 	comment = getSafeHTML( form.comment, "C:/path/to/policy.xml" );
 </bx:script>
 ```
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-esapi) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27020\&issuetype=1).
