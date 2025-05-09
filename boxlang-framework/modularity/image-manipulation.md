@@ -34,7 +34,7 @@ info = imgObj.info();
 writeDump(info);
 ```
 
-## Contributed Functions
+### Contributed Functions
 
 * `getReadableImageFormats()` : Returns a list of image formats that BoxLang can read on the operating system.
 * `getWriteableImageFormats()` : Returns a list of image formats that BoxLang can write on the operating system.
