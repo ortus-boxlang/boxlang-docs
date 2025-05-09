@@ -91,3 +91,7 @@ writeDump(info);
 * `ImageWriteBase64( name, string format )` : Writes Base64 images to the specified filename and destination.
 * `IsImage( name )` : Determines whether a variable returns an image.
 * `IsImageFile( string value )` : Verifies whether an image file is valid.
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-image) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27022\&issuetype=1).
