@@ -764,6 +764,7 @@
     * [Scheduler Service Events](boxlang-framework/interceptors/core-interception-points/scheduler-service-events.md)
     * [Template Invocations](boxlang-framework/interceptors/core-interception-points/template-invocations.md)
     * [Transaction Events](boxlang-framework/interceptors/core-interception-points/transaction-events.md)
+  * [Request Interception Points](boxlang-framework/interceptors/request-interception-points.md)
 * [HTTP/S Calls](boxlang-framework/http-calls.md)
 * [Java Interop](boxlang-framework/java-integration.md)
 * [JDBC Transactions](boxlang-framework/transactions.md)
