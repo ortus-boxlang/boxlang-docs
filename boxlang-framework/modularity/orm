@@ -16,27 +16,14 @@ class entityName="Auto" persistent="true" {
 }
 ```
 
-BoxLang ORM also enables transactional persistence, where an error during a save will roll back the entire transaction to prevent leaving the database in a broken state:
+Install bx-orm from CommandBox for web runtimes:
 
-```js
-transaction{
-    try{
-        entitySave(
-            entityNew( "Purchase", {
-                productID : "123-expensive-watch",
-                purchaseTime : now(),
-                customerID : customer.getId()
-            })
-        );
-        var cartProducts = entityLoad( "CartProduct", customer.getID() );
-        entityDelete( cartProducts );
-    } catch ( any e ){
-        // don't clear the user's cart if the purchase failed
-        transactionRollback();
-        rethrow;
-    }
-}
+```bash
+# Using CommandBox to install for web servers.
+box install bx-orm
 ```
+
+Note that only the web runtime is currently supported.
 
 ## Contributed BIFs
 
@@ -67,4 +54,4 @@ transaction{
 
 ## GitHub Repository and Reporting Issues
 
-Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-orm) for release notes. You can also file a bug report or improvement suggestion  via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27018\&issuetype=1).&#x20;
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-orm) for release notes. You can also file a bug report or improvement suggestion  via [Jira](https://ortussolutions.atlassian.net/issues/?jql=project+%3D+%22BLMODULES%22+AND+component+%3D+bx-orm+ORDER+BY+created+DESC&atlOrigin=eyJpIjoiMzJhODRmODgxM2I5NDRiOTlmOThkNjIxMDY4ODJjZjkiLCJwIjoiaiJ9).
