@@ -23,7 +23,7 @@ box install bx-web-support
 THIS MODULE IS NOT NEEDED FOR COMMANDBOX OR THE MINISERVER. IT'S PURELY FOR TESTING, MOCKING AND AUDITING.
 {% endhint %}
 
-## Settings
+### Settings
 
 Here are the default settings for this module you can configure:
 
@@ -42,11 +42,11 @@ settings = {
 };
 ```
 
-## Functions
+### Functions
 
 Here are some functions collaborated for mocking/testing
 
-### `getMockServer()`
+#### `getMockServer()`
 
 Creates a new mock server and stores it in the request context.  If it exists already, it will return the existing one.
 
@@ -72,7 +72,7 @@ function invoke(
 ){
 ```
 
-### `startMockRequest()`
+#### `startMockRequest()`
 
 Handle the start of a mock request using passed arguments.
 
@@ -105,3 +105,7 @@ function invoke(
 	boolean force = false
 ){
 ```
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-web-support) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27030\&issuetype=1).
