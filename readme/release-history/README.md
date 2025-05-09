@@ -1,6 +1,6 @@
 ---
-icon: space-awesome
 description: All the major information about BoxLang Releases
+icon: space-awesome
 ---
 
 # Release History
@@ -23,10 +23,11 @@ And constructed with the following guidelines:
 
 For all BoxLang releases, updates are provided for 12 months, and security fixes are provided for 2 years after the next major release.
 
-| Version | Release | Updates | Security Fixes |
-| ------- | ------- | ------- | -------------- |
-| **1.x** | 2025    | 2026    | 2028           |
+| Version | Release  | Updates  | Security Fixes |
+| ------- | -------- | -------- | -------------- |
+| **1.x** | May 2025 | May 2026 | May 2028       |
+| 2.x     | May 2026 | May 2027 | May 2029       |
 
 ### Releases
 
-In this section, you will find the release notes and links for each version's documentation once we reach a stable release.  For now, you can see all the different beta releases on the left hand navigation under Release History.
+This section will contain the release notes and links for each version's documentation once we reach a stable release. For now, you can see all the different release candidates and beta releases on the left-hand navigation under Release History.
