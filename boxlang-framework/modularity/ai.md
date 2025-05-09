@@ -545,3 +545,7 @@ result = aiChat(
 
 println( result )
 ```
+
+### GitHub Repository and Reporting Issues
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-ai) for release notes. You can also file a bug report or improvement suggestion  via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27149\&issuetype=1).&#x20;
