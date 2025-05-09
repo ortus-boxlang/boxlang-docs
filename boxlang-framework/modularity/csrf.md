@@ -56,3 +56,7 @@ The module may be enabled to perform auto-verification of CSRF inbound headers. 
 ### Cache Reaping
 
 A scheduler is enabled with the module, which will perform a check and remove all expired tokens from the cache at a frequency of minutes ( default `1` ). If you wish to adjust this, you can change the `reapFrequency` setting to your desired interval.
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-csrf) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27182\&issuetype=1).
