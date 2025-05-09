@@ -30,7 +30,7 @@ _Important Note: WDDX is, effectively, no longer supported for new development, 
 
 
 
-## Contributed Functions
+### Contributed Functions
 
 This module will contribute the following components globally:
 
@@ -43,9 +43,9 @@ bx:wddx
     output="WddxTextVariable"
 ```
 
-## Attributes
+### Attributes
 
-### **action:string (required)**
+#### **action:string (required)**
 
 The action to execute
 
@@ -54,25 +54,29 @@ The action to execute
 * `cfml2js`
 * `wddx2js`
 
-### `input:string (required)`
+#### input:string (required)
 
-`The value to process`
+The value to process.
 
-### `output:variableName`
+#### output:variableName
 
-The name of the variable of the output&#x20;
+The name of the variable of the output.&#x20;
 
-### topLevelVariable:string
+#### topLevelVariable:string
 
 Name of top-level JavaScript object created by deserialization. The object is an instance of the WddxRecordset object.
 
-### **useTimezoneInfo:boolean=true**
+#### **useTimezoneInfo:boolean=true**
 
 Whether to output time-zone information when serializing CFML to WDDX.
 
-### validate:boolean=false
+#### validate:boolean=false
 
 Applies if action = "wddx2cfml" or "wddx2js".
 
 * Yes: validates WDDX input with an XML parser using WDDX DTD. If parser processes input without error, packet is deserialized. Otherwise, an error is thrown.
 * No: no input validation
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-wddx) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27029\&issuetype=1).
