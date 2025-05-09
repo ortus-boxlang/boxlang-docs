@@ -127,3 +127,7 @@ The following attributes are not supported and will be ignored if provided:
 * `richtext`
 * `toolbar`
 * `toolbarOnFocus`
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-ui-forms) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27027\&issuetype=1).
