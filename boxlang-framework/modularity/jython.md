@@ -103,3 +103,7 @@ Each execution produces a result which is a structure with the following keys:
 * `engine` : A reference to the engine
 * `globalScope` : A reference to the global scope of JSR223
 * `engineScope` : A reference to the engine scope of JSR223
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-jython) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27023\&issuetype=1).
