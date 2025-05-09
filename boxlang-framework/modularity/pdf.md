@@ -127,3 +127,7 @@ bx:document format="pdf" variable="myPDF"{
 
 fileWrite( "/path/to/mydocument.pdf", myPDF );
 ```
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-pdf) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27017\&issuetype=1).
