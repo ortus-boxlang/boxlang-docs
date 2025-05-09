@@ -36,7 +36,7 @@ bx:ftp
 bx:dump var="result";
 ```
 
-## Attributes
+### Attributes
 
 Here is the list of available attributes you can use.
 
@@ -60,9 +60,9 @@ Here is the list of available attributes you can use.
 | removeDir   |         |                                                                                                                                                                                                                                                 |
 | remove      |         |                                                                                                                                                                                                                                                 |
 
-## Examples
+### Examples
 
-### Open FTP Connection
+#### Open FTP Connection
 
 ```
 bx:ftp
@@ -75,7 +75,7 @@ bx:ftp
     passive="true|false";
 ```
 
-### Open SFTP Connection
+#### Open SFTP Connection
 
 To connect using SFTP, you need to set `secure`equal to `true`.
 
@@ -90,9 +90,12 @@ bx:ftp
     secure="true";
 ```
 
-### Close Connection
+#### Close Connection
 
 ```
 bx:ftp action="close" connection="conn" result="myResult";
 ```
 
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-ftp) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27021\&issuetype=1).
