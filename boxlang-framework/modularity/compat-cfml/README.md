@@ -120,3 +120,7 @@ The compat module will contribute the following built-in functions globally:
 * `getVariable` - Learn more here: https://cfdocs.org/getVariable
 * `setVariable` - Learn more here: https://cfdocs.org/setVariable
 * `systemOutput` - Learn more here: https://cfdocs.org/systemOutput
+
+### GitHub Repository and Reporting Issues
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-compat-cfml) for release notes. You can also file a bug report or improvement suggestion  via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27018\&issuetype=1).&#x20;
