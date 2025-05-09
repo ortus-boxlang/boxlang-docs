@@ -1,0 +1,70 @@
+# BoxLang ORM
+
+The [BoxLang ORM module](https://github.com/ortus-boxlang/bx-orm) allows your BoxLang
+  application to integrate with the powerful [Hibernate ORM](https://hibernate.org/orm/). With Hibernate, you can interact with your database records in an object oriented fashion, using a BoxLang class to denote each record and simple getters and setters for each field value:
+
+```js
+class entityName="Auto" persistent="true" {
+
+	property name="id" type="string" fieldtype="id" ormtype="string";
+	property name="make" type="string";
+	property name="model" type="string";
+
+    function onPreInsert(){
+        log.info( "Inserting new Auto: #getMake()# #getModel()#" );
+    }
+}
+```
+
+BoxLang ORM also enables transactional persistence, where an error during a save will roll back the entire transaction to prevent leaving the database in a broken state:
+
+```js
+transaction{
+    try{
+        entitySave(
+            entityNew( "Purchase", {
+                productID : "123-expensive-watch",
+                purchaseTime : now(),
+                customerID : customer.getId()
+            })
+        );
+        var cartProducts = entityLoad( "CartProduct", customer.getID() );
+        entityDelete( cartProducts );
+    } catch ( any e ){
+        // don't clear the user's cart if the purchase failed
+        transactionRollback();
+        rethrow;
+    }
+}
+```
+
+## Contributed BIFs
+
+* `EntityDelete()`
+* `EntityLoad()`
+* `EntityLoadByExample()`
+* `EntityLoadByPK()`
+* `EntityMerge()`
+* `EntityNameArray()`
+* `EntityNameList()`
+* `EntityNew()`
+* `EntityReload()`
+* `EntitySave()`
+* `EntityToQuery()`
+* `ORMClearSession()`
+* `ORMCloseAllSessions()`
+* `ORMCloseSession()`
+* `ORMEvictCollection()`
+* `ORMEvictEntity()`
+* `ORMEvictQueries()`
+* `ORMExecuteQuery()`
+* `ORMFlush()`
+* `ORMFlushAll()`
+* `ORMGetHibernateVersion()`
+* `ORMGetSession()`
+* `ORMGetSessionFactory()`
+* `ORMReload()`
+
+## GitHub Repository and Reporting Issues
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-orm) for release notes. You can also file a bug report or improvement suggestion  via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27018\&issuetype=1).&#x20;
