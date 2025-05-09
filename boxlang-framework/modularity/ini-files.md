@@ -68,3 +68,7 @@ iniFile.removeEntry( "section1", "entry1" );
 // Remove a section
 iniFile.removeSection( "section1" );
 ```
+
+### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-ini) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27024\&issuetype=1).
