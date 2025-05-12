@@ -2,7 +2,7 @@ name: Link Checker
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main, v1.x ]
   pull_request:
     types: [assigned, opened, synchronize, reopened]
 
