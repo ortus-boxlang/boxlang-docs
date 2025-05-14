@@ -1,6 +1,6 @@
 ---
-icon: shield-cross
 description: Configure the security settings in BoxLang
+icon: shield-cross
 ---
 
 # Security
@@ -22,81 +22,13 @@ This segment is where you can configure the security elements of BoxLang under t
 	// A list of Component names that will be disallowed from execution
 	// Ex: "disallowedComponents": [ "execute", "http" ]
 	"disallowedComponents": [],
+	// This is a boolean flag that determines if the server.system scope will be populated with the
+	// Java system properties and environment variables. By default this is set to true.
+	"populateServerSystemScope": true,
 	// An explicit whitelist of file extensions that are allowed to be uploaded - overrides any values in the disallowedWriteExtensions
 	"allowedFileOperationExtensions": [],
 	// The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move )
-	"disallowedFileOperationExtensions": [
-		"bat",
-		"exe",
-		"cmd",
-		"cfm",
-		"cfc",
-		"cfs",
-		"bx",
-		"bxm",
-		"bxs",
-		"sh",
-		"php",
-		"pl",
-		"cgi",
-		"386",
-		"dll",
-		"com",
-		"torrent",
-		"js",
-		"app",
-		"jar",
-		"pif",
-		"vb",
-		"vbscript",
-		"wsf",
-		"asp",
-		"cer",
-		"csr",
-		"jsp",
-		"drv",
-		"sys",
-		"ade",
-		"adp",
-		"bas",
-		"chm",
-		"cpl",
-		"crt",
-		"csh",
-		"fxp",
-		"hlp",
-		"hta",
-		"inf",
-		"ins",
-		"isp",
-		"jse",
-		"htaccess",
-		"htpasswd",
-		"ksh",
-		"lnk",
-		"mdb",
-		"mde",
-		"mdt",
-		"mdw",
-		"msc",
-		"msi",
-		"msp",
-		"mst",
-		"ops",
-		"pcd",
-		"prg",
-		"reg",
-		"scr",
-		"sct",
-		"shb",
-		"shs",
-		"url",
-		"vbe",
-		"vbs",
-		"wsc",
-		"wsf",
-		"wsh"
-	]
+	"disallowedFileOperationExtensions": []
 },
 ```
 {% endcode %}
@@ -138,7 +70,7 @@ An array of Component names that will be disallowed from execution.
 
 ## Disallowed File Operation Extensions
 
-The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move )
+The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move ).  By default we don't restrict, but you can :)
 
 ```json
 "disallowedFileOperationExtensions": [
@@ -215,4 +147,10 @@ The list of file extensions that are not allowed to be uploaded. Also enforced b
 	],
 ```
 
-###
+## populateServerSystemScope
+
+This is a boolean flag that, if enabled, will populate the `server.system` scope with the Java environment and properties.  If disabled, it will not populate them and users will only be able to get environment and properties via the `getSystemSetting()` BIF. &#x20;
+
+```json
+"populateServerSystemScope" : false
+```
