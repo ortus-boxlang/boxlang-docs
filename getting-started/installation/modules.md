@@ -402,3 +402,9 @@ install-bx-module bx-oracle
 ```
 install-bx-module bx-postgresql
 ```
+
+### [SQLite](https://forgebox.io/view/bx-sqlite)
+
+```
+install-bx-module bx-sqlite
+```
