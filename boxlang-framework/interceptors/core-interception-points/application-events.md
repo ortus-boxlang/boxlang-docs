@@ -2,17 +2,71 @@
 
 These events occur around the life cycle of the request listener `Application.bx`:
 
+* [`beforeApplicationListenerLoad`](application-events.md#beforeapplicationlistenerload)
+* [`afterApplicationListenerLoad`](application-events.md#afterapplicationlistenerload)
 * [`onAbort`](application-events.md#onabort)
+* [`onApplicationDefined`](application-events.md#onapplicationdefined)
 * [`onApplicationEnd`](application-events.md#onapplicationend)
+* [`onApplicationRestart`](application-events.md#onapplicationrestart)
 * [`onApplicationStart`](application-events.md#onapplicationstart)
 * [`onClassRequest`](application-events.md#onclassrequest)
 * [`onError`](application-events.md#onerror)
 * [`onMissingTemplate`](application-events.md#onmissingtemplate)
 * [`onRequest`](application-events.md#onrequest)
+* [`onRequestFlushBuffer`](application-events.md#onrequestflushbuffer)
 * [`onRequestEnd`](application-events.md#onrequestend)
 * [`onRequestStart`](application-events.md#onrequeststart)
+* [`onSessionCreated`](application-events.md#onsessioncreated)
+* [`onSessionDestroyed`](application-events.md#onsessiondestroyed)
 * [`onSessionEnd`](application-events.md#onsessionend)
 * [`onSessionStart`](application-events.md#onsessionstart)
+
+## beforeApplicationListenerLoad
+
+Announced by the Application service before the application listener gets defined.  This is a good place to do any type of processing that needs to be done before the application listener is loaded.
+
+### Data Structure
+
+| Data Key      | Type                      | Description                      |
+| ------------- | ------------------------- | -------------------------------- |
+| `context`     | `IBoxContext`             | The BoxLang Request context      |
+| `listener`    | `BaseApplicationListener` | The BoxLang listener class       |
+| `template`    | `URI` | The URI of the template matching the Application.bx       |
+
+### Example
+
+```groovy
+class myListener{
+	function beforeApplicationListenerLoad( struct data ){
+		// This is where you can create  your own scopes or load your own caches
+		// or more.
+	}
+}
+```
+
+## afterApplicationListenerLoad
+
+Announced by the Application service after the application listener gets defined.  This is a good place to do any type of processing that needs to be done after the application listener is loaded. This could include
+any custom frameworks or modules that need to be loaded after the application listener is loaded.
+
+### Data Structure
+
+| Data Key      | Type                      | Description                      |
+| ------------- | ------------------------- | -------------------------------- |
+| `context`     | `IBoxContext`             | The BoxLang Request context      |
+| `listener`    | `BaseApplicationListener` | The BoxLang listener class       |
+| `template`    | `URI` | The URI of the template matching the Application.bx       |
+
+### Example
+
+```groovy
+class myListener{
+	function afterApplicationListenerLoad( struct data ){
+		// This is where you can create  your own scopes or load your own caches
+		// or more.
+	}
+}
+```
 
 ## onAbort
 
@@ -43,6 +97,34 @@ class myListener{
 }
 ```
 
+## onApplicationDefined
+
+This happens when the application is defined and the following has been set:
+
+* Aplication scope
+* Class loaders
+* Caches
+* Schedulers
+* Session Management
+
+### Data Structure
+
+| Data Key      | Type                      | Description                      |
+| ------------- | ------------------------- | -------------------------------- |
+| `context`     | `IBoxContext`             | The BoxLang Request context      |
+| `listener`    | `BaseApplicationListener` | The BoxLang listener class       |
+
+### Example
+
+```groovy
+class myListener{
+	function onApplicationDefined( struct data ){
+		// This is where you can create  your own scopes or load your own caches
+		// or more.
+	}
+}
+```
+
 ## onApplicationEnd
 
 This event is triggered when the application has timed out or is being shut down. It could also happen if the application is being reloaded or the server is being restarted or shut down.
@@ -69,6 +151,28 @@ class myListener{
 	function onApplicationEnd( struct data ){
 		// This is where you would do any cleanup
 		// or save the application scope to a file
+	}
+}
+```
+
+## onApplicationRestart
+
+This event is triggered when the application is restarted via the `ApplicationRestart()` BIF.
+
+### Data Structure
+
+| Data Key      | Type                      | Description                      |
+| ------------- | ------------------------- | -------------------------------- |
+| `application` | `Application`             | The BoxLang Application class    |
+| `context`     | `IBoxContext`             | The BoxLang Request context      |
+
+### Example
+
+```groovy
+class myListener{
+	function onApplicationRestart( struct data ){
+		// This is where you would do any cleanup
+		// or log restarts
 	}
 }
 ```
@@ -241,6 +345,29 @@ class myListener{
 }
 ```
 
+## onRequestFlushBuffer
+
+Whenever a context flushes the output buffer, this event is triggered. This is a great place to do any type of processing that needs to be done before the request is executed or transform the output buffer.
+
+### Data Structure
+
+| Data Key      | Type                      | Description                      |
+| ------------- | ------------------------- | -------------------------------- |
+| `context`     | `IBoxContext`             | The BoxLang Request context      |
+| `output`    | `String` | The output to be flushed       |
+
+### Example
+
+```groovy
+class myListener{
+	function onRequestFlushBuffer( struct data ){
+		// This is where you would do any type of processing
+		// that needs to be done before the request is executed.
+		var output = data.output;
+	}
+}
+```
+
 ## onRequestEnd
 
 This event is triggered once the request has been executed and the response is being sent back to the client. This is a great place to do any type of processing that needs to be done after the request is executed.
@@ -377,6 +504,30 @@ class myListener{
 }
 ```
 
-These events are also special, because not only are they announced by the BoxLang runtime globally, but also by the Application.bx Listener locally on a per-request basis.  This means, that you or modules can listen to application life-cycle events on a per request basis without affecting other applications.
+## onSessionDestroyed
 
-<table><thead><tr><th width="288">Event Name</th><th align="center">Data</th><th>Description</th></tr></thead><tbody><tr><td><code>onApplicationRestart</code></td><td align="center"></td><td>Triggered when an application restarts.</td></tr><tr><td><code>onApplicationDefined</code></td><td align="center"></td><td>Triggered when an application is defined.</td></tr><tr><td><code>beforeApplicationListenerLoad</code></td><td align="center"></td><td>Before application listener is loaded.</td></tr><tr><td><code>afterApplicationListenerLoad</code></td><td align="center"></td><td>After application listener is loaded.</td></tr><tr><td><code>onRequestFlushBuffer</code></td><td align="center"></td><td>Triggered when the output buffer is flushed.</td></tr><tr><td><code>onSessionCreated</code></td><td align="center"></td><td>Triggered when a session is created.</td></tr><tr><td><code>onSessionDestroyed</code></td><td align="center"></td><td>Triggered when a session is destroyed.</td></tr><tr><td><code>onClassRequest</code></td><td align="center"></td><td>Triggered when a class is requested.</td></tr></tbody></table>
+This is when a session get's destroyed. This could be when the session times out or when the session is being destroyed manually. This is a great place to do any type of processing that needs to be done before the session is destroyed.
+
+### Data Structure
+
+| Data Key      | Type                      | Description                      |
+| ------------- | ------------------------- | -------------------------------- |
+| `application` | `Application`             | The BoxLang Application class    |
+| `listner`     | `Listener`             | The BoxLang Listener class      |
+| `session`     | `Session`             | The BoxLang Session class      |
+
+### Example
+
+```groovy
+class myListener{
+	function onSessionDestroyed( struct data ){
+		// This is where you would do any type of processing
+		// that needs to be done before the session is started.
+		
+		var sessionID = data.args.sessionID;
+		
+		// You can also use this event to display a custom error page
+		// or redirect the user to a different page.
+	}
+}
+```
