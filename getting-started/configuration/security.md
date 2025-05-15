@@ -70,7 +70,9 @@ An array of Component names that will be disallowed from execution.
 
 ## Disallowed File Operation Extensions
 
-The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move ).  By default we don't restrict, but you can :)
+The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move ).  By default, in the CLI and Lambda runtimes,  we don't restrict, but you can :)
+
+In Web runtimes, the following extensions are disallowed by default.   Unlike other engines this list does not apply to just uploads but applies to File move and copy operations.  This is enforced to prevent a bad actor from uploading a file with one extension and being able to copy it to another that is executable.
 
 ```json
 "disallowedFileOperationExtensions": [
@@ -145,6 +147,12 @@ The list of file extensions that are not allowed to be uploaded. Also enforced b
 		"wsf",
 		"wsh"
 	],
+```
+
+**Note:** If you wish to override a single extension you may do so by placing the extension in the `allowedFileOperationExtensions` setting in the application:
+
+```
+this.allowedFileOperationExtensions = [ "cfc", "cfm" ];
 ```
 
 ## populateServerSystemScope
