@@ -41,6 +41,14 @@ An explicit whitelist of file extensions that are allowed to be uploaded - overr
 "allowedFileOperationExtensions": [],
 ```
 
+Individual file extensions may be whitelisted in your Application context like so:
+
+```
+this.allowedFileOperationExtensions = [ "bxm", "bx" ];
+```
+
+Anything placed in the allowed extensions overrides the disallowed extensions array
+
 ## Disallowed Imports
 
 An array of regex patterns (case-sensitive) that will try to be matched to imports or to creation of classes. If they match the patterns a security exception wil be thrown.
@@ -152,7 +160,7 @@ In Web runtimes, the following extensions are disallowed by default.   Unlike ot
 **Note:** If you wish to override a single extension you may do so by placing the extension in the `allowedFileOperationExtensions` setting in the application:
 
 ```
-this.allowedFileOperationExtensions = [ "cfc", "cfm" ];
+this.allowedFileOperationExtensions = [ "bxm", "bx" ];
 ```
 
 ## populateServerSystemScope
