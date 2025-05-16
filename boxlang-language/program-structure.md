@@ -7,7 +7,7 @@ icon: folder-tree
 
 ## File Types
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 BoxLang can be written in 3 types of files:
 
