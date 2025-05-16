@@ -862,6 +862,7 @@
   * [OSHI - Operating System + Hardware](boxlang-framework/modularity/hardware-and-system-info.md)
   * [Password Encryption](boxlang-framework/modularity/encryption-and-decryption.md)
   * [PDF](boxlang-framework/modularity/pdf.md)
+  * [Redis](boxlang-framework/modularity/redis.md)
   * [UI Forms](boxlang-framework/modularity/ui-forms.md)
   * [WDDX](boxlang-framework/modularity/wddx.md)
   * [Web Support](boxlang-framework/modularity/web-support.md)
