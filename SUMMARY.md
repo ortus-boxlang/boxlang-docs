@@ -854,6 +854,7 @@
   * [FTP](boxlang-framework/modularity/ftp.md)
   * [Image Manipulation](boxlang-framework/modularity/image-manipulation.md)
   * [INI Files](boxlang-framework/modularity/ini-files.md)
+  * [JDBC](boxlang-framework/modularity/jdbc.md)
   * [Jython](boxlang-framework/modularity/jython.md)
   * [Mail](boxlang-framework/modularity/mail.md)
   * [Markdown](boxlang-framework/modularity/markdown.md)
