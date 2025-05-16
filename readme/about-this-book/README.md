@@ -1,14 +1,11 @@
 ---
-icon: address-card
 description: Learn more about this book
+icon: address-card
 ---
 
 # About This Book
 
 The source code for this book is hosted on GitHub: [https://github.com/ortus-boxlang/boxlang-docs](https://github.com/ortus-boxlang/boxlang-docs). You can freely contribute to it and submit pull requests. Ortus Solutions, Corp copyrights the contents of this book and cannot be altered or reproduced without the author's consent. All content is provided _"As-Is"_ and can be freely distributed.‌
-
-* The majority of code examples in this book are done in `bx:script`.
-* The majority of code generation and running of examples are done via **CommandBox**: The BoxLang CLI, Package Manager, REPL - [https://www.ortussolutions.com/products/commandbox](https://www.ortussolutions.com/products/commandbox)​
 
 ## Notice of Liability
 
@@ -27,5 +24,3 @@ The Shalom Children's Home ([https://www.harvesting.org/](https://www.harvesting
 Shalom now cares for over 80 children in El Salvador, from newborns to 18 years old. They receive shelter, clothing, food, medical care, education, and life skills training in a Christian environment. A child sponsorship program supports the home.‌
 
 We have supported Shalom since 2010; it is a place of blessings for many children in El Salvador who either have no families or have been abandoned. This is a good earth to seed and plant.
-
-![Shalom Orphanage](https://raw.githubusercontent.com/ortus-docs/logbox-docs/master/images/shalom.jpg)

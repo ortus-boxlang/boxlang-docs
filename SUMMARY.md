@@ -38,7 +38,7 @@
       * [1.0.0-Beta3](readme/release-history/1.0.0-beta3.md)
       * [1.0.0-Beta2](readme/release-history/1.0.0-beta2.md)
   * [About This Book](readme/about-this-book/README.md)
-    * [Author](readme/about-this-book/author.md)
+    * [Authors](readme/about-this-book/author.md)
 
 ## Getting Started
 

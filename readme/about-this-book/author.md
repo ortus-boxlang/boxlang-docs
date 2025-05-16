@@ -1,8 +1,9 @@
 ---
-description: Information about the author
+description: Information about the authors
+icon: user-group
 ---
 
-# Author
+# Authors
 
 ## Luis Fernando Majano Lainez
 
