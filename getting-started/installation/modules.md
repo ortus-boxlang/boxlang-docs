@@ -82,28 +82,5 @@ You can customize the boxlang module directory by changing the `runtime.modulesD
 
 Visit the [Modules](../../boxlang-framework/modularity/) section of our docs for the most up to date listing of our supported modules.
 
-## +/++ Modules
-
-These modules are available for our [+/++ subscribers only](https://ww.boxlang.io/plans). However, you can install them free of charge and try them out.
-
-### bx-redis
-
-`Category: Caching`
-
-This module will enhance your language by allowing you to connect to Redis instances, clusters, or sentinel instances. Here are some features:
-
-* Add native Redis functionality to the language
-* Connect to a Redis server or a Redis cluster, or Redis Sentinel
-* Store session variables in a distributed Redis cluster
-* Leverage the Redis publish/subscribe features to create real-time messaging
-* Get rid of sticky session load balancers, come to the round-robin world!
-* Session variable persistence even after server restarts
-* Cache connection capabilities for providing distributed & highly scalable query, object, template, and function caching
-* Much more
-
-```
-install-bx-module bx-redis
-```
-
-* Download: [https://forgebox.io/view/bx-redis](https://forgebox.io/view/bx-redis)
+##
 
