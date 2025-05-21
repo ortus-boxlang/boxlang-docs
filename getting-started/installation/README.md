@@ -64,18 +64,7 @@ sudo xbps-install curl zip unzip openjdk21
 
 ```
 
-Note that you may need to tell the system to use the correct JDK version. This can be done via `xbps-alternatives ` (sudo may be required).
-
-You may also just modify the symbolic links in `/usr/lib/jvm`:
-
-```bash
-cd /usr/lib/jvm
-sudo rm ./default-jre
-sudo rm -/default-jdk
-
-sudo ln -s ./openjdk21 ./default-jdk
-sudo ln -s ./openjdk21 ./default-jew
-```
+Note that you may need to tell the system to use the correct JDK version. This can be done via `sudo xbps-alternatives -g jdk -s openjdk21`
 {% endtab %}
 
 {% tab title="Windows" %}
