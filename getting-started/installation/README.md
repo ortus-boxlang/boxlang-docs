@@ -72,6 +72,13 @@ Use the following powershell script to install the JRE:
 ```powershell
 Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://downloads.ortussolutions.com/ortussolutions/boxlang/install-jre.ps1''))"'
 ```
+
+* Once this runs the JRE will be installed in your `C:\Program Files\Java\jre{version}`&#x20;
+* A `JAVA_HOME` will be created for you
+
+{% hint style="danger" %}
+Make sure you restart any terminal windows for changes to take effect.
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
@@ -100,7 +107,7 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 {% endtabs %}
 
 {% hint style="danger" %}
-If your system requires admin privileges (Like Chromebooks), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
+If your system requires admin privileges (Like Chromebooks, some Linux bistros), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
 {% endhint %}
 
 {% hint style="info" %}
