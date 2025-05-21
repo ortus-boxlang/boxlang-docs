@@ -329,3 +329,10 @@ myStruct = {
 println( myStruct )
 ```
 
+### Change Listeners
+
+All arrays, and structures offer the ability to listen to changes to itself or a specific key if a structure.  This is all done via our `$bx` metadata object available on all arrays/structures.  You will call the `registerChangeListener()` function in order to register a closure/lambda that will listen to changes.
+
+```java
+array.$bx.registerChangeListener( closure/lambda )
+```

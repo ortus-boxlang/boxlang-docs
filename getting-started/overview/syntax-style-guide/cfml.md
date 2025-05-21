@@ -130,14 +130,6 @@ function foo( required any myService ) {}
 
 The `output` of functions will be false in BL. The BoxLang runtime will toggle this behavior based on the type of the compiled source code. So for `.cfm` or `.cfc` source files, default value of the `output` annotation on classes and functions will remain `true` but for code compiled from `.bx`, `.bxs` or `.bxm` files, the default value of the `output` annotation on classes and functions will be `false`.
 
-Note, if your `Application.cfc` and `onRequestStart()` method do not specify
-
-```html
-@output( true )
-```
-
-you will get a blank page with no output!
-
 ## Accessors True
 
 Accessors in BoxLang are automatically `true` for all classes by default.  This is `false` for CFML.  You can also disable as normal if needed.
@@ -279,11 +271,11 @@ Some bifs have been renamed in BoxLang.
 
 | CFML                 | BoxLang          |
 | -------------------- | ---------------- |
-| serializeJSON        | jsonSerialize    |
-| deserializeJSON      | jsonDeserialize  |
-| chr                  | char             |
 | asc                  | ascii            |
+| chr                  | char             |
+| deserializeJSON      | jsonDeserialize  |
 | getComponentMetadata | getClassMetadata |
+| serializeJSON        | jsonSerialize    |
 
 ## CreateObject Types
 
