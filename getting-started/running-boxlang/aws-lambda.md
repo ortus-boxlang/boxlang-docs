@@ -86,7 +86,8 @@ The BoxLang default template for AWS lambda can be found here: [https://github.c
       + Lambda.bx (Your BoxLang Lambda function)
   + resources
     + boxlang.json (A custom BoxLang configuration file)
-    + modules (Where you will install BoxLang modules using CommandBox, don't put in source control )
+    + Application.bx ( If desired )
+    + boxlang_modules (Where you will install BoxLang modules using CommandBox, don't put in source control )
   + test
     + java
       + com
