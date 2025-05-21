@@ -46,11 +46,25 @@ sudo yum update
 sudo yum upgrade
 
 # Install requirements
-sudo yum install curl zip unzip java-21-openjdk
+sudo yum install curl zip unzip jq java-21-openjdk
 
 ```
 
 Note that you may need to tell the system to use the correct JDK version. This can be done via `update-alternatives --config java` (sudo may be required).
+{% endtab %}
+
+**XBPS (Voidlinux)**
+
+```bash
+# Update OS first
+sudo xbps-install -Su
+
+# Install requirements
+sudo xbps-install curl zip unzip jq openjdk21
+
+```
+
+Note that you may need to tell the system to use the correct JDK version. This can be done via `sudo xbps-alternatives -g jdk -s openjdk21`
 {% endtab %}
 
 {% tab title="Windows" %}
