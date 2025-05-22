@@ -67,6 +67,20 @@ sudo xbps-install curl zip unzip jq openjdk21
 Note that you may need to tell the system to use the correct JDK version. This can be done via `sudo xbps-alternatives -g jdk -s openjdk21`
 {% endtab %}
 
+**Arch Linux Variants**
+
+```bash
+# Update OS first
+sudo pacman -Syu
+
+# Install requirements
+sudo pacman -S curl zip unzip jq jre21-openjdk
+
+```
+
+Note that you may need to tell the system to use the correct JDK version. This can be done via `sudo archlinux-java set java-21-openjdk`
+{% endtab %}
+
 {% tab title="Windows" %}
 **Powershell Script**
 
