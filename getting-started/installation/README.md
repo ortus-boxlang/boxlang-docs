@@ -16,15 +16,17 @@ If you want to use our BoxLang/CFML to Java transpiler, you must have the JDK in
 {% endhint %}
 
 {% tabs %}
-{% tab title="Mac" %}
+{% tab title="🍎 Mac" %}
 We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
 
 ```bash
 brew install curl zip unzip jq openjdk@21
 ```
+
+Once the requirements are installed, then move down to the quick installer.
 {% endtab %}
 
-{% tab title="*nix" %}
+{% tab title="🐧 *Unix/Linux" %}
 Leverage your system‘s package manager to install the needed requirements.
 
 **APT**
@@ -64,7 +66,6 @@ sudo xbps-install curl zip unzip jq openjdk21
 ```
 
 Note that you may need to tell the system to use the correct JDK version. This can be done via `sudo xbps-alternatives -g jdk -s openjdk21`
-{% endtab %}
 
 **Arch Linux Variants**
 
@@ -80,14 +81,16 @@ sudo pacman -S curl zip unzip jq jre21-openjdk
 Note that you may need to tell the system to use the correct JDK version. This can be done via `sudo archlinux-java set java-21-openjdk`
 {% endtab %}
 
-{% tab title="Windows" %}
+{% tab title="🪟 Windows" %}
+
+
 Use the following powershell script to install the JRE:
 
 ```powershell
 Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://downloads.ortussolutions.com/ortussolutions/boxlang/install-jre.ps1''))"'
 ```
 
-* Once this runs the JRE will be installed in your `C:\Program Files\Java\jre{version}`&#x20;
+* Once this runs the JRE will be installed in your `C:\Program Files\Java\jre{version}`
 * A `JAVA_HOME` will be created for you
 
 {% hint style="danger" %}
@@ -98,7 +101,7 @@ Make sure you restart any terminal windows for changes to take effect.
 
 ## Quick Installer
 
-To get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac/Linux/\*Nix/Windows
+To get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac/Linux/\*Nix/Windows.  This will allow you to execute the script in your favorite terminal application.  Please note that some OS will require for you to run it as an administrator or with `sudo` capabilities.
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}
@@ -121,7 +124,7 @@ Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy 
 {% endtabs %}
 
 {% hint style="danger" %}
-If your system requires admin privileges (Like Chromebooks, some Linux bistros), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
+If your system requires admin privileges (Like Chromebooks, or Linux distros), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
 {% endhint %}
 
 {% hint style="info" %}
@@ -131,18 +134,21 @@ The quick installer requires the following:
 * Permission to copy files to `/usr/local/bin and /usr/local/lib`
 {% endhint %}
 
-The quick installer will install the latest stable **OS** binary and the **MiniServer** in the above directories. It will also install the following scripts for you.
+The quick installer will install the latest stable **BoxLang** **OS** binary and the **MiniServer** in the above directories. It will also install the following scripts for you:
 
 * `boxlang` - Our BoxLang binary runner, [learn more](../running-boxlang/)
 * `boxlang-miniserver` - Our BoxLang MiniServer binary runner, [learn more](../running-boxlang/miniserver.md)
-* `install-boxlang` - The quick installer so you can reuse it to upgrade your installations
+* `install-boxlang` - The quick installer so you can reuse it to upgrade your installations or install the `snapshot` version of BoxLang
 * `install-bx-module` - A module installer. Just pass in the slug of the module, an optional version or a list of modules.
 
 ```bash
+# Test BoxLang works:
+boxlang --version
+
 # Install a single module
 install-bx-module bx-compat-cfml
 
-# Install a specific verision of a module
+# Install a specific version of a module
 install-bx-module bx-compat-cfml@1.11.0
 
 # Install multiple async modules
@@ -151,7 +157,7 @@ install-bx-module bx-compat-cfml bx-esapi bx-pdf
 
 ### Upgrading Your Install
 
-The `install-boxlang` script will allow you to upgrade your OS installation easily. If you call it without arguments, it will install the **latest stable** release and override the local install. You can also pass a specific version to install as the second argument or the word `snapshot`to install the bleeding edge release.
+The `install-boxlang` script will allow you to upgrade your OS installation easily. If you call it without arguments, it will install the **latest stable** release and override the local install. You can also pass a specific version to install as the second argument or the word `snapshot`to install the bleeding edge release.  You can find all the latest artifacts here: [https://downloads.ortussolutions.com/#/ortussolutions/boxlang/](https://downloads.ortussolutions.com/#/ortussolutions/boxlang/)
 
 ```bash
 # Upgrade to the latest stable version
