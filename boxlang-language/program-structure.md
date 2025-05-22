@@ -99,7 +99,7 @@ script.bxs
     + data.bxs
 ```
 
-Then we can do so my location reference:
+Then we can do so by location reference:
 
 {% code title="script.bxs" %}
 ```javascript
