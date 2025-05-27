@@ -34,6 +34,7 @@ Our BoxLang AWS Handler acts as a front controller to all incoming Lambda execut
 * Execution of your Lambda classes by convention
 * Automatic error management
 * Automatic response management and serialization
+* Life-Cycle Events via our `Application.bx`
 
 The BoxLang AWS runtime provides a pre-built Java handler for Lambda already configured to accept JSON in as a BoxLang Struct and then output either by returning a simple or complex object or using our `response` convention struct.  Our runtime will automatically convert your results to JSON. &#x20;
 
@@ -83,10 +84,10 @@ The BoxLang default template for AWS lambda can be found here: [https://github.c
 /src
   + main
     + bx
+      + Application.bx (Your life-cycle class)
       + Lambda.bx (Your BoxLang Lambda function)
   + resources
     + boxlang.json (A custom BoxLang configuration file)
-    + Application.bx ( If desired )
     + boxlang_modules (Where you will install BoxLang modules using CommandBox, don't put in source control )
   + test
     + java
@@ -223,7 +224,7 @@ Now you can go ahead and build your function.  You can use TestBox to unit test 
 
 
 
-### Multiple Functions Header
+## Multiple Functions Header
 
 The runtime also allows you to create other functions inside of your Lambda that can be targeted if your AWS Lambda is exposed as an URL, which we recommend.  You will be able to target different functions in your `Lambda.bx`by using the following header when executing your lambda:
 
@@ -232,6 +233,19 @@ x-bx-function=methodName
 ```
 
 This makes it incredibly flexible where you can respond to that incoming header in a different function than the one by convention.
+
+## Lambda Modules
+
+You can use any BoxLang module with the BoxLang Lambda runtime by just installing them to the `src/resources/boxlang_modules` folder.  All modules placed there when running your build script, will be packaged up into your lambda package.
+
+```bash
+# Using the install-bx-module you can cd to the folder and install modules
+cd src/resources
+install-bx-module {names} --local
+
+# Or use CommandBox and add them to the box.json
+box install id=bx-module directory=src/resources/boxlang_modules
+```
 
 ## Deploy to AWS
 
