@@ -287,3 +287,93 @@ myStruct = {
 }
 println( myStruct )
 ```
+
+## Change Listeners
+
+All arrays and structures offer the ability to listen to changes to themselves.  This is all done via our `$bx` metadata object available on all arrays/structures.  You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the struct.  You can listen:
+
+* To all changes in the structure
+* To a specific key in the structure
+
+However, you must EXPLICITLY return the value that will be stored in the change.
+
+```java
+// Listen to all changes in the array
+myStruct.$bx.registerChangeListener( closure/lambda )
+
+// Listen to a specific index in the array
+myStruct.$bx.registerChangeListener( index, closure/lambda )
+```
+
+{% hint style="warning" %}
+Please note that this change listener will fire on every struct access, so ensure it's performant.
+{% endhint %}
+
+The signature of the closure/lambda is the following
+
+```groovy
+( Key key, any newValue, any oldValue, struct ) => {}
+```
+
+{% hint style="success" %}
+Please note that the Key is a BoxLang Key object, which simulates a case-insensitive string.  You can use methods on it like:\
+
+
+* `getName()`
+* `getNameNoCase()`
+* `toString()`
+{% endhint %}
+
+Here are a few simple examples:
+
+{% embed url="https://try.boxlang.io/?code=eJxlUU1PhDAQvfdXvHAwkJBdJSExbNbLHjV682I8VBh3m%2B2WpgwQYva%2FWywg0fbQ6Zs3b76U6chw7Qbs8SXgT%2FQhjb9RgbssDYiVVg4jcj8BZ9WrkZBPf2mtJg9kt%2BIqxHaLJ9UwGXANqTXKkzRHalB%2Fgk%2BEhl1bcgFZVSkcXeqOxtdqWXqDuNwINZe1cXQctdzhRyPokosRn2lIYah%2Flbr1YbWuJivIJ9g%2FTB1ZpwxrEyN6pKFAhBv4YCS7P95n6tGNGoEza%2F8nvuhqTZxTz0RH3DqzxO%2FEFYlYtWRb9iJWGQpzS5F7wq%2B%2FIk1M8bKJtfNtmvW731eWC7EUtTCQfANtnZDm" %}
+
+```java
+inventory = {
+    "banana": 12,
+    "papaya": 8,
+    "kiwi": 15,
+    "apple": 20
+}
+
+// Listen to all changes of the struct: add, remove, replace, etc.
+inventory.registerChangeListener( (key, newValue, oldValue, struct) => {
+    println( "Key: " & key );
+    println( "New value: " & newValue );
+    println( "Old value: " & oldValue );
+    return newValue;
+} )
+
+inventory.put( "pineapple", 5 )
+inventory.delete( "banana" )
+inventory["apple"] = 25
+
+println( inventory )
+```
+
+Here is another example when listening to a specific index:
+
+{% embed url="https://try.boxlang.io/?code=eJxlkTFrwzAQhXf9ioeHEoNI0pRASUiXji3t1qV0UO1LckTIQpZjTMl%2FrxxZjmnlRX73vXd3NpszGV%2B5Djv8CISTfSsTnmyD%2B5WMilVWdb3yOAgnbrkH1sO7slZTEFZLcRFiscAr154MfIXiqMyBauwrB4XaUsF7LnCiDhyAI6H2rim84DTJ3NGht7vnqzVGkZuNk0nMgl3CUPuhdEMSlS6HWwzLsXsa1rGOjdcmuF%2Bo2yDD3bV3vv1TfaMW5z4jMin7P%2FiuyymYWifQkW%2BcGf1bcUEuJsvZxocQy4biR5NYB%2BBWL0mTp9uy0%2BJnEr%2FC33pYCjFONSLIfwF%2Fs5BH" %}
+
+```java
+inventory = {
+    "banana": 12,
+    "papaya": 8,
+    "kiwi": 15,
+    "apple": 20
+}
+
+// Listen to changes for a specific key in the struct
+inventory.registerChangeListener( "banana", (key, newValue, oldValue, struct) => {
+    println( "Key: " & key );
+    println( "New value: " & newValue );
+    println( "Old value: " & oldValue );
+    return newValue;
+} )
+
+inventory.put( "pineapple", 5 )
+inventory.delete( "banana" )
+inventory["banana"] = 30
+
+println( inventory )
+```

@@ -53,17 +53,54 @@ All arrays in BoxLang are passed by **passed by reference**. Please remember thi
 
 ## Arrays in Code
 
-Let's go ahead and model some code in BoxLang using our fancy REPL tool CommandBox:
+Let's do some code samples:
 
-![](../.gitbook/assets/arrays_in_code.png)
+{% embed url="https://try.boxlang.io/?code=eJx9lMGO0zAQhu95ilEqsa1ou1zgsKI9sKIS0gISXcQBcZg608TCsSPb2WWFeHfGdtKk6UJbqU4y%2Fv3NPzM52lZ6Bxv4DvkBNX%2FzJeQNNvgUVz%2Flowz%2F2DSKwsJY1GVclRYbyuFHll1fwzt0UgBai09gGrLopdEua6zUXuk55HekS1%2FdQA4v4BgPXSvS8wUsRkE7aZ1Pj88ij%2BH%2BJPYOnw1V2EUGql2rRQBBBY01DFzXUpfwKH2VWMeEq9VqvOHzKQvgJ3mn%2BBEbWIFnE9zR2BoIRQWkqCbtO11QWB8KXII2gEKQc%2BANmNY7WRA4wfa4rG1YXqCjXV%2BAjr%2FGZp7WsNqmxboNgZP0v%2FYCKfuJ3tqbvefYcrBCKk%2BW2UvyPbCDGr2ogiUIwuhChnwzZXQ5xTrG7XOYx%2BvFwJaKuIXX58VhCdBYk0t4g%2BQl2RcqWkFMJkx9kJoAlRoIWZFtBMc7FMEDqpYybzyq1FADoY0yTOjaegkDJl%2FCyzHsEl6dsd4HNRAVWhScY0c8PqN3UBedf7EfB%2FM62OxoWl3ENMfG6eIZ25xH6903bph5jvk%2FpwBi3Klnr%2FCqa%2FbhpAS3N9aDsQWXuLcuc3yPimklw10G4v48RB5cs%2B8NWvpkbkObHc5h9lEknToWvKzjbYVSj4afLWSvKrKZJdeqwZMM%2BHPqqEmvp356u4E3LBsD%2Fz8RMSTmNKaOLFSMaFIGieSSnWf5fZjkFfCGONgY3wPAv%2FGIT14XH3hkHmTRcv90Nnevis7rsLUv%2FpJbuaBfC9hs4XfEHrRm8dHsBmYxdBYk%2FsDiLwjQ05s%3D" %}
 
-Check it out:
+```java
+fruits = [ "banana", "papaya", "kiwi", "apple", "orange", "grape" ]
 
-* The array was created by putting pieces of data between square brackets (`[]`) and separated by commas
-* We added an element to the array using the member function `append()`
-* We fetched the element at a specific position by using square brackets (`[ x ]`) and replaced `x` with the index, we wanted
-* We retrieved the size of the array by using the member function `len()`
-* We searched the contents of the array using the member function `findNoCase()` , and it gave us the index position of the element in the array.
+// Basic array operations
+println( "Length: " & fruits.len() )
+println( "First fruit: " & fruits.first() )
+println( "Last fruit: " & fruits.last() )
+
+// Functional programming with arrays
+println( "--- Functional Operations ---" )
+
+// Map - transform each element with a lambda, no access to outside scopes
+uppercaseFruits = fruits.map( fruit -> fruit.ucase() )
+println( "Uppercase: " & uppercaseFruits.toString() )
+
+// Filter - get elements matching a condition
+longFruits = fruits.filter( (fruit) -> fruit.len() > 5 )
+println( "Long names: " & longFruits.toString() )
+
+// Reduce - combine all elements into a single value
+totalLength = fruits.reduce( (sum, fruit) -> sum + fruit.len(), 0 )
+println( "Total characters: " & totalLength )
+
+// Find - get first matching element
+foundFruit = fruits.find( (fruit) -> fruit.startsWith("a") )
+println( "First fruit starting with 'a': " & foundFruit )
+
+// Sort order elements
+sortedFruits = fruits.sort( (a, b) -> a.compareNoCase(b) )
+println( "Sorted: " & sortedFruits.toString() )
+
+// Chain operations together
+result = fruits
+    .filter( fruit -> fruit.len() <= 6 )
+    .map( fruit -> fruit.ucase() )
+    .sort()
+println( "Chained operations: " & result.toString() )
+
+// forEach - perform action on each element
+println( "--- Individual Fruits ---" )
+fruits.each( (fruit, index) => {
+    println( "#index#: #fruit#" )
+} )
+```
 
 Please note that all member functions can also be used as traditional [array functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array). However, [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) look much better for readability.
 
@@ -73,19 +110,278 @@ Please note that all member functions can also be used as traditional [array fun
 
 ## Multi-Dimensional Arrays
 
-To create grids or matrix constructs, you must create two-dimensional arrays. This gives you an **x** and **y** axis of data. You will do so using the `arrayNew( dimensions = max 3 )` method:
+While BoxLang arrays are inherently one-dimensional, you can create multi-dimensional structures by nesting arrays within arrays. This approach provides flexibility for representing matrices, tables, grids, and other complex data structures.
+
+### Creating Multi-Dimensional Arrays
+
+#### 2D Arrays (Matrix/Grid)
 
 ```javascript
-grid = arrayNew( 2 );
-grid[ 1 ][ 1 ] = 'Hammer';
-grid[ 1 ][ 2 ] = 'Nail';
-grid[ 2 ][ 1 ] = 'Screwdriver';
-grid[ 1 ][ 2 ] = 'Screw';
+// Create a simple 2D array (3x3 grid)
+grid = [
+    [ 1, 2, 3 ],
+    [ 4, 5, 6 ],
+    [ 7, 8, 9 ]
+]
+
+// Mixed data types in a 2D array
+studentGrades = [
+    [ "Alice", 85, 92, 78 ],
+    [ "Bob", 91, 88, 95 ],
+    [ "Carol", 76, 84, 89 ]
+]
 ```
 
-{% hint style="success" %}
-**Tip:** BoxLang only supports two and three-dimensional arrays, so you can easily represent x, y, and z axis.
-{% endhint %}
+#### 3D Arrays (Cube/Volume)
+
+```javascript
+// 3D array representing a 2x2x2 cube
+cube = [
+    [
+        [ 1, 2 ],
+        [ 3, 4 ]
+    ],
+    [
+        [ 5, 6 ],
+        [ 7, 8 ]
+    ]
+]
+```
+
+#### Dynamic Creation
+
+```javascript
+// Create a 5x5 matrix dynamically
+matrix = []
+for( row = 1; row <= 5; row++ ) {
+    matrix.append( [] )
+    for( col = 1; col <= 5; col++ ) {
+        matrix[ row ].append( row * col )
+    }
+}
+```
+
+### Accessing Elements
+
+#### 2D Array Access
+
+```javascript
+grid = [
+    [ "A1", "A2", "A3" ],
+    [ "B1", "B2", "B3" ],
+    [ "C1", "C2", "C3" ]
+]
+
+// Access element at row 2, column 3
+println( grid[2][3] )  // Output: "B3"
+
+// Access entire row
+println( grid[1] )     // Output: ["A1", "A2", "A3"]
+```
+
+#### 3D Array Access
+
+```javascript
+// Access element in 3D array
+println( cube[1][2][1] )  // Access layer 1, row 2, column 1
+```
+
+### Modifying Multi-Dimensional Arrays
+
+#### Adding Rows and Columns
+
+```javascript
+data = [
+    [ 1, 2 ],
+    [ 3, 4 ]
+]
+
+// Add a new row
+data.append( [ 5, 6 ] )
+
+// Add a column to each existing row
+data.each( (row) => row.append( 0 ) )
+
+println( data )
+// Output: [[1, 2, 0], [3, 4, 0], [5, 6, 0]]
+```
+
+#### Updating Elements
+
+```javascript
+// Update a specific cell
+data[1][2] = 99
+
+// Update an entire row
+data[2] = [ 10, 20, 30 ]
+```
+
+### Working with Multi-Dimensional Arrays
+
+#### Iterating Through 2D Arrays
+
+```javascript
+matrix = [
+    [ 1, 2, 3 ],
+    [ 4, 5, 6 ],
+    [ 7, 8, 9 ]
+]
+
+// Iterate through all elements
+matrix.each( (row, rowIndex) => {
+    row.each( (cell, colIndex) => {
+        println( "Row #rowIndex#, Col #colIndex#: #cell#" )
+    })
+})
+
+// Find specific values
+matrix.each( (row) => {
+    foundIndex = row.find( (cell) => cell > 5 )
+    if( foundIndex > 0 ) {
+        println( "Found value > 5 at column #foundIndex#" )
+    }
+})
+```
+
+#### Functional Programming with 2D Arrays
+
+```javascript
+// Transform all elements in a 2D array
+doubled = matrix.map( (row) => 
+    row.map( (cell) => cell * 2 )
+)
+
+// Filter rows based on criteria
+evenRows = matrix.filter( (row) => 
+    row.every( (cell) => cell % 2 == 0 )
+)
+
+// Sum all elements in the matrix
+total = matrix
+    .map( (row) => row.reduce( (sum, cell) => sum + cell, 0 ) )
+    .reduce( (sum, rowTotal) => sum + rowTotal, 0 )
+```
+
+### Practical Examples
+
+#### Game Board (Tic-Tac-Toe)
+
+{% embed url="https://try.boxlang.io/?code=eJyVjk0LwjAMhu%2F9FS%2FZpYXpcLs6T17FqzB66FzF4r7YxA%2FU%2F27bOefVEEJ48%2BRN8kZ1BVJkDDYyECj8FsjwL5lJxqIIG3XSqJqL7lnu7LOFtGmP0I4%2BSixtOmVLE5OMjDNZm74t1R1%2BOjBzrfZHDt411xCmLvRNIF3h4Z9pO1Ofy5qDAju3dgGe8G08tYkMCMLz5sAHDyyRQPzsz8Zw6Eu8AWHPSBI%3D" %}
+
+```javascript
+board = [
+    [ " ", " ", " " ],
+    [ " ", " ", " " ],
+    [ " ", " ", " " ]
+]
+
+// Make moves
+board[1][1] = "X"
+board[2][2] = "O"
+board[1][3] = "X"
+
+// Display board
+board.each( (row, index) => {
+    println( "#row[1]# | #row[2]# | #row[3]#" )
+    if( index < 3 ) println( "---------" )
+})
+```
+
+#### Spreadsheet Data
+
+{% embed url="https://try.boxlang.io/?code=eJyFUE1vgzAMvedXWJxAQyVq1%2B3EpH1p0qTt0iPi4LUeRA0BJaFT%2F%2F2cwNSul%2Bbi2H5%2Bz89usIQ71xJ5KKESwK%2BC5BM7SnJIHpsYXmhA6zsyPmQb1GiPCdT5H%2Fy9bw13VpK7r6ZRhsgq03Dpfi2lPEeiCYzLNSM%2F0O7JT7i7C9xT%2FxUI15McuUAlI0TUQhQFvPHCqDVQN%2Bj%2BSORAGTjTFjT%2FHftyJ5dRYOG02lIKS8gAmGyzVwO0DCELtv%2BZMN9Ke7IppFzJoHwInWpVQ1n%2BNwlZXOgZ9XbU6AnwQBYbAhfvJGJQdGWPKe9wuBC8reeewEMzXT4QzZwLS7sxMKRu7PJZMc5yDjdzIQfJRovTlCaTZr8VS5LK" %}
+
+```javascript
+spreadsheet = [
+    [ "Name", "Age", "Department", "Salary" ],
+    [ "John", 30, "Engineering", 75000 ],
+    [ "Jane", 25, "Marketing", 65000 ],
+    [ "Bob", 35, "Sales", 70000 ]
+]
+
+// Get all employees in Engineering
+engineers = spreadsheet
+    .slice( 2 )  // Skip header row
+    .filter( (row) => row[3] == "Engineering" )
+
+// Calculate average salary
+salaries = spreadsheet
+    .slice( 2 )
+    .map( (row) => row[4] )
+    
+avgSalary = salaries.reduce( (sum, salary) => sum + salary, 0 ) / salaries.len()
+```
+
+#### Image Pixel Data (RGB)
+
+{% embed url="https://try.boxlang.io/?code=eJxVkMtugzAQRff%2BirsMqlUKKFI3qdRkwaqbLFpViIVFJgSV2Mg4L1X9945NCMnIMvNgDpcbx1hTZ6kn7aCQnTM0e1UTTo3bYZ0vcVTtgXoxdBcoBDgKFOl8LvHCp5Qo%2BDnU12KoS3DJEfuPbCRyS6Qllgx8oEyrI9Qv32FHFoO%2BqW3NSeKD5WinJFYXpUdakr5KjNckZULf0YKs3KqLF6SqH4mvXeNIlELw4L2qqO9haYPK7DujvT9mi645UwvlMEtlEgmef3p%2F2JhgUJGWReLPQCfXw%2B3oERP4K6OPZB2cQc0a%2Bkq1JG7ZiHveq26GmTWnCIu38JecX7tBiu%2FjN0x8eAIvDzMv42lQzLpuaVZGiJHddiy5g9VsXx3MmG6U4Z2%2FSET%2Fk72WFA%3D%3D" %}
+
+```javascript
+// Represent a 3x3 image with RGB values
+image = [
+    [ [255, 0, 0], [0, 255, 0], [0, 0, 255] ],    // Red, Green, Blue
+    [ [255, 255, 0], [255, 0, 255], [0, 255, 255] ], // Yellow, Magenta, Cyan
+    [ [128, 128, 128], [0, 0, 0], [255, 255, 255] ]  // Gray, Black, White
+]
+
+// Access red component of pixel at (2,1)
+redValue = image[2][1][1]  // Gets the red component
+
+// Convert to grayscale
+grayscale = image.map( (row) =>
+    row.map( (pixel) => {
+        gray = (pixel[1] + pixel[2] + pixel[3]) / 3
+        return [ gray, gray, gray ]
+    })
+)
+```
+
+### Helper Functions
+
+#### Utility Functions for Multi-Dimensional Arrays
+
+```javascript
+// Get dimensions of a 2D array
+function getDimensions( array2D ) {
+    return {
+        "rows": array2D.len(),
+        "cols": array2D.len() > 0 ? array2D[1].len() : 0
+    }
+}
+
+// Transpose a 2D array (swap rows and columns)
+function transpose( array2D ) {
+    if( array2D.len() == 0 ) return []
+    
+    result = []
+    for( col = 1; col <= array2D[1].len(); col++ ) {
+        newRow = []
+        for( row = 1; row <= array2D.len(); row++ ) {
+            newRow.append( array2D[row][col] )
+        }
+        result.append( newRow )
+    }
+    return result
+}
+
+// Flatten a 2D array into 1D
+function flatten( array2D ) {
+    return array2D.reduce( (flat, row) => {
+        flat.addAll( row )
+        return flat
+    }, [] )
+}
+```
+
+### Best Practices
+
+1. **Consistent Structure**: Ensure all sub-arrays have the same length when representing regular grids
+2. **Bounds Checking**: Always verify array indices exist before accessing nested elements
+3. **Memory Considerations**: Large multi-dimensional arrays can consume significant memory
+4. **Initialization**: Pre-populate arrays with default values to avoid null reference errors
+5. **Documentation**: Clearly document the expected structure and dimensions of your nested arrays
+
+Multi-dimensional arrays in BoxLang provide powerful data organization capabilities while maintaining the simplicity of single-dimensional array operations.
 
 ## Common Methods
 
@@ -201,58 +497,15 @@ arrayEach( array, callback, parallel:boolean, maxThreads:numeric );
 each( collection, callback, parallel:boolean, maxThreads:numeric );
 ```
 
-This is incredibly awesome, as your callback will now be called concurrently! However, please note that once you enter concurrency land, you should shiver and tremble. Thread concurrency will be of the utmost importance, and you must ensure that var scoping is done correctly and that appropriate locking strategies are in place when accessing shared scopes and/or resources.
+This is incredibly awesome, as your callback will now be called concurrently! However, please note that once you enter concurrency land, you should shiver and tremble. Thread concurrency will be of the utmost importance, and you must ensure that scoping is done correctly and that appropriate locking strategies are in place when accessing shared scopes and/or resources.  Here is where unmodifiable arrays, structs, and queries can help.
 
 ```java
-myArray.each( function( item ){
+myArray.each( item => {
    myservice.process( item );
 }, true, 20 );
 ```
 
-Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible. Under the hood, the engine uses a single thread executor for each execution. They do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it. This approach can be verbose and error-prone, but it's easy. You also don't control where the processing thread runs and are at the mercy of the engine.
 
-### ColdBox Futures Parallel Programming
-
-If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code). You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
-
-{% embed url="https://coldbox.ortusbooks.com/digging-deeper/promises-async-programming/parallel-computations" %}
-ColdBox Futures and Async Programming
-{% endembed %}
-
-Here are some methods that will allow you to do parallel computations:
-
-* `all( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures to execute them in parallel. When you call on it, it will return a future that will retrieve an array of the results of all the operations.
-* `allApply( items, fn, executor ):array` : This function can accept an array of items or a struct of items of any type and apply a function to each item in parallel. The `fn` argument receives the appropriate item and must return a result. Consider this a parallel `map()` operation.
-* `anyOf( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures and will execute them in parallel. However, instead of returning all of the results in an array like `all()`, this method will return the future that executes the fastest! Race Baby!
-* `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations. The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
-
-```javascript
-// Let's find the fastest dns server
-var f = asyncManager().anyOf( ()=>dns1.resolve(), ()=>dns2.resolve() );
-
-// Let's process some data
-var data = [1,2, ... 100 ];
-var results = asyncManager().all( data );
-
-// Process multiple futures
-var f1 = asyncManager.newFuture( function(){
-    return "hello";
-} );
-var f2 = asyncManager.newFuture( function(){
-    return "world!";
-} );
-var aResults = asyncManager.newFuture()
-    .withTimeout( 5 )
-    .all( f1, f2 );
-
-// Process mementos for an array of objects
-function index( event, rc, prc ){
-    return async().allApply(
-        orderService.findAll(),
-        ( order ) => order.getMemento()
-    );
-}
-```
 
 ## Spread Operator
 
@@ -329,10 +582,75 @@ myStruct = {
 println( myStruct )
 ```
 
-### Change Listeners
+## Change Listeners
 
-All arrays, and structures offer the ability to listen to changes to itself or a specific key if a structure.  This is all done via our `$bx` metadata object available on all arrays/structures.  You will call the `registerChangeListener()` function in order to register a closure/lambda that will listen to changes.
+All arrays and structures offer the ability to listen to changes to themselves.  This is all done via our `$bx` metadata object available on all arrays/structures.  You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the array.  You can listen:
+
+* To all changes in the array
+* To a specific index in the array
+
+However, you must EXPLICITLY return the value that will be stored in the change.
 
 ```java
+// Listen to all changes in the array
 array.$bx.registerChangeListener( closure/lambda )
+
+// Listen to a specific index in the array
+array.$bx.registerChangeListener( index, closure/lambda )
+```
+
+{% hint style="warning" %}
+Please note that this change listener will fire on every array access, so ensure it's performant.
+{% endhint %}
+
+The signature of the closure/lambda is the following
+
+```groovy
+( Key key, any newValue, any oldValue, array ) => {}
+```
+
+{% hint style="success" %}
+Please note that the Key is a BoxLang Key object, which simulates a case-insensitive string.  You can use methods on it like:\
+
+
+* `getName()`
+* `getNameNoCase()`
+* `toString()`
+{% endhint %}
+
+Here are a few simple examples:
+
+{% embed url="https://try.boxlang.io/?code=eJxdT7EKwkAM3fsVjxukhSK4WiqIq%2BjmIg4njfXoEY%2F0ainiv3utbRGTIY%2FkvZfkJo3xNXKcoa6aQ6oUymmnuwFVpjV91c5ZUrhEt0GwFCpN7Ul2d80l7XvMJDHiiroUTO1J24ZSPGwxIi2iOyT55hUhhBPD3nIMdaAWz56zhsJi1iLJ%2FohHW%2FwSJ%2BuJKOQb4VmfRW8k0XRvuJ%2B4CCbOMI3PJNOwIEuetj7GqpfMG7%2Fj0PoAbqZdjg%3D%3D" %}
+
+```java
+fruits = [ "banana", "papaya", "kiwi", "apple" ]
+// Listen to all changes of the array: add, remove, replace, etc.
+fruits.registerChangeListener( (key, newValue, oldValue, array )=>{
+    println( "New value: " & newValue );
+    println( "Old value: " & oldValue );
+    return newValue;
+} )
+
+fruits.append( "pineapple" )
+fruits.deleteAt( 1 )
+
+println( fruits )
+
+```
+
+Here is another example when listening to a specific index:
+
+{% embed url="https://try.boxlang.io/?code=eJxdT0EKwkAMvPcVwx6khSJ4VRTEq%2BjNi3hYadTFEJd0ayni392WtorJIcNkZkguWrlQYokjzNlKbJPDeOtt06G7q107rfdMBqfk0hmmSldXBtLNzcqVti0W0hSzHOmdmhxC9cFyRTkeXPTIqtoG2XL1ShDLq5PAksLsqMaz1cxhMBm9yBZ%2Fwj0Xv8IhehAqhUpl9C%2BSN7JkODm%2BQFLEEK5caeKi5wtiCrQO8fgv6aQkDR0Zv78R86O1fABV5V9G" %}
+
+```java
+fruits = [ "banana", "papaya", "kiwi", "apple" ]
+fruits.registerChangeListener( 1, (key, newValue, oldValue, array )=>{
+    println( "New value: " & newValue );
+    println( "Old value: " & oldValue );
+    return newValue;
+} )
+
+fruits.append( "luis" )
+fruits.deleteAt( 1 )
+fruits.insertAt( 1, "hello" )
 ```
