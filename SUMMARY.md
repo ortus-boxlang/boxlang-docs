@@ -245,7 +245,7 @@
       * [ToUnmodifiable](boxlang-language/reference/built-in-functions/conversion/ToUnmodifiable.md)
     * [decision](boxlang-language/reference/built-in-functions/decision/README.md)
       * [ArrayIsEmpty](boxlang-language/reference/built-in-functions/decision/ArrayIsEmpty.md)
-      * [arrayIsEmpty](boxlang-language/reference/built-in-functions/decision/arrayIsEmpty.md)
+      * [arrayIsEmpty](boxlang-language/reference/built-in-functions/decision/arrayisempty-1.md)
       * [Attempt](boxlang-language/reference/built-in-functions/decision/Attempt.md)
       * [IsArray](boxlang-language/reference/built-in-functions/decision/IsArray.md)
       * [IsBinary](boxlang-language/reference/built-in-functions/decision/IsBinary.md)
