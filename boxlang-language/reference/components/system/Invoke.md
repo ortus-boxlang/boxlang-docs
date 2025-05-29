@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Invoke`
 
 Invokes a method from within a template or class.
@@ -24,9 +24,4 @@ argumentCollection=[any] />
 
 ## Examples
 
-```
-<bx:Invoke class=[any]
-method=[string]
-returnVariable=[string]
-argumentCollection=[any] />
-```
+

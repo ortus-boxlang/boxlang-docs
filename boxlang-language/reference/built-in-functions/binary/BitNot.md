@@ -19,17 +19,41 @@ BitNot(number=[integer])
 
 ## Examples
 
+### Calculate bitwise logical NOT
+
+Uses the bitNot function to perform the logical NOT operation of a signed 32-bit integer (two's complement)
+
+<a href="https://try.boxlang.io/?code=eJxLyizxyy%2FRUDBQ0LTmAgAdxQN3" target="_blank">Run Example</a>
+
+```java
+bitNot( 0 );
+
+```
+
+Result: -1
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJwrL8osSfUvLSkoLdFQSMos8csH0gYKmgqa1lzlyHJKNklFdkoYwjAtRqamEE0ATLQZFw%3D%3D" target="_blank">Run Example</a>
+
+```java
+writeOutput( bitNot( 0 ) );
+writeOutput( "<br>" );
+writeOutput( bitNot( 255 ) );
+
+```
+
 
 
 ## Related
 
-  * [BinaryDecode](./BinaryDecode.md)
-  * [BinaryEncode](./BinaryEncode.md)
-  * [BitAnd](./BitAnd.md)
-  * [BitMaskClear](./BitMaskClear.md)
-  * [BitMaskRead](./BitMaskRead.md)
-  * [BitMaskSet](./BitMaskSet.md)
+  * [BitXor](./BitXor.md)
   * [BitOr](./BitOr.md)
+  * [BitAnd](./BitAnd.md)
+  * [BitMaskRead](./BitMaskRead.md)
+  * [BinaryDecode](./BinaryDecode.md)
+  * [BitMaskSet](./BitMaskSet.md)
+  * [BitMaskClear](./BitMaskClear.md)
+  * [BinaryEncode](./BinaryEncode.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
-  * [BitXor](./BitXor.md)

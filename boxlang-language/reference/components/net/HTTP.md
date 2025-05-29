@@ -1,7 +1,7 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `HTTP`
 
-I make an HTTP call
+I make an HTTP call using tons of attributes to control the request.
 
 ## Component Signature
 
@@ -39,7 +39,8 @@ columns=[string]
 firstRowAsHeaders=[boolean]
 textQualifier=[string]
 domain=[string]
-workstation=[string] />
+workstation=[string]
+httpVersion=[string] />
 ```
 
 ### Attributes
@@ -81,42 +82,49 @@ workstation=[string] />
 | `textQualifier` | `string` | `false` |  |  |
 | `domain` | `string` | `false` |  |  |
 | `workstation` | `string` | `false` |  |  |
+| `httpVersion` | `string` | `false` |  | `HTTP/2` |
 
 ## Examples
 
+### Script Syntax
+
+
+
+<a href="https://try.boxlang.io/?code=eJwtjEEOwiAQAM%2Fyis2e9GC5mjbcNH7AD1DcFhMQCotojH8XU08zh8mMz94yR%2FDENlwVnk8XBGN1ysQKC0%2F7A0JJTuEvy72UtdZuDmF21JngJUKiXFyLVyK8xWZcr1En7eGuPSlcEPgVm7QZwkO70txM3uEgPqKmG9Ox%2BLj972A3iC9hPzS%2B" target="_blank">Run Example</a>
+
+```java
+bx:http method="GET" charset="utf-8" url="https://www.google.com/" result="result" {
+	bx:httpparam name="q" type="url" value="bx";
+}
+writeDump( result );
+
 ```
-<bx:HTTP URL=[string]
-port=[numeric]
-method=[string]
-username=[string]
-password=[string]
-userAgent=[string]
-charset=[string]
-resolveUrl=[boolean]
-throwOnError=[boolean]
-redirect=[boolean]
-timeout=[numeric]
-getAsBinary=[string]
-result=[string]
-file=[string]
-multipart=[boolean]
-multipartType=[string]
-clientCertPassword=[string]
-path=[string]
-clientCert=[string]
-compression=[string]
-authType=[string]
-cachedWithin=[string]
-encodeUrl=[boolean]
-proxyServer=[string]
-proxyPort=[integer]
-proxyUser=[string]
-proxyPassword=[string]
-name=[string]
-delimiter=[string]
-columns=[string]
-firstRowAsHeaders=[boolean]
-textQualifier=[string]
-domain=[string]
-workstation=[string] />
+
+
+### Alternate Script Syntax
+
+
+
+
+```java
+httpService = new http( method="GET", charset="utf-8", url="https://www.google.com/" );
+httpService.addParam( name="q", type="url", value="bx" );
+result = httpService.send().getPrefix();
+writeDump( result );
+
 ```
+
+
+### BX:HTTP Tag Syntax
+
+
+
+
+```java
+<bx:http result="result" method="GET" charset="utf-8" url="https://www.google.com/">
+    <bx:httpparam name="q" type="url" value="bx">
+</bx:http>
+<bx:dump var="#result#">
+```
+
+

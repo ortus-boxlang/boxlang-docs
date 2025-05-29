@@ -19,34 +19,58 @@ Asin(number=[double])
 
 ## Examples
 
+### Arcsine of 0.3
+
+
+
+<a href="https://try.boxlang.io/?code=eJxLLM7M01DQM1bQtOYCABcvAuM%3D" target="_blank">Run Example</a>
+
+```java
+asin( .3 );
+
+```
+
+Result: 0.3046926540153975
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJwrzsxLVbBVMLTmSinNLdBQcCzOzNNQKAaJaipoWnMp6OsrGOqZmhuYW5oZG5mZW5oqZOYpFCWmZCbmFXMBAA9GEHw%3D" target="_blank">Run Example</a>
+
+```java
+sine = 1;
+dump( Asin( sine ) );
+ // 1.570796326795 in radians
+
+```
+
 
 
 ## Related
 
-  * [Abs](./Abs.md)
-  * [Acos](./Acos.md)
-  * [Atn](./Atn.md)
-  * [Ceiling](./Ceiling.md)
-  * [Cos](./Cos.md)
+  * [Sqr](./Sqr.md)
+  * [Sgn](./Sgn.md)
+  * [Pi](./Pi.md)
   * [DecrementValue](./DecrementValue.md)
-  * [Exp](./Exp.md)
-  * [Fix](./Fix.md)
-  * [Floor](./Floor.md)
-  * [FormatBaseN](./FormatBaseN.md)
-  * [IncrementValue](./IncrementValue.md)
   * [InputBaseN](./InputBaseN.md)
+  * [Round](./Round.md)
+  * [Cos](./Cos.md)
   * [Int](./Int.md)
-  * [Log](./Log.md)
-  * [Log10](./Log10.md)
+  * [Exp](./Exp.md)
+  * [Ceiling](./Ceiling.md)
+  * [RandRange](./RandRange.md)
+  * [Atn](./Atn.md)
+  * [Fix](./Fix.md)
   * [Max](./Max.md)
   * [Min](./Min.md)
-  * [Pi](./Pi.md)
+  * [Abs](./Abs.md)
+  * [Log](./Log.md)
+  * [Log10](./Log10.md)
   * [PrecisionEvaluate](./PrecisionEvaluate.md)
+  * [Acos](./Acos.md)
   * [Rand](./Rand.md)
+  * [Floor](./Floor.md)
   * [Randomize](./Randomize.md)
-  * [RandRange](./RandRange.md)
-  * [Round](./Round.md)
-  * [Sgn](./Sgn.md)
-  * [Sin](./Sin.md)
-  * [Sqr](./Sqr.md)
+  * [FormatBaseN](./FormatBaseN.md)
   * [Tan](./Tan.md)
+  * [Sin](./Sin.md)
+  * [IncrementValue](./IncrementValue.md)

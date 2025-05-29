@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `SaveContent`
 
 I capture the generated content from the body statements and save it into a variable
@@ -22,8 +22,29 @@ append=[boolean] />
 
 ## Examples
 
+### Script Syntax
+
+
+
+<a href="https://try.boxlang.io/?code=eJxLqrAqTixLTc7PK0nNK1EoSyzKTEzKSbVVyq10hogpKVRzcZYXZZak%2BpeWFJSWaCgoBefnwnToKSloWnPVcgEA0RIZLw%3D%3D" target="_blank">Run Example</a>
+
+```java
+bx:savecontent variable="myContent" {
+	writeOutput( "Somecontent." );
+}
+
 ```
-<bx:SaveContent variable=[string]
-trim=[boolean]
-append=[boolean] />
+
+
+### Tag Syntax
+
+
+
+
+```java
+<bx:savecontent variable="myContent">
+<bx:output>Some content.</bx:output>
+</bx:savecontent>
 ```
+
+

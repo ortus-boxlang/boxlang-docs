@@ -19,39 +19,115 @@ IsXMLRoot(value=[any])
 
 ## Examples
 
+### "boxlangengines" is root element
+
+
+
+
+```java
+<bx:xml variable="example">
+	<boxlangengines>
+		<engine>
+			<name>Adobe ColdFusion</name>
+		</engine>
+		<engine>
+			<name>Boxlang</name>
+		</engine>
+		<engine>
+			<name>Railo</name>
+		</engine>
+		<engine>
+			<name>Open BlueDragon</name>
+		</engine>
+	</boxlangengines>
+</bx:xml>
+<bx:script>
+	writeOutput( isXMLRoot( example.BOXLANGENGINES ) );
+</bx:script>
+
+```
+
+Result: YES
+
+### "engine" is child of "boxlangengines"
+
+
+
+
+```java
+<bx:xml variable="example">
+	<boxlangengines>
+		<engine>
+			<name>Adobe ColdFusion</name>
+		</engine>
+		<engine>
+			<name>Boxlang</name>
+		</engine>
+		<engine>
+			<name>Railo</name>
+		</engine>
+		<engine>
+			<name>Open BlueDragon</name>
+		</engine>
+	</boxlangengines>
+</bx:xml>
+<bx:script>
+	writeOutput( isXMLRoot( example.BOXLANGENGINES.ENGINE ) );
+</bx:script>
+
+```
+
+Result: NO
+
+### Additional Examples
+
+
+```java
+<bx:xml variable="xmlobject">
+	<office>
+		<employee>
+			<emp_name>boxlang_dev</emp_name>
+			<emp_no>121</emp_no>
+		</employee>
+	</office>
+</bx:xml>
+<bx:dump var="#IsXmlroot( xmlobject.OFFICE )#"/>
+```
+
 
 
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
-  * [Attempt](./Attempt.md)
-  * [IsArray](./IsArray.md)
+  * [IsXMLDoc](./IsXMLDoc.md)
   * [IsBinary](./IsBinary.md)
-  * [IsBoolean](./IsBoolean.md)
-  * [IsClosure](./IsClosure.md)
-  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsDate](./IsDate.md)
-  * [IsDateObject](./IsDateObject.md)
-  * [IsDebugMode](./IsDebugMode.md)
+  * [IsNumericDate](./IsNumericDate.md)
   * [IsDefined](./IsDefined.md)
   * [IsEmpty](./IsEmpty.md)
-  * [IsFileObject](./IsFileObject.md)
-  * [IsIPv6](./IsIPv6.md)
-  * [IsJSON](./IsJSON.md)
-  * [IsLeapYear](./IsLeapYear.md)
-  * [IsLocalHost](./IsLocalHost.md)
-  * [IsNull](./IsNull.md)
-  * [IsNumeric](./IsNumeric.md)
-  * [IsNumericDate](./IsNumericDate.md)
+  * [structIsEmpty](./structIsEmpty.md)
+  * [arrayIsEmpty](./arrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
+  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsObject](./IsObject.md)
+  * [IsDateObject](./IsDateObject.md)
+  * [IsXmlAttribute](./IsXmlAttribute.md)
+  * [IsValid](./IsValid.md)
+  * [IsDebugMode](./IsDebugMode.md)
+  * [IsBoolean](./IsBoolean.md)
+  * [IsLeapYear](./IsLeapYear.md)
   * [IsQuery](./IsQuery.md)
+  * [IsArray](./IsArray.md)
+  * [IsJSON](./IsJSON.md)
+  * [IsXML](./IsXML.md)
+  * [IsIPv6](./IsIPv6.md)
+  * [IsNull](./IsNull.md)
+  * [IsClosure](./IsClosure.md)
+  * [IsNumeric](./IsNumeric.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [IsSimpleValue](./IsSimpleValue.md)
   * [IsStruct](./IsStruct.md)
-  * [IsValid](./IsValid.md)
-  * [IsXML](./IsXML.md)
-  * [IsXmlAttribute](./IsXmlAttribute.md)
-  * [IsXMLDoc](./IsXMLDoc.md)
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
-  * [LSIsNumeric](./LSIsNumeric.md)
-  * [structIsEmpty](./structIsEmpty.md)
+  * [IsLocalHost](./IsLocalHost.md)
+  * [IsFileObject](./IsFileObject.md)

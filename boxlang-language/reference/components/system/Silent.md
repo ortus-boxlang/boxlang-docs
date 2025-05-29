@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Silent`
 
 Suppresses output produced by code within the body of the component.
@@ -15,6 +15,19 @@ This tag does not accept any attributes
 
 ## Examples
 
+### Example for bx:silent tag
+
+Content within bx:silent tag will not be displayed
+
+
+```java
+ <bx:set a = 10 > 
+ <bx:set b = 5 > 
+ <bx:silent> 
+    <bx:output> This is from inside bx:silent #a + b# </bx:output> 
+ </bx:silent> 
+ <bx:output>This is from outside bx:silent #a - b#</bx:output> 
 ```
-<bx:Silent  />
-```
+
+Result: This is from outside bx:silent 5
+

@@ -20,17 +20,39 @@ BitXor(number1=[integer], number2=[integer])
 
 ## Examples
 
+### Calculate bitwise logical XOR
+
+Uses the bitXor function to perform the logical XOR operation on each pair of the corresponding bits
+
+<a href="https://try.boxlang.io/?code=eJxLyiyJyC%2FSUDDVUTBW0LTmAgAqBwQD" target="_blank">Run Example</a>
+
+```java
+bitXor( 5, 3 );
+
+```
+
+Result: 6
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJwrL8osSfUvLSkoLdFQSMosicgv0lAwNLLQUTBV0FTQtOYCAMcpCbg%3D" target="_blank">Run Example</a>
+
+```java
+writeOutput( bitXor( 128, 5 ) );
+
+```
+
 
 
 ## Related
 
-  * [BinaryDecode](./BinaryDecode.md)
-  * [BinaryEncode](./BinaryEncode.md)
-  * [BitAnd](./BitAnd.md)
-  * [BitMaskClear](./BitMaskClear.md)
-  * [BitMaskRead](./BitMaskRead.md)
-  * [BitMaskSet](./BitMaskSet.md)
   * [BitNot](./BitNot.md)
   * [BitOr](./BitOr.md)
+  * [BitAnd](./BitAnd.md)
+  * [BitMaskRead](./BitMaskRead.md)
+  * [BinaryDecode](./BinaryDecode.md)
+  * [BitMaskSet](./BitMaskSet.md)
+  * [BitMaskClear](./BitMaskClear.md)
+  * [BinaryEncode](./BinaryEncode.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)

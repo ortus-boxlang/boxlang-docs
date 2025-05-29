@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `ProcResult`
 
 Register a result set variable for a stored procedure.
@@ -22,8 +22,4 @@ maxRows=[integer] />
 
 ## Examples
 
-```
-<bx:ProcResult name=[string]
-resultSet=[integer]
-maxRows=[integer] />
-```
+

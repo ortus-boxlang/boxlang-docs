@@ -4,6 +4,8 @@
 
 Reads a line of text from the CLI.
 
+You can optionally provide a prompt string to display before reading the input.
+
 ## Method Signature
 
 ```
@@ -15,7 +17,7 @@ CLIRead(prompt=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `prompt` | `string` | `false` |  |  |
+| `prompt` | `string` | `false` | An optional prompt string to display before reading input. |  |
 
 ## Examples
 
@@ -24,4 +26,5 @@ CLIRead(prompt=[string])
 ## Related
 
   * [CLIExit](./CLIExit.md)
+  * [CLIClear](./CLIClear.md)
   * [CLIGetArgs](./CLIGetArgs.md)

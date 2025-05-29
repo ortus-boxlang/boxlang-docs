@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `ProcParam`
 
 Provide a paramater to a stored procudure.
@@ -28,11 +28,18 @@ null=[boolean] />
 
 ## Examples
 
+### Basic Example
+
+
+
+
+```java
+<bx:storedproc procedure="foo_proc" dataSource="MY_SYBASE_TEST" username="sa" password="mygoodpw" dbServer="scup" dbName="pubs2" returnCode="Yes" debug="Yes">
+<bx:procresult name="RS1"> 
+<bx:procresult name="RS3" resultSet="3"> 
+<bx:procparam type="IN" sqltype="INTEGER" value="1" dbVarName="@param1"> 
+<bx:procparam type="OUT" sqltype="DATE" variable="FOO" dbVarName="@param2">
+</bx:storedproc>
 ```
-<bx:ProcParam type=[string]
-value=[any]
-sqltype=[string]
-maxLength=[integer]
-scale=[integer]
-null=[boolean] />
-```
+
+

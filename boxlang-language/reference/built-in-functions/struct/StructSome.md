@@ -22,35 +22,103 @@ StructSome(struct=[structloose], callback=[function:BiPredicate], parallel=[bool
 
 ## Examples
 
+### The simple StructSome example
+
+Here we have simple example about structsome function.
+
+
+```java
+<bx:script>
+	struct = {
+		"Name" : "Raja",
+		"age" : 20,
+		"mark" : 80
+	};
+	result = structSome( struct, ( Any key, Any value ) => {
+		return key == "Name";
+	} );
+	writeOutput( (result ? "" : "No") & " Key Exists." );
+</bx:script>
+
+```
+
+Result: Key Exists.
+
+### The structSome member function example
+
+Here we have simple example about structsome as member function.
+
+
+```java
+<bx:script>
+	struct = {
+		"Name" : "Raja",
+		"age" : 20,
+		"mark" : 80
+	};
+	result = struct.some( ( Any key, Any value ) => {
+		return key == "average";
+	} );
+	writeOutput( (result ? "" : "No") & " Key Exists." );
+</bx:script>
+
+```
+
+Result: No Key Exists.
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJx1jb0KAjEQhOvsU2yZgyConSHCIRbWin3UtTF3J%2FkRjiPv7uZylWA3s9%2FOTIhocEIQa9zhBEK0h8vpemQTfSIQWYHY%2FKKndWFh238MsgZPIbkyELjsHs9DR5K1QoltP%2BKLRjWLj3WJsEGzL12P1L0l37yZ7wqdvZEz%2FI2NBuEpJt%2FXzKrOasgF1eAyyv4Lv8A9hg%3D%3D" target="_blank">Run Example</a>
+
+```java
+st = { 
+	1 : {
+		ACTIVE : true
+	},
+	2 : {
+		ACTIVE : false
+	},
+	3 : {
+		ACTIVE : false
+	}
+};
+result = structSome( st, ( Any key, Any value ) => {
+	dump( var=value, label=key );
+	return value.ACTIVE;
+} );
+dump( result );
+
+```
+
 
 
 ## Related
 
-  * [StructAppend](./StructAppend.md)
-  * [StructClear](./StructClear.md)
-  * [StructCopy](./StructCopy.md)
-  * [StructDelete](./StructDelete.md)
-  * [StructEach](./StructEach.md)
   * [StructEquals](./StructEquals.md)
-  * [StructEvery](./StructEvery.md)
-  * [StructFilter](./StructFilter.md)
-  * [StructFind](./StructFind.md)
-  * [StructFindKey](./StructFindKey.md)
-  * [StructFindValue](./StructFindValue.md)
-  * [StructGet](./StructGet.md)
-  * [StructGetMetadata](./StructGetMetadata.md)
-  * [StructInsert](./StructInsert.md)
-  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
-  * [StructIsOrdered](./StructIsOrdered.md)
-  * [StructKeyArray](./StructKeyArray.md)
-  * [StructKeyExists](./StructKeyExists.md)
-  * [StructKeyList](./StructKeyList.md)
-  * [StructKeyTranslate](./StructKeyTranslate.md)
-  * [StructMap](./StructMap.md)
-  * [StructNew](./StructNew.md)
   * [StructReduce](./StructReduce.md)
+  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
+  * [StructNew](./StructNew.md)
+  * [StructGet](./StructGet.md)
+  * [StructDelete](./StructDelete.md)
+  * [StructFilter](./StructFilter.md)
+  * [StructIsOrdered](./StructIsOrdered.md)
   * [StructSort](./StructSort.md)
+  * [StructEach](./StructEach.md)
   * [StructToQueryString](./StructToQueryString.md)
-  * [StructToSorted](./StructToSorted.md)
   * [StructUpdate](./StructUpdate.md)
+  * [StructClear](./StructClear.md)
+  * [StructGetMetadata](./StructGetMetadata.md)
+  * [StructKeyArray](./StructKeyArray.md)
+  * [StructToSorted](./StructToSorted.md)
+  * [StructCopy](./StructCopy.md)
+  * [StructFindKey](./StructFindKey.md)
+  * [StructInsert](./StructInsert.md)
+  * [StructMap](./StructMap.md)
+  * [StructFindValue](./StructFindValue.md)
   * [StructValueArray](./StructValueArray.md)
+  * [StructKeyExists](./StructKeyExists.md)
+  * [StructKeyTranslate](./StructKeyTranslate.md)
+  * [StructEvery](./StructEvery.md)
+  * [StructFind](./StructFind.md)
+  * [StructKeyList](./StructKeyList.md)
+  * [StructAppend](./StructAppend.md)

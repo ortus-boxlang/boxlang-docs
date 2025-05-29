@@ -19,53 +19,118 @@ ArrayMax(array=[array])
 
 ## Examples
 
+### Simple example with empty array
+
+To get the largest numeric value of an array
+
+<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFVIBNF%2BqeUaCoYKmtZc5UWZJan%2BpSUFpSUaEDnfxAoNhWK4Dk2QKgDlCBWc" target="_blank">Run Example</a>
+
+```java
+someArray = arrayNew( 1 );
+writeOutput( arrayMax( someArray ) );
+
+```
+
+Result: 0
+
+### Get largest numeric value of an array
+
+Uses the arrayMax function to get the largest numeric value of an array
+
+<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNDLW4eI0MQUSFuZAwhDE44q15iovyixJ9S8tKSgt0VBIBGnwTazQUCiGa9dU0LTmAgAYNxUk" target="_blank">Run Example</a>
+
+```java
+someArray = [ 
+	23,
+	45,
+	87,
+	1,
+	4
+];
+writeOutput( arrayMax( someArray ) );
+
+```
+
+Result: 87
+
+### Get largest numeric value of an array using member function
+
+
+
+<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNDLW4eI0MQUSBkBsCOJwxVpzlRdllqT6l5YUlJZoKBTD9OjlJlZoaCpoWnMBAIh4EtQ%3D" target="_blank">Run Example</a>
+
+```java
+someArray = [ 
+	23,
+	45,
+	0,
+	1,
+	4
+];
+writeOutput( someArray.max() );
+
+```
+
+Result: 45
+
+### Additional Examples
+
+
+```java
+aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
+dump( arrayMax( aNames ) );
+// member function
+dump( aNames.max() );
+
+```
+
 
 
 ## Related
 
-  * [ArrayAppend](./ArrayAppend.md)
-  * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayClear](./ArrayClear.md)
-  * [ArrayContains](./ArrayContains.md)
-  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-  * [ArrayDelete](./ArrayDelete.md)
-  * [ArrayDeleteAt](./ArrayDeleteAt.md)
-  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-  * [ArrayEach](./ArrayEach.md)
-  * [ArrayEvery](./ArrayEvery.md)
-  * [ArrayFilter](./ArrayFilter.md)
-  * [ArrayFind](./ArrayFind.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayMerge](./ArrayMerge.md)
+  * [ArrayIndexExists](./ArrayIndexExists.md)
+  * [ArrayIsDefined](./ArrayIsDefined.md)
   * [ArrayFindAll](./ArrayFindAll.md)
   * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArrayFindNoCase](./ArrayFindNoCase.md)
-  * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayGetMetadata](./ArrayGetMetadata.md)
-  * [ArrayIndexExists](./ArrayIndexExists.md)
-  * [ArrayInsertAt](./ArrayInsertAt.md)
-  * [ArrayIsDefined](./ArrayIsDefined.md)
-  * [ArrayLast](./ArrayLast.md)
-  * [ArrayMap](./ArrayMap.md)
-  * [ArrayMedian](./ArrayMedian.md)
-  * [ArrayMerge](./ArrayMerge.md)
-  * [ArrayMid](./ArrayMid.md)
-  * [ArrayMin](./ArrayMin.md)
-  * [ArrayNew](./ArrayNew.md)
-  * [ArrayPop](./ArrayPop.md)
-  * [ArrayPrepend](./ArrayPrepend.md)
-  * [ArrayPush](./ArrayPush.md)
-  * [ArrayRange](./ArrayRange.md)
-  * [ArrayReduce](./ArrayReduce.md)
-  * [ArrayReduceRight](./ArrayReduceRight.md)
-  * [ArrayResize](./ArrayResize.md)
-  * [ArrayReverse](./ArrayReverse.md)
-  * [ArraySet](./ArraySet.md)
-  * [ArrayShift](./ArrayShift.md)
-  * [ArraySlice](./ArraySlice.md)
-  * [ArraySome](./ArraySome.md)
-  * [ArraySort](./ArraySort.md)
-  * [ArraySplice](./ArraySplice.md)
   * [ArraySum](./ArraySum.md)
-  * [ArraySwap](./ArraySwap.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayContains](./ArrayContains.md)
+  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
+  * [ArrayPush](./ArrayPush.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArraySome](./ArraySome.md)
+  * [ArrayDelete](./ArrayDelete.md)
+  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
+  * [ArrayMedian](./ArrayMedian.md)
+  * [ArrayAvg](./ArrayAvg.md)
   * [ArrayToList](./ArrayToList.md)
+  * [ArrayFilter](./ArrayFilter.md)
+  * [ArrayClear](./ArrayClear.md)
+  * [ArrayRange](./ArrayRange.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayShift](./ArrayShift.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayUnshift](./ArrayUnshift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayInsertAt](./ArrayInsertAt.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArraySet](./ArraySet.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArrayDeleteAt](./ArrayDeleteAt.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArrayEach](./ArrayEach.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayEvery](./ArrayEvery.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMin](./ArrayMin.md)

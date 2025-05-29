@@ -19,34 +19,67 @@ Rand(algorithm=[string])
 
 ## Examples
 
+### simple example Using rand()
+
+To generate a random number between 0 to 1
+
+<a href="https://try.boxlang.io/?code=eJwrL8osSfUvLSkoLdFQKErMS9HQVNC05gIAaa4HiQ%3D%3D" target="_blank">Run Example</a>
+
+```java
+writeOutput( rand() );
+
+```
+
+
+### simple example Using rand() with algorithm
+
+To generate a random number between 0 to 1 by using bxmX_COMPAT algorithm
+
+
+```java
+writeOutput( rand( "bxmX_COMPAT" ) );
+
+```
+
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJwrL8osSXUpzS3QUChKzEvR0FSws1UwUFBTg3FtbBUMFTStucrRFCooBXs4GgYE%2BbkrKeDUBADz0hiR" target="_blank">Run Example</a>
+
+```java
+writeDump( rand() >= 0 && rand() <= 1 );
+writeDump( rand( "SHA1PRNG" ) >= 0 && rand() <= 1 );
+
+```
+
 
 
 ## Related
 
-  * [Abs](./Abs.md)
-  * [Acos](./Acos.md)
+  * [Sqr](./Sqr.md)
   * [Asin](./Asin.md)
-  * [Atn](./Atn.md)
-  * [Ceiling](./Ceiling.md)
-  * [Cos](./Cos.md)
+  * [Sgn](./Sgn.md)
+  * [Pi](./Pi.md)
   * [DecrementValue](./DecrementValue.md)
-  * [Exp](./Exp.md)
-  * [Fix](./Fix.md)
-  * [Floor](./Floor.md)
-  * [FormatBaseN](./FormatBaseN.md)
-  * [IncrementValue](./IncrementValue.md)
   * [InputBaseN](./InputBaseN.md)
+  * [Round](./Round.md)
+  * [Cos](./Cos.md)
   * [Int](./Int.md)
-  * [Log](./Log.md)
-  * [Log10](./Log10.md)
+  * [Exp](./Exp.md)
+  * [Ceiling](./Ceiling.md)
+  * [RandRange](./RandRange.md)
+  * [Atn](./Atn.md)
+  * [Fix](./Fix.md)
   * [Max](./Max.md)
   * [Min](./Min.md)
-  * [Pi](./Pi.md)
+  * [Abs](./Abs.md)
+  * [Log](./Log.md)
+  * [Log10](./Log10.md)
   * [PrecisionEvaluate](./PrecisionEvaluate.md)
+  * [Acos](./Acos.md)
+  * [Floor](./Floor.md)
   * [Randomize](./Randomize.md)
-  * [RandRange](./RandRange.md)
-  * [Round](./Round.md)
-  * [Sgn](./Sgn.md)
-  * [Sin](./Sin.md)
-  * [Sqr](./Sqr.md)
+  * [FormatBaseN](./FormatBaseN.md)
   * [Tan](./Tan.md)
+  * [Sin](./Sin.md)
+  * [IncrementValue](./IncrementValue.md)

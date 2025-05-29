@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Cache`
 
 Component which provides caching functionality, including content, individual entries, and HTTP headers
@@ -58,26 +58,4 @@ dependsOn=[string] />
 
 ## Examples
 
-```
-<bx:Cache action=[string]
-key=[string]
-value=[any]
-name=[any]
-cacheName=[string]
-metadata=[struct]
-directory=[string]
-timespan=[double]
-idleTime=[double]
-metadata=[struct]
-stripWhitespace=[boolean]
-throwOnError=[boolean]
-useCache=[boolean]
-expireURL=[string]
-password=[string]
-port=[integer]
-protocol=[string]
-region=[string]
-useQueryString=[boolean]
-username=[string]
-dependsOn=[string] />
-```
+

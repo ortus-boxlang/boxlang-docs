@@ -28,7 +28,7 @@ ExecutorNew(name=[string], type=[string], maxThreads=[integer])
 |----------|------|----------|-------------|---------|
 | `name` | `string` | `true` | The name of the executor to create if not already created |  |
 | `type` | `string` | `true` | The type of executor to create |  |
-| `maxThreads` | `integer` | `false` |  | `20` |
+| `maxThreads` | `integer` | `false` |  | `10` |
 
 ## Examples
 
@@ -36,14 +36,17 @@ ExecutorNew(name=[string], type=[string], maxThreads=[integer])
 
 ## Related
 
-  * [ExecutorGet](./ExecutorGet.md)
-  * [ExecutorHas](./ExecutorHas.md)
-  * [ExecutorList](./ExecutorList.md)
-  * [ExecutorShutdown](./ExecutorShutdown.md)
-  * [ExecutorStatus](./ExecutorStatus.md)
-  * [FutureNew](./FutureNew.md)
-  * [IsInThread](./IsInThread.md)
   * [RunAsync](./RunAsync.md)
   * [ThreadJoin](./ThreadJoin.md)
-  * [ThreadNew](./ThreadNew.md)
+  * [IsThreadInterrupted](./IsThreadInterrupted.md)
+  * [ExecutorGet](./ExecutorGet.md)
+  * [IsInThread](./IsInThread.md)
+  * [FutureNew](./FutureNew.md)
+  * [ExecutorStatus](./ExecutorStatus.md)
+  * [ExecutorList](./ExecutorList.md)
   * [ThreadTerminate](./ThreadTerminate.md)
+  * [ThreadNew](./ThreadNew.md)
+  * [ExecutorHas](./ExecutorHas.md)
+  * [ThreadInterrupt](./ThreadInterrupt.md)
+  * [ExecutorShutdown](./ExecutorShutdown.md)
+  * [isThreadAlive](./isThreadAlive.md)

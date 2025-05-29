@@ -24,67 +24,93 @@ ReplaceList(string=[string], list1=[string], list2=[string], delimiter_list1=[st
 
 ## Examples
 
+### Tag Example
+
+
+
+
+```java
+<bx:set myString = "My test string" >
+<bx:set mySubstring1 = "Test, String" >
+<bx:set mySubString2 = "Replaced, Sentence" >
+<bx:output>#replaceListNoCase( myString, mySubstring1, mySubString2 )#</bx:output>
+```
+
+Result: My Replaced Sentence
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJxtjrsKwkAURPt8xXUrhSG%2BX4iFqGChFopou48bs2IS2SS6%2Fr1PsLGbGQ7DuTlb8KxMLlVyfDlLzUubF%2BtsKnOuklhY2m3nmwpoIa9MklKrmYy8hwIkYosyZ%2FeKez7rLGGo0pi7oBrVRlSv03em9%2FznJXgyK04UO4rKVBc2S4O8cDQm4b2fqKnh6Bjbk%2FcHqfTsU8QouP20n3j4T11CQcOAEeGIGBanl2gDTbTQRgdd9NDHAMOPbvAAJBRSiQ%3D%3D" target="_blank">Run Example</a>
+
+```java
+writeDump( replaceListNoCase( "Hi USER!, Have a nice day.", "hi,user", "Welcome,buddy" ) ); // Welcome buddy!, Have a nice day.
+// Member function
+str = "xxxAbCdefghijxxXabcDefghij";
+writeDump( str.replaceListNoCase( "a,b,c,d,e,f,g,h,i,j", "0,1,2,3,4,5,6,7,8,9" ) );
+
+```
+
 
 
 ## Related
 
-  * [Ascii](./Ascii.md)
-  * [CamelCase](./CamelCase.md)
-  * [Char](./Char.md)
-  * [CharsetDecode](./CharsetDecode.md)
-  * [CharsetEncode](./CharsetEncode.md)
-  * [Compare](./Compare.md)
-  * [CompareNoCase](./CompareNoCase.md)
-  * [Find](./Find.md)
-  * [FindNoCase](./FindNoCase.md)
-  * [FindOneOf](./FindOneOf.md)
-  * [Insert](./Insert.md)
-  * [JSStringFormat](./JSStringFormat.md)
-  * [KebabCase](./KebabCase.md)
-  * [LCase](./LCase.md)
-  * [Left](./Left.md)
-  * [ListReduce](./ListReduce.md)
-  * [LJustify](./LJustify.md)
-  * [LTrim](./LTrim.md)
-  * [Mid](./Mid.md)
-  * [ParagraphFormat](./ParagraphFormat.md)
-  * [PascalCase](./PascalCase.md)
-  * [QueryStringToStruct](./QueryStringToStruct.md)
-  * [ReEscape](./ReEscape.md)
+  * [SpanIncluding](./SpanIncluding.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
-  * [ReMatch](./ReMatch.md)
-  * [reMatchNoCase](./reMatchNoCase.md)
-  * [RemoveChars](./RemoveChars.md)
-  * [RepeatString](./RepeatString.md)
-  * [Replace](./Replace.md)
-  * [ReplaceListNoCase](./ReplaceListNoCase.md)
-  * [ReplaceNoCase](./ReplaceNoCase.md)
+  * [KebabCase](./KebabCase.md)
+  * [Ascii](./Ascii.md)
+  * [Val](./Val.md)
+  * [StringFilter](./StringFilter.md)
+  * [Compare](./Compare.md)
+  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [ReReplace](./ReReplace.md)
   * [reReplaceNoCase](./reReplaceNoCase.md)
-  * [Reverse](./Reverse.md)
-  * [Right](./Right.md)
-  * [RJustify](./RJustify.md)
-  * [RTrim](./RTrim.md)
-  * [Slugify](./Slugify.md)
-  * [SnakeCase](./SnakeCase.md)
-  * [SpanExcluding](./SpanExcluding.md)
-  * [SpanIncluding](./SpanIncluding.md)
-  * [SQLPrettify](./SQLPrettify.md)
-  * [StringBind](./StringBind.md)
-  * [StringEach](./StringEach.md)
-  * [StringEvery](./StringEvery.md)
-  * [StringFilter](./StringFilter.md)
-  * [StringMap](./StringMap.md)
-  * [StringReduce](./StringReduce.md)
-  * [StringReduceRight](./StringReduceRight.md)
-  * [StringSome](./StringSome.md)
-  * [StringSort](./StringSort.md)
   * [StripCR](./StripCR.md)
-  * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
-  * [UCase](./UCase.md)
-  * [UCFirst](./UCFirst.md)
-  * [Val](./Val.md)
+  * [Insert](./Insert.md)
+  * [CamelCase](./CamelCase.md)
+  * [StringBind](./StringBind.md)
+  * [SnakeCase](./SnakeCase.md)
+  * [Right](./Right.md)
+  * [FindOneOf](./FindOneOf.md)
+  * [ReEscape](./ReEscape.md)
+  * [SpanExcluding](./SpanExcluding.md)
+  * [CompareNoCase](./CompareNoCase.md)
+  * [StringReduceRight](./StringReduceRight.md)
+  * [Reverse](./Reverse.md)
+  * [Replace](./Replace.md)
+  * [ReplaceListNoCase](./ReplaceListNoCase.md)
+  * [StringReduce](./StringReduce.md)
+  * [Slugify](./Slugify.md)
   * [Wrap](./Wrap.md)
+  * [PascalCase](./PascalCase.md)
+  * [StringSort](./StringSort.md)
+  * [StringEach](./StringEach.md)
+  * [Trim](./Trim.md)
+  * [LTrim](./LTrim.md)
+  * [UCFirst](./UCFirst.md)
+  * [Find](./Find.md)
+  * [FindNoCase](./FindNoCase.md)
+  * [ReMatch](./ReMatch.md)
+  * [reMatchNoCase](./reMatchNoCase.md)
+  * [LJustify](./LJustify.md)
+  * [RJustify](./RJustify.md)
+  * [CharsetEncode](./CharsetEncode.md)
+  * [StringEvery](./StringEvery.md)
+  * [Left](./Left.md)
+  * [UCase](./UCase.md)
+  * [ListReduce](./ListReduce.md)
   * [YesNoFormat](./YesNoFormat.md)
+  * [Char](./Char.md)
+  * [ReplaceNoCase](./ReplaceNoCase.md)
+  * [RemoveChars](./RemoveChars.md)
+  * [RTrim](./RTrim.md)
+  * [JSStringFormat](./JSStringFormat.md)
+  * [RepeatString](./RepeatString.md)
+  * [CharsetDecode](./CharsetDecode.md)
+  * [StringSome](./StringSome.md)
+  * [SQLPrettify](./SQLPrettify.md)
+  * [StringMap](./StringMap.md)
+  * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [Mid](./Mid.md)
+  * [LCase](./LCase.md)
+  * [ParagraphFormat](./ParagraphFormat.md)

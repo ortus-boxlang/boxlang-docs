@@ -21,39 +21,65 @@ ListCompact(list=[string], delimiter=[string], multiCharacterDelimiter=[boolean]
 
 ## Examples
 
+### Trims first and last comma from list string
+
+
+
+<a href="https://try.boxlang.io/?code=eJzLySwucc7PLUhMLtFQUNJJTU8v1snNzMnWSSpKTUzRScvJLy3SUVLQtOYCAEI9DfM%3D" target="_blank">Run Example</a>
+
+```java
+listCompact( ",eggs,milk,bread,flour," );
+
+```
+
+Result: eggs,milk,bread,flour
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJxVjssKwjAQRff9iiGrlhkMPnbFlS4VBb8g1tEG8iKZ2N%2B3UBG8uwuXc4%2FWcLM%2BOYZnDYPYGJopW%2BFLlVSlBWeLHKJPZpiLIqKrM0HolZkDFfNmYpNlJFLQQdc3WsOZ%2FZ3zjweTlRGGWiR6eLCzfsbnpkg%2BFYE9KERc4wa3uMMlql8cjtWnFpbh6l8Ev3cf5Ps80Q%3D%3D" target="_blank">Run Example</a>
+
+```java
+// Simple function
+writeOutput( listCompact( ",,,Plant,green,save,earth,," ) );
+// Member function with custom delimiter
+strLst = "+++1+2+3+4+++++++";
+writeDump( strLst.listCompact( "+" ) );
+
+```
+
 
 
 ## Related
 
-  * [GetToken](./GetToken.md)
-  * [ListAppend](./ListAppend.md)
-  * [ListAvg](./ListAvg.md)
-  * [ListChangeDelims](./ListChangeDelims.md)
-  * [ListContains](./ListContains.md)
-  * [ListContainsNoCase](./ListContainsNoCase.md)
-  * [ListDeleteAt](./ListDeleteAt.md)
-  * [ListEach](./ListEach.md)
-  * [ListEvery](./ListEvery.md)
-  * [ListFilter](./ListFilter.md)
-  * [ListFind](./ListFind.md)
-  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListSome](./ListSome.md)
+  * [ListReduceRight](./ListReduceRight.md)
+  * [ListPrepend](./ListPrepend.md)
   * [ListFirst](./ListFirst.md)
-  * [ListGetAt](./ListGetAt.md)
+  * [ListLast](./ListLast.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
-  * [ListItemTrim](./ListItemTrim.md)
-  * [ListLast](./ListLast.md)
-  * [ListLen](./ListLen.md)
-  * [ListMap](./ListMap.md)
-  * [ListPrepend](./ListPrepend.md)
-  * [ListQualify](./ListQualify.md)
-  * [ListReduceRight](./ListReduceRight.md)
-  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
-  * [ListRest](./ListRest.md)
-  * [ListSetAt](./ListSetAt.md)
-  * [ListSome](./ListSome.md)
-  * [ListSort](./ListSort.md)
-  * [ListToArray](./ListToArray.md)
+  * [ListChangeDelims](./ListChangeDelims.md)
+  * [ListFind](./ListFind.md)
+  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListContains](./ListContains.md)
+  * [ListContainsNoCase](./ListContainsNoCase.md)
   * [ListTrim](./ListTrim.md)
+  * [ListMap](./ListMap.md)
+  * [ListDeleteAt](./ListDeleteAt.md)
+  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
+  * [ListToArray](./ListToArray.md)
+  * [ListQualify](./ListQualify.md)
+  * [ListAppend](./ListAppend.md)
   * [ListValueCount](./ListValueCount.md)
   * [ListValueCountNoCase](./ListValueCountNoCase.md)
+  * [ListAvg](./ListAvg.md)
+  * [ListLen](./ListLen.md)
+  * [ListRest](./ListRest.md)
+  * [ListGetAt](./ListGetAt.md)
+  * [ListEvery](./ListEvery.md)
+  * [ListEach](./ListEach.md)
+  * [ListSort](./ListSort.md)
+  * [ListSetAt](./ListSetAt.md)
+  * [ListFilter](./ListFilter.md)
+  * [GetToken](./GetToken.md)
+  * [ListItemTrim](./ListItemTrim.md)

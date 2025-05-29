@@ -20,35 +20,55 @@ StructEquals(struct1=[structloose], struct2=[structloose])
 
 ## Examples
 
+### Append options to config struct (without overwrite flag)
+
+
+
+<a href="https://try.boxlang.io/?code=eJxLzs9Ly0w3VLBVqFbg4nRUsFIw0OHidALRXLXWXMlgaSOQNKqsIUi2vCizJNW%2FtKSgtERDobikqDS5xLWwNDGnWEMBotFQRwFmgqaCpjUXABwCHhk%3D" target="_blank">Run Example</a>
+
+```java
+config1 = { 
+	A : 0,
+	B : 0
+};
+config2 = {
+	A : 0,
+	B : 1
+};
+writeOutput( structEquals( config1, config2 ) );
+
+```
+
+Result: NO
 
 
 ## Related
 
-  * [StructAppend](./StructAppend.md)
-  * [StructClear](./StructClear.md)
-  * [StructCopy](./StructCopy.md)
-  * [StructDelete](./StructDelete.md)
-  * [StructEach](./StructEach.md)
-  * [StructEvery](./StructEvery.md)
-  * [StructFilter](./StructFilter.md)
-  * [StructFind](./StructFind.md)
-  * [StructFindKey](./StructFindKey.md)
-  * [StructFindValue](./StructFindValue.md)
-  * [StructGet](./StructGet.md)
-  * [StructGetMetadata](./StructGetMetadata.md)
-  * [StructInsert](./StructInsert.md)
-  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
-  * [StructIsOrdered](./StructIsOrdered.md)
-  * [StructKeyArray](./StructKeyArray.md)
-  * [StructKeyExists](./StructKeyExists.md)
-  * [StructKeyList](./StructKeyList.md)
-  * [StructKeyTranslate](./StructKeyTranslate.md)
-  * [StructMap](./StructMap.md)
-  * [StructNew](./StructNew.md)
   * [StructReduce](./StructReduce.md)
-  * [StructSome](./StructSome.md)
+  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
+  * [StructNew](./StructNew.md)
+  * [StructGet](./StructGet.md)
+  * [StructDelete](./StructDelete.md)
+  * [StructFilter](./StructFilter.md)
+  * [StructIsOrdered](./StructIsOrdered.md)
   * [StructSort](./StructSort.md)
+  * [StructEach](./StructEach.md)
   * [StructToQueryString](./StructToQueryString.md)
-  * [StructToSorted](./StructToSorted.md)
   * [StructUpdate](./StructUpdate.md)
+  * [StructClear](./StructClear.md)
+  * [StructGetMetadata](./StructGetMetadata.md)
+  * [StructKeyArray](./StructKeyArray.md)
+  * [StructToSorted](./StructToSorted.md)
+  * [StructCopy](./StructCopy.md)
+  * [StructFindKey](./StructFindKey.md)
+  * [StructInsert](./StructInsert.md)
+  * [StructMap](./StructMap.md)
+  * [StructFindValue](./StructFindValue.md)
   * [StructValueArray](./StructValueArray.md)
+  * [StructSome](./StructSome.md)
+  * [StructKeyExists](./StructKeyExists.md)
+  * [StructKeyTranslate](./StructKeyTranslate.md)
+  * [StructEvery](./StructEvery.md)
+  * [StructFind](./StructFind.md)
+  * [StructKeyList](./StructKeyList.md)
+  * [StructAppend](./StructAppend.md)

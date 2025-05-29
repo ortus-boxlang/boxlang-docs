@@ -25,67 +25,112 @@ StringSome(list=[string], callback=[function:Predicate], delimiter=[string], inc
 
 ## Examples
 
+### Full function
+
+Are any of the characters in the string greater than our condition?
+
+<a href="https://try.boxlang.io/?code=eJw9jUEKgCAUBdd5iocrhW4gBZ2hE5hZSPUL%2BxIR3T0paDsMM4F2joFGVJC2c70fRmmEs%2FPcWTdlqtDQiUAbNKoalyii5xTpRTXkkPXbiCMG9mviLbFC%2BybbdfEqa9%2BgxB%2FV0EY8N6wmrw%3D%3D" target="_blank">Run Example</a>
+
+```java
+instring = "abcdefg";
+callback = ( Any inp ) => {
+	return inp > "f";
+};
+writeoutput( StringSome( instring, callback ) );
+
+```
+
+Result: YES
+
+### Member function
+
+Are any of the characters in the string greater than our condition?
+
+
+```java
+instring = "abcdefg";
+callback = ( Any inp ) => {
+	return inp > "f";
+};
+writeoutput( instring.some( callback ) );
+
+```
+
+Result: YES
+
+### Additional Examples
+
+<a href="https://try.boxlang.io?code=eJzLrQwuKcrMS1ewVVBKyq%2FIScxLV7LmSk7MyUlKTM4GimooOOZVKlQoaCrY2gEpO6C6RCVra67yosySVJfS3AINBYgJwfm5qRoKuVDzdBTgZmgqaCJMjDfEbmYVSWYCTQGZCgDNVDqs" target="_blank">Run Example</a>
+
+```java
+myString = "boxlang";
+callback = ( Any x ) => x >= "a";;
+writeDump( StringSome( myString, callback ) );
+callback_1 = ( Any x ) => x >= "z";;
+writeDump( StringSome( myString, callback_1 ) );
+
+```
 
 
 ## Related
 
-  * [Ascii](./Ascii.md)
-  * [CamelCase](./CamelCase.md)
-  * [Char](./Char.md)
-  * [CharsetDecode](./CharsetDecode.md)
-  * [CharsetEncode](./CharsetEncode.md)
-  * [Compare](./Compare.md)
-  * [CompareNoCase](./CompareNoCase.md)
-  * [Find](./Find.md)
-  * [FindNoCase](./FindNoCase.md)
-  * [FindOneOf](./FindOneOf.md)
-  * [Insert](./Insert.md)
-  * [JSStringFormat](./JSStringFormat.md)
-  * [KebabCase](./KebabCase.md)
-  * [LCase](./LCase.md)
-  * [Left](./Left.md)
-  * [ListReduce](./ListReduce.md)
-  * [LJustify](./LJustify.md)
-  * [LTrim](./LTrim.md)
-  * [Mid](./Mid.md)
-  * [ParagraphFormat](./ParagraphFormat.md)
-  * [PascalCase](./PascalCase.md)
-  * [QueryStringToStruct](./QueryStringToStruct.md)
-  * [ReEscape](./ReEscape.md)
+  * [SpanIncluding](./SpanIncluding.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
-  * [ReMatch](./ReMatch.md)
-  * [reMatchNoCase](./reMatchNoCase.md)
-  * [RemoveChars](./RemoveChars.md)
-  * [RepeatString](./RepeatString.md)
+  * [KebabCase](./KebabCase.md)
+  * [Ascii](./Ascii.md)
+  * [Val](./Val.md)
+  * [StringFilter](./StringFilter.md)
+  * [Compare](./Compare.md)
+  * [TrueFalseFormat](./TrueFalseFormat.md)
+  * [ReReplace](./ReReplace.md)
+  * [reReplaceNoCase](./reReplaceNoCase.md)
+  * [StripCR](./StripCR.md)
+  * [Insert](./Insert.md)
+  * [CamelCase](./CamelCase.md)
+  * [StringBind](./StringBind.md)
+  * [SnakeCase](./SnakeCase.md)
+  * [Right](./Right.md)
+  * [FindOneOf](./FindOneOf.md)
+  * [ReEscape](./ReEscape.md)
+  * [SpanExcluding](./SpanExcluding.md)
+  * [CompareNoCase](./CompareNoCase.md)
+  * [StringReduceRight](./StringReduceRight.md)
+  * [Reverse](./Reverse.md)
   * [Replace](./Replace.md)
   * [ReplaceList](./ReplaceList.md)
   * [ReplaceListNoCase](./ReplaceListNoCase.md)
-  * [ReplaceNoCase](./ReplaceNoCase.md)
-  * [ReReplace](./ReReplace.md)
-  * [reReplaceNoCase](./reReplaceNoCase.md)
-  * [Reverse](./Reverse.md)
-  * [Right](./Right.md)
-  * [RJustify](./RJustify.md)
-  * [RTrim](./RTrim.md)
-  * [Slugify](./Slugify.md)
-  * [SnakeCase](./SnakeCase.md)
-  * [SpanExcluding](./SpanExcluding.md)
-  * [SpanIncluding](./SpanIncluding.md)
-  * [SQLPrettify](./SQLPrettify.md)
-  * [StringBind](./StringBind.md)
-  * [StringEach](./StringEach.md)
-  * [StringEvery](./StringEvery.md)
-  * [StringFilter](./StringFilter.md)
-  * [StringMap](./StringMap.md)
   * [StringReduce](./StringReduce.md)
-  * [StringReduceRight](./StringReduceRight.md)
-  * [StringSort](./StringSort.md)
-  * [StripCR](./StripCR.md)
-  * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
-  * [UCase](./UCase.md)
-  * [UCFirst](./UCFirst.md)
-  * [Val](./Val.md)
+  * [Slugify](./Slugify.md)
   * [Wrap](./Wrap.md)
+  * [PascalCase](./PascalCase.md)
+  * [StringSort](./StringSort.md)
+  * [StringEach](./StringEach.md)
+  * [Trim](./Trim.md)
+  * [LTrim](./LTrim.md)
+  * [UCFirst](./UCFirst.md)
+  * [Find](./Find.md)
+  * [FindNoCase](./FindNoCase.md)
+  * [ReMatch](./ReMatch.md)
+  * [reMatchNoCase](./reMatchNoCase.md)
+  * [LJustify](./LJustify.md)
+  * [RJustify](./RJustify.md)
+  * [CharsetEncode](./CharsetEncode.md)
+  * [StringEvery](./StringEvery.md)
+  * [Left](./Left.md)
+  * [UCase](./UCase.md)
+  * [ListReduce](./ListReduce.md)
   * [YesNoFormat](./YesNoFormat.md)
+  * [Char](./Char.md)
+  * [ReplaceNoCase](./ReplaceNoCase.md)
+  * [RemoveChars](./RemoveChars.md)
+  * [RTrim](./RTrim.md)
+  * [JSStringFormat](./JSStringFormat.md)
+  * [RepeatString](./RepeatString.md)
+  * [CharsetDecode](./CharsetDecode.md)
+  * [SQLPrettify](./SQLPrettify.md)
+  * [StringMap](./StringMap.md)
+  * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [Mid](./Mid.md)
+  * [LCase](./LCase.md)
+  * [ParagraphFormat](./ParagraphFormat.md)

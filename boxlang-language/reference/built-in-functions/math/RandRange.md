@@ -21,34 +21,78 @@ RandRange(number1=[numeric], number2=[numeric], algorithm=[string])
 
 ## Examples
 
+### Tag Example
+
+The following example calls the Randomize function to seed the random number generator and generates 10 random numbers.  
+
+
+```java
+<bx:set r = randomize( 7, "SHA1PRNG" ) > 
+ <bx:set local.MYINT = 1 > 
+ <bx:set local.MYINT2 = 999 > 
+<!--- Generate and display the random number. ---> 
+ <bx:output><p><b> 
+ RandRange returned: #randRange( local.MYINT, local.MYINT2, "SHA1PRNG" )# 
+ </bx:output></b></p>  
+```
+
+
+### Script Example
+
+ 
+
+
+```java
+<bx:script>
+	bytes = [];
+	bytecount = 32;
+	arrayResize( bytes, byteCount );
+	for( i = 1; i <= byteCount; i++ ) {
+		bytes[ i ] = randRange( -128, 127, "SHA1PRNG" );
+	}
+</bx:script>
+ 
+ <bx:dump var="#bytes#"/>  
+```
+
+
+### Additional Examples
+
+
+```java
+writeDump( randRange( 25, 125, "bxmX_COMPAT" ) );
+writeDump( randRange( 100, 500, "SHA1PRNG" ) );
+
+```
+
 
 
 ## Related
 
-  * [Abs](./Abs.md)
-  * [Acos](./Acos.md)
+  * [Sqr](./Sqr.md)
   * [Asin](./Asin.md)
-  * [Atn](./Atn.md)
-  * [Ceiling](./Ceiling.md)
-  * [Cos](./Cos.md)
+  * [Sgn](./Sgn.md)
+  * [Pi](./Pi.md)
   * [DecrementValue](./DecrementValue.md)
-  * [Exp](./Exp.md)
-  * [Fix](./Fix.md)
-  * [Floor](./Floor.md)
-  * [FormatBaseN](./FormatBaseN.md)
-  * [IncrementValue](./IncrementValue.md)
   * [InputBaseN](./InputBaseN.md)
+  * [Round](./Round.md)
+  * [Cos](./Cos.md)
   * [Int](./Int.md)
-  * [Log](./Log.md)
-  * [Log10](./Log10.md)
+  * [Exp](./Exp.md)
+  * [Ceiling](./Ceiling.md)
+  * [Atn](./Atn.md)
+  * [Fix](./Fix.md)
   * [Max](./Max.md)
   * [Min](./Min.md)
-  * [Pi](./Pi.md)
+  * [Abs](./Abs.md)
+  * [Log](./Log.md)
+  * [Log10](./Log10.md)
   * [PrecisionEvaluate](./PrecisionEvaluate.md)
+  * [Acos](./Acos.md)
   * [Rand](./Rand.md)
+  * [Floor](./Floor.md)
   * [Randomize](./Randomize.md)
-  * [Round](./Round.md)
-  * [Sgn](./Sgn.md)
-  * [Sin](./Sin.md)
-  * [Sqr](./Sqr.md)
+  * [FormatBaseN](./FormatBaseN.md)
   * [Tan](./Tan.md)
+  * [Sin](./Sin.md)
+  * [IncrementValue](./IncrementValue.md)

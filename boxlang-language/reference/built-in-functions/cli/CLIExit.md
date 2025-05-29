@@ -23,5 +23,6 @@ CLIExit(exitCode=[numeric])
 
 ## Related
 
+  * [CLIClear](./CLIClear.md)
   * [CLIGetArgs](./CLIGetArgs.md)
   * [CLIRead](./CLIRead.md)

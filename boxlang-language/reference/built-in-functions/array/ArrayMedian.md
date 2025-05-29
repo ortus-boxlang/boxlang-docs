@@ -21,53 +21,83 @@ ArrayMedian(array=[array])
 
 ## Examples
 
+### Calculates the Median value
+
+Uses the arrayMedian function to calculate the Median value
+
+<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYa5Ya65coGAiSNI3NSUzMU9DoRiuWtOaq7wosyTVv7SkoLREQyEXJAIARXgWXQ%3D%3D" target="_blank">Run Example</a>
+
+```java
+someArray = [ 
+	1,
+	2,
+	2
+];
+m = arrayMedian( someArray );
+writeOutput( m );
+
+```
+
+Result: 2
+
+### Additional Examples
+
+
+```java
+aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
+dump( arrayMedian( aNames ) );
+// member function
+dump( aNames.median() );
+
+```
+
 
 
 ## Related
 
-  * [ArrayAppend](./ArrayAppend.md)
-  * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayClear](./ArrayClear.md)
-  * [ArrayContains](./ArrayContains.md)
-  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-  * [ArrayDelete](./ArrayDelete.md)
-  * [ArrayDeleteAt](./ArrayDeleteAt.md)
-  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-  * [ArrayEach](./ArrayEach.md)
-  * [ArrayEvery](./ArrayEvery.md)
-  * [ArrayFilter](./ArrayFilter.md)
-  * [ArrayFind](./ArrayFind.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayMerge](./ArrayMerge.md)
+  * [ArrayIndexExists](./ArrayIndexExists.md)
+  * [ArrayIsDefined](./ArrayIsDefined.md)
   * [ArrayFindAll](./ArrayFindAll.md)
   * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArrayFindNoCase](./ArrayFindNoCase.md)
-  * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayGetMetadata](./ArrayGetMetadata.md)
-  * [ArrayIndexExists](./ArrayIndexExists.md)
-  * [ArrayInsertAt](./ArrayInsertAt.md)
-  * [ArrayIsDefined](./ArrayIsDefined.md)
-  * [ArrayLast](./ArrayLast.md)
-  * [ArrayMap](./ArrayMap.md)
-  * [ArrayMax](./ArrayMax.md)
-  * [ArrayMerge](./ArrayMerge.md)
-  * [ArrayMid](./ArrayMid.md)
-  * [ArrayMin](./ArrayMin.md)
-  * [ArrayNew](./ArrayNew.md)
-  * [ArrayPop](./ArrayPop.md)
-  * [ArrayPrepend](./ArrayPrepend.md)
-  * [ArrayPush](./ArrayPush.md)
-  * [ArrayRange](./ArrayRange.md)
-  * [ArrayReduce](./ArrayReduce.md)
-  * [ArrayReduceRight](./ArrayReduceRight.md)
-  * [ArrayResize](./ArrayResize.md)
-  * [ArrayReverse](./ArrayReverse.md)
-  * [ArraySet](./ArraySet.md)
-  * [ArrayShift](./ArrayShift.md)
-  * [ArraySlice](./ArraySlice.md)
-  * [ArraySome](./ArraySome.md)
-  * [ArraySort](./ArraySort.md)
-  * [ArraySplice](./ArraySplice.md)
   * [ArraySum](./ArraySum.md)
-  * [ArraySwap](./ArraySwap.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayContains](./ArrayContains.md)
+  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
+  * [ArrayPush](./ArrayPush.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArraySome](./ArraySome.md)
+  * [ArrayDelete](./ArrayDelete.md)
+  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
+  * [ArrayAvg](./ArrayAvg.md)
   * [ArrayToList](./ArrayToList.md)
+  * [ArrayFilter](./ArrayFilter.md)
+  * [ArrayClear](./ArrayClear.md)
+  * [ArrayRange](./ArrayRange.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayShift](./ArrayShift.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayUnshift](./ArrayUnshift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayInsertAt](./ArrayInsertAt.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArraySet](./ArraySet.md)
+  * [ArrayMax](./ArrayMax.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArrayDeleteAt](./ArrayDeleteAt.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArrayEach](./ArrayEach.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayEvery](./ArrayEvery.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMin](./ArrayMin.md)

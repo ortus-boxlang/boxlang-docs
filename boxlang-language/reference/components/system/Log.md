@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Log`
 
 Logs information to the specified log file
@@ -26,10 +26,4 @@ application=[boolean] />
 
 ## Examples
 
-```
-<bx:Log text=[string]
-file=[string]
-log=[string]
-type=[string]
-application=[boolean] />
-```
+

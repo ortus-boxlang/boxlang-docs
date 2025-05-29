@@ -22,49 +22,63 @@ DateTimeFormat(date=[any], mask=[string], timezone=[string], locale=[string])
 
 ## Examples
 
+### Omitting the Mask
+
+Should default mask to `hh:mm tt`
+
+<a href="https://try.boxlang.io/?code=eJwrycxNdcsvyk0s0VBILkpNLEl1AeIQoKiGgpGBobmOgoWOgrGhjoKhqY6CERAbGipoKmhacwEADccPEg%3D%3D" target="_blank">Run Example</a>
+
+```java
+timeFormat( createDateTime( 2017, 8, 31, 15, 25, 11 ) );
+
+```
+
+Result: 03:25 pm
+
+### Additional Examples
 
 
 ## Related
 
-  * [ClearTimezone](./ClearTimezone.md)
-  * [CreateDate](./CreateDate.md)
-  * [CreateDateTime](./CreateDateTime.md)
-  * [CreateODBCDate](./CreateODBCDate.md)
-  * [CreateODBCDateTime](./CreateODBCDateTime.md)
-  * [CreateODBCTime](./CreateODBCTime.md)
-  * [CreateTime](./CreateTime.md)
   * [CreateTimeSpan](./CreateTimeSpan.md)
-  * [DateAdd](./DateAdd.md)
+  * [SetTimezone](./SetTimezone.md)
   * [DateCompare](./DateCompare.md)
-  * [DateConvert](./DateConvert.md)
+  * [Now](./Now.md)
   * [DateDiff](./DateDiff.md)
-  * [DateFormat](./DateFormat.md)
-  * [DatePart](./DatePart.md)
+  * [CreateTime](./CreateTime.md)
+  * [ClearTimezone](./ClearTimezone.md)
+  * [DateAdd](./DateAdd.md)
+  * [Year](./Year.md)
+  * [Quarter](./Quarter.md)
+  * [Month](./Month.md)
+  * [MonthAsString](./MonthAsString.md)
+  * [MonthShortAsString](./MonthShortAsString.md)
   * [Day](./Day.md)
   * [DayOfWeek](./DayOfWeek.md)
   * [DayOfWeekAsString](./DayOfWeekAsString.md)
   * [DayOfWeekShortAsString](./DayOfWeekShortAsString.md)
-  * [DayOfYear](./DayOfYear.md)
   * [DaysInMonth](./DaysInMonth.md)
   * [DaysInYear](./DaysInYear.md)
+  * [DayOfYear](./DayOfYear.md)
   * [FirstDayOfMonth](./FirstDayOfMonth.md)
+  * [Week](./Week.md)
+  * [Hour](./Hour.md)
+  * [Minute](./Minute.md)
+  * [Second](./Second.md)
+  * [Millisecond](./Millisecond.md)
+  * [Nanosecond](./Nanosecond.md)
+  * [Offset](./Offset.md)
+  * [GetTimezone](./GetTimezone.md)
   * [GetNumericDate](./GetNumericDate.md)
   * [GetTime](./GetTime.md)
-  * [GetTimezone](./GetTimezone.md)
+  * [CreateDateTime](./CreateDateTime.md)
+  * [CreateDate](./CreateDate.md)
   * [GetTimezoneInfo](./GetTimezoneInfo.md)
-  * [Hour](./Hour.md)
-  * [Millisecond](./Millisecond.md)
-  * [Minute](./Minute.md)
-  * [Month](./Month.md)
-  * [MonthAsString](./MonthAsString.md)
-  * [MonthShortAsString](./MonthShortAsString.md)
-  * [Nanosecond](./Nanosecond.md)
-  * [Now](./Now.md)
-  * [Offset](./Offset.md)
-  * [ParseDateTime](./ParseDateTime.md)
-  * [Quarter](./Quarter.md)
-  * [Second](./Second.md)
-  * [SetTimezone](./SetTimezone.md)
+  * [CreateODBCDateTime](./CreateODBCDateTime.md)
+  * [CreateODBCDate](./CreateODBCDate.md)
+  * [CreateODBCTime](./CreateODBCTime.md)
+  * [DateConvert](./DateConvert.md)
+  * [DatePart](./DatePart.md)
+  * [DateFormat](./DateFormat.md)
   * [TimeFormat](./TimeFormat.md)
-  * [Week](./Week.md)
-  * [Year](./Year.md)
+  * [ParseDateTime](./ParseDateTime.md)

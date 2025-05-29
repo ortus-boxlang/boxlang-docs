@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Zip`
 
 The BoxLang Zip component is a powerful component that allows you to interact with zip/gzip files.
@@ -42,18 +42,35 @@ variable=[string] />
 
 ## Examples
 
+### Extract / Unzip a zip file into a folder
+
+Uses `action="unzip"` in the bx:zip tag to unzip into the temp directory.
+
+
+```java
+<bx:zip action="unzip" destination="#getTempDirectory()#" file="#zipFilePath#">
 ```
-<bx:Zip action=[string]
-file=[string]
-destination=[string]
-filter=[any]
-entryPath=[any]
-charset=[string]
-result=[string]
-overwrite=[boolean]
-prefix=[string]
-recurse=[boolean]
-flatList=[boolean]
-source=[string]
-variable=[string] />
+
+
+### Extract / Unzip a zip file into a folder (Script Syntax)
+
+Uses `action="unzip"` in the bx:zip tag to unzip into the temp directory.
+
+
+```java
+bx:zip action="unzip" file="zipFileName" destination=getTempDirectory();
+
 ```
+
+
+### List contents of a zip folder (Script Syntax)
+
+Uses `action="list"` in the bx:zip tag to list the zip contents.
+
+
+```java
+bx:zip action="list" file="zipFileName" name="zipList";
+
+```
+
+

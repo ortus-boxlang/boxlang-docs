@@ -21,35 +21,47 @@ StructIsOrdered(struct=[structloose])
 
 ## Examples
 
+### Check if a struct is ordered
+
+
+
+<a href="https://try.boxlang.io/?code=eJwrLikqTS7xSy3XUFDKL0pJLUpNUVLQ1Mss9odwNDStuQDtoAvv" target="_blank">Run Example</a>
+
+```java
+structNew( "ordered" ).isOrdered();
+
+```
+
+Result: true
 
 
 ## Related
 
-  * [StructAppend](./StructAppend.md)
-  * [StructClear](./StructClear.md)
-  * [StructCopy](./StructCopy.md)
-  * [StructDelete](./StructDelete.md)
-  * [StructEach](./StructEach.md)
   * [StructEquals](./StructEquals.md)
-  * [StructEvery](./StructEvery.md)
-  * [StructFilter](./StructFilter.md)
-  * [StructFind](./StructFind.md)
-  * [StructFindKey](./StructFindKey.md)
-  * [StructFindValue](./StructFindValue.md)
-  * [StructGet](./StructGet.md)
-  * [StructGetMetadata](./StructGetMetadata.md)
-  * [StructInsert](./StructInsert.md)
-  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
-  * [StructKeyArray](./StructKeyArray.md)
-  * [StructKeyExists](./StructKeyExists.md)
-  * [StructKeyList](./StructKeyList.md)
-  * [StructKeyTranslate](./StructKeyTranslate.md)
-  * [StructMap](./StructMap.md)
-  * [StructNew](./StructNew.md)
   * [StructReduce](./StructReduce.md)
-  * [StructSome](./StructSome.md)
+  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
+  * [StructNew](./StructNew.md)
+  * [StructGet](./StructGet.md)
+  * [StructDelete](./StructDelete.md)
+  * [StructFilter](./StructFilter.md)
   * [StructSort](./StructSort.md)
+  * [StructEach](./StructEach.md)
   * [StructToQueryString](./StructToQueryString.md)
-  * [StructToSorted](./StructToSorted.md)
   * [StructUpdate](./StructUpdate.md)
+  * [StructClear](./StructClear.md)
+  * [StructGetMetadata](./StructGetMetadata.md)
+  * [StructKeyArray](./StructKeyArray.md)
+  * [StructToSorted](./StructToSorted.md)
+  * [StructCopy](./StructCopy.md)
+  * [StructFindKey](./StructFindKey.md)
+  * [StructInsert](./StructInsert.md)
+  * [StructMap](./StructMap.md)
+  * [StructFindValue](./StructFindValue.md)
   * [StructValueArray](./StructValueArray.md)
+  * [StructSome](./StructSome.md)
+  * [StructKeyExists](./StructKeyExists.md)
+  * [StructKeyTranslate](./StructKeyTranslate.md)
+  * [StructEvery](./StructEvery.md)
+  * [StructFind](./StructFind.md)
+  * [StructKeyList](./StructKeyList.md)
+  * [StructAppend](./StructAppend.md)

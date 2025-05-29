@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Param`
 
 Tests for a parameter's existence, tests its data type, and, if a default value is not assigned, optionally provides one.
@@ -28,11 +28,36 @@ pattern=[string] />
 
 ## Examples
 
+### bx:param in BL
+
+A very basic BL bx:param example
+
+
+```java
+<bx:param name="userID" default="0"/>
 ```
-<bx:Param name=[string]
-type=[string]
-default=[any]
-max=[numeric]
-min=[numeric]
-pattern=[string] />
+
+
+### bx:param in script
+
+A very basic script bx:param example
+
+<a href="https://try.boxlang.io/?code=eJxLqrAqSCxKzFXIS8xNtVUqLU4t8nRRUkhJTUsszSmxNbDmSiKoAgArtxbV" target="_blank">Run Example</a>
+
+```java
+bx:param name="userID" default=0;
+bx:param name="userID" default=0;
+
 ```
+
+
+### Tag syntax using a regex
+
+Throws an error if the value is not one of a list of possible values
+
+
+```java
+<bx:param name="sortdir" default="ASC" type="regex" pattern="ASC|DESC"/>
+```
+
+

@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Include`
 
 I include a template into the current template
@@ -18,6 +18,13 @@ I include a template into the current template
 
 ## Examples
 
+### Tag Syntax
+
+
+
+
+```java
+<bx:include template="mypage.bxm">
 ```
-<bx:Include template=[string] />
-```
+
+

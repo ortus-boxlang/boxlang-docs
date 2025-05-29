@@ -25,6 +25,6 @@ LSNumberFormat(number=[number], mask=[string], locale=[string])
 
 ## Related
 
-  * [BooleanFormat](./BooleanFormat.md)
   * [DecimalFormat](./DecimalFormat.md)
+  * [BooleanFormat](./BooleanFormat.md)
   * [NumberFormat](./NumberFormat.md)

@@ -19,41 +19,65 @@ GetCanonicalPath(path=[string])
 
 ## Examples
 
+### getCanonicalPath Example
+
+ Returns the canonical path of the input path.
+
+<a href="https://try.boxlang.io/?code=eJwrL8osSfUvLSkoLdFQSE8tcU7My8%2FLTE7MCUgsyQCLOCUWp4ak5hbkJJakggU1FYDQmgsAiaEUTg%3D%3D" target="_blank">Run Example</a>
+
+```java
+writeOutput( getCanonicalPath( getBaseTemplatePath() ) );
+
+```
+
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJxLSixOjS9ILMlQsFVITy1xAnJDUnMLchJLUgOAohqa1lzJiXn5eZnJiTkQJc4wLlheIQluAFBpSmlugYYCQgNQSEFfX0E%2FIz83Vb88NalYvzipQj%2BnNDk11VQfaFZRam5%2BSapeclouFwDd4y8X" target="_blank">Run Example</a>
+
+```java
+base_path = getBaseTemplatePath();
+canonical = getCanonicalPath( base_path );
+dump( canonical );
+ // /var/task
+
+```
+
 
 
 ## Related
 
-  * [ContractPath](./ContractPath.md)
-  * [CreateTempDirectory](./CreateTempDirectory.md)
-  * [CreateTempFile](./CreateTempFile.md)
-  * [DirectoryCopy](./DirectoryCopy.md)
-  * [DirectoryCreate](./DirectoryCreate.md)
-  * [DirectoryDelete](./DirectoryDelete.md)
-  * [DirectoryExists](./DirectoryExists.md)
-  * [DirectoryList](./DirectoryList.md)
-  * [DirectoryMove](./DirectoryMove.md)
-  * [DirectoryRename](./DirectoryRename.md)
-  * [ExpandPath](./ExpandPath.md)
-  * [FileAppend](./FileAppend.md)
-  * [FileClose](./FileClose.md)
-  * [FileCopy](./FileCopy.md)
-  * [FileDelete](./FileDelete.md)
-  * [FileExists](./FileExists.md)
-  * [FileGetMimeType](./FileGetMimeType.md)
-  * [FileInfo](./FileInfo.md)
   * [FileIsEOF](./FileIsEOF.md)
-  * [FileMove](./FileMove.md)
-  * [FileOpen](./FileOpen.md)
+  * [FileExists](./FileExists.md)
+  * [FileInfo](./FileInfo.md)
+  * [GetFileInfo](./GetFileInfo.md)
+  * [FileGetMimeType](./FileGetMimeType.md)
+  * [FileWriteLine](./FileWriteLine.md)
+  * [DirectoryExists](./DirectoryExists.md)
+  * [FileAppend](./FileAppend.md)
   * [FileRead](./FileRead.md)
   * [FileReadBinary](./FileReadBinary.md)
-  * [FileReadLine](./FileReadLine.md)
-  * [FileSeek](./FileSeek.md)
-  * [FileSetAccessMode](./FileSetAccessMode.md)
-  * [FileSetAttribute](./FileSetAttribute.md)
-  * [FileSetLastModified](./FileSetLastModified.md)
-  * [FileSkipBytes](./FileSkipBytes.md)
-  * [FileWrite](./FileWrite.md)
-  * [FileWriteLine](./FileWriteLine.md)
+  * [DirectoryCreate](./DirectoryCreate.md)
+  * [DirectoryMove](./DirectoryMove.md)
+  * [DirectoryRename](./DirectoryRename.md)
+  * [DirectoryCopy](./DirectoryCopy.md)
+  * [FileOpen](./FileOpen.md)
+  * [FileCopy](./FileCopy.md)
+  * [FileClose](./FileClose.md)
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
-  * [GetFileInfo](./GetFileInfo.md)
+  * [FileReadLine](./FileReadLine.md)
+  * [FileMove](./FileMove.md)
+  * [FileSetAccessMode](./FileSetAccessMode.md)
+  * [FileSeek](./FileSeek.md)
+  * [FileSkipBytes](./FileSkipBytes.md)
+  * [ExpandPath](./ExpandPath.md)
+  * [FileSetLastModified](./FileSetLastModified.md)
+  * [ContractPath](./ContractPath.md)
+  * [CreateTempDirectory](./CreateTempDirectory.md)
+  * [DirectoryDelete](./DirectoryDelete.md)
+  * [FileSetAttribute](./FileSetAttribute.md)
+  * [FileDelete](./FileDelete.md)
+  * [DirectoryList](./DirectoryList.md)
+  * [FileWrite](./FileWrite.md)
+  * [CreateTempFile](./CreateTempFile.md)
   * [getTempFile](./getTempFile.md)

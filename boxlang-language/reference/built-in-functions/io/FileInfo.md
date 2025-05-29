@@ -21,41 +21,73 @@ FileInfo(file=[any])
 
 ## Examples
 
+### Output some information about a temporary file
+
+
+
+<a href="https://try.boxlang.io/?code=eJxtkFFLwzAUhd%2F9Fdc8SAdj1ldFpJqWBVwHa2HgW2ZSF2ja0aaM%2Beu9N0vLZMtLck%2FOd3Nz7CkztYZX%2BNGu1PZAVTQW3HT627XdKZrNgTndO7pmMHu5q%2FAgmqo9k1moIrDnfugw%2FUZLJXe%2Be3Q%2FAouPJN%2BkCYc3YEPD4BkYm8EDsC64GaHbzrib6HYjyvSKPQa7Z5dGKd38J0WxFJynOZFN6%2BCC3Xs7kko6eo%2FjVhqrs7az0kUw9fhMinK15iITKcc4qqGupygK80tsPtid7q7IQnyl8AhPcRyHDfl4Eceep%2BH1enCHARmGC6ea0DxZpTQlqqYHurrIFfV50KbAUAPZqCCHLFBcwI3HhIOj7EE6qGXvwLbKVEYrEoj3iYwN92SEnj7aVjAO6T9OltW77%2F8HrTatjw%3D%3D" target="_blank">Run Example</a>
+
+```java
+myFile = getTempFile( getTempDirectory(), "testFile" );
+fileInfo = getFileInfo( myFile );
+isReadable = (!fileInfo.CANREAD ? "un" : "") & "readable";
+isWritable = (!fileInfo.CANWRITE ? "un" : "") & "writable";
+isHidden = (!fileInfo.ISHIDDEN ? "not " : "") & "hidden";
+date = DateTimeFormat( fileInfo.LASTMODIFIED, "full" );
+fileSize = NumberFormat( fileInfo.SIZE / 1000 / 1000, "0.00" );
+writeOutput( """" & fileInfo.NAME & """ is " & isReadable & ", " & isWritable & " and " & isHidden & ". " );
+writeOutput( "It was at last modified at " & date & " and has a size of " & fileSize & " MB" );
+
+```
+
+Result: "testFile9217639658547923751.tmp" is readable, writable and not hidden. It was at last modified at Friday, November 3, 2017 3:58:08 PM UTC and has a size of 0.00 MB
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJxLy8xJVbBVSE8tCUnNLXAD8jRgHJfMotTkkvyiSg1NHQWllNTcfCUFTWuulNLcAg2FssQiW6A6kAbPvLR8DYU0kEFAhTmJSak5tkruCDk0XTi1oKgHABOwMQs%3D" target="_blank">Run Example</a>
+
+```java
+file = getTempFile( getTempDirectory(), "demo" );
+dump( var=getFileInfo( file ), label="GetFileInfo" );
+dump( var=FileInfo( file ), label="FileInfo" );
+
+```
+
 
 
 ## Related
 
-  * [ContractPath](./ContractPath.md)
-  * [CreateTempDirectory](./CreateTempDirectory.md)
-  * [CreateTempFile](./CreateTempFile.md)
-  * [DirectoryCopy](./DirectoryCopy.md)
-  * [DirectoryCreate](./DirectoryCreate.md)
-  * [DirectoryDelete](./DirectoryDelete.md)
-  * [DirectoryExists](./DirectoryExists.md)
-  * [DirectoryList](./DirectoryList.md)
-  * [DirectoryMove](./DirectoryMove.md)
-  * [DirectoryRename](./DirectoryRename.md)
-  * [ExpandPath](./ExpandPath.md)
-  * [FileAppend](./FileAppend.md)
-  * [FileClose](./FileClose.md)
-  * [FileCopy](./FileCopy.md)
-  * [FileDelete](./FileDelete.md)
-  * [FileExists](./FileExists.md)
-  * [FileGetMimeType](./FileGetMimeType.md)
   * [FileIsEOF](./FileIsEOF.md)
-  * [FileMove](./FileMove.md)
-  * [FileOpen](./FileOpen.md)
+  * [FileExists](./FileExists.md)
+  * [GetFileInfo](./GetFileInfo.md)
+  * [FileGetMimeType](./FileGetMimeType.md)
+  * [FileWriteLine](./FileWriteLine.md)
+  * [DirectoryExists](./DirectoryExists.md)
+  * [FileAppend](./FileAppend.md)
   * [FileRead](./FileRead.md)
   * [FileReadBinary](./FileReadBinary.md)
-  * [FileReadLine](./FileReadLine.md)
-  * [FileSeek](./FileSeek.md)
-  * [FileSetAccessMode](./FileSetAccessMode.md)
-  * [FileSetAttribute](./FileSetAttribute.md)
-  * [FileSetLastModified](./FileSetLastModified.md)
-  * [FileSkipBytes](./FileSkipBytes.md)
-  * [FileWrite](./FileWrite.md)
-  * [FileWriteLine](./FileWriteLine.md)
   * [GetCanonicalPath](./GetCanonicalPath.md)
+  * [DirectoryCreate](./DirectoryCreate.md)
+  * [DirectoryMove](./DirectoryMove.md)
+  * [DirectoryRename](./DirectoryRename.md)
+  * [DirectoryCopy](./DirectoryCopy.md)
+  * [FileOpen](./FileOpen.md)
+  * [FileCopy](./FileCopy.md)
+  * [FileClose](./FileClose.md)
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
-  * [GetFileInfo](./GetFileInfo.md)
+  * [FileReadLine](./FileReadLine.md)
+  * [FileMove](./FileMove.md)
+  * [FileSetAccessMode](./FileSetAccessMode.md)
+  * [FileSeek](./FileSeek.md)
+  * [FileSkipBytes](./FileSkipBytes.md)
+  * [ExpandPath](./ExpandPath.md)
+  * [FileSetLastModified](./FileSetLastModified.md)
+  * [ContractPath](./ContractPath.md)
+  * [CreateTempDirectory](./CreateTempDirectory.md)
+  * [DirectoryDelete](./DirectoryDelete.md)
+  * [FileSetAttribute](./FileSetAttribute.md)
+  * [FileDelete](./FileDelete.md)
+  * [DirectoryList](./DirectoryList.md)
+  * [FileWrite](./FileWrite.md)
+  * [CreateTempFile](./CreateTempFile.md)
   * [getTempFile](./getTempFile.md)

@@ -25,39 +25,87 @@ ListEvery(list=[string], callback=[function:Predicate], delimiter=[string], incl
 
 ## Examples
 
+### Example for positive result
+
+Checks whether all items in a list are greater than 2 and outputs true because all of them fulfill the requirement.
+
+<a href="https://try.boxlang.io/?code=eJzLySwuUbBVUDLRMdUx0zFXsuYqL8osSfUvLSkoLdFQyAFKu5alFlVCmDoKGgqOeZUKZYk5pakKmgq2dgrVXJxFqSWlRXlQQTsFI2uuWqCcpjUXAD1HG50%3D" target="_blank">Run Example</a>
+
+```java
+list = "4,5,6,7";
+writeOutput( listEvery( list, ( Any value ) => {
+	return value > 2;
+} ) );
+
+```
+
+Result: true
+
+### Example for negative result
+
+Checks whether all items in a list are greater than 2 and outputs false because some of them do not fulfill the requirement.
+
+<a href="https://try.boxlang.io/?code=eJzLySwuUbBVUDLUMdIx1jFRsuYqL8osSfUvLSkoLdFQyAFKu5alFlVCmDoKGgqOeZUKZYk5pakKmgq2dgrVXJxFqSWlRXlQQTsFI2uuWqCcpjUXADlvG5E%3D" target="_blank">Run Example</a>
+
+```java
+list = "1,2,3,4";
+writeOutput( listEvery( list, ( Any value ) => {
+	return value > 2;
+} ) );
+
+```
+
+Result: false
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJxdjMEKwjAQBc%2FmKx49pZA%2FCBUEvfkTAbclEGPY7laL%2BO%2FW5FRvwzDMyBplxoAulJLIFQrsHhzyRJ031zjLZSFeLcYaOlic8oolJCVXMeYbvRqmLUeP4Yi3OTw5Cp31XmxL0PudrIt%2F2Q6bYxLlDGElbz4%2F9QXZuzbm" target="_blank">Run Example</a>
+
+```java
+fruits = "apple,pear,orange";
+ListEvery( fruits, ( Any value, Any index, Any list ) => {
+	writeDump( index );
+	writeDump( value );
+	writeDump( list );
+	return true;
+} );
+
+```
+
+Result: true
 
 
 ## Related
 
-  * [GetToken](./GetToken.md)
-  * [ListAppend](./ListAppend.md)
-  * [ListAvg](./ListAvg.md)
-  * [ListChangeDelims](./ListChangeDelims.md)
-  * [ListCompact](./ListCompact.md)
-  * [ListContains](./ListContains.md)
-  * [ListContainsNoCase](./ListContainsNoCase.md)
-  * [ListDeleteAt](./ListDeleteAt.md)
-  * [ListEach](./ListEach.md)
-  * [ListFilter](./ListFilter.md)
-  * [ListFind](./ListFind.md)
-  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListSome](./ListSome.md)
+  * [ListReduceRight](./ListReduceRight.md)
+  * [ListPrepend](./ListPrepend.md)
   * [ListFirst](./ListFirst.md)
-  * [ListGetAt](./ListGetAt.md)
+  * [ListLast](./ListLast.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
-  * [ListItemTrim](./ListItemTrim.md)
-  * [ListLast](./ListLast.md)
-  * [ListLen](./ListLen.md)
-  * [ListMap](./ListMap.md)
-  * [ListPrepend](./ListPrepend.md)
-  * [ListQualify](./ListQualify.md)
-  * [ListReduceRight](./ListReduceRight.md)
-  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
-  * [ListRest](./ListRest.md)
-  * [ListSetAt](./ListSetAt.md)
-  * [ListSome](./ListSome.md)
-  * [ListSort](./ListSort.md)
-  * [ListToArray](./ListToArray.md)
+  * [ListChangeDelims](./ListChangeDelims.md)
+  * [ListFind](./ListFind.md)
+  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListContains](./ListContains.md)
+  * [ListContainsNoCase](./ListContainsNoCase.md)
+  * [ListCompact](./ListCompact.md)
   * [ListTrim](./ListTrim.md)
+  * [ListMap](./ListMap.md)
+  * [ListDeleteAt](./ListDeleteAt.md)
+  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
+  * [ListToArray](./ListToArray.md)
+  * [ListQualify](./ListQualify.md)
+  * [ListAppend](./ListAppend.md)
   * [ListValueCount](./ListValueCount.md)
   * [ListValueCountNoCase](./ListValueCountNoCase.md)
+  * [ListAvg](./ListAvg.md)
+  * [ListLen](./ListLen.md)
+  * [ListRest](./ListRest.md)
+  * [ListGetAt](./ListGetAt.md)
+  * [ListEach](./ListEach.md)
+  * [ListSort](./ListSort.md)
+  * [ListSetAt](./ListSetAt.md)
+  * [ListFilter](./ListFilter.md)
+  * [GetToken](./GetToken.md)
+  * [ListItemTrim](./ListItemTrim.md)

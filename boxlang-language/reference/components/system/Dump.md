@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Dump`
 
 Outputs the contents of a variable (simple or complex) of any type for debugging purposes to a specific output location.
@@ -32,13 +32,4 @@ showUDFs=[boolean] />
 
 ## Examples
 
-```
-<bx:Dump var=[any]
-label=[string]
-top=[numeric]
-expand=[boolean]
-abort=[any]
-output=[string]
-format=[string]
-showUDFs=[boolean] />
-```
+

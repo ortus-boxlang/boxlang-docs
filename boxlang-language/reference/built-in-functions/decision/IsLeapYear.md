@@ -19,39 +19,65 @@ IsLeapYear(year=[numeric])
 
 ## Examples
 
+### Is the current date in a leap year?
+
+
+
+<a href="https://try.boxlang.io/?code=eJxLSSxJVbBVyMsv19C05sos9klNLIhMTSwCiiE4GgqVYDIFpFhTAaiwvCizJNW%2FtKSgtEQDSSFICgBT2BqY" target="_blank">Run Example</a>
+
+```java
+date = now();
+isLeapYear = isLeapYear( year( date ) );
+writeOutput( isLeapYear );
+
+```
+
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJwrL8osSXUpzS3QUMhJTErNsVUyMjC0UNJRKEsssvUs9klNLIhMTSzSUAAJK2gqaFpzlWPRYmSAVYuRAS4thljUG0IUAwDp1ytf" target="_blank">Run Example</a>
+
+```java
+writeDump( label="2018", var=IsLeapYear( 2018 ) );
+writeDump( label="2020", var=IsLeapYear( 2020 ) );
+writeDump( label="1", var=IsLeapYear( 1 ) );
+
+```
+
 
 
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
-  * [Attempt](./Attempt.md)
-  * [IsArray](./IsArray.md)
+  * [IsXMLDoc](./IsXMLDoc.md)
   * [IsBinary](./IsBinary.md)
-  * [IsBoolean](./IsBoolean.md)
-  * [IsClosure](./IsClosure.md)
-  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsDate](./IsDate.md)
-  * [IsDateObject](./IsDateObject.md)
-  * [IsDebugMode](./IsDebugMode.md)
+  * [IsNumericDate](./IsNumericDate.md)
   * [IsDefined](./IsDefined.md)
   * [IsEmpty](./IsEmpty.md)
-  * [IsFileObject](./IsFileObject.md)
-  * [IsIPv6](./IsIPv6.md)
-  * [IsJSON](./IsJSON.md)
-  * [IsLocalHost](./IsLocalHost.md)
-  * [IsNull](./IsNull.md)
-  * [IsNumeric](./IsNumeric.md)
-  * [IsNumericDate](./IsNumericDate.md)
+  * [structIsEmpty](./structIsEmpty.md)
+  * [arrayIsEmpty](./arrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
+  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsObject](./IsObject.md)
+  * [IsDateObject](./IsDateObject.md)
+  * [IsXmlAttribute](./IsXmlAttribute.md)
+  * [IsValid](./IsValid.md)
+  * [IsDebugMode](./IsDebugMode.md)
+  * [IsBoolean](./IsBoolean.md)
   * [IsQuery](./IsQuery.md)
+  * [IsArray](./IsArray.md)
+  * [IsJSON](./IsJSON.md)
+  * [IsXML](./IsXML.md)
+  * [IsIPv6](./IsIPv6.md)
+  * [IsNull](./IsNull.md)
+  * [IsClosure](./IsClosure.md)
+  * [IsNumeric](./IsNumeric.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [IsSimpleValue](./IsSimpleValue.md)
   * [IsStruct](./IsStruct.md)
-  * [IsValid](./IsValid.md)
-  * [IsXML](./IsXML.md)
-  * [IsXmlAttribute](./IsXmlAttribute.md)
-  * [IsXMLDoc](./IsXMLDoc.md)
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
-  * [LSIsNumeric](./LSIsNumeric.md)
-  * [structIsEmpty](./structIsEmpty.md)
+  * [IsLocalHost](./IsLocalHost.md)
+  * [IsFileObject](./IsFileObject.md)

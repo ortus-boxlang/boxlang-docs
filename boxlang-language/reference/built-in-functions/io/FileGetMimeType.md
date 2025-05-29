@@ -20,41 +20,69 @@ FileGetMimeType(file=[string], strict=[boolean])
 
 ## Examples
 
+### Two PDFs and two text files with and without strict mode
+
+Assume that you have a file named test.pdf in temp directory and test.txt in the same folder, and you want to check the MIME type. Here test.txt is a copy of test.pdf with extension renamed to txt.
+
+
+```java
+<bx:script>
+	mimeTypes = "";
+	mimeTypes = listAppend( mimeTypes, fileGetMimeType( expandPath( "/folder1/test.pdf" ) ) );
+	mimeTypes = listAppend( mimeTypes, fileGetMimeType( expandPath( "/folder1/test.pdf" ), false ) );
+	mimeTypes = listAppend( mimeTypes, fileGetMimeType( expandPath( "/folder1/test.txt" ) ) );
+	mimeTypes = listAppend( mimeTypes, fileGetMimeType( expandPath( "/folder1/test.txt" ), false ) );
+	writeOutput( mimeTypes );
+</bx:script>
+
+```
+
+Result: application/pdf,application/pdf,text/plain,text/plain
+
+### Additional Examples
+
+
+```java
+file = filegetmimetype( filepath / filename.EXT );
+writeDump( file );
+
+```
+
 
 
 ## Related
 
-  * [ContractPath](./ContractPath.md)
-  * [CreateTempDirectory](./CreateTempDirectory.md)
-  * [CreateTempFile](./CreateTempFile.md)
-  * [DirectoryCopy](./DirectoryCopy.md)
-  * [DirectoryCreate](./DirectoryCreate.md)
-  * [DirectoryDelete](./DirectoryDelete.md)
-  * [DirectoryExists](./DirectoryExists.md)
-  * [DirectoryList](./DirectoryList.md)
-  * [DirectoryMove](./DirectoryMove.md)
-  * [DirectoryRename](./DirectoryRename.md)
-  * [ExpandPath](./ExpandPath.md)
-  * [FileAppend](./FileAppend.md)
-  * [FileClose](./FileClose.md)
-  * [FileCopy](./FileCopy.md)
-  * [FileDelete](./FileDelete.md)
+  * [FileIsEOF](./FileIsEOF.md)
   * [FileExists](./FileExists.md)
   * [FileInfo](./FileInfo.md)
-  * [FileIsEOF](./FileIsEOF.md)
-  * [FileMove](./FileMove.md)
-  * [FileOpen](./FileOpen.md)
+  * [GetFileInfo](./GetFileInfo.md)
+  * [FileWriteLine](./FileWriteLine.md)
+  * [DirectoryExists](./DirectoryExists.md)
+  * [FileAppend](./FileAppend.md)
   * [FileRead](./FileRead.md)
   * [FileReadBinary](./FileReadBinary.md)
-  * [FileReadLine](./FileReadLine.md)
-  * [FileSeek](./FileSeek.md)
-  * [FileSetAccessMode](./FileSetAccessMode.md)
-  * [FileSetAttribute](./FileSetAttribute.md)
-  * [FileSetLastModified](./FileSetLastModified.md)
-  * [FileSkipBytes](./FileSkipBytes.md)
-  * [FileWrite](./FileWrite.md)
-  * [FileWriteLine](./FileWriteLine.md)
   * [GetCanonicalPath](./GetCanonicalPath.md)
+  * [DirectoryCreate](./DirectoryCreate.md)
+  * [DirectoryMove](./DirectoryMove.md)
+  * [DirectoryRename](./DirectoryRename.md)
+  * [DirectoryCopy](./DirectoryCopy.md)
+  * [FileOpen](./FileOpen.md)
+  * [FileCopy](./FileCopy.md)
+  * [FileClose](./FileClose.md)
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
-  * [GetFileInfo](./GetFileInfo.md)
+  * [FileReadLine](./FileReadLine.md)
+  * [FileMove](./FileMove.md)
+  * [FileSetAccessMode](./FileSetAccessMode.md)
+  * [FileSeek](./FileSeek.md)
+  * [FileSkipBytes](./FileSkipBytes.md)
+  * [ExpandPath](./ExpandPath.md)
+  * [FileSetLastModified](./FileSetLastModified.md)
+  * [ContractPath](./ContractPath.md)
+  * [CreateTempDirectory](./CreateTempDirectory.md)
+  * [DirectoryDelete](./DirectoryDelete.md)
+  * [FileSetAttribute](./FileSetAttribute.md)
+  * [FileDelete](./FileDelete.md)
+  * [DirectoryList](./DirectoryList.md)
+  * [FileWrite](./FileWrite.md)
+  * [CreateTempFile](./CreateTempFile.md)
   * [getTempFile](./getTempFile.md)

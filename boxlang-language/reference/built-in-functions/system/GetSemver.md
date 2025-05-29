@@ -1,24 +1,32 @@
-# GetSemver
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-Parses and returns a Semver object version of the passed version string or if you do not pass in a version, we will return to you a Semver builder {@link Semver#of()} object, so you can programmaticaly build a version object.
+# Function: `GetSemver`
 
-Semver is a tool that provides useful methods to manipulate versions that follow the "semantic versioning" specification (see [semver.org](http://semver.org) and [github](https://github.com/semver4j/semver4j)).
+Parses and returns a Semver object version of the passed version string or if you do not pass
+ in a version, we will return to you a Semver builder {@link Semver#of()} object, so you can programmaticaly build
+ a version object.
 
-Some of the methods provided by Semver are:
+<p>
+ Semver is a tool that provides useful methods to manipulate versions that follow the "semantic versioning"
+ specification (see <a href="http://semver.org">semver.org</a> and <a href="https://github.com/semver4j/semver4j">github</a>).
+ <p>
+ Some of the methods provided by Semver are:
+ <ul>
+ <li>{@link Semver#compareTo(Semver)}: Compares two versions and returns -1, 0, or 1 if the first version is less than,
+ equal to, or greater than the second version, respectively.</li>
+ <li>{@link Semver#satisfies(String)}: Checks if the version satisfies the given range.</li>
+ <li>{@link Semver#isValid(String)}: Checks if the version is valid.</li>
+ <li>{@link Semver#nextMajor()}: Increments the major version.</li>
+ <li>{@link Semver#nextMinor()}: Increments the minor version.</li>
+ <li>{@link Semver#nextPatch()}: Increments the patch version.</li>
+ <li>{@link Semver#withBuild(String)}: Set the build version.</li>
+ <li>{@link Semver#withPreRelease(String)}: Set the pre-release version.</li>
+ <li>{@link Semver#isStable()}: Checks if the version is stable.</li>
+ </ul>
+ <p>
+ Here are some examples of how to parse and manipulate versions using Semver:
 
-* {@link Semver#compare(Semver)}: Compares two versions and returns -1, 0, or 1 if the first version is less than, equal to, or greater than the second version, respectively.
-* {@link Semver#satisfies(String)}: Checks if the version satisfies the given range.
-* {@link Semver#valid()}: Checks if the version is valid.
-* {@link Semver#incMajor()}: Increments the major version.
-* {@link Semver#incMinor()}: Increments the minor version.
-* {@link Semver#incPatch()}: Increments the patch version.
-* {@link Semver#incPreRelease()}: Increments the pre-release version.
-* {@link Semver#incBuild()}: Increments the build version.
-* {@link Semver#isStable()}: Checks if the version is stable.
-
-Here are some examples of how to parse and manipulate versions using Semver:
-
-```
+ <pre>
 
  var version = GetSemver( "1.2.3-alpha+20151212" );
  var version = GetSemver( "1.2.3-alpha" );
@@ -26,12 +34,11 @@ Here are some examples of how to parse and manipulate versions using Semver:
  var version = GetSemver( "1.2.3+20151212" );
  var version = GetSemver( "1.2.3-alpha.1" );
  var version = GetSemver( "1.2.3-alpha.beta" );
- 
-```
+ </pre>
 
-Here are some examples of comparing versions using Semver:
+ Here are some examples of comparing versions using Semver:
 
-```
+ <pre>
  var version1 = GetSemver( "1.2.3" );
  var version2 = GetSemver( "1.2.4" );
  var version3 = GetSemver( "1.3.0" );
@@ -39,17 +46,16 @@ Here are some examples of comparing versions using Semver:
  version1.compare( version2 ); // -1
  version1.compare( version3 ); // -1
  version2.compare( version3 ); // -1
- 
-```
+ </pre>
 
-To use the builder you can do something like this:
+ <p>
+ To use the builder you can do something like this:
 
-```
+ <pre>
 
  var version = GetSemver().withMajor( 1 ).withMinor( 2 ).withPatch( 3 ).withPreRelease( "alpha" ).toSemver();
  var versionString = GetSemver().withMajor( 1 ).withMinor( 2 ).withPatch( 3 ).withPreRelease( "alpha" ).toString();
- 
-```
+ </pre>
 
 ## Method Signature
 
@@ -59,74 +65,80 @@ GetSemver(version=[string])
 
 ### Arguments
 
-| Argument  | Type     | Required | Description                  | Default |
-| --------- | -------- | -------- | ---------------------------- | ------- |
-| `version` | `string` | `false`  | The version string to parse. |         |
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `version` | `string` | `false` | The version string to parse. |  |
 
 ## Examples
 
+
+
 ## Related
 
-* [ApplicationRestart](ApplicationRestart.md)
-* [ApplicationStartTime](ApplicationStartTime.md)
-* [ApplicationStop](ApplicationStop.md)
-* [BoxAnnounce](BoxAnnounce.md)
-* [BoxAnnounceAsync](BoxAnnounceAsync.md)
-* [BoxRegisterInterceptionPoints](BoxRegisterInterceptionPoints.md)
-* [BoxRegisterInterceptor](BoxRegisterInterceptor.md)
-* [BoxRegisterRequestInterceptor](BoxRegisterRequestInterceptor.md)
-* [CallStackGet](CallStackGet.md)
-* [CreateGUID](CreateGUID.md)
-* [CreateObject](CreateObject.md)
-* [CreateUUID](CreateUUID.md)
-* [DE](DE.md)
-* [DebugBoxContexts](DebugBoxContexts.md)
-* [Dump](Dump.md)
-* [Duplicate](Duplicate.md)
-* [echo](echo.md)
-* [EncodeForHTML](EncodeForHTML.md)
-* [GetApplicationMetadata](GetApplicationMetadata.md)
-* [GetBaseTagData](GetBaseTagData.md)
-* [GetBaseTagList](GetBaseTagList.md)
-* [GetBaseTemplatePath](GetBaseTemplatePath.md)
-* [GetBoxContext](GetBoxContext.md)
-* [GetBoxRuntime](GetBoxRuntime.md)
-* [GetBoxVersionInfo](GetBoxVersionInfo.md)
-* [GetClassMetadata](GetClassMetadata.md)
-* [GetComponentList](GetComponentList.md)
-* [GetContextRoot](GetContextRoot.md)
-* [GetCurrentTemplatePath](GetCurrentTemplatePath.md)
-* [GetFileFromPath](GetFileFromPath.md)
-* [GetFunctionCalledName](GetFunctionCalledName.md)
-* [GetFunctionList](GetFunctionList.md)
-* [GetModuleInfo](GetModuleInfo.md)
-* [GetModuleList](GetModuleList.md)
-* [GetRequestClassLoader](GetRequestClassLoader.md)
-* [GetSystemSetting](GetSystemSetting.md)
-* [GetTempDirectory](GetTempDirectory.md)
-* [GetTickCount](GetTickCount.md)
-* [htmlEditFormat](htmlEditFormat.md)
-* [IIF](IIF.md)
-* [Invoke](Invoke.md)
-* [IsInstanceOf](IsInstanceOf.md)
-* [JavaCast](JavaCast.md)
-* [ObjectDeserialize](ObjectDeserialize.md)
-* [ObjectSerialize](ObjectSerialize.md)
-* [PagePoolClear](PagePoolClear.md)
-* [Print](Print.md)
-* [Println](Println.md)
-* [RunThreadInContext](RunThreadInContext.md)
-* [SessionInvalidate](SessionInvalidate.md)
-* [SessionRotate](SessionRotate.md)
-* [SessionStartTime](SessionStartTime.md)
-* [Sleep](Sleep.md)
-* [SystemCacheClear](SystemCacheClear.md)
-* [SystemExecute](SystemExecute.md)
-* [SystemOutput](SystemOutput.md)
-* [Throw](Throw.md)
-* [Trace](Trace.md)
-* [URLDecode](URLDecode.md)
-* [URLEncodedFormat](URLEncodedFormat.md)
-* [writeDump](writeDump.md)
-* [WriteLog](WriteLog.md)
-* [WriteOutput](WriteOutput.md)
+  * [Throw](./Throw.md)
+  * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
+  * [Duplicate](./Duplicate.md)
+  * [WriteLog](./WriteLog.md)
+  * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [SessionRotate](./SessionRotate.md)
+  * [IsInstanceOf](./IsInstanceOf.md)
+  * [GetApplicationMetadata](./GetApplicationMetadata.md)
+  * [URLDecode](./URLDecode.md)
+  * [GetFunctionList](./GetFunctionList.md)
+  * [URLEncodedFormat](./URLEncodedFormat.md)
+  * [ApplicationRestart](./ApplicationRestart.md)
+  * [Invoke](./Invoke.md)
+  * [GetModuleInfo](./GetModuleInfo.md)
+  * [CreateUUID](./CreateUUID.md)
+  * [GetTempDirectory](./GetTempDirectory.md)
+  * [GetModuleList](./GetModuleList.md)
+  * [ApplicationStop](./ApplicationStop.md)
+  * [SystemExecute](./SystemExecute.md)
+  * [IIF](./IIF.md)
+  * [BoxModuleReload](./BoxModuleReload.md)
+  * [GetRequestClassLoader](./GetRequestClassLoader.md)
+  * [GetFunctionCalledName](./GetFunctionCalledName.md)
+  * [WriteOutput](./WriteOutput.md)
+  * [echo](./echo.md)
+  * [Print](./Print.md)
+  * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
+  * [ApplicationStartTime](./ApplicationStartTime.md)
+  * [GetBoxContext](./GetBoxContext.md)
+  * [CreateObject](./CreateObject.md)
+  * [GetComponentList](./GetComponentList.md)
+  * [ObjectSerialize](./ObjectSerialize.md)
+  * [SessionInvalidate](./SessionInvalidate.md)
+  * [SessionStartTime](./SessionStartTime.md)
+  * [BoxUnregisterRequestInterceptor](./BoxUnregisterRequestInterceptor.md)
+  * [GetFileFromPath](./GetFileFromPath.md)
+  * [EncodeForHTML](./EncodeForHTML.md)
+  * [htmlEditFormat](./htmlEditFormat.md)
+  * [GetClassMetadata](./GetClassMetadata.md)
+  * [SystemOutput](./SystemOutput.md)
+  * [JavaCast](./JavaCast.md)
+  * [GetContextRoot](./GetContextRoot.md)
+  * [GetTickCount](./GetTickCount.md)
+  * [CreateGUID](./CreateGUID.md)
+  * [Sleep](./Sleep.md)
+  * [DE](./DE.md)
+  * [GetBoxRuntime](./GetBoxRuntime.md)
+  * [PagePoolClear](./PagePoolClear.md)
+  * [GetCurrentTemplatePath](./GetCurrentTemplatePath.md)
+  * [Println](./Println.md)
+  * [SystemCacheClear](./SystemCacheClear.md)
+  * [GetSystemSetting](./GetSystemSetting.md)
+  * [RunThreadInContext](./RunThreadInContext.md)
+  * [GetBaseTagData](./GetBaseTagData.md)
+  * [BoxAnnounce](./BoxAnnounce.md)
+  * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
+  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
+  * [GetBoxVersionInfo](./GetBoxVersionInfo.md)
+  * [Trace](./Trace.md)
+  * [GetBaseTagList](./GetBaseTagList.md)
+  * [ObjectDeserialize](./ObjectDeserialize.md)
+  * [DebugBoxContexts](./DebugBoxContexts.md)
+  * [Dump](./Dump.md)
+  * [writeDump](./writeDump.md)
+  * [BoxUnregisterInterceptor](./BoxUnregisterInterceptor.md)
+  * [CallStackGet](./CallStackGet.md)

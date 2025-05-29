@@ -22,41 +22,60 @@ FileRead(filepath=[string], charsetOrBufferSize=[string], charset=[string], buff
 
 ## Examples
 
+### Read a file into a binary object
+
+Uses expandPath to grab a file in current directory.
+
+
+```java
+binaryContent = fileReadBinary( expandPath( "./file.pdf" ) );
+
+```
+
+
+### Additional Examples
+
+
+```java
+binaryContent = fileReadBinary( expandPath( "./image.jpg" ) );
+
+```
+
 
 
 ## Related
 
-  * [ContractPath](./ContractPath.md)
-  * [CreateTempDirectory](./CreateTempDirectory.md)
-  * [CreateTempFile](./CreateTempFile.md)
-  * [DirectoryCopy](./DirectoryCopy.md)
-  * [DirectoryCreate](./DirectoryCreate.md)
-  * [DirectoryDelete](./DirectoryDelete.md)
+  * [FileIsEOF](./FileIsEOF.md)
+  * [FileExists](./FileExists.md)
+  * [FileInfo](./FileInfo.md)
+  * [GetFileInfo](./GetFileInfo.md)
+  * [FileGetMimeType](./FileGetMimeType.md)
+  * [FileWriteLine](./FileWriteLine.md)
   * [DirectoryExists](./DirectoryExists.md)
-  * [DirectoryList](./DirectoryList.md)
+  * [FileAppend](./FileAppend.md)
+  * [FileReadBinary](./FileReadBinary.md)
+  * [GetCanonicalPath](./GetCanonicalPath.md)
+  * [DirectoryCreate](./DirectoryCreate.md)
   * [DirectoryMove](./DirectoryMove.md)
   * [DirectoryRename](./DirectoryRename.md)
-  * [ExpandPath](./ExpandPath.md)
-  * [FileAppend](./FileAppend.md)
-  * [FileClose](./FileClose.md)
-  * [FileCopy](./FileCopy.md)
-  * [FileDelete](./FileDelete.md)
-  * [FileExists](./FileExists.md)
-  * [FileGetMimeType](./FileGetMimeType.md)
-  * [FileInfo](./FileInfo.md)
-  * [FileIsEOF](./FileIsEOF.md)
-  * [FileMove](./FileMove.md)
+  * [DirectoryCopy](./DirectoryCopy.md)
   * [FileOpen](./FileOpen.md)
-  * [FileReadBinary](./FileReadBinary.md)
-  * [FileReadLine](./FileReadLine.md)
-  * [FileSeek](./FileSeek.md)
-  * [FileSetAccessMode](./FileSetAccessMode.md)
-  * [FileSetAttribute](./FileSetAttribute.md)
-  * [FileSetLastModified](./FileSetLastModified.md)
-  * [FileSkipBytes](./FileSkipBytes.md)
-  * [FileWrite](./FileWrite.md)
-  * [FileWriteLine](./FileWriteLine.md)
-  * [GetCanonicalPath](./GetCanonicalPath.md)
+  * [FileCopy](./FileCopy.md)
+  * [FileClose](./FileClose.md)
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
-  * [GetFileInfo](./GetFileInfo.md)
+  * [FileReadLine](./FileReadLine.md)
+  * [FileMove](./FileMove.md)
+  * [FileSetAccessMode](./FileSetAccessMode.md)
+  * [FileSeek](./FileSeek.md)
+  * [FileSkipBytes](./FileSkipBytes.md)
+  * [ExpandPath](./ExpandPath.md)
+  * [FileSetLastModified](./FileSetLastModified.md)
+  * [ContractPath](./ContractPath.md)
+  * [CreateTempDirectory](./CreateTempDirectory.md)
+  * [DirectoryDelete](./DirectoryDelete.md)
+  * [FileSetAttribute](./FileSetAttribute.md)
+  * [FileDelete](./FileDelete.md)
+  * [DirectoryList](./DirectoryList.md)
+  * [FileWrite](./FileWrite.md)
+  * [CreateTempFile](./CreateTempFile.md)
   * [getTempFile](./getTempFile.md)

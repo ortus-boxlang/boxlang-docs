@@ -19,34 +19,54 @@ Log10(number=[numeric])
 
 ## Examples
 
+### logarithm 3.1 to base 10
+
+
+
+<a href="https://try.boxlang.io/?code=eJzLyU83NNBQMNYzVNC05gIAG7kDDA%3D%3D" target="_blank">Run Example</a>
+
+```java
+log10( 3.1 );
+
+```
+
+Result: 0.4913616938350069271914042463676003
+
+### Additional Examples
+
+
+```java
+<bx:output>#log10( 10 )#</bx:output>
+```
+
 
 
 ## Related
 
-  * [Abs](./Abs.md)
-  * [Acos](./Acos.md)
+  * [Sqr](./Sqr.md)
   * [Asin](./Asin.md)
-  * [Atn](./Atn.md)
-  * [Ceiling](./Ceiling.md)
-  * [Cos](./Cos.md)
+  * [Sgn](./Sgn.md)
+  * [Pi](./Pi.md)
   * [DecrementValue](./DecrementValue.md)
-  * [Exp](./Exp.md)
-  * [Fix](./Fix.md)
-  * [Floor](./Floor.md)
-  * [FormatBaseN](./FormatBaseN.md)
-  * [IncrementValue](./IncrementValue.md)
   * [InputBaseN](./InputBaseN.md)
+  * [Round](./Round.md)
+  * [Cos](./Cos.md)
   * [Int](./Int.md)
-  * [Log](./Log.md)
+  * [Exp](./Exp.md)
+  * [Ceiling](./Ceiling.md)
+  * [RandRange](./RandRange.md)
+  * [Atn](./Atn.md)
+  * [Fix](./Fix.md)
   * [Max](./Max.md)
   * [Min](./Min.md)
-  * [Pi](./Pi.md)
+  * [Abs](./Abs.md)
+  * [Log](./Log.md)
   * [PrecisionEvaluate](./PrecisionEvaluate.md)
+  * [Acos](./Acos.md)
   * [Rand](./Rand.md)
+  * [Floor](./Floor.md)
   * [Randomize](./Randomize.md)
-  * [RandRange](./RandRange.md)
-  * [Round](./Round.md)
-  * [Sgn](./Sgn.md)
-  * [Sin](./Sin.md)
-  * [Sqr](./Sqr.md)
+  * [FormatBaseN](./FormatBaseN.md)
   * [Tan](./Tan.md)
+  * [Sin](./Sin.md)
+  * [IncrementValue](./IncrementValue.md)

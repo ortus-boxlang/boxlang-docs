@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Lock`
 
 Ensures the integrity of shared data.
@@ -26,10 +26,28 @@ throwOnTimeout=[boolean] />
 
 ## Examples
 
+### Script Syntax
+
+
+
+
+```java
+bx:lock timeout="60" scope="session" type="exclusive" {
+	session.MYVAR = "Hello";
+}
+
 ```
-<bx:Lock name=[string]
-scope=[string]
-type=[string]
-timeout=[Integer]
-throwOnTimeout=[boolean] />
+
+
+### Tag Syntax
+
+
+
+
+```java
+<bx:lock timeout="60" scope="session" type="exclusive"> 
+ <bx:set session.MYVAR = "Hello" > 
+ </bx:lock>
 ```
+
+

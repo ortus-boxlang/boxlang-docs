@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Exit`
 
 This component aborts processing of the currently executing custom tag, exits the page within the currently executing custom tag, or re-executes a section of code within the currently executing custom tag.
@@ -18,6 +18,22 @@ This component aborts processing of the currently executing custom tag, exits th
 
 ## Examples
 
+### Simple bx:exit example
+
+Here the loop over the 5 number. When it's meet the condition as true then the block of code get exit.
+
+
+```java
+<bx:output>
+<bx:loop from="1" to="5" index="i">
+<bx:if i == 3 >
+	<bx:exit>
+<bx:else>
+	#i#
+</bx:if>
+</bx:loop>
+</bx:output>
 ```
-<bx:Exit method=[string] />
-```
+
+Result: 1 2
+

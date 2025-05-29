@@ -20,53 +20,136 @@ ArrayDeleteAt(array=[modifiableArray], index=[integer])
 
 ## Examples
 
+### Simple example for arrayDeleteAt function
+
+Uses the arrayDeleteAt function to delete the value in specific position
+
+<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiVApKTVHSAdLhGZklqWCWe1Fqah6Y5ZRTChEKyMzLVuKKteZKBGl1Sc1JLUl1LNFQKIaZpqNgrKBpzVVeBDTEv7SkoBQo6RXs7xecWpSZmJNZlYqkVkETpBQAhJIoyQ%3D%3D" target="_blank">Run Example</a>
+
+```java
+someArray = [ 
+	"Red",
+	"White",
+	"Green",
+	"Blue",
+	"Pink"
+];
+arrayDeleteAt( someArray, 3 );
+writeOutput( JSONSerialize( someArray ) );
+
+```
+
+Result: ["Red", "White", "Blue", "Pink"]
+
+### Simple example with member function
+
+Uses the member function is the same as running arrayDeleteAt.
+
+<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiVApKTVHSAdLhGZklqWCWe1Fqah6Y5ZRTChEKyMzLVuKKteYqhmnXc0nNSS1JdSzRUDBS0LTmKi8CavcvLSkoBYp4Bfv7BacWZSbmZFalaijANSlogpQCAIUrJos%3D" target="_blank">Run Example</a>
+
+```java
+someArray = [ 
+	"Red",
+	"White",
+	"Green",
+	"Blue",
+	"Pink"
+];
+someArray.DeleteAt( 2 );
+writeOutput( JSONSerialize( someArray ) );
+
+```
+
+Result: ["Red", "Green", "Blue", "Pink"]
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJxLLCpSsFWIVuDiNDTS4eI0AGJDIAaxjYHYBIhNgdiMK9aaK6U0t0BDIRGoQ9OaC0glVrqk5qSWpDqWgEV1FExAEiiqAJteFeI%3D" target="_blank">Run Example</a>
+
+```java
+arr = [ 
+	12,
+	0,
+	1,
+	2,
+	3,
+	4,
+	5,
+	6
+];
+dump( arr );
+arrayDeleteAt( arr, 4 );
+dump( arr );
+
+```
+
+
+<a href="https://try.boxlang.io/?code=eJxLLCpSsFWIVuDiNDTS4eI0AGJDIAaxjYHYBIhNgdiMK9aaK6U0t0BDIRGoQ9OaC0jppaTmpJakOpZoKJiAhFDkAQ8KE8U%3D" target="_blank">Run Example</a>
+
+```java
+arr = [ 
+	12,
+	0,
+	1,
+	2,
+	3,
+	4,
+	5,
+	6
+];
+dump( arr );
+arr.deleteAt( 4 );
+dump( arr );
+
+```
+
 
 
 ## Related
 
-  * [ArrayAppend](./ArrayAppend.md)
-  * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayClear](./ArrayClear.md)
-  * [ArrayContains](./ArrayContains.md)
-  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-  * [ArrayDelete](./ArrayDelete.md)
-  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-  * [ArrayEach](./ArrayEach.md)
-  * [ArrayEvery](./ArrayEvery.md)
-  * [ArrayFilter](./ArrayFilter.md)
-  * [ArrayFind](./ArrayFind.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayMerge](./ArrayMerge.md)
+  * [ArrayIndexExists](./ArrayIndexExists.md)
+  * [ArrayIsDefined](./ArrayIsDefined.md)
   * [ArrayFindAll](./ArrayFindAll.md)
   * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArrayFindNoCase](./ArrayFindNoCase.md)
-  * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayGetMetadata](./ArrayGetMetadata.md)
-  * [ArrayIndexExists](./ArrayIndexExists.md)
-  * [ArrayInsertAt](./ArrayInsertAt.md)
-  * [ArrayIsDefined](./ArrayIsDefined.md)
-  * [ArrayLast](./ArrayLast.md)
-  * [ArrayMap](./ArrayMap.md)
-  * [ArrayMax](./ArrayMax.md)
-  * [ArrayMedian](./ArrayMedian.md)
-  * [ArrayMerge](./ArrayMerge.md)
-  * [ArrayMid](./ArrayMid.md)
-  * [ArrayMin](./ArrayMin.md)
-  * [ArrayNew](./ArrayNew.md)
-  * [ArrayPop](./ArrayPop.md)
-  * [ArrayPrepend](./ArrayPrepend.md)
-  * [ArrayPush](./ArrayPush.md)
-  * [ArrayRange](./ArrayRange.md)
-  * [ArrayReduce](./ArrayReduce.md)
-  * [ArrayReduceRight](./ArrayReduceRight.md)
-  * [ArrayResize](./ArrayResize.md)
-  * [ArrayReverse](./ArrayReverse.md)
-  * [ArraySet](./ArraySet.md)
-  * [ArrayShift](./ArrayShift.md)
-  * [ArraySlice](./ArraySlice.md)
-  * [ArraySome](./ArraySome.md)
-  * [ArraySort](./ArraySort.md)
-  * [ArraySplice](./ArraySplice.md)
   * [ArraySum](./ArraySum.md)
-  * [ArraySwap](./ArraySwap.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayContains](./ArrayContains.md)
+  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
+  * [ArrayPush](./ArrayPush.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArraySome](./ArraySome.md)
+  * [ArrayDelete](./ArrayDelete.md)
+  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
+  * [ArrayMedian](./ArrayMedian.md)
+  * [ArrayAvg](./ArrayAvg.md)
   * [ArrayToList](./ArrayToList.md)
+  * [ArrayFilter](./ArrayFilter.md)
+  * [ArrayClear](./ArrayClear.md)
+  * [ArrayRange](./ArrayRange.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayShift](./ArrayShift.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayUnshift](./ArrayUnshift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayInsertAt](./ArrayInsertAt.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArraySet](./ArraySet.md)
+  * [ArrayMax](./ArrayMax.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArrayEach](./ArrayEach.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayEvery](./ArrayEvery.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMin](./ArrayMin.md)

@@ -19,39 +19,63 @@ IsIPv6(hostname=[string])
 
 ## Examples
 
+### isIPV6 Example
+
+
+
+<a href="https://try.boxlang.io/?code=eJzLLPYMCDPTUFAyNDLXMwBCQyUFTWsuAEPKBNE%3D" target="_blank">Run Example</a>
+
+```java
+isIPV6( "127.0.0.1" );
+
+```
+
+Result: false
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJzLLFCwVVByc7UwsHJ2MTCwMjAAEc4urlaGRqbmEK6RoaGrlbmRpbOSNVd5UWZJqn9pSUFpiYZCZrFnQJkZkC5Q0FTQtOYCANXQE3Y%3D" target="_blank">Run Example</a>
+
+```java
+ip = "FE80:CD00:0000:0CDE:1257:0000:211E:729C";
+writeOutput( isIPv6( ip ) );
+
+```
+
 
 
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
-  * [Attempt](./Attempt.md)
-  * [IsArray](./IsArray.md)
+  * [IsXMLDoc](./IsXMLDoc.md)
   * [IsBinary](./IsBinary.md)
-  * [IsBoolean](./IsBoolean.md)
-  * [IsClosure](./IsClosure.md)
-  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsDate](./IsDate.md)
-  * [IsDateObject](./IsDateObject.md)
-  * [IsDebugMode](./IsDebugMode.md)
+  * [IsNumericDate](./IsNumericDate.md)
   * [IsDefined](./IsDefined.md)
   * [IsEmpty](./IsEmpty.md)
-  * [IsFileObject](./IsFileObject.md)
-  * [IsJSON](./IsJSON.md)
-  * [IsLeapYear](./IsLeapYear.md)
-  * [IsLocalHost](./IsLocalHost.md)
-  * [IsNull](./IsNull.md)
-  * [IsNumeric](./IsNumeric.md)
-  * [IsNumericDate](./IsNumericDate.md)
+  * [structIsEmpty](./structIsEmpty.md)
+  * [arrayIsEmpty](./arrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
+  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsObject](./IsObject.md)
+  * [IsDateObject](./IsDateObject.md)
+  * [IsXmlAttribute](./IsXmlAttribute.md)
+  * [IsValid](./IsValid.md)
+  * [IsDebugMode](./IsDebugMode.md)
+  * [IsBoolean](./IsBoolean.md)
+  * [IsLeapYear](./IsLeapYear.md)
   * [IsQuery](./IsQuery.md)
+  * [IsArray](./IsArray.md)
+  * [IsJSON](./IsJSON.md)
+  * [IsXML](./IsXML.md)
+  * [IsNull](./IsNull.md)
+  * [IsClosure](./IsClosure.md)
+  * [IsNumeric](./IsNumeric.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
   * [IsSimpleValue](./IsSimpleValue.md)
   * [IsStruct](./IsStruct.md)
-  * [IsValid](./IsValid.md)
-  * [IsXML](./IsXML.md)
-  * [IsXmlAttribute](./IsXmlAttribute.md)
-  * [IsXMLDoc](./IsXMLDoc.md)
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
-  * [LSIsNumeric](./LSIsNumeric.md)
-  * [structIsEmpty](./structIsEmpty.md)
+  * [IsLocalHost](./IsLocalHost.md)
+  * [IsFileObject](./IsFileObject.md)

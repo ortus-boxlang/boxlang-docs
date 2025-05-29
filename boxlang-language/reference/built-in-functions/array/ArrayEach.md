@@ -24,53 +24,129 @@ ArrayEach(array=[array], callback=[function:Consumer], parallel=[boolean], maxTh
 
 ## Examples
 
+### Simple Example
+
+
+
+<a href="https://try.boxlang.io/?code=eJzLSS0pSS0qVrBViFbg4lRKVNIBkklgMhlMpihxxVpzJRYVJVa6JiZnaCjkQHToKGgoOOZVKqTmpOam5pXogDmZeSmpFQqaCrZ2CtVcnOVFmSWp%2FqUlBaUlGgpKymBJZStlqA5layUFTWuuWhABAKk3JdU%3D" target="_blank">Run Example</a>
+
+```java
+letters = [ 
+	"a",
+	"b",
+	"c",
+	"d"
+];
+arrayEach( letters, ( Any element, Any index ) => {
+	writeOutput( "#index#:#element#;" );
+} );
+
+```
+
+Result: 1:a;2:b;3:c;4:d;
+
+### Member Function Example
+
+
+
+<a href="https://try.boxlang.io/?code=eJxLVLBViFbg4lRKVNIBkklgMlmJK9aaK1EvNTE5Q0NBQ8Exr1IhNSc1NzWvRAfMycxLSa2AMBOLihIrFTQVbO0Uqrk4y4syS1L9S0sKSks0FJSUweqUrZShmpWtlRQ0rblqQQQAdHghQA%3D%3D" target="_blank">Run Example</a>
+
+```java
+a = [ 
+	"a",
+	"b",
+	"c"
+];
+a.each( ( Any element, Any index, Any array ) => {
+	writeOutput( "#index#:#element#;" );
+} );
+
+```
+
+Result: 1:a;2:b;3:c;
+
+### Additional Examples
+
+
+```java
+aNames = array( "Marcus", "Sarah", "Josefine" );
+arrayEach( aNames, ( Any element ) => {
+	dump( element );
+} );
+
+```
+
+
+<a href="https://try.boxlang.io/?code=eJxVkEFrwzAMhc%2FJr3jYFwc81rFblwbG2HmX3EoPrqO1pk5SbIWtjP33JdoY5PKhJ570hDK7xNjhRNwGf3kZp4FN9VS6ubcvC%2BWUnXkUemEnJOG78CQ8C4MqD%2FN0Su726vzZwFkYPA83UKSeBrYiwtDR528pXlTYNfgqi48UmN4mvk5soGo%2FdtRoceut%2Fluhsdfre%2FWhvhdrfUyNwnx%2FkSPR1eBhs1nktwWniSweF7UOaUd2EW3oaQtt1otxh7x8qNLoQ4whkx%2BHLv%2FH%2FAC9Els8" target="_blank">Run Example</a>
+
+```java
+start = getTickCount();
+a = [
+	"a",
+	"b",
+	"c",
+	"d",
+	"e",
+	"f",
+	"g",
+	"h",
+	"i"
+];
+arrayEach( a, ( Any element, Any index, Any array ) => {
+	writeOutput( "<code>#index#:#element# [#getTickCount()#]</code><br>" );
+	sleep( 100 );
+}, true, 3 );
+writeOutput( "Total Time: #(getTickCount() - start)# milliseconds<br>" );
+
+```
+
 
 
 ## Related
 
-  * [ArrayAppend](./ArrayAppend.md)
-  * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayClear](./ArrayClear.md)
-  * [ArrayContains](./ArrayContains.md)
-  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-  * [ArrayDelete](./ArrayDelete.md)
-  * [ArrayDeleteAt](./ArrayDeleteAt.md)
-  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-  * [ArrayEvery](./ArrayEvery.md)
-  * [ArrayFilter](./ArrayFilter.md)
-  * [ArrayFind](./ArrayFind.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayMerge](./ArrayMerge.md)
+  * [ArrayIndexExists](./ArrayIndexExists.md)
+  * [ArrayIsDefined](./ArrayIsDefined.md)
   * [ArrayFindAll](./ArrayFindAll.md)
   * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArrayFindNoCase](./ArrayFindNoCase.md)
-  * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayGetMetadata](./ArrayGetMetadata.md)
-  * [ArrayIndexExists](./ArrayIndexExists.md)
-  * [ArrayInsertAt](./ArrayInsertAt.md)
-  * [ArrayIsDefined](./ArrayIsDefined.md)
-  * [ArrayLast](./ArrayLast.md)
-  * [ArrayMap](./ArrayMap.md)
-  * [ArrayMax](./ArrayMax.md)
-  * [ArrayMedian](./ArrayMedian.md)
-  * [ArrayMerge](./ArrayMerge.md)
-  * [ArrayMid](./ArrayMid.md)
-  * [ArrayMin](./ArrayMin.md)
-  * [ArrayNew](./ArrayNew.md)
-  * [ArrayPop](./ArrayPop.md)
-  * [ArrayPrepend](./ArrayPrepend.md)
-  * [ArrayPush](./ArrayPush.md)
-  * [ArrayRange](./ArrayRange.md)
-  * [ArrayReduce](./ArrayReduce.md)
-  * [ArrayReduceRight](./ArrayReduceRight.md)
-  * [ArrayResize](./ArrayResize.md)
-  * [ArrayReverse](./ArrayReverse.md)
-  * [ArraySet](./ArraySet.md)
-  * [ArrayShift](./ArrayShift.md)
-  * [ArraySlice](./ArraySlice.md)
-  * [ArraySome](./ArraySome.md)
-  * [ArraySort](./ArraySort.md)
-  * [ArraySplice](./ArraySplice.md)
   * [ArraySum](./ArraySum.md)
-  * [ArraySwap](./ArraySwap.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayContains](./ArrayContains.md)
+  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
+  * [ArrayPush](./ArrayPush.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArraySome](./ArraySome.md)
+  * [ArrayDelete](./ArrayDelete.md)
+  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
+  * [ArrayMedian](./ArrayMedian.md)
+  * [ArrayAvg](./ArrayAvg.md)
   * [ArrayToList](./ArrayToList.md)
+  * [ArrayFilter](./ArrayFilter.md)
+  * [ArrayClear](./ArrayClear.md)
+  * [ArrayRange](./ArrayRange.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayShift](./ArrayShift.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayUnshift](./ArrayUnshift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayInsertAt](./ArrayInsertAt.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArraySet](./ArraySet.md)
+  * [ArrayMax](./ArrayMax.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArrayDeleteAt](./ArrayDeleteAt.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayEvery](./ArrayEvery.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMin](./ArrayMin.md)

@@ -23,39 +23,91 @@ ListGetAt(list=[string], position=[integer], delimiter=[string], includeEmptyFie
 
 ## Examples
 
+### Simple Example
+
+Returns the 2nd element in the list
+
+<a href="https://try.boxlang.io/?code=eJzLySwucU8tcSzRUFBKy8%2FXSUos0snJL0rN1cksKC7NVdJRMFLQtOYCABBIDHQ%3D" target="_blank">Run Example</a>
+
+```java
+listGetAt( "foo,bar,lorem,ipsum", 2 );
+
+```
+
+Result: bar
+
+### Example with Delimiter
+
+Returns the 3rd element in the list using a custom delimiter
+
+<a href="https://try.boxlang.io/?code=eJzLySwucU8tcSzRUFBKy8%2FXSUosqsnJL0rN1cksKC7NrclNrSnOz00tycjMS1fSUTDWUVCqUVLQtOYCAGHmE2k%3D" target="_blank">Run Example</a>
+
+```java
+listGetAt( "foo,bar|lorem,ipsum|me|something", 3, "|" );
+
+```
+
+Result: me
+
+### Example with IncludeEmptyValues
+
+Returns the 4th element in the list, treating the empty element as a value
+
+<a href="https://try.boxlang.io/?code=eJzLySwucU8tcSzRUFBKy8%2FXSUos0tHJyS9KzdXJLCguzVXSUTDRUVDSAdIlRaWpCprWXAC3TA9q" target="_blank">Run Example</a>
+
+```java
+listGetAt( "foo,bar,,lorem,ipsum", 4, ",", true );
+
+```
+
+Result: lorem
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJxNzrsKwzAMBdDdX3HxkgRMNZROoUOhj6Wl0D%2BIbUENeWHLpJ9fp3TIJAkuOneJQfiZZc5Sow9JbiynsurOGGuc0QZ7A71OiZnRoGlBhBdLjmOCVeV48GA54ppHJ2EasQR5o6IKnvswFCCqJPFevuMITR2RJUfkdauW1T%2FnYa7xj%2Bw2LQ6Fpi2tVvvymdkJe0y%2F3nDqC4%2BwPHA%3D" target="_blank">Run Example</a>
+
+```java
+writeOutput( listGetAt( "a,,b,c,", 3, ",", true ) ); // Returns b
+// Member Function with '/' delimiter
+strList = "/a//b/c//d";
+writeDump( strList.listGetAt( 5, "/", true ) );
+ // Expected output c
+
+```
+
 
 
 ## Related
 
-  * [GetToken](./GetToken.md)
-  * [ListAppend](./ListAppend.md)
-  * [ListAvg](./ListAvg.md)
-  * [ListChangeDelims](./ListChangeDelims.md)
-  * [ListCompact](./ListCompact.md)
-  * [ListContains](./ListContains.md)
-  * [ListContainsNoCase](./ListContainsNoCase.md)
-  * [ListDeleteAt](./ListDeleteAt.md)
-  * [ListEach](./ListEach.md)
-  * [ListEvery](./ListEvery.md)
-  * [ListFilter](./ListFilter.md)
-  * [ListFind](./ListFind.md)
-  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListSome](./ListSome.md)
+  * [ListReduceRight](./ListReduceRight.md)
+  * [ListPrepend](./ListPrepend.md)
   * [ListFirst](./ListFirst.md)
+  * [ListLast](./ListLast.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
-  * [ListItemTrim](./ListItemTrim.md)
-  * [ListLast](./ListLast.md)
-  * [ListLen](./ListLen.md)
-  * [ListMap](./ListMap.md)
-  * [ListPrepend](./ListPrepend.md)
-  * [ListQualify](./ListQualify.md)
-  * [ListReduceRight](./ListReduceRight.md)
-  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
-  * [ListRest](./ListRest.md)
-  * [ListSetAt](./ListSetAt.md)
-  * [ListSome](./ListSome.md)
-  * [ListSort](./ListSort.md)
-  * [ListToArray](./ListToArray.md)
+  * [ListChangeDelims](./ListChangeDelims.md)
+  * [ListFind](./ListFind.md)
+  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListContains](./ListContains.md)
+  * [ListContainsNoCase](./ListContainsNoCase.md)
+  * [ListCompact](./ListCompact.md)
   * [ListTrim](./ListTrim.md)
+  * [ListMap](./ListMap.md)
+  * [ListDeleteAt](./ListDeleteAt.md)
+  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
+  * [ListToArray](./ListToArray.md)
+  * [ListQualify](./ListQualify.md)
+  * [ListAppend](./ListAppend.md)
   * [ListValueCount](./ListValueCount.md)
   * [ListValueCountNoCase](./ListValueCountNoCase.md)
+  * [ListAvg](./ListAvg.md)
+  * [ListLen](./ListLen.md)
+  * [ListRest](./ListRest.md)
+  * [ListEvery](./ListEvery.md)
+  * [ListEach](./ListEach.md)
+  * [ListSort](./ListSort.md)
+  * [ListSetAt](./ListSetAt.md)
+  * [ListFilter](./ListFilter.md)
+  * [GetToken](./GetToken.md)
+  * [ListItemTrim](./ListItemTrim.md)

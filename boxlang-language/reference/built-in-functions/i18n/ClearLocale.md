@@ -20,13 +20,13 @@ This function does not accept any arguments
 
 ## Related
 
-  * [CurrencyFormat](./CurrencyFormat.md)
-  * [GetLocale](./GetLocale.md)
   * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
+  * [GetLocale](./GetLocale.md)
   * [GetLocaleInfo](./GetLocaleInfo.md)
-  * [IsCurrency](./IsCurrency.md)
-  * [LSCurrencyFormat](./LSCurrencyFormat.md)
-  * [LSIsCurrency](./LSIsCurrency.md)
-  * [LSParseCurrency](./LSParseCurrency.md)
-  * [ParseCurrency](./ParseCurrency.md)
   * [SetLocale](./SetLocale.md)
+  * [ParseCurrency](./ParseCurrency.md)
+  * [LSParseCurrency](./LSParseCurrency.md)
+  * [CurrencyFormat](./CurrencyFormat.md)
+  * [LSCurrencyFormat](./LSCurrencyFormat.md)
+  * [IsCurrency](./IsCurrency.md)
+  * [LSIsCurrency](./LSIsCurrency.md)

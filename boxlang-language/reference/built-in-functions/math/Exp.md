@@ -19,34 +19,54 @@ Exp(number=[numeric])
 
 ## Examples
 
+### exponent of 1.13140211149
+
+The result could vary depending on if the server is running windows or linux.  On a windows box the result will be round to 3.1
+
+<a href="https://try.boxlang.io/?code=eJxLrSjQUDDUMzQ2NDEwMjQ0NLFU0LTmAgA9twSu" target="_blank">Run Example</a>
+
+```java
+exp( 1.13140211149 );
+
+```
+
+Result: 3.099999999991346707809724952544356
+
+### Additional Examples
+
+
+```java
+<bx:output>#exp( 10 )#</bx:output>
+```
+
 
 
 ## Related
 
-  * [Abs](./Abs.md)
-  * [Acos](./Acos.md)
+  * [Sqr](./Sqr.md)
   * [Asin](./Asin.md)
-  * [Atn](./Atn.md)
-  * [Ceiling](./Ceiling.md)
-  * [Cos](./Cos.md)
+  * [Sgn](./Sgn.md)
+  * [Pi](./Pi.md)
   * [DecrementValue](./DecrementValue.md)
-  * [Fix](./Fix.md)
-  * [Floor](./Floor.md)
-  * [FormatBaseN](./FormatBaseN.md)
-  * [IncrementValue](./IncrementValue.md)
   * [InputBaseN](./InputBaseN.md)
+  * [Round](./Round.md)
+  * [Cos](./Cos.md)
   * [Int](./Int.md)
-  * [Log](./Log.md)
-  * [Log10](./Log10.md)
+  * [Ceiling](./Ceiling.md)
+  * [RandRange](./RandRange.md)
+  * [Atn](./Atn.md)
+  * [Fix](./Fix.md)
   * [Max](./Max.md)
   * [Min](./Min.md)
-  * [Pi](./Pi.md)
+  * [Abs](./Abs.md)
+  * [Log](./Log.md)
+  * [Log10](./Log10.md)
   * [PrecisionEvaluate](./PrecisionEvaluate.md)
+  * [Acos](./Acos.md)
   * [Rand](./Rand.md)
+  * [Floor](./Floor.md)
   * [Randomize](./Randomize.md)
-  * [RandRange](./RandRange.md)
-  * [Round](./Round.md)
-  * [Sgn](./Sgn.md)
-  * [Sin](./Sin.md)
-  * [Sqr](./Sqr.md)
+  * [FormatBaseN](./FormatBaseN.md)
   * [Tan](./Tan.md)
+  * [Sin](./Sin.md)
+  * [IncrementValue](./IncrementValue.md)

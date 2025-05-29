@@ -23,8 +23,8 @@ StructCount(value=[any])
 
 ## Related
 
-  * [ArrayLen](./ArrayLen.md)
   * [GetMetaData](./GetMetaData.md)
-  * [Len](./Len.md)
   * [NullValue](./NullValue.md)
+  * [Len](./Len.md)
+  * [ArrayLen](./ArrayLen.md)
   * [StringLen](./StringLen.md)

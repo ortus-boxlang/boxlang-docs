@@ -22,41 +22,87 @@ FileOpen(file=[string], mode=[string], charset=[string], seekable=[boolean])
 
 ## Examples
 
+### Opens a file, reads a line then closes it.
+
+
+
+
+```java
+// Open File
+var fileObject = fileOpen( "/path/to/file.txt" );
+// Perform Actions
+try {
+	// Read Line
+	writeOutput( fileReadLine( fileObject ) );
+}
+// Error Handling
+ catch (any ex) {
+	// Report Exception
+	writeDump( ex );
+}finally {
+	// Always Close
+	// Close File
+	fileClose( fileObject );
+}
+
+```
+
+
+### Additional Examples
+
+
+```java
+myFile = fileOpen( "filepath/filename.ext" );
+writeDump( myfile );
+
+```
+
+
+
+```java
+// how to access the underlying resource provider info
+f = "ram://demo.txt";
+fileWrite( f, "demo" );
+dump( f.getResource().getResourceProvider().getScheme() );
+ // ram ( i.e. the resource provider type)
+
+```
+
 
 
 ## Related
 
-  * [ContractPath](./ContractPath.md)
-  * [CreateTempDirectory](./CreateTempDirectory.md)
-  * [CreateTempFile](./CreateTempFile.md)
-  * [DirectoryCopy](./DirectoryCopy.md)
-  * [DirectoryCreate](./DirectoryCreate.md)
-  * [DirectoryDelete](./DirectoryDelete.md)
-  * [DirectoryExists](./DirectoryExists.md)
-  * [DirectoryList](./DirectoryList.md)
-  * [DirectoryMove](./DirectoryMove.md)
-  * [DirectoryRename](./DirectoryRename.md)
-  * [ExpandPath](./ExpandPath.md)
-  * [FileAppend](./FileAppend.md)
-  * [FileClose](./FileClose.md)
-  * [FileCopy](./FileCopy.md)
-  * [FileDelete](./FileDelete.md)
-  * [FileExists](./FileExists.md)
-  * [FileGetMimeType](./FileGetMimeType.md)
-  * [FileInfo](./FileInfo.md)
   * [FileIsEOF](./FileIsEOF.md)
-  * [FileMove](./FileMove.md)
+  * [FileExists](./FileExists.md)
+  * [FileInfo](./FileInfo.md)
+  * [GetFileInfo](./GetFileInfo.md)
+  * [FileGetMimeType](./FileGetMimeType.md)
+  * [FileWriteLine](./FileWriteLine.md)
+  * [DirectoryExists](./DirectoryExists.md)
+  * [FileAppend](./FileAppend.md)
   * [FileRead](./FileRead.md)
   * [FileReadBinary](./FileReadBinary.md)
-  * [FileReadLine](./FileReadLine.md)
-  * [FileSeek](./FileSeek.md)
-  * [FileSetAccessMode](./FileSetAccessMode.md)
-  * [FileSetAttribute](./FileSetAttribute.md)
-  * [FileSetLastModified](./FileSetLastModified.md)
-  * [FileSkipBytes](./FileSkipBytes.md)
-  * [FileWrite](./FileWrite.md)
-  * [FileWriteLine](./FileWriteLine.md)
   * [GetCanonicalPath](./GetCanonicalPath.md)
+  * [DirectoryCreate](./DirectoryCreate.md)
+  * [DirectoryMove](./DirectoryMove.md)
+  * [DirectoryRename](./DirectoryRename.md)
+  * [DirectoryCopy](./DirectoryCopy.md)
+  * [FileCopy](./FileCopy.md)
+  * [FileClose](./FileClose.md)
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
-  * [GetFileInfo](./GetFileInfo.md)
+  * [FileReadLine](./FileReadLine.md)
+  * [FileMove](./FileMove.md)
+  * [FileSetAccessMode](./FileSetAccessMode.md)
+  * [FileSeek](./FileSeek.md)
+  * [FileSkipBytes](./FileSkipBytes.md)
+  * [ExpandPath](./ExpandPath.md)
+  * [FileSetLastModified](./FileSetLastModified.md)
+  * [ContractPath](./ContractPath.md)
+  * [CreateTempDirectory](./CreateTempDirectory.md)
+  * [DirectoryDelete](./DirectoryDelete.md)
+  * [FileSetAttribute](./FileSetAttribute.md)
+  * [FileDelete](./FileDelete.md)
+  * [DirectoryList](./DirectoryList.md)
+  * [FileWrite](./FileWrite.md)
+  * [CreateTempFile](./CreateTempFile.md)
   * [getTempFile](./getTempFile.md)

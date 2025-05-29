@@ -10,9 +10,10 @@ By default with no arguments, it will clear all caches.
 
  <ul>
  <li><code>all</code> - Clear everything</li>
- <li><code>template</code> or <code>page</code> - Clear the compiled class pools</li>
+ <li><code>page</code> - Clear the compiled class pools</li>
  <li><code>class</code> - Clear the class path resolvers</li>
- <li><code>query</code> - Clear the default cache region</li>
+ <li><code>template</code> - Clear all the templates cached using the bx:cache component</li>
+ <li><code>query</code> - Clears the cache storing queries</li>
  <li><code>object</code> - Clear the default cache region</li>
  </ul>
 
@@ -31,70 +32,107 @@ SystemCacheClear(cacheName=[string])
 
 ## Examples
 
+### Clear all caches
+
+Clear all caches.
+
+<a href="https://try.boxlang.io/?code=eJwrriwuSc11TkzOSHXOSU0s0tC05gIAUsYG9w%3D%3D" target="_blank">Run Example</a>
+
+```java
+systemCacheClear();
+
+```
+
+
+### Clear the template cache
+
+Clear the template cache.
+
+<a href="https://try.boxlang.io/?code=eJwrriwuSc11TkzOSHXOSU0s0lBQAvILchJLUpUUNK25AMYlCtc%3D" target="_blank">Run Example</a>
+
+```java
+systemCacheClear( "template" );
+
+```
+
+
+### Additional Examples
+
+
+```java
+SystemCacheClear( [ 
+	cacheName
+] );
+
+```
+
 
 
 ## Related
 
-  * [ApplicationRestart](./ApplicationRestart.md)
-  * [ApplicationStartTime](./ApplicationStartTime.md)
-  * [ApplicationStop](./ApplicationStop.md)
-  * [BoxAnnounce](./BoxAnnounce.md)
+  * [Throw](./Throw.md)
+  * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
+  * [Duplicate](./Duplicate.md)
+  * [WriteLog](./WriteLog.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
-  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
-  * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
-  * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
-  * [CallStackGet](./CallStackGet.md)
-  * [CreateGUID](./CreateGUID.md)
-  * [CreateObject](./CreateObject.md)
+  * [SessionRotate](./SessionRotate.md)
+  * [IsInstanceOf](./IsInstanceOf.md)
+  * [GetApplicationMetadata](./GetApplicationMetadata.md)
+  * [URLDecode](./URLDecode.md)
+  * [GetFunctionList](./GetFunctionList.md)
+  * [URLEncodedFormat](./URLEncodedFormat.md)
+  * [ApplicationRestart](./ApplicationRestart.md)
+  * [Invoke](./Invoke.md)
+  * [GetModuleInfo](./GetModuleInfo.md)
   * [CreateUUID](./CreateUUID.md)
+  * [GetTempDirectory](./GetTempDirectory.md)
+  * [GetSemver](./GetSemver.md)
+  * [GetModuleList](./GetModuleList.md)
+  * [ApplicationStop](./ApplicationStop.md)
+  * [SystemExecute](./SystemExecute.md)
+  * [IIF](./IIF.md)
+  * [BoxModuleReload](./BoxModuleReload.md)
+  * [GetRequestClassLoader](./GetRequestClassLoader.md)
+  * [GetFunctionCalledName](./GetFunctionCalledName.md)
+  * [WriteOutput](./WriteOutput.md)
+  * [echo](./echo.md)
+  * [Print](./Print.md)
+  * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
+  * [ApplicationStartTime](./ApplicationStartTime.md)
+  * [GetBoxContext](./GetBoxContext.md)
+  * [CreateObject](./CreateObject.md)
+  * [GetComponentList](./GetComponentList.md)
+  * [ObjectSerialize](./ObjectSerialize.md)
+  * [SessionInvalidate](./SessionInvalidate.md)
+  * [SessionStartTime](./SessionStartTime.md)
+  * [BoxUnregisterRequestInterceptor](./BoxUnregisterRequestInterceptor.md)
+  * [GetFileFromPath](./GetFileFromPath.md)
+  * [EncodeForHTML](./EncodeForHTML.md)
+  * [htmlEditFormat](./htmlEditFormat.md)
+  * [GetClassMetadata](./GetClassMetadata.md)
+  * [SystemOutput](./SystemOutput.md)
+  * [JavaCast](./JavaCast.md)
+  * [GetContextRoot](./GetContextRoot.md)
+  * [GetTickCount](./GetTickCount.md)
+  * [CreateGUID](./CreateGUID.md)
+  * [Sleep](./Sleep.md)
   * [DE](./DE.md)
+  * [GetBoxRuntime](./GetBoxRuntime.md)
+  * [PagePoolClear](./PagePoolClear.md)
+  * [GetCurrentTemplatePath](./GetCurrentTemplatePath.md)
+  * [Println](./Println.md)
+  * [GetSystemSetting](./GetSystemSetting.md)
+  * [RunThreadInContext](./RunThreadInContext.md)
+  * [GetBaseTagData](./GetBaseTagData.md)
+  * [BoxAnnounce](./BoxAnnounce.md)
+  * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
+  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
+  * [GetBoxVersionInfo](./GetBoxVersionInfo.md)
+  * [Trace](./Trace.md)
+  * [GetBaseTagList](./GetBaseTagList.md)
+  * [ObjectDeserialize](./ObjectDeserialize.md)
   * [DebugBoxContexts](./DebugBoxContexts.md)
   * [Dump](./Dump.md)
-  * [Duplicate](./Duplicate.md)
-  * [echo](./echo.md)
-  * [EncodeForHTML](./EncodeForHTML.md)
-  * [GetApplicationMetadata](./GetApplicationMetadata.md)
-  * [GetBaseTagData](./GetBaseTagData.md)
-  * [GetBaseTagList](./GetBaseTagList.md)
-  * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
-  * [GetBoxContext](./GetBoxContext.md)
-  * [GetBoxRuntime](./GetBoxRuntime.md)
-  * [GetBoxVersionInfo](./GetBoxVersionInfo.md)
-  * [GetClassMetadata](./GetClassMetadata.md)
-  * [GetComponentList](./GetComponentList.md)
-  * [GetContextRoot](./GetContextRoot.md)
-  * [GetCurrentTemplatePath](./GetCurrentTemplatePath.md)
-  * [GetFileFromPath](./GetFileFromPath.md)
-  * [GetFunctionCalledName](./GetFunctionCalledName.md)
-  * [GetFunctionList](./GetFunctionList.md)
-  * [GetModuleInfo](./GetModuleInfo.md)
-  * [GetModuleList](./GetModuleList.md)
-  * [GetRequestClassLoader](./GetRequestClassLoader.md)
-  * [GetSemver](./GetSemver.md)
-  * [GetSystemSetting](./GetSystemSetting.md)
-  * [GetTempDirectory](./GetTempDirectory.md)
-  * [GetTickCount](./GetTickCount.md)
-  * [htmlEditFormat](./htmlEditFormat.md)
-  * [IIF](./IIF.md)
-  * [Invoke](./Invoke.md)
-  * [IsInstanceOf](./IsInstanceOf.md)
-  * [JavaCast](./JavaCast.md)
-  * [ObjectDeserialize](./ObjectDeserialize.md)
-  * [ObjectSerialize](./ObjectSerialize.md)
-  * [PagePoolClear](./PagePoolClear.md)
-  * [Print](./Print.md)
-  * [Println](./Println.md)
-  * [RunThreadInContext](./RunThreadInContext.md)
-  * [SessionInvalidate](./SessionInvalidate.md)
-  * [SessionRotate](./SessionRotate.md)
-  * [SessionStartTime](./SessionStartTime.md)
-  * [Sleep](./Sleep.md)
-  * [SystemExecute](./SystemExecute.md)
-  * [SystemOutput](./SystemOutput.md)
-  * [Throw](./Throw.md)
-  * [Trace](./Trace.md)
-  * [URLDecode](./URLDecode.md)
-  * [URLEncodedFormat](./URLEncodedFormat.md)
   * [writeDump](./writeDump.md)
-  * [WriteLog](./WriteLog.md)
-  * [WriteOutput](./WriteOutput.md)
+  * [BoxUnregisterInterceptor](./BoxUnregisterInterceptor.md)
+  * [CallStackGet](./CallStackGet.md)

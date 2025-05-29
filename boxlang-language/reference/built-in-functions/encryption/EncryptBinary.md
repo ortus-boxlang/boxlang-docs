@@ -2,7 +2,7 @@
 
 # Function: `EncryptBinary`
 
-Decrypts a provided encoded encrypted string using the specified algorithm and key
+Encrypts a binary object using the specified algorithm and key
 
 ## Method Signature
 
@@ -15,7 +15,7 @@ EncryptBinary(object=[any], key=[string], algorithm=[string], encoding=[string],
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `object` | `any` | `true` |  |  |
+| `object` | `any` | `false` | The object to encrypt. If the object is not a string or binary data, the object must implement the java.io.Serializable interface |  |
 | `key` | `string` | `true` | The string representation of the secret key to use for encryption ( see generateSecretKey() ) |  |
 | `algorithm` | `string` | `false` | The algorithm to use for encryption. Default is AES |  |
 | `encoding` | `string` | `false` | The encoding type to use for encoding the encrypted data. Default is Base64 | `UU` |
@@ -30,9 +30,10 @@ EncryptBinary(object=[any], key=[string], algorithm=[string], encoding=[string],
 ## Related
 
   * [Decrypt](./Decrypt.md)
-  * [Encrypt](./Encrypt.md)
-  * [GeneratePDBKDFKey](./GeneratePDBKDFKey.md)
+  * [DecryptBinary](./DecryptBinary.md)
   * [GenerateSecretKey](./GenerateSecretKey.md)
   * [Hash](./Hash.md)
   * [Hash40](./Hash40.md)
+  * [Encrypt](./Encrypt.md)
   * [Hmac](./Hmac.md)
+  * [GeneratePBKDFKey](./GeneratePBKDFKey.md)

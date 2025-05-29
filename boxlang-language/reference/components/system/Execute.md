@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Execute`
 
 Component variation of Execute function
@@ -34,14 +34,25 @@ errorVariable=[string] />
 
 ## Examples
 
+### Script syntax
+
+If you want to execute a script (.sh,.cmd,.bat), use bash (linux) or cmd.exe (windows) as the command and the script as argument for the shell interpreter.
+
+
+```java
+bx:execute name="bash" arguments="/opt/jq.sh #cmdArgs#" variable="standardOut" errorVariable="errorOut" timeout="10";
+
 ```
-<bx:Execute variable=[string]
-name=[string]
-arguments=[any]
-timeout=[long]
-terminateOnTimeout=[boolean]
-directory=[string]
-outputFile=[string]
-errorFile=[string]
-errorVariable=[string] />
+
+
+### Script syntax with terminateOnTimeout
+
+Printing a PDF using lpr
+
+
+```java
+bx:execute name="lpr" arguments="-P 'My Print Job Name' 'C:/Users/devguy/Documents/server/mynewfile.pdf'" timeout="5" terminateOnTimeout="true";
+
 ```
+
+

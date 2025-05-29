@@ -19,39 +19,76 @@ IsStruct(variable=[any])
 
 ## Examples
 
+### isStruct Example
+
+Returns true if variable is a Boxlang structure or is a Java object that implements the java.lang.Map interface. 
+
+<a href="https://try.boxlang.io/?code=eJzLLA4uKSpNLtFQKAbTfqnlGpoKmtZcAHq5CFg%3D" target="_blank">Run Example</a>
+
+```java
+isStruct( structNew() );
+
+```
+
+Result: true
+
+### isStruct Example for False
+
+Returns false is the object in the variable parameter is a user-defined function UDF).  In the example below exponent is a function created by the user
+
+<a href="https://try.boxlang.io/?code=eJzLLA4uKSpNLtFQSCwqSqz0Sy3XUDBU0FTQtOYCAIeoCEM%3D" target="_blank">Run Example</a>
+
+```java
+isStruct( arrayNew( 1 ) );
+
+```
+
+Result: false
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJwrLilSsFUoLikqTS7xSy3X0LTmKi%2FKLEn1Ly0pKC3RUMgsDgbLaYDUKGgqAOUB1fIRGQ%3D%3D" target="_blank">Run Example</a>
+
+```java
+str = structNew();
+writeOutput( isStruct( str ) );
+
+```
+
 
 
 ## Related
 
   * [ArrayIsEmpty](./ArrayIsEmpty.md)
-  * [Attempt](./Attempt.md)
-  * [IsArray](./IsArray.md)
+  * [IsXMLDoc](./IsXMLDoc.md)
   * [IsBinary](./IsBinary.md)
-  * [IsBoolean](./IsBoolean.md)
-  * [IsClosure](./IsClosure.md)
-  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsDate](./IsDate.md)
-  * [IsDateObject](./IsDateObject.md)
-  * [IsDebugMode](./IsDebugMode.md)
+  * [IsNumericDate](./IsNumericDate.md)
   * [IsDefined](./IsDefined.md)
   * [IsEmpty](./IsEmpty.md)
-  * [IsFileObject](./IsFileObject.md)
-  * [IsIPv6](./IsIPv6.md)
-  * [IsJSON](./IsJSON.md)
-  * [IsLeapYear](./IsLeapYear.md)
-  * [IsLocalHost](./IsLocalHost.md)
-  * [IsNull](./IsNull.md)
-  * [IsNumeric](./IsNumeric.md)
-  * [IsNumericDate](./IsNumericDate.md)
+  * [structIsEmpty](./structIsEmpty.md)
+  * [arrayIsEmpty](./arrayIsEmpty.md)
+  * [Attempt](./Attempt.md)
+  * [IsCustomFunction](./IsCustomFunction.md)
   * [IsObject](./IsObject.md)
-  * [IsQuery](./IsQuery.md)
-  * [IsSimpleValue](./IsSimpleValue.md)
-  * [IsValid](./IsValid.md)
-  * [IsXML](./IsXML.md)
+  * [IsDateObject](./IsDateObject.md)
   * [IsXmlAttribute](./IsXmlAttribute.md)
-  * [IsXMLDoc](./IsXMLDoc.md)
+  * [IsValid](./IsValid.md)
+  * [IsDebugMode](./IsDebugMode.md)
+  * [IsBoolean](./IsBoolean.md)
+  * [IsLeapYear](./IsLeapYear.md)
+  * [IsQuery](./IsQuery.md)
+  * [IsArray](./IsArray.md)
+  * [IsJSON](./IsJSON.md)
+  * [IsXML](./IsXML.md)
+  * [IsIPv6](./IsIPv6.md)
+  * [IsNull](./IsNull.md)
+  * [IsClosure](./IsClosure.md)
+  * [IsNumeric](./IsNumeric.md)
+  * [LSIsNumeric](./LSIsNumeric.md)
+  * [IsSimpleValue](./IsSimpleValue.md)
   * [IsXMLElem](./IsXMLElem.md)
   * [IsXMLNode](./IsXMLNode.md)
   * [IsXMLRoot](./IsXMLRoot.md)
-  * [LSIsNumeric](./LSIsNumeric.md)
-  * [structIsEmpty](./structIsEmpty.md)
+  * [IsLocalHost](./IsLocalHost.md)
+  * [IsFileObject](./IsFileObject.md)

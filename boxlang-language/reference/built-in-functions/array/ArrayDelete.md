@@ -21,53 +21,98 @@ ArrayDelete(array=[modifiableArray], value=[any], scope=[string])
 
 ## Examples
 
+### Delete an element from an array
+
+Deletes the first `apple` element from the array `arr`.
+
+<a href="https://try.boxlang.io/?code=eJxLLCpSsFWIVuDiVEosKMhJVdIBsvKLEvPSIcyC1MQiMMMRLMsVa82VWFSUWOmSmpNakuqX75xYnKqhABTSUYAqUdC05iovyixJdSnNLQBLgUQA9s0eFg%3D%3D" target="_blank">Run Example</a>
+
+```java
+arr = [ 
+	"apple",
+	"orange",
+	"pear",
+	"Apple"
+];
+arrayDeleteNoCase( arr, "Apple" );
+writeDump( arr );
+
+```
+
+Result: ['orange','pear','Apple']
+
+### Additional Examples
+
+<a href="https://try.boxlang.io?code=eJyNjr8KwjAQxmfzFEemCoU%2BQMlQ7eLSJTiJw0WuUoi2XFOrb29yirhUXL77w3ff%2FZAZDBxArbTr7x6vZ53H3u7tTqtjqWbuAtXTZcjghmyQOQePjrzRG2p7Jg3rUsU1PmryFKjptzhSBuLU42Q7cfzIqdpAnExQFPCGSIkNzQkt0qAwVU7K6TWI4gJjPP0fU8zpRxTvF2i%2FEz%2FAT7cRXw8%3D" target="_blank">Run Example</a>
+
+```java
+arr = [ 
+	"boxlang",
+	"SUSI"
+];
+writeDump( var=arr, label="Before" );
+arrayDeleteNoCase( arr, "suSi" );
+writeDump( var=arr, label="After" ); // boxlang
+arrNew = [
+	"a",
+	"Ab",
+	"c",
+	"A",
+	"a"
+];
+writeDump( var=arrNew, label="Before" );
+arrayDeleteNoCase( arrNew, "a", "all" );
+writeDump( var=arrNew, label="After" );
+
+```
+
 
 
 ## Related
 
-  * [ArrayAppend](./ArrayAppend.md)
-  * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayClear](./ArrayClear.md)
-  * [ArrayContains](./ArrayContains.md)
-  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-  * [ArrayDeleteAt](./ArrayDeleteAt.md)
-  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-  * [ArrayEach](./ArrayEach.md)
-  * [ArrayEvery](./ArrayEvery.md)
-  * [ArrayFilter](./ArrayFilter.md)
-  * [ArrayFind](./ArrayFind.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayMerge](./ArrayMerge.md)
+  * [ArrayIndexExists](./ArrayIndexExists.md)
+  * [ArrayIsDefined](./ArrayIsDefined.md)
   * [ArrayFindAll](./ArrayFindAll.md)
   * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArrayFindNoCase](./ArrayFindNoCase.md)
-  * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayGetMetadata](./ArrayGetMetadata.md)
-  * [ArrayIndexExists](./ArrayIndexExists.md)
-  * [ArrayInsertAt](./ArrayInsertAt.md)
-  * [ArrayIsDefined](./ArrayIsDefined.md)
-  * [ArrayLast](./ArrayLast.md)
-  * [ArrayMap](./ArrayMap.md)
-  * [ArrayMax](./ArrayMax.md)
-  * [ArrayMedian](./ArrayMedian.md)
-  * [ArrayMerge](./ArrayMerge.md)
-  * [ArrayMid](./ArrayMid.md)
-  * [ArrayMin](./ArrayMin.md)
-  * [ArrayNew](./ArrayNew.md)
-  * [ArrayPop](./ArrayPop.md)
-  * [ArrayPrepend](./ArrayPrepend.md)
-  * [ArrayPush](./ArrayPush.md)
-  * [ArrayRange](./ArrayRange.md)
-  * [ArrayReduce](./ArrayReduce.md)
-  * [ArrayReduceRight](./ArrayReduceRight.md)
-  * [ArrayResize](./ArrayResize.md)
-  * [ArrayReverse](./ArrayReverse.md)
-  * [ArraySet](./ArraySet.md)
-  * [ArrayShift](./ArrayShift.md)
-  * [ArraySlice](./ArraySlice.md)
-  * [ArraySome](./ArraySome.md)
-  * [ArraySort](./ArraySort.md)
-  * [ArraySplice](./ArraySplice.md)
   * [ArraySum](./ArraySum.md)
-  * [ArraySwap](./ArraySwap.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayContains](./ArrayContains.md)
+  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
+  * [ArrayPush](./ArrayPush.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArraySome](./ArraySome.md)
+  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
+  * [ArrayMedian](./ArrayMedian.md)
+  * [ArrayAvg](./ArrayAvg.md)
   * [ArrayToList](./ArrayToList.md)
+  * [ArrayFilter](./ArrayFilter.md)
+  * [ArrayClear](./ArrayClear.md)
+  * [ArrayRange](./ArrayRange.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayShift](./ArrayShift.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayUnshift](./ArrayUnshift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayInsertAt](./ArrayInsertAt.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArraySet](./ArraySet.md)
+  * [ArrayMax](./ArrayMax.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArrayDeleteAt](./ArrayDeleteAt.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArrayEach](./ArrayEach.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayEvery](./ArrayEvery.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMin](./ArrayMin.md)

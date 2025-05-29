@@ -23,8 +23,8 @@ StringLen(value=[any])
 
 ## Related
 
-  * [ArrayLen](./ArrayLen.md)
   * [GetMetaData](./GetMetaData.md)
-  * [Len](./Len.md)
   * [NullValue](./NullValue.md)
+  * [Len](./Len.md)
   * [StructCount](./StructCount.md)
+  * [ArrayLen](./ArrayLen.md)

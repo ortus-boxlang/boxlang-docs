@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `DBInfo`
 
 Retrieve database metadata for a given datasource.
@@ -12,9 +12,7 @@ datasource=[string]
 table=[string]
 pattern=[string]
 dbname=[string]
-filter=[string]
-username=[string]
-password=[string] />
+filter=[string] />
 ```
 
 ### Attributes
@@ -26,22 +24,84 @@ password=[string] />
 | `name` | `string` | `true` | Name of the variable to which the result will be assigned. Required. |  |
 | `datasource` | `string` | `false` | Name of the datasource to check metadata on. If not provided, the default datasource will be used. |  |
 | `table` | `string` | `false` | Table name for which to retrieve metadata. Required for `columns`, `foreignkeys`, and `index` types. |  |
-| `pattern` | `string` | `false` |  |  |
-| `dbname` | `string` | `false` |  |  |
-| `filter` | `string` | `false` | This is a string value that must match a table type in your database implementation. Each database is different.<br>                   Some common filter types are:<br>                   <ul><br>                   <li>TABLE - This is the default value and will return only tables.</li><br>                   <li>VIEW - This will return only views.</li><br>                   <li>SYSTEM TABLE - This will return only system tables.</li><br>                   <li>GLOBAL TEMPORARY - This will return only global temporary tables.</li><br>                   <li>LOCAL TEMPORARY - This will return only local temporary tables.</li><br>                   <li>ALIAS - This will return only aliases.</li><br>                   <li>SYNONYM - This will return only synonyms.</li><br>                   </ul> |  |
-| `username` | `string` | `false` |  |  |
-| `password` | `string` | `false` |  |  |
+| `pattern` | `string` | `false` | Table name pattern to filter by. Can use wildcards or any `LIKE`-compatible pattern such as `tbl_%`. Can use `schemaName.tableName` syntax to additionally filter by schema. |  |
+| `dbname` | `string` | `false` | Name of the database to check for tables. If not provided, the database name from the connection will be used. |  |
+| `filter` | `string` | `false` | This is a string value that must match a table type in your database implementation. Each database is different.<br>                   Some common filter types are:<br>                   <ul><br>                   TABLE - This is the default value and will return only tables.<br>                   VIEW - This will return only views.<br>                   SYSTEM TABLE - This will return only system tables.<br>                   GLOBAL TEMPORARY - This will return only global temporary tables.<br>                   LOCAL TEMPORARY - This will return only local temporary tables.<br>                   ALIAS - This will return only aliases.<br>                   SYNONYM - This will return only synonyms.<br>                   </ul> |  |
 
 ## Examples
 
+### Check JDBC Version
+
+```js
+bx:dbinfo( type='version', name='result' );
 ```
-<bx:DBInfo type=[string]
-name=[string]
-datasource=[string]
-table=[string]
-pattern=[string]
-dbname=[string]
-filter=[string]
-username=[string]
-password=[string] />
+
+The `result` variable is now populated with a query looking something like this:
+
+| DATABASE_PRODUCTNAME | DATABASE_VERSION | DRIVER_NAME        | DRIVER_VERSION | JDBC_MAJOR_VERSION | JDBC_MINOR_VERSION |
+|-----------------------|------------------|--------------------|----------------|--------------------|--------------------|
+| MySQL                | 8.0.33          | MySQL Connector/J  | 8.0.33        | 4                  | 2                  |
+
+### Read All Database Views
+
+Use `type=tables` to read all database tables, or filter for a specific type of table using `filter=TABLE|VIEW|SYSTEM TABLE|GLOBAL TEMPORARY|LOCAL TEMPORARY`:
+
+```js
+bx:dbinfo( type='tables', name='result', filter='VIEW' );
 ```
+
+| TABLE_CAT | TABLE_SCHEM | TABLE_NAME | TABLE_TYPE | REMARKS       | TYPE_CAT | TYPE_SCHEM | TYPE_NAME | SELF_REFERENCING_COL_NAME | REF_GENERATION |
+|-----------|-------------|------------|------------|---------------|----------|------------|-----------|---------------------------|----------------|
+| mydb      | public      | my_view    | VIEW       | Example view  | NULL     | NULL       | NULL      | NULL                      | NULL           |
+
+### Read Table Columns
+
+```js
+bx:dbinfo( type='columns', name='result', table='admins' );
+```
+
+The `admins` table column information is now populated into the `result` variable. The result columns are:
+
+* TABLE_CAT
+* TABLE_SCHEM
+* TABLE_NAME
+* COLUMN_NAME
+* DATA_TYPE
+* TYPE_NAME
+* COLUMN_SIZE
+* BUFFER_LENGTH
+* DECIMAL_DIGITS
+* NUM_PREC_RADIX
+* NULLABLE
+* REMARKS
+* COLUMN_DEF
+* SQL_DATA_TYPE
+* SQL_DATETIME_SUB
+* CHAR_OCTET_LENGTH
+* ORDINAL_POSITION
+* IS_NULLABLE
+* SCOPE_CATALOG
+* SCOPE_SCHEMA
+* SCOPE_TABLE
+* SOURCE_DATA_TYPE
+* IS_AUTOINCREMENT
+* IS_GENERATEDCOLUMN
+* SCOPE_CATLOG
+* IS_PRIMARYKEY
+* IS_FOREIGNKEY
+* REFERENCED_PRIMARYKEY
+* REFERENCED_PRIMARYKEY_TABLE
+### Output Column Names
+
+Along with the data type and size
+
+
+```java
+<bx:dbinfo type="columns" name="cols" table="tester">
+<bx:output query="cols">
+        #cols.COLUMN_NAME# #cols.TYPE_NAME#(#cols.COLUMN_SIZE#)<br>
+</bx:output>
+
+```
+
+

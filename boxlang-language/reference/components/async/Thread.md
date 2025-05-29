@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `Thread`
 
 The thread component enables multithreaded programming in BoxLang.
@@ -10,7 +10,8 @@ The thread component enables multithreaded programming in BoxLang.
 action=[string]
 duration=[integer]
 priority=[string]
-timeout=[integer] />
+timeout=[integer]
+virtual=[boolean] />
 ```
 
 ### Attributes
@@ -23,13 +24,33 @@ timeout=[integer] />
 | `duration` | `integer` | `false` | The number of milliseconds to pause the thread. This attribute is required if the action attribute is set to "sleep". | `0` |
 | `priority` | `string` | `false` | The priority of the thread. The default value is "normal". The following are the possible values: "high", "low", "normal". | `normal` |
 | `timeout` | `integer` | `false` | The number of milliseconds to wait for the thread to finish. If the thread does not finish within the specified time, the thread<br>                    is terminated. If the timeout attribute is not specified, the thread runs until it finishes. |  |
+| `virtual` | `boolean` | `false` | If true, the thread will be a <a href="https://docs.oracle.com/en/java/javase/21/core/virtual-threads.html">virtual thread</a>. Default is false. | `false` |
 
 ## Examples
 
+### Script Syntax
+
+CF9+
+
+
+```java
+// do single thread stuff
+bx:thread action="run" name="myThread";
+bx:thread action="join" name="myThread,myOtherThread";
+
 ```
-<bx:Thread name=[string]
-action=[string]
-duration=[integer]
-priority=[string]
-timeout=[integer] />
+
+
+### Tag Syntax
+
+
+
+
+```java
+<bx:thread action="run" name="myThread">
+ <!--- Do single thread stuff ---> 
+ </bx:thread> 
+ <bx:thread action="join" name="myThread,myOtherThread"/>
 ```
+
+

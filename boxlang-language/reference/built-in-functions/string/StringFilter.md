@@ -25,67 +25,118 @@ StringFilter(list=[string], filter=[function:Predicate], delimiter=[string], inc
 
 ## Examples
 
+### Full function
+
+Return only the letters in the string that meet the callback condition.
+
+<a href="https://try.boxlang.io/?code=eJzLSS0pSS0qVrBVUKqqCgyMUrLmSk7MyUlKTM4GimkoOOZVKmTmFShoKtjaKVRzcRallpQW5YGFbEF6gOprrbny83Iqo0CGBJcUZealu2XmAA3VUMiBGK6jADdS05qrvCizJNW%2FtKSgtERDAaoRKAwAnFYr7w%3D%3D" target="_blank">Run Example</a>
+
+```java
+letters = "zzQQZ";
+callback = ( Any inp ) => {
+	return inp == "z";
+};
+onlyZs = StringFilter( letters, callback );
+writeOutput( onlyZs );
+
+```
+
+Result: zzZ
+
+### Member function
+
+Return only the letters in the string that meet the callback condition.
+
+
+```java
+letters = "zzQQZ";
+callback = ( Any inp ) => {
+	return inp == "z";
+};
+onlyZs = letters.filter( callback );
+writeOutput( onlyZs );
+
+```
+
+Result: zzZ
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJyNjTEKAjEQRWtziiFVAjZbhwiK7D0yMUhwzC6TCYuIdzfiWm1j%2Bz7%2FPUoiiSt40AExXk7aqRiIMMTb2EqUPJU%2BGjiWB%2BQyNwEL%2FgBPteMkjcsKfRdg%2F76c4lQbdQJVOJfrmKkXDNC3tIeN3jq1cJZ0bvfZwHq3P9GwMWmcUP%2FpGT70DSRqTHU%3D" target="_blank">Run Example</a>
+
+```java
+letters = "abbcdB";
+callbackFunction = ( Any input ) => {
+	return input == "b";
+};
+result = stringFilter( letters, callbackFunction );
+writeDump( result );
+result1 = stringFilter( "bob", callbackFunction );
+writeDump( result1 );
+
+```
+
 
 
 ## Related
 
-  * [Ascii](./Ascii.md)
-  * [CamelCase](./CamelCase.md)
-  * [Char](./Char.md)
-  * [CharsetDecode](./CharsetDecode.md)
-  * [CharsetEncode](./CharsetEncode.md)
-  * [Compare](./Compare.md)
-  * [CompareNoCase](./CompareNoCase.md)
-  * [Find](./Find.md)
-  * [FindNoCase](./FindNoCase.md)
-  * [FindOneOf](./FindOneOf.md)
-  * [Insert](./Insert.md)
-  * [JSStringFormat](./JSStringFormat.md)
-  * [KebabCase](./KebabCase.md)
-  * [LCase](./LCase.md)
-  * [Left](./Left.md)
-  * [ListReduce](./ListReduce.md)
-  * [LJustify](./LJustify.md)
-  * [LTrim](./LTrim.md)
-  * [Mid](./Mid.md)
-  * [ParagraphFormat](./ParagraphFormat.md)
-  * [PascalCase](./PascalCase.md)
-  * [QueryStringToStruct](./QueryStringToStruct.md)
-  * [ReEscape](./ReEscape.md)
+  * [SpanIncluding](./SpanIncluding.md)
   * [ReFind](./ReFind.md)
   * [reFindNoCase](./reFindNoCase.md)
-  * [ReMatch](./ReMatch.md)
-  * [reMatchNoCase](./reMatchNoCase.md)
-  * [RemoveChars](./RemoveChars.md)
-  * [RepeatString](./RepeatString.md)
+  * [KebabCase](./KebabCase.md)
+  * [Ascii](./Ascii.md)
+  * [Val](./Val.md)
+  * [Compare](./Compare.md)
+  * [TrueFalseFormat](./TrueFalseFormat.md)
+  * [ReReplace](./ReReplace.md)
+  * [reReplaceNoCase](./reReplaceNoCase.md)
+  * [StripCR](./StripCR.md)
+  * [Insert](./Insert.md)
+  * [CamelCase](./CamelCase.md)
+  * [StringBind](./StringBind.md)
+  * [SnakeCase](./SnakeCase.md)
+  * [Right](./Right.md)
+  * [FindOneOf](./FindOneOf.md)
+  * [ReEscape](./ReEscape.md)
+  * [SpanExcluding](./SpanExcluding.md)
+  * [CompareNoCase](./CompareNoCase.md)
+  * [StringReduceRight](./StringReduceRight.md)
+  * [Reverse](./Reverse.md)
   * [Replace](./Replace.md)
   * [ReplaceList](./ReplaceList.md)
   * [ReplaceListNoCase](./ReplaceListNoCase.md)
-  * [ReplaceNoCase](./ReplaceNoCase.md)
-  * [ReReplace](./ReReplace.md)
-  * [reReplaceNoCase](./reReplaceNoCase.md)
-  * [Reverse](./Reverse.md)
-  * [Right](./Right.md)
-  * [RJustify](./RJustify.md)
-  * [RTrim](./RTrim.md)
-  * [Slugify](./Slugify.md)
-  * [SnakeCase](./SnakeCase.md)
-  * [SpanExcluding](./SpanExcluding.md)
-  * [SpanIncluding](./SpanIncluding.md)
-  * [SQLPrettify](./SQLPrettify.md)
-  * [StringBind](./StringBind.md)
-  * [StringEach](./StringEach.md)
-  * [StringEvery](./StringEvery.md)
-  * [StringMap](./StringMap.md)
   * [StringReduce](./StringReduce.md)
-  * [StringReduceRight](./StringReduceRight.md)
-  * [StringSome](./StringSome.md)
-  * [StringSort](./StringSort.md)
-  * [StripCR](./StripCR.md)
-  * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
-  * [UCase](./UCase.md)
-  * [UCFirst](./UCFirst.md)
-  * [Val](./Val.md)
+  * [Slugify](./Slugify.md)
   * [Wrap](./Wrap.md)
+  * [PascalCase](./PascalCase.md)
+  * [StringSort](./StringSort.md)
+  * [StringEach](./StringEach.md)
+  * [Trim](./Trim.md)
+  * [LTrim](./LTrim.md)
+  * [UCFirst](./UCFirst.md)
+  * [Find](./Find.md)
+  * [FindNoCase](./FindNoCase.md)
+  * [ReMatch](./ReMatch.md)
+  * [reMatchNoCase](./reMatchNoCase.md)
+  * [LJustify](./LJustify.md)
+  * [RJustify](./RJustify.md)
+  * [CharsetEncode](./CharsetEncode.md)
+  * [StringEvery](./StringEvery.md)
+  * [Left](./Left.md)
+  * [UCase](./UCase.md)
+  * [ListReduce](./ListReduce.md)
   * [YesNoFormat](./YesNoFormat.md)
+  * [Char](./Char.md)
+  * [ReplaceNoCase](./ReplaceNoCase.md)
+  * [RemoveChars](./RemoveChars.md)
+  * [RTrim](./RTrim.md)
+  * [JSStringFormat](./JSStringFormat.md)
+  * [RepeatString](./RepeatString.md)
+  * [CharsetDecode](./CharsetDecode.md)
+  * [StringSome](./StringSome.md)
+  * [SQLPrettify](./SQLPrettify.md)
+  * [StringMap](./StringMap.md)
+  * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [Mid](./Mid.md)
+  * [LCase](./LCase.md)
+  * [ParagraphFormat](./ParagraphFormat.md)

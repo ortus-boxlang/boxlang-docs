@@ -1,4 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the Component class)
+
 # Component: `InvokeArgument`
 
 Passes the name and value of an argument to a method.
@@ -20,7 +20,18 @@ value=[any] />
 
 ## Examples
 
+### Invoke a SOAP webservice and passing arguments using bx:invokeargument
+
+Calls a remote web service to perform an addition, uses bx:invokeargument to pass the arguments to the method.
+
+
+```java
+<bx:invoke webservice="http://soaptest.parasoft.com/calculator.wsdl" method="add" returnvariable="answer">
+    <bx:invokeargument name="x" value="2">
+    <bx:invokeargument name="y" value="3">
+</bx:invoke>
+<bx:output>#answer#</bx:output>
 ```
-<bx:InvokeArgument name=[string]
-value=[any] />
-```
+
+Result: 5.0
+

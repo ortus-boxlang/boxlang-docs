@@ -21,53 +21,93 @@ ArrayInsertAt(array=[modifiableArray], position=[integer], value=[any])
 
 ## Examples
 
+### Insert an Item in an Array at Position 2
+
+Inserts the number 4 at position 2
+
+<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYmOuWGuuRJCEZ15xalGJY4mGQjFMrY6CkY6CiYKmNVd5UWZJqn9pSUEpUN4r2N8vOLUoMzEnsyoVSbmCJkgpAHpvIAc%3D" target="_blank">Run Example</a>
+
+```java
+someArray = [ 
+	1,
+	2,
+	3
+];
+arrayInsertAt( someArray, 2, 4 );
+writeOutput( JSONSerialize( someArray ) );
+
+```
+
+Result: [1,4,2,3]
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJyFjTsOwjAMQGdyCisTSBUdGCuGjpwBMbjEQRbkI5Oo4vYkAbVsyMuT%2FfRsJXMaRfAFRziD2miM8UG6K3TnmRtM6Ms0DIL%2B9jm7QmEV1WVQWEMn%2FyRJY9qCXeIdHDrQnmbgdiUDnMhp2A3KZBd%2F3brre3DkJhKw2V8TB69WYc%2FLh1r9imjMv%2Bobm5pKjg%3D%3D" target="_blank">Run Example</a>
+
+```java
+fruitArray = [ 
+	"apple",
+	"kiwi",
+	"banana",
+	"orange",
+	"mango",
+	"kiwi"
+];
+arrayInsertAt( fruitArray, 3, "new inserted item" );
+dump( fruitArray );
+// member function
+fruitArray.insertAt( 3, "member added item" );
+dump( fruitArray );
+
+```
+
 
 
 ## Related
 
-  * [ArrayAppend](./ArrayAppend.md)
-  * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayClear](./ArrayClear.md)
-  * [ArrayContains](./ArrayContains.md)
-  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-  * [ArrayDelete](./ArrayDelete.md)
-  * [ArrayDeleteAt](./ArrayDeleteAt.md)
-  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-  * [ArrayEach](./ArrayEach.md)
-  * [ArrayEvery](./ArrayEvery.md)
-  * [ArrayFilter](./ArrayFilter.md)
-  * [ArrayFind](./ArrayFind.md)
-  * [ArrayFindAll](./ArrayFindAll.md)
-  * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArrayFindNoCase](./ArrayFindNoCase.md)
-  * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayMerge](./ArrayMerge.md)
   * [ArrayIndexExists](./ArrayIndexExists.md)
   * [ArrayIsDefined](./ArrayIsDefined.md)
-  * [ArrayLast](./ArrayLast.md)
-  * [ArrayMap](./ArrayMap.md)
-  * [ArrayMax](./ArrayMax.md)
-  * [ArrayMedian](./ArrayMedian.md)
-  * [ArrayMerge](./ArrayMerge.md)
-  * [ArrayMid](./ArrayMid.md)
-  * [ArrayMin](./ArrayMin.md)
-  * [ArrayNew](./ArrayNew.md)
-  * [ArrayPop](./ArrayPop.md)
-  * [ArrayPrepend](./ArrayPrepend.md)
-  * [ArrayPush](./ArrayPush.md)
-  * [ArrayRange](./ArrayRange.md)
-  * [ArrayReduce](./ArrayReduce.md)
-  * [ArrayReduceRight](./ArrayReduceRight.md)
-  * [ArrayResize](./ArrayResize.md)
-  * [ArrayReverse](./ArrayReverse.md)
-  * [ArraySet](./ArraySet.md)
-  * [ArrayShift](./ArrayShift.md)
-  * [ArraySlice](./ArraySlice.md)
-  * [ArraySome](./ArraySome.md)
-  * [ArraySort](./ArraySort.md)
-  * [ArraySplice](./ArraySplice.md)
+  * [ArrayFindAll](./ArrayFindAll.md)
+  * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
   * [ArraySum](./ArraySum.md)
-  * [ArraySwap](./ArraySwap.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayContains](./ArrayContains.md)
+  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
+  * [ArrayPush](./ArrayPush.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArraySome](./ArraySome.md)
+  * [ArrayDelete](./ArrayDelete.md)
+  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
+  * [ArrayMedian](./ArrayMedian.md)
+  * [ArrayAvg](./ArrayAvg.md)
   * [ArrayToList](./ArrayToList.md)
+  * [ArrayFilter](./ArrayFilter.md)
+  * [ArrayClear](./ArrayClear.md)
+  * [ArrayRange](./ArrayRange.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayShift](./ArrayShift.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayUnshift](./ArrayUnshift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArraySet](./ArraySet.md)
+  * [ArrayMax](./ArrayMax.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArrayDeleteAt](./ArrayDeleteAt.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArrayEach](./ArrayEach.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayEvery](./ArrayEvery.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMin](./ArrayMin.md)

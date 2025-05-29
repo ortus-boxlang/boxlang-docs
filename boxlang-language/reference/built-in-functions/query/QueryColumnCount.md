@@ -19,39 +19,69 @@ QueryColumnCount(query=[query])
 
 ## Examples
 
+### Output number of query columns
+
+
+
+<a href="https://try.boxlang.io/?code=eJzLrQwsTS2qVLBVKATRfqnlGgpKni46eYm5qTqJ6alKCprWXOVFmSWp%2FqUlBaUlGhB1zvk5pbl5zvmleUCRXKgZmiC1AHidG3M%3D" target="_blank">Run Example</a>
+
+```java
+myQuery = queryNew( "ID,name,age" );
+writeOutput( queryColumnCount( myQuery ) );
+
+```
+
+Result: 3
+
+### Additional Examples
+
+<a href="https://try.boxlang.io/?code=eJwrLKpUsFUoLE0tqvRLLddQUEpMTNRJSkrSSU5O1klJSdFJTU1VUtC05goEKXFMSQnKB6oqBOqCiQWnljin5uSABXXA%2BpWAVHFxMVZtOgrG%2BHVqGGpi12cIEi4vyixJdSnNLdCAuNk5P6c0N885vzSvBOoqkCoAFHxCng%3D%3D" target="_blank">Run Example</a>
+
+```java
+qry = queryNew( "aaa,bbb,ccc,ddd,eee" );
+QueryAddRow( qry );
+QuerySetCell( qry, "aaa", "sss" );
+QueryAddRow( qry, 3 );
+QuerySetCell( qry, "aaa", (1) );
+QueryAddRow( qry, 1 );
+writeDump( queryColumnCount( qry ) );
+
+```
+
 
 
 ## Related
 
-  * [QueryAddColumn](./QueryAddColumn.md)
-  * [QueryAddRow](./QueryAddRow.md)
-  * [QueryAppend](./QueryAppend.md)
-  * [QueryClear](./QueryClear.md)
-  * [QueryColumnArray](./QueryColumnArray.md)
-  * [QueryColumnData](./QueryColumnData.md)
-  * [QueryColumnExists](./QueryColumnExists.md)
+  * [QueryRecordCount](./QueryRecordCount.md)
   * [QueryColumnList](./QueryColumnList.md)
-  * [QueryCurrentRow](./QueryCurrentRow.md)
-  * [QueryDeleteColumn](./QueryDeleteColumn.md)
-  * [QueryDeleteRow](./QueryDeleteRow.md)
+  * [QueryRowSwap](./QueryRowSwap.md)
+  * [QuerySort](./QuerySort.md)
   * [QueryEach](./QueryEach.md)
-  * [QueryEvery](./QueryEvery.md)
+  * [QueryKeyExists](./QueryKeyExists.md)
+  * [QueryReduce](./QueryReduce.md)
+  * [QueryCurrentRow](./QueryCurrentRow.md)
+  * [QueryColumnData](./QueryColumnData.md)
+  * [QueryRowData](./QueryRowData.md)
   * [QueryFilter](./QueryFilter.md)
+  * [QueryAddRow](./QueryAddRow.md)
+  * [QueryNew](./QueryNew.md)
+  * [QueryReverse](./QueryReverse.md)
+  * [QueryPrepend](./QueryPrepend.md)
+  * [QueryColumnExists](./QueryColumnExists.md)
+  * [QueryAddColumn](./QueryAddColumn.md)
   * [QueryGetCell](./QueryGetCell.md)
   * [QueryGetResult](./QueryGetResult.md)
-  * [QueryInsertAt](./QueryInsertAt.md)
-  * [QueryKeyExists](./QueryKeyExists.md)
   * [QueryMap](./QueryMap.md)
-  * [QueryNew](./QueryNew.md)
-  * [QueryPrepend](./QueryPrepend.md)
+  * [QueryEvery](./QueryEvery.md)
   * [QueryRecordCount](./QueryRecordCount.md)
-  * [QueryReduce](./QueryReduce.md)
-  * [QueryRegisterFunction](./QueryRegisterFunction.md)
-  * [QueryReverse](./QueryReverse.md)
-  * [QueryRowData](./QueryRowData.md)
-  * [QueryRowSwap](./QueryRowSwap.md)
-  * [QuerySetCell](./QuerySetCell.md)
-  * [QuerySetRow](./QuerySetRow.md)
-  * [QuerySlice](./QuerySlice.md)
   * [QuerySome](./QuerySome.md)
-  * [QuerySort](./QuerySort.md)
+  * [QueryDeleteColumn](./QueryDeleteColumn.md)
+  * [QuerySetCell](./QuerySetCell.md)
+  * [QueryInsertAt](./QueryInsertAt.md)
+  * [QueryClear](./QueryClear.md)
+  * [QuerySetRow](./QuerySetRow.md)
+  * [QueryColumnArray](./QueryColumnArray.md)
+  * [QueryDeleteRow](./QueryDeleteRow.md)
+  * [QueryAppend](./QueryAppend.md)
+  * [QuerySlice](./QuerySlice.md)
+  * [QueryRegisterFunction](./QueryRegisterFunction.md)
