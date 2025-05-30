@@ -5,7 +5,7 @@ icon: brackets-curly
 
 # Syntax & Semantics
 
-BoxLang is a dynamic language that is fluent with a low verbosity syntax.  It will feel like a very lean Java syntax.  Check out our quick [style guide](../getting-started/overview/syntax-style-guide/) if you are a Java/Kotlin/Python/PHP/Ruby/CFML/Rust developer, this will give you a first-hand look at the major semantics of the language.
+BoxLang is a dynamic language that is fluent with a low verbosity syntax. It will feel like a very lean Java syntax. Check out our quick [style guide](../getting-started/overview/syntax-style-guide/) if you are a Java/Kotlin/Python/PHP/Ruby/CFML/Rust developer, this will give you a first-hand look at the major semantics of the language.
 
 ## Syntax Files
 
@@ -19,7 +19,7 @@ BoxLang can be written in either templates, scripts, or classes. You will write 
 
 ## Implicit Behavior
 
-BoxLang also gives you a pre-set of defined headless [components](https://boxlang.ortusbooks.com/boxlang-language/reference/components) and [functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions) available to you in any file in which you write your code. These components and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation.&#x20;
+BoxLang also gives you a pre-set of defined headless [components](https://boxlang.ortusbooks.com/boxlang-language/reference/components) and [functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions) available to you in any file in which you write your code. These components and functions allow you to extend the typical language constructs with many modern capabilities, from database interaction to PDF generation.
 
 Also, note that you can use all the BoxLang types naturally with no imports:
 
@@ -38,13 +38,13 @@ Also, note that you can use all the BoxLang types naturally with no imports:
 
 ## Exploring Behavior
 
-Let's start by exploring some behavior in these types of files.  Ensure you are using the [BoxLang IDE](../getting-started/ide-tooling/) Write the code; remember you can execute any BoxLang file within your editor by right-clicking the file and saying **"BoxLang: Run File"**
+Let's start by exploring some behavior in these types of files. Ensure you are using the [BoxLang IDE](../getting-started/ide-tooling/) Write the code; remember you can execute any BoxLang file within your editor by right-clicking the file and saying **"BoxLang: Run File"**
 
 <figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>Run a File</p></figcaption></figure>
 
 ### Scripting
 
-Let's write a simple scripting file that declares and uses a few boxlang types, and then you can print them on the console.  You can run the script via your REPL or via [https://try.boxlang.io](https://try.boxlang.io)
+Let's write a simple scripting file that declares and uses a few boxlang types, and then you can print them on the console. You can run the script via your REPL or via [https://try.boxlang.io](https://try.boxlang.io)
 
 {% tabs %}
 {% tab title="myscript.bxs" %}
@@ -71,10 +71,10 @@ Now you can run it in the REPL: `boxlang myscript.bxs`
 
 ### Templating
 
-I can also use the templating language and build this in an HTML-enabled application. &#x20;
+I can also use the templating language and build this in an HTML-enabled application.
 
 {% hint style="info" %}
-If you want to see HTML being produced, then you will need to run the file in our [MiniServer](../getting-started/running-boxlang/miniserver.md) or [CommandBox](../getting-started/running-boxlang/commandbox.md) server.  If not, just run the templating file via the REPL `boxlang` binary.
+If you want to see HTML being produced, then you will need to run the file in our [MiniServer](../getting-started/running-boxlang/miniserver.md) or [CommandBox](../getting-started/running-boxlang/commandbox.md) server. If not, just run the templating file via the REPL `boxlang` binary.
 {% endhint %}
 
 {% tabs %}
@@ -92,7 +92,7 @@ If you want to see HTML being produced, then you will need to run the file in ou
 {% endtab %}
 {% endtabs %}
 
-Run this in the MiniServer or CommandBox or the REPL tool: `boxlang myprogram.bxm`.  You can also leverage scripting in templates by using the `<bx:script>` template:
+Run this in the MiniServer or CommandBox or the REPL tool: `boxlang myprogram.bxm`. You can also leverage scripting in templates by using the `<bx:script>` template:
 
 ```markup
 <bx:script>
@@ -128,7 +128,7 @@ class{
 {% endtab %}
 {% endtabs %}
 
-Please note that no types or visibility scopes you might be used to are present. BoxLang can also infer variable types on more distinct variables like dates, booleans, or numbers.   It also can include a `main()` method that can be invoked for you if you run the class via our REPL tool:
+Please note that no types or visibility scopes you might be used to are present. BoxLang can also infer variable types on more distinct variables like dates, booleans, or numbers. It also can include a `main()` method that can be invoked for you if you run the class via our REPL tool:
 
 ```bash
 $> boxlang Sample
@@ -155,9 +155,9 @@ class{
 By default, the return type of every function and/or argument is **any**. Thus, it can be determined at runtime as a dynamic variable.
 {% endhint %}
 
-### Semi-Colons
+### Semicolons
 
-Please note that semi-colons are used to demarcate line endings in BoxLang `;`. They can be optional, however.
+Please note that semicolons are used to demarcate line endings in BoxLang `;`. They can be optional, however.
 
 ## Polyglot References
 
@@ -228,4 +228,3 @@ public class MyProgram {
 ```
 {% endtab %}
 {% endtabs %}
-
