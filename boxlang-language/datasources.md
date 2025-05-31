@@ -2,7 +2,7 @@
 
 A datasource is a **named** connection to a specific database with specified credentials. You can define a datasource in one of three locations:
 
-1. [At the boxlang runtime level via your `boxlang.json` config file](datasources.md#defining-datasources-in-boxlangjson)
+1. [At the boxlang runtime level via your `boxlang.json` config file](datasources.md#defining-datasources-in-boxlang.json)
 2. For web applications, [in your `Application.bx` via `this.datasources`](datasources.md#defining-datasources-in-applicationbx)
 3. [Inline, at query time, via the `queryExecute()` BIF, `query` or `dbInfo` component, etc](datasources.md#defining-inline-datasources)
 
@@ -295,4 +295,8 @@ This returns a struct of pool metadata including the following keys:
 * `maxConnections`
 * `minConnections`
 
-Find out what datasources you have defined by dumping out this getBoxContext().getRuntime().getDatasourceService().getNames()
+Find out what datasources you have defined by dumping out: 
+
+```js
+getBoxContext().getRuntime().getDatasourceService().getNames()
+```
