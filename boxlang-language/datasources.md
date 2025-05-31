@@ -31,6 +31,7 @@ To use any of these databases you'll need to install its BoxLang module to suppo
 
 The datasource configuration struct should be defined exactly the same whether you are using an inline, ad-hoc datasource or configuring a datasource in your `boxlang.json` or `Application.bx`. Make sure you have a "driver" key defined OR the driver clearly denoted in the JDBC url:
 
+{% code title="Application.bx" %}
 ```js
 this.datasources[ "testDB" ] = {
 	"driver": "mysql",
@@ -38,10 +39,11 @@ this.datasources[ "testDB" ] = {
 	"url" : "jdbc:mysql://localhost:3306/test"
 };
 ```
+{% endcode %}
 
 ## Defining Datasources In `boxlang.json`
 
-You can define a datasource at the BoxLang runtime level by placing it in your `boxlang.json`:
+You can define a datasource at the BoxLang runtime level by placing it in [your `boxlang.json` configuration file](/getting-started/configuration):
 
 {% code title="boxlang.json" %}
 ```js
@@ -141,7 +143,7 @@ You can also define a default datasource to allow you to omit the `datasource` c
 
 To do this, you'll need to define a default datasource in one of two locations:
 
-1. In your BoxLang runtime's `boxlang.json` config file via the `defaultDatasource` key
+1. In [your BoxLang runtime's `boxlang.json` config file](/getting-started/configuration) via the `defaultDatasource` key
 2. or, for web server runtimes, in a `this.datasource` variable in your `Application.bx` file
 
 ### Defining a default datasource via boxlang.json
