@@ -95,6 +95,7 @@
   * [Null & Nothingness](boxlang-language/null-and-nothingness.md)
   * [Strings](boxlang-language/strings.md)
   * [Numbers](boxlang-language/numbers.md)
+  * [Dates & Times](boxlang-language/syntax/dates-and-times.md)
   * [JSON](boxlang-language/json.md)
   * [Arrays](boxlang-language/arrays.md)
   * [Structures](boxlang-language/structures.md)

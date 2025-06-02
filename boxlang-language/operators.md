@@ -64,6 +64,10 @@ These operators are used to perform arithmetic/mathematical operations on operan
 | `+`      | Positive            | `a = +b` Make the value of b a positive number                                                                                                                                                  |
 | `()`     | Grouping            | <p>The grouping operator is used just like in mathematics, to give precedence to operations.<br><code>result = 3 * (2+3)</code> which is not the same as<br><code>result = 3 * 2 + 3</code></p> |
 
+#### Notes on mathematical casting:&#x20;
+
+For basic arithmetic operations ( addition, subtraction, multiplication and division ) dates and timespans may be cast as numeric values.  In BoxLang the numeric value of a [DateTime](../boxlang-framework/modularity/compat-cfml/reference/types/datetime.md) object is a representation of the decimal days since the Unix epoch time.  A [timespan](reference/built-in-functions/temporal/CreateTimeSpan.md) or Java [Duration](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html) object is represented as decimal days for the purpose of mathematical operations. &#x20;
+
 ## Bitwise Operators
 
 {% hint style="info" %}
@@ -109,8 +113,6 @@ Logical operators perform logic between values or values, usually denoting a `bo
 | `XOR`      | Exclusive Or | <p>Returns true when either of the operands is true (one is true, and the other is false), but both are not true, and both are not false.<br><code>true XOR true = false</code><br><code>true XOR false = true</code><br><code>false XOR false = false</code></p> |
 | `EQV`      | Equivalence  | <p>The exact opposite of an exclusive or. Meaning that it will return true when both operands are either true or false.<br><code>true EQV true = true</code><br><code>true EQV false = false</code><br><code>false EQV false = true</code></p>                    |
 | `IMP`      | Implication  | A implies B is equivalent to `if a then b`. A imp b is false ONLY if a is true and b is false; else, it returns true always.                                                                                                                                      |
-
-
 
 ## Comparison Operators
 
@@ -194,13 +196,13 @@ event
 
 ## Function Expressions
 
-In BoxLang, a function invocation can be used as an expression, where the results of the function call is the effective value used. 
+In BoxLang, a function invocation can be used as an expression, where the results of the function call is the effective value used.
 
 ```javascript
 results = ucase( "this is text " ) & toString( 12 + 50 )
 ```
 
-`Function` is also a proper type, allowing a reference to a function to be passed as an argument to another function or returned from another function as the return value.  Functions which accept or return other functions are called higher order functions**.   
+`Function` is also a proper type, allowing a reference to a function to be passed as an argument to another function or returned from another function as the return value. Functions which accept or return other functions are called higher order functions\*\*.
 
 ```javascript
 // I can also pass lambdas or anonymous functions as arguments
@@ -293,7 +295,7 @@ writeDump( mergedUsers )
 Feature coming soon
 {% endhint %}
 
-The Rest function operator is similar to the Spread Operator but behaves oppositely. The spread syntax expands the iterable constructs into individual elements, and the Rest syntax collects and condenses them into a single construct, usually an array.&#x20;
+The Rest function operator is similar to the Spread Operator but behaves oppositely. The spread syntax expands the iterable constructs into individual elements, and the Rest syntax collects and condenses them into a single construct, usually an array.
 
 Imagine I need to create a function that takes in an unlimited number of Identifiers so I can return all items that have that ID:
 
