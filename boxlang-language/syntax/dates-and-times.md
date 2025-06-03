@@ -396,7 +396,18 @@ These member methods provide direct access to the rich functionality of BoxLang'
 
 ## Date Arithmetic and Mathematical Operations
 
-BoxLang supports mathematical operations on dates, converting them to fractional days for calculations:
+BoxLang supports mathematical operations on dates, converting them to fractional days for calculations.  For basic arithmetic operations (addition, subtraction, multiplication, and division), dates and timespans can be cast as numeric values. In BoxLang, the numeric value of a [DateTime](https://boxlang.ortusbooks.com/boxlang-framework/modularity/compat-cfml/reference/types/datetime) object represents the **decimal days since the Unix epoch time.**&#x20;
+
+A [timespan](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/temporal/createtimespan) or Java [Duration](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html) object is represented as decimal days for the purpose of mathematical operations.
+
+```javascript
+timeNow = now();
+// Addition casts the date to a numeric day value 
+// ( example: 20241.89415408551756893278841047638 )
+originalEpochDays = timeNow + 0;
+// Add 2.5 days to the decimal days value
+updatedEpochDays = timeNow + 2.5;
+```
 
 ### Addition and Subtraction
 
@@ -611,19 +622,3 @@ function formatInTimezone(dt, mask, timezone) {
 * Be mindful of timezone conversions in loops
 * Use `createTimeSpan()` for duration calculations rather than manual arithmetic
 
-
-
-### Mathematical Representations
-
-For basic arithmetic operations ( addition, subtraction, multiplication and division ) dates and timespans may be cast as numeric values. In BoxLang the numeric value of a [DateTime](https://boxlang.ortusbooks.com/boxlang-framework/modularity/compat-cfml/reference/types/datetime) object is a representation of the decimal days since the Unix epoch time.&#x20;
-
-A [timespan](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/temporal/createtimespan) or Java [Duration](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html) object is represented as decimal days for the purpose of mathematical operations.
-
-```javascript
-timeNow = now();
-// Addition casts the date to a numeric day value 
-// ( example: 20241.89415408551756893278841047638 )
-originalEpochDays = timeNow + 0;
-// Add 2.5 days to the decimal days value
-updatedEpochDays = timeNow + 2.5;
-```
