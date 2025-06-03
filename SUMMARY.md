@@ -739,6 +739,7 @@
 
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Asynchronous Programming](boxlang-framework/asynchronous-programming.md)
+* [Caching](boxlang-framework/caching.md)
 * [File Handling](boxlang-framework/file-handling.md)
 * [Interceptors](boxlang-framework/interceptors/README.md)
   * [Core Interception Points](boxlang-framework/interceptors/core-interception-points/README.md)
