@@ -6,11 +6,11 @@ These events occur when a function is about to be executed or has finished execu
 * [`postFunctionInvoke`](function-invocations.md#postfunctioninvoke) - This event is triggered after a function has been invoked.
 * [`onFunctionException`](function-invocations.md#onfunctionexception) - This event is triggered when an exception occurs during the function invocation.
 
-### preFunctionInvoke
+## preFunctionInvoke
 
 This event is triggered before a function is invoked. It allows you to perform actions or modifications before the function execution begins.
 
-#### Data Structure
+### Data Structure
 
 | Data Key    | Type             | Description                             |
 | ----------- | ---------------- | --------------------------------------- |
@@ -19,7 +19,7 @@ This event is triggered before a function is invoked. It allows you to perform a
 | `function`  | `Function`       | The UDF/Function/Closure/Lambda invoked |
 | `name`      | `String`         | The name of the function invoked        |
 
-#### Example
+### Example
 
 ```groovy
 cass myListener{
@@ -37,11 +37,11 @@ cass myListener{
 }
 ```
 
-### postFunctionInvoke
+## postFunctionInvoke
 
 This event is triggered after a function has been invoked. It allows you to perform actions or modifications after the function execution has completed.
 
-#### Data Structure
+### Data Structure
 
 | Data Key    | Type             | Description                             |
 | ----------- | ---------------- | --------------------------------------- |
@@ -51,7 +51,7 @@ This event is triggered after a function has been invoked. It allows you to perf
 | `name`      | `String`         | The name of the function invoked        |
 | `result`    | `Any`            | The result of the function call         |
 
-#### Example
+### Example
 
 ```groovy
 cass myListener{
@@ -68,11 +68,11 @@ cass myListener{
 }
 ```
 
-### onFunctionException
+## onFunctionException
 
 This event is triggered when an exception occurs during the function invocation. It allows you to handle exceptions gracefully.
 
-#### Data Structure
+### Data Structure
 
 | Data Key    | Type             | Description                                                |
 | ----------- | ---------------- | ---------------------------------------------------------- |
@@ -82,7 +82,7 @@ This event is triggered when an exception occurs during the function invocation.
 | `name`      | `String`         | The name of the function invoked                           |
 | `exception` | `Exception`      | The exception that occurred during the function invocation |
 
-#### Example
+### Example
 
 ```groovy
 cass myListener{
