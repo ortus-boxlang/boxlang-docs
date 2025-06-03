@@ -739,7 +739,12 @@
 
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Asynchronous Programming](boxlang-framework/asynchronous-programming.md)
-* [Caching](boxlang-framework/caching.md)
+* [Caching](boxlang-framework/caching/README.md)
+  * [Cache Service](boxlang-framework/caching/cache-service.md)
+  * [BoxCache Provider](boxlang-framework/caching/boxcache-provider.md)
+  * [Custom Cache Providers](boxlang-framework/caching/custom-cache-providers.md)
+  * [Custom Object Stores](boxlang-framework/caching/custom-object-stores.md)
+  * [Custom Eviction Policies](boxlang-framework/caching/custom-eviction-policies.md)
 * [File Handling](boxlang-framework/file-handling.md)
 * [Interceptors](boxlang-framework/interceptors/README.md)
   * [Core Interception Points](boxlang-framework/interceptors/core-interception-points/README.md)

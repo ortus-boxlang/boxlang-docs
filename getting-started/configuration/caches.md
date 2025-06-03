@@ -11,7 +11,7 @@ BoxLang comes bundled with an enterprise caching engine that can be configured w
 
 You can also define [per-application caches](../../boxlang-framework/applicationbx.md) by defining them in the `Application.bx` file in your applications.
 
-### Default Caches
+## Default Caches
 
 Every BoxLang runtime comes pre-configured with the following caches that are mandatory for operation:
 
@@ -112,13 +112,9 @@ Every BoxLang runtime comes pre-configured with the following caches that are ma
 ```
 {% endcode %}
 
-### Providers
+{% include "../../.gitbook/includes/boxcache-providers.md" %}
 
-Here are the available providers for BoxLang.  The table shows the status of completion of each provider and its availability for the open-source version of BoxLang, or if you are a +/++ subscriber.
-
-<table><thead><tr><th width="218">Provider</th><th width="275">Description</th><th>Status<select><option value="bl4hmf4yFdhg" label="Done" color="blue"></option><option value="WfqzsFQb9K23" label="In Progress" color="blue"></option></select></th><th width="58" data-type="checkbox">OS</th><th data-type="checkbox">+/++</th></tr></thead><tbody><tr><td><strong>BoxLang</strong></td><td>The enterprise BoxLang native cache provider can leverage many different object stores.</td><td><span data-option="bl4hmf4yFdhg">Done</span></td><td>true</td><td>true</td></tr><tr><td><strong>Redis</strong></td><td>A Redis single-node provider</td><td><span data-option="bl4hmf4yFdhg">Done</span></td><td>false</td><td>true</td></tr><tr><td><strong>RedisCluster</strong></td><td>A Redis cluster cache provider</td><td><span data-option="bl4hmf4yFdhg">Done</span></td><td>false</td><td>true</td></tr><tr><td><strong>MongoDB</strong></td><td>A Mong DB based Provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>Couchbase</strong></td><td>A Couchbase based provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>ElasticSearch</strong></td><td>An Elastic Search provider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr><tr><td><strong>EhCache</strong></td><td>An EhCacheProvider</td><td><span data-option="WfqzsFQb9K23">In Progress</span></td><td>false</td><td>true</td></tr></tbody></table>
-
-### Configuration
+## Configuration
 
 Every cache must be placed inside the `caches`object with a unique name key.  The value of that key contains:
 
@@ -140,11 +136,7 @@ Our `BoxCacheProvider`is an enterprise-level cache designed to be fast and event
 
 ### Object Stores
 
-Here are the available object stores for our BoxCache providers.&#x20;
-
-<table><thead><tr><th width="287">Type</th><th width="307">Description</th></tr></thead><tbody><tr><td><strong>BlackHoleStore</strong></td><td>Mocking store, just simulates a store, nothing is stored.</td></tr><tr><td><strong>ConcurrentSoftReferenceStore</strong></td><td>Memory-sensitive storage leveraging Java Soft References.</td></tr><tr><td><strong>ConcurrentStore</strong></td><td>Leverages concurrent hashmaps for storage.</td></tr><tr><td><strong>FileSystemStore</strong></td><td>Stores the cache items in a serialized fashion on disk</td></tr><tr><td><strong>JDCBStore</strong></td><td>Stores caches in JDBC Databases</td></tr></tbody></table>
-
-Each store can have different configuration properties as well.
+{% include "../../.gitbook/includes/boxcache-stores.md" %}
 
 ### Global Properties
 
@@ -230,7 +222,7 @@ If enabled, the last access timeout will be reset on every access for the cache 
 
 #### useLastAccessTimeouts
 
-If enabled, the last access timeout will be used to evict objects from the cache.  Default is true.
+If enabled, the last access timeout will be used to evict objects from the cache.  The default is true.
 
 ```json
 "useLastAccessTimeouts" : true
@@ -238,10 +230,11 @@ If enabled, the last access timeout will be used to evict objects from the cache
 
 
 
-### File System Store Properties
+### File System Store
 
-These are the custom properties for this store:
+The file system store leverages a destination `directory` and stores all cache items as serialized entities on disk.  It is highly efficient and fast considering it's a disk cache.
 
 #### directory
 
 The absolute path of the directory that will hold all the serialized cache entries on disk.
+
