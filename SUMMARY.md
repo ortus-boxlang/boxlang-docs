@@ -61,6 +61,7 @@
   * [Chromebooks](getting-started/running-boxlang/chromebooks.md)
   * [CLI Scripting](getting-started/running-boxlang/cli-scripting.md)
   * [Docker](getting-started/running-boxlang/docker.md)
+  * [GitHub Actions](getting-started/running-boxlang/github-actions.md)
   * [JSR-223 Scripting](getting-started/running-boxlang/jsr-223-scripting.md)
   * [MiniServer](getting-started/running-boxlang/miniserver.md)
   * [Try BoxLang!](getting-started/running-boxlang/try-boxlang.md)
