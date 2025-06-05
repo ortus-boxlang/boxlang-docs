@@ -105,20 +105,52 @@ To get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}
-```javascript
-/bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
+Just copy the following into your terminal:
+
+```bash
+curl -fsSL https://install.boxlang.io | bash
+```
+
+With more arguments:
+
+```bash
+# Development snapshot
+curl -fsSL https://install.boxlang.io | bash -s -- snapshot
+
+# Specific version
+curl -fsSL https://install.boxlang.io | bash -s -- 1.2.0
+
+# Uninstall
+curl -fsSL https://install.boxlang.io | bash -s -- --uninstall
 ```
 {% endtab %}
 
 {% tab title="SH" %}
-```python
-/bin/sh -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)"
+Just copy the following into your terminal:
+
+```bash
+curl -fsSL https://install.boxlang.io | sh
+```
+
+With more arguments:
+
+```bash
+# Development snapshot
+curl -fsSL https://install.boxlang.io | sh -s -- snapshot
+
+# Specific version
+curl -fsSL https://install.boxlang.io | sh -s -- 1.2.0
+
+# Uninstall
+curl -fsSL https://install.boxlang.io | sh -s -- --uninstall
 ```
 {% endtab %}
 
 {% tab title="Windows PowerShell" %}
+Just copy this into a Powershell Terminal. Make sure you are an administrator.
+
 ```powershell
-Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.ps1''))"'
+Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://install-windows.boxlang.io''))"'
 ```
 {% endtab %}
 {% endtabs %}
@@ -131,7 +163,6 @@ If your system requires admin privileges (Like Chromebooks, or Linux distros), m
 The quick installer requires the following:
 
 * JRE21+
-* Permission to copy files to `/usr/local/bin and /usr/local/lib`
 {% endhint %}
 
 The quick installer will install the latest stable **BoxLang** **OS** binary and the **MiniServer** in the above directories. It will also install the following scripts for you:
