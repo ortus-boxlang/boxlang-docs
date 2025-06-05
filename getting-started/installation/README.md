@@ -101,7 +101,7 @@ Make sure you restart any terminal windows for changes to take effect.
 
 ## Quick Installer
 
-To get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac/Linux/\*Nix/Windows.  This will allow you to execute the script in your favorite terminal application.  Please note that some OS will require for you to run it as an administrator or with `sudo` capabilities.
+Once the requirements above are installed, to get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac/Linux/\*Nix/Windows.  This will allow you to execute the script in your favorite terminal application.  Please note that some OS will require you to run it as an `administrator` or with `sudo` capabilities.
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}
@@ -119,10 +119,9 @@ curl -fsSL https://install.boxlang.io | bash -s -- snapshot
 
 # Specific version
 curl -fsSL https://install.boxlang.io | bash -s -- 1.2.0
-
-# Uninstall
-curl -fsSL https://install.boxlang.io | bash -s -- --uninstall
 ```
+
+Please make sure you use the `--help` on our scripts to see everything you can do with them.
 {% endtab %}
 
 {% tab title="SH" %}
@@ -140,10 +139,9 @@ curl -fsSL https://install.boxlang.io | sh -s -- snapshot
 
 # Specific version
 curl -fsSL https://install.boxlang.io | sh -s -- 1.2.0
-
-# Uninstall
-curl -fsSL https://install.boxlang.io | sh -s -- --uninstall
 ```
+
+Please make sure you use the `--help` on our scripts to see everything you can do with them.
 {% endtab %}
 
 {% tab title="Windows PowerShell" %}
@@ -152,6 +150,8 @@ Just copy this into a Powershell Terminal. Make sure you are an administrator.
 ```powershell
 Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://install-windows.boxlang.io''))"'
 ```
+
+Please make sure you use the `--help` on our scripts to see everything you can do with them.
 {% endtab %}
 {% endtabs %}
 
@@ -169,12 +169,21 @@ The quick installer will install the latest stable **BoxLang** **OS** binary and
 
 * `boxlang` - Our BoxLang binary runner, [learn more](../running-boxlang/)
 * `boxlang-miniserver` - Our BoxLang MiniServer binary runner, [learn more](../running-boxlang/miniserver.md)
-* `install-boxlang` - The quick installer so you can reuse it to upgrade your installations or install the `snapshot` version of BoxLang
-* `install-bx-module` - A module installer. Just pass in the slug of the module, an optional version or a list of modules.
+* `install-boxlang` - The quick installer so you can reuse it to upgrade your installations or install the `snapshot` version of BoxLang.  Run `install-boxlang --help` for more commands.
+* `install-bx-module` - A module installer. Just pass in the slug of the module, an optional version or a list of modules.  Run `install-bx-module` for more commands.
 
 ```bash
 # Test BoxLang works:
 boxlang --version
+
+# Get Help
+install-boxlang --help
+
+# Upgrade your installation
+install-boxlang
+
+# Uninstall
+install-boxlang --uninstall
 
 # Install a single module
 install-bx-module bx-compat-cfml
@@ -184,6 +193,15 @@ install-bx-module bx-compat-cfml@1.11.0
 
 # Install multiple async modules
 install-bx-module bx-compat-cfml bx-esapi bx-pdf
+
+# Remove a module
+install-bx-module --remove bx-esapi
+
+# List your modules
+install-bx-module --list
+
+# Get all the help
+install-bx-module --help
 ```
 
 ### Upgrading Your Install
