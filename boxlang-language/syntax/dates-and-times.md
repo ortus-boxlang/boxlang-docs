@@ -567,6 +567,8 @@ function addBusinessDays(date, days) {
 }
 ```
 
+**Important Note:**  The above assumes a locale where the starting day of the week is Sunday.  The `dayOfWeek` value returned for a given date will depend on the server locale ( e.g. The first day of the week for most of Europe is Monday, whereas the first day of the week in Egypt is Saturday )  unless you specify a locale argument to ensure consistency:  `dayOfWeek( date=result, locale="en_US" )`
+
 #### Date Range Generation
 
 ```javascript
