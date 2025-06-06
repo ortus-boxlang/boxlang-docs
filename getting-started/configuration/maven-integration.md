@@ -108,7 +108,15 @@ You should see output showing the Maven version, Java version, and OS informatio
 
 ## Getting Started
 
-The BoxLang home by default is located in your user's home directory: `~/.boxlang`
+The BoxLang home by default is located in your user's home directory: `~/.boxlang` from here is where you will be making maven installation commands.  Fire up a terminal and navigate to your BoxLang HOME.
+
+```bash
+
+cd $BOXLANG_HOME
+
+// or
+cd ~/.boxlang
+```
 
 ### The BoxLang POM File
 
@@ -186,11 +194,6 @@ Edit the `pom.xml` file and add your dependency inside the `<dependencies>` sect
     <dependency>
         <groupId>com.google.zxing</groupId>
         <artifactId>core</artifactId>
-        <version>3.5.2</version>
-    </dependency>
-    <dependency>
-        <groupId>com.google.zxing</groupId>
-        <artifactId>javase</artifactId>
         <version>3.5.2</version>
     </dependency>
     
@@ -271,11 +274,6 @@ Add QR code generation capabilities to your BoxLang applications:
 <dependency>
     <groupId>com.google.zxing</groupId>
     <artifactId>core</artifactId>
-    <version>3.5.2</version>
-</dependency>
-<dependency>
-    <groupId>com.google.zxing</groupId>
-    <artifactId>javase</artifactId>
     <version>3.5.2</version>
 </dependency>
 ```
@@ -521,12 +519,6 @@ Use properties for easier version management:
     <dependency>
         <groupId>com.google.zxing</groupId>
         <artifactId>core</artifactId>
-        <version>${zxing.version}</version>
-    </dependency>
-    
-    <dependency>
-        <groupId>com.google.zxing</groupId>
-        <artifactId>javase</artifactId>
         <version>${zxing.version}</version>
     </dependency>
     
