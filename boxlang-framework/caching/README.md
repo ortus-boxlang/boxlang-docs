@@ -80,7 +80,7 @@ The BoxCache also ships with several different eviction policies that are trigge
 
 ## Cache BIFs (Built-in Functions)
 
-BoxLang provides a comprehensive set of Built-in Functions (BIFs) that offer convenient access to the caching infrastructure. These BIFs provide a developer-friendly interface for working with caches, filters, and the cache service without requiring direct Java interaction.
+BoxLang provides a comprehensive set of Built-in Functions (BIFs) that offer convenient access to the caching infrastructure. These BIFs provide a developer-friendly interface for working with caches, filters, and the cache service, eliminating the need for direct Java interaction.
 
 ### Overview
 
@@ -91,6 +91,10 @@ Cache BIFs serve as the primary interface for BoxLang developers to interact wit
 * **Filter Support**: Powerful pattern matching for bulk operations
 * **Service Discovery**: Introspection capabilities for registered caches and providers
 * **BoxLang Integration**: Native BoxLang syntax and conventions
+
+{% hint style="danger" %}
+Please note that all get operations from our cache providers return an [Attempt](../../boxlang-language/reference/built-in-functions/decision/Attempt.md).  An object that could potentially have your data or not.  Fully functional and avoids any `null` issues.
+{% endhint %}
 
 ### Available Cache BIFs
 
@@ -112,7 +116,7 @@ cache([cacheName="default"])
 
 **Parameters:**
 
-* `cacheName` (string, optional): The name of the cache to retrieve. Defaults to "default"
+* `cacheName` (string, optional): The name of the cache to retrieve. Defaults to `"default"`
 
 **Returns:** `ICacheProvider` - The requested cache instance
 
@@ -120,25 +124,29 @@ cache([cacheName="default"])
 
 ```javascript
 // Get the default cache
-myCache = cache();
+myCache = cache()
 
 // Get a named cache
-userCache = cache("userSessions");
-apiCache = cache("apiResponses");
+// Let's assume you have created these caches already in your boxlang.json
+userCache = cache( "userSessions" );
+apiCache = cache( "apiResponses" 
 
 // Basic cache operations
-cache().set("user:123", userData);
-user = cache().get("user:123");
-cache().clear("user:123");
+cache().set("user:123", userData)
+// Get operations return a BoxLang attempt
+user = cache().get("user:123").getOrDefault( new User() )
+cache().clear( "user:123" );
 
 // Chained operations
-cache("userSessions")
-    .set("session:abc123", sessionData, 1800) // 30 minutes
-    .set("session:def456", otherSession, 3600); // 1 hour
+cache( "userSessions" )
+    .set( "session:abc123", sessionData, 1800 ) // 30 minutes
+    .set( "session:def456", otherSession, 3600 ) // 1 hour
 
 // Check if cache exists and use it
-if (arrayContains(cacheNames(), "productCache")) {
-    product = cache("productCache").get("product:456");
+if ( cacheNames().contains( "productCache") ) {
+    product = cache( "productCache" )
+        .get( "product:456" )
+        .getOrDefault( 0 
 }
 ```
 
@@ -170,29 +178,29 @@ cacheFilter(filter, [useRegex=false])
 
 ```javascript
 // Wildcard filtering (default)
-userFilter = cacheFilter("user:*");
-sessionFilter = cacheFilter("session:*");
-tempFilter = cacheFilter("temp_*");
+userFilter = cacheFilter( "user:*" )
+sessionFilter = cacheFilter( "session:*" )
+tempFilter = cacheFilter( "temp_*" )
 
 // Regex filtering
-emailFilter = cacheFilter(".*@domain\.com$", true);
-idFilter = cacheFilter("^id_\d{4,6}$", true);
+emailFilter = cacheFilter( ".*@domain\.com$", true )
+idFilter = cacheFilter( "^id_\d{4,6}$", true )
 
 // Use filters with cache operations
-cache().clear(cacheFilter("temp_*")); // Clear all temp keys
-cache().clear(cacheFilter("user:session_.*", true)); // Regex clear
+cache().clear( cacheFilter( "temp_*" ) ) // Clear all temp keys
+cache().clear( cacheFilter( "user:session_.*", true ) ) // Regex clear
 
-// Get multiple keys with filter
-userSessions = cache().get(cacheFilter("user:*"));
+// Get multiple keys with filter, returns struct
+userSessionsStruct = cache().get( cacheFilter( "user:*" ) )
 // Returns: { "user:123": userData, "user:456": otherUser, ... }
 
 // Bulk operations with filters
-cache().clear(cacheFilter("api:response:*")); // Clear API cache
-cache().lookup(cacheFilter("product:*")); // Check which products are cached
+cache().clear( cacheFilter( "api:response:*" ) ) // Clear API cache
+cache().lookup( cacheFilter( "product:*" ) ) // Check which products are cached
 
 // Complex patterns
-cache().clear(cacheFilter("cache_temp_[0-9]*")); // Clear numbered temp caches
-cache().get(cacheFilter("user_session_????")); // Get 4-char session IDs
+cache().clear( cacheFilter( "cache_temp_[0-9]*" ) ) // Clear numbered temp caches
+cache().get( cacheFilter( "user_session_????" ) ) // Get 4-char session IDs
 ```
 
 **Custom Filter Functions:**
@@ -201,16 +209,16 @@ You can also use closures/lambdas as filters:
 
 ```javascript
 // Custom filter using closure
-customFilter = function(key) {
-    return key.getName().startsWith("special_") && 
+customFilter = key -> {
+    return key.getName().startsWith( "special_" ) && 
            key.getName().length() > 10;
 };
 
-cache().clear(customFilter);
+cache().clear( customFilter )
 
 // One-liner custom filters
-cache().clear(key => key.getName().contains("_expired_"));
-cache().get(key => key.getName().endsWith("_active"));
+cache().clear( key -> key.getName().contains("_expired_") )
+cache().get( key -> key.getName().endsWith("_active") )
 ```
 
 ### cacheNames()
@@ -229,28 +237,26 @@ cacheNames()
 
 ```javascript
 // Get all cache names
-allCaches = cacheNames();
-writeOutput("Available caches: " & arrayToList(allCaches));
+allCaches = cacheNames()
+println( "Available caches: " & allCaches.toList() )
 
 // Check if specific cache exists
-if (arrayContains(cacheNames(), "mySpecialCache")) {
+if ( cacheNames().contains( "mySpecialCache" ) ) {
     // Use the cache
-    cache("mySpecialCache").set("key", "value");
+    cache( "mySpecialCache" ).set( "key", "value" )
 } else {
     // Create the cache or handle missing cache
-    writeOutput("Cache 'mySpecialCache' not found!");
+    println( "Cache 'mySpecialCache' not found!" )
 }
 
 // Iterate through all caches
-for (cacheName in cacheNames()) {
-    cacheInstance = cache(cacheName);
-    writeOutput("Cache '#cacheName#' has #cacheInstance.getSize()# items");
+for ( cacheName in cacheNames() ) {
+    cacheInstance = cache( cacheName )
+    println( "Cache '#cacheName#' has #cacheInstance.getSize()# items" )
 }
 
 // Filter cache names
-userCaches = arrayFilter(cacheNames(), function(name) {
-    return name.startsWith("user");
-});
+userCaches = cacheNames().filter( name -> name.startsWith( "user" ) )
 ```
 
 ### cacheProviders()
@@ -269,20 +275,20 @@ cacheProviders()
 
 ```javascript
 // Get all available providers
-providers = cacheProviders();
-writeOutput("Available providers: " & arrayToList(providers));
+providers = cacheProviders()
+println( "Available providers: " & providers.toList() )
 
 // Check provider availability
-if (arrayContains(cacheProviders(), "Redis")) {
+if ( cacheProviders().contains( "Redis" ) ) {
     // Can create Redis caches
-    writeOutput("Redis provider is available");
+    println( "Redis provider is available" )
 } else {
-    writeOutput("Redis provider not registered");
+    println( "Redis provider not registered" )
 }
 
 // Display provider information
-for (provider in cacheProviders()) {
-    writeOutput("Provider available: #provider#");
+for ( provider in cacheProviders() ) {
+    println( "Provider available: #provider#" )
 }
 ```
 
@@ -302,25 +308,28 @@ cacheService()
 
 ```javascript
 // Get the cache service
-service = cacheService();
+service = cacheService()
 
 // Create new caches dynamically
-service.createCache("newCache", "BoxLang", {
+service.createCache( "newCache", "BoxLang", {
     "maxObjects": 5000,
     "defaultTimeout": 1800,
     "evictionPolicy": "LRU"
-});
+} )
 
 // Register custom providers
-service.registerProvider("MyProvider", createObject("java", "com.mycompany.MyProvider"));
+service.registerProvider( 
+    "MyProvider", 
+    new java:com.mycompany.MyProvider()
+)
 
 // Bulk operations
-service.clearAllCaches(); // Clear all caches
-service.reapAllCaches();  // Run maintenance on all caches
+service.clearAllCaches() // Clear all caches
+service.reapAllCaches() // Run maintenance on all caches
 
 // Advanced cache management
-service.replaceCache("oldCache", newCacheInstance);
-service.shutdownCache("temporaryCache");
+service.replaceCache( "oldCache", newCacheInstance )
+service.shutdownCache( "temporaryCache" )
 ```
 
 ## Practical Usage Patterns
@@ -328,75 +337,41 @@ service.shutdownCache("temporaryCache");
 #### Basic Caching Pattern
 
 ```javascript
-// Simple get-or-set pattern
-function getUser(userID) {
-    var cacheKey = "user:#userID#";
-    var user = cache().get(cacheKey);
+// Simple get-or-set pattern using getOrSet
+function getUser( userID ) {
+    var cacheKey = "user:#userID#"
     
-    if (user.isPresent()) {
-        return user.get();
-    }
-    
-    // Load from database
-    user = userService.loadUser(userID);
-    
-    // Cache for 30 minutes
-    cache().set(cacheKey, user, 1800);
-    
-    return user;
+    return cache().getOrSet( 
+        cacheKey, 
+        () -> userService.loadUser( userID ),
+        1800 // Cache for 30 minutes
+    )
 }
 ```
 
-#### Session Management
 
-```javascript
-// Session cache operations
-function storeSession(sessionID, sessionData) {
-    cache("sessions").set("session:#sessionID#", sessionData, 3600);
-}
-
-function getSession(sessionID) {
-    return cache("sessions").get("session:#sessionID#");
-}
-
-function clearUserSessions(userID) {
-    var filter = cacheFilter("session:*user:#userID#*");
-    cache("sessions").clear(filter);
-}
-
-function cleanupExpiredSessions() {
-    // Custom filter for expired sessions
-    var expiredFilter = function(key) {
-        var session = cache("sessions").getQuiet(key);
-        return session.isPresent() && 
-               session.get().lastActivity < dateAdd("h", -2, now());
-    };
-    
-    cache("sessions").clear(expiredFilter);
-}
-```
 
 #### API Response Caching
 
 ```javascript
 // API response caching with patterns
-function cacheAPIResponse(endpoint, params, response) {
-    var cacheKey = "api:#endpoint#:#hash(serialize(params))#";
-    cache("apiCache").set(cacheKey, response, 600); // 10 minutes
+function cacheAPIResponse( endpoint, params, response ) {
+    var cacheKey = "api:#endpoint#:#hash( serialize( params ) )#"
+    cache( "apiCache" ).set( cacheKey, response, 600 ) // 10 minutes
 }
 
-function getCachedAPIResponse(endpoint, params) {
-    var cacheKey = "api:#endpoint#:#hash(serialize(params))#";
-    return cache("apiCache").get(cacheKey);
+function getCachedAPIResponse( endpoint, params ) {
+    var cacheKey = "api:#endpoint#:#hash( serialize( params ) )#"
+    return cache( "apiCache" ).get( cacheKey )
 }
 
-function clearAPICache(endpoint) {
-    if (isNull(endpoint)) {
+function clearAPICache( endpoint ) {
+    if ( isNull( endpoint ) ) {
         // Clear all API cache
-        cache("apiCache").clear(cacheFilter("api:*"));
+        cache( "apiCache" ).clear( cacheFilter( "api:*" ) )
     } else {
         // Clear specific endpoint
-        cache("apiCache").clear(cacheFilter("api:#endpoint#:*"));
+        cache( "apiCache" ).clear( cacheFilter( "api:#endpoint#:*" ) )
     }
 }
 ```
@@ -407,20 +382,18 @@ function clearAPICache(endpoint) {
 // Cache warming function
 function warmupCaches() {
     // Warm user cache with active users
-    var activeUsers = userService.getActiveUsers();
-    
-    for (var user in activeUsers) {
-        cache("users").set("user:#user.id#", user, 7200); // 2 hours
+    var activeUsers = userService.getActiveUsers()
+    for ( var user in activeUsers ) {
+        cache( "users" ).set( "user:#user.id#", user, 7200 ) // 2 hours
     }
     
     // Warm product cache
-    var popularProducts = productService.getPopularProducts();
-    
-    for (var product in popularProducts) {
-        cache("products").set("product:#product.id#", product, 3600);
+    var popularProducts = productService.getPopularProducts()
+    for ( var product in popularProducts ) {
+        cache( "products" ).set( "product:#product.id#", product, 3600 )
     }
     
-    writeOutput("Warmed #arrayLen(activeUsers)# users and #arrayLen(popularProducts)# products");
+    println( "Warmed #activeUsers.len()# users and #popularProducts.len()# products" )
 }
 ```
 
@@ -429,36 +402,37 @@ function warmupCaches() {
 ```javascript
 // Cache monitoring function
 function getCacheReport() {
-    var report = {};
+    var report = {}
     
-    for (var cacheName in cacheNames()) {
-        var cacheInstance = cache(cacheName);
-        var stats = cacheInstance.getStats();
+    for ( var cacheName in cacheNames() ) {
+        var cacheInstance = cache( cacheName )
+        var stats = cacheInstance.getStats()
         
-        report[cacheName] = {
+        report[ cacheName ] = {
             "size": cacheInstance.getSize(),
             "hits": stats.getHits(),
             "misses": stats.getMisses(),
             "hitRate": stats.getHitRate(),
             "enabled": cacheInstance.isEnabled()
-        };
+        }
     }
     
-    return report;
+    return report
 }
 
 // Display cache status
 function displayCacheStatus() {
-    var report = getCacheReport();
+    var report = getCacheReport()
     
-    for (var cacheName in report) {
-        var info = report[cacheName];
-        writeOutput("Cache: #cacheName#");
-        writeOutput("  Size: #info.size# items");
-        writeOutput("  Hit Rate: #numberFormat(info.hitRate * 100, '0.00')#%");
-        writeOutput("  Hits: #info.hits#, Misses: #info.misses#");
-        writeOutput("  Status: #info.enabled ? 'Enabled' : 'Disabled'#");
-        writeOutput("---");
+    for ( var cacheName in report ) {
+        var info = report[ cacheName ]
+        
+        println( "Cache: #cacheName#" )
+        println( " Size: #info.size# items" )
+        println( " Hit Rate: #numberFormat( info.hitRate * 100, '0.00' )#%" )
+        println( " Hits: #info.hits#, Misses: #info.misses#" )
+        println( " Status: #info.enabled ? 'Enabled' : 'Disabled'#" )
+        println( "---" )
     }
 }
 ```
@@ -467,21 +441,21 @@ function displayCacheStatus() {
 
 ```javascript
 // Create caches based on application needs
-function createUserCache(maxUsers) {
-    var service = cacheService();
+function createUserCache( maxUsers ) {
+    var service = cacheService()
     
-    if (!service.hasCache("userCache")) {
-        service.createCache("userCache", "BoxLang", {
+    if ( !service.hasCache( "userCache" ) ) {
+        service.createCache( "userCache", "BoxLang", {
             "maxObjects": maxUsers * 2,
             "defaultTimeout": 3600,
             "evictionPolicy": "LRU",
             "objectStore": "ConcurrentHashMap"
-        });
+        } )
         
-        writeOutput("Created user cache for #maxUsers# users");
+        println( "Created user cache for #maxUsers# users" )
     }
     
-    return cache("userCache");
+    return cache( "userCache" )
 }
 ```
 
@@ -489,27 +463,14 @@ function createUserCache(maxUsers) {
 
 ```javascript
 // Safe cache operations with fallbacks
-function safeGet(cacheKey, fallbackFunction) {
+function safeGet( cacheKey, fallbackFunction ) {
     try {
-        var result = cache().get(cacheKey);
-        if (result.isPresent()) {
-            return result.get();
-        }
-    } catch (any e) {
-        writeLog("Cache error: #e.message#", "error");
+        return cache().getOrSet( cacheKey, fallbackFunction, 1800 )
+    } catch ( any e ) {
+        writeLog( "Cache error: #e.message#", "error" )
+        // Fallback directly to function if cache fails completely
+        return fallbackFunction()
     }
-    
-    // Fallback to function
-    var data = fallbackFunction();
-    
-    // Try to cache the result
-    try {
-        cache().set(cacheKey, data, 1800);
-    } catch (any e) {
-        writeLog("Cache set error: #e.message#", "warning");
-    }
-    
-    return data;
 }
 ```
 
@@ -519,16 +480,16 @@ function safeGet(cacheKey, fallbackFunction) {
 
 ```javascript
 // Hierarchical cache clearing
-function clearUserData(userID) {
+function clearUserData( userID ) {
     var filters = [
-        cacheFilter("user:#userID#*"),           // User data
-        cacheFilter("session:*user:#userID#*"),  // User sessions  
-        cacheFilter("profile:#userID#*"),        // User profiles
-        cacheFilter("pref:#userID#*")            // User preferences
-    ];
+        cacheFilter( "user:#userID#*" ), // User data
+        cacheFilter( "session:*user:#userID#*" ), // User sessions
+        cacheFilter( "profile:#userID#*" ), // User profiles
+        cacheFilter( "pref:#userID#*" ) // User preferences
+    ]
     
-    for (var filter in filters) {
-        cache().clear(filter);
+    for ( var filter in filters ) {
+        cache().clear( filter )
     }
 }
 ```
@@ -537,14 +498,12 @@ function clearUserData(userID) {
 
 ```javascript
 // Operate across multiple caches
-function clearAllUserCaches(userID) {
-    var userCaches = arrayFilter(cacheNames(), function(name) {
-        return name.contains("user") || name.contains("session");
-    });
+function clearAllUserCaches( userID ) {
+    var userCaches = cacheNames().filter( name -> name.contains( "user" ) || name.contains( "session" ) )
     
-    for (var cacheName in userCaches) {
-        var userFilter = cacheFilter("*#userID#*");
-        cache(cacheName).clear(userFilter);
+    for ( var cacheName in userCaches ) {
+        var userFilter = cacheFilter( "*#userID#*" )
+        cache( cacheName ).clear( userFilter )
     }
 }
 ```
@@ -553,12 +512,12 @@ function clearAllUserCaches(userID) {
 
 ```javascript
 // Synchronize data across multiple caches
-function syncUserAcrossCaches(userID, userData) {
-    var caches = ["primaryUsers", "secondaryUsers", "userProfiles"];
+function syncUserAcrossCaches( userID, userData ) {
+    var caches = [ "primaryUsers", "secondaryUsers", "userProfiles" ]
     
-    for (var cacheName in caches) {
-        if (arrayContains(cacheNames(), cacheName)) {
-            cache(cacheName).set("user:#userID#", userData, 3600);
+    for ( var cacheName in caches ) {
+        if ( cacheNames().contains( cacheName ) ) {
+            cache( cacheName ).set( "user:#userID#", userData, 3600 )
         }
     }
 }
@@ -570,21 +529,21 @@ function syncUserAcrossCaches(userID, userData) {
 
 ```javascript
 // Use descriptive, hierarchical cache keys
-cache().set("user:profile:#userID#", profile);
-cache().set("api:response:v1:#endpoint#:#params#", response);
-cache().set("session:data:#sessionID#", sessionData);
-cache().set("config:app:#version#", configuration);
+cache().set( "user:profile:#userID#", profile )
+cache().set( "api:response:v1:#endpoint#:#params#", response )
+cache().set( "session:data:#sessionID#", sessionData )
+cache().set( "config:app:#version#", configuration )
 ```
 
 #### 2. Efficient Filter Usage
 
 ```javascript
 // Prefer specific patterns over broad wildcards
-cache().clear(cacheFilter("temp:session:*"));        // Good
-cache().clear(cacheFilter("*"));                     // Avoid - too broad
+cache().clear( cacheFilter( "temp:session:*" ) )        // Good
+cache().clear( cacheFilter( "*" ) )                     // Avoid - too broad
 
 // Use regex for complex patterns
-cache().clear(cacheFilter("^user:temp_\d{8}$", true)); // Complex pattern
+cache().clear( cacheFilter( "^user:temp_\d{8}$", true ) ) // Complex pattern
 ```
 
 #### 3. Error Handling
@@ -592,10 +551,10 @@ cache().clear(cacheFilter("^user:temp_\d{8}$", true)); // Complex pattern
 ```javascript
 // Always handle cache failures gracefully
 try {
-    return cache().get(key).orElse(fallbackValue);
-} catch (any e) {
-    writeLog("Cache error: #e.message#", "error");
-    return fallbackValue;
+    return cache().get( key ).orElse( fallbackValue )
+} catch ( any e ) {
+    writeLog( "Cache error: #e.message#", "error" )
+    return fallbackValue
 }
 ```
 
@@ -604,12 +563,12 @@ try {
 ```javascript
 // Regular cache performance checks
 function monitorCachePerformance() {
-    for (var cacheName in cacheNames()) {
-        var cacheInstance = cache(cacheName);
-        var hitRate = cacheInstance.getStats().getHitRate();
+    for ( var cacheName in cacheNames() ) {
+        var cacheInstance = cache( cacheName )
+        var hitRate = cacheInstance.getStats().getHitRate()
         
-        if (hitRate < 0.7) { // Less than 70% hit rate
-            writeLog("Cache '#cacheName#' has low hit rate: #hitRate#", "warning");
+        if ( hitRate < 0.7 ) { // Less than 70% hit rate
+            writeLog( "Cache '#cacheName#' has low hit rate: #hitRate#", "warning" )
         }
     }
 }

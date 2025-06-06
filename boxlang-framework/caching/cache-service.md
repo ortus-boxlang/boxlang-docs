@@ -44,13 +44,13 @@ The Cache Service is available through the `cacheService()` BIF
 
 ```javascript
 // Get the cache service
-cacheService = cacheService();
+cacheService = cacheService(
 
 // Access the default cache
 defaultCache = cacheService.getDefaultCache();
 
 // Access a named cache  
-myCache = cacheService.getCache("myCache");
+myCache = cacheService.getCache("myCache
 
 // Using BIFs (recommended)
 defaultCache = cache();
@@ -63,22 +63,22 @@ myCache = cache("myCache");
 
 ```javascript
 // Get a cache instance
-userCache = cache("userCache");
+userCache = cache("userCache"
 
 // Store data
 userCache.set("user:123", userData);
 
 // Retrieve data
-result = userCache.get("user:123");
+result = userCache.get("user:123")
 if (result.isPresent()) {
     user = result.get();
 }
 
 // Check if key exists
-exists = userCache.lookup("user:123");
+exists = userCache.lookup("user:123")
 
 // Remove data
-userCache.clear("user:123");
+userCache.clear("user:123")
 ```
 
 **Cache Validation**
@@ -86,12 +86,12 @@ userCache.clear("user:123");
 ```javascript
 // Check if a cache exists
 if (arrayContains(cacheNames(), "sessionCache")) {
-    sessionCache = cache("sessionCache");
+    sessionCache = cache("sessionCache")
     // Use the cache...
 }
 
 // Get available caches
-registeredCaches = cacheNames();
+registeredCaches = cacheNames()
 ```
 
 ## Cache Management
@@ -102,7 +102,7 @@ The simplest way to create a new cache:
 
 ```javascript
 // Create a cache with default BoxLang provider and settings
-newCache = cacheService().createDefaultCache("myNewCache");
+newCache = cacheService().createDefaultCache("myNewCache")
 
 // Create with custom configuration
 config = {
@@ -110,7 +110,7 @@ config = {
     "maxObjects": 5000,
     "defaultTimeout": 1800, // 30 minutes
     "evictionPolicy": "LRU"
-};
+
 
 customCache = cacheService().createDefaultCache("myCache", config);
 ```
@@ -123,13 +123,13 @@ properties = {
     "maxObjects": 10000,
     "defaultTimeout": 3600,
     "objectStore": "ConcurrentHashMap"
-};
+}
 
 cache = cacheService().createCache(
     "highPerformanceCache", 
     "BoxLang", 
     properties
-);
+)
 ```
 
 **Conditional Cache Creation**
@@ -140,7 +140,7 @@ cache = cacheService().createCacheIfAbsent(
     "conditionalCache",
     "BoxLang",
     defaultProperties
-);
+)
 ```
 
 **Manual Registration**
