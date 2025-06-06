@@ -82,6 +82,7 @@
   * [Experimental](getting-started/configuration/experimental.md)
   * [Executors](getting-started/configuration/executors.md)
   * [Logging](getting-started/configuration/logging.md)
+  * [Maven Integration](getting-started/configuration/maven-integration.md)
   * [Modules](getting-started/configuration/modules.md)
   * [Security](getting-started/configuration/security.md)
 
