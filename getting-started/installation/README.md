@@ -105,40 +105,32 @@ Once the requirements above are installed, to get started quickly with BoxLang, 
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}
-Just copy the following into your terminal:
+Just copy the following into your terminal to install be default for your user.
 
 ```bash
-curl -fsSL https://install.boxlang.io | bash
+/bin/bash -c "$(curl -fsSL https://install.boxlang.io)"
 ```
 
-With more arguments:
+If you want a system-wide installation then prefix it with `sudo`:
 
 ```bash
-# Development snapshot
-curl -fsSL https://install.boxlang.io | bash -s -- snapshot
-
-# Specific version
-curl -fsSL https://install.boxlang.io | bash -s -- 1.2.0
+sudo /bin/bash -c "$(curl -fsSL https://install.boxlang.io)"
 ```
 
 Please make sure you use the `--help` on our scripts to see everything you can do with them.
 {% endtab %}
 
 {% tab title="SH" %}
-Just copy the following into your terminal:
+Just copy the following into your terminal to install be default for your user.
 
 ```bash
-curl -fsSL https://install.boxlang.io | sh
+/bin/sh -c "$(curl -fsSL https://install.boxlang.io)"
 ```
 
-With more arguments:
+If you want a system-wide installation then prefix it with `sudo`:
 
 ```bash
-# Development snapshot
-curl -fsSL https://install.boxlang.io | sh -s -- snapshot
-
-# Specific version
-curl -fsSL https://install.boxlang.io | sh -s -- 1.2.0
+sudo /bin/sh -c "$(curl -fsSL https://install.boxlang.io)"
 ```
 
 Please make sure you use the `--help` on our scripts to see everything you can do with them.
