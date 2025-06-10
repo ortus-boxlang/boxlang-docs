@@ -84,7 +84,8 @@ Note that you may need to tell the system to use the correct JDK version. This c
 {% tab title="🪟 Windows" %}
 
 
-Use the following powershell script to install the JRE:
+Use the following powershell script to install the JRE 21. \
+**HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 ```powershell
 Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://downloads.ortussolutions.com/ortussolutions/boxlang/install-jre.ps1''))"'
@@ -137,10 +138,11 @@ Please make sure you use the `--help` on our scripts to see everything you can d
 {% endtab %}
 
 {% tab title="Windows PowerShell" %}
-Just copy this into a Powershell Terminal. Make sure you are an administrator.
+Just copy this into a Powershell Terminal.\
+**HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 ```powershell
-Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://install-windows.boxlang.io''))"'
+iex ((New-Object System.Net.WebClient).DownloadString('https://install-windows.boxlang.io'))
 ```
 
 Please make sure you use the `--help` on our scripts to see everything you can do with them.
@@ -149,12 +151,6 @@ Please make sure you use the `--help` on our scripts to see everything you can d
 
 {% hint style="danger" %}
 If your system requires admin privileges (Like Chromebooks, or Linux distros), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
-{% endhint %}
-
-{% hint style="info" %}
-The quick installer requires the following:
-
-* JRE21+
 {% endhint %}
 
 The quick installer will install the latest stable **BoxLang** **OS** binary and the **MiniServer** in the above directories. It will also install the following scripts for you:
