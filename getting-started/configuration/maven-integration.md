@@ -196,14 +196,7 @@ Edit the `pom.xml` file and add your dependency inside the `<dependencies>` sect
         <artifactId>core</artifactId>
         <version>3.5.2</version>
     </dependency>
-    
-    <!-- PDF generation with iText -->
-    <dependency>
-        <groupId>com.itextpdf</groupId>
-        <artifactId>itext7-core</artifactId>
-        <version>8.0.2</version>
-        <type>pom</type>
-    </dependency>
+
 </dependencies>
 ```
 
@@ -332,91 +325,6 @@ dataURL = qrGenerator.generateDataURL( "BoxLang is awesome!" )
 println( "Data URL: " & dataURL.left( 50 ) & "..." )
 ```
 
-### PDF Generation with iText
-
-Create dynamic PDFs programmatically:
-
-```xml
-<!-- Add to pom.xml -->
-<dependency>
-    <groupId>com.itextpdf</groupId>
-    <artifactId>itext7-core</artifactId>
-    <version>8.0.2</version>
-    <type>pom</type>
-</dependency>
-```
-
-```javascript
-// PDF generator utility
-function createPDFGenerator() {
-    return {
-        "createSimplePDF": ( filePath, content ) -> {
-            var writer = new com.itextpdf.kernel.pdf.PdfWriter( filePath )
-            var pdf = new com.itextpdf.kernel.pdf.PdfDocument( writer )
-            var document = new com.itextpdf.layout.Document( pdf )
-            
-            var paragraph = new com.itextpdf.layout.element.Paragraph( content )
-            document.add( paragraph )
-            
-            document.close()
-            return filePath
-        },
-        
-        "createStyledPDF": ( filePath, title, content ) -> {
-            var writer = new com.itextpdf.kernel.pdf.PdfWriter( filePath )
-            var pdf = new com.itextpdf.kernel.pdf.PdfDocument( writer )
-            var document = new com.itextpdf.layout.Document( pdf )
-            
-            // Add title
-            var titleParagraph = new com.itextpdf.layout.element.Paragraph( title )
-                .setFontSize( 20 )
-                .setBold()
-            document.add( titleParagraph )
-            
-            // Add content
-            var contentParagraph = new com.itextpdf.layout.element.Paragraph( content )
-                .setFontSize( 12 )
-            document.add( contentParagraph )
-            
-            // Add table
-            var table = new com.itextpdf.layout.element.Table( [ 1, 1, 1 ] )
-            table.addCell( "Feature" )
-            table.addCell( "BoxLang" )
-            table.addCell( "Status" )
-            table.addCell( "Dynamic Typing" )
-            table.addCell( "✓" )
-            table.addCell( "Active" )
-            table.addCell( "Java Integration" )
-            table.addCell( "✓" )
-            table.addCell( "Active" )
-            
-            document.add( table )
-            
-            document.close()
-            return filePath
-        }
-    }
-}
-
-// Usage
-pdfGen = createPDFGenerator()
-
-// Simple PDF
-simplePDF = pdfGen.createSimplePDF( 
-    "/tmp/simple-report.pdf", 
-    "This is a PDF generated from BoxLang using iText!" 
-)
-
-// Styled PDF with table
-styledPDF = pdfGen.createStyledPDF(
-    "/tmp/boxlang-features.pdf",
-    "BoxLang Feature Report",
-    "BoxLang combines the flexibility of dynamic languages with the power of the JVM."
-)
-
-println( "PDFs created: " & simplePDF & " and " & styledPDF )
-```
-
 ### Encryption and Security
 
 Add cryptographic capabilities with Bouncy Castle:
@@ -480,13 +388,6 @@ For large applications, organize dependencies by functionality:
 
 ```xml
 <dependencies>
-    <!-- Document Generation -->
-    <dependency>
-        <groupId>com.itextpdf</groupId>
-        <artifactId>itext7-core</artifactId>
-        <version>8.0.2</version>
-        <type>pom</type>
-    </dependency>
     
     <!-- QR Code Generation -->
     <dependency>
@@ -512,7 +413,6 @@ Use properties for easier version management:
 <properties>
     <zxing.version>3.5.2</zxing.version>
     <commons.version>1.12.0</commons.version>
-    <itext.version>8.0.2</itext.version>
 </properties>
 
 <dependencies>
@@ -591,14 +491,6 @@ Add comments explaining why each dependency is needed:
         <version>3.5.2</version>
     </dependency>
     
-    <!-- iText - PDF generation for invoices and reports -->
-    <dependency>
-        <groupId>com.itextpdf</groupId>
-        <artifactId>itext7-core</artifactId>
-        <version>8.0.2</version>
-        <type>pom</type>
-    </dependency>
-    
     <!-- Bouncy Castle - Cryptography for secure operations -->
     <dependency>
         <groupId>org.bouncycastle</groupId>
@@ -619,10 +511,6 @@ function testDependencies() {
         // Test ZXing (QR Codes)
         var qrWriter = new com.google.zxing.qrcode.QRCodeWriter()
         println( "✅ ZXing QR Code library loaded successfully" )
-        
-        // Test iText (PDF)
-        var pdfWriter = new com.itextpdf.kernel.pdf.PdfWriter()
-        println( "✅ iText PDF library loaded successfully" )
         
         // Test Bouncy Castle
         var provider = new org.bouncycastle.jce.provider.BouncyCastleProvider()
