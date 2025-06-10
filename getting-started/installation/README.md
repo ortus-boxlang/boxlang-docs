@@ -88,7 +88,7 @@ Use the following powershell script to install the JRE 21. \
 **HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 ```powershell
-Start-Process powershell -Verb RunAs -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString(''https://downloads.ortussolutions.com/ortussolutions/boxlang/install-jre.ps1''))"'
+powershell -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://downloads.ortussolutions.com/ortussolutions/boxlang/install-jre.ps1'))"
 ```
 
 * Once this runs the JRE will be installed in your `C:\Program Files\Java\jre{version}`
@@ -142,7 +142,7 @@ Just copy this into a Powershell Terminal.\
 **HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 ```powershell
-iex ((New-Object System.Net.WebClient).DownloadString('https://install-windows.boxlang.io'))
+powershell -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://install-windows.boxlang.io'))"
 ```
 
 Please make sure you use the `--help` on our scripts to see everything you can do with them.
