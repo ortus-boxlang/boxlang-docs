@@ -7,7 +7,7 @@ icon: wrench-simple
 
 BoxLang has an installation-level configuration file that allows developers to adjust various settings from the compiler to default cache providers, runtime-wide data sources, and much more.  Depending on which runtime you are using, the configuration file location might change, but the configuration segments remain  the same.
 
-<table><thead><tr><th width="237">Runtime</th><th>Default Config Location</th></tr></thead><tbody><tr><td>AWS Lamba</td><td><code>{lambdaRoot}/boxlang.json</code></td></tr><tr><td>Operating System</td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td>MiniServer</td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td>CommandBox</td><td><code>~/.commandbox/servers/{serverHome}/WEB-INF/boxlang/config/boxlang.json</code></td></tr></tbody></table>
+<table><thead><tr><th width="237">Runtime</th><th>Default Config Location</th></tr></thead><tbody><tr><td><strong>AWS Lamba</strong></td><td><code>{lambdaRoot}/boxlang.json</code></td></tr><tr><td><strong>Operating System</strong></td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td><strong>MiniServer</strong></td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td><strong>CommandBox</strong></td><td><code>~/.commandbox/servers/{serverHome}/WEB-INF/boxlang/config/boxlang.json</code></td></tr></tbody></table>
 
 {% hint style="info" %}
 All runtimes allow for configuration overrides.
@@ -127,6 +127,10 @@ Here, you will find each segment and its configuration details.
 
 {% content-ref url="configuration/logging.md" %}
 [logging.md](configuration/logging.md)
+{% endcontent-ref %}
+
+{% content-ref url="configuration/maven-integration.md" %}
+[maven-integration.md](configuration/maven-integration.md)
 {% endcontent-ref %}
 
 {% content-ref url="configuration/modules.md" %}
