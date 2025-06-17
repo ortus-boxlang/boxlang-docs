@@ -56,10 +56,10 @@ The only difference is that BVM adds version management capabilities on top.
 
 ```bash
 # Install BVM
-curl -fsSL https://boxlang.io/install-bvm.sh | bash
+curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh | bash
 
 # Or download and run locally
-wget https://raw.githubusercontent.com/ortus-boxlang/boxlang-quick-installer/main/src/install-bvm.sh
+wget https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh
 chmod +x install-bvm.sh
 ./install-bvm.sh
 ```

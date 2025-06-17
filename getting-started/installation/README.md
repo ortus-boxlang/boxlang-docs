@@ -243,6 +243,24 @@ install-bx-module bx-esapi --local
 install-bx-module bx-compat-cfml bx-esapi --local
 ```
 
+## BoxLang Version Manager (BVM)
+
+BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang.
+
+{% content-ref url="boxlang-version-manager-bvm.md" %}
+[boxlang-version-manager-bvm.md](boxlang-version-manager-bvm.md)
+{% endcontent-ref %}
+
+```bash
+# Install BVM
+/bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh)"
+
+# Or download and run locally
+wget https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh
+chmod +x install-bvm.sh
+./install-bvm.sh
+```
+
 ## R.E.P.L.
 
 **Read Evaluate Print Loop**
