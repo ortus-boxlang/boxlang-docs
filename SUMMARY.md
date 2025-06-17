@@ -54,6 +54,7 @@
     * [Migrating from Adobe ColdFusion](getting-started/overview/running-coldfusion-cfml-apps/migrating-from-adobe-coldfusion.md)
     * [Migrating From Lucee CFML](getting-started/overview/running-coldfusion-cfml-apps/migrating-from-lucee-cfml.md)
 * [Installation](getting-started/installation/README.md)
+  * [BoxLang Quick Installer](getting-started/installation/boxlang-quick-installer.md)
   * [BoxLang Version Manager (BVM)](getting-started/installation/boxlang-version-manager-bvm.md)
   * [Modules](getting-started/installation/modules.md)
 * [Running BoxLang](getting-started/running-boxlang/README.md)

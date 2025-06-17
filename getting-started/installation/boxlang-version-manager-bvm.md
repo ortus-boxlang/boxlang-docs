@@ -8,6 +8,8 @@ icon: list-tree
 
 # BoxLang Version Manager (BVM)
 
+<figure><img src="../../.gitbook/assets/bvm.jpg" alt=""><figcaption><p>BoxLang Version Manager</p></figcaption></figure>
+
 BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang.
 
 ### BVM vs Single-Version Installer
@@ -56,10 +58,10 @@ The only difference is that BVM adds version management capabilities on top.
 
 ```bash
 # Install BVM
-curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh | bash
+curl -fsSL https://install-bvm.boxlang.io/ | bash
 
 # Or download and run locally
-wget https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh
+wget --content-disposition https://install-bvm.boxlang.io/
 chmod +x install-bvm.sh
 ./install-bvm.sh
 ```

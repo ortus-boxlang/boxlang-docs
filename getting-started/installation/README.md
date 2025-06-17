@@ -23,7 +23,7 @@ We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the
 brew install curl zip unzip jq openjdk@21
 ```
 
-Once the requirements are installed, then move down to the quick installer.
+Once the requirements are installed, move down to the quick installer.
 {% endtab %}
 
 {% tab title="🐧 *Unix/Linux" %}
@@ -106,13 +106,13 @@ Once the requirements above are installed, to get started quickly with BoxLang, 
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}
-Just copy the following into your terminal to install be default for your user.
+Just copy the following into your terminal to install by default for your user.
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://install.boxlang.io)"
 ```
 
-If you want a system-wide installation then prefix it with `sudo`:
+If you want a system-wide installation, then prefix it with `sudo`:
 
 ```bash
 sudo /bin/bash -c "$(curl -fsSL https://install.boxlang.io)"
@@ -150,7 +150,7 @@ Please make sure you use the `--help` on our scripts to see everything you can d
 {% endtabs %}
 
 {% hint style="danger" %}
-If your system requires admin privileges (Like Chromebooks, or Linux distros), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
+If your system requires admin privileges (Like Chromebooks or Linux distros), make sure you use `sudo` or make sure the `/usr/local` folder is yours as the owner.
 {% endhint %}
 
 The quick installer will install the latest stable **BoxLang** **OS** binary and the **MiniServer** in the above directories. It will also install the following scripts for you:
@@ -194,7 +194,7 @@ install-bx-module --help
 
 ### Upgrading Your Install
 
-The `install-boxlang` script will allow you to upgrade your OS installation easily. If you call it without arguments, it will install the **latest stable** release and override the local install. You can also pass a specific version to install as the second argument or the word `snapshot`to install the bleeding edge release.  You can find all the latest artifacts here: [https://downloads.ortussolutions.com/#/ortussolutions/boxlang/](https://downloads.ortussolutions.com/#/ortussolutions/boxlang/)
+The `install-boxlang` script will allow you to upgrade your OS installation easily. If you call it without arguments, it will install the **latest stable** release and override the local install. You can also pass a specific version to install as the second argument, or the word `snapshot`to install the bleeding edge release.  You can find all the latest artifacts here: [https://downloads.ortussolutions.com/#/ortussolutions/boxlang/](https://downloads.ortussolutions.com/#/ortussolutions/boxlang/)
 
 ```bash
 # Upgrade to the latest stable version
@@ -219,7 +219,7 @@ You can use the `install-bx-module` binary to install modules into your boxlang 
 All our modules are available in the cloud software directory [FORGEBOX](https://forgebox.io/type/boxlang-modules). You can also register and collaborate with modules of your own :person\_raising\_hand:.
 {% endhint %}
 
-#### Install to BoxLang Home
+#### Install to the BoxLang Home
 
 ```bash
 # install individual modules
@@ -232,7 +232,7 @@ install-bx-module bx-compat-cfml bx-esapi
 
 #### Install Locally
 
-You can also install modules to the running application (CLI, web) by using the `--local`option in the command. This will create a `boxlang_modules`folder from where you ran the command and install the modules locally.
+You can also install modules to the running application (CLI, web) by using the `--local`option in the command. This will create a `boxlang_modules`folder from which you ran the command and install the modules locally.
 
 ```bash
 # install individual modules
@@ -253,10 +253,10 @@ BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows y
 
 ```bash
 # Install BVM
-/bin/bash -c "$(curl -fsSL https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh)"
+curl -fsSL https://install-bvm.boxlang.io/ | bash
 
 # Or download and run locally
-wget https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/install-bvm.sh
+wget --content-disposition https://install-bvm.boxlang.io/
 chmod +x install-bvm.sh
 ./install-bvm.sh
 ```
