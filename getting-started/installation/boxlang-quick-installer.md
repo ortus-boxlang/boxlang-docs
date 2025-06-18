@@ -41,6 +41,43 @@ boxlang
 boxlang-miniserver --port 8080
 ```
 
+### 📋 Prerequisites
+
+#### All Platforms
+
+* **Java 21+** - Required to run BoxLang
+
+#### Mac/Linux Additional Requirements
+
+* **curl** - For downloading releases
+* **unzip** - For extracting archives
+* **jq** - For JSON parsing (optional, fallback available)
+
+#### Installing Prerequisites
+
+**macOS (with Homebrew):**
+
+```bash
+brew install curl unzip jq
+```
+
+**Ubuntu/Debian:**
+
+```bash
+sudo apt update && sudo apt install curl unzip jq default-jdk
+```
+
+**RHEL/CentOS/Fedora:**
+
+```bash
+sudo dnf install curl unzip jq java-21-openjdk
+```
+
+**Windows:**
+
+* Java 21+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/)
+* PowerShell 5.1+ (included with Windows 10+)
+
 ### 📦 Installation Options
 
 #### Option 1: Single-Version Installer (Recommended for Most Users)
@@ -78,6 +115,28 @@ boxlang-miniserver --port 8080
 * ✅ Clean uninstall capabilities
 * ✅ Health check and diagnostics
 
+### ⚙️ Command Options
+
+Here are the available options for the install command.
+
+| Option                 | Short | Description                                        |
+| ---------------------- | ----- | -------------------------------------------------- |
+| `--help`               | `-h`  | Show this help message                             |
+| `--uninstall`          |       | Remove BoxLang from the system                     |
+| `--check-update`       |       | Check if a newer version is available              |
+| `--system`             |       | Force system-wide installation (requires sudo)     |
+| `--force`              |       | Force reinstallation even if already installed     |
+| `--with-commandbox`    |       | Install CommandBox without prompting               |
+| `--without-commandbox` |       | Skip CommandBox installation                       |
+| `--yes`                | `-y`  | Use defaults for all prompts (installs CommandBox) |
+
+### Notes
+
+* Use `--system` when you want to install BoxLang for all users on the system
+* The `--force` option is useful when you need to reinstall or update an existing installation
+* `--yes` automatically accepts all defaults, including installing CommandBox
+* `--with-commandbox` and `--without-commandbox` give you explicit control over CommandBox installation
+
 ### 🛠️ What Gets Installed
 
 #### Core Components
@@ -105,42 +164,53 @@ Local User: ~/.local/bin/          # Binaries (Linux/Mac)
 C:\BoxLang\  # Installation directory (Windows)
 ```
 
-### 📋 Prerequisites
+### 📖 Help Command
 
-#### All Platforms
+Always make sure to run the `--help` command to get the latest and greatest command usage.
 
-* **Java 21+** - Required to run BoxLang
-
-#### Mac/Linux Additional Requirements
-
-* **curl** - For downloading releases
-* **unzip** - For extracting archives
-* **jq** - For JSON parsing (optional, fallback available)
-
-#### Installing Prerequisites
-
-**macOS (with Homebrew):**
-
-```bash
-brew install curl unzip jq
 ```
+📦 BoxLang® Quick Installer v@build.version@
 
-**Ubuntu/Debian:**
+This script installs the BoxLang® runtime, MiniServer and tools on your system.
 
-```bash
-sudo apt update && sudo apt install curl unzip jq default-jdk
+Usage:
+  install-boxlang [version] [options]
+  install-boxlang --help
+
+Arguments:
+  [version]         (Optional) Specify which version to install
+                    - 'latest' (default): Install the latest stable release
+                    - 'snapshot': Install the latest development snapshot
+                    - '1.2.0': Install a specific version number
+
+Options:
+  --help, -h            Show this help message
+  --uninstall           Remove BoxLang from the system
+  --check-update        Check if a newer version is available
+  --system              Force system-wide installation (requires sudo)
+  --force               Force reinstallation even if already installed
+  --with-commandbox     Install CommandBox without prompting
+  --without-commandbox  Skip CommandBox installation
+  --yes, -y             Use defaults for all prompts (installs CommandBox)
+
+Examples:
+  install-boxlang
+  install-boxlang latest
+  install-boxlang snapshot
+  install-boxlang 1.2.0
+  install-boxlang --force
+  install-boxlang --with-commandbox
+  install-boxlang --without-commandbox
+  install-boxlang --yes
+  install-boxlang --uninstall
+  install-boxlang --check-update
+  sudo install-boxlang --system
+
+Non-Interactive Usage:
+  🌐 Install with CommandBox: curl -fsSL https://boxlang.io/install.sh | bash -s -- --with-commandbox
+  🌐 Install without CommandBox: curl -fsSL https://boxlang.io/install.sh | bash -s -- --without-commandbox
+  🌐 Install with defaults: curl -fsSL https://boxlang.io/install.sh | bash -s -- --yes
 ```
-
-**RHEL/CentOS/Fedora:**
-
-```bash
-sudo dnf install curl unzip jq java-21-openjdk
-```
-
-**Windows:**
-
-* Java 21+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/)
-* PowerShell 5.1+ (included with Windows 10+)
 
 ### 🎯 Detailed Usage
 
