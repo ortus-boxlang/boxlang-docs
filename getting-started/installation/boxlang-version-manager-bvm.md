@@ -10,9 +10,11 @@ icon: list-tree
 
 <figure><img src="../../.gitbook/assets/bvm.jpg" alt=""><figcaption><p>BoxLang Version Manager</p></figcaption></figure>
 
+## BVM - BoxLang Version Manager
+
 BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang.
 
-### BVM vs Single-Version Installer
+### 🆚 BVM vs Single-Version Installer
 
 **Choose BVM if you:**
 
@@ -38,7 +40,7 @@ BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows y
 
 The only difference is that BVM adds version management capabilities on top.
 
-### Features
+### 🍬 Features
 
 * 📦 **Install complete BoxLang environment** - runtime, MiniServer, and helper scripts
 * 🔄 **Switch between versions easily** - change your active BoxLang version with one command
@@ -51,17 +53,61 @@ The only difference is that BVM adds version management capabilities on top.
 * 🔗 **Seamless integration** - wrapper scripts make all tools available in PATH
 * ⚡ **Command aliases** - convenient short aliases for all major commands
 * 🛠️ **Helper script integration** - all BoxLang helper scripts work with active version
+* 🎯 **Smart version detection** - automatically detects actual version numbers from installations
 
-### Quick Start
+### 🔎 Version Detection & Management
+
+BVM intelligently detects actual version numbers when installing "**latest**" or "**snapshot**" versions, providing clear and accurate version tracking. A symbolic link named `latest` points to the most recent stable version, while snapshot versions are installed with their full version names (e.g., `1.3.0-snapshot`).
+
+#### How Version Detection Works
+
+When you install using aliases like "latest" or "snapshot", BVM:
+
+1. **Downloads the requested version** (latest stable or development snapshot)
+2. **Inspects the BoxLang JAR file** to extract the actual version number
+3. **Installs under the detected version** (e.g., `1.2.0` or `1.3.0-snapshot`)
+4. **Creates appropriate symlinks** (only for "latest" - points to the actual version)
+
+#### Benefits
+
+* 🎯 **Clear version tracking** - `bvm list` shows actual version numbers, not generic aliases
+* 📋 **Accurate history** - see exactly which versions you have installed
+* 🔍 **No confusion** - distinguish between different snapshot builds
+* 🔗 **Smart symlinks** - "latest" symlink for convenience, actual versions for clarity
+
+#### Example
+
+**Before** (old behavior):
+
+```bash
+$ bvm list
+Installed BoxLang versions:
+  * latest (current)
+    snapshot
+    1.1.0
+```
+
+**After** (new behavior):
+
+```bash
+$ bvm list
+Installed BoxLang versions:
+  * 1.2.0 (current)
+    latest → 1.2.0
+    1.3.0-snapshot
+    1.1.0
+```
+
+### 🚀 Quick Start
 
 #### Installation
 
 ```bash
 # Install BVM
-curl -fsSL https://install-bvm.boxlang.io/ | bash
+curl -fsSL https://boxlang.io/install-bvm.sh | bash
 
 # Or download and run locally
-wget --content-disposition https://install-bvm.boxlang.io/
+wget https://raw.githubusercontent.com/ortus-boxlang/boxlang-quick-installer/main/src/install-bvm.sh
 chmod +x install-bvm.sh
 ./install-bvm.sh
 ```
@@ -91,23 +137,60 @@ bvm --help
 bvm -h
 ```
 
-### Commands
+### 📋 Prerequisites
+
+* **curl** - For downloading BoxLang releases
+* **unzip** - For extracting archives
+* **jq** - For parsing JSON (optional, fallback available)
+* **Java 21+** - Required to run BoxLang
+
+#### Installing Prerequisites
+
+**macOS (with Homebrew):**
+
+```bash
+brew install curl unzip jq
+```
+
+**Ubuntu/Debian:**
+
+```bash
+sudo apt update && sudo apt install curl unzip jq
+```
+
+**RHEL/CentOS/Fedora:**
+
+```bash
+sudo dnf install curl unzip jq
+```
+
+### 🤖 Integration with the System Shell
+
+BVM automatically adds itself and the current BoxLang version to your `PATH`. After installation, restart your terminal or run:
+
+```bash
+source ~/.bashrc  # or ~/.zshrc, ~/.profile, etc.
+```
+
+### ⚡Commands
 
 #### Version Management
 
 * `bvm install <version>` - Install a specific BoxLang version
-  * `bvm install latest` - Install latest stable release
-  * `bvm install snapshot` - Install latest development snapshot
+  * `bvm install latest` - Install latest stable release (detects and installs actual version, e.g., `1.2.0`)
+  * `bvm install snapshot` - Install latest development snapshot (detects and installs actual version, e.g., `1.3.0-snapshot`)
   * `bvm install 1.2.0` - Install specific version
 * `bvm use <version>` - Switch to a specific BoxLang version
+  * Can use actual version numbers (e.g., `1.2.0`, `1.3.0-snapshot`) or `latest` symlink
 * `bvm current` - Show currently active BoxLang version
-* `bvm uninstall <version>` - Uninstall a specific BoxLang version
+* `bvm uninstall <version>` - Uninstall a specific BoxLang version (use actual version number)
   * Aliases: `bvm remove <version>`, `bvm rm <version>`
 
 #### Information
 
-* `bvm list` - List all installed BoxLang versions
+* `bvm list` - List all installed BoxLang versions (shows actual version numbers and symlinks)
   * Alias: `bvm ls`
+  * Example output: `1.2.0`, `latest → 1.2.0`, `1.3.0-snapshot`
 * `bvm list-remote` - List available BoxLang versions for download
   * Alias: `bvm ls-remote`
 * `bvm which` - Show path to current BoxLang installation
@@ -129,7 +212,7 @@ bvm -h
 * `bvm help` - Show help message
   * Aliases: `bvm --help`, `bvm -h`
 
-### What BVM Installs
+### 🖥️ What BVM Installs
 
 When you install a BoxLang version with BVM, it downloads and sets up:
 
@@ -149,20 +232,31 @@ When you install a BoxLang version with BVM, it downloads and sets up:
 * **Wrapper scripts** - BVM creates wrapper scripts so you can use `boxlang`, `bx`, `boxlang-miniserver`, etc. directly
 * **Version management** - All tools automatically use the currently active BoxLang version
 * **Helper script integration** - All helper scripts work with the currently active BoxLang version
+* **Smart version detection** - Automatically detects actual version numbers from downloaded installations
 
-### Examples
+### 🧑‍💻 Examples
 
 ```bash
-# Install and use the latest BoxLang
-bvm install latest
-bvm use latest
+# Install and use the latest BoxLang (detects actual version)
+bvm install latest    # Downloads latest, detects version (e.g., 1.2.0), installs as 1.2.0
+bvm use latest        # Uses the latest symlink
+
+# Install a development snapshot (detects actual version)
+bvm install snapshot  # Downloads snapshot, detects version (e.g., 1.3.0-snapshot), installs as 1.3.0-snapshot
+bvm use 1.3.0-snapshot
 
 # Install a specific version
 bvm install 1.2.0
 bvm use 1.2.0
 
-# See what's installed
+# See what's installed (shows actual version numbers)
 bvm list
+# Example output:
+#   * 1.2.0 (current)
+#     latest → 1.2.0
+#     1.3.0-snapshot
+#     1.1.0
+
 # or use the short alias
 bvm ls
 
@@ -200,7 +294,7 @@ bvm doctor
 bvm clean
 ```
 
-### Migrating from Single-Version Installer to BVM
+### 🦾 Migrating from Single-Version Installer to BVM
 
 If you currently have BoxLang installed via `install-boxlang.sh` and want to switch to BVM for version management:
 
@@ -237,42 +331,7 @@ boxlang --version
 
 **Note:** Your BoxLang home directory (`~/.boxlang`) with modules, settings, and data will be preserved during migration.
 
-### Prerequisites
-
-* **curl** - For downloading BoxLang releases
-* **unzip** - For extracting archives
-* **jq** - For parsing JSON (optional, fallback available)
-* **Java 21+** - Required to run BoxLang
-
-#### Installing Prerequisites
-
-**macOS (with Homebrew):**
-
-```bash
-brew install curl unzip jq
-```
-
-**Ubuntu/Debian:**
-
-```bash
-sudo apt update && sudo apt install curl unzip jq
-```
-
-**RHEL/CentOS/Fedora:**
-
-```bash
-sudo dnf install curl unzip jq
-```
-
-### Integration with Shell
-
-BVM automatically adds itself and the current BoxLang version to your PATH. After installation, restart your terminal or run:
-
-```bash
-source ~/.bashrc  # or ~/.zshrc, ~/.profile, etc.
-```
-
-### Troubleshooting
+### 🐛 Troubleshooting
 
 #### BVM not found after installation
 
@@ -300,7 +359,7 @@ bvm doctor
 
 This will check your BVM installation and identify any issues.
 
-### Contributing
+### 🤝 Contributing
 
 BVM is part of the BoxLang Quick Installer project. To contribute:
 
@@ -310,15 +369,24 @@ BVM is part of the BoxLang Quick Installer project. To contribute:
 4. Test thoroughly
 5. Submit a pull request
 
-### License
+### 📄 License
 
 Licensed under the Apache License, Version 2.0. See the LICENSE file for details.
 
-### Support
+### 🆘Support
 
-* 🌐 Website: https://boxlang.io
-* 📖 Documentation: https://boxlang.io/docs
-* 💾 GitHub: https://github.com/ortus-boxlang/boxlang
-* 💬 Community: https://boxlang.io/community
-* 🧑‍💻 Try: https://try.boxlang.io
-* 🫶 Professional Support: https://boxlang.io/plans
+#### Community Support (Free)
+
+🌐 Website: https://boxlang.io\
+📖 Documentation: https://boxlang.ortusbooks.com\
+💾 GitHub: https://github.com/ortus-boxlang/boxlang\
+💬 Community: https://community.ortussolutions.com/\
+🧑‍💻 Try: https://try.boxlang.io\
+📧 Mailing List: https://newsletter.boxlang.io
+
+#### Professional Support
+
+🫶 Enterprise Support: https://boxlang.io/plans\
+🎓 Training: https://learn.boxlang.io\
+🔧 Consulting: https://www.ortussolutions.com/services/development\
+📞 Priority Support: Available with enterprise plans

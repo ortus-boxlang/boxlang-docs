@@ -130,7 +130,7 @@ Here are the available options for the install command.
 | `--without-commandbox` |       | Skip CommandBox installation                       |
 | `--yes`                | `-y`  | Use defaults for all prompts (installs CommandBox) |
 
-### Notes
+#### Notes
 
 * Use `--system` when you want to install BoxLang for all users on the system
 * The `--force` option is useful when you need to reinstall or update an existing installation
@@ -168,7 +168,7 @@ C:\BoxLang\  # Installation directory (Windows)
 
 Always make sure to run the `--help` command to get the latest and greatest command usage.
 
-```
+```bash
 📦 BoxLang® Quick Installer v@build.version@
 
 This script installs the BoxLang® runtime, MiniServer and tools on your system.
