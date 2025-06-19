@@ -88,7 +88,7 @@ Use the following powershell script to install the JRE 21. \
 **HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 ```powershell
-powershell -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://downloads.ortussolutions.com/ortussolutions/boxlang/install-jre.ps1'))"
+powershell -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/helpers/install-jre.ps1'))"
 ```
 
 * Once this runs the JRE will be installed in your `C:\Program Files\Java\jre{version}`
@@ -103,6 +103,10 @@ Make sure you restart any terminal windows for changes to take effect.
 ## Quick Installer
 
 Once the requirements above are installed, to get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac/Linux/\*Nix/Windows.  This will allow you to execute the script in your favorite terminal application.  Please note that some OS will require you to run it as an `administrator` or with `sudo` capabilities.
+
+{% content-ref url="boxlang-quick-installer.md" %}
+[boxlang-quick-installer.md](boxlang-quick-installer.md)
+{% endcontent-ref %}
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}

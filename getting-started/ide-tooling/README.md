@@ -1,6 +1,6 @@
 ---
-icon: laptop-code
 description: Welcome to the world of BoxLang Tooling!
+icon: laptop-code
 ---
 
 # IDE & Tooling
@@ -23,7 +23,9 @@ We have a collection of CLI tools available to every OS installation:
 
 ## BoxLang IDE
 
-We have an official first-party extension for VSCode. You can find it in the [VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang).
+We have an official first-party extension for VSCode. You can find it in the [VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang).  It also has it's own documentation website: [https://boxlang-ide.ortusbooks.com/](https://boxlang-ide.ortusbooks.com/)
+
+{% embed url="https://boxlang-ide.ortusbooks.com/" %}
 
 <figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
 
