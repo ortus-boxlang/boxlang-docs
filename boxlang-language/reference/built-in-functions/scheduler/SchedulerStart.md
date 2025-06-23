@@ -29,8 +29,8 @@ SchedulerStart(className=[string], name=[string], force=[boolean])
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
-  * [SchedulerRestart](./SchedulerRestart.md)
-  * [SchedulerStats](./SchedulerStats.md)
-  * [SchedulerShutdown](./SchedulerShutdown.md)
-  * [SchedulerList](./SchedulerList.md)
   * [SchedulerGetAll](./SchedulerGetAll.md)
+  * [SchedulerList](./SchedulerList.md)
+  * [SchedulerRestart](./SchedulerRestart.md)
+  * [SchedulerShutdown](./SchedulerShutdown.md)
+  * [SchedulerStats](./SchedulerStats.md)

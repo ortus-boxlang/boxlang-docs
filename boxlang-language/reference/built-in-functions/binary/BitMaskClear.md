@@ -75,13 +75,13 @@ writeOutput( bitMaskClear( 255, 0, 4 ) );
 
 ## Related
 
-  * [BitNot](./BitNot.md)
-  * [BitXor](./BitXor.md)
-  * [BitOr](./BitOr.md)
+  * [BinaryDecode](./BinaryDecode.md)
+  * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)
   * [BitMaskRead](./BitMaskRead.md)
-  * [BinaryDecode](./BinaryDecode.md)
   * [BitMaskSet](./BitMaskSet.md)
-  * [BinaryEncode](./BinaryEncode.md)
+  * [BitNot](./BitNot.md)
+  * [BitOr](./BitOr.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
+  * [BitXor](./BitXor.md)

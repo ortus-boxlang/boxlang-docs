@@ -21,8 +21,8 @@ This function does not accept any arguments
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
-  * [SchedulerRestart](./SchedulerRestart.md)
-  * [SchedulerStats](./SchedulerStats.md)
-  * [SchedulerShutdown](./SchedulerShutdown.md)
   * [SchedulerList](./SchedulerList.md)
+  * [SchedulerRestart](./SchedulerRestart.md)
+  * [SchedulerShutdown](./SchedulerShutdown.md)
   * [SchedulerStart](./SchedulerStart.md)
+  * [SchedulerStats](./SchedulerStats.md)

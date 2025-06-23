@@ -199,6 +199,6 @@ dump( NumberFormat( 1, "C000" ) );
 
 ## Related
 
-  * [DecimalFormat](./DecimalFormat.md)
   * [BooleanFormat](./BooleanFormat.md)
+  * [DecimalFormat](./DecimalFormat.md)
   * [LSNumberFormat](./LSNumberFormat.md)

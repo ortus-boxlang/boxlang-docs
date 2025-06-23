@@ -85,13 +85,13 @@ dump( GetLocaleInfo() );
 
 ## Related
 
-  * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
-  * [GetLocale](./GetLocale.md)
-  * [SetLocale](./SetLocale.md)
-  * [ParseCurrency](./ParseCurrency.md)
-  * [LSParseCurrency](./LSParseCurrency.md)
   * [ClearLocale](./ClearLocale.md)
   * [CurrencyFormat](./CurrencyFormat.md)
-  * [LSCurrencyFormat](./LSCurrencyFormat.md)
+  * [GetLocale](./GetLocale.md)
+  * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
   * [IsCurrency](./IsCurrency.md)
+  * [LSCurrencyFormat](./LSCurrencyFormat.md)
   * [LSIsCurrency](./LSIsCurrency.md)
+  * [LSParseCurrency](./LSParseCurrency.md)
+  * [ParseCurrency](./ParseCurrency.md)
+  * [SetLocale](./SetLocale.md)

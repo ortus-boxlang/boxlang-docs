@@ -68,9 +68,9 @@ writeDump( result );
 
   * [Decrypt](./Decrypt.md)
   * [DecryptBinary](./DecryptBinary.md)
-  * [GenerateSecretKey](./GenerateSecretKey.md)
-  * [Hash](./Hash.md)
-  * [Hash40](./Hash40.md)
   * [Encrypt](./Encrypt.md)
   * [EncryptBinary](./EncryptBinary.md)
   * [GeneratePBKDFKey](./GeneratePBKDFKey.md)
+  * [GenerateSecretKey](./GenerateSecretKey.md)
+  * [Hash](./Hash.md)
+  * [Hash40](./Hash40.md)

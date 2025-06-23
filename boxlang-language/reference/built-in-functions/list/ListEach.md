@@ -4,6 +4,13 @@
 
 Used to iterate over a delimited list and run the function closure for each item in the list.
 
+This BIF is similar to the ArrayEach BIF, but operates on a delimited list instead of an array.
+ <p>
+ <h2>Parallel Execution</h2>
+ If the <code>parallel</code> argument is set to true, and no <code>max_threads</code> are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If <code>max_threads</code> is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+
 ## Method Signature
 
 ```
@@ -20,8 +27,8 @@ ListEach(list=[string], callback=[function:Consumer], delimiter=[string], includ
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `true` |
-| `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
-| `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `integer` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
 | `ordered` | `boolean` | `false` | (BoxLang only) whether parallel operations should execute and maintain order | `false` |
 
 ## Examples
@@ -122,35 +129,36 @@ strLst.listEach( ( Any element, Any index, Any list ) => {
 
 ## Related
 
-  * [ListSome](./ListSome.md)
-  * [ListReduceRight](./ListReduceRight.md)
-  * [ListPrepend](./ListPrepend.md)
-  * [ListFirst](./ListFirst.md)
-  * [ListLast](./ListLast.md)
-  * [ListIndexExists](./ListIndexExists.md)
-  * [ListInsertAt](./ListInsertAt.md)
+  * [GetToken](./GetToken.md)
+  * [ListAppend](./ListAppend.md)
+  * [ListAvg](./ListAvg.md)
   * [ListChangeDelims](./ListChangeDelims.md)
-  * [ListFind](./ListFind.md)
-  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListCompact](./ListCompact.md)
   * [ListContains](./ListContains.md)
   * [ListContainsNoCase](./ListContainsNoCase.md)
-  * [ListCompact](./ListCompact.md)
-  * [ListTrim](./ListTrim.md)
-  * [ListMap](./ListMap.md)
   * [ListDeleteAt](./ListDeleteAt.md)
-  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
-  * [ListToArray](./ListToArray.md)
+  * [ListEvery](./ListEvery.md)
+  * [ListFilter](./ListFilter.md)
+  * [ListFind](./ListFind.md)
+  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListFirst](./ListFirst.md)
+  * [ListGetAt](./ListGetAt.md)
+  * [ListIndexExists](./ListIndexExists.md)
+  * [ListInsertAt](./ListInsertAt.md)
+  * [ListItemTrim](./ListItemTrim.md)
+  * [ListLast](./ListLast.md)
+  * [ListLen](./ListLen.md)
+  * [ListMap](./ListMap.md)
+  * [ListNone](./ListNone.md)
+  * [ListPrepend](./ListPrepend.md)
   * [ListQualify](./ListQualify.md)
-  * [ListAppend](./ListAppend.md)
+  * [ListReduceRight](./ListReduceRight.md)
+  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
+  * [ListRest](./ListRest.md)
+  * [ListSetAt](./ListSetAt.md)
+  * [ListSome](./ListSome.md)
+  * [ListSort](./ListSort.md)
+  * [ListToArray](./ListToArray.md)
+  * [ListTrim](./ListTrim.md)
   * [ListValueCount](./ListValueCount.md)
   * [ListValueCountNoCase](./ListValueCountNoCase.md)
-  * [ListAvg](./ListAvg.md)
-  * [ListLen](./ListLen.md)
-  * [ListRest](./ListRest.md)
-  * [ListGetAt](./ListGetAt.md)
-  * [ListEvery](./ListEvery.md)
-  * [ListSort](./ListSort.md)
-  * [ListSetAt](./ListSetAt.md)
-  * [ListFilter](./ListFilter.md)
-  * [GetToken](./GetToken.md)
-  * [ListItemTrim](./ListItemTrim.md)

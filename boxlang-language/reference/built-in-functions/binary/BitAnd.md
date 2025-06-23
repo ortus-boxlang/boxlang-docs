@@ -52,13 +52,13 @@ writeOutput( bitAnd( inputValue1, inputValue2 ) );
 
 ## Related
 
-  * [BitNot](./BitNot.md)
-  * [BitXor](./BitXor.md)
-  * [BitOr](./BitOr.md)
-  * [BitMaskRead](./BitMaskRead.md)
   * [BinaryDecode](./BinaryDecode.md)
-  * [BitMaskSet](./BitMaskSet.md)
-  * [BitMaskClear](./BitMaskClear.md)
   * [BinaryEncode](./BinaryEncode.md)
+  * [BitMaskClear](./BitMaskClear.md)
+  * [BitMaskRead](./BitMaskRead.md)
+  * [BitMaskSet](./BitMaskSet.md)
+  * [BitNot](./BitNot.md)
+  * [BitOr](./BitOr.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
+  * [BitXor](./BitXor.md)

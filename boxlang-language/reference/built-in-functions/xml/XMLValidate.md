@@ -71,11 +71,11 @@ dump( xmlValidate( xml_document, validator ) );
 
 ## Related
 
-  * [XMLElemNew](./XMLElemNew.md)
-  * [XMLSearch](./XMLSearch.md)
-  * [XMLGetNodeType](./XMLGetNodeType.md)
-  * [XMLTransform](./XMLTransform.md)
-  * [XMLNew](./XMLNew.md)
-  * [XMLFormat](./XMLFormat.md)
   * [XMLChildPos](./XMLChildPos.md)
+  * [XMLElemNew](./XMLElemNew.md)
+  * [XMLFormat](./XMLFormat.md)
+  * [XMLGetNodeType](./XMLGetNodeType.md)
+  * [XMLNew](./XMLNew.md)
   * [XMLParse](./XMLParse.md)
+  * [XMLSearch](./XMLSearch.md)
+  * [XMLTransform](./XMLTransform.md)

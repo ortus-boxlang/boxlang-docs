@@ -68,6 +68,6 @@ This function does not accept any arguments
 
 ## Related
 
-  * [CLIExit](./CLIExit.md)
   * [CLIClear](./CLIClear.md)
+  * [CLIExit](./CLIExit.md)
   * [CLIRead](./CLIRead.md)

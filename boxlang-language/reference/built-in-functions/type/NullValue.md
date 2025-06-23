@@ -43,8 +43,8 @@ dump( isNull( my_null ) );
 
 ## Related
 
+  * [ArrayLen](./ArrayLen.md)
   * [GetMetaData](./GetMetaData.md)
   * [Len](./Len.md)
-  * [StructCount](./StructCount.md)
-  * [ArrayLen](./ArrayLen.md)
   * [StringLen](./StringLen.md)
+  * [StructCount](./StructCount.md)

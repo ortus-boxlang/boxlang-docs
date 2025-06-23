@@ -142,6 +142,19 @@ Arguments:
 
 Used to iterate over a struct and run the function closure for each key/value pair.
 
+<p>,
+ The function will be passed 3 arguments: the key, the value, and the struct.
+ You can alternatively pass a Java BiConsumer which will only receive the first 2 args (key and value).
+ ,<p>,
+ This BIF is useful for performing side effects on each item in the struct, such as logging or modifying external state.
+ ,<p>,
+
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+
 Arguments:
 
 | Argument | Type | Required | Default |
@@ -167,7 +180,18 @@ Arguments:
 <details>
 <summary><code>every(callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Used to iterate over a struct and test whether every item in the struct meets the test.
+Used to iterate over a struct and test whether <strong>every</strong> item meets the test callback.
+
+The function will be passed 3 arguments: the value, the index, and the struct.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that does not meet the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ This allows for efficient processing of large structs, especially when the test function is computationally expensive or the struct is large.
 
 Arguments:
 
@@ -181,7 +205,20 @@ Arguments:
 <details>
 <summary><code>filter(callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Used to filter a struct and return a new struct containing the result
+Filters a struct and returns a new struct with the values that pass the filter criteria.
+
+This BIF will invoke the callback function for each entry in the struct, passing the key, value, and the struct itself.
+ ,<ul>,
+ ,<li>,If the callback returns true, the entry will be included in the new struct.,</li>,
+ ,<li>,If the callback returns false, the entry will be excluded from the new struct.,</li>,
+ ,<li>,If the callback requires strict arguments, it will only receive the key and value.,</li>,
+ ,<li>,If the callback does not require strict arguments, it will receive the key, value, and the original struct.,</li>,
+ ,</ul>,
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to filter, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 Arguments:
 
@@ -346,13 +383,51 @@ Returns the absolute value of a number
 <details>
 <summary><code>map(callback=[function:BiFunction], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Used to map a struct to a new struct of the same type containing the result
+This BIF will iterate over each key-value pair in the struct and invoke the callback function for each item so you can do
+ any operation on the key-value pair and return a new value that will be set in a new struct.
+
+The callback function will be passed the key, the value, and the original struct.
+ ,<ul>,
+ ,<li>,If the callback requires strict arguments, it will only receive the key and value.,</li>,
+ ,<li>,If the callback does not require strict arguments, it will receive the key, value, and the original struct.,</li>,
+ ,</ul>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the map will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the map in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to map, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function:BiFunction` | `true` | `null` |
+| `parallel` | `boolean` | `false` | `false` |
+| `maxThreads` | `integer` | `false` | `null` |
+
+</details>
+<details>
+<summary><code>none(callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])</code></summary>
+
+Used to iterate over a struct and test whether <strong>NONE</strong> item meets the test callback.
+
+This is the opposite of ,{@link StructSome},.
+ ,<p>,
+ The function will be passed 3 arguments: the value, the index, and the struct.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that does not meet the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ This allows for efficient processing of large structs, especially when the test function is computationally expensive or the struct is large.
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `callback` | `function:BiPredicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
@@ -373,7 +448,19 @@ Arguments:
 <details>
 <summary><code>some(callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Used to iterate over a struct and test whether any items meet the test callback.
+Used to iterate over a struct and test whether <strong>ANY</strong> items meet the test callback.
+
+The function will be passed 3 arguments: the key, the value, and the struct.
+ You can alternatively pass a Java BiPredicate which will only receive the first 2 args.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that meets the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+ ,<p>
 
 Arguments:
 
@@ -400,9 +487,32 @@ Arguments:
 
 </details>
 <details>
-<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[string], useCustomSerializer=[boolean])</code></summary>
+<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[string], useCustomSerializer=[boolean], pretty=[boolean])</code></summary>
 
-Converts a BoxLang variable into a JSON (JavaScript Object Notation) string.
+Converts a BoxLang variable into a JSON (JavaScript Object Notation) string according to the specified options.
+
+<h2>,Query Format Options,</h2>,
+ The ,<code>,queryFormat,</code>, argument determines how queries are serialized:
+ ,<ul>,
+ ,<li>,<code>,row,</code>, or ,<code>,false,</code>,: Serializes the query as a top-level struct with two keys:
+ ,<code>,columns,</code>, (an array of column names) and ,<code>,data,</code>, (an array of arrays representing
+ each row's data).,</li>,
+ ,<li>,<code>,column,</code>, or ,<code>,true,</code>,: Serializes the query as a top-level struct with three keys:
+ ,<code>,rowCount,</code>, (the number of rows), ,<code>,columns,</code>, (an array of column names), and
+ ,<code>,data,</code>, (a struct where each key is a column name and the value is an array of values for that column).,</li>,
+ ,<li>,<code>,struct,</code>,: Serializes the query as an array of structs, where each struct represents a row of data.,</li>,
+ ,</ul>,
+
+ ,<h2>,Usage,</h2>,
+ 
+ ,<pre>,
+ // Convert a query to JSON
+ myQuery = ...;
+ json = jsonSerialize( myQuery, queryFormat="row" );
+ // Convert a list to JSON
+ myList = "foo,bar,baz";
+ jsonList = jsonSerialize( myList );
+ ,</pre>
 
 Arguments:
 
@@ -411,6 +521,7 @@ Arguments:
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `string` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
+| `pretty` | `boolean` | `false` | `false` |
 
 </details>
 <details>

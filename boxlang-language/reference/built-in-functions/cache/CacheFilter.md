@@ -46,7 +46,7 @@ CacheFilter(filter=[string], useRegex=[boolean])
 
 ## Related
 
-  * [CacheNames](./CacheNames.md)
-  * [CacheService](./CacheService.md)
-  * [CacheProviders](./CacheProviders.md)
   * [Cache](./Cache.md)
+  * [CacheNames](./CacheNames.md)
+  * [CacheProviders](./CacheProviders.md)
+  * [CacheService](./CacheService.md)

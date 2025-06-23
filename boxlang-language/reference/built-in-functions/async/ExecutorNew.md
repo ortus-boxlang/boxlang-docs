@@ -9,11 +9,11 @@ The return value is an ExecutorRecord object that can be used to interact with t
  Available types are:
  - "cached" - Creates a cached thread pool executor.
  - "fixed" - Creates a fixed thread pool executor.
- - "fork_join" - Creates a fork-join pool executor.
+ - "fork_join" - Creates a fork join pool executor.
  - "scheduled" - Creates a scheduled thread pool executor.
  - "single" - Creates a single thread executor.
  - "virtual" - Creates a virtual thread executor.
- - "work_stealing" - Creates a work-stealing thread pool executor.
+ - "work_stealing" - Creates a work stealing thread pool executor.
 
 ## Method Signature
 
@@ -36,17 +36,17 @@ ExecutorNew(name=[string], type=[string], maxThreads=[integer])
 
 ## Related
 
-  * [RunAsync](./RunAsync.md)
-  * [ThreadJoin](./ThreadJoin.md)
-  * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [ExecutorGet](./ExecutorGet.md)
-  * [IsInThread](./IsInThread.md)
-  * [FutureNew](./FutureNew.md)
-  * [ExecutorStatus](./ExecutorStatus.md)
-  * [ExecutorList](./ExecutorList.md)
-  * [ThreadTerminate](./ThreadTerminate.md)
-  * [ThreadNew](./ThreadNew.md)
   * [ExecutorHas](./ExecutorHas.md)
-  * [ThreadInterrupt](./ThreadInterrupt.md)
+  * [ExecutorList](./ExecutorList.md)
   * [ExecutorShutdown](./ExecutorShutdown.md)
+  * [ExecutorStatus](./ExecutorStatus.md)
+  * [FutureNew](./FutureNew.md)
+  * [IsInThread](./IsInThread.md)
   * [isThreadAlive](./isThreadAlive.md)
+  * [IsThreadInterrupted](./IsThreadInterrupted.md)
+  * [RunAsync](./RunAsync.md)
+  * [ThreadInterrupt](./ThreadInterrupt.md)
+  * [ThreadJoin](./ThreadJoin.md)
+  * [ThreadNew](./ThreadNew.md)
+  * [ThreadTerminate](./ThreadTerminate.md)

@@ -25,6 +25,6 @@ CLIRead(prompt=[string])
 
 ## Related
 
-  * [CLIExit](./CLIExit.md)
   * [CLIClear](./CLIClear.md)
+  * [CLIExit](./CLIExit.md)
   * [CLIGetArgs](./CLIGetArgs.md)

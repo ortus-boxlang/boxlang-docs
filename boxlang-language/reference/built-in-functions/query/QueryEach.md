@@ -2,12 +2,20 @@
 
 # Function: `QueryEach`
 
-Iterates over query rows and passes each row per iteration to a callback function
+Iterates over query rows and passes each row per iteration to a callback function.
+
+This function is used to perform an action for each row in the query.
+ It does not return a value, but rather allows you to perform side effects such as printing or modifying data.
+ <p>
+ <h2>Parallel Execution</h2>
+ If the <code>parallel</code> argument is set to true, and no <code>max_threads</code> are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If <code>max_threads</code> is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 ## Method Signature
 
 ```
-QueryEach(query=[query], callback=[function:Consumer], parallel=[boolean], maxThreads=[integer])
+QueryEach(query=[query], callback=[function:Consumer], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
 ```
 
 ### Arguments
@@ -17,8 +25,9 @@ QueryEach(query=[query], callback=[function:Consumer], parallel=[boolean], maxTh
 |----------|------|----------|-------------|---------|
 | `query` | `query` | `true` | The query to iterate over |  |
 | `callback` | `function:Consumer` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the row, the currentRow, the query. You can alternatively pass a Java Consumer which will only receive the 1st arg. |  |
-| `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
-| `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `integer` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
+| `ordered` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -145,36 +154,37 @@ Dump( var=people, label="people - with calculated age" );
 
 ## Related
 
-  * [QueryRecordCount](./QueryRecordCount.md)
-  * [QueryColumnList](./QueryColumnList.md)
-  * [QueryRowSwap](./QueryRowSwap.md)
-  * [QuerySort](./QuerySort.md)
-  * [QueryKeyExists](./QueryKeyExists.md)
-  * [QueryColumnCount](./QueryColumnCount.md)
-  * [QueryReduce](./QueryReduce.md)
-  * [QueryCurrentRow](./QueryCurrentRow.md)
-  * [QueryColumnData](./QueryColumnData.md)
-  * [QueryRowData](./QueryRowData.md)
-  * [QueryFilter](./QueryFilter.md)
-  * [QueryAddRow](./QueryAddRow.md)
-  * [QueryNew](./QueryNew.md)
-  * [QueryReverse](./QueryReverse.md)
-  * [QueryPrepend](./QueryPrepend.md)
-  * [QueryColumnExists](./QueryColumnExists.md)
   * [QueryAddColumn](./QueryAddColumn.md)
+  * [QueryAddRow](./QueryAddRow.md)
+  * [QueryAppend](./QueryAppend.md)
+  * [QueryClear](./QueryClear.md)
+  * [QueryColumnArray](./QueryColumnArray.md)
+  * [QueryColumnCount](./QueryColumnCount.md)
+  * [QueryColumnData](./QueryColumnData.md)
+  * [QueryColumnExists](./QueryColumnExists.md)
+  * [QueryColumnList](./QueryColumnList.md)
+  * [QueryCurrentRow](./QueryCurrentRow.md)
+  * [QueryDeleteColumn](./QueryDeleteColumn.md)
+  * [QueryDeleteRow](./QueryDeleteRow.md)
+  * [QueryEvery](./QueryEvery.md)
+  * [QueryFilter](./QueryFilter.md)
   * [QueryGetCell](./QueryGetCell.md)
   * [QueryGetResult](./QueryGetResult.md)
-  * [QueryMap](./QueryMap.md)
-  * [QueryEvery](./QueryEvery.md)
-  * [QueryRecordCount](./QueryRecordCount.md)
-  * [QuerySome](./QuerySome.md)
-  * [QueryDeleteColumn](./QueryDeleteColumn.md)
-  * [QuerySetCell](./QuerySetCell.md)
   * [QueryInsertAt](./QueryInsertAt.md)
-  * [QueryClear](./QueryClear.md)
-  * [QuerySetRow](./QuerySetRow.md)
-  * [QueryColumnArray](./QueryColumnArray.md)
-  * [QueryDeleteRow](./QueryDeleteRow.md)
-  * [QueryAppend](./QueryAppend.md)
-  * [QuerySlice](./QuerySlice.md)
+  * [QueryKeyExists](./QueryKeyExists.md)
+  * [QueryMap](./QueryMap.md)
+  * [QueryNew](./QueryNew.md)
+  * [QueryNone](./QueryNone.md)
+  * [QueryPrepend](./QueryPrepend.md)
+  * [QueryRecordCount](./QueryRecordCount.md)
+  * [QueryRecordCount](./QueryRecordCount.md)
+  * [QueryReduce](./QueryReduce.md)
   * [QueryRegisterFunction](./QueryRegisterFunction.md)
+  * [QueryReverse](./QueryReverse.md)
+  * [QueryRowData](./QueryRowData.md)
+  * [QueryRowSwap](./QueryRowSwap.md)
+  * [QuerySetCell](./QuerySetCell.md)
+  * [QuerySetRow](./QuerySetRow.md)
+  * [QuerySlice](./QuerySlice.md)
+  * [QuerySome](./QuerySome.md)
+  * [QuerySort](./QuerySort.md)

@@ -31,7 +31,19 @@ Collect a Java stream into a BoxLang Array
 
 Collect a Java stream into a BoxLang Query.
 
-Provde an empty query to populate.
+Provide a template query to match the columns and types of the stream.
+ Once the stream collects, it will return a Query object that can be used in BoxLang.
+
+ ,<h2>,Usage,</h2>,
+
+ ,<pre>,
+ // Create a query template
+ templateQuery = queryNew( "id,name,age" );
+ // Create a stream from an array of structs
+ stream = [ {id:1, name:"John", age:30}, {id:2, name:"Jane", age:25} ].toStream();
+ // Convert the stream to a query
+ result = stream.toBXQuery( templateQuery );
+ ,</pre>
 
 Arguments:
 

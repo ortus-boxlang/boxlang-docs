@@ -2,7 +2,18 @@
 
 # Function: `QueryEvery`
 
-Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
+Used to iterate over a Query and test whether <strong>every</strong> item meets the test callback.
+
+The function will be passed 3 arguments: the value, the index, and the Query.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ <p>
+ <strong>Note:</strong> This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that does not meet the test condition.
+ <p>
+ <h2>Parallel Execution</h2>
+ If the <code>parallel</code> argument is set to true, and no <code>max_threads</code> are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If <code>max_threads</code> is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ This allows for efficient processing of large Queries, especially when the test function is computationally expensive or the Query is large.
 
 ## Method Signature
 
@@ -15,10 +26,10 @@ QueryEvery(query=[query], closure=[function:Predicate], parallel=[boolean], maxT
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `query` | `query` | `true` | The query to iterate over |  |
+| `query` | `query` | `true` | The query to test against the callback. |  |
 | `closure` | `function:Predicate` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the row, the currentRow, the query. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
-| `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
-| `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `integer` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
 
 ## Examples
 
@@ -98,36 +109,37 @@ dump( var=valid, label="valid - age between 40 and 50" );
 
 ## Related
 
-  * [QueryRecordCount](./QueryRecordCount.md)
-  * [QueryColumnList](./QueryColumnList.md)
-  * [QueryRowSwap](./QueryRowSwap.md)
-  * [QuerySort](./QuerySort.md)
-  * [QueryEach](./QueryEach.md)
-  * [QueryKeyExists](./QueryKeyExists.md)
-  * [QueryColumnCount](./QueryColumnCount.md)
-  * [QueryReduce](./QueryReduce.md)
-  * [QueryCurrentRow](./QueryCurrentRow.md)
-  * [QueryColumnData](./QueryColumnData.md)
-  * [QueryRowData](./QueryRowData.md)
-  * [QueryFilter](./QueryFilter.md)
-  * [QueryAddRow](./QueryAddRow.md)
-  * [QueryNew](./QueryNew.md)
-  * [QueryReverse](./QueryReverse.md)
-  * [QueryPrepend](./QueryPrepend.md)
-  * [QueryColumnExists](./QueryColumnExists.md)
   * [QueryAddColumn](./QueryAddColumn.md)
+  * [QueryAddRow](./QueryAddRow.md)
+  * [QueryAppend](./QueryAppend.md)
+  * [QueryClear](./QueryClear.md)
+  * [QueryColumnArray](./QueryColumnArray.md)
+  * [QueryColumnCount](./QueryColumnCount.md)
+  * [QueryColumnData](./QueryColumnData.md)
+  * [QueryColumnExists](./QueryColumnExists.md)
+  * [QueryColumnList](./QueryColumnList.md)
+  * [QueryCurrentRow](./QueryCurrentRow.md)
+  * [QueryDeleteColumn](./QueryDeleteColumn.md)
+  * [QueryDeleteRow](./QueryDeleteRow.md)
+  * [QueryEach](./QueryEach.md)
+  * [QueryFilter](./QueryFilter.md)
   * [QueryGetCell](./QueryGetCell.md)
   * [QueryGetResult](./QueryGetResult.md)
-  * [QueryMap](./QueryMap.md)
-  * [QueryRecordCount](./QueryRecordCount.md)
-  * [QuerySome](./QuerySome.md)
-  * [QueryDeleteColumn](./QueryDeleteColumn.md)
-  * [QuerySetCell](./QuerySetCell.md)
   * [QueryInsertAt](./QueryInsertAt.md)
-  * [QueryClear](./QueryClear.md)
-  * [QuerySetRow](./QuerySetRow.md)
-  * [QueryColumnArray](./QueryColumnArray.md)
-  * [QueryDeleteRow](./QueryDeleteRow.md)
-  * [QueryAppend](./QueryAppend.md)
-  * [QuerySlice](./QuerySlice.md)
+  * [QueryKeyExists](./QueryKeyExists.md)
+  * [QueryMap](./QueryMap.md)
+  * [QueryNew](./QueryNew.md)
+  * [QueryNone](./QueryNone.md)
+  * [QueryPrepend](./QueryPrepend.md)
+  * [QueryRecordCount](./QueryRecordCount.md)
+  * [QueryRecordCount](./QueryRecordCount.md)
+  * [QueryReduce](./QueryReduce.md)
   * [QueryRegisterFunction](./QueryRegisterFunction.md)
+  * [QueryReverse](./QueryReverse.md)
+  * [QueryRowData](./QueryRowData.md)
+  * [QueryRowSwap](./QueryRowSwap.md)
+  * [QuerySetCell](./QuerySetCell.md)
+  * [QuerySetRow](./QuerySetRow.md)
+  * [QuerySlice](./QuerySlice.md)
+  * [QuerySome](./QuerySome.md)
+  * [QuerySort](./QuerySort.md)

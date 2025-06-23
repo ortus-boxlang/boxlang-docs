@@ -33,8 +33,8 @@ SchedulerShutdown(name=[string], force=[boolean], timeout=[integer])
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
-  * [SchedulerRestart](./SchedulerRestart.md)
-  * [SchedulerStats](./SchedulerStats.md)
-  * [SchedulerList](./SchedulerList.md)
-  * [SchedulerStart](./SchedulerStart.md)
   * [SchedulerGetAll](./SchedulerGetAll.md)
+  * [SchedulerList](./SchedulerList.md)
+  * [SchedulerRestart](./SchedulerRestart.md)
+  * [SchedulerStart](./SchedulerStart.md)
+  * [SchedulerStats](./SchedulerStats.md)

@@ -2,7 +2,19 @@
 
 # Function: `StructSome`
 
-Used to iterate over a struct and test whether any items meet the test callback.
+Used to iterate over a struct and test whether <strong>ANY</strong> items meet the test callback.
+
+The function will be passed 3 arguments: the key, the value, and the struct.
+ You can alternatively pass a Java BiPredicate which will only receive the first 2 args.
+ The function should return true if the item meets the test, and false otherwise.
+ <p>
+ <strong>Note:</strong> This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that meets the test condition.
+ <p>
+ <h2>Parallel Execution</h2>
+ If the <code>parallel</code> argument is set to true, and no <code>max_threads</code> are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If <code>max_threads</code> is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+ <p>
 
 ## Method Signature
 
@@ -17,8 +29,8 @@ StructSome(struct=[structloose], callback=[function:BiPredicate], parallel=[bool
 |----------|------|----------|-------------|---------|
 | `struct` | `struct` | `true` | The target struct to test |  |
 | `callback` | `function:BiPredicate` | `true` | The function used to test. The function will be passed 3 arguments: the key, the value, the struct. You can alternatively pass a Java BiPredicate which will only receive the first 2 args. |  |
-| `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
-| `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `integer` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
 
 ## Examples
 
@@ -94,31 +106,32 @@ dump( result );
 
 ## Related
 
-  * [StructEquals](./StructEquals.md)
-  * [StructReduce](./StructReduce.md)
-  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
-  * [StructNew](./StructNew.md)
-  * [StructGet](./StructGet.md)
-  * [StructDelete](./StructDelete.md)
-  * [StructFilter](./StructFilter.md)
-  * [StructIsOrdered](./StructIsOrdered.md)
-  * [StructSort](./StructSort.md)
-  * [StructEach](./StructEach.md)
-  * [StructToQueryString](./StructToQueryString.md)
-  * [StructUpdate](./StructUpdate.md)
-  * [StructClear](./StructClear.md)
-  * [StructGetMetadata](./StructGetMetadata.md)
-  * [StructKeyArray](./StructKeyArray.md)
-  * [StructToSorted](./StructToSorted.md)
-  * [StructCopy](./StructCopy.md)
-  * [StructFindKey](./StructFindKey.md)
-  * [StructInsert](./StructInsert.md)
-  * [StructMap](./StructMap.md)
-  * [StructFindValue](./StructFindValue.md)
-  * [StructValueArray](./StructValueArray.md)
-  * [StructKeyExists](./StructKeyExists.md)
-  * [StructKeyTranslate](./StructKeyTranslate.md)
-  * [StructEvery](./StructEvery.md)
-  * [StructFind](./StructFind.md)
-  * [StructKeyList](./StructKeyList.md)
   * [StructAppend](./StructAppend.md)
+  * [StructClear](./StructClear.md)
+  * [StructCopy](./StructCopy.md)
+  * [StructDelete](./StructDelete.md)
+  * [StructEach](./StructEach.md)
+  * [StructEquals](./StructEquals.md)
+  * [StructEvery](./StructEvery.md)
+  * [StructFilter](./StructFilter.md)
+  * [StructFind](./StructFind.md)
+  * [StructFindKey](./StructFindKey.md)
+  * [StructFindValue](./StructFindValue.md)
+  * [StructGet](./StructGet.md)
+  * [StructGetMetadata](./StructGetMetadata.md)
+  * [StructInsert](./StructInsert.md)
+  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
+  * [StructIsOrdered](./StructIsOrdered.md)
+  * [StructKeyArray](./StructKeyArray.md)
+  * [StructKeyExists](./StructKeyExists.md)
+  * [StructKeyList](./StructKeyList.md)
+  * [StructKeyTranslate](./StructKeyTranslate.md)
+  * [StructMap](./StructMap.md)
+  * [StructNew](./StructNew.md)
+  * [StructNone](./StructNone.md)
+  * [StructReduce](./StructReduce.md)
+  * [StructSort](./StructSort.md)
+  * [StructToQueryString](./StructToQueryString.md)
+  * [StructToSorted](./StructToSorted.md)
+  * [StructUpdate](./StructUpdate.md)
+  * [StructValueArray](./StructValueArray.md)

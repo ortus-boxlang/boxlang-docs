@@ -75,11 +75,11 @@ dump( XmlGetNodeType( xml_document.XMLROOT.XMLCHILDREN[ 1 ].XMLCHILDREN.last() )
 
 ## Related
 
-  * [XMLElemNew](./XMLElemNew.md)
-  * [XMLSearch](./XMLSearch.md)
-  * [XMLValidate](./XMLValidate.md)
-  * [XMLTransform](./XMLTransform.md)
-  * [XMLNew](./XMLNew.md)
-  * [XMLFormat](./XMLFormat.md)
   * [XMLChildPos](./XMLChildPos.md)
+  * [XMLElemNew](./XMLElemNew.md)
+  * [XMLFormat](./XMLFormat.md)
+  * [XMLNew](./XMLNew.md)
   * [XMLParse](./XMLParse.md)
+  * [XMLSearch](./XMLSearch.md)
+  * [XMLTransform](./XMLTransform.md)
+  * [XMLValidate](./XMLValidate.md)

@@ -47,13 +47,13 @@ writeOutput( bitNot( 255 ) );
 
 ## Related
 
-  * [BitXor](./BitXor.md)
-  * [BitOr](./BitOr.md)
-  * [BitAnd](./BitAnd.md)
-  * [BitMaskRead](./BitMaskRead.md)
   * [BinaryDecode](./BinaryDecode.md)
-  * [BitMaskSet](./BitMaskSet.md)
-  * [BitMaskClear](./BitMaskClear.md)
   * [BinaryEncode](./BinaryEncode.md)
+  * [BitAnd](./BitAnd.md)
+  * [BitMaskClear](./BitMaskClear.md)
+  * [BitMaskRead](./BitMaskRead.md)
+  * [BitMaskSet](./BitMaskSet.md)
+  * [BitOr](./BitOr.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
+  * [BitXor](./BitXor.md)

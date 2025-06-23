@@ -55,5 +55,5 @@ writeOutput( decimalFormat( 26 ) );
 ## Related
 
   * [BooleanFormat](./BooleanFormat.md)
-  * [NumberFormat](./NumberFormat.md)
   * [LSNumberFormat](./LSNumberFormat.md)
+  * [NumberFormat](./NumberFormat.md)

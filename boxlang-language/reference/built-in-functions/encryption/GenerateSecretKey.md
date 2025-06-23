@@ -59,9 +59,9 @@ dump( ex );
 
   * [Decrypt](./Decrypt.md)
   * [DecryptBinary](./DecryptBinary.md)
-  * [Hash](./Hash.md)
-  * [Hash40](./Hash40.md)
   * [Encrypt](./Encrypt.md)
   * [EncryptBinary](./EncryptBinary.md)
-  * [Hmac](./Hmac.md)
   * [GeneratePBKDFKey](./GeneratePBKDFKey.md)
+  * [Hash](./Hash.md)
+  * [Hash40](./Hash40.md)
+  * [Hmac](./Hmac.md)

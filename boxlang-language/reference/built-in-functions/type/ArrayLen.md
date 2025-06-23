@@ -24,7 +24,7 @@ ArrayLen(value=[any])
 ## Related
 
   * [GetMetaData](./GetMetaData.md)
-  * [NullValue](./NullValue.md)
   * [Len](./Len.md)
-  * [StructCount](./StructCount.md)
+  * [NullValue](./NullValue.md)
   * [StringLen](./StringLen.md)
+  * [StructCount](./StructCount.md)

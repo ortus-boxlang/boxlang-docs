@@ -88,13 +88,13 @@ dump( BinaryDecode( encoded_binary, "hex" ) );
 
 ## Related
 
-  * [BitNot](./BitNot.md)
-  * [BitXor](./BitXor.md)
-  * [BitOr](./BitOr.md)
+  * [BinaryEncode](./BinaryEncode.md)
   * [BitAnd](./BitAnd.md)
+  * [BitMaskClear](./BitMaskClear.md)
   * [BitMaskRead](./BitMaskRead.md)
   * [BitMaskSet](./BitMaskSet.md)
-  * [BitMaskClear](./BitMaskClear.md)
-  * [BinaryEncode](./BinaryEncode.md)
+  * [BitNot](./BitNot.md)
+  * [BitOr](./BitOr.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
+  * [BitXor](./BitXor.md)

@@ -22,6 +22,11 @@ Arguments:
 
 </details>
 <details>
+<summary><code>clone()</code></summary>
+
+Clone this XML object
+</details>
+<details>
 <summary><code>getNodeType()</code></summary>
 
 Get XML values according to given xPath query

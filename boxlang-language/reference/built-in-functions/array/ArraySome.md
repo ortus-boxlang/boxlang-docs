@@ -2,12 +2,24 @@
 
 # Function: `ArraySome`
 
-Calls a given closure/function with every element in a given array and returns true if one of the closure calls returns true
+Used to iterate over an array and test whether <strong>ANY</strong> items meet the test callback.
+
+The function will be passed 3 arguments: the value, the index, and the array.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ <p>
+ <strong>Note:</strong> This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that meets the test condition.
+ <p>
+ <h2>Parallel Execution</h2>
+ If the <code>parallel</code> argument is set to true, and no <code>max_threads</code> are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If <code>max_threads</code> is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+ <p>
 
 ## Method Signature
 
 ```
-ArraySome(array=[array], callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])
+ArraySome(array=[array], callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])
 ```
 
 ### Arguments
@@ -17,9 +29,8 @@ ArraySome(array=[array], callback=[function:Predicate], parallel=[boolean], maxT
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to reduce |  |
 | `callback` | `function:Predicate` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
-| `parallel` | `boolean` | `false` | Specifies whether the items can be executed in parallel | `false` |
-| `maxThreads` | `integer` | `false` | The maximum number of threads to use when parallel = true |  |
-| `initialValue` | `any` | `false` |  |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `integer` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
 
 ## Examples
 
@@ -105,49 +116,50 @@ dump( hasSome2 );
 
 ## Related
 
-  * [ArrayPrepend](./ArrayPrepend.md)
-  * [ArrayResize](./ArrayResize.md)
-  * [ArrayReduce](./ArrayReduce.md)
-  * [ArrayMerge](./ArrayMerge.md)
-  * [ArrayIndexExists](./ArrayIndexExists.md)
-  * [ArrayIsDefined](./ArrayIsDefined.md)
-  * [ArrayFindAll](./ArrayFindAll.md)
-  * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArraySum](./ArraySum.md)
-  * [ArraySplice](./ArraySplice.md)
-  * [ArrayReduceRight](./ArrayReduceRight.md)
-  * [ArrayReverse](./ArrayReverse.md)
-  * [ArrayFind](./ArrayFind.md)
-  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayAvg](./ArrayAvg.md)
+  * [ArrayClear](./ArrayClear.md)
   * [ArrayContains](./ArrayContains.md)
   * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-  * [ArrayPush](./ArrayPush.md)
-  * [ArrayGetMetadata](./ArrayGetMetadata.md)
-  * [ArrayMap](./ArrayMap.md)
-  * [ArrayPop](./ArrayPop.md)
   * [ArrayDelete](./ArrayDelete.md)
+  * [ArrayDeleteAt](./ArrayDeleteAt.md)
   * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-  * [ArrayMedian](./ArrayMedian.md)
-  * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayToList](./ArrayToList.md)
+  * [ArrayEach](./ArrayEach.md)
+  * [ArrayEvery](./ArrayEvery.md)
   * [ArrayFilter](./ArrayFilter.md)
-  * [ArrayClear](./ArrayClear.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindAll](./ArrayFindAll.md)
+  * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayIndexExists](./ArrayIndexExists.md)
+  * [ArrayInsertAt](./ArrayInsertAt.md)
+  * [ArrayIsDefined](./ArrayIsDefined.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
+  * [ArrayMerge](./ArrayMerge.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayMin](./ArrayMin.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArrayNone](./ArrayNone.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayPush](./ArrayPush.md)
   * [ArrayRange](./ArrayRange.md)
-  * [ArraySwap](./ArraySwap.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArraySet](./ArraySet.md)
   * [ArrayShift](./ArrayShift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArraySum](./ArraySum.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayToList](./ArrayToList.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayUnshift](./ArrayUnshift.md)
-  * [ArraySlice](./ArraySlice.md)
-  * [ArrayMid](./ArrayMid.md)
-  * [ArrayInsertAt](./ArrayInsertAt.md)
-  * [ArrayNew](./ArrayNew.md)
-  * [ArraySet](./ArraySet.md)
-  * [ArrayMax](./ArrayMax.md)
-  * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayDeleteAt](./ArrayDeleteAt.md)
-  * [ArraySort](./ArraySort.md)
-  * [ArrayEach](./ArrayEach.md)
-  * [ArrayAppend](./ArrayAppend.md)
-  * [ArrayEvery](./ArrayEvery.md)
-  * [ArrayLast](./ArrayLast.md)
-  * [ArrayMin](./ArrayMin.md)

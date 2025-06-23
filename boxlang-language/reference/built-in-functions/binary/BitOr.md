@@ -48,13 +48,13 @@ writeOutput( bitOr( 10, 0 ) );
 
 ## Related
 
-  * [BitNot](./BitNot.md)
-  * [BitXor](./BitXor.md)
-  * [BitAnd](./BitAnd.md)
-  * [BitMaskRead](./BitMaskRead.md)
   * [BinaryDecode](./BinaryDecode.md)
-  * [BitMaskSet](./BitMaskSet.md)
-  * [BitMaskClear](./BitMaskClear.md)
   * [BinaryEncode](./BinaryEncode.md)
+  * [BitAnd](./BitAnd.md)
+  * [BitMaskClear](./BitMaskClear.md)
+  * [BitMaskRead](./BitMaskRead.md)
+  * [BitMaskSet](./BitMaskSet.md)
+  * [BitNot](./BitNot.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
+  * [BitXor](./BitXor.md)

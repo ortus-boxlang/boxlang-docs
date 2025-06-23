@@ -28,9 +28,9 @@ Hash40(input=[any], algorithm=[string], encoding=[string], numIterations=[intege
 
   * [Decrypt](./Decrypt.md)
   * [DecryptBinary](./DecryptBinary.md)
-  * [GenerateSecretKey](./GenerateSecretKey.md)
-  * [Hash](./Hash.md)
   * [Encrypt](./Encrypt.md)
   * [EncryptBinary](./EncryptBinary.md)
-  * [Hmac](./Hmac.md)
   * [GeneratePBKDFKey](./GeneratePBKDFKey.md)
+  * [GenerateSecretKey](./GenerateSecretKey.md)
+  * [Hash](./Hash.md)
+  * [Hmac](./Hmac.md)

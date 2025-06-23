@@ -82,9 +82,9 @@ dump( generatePBKDFKey( "PBKDF2WithHmacSHA1", "secret", "salty", 5000, 128 ) );
 
   * [Decrypt](./Decrypt.md)
   * [DecryptBinary](./DecryptBinary.md)
+  * [Encrypt](./Encrypt.md)
+  * [EncryptBinary](./EncryptBinary.md)
   * [GenerateSecretKey](./GenerateSecretKey.md)
   * [Hash](./Hash.md)
   * [Hash40](./Hash40.md)
-  * [Encrypt](./Encrypt.md)
-  * [EncryptBinary](./EncryptBinary.md)
   * [Hmac](./Hmac.md)

@@ -152,9 +152,17 @@ Arguments:
 
 </details>
 <details>
-<summary><code>each(callback=[function:Consumer], parallel=[boolean], maxThreads=[integer], ordered=[boolean], initialValue=[any])</code></summary>
+<summary><code>each(callback=[function:Consumer], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
 
 Used to iterate over an array and run the function closure for each item in the array.
+
+This BIF is used to perform an operation on each item in the array, similar to Java's forEach method.
+ It can also be used to perform operations in parallel if the `parallel` argument is set to true.
+
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the iterator will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the iterator in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 Arguments:
 
@@ -164,7 +172,6 @@ Arguments:
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 | `ordered` | `boolean` | `false` | `false` |
-| `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
@@ -182,9 +189,20 @@ Arguments:
 
 </details>
 <details>
-<summary><code>every(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>every(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Returns true if every closure returns true, otherwise false
+Used to iterate over an array and test whether <strong>every</strong> item meets the test callback.
+
+The function will be passed 3 arguments: the value, the index, and the array.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that does not meet the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ This allows for efficient processing of large arrays, especially when the test function is computationally expensive or the array is large.
 
 Arguments:
 
@@ -193,13 +211,25 @@ Arguments:
 | `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-| `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
-<summary><code>filter(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>filter(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Used to filter an array to items for which the closure function returns true.
+Filters an array and returns a new array containing the result
+ This BIF will invoke the callback function for each item in the array, passing the item, its index, and the array itself.
+
+<ul>,
+ ,<li>,If the callback returns true, the item will be included in the new array.,</li>,
+ ,<li>,If the callback returns false, the item will be excluded from the new array.,</li>,
+ ,<li>,If the callback requires strict arguments, it will only receive the item and its index.,</li>,
+ ,<li>,If the callback does not require strict arguments, it will receive the item, its index, and the array itself.,</li>,
+ ,</ul>,
+
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to filter, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 Arguments:
 
@@ -208,7 +238,6 @@ Arguments:
 | `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-| `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
@@ -376,7 +405,7 @@ Return first item in array
 Returns the absolute value of a number
 </details>
 <details>
-<summary><code>map(callback=[function:Function], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>map(callback=[function:Function], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Iterates over every entry of the array and calls the closure function to work on the element of the array.
 
@@ -390,7 +419,6 @@ Arguments:
 | `callback` | `function:Function` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-| `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
@@ -438,6 +466,33 @@ Arguments:
 <summary><code>min()</code></summary>
 
 Return length of array
+</details>
+<details>
+<summary><code>none(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
+
+Used to iterate over an array and test whether <strong>NONE</strong> item meets the test callback.
+
+This is the opposite of ,{@link ArraySome},.
+ ,<p>,
+ The function will be passed 3 arguments: the value, the index, and the array.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that does meet the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ This allows for efficient processing of large arrays, especially when the test function is computationally expensive or the array is large.
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `callback` | `function:Predicate` | `true` | `null` |
+| `parallel` | `boolean` | `false` | `false` |
+| `maxThreads` | `integer` | `false` | `null` |
+
 </details>
 <details>
 <summary><code>parallelStream()</code></summary>
@@ -603,9 +658,21 @@ Arguments:
 
 </details>
 <details>
-<summary><code>some(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>some(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Calls a given closure/function with every element in a given array and returns true if one of the closure calls returns true
+Used to iterate over an array and test whether <strong>ANY</strong> items meet the test callback.
+
+The function will be passed 3 arguments: the value, the index, and the array.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that meets the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+ ,<p>
 
 Arguments:
 
@@ -614,7 +681,6 @@ Arguments:
 | `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-| `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
@@ -675,9 +741,32 @@ Arguments:
 
 </details>
 <details>
-<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[string], useCustomSerializer=[boolean])</code></summary>
+<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[string], useCustomSerializer=[boolean], pretty=[boolean])</code></summary>
 
-Converts a BoxLang variable into a JSON (JavaScript Object Notation) string.
+Converts a BoxLang variable into a JSON (JavaScript Object Notation) string according to the specified options.
+
+<h2>,Query Format Options,</h2>,
+ The ,<code>,queryFormat,</code>, argument determines how queries are serialized:
+ ,<ul>,
+ ,<li>,<code>,row,</code>, or ,<code>,false,</code>,: Serializes the query as a top-level struct with two keys:
+ ,<code>,columns,</code>, (an array of column names) and ,<code>,data,</code>, (an array of arrays representing
+ each row's data).,</li>,
+ ,<li>,<code>,column,</code>, or ,<code>,true,</code>,: Serializes the query as a top-level struct with three keys:
+ ,<code>,rowCount,</code>, (the number of rows), ,<code>,columns,</code>, (an array of column names), and
+ ,<code>,data,</code>, (a struct where each key is a column name and the value is an array of values for that column).,</li>,
+ ,<li>,<code>,struct,</code>,: Serializes the query as an array of structs, where each struct represents a row of data.,</li>,
+ ,</ul>,
+
+ ,<h2>,Usage,</h2>,
+ 
+ ,<pre>,
+ // Convert a query to JSON
+ myQuery = ...;
+ json = jsonSerialize( myQuery, queryFormat="row" );
+ // Convert a list to JSON
+ myList = "foo,bar,baz";
+ jsonList = jsonSerialize( myList );
+ ,</pre>
 
 Arguments:
 
@@ -686,6 +775,7 @@ Arguments:
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `string` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
+| `pretty` | `boolean` | `false` | `false` |
 
 </details>
 <details>

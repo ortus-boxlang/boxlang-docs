@@ -1,3 +1,4 @@
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
 # Function: `IncrementValue`
 
@@ -21,6 +22,7 @@ IncrementValue(number=[numeric])
 ### Increment 7
 
 
+
 <a href="https://try.boxlang.io/?code=eJzLzEsuSs1NzSsJS8wpTdVQMFfQtOYCAFgVBtA%3D" target="_blank">Run Example</a>
 
 ```java
@@ -32,7 +34,7 @@ Result: 8
 
 ### Increment 7.5
 
-There is a difference in the behavior of this function between engines. ACF will return the integer incremented removing the decimal part. Boxlang ( and Lucee ) will increment the integer part but return both.
+There is a difference between BL engines. ACF will return the integer incremented removing the decimal part. Boxlang will increment the integer part but return both.
 
 <a href="https://try.boxlang.io/?code=eJzLzEsuSs1NzSsJS8wpTdVQMNczVdC05gIAZrYHMw%3D%3D" target="_blank">Run Example</a>
 
@@ -56,32 +58,33 @@ writeDump( incrementvalue( num ) );
 ```
 
 
+
 ## Related
 
-* [Sqr](./Sqr.md)
-* [Asin](./Asin.md)
-* [Sgn](./Sgn.md)
-* [Pi](./Pi.md)
-* [DecrementValue](./DecrementValue.md)
-* [InputBaseN](./InputBaseN.md)
-* [Round](./Round.md)
-* [Cos](./Cos.md)
-* [Int](./Int.md)
-* [Exp](./Exp.md)
-* [Ceiling](./Ceiling.md)
-* [RandRange](./RandRange.md)
-* [Atn](./Atn.md)
-* [Fix](./Fix.md)
-* [Max](./Max.md)
-* [Min](./Min.md)
-* [Abs](./Abs.md)
-* [Log](./Log.md)
-* [Log10](./Log10.md)
-* [PrecisionEvaluate](./PrecisionEvaluate.md)
-* [Acos](./Acos.md)
-* [Rand](./Rand.md)
-* [Floor](./Floor.md)
-* [Randomize](./Randomize.md)
-* [FormatBaseN](./FormatBaseN.md)
-* [Tan](./Tan.md)
-* [Sin](./Sin.md)
+  * [Abs](./Abs.md)
+  * [Acos](./Acos.md)
+  * [Asin](./Asin.md)
+  * [Atn](./Atn.md)
+  * [Ceiling](./Ceiling.md)
+  * [Cos](./Cos.md)
+  * [DecrementValue](./DecrementValue.md)
+  * [Exp](./Exp.md)
+  * [Fix](./Fix.md)
+  * [Floor](./Floor.md)
+  * [FormatBaseN](./FormatBaseN.md)
+  * [InputBaseN](./InputBaseN.md)
+  * [Int](./Int.md)
+  * [Log](./Log.md)
+  * [Log10](./Log10.md)
+  * [Max](./Max.md)
+  * [Min](./Min.md)
+  * [Pi](./Pi.md)
+  * [PrecisionEvaluate](./PrecisionEvaluate.md)
+  * [Rand](./Rand.md)
+  * [Randomize](./Randomize.md)
+  * [RandRange](./RandRange.md)
+  * [Round](./Round.md)
+  * [Sgn](./Sgn.md)
+  * [Sin](./Sin.md)
+  * [Sqr](./Sqr.md)
+  * [Tan](./Tan.md)

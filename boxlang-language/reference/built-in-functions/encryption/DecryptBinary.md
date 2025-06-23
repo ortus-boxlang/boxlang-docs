@@ -30,10 +30,10 @@ DecryptBinary(string=[string], key=[string], algorithm=[string], encoding=[strin
 ## Related
 
   * [Decrypt](./Decrypt.md)
+  * [Encrypt](./Encrypt.md)
+  * [EncryptBinary](./EncryptBinary.md)
+  * [GeneratePBKDFKey](./GeneratePBKDFKey.md)
   * [GenerateSecretKey](./GenerateSecretKey.md)
   * [Hash](./Hash.md)
   * [Hash40](./Hash40.md)
-  * [Encrypt](./Encrypt.md)
-  * [EncryptBinary](./EncryptBinary.md)
   * [Hmac](./Hmac.md)
-  * [GeneratePBKDFKey](./GeneratePBKDFKey.md)

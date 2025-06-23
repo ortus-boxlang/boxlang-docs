@@ -25,11 +25,11 @@ XMLTransform(XML=[any], XSL=[String], parameters=[Struct])
 
 ## Related
 
+  * [XMLChildPos](./XMLChildPos.md)
   * [XMLElemNew](./XMLElemNew.md)
-  * [XMLSearch](./XMLSearch.md)
-  * [XMLValidate](./XMLValidate.md)
+  * [XMLFormat](./XMLFormat.md)
   * [XMLGetNodeType](./XMLGetNodeType.md)
   * [XMLNew](./XMLNew.md)
-  * [XMLFormat](./XMLFormat.md)
-  * [XMLChildPos](./XMLChildPos.md)
   * [XMLParse](./XMLParse.md)
+  * [XMLSearch](./XMLSearch.md)
+  * [XMLValidate](./XMLValidate.md)

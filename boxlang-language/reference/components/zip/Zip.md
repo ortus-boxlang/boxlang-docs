@@ -18,7 +18,8 @@ prefix=[string]
 recurse=[boolean]
 flatList=[boolean]
 source=[string]
-variable=[string] />
+variable=[string]
+compressionLevel=[integer] />
 ```
 
 ### Attributes
@@ -39,6 +40,7 @@ variable=[string] />
 | `flatList` | `boolean` | `false` | If false, the list action will return an array of structs with all kinds of information about the entries. If true, it will return a flat list of strings with the path of the entries. Default is false. Actions: list | `false` |
 | `source` | `string` | `false` | The absolute path to the source directory to be zipped. Actions: zip |  |
 | `variable` | `string` | `false` | The name of the variable to store the read content in |  |
+| `compressionLevel` | `integer` | `false` |  | `6` |
 
 ## Examples
 

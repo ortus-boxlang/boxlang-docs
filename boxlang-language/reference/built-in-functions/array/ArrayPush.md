@@ -1,3 +1,4 @@
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
 # Function: `ArrayPush`
 
@@ -38,7 +39,9 @@ writeOutput( "This array has " & arrayLen( arr ) & " elements." );
 
 Result: This array has 4 elements.
 
-### Member function version
+### Member function version.
+
+Using the member function. This version also works in ACF2018.
 
 <a href="https://try.boxlang.io/?code=eJxLLCpSsFWIVuDiNNTh4jQCYmOuWGuuxBygaGJRkV5BaXGGhoKJkYKmNVd5UWZJqn9pSUFpiYaCUkhGZjFISWKlQkZisYKSgpoCUJcakJGak5qbmldSrKcE0gUA358aew%3D%3D" target="_blank">Run Example</a>
 
@@ -55,7 +58,7 @@ writeOutput( "This array has " & al & " elements." );
 
 Result: This array has 4 elements.
 
-### Push an object onto an array
+### Push an object onto an array.
 
 This demonstrates pushing an object onto an array.
 
@@ -108,51 +111,53 @@ Dump( ArrayPush( moreNumbers, 4 ) );
 ```
 
 
+
 ## Related
 
-* [ArrayPrepend](./ArrayPrepend.md)
-* [ArrayResize](./ArrayResize.md)
-* [ArrayReduce](./ArrayReduce.md)
-* [ArrayMerge](./ArrayMerge.md)
-* [ArrayIndexExists](./ArrayIndexExists.md)
-* [ArrayIsDefined](./ArrayIsDefined.md)
-* [ArrayFindAll](./ArrayFindAll.md)
-* [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-* [ArraySum](./ArraySum.md)
-* [ArraySplice](./ArraySplice.md)
-* [ArrayReduceRight](./ArrayReduceRight.md)
-* [ArrayReverse](./ArrayReverse.md)
-* [ArrayFind](./ArrayFind.md)
-* [ArrayFindNoCase](./ArrayFindNoCase.md)
-* [ArrayContains](./ArrayContains.md)
-* [ArrayContainsNoCase](./ArrayContainsNoCase.md)
-* [ArrayGetMetadata](./ArrayGetMetadata.md)
-* [ArrayMap](./ArrayMap.md)
-* [ArrayPop](./ArrayPop.md)
-* [ArraySome](./ArraySome.md)
-* [ArrayDelete](./ArrayDelete.md)
-* [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
-* [ArrayMedian](./ArrayMedian.md)
-* [ArrayAvg](./ArrayAvg.md)
-* [ArrayToList](./ArrayToList.md)
-* [ArrayFilter](./ArrayFilter.md)
-* [ArrayClear](./ArrayClear.md)
-* [ArrayRange](./ArrayRange.md)
-* [ArraySwap](./ArraySwap.md)
-* [ArrayShift](./ArrayShift.md)
-* [ArrayToStruct](./ArrayToStruct.md)
-* [ArrayUnshift](./ArrayUnshift.md)
-* [ArraySlice](./ArraySlice.md)
-* [ArrayMid](./ArrayMid.md)
-* [ArrayInsertAt](./ArrayInsertAt.md)
-* [ArrayNew](./ArrayNew.md)
-* [ArraySet](./ArraySet.md)
-* [ArrayMax](./ArrayMax.md)
-* [ArrayFirst](./ArrayFirst.md)
-* [ArrayDeleteAt](./ArrayDeleteAt.md)
-* [ArraySort](./ArraySort.md)
-* [ArrayEach](./ArrayEach.md)
-* [ArrayAppend](./ArrayAppend.md)
-* [ArrayEvery](./ArrayEvery.md)
-* [ArrayLast](./ArrayLast.md)
-* [ArrayMin](./ArrayMin.md)
+  * [ArrayAppend](./ArrayAppend.md)
+  * [ArrayAvg](./ArrayAvg.md)
+  * [ArrayClear](./ArrayClear.md)
+  * [ArrayContains](./ArrayContains.md)
+  * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
+  * [ArrayDelete](./ArrayDelete.md)
+  * [ArrayDeleteAt](./ArrayDeleteAt.md)
+  * [ArrayDeleteNoCase](./ArrayDeleteNoCase.md)
+  * [ArrayEach](./ArrayEach.md)
+  * [ArrayEvery](./ArrayEvery.md)
+  * [ArrayFilter](./ArrayFilter.md)
+  * [ArrayFind](./ArrayFind.md)
+  * [ArrayFindAll](./ArrayFindAll.md)
+  * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
+  * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayFirst](./ArrayFirst.md)
+  * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayIndexExists](./ArrayIndexExists.md)
+  * [ArrayInsertAt](./ArrayInsertAt.md)
+  * [ArrayIsDefined](./ArrayIsDefined.md)
+  * [ArrayLast](./ArrayLast.md)
+  * [ArrayMap](./ArrayMap.md)
+  * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
+  * [ArrayMerge](./ArrayMerge.md)
+  * [ArrayMid](./ArrayMid.md)
+  * [ArrayMin](./ArrayMin.md)
+  * [ArrayNew](./ArrayNew.md)
+  * [ArrayNone](./ArrayNone.md)
+  * [ArrayPop](./ArrayPop.md)
+  * [ArrayPrepend](./ArrayPrepend.md)
+  * [ArrayRange](./ArrayRange.md)
+  * [ArrayReduce](./ArrayReduce.md)
+  * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayResize](./ArrayResize.md)
+  * [ArrayReverse](./ArrayReverse.md)
+  * [ArraySet](./ArraySet.md)
+  * [ArrayShift](./ArrayShift.md)
+  * [ArraySlice](./ArraySlice.md)
+  * [ArraySome](./ArraySome.md)
+  * [ArraySort](./ArraySort.md)
+  * [ArraySplice](./ArraySplice.md)
+  * [ArraySum](./ArraySum.md)
+  * [ArraySwap](./ArraySwap.md)
+  * [ArrayToList](./ArrayToList.md)
+  * [ArrayToStruct](./ArrayToStruct.md)
+  * [ArrayUnshift](./ArrayUnshift.md)

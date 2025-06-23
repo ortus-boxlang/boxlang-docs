@@ -87,5 +87,5 @@ writeDump( BooleanFormat( 0 ) );
 ## Related
 
   * [DecimalFormat](./DecimalFormat.md)
-  * [NumberFormat](./NumberFormat.md)
   * [LSNumberFormat](./LSNumberFormat.md)
+  * [NumberFormat](./NumberFormat.md)

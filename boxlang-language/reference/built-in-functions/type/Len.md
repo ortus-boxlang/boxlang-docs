@@ -88,8 +88,8 @@ echo( "There are " & animalCount & " animal(s) in the 'animals' struct" );
 
 ## Related
 
+  * [ArrayLen](./ArrayLen.md)
   * [GetMetaData](./GetMetaData.md)
   * [NullValue](./NullValue.md)
-  * [StructCount](./StructCount.md)
-  * [ArrayLen](./ArrayLen.md)
   * [StringLen](./StringLen.md)
+  * [StructCount](./StructCount.md)

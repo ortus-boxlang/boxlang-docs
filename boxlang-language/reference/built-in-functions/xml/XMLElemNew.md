@@ -57,11 +57,11 @@ dump( xml_document );
 
 ## Related
 
-  * [XMLSearch](./XMLSearch.md)
-  * [XMLValidate](./XMLValidate.md)
-  * [XMLGetNodeType](./XMLGetNodeType.md)
-  * [XMLTransform](./XMLTransform.md)
-  * [XMLNew](./XMLNew.md)
-  * [XMLFormat](./XMLFormat.md)
   * [XMLChildPos](./XMLChildPos.md)
+  * [XMLFormat](./XMLFormat.md)
+  * [XMLGetNodeType](./XMLGetNodeType.md)
+  * [XMLNew](./XMLNew.md)
   * [XMLParse](./XMLParse.md)
+  * [XMLSearch](./XMLSearch.md)
+  * [XMLTransform](./XMLTransform.md)
+  * [XMLValidate](./XMLValidate.md)

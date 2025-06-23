@@ -2,9 +2,25 @@
 
 # Type: `Query`
 
-This type represents a representation of a database query result set.
+Represents a BoxLang Query object that stores tabular data.
 
-It provides language specific methods to access columnar data, both as value lists and within iterative loops
+This class implements multiple interfaces:
+ - IType: for BoxLang type system integration
+ - IReferenceable: for dynamic property/method access
+ - Collection,<IStruct>,: for Java collection operations
+ - Serializable: for persistence support
+
+ The Query object stores data as a list of row arrays, with column metadata maintained
+ separately. It provides thread-safe operations for manipulating the data and
+ supports JDBC ResultSet integration.
+
+ Key features:
+ - Dynamic column addition/removal
+ - Row manipulation (add, delete, swap)
+ - Conversion to/from other data structures
+ - Query metadata support
+ - Collection interface implementation
+ - Optimized data storage with lazy initialization
 
 ## Query Methods
 
@@ -132,9 +148,17 @@ Arguments:
 
 </details>
 <details>
-<summary><code>each(callback=[function:Consumer], parallel=[boolean], maxThreads=[integer])</code></summary>
+<summary><code>each(callback=[function:Consumer], parallel=[boolean], maxThreads=[integer], ordered=[boolean])</code></summary>
 
-Iterates over query rows and passes each row per iteration to a callback function
+Iterates over query rows and passes each row per iteration to a callback function.
+
+This function is used to perform an action for each row in the query.
+ It does not return a value, but rather allows you to perform side effects such as printing or modifying data.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 Arguments:
 
@@ -143,12 +167,24 @@ Arguments:
 | `callback` | `function:Consumer` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
+| `ordered` | `boolean` | `false` | `false` |
 
 </details>
 <details>
 <summary><code>every(closure=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-Executes a callback/closure against every row in a query and returns true if the callback/closure returned true for every row.
+Used to iterate over a Query and test whether <strong>every</strong> item meets the test callback.
+
+The function will be passed 3 arguments: the value, the index, and the Query.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that does not meet the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ This allows for efficient processing of large Queries, especially when the test function is computationally expensive or the Query is large.
 
 Arguments:
 
@@ -163,6 +199,19 @@ Arguments:
 <summary><code>filter(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
 Filters query rows specified in filter criteria
+ This BIF will invoke the callback function for each row in the query, passing the row as a struct.
+
+<ul>,
+ ,<li>,If the callback returns true, the row will be included in the new query.,</li>,
+ ,<li>,If the callback returns false, the row will be excluded from the new query.,</li>,
+ ,<li>,If the callback requires strict arguments, it will only receive the row as a struct.,</li>,
+ ,<li>,If the callback does not require strict arguments, it will receive the row as a struct, the row number (1-based), and the query itself.,</li>,
+ ,</ul>,
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to filter, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 Arguments:
 
@@ -244,13 +293,52 @@ Returns the absolute value of a number
 <details>
 <summary><code>map(callback=[function:Function], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-This function maps the query to a new query.
+This BIF will iterate over each row in the query and invoke the callback function for each item so you can do
+ any operation on the row and return a new value that will be set at the same index in a new query.
+
+The callback function will be passed the row as a struct, the current row number (1-based), and the query itself.
+ ,<ul>,
+ ,<li>,If the callback requires strict arguments, it will only receive the row as a struct.,</li>,
+ ,<li>,If the callback does not require strict arguments, it will receive the row as a struct, the row number (1-based), and the query itself.,</li>,
+ ,</ul>,
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the map will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the map in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to map, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `callback` | `function:Function` | `true` | `null` |
+| `parallel` | `boolean` | `false` | `false` |
+| `maxThreads` | `integer` | `false` | `null` |
+
+</details>
+<details>
+<summary><code>none(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
+
+Used to iterate over a Query and test whether <strong>NONE</strong> item meets the test callback.
+
+This is the opposite of ,{@link QuerySome},.
+ ,<p>,
+ The function will be passed 3 arguments: the value, the index, and the Query.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that does not meet the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ This allows for efficient processing of large Queries, especially when the test function is computationally expensive or the Query is large.
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
 
@@ -356,9 +444,21 @@ Arguments:
 
 </details>
 <details>
-<summary><code>some(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer], initialValue=[any])</code></summary>
+<summary><code>some(callback=[function:Predicate], parallel=[boolean], maxThreads=[integer])</code></summary>
 
-This function calls a given closure/function with every element in a given query and returns true, if one of the closure calls returns true
+Used to iterate over a query and test whether <strong>ANY</strong> items meet the test callback.
+
+The function will be passed 3 arguments: the row, the currentRow, and the query.
+ You can alternatively pass a Java Predicate which will only receive the 1st arg.
+ The function should return true if the item meets the test, and false otherwise.
+ ,<p>,
+ ,<strong>,Note:,</strong>, This operation is a short-circuit operation, meaning it will stop iterating as soon as it finds the first item that meets the test condition.
+ ,<p>,
+ ,<h2>,Parallel Execution,</h2>,
+ If the ,<code>,parallel,</code>, argument is set to true, and no ,<code>,max_threads,</code>, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If ,<code>,max_threads,</code>, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+ ,<p>
 
 Arguments:
 
@@ -367,7 +467,6 @@ Arguments:
 | `callback` | `function:Predicate` | `true` | `null` |
 | `parallel` | `boolean` | `false` | `false` |
 | `maxThreads` | `integer` | `false` | `null` |
-| `initialValue` | `any` | `false` | `null` |
 
 </details>
 <details>
@@ -388,9 +487,32 @@ Arguments:
 Convert this query to an array of structs.
 </details>
 <details>
-<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[string], useCustomSerializer=[boolean])</code></summary>
+<summary><code>toJSON(queryFormat=[string], useSecureJSONPrefix=[string], useCustomSerializer=[boolean], pretty=[boolean])</code></summary>
 
-Converts a BoxLang variable into a JSON (JavaScript Object Notation) string.
+Converts a BoxLang variable into a JSON (JavaScript Object Notation) string according to the specified options.
+
+<h2>,Query Format Options,</h2>,
+ The ,<code>,queryFormat,</code>, argument determines how queries are serialized:
+ ,<ul>,
+ ,<li>,<code>,row,</code>, or ,<code>,false,</code>,: Serializes the query as a top-level struct with two keys:
+ ,<code>,columns,</code>, (an array of column names) and ,<code>,data,</code>, (an array of arrays representing
+ each row's data).,</li>,
+ ,<li>,<code>,column,</code>, or ,<code>,true,</code>,: Serializes the query as a top-level struct with three keys:
+ ,<code>,rowCount,</code>, (the number of rows), ,<code>,columns,</code>, (an array of column names), and
+ ,<code>,data,</code>, (a struct where each key is a column name and the value is an array of values for that column).,</li>,
+ ,<li>,<code>,struct,</code>,: Serializes the query as an array of structs, where each struct represents a row of data.,</li>,
+ ,</ul>,
+
+ ,<h2>,Usage,</h2>,
+ 
+ ,<pre>,
+ // Convert a query to JSON
+ myQuery = ...;
+ json = jsonSerialize( myQuery, queryFormat="row" );
+ // Convert a list to JSON
+ myList = "foo,bar,baz";
+ jsonList = jsonSerialize( myList );
+ ,</pre>
 
 Arguments:
 
@@ -399,6 +521,7 @@ Arguments:
 | `queryFormat` | `string` | `false` | `row` |
 | `useSecureJSONPrefix` | `string` | `false` | `false` |
 | `useCustomSerializer` | `boolean` | `false` | `null` |
+| `pretty` | `boolean` | `false` | `false` |
 
 </details>
 <details>

@@ -20,7 +20,7 @@ This function does not accept any arguments
 
 ## Related
 
-  * [CacheNames](./CacheNames.md)
-  * [CacheFilter](./CacheFilter.md)
-  * [CacheProviders](./CacheProviders.md)
   * [Cache](./Cache.md)
+  * [CacheFilter](./CacheFilter.md)
+  * [CacheNames](./CacheNames.md)
+  * [CacheProviders](./CacheProviders.md)

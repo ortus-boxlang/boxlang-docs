@@ -14,11 +14,16 @@ Compress the source file or folder to the destination file or folder using
  <p>
  The {@code overwrite} argument is used to overwrite the destination
  file if it already exists, else it will throw an exception. The default is {@code false}.
+ <p>
+ <h2>Compression Levels</h2>
+ The {@code compressionLevel} argument is used to specify the compression level to use for the compression.
+ The default is {@code 6}, which is a good balance between speed and compression ratio.
+ The valid range is from {@code 0} (no compression) to {@code 9} (maximum compression).
 
 ## Method Signature
 
 ```
-Compress(format=[string], source=[string], destination=[string], includeBaseFolder=[boolean], overwrite=[boolean], prefix=[string], filter=[any], recurse=[boolean])
+Compress(format=[string], source=[string], destination=[string], includeBaseFolder=[boolean], overwrite=[boolean], prefix=[string], filter=[any], recurse=[boolean], compressionLevel=[integer])
 ```
 
 ### Arguments
@@ -34,6 +39,7 @@ Compress(format=[string], source=[string], destination=[string], includeBaseFold
 | `prefix` | `string` | `false` | The prefix directory to store the compressed files under. Default is empty. |  |
 | `filter` | `any` | `false` | A regular expression to filter the files to compress or a function that receives the file name and returns a boolean. |  |
 | `recurse` | `boolean` | `false` | Whether to compress the files recursively. Default is true. | `true` |
+| `compressionLevel` | `integer` | `false` | The compression level to use for the compression. Default is 6, which is a good balance between speed and compression ratio. | `[ortus.boxlang.runtime.validation.dynamic.Max@61d1315b, 6, ortus.boxlang.runtime.validation.dynamic.Min@307ca947]` |
 
 ## Examples
 

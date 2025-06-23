@@ -85,11 +85,11 @@ dump( XmlSearch( xml_document, "/notes/note[last()]/body" ) );
 
 ## Related
 
-  * [XMLElemNew](./XMLElemNew.md)
-  * [XMLValidate](./XMLValidate.md)
-  * [XMLGetNodeType](./XMLGetNodeType.md)
-  * [XMLTransform](./XMLTransform.md)
-  * [XMLNew](./XMLNew.md)
-  * [XMLFormat](./XMLFormat.md)
   * [XMLChildPos](./XMLChildPos.md)
+  * [XMLElemNew](./XMLElemNew.md)
+  * [XMLFormat](./XMLFormat.md)
+  * [XMLGetNodeType](./XMLGetNodeType.md)
+  * [XMLNew](./XMLNew.md)
   * [XMLParse](./XMLParse.md)
+  * [XMLTransform](./XMLTransform.md)
+  * [XMLValidate](./XMLValidate.md)

@@ -48,13 +48,13 @@ Result: 120.5
 
 ## Related
 
-  * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
-  * [GetLocale](./GetLocale.md)
-  * [GetLocaleInfo](./GetLocaleInfo.md)
-  * [SetLocale](./SetLocale.md)
-  * [LSParseCurrency](./LSParseCurrency.md)
   * [ClearLocale](./ClearLocale.md)
   * [CurrencyFormat](./CurrencyFormat.md)
-  * [LSCurrencyFormat](./LSCurrencyFormat.md)
+  * [GetLocale](./GetLocale.md)
+  * [GetLocaleDisplayName](./GetLocaleDisplayName.md)
+  * [GetLocaleInfo](./GetLocaleInfo.md)
   * [IsCurrency](./IsCurrency.md)
+  * [LSCurrencyFormat](./LSCurrencyFormat.md)
   * [LSIsCurrency](./LSIsCurrency.md)
+  * [LSParseCurrency](./LSParseCurrency.md)
+  * [SetLocale](./SetLocale.md)

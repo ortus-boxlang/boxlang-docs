@@ -78,9 +78,9 @@ bx:transaction {
 
 ## Related
 
-  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
-  * [TransactionCommit](./TransactionCommit.md)
-  * [QueryExecute](./QueryExecute.md)
-  * [TransactionSetSavepoint](./TransactionSetSavepoint.md)
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
+  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
+  * [QueryExecute](./QueryExecute.md)
+  * [TransactionCommit](./TransactionCommit.md)
+  * [TransactionSetSavepoint](./TransactionSetSavepoint.md)

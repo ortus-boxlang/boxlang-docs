@@ -51,7 +51,7 @@ Flushes the 'hello-world.bxm' page from the cache.
 
 ## Related
 
-  * [CacheNames](./CacheNames.md)
   * [CacheFilter](./CacheFilter.md)
-  * [CacheService](./CacheService.md)
+  * [CacheNames](./CacheNames.md)
   * [CacheProviders](./CacheProviders.md)
+  * [CacheService](./CacheService.md)

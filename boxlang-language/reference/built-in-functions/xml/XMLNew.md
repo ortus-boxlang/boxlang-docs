@@ -46,11 +46,11 @@ dump( xml_document );
 
 ## Related
 
-  * [XMLElemNew](./XMLElemNew.md)
-  * [XMLSearch](./XMLSearch.md)
-  * [XMLValidate](./XMLValidate.md)
-  * [XMLGetNodeType](./XMLGetNodeType.md)
-  * [XMLTransform](./XMLTransform.md)
-  * [XMLFormat](./XMLFormat.md)
   * [XMLChildPos](./XMLChildPos.md)
+  * [XMLElemNew](./XMLElemNew.md)
+  * [XMLFormat](./XMLFormat.md)
+  * [XMLGetNodeType](./XMLGetNodeType.md)
   * [XMLParse](./XMLParse.md)
+  * [XMLSearch](./XMLSearch.md)
+  * [XMLTransform](./XMLTransform.md)
+  * [XMLValidate](./XMLValidate.md)

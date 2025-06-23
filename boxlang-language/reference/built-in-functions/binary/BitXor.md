@@ -46,13 +46,13 @@ writeOutput( bitXor( 128, 5 ) );
 
 ## Related
 
+  * [BinaryDecode](./BinaryDecode.md)
+  * [BinaryEncode](./BinaryEncode.md)
+  * [BitAnd](./BitAnd.md)
+  * [BitMaskClear](./BitMaskClear.md)
+  * [BitMaskRead](./BitMaskRead.md)
+  * [BitMaskSet](./BitMaskSet.md)
   * [BitNot](./BitNot.md)
   * [BitOr](./BitOr.md)
-  * [BitAnd](./BitAnd.md)
-  * [BitMaskRead](./BitMaskRead.md)
-  * [BinaryDecode](./BinaryDecode.md)
-  * [BitMaskSet](./BitMaskSet.md)
-  * [BitMaskClear](./BitMaskClear.md)
-  * [BinaryEncode](./BinaryEncode.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)

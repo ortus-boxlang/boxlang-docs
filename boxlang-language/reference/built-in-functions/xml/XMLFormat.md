@@ -48,11 +48,11 @@ dump( XmlFormat( string ) );
 
 ## Related
 
-  * [XMLElemNew](./XMLElemNew.md)
-  * [XMLSearch](./XMLSearch.md)
-  * [XMLValidate](./XMLValidate.md)
-  * [XMLGetNodeType](./XMLGetNodeType.md)
-  * [XMLTransform](./XMLTransform.md)
-  * [XMLNew](./XMLNew.md)
   * [XMLChildPos](./XMLChildPos.md)
+  * [XMLElemNew](./XMLElemNew.md)
+  * [XMLGetNodeType](./XMLGetNodeType.md)
+  * [XMLNew](./XMLNew.md)
   * [XMLParse](./XMLParse.md)
+  * [XMLSearch](./XMLSearch.md)
+  * [XMLTransform](./XMLTransform.md)
+  * [XMLValidate](./XMLValidate.md)

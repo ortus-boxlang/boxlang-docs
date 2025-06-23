@@ -83,9 +83,9 @@ writeDump( testEncrypt );
 
   * [Decrypt](./Decrypt.md)
   * [DecryptBinary](./DecryptBinary.md)
+  * [EncryptBinary](./EncryptBinary.md)
+  * [GeneratePBKDFKey](./GeneratePBKDFKey.md)
   * [GenerateSecretKey](./GenerateSecretKey.md)
   * [Hash](./Hash.md)
   * [Hash40](./Hash40.md)
-  * [EncryptBinary](./EncryptBinary.md)
   * [Hmac](./Hmac.md)
-  * [GeneratePBKDFKey](./GeneratePBKDFKey.md)

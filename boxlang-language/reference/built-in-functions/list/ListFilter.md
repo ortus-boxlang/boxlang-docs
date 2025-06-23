@@ -3,6 +3,19 @@
 # Function: `ListFilter`
 
 Filters a delimted list and returns the values from the callback test
+ This BIF will invoke the callback function for each entry in the list, passing the entry as a string.
+
+<ul>
+ <li>If the callback returns true, the entry will be included in the new list.</li>
+ <li>If the callback returns false, the entry will be excluded from the new list.</li>
+ <li>If the callback requires strict arguments, it will only receive the entry as a string.</li>
+ <li>If the callback does not require strict arguments, it will receive the entry as a string, the index (0-based), and the original list as a string.</li>
+ </ul>
+ <p>
+ <h2>Parallel Execution</h2>
+ If the <code>parallel</code> argument is set to true, and no <code>max_threads</code> are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If <code>max_threads</code> is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to filter, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 ## Method Signature
 
@@ -20,8 +33,8 @@ ListFilter(list=[string], filter=[function:Predicate], delimiter=[string], inclu
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `true` |
-| `parallel` | `boolean` | `false` | boolean whether to execute the filter in parallel | `false` |
-| `maxThreads` | `integer` | `false` | number the maximum number of threads to use in the parallel filter |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `integer` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
 
 ## Examples
 
@@ -88,35 +101,36 @@ writeDump( res );
 
 ## Related
 
-  * [ListSome](./ListSome.md)
-  * [ListReduceRight](./ListReduceRight.md)
-  * [ListPrepend](./ListPrepend.md)
-  * [ListFirst](./ListFirst.md)
-  * [ListLast](./ListLast.md)
-  * [ListIndexExists](./ListIndexExists.md)
-  * [ListInsertAt](./ListInsertAt.md)
+  * [GetToken](./GetToken.md)
+  * [ListAppend](./ListAppend.md)
+  * [ListAvg](./ListAvg.md)
   * [ListChangeDelims](./ListChangeDelims.md)
-  * [ListFind](./ListFind.md)
-  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListCompact](./ListCompact.md)
   * [ListContains](./ListContains.md)
   * [ListContainsNoCase](./ListContainsNoCase.md)
-  * [ListCompact](./ListCompact.md)
-  * [ListTrim](./ListTrim.md)
-  * [ListMap](./ListMap.md)
   * [ListDeleteAt](./ListDeleteAt.md)
-  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
-  * [ListToArray](./ListToArray.md)
+  * [ListEach](./ListEach.md)
+  * [ListEvery](./ListEvery.md)
+  * [ListFind](./ListFind.md)
+  * [ListFindNoCase](./ListFindNoCase.md)
+  * [ListFirst](./ListFirst.md)
+  * [ListGetAt](./ListGetAt.md)
+  * [ListIndexExists](./ListIndexExists.md)
+  * [ListInsertAt](./ListInsertAt.md)
+  * [ListItemTrim](./ListItemTrim.md)
+  * [ListLast](./ListLast.md)
+  * [ListLen](./ListLen.md)
+  * [ListMap](./ListMap.md)
+  * [ListNone](./ListNone.md)
+  * [ListPrepend](./ListPrepend.md)
   * [ListQualify](./ListQualify.md)
-  * [ListAppend](./ListAppend.md)
+  * [ListReduceRight](./ListReduceRight.md)
+  * [ListRemoveDuplicates](./ListRemoveDuplicates.md)
+  * [ListRest](./ListRest.md)
+  * [ListSetAt](./ListSetAt.md)
+  * [ListSome](./ListSome.md)
+  * [ListSort](./ListSort.md)
+  * [ListToArray](./ListToArray.md)
+  * [ListTrim](./ListTrim.md)
   * [ListValueCount](./ListValueCount.md)
   * [ListValueCountNoCase](./ListValueCountNoCase.md)
-  * [ListAvg](./ListAvg.md)
-  * [ListLen](./ListLen.md)
-  * [ListRest](./ListRest.md)
-  * [ListGetAt](./ListGetAt.md)
-  * [ListEvery](./ListEvery.md)
-  * [ListEach](./ListEach.md)
-  * [ListSort](./ListSort.md)
-  * [ListSetAt](./ListSetAt.md)
-  * [GetToken](./GetToken.md)
-  * [ListItemTrim](./ListItemTrim.md)

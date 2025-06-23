@@ -92,15 +92,15 @@ writeDump( dt.toString() );
 
 ## Related
 
-  * [ToNumeric](./ToNumeric.md)
-  * [JSONPrettify](./JSONPrettify.md)
-  * [JSONDeserialize](./JSONDeserialize.md)
-  * [ToScript](./ToScript.md)
-  * [ToUnmodifiable](./ToUnmodifiable.md)
-  * [ToBase64](./ToBase64.md)
   * [DataNavigate](./DataNavigate.md)
-  * [ParseNumber](./ParseNumber.md)
+  * [JSONDeserialize](./JSONDeserialize.md)
+  * [JSONPrettify](./JSONPrettify.md)
+  * [JSONSerialize](./JSONSerialize.md)
   * [LSParseNumber](./LSParseNumber.md)
+  * [ParseNumber](./ParseNumber.md)
+  * [ToBase64](./ToBase64.md)
   * [ToBinary](./ToBinary.md)
   * [ToModifiable](./ToModifiable.md)
-  * [JSONSerialize](./JSONSerialize.md)
+  * [ToNumeric](./ToNumeric.md)
+  * [ToScript](./ToScript.md)
+  * [ToUnmodifiable](./ToUnmodifiable.md)

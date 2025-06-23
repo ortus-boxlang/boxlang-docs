@@ -76,5 +76,5 @@ extract( "zip", "D:\test.zip", "D:\zipresult" );
 
 ## Related
 
-  * [IsZipFile](./IsZipFile.md)
   * [Compress](./Compress.md)
+  * [IsZipFile](./IsZipFile.md)

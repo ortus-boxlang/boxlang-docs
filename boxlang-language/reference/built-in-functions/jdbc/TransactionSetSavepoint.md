@@ -65,9 +65,9 @@ bx:transaction {
 
 ## Related
 
-  * [TransactionRollback](./TransactionRollback.md)
-  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
-  * [TransactionCommit](./TransactionCommit.md)
-  * [QueryExecute](./QueryExecute.md)
   * [IsInTransaction](./IsInTransaction.md)
   * [IsWithinTransaction](./IsWithinTransaction.md)
+  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
+  * [QueryExecute](./QueryExecute.md)
+  * [TransactionCommit](./TransactionCommit.md)
+  * [TransactionRollback](./TransactionRollback.md)
