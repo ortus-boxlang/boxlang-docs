@@ -43,6 +43,47 @@ writeOutput( jsonSerialize( person ) );
 { "name" : "Luis Majano", "company" : "Ortus Solutions", "year" : 2006 }
 ```
 
+### **Pretty JSON**
+
+You can leverage the `pretty` argument to `jsonSerialize()` function to enable formatted JSON output for improved readability.
+
+**Example:**
+
+```javascript
+data = {
+    name: "John Doe",
+    age: 30,
+    address: {
+        street: "123 Main St",
+        city: "Anytown",
+        country: "USA"
+    },
+    hobbies: ["reading", "cycling", "photography"]
+};
+
+// Standard compact JSON (default behavior)
+compactJson = jsonSerialize( data );
+// Output: {"name":"John Doe","age":30,"address":{"street":"123 Main St","city":"Anytown","country":"USA"},"hobbies":["reading","cycling","photography"]}
+
+// Pretty formatted JSON (new feature)
+prettyJson = jsonSerialize( data: data, pretty: true );
+/* Output:
+{
+  "name" : "John Doe",
+  "age" : 30,
+  "address" : {
+    "street" : "123 Main St",
+    "city" : "Anytown",
+    "country" : "USA"
+  },
+  "hobbies" : [ "reading", "cycling", "photography" ]
+}
+*/
+
+// Useful for debugging and configuration files
+writeFile( "config.json", jsonSerialize( data: appConfig, pretty: true ) );
+```
+
 ## Deserialize
 
 The inverse of serialization is deserialization ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsondeserialize](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/jsondeserialize)). BoxLang gives you the `jsonDeserialize()` function that will take a JSON document and produce native BoxLang data structures for you.
