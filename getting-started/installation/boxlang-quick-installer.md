@@ -41,42 +41,27 @@ boxlang
 boxlang-miniserver --port 8080
 ```
 
-### 📋 Prerequisites
+### 📋Requirements <a href="#requirements-7" id="requirements-7"></a>
 
-#### All Platforms
+You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21)
 
-* **Java 21+** - Required to run BoxLang
+* JRE 21+
 
-#### Mac/Linux Additional Requirements
+{% hint style="warning" %}
+If you want to use our BoxLang/CFML to Java transpiler, you must have the JDK installed, not the JRE.
+{% endhint %}
 
-* **curl** - For downloading releases
-* **unzip** - For extracting archives
-* **jq** - For JSON parsing (optional, fallback available)
-
-#### Installing Prerequisites
-
-**macOS (with Homebrew):**
+{% tabs %}
+{% tab title="🍎 Mac" %}
+We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
 
 ```bash
-brew install curl unzip jq
+brew install curl zip unzip jq openjdk@21
 ```
 
-**Ubuntu/Debian:**
-
-```bash
-sudo apt update && sudo apt install curl unzip jq default-jdk
-```
-
-**RHEL/CentOS/Fedora:**
-
-```bash
-sudo dnf install curl unzip jq java-21-openjdk
-```
-
-**Windows:**
-
-* Java 21+ from [Oracle](https://www.oracle.com/java/technologies/downloads/) or [OpenJDK](https://openjdk.org/)
-* PowerShell 5.1+ (included with Windows 10+)
+Once the requirements are installed, move down to the quick installer.
+{% endtab %}
+{% endtabs %}
 
 ### 📦 Installation Options
 
