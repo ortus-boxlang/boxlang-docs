@@ -62,6 +62,7 @@
   * [CommandBox](getting-started/running-boxlang/commandbox.md)
   * [Chromebooks](getting-started/running-boxlang/chromebooks.md)
   * [CLI Scripting](getting-started/running-boxlang/cli-scripting.md)
+  * [Demos](getting-started/running-boxlang/demos.md)
   * [Docker](getting-started/running-boxlang/docker.md)
   * [GitHub Actions](getting-started/running-boxlang/github-actions.md)
   * [JSR-223 Scripting](getting-started/running-boxlang/jsr-223-scripting.md)
