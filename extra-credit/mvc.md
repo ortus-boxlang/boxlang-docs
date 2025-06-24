@@ -128,6 +128,12 @@ ColdBox has become the defacto platform for developing modern MVC BoxLang applic
 
 The ColdBox HMVC Platform is the de-facto enterprise-level HMVC framework for BoxLang developers. It's professionally backed, highly extensible, and productive. Getting started with ColdBox is quick and painless. The only thing you need to begin is [CommandBox](http://www.ortussolutions.com/products/commandbox), a command line tool for BoxLang developers.
 
+Using CommandBox you can quickly spin up a ColdBox application using our BoxLang template
+
+```
+box coldbox create app skeleton=coldbox-templates/bx-default 
+```
+
 You can check out our quick learning guides below:
 
 * **Quick Start Guide:** [https://coldbox.ortusbooks.com/getting-started/getting-started-guide](https://coldbox.ortusbooks.com/getting-started/getting-started-guide)
