@@ -81,6 +81,5 @@ The web server will automatically be configured to use your projects directory a
 
 ### Contributing
 
-Checkout the [git repository](https://github.com/ortus-boxlang/vscode-boxlang) for our extension.
+Checkout the [git repository](https://github.com/ortus-boxlang/vscode-boxlang) for our extension. Issues should be reported to the Jira project: [https://ortussolutions.atlassian.net/jira/software/c/projects/BLIDE/boards/132](https://ortussolutions.atlassian.net/jira/software/c/projects/BLIDE/boards/132?search=log)
 
-Feel free to create an issue if you are having any problemsor want to create a feature request. Pull requests are welcome as well.
