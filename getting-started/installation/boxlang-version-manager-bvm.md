@@ -10,8 +10,6 @@ icon: list-tree
 
 <figure><img src="../../.gitbook/assets/bvm.jpg" alt=""><figcaption><p>BoxLang Version Manager</p></figcaption></figure>
 
-# BVM - BoxLang Version Manager
-
 BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang.
 
 ## BVM vs Single-Version Installer
@@ -57,7 +55,92 @@ The only difference is that BVM adds version management capabilities on top.
 - 🆙 **Built-in update checker** - check for BVM updates and upgrade easily
 - 🗑️ **Uninstall BVM** - Remove completely BVM, versions, etc.
 
-## Version Detection & Management
+## Security & Reliability
+
+BVM includes several security and reliability enhancements to ensure safe and reliable installations:
+
+### SHA-256 Checksum Verification
+
+- 🔒 **Automatic verification** - Downloads and verifies SHA-256 checksums for all BoxLang downloads
+- ✅ **Cryptographic integrity** - Ensures downloaded files haven't been tampered with
+- 🛡️ **Security first** - Available for BoxLang 1.3.0 and later versions
+- ⚠️ **Graceful fallback** - Clear warnings for pre-1.3.0 versions without checksums
+- 🔧 **Multiple tools** - Supports both `sha256sum` (Linux) and `shasum` (macOS)
+
+### Force Reinstallation
+
+Use the `--force` flag to reinstall existing versions:
+
+```bash
+# Reinstall latest version (useful for getting updates)
+bvm install latest --force
+
+# Reinstall a specific version (useful for corruption recovery)
+bvm install 1.2.0 --force
+
+# Force works with any version
+bvm install snapshot --force
+```
+
+**When to use `--force`:**
+
+- 🔄 Recover from corrupted installations
+- 🆙 Get the latest "latest" or "snapshot" builds
+- 🛠️ Troubleshoot installation issues
+- 🧪 Testing and development scenarios
+
+### Command Aliases
+
+BVM provides convenient short aliases for all major commands:
+
+```bash
+# List commands
+bvm list          # Full command
+bvm ls            # Short alias
+
+bvm list-remote   # Full command
+bvm ls-remote     # Short alias
+
+# Remove commands
+bvm remove 1.2.0  # Full command
+bvm rm 1.2.0      # Short alias
+
+# MiniServer commands
+bvm miniserver    # Full command
+bvm mini-server   # Alternative
+bvm ms            # Short alias
+
+# Maintenance commands
+bvm doctor        # Full command
+bvm health        # Alias
+
+bvm stats         # Full command
+bvm performance   # Alias
+bvm usage         # Alias
+
+# Version commands
+bvm version       # Full command
+bvm --version     # Standard flag
+bvm -v            # Short flag
+
+# Help commands
+bvm help          # Full command
+bvm --help        # Standard flag
+bvm -h            # Short flag
+```
+
+### Automatic Snapshot Updates
+
+BVM automatically ensures you have the latest development builds:
+
+```bash
+# When switching to snapshot, BVM automatically re-downloads
+bvm use snapshot
+# Output: "Snapshot version detected, re-downloading..."
+
+# This ensures you always have the latest development build
+# without manually forcing reinstallation
+```
 
 BVM now intelligently detects actual version numbers when installing "latest" or "snapshot" versions, providing clear and accurate version tracking.
 
@@ -248,6 +331,7 @@ bvm -h
   - `bvm install latest` - Install latest stable release (detects and installs actual version, e.g., `1.2.0`)
   - `bvm install snapshot` - Install latest development snapshot (detects and installs actual version, e.g., `1.3.0-snapshot`)
   - `bvm install 1.2.0` - Install specific version
+  - `bvm install <version> --force` - Force reinstall existing version (useful for updates or corruption recovery)
 
 - `bvm use <version>` - Switch to a specific BoxLang version
   - Can use actual version numbers (e.g., `1.2.0`, `1.3.0-snapshot`) or `latest` symlink
@@ -281,6 +365,8 @@ bvm -h
 
 - `bvm check-update` - Check for BVM updates and optionally upgrade
 - `bvm clean` - Clean cache and temporary files
+- `bvm stats` - Show performance and usage statistics
+  - Aliases: `bvm performance`, `bvm usage`
 - `bvm doctor` - Check BVM installation health
   - Alias: `bvm health`
 - `bvm help` - Show help message
@@ -322,6 +408,27 @@ bvm use 1.3.0-snapshot
 # Install a specific version
 bvm install 1.2.0
 bvm use 1.2.0
+
+# Force reinstall latest (get updates)
+bvm install latest --force
+
+# Force reinstall to recover from corruption
+bvm install 1.2.0 --force
+
+# Use short aliases for efficiency
+bvm ls                    # List installed versions
+bvm ls-remote            # List available versions
+bvm rm 1.1.0             # Remove old version
+bvm ms --port 8080       # Start MiniServer
+
+# Check performance statistics
+bvm stats                # Full stats output
+bvm performance          # Same as stats
+bvm usage               # Same as stats
+
+# Health check with alias
+bvm doctor              # Full command
+bvm health              # Short alias
 
 # Project-specific versions with .bvmrc
 cd my-project
@@ -568,10 +675,15 @@ boxlang --version
 
 ## Prerequisites
 
-- **curl** - For downloading BoxLang releases
+- **curl** - For downloading BoxLang releases and checksum files
 - **unzip** - For extracting archives
 - **jq** - For parsing JSON (optional, fallback available)
 - **Java 21+** - Required to run BoxLang
+- **sha256sum or shasum** - For checksum verification (optional but recommended for security)
+
+### Security Note
+
+BVM automatically verifies SHA-256 checksums when available (BoxLang 1.3.0+) to ensure download integrity. While `sha256sum` (Linux) or `shasum` (macOS) are optional, they're highly recommended for security verification.
 
 ### Installing Prerequisites
 
