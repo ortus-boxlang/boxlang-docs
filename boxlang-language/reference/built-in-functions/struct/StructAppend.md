@@ -1,9 +1,7 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+# StructAppend
 
-# Function: `StructAppend`
-
-Appends the contents of a second struct to the first struct either with or
- without overwrite
+Appends the contents of a second struct to the first struct either with or\
+without overwrite
 
 ## Method Signature
 
@@ -13,20 +11,17 @@ StructAppend(struct1=[structloose], struct2=[structloose], overwrite=[boolean])
 
 ### Arguments
 
-
-| Argument | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `struct1` | `struct` | `true` | The target struct which will be the recipient of the<br>                   appending |  |
-| `struct2` | `struct` | `true` | The struct containing the values to be appended |  |
-| `overwrite` | `boolean` | `false` | Default true. Whether to overwrite existing values found<br>                     in struct1 from the values in struct2 | `true` |
+| Argument    | Type      | Required | Description                                                                                              | Default |
+| ----------- | --------- | -------- | -------------------------------------------------------------------------------------------------------- | ------- |
+| `struct1`   | `struct`  | `true`   | <p>The target struct which will be the recipient of the<br>appending</p>                                 |         |
+| `struct2`   | `struct`  | `true`   | The struct containing the values to be appended                                                          |         |
+| `overwrite` | `boolean` | `false`  | <p>Default true. Whether to overwrite existing values found<br>in struct1 from the values in struct2</p> | `true`  |
 
 ## Examples
 
 ### Append options to config struct (without overwrite flag)
 
-
-
-<a href="https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINki0uKSpNLHAsKUvNSNBSSwSbpKED16CikJeYUpypoWnOVF2WWpPqXlhSUlmgoeAX7%2BwWnFmUm5mRWpcJ0KWiC1AEAiAUo9A%3D%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINki0uKSpNLHAsKUvNSNBSSwSbpKED16CikJeYUpypoWnOVF2WWpPqXlhSUlmgoeAX7%2BwWnFmUm5mRWpcJ0KWiC1AEAiAUo9A%3D%3D)
 
 ```java
 config = { 
@@ -46,9 +41,7 @@ Result: {"A":0,"B":0,"C":1}
 
 ### Append options to config struct (same, but using member function)
 
-
-
-<a href="https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINkk8F69RILClLzUjQUoIp1FNISc4pTFTStucqLMktS%2FUtLCkpLNBS8gv39glOLMhNzMqtSNRQgmhU0QeoAWzomUQ%3D%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINkk8F69RILClLzUjQUoIp1FNISc4pTFTStucqLMktS%2FUtLCkpLNBS8gv39glOLMhNzMqtSNRQgmhU0QeoAWzomUQ%3D%3D)
 
 ```java
 config = { 
@@ -68,9 +61,7 @@ Result: {"A":0,"B":0,"C":1}
 
 ### Append options to config struct (with overwrite flag)
 
-
-
-<a href="https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINki0uKSpNLHAsKUvNSNBSSwSbpKMD0aFpzlRdllqT6l5YUlJZoKHgF%2B%2FsFpxZlJuZkVqXClCtogtQBAGzxJp0%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINki0uKSpNLHAsKUvNSNBSSwSbpKMD0aFpzlRdllqT6l5YUlJZoKHgF%2B%2FsFpxZlJuZkVqXClCtogtQBAGzxJp0%3D)
 
 ```java
 config = { 
@@ -92,7 +83,7 @@ Result: {"A":0,"B":1,"C":1}
 
 Demonstrates how to construct a Request Context (rc) that combines the values of the form and url scopes
 
-<a href="https://try.boxlang.io/?code=eJwrSlawVaiuteYqLikqTS5xLChIzUvRUChK1lFIyy%2FKVdDEJlNalAOSKC%2FKLEn1Ly0pKC3RUPAK9vcLTi3KTMzJrEoFKVPQBKkBABt3H1k%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJwrSlawVaiuteYqLikqTS5xLChIzUvRUChK1lFIyy%2FKVdDEJlNalAOSKC%2FKLEn1Ly0pKC3RUPAK9vcLTi3KTMzJrEoFKVPQBKkBABt3H1k%3D)
 
 ```java
 rc = {};
@@ -102,12 +93,11 @@ writeOutput( JSONSerialize( rc ) );
 
 ```
 
-
 ### Polyfill for earlier versions
 
 In older Boxlang version where this function is not supported yet, you can fall back to a native java method to achieve the same behavior except that it does not have the `overwriteFlag`.
 
-<a href="https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINkk8F69QpKSxxzcjQUYIo1rbnKizJLUv1LS4BSGgpewf5%2BwalFmYk5mVWpGgoQXQqaIHUAUXgj9A%3D%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLzs9Ly0xXsFWoVuDidFSwUjDQ4eJ0AtFctdZc%2BQUlmfl5xSBpiKghUNYZRINkk8F69QpKSxxzcjQUYIo1rbnKizJLUv1LS4BSGgpewf5%2BwalFmYk5mVWpGgoQXQqaIHUAUXgj9A%3D%3D)
 
 ```java
 config = { 
@@ -127,7 +117,7 @@ Result: {"A":0,"B":0,"C":1}
 
 ### Additional Examples
 
-<a href="https://try.boxlang.io/?code=eJxlj80KwjAQhM%2FmKYacKhR6V3ooFcSTQgXPa7LQYpuUNLUH8d3tn1bxtrMz2XxDpqiobBDjAbFKjxdsICtrZShWp8N%2BULYwNymeWxFFyHLbQbXOsfGg6a3YtVUdoKQrl7FMf00Z4k4unhXW45XUMXkGwXA3B0U%2FJuM0oPQkyXkkYdu9%2F07qmo2GzxlL2NsPRuZdq%2FyUCt7b8Cu7Xiosbi8Ko8pWcwNF%2FrdMMmN3hc8HF6Q16%2F9OL2AAaSU%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxlj80KwjAQhM%2FmKYacKhR6V3ooFcSTQgXPa7LQYpuUNLUH8d3tn1bxtrMz2XxDpqiobBDjAbFKjxdsICtrZShWp8N%2BULYwNymeWxFFyHLbQbXOsfGg6a3YtVUdoKQrl7FMf00Z4k4unhXW45XUMXkGwXA3B0U%2FJuM0oPQkyXkkYdu9%2F07qmo2GzxlL2NsPRuZdq%2FyUCt7b8Cu7Xiosbi8Ko8pWcwNF%2FrdMMmN3hc8HF6Q16%2F9OL2AAaSU%3D)
 
 ```java
 animals = { 
@@ -147,36 +137,34 @@ Dump( label="Animals with cat added", var=animals );
 
 ```
 
-
-
 ## Related
 
-  * [StructClear](./StructClear.md)
-  * [StructCopy](./StructCopy.md)
-  * [StructDelete](./StructDelete.md)
-  * [StructEach](./StructEach.md)
-  * [StructEquals](./StructEquals.md)
-  * [StructEvery](./StructEvery.md)
-  * [StructFilter](./StructFilter.md)
-  * [StructFind](./StructFind.md)
-  * [StructFindKey](./StructFindKey.md)
-  * [StructFindValue](./StructFindValue.md)
-  * [StructGet](./StructGet.md)
-  * [StructGetMetadata](./StructGetMetadata.md)
-  * [StructInsert](./StructInsert.md)
-  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
-  * [StructIsOrdered](./StructIsOrdered.md)
-  * [StructKeyArray](./StructKeyArray.md)
-  * [StructKeyExists](./StructKeyExists.md)
-  * [StructKeyList](./StructKeyList.md)
-  * [StructKeyTranslate](./StructKeyTranslate.md)
-  * [StructMap](./StructMap.md)
-  * [StructNew](./StructNew.md)
-  * [StructNone](./StructNone.md)
-  * [StructReduce](./StructReduce.md)
-  * [StructSome](./StructSome.md)
-  * [StructSort](./StructSort.md)
-  * [StructToQueryString](./StructToQueryString.md)
-  * [StructToSorted](./StructToSorted.md)
-  * [StructUpdate](./StructUpdate.md)
-  * [StructValueArray](./StructValueArray.md)
+* [StructClear](StructClear.md)
+* [StructCopy](StructCopy.md)
+* [StructDelete](StructDelete.md)
+* [StructEach](StructEach.md)
+* [StructEquals](StructEquals.md)
+* [StructEvery](StructEvery.md)
+* [StructFilter](StructFilter.md)
+* [StructFind](StructFind.md)
+* [StructFindKey](StructFindKey.md)
+* [StructFindValue](StructFindValue.md)
+* [StructGet](StructGet.md)
+* [StructGetMetadata](StructGetMetadata.md)
+* [StructInsert](StructInsert.md)
+* [StructIsCaseSensitive](StructIsCaseSensitive.md)
+* [StructIsOrdered](StructIsOrdered.md)
+* [StructKeyArray](StructKeyArray.md)
+* [StructKeyExists](StructKeyExists.md)
+* [StructKeyList](StructKeyList.md)
+* [StructKeyTranslate](StructKeyTranslate.md)
+* [StructMap](StructMap.md)
+* [StructNew](StructNew.md)
+* [StructNone](StructNone.md)
+* [StructReduce](StructReduce.md)
+* [StructSome](StructSome.md)
+* [StructSort](StructSort.md)
+* [StructToQueryString](StructToQueryString.md)
+* [StructToSorted](StructToSorted.md)
+* [StructUpdate](StructUpdate.md)
+* [StructValueArray](StructValueArray.md)

@@ -1,11 +1,9 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
-
-# Function: `TransactionCommit`
+# TransactionCommit
 
 Commit the current transaction and persist all stored queries.
 
-You can continue to use the transaction after a `transactionCommit()` call, but you will not be able to roll back past (before) this
- point since the changes are fully persisted to the database.
+You can continue to use the transaction after a `transactionCommit()` call, but you will not be able to roll back past (before) this\
+point since the changes are fully persisted to the database.
 
 ## Method Signature
 
@@ -39,7 +37,7 @@ Note that the rollback cannot affect the INSERT statement, since it has already 
 
 In this code, transactionCommit() will commit the pending transaction, which is any database queries run in the transaction block.
 
-<a href="https://try.boxlang.io/?code=eJxLqrAqKUrMK05MLsnMz1Oo5uIsKaoEUZz6%2BgrJ%2BSmpCiX5CkWleUCBJFSlEMpWKTk%2FNzezRMmai7NWITmxJDlDQSMxr1IhVRNsCg5NRfk5OUmJydlgbVy1XADL1Cvw" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLqrAqKUrMK05MLsnMz1Oo5uIsKaoEUZz6%2BgrJ%2BSmpCiX5CkWleUCBJFSlEMpWKTk%2FNzezRMmai7NWITmxJDlDQSMxr1IhVRNsCg5NRfk5OUmJydlgbVy1XADL1Cvw)
 
 ```java
 bx:transaction {
@@ -53,13 +51,11 @@ bx:transaction {
 
 ```
 
-
-
 ## Related
 
-  * [IsInTransaction](./IsInTransaction.md)
-  * [IsWithinTransaction](./IsWithinTransaction.md)
-  * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
-  * [QueryExecute](./QueryExecute.md)
-  * [TransactionRollback](./TransactionRollback.md)
-  * [TransactionSetSavepoint](./TransactionSetSavepoint.md)
+* [IsInTransaction](IsInTransaction.md)
+* [IsWithinTransaction](IsWithinTransaction.md)
+* [PreserveSingleQuotes](PreserveSingleQuotes.md)
+* [QueryExecute](QueryExecute.md)
+* [TransactionRollback](TransactionRollback.md)
+* [TransactionSetSavepoint](TransactionSetSavepoint.md)

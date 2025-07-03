@@ -1,9 +1,7 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+# GeneratePBKDFKey
 
-# Function: `GeneratePBKDFKey`
-
-Generates an encoded encryption key using the specified algorithm and key
- size
+Generates an encoded encryption key using the specified algorithm and key\
+size
 
 ## Method Signature
 
@@ -13,14 +11,13 @@ GeneratePBKDFKey(algorithm=[string], passphrase=[string], salt=[string], iterati
 
 ### Arguments
 
-
-| Argument | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `algorithm` | `string` | `true` | The algorithm to use for generating the key. Algorithms supported are: PBKDF2WithHmacSHA1, PBKDF2WithHmacSHA224, PBKDF2WithHmacSHA256, PBKDF2WithHmacSHA384, PBKDF2WithHmacSHA512 | `AES` |
-| `passphrase` | `string` | `true` | The passphrase to use for generating the key. This is |  |
-| `salt` | `string` | `true` | The salt to use for generating the key. This is a random string |  |
-| `iterations` | `numeric` | `false` | The number of iterations to use for generating the key. |  |
-| `keySize` | `numeric` | `false` | The optional size of the key to generate. If not provided<br>                   the default key size for the algorithm will be used |  |
+| Argument     | Type      | Required | Description                                                                                                                                                                       | Default |
+| ------------ | --------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `algorithm`  | `string`  | `true`   | The algorithm to use for generating the key. Algorithms supported are: PBKDF2WithHmacSHA1, PBKDF2WithHmacSHA224, PBKDF2WithHmacSHA256, PBKDF2WithHmacSHA384, PBKDF2WithHmacSHA512 | `AES`   |
+| `passphrase` | `string`  | `true`   | The passphrase to use for generating the key. This is                                                                                                                             |         |
+| `salt`       | `string`  | `true`   | The salt to use for generating the key. This is a random string                                                                                                                   |         |
+| `iterations` | `numeric` | `false`  | The number of iterations to use for generating the key.                                                                                                                           |         |
+| `keySize`    | `numeric` | `false`  | <p>The optional size of the key to generate. If not provided<br>the default key size for the algorithm will be used</p>                                                           |         |
 
 ## Examples
 
@@ -28,7 +25,7 @@ GeneratePBKDFKey(algorithm=[string], passphrase=[string], salt=[string], iterati
 
 The `PBKDF2WithHmacSHA1` algorithm will work on older JVMs, or older versions of CF
 
-<a href="https://try.boxlang.io/?code=eJxLT81LLUosSQ1w8nZx806t1FBQAjONwjNLMjxyE5ODPRwNlXQUlIpTk4tSS8CsxJySSiDD1MDAQEfB0MhCQdOaCwA5uBR8" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLT81LLUosSQ1w8nZx806t1FBQAjONwjNLMjxyE5ODPRwNlXQUlIpTk4tSS8CsxJySSiDD1MDAQEfB0MhCQdOaCwA5uBR8)
 
 ```java
 generatePBKDFKey( "PBKDF2WithHmacSHA1", "secret", "salty", 5000, 128 );
@@ -38,9 +35,6 @@ generatePBKDFKey( "PBKDF2WithHmacSHA1", "secret", "salty", 5000, 128 );
 Result: Y0MCpCe3zb0CNJvyXNUWEQ==
 
 ### More complex encryption example
-
-
-
 
 ```java
 // some variables
@@ -65,10 +59,9 @@ writeOutput( "<br /><b>Data After Decryption</b>: " & decryptedData );
 
 ```
 
-
 ### Additional Examples
 
-<a href="https://try.boxlang.io/?code=eJxLKc0t0FBIT81LLUosSQ1w8nZx806t1FBQAjONwjNLMjxyE5ODPRwNlXQUlIpTk4tSS8CsxJySSiDD1MDAQEfB0MhCQVNB05pLQV9fIdLA17nAOdW4KsnA2c%2BrrDLCLzTcNdDWlgsACv4fBw%3D%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLKc0t0FBIT81LLUosSQ1w8nZx806t1FBQAjONwjNLMjxyE5ODPRwNlXQUlIpTk4tSS8CsxJySSiDD1MDAQEfB0MhCQVNB05pLQV9fIdLA17nAOdW4KsnA2c%2BrrDLCLzTcNdDWlgsACv4fBw%3D%3D)
 
 ```java
 dump( generatePBKDFKey( "PBKDF2WithHmacSHA1", "secret", "salty", 5000, 128 ) );
@@ -76,15 +69,13 @@ dump( generatePBKDFKey( "PBKDF2WithHmacSHA1", "secret", "salty", 5000, 128 ) );
 
 ```
 
-
-
 ## Related
 
-  * [Decrypt](./Decrypt.md)
-  * [DecryptBinary](./DecryptBinary.md)
-  * [Encrypt](./Encrypt.md)
-  * [EncryptBinary](./EncryptBinary.md)
-  * [GenerateSecretKey](./GenerateSecretKey.md)
-  * [Hash](./Hash.md)
-  * [Hash40](./Hash40.md)
-  * [Hmac](./Hmac.md)
+* [Decrypt](Decrypt.md)
+* [DecryptBinary](DecryptBinary.md)
+* [Encrypt](Encrypt.md)
+* [EncryptBinary](EncryptBinary.md)
+* [GenerateSecretKey](GenerateSecretKey.md)
+* [Hash](Hash.md)
+* [Hash40](Hash40.md)
+* [Hmac](Hmac.md)

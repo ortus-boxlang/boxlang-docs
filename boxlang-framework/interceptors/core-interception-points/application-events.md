@@ -23,15 +23,15 @@ These events occur around the life cycle of the request listener `Application.bx
 
 ## beforeApplicationListenerLoad
 
-Announced by the Application service before the application listener gets defined.  This is a good place to do any type of processing that needs to be done before the application listener is loaded.
+Announced by the Application service before the application listener gets defined. This is a good place to do any type of processing that needs to be done before the application listener is loaded.
 
 ### Data Structure
 
-| Data Key      | Type                      | Description                      |
-| ------------- | ------------------------- | -------------------------------- |
-| `context`     | `IBoxContext`             | The BoxLang Request context      |
-| `listener`    | `BaseApplicationListener` | The BoxLang listener class       |
-| `template`    | `URI` | The URI of the template matching the Application.bx       |
+| Data Key   | Type                      | Description                                         |
+| ---------- | ------------------------- | --------------------------------------------------- |
+| `context`  | `IBoxContext`             | The BoxLang Request context                         |
+| `listener` | `BaseApplicationListener` | The BoxLang listener class                          |
+| `template` | `URI`                     | The URI of the template matching the Application.bx |
 
 ### Example
 
@@ -46,16 +46,16 @@ class myListener{
 
 ## afterApplicationListenerLoad
 
-Announced by the Application service after the application listener gets defined.  This is a good place to do any type of processing that needs to be done after the application listener is loaded. This could include
+Announced by the Application service after the application listener gets defined. This is a good place to do any type of processing that needs to be done after the application listener is loaded. This could include\
 any custom frameworks or modules that need to be loaded after the application listener is loaded.
 
 ### Data Structure
 
-| Data Key      | Type                      | Description                      |
-| ------------- | ------------------------- | -------------------------------- |
-| `context`     | `IBoxContext`             | The BoxLang Request context      |
-| `listener`    | `BaseApplicationListener` | The BoxLang listener class       |
-| `template`    | `URI` | The URI of the template matching the Application.bx       |
+| Data Key   | Type                      | Description                                         |
+| ---------- | ------------------------- | --------------------------------------------------- |
+| `context`  | `IBoxContext`             | The BoxLang Request context                         |
+| `listener` | `BaseApplicationListener` | The BoxLang listener class                          |
+| `template` | `URI`                     | The URI of the template matching the Application.bx |
 
 ### Example
 
@@ -109,10 +109,10 @@ This happens when the application is defined and the following has been set:
 
 ### Data Structure
 
-| Data Key      | Type                      | Description                      |
-| ------------- | ------------------------- | -------------------------------- |
-| `context`     | `IBoxContext`             | The BoxLang Request context      |
-| `listener`    | `BaseApplicationListener` | The BoxLang listener class       |
+| Data Key   | Type                      | Description                 |
+| ---------- | ------------------------- | --------------------------- |
+| `context`  | `IBoxContext`             | The BoxLang Request context |
+| `listener` | `BaseApplicationListener` | The BoxLang listener class  |
 
 ### Example
 
@@ -161,10 +161,10 @@ This event is triggered when the application is restarted via the `ApplicationRe
 
 ### Data Structure
 
-| Data Key      | Type                      | Description                      |
-| ------------- | ------------------------- | -------------------------------- |
-| `application` | `Application`             | The BoxLang Application class    |
-| `context`     | `IBoxContext`             | The BoxLang Request context      |
+| Data Key      | Type          | Description                   |
+| ------------- | ------------- | ----------------------------- |
+| `application` | `Application` | The BoxLang Application class |
+| `context`     | `IBoxContext` | The BoxLang Request context   |
 
 ### Example
 
@@ -351,10 +351,10 @@ Whenever a context flushes the output buffer, this event is triggered. This is a
 
 ### Data Structure
 
-| Data Key      | Type                      | Description                      |
-| ------------- | ------------------------- | -------------------------------- |
-| `context`     | `IBoxContext`             | The BoxLang Request context      |
-| `output`    | `String` | The output to be flushed       |
+| Data Key  | Type          | Description                 |
+| --------- | ------------- | --------------------------- |
+| `context` | `IBoxContext` | The BoxLang Request context |
+| `output`  | `String`      | The output to be flushed    |
 
 ### Example
 
@@ -510,11 +510,11 @@ This is when a session get's destroyed. This could be when the session times out
 
 ### Data Structure
 
-| Data Key      | Type                      | Description                      |
-| ------------- | ------------------------- | -------------------------------- |
-| `application` | `Application`             | The BoxLang Application class    |
-| `listner`     | `Listener`             | The BoxLang Listener class      |
-| `session`     | `Session`             | The BoxLang Session class      |
+| Data Key      | Type          | Description                   |
+| ------------- | ------------- | ----------------------------- |
+| `application` | `Application` | The BoxLang Application class |
+| `listner`     | `Listener`    | The BoxLang Listener class    |
+| `session`     | `Session`     | The BoxLang Session class     |
 
 ### Example
 

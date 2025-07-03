@@ -1,11 +1,9 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
-
-# Function: `DE`
+# DE
 
 Delay evaluation of a string as an expression, when it is passed as a parameter to the IIf or Evaluate functions.
 
-Escapes any double quotation
- marks in the parameter and wraps the result in double quotation marks. It does not escape # so the string could still be evaluated in some cases.
+Escapes any double quotation\
+marks in the parameter and wraps the result in double quotation marks. It does not escape # so the string could still be evaluated in some cases.
 
 ## Method Signature
 
@@ -15,18 +13,15 @@ DE(string=[string])
 
 ### Arguments
 
-
-| Argument | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `string` | `string` | `true` | The string to delay evaluation of. |  |
+| Argument | Type     | Required | Description                        | Default |
+| -------- | -------- | -------- | ---------------------------------- | ------- |
+| `string` | `string` | `true`   | The string to delay evaluation of. |         |
 
 ## Examples
 
 ### Simple Example
 
-
-
-<a href="https://try.boxlang.io/?code=eJxLSdVQUCpILUlVUtC05gIAHgIDkg%3D%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLSdVQUCpILUlVUtC05gIAHgIDkg%3D%3D)
 
 ```java
 de( "pete" );
@@ -37,80 +32,78 @@ Result: "pete"
 
 ### Additional Examples
 
-<a href="https://try.boxlang.io/?code=eJwLL8osSfUvLSkoLdFQSEnVUFAqLi3OVFLQVNC05gIAmUoI1Q%3D%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJwLL8osSfUvLSkoLdFQSEnVUFAqLi3OVFLQVNC05gIAmUoI1Q%3D%3D)
 
 ```java
 WriteOutput( de( "susi" ) );
 
 ```
 
-
-
 ## Related
 
-  * [ApplicationRestart](./ApplicationRestart.md)
-  * [ApplicationStartTime](./ApplicationStartTime.md)
-  * [ApplicationStop](./ApplicationStop.md)
-  * [BoxAnnounce](./BoxAnnounce.md)
-  * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
-  * [BoxModuleReload](./BoxModuleReload.md)
-  * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
-  * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)
-  * [BoxRegisterRequestInterceptor](./BoxRegisterRequestInterceptor.md)
-  * [BoxUnregisterInterceptor](./BoxUnregisterInterceptor.md)
-  * [BoxUnregisterRequestInterceptor](./BoxUnregisterRequestInterceptor.md)
-  * [CallStackGet](./CallStackGet.md)
-  * [CreateGUID](./CreateGUID.md)
-  * [CreateObject](./CreateObject.md)
-  * [CreateUUID](./CreateUUID.md)
-  * [DebugBoxContexts](./DebugBoxContexts.md)
-  * [Dump](./Dump.md)
-  * [Duplicate](./Duplicate.md)
-  * [echo](./echo.md)
-  * [EncodeForHTML](./EncodeForHTML.md)
-  * [GetApplicationMetadata](./GetApplicationMetadata.md)
-  * [GetBaseTagData](./GetBaseTagData.md)
-  * [GetBaseTagList](./GetBaseTagList.md)
-  * [GetBaseTemplatePath](./GetBaseTemplatePath.md)
-  * [GetBoxContext](./GetBoxContext.md)
-  * [GetBoxRuntime](./GetBoxRuntime.md)
-  * [GetBoxVersionInfo](./GetBoxVersionInfo.md)
-  * [GetClassMetadata](./GetClassMetadata.md)
-  * [GetComponentList](./GetComponentList.md)
-  * [GetContextRoot](./GetContextRoot.md)
-  * [GetCurrentTemplatePath](./GetCurrentTemplatePath.md)
-  * [GetFileFromPath](./GetFileFromPath.md)
-  * [GetFunctionCalledName](./GetFunctionCalledName.md)
-  * [GetFunctionList](./GetFunctionList.md)
-  * [GetModuleInfo](./GetModuleInfo.md)
-  * [GetModuleList](./GetModuleList.md)
-  * [GetRequestClassLoader](./GetRequestClassLoader.md)
-  * [GetSemver](./GetSemver.md)
-  * [GetSystemSetting](./GetSystemSetting.md)
-  * [GetTempDirectory](./GetTempDirectory.md)
-  * [GetTickCount](./GetTickCount.md)
-  * [htmlEditFormat](./htmlEditFormat.md)
-  * [IIF](./IIF.md)
-  * [Invoke](./Invoke.md)
-  * [IsInstanceOf](./IsInstanceOf.md)
-  * [JavaCast](./JavaCast.md)
-  * [ObjectDeserialize](./ObjectDeserialize.md)
-  * [ObjectSerialize](./ObjectSerialize.md)
-  * [PagePoolClear](./PagePoolClear.md)
-  * [Print](./Print.md)
-  * [Println](./Println.md)
-  * [RunThreadInContext](./RunThreadInContext.md)
-  * [SessionInvalidate](./SessionInvalidate.md)
-  * [SessionRotate](./SessionRotate.md)
-  * [SessionStartTime](./SessionStartTime.md)
-  * [Sleep](./Sleep.md)
-  * [SystemCacheClear](./SystemCacheClear.md)
-  * [SystemExecute](./SystemExecute.md)
-  * [SystemOutput](./SystemOutput.md)
-  * [Throw](./Throw.md)
-  * [Trace](./Trace.md)
-  * [URLDecode](./URLDecode.md)
-  * [URLEncodedFormat](./URLEncodedFormat.md)
-  * [writeDump](./writeDump.md)
-  * [WriteLog](./WriteLog.md)
-  * [WriteOutput](./WriteOutput.md)
+* [ApplicationRestart](ApplicationRestart.md)
+* [ApplicationStartTime](ApplicationStartTime.md)
+* [ApplicationStop](ApplicationStop.md)
+* [BoxAnnounce](BoxAnnounce.md)
+* [BoxAnnounceAsync](BoxAnnounceAsync.md)
+* [BoxModuleReload](BoxModuleReload.md)
+* [BoxRegisterInterceptionPoints](BoxRegisterInterceptionPoints.md)
+* [BoxRegisterInterceptor](BoxRegisterInterceptor.md)
+* [BoxRegisterRequestInterceptor](BoxRegisterRequestInterceptor.md)
+* [BoxUnregisterInterceptor](BoxUnregisterInterceptor.md)
+* [BoxUnregisterRequestInterceptor](BoxUnregisterRequestInterceptor.md)
+* [CallStackGet](CallStackGet.md)
+* [CreateGUID](CreateGUID.md)
+* [CreateObject](CreateObject.md)
+* [CreateUUID](CreateUUID.md)
+* [DebugBoxContexts](DebugBoxContexts.md)
+* [Dump](Dump.md)
+* [Duplicate](Duplicate.md)
+* [echo](echo.md)
+* [EncodeForHTML](EncodeForHTML.md)
+* [GetApplicationMetadata](GetApplicationMetadata.md)
+* [GetBaseTagData](GetBaseTagData.md)
+* [GetBaseTagList](GetBaseTagList.md)
+* [GetBaseTemplatePath](GetBaseTemplatePath.md)
+* [GetBoxContext](GetBoxContext.md)
+* [GetBoxRuntime](GetBoxRuntime.md)
+* [GetBoxVersionInfo](GetBoxVersionInfo.md)
+* [GetClassMetadata](GetClassMetadata.md)
+* [GetComponentList](GetComponentList.md)
+* [GetContextRoot](GetContextRoot.md)
+* [GetCurrentTemplatePath](GetCurrentTemplatePath.md)
+* [GetFileFromPath](GetFileFromPath.md)
+* [GetFunctionCalledName](GetFunctionCalledName.md)
+* [GetFunctionList](GetFunctionList.md)
+* [GetModuleInfo](GetModuleInfo.md)
+* [GetModuleList](GetModuleList.md)
+* [GetRequestClassLoader](GetRequestClassLoader.md)
+* [GetSemver](GetSemver.md)
+* [GetSystemSetting](GetSystemSetting.md)
+* [GetTempDirectory](GetTempDirectory.md)
+* [GetTickCount](GetTickCount.md)
+* [htmlEditFormat](htmlEditFormat.md)
+* [IIF](IIF.md)
+* [Invoke](Invoke.md)
+* [IsInstanceOf](IsInstanceOf.md)
+* [JavaCast](JavaCast.md)
+* [ObjectDeserialize](ObjectDeserialize.md)
+* [ObjectSerialize](ObjectSerialize.md)
+* [PagePoolClear](PagePoolClear.md)
+* [Print](Print.md)
+* [Println](Println.md)
+* [RunThreadInContext](RunThreadInContext.md)
+* [SessionInvalidate](SessionInvalidate.md)
+* [SessionRotate](SessionRotate.md)
+* [SessionStartTime](SessionStartTime.md)
+* [Sleep](Sleep.md)
+* [SystemCacheClear](SystemCacheClear.md)
+* [SystemExecute](SystemExecute.md)
+* [SystemOutput](SystemOutput.md)
+* [Throw](Throw.md)
+* [Trace](Trace.md)
+* [URLDecode](URLDecode.md)
+* [URLEncodedFormat](URLEncodedFormat.md)
+* [writeDump](writeDump.md)
+* [WriteLog](WriteLog.md)
+* [WriteOutput](WriteOutput.md)

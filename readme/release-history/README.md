@@ -33,7 +33,7 @@ This gives you a clear planning horizon and overlap between versions, so you can
 
 Here is our 5-year outlook.
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt=""><figcaption></figcaption></figure>
 
 <table><thead><tr><th width="104.49920654296875" align="center">Version</th><th align="center">Active Support</th><th align="center">LTS (updates &#x26; security)</th><th align="center">LTS (security-only)</th></tr></thead><tbody><tr><td align="center"><strong>v1</strong></td><td align="center">2025 – 2026</td><td align="center">2026 – 2027</td><td align="center">2027 – 2028</td></tr><tr><td align="center"><strong>v2</strong></td><td align="center">2026 – 2027</td><td align="center">2027 – 2028</td><td align="center">2028 – 2029</td></tr><tr><td align="center"><strong>v3</strong></td><td align="center">2027 – 2028</td><td align="center">2028 – 2029</td><td align="center">2029 – 2030</td></tr><tr><td align="center"><strong>v4</strong></td><td align="center">2028 – 2029</td><td align="center">2029 – 2030</td><td align="center">2030 – 2031</td></tr><tr><td align="center"><strong>v5</strong></td><td align="center">2029 – 2030</td><td align="center">2030 – 2031</td><td align="center">2031 – 2032</td></tr></tbody></table>
 

@@ -21,11 +21,11 @@ The way that interceptors are used is usually referred to as **event-driven prog
 
 Events have unique names like: `onRequestStart, onHTTPRequest, onParse`
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Event Emitters aka Interceptor Pools <a href="#resources" id="resources"></a>
 
-<figure><img src="../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 BoxLang has 3 interceptor pools that will emit events:
 

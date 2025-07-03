@@ -80,6 +80,7 @@
   * [CFML Feature Audit](getting-started/ide-tooling/cfml-feature-audit.md)
   * [CFML Transpiler](getting-started/ide-tooling/cfml-to-boxlang-transpiler.md)
   * [Syntax Highlighters](getting-started/ide-tooling/syntax-highlighters.md)
+  * [BoxLang Monaco Editor](getting-started/ide-tooling/boxlang-monaco-editor.md)
 * [Runtime Configuration](getting-started/configuration.md)
   * [Directives](getting-started/configuration/directives.md)
   * [Caches](getting-started/configuration/caches.md)

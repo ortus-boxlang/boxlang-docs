@@ -1,11 +1,9 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
-
-# Function: `Replace`
+# Replace
 
 Replaces occurrences of substring1 in a string with obj, in a specified scope.
 
-The search is case-sensitive. Function returns original string with
- replacements made
+The search is case-sensitive. Function returns original string with\
+replacements made
 
 ## Method Signature
 
@@ -15,13 +13,12 @@ Replace(string=[string], substring1=[string], obj=[any], scope=[string])
 
 ### Arguments
 
-
-| Argument | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `string` | `string` | `true` | The string to search |  |
-| `substring1` | `string` | `true` | The substring to search for |  |
-| `obj` | `any` | `true` | The string to replace substring1 with |  |
-| `scope` | `string` | `true` | The scope to search in | `one` |
+| Argument     | Type     | Required | Description                           | Default |
+| ------------ | -------- | -------- | ------------------------------------- | ------- |
+| `string`     | `string` | `true`   | The string to search                  |         |
+| `substring1` | `string` | `true`   | The substring to search for           |         |
+| `obj`        | `any`    | `true`   | The string to replace substring1 with |         |
+| `scope`      | `string` | `true`   | The scope to search in                | `one`   |
 
 ## Examples
 
@@ -29,7 +26,7 @@ Replace(string=[string], substring1=[string], obj=[any], scope=[string])
 
 Replace in Script Syntax
 
-<a href="https://try.boxlang.io?code=eJxLTy0JS8xRsFUoSi3ISUxO1VBQcsqvyEnMS1fSUVAKBRGlSgqa1lzlRZklqS6luQUaCukQPZrWAEpOEnw%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLTy0JS8xRsFUoSi3ISUxO1VBQcsqvyEnMS1fSUVAKBRGlSgqa1lzlRZklqS6luQUaCukQPZrWAEpOEnw%3D)
 
 ```java
 getVal = replace( "Boxlang", "U", "u" );
@@ -43,7 +40,7 @@ Result: Boxlang
 
 Something similar in Tag Syntax
 
-<a href="https://try.boxlang.io?code=eJxLSEiwSaqwKk4tUUhPLQlLzDFUsFUoSi3ISUxO1VBQcsqvyEnMS1fSUVDyBxH5YJafq5KCpoIdF0hnSmlugUJZYpGtkjLUAGUlfbuEhAQA3xIaeQ%3D%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLSEiwSaqwKk4tUUhPLQlLzDFUsFUoSi3ISUxO1VBQcsqvyEnMS1fSUVDyBxH5YJafq5KCpoIdF0hnSmlugUJZYpGtkjLUAGUlfbuEhAQA3xIaeQ%3D%3D)
 
 ```java
 <bx:set getVal1 = replace( "Boxlang", "O", "o", "ONE" ) >
@@ -56,7 +53,7 @@ Result: Boxlang
 
 You can pass in a callback function to the third argument of the `replace` function
 
-<a href="https://try.boxlang.io/?code=eJwtjcEKwjAMhs%2F2KX562mD4AuJheB34DLFUKdSsZAkyxHe3pbskfEm%2BP67YI6eAp3HQtDKs3GiLA2beUUg1Ck8d1i21i06rpBdGfN1JoppUr2uHgvHifk7iZllxhcSSKdS1n%2FEmBqFya4GY8tlP8MS19ueV5mXxLeMjSePdtJgOOOLq%2BA%2FPgDrf" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJwtjcEKwjAMhs%2F2KX562mD4AuJheB34DLFUKdSsZAkyxHe3pbskfEm%2BP67YI6eAp3HQtDKs3GiLA2beUUg1Ck8d1i21i06rpBdGfN1JoppUr2uHgvHifk7iZllxhcSSKdS1n%2FEmBqFya4GY8tlP8MS19ueV5mXxLeMjSePdtJgOOOLq%2BA%2FPgDrf)
 
 ```java
 
@@ -74,7 +71,7 @@ Result: A mAN a plAN a cANal.
 
 You can pass position to start searching in the string
 
-<a href="https://try.boxlang.io/?code=eJxLTy0JSi1WsFUoSi3ISUxO1VBQ8skvS1Vwzs9JcSstzszPU9JRUMoHEf4gwtHHB0QZKyloWnOVF2WWpPqXlhSUlmgopENMAgoDADjeGJA%3D" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJxLTy0JSi1WsFUoSi3ISUxO1VBQ8skvS1Vwzs9JcSstzszPU9JRUMoHEf4gwtHHB0QZKyloWnOVF2WWpPqXlhSUlmgopENMAgoDADjeGJA%3D)
 
 ```java
 getRes = replace( "Love Boxlang", "o", "O", "ALL", "3" );
@@ -85,7 +82,6 @@ writeOutput( getRes );
 Result: Love Boxlang
 
 ### Additional Examples
-
 
 ```java
 writeDump( replace( "xxabcxxabcxx", "abc", "def" ) );
@@ -111,67 +107,65 @@ writeDump( var=replace( "one string, two strings, three strings", {
 
 ```
 
-
-
 ## Related
 
-  * [Ascii](./Ascii.md)
-  * [CamelCase](./CamelCase.md)
-  * [Char](./Char.md)
-  * [CharsetDecode](./CharsetDecode.md)
-  * [CharsetEncode](./CharsetEncode.md)
-  * [Compare](./Compare.md)
-  * [CompareNoCase](./CompareNoCase.md)
-  * [Find](./Find.md)
-  * [FindNoCase](./FindNoCase.md)
-  * [FindOneOf](./FindOneOf.md)
-  * [Insert](./Insert.md)
-  * [JSStringFormat](./JSStringFormat.md)
-  * [KebabCase](./KebabCase.md)
-  * [LCase](./LCase.md)
-  * [Left](./Left.md)
-  * [ListReduce](./ListReduce.md)
-  * [LJustify](./LJustify.md)
-  * [LTrim](./LTrim.md)
-  * [Mid](./Mid.md)
-  * [ParagraphFormat](./ParagraphFormat.md)
-  * [PascalCase](./PascalCase.md)
-  * [QueryStringToStruct](./QueryStringToStruct.md)
-  * [ReEscape](./ReEscape.md)
-  * [ReFind](./ReFind.md)
-  * [reFindNoCase](./reFindNoCase.md)
-  * [ReMatch](./ReMatch.md)
-  * [reMatchNoCase](./reMatchNoCase.md)
-  * [RemoveChars](./RemoveChars.md)
-  * [RepeatString](./RepeatString.md)
-  * [ReplaceList](./ReplaceList.md)
-  * [ReplaceListNoCase](./ReplaceListNoCase.md)
-  * [ReplaceNoCase](./ReplaceNoCase.md)
-  * [ReReplace](./ReReplace.md)
-  * [reReplaceNoCase](./reReplaceNoCase.md)
-  * [Reverse](./Reverse.md)
-  * [Right](./Right.md)
-  * [RJustify](./RJustify.md)
-  * [RTrim](./RTrim.md)
-  * [Slugify](./Slugify.md)
-  * [SnakeCase](./SnakeCase.md)
-  * [SpanExcluding](./SpanExcluding.md)
-  * [SpanIncluding](./SpanIncluding.md)
-  * [SQLPrettify](./SQLPrettify.md)
-  * [StringBind](./StringBind.md)
-  * [StringEach](./StringEach.md)
-  * [StringEvery](./StringEvery.md)
-  * [StringFilter](./StringFilter.md)
-  * [StringMap](./StringMap.md)
-  * [StringReduce](./StringReduce.md)
-  * [StringReduceRight](./StringReduceRight.md)
-  * [StringSome](./StringSome.md)
-  * [StringSort](./StringSort.md)
-  * [StripCR](./StripCR.md)
-  * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
-  * [UCase](./UCase.md)
-  * [UCFirst](./UCFirst.md)
-  * [Val](./Val.md)
-  * [Wrap](./Wrap.md)
-  * [YesNoFormat](./YesNoFormat.md)
+* [Ascii](Ascii.md)
+* [CamelCase](CamelCase.md)
+* [Char](Char.md)
+* [CharsetDecode](CharsetDecode.md)
+* [CharsetEncode](CharsetEncode.md)
+* [Compare](Compare.md)
+* [CompareNoCase](CompareNoCase.md)
+* [Find](Find.md)
+* [FindNoCase](FindNoCase.md)
+* [FindOneOf](FindOneOf.md)
+* [Insert](Insert.md)
+* [JSStringFormat](JSStringFormat.md)
+* [KebabCase](KebabCase.md)
+* [LCase](LCase.md)
+* [Left](Left.md)
+* [ListReduce](ListReduce.md)
+* [LJustify](LJustify.md)
+* [LTrim](LTrim.md)
+* [Mid](Mid.md)
+* [ParagraphFormat](ParagraphFormat.md)
+* [PascalCase](PascalCase.md)
+* [QueryStringToStruct](QueryStringToStruct.md)
+* [ReEscape](ReEscape.md)
+* [ReFind](ReFind.md)
+* [reFindNoCase](reFindNoCase.md)
+* [ReMatch](ReMatch.md)
+* [reMatchNoCase](reMatchNoCase.md)
+* [RemoveChars](RemoveChars.md)
+* [RepeatString](RepeatString.md)
+* [ReplaceList](ReplaceList.md)
+* [ReplaceListNoCase](ReplaceListNoCase.md)
+* [ReplaceNoCase](ReplaceNoCase.md)
+* [ReReplace](ReReplace.md)
+* [reReplaceNoCase](reReplaceNoCase.md)
+* [Reverse](Reverse.md)
+* [Right](Right.md)
+* [RJustify](RJustify.md)
+* [RTrim](RTrim.md)
+* [Slugify](Slugify.md)
+* [SnakeCase](SnakeCase.md)
+* [SpanExcluding](SpanExcluding.md)
+* [SpanIncluding](SpanIncluding.md)
+* [SQLPrettify](SQLPrettify.md)
+* [StringBind](StringBind.md)
+* [StringEach](StringEach.md)
+* [StringEvery](StringEvery.md)
+* [StringFilter](StringFilter.md)
+* [StringMap](StringMap.md)
+* [StringReduce](StringReduce.md)
+* [StringReduceRight](StringReduceRight.md)
+* [StringSome](StringSome.md)
+* [StringSort](StringSort.md)
+* [StripCR](StripCR.md)
+* [Trim](Trim.md)
+* [TrueFalseFormat](TrueFalseFormat.md)
+* [UCase](UCase.md)
+* [UCFirst](UCFirst.md)
+* [Val](Val.md)
+* [Wrap](Wrap.md)
+* [YesNoFormat](YesNoFormat.md)

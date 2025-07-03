@@ -1,6 +1,4 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
-
-# Function: `ToScript`
+# ToScript
 
 No description available.
 
@@ -12,11 +10,10 @@ ToScript(cfvar=[any], javascriptvar=[string])
 
 ### Arguments
 
-
-| Argument | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `cfvar` | `any` | `true` |  |  |
-| `javascriptvar` | `string` | `true` |  |  |
+| Argument        | Type     | Required | Description | Default |
+| --------------- | -------- | -------- | ----------- | ------- |
+| `cfvar`         | `any`    | `true`   |             |         |
+| `javascriptvar` | `string` | `true`   |             |         |
 
 ## Examples
 
@@ -24,8 +21,7 @@ ToScript(cfvar=[any], javascriptvar=[string])
 
 Converts boxlang objects to JavaScript syntax for use
 
-<a href="https://try.boxlang.io?code=eJy1Vm1vGjkQ%2Fr6%2FYmqkFnSkKG0%2FEUBKIZFaNa0SUHunKhJedgCny5ra3gA63X%2Fv%2BGXZJUty7ekaJWHtmXk8M36eYafTadRbvhpM5HimxNr0OrSIaOv1YCize1RGZAvgoI2yD%2FdcCR6nSG6vB1Ev3nY1GjBLocfeoQ9sQiug3yKIgfeUuVnnxj4PJkusBhWoIDJ4K7cpzxa9TjzoxWoQNUq%2Fhtvw%2FwhaZgsH5HFBzqEoolnGtIHd6c9csVavE2I87N4XjjhD68hZ7zIq6T2%2F5z4QtPtow8z3qVrQ56IgIysREc%2BSIltDiSvUeWqqDegeJtnzR4DZrbHPDG5N547Q%2FC4D26ecL8hUnsEGEYHBv5Z3FiVylq8wMy83ShhsepO9gUqJQneBwR%2FgbK2ziNJzBkqtU7nRGl2oU0rxXWDJs5OTExgq5AbBtmAt13nqFiAzPEkEpaGFzHjqw4D8S3Ktdudusw%2Fu8yNumnAKrUCqVMo1JZ3gts8Eg7mSqz47ZdT4PnvDaihfQcDtAUkdNqZoW8HgOdlDcRbZllZnbqDoPrNzX2sgrC%2F3i22qu2WihyFsbQlq10XUEdKXhT9VVsPl%2FAGz5h6r1aBS3WL3tSEat11oVAsOZC6r%2BhkNBQBHGvdUk5DZc6zu%2B5iCSnKVwimqILEcCGzfIUsax1IQ5oXed%2FQ3iOVoIWfRXCpoCntTYbsV%2FV0TUNFxKxhBf%2By2EI%2FfF7d20%2BbKSEr%2FVMXk8n84cr%2FnqIKEHFs1zgyppGibdmyayzSVGxvg3EHGd%2BRmWxlLs4Qvo9Gf5KNW3E%2BfcwcxLjtV7beP1S9dOoHH1w6VQ8INj7nGQ21muNGkJne0EyYTSdsIkyKjFgq6pgWqNvV4tnRjB8pQF3OeJDeSwhxOzTpGM8Q09WaLl1jU0yM4Dz33KYxwgztIcE7DR8NE5Sue%2FU95vPqVPK4wgw1Pv9HAgyspH%2BTgCDTKV%2BtKBqH%2FKs%2FgWs6voRnud%2B5PapUX4Q0ZXxG3tVQGE7oKzSCJvRScnagO9DO%2B%2BHAxnADdErjc4PLm05U71Jk%2F3YwubuDtX8E4uhgP%2FdhwGIGodl54WpSTyyWSUAVWtAdp2EqCTCtUW2CGir4CEoh35cgpw6hllrruGNbqPjp4Homwoq2Pn187vyoVj9qOLnmq8WfTOQIAcwtwOBv9t2PxDlHXLdR0G%2FY9Af7T1KtMvCc6%2BKjbU5UdvCS42i5peMYK74WhuWrfRgC3fLUmfiUSNWTSQK4PBpFndDH%2Bdai0%2BsYxnU5%2FAF6Aku0%3D" target="_blank">Run Example</a>
-
+[Run Example](https://try.boxlang.io/?code=eJy1Vm1vGjkQ%2Fr6%2FYmqkFnSkKG0%2FEUBKIZFaNa0SUHunKhJedgCny5ra3gA63X%2Fv%2BGXZJUty7ekaJWHtmXk8M36eYafTadRbvhpM5HimxNr0OrSIaOv1YCize1RGZAvgoI2yD%2FdcCR6nSG6vB1Ev3nY1GjBLocfeoQ9sQiug3yKIgfeUuVnnxj4PJkusBhWoIDJ4K7cpzxa9TjzoxWoQNUq%2Fhtvw%2FwhaZgsH5HFBzqEoolnGtIHd6c9csVavE2I87N4XjjhD68hZ7zIq6T2%2F5z4QtPtow8z3qVrQ56IgIysREc%2BSIltDiSvUeWqqDegeJtnzR4DZrbHPDG5N547Q%2FC4D26ecL8hUnsEGEYHBv5Z3FiVylq8wMy83ShhsepO9gUqJQneBwR%2FgbK2ziNJzBkqtU7nRGl2oU0rxXWDJs5OTExgq5AbBtmAt13nqFiAzPEkEpaGFzHjqw4D8S3Ktdudusw%2Fu8yNumnAKrUCqVMo1JZ3gts8Eg7mSqz47ZdT4PnvDaihfQcDtAUkdNqZoW8HgOdlDcRbZllZnbqDoPrNzX2sgrC%2F3i22qu2WihyFsbQlq10XUEdKXhT9VVsPl%2FAGz5h6r1aBS3WL3tSEat11oVAsOZC6r%2BhkNBQBHGvdUk5DZc6zu%2B5iCSnKVwimqILEcCGzfIUsax1IQ5oXed%2FQ3iOVoIWfRXCpoCntTYbsV%2FV0TUNFxKxhBf%2By2EI%2FfF7d20%2BbKSEr%2FVMXk8n84cr%2FnqIKEHFs1zgyppGibdmyayzSVGxvg3EHGd%2BRmWxlLs4Qvo9Gf5KNW3E%2BfcwcxLjtV7beP1S9dOoHH1w6VQ8INj7nGQ21muNGkJne0EyYTSdsIkyKjFgq6pgWqNvV4tnRjB8pQF3OeJDeSwhxOzTpGM8Q09WaLl1jU0yM4Dz33KYxwgztIcE7DR8NE5Sue%2FU95vPqVPK4wgw1Pv9HAgyspH%2BTgCDTKV%2BtKBqH%2FKs%2FgWs6voRnud%2B5PapUX4Q0ZXxG3tVQGE7oKzSCJvRScnagO9DO%2B%2BHAxnADdErjc4PLm05U71Jk%2F3YwubuDtX8E4uhgP%2FdhwGIGodl54WpSTyyWSUAVWtAdp2EqCTCtUW2CGir4CEoh35cgpw6hllrruGNbqPjp4Homwoq2Pn187vyoVj9qOLnmq8WfTOQIAcwtwOBv9t2PxDlHXLdR0G%2FY9Af7T1KtMvCc6%2BKjbU5UdvCS42i5peMYK74WhuWrfRgC3fLUmfiUSNWTSQK4PBpFndDH%2Bdai0%2BsYxnU5%2FAF6Aku0%3D)
 
 ```html
 <h2>ToScript</h2>
@@ -112,10 +108,9 @@ False):</strong><br>
 </bx:output>
 ```
 
-
 ### Additional Examples
 
-<a href="https://try.boxlang.io?code=eJyNkcFqwzAMhs%2F1UwifUgik3XFhh8BGobCM4rFL6cENJvNo3E6213Wl7z7ZzlYCYewiWb%2Blzz9yUYBw6BvHUoI7OF%2FKvljDHDak8O3%2BcydNy0v2Zl8kkrQUT7VQqOVOf6msZ8C0ZKjsL%2Bl5LxrUB5eBjVIOPM7z0HhE7dS97w4ZXGdILwqoEOWJxUiU9aZM5%2F%2FbSaPJDZ0HVuLdH05Cf7Kx8gpPLEYivIdcq2MG3MhO5bJVnDAfEptXibnxHb3fkHRmk7p6fIBb4MJbzXM2qRahvJmxS29qFZFXU%2FERosU8Yir0J1O0KG3a8EFhE05Zx3%2BWPiBSTTyK48vuabXvtgqZiYnm57MII3kAS%2FfES4cRZJiYlt%2FuR7jz" target="_blank">Run Example</a>
+[Run Example](https://try.boxlang.io/?code=eJyNkcFqwzAMhs%2F1UwifUgik3XFhh8BGobCM4rFL6cENJvNo3E6213Wl7z7ZzlYCYewiWb%2Blzz9yUYBw6BvHUoI7OF%2FKvljDHDak8O3%2BcydNy0v2Zl8kkrQUT7VQqOVOf6msZ8C0ZKjsL%2Bl5LxrUB5eBjVIOPM7z0HhE7dS97w4ZXGdILwqoEOWJxUiU9aZM5%2F%2FbSaPJDZ0HVuLdH05Cf7Kx8gpPLEYivIdcq2MG3MhO5bJVnDAfEptXibnxHb3fkHRmk7p6fIBb4MJbzXM2qRahvJmxS29qFZFXU%2FERosU8Yir0J1O0KG3a8EFhE05Zx3%2BWPiBSTTyK48vuabXvtgqZiYnm57MII3kAS%2FfES4cRZJiYlt%2FuR7jz)
 
 ```java
 // Struct
@@ -148,24 +143,24 @@ writeDump( resNum );
 
 ```
 
-RESULT: 
-jsVar = {"1":"boxlang"};
-jsVar = ["boxlang"];
-Query = {"columns":["name","age"],"data":[["Susi",20]]};
-Str = "test";
+RESULT:\
+jsVar = {"1":"boxlang"};\
+jsVar = \["boxlang"];\
+Query = {"columns":\["name","age"],"data":\[\["Susi",20]]};\
+Str = "test";\
 number = 10;
 
 ## Related
 
-  * [DataNavigate](./DataNavigate.md)
-  * [JSONDeserialize](./JSONDeserialize.md)
-  * [JSONPrettify](./JSONPrettify.md)
-  * [JSONSerialize](./JSONSerialize.md)
-  * [LSParseNumber](./LSParseNumber.md)
-  * [ParseNumber](./ParseNumber.md)
-  * [ToBase64](./ToBase64.md)
-  * [ToBinary](./ToBinary.md)
-  * [ToModifiable](./ToModifiable.md)
-  * [ToNumeric](./ToNumeric.md)
-  * [ToString](./ToString.md)
-  * [ToUnmodifiable](./ToUnmodifiable.md)
+* [DataNavigate](DataNavigate.md)
+* [JSONDeserialize](JSONDeserialize.md)
+* [JSONPrettify](JSONPrettify.md)
+* [JSONSerialize](JSONSerialize.md)
+* [LSParseNumber](LSParseNumber.md)
+* [ParseNumber](ParseNumber.md)
+* [ToBase64](ToBase64.md)
+* [ToBinary](ToBinary.md)
+* [ToModifiable](ToModifiable.md)
+* [ToNumeric](ToNumeric.md)
+* [ToString](ToString.md)
+* [ToUnmodifiable](ToUnmodifiable.md)
