@@ -45,18 +45,12 @@ boxlang-miniserver --port 8080
 
 You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21)
 
-* JRE 21+
-
-{% hint style="warning" %}
-If you want to use our BoxLang/CFML to Java transpiler, you must have the JDK installed, not the JRE.
-{% endhint %}
-
 {% tabs %}
 {% tab title="🍎 Mac" %}
 We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
 
 ```bash
-brew install curl zip unzip jq openjdk@21
+brew install openjdk@21
 ```
 
 Once the requirements are installed, move down to the quick installer.

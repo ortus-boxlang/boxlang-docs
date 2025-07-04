@@ -5,14 +5,16 @@ icon: sign-posts-wrench
 
 # Installation
 
+BoxLang can be deployed on multiple runtimes, and each runtime can be set up differently.  We recommend you leverage the "Running BoxLang" section for those specific runtimes.  We recommend getting started by installing BoxLang at the global operating system level first.  This is what this guide does! &#x20;
+
+**You can choose to either install a single version of BoxLang (Quick Installer) or our BoxLang Version Manager (BVM), so you can manage multiple versions of BoxLang on your operating system.**
+
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
 
-You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21)
-
-* JRE 21+
+BoxLang is a JVM language, so we need a JVM.  You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21). Alternatively, see the tabs below for instructions on how to automate it.
 
 {% hint style="warning" %}
-If you want to use our BoxLang/CFML to Java transpiler, you must have the JDK installed, not the JRE.
+To use our BoxLang/CFML to Java transpiler, you must have the JDK installed, not the JRE.
 {% endhint %}
 
 {% tabs %}
@@ -20,7 +22,7 @@ If you want to use our BoxLang/CFML to Java transpiler, you must have the JDK in
 We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
 
 ```bash
-brew install curl zip unzip jq openjdk@21
+brew install openjdk@21
 ```
 
 Once the requirements are installed, move down to the quick installer.
@@ -37,7 +39,7 @@ sudo apt-get update
 sudo apt-get full-upgrade
 
 # Install requirements
-sudo apt-get install curl zip unzip jq openjdk-21-jre
+sudo apt-get install openjdk-21-jre
 ```
 
 **Yum**
@@ -48,7 +50,7 @@ sudo yum update
 sudo yum upgrade
 
 # Install requirements
-sudo yum install curl zip unzip jq java-21-openjdk
+sudo yum install java-21-openjdk
 
 ```
 
@@ -61,7 +63,7 @@ Note that you may need to tell the system to use the correct JDK version. This c
 sudo xbps-install -Su
 
 # Install requirements
-sudo xbps-install curl zip unzip jq openjdk21
+sudo xbps-install openjdk21
 
 ```
 
@@ -74,7 +76,7 @@ Note that you may need to tell the system to use the correct JDK version. This c
 sudo pacman -Syu
 
 # Install requirements
-sudo pacman -S curl zip unzip jq jre21-openjdk
+sudo pacman -S jre21-openjdk
 
 ```
 
@@ -84,29 +86,33 @@ Note that you may need to tell the system to use the correct JDK version. This c
 {% tab title="🪟 Windows" %}
 
 
-Use the following powershell script to install the JRE 21. \
+Use the following PowerShell script to install the JRE 21. \
 **HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 ```powershell
 powershell -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/helpers/install-jre.ps1'))"
 ```
 
-* Once this runs the JRE will be installed in your `C:\Program Files\Java\jre{version}`
+* Once this runs, the JRE will be installed in your `C:\Program Files\Java\jre{version}`
 * A `JAVA_HOME` will be created for you
 
 {% hint style="danger" %}
-Make sure you restart any terminal windows for changes to take effect.
+Ensure you restart any terminal windows for the changes to take effect.
 {% endhint %}
 {% endtab %}
 {% endtabs %}
 
 ## Quick Installer
 
-Once the requirements above are installed, to get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac/Linux/\*Nix/Windows.  This will allow you to execute the script in your favorite terminal application.  Please note that some OS will require you to run it as an `administrator` or with `sudo` capabilities.
+Once the requirements above are installed, to get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac, Linux,\* Nix, or Windows.  This will allow you to execute the script in your favorite terminal application.  Please note that some OS will require you to run it as an `administrator` or with `sudo` capabilities.
+
+You can see the full documentation for the quick installer in the link below:
 
 {% content-ref url="boxlang-quick-installer.md" %}
 [boxlang-quick-installer.md](boxlang-quick-installer.md)
 {% endcontent-ref %}
+
+Let's get started:
 
 {% tabs %}
 {% tab title="Bash / ZSH" %}
@@ -249,11 +255,13 @@ install-bx-module bx-compat-cfml bx-esapi --local
 
 ## BoxLang Version Manager (BVM)
 
-BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang.
+BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang.  Read the full documentation at the link below:
 
 {% content-ref url="boxlang-version-manager-bvm.md" %}
 [boxlang-version-manager-bvm.md](boxlang-version-manager-bvm.md)
 {% endcontent-ref %}
+
+To get started easily just follow the instructions:
 
 ```bash
 # Install BVM
@@ -267,9 +275,9 @@ chmod +x install-bvm.sh
 
 ## R.E.P.L.
 
-**Read Evaluate Print Loop**
+**Read, Evaluate, Print Loop**
 
-A REPL, or Read-Evaluate-Print Loop, is an interactive programming environment that takes single user inputs, executes them, and returns the result to the user. This is particularly useful for testing code snippets and debugging in real time. In the context of BoxLang, running `boxlang` will start the REPL, allowing you to write and test code quickly within the BoxLang environment.
+A REPL, or Read-Evaluate-Print Loop, is an interactive programming environment that takes single-user inputs, executes them, and returns the result to the user. This is particularly useful for testing code snippets and debugging in real time. In the context of BoxLang, running `boxlang` will start the REPL, allowing you to write and test code quickly within the BoxLang environment.
 
 The REPL will also remember state, so you can define variables and use them in your testing and explorations. Code away :rocket:
 
@@ -294,7 +302,7 @@ Here, you can find the installers and binaries for all Operating Systems:
 
 ### MiniServer Binaries
 
-The BoxLang MiniServer includes the BoxLang OS runtime with the addition of our super fast and lightweight web server.
+The BoxLang MiniServer includes the BoxLang OS runtime with the addition of our super-fast and lightweight web server.
 
 * All OSs:\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/boxlang-miniserver-latest.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/boxlang-miniserver-latest.zip)
@@ -310,7 +318,7 @@ BoxLang can also run on AWS Lambdas. It even powers our entry playground at [htt
 
 ### CommandBox BoxLang Server
 
-BoxLang can also be deployed using [CommandBox](https://www.ortussolutions.com/products/commandbox). This is our preferred way to deploy web applications using BoxLang. BoxLang +/++ Subscribers even get access to [CommandBox Pro](https://www.ortussolutions.com/products/commandbox-pro). Note: This installation method is typically localized for a particular web application and is not typically accessed generally by other applications.
+BoxLang can also be deployed using [CommandBox](https://www.ortussolutions.com/products/commandbox). This is our preferred way to deploy web applications using BoxLang. BoxLang +/++ Subscribers even get access to [CommandBox Pro](https://www.ortussolutions.com/products/commandbox-pro). Note: This installation method is typically tailored for a specific web application and is not typically accessible by other applications.
 
 ```bash
 box install commandbox-boxlang
