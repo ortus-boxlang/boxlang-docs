@@ -885,5 +885,6 @@
 
 ## Extra Credit
 
+* [Testing](extra-credit/testing.md)
 * [MVC](extra-credit/mvc.md)
 * [Dependency Injection](extra-credit/dependency-injection.md)

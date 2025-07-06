@@ -20,11 +20,11 @@ Monaco Editor language support for BoxLang - providing syntax highlighting, Inte
 
 #### BoxLang Script Syntax Highlighting
 
-<figure><img src="../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 #### BoxLang Template Syntax Highlighting
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 ### Installation
 
