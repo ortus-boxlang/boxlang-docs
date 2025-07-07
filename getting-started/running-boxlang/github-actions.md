@@ -18,10 +18,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up BoxLang
-      uses: boxlang/setup-boxlang@v1
+      uses: ortus-boxlang/setup-boxlang@1.0.0
       with:
         version: latest # or specify a version like '1.2.3'
         modules: "module1 module2" # optional: specify modules to install
@@ -48,14 +48,14 @@ Simple usage:
 
 ```yaml
 - name: Setup BoxLang
-  uses: ortus-boxlang/setup-boxlang@v1
+  uses: ortus-boxlang/setup-boxlang@1.0.0
 ```
 
 With Specific Modules:
 
 ```yaml
 - name: Setup BoxLang
-  uses: ortus-boxlang/setup-boxlang@v1
+  uses: ortus-boxlang/setup-boxlang@1.0.0
   with:
     modules: bx-ai bx-orm bx-pdf
 ```
@@ -64,7 +64,7 @@ Install a specific version of BoxLang:
 
 ```yaml
 - name: Setup BoxLang with specific version
-  uses: ortus-boxlang/setup-boxlang@v1
+  uses: ortus-boxlang/setup-boxlang@1.0.0
   with:
     version: snapshot
 ```
@@ -73,7 +73,7 @@ Here is another one:
 
 ```yaml
 - name: Setup BoxLang with specific version
-  uses: ortus-boxlang/setup-boxlang@v1
+  uses: ortus-boxlang/setup-boxlang@1.0.0
   with:
     version: 1.1.0
 ```

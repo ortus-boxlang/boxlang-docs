@@ -5,25 +5,11 @@ icon: laptop-code
 
 # IDE & Tooling
 
-## CLI Tools
-
-We have a collection of CLI tools available to every OS installation:
-
-{% content-ref url="boxlang-compiler.md" %}
-[boxlang-compiler.md](boxlang-compiler.md)
-{% endcontent-ref %}
-
-{% content-ref url="cfml-feature-audit.md" %}
-[cfml-feature-audit.md](cfml-feature-audit.md)
-{% endcontent-ref %}
-
-{% content-ref url="cfml-to-boxlang-transpiler.md" %}
-[cfml-to-boxlang-transpiler.md](cfml-to-boxlang-transpiler.md)
-{% endcontent-ref %}
+In this section of the docs, you will find a collection of tools, IDE integrations, and much more to assist you in your BoxLang adventures.
 
 ## BoxLang IDE
 
-We have an official first-party extension for VSCode. You can find it in the [VSCode marketplace](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang).  It also has it's own documentation website: [https://boxlang-ide.ortusbooks.com/](https://boxlang-ide.ortusbooks.com/)
+We have an official first-party extension for Visual Studio Code. You can find it in the Visual Studio Code[ marketplace](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang).  It also has its documentation website: [https://boxlang-ide.ortusbooks.com/](https://boxlang-ide.ortusbooks.com/)
 
 {% embed url="https://boxlang-ide.ortusbooks.com/" %}
 
@@ -34,52 +20,49 @@ We have an official first-party extension for VSCode. You can find it in the [VS
 * Language server integration
   * Inline documentation
   * Language hints
-  * Type information (experimental)
+  * Type information
 * [Built-in debugger](boxlang-debugger/)
 * Mini BoxLang web server for quick development/testing
+* BoxLang version manager
+* BoxLang Agentic Coding `@boxlang`
 * Code Highlights and Introspection for supported grammars: Java, HTML, CSS, SQL, CFML
+* So much more.
 
-### Language Server
+## BoxLang Monaco Editor
 
-The extension bundles a language server based on the BoxLang runtime that gives VSCode access to the same information used when executing your sourcecode. This provides us the ability to display rich information right in the editor.
+Monaco Editor language support for BoxLang - providing syntax highlighting, IntelliSense, and custom themes for BoxLang development.
 
-Some features provided by the language server are
+{% content-ref url="boxlang-monaco-editor.md" %}
+[boxlang-monaco-editor.md](boxlang-monaco-editor.md)
+{% endcontent-ref %}
 
-#### Code outlines
+## CLI Tools
 
-<figure><img src="../../.gitbook/assets/ide-tooling-outline.png" alt=""><figcaption></figcaption></figure>
+We have a collection of CLI tools available to every OS installation:
 
-#### Function definition
+{% content-ref url="boxlang-compiler.md" %}
+[boxlang-compiler.md](boxlang-compiler.md)
+{% endcontent-ref %}
 
-<figure><img src="../../.gitbook/assets/ide-tooling-function-definition.png" alt=""><figcaption></figcaption></figure>
+{% content-ref url="boxlang-debugger/" %}
+[boxlang-debugger](boxlang-debugger/)
+{% endcontent-ref %}
 
-#### Type hinting (experimental - must configure in settings)
+{% content-ref url="cfml-feature-audit.md" %}
+[cfml-feature-audit.md](cfml-feature-audit.md)
+{% endcontent-ref %}
 
-<figure><img src="../../.gitbook/assets/ide-tooling-type-hinting.png" alt=""><figcaption></figcaption></figure>
+{% content-ref url="cfml-to-boxlang-transpiler.md" %}
+[cfml-to-boxlang-transpiler.md](cfml-to-boxlang-transpiler.md)
+{% endcontent-ref %}
 
-A lot of functionality is still provided through the old JavaScript API. It is being converted to use the language server ASAP.
 
-### Debugger
 
-The [debugger](boxlang-debugger/) is implemented in Java using the JDP. It provides complete control over a running BoxLang application.
+## Syntax Highlighters
 
-The extension provides quick ways to run your BoxLang programs. Simply right-click within a `.bxs` file or class (`.bx`) that implements a main method and select "BoxLang: Run File".
+Check out our syntax highlighters page so you can leverage some of them in your applications.
 
-<figure><img src="../../.gitbook/assets/ide-tooling-context-run.png" alt=""><figcaption></figcaption></figure>
-
-You can use it to debug command line scripts or the built-in web server.
-
-<figure><img src="../../.gitbook/assets/ide-tooling-debug.png" alt=""><figcaption></figcaption></figure>
-
-### Mini Web Server
-
-The MinServer provides a lightweight web runtime powered by undertow. Simply hit `ctrl+shift+p` to bring up the command palette and select "BoxLang: Run Web Server". When you run the command it will open up the MinServer on the configured port (defaults to 8085) and open your browser.
-
-<figure><img src="../../.gitbook/assets/ide-tooling-context-minserver.png" alt=""><figcaption></figcaption></figure>
-
-The web server will automatically be configured to use your projects directory as the web root. You will be prompted to select your web root if you have more than one folder open in your workspace.
-
-### Contributing
-
-Checkout the [git repository](https://github.com/ortus-boxlang/vscode-boxlang) for our extension. Issues should be reported to the Jira project: [https://ortussolutions.atlassian.net/jira/software/c/projects/BLIDE/boards/132](https://ortussolutions.atlassian.net/jira/software/c/projects/BLIDE/boards/132?search=log)
+{% content-ref url="syntax-highlighters.md" %}
+[syntax-highlighters.md](syntax-highlighters.md)
+{% endcontent-ref %}
 
