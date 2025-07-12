@@ -26,7 +26,7 @@ Components can be called using either script-based or template-based syntax acco
 
 #### **Script Context:**
 
-```cfscript
+```js
 // Self-closing
 bx:myComponent;
 bx:myComponent attribute="value";
@@ -73,7 +73,7 @@ flowchart TD
 
 BoxLang ships with many core components that extend the language with framework capabilities.  You can find them in the [reference section.](../boxlang-language/reference/components/)
 
-```cfscript
+```js
 // HTTP operations
 bx:http url="https://api.example.com/users" result="apiResponse";
 
@@ -82,7 +82,7 @@ bx:query name="users" datasource="myDB" {
     SELECT id, name, email FROM users WHERE active = 1
 }
 
-// File operations  
+// File operations
 bx:file action="read" file="/path/to/data.txt" variable="fileContent";
 
 // Conditional logic
@@ -95,7 +95,7 @@ bx:if condition="#user.isAdmin#" {
 
 Any BoxLang module can also register and collaborate with components to the runtime.
 
-```cfscript
+```js
 // Example: A caching module might provide
 bx:cache key="userList" timeout="3600" {
     // Expensive operation cached for 1 hour
@@ -104,7 +104,7 @@ bx:cache key="userList" timeout="3600" {
     }
 }
 
-// Example: A PDF module might provide  
+// Example: A PDF module might provide
 bx:pdf action="generate" filename="report.pdf" {
     // PDF content here
 }
@@ -125,7 +125,7 @@ Let's start with a simple example:
 **File: `components/greeting.bxm`**
 
 ```xml
-<!--- 
+<!---
 Simple greeting component that takes a name attribute
 Usage: <bx:greeting name="Alice" />
 --->
@@ -140,7 +140,7 @@ Usage: <bx:greeting name="Alice" />
 
 All data passed to your component is available in the `attributes` scope:
 
-```markup
+```xml
 <!--- File: components/userCard.bxm --->
 
 <!--- Best practice: Parameterize your attributes with validation --->
@@ -154,7 +154,7 @@ All data passed to your component is available in the `attributes` scope:
     <bx:if condition="#attributes.showAvatar#">
         <img src="/avatars/#attributes.userId#.jpg" alt="Avatar" class="avatar" />
     </bx:if>
-    
+
     <div class="user-info">
         <h3>#attributes.name#</h3>
         <p class="email">#attributes.email#</p>
@@ -164,7 +164,7 @@ All data passed to your component is available in the `attributes` scope:
 
 **Script syntax for parameterization:**
 
-```cfscript
+```js
 // In a .bxs component file
 bx:param name="attributes.userId" type="string" required="true";
 bx:param name="attributes.data" default="#arrayNew()#" type="array";
@@ -183,7 +183,7 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 
 **File: `components/boldWrapper.bxm`**
 
-```markup
+```xml
 <!--- Component that wraps content in bold tags --->
 
 <bx:if condition="#thisTag.executionMode IS 'end'#">
@@ -194,7 +194,7 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 
 **Usage:**
 
-```markup
+```xml
 <bx:boldWrapper>This text will be bold</bx:boldWrapper>
 <!-- Outputs: <b>This text will be bold</b> -->
 ```
@@ -203,7 +203,7 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 
 **File: `components/section.bxm`**
 
-```markup
+```xml
 <!--- Advanced component demonstrating full execution cycle --->
 
 <bx:param name="attributes.title" type="string" required="true">
@@ -221,18 +221,18 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
                 </button>
             </bx:if>
         </header>
-        <div class="section-content" 
+        <div class="section-content"
              style="#attributes.collapsed ? 'display:none' : ''#">
 </bx:if>
 
 <bx:if condition="#thisTag.executionMode IS 'end'#">
     <!--- Process any nested content --->
     #thisTag.generatedContent#
-    
+
     <!--- Closing section markup --->
         </div>
     </section>
-    
+
     <!--- Clear the content so it's not output again --->
     <bx:set thisTag.generatedContent = "">
 </bx:if>
@@ -240,7 +240,7 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 
 **Usage:**
 
-```markup
+```xml
 <bx:section title="User Information" collapsible="true">
     <p>This content appears inside the section.</p>
     <bx:userCard userId="123" name="John Doe" email="john@example.com" />
@@ -294,17 +294,17 @@ BoxLang component locations can be defined globally or on a per-app basis.
 
 ### **Application Configuration (`Application.bx`):**
 
-```cfscript
+```js
 class {
     // Component paths for .bxm, .bxs template files
-    this.customComponentPaths = [ 
-        "/absolute/path/to/components", 
-        "./relative/path/components" 
+    this.customComponentPaths = [
+        "/absolute/path/to/components",
+        "./relative/path/components"
     ];
-    
+
     // Class paths for .bx class files
-    this.classPaths = [ 
-        "/absolute/path/to/classes" 
+    this.classPaths = [
+        "/absolute/path/to/classes"
     ];
 }
 ```
@@ -324,7 +324,7 @@ During discovery, BoxLang looks for files with these extensions in order:
 
 **Script Syntax:**
 
-```cfscript
+```js
 // Basic call
 bx:component template="greeting" name="Alice";
 
@@ -340,7 +340,7 @@ bx:component template="/shared/components/layout" title="My Page";
 
 **Template Syntax:**
 
-```markup
+```xml
 <!--- Basic call --->
 <bx:component template="greeting" name="Alice" />
 
@@ -356,7 +356,7 @@ BoxLang looks for a component file matching the name after `bx:`:
 
 **Script Syntax:**
 
-```cfscript
+```js
 // Looks for greeting.bxm, greeting.bxs, etc.
 bx:greeting name="Alice";
 
@@ -367,7 +367,7 @@ bx:userCard userId="123" name="John Doe" {
 
 **Template Syntax:**
 
-```markup
+```xml
 <!--- Looks for greeting.bxm, greeting.bxs, etc. --->
 <bx:greeting name="Alice" />
 
@@ -382,7 +382,7 @@ bx:userCard userId="123" name="John Doe" {
 
 Contains all attributes passed to the component call:
 
-```markup
+```xml
 <!--- Component: productDisplay.bxm --->
 <bx:param name="attributes.productId" type="string" required="true">
 <bx:param name="attributes.showPrice" type="boolean" default="true">
@@ -400,7 +400,7 @@ Contains all attributes passed to the component call:
 
 A localized scope for the component's internal logic:
 
-```markup
+```xml
 <!--- Component: calculator.bxm --->
 <bx:param name="attributes.operation" type="string" required="true">
 <bx:param name="attributes.a" type="numeric" required="true">
@@ -427,7 +427,7 @@ A localized scope for the component's internal logic:
 
 Provides access to the calling context (use sparingly):
 
-```markup
+```xml
 <!--- Component: debugInfo.bxm --->
 <bx:if condition="#isDefined( 'caller.request.debug' ) AND caller.request.debug#">
     <div class="debug-panel">
@@ -442,7 +442,7 @@ Provides access to the calling context (use sparingly):
 
 Manages component execution and content:
 
-```markup
+```xml
 <!--- Component: accordion.bxm --->
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.expanded" type="boolean" default="false">
@@ -463,13 +463,419 @@ Manages component execution and content:
 </bx:if>
 ```
 
+## Associating Subtag Data with Base Tags
+
+BoxLang provides the `bx:associate` component to create relationships between child components and their parent components. This powerful feature allows you to build hierarchical component structures where child components can pass data up to their parent components.
+
+### How Component Association Works
+
+When you use `bx:associate` inside a child component, it creates a data structure in the parent component that contains all the associated data from its children. This enables complex component hierarchies like forms with fields, menus with items, or layouts with sections.
+
+```mermaid
+graph TD
+    A[Parent Component] --> B[Child Component 1]
+    A --> C[Child Component 2]
+    A --> D[Child Component 3]
+    B --> E[bx:associate datacollection="items"]
+    C --> F[bx:associate datacollection="items"]
+    D --> G[bx:associate datacollection="items"]
+    E --> H[Parent's items array gets child 1 data]
+    F --> I[Parent's items array gets child 2 data]
+    G --> J[Parent's items array gets child 3 data]
+```
+
+### Basic Association Syntax
+
+**Script Syntax:**
+
+```js
+bx:associate dataCollection="collectionName";
+```
+
+**Template Syntax:**
+
+```xml
+<bx:associate dataCollection="collectionName" />
+```
+
+### Simple Example: Menu with Menu Items
+
+**Parent Component: `menu.bxm`**
+
+```xml
+<!--- File: components/menu.bxm --->
+<bx:param name="attributes.id" type="string" required="true">
+<bx:param name="attributes.class" type="string" default="nav-menu">
+
+<bx:if condition="#thisTag.executionMode IS 'start'#">
+    <nav id="#attributes.id#" class="#attributes.class#">
+        <ul class="menu-list">
+</bx:if>
+
+<bx:if condition="#thisTag.executionMode IS 'end'#">
+    <!--- Process the nested content to collect menu items --->
+    #thisTag.generatedContent#
+
+    <!--- Now render all associated menu items --->
+    <bx:if condition="#isDefined( 'thisTag.menuItems' ) AND isArray( thisTag.menuItems )#">
+        <bx:loop array="#thisTag.menuItems#" index="menuItem">
+            <li class="menu-item">
+                <a href="#menuItem.url#"
+                   class="#menuItem.class ?: ''#"
+                   #menuItem.target ? 'target="' & menuItem.target & '"' : ''#>
+                    #menuItem.label#
+                </a>
+            </li>
+        </bx:loop>
+    </bx:if>
+
+        </ul>
+    </nav>
+
+    <bx:set thisTag.generatedContent = "">
+</bx:if>
+```
+
+**Child Component: `menuItem.bxm`**
+
+```xml
+<!--- File: components/menuItem.bxm --->
+<bx:param name="attributes.label" type="string" required="true">
+<bx:param name="attributes.url" type="string" required="true">
+<bx:param name="attributes.class" type="string" default="">
+<bx:param name="attributes.target" type="string" default="">
+
+<!--- Associate this menu item data with the parent menu --->
+<bx:associate dataCollection="menuItems" />
+```
+
+**Usage:**
+
+```xml
+<bx:menu id="mainNav" class="primary-navigation">
+    <bx:menuItem label="Home" url="/" />
+    <bx:menuItem label="About" url="/about" />
+    <bx:menuItem label="Products" url="/products" class="dropdown-trigger" />
+    <bx:menuItem label="Contact" url="/contact" />
+    <bx:menuItem label="External Link" url="https://example.com" target="_blank" />
+</bx:menu>
+```
+
+### Advanced Example: Form with Form Fields
+
+**Parent Component: `form.bxm`**
+
+```xml
+<!--- File: components/form.bxm --->
+<bx:param name="attributes.action" type="string" required="true">
+<bx:param name="attributes.method" type="string" default="POST">
+<bx:param name="attributes.id" type="string" default="">
+<bx:param name="attributes.class" type="string" default="form">
+<bx:param name="attributes.validateOnSubmit" type="boolean" default="true">
+
+<bx:if condition="#thisTag.executionMode IS 'start'#">
+    <form action="#attributes.action#"
+          method="#attributes.method#"
+          #len( attributes.id ) ? 'id="' & attributes.id & '"' : ''#
+          class="#attributes.class#"
+          #attributes.validateOnSubmit ? 'data-validate="true"' : ''#>
+</bx:if>
+
+<bx:if condition="#thisTag.executionMode IS 'end'#">
+    <!--- Process nested content to collect form fields --->
+    #thisTag.generatedContent#
+
+    <!--- Render all associated form fields --->
+    <bx:if condition="#isDefined( 'thisTag.formFields' ) AND isArray( thisTag.formFields )#">
+        <bx:loop array="#thisTag.formFields#" index="field">
+            <div class="form-group field-type-#field.type#">
+                <bx:if condition="#len( field.label ?: '' )#">
+                    <label for="#field.name#" class="form-label">
+                        #field.label#
+                        <bx:if condition="#field.required#">
+                            <span class="required">*</span>
+                        </bx:if>
+                    </label>
+                </bx:if>
+
+                <bx:switch expression="#field.type#">
+                    <bx:case value="text,email,password,number,tel,url">
+                        <input type="#field.type#"
+                               name="#field.name#"
+                               id="#field.name#"
+                               value="#field.value ?: ''#"
+                               class="form-control #field.class ?: ''#"
+                               #field.required ? 'required' : ''#
+                               #len( field.placeholder ?: '' ) ? 'placeholder="' & field.placeholder & '"' : ''# />
+                    </bx:case>
+
+                    <bx:case value="textarea">
+                        <textarea name="#field.name#"
+                                  id="#field.name#"
+                                  class="form-control #field.class ?: ''#"
+                                  #field.required ? 'required' : ''#
+                                  #len( field.placeholder ?: '' ) ? 'placeholder="' & field.placeholder & '"' : ''#
+                                  rows="#field.rows ?: 4#">#field.value ?: ''#</textarea>
+                    </bx:case>
+
+                    <bx:case value="select">
+                        <select name="#field.name#"
+                                id="#field.name#"
+                                class="form-control #field.class ?: ''#"
+                                #field.required ? 'required' : ''#>
+                            <bx:if condition="#len( field.placeholder ?: '' )#">
+                                <option value="">#field.placeholder#</option>
+                            </bx:if>
+                            <bx:if condition="#isDefined( 'field.options' ) AND isArray( field.options )#">
+                                <bx:loop array="#field.options#" index="option">
+                                    <option value="#option.value#"
+                                            #option.value EQ ( field.value ?: '' ) ? 'selected' : ''#>
+                                        #option.label#
+                                    </option>
+                                </bx:loop>
+                            </bx:if>
+                        </select>
+                    </bx:case>
+                </bx:switch>
+
+                <bx:if condition="#len( field.helpText ?: '' )#">
+                    <small class="form-help">#field.helpText#</small>
+                </bx:if>
+            </div>
+        </bx:loop>
+    </bx:if>
+
+    <!--- Render any additional content (like buttons) --->
+    <bx:if condition="#isDefined( 'thisTag.formActions' ) AND isArray( thisTag.formActions )#">
+        <div class="form-actions">
+            <bx:loop array="#thisTag.formActions#" index="action">
+                <button type="#action.type ?: 'button'#"
+                        class="btn #action.class ?: 'btn-primary'#"
+                        #len( action.onclick ?: '' ) ? 'onclick="' & action.onclick & '"' : ''#>
+                    #action.label#
+                </button>
+            </bx:loop>
+        </div>
+    </bx:if>
+
+    </form>
+
+    <bx:set thisTag.generatedContent = "">
+</bx:if>
+```
+
+**Child Components:**
+
+**`formField.bxm`**
+
+```xml
+<!--- File: components/formField.bxm --->
+<bx:param name="attributes.name" type="string" required="true">
+<bx:param name="attributes.type" type="string" default="text">
+<bx:param name="attributes.label" type="string" default="">
+<bx:param name="attributes.value" type="string" default="">
+<bx:param name="attributes.placeholder" type="string" default="">
+<bx:param name="attributes.required" type="boolean" default="false">
+<bx:param name="attributes.class" type="string" default="">
+<bx:param name="attributes.helpText" type="string" default="">
+<bx:param name="attributes.rows" type="numeric" default="4">
+
+<!--- For select fields, collect options if this is a container --->
+<bx:if condition="#attributes.type EQ 'select' AND thisTag.hasEndTag#">
+    <bx:if condition="#thisTag.executionMode IS 'end'#">
+        <!--- Process nested options --->
+        #thisTag.generatedContent#
+        <bx:set thisTag.generatedContent = "">
+    </bx:if>
+</bx:if>
+
+<!--- Associate this field data with the parent form --->
+<bx:associate dataCollection="formFields" />
+```
+
+**`formOption.bxm`**
+
+```xml
+<!--- File: components/formOption.bxm --->
+<bx:param name="attributes.value" type="string" required="true">
+<bx:param name="attributes.label" type="string" required="true">
+
+<!--- Associate this option with the parent form field --->
+<bx:associate dataCollection="options" />
+```
+
+**`formAction.bxm`**
+
+```xml
+<!--- File: components/formAction.bxm --->
+<bx:param name="attributes.label" type="string" required="true">
+<bx:param name="attributes.type" type="string" default="submit">
+<bx:param name="attributes.class" type="string" default="btn-primary">
+<bx:param name="attributes.onclick" type="string" default="">
+
+<!--- Associate this action with the parent form --->
+<bx:associate dataCollection="formActions" />
+```
+
+**Usage:**
+
+```xml
+<bx:form action="/contact/submit" method="POST" id="contactForm">
+    <bx:formField name="firstName"
+                  type="text"
+                  label="First Name"
+                  required="true"
+                  placeholder="Enter your first name" />
+
+    <bx:formField name="email"
+                  type="email"
+                  label="Email Address"
+                  required="true"
+                  helpText="We'll never share your email" />
+
+    <bx:formField name="country"
+                  type="select"
+                  label="Country"
+                  required="true"
+                  placeholder="Select your country">
+        <bx:formOption value="us" label="United States" />
+        <bx:formOption value="ca" label="Canada" />
+        <bx:formOption value="uk" label="United Kingdom" />
+    </bx:formField>
+
+    <bx:formField name="message"
+                  type="textarea"
+                  label="Message"
+                  placeholder="Enter your message"
+                  rows="6" />
+
+    <bx:formAction label="Send Message" type="submit" />
+    <bx:formAction label="Reset Form" type="reset" class="btn-secondary" />
+</bx:form>
+```
+
+### Key Points About `bx:associate`
+
+#### 1. **Data Collection Names**
+
+The `dataCollection` attribute specifies the name of the array that will be created in the parent component's `thisTag` scope.
+
+#### 2. **Automatic Array Creation**
+
+If the specified collection doesn't exist, BoxLang automatically creates it as an empty array.
+
+#### 3. **Attribute Inheritance**
+
+All attributes from the child component are automatically added to the collection item.
+
+#### 4. **Execution Timing**
+
+Association happens during the child component's execution, so data is available when the parent reaches its "end" execution mode.
+
+#### 5. **Nested Associations**
+
+You can have multiple levels of association for complex hierarchies.
+
+### Advanced Pattern: Tab Container
+
+**Parent Component: `tabContainer.bxm`**
+
+```xml
+<bx:param name="attributes.id" type="string" required="true">
+<bx:param name="attributes.activeTab" type="string" default="">
+
+<bx:if condition="#thisTag.executionMode IS 'start'#">
+    <div id="#attributes.id#" class="tab-container">
+        <ul class="tab-nav" role="tablist">
+</bx:if>
+
+<bx:if condition="#thisTag.executionMode IS 'end'#">
+    #thisTag.generatedContent#
+
+    <!--- Render tab navigation --->
+    <bx:if condition="#isDefined( 'thisTag.tabs' ) AND isArray( thisTag.tabs )#">
+        <bx:loop array="#thisTag.tabs#" index="tab" item="i">
+            <li class="tab-nav-item">
+                <button class="tab-button #( i EQ 1 OR tab.id EQ attributes.activeTab ) ? 'active' : ''#"
+                        data-tab="#tab.id#"
+                        role="tab">
+                    #tab.title#
+                </button>
+            </li>
+        </bx:loop>
+
+        </ul>
+
+        <!--- Render tab content --->
+        <div class="tab-content">
+            <bx:loop array="#thisTag.tabs#" index="tab" item="i">
+                <div id="#tab.id#"
+                     class="tab-pane #( i EQ 1 OR tab.id EQ attributes.activeTab ) ? 'active' : ''#"
+                     role="tabpanel">
+                    #tab.content#
+                </div>
+            </bx:loop>
+        </div>
+    </bx:if>
+
+    </div>
+
+    <bx:set thisTag.generatedContent = "">
+</bx:if>
+```
+
+**Child Component: `tab.bxm`**
+
+```xml
+<bx:param name="attributes.id" type="string" required="true">
+<bx:param name="attributes.title" type="string" required="true">
+
+<bx:if condition="#thisTag.executionMode IS 'end'#">
+    <!--- Capture the tab content --->
+    <bx:set variables.tabContent = thisTag.generatedContent />
+    <bx:set thisTag.generatedContent = "">
+
+    <!--- Set the content in attributes for association --->
+    <bx:set attributes.content = variables.tabContent />
+</bx:if>
+
+<!--- Associate this tab with the parent container --->
+<bx:associate dataCollection="tabs" />
+```
+
+**Usage:**
+
+```xml
+<bx:tabContainer id="mainTabs" activeTab="profile">
+    <bx:tab id="overview" title="Overview">
+        <h3>Account Overview</h3>
+        <p>Welcome to your account dashboard.</p>
+    </bx:tab>
+
+    <bx:tab id="profile" title="Profile">
+        <h3>Profile Settings</h3>
+        <bx:form action="/profile/update">
+            <bx:formField name="name" label="Full Name" required="true" />
+            <bx:formAction label="Update Profile" />
+        </bx:form>
+    </bx:tab>
+
+    <bx:tab id="settings" title="Settings">
+        <h3>Account Settings</h3>
+        <p>Manage your account preferences.</p>
+    </bx:tab>
+</bx:tabContainer>
+```
+
+This association pattern enables powerful component composition where child components contribute data to their parents, creating flexible and reusable component hierarchies.
+
 ## Advanced Component Patterns
 
 ### Component Composition
 
 Components can call other components for powerful composition:
 
-```markup
+```xml
 <!--- Component: pageLayout.bxm --->
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.showSidebar" type="boolean" default="true">
@@ -483,14 +889,14 @@ Components can call other components for powerful composition:
     </head>
     <body>
         <bx:header siteName="My Site" />
-        
+
         <div class="main-container">
             <bx:if condition="#attributes.showSidebar#">
                 <aside class="sidebar">
                     <bx:navigation />
                 </aside>
             </bx:if>
-            
+
             <main class="content">
 </bx:if>
 
@@ -498,7 +904,7 @@ Components can call other components for powerful composition:
     #thisTag.generatedContent#
             </main>
         </div>
-        
+
         <bx:footer />
     </body>
     </html>
@@ -508,7 +914,7 @@ Components can call other components for powerful composition:
 
 ### Conditional Component Loading
 
-```markup
+```xml
 <!--- Component: roleBasedContent.bxm --->
 <bx:param name="attributes.userRole" type="string" required="true">
 
@@ -529,7 +935,7 @@ Components can call other components for powerful composition:
 
 #### 1. Always Use `bx:param` for Attribute Validation
 
-```markup
+```xml
 <!--- Good: Explicit parameter definition --->
 <bx:param name="attributes.userId" type="string" required="true">
 <bx:param name="attributes.maxItems" type="numeric" default="10">
@@ -540,7 +946,7 @@ Components can call other components for powerful composition:
 
 #### 2. Handle Execution Modes Properly
 
-```markup
+```xml
 <!--- Good: Proper execution mode handling --->
 <bx:if condition="#thisTag.executionMode IS 'end'#">
     <div class="wrapper">
@@ -555,7 +961,7 @@ Components can call other components for powerful composition:
 
 #### 3. Use Descriptive Component Names
 
-```markup
+```xml
 <!--- Good --->
 <bx:_userProfileCard userId="123" />
 <bx:_productListingGrid products="#variables.products#" />
@@ -567,7 +973,7 @@ Components can call other components for powerful composition:
 
 #### 4. Document Your Components
 
-```markup
+```xml
 <!---
 Component: userProfileCard.bxm
 Description: Displays a user profile with avatar, name, and contact info
@@ -582,7 +988,7 @@ Example:
 
 #### 5. Minimize Use of `caller` Scope
 
-```markup
+```xml
 <!--- Good: Self-contained component --->
 <bx:param name="attributes.data" type="array" required="true">
 
