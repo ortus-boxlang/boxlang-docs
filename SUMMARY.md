@@ -751,6 +751,7 @@
 
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Asynchronous Programming](boxlang-framework/asynchronous-programming.md)
+* [Components](boxlang-framework/components.md)
 * [Caching](boxlang-framework/caching/README.md)
   * [Cache Service](boxlang-framework/caching/cache-service.md)
   * [BoxCache Provider](boxlang-framework/caching/boxcache-provider.md)
