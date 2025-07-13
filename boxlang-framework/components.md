@@ -40,10 +40,10 @@ bx:myComponent attribute="value" {
 #### **Template Context:**
 
 ```xml
-<!--- Self-closing --->
+<!-- Self-closing -->
 <bx:myComponent attribute="value" />
 
-<!--- With body content --->
+<!-- With body content -->
 <bx:myComponent attribute="value">
     Content and logic here
 </bx:myComponent>
@@ -125,10 +125,10 @@ Let's start with a simple example:
 **File: `components/greeting.bxm`**
 
 ```xml
-<!---
+<!--
 Simple greeting component that takes a name attribute
 Usage: <bx:greeting name="Alice" />
---->
+-->
 
 <div class="greeting-card">
     <h2>Hello, #attributes.name ?: "World"#!</h2>
@@ -141,9 +141,9 @@ Usage: <bx:greeting name="Alice" />
 All data passed to your component is available in the `attributes` scope:
 
 ```xml
-<!--- File: components/userCard.bxm --->
+<!-- File: components/userCard.bxm -->
 
-<!--- Best practice: Parameterize your attributes with validation --->
+<!-- Best practice: Parameterize your attributes with validation -->
 <bx:param name="attributes.userId" type="string" required="true">
 <bx:param name="attributes.name" type="string" required="true">
 <bx:param name="attributes.email" type="string" required="true">
@@ -184,7 +184,7 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 **File: `components/boldWrapper.bxm`**
 
 ```xml
-<!--- Component that wraps content in bold tags --->
+<!-- Component that wraps content in bold tags -->
 
 <bx:if condition="#thisTag.executionMode IS 'end'#">
     <bx:output><b>#thisTag.generatedContent#</b></bx:output>
@@ -204,14 +204,14 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 **File: `components/section.bxm`**
 
 ```xml
-<!--- Advanced component demonstrating full execution cycle --->
+<!-- Advanced component demonstrating full execution cycle -->
 
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.collapsible" type="boolean" default="false">
 <bx:param name="attributes.collapsed" type="boolean" default="false">
 
 <bx:if condition="#thisTag.executionMode IS 'start'#">
-    <!--- Opening section markup --->
+    <!-- Opening section markup -->
     <section class="content-section">
         <header class="section-header">
             <h2>#attributes.title#</h2>
@@ -226,14 +226,14 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 </bx:if>
 
 <bx:if condition="#thisTag.executionMode IS 'end'#">
-    <!--- Process any nested content --->
+    <!-- Process any nested content -->
     #thisTag.generatedContent#
 
-    <!--- Closing section markup --->
+    <!-- Closing section markup -->
         </div>
     </section>
 
-    <!--- Clear the content so it's not output again --->
+    <!-- Clear the content so it's not output again -->
     <bx:set thisTag.generatedContent = "">
 </bx:if>
 ```
@@ -341,10 +341,10 @@ bx:component template="/shared/components/layout" title="My Page";
 **Template Syntax:**
 
 ```xml
-<!--- Basic call --->
+<!-- Basic call -->
 <bx:component template="greeting" name="Alice" />
 
-<!--- With body content --->
+<!-- With body content -->
 <bx:component template="userCard" userId="123" name="John Doe">
     <p>Additional content here</p>
 </bx:component>
@@ -368,7 +368,7 @@ bx:userCard userId="123" name="John Doe" {
 **Template Syntax:**
 
 ```xml
-<!--- Looks for greeting.bxm, greeting.bxs, etc. --->
+<!-- Looks for greeting.bxm, greeting.bxs, etc. -->
 <bx:greeting name="Alice" />
 
 <bx:userCard userId="123" name="John Doe">
@@ -383,7 +383,7 @@ bx:userCard userId="123" name="John Doe" {
 Contains all attributes passed to the component call:
 
 ```xml
-<!--- Component: productDisplay.bxm --->
+<!-- Component: productDisplay.bxm -->
 <bx:param name="attributes.productId" type="string" required="true">
 <bx:param name="attributes.showPrice" type="boolean" default="true">
 <bx:param name="attributes.currency" type="string" default="USD">
@@ -401,7 +401,7 @@ Contains all attributes passed to the component call:
 A localized scope for the component's internal logic:
 
 ```xml
-<!--- Component: calculator.bxm --->
+<!-- Component: calculator.bxm -->
 <bx:param name="attributes.operation" type="string" required="true">
 <bx:param name="attributes.a" type="numeric" required="true">
 <bx:param name="attributes.b" type="numeric" required="true">
@@ -428,7 +428,7 @@ A localized scope for the component's internal logic:
 Provides access to the calling context (use sparingly):
 
 ```xml
-<!--- Component: debugInfo.bxm --->
+<!-- Component: debugInfo.bxm -->
 <bx:if condition="#isDefined( 'caller.request.debug' ) AND caller.request.debug#">
     <div class="debug-panel">
         <h4>Debug Information</h4>
@@ -443,7 +443,7 @@ Provides access to the calling context (use sparingly):
 Manages component execution and content:
 
 ```xml
-<!--- Component: accordion.bxm --->
+<!-- Component: accordion.bxm -->
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.expanded" type="boolean" default="false">
 
@@ -503,7 +503,7 @@ bx:associate dataCollection="collectionName";
 **Parent Component: `menu.bxm`**
 
 ```xml
-<!--- File: components/menu.bxm --->
+<!-- File: components/menu.bxm -->
 <bx:param name="attributes.id" type="string" required="true">
 <bx:param name="attributes.class" type="string" default="nav-menu">
 
@@ -513,10 +513,10 @@ bx:associate dataCollection="collectionName";
 </bx:if>
 
 <bx:if condition="#thisTag.executionMode IS 'end'#">
-    <!--- Process the nested content to collect menu items --->
+    <!-- Process the nested content to collect menu items -->
     #thisTag.generatedContent#
 
-    <!--- Now render all associated menu items --->
+    <!-- Now render all associated menu items -->
     <bx:if condition="#isDefined( 'thisTag.menuItems' ) AND isArray( thisTag.menuItems )#">
         <bx:loop array="#thisTag.menuItems#" index="menuItem">
             <li class="menu-item">
@@ -539,13 +539,13 @@ bx:associate dataCollection="collectionName";
 **Child Component: `menuItem.bxm`**
 
 ```xml
-<!--- File: components/menuItem.bxm --->
+<!-- File: components/menuItem.bxm -->
 <bx:param name="attributes.label" type="string" required="true">
 <bx:param name="attributes.url" type="string" required="true">
 <bx:param name="attributes.class" type="string" default="">
 <bx:param name="attributes.target" type="string" default="">
 
-<!--- Associate this menu item data with the parent menu --->
+<!-- Associate this menu item data with the parent menu -->
 <bx:associate dataCollection="menuItems" />
 ```
 
@@ -566,7 +566,7 @@ bx:associate dataCollection="collectionName";
 **Parent Component: `form.bxm`**
 
 ```xml
-<!--- File: components/form.bxm --->
+<!-- File: components/form.bxm -->
 <bx:param name="attributes.action" type="string" required="true">
 <bx:param name="attributes.method" type="string" default="POST">
 <bx:param name="attributes.id" type="string" default="">
@@ -582,10 +582,10 @@ bx:associate dataCollection="collectionName";
 </bx:if>
 
 <bx:if condition="#thisTag.executionMode IS 'end'#">
-    <!--- Process nested content to collect form fields --->
+    <!-- Process nested content to collect form fields -->
     #thisTag.generatedContent#
 
-    <!--- Render all associated form fields --->
+    <!-- Render all associated form fields -->
     <bx:if condition="#isDefined( 'thisTag.formFields' ) AND isArray( thisTag.formFields )#">
         <bx:loop array="#thisTag.formFields#" index="field">
             <div class="form-group field-type-#field.type#">
@@ -645,7 +645,7 @@ bx:associate dataCollection="collectionName";
         </bx:loop>
     </bx:if>
 
-    <!--- Render any additional content (like buttons) --->
+    <!-- Render any additional content (like buttons) -->
     <bx:if condition="#isDefined( 'thisTag.formActions' ) AND isArray( thisTag.formActions )#">
         <div class="form-actions">
             <bx:loop array="#thisTag.formActions#" index="action">
@@ -669,7 +669,7 @@ bx:associate dataCollection="collectionName";
 **`formField.bxm`**
 
 ```xml
-<!--- File: components/formField.bxm --->
+<!-- File: components/formField.bxm -->
 <bx:param name="attributes.name" type="string" required="true">
 <bx:param name="attributes.type" type="string" default="text">
 <bx:param name="attributes.label" type="string" default="">
@@ -680,40 +680,40 @@ bx:associate dataCollection="collectionName";
 <bx:param name="attributes.helpText" type="string" default="">
 <bx:param name="attributes.rows" type="numeric" default="4">
 
-<!--- For select fields, collect options if this is a container --->
+<!-- For select fields, collect options if this is a container -->
 <bx:if condition="#attributes.type EQ 'select' AND thisTag.hasEndTag#">
     <bx:if condition="#thisTag.executionMode IS 'end'#">
-        <!--- Process nested options --->
+        <!-- Process nested options -->
         #thisTag.generatedContent#
         <bx:set thisTag.generatedContent = "">
     </bx:if>
 </bx:if>
 
-<!--- Associate this field data with the parent form --->
+<!-- Associate this field data with the parent form -->
 <bx:associate dataCollection="formFields" />
 ```
 
 **`formOption.bxm`**
 
 ```xml
-<!--- File: components/formOption.bxm --->
+<!-- File: components/formOption.bxm -->
 <bx:param name="attributes.value" type="string" required="true">
 <bx:param name="attributes.label" type="string" required="true">
 
-<!--- Associate this option with the parent form field --->
+<!-- Associate this option with the parent form field -->
 <bx:associate dataCollection="options" />
 ```
 
 **`formAction.bxm`**
 
 ```xml
-<!--- File: components/formAction.bxm --->
+<!-- File: components/formAction.bxm -->
 <bx:param name="attributes.label" type="string" required="true">
 <bx:param name="attributes.type" type="string" default="submit">
 <bx:param name="attributes.class" type="string" default="btn-primary">
 <bx:param name="attributes.onclick" type="string" default="">
 
-<!--- Associate this action with the parent form --->
+<!-- Associate this action with the parent form -->
 <bx:associate dataCollection="formActions" />
 ```
 
@@ -792,7 +792,7 @@ You can have multiple levels of association for complex hierarchies.
 <bx:if condition="#thisTag.executionMode IS 'end'#">
     #thisTag.generatedContent#
 
-    <!--- Render tab navigation --->
+    <!-- Render tab navigation -->
     <bx:if condition="#isDefined( 'thisTag.tabs' ) AND isArray( thisTag.tabs )#">
         <bx:loop array="#thisTag.tabs#" index="tab" item="i">
             <li class="tab-nav-item">
@@ -806,7 +806,7 @@ You can have multiple levels of association for complex hierarchies.
 
         </ul>
 
-        <!--- Render tab content --->
+        <!-- Render tab content -->
         <div class="tab-content">
             <bx:loop array="#thisTag.tabs#" index="tab" item="i">
                 <div id="#tab.id#"
@@ -831,15 +831,15 @@ You can have multiple levels of association for complex hierarchies.
 <bx:param name="attributes.title" type="string" required="true">
 
 <bx:if condition="#thisTag.executionMode IS 'end'#">
-    <!--- Capture the tab content --->
+    <!-- Capture the tab content -->
     <bx:set variables.tabContent = thisTag.generatedContent />
     <bx:set thisTag.generatedContent = "">
 
-    <!--- Set the content in attributes for association --->
+    <!-- Set the content in attributes for association -->
     <bx:set attributes.content = variables.tabContent />
 </bx:if>
 
-<!--- Associate this tab with the parent container --->
+<!-- Associate this tab with the parent container -->
 <bx:associate dataCollection="tabs" />
 ```
 
@@ -876,7 +876,7 @@ This association pattern enables powerful component composition where child comp
 Components can call other components for powerful composition:
 
 ```xml
-<!--- Component: pageLayout.bxm --->
+<!-- Component: pageLayout.bxm -->
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.showSidebar" type="boolean" default="true">
 
@@ -915,7 +915,7 @@ Components can call other components for powerful composition:
 ### Conditional Component Loading
 
 ```xml
-<!--- Component: roleBasedContent.bxm --->
+<!-- Component: roleBasedContent.bxm -->
 <bx:param name="attributes.userRole" type="string" required="true">
 
 <bx:switch expression="#attributes.userRole#">
@@ -936,18 +936,18 @@ Components can call other components for powerful composition:
 #### 1. Always Use `bx:param` for Attribute Validation
 
 ```xml
-<!--- Good: Explicit parameter definition --->
+<!-- Good: Explicit parameter definition -->
 <bx:param name="attributes.userId" type="string" required="true">
 <bx:param name="attributes.maxItems" type="numeric" default="10">
 
-<!--- Avoid: Accessing attributes without validation --->
-<!--- <p>User: #attributes.userId#</p> --->
+<!-- Avoid: Accessing attributes without validation -->
+<!-- <p>User: #attributes.userId#</p> -->
 ```
 
 #### 2. Handle Execution Modes Properly
 
 ```xml
-<!--- Good: Proper execution mode handling --->
+<!-- Good: Proper execution mode handling -->
 <bx:if condition="#thisTag.executionMode IS 'end'#">
     <div class="wrapper">
         #thisTag.generatedContent#
@@ -955,18 +955,18 @@ Components can call other components for powerful composition:
     <bx:set thisTag.generatedContent = "">
 </bx:if>
 
-<!--- Avoid: Not checking execution mode (causes double execution) --->
-<!--- <div class="wrapper">#thisTag.generatedContent#</div> --->
+<!-- Avoid: Not checking execution mode (causes double execution) -->
+<!-- <div class="wrapper">#thisTag.generatedContent#</div> -->
 ```
 
 #### 3. Use Descriptive Component Names
 
 ```xml
-<!--- Good --->
+<!-- Good -->
 <bx:_userProfileCard userId="123" />
 <bx:_productListingGrid products="#variables.products#" />
 
-<!--- Avoid --->
+<!-- Avoid -->
 <bx:_card data="123" />
 <bx:_list items="#variables.items#" />
 ```
@@ -974,7 +974,7 @@ Components can call other components for powerful composition:
 #### 4. Document Your Components
 
 ```xml
-<!---
+<!--
 Component: userProfileCard.bxm
 Description: Displays a user profile with avatar, name, and contact info
 Attributes:
@@ -983,17 +983,17 @@ Attributes:
   - theme (string, default: "light"): Visual theme (light|dark)
 Example:
   <bx:userProfileCard userId="123" showEmail="false" theme="dark" />
---->
+-->
 ```
 
 #### 5. Minimize Use of `caller` Scope
 
 ```xml
-<!--- Good: Self-contained component --->
+<!-- Good: Self-contained component -->
 <bx:param name="attributes.data" type="array" required="true">
 
-<!--- Avoid: Reaching into caller scope --->
-<!--- <bx:set variables.data = caller.variables.someData> --->
+<!-- Avoid: Reaching into caller scope -->
+<!-- <bx:set variables.data = caller.variables.someData> -->
 ```
 
 ## Migration from CFML Custom Tags
