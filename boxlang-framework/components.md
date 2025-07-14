@@ -108,7 +108,7 @@ bx:http url="https://api.example.com/users" result="apiResponse";
 
 // Database queries
 bx:query name="users" datasource="myDB" {
-    SELECT id, name, email FROM users WHERE active = 1
+    writeoutput( "SELECT id, name, email FROM users WHERE active = 1 " )
 }
 
 // File operations
@@ -124,7 +124,7 @@ Any BoxLang module can also register and collaborate with components to the runt
 bx:cache key="userList" timeout="3600" {
     // Expensive operation cached for 1 hour
     bx:query name="expensiveQuery" datasource="myDB" {
-        SELECT * FROM complex_view WHERE processing_intensive = 1
+        writeOutput( "SELECT * FROM complex_view WHERE processing_intensive = 1" )
     }
 }
 
