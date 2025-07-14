@@ -352,15 +352,15 @@ Custom component discovery is a hierarchical lookup process that occurs when Box
 
 ```mermaid
 graph TD
-    A[Custom Component Call] --> B[1. Relative to Caller]
+    A[Custom Component Call <br> bx:_MyComponent] --> B[1- Relative to Caller]
     B --> C{Found?}
-    C -->|No| D[2. Application Component Paths]
+    C -->|No| D[2- Application Component Paths]
     D --> E{Found?}
-    E -->|No| F[3. Application Class Paths]
+    E -->|No| F[3- Application Class Paths]
     F --> G{Found?}
-    G -->|No| H[4. Global Component Directories]
+    G -->|No| H[4- Global Component Directories]
     H --> I{Found?}
-    I -->|No| J[5. Global Class Directories]
+    I -->|No| J[5- Global Class Directories]
     J --> K{Found?}
     K -->|Yes| L[Load and Execute Component]
     K -->|No| M[Throw Component Not Found Error]
