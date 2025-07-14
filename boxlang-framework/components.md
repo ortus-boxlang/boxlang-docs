@@ -57,11 +57,11 @@ Components can be called using either script-based or template-based syntax acco
 
 ```js
 // Self-closing
-bx:myComponent;
-bx:myComponent attribute="value";
+bx:_myComponent;
+bx:_myComponent attribute="value";
 
 // With body content
-bx:myComponent attribute="value" {
+bx:_myComponent attribute="value" {
     // Content and logic here
 }
 ```
@@ -70,12 +70,12 @@ bx:myComponent attribute="value" {
 
 ```xml
 <!-- Self-closing -->
-<bx:myComponent attribute="value" />
+<bx:_myComponent attribute="value" />
 
 <!-- With body content -->
-<bx:myComponent attribute="value">
+<bx:_myComponent attribute="value">
     Content and logic here
-</bx:myComponent>
+</bx:_myComponent>
 ```
 
 ### Component Execution Flow
@@ -289,7 +289,6 @@ Here's an advanced component demonstrating the full execution cycle, shown in bo
 
 ```xml
 <!-- Advanced component demonstrating full execution cycle -->
-
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.collapsible" type="boolean" default="false">
 <bx:param name="attributes.collapsed" type="boolean" default="false">
@@ -328,7 +327,6 @@ Here's an advanced component demonstrating the full execution cycle, shown in bo
 
 ```js
 // Advanced component demonstrating full execution cycle
-
 bx:param name="attributes.title" type="string" required="true";
 bx:param name="attributes.collapsible" type="boolean" default="false";
 bx:param name="attributes.collapsed" type="boolean" default="false";
@@ -369,10 +367,10 @@ if ( thisTag.executionMode == "end" ) {
 **Usage (same for both template and script versions):**
 
 ```xml
-<bx:section title="User Information" collapsible="true">
+<bx:_section title="User Information" collapsible="true">
     <p>This content appears inside the section.</p>
     <bx:userCard userId="123" name="John Doe" email="john@example.com" />
-</bx:section>
+</bx:_section>
 ```
 
 ## Custom Component Discovery
@@ -450,28 +448,28 @@ During discovery, BoxLang looks for files with these extensions in order:
 
 ```js
 // Basic call
-bx:component template="greeting" name="Alice";
+bx:_component template="greeting" name="Alice";
 
 // With body content
-bx:component template="userCard" userId="123" name="John Doe" {
+bx:_component template="userCard" userId="123" name="John Doe" {
     writeOutput( "<p>Additional content here</p>" );
 }
 
 // With relative or absolute paths
-bx:component template="./components/greeting" name="Alice";
-bx:component template="/shared/components/layout" title="My Page";
+bx:_component template="./components/greeting" name="Alice";
+bx:_component template="/shared/components/layout" title="My Page";
 ```
 
 **Template Syntax:**
 
 ```xml
 <!-- Basic call -->
-<bx:component template="greeting" name="Alice" />
+<bx:_component template="greeting" name="Alice" />
 
 <!-- With body content -->
-<bx:component template="userCard" userId="123" name="John Doe">
+<bx:_component template="userCard" userId="123" name="John Doe">
     <p>Additional content here</p>
-</bx:component>
+</bx:_component>
 ```
 
 ### Method 2: Convention-Based Calling
@@ -482,9 +480,9 @@ BoxLang looks for a component file matching the name after `bx:`:
 
 ```js
 // Looks for greeting.bxm, greeting.bxs, etc.
-bx:greeting name="Alice";
+bx:_greeting name="Alice";
 
-bx:userCard userId="123" name="John Doe" {
+bx:_userCard userId="123" name="John Doe" {
     writeOutput( "<p>Additional content</p>" );
 }
 ```
@@ -493,11 +491,11 @@ bx:userCard userId="123" name="John Doe" {
 
 ```xml
 <!-- Looks for greeting.bxm, greeting.bxs, etc. -->
-<bx:greeting name="Alice" />
+<bx:_greeting name="Alice" />
 
-<bx:userCard userId="123" name="John Doe">
+<bx:_userCard userId="123" name="John Doe">
     <p>Additional content</p>
-</bx:userCard>
+</bx:_userCard>
 ```
 
 ## Component Scopes Deep Dive
@@ -676,13 +674,13 @@ bx:associate dataCollection="collectionName";
 **Usage:**
 
 ```xml
-<bx:menu id="mainNav" class="primary-navigation">
-    <bx:menuItem label="Home" url="/" />
-    <bx:menuItem label="About" url="/about" />
-    <bx:menuItem label="Products" url="/products" class="dropdown-trigger" />
-    <bx:menuItem label="Contact" url="/contact" />
-    <bx:menuItem label="External Link" url="https://example.com" target="_blank" />
-</bx:menu>
+<bx:_menu id="mainNav" class="primary-navigation">
+    <bx:_menuItem label="Home" url="/" />
+    <bx:_menuItem label="About" url="/about" />
+    <bx:_menuItem label="Products" url="/products" class="dropdown-trigger" />
+    <bx:_menuItem label="Contact" url="/contact" />
+    <bx:_menuItem label="External Link" url="https://example.com" target="_blank" />
+</bx:_menu>
 ```
 
 ### Advanced Example: Form with Form Fields
@@ -844,38 +842,38 @@ bx:associate dataCollection="collectionName";
 **Usage:**
 
 ```xml
-<bx:form action="/contact/submit" method="POST" id="contactForm">
-    <bx:formField name="firstName"
+<bx:_form action="/contact/submit" method="POST" id="contactForm">
+    <bx:_formField name="firstName"
                   type="text"
                   label="First Name"
                   required="true"
                   placeholder="Enter your first name" />
 
-    <bx:formField name="email"
+    <bx:_formField name="email"
                   type="email"
                   label="Email Address"
                   required="true"
                   helpText="We'll never share your email" />
 
-    <bx:formField name="country"
+    <bx:_formField name="country"
                   type="select"
                   label="Country"
                   required="true"
                   placeholder="Select your country">
-        <bx:formOption value="us" label="United States" />
-        <bx:formOption value="ca" label="Canada" />
-        <bx:formOption value="uk" label="United Kingdom" />
-    </bx:formField>
+        <bx:_formOption value="us" label="United States" />
+        <bx:_formOption value="ca" label="Canada" />
+        <bx:_formOption value="uk" label="United Kingdom" />
+    </bx:_formField>
 
-    <bx:formField name="message"
+    <bx:_formField name="message"
                   type="textarea"
                   label="Message"
                   placeholder="Enter your message"
                   rows="6" />
 
-    <bx:formAction label="Send Message" type="submit" />
-    <bx:formAction label="Reset Form" type="reset" class="btn-secondary" />
-</bx:form>
+    <bx:_formAction label="Send Message" type="submit" />
+    <bx:_formAction label="Reset Form" type="reset" class="btn-secondary" />
+</bx:_form>
 ```
 
 ### Key Points About `bx:associate`
@@ -970,25 +968,25 @@ You can have multiple levels of association for complex hierarchies.
 **Usage:**
 
 ```xml
-<bx:tabContainer id="mainTabs" activeTab="profile">
-    <bx:tab id="overview" title="Overview">
+<bx:_tabContainer id="mainTabs" activeTab="profile">
+    <bx:_tab id="overview" title="Overview">
         <h3>Account Overview</h3>
         <p>Welcome to your account dashboard.</p>
-    </bx:tab>
+    </bx:_tab>
 
-    <bx:tab id="profile" title="Profile">
+    <bx:_tab id="profile" title="Profile">
         <h3>Profile Settings</h3>
-        <bx:form action="/profile/update">
-            <bx:formField name="name" label="Full Name" required="true" />
-            <bx:formAction label="Update Profile" />
-        </bx:form>
+        <bx:_form action="/profile/update">
+            <bx:_formField name="name" label="Full Name" required="true" />
+            <bx:_formAction label="Update Profile" />
+        </bx:_form>
     </bx:tab>
 
-    <bx:tab id="settings" title="Settings">
+    <bx:_tab id="settings" title="Settings">
         <h3>Account Settings</h3>
         <p>Manage your account preferences.</p>
-    </bx:tab>
-</bx:tabContainer>
+    </bx:_tab>
+</bx:_tabContainer>
 ```
 
 This association pattern enables powerful component composition where child components contribute data to their parents, creating flexible and reusable component hierarchies.
@@ -1115,17 +1113,26 @@ if ( thisTag.executionMode == "end" ) {
 
 ```xml
 <!-- Good -->
-<bx:userProfileCard userId="123" />
-<bx:productListingGrid products="#variables.products#" />
+<bx:_userProfileCard userId="123" />
+<bx:_productListingGrid products="#variables.products#" />
 
 <!-- Avoid -->
-<bx:card data="123" />
-<bx:list items="#variables.items#" />
+<bx:_card data="123" />
+<bx:_list items="#variables.items#" />
 ```
 
 ### 4. Document Your Components
 
 **Template-based components:**
+```xml
+<!--
+Component: userProfileCard.bxm
+Description: Displays a user profile with avatar, name, and contact info
+Attributes:
+  - userId (string, required): User's unique identifier
+  - showEmail (boolean, default: true): Whether to show email address
+  - theme (string, default: "light"): Visual theme (light|dark)
+Example:
 
 ```xml
 <!--
