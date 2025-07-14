@@ -84,11 +84,6 @@ bx:query name="users" datasource="myDB" {
 
 // File operations
 bx:file action="read" file="/path/to/data.txt" variable="fileContent";
-
-// Conditional logic
-bx:if condition="#user.isAdmin#" {
-    writeOutput( "Admin content here" );
-}
 ```
 
 ### Module Components
@@ -116,11 +111,18 @@ Core and module components are **registered** with the runtime and don't go thro
 
 ## Creating Custom Components
 
-Custom components are user-defined components written in BoxLang that will allow you to extend the language with your own features.  It will also allow you to create expressive contributions to the templating language.
+Custom components are user-defined components written in BoxLang that will allow you to extend the language with your own features. It will also allow you to create expressive contributions to the templating language.
+
+Custom components can be created using two approaches:
+
+* **Template-based components** (`.bxm` files): Use BoxLang's templating syntax
+* **Script-based components** (`.bxs` files): Use pure BoxLang script syntax
 
 ### Basic Custom Component Structure
 
-Let's start with a simple example:
+Let's start with simple examples using both approaches:
+
+#### Template-based Component
 
 **File: `components/greeting.bxm`**
 
@@ -136,9 +138,27 @@ Usage: <bx:greeting name="Alice" />
 </div>
 ```
 
+#### Script-based Component
+
+**File: `components/greeting.bxs`**
+
+```js
+/*
+Simple greeting component that takes a name attribute
+Usage: bx:greeting name="Alice";
+*/
+
+writeOutput( '<div class="greeting-card">' );
+writeOutput( '<h2>Hello, ' & ( attributes.name ?: "World" ) & '!</h2>' );
+writeOutput( '<p>Welcome to our application.</p>' );
+writeOutput( '</div>' );
+```
+
 ### Component Input: The `attributes` Scope
 
-All data passed to your component is available in the `attributes` scope:
+All data passed to your component is available in the `attributes` scope. Both template and script-based components can validate and process these attributes.
+
+#### Template-based Component with Attributes
 
 ```xml
 <!-- File: components/userCard.bxm -->
@@ -151,7 +171,7 @@ All data passed to your component is available in the `attributes` scope:
 <bx:param name="attributes.theme" type="string" default="light">
 
 <div class="user-card theme-#attributes.theme#" data-user-id="#attributes.userId#">
-    <bx:if condition="#attributes.showAvatar#">
+    <bx:if attributes.showAvatar>
         <img src="/avatars/#attributes.userId#.jpg" alt="Avatar" class="avatar" />
     </bx:if>
 
@@ -162,18 +182,34 @@ All data passed to your component is available in the `attributes` scope:
 </div>
 ```
 
-**Script syntax for parameterization:**
+#### Script-based Component with Attributes
 
 ```js
-// In a .bxs component file
+// File: components/userCard.bxs
+
+// Best practice: Parameterize your attributes with validation
 bx:param name="attributes.userId" type="string" required="true";
-bx:param name="attributes.data" default="#arrayNew()#" type="array";
-bx:param name="attributes.maxItems" default="10" type="numeric";
+bx:param name="attributes.name" type="string" required="true";
+bx:param name="attributes.email" type="string" required="true";
+bx:param name="attributes.showAvatar" type="boolean" default="false";
+bx:param name="attributes.theme" type="string" default="light";
+
+writeOutput( '<div class="user-card theme-' & attributes.theme & '" data-user-id="' & attributes.userId & '">' );
+
+if ( attributes.showAvatar ) {
+    writeOutput( '<img src="/avatars/' & attributes.userId & '.jpg" alt="Avatar" class="avatar" />' );
+}
+
+writeOutput( '<div class="user-info">' );
+writeOutput( '<h3>' & attributes.name & '</h3>' );
+writeOutput( '<p class="email">' & attributes.email & '</p>' );
+writeOutput( '</div>' );
+writeOutput( '</div>' );
 ```
 
 ### Component Content: The `thisTag` Scope
 
-When components have start and end tags, BoxLang provides the `thisTag` scope to manage content and execution:
+When components have start and end tags, BoxLang provides the `thisTag` scope to manage content and execution. This works the same way in both template and script-based components.
 
 **The `thisTag` scope contains:**
 
@@ -181,18 +217,33 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 * `hasEndTag`: boolean indicating if component has closing tag
 * `generatedContent`: Content between start and end tags
 
+#### Template-based Component with `thisTag`
+
 **File: `components/boldWrapper.bxm`**
 
 ```xml
 <!-- Component that wraps content in bold tags -->
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     <bx:output><b>#thisTag.generatedContent#</b></bx:output>
     <bx:set thisTag.generatedContent = "">
 </bx:if>
 ```
 
-**Usage:**
+#### Script-based Component with `thisTag`
+
+**File: `components/boldWrapper.bxs`**
+
+```js
+// Component that wraps content in bold tags
+
+if ( thisTag.executionMode == "end" ) {
+    writeOutput( "<b>" & thisTag.generatedContent & "</b>" );
+    thisTag.generatedContent = "";
+}
+```
+
+**Usage (same for both):**
 
 ```xml
 <bx:boldWrapper>This text will be bold</bx:boldWrapper>
@@ -200,6 +251,10 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 ```
 
 ### Complex Component with Start/End Logic
+
+Here's an advanced component demonstrating the full execution cycle, shown in both template and script syntax:
+
+#### Template-based Version
 
 **File: `components/section.bxm`**
 
@@ -210,12 +265,12 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 <bx:param name="attributes.collapsible" type="boolean" default="false">
 <bx:param name="attributes.collapsed" type="boolean" default="false">
 
-<bx:if condition="#thisTag.executionMode IS 'start'#">
+<bx:if thisTag.executionMode eq "start">
     <!-- Opening section markup -->
     <section class="content-section">
         <header class="section-header">
             <h2>#attributes.title#</h2>
-            <bx:if condition="#attributes.collapsible#">
+            <bx:if thisTag.attributes.collapsible>
                 <button class="toggle-btn" data-collapsed="#attributes.collapsed#">
                     #attributes.collapsed ? "Expand" : "Collapse"#
                 </button>
@@ -225,7 +280,7 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
              style="#attributes.collapsed ? 'display:none' : ''#">
 </bx:if>
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     <!-- Process any nested content -->
     #thisTag.generatedContent#
 
@@ -238,7 +293,51 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
 </bx:if>
 ```
 
-**Usage:**
+#### Script-based Version
+
+**File: `components/section.bxs`**
+
+```js
+// Advanced component demonstrating full execution cycle
+
+bx:param name="attributes.title" type="string" required="true";
+bx:param name="attributes.collapsible" type="boolean" default="false";
+bx:param name="attributes.collapsed" type="boolean" default="false";
+
+if ( thisTag.executionMode == "start" ) {
+    // Opening section markup
+    writeOutput( '<section class="content-section">' );
+    writeOutput( '<header class="section-header">' );
+    writeOutput( '<h2>' & attributes.title & '</h2>' );
+
+    if ( attributes.collapsible ) {
+        writeOutput( '<button class="toggle-btn" data-collapsed="' & attributes.collapsed & '">' );
+        writeOutput( attributes.collapsed ? "Expand" : "Collapse" );
+        writeOutput( '</button>' );
+    }
+
+    writeOutput( '</header>' );
+    writeOutput( '<div class="section-content"' );
+    if ( attributes.collapsed ) {
+        writeOutput( ' style="display:none"' );
+    }
+    writeOutput( '>' );
+}
+
+if ( thisTag.executionMode == "end" ) {
+    // Process any nested content
+    writeOutput( thisTag.generatedContent );
+
+    // Closing section markup
+    writeOutput( '</div>' );
+    writeOutput( '</section>' );
+
+    // Clear the content so it's not output again
+    thisTag.generatedContent = "";
+}
+```
+
+**Usage (same for both template and script versions):**
 
 ```xml
 <bx:section title="User Information" collapsible="true">
@@ -246,10 +345,6 @@ When components have start and end tags, BoxLang provides the `thisTag` scope to
     <bx:userCard userId="123" name="John Doe" email="john@example.com" />
 </bx:section>
 ```
-
-{% hint style="warning" %}
-Please note that I have written these components in the same templating language, but you can easily wrap this in a \<bx:script> and write them in script if needed.
-{% endhint %}
 
 ## Custom Component Discovery
 
@@ -390,7 +485,7 @@ Contains all attributes passed to the component call:
 
 <div class="product" data-id="#attributes.productId#">
     <h3>#attributes.name#</h3>
-    <bx:if condition="#attributes.showPrice#">
+    <bx:if "#attributes.showPrice#">
         <p class="price">#attributes.price# #attributes.currency#</p>
     </bx:if>
 </div>
@@ -429,7 +524,7 @@ Provides access to the calling context (use sparingly):
 
 ```xml
 <!-- Component: debugInfo.bxm -->
-<bx:if condition="#isDefined( 'caller.request.debug' ) AND caller.request.debug#">
+<bx:if "#isDefined( 'caller.request.debug' ) AND caller.request.debug#">
     <div class="debug-panel">
         <h4>Debug Information</h4>
         <p>Current Template: #caller.getCurrentTemplatePath()#</p>
@@ -447,7 +542,7 @@ Manages component execution and content:
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.expanded" type="boolean" default="false">
 
-<bx:if condition="#thisTag.executionMode IS 'start'#">
+<bx:if thisTag.executionMode eq "start">
     <div class="accordion-item">
         <button class="accordion-header" onclick="toggleAccordion(this)">
             #attributes.title#
@@ -455,7 +550,7 @@ Manages component execution and content:
         <div class="accordion-content" style="#attributes.expanded ? '' : 'display:none'#">
 </bx:if>
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     #thisTag.generatedContent#
         </div>
     </div>
@@ -507,17 +602,17 @@ bx:associate dataCollection="collectionName";
 <bx:param name="attributes.id" type="string" required="true">
 <bx:param name="attributes.class" type="string" default="nav-menu">
 
-<bx:if condition="#thisTag.executionMode IS 'start'#">
+<bx:if thisTag.executionMode eq "start">
     <nav id="#attributes.id#" class="#attributes.class#">
         <ul class="menu-list">
 </bx:if>
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     <!-- Process the nested content to collect menu items -->
     #thisTag.generatedContent#
 
     <!-- Now render all associated menu items -->
-    <bx:if condition="#isDefined( 'thisTag.menuItems' ) AND isArray( thisTag.menuItems )#">
+    <bx:if "#isDefined( 'thisTag.menuItems' ) AND isArray( thisTag.menuItems )#">
         <bx:loop array="#thisTag.menuItems#" index="menuItem">
             <li class="menu-item">
                 <a href="#menuItem.url#"
@@ -573,7 +668,7 @@ bx:associate dataCollection="collectionName";
 <bx:param name="attributes.class" type="string" default="form">
 <bx:param name="attributes.validateOnSubmit" type="boolean" default="true">
 
-<bx:if condition="#thisTag.executionMode IS 'start'#">
+<bx:if thisTag.executionMode eq "start">
     <form action="#attributes.action#"
           method="#attributes.method#"
           #len( attributes.id ) ? 'id="' & attributes.id & '"' : ''#
@@ -581,18 +676,18 @@ bx:associate dataCollection="collectionName";
           #attributes.validateOnSubmit ? 'data-validate="true"' : ''#>
 </bx:if>
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     <!-- Process nested content to collect form fields -->
     #thisTag.generatedContent#
 
     <!-- Render all associated form fields -->
-    <bx:if condition="#isDefined( 'thisTag.formFields' ) AND isArray( thisTag.formFields )#">
+    <bx:if "#isDefined( 'thisTag.formFields' ) AND isArray( thisTag.formFields )#">
         <bx:loop array="#thisTag.formFields#" index="field">
             <div class="form-group field-type-#field.type#">
-                <bx:if condition="#len( field.label ?: '' )#">
+                <bx:if "#len( field.label ?: '' )#">
                     <label for="#field.name#" class="form-label">
                         #field.label#
-                        <bx:if condition="#field.required#">
+                        <bx:if "#field.required#">
                             <span class="required">*</span>
                         </bx:if>
                     </label>
@@ -623,10 +718,10 @@ bx:associate dataCollection="collectionName";
                                 id="#field.name#"
                                 class="form-control #field.class ?: ''#"
                                 #field.required ? 'required' : ''#>
-                            <bx:if condition="#len( field.placeholder ?: '' )#">
+                            <bx:if "#len( field.placeholder ?: '' )#">
                                 <option value="">#field.placeholder#</option>
                             </bx:if>
-                            <bx:if condition="#isDefined( 'field.options' ) AND isArray( field.options )#">
+                            <bx:if "#isDefined( 'field.options' ) AND isArray( field.options )#">
                                 <bx:loop array="#field.options#" index="option">
                                     <option value="#option.value#"
                                             #option.value EQ ( field.value ?: '' ) ? 'selected' : ''#>
@@ -638,7 +733,7 @@ bx:associate dataCollection="collectionName";
                     </bx:case>
                 </bx:switch>
 
-                <bx:if condition="#len( field.helpText ?: '' )#">
+                <bx:if "#len( field.helpText ?: '' )#">
                     <small class="form-help">#field.helpText#</small>
                 </bx:if>
             </div>
@@ -646,7 +741,7 @@ bx:associate dataCollection="collectionName";
     </bx:if>
 
     <!-- Render any additional content (like buttons) -->
-    <bx:if condition="#isDefined( 'thisTag.formActions' ) AND isArray( thisTag.formActions )#">
+    <bx:if "#isDefined( 'thisTag.formActions' ) AND isArray( thisTag.formActions )#">
         <div class="form-actions">
             <bx:loop array="#thisTag.formActions#" index="action">
                 <button type="#action.type ?: 'button'#"
@@ -681,8 +776,8 @@ bx:associate dataCollection="collectionName";
 <bx:param name="attributes.rows" type="numeric" default="4">
 
 <!-- For select fields, collect options if this is a container -->
-<bx:if condition="#attributes.type EQ 'select' AND thisTag.hasEndTag#">
-    <bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if "#attributes.type EQ 'select' AND thisTag.hasEndTag#">
+    <bx:if thisTag.executionMode eq "end">
         <!-- Process nested options -->
         #thisTag.generatedContent#
         <bx:set thisTag.generatedContent = "">
@@ -784,16 +879,16 @@ You can have multiple levels of association for complex hierarchies.
 <bx:param name="attributes.id" type="string" required="true">
 <bx:param name="attributes.activeTab" type="string" default="">
 
-<bx:if condition="#thisTag.executionMode IS 'start'#">
+<bx:if thisTag.executionMode eq "start">
     <div id="#attributes.id#" class="tab-container">
         <ul class="tab-nav" role="tablist">
 </bx:if>
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     #thisTag.generatedContent#
 
     <!-- Render tab navigation -->
-    <bx:if condition="#isDefined( 'thisTag.tabs' ) AND isArray( thisTag.tabs )#">
+    <bx:if "#isDefined( 'thisTag.tabs' ) AND isArray( thisTag.tabs )#">
         <bx:loop array="#thisTag.tabs#" index="tab" item="i">
             <li class="tab-nav-item">
                 <button class="tab-button #( i EQ 1 OR tab.id EQ attributes.activeTab ) ? 'active' : ''#"
@@ -830,7 +925,7 @@ You can have multiple levels of association for complex hierarchies.
 <bx:param name="attributes.id" type="string" required="true">
 <bx:param name="attributes.title" type="string" required="true">
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     <!-- Capture the tab content -->
     <bx:set variables.tabContent = thisTag.generatedContent />
     <bx:set thisTag.generatedContent = "">
@@ -880,7 +975,7 @@ Components can call other components for powerful composition:
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.showSidebar" type="boolean" default="true">
 
-<bx:if condition="#thisTag.executionMode IS 'start'#">
+<bx:if thisTag.executionMode eq "start">
     <!DOCTYPE html>
     <html>
     <head>
@@ -891,7 +986,7 @@ Components can call other components for powerful composition:
         <bx:header siteName="My Site" />
 
         <div class="main-container">
-            <bx:if condition="#attributes.showSidebar#">
+            <bx:if "#attributes.showSidebar#">
                 <aside class="sidebar">
                     <bx:navigation />
                 </aside>
@@ -900,7 +995,7 @@ Components can call other components for powerful composition:
             <main class="content">
 </bx:if>
 
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     #thisTag.generatedContent#
             </main>
         </div>
@@ -933,7 +1028,9 @@ Components can call other components for powerful composition:
 
 ## Best Practices
 
-#### 1. Always Use `bx:param` for Attribute Validation
+### 1. Always Use `bx:param` for Attribute Validation
+
+**Template-based components:**
 
 ```xml
 <!-- Good: Explicit parameter definition -->
@@ -944,11 +1041,24 @@ Components can call other components for powerful composition:
 <!-- <p>User: #attributes.userId#</p> -->
 ```
 
-#### 2. Handle Execution Modes Properly
+**Script-based components:**
+
+```js
+// Good: Explicit parameter definition
+bx:param name="attributes.userId" type="string" required="true";
+bx:param name="attributes.maxItems" type="numeric" default="10";
+
+// Avoid: Accessing attributes without validation
+// writeOutput( "User: " & attributes.userId );
+```
+
+### 2. Handle Execution Modes Properly
+
+**Template-based components:**
 
 ```xml
 <!-- Good: Proper execution mode handling -->
-<bx:if condition="#thisTag.executionMode IS 'end'#">
+<bx:if thisTag.executionMode eq "end">
     <div class="wrapper">
         #thisTag.generatedContent#
     </div>
@@ -959,19 +1069,34 @@ Components can call other components for powerful composition:
 <!-- <div class="wrapper">#thisTag.generatedContent#</div> -->
 ```
 
-#### 3. Use Descriptive Component Names
+**Script-based components:**
+
+```js
+// Good: Proper execution mode handling
+if ( thisTag.executionMode == "end" ) {
+    writeOutput( '<div class="wrapper">' & thisTag.generatedContent & '</div>' );
+    thisTag.generatedContent = "";
+}
+
+// Avoid: Not checking execution mode (causes double execution)
+// writeOutput( '<div class="wrapper">' & thisTag.generatedContent & '</div>' );
+```
+
+### 3. Use Descriptive Component Names
 
 ```xml
 <!-- Good -->
-<bx:_userProfileCard userId="123" />
-<bx:_productListingGrid products="#variables.products#" />
+<bx:userProfileCard userId="123" />
+<bx:productListingGrid products="#variables.products#" />
 
 <!-- Avoid -->
-<bx:_card data="123" />
-<bx:_list items="#variables.items#" />
+<bx:card data="123" />
+<bx:list items="#variables.items#" />
 ```
 
-#### 4. Document Your Components
+### 4. Document Your Components
+
+**Template-based components:**
 
 ```xml
 <!--
@@ -986,7 +1111,24 @@ Example:
 -->
 ```
 
-#### 5. Minimize Use of `caller` Scope
+**Script-based components:**
+
+```js
+/*
+Component: userProfileCard.bxs
+Description: Displays a user profile with avatar, name, and contact info
+Attributes:
+  - userId (string, required): User's unique identifier
+  - showEmail (boolean, default: true): Whether to show email address
+  - theme (string, default: "light"): Visual theme (light|dark)
+Example:
+  bx:userProfileCard userId="123" showEmail="false" theme="dark";
+*/
+```
+
+### 5. Minimize Use of `caller` Scope
+
+**Template-based components:**
 
 ```xml
 <!-- Good: Self-contained component -->
@@ -994,6 +1136,16 @@ Example:
 
 <!-- Avoid: Reaching into caller scope -->
 <!-- <bx:set variables.data = caller.variables.someData> -->
+```
+
+**Script-based components:**
+
+```js
+// Good: Self-contained component
+bx:param name="attributes.data" type="array" required="true";
+
+// Avoid: Reaching into caller scope
+// variables.data = caller.variables.someData;
 ```
 
 ## Migration from CFML Custom Tags
