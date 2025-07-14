@@ -7,13 +7,13 @@ icon: plug
 
 # Components
 
-BoxLang components are reusable blocks of code that extend the language's capabilities without modifying the parser. They provide a powerful way to create custom language constructs, encapsulate complex logic, and build modular applications.  They are analogous to web components.  Here is a super simple example of a component that outputs a greeting:
+BoxLang components are reusable blocks of code that extend the language's capabilities without modifying the parser. They provide a powerful way to create custom language constructs, encapsulate complex logic, and build modular applications. They are analogous to web components. Here is a super simple example of a component that outputs a greeting:
 
 **Greeting.bxm**
 
 ```xml
 <bx:output>
-    <h1>Hello, #attributes.name ?: "None Passed"#!</h1>
+    <h1>Hello, #attributes.yourname ?: "None Passed"#!</h1>
 </bx:output>
 ```
 
@@ -21,13 +21,13 @@ Now I can call it in my BoxLang script:
 
 ```js
 // In a BoxLang script
-bx:_greeting name="World";
+bx:_greeting yourname="World";
 ```
 
 Or in a BoxLang template:
 
 ```xml
-<bx:_greeting name="World" />
+<bx:_greeting yourname="World">
 ```
 
 This will output:
@@ -69,8 +69,8 @@ bx:_myComponent attribute="value" {
 #### **Template Context:**
 
 ```xml
-<!-- Self-closing -->
-<bx:_myComponent attribute="value" />
+<!-- With no body -->
+<bx:_myComponent attribute="value">
 
 <!-- With body content -->
 <bx:_myComponent attribute="value">
@@ -100,7 +100,7 @@ flowchart TD
 
 ### Core Components
 
-BoxLang ships with many core components that extend the language with framework capabilities.  You can find them in the [reference section.](../boxlang-language/reference/components/)
+BoxLang ships with many core components that extend the language with framework capabilities. You can find them in the [reference section.](../boxlang-language/reference/components/)
 
 ```js
 // HTTP operations
@@ -135,7 +135,7 @@ bx:pdf action="generate" filename="report.pdf" {
 ```
 
 {% hint style="info" %}
-Core and module components are **registered** with the runtime and don't go through the discovery process.  They leverage the core Component Service to achieve this.
+Core and module components are **registered** with the runtime and don't go through the discovery process. They leverage the core Component Service to achieve this.
 {% endhint %}
 
 ## Creating Custom Components
@@ -162,7 +162,7 @@ Usage: <bx:greeting name="Alice" />
 -->
 
 <div class="greeting-card">
-    <h2>Hello, #attributes.name ?: "World"#!</h2>
+    <h2>Hello, #attributes.yourname ?: "World"#!</h2>
     <p>Welcome to our application.</p>
 </div>
 ```
@@ -178,14 +178,14 @@ Usage: bx:greeting name="Alice";
 */
 
 writeOutput( '<div class="greeting-card">' );
-writeOutput( '<h2>Hello, ' & ( attributes.name ?: "World" ) & '!</h2>' );
+writeOutput( '<h2>Hello, ' & ( attributes.yourname ?: "World" ) & '!</h2>' );
 writeOutput( '<p>Welcome to our application.</p>' );
 writeOutput( '</div>' );
 ```
 
 ### Component Input: The `attributes` Scope
 
-All data passed to your component is available in the `attributes` scope. Both template and script-based components can validate and process these attributes.
+All data passed to your component is available in the `attributes` scope. Both template and script-based components can validate and process these attributes. Note that the attribute name `name` is reserved and is only used when invoking components via `bx:component` .
 
 #### Template-based Component with Attributes
 
@@ -194,7 +194,7 @@ All data passed to your component is available in the `attributes` scope. Both t
 
 <!-- Best practice: Parameterize your attributes with validation -->
 <bx:param name="attributes.userId" type="string" required="true">
-<bx:param name="attributes.name" type="string" required="true">
+<bx:param name="attributes.username" type="string" required="true">
 <bx:param name="attributes.email" type="string" required="true">
 <bx:param name="attributes.showAvatar" type="boolean" default="false">
 <bx:param name="attributes.theme" type="string" default="light">
@@ -205,7 +205,7 @@ All data passed to your component is available in the `attributes` scope. Both t
     </bx:if>
 
     <div class="user-info">
-        <h3>#attributes.name#</h3>
+        <h3>#attributes.username#</h3>
         <p class="email">#attributes.email#</p>
     </div>
 </div>
@@ -218,7 +218,7 @@ All data passed to your component is available in the `attributes` scope. Both t
 
 // Best practice: Parameterize your attributes with validation
 bx:param name="attributes.userId" type="string" required="true";
-bx:param name="attributes.name" type="string" required="true";
+bx:param name="attributes.username" type="string" required="true";
 bx:param name="attributes.email" type="string" required="true";
 bx:param name="attributes.showAvatar" type="boolean" default="false";
 bx:param name="attributes.theme" type="string" default="light";
@@ -230,7 +230,7 @@ if ( attributes.showAvatar ) {
 }
 
 writeOutput( '<div class="user-info">' );
-writeOutput( '<h3>' & attributes.name & '</h3>' );
+writeOutput( '<h3>' & attributes.username & '</h3>' );
 writeOutput( '<p class="email">' & attributes.email & '</p>' );
 writeOutput( '</div>' );
 writeOutput( '</div>' );
@@ -309,15 +309,11 @@ Here's an advanced component demonstrating the full execution cycle, shown in bo
 </bx:if>
 
 <bx:if thisTag.executionMode eq "end">
-    <!-- Process any nested content -->
-    #thisTag.generatedContent#
 
     <!-- Closing section markup -->
         </div>
     </section>
 
-    <!-- Clear the content so it's not output again -->
-    <bx:set thisTag.generatedContent = "">
 </bx:if>
 ```
 
@@ -352,15 +348,11 @@ if ( thisTag.executionMode == "start" ) {
 }
 
 if ( thisTag.executionMode == "end" ) {
-    // Process any nested content
-    writeOutput( thisTag.generatedContent );
 
     // Closing section markup
     writeOutput( '</div>' );
     writeOutput( '</section>' );
 
-    // Clear the content so it's not output again
-    thisTag.generatedContent = "";
 }
 ```
 
@@ -448,15 +440,15 @@ During discovery, BoxLang looks for files with these extensions in order:
 
 ```js
 // Basic call
-bx:_component template="greeting" name="Alice";
+bx:_component template="greeting" username="Alice";
 
 // With body content
-bx:_component template="userCard" userId="123" name="John Doe" {
+bx:_component template="userCard" userId="123" username="John Doe" {
     writeOutput( "<p>Additional content here</p>" );
 }
 
 // With relative or absolute paths
-bx:_component template="./components/greeting" name="Alice";
+bx:_component template="./components/greeting" username="Alice";
 bx:_component template="/shared/components/layout" title="My Page";
 ```
 
@@ -464,10 +456,10 @@ bx:_component template="/shared/components/layout" title="My Page";
 
 ```xml
 <!-- Basic call -->
-<bx:_component template="greeting" name="Alice" />
+<bx:_component template="greeting" username="Alice" />
 
 <!-- With body content -->
-<bx:_component template="userCard" userId="123" name="John Doe">
+<bx:_component template="userCard" userId="123" username="John Doe">
     <p>Additional content here</p>
 </bx:_component>
 ```
@@ -482,7 +474,7 @@ BoxLang looks for a component file matching the name after `bx:`:
 // Looks for greeting.bxm, greeting.bxs, etc.
 bx:_greeting name="Alice";
 
-bx:_userCard userId="123" name="John Doe" {
+bx:_userCard userId="123" username="John Doe" {
     writeOutput( "<p>Additional content</p>" );
 }
 ```
@@ -491,9 +483,9 @@ bx:_userCard userId="123" name="John Doe" {
 
 ```xml
 <!-- Looks for greeting.bxm, greeting.bxs, etc. -->
-<bx:_greeting name="Alice" />
+<bx:_greeting username="Alice" />
 
-<bx:_userCard userId="123" name="John Doe">
+<bx:_userCard userId="123" username="John Doe">
     <p>Additional content</p>
 </bx:_userCard>
 ```
@@ -511,7 +503,7 @@ Contains all attributes passed to the component call:
 <bx:param name="attributes.currency" type="string" default="USD">
 
 <div class="product" data-id="#attributes.productId#">
-    <h3>#attributes.name#</h3>
+    <h3>#attributes.username#</h3>
     <bx:if "#attributes.showPrice#">
         <p class="price">#attributes.price# #attributes.currency#</p>
     </bx:if>
@@ -578,10 +570,8 @@ Manages component execution and content:
 </bx:if>
 
 <bx:if thisTag.executionMode eq "end">
-    #thisTag.generatedContent#
         </div>
     </div>
-    <bx:set thisTag.generatedContent = "">
 </bx:if>
 ```
 
@@ -635,8 +625,6 @@ bx:associate dataCollection="collectionName";
 </bx:if>
 
 <bx:if thisTag.executionMode eq "end">
-    <!-- Process the nested content to collect menu items -->
-    #thisTag.generatedContent#
 
     <!-- Now render all associated menu items -->
     <bx:if "#isDefined( 'thisTag.menuItems' ) AND isArray( thisTag.menuItems )#">
@@ -654,7 +642,6 @@ bx:associate dataCollection="collectionName";
         </ul>
     </nav>
 
-    <bx:set thisTag.generatedContent = "">
 </bx:if>
 ```
 
@@ -704,15 +691,13 @@ bx:associate dataCollection="collectionName";
 </bx:if>
 
 <bx:if thisTag.executionMode eq "end">
-    <!-- Process nested content to collect form fields -->
-    #thisTag.generatedContent#
 
     <!-- Render all associated form fields -->
     <bx:if "#isDefined( 'thisTag.formFields' ) AND isArray( thisTag.formFields )#">
         <bx:loop array="#thisTag.formFields#" index="field">
             <div class="form-group field-type-#field.type#">
                 <bx:if "#len( field.label ?: '' )#">
-                    <label for="#field.name#" class="form-label">
+                    <label for="#field.fieldname#" class="form-label">
                         #field.label#
                         <bx:if "#field.required#">
                             <span class="required">*</span>
@@ -723,7 +708,7 @@ bx:associate dataCollection="collectionName";
                 <bx:switch expression="#field.type#">
                     <bx:case value="text,email,password,number,tel,url">
                         <input type="#field.type#"
-                               name="#field.name#"
+                               name="#field.fieldname#"
                                id="#field.name#"
                                value="#field.value ?: ''#"
                                class="form-control #field.class ?: ''#"
@@ -732,8 +717,8 @@ bx:associate dataCollection="collectionName";
                     </bx:case>
 
                     <bx:case value="textarea">
-                        <textarea name="#field.name#"
-                                  id="#field.name#"
+                        <textarea name="#field.fieldname#"
+                                  id="#field.fieldname#"
                                   class="form-control #field.class ?: ''#"
                                   #field.required ? 'required' : ''#
                                   #len( field.placeholder ?: '' ) ? 'placeholder="' & field.placeholder & '"' : ''#
@@ -741,8 +726,8 @@ bx:associate dataCollection="collectionName";
                     </bx:case>
 
                     <bx:case value="select">
-                        <select name="#field.name#"
-                                id="#field.name#"
+                        <select name="#field.fieldname#"
+                                id="#field.fieldname#"
                                 class="form-control #field.class ?: ''#"
                                 #field.required ? 'required' : ''#>
                             <bx:if "#len( field.placeholder ?: '' )#">
@@ -782,7 +767,7 @@ bx:associate dataCollection="collectionName";
 
     </form>
 
-    <bx:set thisTag.generatedContent = "">
+
 </bx:if>
 ```
 
@@ -792,7 +777,7 @@ bx:associate dataCollection="collectionName";
 
 ```xml
 <!-- File: components/formField.bxm -->
-<bx:param name="attributes.name" type="string" required="true">
+<bx:param name="attributes.fieldname" type="string" required="true">
 <bx:param name="attributes.type" type="string" default="text">
 <bx:param name="attributes.label" type="string" default="">
 <bx:param name="attributes.value" type="string" default="">
@@ -801,15 +786,6 @@ bx:associate dataCollection="collectionName";
 <bx:param name="attributes.class" type="string" default="">
 <bx:param name="attributes.helpText" type="string" default="">
 <bx:param name="attributes.rows" type="numeric" default="4">
-
-<!-- For select fields, collect options if this is a container -->
-<bx:if "#attributes.type EQ 'select' AND thisTag.hasEndTag#">
-    <bx:if thisTag.executionMode eq "end">
-        <!-- Process nested options -->
-        #thisTag.generatedContent#
-        <bx:set thisTag.generatedContent = "">
-    </bx:if>
-</bx:if>
 
 <!-- Associate this field data with the parent form -->
 <bx:associate dataCollection="formFields" />
@@ -843,19 +819,19 @@ bx:associate dataCollection="collectionName";
 
 ```xml
 <bx:_form action="/contact/submit" method="POST" id="contactForm">
-    <bx:_formField name="firstName"
+    <bx:_formField fieldname="firstName"
                   type="text"
                   label="First Name"
                   required="true"
                   placeholder="Enter your first name" />
 
-    <bx:_formField name="email"
+    <bx:_formField fieldname="email"
                   type="email"
                   label="Email Address"
                   required="true"
                   helpText="We'll never share your email" />
 
-    <bx:_formField name="country"
+    <bx:_formField fieldname="country"
                   type="select"
                   label="Country"
                   required="true"
@@ -865,7 +841,7 @@ bx:associate dataCollection="collectionName";
         <bx:_formOption value="uk" label="United Kingdom" />
     </bx:_formField>
 
-    <bx:_formField name="message"
+    <bx:_formField fieldname="message"
                   type="textarea"
                   label="Message"
                   placeholder="Enter your message"
@@ -912,7 +888,6 @@ You can have multiple levels of association for complex hierarchies.
 </bx:if>
 
 <bx:if thisTag.executionMode eq "end">
-    #thisTag.generatedContent#
 
     <!-- Render tab navigation -->
     <bx:if "#isDefined( 'thisTag.tabs' ) AND isArray( thisTag.tabs )#">
@@ -942,7 +917,6 @@ You can have multiple levels of association for complex hierarchies.
 
     </div>
 
-    <bx:set thisTag.generatedContent = "">
 </bx:if>
 ```
 
@@ -1007,15 +981,15 @@ Components can call other components for powerful composition:
     <html>
     <head>
         <title>#attributes.title#</title>
-        <bx:stylesheet href="/css/main.css" />
+        <bx:stylesheet href="/css/main.css" >
     </head>
     <body>
-        <bx:header siteName="My Site" />
+        <bx:_header siteName="My Site" >
 
         <div class="main-container">
             <bx:if "#attributes.showSidebar#">
                 <aside class="sidebar">
-                    <bx:navigation />
+                    <bx:_navigation >
                 </aside>
             </bx:if>
 
@@ -1023,14 +997,14 @@ Components can call other components for powerful composition:
 </bx:if>
 
 <bx:if thisTag.executionMode eq "end">
-    #thisTag.generatedContent#
+
             </main>
         </div>
 
-        <bx:footer />
+        <bx:_footer />
     </body>
     </html>
-    <bx:set thisTag.generatedContent = "">
+
 </bx:if>
 ```
 
@@ -1079,37 +1053,7 @@ bx:param name="attributes.maxItems" type="numeric" default="10";
 // writeOutput( "User: " & attributes.userId );
 ```
 
-### 2. Handle Execution Modes Properly
-
-**Template-based components:**
-
-```xml
-<!-- Good: Proper execution mode handling -->
-<bx:if thisTag.executionMode eq "end">
-    <div class="wrapper">
-        #thisTag.generatedContent#
-    </div>
-    <bx:set thisTag.generatedContent = "">
-</bx:if>
-
-<!-- Avoid: Not checking execution mode (causes double execution) -->
-<!-- <div class="wrapper">#thisTag.generatedContent#</div> -->
-```
-
-**Script-based components:**
-
-```js
-// Good: Proper execution mode handling
-if ( thisTag.executionMode == "end" ) {
-    writeOutput( '<div class="wrapper">' & thisTag.generatedContent & '</div>' );
-    thisTag.generatedContent = "";
-}
-
-// Avoid: Not checking execution mode (causes double execution)
-// writeOutput( '<div class="wrapper">' & thisTag.generatedContent & '</div>' );
-```
-
-### 3. Use Descriptive Component Names
+### 2. Use Descriptive Component Names
 
 ```xml
 <!-- Good -->
@@ -1121,10 +1065,11 @@ if ( thisTag.executionMode == "end" ) {
 <bx:_list items="#variables.items#" />
 ```
 
-### 4. Document Your Components
+### 3. Document Your Components
 
 **Template-based components:**
-```xml
+
+````xml
 <!--
 Component: userProfileCard.bxm
 Description: Displays a user profile with avatar, name, and contact info
@@ -1145,7 +1090,7 @@ Attributes:
 Example:
   <bx:userProfileCard userId="123" showEmail="false" theme="dark" />
 -->
-```
+````
 
 **Script-based components:**
 
@@ -1162,7 +1107,7 @@ Example:
 */
 ```
 
-### 5. Minimize Use of `caller` Scope
+### 4. Minimize Use of `caller` Scope
 
 **Template-based components:**
 
