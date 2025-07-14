@@ -7,7 +7,36 @@ icon: plug
 
 # Components
 
-BoxLang components are reusable blocks of code that extend the language's capabilities without modifying the parser. They provide a powerful way to create custom language constructs, encapsulate complex logic, and build modular applications.  They are analogous to web components.
+BoxLang components are reusable blocks of code that extend the language's capabilities without modifying the parser. They provide a powerful way to create custom language constructs, encapsulate complex logic, and build modular applications.  They are analogous to web components.  Here is a super simple example of a component that outputs a greeting:
+
+**Greeting.bxm**
+
+```xml
+<bx:output>
+    <h1>Hello, #attributes.name ?: "None Passed"#!</h1>
+</bx:output>
+```
+
+Now I can call it in my BoxLang script:
+
+```js
+// In a BoxLang script
+bx:_greeting name="World";
+```
+
+Or in a BoxLang template:
+
+```xml
+<bx:_greeting name="World" />
+```
+
+This will output:
+
+```html
+<h1>Hello, World!</h1>
+```
+
+This simple example illustrates how components allow you to encapsulate functionality and reuse it across your BoxLang applications. Components can be as simple or complex as needed, and they can include attributes, logic, and even nested content.
 
 ## Why Components Matter
 
