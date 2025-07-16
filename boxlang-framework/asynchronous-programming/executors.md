@@ -276,13 +276,13 @@ if ( stats.keyExists( "stealCount" ) ) {
 `ExecutorRecord` includes a built-in task factory as well for complex scheduling.  These methods will give you back a BoxLang `ScheduledTask` instance, which you can configure and start manually or attach it to a BoxLang `Scheduler`.
 
 ```boxlang
-var executor = executorGet( "scheduled-tasks" );
+executor = executorGet( "scheduled-tasks" );
 
 // Create a named task (not yet executing)
-var cleanupTask = executor.newTask( "daily-cleanup" );
+cleanupTask = executor.newTask( "daily-cleanup" );
 
 // Create an auto-named task
-var monitoringTask = executor.newTask();
+monitoringTask = executor.newTask();
 
 // Configure and start the task
 cleanupTask
@@ -297,7 +297,7 @@ cleanupTask
 ### 🛡️ Enhanced Shutdown Management
 
 ```boxlang
-var executor = executorGet( "my-custom-executor" );
+executor = executorGet( "my-custom-executor" );
 
 // Graceful shutdown with timeout
 executor.shutdownAndAwaitTermination( 30, "seconds" );
@@ -306,7 +306,7 @@ executor.shutdownAndAwaitTermination( 30, "seconds" );
 executor.shutdownQuiet();
 
 // Check shutdown status
-var stats = executor.getStats();
+stats = executor.getStats();
 if ( stats.isShutdown ) {
     writeOutput( "Executor is shutdown" );
 }
@@ -361,11 +361,11 @@ for ( name in allExecutors ) {
 
 ```boxlang
 // ❌ Direct executor scheduling (basic)
-var executor = executorGet( "scheduled-tasks" );
+executor = executorGet( "scheduled-tasks" );
 executor.schedule( task, 5, "seconds" );
 
 // ✅ BoxLang Scheduler (recommended)
-var scheduler = new Scheduler( "MyScheduler" );
+scheduler = new Scheduler( "MyScheduler" );
 scheduler.task( "cleanup" )
     .call( () => cleanupTempFiles() )
     .every( 1, "hours" )
@@ -386,158 +386,158 @@ scheduler.task( "cleanup" )
 
 ```boxlang
 // Get the default I/O executor (returns ExecutorRecord)
-var ioExecutor = executorGet();
+ioExecutor = executorGet()
 
 // Create a custom executor for CPU tasks (returns ExecutorRecord)
-var cpuExecutor = executorNew( "heavy-cpu", "fixed", 4 );
+cpuExecutor = executorNew( "heavy-cpu", "fixed", 4 )
 
 // Check executor status using ExecutorRecord methods
 if ( executorHas( "heavy-cpu" ) ) {
-    var stats = cpuExecutor.getStats();
-    writeOutput( "Active threads: #stats.activeCount#" );
-    writeOutput( "Pool size: #stats.poolSize#" );
-    writeOutput( "Completed tasks: #stats.completedTaskCount#" );
+    stats = cpuExecutor.getStats()
+    writeOutput( "Active threads: #stats.activeCount#" )
+    writeOutput( "Pool size: #stats.poolSize#" )
+    writeOutput( "Completed tasks: #stats.completedTaskCount#" )
 }
 
 // List all available executors
-var allExecutors = executorList();
-writeDump( allExecutors );
+allExecutors = executorList()
+writeDump( allExecutors )
 
 // Always shutdown custom executors when done
-cpuExecutor.shutdownAndAwaitTermination( 30, "seconds" );
+cpuExecutor.shutdownAndAwaitTermination( 30, "seconds" )
 ```
 
 ### ⚡ Asynchronous Task Execution with Error Handling
 
 ```boxlang
 // Submit async tasks to different executors
-var ioExecutor = executorGet( "io-tasks" );
-var cpuExecutor = executorGet( "cpu-tasks" );
+ioExecutor = executorGet( "io-tasks" )
+cpuExecutor = executorGet( "cpu-tasks" )
 
 try {
     // I/O bound task (database query)
-    var dbFuture = ioExecutor.submit( () => {
-        log( text: "Starting database query", type: "Information", log: "async" );
-        var result = queryExecute( "SELECT * FROM users WHERE active = ?", [ true ] );
-        log( text: "Database query completed: #result.recordCount# records", type: "Information", log: "async" );
-        return result;
-    } );
+    dbFuture = ioExecutor.submit( () => {
+        log( text: "Starting database query", type: "Information", log: "async" )
+        result = queryExecute( "SELECT * FROM users WHERE active = ?", [ true ] )
+        log( text: "Database query completed: #result.recordCount# records", type: "Information", log: "async" )
+        return result
+    } )
 
     // CPU bound task (heavy computation)
-    var mathFuture = cpuExecutor.submit( () => {
-        log( text: "Starting prime calculation", type: "Information", log: "async" );
-        var primes = calculatePrimes( 1000000 );
-        log( text: "Prime calculation completed: #arrayLen( primes )# primes found", type: "Information", log: "async" );
-        return primes;
-    } );
+    mathFuture = cpuExecutor.submit( () => {
+        log( text: "Starting prime calculation", type: "Information", log: "async" )
+        primes = calculatePrimes( 1000000 )
+        log( text: "Prime calculation completed: #arrayLen( primes )# primes found", type: "Information", log: "async" )
+        return primes
+    } )
 
     // Wait for results with timeout
-    var users = dbFuture.get( 5000 ); // 5 second timeout
-    var primes = mathFuture.get();
+    users = dbFuture.get( 5000 ) // 5 second timeout
+    primes = mathFuture.get()
 
-    writeOutput( "Found #users.recordCount# users and #arrayLen( primes )# primes" );
+    writeOutput( "Found #users.recordCount# users and #arrayLen( primes )# primes" )
 
 } catch ( any e ) {
-    log( text: "Task execution failed: #e.message#", type: "Error", log: "async" );
-    rethrow;
+    log( text: "Task execution failed: #e.message#", type: "Error", log: "async" )
+    rethrow
 }
 
 // Monitor executor performance
-var ioStats = ioExecutor.getStats();
-var cpuStats = cpuExecutor.getStats();
+ioStats = ioExecutor.getStats()
+cpuStats = cpuExecutor.getStats()
 
-writeOutput( "I/O Executor - Active: #ioStats.activeCount#, Completed: #ioStats.completedTaskCount#" );
-writeOutput( "CPU Executor - Active: #cpuStats.activeCount#, Pool Size: #cpuStats.poolSize#" );
+writeOutput( "I/O Executor - Active: #ioStats.activeCount#, Completed: #ioStats.completedTaskCount#" )
+writeOutput( "CPU Executor - Active: #cpuStats.activeCount#, Pool Size: #cpuStats.poolSize#" )
 ```
 
 ### ⏰ Advanced Scheduled Task Management
 
 ```boxlang
 // Get the scheduled executor
-var scheduler = executorGet( "scheduled-tasks" );
+scheduler = executorGet( "scheduled-tasks" )
 
 // Create a named task for better tracking
-var cleanupTask = scheduler.newTask( "temp-file-cleanup" );
+cleanupTask = scheduler.newTask( "temp-file-cleanup" )
 
 // Configure the task but don't start it yet
 cleanupTask.call( () => {
-    log( text: "Starting temp file cleanup", type: "Information", log: "async" );
+    log( text: "Starting temp file cleanup", type: "Information", log: "async" )
 
-    var filesDeleted = cleanupTempFiles();
+    filesDeleted = cleanupTempFiles()
 
-    log( text: "Cleanup completed: #filesDeleted# files deleted", type: "Information", log: "async" );
-    return filesDeleted;
-} );
+    log( text: "Cleanup completed: #filesDeleted# files deleted", type: "Information", log: "async" )
+    return filesDeleted
+} )
 
 // Start the task to run every hour
-cleanupTask.every( 1, "hours" ).start();
+cleanupTask.every( 1, "hours" ).start()
 
 // Schedule a one-time delayed task
-var healthCheckTask = scheduler.newTask( "health-check" );
+healthCheckTask = scheduler.newTask( "health-check" )
 healthCheckTask.call( () => {
-    var status = performHealthCheck();
-    log( text: "Health check completed: #status#", type: "Information", log: "async" );
-    return status;
-} );
+    status = performHealthCheck()
+    log( text: "Health check completed: #status#", type: "Information", log: "async" )
+    return status
+} )
 
 // Run once after 30 seconds
-healthCheckTask.in( 30, "seconds" ).start();
+healthCheckTask.in( 30, "seconds" ).start()
 
 // Monitor scheduled tasks
-var stats = scheduler.getStats();
-writeOutput( "Scheduled tasks - Active: #stats.activeCount#, Queue size: #stats.taskCount#" );
+stats = scheduler.getStats()
+writeOutput( "Scheduled tasks - Active: #stats.activeCount#, Queue size: #stats.taskCount#" )
 ```
 
 ### 🔄 Parallel Processing with Work Stealing
 
 ```boxlang
 // Create a work-stealing executor for parallel processing
-var parallelExecutor = executorNew( "parallel-processor", "work_stealing", 8 );
+parallelExecutor = executorNew( "parallel-processor", "work_stealing", 8 )
 
 try {
-    var largeDataset = generateLargeDataset( 10000 ); // 10,000 items
-    var chunkSize = 100;
-    var futures = [];
+    largeDataset = generateLargeDataset( 10000 ) // 10,000 items
+    chunkSize = 100
+    futures = []
 
-    log( text: "Starting parallel processing of #arrayLen( largeDataset )# items", type: "Information", log: "async" );
+    log( text: "Starting parallel processing of #arrayLen( largeDataset )# items", type: "Information", log: "async" )
 
     // Split work across multiple threads
-    for ( var i = 1; i <= arrayLen( largeDataset ); i += chunkSize ) {
-        var chunk = arraySlice( largeDataset, i, min( i + chunkSize - 1, arrayLen( largeDataset ) ) );
+    for ( i = 1 i <= arrayLen( largeDataset ) i += chunkSize ) {
+        chunk = arraySlice( largeDataset, i, min( i + chunkSize - 1, arrayLen( largeDataset ) ) )
 
         futures.append( parallelExecutor.submit( () => {
-            var processedChunk = processDataChunk( chunk );
-            log( text: "Processed chunk of #arrayLen( chunk )# items", type: "Debug", log: "async" );
-            return processedChunk;
-        } ) );
+            processedChunk = processDataChunk( chunk )
+            log( text: "Processed chunk of #arrayLen( chunk )# items", type: "Debug", log: "async" )
+            return processedChunk
+        } ) )
     }
 
     // Collect all results
-    var results = [];
-    for ( var future in futures ) {
+    results = []
+    for ( future in futures ) {
         try {
-            results.append( future.get( 60000 ) ); // 60 second timeout per chunk
+            results.append( future.get( 60000 ) ) // 60 second timeout per chunk
         } catch ( any e ) {
-            log( text: "Chunk processing failed: #e.message#", type: "Error", log: "async" );
+            log( text: "Chunk processing failed: #e.message#", type: "Error", log: "async" )
         }
     }
 
-    log( text: "Parallel processing completed: #arrayLen( results )# chunks processed", type: "Information", log: "async" );
+    log( text: "Parallel processing completed: #arrayLen( results )# chunks processed", type: "Information", log: "async" )
 
     // Monitor work stealing performance
-    var stats = parallelExecutor.getStats();
+    stats = parallelExecutor.getStats()
     if ( stats.keyExists( "stealCount" ) ) {
-        writeOutput( "Work stealing efficiency: #stats.stealCount# steals performed" );
+        writeOutput( "Work stealing efficiency: #stats.stealCount# steals performed" )
     }
 
 } catch ( any e ) {
-    log( text: "Parallel processing failed: #e.message#", type: "Error", log: "async" );
-    rethrow;
+    log( text: "Parallel processing failed: #e.message#", type: "Error", log: "async" )
+    rethrow
 } finally {
     // CRITICAL: Always shutdown custom executors
     // Remember: Once shutdown, the executor cannot be restarted!
-    parallelExecutor.shutdownAndAwaitTermination( 30, "seconds" );
-    log( text: "Parallel processor shutdown completed", type: "Information", log: "async" );
+    parallelExecutor.shutdownAndAwaitTermination( 30, "seconds" )
+    log( text: "Parallel processor shutdown completed", type: "Information", log: "async" )
 }
 ```
 
@@ -545,52 +545,52 @@ try {
 
 ```boxlang
 // Use virtual threads for I/O-intensive batch processing
-var batchProcessor = executorNew( "batch-io-processor", "virtual" );
+batchProcessor = executorNew( "batch-io-processor", "virtual" )
 
 try {
-    var apiEndpoints = [
+    apiEndpoints = [
         "https://api1.example.com/data",
         "https://api2.example.com/data",
         "https://api3.example.com/data"
         // ... hundreds more endpoints
-    ];
+    ]
 
-    log( text: "Starting batch I/O processing with virtual threads", type: "Information", log: "async" );
+    log( text: "Starting batch I/O processing with virtual threads", type: "Information", log: "async" )
 
-    var futures = [];
+    futures = []
 
     // Submit hundreds/thousands of I/O tasks - virtual threads handle it easily
-    for ( var endpoint in apiEndpoints ) {
+    for ( endpoint in apiEndpoints ) {
         futures.append( batchProcessor.submit( () => {
             try {
-                var result = httpGet( endpoint );
-                log( text: "API call completed: #endpoint#", type: "Debug", log: "async" );
-                return result;
+                result = httpGet( endpoint )
+                log( text: "API call completed: #endpoint#", type: "Debug", log: "async" )
+                return result
             } catch ( any e ) {
-                log( text: "API call failed for #endpoint#: #e.message#", type: "Warning", log: "async" );
-                return { error: e.message, endpoint: endpoint };
+                log( text: "API call failed for #endpoint#: #e.message#", type: "Warning", log: "async" )
+                return { error: e.message, endpoint: endpoint }
             }
-        } ) );
+        } ) )
     }
 
     // Process results as they complete
-    var successCount = 0;
-    var errorCount = 0;
+    successCount = 0
+    errorCount = 0
 
-    for ( var future in futures ) {
-        var result = future.get( 30000 ); // 30 second timeout per API call
+    for ( future in futures ) {
+        result = future.get( 30000 ) // 30 second timeout per API call
         if ( result.keyExists( "error" ) ) {
-            errorCount++;
+            errorCount++
         } else {
-            successCount++;
+            successCount++
         }
     }
 
-    log( text: "Batch processing completed - Success: #successCount#, Errors: #errorCount#", type: "Information", log: "async" );
+    log( text: "Batch processing completed - Success: #successCount#, Errors: #errorCount#", type: "Information", log: "async" )
 
 } finally {
     // Virtual thread executors shutdown quickly
-    batchProcessor.shutdownAndAwaitTermination( 10, "seconds" );
+    batchProcessor.shutdownAndAwaitTermination( 10, "seconds" )
 }
 ```
 
@@ -625,10 +625,10 @@ try {
 ```boxlang
 // Regular performance monitoring
 function monitorExecutorPerformance() {
-    var allStats = executorStatus(); // Gets all executor stats
+    allStats = executorStatus() // Gets all executor stats
 
-    for ( var executorName in allStats ) {
-        var stats = allStats[ executorName ];
+    for ( executorName in allStats ) {
+        stats = allStats[ executorName ]
 
         // Check for performance issues
         if ( stats.activeCount > stats.maximumPoolSize * 0.8 ) {
@@ -636,29 +636,29 @@ function monitorExecutorPerformance() {
                 text: "High thread utilization in #executorName#: #stats.activeCount#/#stats.maximumPoolSize#",
                 type: "Warning",
                 log: "async"
-            );
+            )
         }
 
         // Monitor task completion rate
         if ( stats.keyExists( "completedTaskCount" ) && stats.completedTaskCount > 0 ) {
-            var efficiency = stats.completedTaskCount / stats.taskCount;
+            efficiency = stats.completedTaskCount / stats.taskCount
             if ( efficiency < 0.7 ) {
                 log(
                     text: "Low task completion efficiency in #executorName#: #efficiency * 100#%",
                     type: "Warning",
                     log: "async"
-                );
+                )
             }
         }
     }
 }
 
 // Schedule monitoring to run every 5 minutes
-var monitoringTask = executorGet( "scheduled-tasks" ).newTask( "performance-monitor" );
+monitoringTask = executorGet( "scheduled-tasks" ).newTask( "performance-monitor" )
 monitoringTask
     .call( monitorExecutorPerformance )
     .every( 5, "minutes" )
-    .start();
+    .start()
 ```
 
 ### 🛡️ Error Handling & Recovery
@@ -666,18 +666,18 @@ monitoringTask
 ```boxlang
 // Robust error handling pattern
 function executeWithRetry( task, maxRetries = 3, executorName = "io-tasks" ) {
-    var executor = executorGet( executorName );
-    var attempt = 0;
+    executor = executorGet( executorName )
+    attempt = 0
 
     while ( attempt < maxRetries ) {
         try {
-            attempt++;
+            attempt++
 
-            var future = executor.submit( task );
-            var result = future.get( 30000 ); // 30 second timeout
+            future = executor.submit( task )
+            result = future.get( 30000 ) // 30 second timeout
 
-            log( text: "Task completed successfully on attempt #attempt#", type: "Information", log: "async" );
-            return result;
+            log( text: "Task completed successfully on attempt #attempt#", type: "Information", log: "async" )
+            return result
 
         } catch ( any e ) {
             log( text: "Task failed on attempt #attempt#: #e.message#", type: "Warning", log: "async" );
@@ -694,7 +694,7 @@ function executeWithRetry( task, maxRetries = 3, executorName = "io-tasks" ) {
 }
 
 // Usage
-var result = executeWithRetry( () => {
+result = executeWithRetry( () => {
     return riskyDatabaseOperation();
 } );
 ```
@@ -706,15 +706,15 @@ var result = executeWithRetry( () => {
 function applicationShutdown() {
     log( text: "Starting application shutdown", type: "Information", log: "async" );
 
-    var customExecutors = [ "batch-processor", "parallel-work", "custom-scheduler" ];
+    customExecutors = [ "batch-processor", "parallel-work", "custom-scheduler" ];
 
-    for ( var executorName in customExecutors ) {
+    for ( executorName in customExecutors ) {
         if ( executorHas( executorName ) ) {
             log( text: "Shutting down executor: #executorName#", type: "Information", log: "async" );
 
             try {
                 // Attempt graceful shutdown first
-                var success = executorShutdown( executorName, false, 30 );
+                success = executorShutdown( executorName, false, 30 );
 
                 if ( !success ) {
                     log( text: "Graceful shutdown failed for #executorName#, forcing shutdown", type: "Warning", log: "async" );
@@ -746,7 +746,7 @@ function applicationShutdown() {
 ```boxlang
 // 1. Simple async task with error handling
 try {
-    var future = executorGet().submit( () => {
+    future = executorGet().submit( () => {
         log( text: "Starting expensive operation", type: "Information", log: "async" );
         return expensiveOperation();
     } );
@@ -755,7 +755,7 @@ try {
     doOtherWork();
 
     // 3. Get result when ready with timeout
-    var result = future.get( 10000 ); // 10 second timeout
+    result = future.get( 10000 ); // 10 second timeout
 
     // 4. Handle the result
     if ( !isNull( result ) ) {
@@ -776,19 +776,19 @@ This template covers 80% of use cases - simple, effective, and leverages BoxLang
 ### 📊 Statistical Analysis
 
 ```boxlang
-var executor = executorGet( "cpu-tasks" );
-var stats = executor.getStats();
+executor = executorGet( "cpu-tasks" );
+stats = executor.getStats();
 
 // Analyze executor health
-var threadUtilization = stats.activeCount / stats.maximumPoolSize;
-var taskThroughput = stats.completedTaskCount / stats.taskCount;
+threadUtilization = stats.activeCount / stats.maximumPoolSize;
+taskThroughput = stats.completedTaskCount / stats.taskCount;
 
 if ( threadUtilization > 0.9 ) {
     log( text: "Executor near capacity: #threadUtilization * 100#% utilization", type: "Warning", log: "async" );
 }
 
 // Create performance report
-var report = {
+report = {
     "executorName": stats.name,
     "type": stats.type,
     "threadUtilization": threadUtilization,
@@ -800,16 +800,16 @@ var report = {
 ### 🎯 Convenient Submission Methods
 
 ```boxlang
-var executor = executorGet( "io-tasks" );
+executor = executorGet( "io-tasks" );
 
 // Submit and get result immediately (blocks until complete)
-var result = executor.submitAndGet( () => {
+result = executor.submitAndGet( () => {
     return databaseQuery();
 } );
 
 // Submit with automatic error handling
 try {
-    var data = executor.submitAndGet( () => {
+    data = executor.submitAndGet( () => {
         if ( Math.random() > 0.5 ) {
             throw new Exception( "Simulated failure" );
         }
