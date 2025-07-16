@@ -1,6 +1,6 @@
 ---
-icon: list-tree
 description: Here you can configure the global thread executors in BoxLang.
+icon: list-tree
 ---
 
 # Executors
@@ -12,17 +12,27 @@ BoxLang allows you to register named executors globally. The JSON object key is 
 // Global Executors for the runtime
 // These are managed by the AsyncService and registered upon startup
 // The name of the executor is the key and the value is a struct of executor settings
-// Types are: cached, fixed, fork_join, scheduled, single, virtual, work_stealing
+// Types are: cached, fixed, fork_join, scheduled, single, virtual, work_stealing`
 // The `threads` property is the number of threads to use in the executor. The default is 20
 // Some executors do not take in a `threads` property
 "executors": {
-	"boxlang-tasks": {
-		"type": "scheduled",
-		"threads": 20
+	// Use this for IO bound tasks, does not support scheduling
+	// This is also the default when requestion an executor service via executorGet()
+	"io-tasks": {
+		"type": "virtual",
+		"description": "Unlimited IO bound tasks using Java Virtual Threads"
 	},
-	"cacheservice-tasks": {
+	// Use this for CPU bound tasks, supports scheduling
+	"cpu-tasks": {
 		"type": "scheduled",
-		"threads": 20
+		"threads": 20,
+		"description": "CPU bound tasks using a fixed thread pool with scheduling capabilities"
+	},
+	// Used for all scheduled tasks in the runtime
+	"scheduled-tasks": {
+		"type": "scheduled",
+		"threads": 20,
+		"description": "Scheduled tasks using a fixed thread pool with scheduling capabilities"
 	}
 },
 ```

@@ -1,16 +1,8 @@
 ---
-icon: waves-sine
+icon: diagram-sankey
 ---
 
-# Asynchronous Programming
-
-We already covered basic threading in our core BoxLang section. In this section, we will cover the usage of asynchronous programming via futures and the `runAsync()` function built into BoxLang.
-
-> A Future is an eventual result of an asynchronous operation.
-
-{% embed url="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/Future.html" %}
-Java Future JDK (Useful Reference)
-{% endembed %}
+# Async Pipelines & BoxFutures
 
 ## runAsync()
 
