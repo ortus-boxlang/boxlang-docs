@@ -632,7 +632,7 @@ for( schedulerName in allSchedulers ) {
 }
 ```
 
-## schedulerList()
+## 📋 schedulerList()
 
 List all the scheduler names registered in the system.
 
@@ -649,7 +649,7 @@ schedulerNames = schedulerList();
 println( "Available schedulers: " & schedulerNames.toString() );
 ```
 
-## schedulerShutdown()
+## 🛑 schedulerShutdown()
 
 Shutdown a scheduler by name gracefully or forcefully.
 
@@ -672,7 +672,7 @@ schedulerShutdown( "MyScheduler" );
 schedulerShutdown( "MyScheduler", true, 60 );
 ```
 
-## schedulerRestart()
+## 🔄 schedulerRestart()
 
 Restart a scheduler by name (shutdown then startup).
 
@@ -695,7 +695,7 @@ schedulerRestart( "MyScheduler" );
 schedulerRestart( "MyScheduler", true, 60 );
 ```
 
-## schedulerStats()
+## 📊 schedulerStats()
 
 Get statistics for all schedulers or a specific scheduler.
 
@@ -732,7 +732,7 @@ for( taskName in myStats ) {
 }
 ```
 
-## Example: Dynamic Scheduler Management
+## 💡 Example: Dynamic Scheduler Management
 
 Here's a practical example of how you might use these BIFs to manage schedulers dynamically:
 
@@ -760,7 +760,7 @@ if( someCondition ) {
 }
 ```
 
-## Task Records
+## 📄 Task Records
 
 When tasks are registered in a scheduler, they are wrapped in a `TaskRecord` object that contains metadata about the task's lifecycle and execution state. You can access task records through the scheduler:
 
@@ -797,7 +797,7 @@ if( taskRecord.error ) {
 | `inetHost` | The hostname where the task is running |
 | `localIp` | The IP address of the server |
 
-## Best Practices
+## 💎 Best Practices
 
 Here are some best practices when working with BoxLang scheduled tasks:
 
