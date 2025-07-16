@@ -3,15 +3,15 @@ description: Human, Fluent, Functional Scheduled Tasks with BoxLang
 icon: calendars
 ---
 
-# Introduction
+# 🎯 Introduction
 
 The BoxLang async framework provides a powerful and flexible way to schedule tasks and workloads in your applications. Whether you need to run tasks at specific intervals, one-off tasks, or manage complex scheduling scenarios, the async package has you covered.  It allows you to schedule tasks using a human-readable DSL (Domain Specific Language) that is both fluent and functional. This makes it easy to define when and how tasks should run, without getting bogged down in complex configurations.
 
 You have three main approaches to scheduling tasks in BoxLang:
 
-1. **Scheduler Approach**: Create a scheduler and register tasks in it
-2. **Scheduled Executor Approach**: Create a `ScheduledExecutor` and send task objects into it
-3. **CLI Runner Approach**: Use the `boxlang schedule {path.to.Scheduler.bx}` command to run tasks from the CLI
+1. **📋 Scheduler Approach**: Create a scheduler and register tasks in it
+2. **⚡ Scheduled Executor Approach**: Create a `ScheduledExecutor` and send task objects into it
+3. **🖥️ CLI Runner Approach**: Use the `boxlang schedule {path.to.Scheduler.bx}` command to run tasks from the CLI
 
 {% hint style="success" %}
 With our scheduled tasks you can run either one-off tasks or periodically tasks.
@@ -19,11 +19,11 @@ With our scheduled tasks you can run either one-off tasks or periodically tasks.
 
 The way to do executor tasks is documented in our [Executors Section](executors.md), this guide focuses on the scheduler runtime and CLI runner approaches.
 
-# Scheduler Service
+# 🏗️ Scheduler Service
 
 BoxLang provides a `SchedulerService` that manages all the global, application, and module schedulers.  There is really no need to interact with it, but if you want to you can access it via the `boxRuntime().getSchedulerService()` method. This service is responsible for managing all the schedulers in your application, including starting and stopping them, and providing access to the registered tasks.
 
-# Configuration
+# ⚙️ Configuration
 
 The BoxLang configuration file located at `{BoxLangHome}/config/boxlang.json` contains all the necessary configurations and tunings for the scheduled tasks framework.  Here are the main configurations you can set:
 
@@ -70,7 +70,7 @@ The `schedulers` property is an array of BoxLang schedulers to register upon sta
 
 The `tasks` property is an object that defines the tasks to register upon startup. Each task is defined by a unique name and can have many properties.  This is an experimental feature that is coming soon.
 
-# Scheduler Class
+# 📋 Scheduler Class
 
 A `Scheduler` is a self-contained class that can track multiple tasks for you and give you enhanced and fluent approaches to scheduling. It is a powerful tool that allows you to register tasks, configure them, and manage their execution. Each scheduler class inherits from the `BaseScheduler` Java class, giving you access to all of its powerful methods and capabilities.
 
@@ -203,11 +203,11 @@ Your scheduler class has access to all the methods from the `BaseScheduler` clas
 | `getRegisteredTasks()` | Get a list of all registered task names |
 
 
-## Scheduling Tasks
+## 🚀 Scheduling Tasks
 
 Now that we have seen the capabilities of the scheduler, let's dive deep into scheduling tasks with the `task( name )` method.
 
-### Registering Tasks
+### 📝 Registering Tasks
 
 Once you call this method, the scheduler will create a `ScheduledTask` object for you, configure it, and register it. The task object provides a fluent API for configuring when and how the task should run.
 
@@ -215,7 +215,7 @@ Once you call this method, the scheduler will create a `ScheduledTask` object fo
 task( "my-task" )
 ```
 
-### Task Closure/Lambda/Object
+### 🎯 Task Closure/Lambda/Object
 
 You register the callable event via the `call()` method on the task object. You can register a closure/lambda or an object. If you register an object, then we will call the object's `run()` method by default, but you can change it using the `method` argument and call any public method.
 
@@ -244,7 +244,7 @@ task( "my-task" )
     .everydayAt( "13:00" )
 ```
 
-### Frequencies
+### ⏰ Frequencies
 
 There are many many frequency methods in scheduled tasks that will enable the tasks in specific intervals. Every time you see that an argument receives a `timeUnit` the available options are:
 
@@ -289,7 +289,7 @@ Ok, let's go over the frequency methods:
 All `time` arguments are defaulted to midnight (00:00)
 {% endhint %}
 
-### Preventing Overlaps / Stacking
+### 🚫 Preventing Overlaps / Stacking
 
 By default all tasks that have interval rates/periods that will execute on that interval schedule. However, what happens if a task takes longer to execute than the period? Well, by default the task will not execute if the previous one has not finished executing, causing the pending task to execute immediately after the current one completes ( Stacking Tasks ). If you want to prevent this behavior, then you can use the `withNoOverlaps()` method and BoxLang will register the tasks with a _fixed delay_. Meaning the intervals do not start counting until the last task has finished executing.
 
@@ -304,7 +304,7 @@ task( "test" )
 Spaced delays are a feature of the Scheduled Executors. There is even a `spacedDelay( delay, timeUnit )` method in the Task object.
 {% endhint %}
 
-### Delaying First Execution
+### ⏳ Delaying First Execution
 
 Every task can also have an initial delay of first execution by using the `delay()` method.
 
@@ -340,7 +340,7 @@ task( "my-task" )
 Please note that the `delay` pushes the execution of the task into the future only for the first execution.
 {% endhint %}
 
-### One Off Tasks
+### 🎯 One Off Tasks
 
 Apart from registering tasks that have specific intervals/frequencies you can also register tasks that can be executed **ONCE** **ONLY**. These are great for warming up caches, registering yourself with control planes, setting up initial data collections and so much more.
 
@@ -360,7 +360,7 @@ task( "register-container" )
     .delay( 30, "seconds" );
 ```
 
-### Life-Cycle Methods
+### 🔄 Life-Cycle Methods
 
 We already saw that a scheduler has life-cycle methods, but a task can also have several useful life-cycle methods:
 
@@ -394,7 +394,7 @@ task( "testharness-Heartbeat" )
 	} );
 ```
 
-### Timezone
+### 🌍 Timezone
 
 By default, all tasks will ask the scheduler for the timezone to run in. However, you can override it on a task-by-task basis using the `setTimezone( timezone )` method:
 
@@ -410,7 +410,7 @@ You can find all valid time zone Id's here: [https://docs.oracle.com/en/java/jav
 Remember that some timezones utilize daylight savings time. When daylight saving time changes occur, your scheduled task may run twice or even not run at all. For this reason, we recommend avoiding timezone scheduling when possible.
 {% endhint %}
 
-### Truth Test Constraints
+### ✅ Truth Test Constraints
 
 There are many ways to constrain the execution of a task. However, you can register a `when()` closure that will be executed at runtime and boolean evaluated. If `true`, then the task can run, else it is disabled.
 

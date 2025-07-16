@@ -9,9 +9,9 @@ icon: chart-network
 
 Executors in Java (and BoxLang) are high-level abstractions for managing and controlling thread execution. They provide a powerful way to handle concurrent tasks without the complexity of manually managing threads. Think of executors as specialized worker pools that can handle different types of workloads efficiently.
 
-```bash
+```
 Tasks Queue  →  Executor Pool  →  Results
-📋 📋 📋             🔄 🔄 🔄          ✅ ✅ ✅
+📋 📋 📋           🔄 🔄 🔄          ✅ ✅ ✅
 ```
 
 Here is a great video you can check out about Executors: [https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s](https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s)
