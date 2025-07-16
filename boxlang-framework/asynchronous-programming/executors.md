@@ -9,12 +9,12 @@ icon: chart-network
 
 Executors in Java (and BoxLang) are high-level abstractions for managing and controlling thread execution. They provide a powerful way to handle concurrent tasks without the complexity of manually managing threads. Think of executors as specialized worker pools that can handle different types of workloads efficiently.
 
-```
+```bash
 Tasks Queue  →  Executor Pool  →  Results
 📋 📋 📋      🔄 🔄 🔄 🔄       ✅ ✅ ✅
 ```
 
-
+Here is a great video you can check out about Executors: https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s
 
 ### **💡 Why Use Executors?**
 
@@ -27,7 +27,7 @@ Tasks Queue  →  Executor Pool  →  Results
 
 ## 🎯 Executor Types & Use Cases
 
-All the Executor types are from the JDK or if you build one manually.
+Here are all the executors types available in BoxLang, each tailored for specific workloads and performance characteristics:
 
 ### 🔄 CACHED
 
@@ -37,7 +37,7 @@ All the Executor types are from the JDK or if you build one manually.
 * **Use Case:** Web requests, quick computations, burst I/O operations
 * **Performance:** Excellent for variable workloads, can consume many resources
 
-#### 📊 FIXED
+### 📊 FIXED
 
 * **Best for:** Consistent workload with known thread requirements
 * **Behavior:** Maintains a fixed number of threads throughout lifecycle
@@ -45,7 +45,7 @@ All the Executor types are from the JDK or if you build one manually.
 * **Use Case:** CPU-intensive tasks, batch processing, controlled concurrency
 * **Performance:** Predictable resource usage, prevents thread explosion
 
-#### 🌿 VIRTUAL (Java 19+)
+### 🌿 VIRTUAL (Java 19+)
 
 * **Best for:** I/O-bound tasks requiring massive concurrency
 * **Behavior:** Lightweight virtual threads managed by the JVM
@@ -53,7 +53,7 @@ All the Executor types are from the JDK or if you build one manually.
 * **Use Case:** Database calls, HTTP requests, file operations, microservices
 * **Performance:** Scales to millions of threads, perfect for I/O blocking
 
-#### ⚡ WORK\_STEALING
+### ⚡ WORK_STEALING
 
 * **Best for:** Recursive, divide-and-conquer algorithms with uneven workload
 * **Behavior:** Threads steal work from each other's deques for load balancing
@@ -61,7 +61,7 @@ All the Executor types are from the JDK or if you build one manually.
 * **Use Case:** Parallel streams, recursive computations, map-reduce operations
 * **Performance:** Excellent for tasks with varying execution times
 
-#### 🍴 FORK\_JOIN
+### 🍴 FORK_JOIN
 
 * **Best for:** Parallel decomposition of large computational tasks
 * **Behavior:** Optimized for fork-join pattern with work-stealing
@@ -69,7 +69,7 @@ All the Executor types are from the JDK or if you build one manually.
 * **Use Case:** Parallel algorithms, mathematical computations, data processing
 * **Performance:** Superior for CPU-bound recursive tasks
 
-#### ⏰ SCHEDULED
+### ⏰ SCHEDULED
 
 * **Best for:** Time-based task execution and periodic operations
 * **Behavior:** Supports delays, fixed-rate, and fixed-delay scheduling
@@ -77,7 +77,7 @@ All the Executor types are from the JDK or if you build one manually.
 * **Use Case:** Cron jobs, periodic cleanup, delayed tasks, heartbeats
 * **Performance:** Efficient for time-sensitive operations
 
-#### 1️⃣ SINGLE
+### 1️⃣ SINGLE
 
 * **Best for:** Sequential task execution ensuring order
 * **Behavior:** One thread processes tasks in FIFO order
@@ -85,9 +85,9 @@ All the Executor types are from the JDK or if you build one manually.
 * **Use Case:** Order-dependent operations, logging, state management
 * **Performance:** No concurrency overhead, thread-safe by design
 
-### 🎁 Pre-defined Runtime Executors
+## 🎁 Pre-defined Runtime Executors
 
-BoxLang ships with three carefully crafted executors ready for immediate use.  They are defined in the BoxLang's Home `config` folder `boxlang.json.`  Check out the [configuration](../../getting-started/configuration/executors.md) section for more information.
+BoxLang ships with three carefully curated executors ready for immediate use.  They are defined in the BoxLang's Home `config` folder `boxlang.json.`  Check out the [configuration](../../getting-started/configuration/executors.md) section for more information.
 
 ```json
 "executors": {
@@ -112,7 +112,9 @@ BoxLang ships with three carefully crafted executors ready for immediate use.  T
 },
 ```
 
-#### 🌐 io-tasks
+It's up to you to create additional executors as needed, but these three cover the most common use cases.
+
+### 🌐 io-tasks
 
 * **Type:** VIRTUAL
 * **Configuration:** Unlimited virtual threads
@@ -121,7 +123,7 @@ BoxLang ships with three carefully crafted executors ready for immediate use.  T
 * **Default:** Used when requesting executor via `executorGet()`
 * **Memory:** Extremely low per-thread overhead (\~KB vs MB for platform threads)
 
-#### 🖥️ cpu-tasks
+### 🖥️ cpu-tasks
 
 * **Type:** SCHEDULED (20 threads)
 * **Configuration:** Fixed 20-thread pool with scheduling capabilities
@@ -129,7 +131,7 @@ BoxLang ships with three carefully crafted executors ready for immediate use.  T
 * **Perfect for:** Heavy computations, data processing, algorithms, image processing
 * **Scheduling:** Supports delayed and periodic execution
 
-#### ⏱️ scheduled-tasks
+### ⏱️ scheduled-tasks
 
 * **Type:** SCHEDULED (20 threads)
 * **Configuration:** Dedicated 20-thread pool for runtime scheduling
@@ -139,11 +141,92 @@ BoxLang ships with three carefully crafted executors ready for immediate use.  T
 
 > **💡 Pro Tip:** These executors are automatically available at runtime startup. You can access them immediately without any setup!
 
-### 🏗️ ExecutorRecord: Enhanced Executor Management
+## 📝 Async Logging
+
+BoxLang provides dedicated logging for all asynchronous operations through the `async.log` file located in the `logs` folder of your BoxLang home directory.  Please leverage logging as much as possible, as in async logging is critical for debugging and monitoring executor behavior.
+
+### 🎯 Automatic Logging
+
+All executor operations are automatically logged:
+
+* Executor creation and configuration
+* Task submissions and completions
+* Shutdown events and timing
+* Error conditions and exceptions
+* Performance warnings
+
+### 📊 Manual Logging
+
+You can send custom messages to the async log:
+
+```js
+// Log different message types to async.log
+writeLog( text: "Starting batch processing job",  log: "async" ) // info message
+writeLog( text: "Performance degradation detected", type: "Warning", log: "async" )
+writeLog( text: "Task execution failed", type: "Error", log: "async" )
+writeLog( text: "Debugging executor behavior", type: "Debug", log: "async" )
+writeLog( text: "Detailed execution trace", type: "Trace", log: "async" )
+```
+
+**Available Log Types:**
+
+* `"Information"` - General operational messages - (Default)
+* `"Warning"` - Performance issues or concerns
+* `"Error"` - Execution failures and exceptions
+* `"Debug"` - Development and troubleshooting info
+* `"Trace"` - Detailed execution flow information
+
+### 📂 Log File Location
+
+```bash
+{BoxLang-Home}/logs/async.log
+```
+
+Monitor this file for:
+
+* Executor performance issues
+* Task execution failures
+* Resource exhaustion warnings
+* Shutdown timing problems
+
+## 🔧 AsyncService
+
+The `AsyncService` is BoxLang's central service for managing executors and anything async related. It provides a unified API to create, retrieve, and control executors programmatically.  This API can be available to you or module authors via the `getBoxRuntime().getAsyncService()` method, but we would highly suggest also using the global built-in functions (BIFs) for convenience.
+
+| Method                                           | Purpose                                         | Returns        |
+| ------------------------------------------------ | ----------------------------------------------- | -------------- |
+| `newExecutor( name, type, threads )`             | Create new executors with custom configurations | ExecutorRecord |
+| `getExecutor( name )`                                         | Retrieve executor instances by name             | ExecutorRecord |
+| `hasExecutor( name )`                                         | Check if an executor exists                               | Boolean        |
+| `deleteExecutor( name )`                                       | Remove and shutdown executors                   | AsyncService   |
+| `shutdownExecutor( name, force, timeout, unit )` | Gracefully shutdown specific executors          | AsyncService   |
+| `shutdownAllExecutors( force, timeout, unit )`   | Shutdown all registered executors               | AsyncService   |
+| `getExecutorStatusMap()`                                  | Get detailed statistics for all executors       | IStruct        |
+| `getExecutorStatusMap( name )`                    | Get statistics for specific executor            | IStruct        |
+| `getExecutorNames()`                                       | List all registered executor names              | List           |
+
+### 🎯 Convenience Builder Methods
+
+```boxlang
+asyncService = getBoxRuntime().getAsyncService()
+
+// Quick executor creation - all return ExecutorRecord
+ cacheExecutor = asyncService.newCachedExecutor( "my-cache" )
+ workerPool = asyncService.newFixedExecutor( "workers", 10 )
+ ioPool = asyncService.newVirtualExecutor( "io-pool" )
+ scheduler = asyncService.newScheduledExecutor( "scheduler", 5 )
+ parallelPool = asyncService.newWorkStealingExecutor( "parallel-work", 8 )
+ forkJoinPool = asyncService.newForkJoinExecutor( "fork-join", 4 )
+ singleThread = asyncService.newSingleExecutor( "sequential" )
+```
+
+All methods return an `ExecutorRecord` instance, which provides enhanced functionality beyond standard Java ExecutorService.  Our BoxLang ExecutorRecord is a wrapper around the Java ExecutorService, providing additional features like statistics, logging, and task management.
+
+## 🏗️ ExecutorRecord: Enhanced Executor Management
 
 **Important:** BoxLang doesn't return raw Java executors. Instead, you get `ExecutorRecord` instances - enhanced wrappers that provide additional functionality beyond standard Java ExecutorService.
 
-#### 🔍 What is ExecutorRecord?
+### 🔍 What is ExecutorRecord?
 
 `ExecutorRecord` is BoxLang's enhanced executor wrapper that provides:
 
@@ -154,32 +237,43 @@ BoxLang ships with three carefully crafted executors ready for immediate use.  T
 * **🎯 Task Factory:** Built-in ScheduledTask creation for complex workflows
 * **🔄 State Management:** Comprehensive executor state monitoring
 
-#### 📊 ExecutorRecord Statistics
+### Getters
+
+The `ExecutorRecord` provides several getters to access executor properties:
+
+* `exectuor()` - Returns the underlying Java ExecutorService instance
+* `name()` - Returns the executor's name
+* `type()` - Returns the executor type (e.g., "fixed", "virtual")
+* `maxThreads()` - Returns the maximum number of threads (if applicable)
+
+The rest of the methods are similar to the Java ExecutorService, but with added BoxLang features.
+
+### 📊 ExecutorRecord Statistics
 
 Every ExecutorRecord provides detailed runtime statistics:
 
 ```boxlang
-var executor = executorGet( "cpu-tasks" );
-var stats = executor.getStats();
+executor = executorGet( "cpu-tasks" )
+stats = executor.getStats()
 
 // Available statistics (varies by executor type)
-writeOutput( "Active Threads: #stats.activeCount#" );
-writeOutput( "Completed Tasks: #stats.completedTaskCount#" );
-writeOutput( "Pool Size: #stats.poolSize#" );
-writeOutput( "Maximum Pool Size: #stats.maximumPoolSize#" );
-writeOutput( "Is Shutdown: #stats.isShutdown#" );
-writeOutput( "Is Terminated: #stats.isTerminated#" );
+println( "Active Threads: #stats.activeCount#" )
+println( "Completed Tasks: #stats.completedTaskCount#" )
+println( "Pool Size: #stats.poolSize#" )
+println( "Maximum Pool Size: #stats.maximumPoolSize#" )
+println( "Is Shutdown: #stats.isShutdown#" )
+println( "Is Terminated: #stats.isTerminated#" )
 
 // Fork/Join specific stats
 if ( stats.keyExists( "stealCount" ) ) {
-    writeOutput( "Work Steal Count: #stats.stealCount#" );
-    writeOutput( "Queued Tasks: #stats.queuedTaskCount#" );
+    println( "Work Steal Count: #stats.stealCount#" )
+    println( "Queued Tasks: #stats.queuedTaskCount#" )
 }
 ```
 
-#### 🎯 Task Creation Factory
+### 🎯 Task Creation Factory
 
-ExecutorRecord includes a built-in task factory for complex scheduling:
+`ExecutorRecord` includes a built-in task factory as well for complex scheduling.  These methods will give you back a BoxLang `ScheduledTask` instance, which you can configure and start manually or attach it to a BoxLang `Scheduler`.
 
 ```boxlang
 var executor = executorGet( "scheduled-tasks" );
@@ -200,7 +294,7 @@ cleanupTask
     .start();
 ```
 
-#### 🛡️ Enhanced Shutdown Management
+### 🛡️ Enhanced Shutdown Management
 
 ```boxlang
 var executor = executorGet( "my-custom-executor" );
@@ -220,127 +314,50 @@ if ( stats.isShutdown ) {
 
 > **⚠️ CRITICAL WARNING:** Once an executor is shutdown, it **CANNOT** be restarted! The executor becomes permanently dead. Always plan your shutdown strategy carefully and prefer graceful shutdown with `shutdownAndAwaitTermination()` when possible.
 
-### 📝 Async Logging
+## 🌟 Global BIFs (Built-in Functions)
 
-BoxLang provides dedicated logging for all asynchronous operations through the `async.log` file located in the `logs` folder of your BoxLang home directory.
-
-#### 🎯 Automatic Logging
-
-All executor operations are automatically logged:
-
-* Executor creation and configuration
-* Task submissions and completions
-* Shutdown events and timing
-* Error conditions and exceptions
-* Performance warnings
-
-#### 📊 Manual Logging
-
-You can send custom messages to the async log:
-
-```boxlang
-// Log different message types to async.log
-log( text: "Starting batch processing job", type: "Information", log: "async" );
-log( text: "Performance degradation detected", type: "Warning", log: "async" );
-log( text: "Task execution failed", type: "Error", log: "async" );
-log( text: "Debugging executor behavior", type: "Debug", log: "async" );
-log( text: "Detailed execution trace", type: "Trace", log: "async" );
-```
-
-**Available Log Types:**
-
-* `"Information"` - General operational messages
-* `"Warning"` - Performance issues or concerns
-* `"Error"` - Execution failures and exceptions
-* `"Debug"` - Development and troubleshooting info
-* `"Trace"` - Detailed execution flow information
-
-#### 📂 Log File Location
-
-```
-{BoxLang-Home}/logs/async.log
-```
-
-Monitor this file for:
-
-* Executor performance issues
-* Task execution failures
-* Resource exhaustion warnings
-* Shutdown timing problems
-
-### 🔧 AsyncService Methods
-
-Access the AsyncService via `getBoxRuntime().getAsyncService()` to manage executors programmatically:
-
-| Method                                           | Purpose                                         | Returns        |
-| ------------------------------------------------ | ----------------------------------------------- | -------------- |
-| `newExecutor( name, type, threads )`             | Create new executors with custom configurations | ExecutorRecord |
-| `getExecutor( name )`                            | Retrieve executor instances by name             | ExecutorRecord |
-| `hasExecutor( name )`                            | Check if an executor exists                     | Boolean        |
-| `deleteExecutor( name )`                         | Remove and shutdown executors                   | AsyncService   |
-| `shutdownExecutor( name, force, timeout, unit )` | Gracefully shutdown specific executors          | AsyncService   |
-| `shutdownAllExecutors( force, timeout, unit )`   | Shutdown all registered executors               | AsyncService   |
-| `getExecutorStatusMap()`                         | Get detailed statistics for all executors       | IStruct        |
-| `getExecutorStatusMap( name )`                   | Get statistics for specific executor            | IStruct        |
-| `getExecutorNames()`                             | List all registered executor names              | List           |
-
-#### 🎯 Convenience Builder Methods
-
-```boxlang
-var asyncService = getBoxRuntime().getAsyncService();
-
-// Quick executor creation - all return ExecutorRecord
-var cacheExecutor = asyncService.newCachedExecutor( "my-cache" );
-var workerPool = asyncService.newFixedExecutor( "workers", 10 );
-var ioPool = asyncService.newVirtualExecutor( "io-pool" );
-var scheduler = asyncService.newScheduledExecutor( "scheduler", 5 );
-var parallelPool = asyncService.newWorkStealingExecutor( "parallel-work", 8 );
-var forkJoinPool = asyncService.newForkJoinExecutor( "fork-join", 4 );
-var singleThread = asyncService.newSingleExecutor( "sequential" );
-```
-
-### 🌟 Global BIFs (Built-in Functions)
-
-BoxLang provides convenient global functions for executor management:
+BoxLang provides convenient global functions for executor management and usage:
 
 | Function                                       | Purpose                                             | Returns        | Example                                 |
 | ---------------------------------------------- | --------------------------------------------------- | -------------- | --------------------------------------- |
 | `executorGet( [name] )`                        | Get ExecutorRecord by name (defaults to "io-tasks") | ExecutorRecord | `executorGet( "cpu-tasks" )`            |
 | `executorHas( name )`                          | Check if executor exists                            | Boolean        | `executorHas( "my-pool" )`              |
-| `executorList()`                               | List all executor names                             | Array          | `executorList()`                        |
+| `executorList()`                                      | List all executor names                             | Array          | `executorList()`                        |
 | `executorNew( name, type, [threads] )`         | Create new executor                                 | ExecutorRecord | `executorNew( "pool", "fixed", 8 )`     |
 | `executorShutdown( name, [force], [timeout] )` | Shutdown executor gracefully or forcefully          | Boolean        | `executorShutdown( "pool", false, 30 )` |
 | `executorStatus( [name] )`                     | Get executor statistics and status                  | Struct         | `executorStatus( "cpu-tasks" )`         |
 
-#### 🎯 BIF Usage Examples
+Remember that if the BIF returns an executor, it will be an `ExecutorRecord` instance, not a raw Java ExecutorService.  This allows you to leverage all the enhanced features and methods provided by BoxLang.
+
+### 🎯 BIF Usage Examples
 
 ```boxlang
 // Quick executor access
-var defaultIO = executorGet(); // Gets "io-tasks"
-var cpuPool = executorGet( "cpu-tasks" );
+defaultIO = executorGet(); // Gets "io-tasks"
+cpuPool = executorGet( "cpu-tasks" )
 
 // Check availability
 if ( executorHas( "custom-pool" ) ) {
-    var customPool = executorGet( "custom-pool" );
+    customPool = executorGet( "custom-pool" )
 }
 
 // Create custom executors
-var batchProcessor = executorNew( "batch-processor", "fixed", 4 );
-var scheduler = executorNew( "my-scheduler", "scheduled", 2 );
+batchProcessor = executorNew( "batch-processor", "fixed", 4 )
+scheduler = executorNew( "my-scheduler", "scheduled", 2 )
 
 // Monitor all executors
-var allExecutors = executorList();
-for ( var name in allExecutors ) {
-    var status = executorStatus( name );
-    writeOutput( "#name#: #status.activeCount# active threads" );
+allExecutors = executorList()
+for ( name in allExecutors ) {
+    status = executorStatus( name )
+    println( "#name#: #status.activeCount# active threads" )
 }
 ```
 
-### ⏰ Scheduled Tasks: Use BoxLang Schedulers
+## ⏰ Scheduled Tasks: Use BoxLang Schedulers
 
 > **🎯 Preferred Approach:** For scheduled tasks, use BoxLang's dedicated Scheduler framework instead of direct executor scheduling. Schedulers provide more features, better management, and integrated lifecycle handling.
 
-#### 🔧 Scheduler vs Direct Executor Scheduling
+### 🔧 Scheduler vs Direct Executor Scheduling
 
 ```boxlang
 // ❌ Direct executor scheduling (basic)
@@ -363,9 +380,9 @@ scheduler.task( "cleanup" )
 * **Monitoring:** Enhanced logging and statistics
 * **Persistence:** Optional task persistence across restarts
 
-### 📚 Practical Examples
+## 📚 Practical Examples
 
-#### 🚀 Basic ExecutorRecord Usage
+### 🚀 Basic ExecutorRecord Usage
 
 ```boxlang
 // Get the default I/O executor (returns ExecutorRecord)
@@ -390,7 +407,7 @@ writeDump( allExecutors );
 cpuExecutor.shutdownAndAwaitTermination( 30, "seconds" );
 ```
 
-#### ⚡ Asynchronous Task Execution with Error Handling
+### ⚡ Asynchronous Task Execution with Error Handling
 
 ```boxlang
 // Submit async tasks to different executors
@@ -419,7 +436,7 @@ try {
     var primes = mathFuture.get();
 
     writeOutput( "Found #users.recordCount# users and #arrayLen( primes )# primes" );
-    
+
 } catch ( any e ) {
     log( text: "Task execution failed: #e.message#", type: "Error", log: "async" );
     rethrow;
@@ -433,7 +450,7 @@ writeOutput( "I/O Executor - Active: #ioStats.activeCount#, Completed: #ioStats.
 writeOutput( "CPU Executor - Active: #cpuStats.activeCount#, Pool Size: #cpuStats.poolSize#" );
 ```
 
-#### ⏰ Advanced Scheduled Task Management
+### ⏰ Advanced Scheduled Task Management
 
 ```boxlang
 // Get the scheduled executor
@@ -445,9 +462,9 @@ var cleanupTask = scheduler.newTask( "temp-file-cleanup" );
 // Configure the task but don't start it yet
 cleanupTask.call( () => {
     log( text: "Starting temp file cleanup", type: "Information", log: "async" );
-    
+
     var filesDeleted = cleanupTempFiles();
-    
+
     log( text: "Cleanup completed: #filesDeleted# files deleted", type: "Information", log: "async" );
     return filesDeleted;
 } );
@@ -471,7 +488,7 @@ var stats = scheduler.getStats();
 writeOutput( "Scheduled tasks - Active: #stats.activeCount#, Queue size: #stats.taskCount#" );
 ```
 
-#### 🔄 Parallel Processing with Work Stealing
+### 🔄 Parallel Processing with Work Stealing
 
 ```boxlang
 // Create a work-stealing executor for parallel processing
@@ -487,7 +504,7 @@ try {
     // Split work across multiple threads
     for ( var i = 1; i <= arrayLen( largeDataset ); i += chunkSize ) {
         var chunk = arraySlice( largeDataset, i, min( i + chunkSize - 1, arrayLen( largeDataset ) ) );
-        
+
         futures.append( parallelExecutor.submit( () => {
             var processedChunk = processDataChunk( chunk );
             log( text: "Processed chunk of #arrayLen( chunk )# items", type: "Debug", log: "async" );
@@ -506,7 +523,7 @@ try {
     }
 
     log( text: "Parallel processing completed: #arrayLen( results )# chunks processed", type: "Information", log: "async" );
-    
+
     // Monitor work stealing performance
     var stats = parallelExecutor.getStats();
     if ( stats.keyExists( "stealCount" ) ) {
@@ -524,7 +541,7 @@ try {
 }
 ```
 
-#### 🔄 Batch Processing with Virtual Threads
+### 🔄 Batch Processing with Virtual Threads
 
 ```boxlang
 // Use virtual threads for I/O-intensive batch processing
@@ -533,7 +550,7 @@ var batchProcessor = executorNew( "batch-io-processor", "virtual" );
 try {
     var apiEndpoints = [
         "https://api1.example.com/data",
-        "https://api2.example.com/data", 
+        "https://api2.example.com/data",
         "https://api3.example.com/data"
         // ... hundreds more endpoints
     ];
@@ -541,7 +558,7 @@ try {
     log( text: "Starting batch I/O processing with virtual threads", type: "Information", log: "async" );
 
     var futures = [];
-    
+
     // Submit hundreds/thousands of I/O tasks - virtual threads handle it easily
     for ( var endpoint in apiEndpoints ) {
         futures.append( batchProcessor.submit( () => {
@@ -559,7 +576,7 @@ try {
     // Process results as they complete
     var successCount = 0;
     var errorCount = 0;
-    
+
     for ( var future in futures ) {
         var result = future.get( 30000 ); // 30 second timeout per API call
         if ( result.keyExists( "error" ) ) {
@@ -577,7 +594,7 @@ try {
 }
 ```
 
-### ⚡ Performance Considerations & Best Practices
+## ⚡ Performance Considerations & Best Practices
 
 > **🚨 Critical Guidelines:**
 >
@@ -588,7 +605,7 @@ try {
 > * **Monitor Stats:** Use `getStats()` to track executor performance
 > * **Log Everything:** Use async logging for troubleshooting and monitoring
 
-#### 🎯 Executor Selection Matrix
+### 🎯 Executor Selection Matrix
 
 | Task Characteristics          | Recommended Executor | Thread Count | Memory Usage           | Best Performance          |
 | ----------------------------- | -------------------- | ------------ | ---------------------- | ------------------------- |
@@ -603,33 +620,33 @@ try {
 | **Background Tasks**          | CACHED               | Dynamic      | Variable               | Burst workloads           |
 | **Sequential Processing**     | SINGLE               | 1            | Low                    | Order guarantee           |
 
-#### 📊 Performance Monitoring
+### 📊 Performance Monitoring
 
 ```boxlang
 // Regular performance monitoring
 function monitorExecutorPerformance() {
     var allStats = executorStatus(); // Gets all executor stats
-    
+
     for ( var executorName in allStats ) {
         var stats = allStats[ executorName ];
-        
+
         // Check for performance issues
         if ( stats.activeCount > stats.maximumPoolSize * 0.8 ) {
-            log( 
-                text: "High thread utilization in #executorName#: #stats.activeCount#/#stats.maximumPoolSize#", 
-                type: "Warning", 
-                log: "async" 
+            log(
+                text: "High thread utilization in #executorName#: #stats.activeCount#/#stats.maximumPoolSize#",
+                type: "Warning",
+                log: "async"
             );
         }
-        
+
         // Monitor task completion rate
         if ( stats.keyExists( "completedTaskCount" ) && stats.completedTaskCount > 0 ) {
             var efficiency = stats.completedTaskCount / stats.taskCount;
             if ( efficiency < 0.7 ) {
-                log( 
-                    text: "Low task completion efficiency in #executorName#: #efficiency * 100#%", 
-                    type: "Warning", 
-                    log: "async" 
+                log(
+                    text: "Low task completion efficiency in #executorName#: #efficiency * 100#%",
+                    type: "Warning",
+                    log: "async"
                 );
             }
         }
@@ -644,32 +661,32 @@ monitoringTask
     .start();
 ```
 
-#### 🛡️ Error Handling & Recovery
+### 🛡️ Error Handling & Recovery
 
 ```boxlang
 // Robust error handling pattern
 function executeWithRetry( task, maxRetries = 3, executorName = "io-tasks" ) {
     var executor = executorGet( executorName );
     var attempt = 0;
-    
+
     while ( attempt < maxRetries ) {
         try {
             attempt++;
-            
+
             var future = executor.submit( task );
             var result = future.get( 30000 ); // 30 second timeout
-            
+
             log( text: "Task completed successfully on attempt #attempt#", type: "Information", log: "async" );
             return result;
-            
+
         } catch ( any e ) {
             log( text: "Task failed on attempt #attempt#: #e.message#", type: "Warning", log: "async" );
-            
+
             if ( attempt >= maxRetries ) {
                 log( text: "Task failed after #maxRetries# attempts", type: "Error", log: "async" );
                 rethrow;
             }
-            
+
             // Exponential backoff
             sleep( attempt * 1000 );
         }
@@ -682,34 +699,34 @@ var result = executeWithRetry( () => {
 } );
 ```
 
-#### 🎯 Resource Management Best Practices
+### 🎯 Resource Management Best Practices
 
 ```boxlang
 // Application shutdown hook - cleanup all custom executors
 function applicationShutdown() {
     log( text: "Starting application shutdown", type: "Information", log: "async" );
-    
+
     var customExecutors = [ "batch-processor", "parallel-work", "custom-scheduler" ];
-    
+
     for ( var executorName in customExecutors ) {
         if ( executorHas( executorName ) ) {
             log( text: "Shutting down executor: #executorName#", type: "Information", log: "async" );
-            
+
             try {
                 // Attempt graceful shutdown first
                 var success = executorShutdown( executorName, false, 30 );
-                
+
                 if ( !success ) {
                     log( text: "Graceful shutdown failed for #executorName#, forcing shutdown", type: "Warning", log: "async" );
                     executorShutdown( executorName, true, 5 );
                 }
-                
+
             } catch ( any e ) {
                 log( text: "Failed to shutdown executor #executorName#: #e.message#", type: "Error", log: "async" );
             }
         }
     }
-    
+
     log( text: "Application shutdown completed", type: "Information", log: "async" );
 }
 ```
@@ -724,7 +741,7 @@ function applicationShutdown() {
 > * **Test Under Load:** Validate executor behavior under realistic workloads
 > * **Size Appropriately:** Match thread counts to actual hardware capabilities
 
-### 🎉 Quick Start Template
+## 🎉 Quick Start Template
 
 ```boxlang
 // 1. Simple async task with error handling
@@ -745,7 +762,7 @@ try {
         processResult( result );
         log( text: "Operation completed successfully", type: "Information", log: "async" );
     }
-    
+
 } catch ( any e ) {
     log( text: "Async operation failed: #e.message#", type: "Error", log: "async" );
     // Handle error appropriately
@@ -754,9 +771,9 @@ try {
 
 This template covers 80% of use cases - simple, effective, and leverages BoxLang's optimized defaults with proper error handling and logging!
 
-### 🔧 Advanced ExecutorRecord Methods
+## 🔧 Advanced ExecutorRecord Methods
 
-#### 📊 Statistical Analysis
+### 📊 Statistical Analysis
 
 ```boxlang
 var executor = executorGet( "cpu-tasks" );
@@ -780,7 +797,7 @@ var report = {
 };
 ```
 
-#### 🎯 Convenient Submission Methods
+### 🎯 Convenient Submission Methods
 
 ```boxlang
 var executor = executorGet( "io-tasks" );
@@ -806,5 +823,3 @@ try {
 ***
 
 🚀 **BoxLang Executors** - Making Java's powerful concurrency accessible, monitorable, and easy to use
-
-Built with ❤️ by the BoxLang Team | [Full Documentation](https://boxlang.ortusbooks.com/)
