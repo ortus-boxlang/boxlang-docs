@@ -11,10 +11,7 @@ Executors in Java (and BoxLang) are high-level abstractions for managing and con
 
 ```bash
 Tasks Queue  →  Executor Pool  →  Results
-📋 📋 📋      ) catch ( any e ) {
-    writeLog( text: "Task execution failed: #e.message#", type: "Error", log: "async" )
-    rethrow
-} 🔄 🔄       ✅ ✅ ✅
+📋 📋 📋             🔄 🔄 🔄          ✅ ✅ ✅
 ```
 
 Here is a great video you can check out about Executors: [https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s](https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s)

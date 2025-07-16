@@ -3,192 +3,248 @@ description: Human, Fluent, Functional Scheduled Tasks with BoxLang
 icon: calendars
 ---
 
-# Scheduled Tasks
+# Introduction
 
-### Introduction
+The BoxLang async framework provides a powerful and flexible way to schedule tasks and workloads in your applications. Whether you need to run tasks at specific intervals, one-off tasks, or manage complex scheduling scenarios, the async package has you covered.  It allows you to schedule tasks using a human-readable DSL (Domain Specific Language) that is both fluent and functional. This makes it easy to define when and how tasks should run, without getting bogged down in complex configurations.
 
-The async package offers you the ability to schedule tasks and workloads via the Scheduled Executors that you can register in the async manager. We also provide you with a lovely `Scheduler` class that can keep track of all the tasks you would like to be executing in a `ScheduledExecutor`. In essence, you have two options when scheduling tasks:
+You have three main approaches to scheduling tasks in BoxLang:
 
 1. **Scheduler Approach**: Create a scheduler and register tasks in it
 2. **Scheduled Executor Approach**: Create a `ScheduledExecutor` and send task objects into it
+3. **CLI Runner Approach**: Use the `boxlang schedule {path.to.Scheduler.bx}` command to run tasks from the CLI
 
 {% hint style="success" %}
 With our scheduled tasks you can run either one-off tasks or periodically tasks.
 {% endhint %}
 
-### Scheduler Approach
+The way to do executor tasks is documented in our [Executors Section](executors.md), this guide focuses on the scheduler runtime and CLI runner approaches.
 
-To create a new scheduler you can call the Async Managers' `newScheduler( name )` method. This will create a new `coldbox.system.async.tasks.Scheduler` object with the specified name you pass. It will also create a `ScheduledExecutor` for you with the default threads count inside the scheduler.. It will be then your responsibility to persist that scheduler so you can use it throughout your application process.
+# Scheduler Service
 
-```javascript
-application.scheduler = asyncmanager.newScheduler( "appScheduler" );
+BoxLang provides a `SchedulerService` that manages all the global, application, and module schedulers.  There is really no need to interact with it, but if you want to you can access it via the `boxRuntime().getSchedulerService()` method. This service is responsible for managing all the schedulers in your application, including starting and stopping them, and providing access to the registered tasks.
+
+# Configuration
+
+The BoxLang configuration file located at `{BoxLangHome}/config/boxlang.json` contains all the necessary configurations and tunings for the scheduled tasks framework.  Here are the main configurations you can set:
+
+```json
+// BoxLang Scheduler
+// These are managed by the SchedulerService and registered upon startup
+// or via a boxlang schedule [scheduler.bx] call
+"scheduler": {
+    // The default scheduler for all scheduled tasks
+    // Each scheduler can have a different executor if needed
+    "executor": "scheduled-tasks",
+    // The cache to leverage for server fixation or distribution
+    "cacheName": "default",
+    // An array of BoxLang Schedulers to register upon startup
+    // Must be an absolute path to the scheduler file
+    // You can use the ${user-dir} or ${boxlang-home} variables or any other environment variable
+    // Example: "schedulers": [ "/path/to/Scheduler.bx" ]
+    "schedulers": [],
+    // You can also define tasks manually here
+    // Every task is an object defined by a unique name
+    // The task object is a struct with the following properties:
+    // - `crontime:string` - The cron time to run the task (optional), defaults to empty string
+    // - `eventhandler:path` - The absolute path to the task event handler(optional), defaults to empty string
+    // - `exclude:any` - Comma-separated list of dates or date range (d1 to d2) on which to not execute the scheduled task
+    // - `file:name` - Name of the log file to store output of the task (optional), defaults to `scheduler`
+    // - `group:string` - The group name of the task (optional), defaults to empty string
+    "tasks": {}
+},
 ```
 
-Once you get an instance to that scheduler you can begin to register tasks on it. Once all tasks have been registered you can use the `startup()` method to startup the tasks and the `shutdown()` method to shutdown all tasks and the linked executor.
+## Executor
 
-{% hint style="success" %}
-The name of the `ScheduledExecutor` will be `{schedulerName}-scheduler`
-{% endhint %}
+The `executor` property defines the default executor to use for all scheduled tasks. This can be overridden on a per-scheduler basis. The default executor is `scheduled-tasks`, which is a `ScheduledExecutor` with a default of 20 threads, which can be found in the `executors` section.
 
-{% code title="Application.cfc" %}
+## Cache Name
+
+The `cacheName` property defines the cache to use for server fixation or distribution. This is useful if you want to share scheduled tasks across multiple servers in a cluster. The default cache is `default`, which is the default cache defined in the BoxLang configuration.  This can be found in the `caches` section of the configuration file and can be overridden on a per-scheduler basis.
+
+## Schedulers
+
+The `schedulers` property is an array of BoxLang schedulers to register upon startup. Each scheduler is defined by an absolute path to the scheduler class (e.g. `/path/to/Scheduler.bx`). You can use the `${user-dir}` or `${boxlang-home}` variables or any other environment variable to define the path. This allows you to define multiple schedulers that can be registered and managed by the `SchedulerService` at runtime startup.
+
+## Tasks
+
+The `tasks` property is an object that defines the tasks to register upon startup. Each task is defined by a unique name and can have many properties.  This is an experimental feature that is coming soon.
+
+# Scheduler Class
+
+A `Scheduler` is a self-contained class that can track multiple tasks for you and give you enhanced and fluent approaches to scheduling. It is a powerful tool that allows you to register tasks, configure them, and manage their execution. Each scheduler class inherits from the `BaseScheduler` Java class, giving you access to all of its powerful methods and capabilities.
+
+Let's review the structure of a BoxLang scheduler class:
+
 ```javascript
-component{
-    
-    this.name = "My App";
-    
-    
-    function onApplicationStart(){
-        new wirebox.system.Injector();
-        application.asyncManager = application.wirebox.getInstance( "wirebox.system.async.AsyncManager" );
-        application.scheduler = application.asyncmanager.newScheduler( "appScheduler" );
+class {
 
-          /**
-           * --------------------------------------------------------------------------
-           * Register Scheduled Tasks
-           * --------------------------------------------------------------------------
-           * You register tasks with the task() method and get back a ColdBoxScheduledTask object
-           * that you can use to register your tasks configurations.
-           */
-          	
-          application.scheduler.task( "Clear Unregistered Users" )
-          	.call( () => application.wirebox.getInstance( "UsersService" ).clearRecentUsers() )
-          	.everyDayAt( "09:00" );
-          	
-          application.scheduler.task( "Hearbeat" )
-          	.call( () => runHeartBeat() )
-          	.every( 5, "minutes" )
-          	.onFailure( ( task, exception ) => {
-          			sendBadHeartbeat( exception );
-          	} );
-          
-          // Startup the scheduler
-          application.scheduler.startup();
-    
-    }
+	// Properties - These are automatically injected by the BoxLang runtime
+	property name="scheduler";       // The BaseScheduler instance this class wraps
+	property name="runtime";         // The BoxRuntime instance
+	property name="logger";          // A logger instance for this scheduler
+	property name="asyncService";    // The AsyncService for executor management
+	property name="cacheService";    // The CacheService for distributed scheduling
+	property name="interceptorService"; // The InterceptorService for event broadcasting
 
+	/**
+	 * The configure method is called by the BoxLang runtime to allow the scheduler to configure itself.
+	 *
+	 * This is where you define your tasks and setup global configuration.
+	 */
+	function configure(){
+		// Setup Scheduler Properties
+		scheduler.setSchedulerName( "My-Scheduler" );
+		scheduler.setTimezone( "UTC" );
 
-    function onApplicationEnd( appScope ){
-        // When the app is restart or dies make sure you cleanup
-        appScope.scheduler.shutdown();
-        appScope.wirebox.shutdown();
-    }
+		// Define a lambda task
+		scheduler.task( "My test Task" )
+			.call( () -> {
+				println( "I am a lambda task: #dateFormat( now(), "full" )#" );
+			} )
+			.every( 2, "second" );
+	}
 
+	/**
+	 * --------------------------------------------------------------------------
+	 * Life - Cycle Callbacks
+	 * --------------------------------------------------------------------------
+	 */
+
+	/**
+	 * Called after the scheduler has registered all schedules
+	 */
+	void function onStartup(){
+		println( "I have started!" & scheduler.getSchedulerName() );
+	}
+
+	/**
+	 * Called before the scheduler is going to be shutdown
+	 */
+	void function onShutdown(){
+		println( "I have shutdown!" & scheduler.getSchedulerName() );
+	}
+
+	/**
+	 * Called whenever ANY task fails
+	 *
+	 * @task      The task that got executed
+	 * @exception The exception object
+	 */
+	function onAnyTaskError( task, exception ){
+		println( "Any task [#task.getName()#] blew up " & exception.getMessage() );
+	}
+
+	/**
+	 * Called whenever ANY task succeeds
+	 *
+	 * @task   The task that got executed
+	 * @result The result (if any) that the task produced as an Optional
+	 */
+	function onAnyTaskSuccess( task, result ){
+		println( "on any task success [#task.getName()#]" );
+		println( "results for task are: " & result.orElse( "No result" ) );
+	}
+
+	/**
+	 * Called before ANY task runs
+	 *
+	 * @task The task about to be executed
+	 */
+	function beforeAnyTask( task ){
+		println( "before any task [#task.getName()#]" );
+	}
+
+	/**
+	 * Called after ANY task runs
+	 *
+	 * @task   The task that got executed
+	 * @result The result (if any) that the task produced as an Optional
+	 */
+	function afterAnyTask( task, result ){
+		println( "after any task completed [#task.getName()#]" );
+		println( "results for task are: " & result.orElse( "No result" ) );
+	}
 
 }
 ```
-{% endcode %}
 
-#### Configuration Methods
+## Scheduler Properties
 
-The following methods are used to impact the operation of all scheduled tasks managed by the scheduler:
+The scheduler properties are automatically injected by the BoxLang runtime and provide access to various services:
 
-| Method                    | Description                                       |
-| ------------------------- | ------------------------------------------------- |
-| `setTimezone( timezone )` | Set the timezone to use for all registered tasks  |
-| `setExecutor( executor )` | Override the executor generated for the scheduler |
+| Property | Description |
+|----------|-------------|
+| `scheduler` | The `BaseScheduler` instance that your class wraps, providing access to all scheduler methods |
+| `runtime` | The `BoxRuntime` instance for access to global services |
+| `logger` | A logger instance specifically configured for this scheduler |
+| `asyncService` | The `AsyncService` for managing executors and async operations |
+| `cacheService` | The `CacheService` for distributed scheduling and state management |
+| `interceptorService` | The `InterceptorService` for broadcasting events and interceptors |
 
-**Timezone For All Tasks**
+## Scheduler Configuration Methods
 
-By default, all tasks run under the system default timezone which usually is UTC. However, if you would like to change to a different execution timezone, then you can use the `setTimeZone()` method and pass in a valid timezone string:
+Your scheduler class has access to all the methods from the `BaseScheduler` class through the `scheduler` property:
 
-```javascript
-setTimezone( "America/Chicago" )
-```
+| Method | Description |
+|--------|-------------|
+| `setSchedulerName( name )` | Set the human-readable name for this scheduler |
+| `setTimezone( timezone )` | Set the timezone for all tasks (default: system timezone) |
+| `setContext( context )` | Set the BoxLang context for task execution |
+| `task( name )` | Register a new task with the given name |
+| `xtask( name )` | Register a new task but disable it immediately (useful for debugging) |
+| `startup()` | Start the scheduler and all its tasks |
+| `shutdown()` | Shutdown the scheduler gracefully |
+| `restart()` | Restart the scheduler |
+| `removeTask( name )` | Remove a task from the scheduler |
+| `hasTask( name )` | Check if a task is registered |
+| `getTaskRecord( name )` | Get the task record for a specific task |
+| `getTaskStats()` | Get statistics for all tasks |
+| `getRegisteredTasks()` | Get a list of all registered task names |
 
-{% hint style="success" %}
-You can find all valid time zone Id's here: [https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZoneId.html](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZoneId.html)
-{% endhint %}
 
-{% hint style="warning" %}
-Remember that some timezones utilize daylight savings time. When daylight saving time changes occur, your scheduled task may run twice or even not run at all. For this reason, we recommend avoiding timezone scheduling when possible.
-{% endhint %}
+## Scheduling Tasks
 
-**Custom Executor**
+Now that we have seen the capabilities of the scheduler, let's dive deep into scheduling tasks with the `task( name )` method.
 
-By default the scheduler will register a `scheduled` executor with a default of 20 threads for you with a name of `{schedulerName}-scheduler.` If you want to add in your own executor as per your configurations, then just call the `setExecutor()` method.
+### Registering Tasks
 
-```javascript
-setExecutor( 
-    asyncManager.newScheduledExecutor( "mymymy", 50 ) 
-);
-```
-
-{% hint style="info" %}
-You can find how to work with executors in our executors section.
-{% endhint %}
-
-#### Scheduler Properties
-
-Every scheduler has the following properties available to you in the `variables` scope
-
-| Object         | Description                                                   |
-| -------------- | ------------------------------------------------------------- |
-| `asyncManager` | Async manager reference                                       |
-| `executor`     | Scheduled executor                                            |
-| `started`      | A boolean flag indicating if the scheduler has started or not |
-| `tasks`        | The collection of registered tasks                            |
-| `timezone`     | Java based timezone object                                    |
-| `util`         | ColdBox utility                                               |
-
-#### Scheduler Utility Methods
-
-Every scheduler has several utility methods:
-
-| Method                  | Description                                                                                                                                                                                                                                                                                                                    |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `getRegisteredTasks()`  | Get an ordered array of all the tasks registered in the scheduler                                                                                                                                                                                                                                                              |
-| `getTaskRecord( name )` | <p>Get the task record structure by name:</p><p><code>{</code></p><p><code>name,</code></p><p><code>task,</code></p><p><code>future,</code></p><p><code>scheduledAt,</code></p><p><code>registeredAt,</code></p><p><code>error,</code></p><p><code>errorMessage,</code></p><p><code>stacktrace</code></p><p><code>}</code></p> |
-| `getTaskStats()`        | Builds out a struct report for all the registered tasks in this scheduler                                                                                                                                                                                                                                                      |
-| `hasTask( name )`       | Check if a scheduler has a task registered by name                                                                                                                                                                                                                                                                             |
-| `hasStarted()`          | Has the scheduler started already                                                                                                                                                                                                                                                                                              |
-| `removeTask( name )`    | Cancel a task and remove it from the scheduler                                                                                                                                                                                                                                                                                 |
-| `startup()`             | Startup the scheduler. This is called by ColdBox for you. No need to call it.                                                                                                                                                                                                                                                  |
-| `shutdown()`            | Shutdown the scheduler                                                                                                                                                                                                                                                                                                         |
-| `task( name, debug )`   | Register a new task and return back to you the task so you can build it out. You can also pass in an optional debug argument to set the task's debug setting which defaults to false.                                                                                                                                          |
-
-### Scheduling Tasks
-
-Ok, now that we have seen all the capabilities of the scheduler, let's dive deep into scheduling tasks with the `task( name )` method.
-
-#### Registering Tasks
-
-Once you call on this method, the scheduler will create a `ColdBoxScheduledTask` object for you, configure it, wire it, register it and return it to you.
+Once you call this method, the scheduler will create a `ScheduledTask` object for you, configure it, and register it. The task object provides a fluent API for configuring when and how the task should run.
 
 ```javascript
 task( "my-task" )
 ```
 
-You can find the API Docs for this object here: [https://s3.amazonaws.com/apidocs.ortussolutions.com/coldbox/6.4.0/coldbox/system/async/tasks/ScheduledTask.html](https://s3.amazonaws.com/apidocs.ortussolutions.com/coldbox/6.4.0/coldbox/system/async/tasks/ScheduledTask.html)
+### Task Closure/Lambda/Object
 
-#### Task Closure/Lambda/Object
-
-You register the callable event via the `call()` method on the task object. You can register a closure/lambda or a invokable CFC. If you register an object, then we will call on the object's `run()` method by default, but you can change it using the `method` argument and call any public/remote method.
+You register the callable event via the `call()` method on the task object. You can register a closure/lambda or an object. If you register an object, then we will call the object's `run()` method by default, but you can change it using the `method` argument and call any public method.
 
 ```javascript
 // Lambda Syntax
 task( "my-task" )
-    .call( () => runcleanup() )
+    .call( () => runCleanup() )
     .everyHour();
-    
+
 // Closure Syntax
 task( "my-task" )
     .call( function(){
         // task here
+        println( "Task executed at: " & now() );
     } )
     .everyHourAt( 45 );
-    
+
 // Object with run() method
 task( "my-task" )
-    .call( wirebox.getInstance( "MyObject" ) )
+    .call( createObject( "MyTaskObject" ) )
     .everyDay()
-    
+
 // Object with a custom method
 task( "my-task" )
-    .call( wirebox.getInstance( "MyObject" ), "reapCache" )
+    .call( createObject( "MyTaskObject" ), "reapCache" )
     .everydayAt( "13:00" )
 ```
 
-#### Frequencies
+### Frequencies
 
 There are many many frequency methods in scheduled tasks that will enable the tasks in specific intervals. Every time you see that an argument receives a `timeUnit` the available options are:
 
@@ -233,13 +289,13 @@ Ok, let's go over the frequency methods:
 All `time` arguments are defaulted to midnight (00:00)
 {% endhint %}
 
-#### Preventing Overlaps / Stacking
+### Preventing Overlaps / Stacking
 
-By default all tasks that have interval rates/periods that will execute on that interval schedule. However, what happens if a task takes longer to execute than the period? Well, by default the task will not execute if the previous one has not finished executing, causing the pending task to execute immediately after the current one completes ( Stacking Tasks ). If you want to prevent this behavior, then you can use the `withNoOverlaps()` method and ColdBox will register the tasks with a _fixed delay_. Meaning the intervals do not start counting until the last task has finished executing.
+By default all tasks that have interval rates/periods that will execute on that interval schedule. However, what happens if a task takes longer to execute than the period? Well, by default the task will not execute if the previous one has not finished executing, causing the pending task to execute immediately after the current one completes ( Stacking Tasks ). If you want to prevent this behavior, then you can use the `withNoOverlaps()` method and BoxLang will register the tasks with a _fixed delay_. Meaning the intervals do not start counting until the last task has finished executing.
 
 ```javascript
 task( "test" )
-	.call( () => getInstance( "CacheService" ).reap() )
+	.call( () => createObject( "CacheService" ).reap() )
 	.everyMinute()
 	.withNoOverlaps();
 ```
@@ -248,7 +304,7 @@ task( "test" )
 Spaced delays are a feature of the Scheduled Executors. There is even a `spacedDelay( delay, timeUnit )` method in the Task object.
 {% endhint %}
 
-#### Delaying First Execution
+### Delaying First Execution
 
 Every task can also have an initial delay of first execution by using the `delay()` method.
 
@@ -284,61 +340,61 @@ task( "my-task" )
 Please note that the `delay` pushes the execution of the task into the future only for the first execution.
 {% endhint %}
 
-#### One Off Tasks
+### One Off Tasks
 
-A part from registering tasks that have specific intervals/frequencies you can also register tasks that can be executed **ONCE** **ONLY**. These are great for warming up caches, registering yourself with control planes, setting up initial data collections and so much more.
+Apart from registering tasks that have specific intervals/frequencies you can also register tasks that can be executed **ONCE** **ONLY**. These are great for warming up caches, registering yourself with control planes, setting up initial data collections and so much more.
 
 Basically, you don't register a frequency just the callable event. Usually, you can also combine them with a delay of execution, if you need them to fire off after certain amount of time has passed.
 
 ```javascript
 task( "build-up-cache" )
-    .call( () => wirebox.getInstance( "MyObject" ).buildCache() )
+    .call( () => createObject( "MyService" ).buildCache() )
     .delay( 1, "minutes" );
-    
+
 task( "notify-admin-server-is-up" )
-    .call( () => wirebox.getInstance( "MyObject" ).notifyAppIsUp( getUtil().getServerIp() ) )
+    .call( () => createObject( "NotificationService" ).notifyAppIsUp( getServerIP() ) )
     .delay( 30, "seconds" );
-    
+
 task( "register-container" )
-    .call( () => ... )
+    .call( () => createObject( "RegistrationService" ).register() )
     .delay( 30, "seconds" );
 ```
 
-#### Life-Cycle Methods
+### Life-Cycle Methods
 
 We already saw that a scheduler has life-cycle methods, but a task can also have several useful life-cycle methods:
 
-| Method                | Description                                                                                                                   |
-| --------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `after( target )`     | <p>Store the closure to execute after the task executes<br></p><p><code>function( task, results )</code></p>                  |
-| `before( target )`    | <p>Store the closure to execute before the task executes<br></p><p><code>function( task )</code></p>                          |
-| `onFailure( target )` | <p>Store the closure to execute if there is a failure running the task<br></p><p><code>function( task, exception )</code></p> |
-| `onSuccess( target )` | <p>Store the closure to execute if the task completes successfully<br></p><p><code>function( task, results )</code></p>       |
+| Method                | Description                                                   |
+| --------------------- | ------------------------------------------------------------- |
+| `after( target )`     | Store the closure to execute after the task executes: `function( task, results )` |
+| `before( target )`    | Store the closure to execute before the task executes: `function( task )` |
+| `onFailure( target )` | Store the closure to execute if there is a failure running the task: `function( task, exception )` |
+| `onSuccess( target )` | Store the closure to execute if the task completes successfully: `function( task, results )` |
 
 ```javascript
 task( "testharness-Heartbeat" )
 	.call( function() {
-			if ( randRange(1, 5) eq 1 ){
-				 throw( message = "I am throwing up randomly!", type="RandomThrowup" );
-			}
-			  writeDump( var='====> I am in a test harness test schedule!', output="console" );
-		} )
-		.every( "5", "seconds" )
-		.before( function( task ) {
-			  writeDump( var='====> Running before the task!', output="console" );
-		} )
-		.after( function( task, results ){
-			  writeDump( var='====> Running after the task!', output="console" );
-		} )
-		.onFailure( function( task, exception ){
-			  writeDump( var='====> test schedule just failed!! #exception.message#', output="console" );
-		} )
-		.onSuccess( function( task, results ){
-			  writeDump( var="====> Test scheduler success : Stats: #task.getStats().toString()#", output="console" );
-		} );
+		if ( randRange(1, 5) == 1 ){
+			throw( message = "I am throwing up randomly!", type="RandomThrowup" );
+		}
+		println( "====> I am in a test harness test schedule!" );
+	} )
+	.every( "5", "seconds" )
+	.before( function( task ) {
+		println( "====> Running before the task!" );
+	} )
+	.after( function( task, results ){
+		println( "====> Running after the task!" );
+	} )
+	.onFailure( function( task, exception ){
+		println( "====> test schedule just failed!! #exception.message#" );
+	} )
+	.onSuccess( function( task, results ){
+		println( "====> Test scheduler success : Stats: #task.getStats().toString()#" );
+	} );
 ```
 
-#### Timezone
+### Timezone
 
 By default, all tasks will ask the scheduler for the timezone to run in. However, you can override it on a task-by-task basis using the `setTimezone( timezone )` method:
 
@@ -354,21 +410,21 @@ You can find all valid time zone Id's here: [https://docs.oracle.com/en/java/jav
 Remember that some timezones utilize daylight savings time. When daylight saving time changes occur, your scheduled task may run twice or even not run at all. For this reason, we recommend avoiding timezone scheduling when possible.
 {% endhint %}
 
-#### Truth Test Constraints
+### Truth Test Constraints
 
 There are many ways to constrain the execution of a task. However, you can register a `when()` closure that will be executed at runtime and boolean evaluated. If `true`, then the task can run, else it is disabled.
 
 ```javascript
 task( "my-task" )
-    .call( () => wirebox.getInstance( "MyObject" ).cleanOldUsers() )
+    .call( () => createObject( "UserService" ).cleanOldUsers() )
     .daily()
     .when( function(){
         // Can we run this task?
         return true;
-    );
+    } );
 ```
 
-#### Start and End Dates
+### Start and End Dates
 
 All scheduled tasks support the ability to seed in the **startOnDateTime** and **endOnDateTime** dates via our DSL:
 
@@ -379,13 +435,13 @@ This means that you can tell the scheduler when the task will become active on a
 
 ```javascript
 task( "restricted-task" )
-  .call( () => ... )
+  .call( () => createObject( "MaintenanceService" ).performMaintenance() )
   .everyHour()
   .startOn( "2022-01-01", "00:00" )
   .endOn( "2022-04-01" )
 ```
 
-#### Start and End Times
+### Start and End Times
 
 All scheduled tasks support the ability to seed in the **startTime** and **endTime** dates via our DSL:
 
@@ -397,18 +453,18 @@ This means that you can tell the scheduler to restrict the execution of the task
 
 ```javascript
 task( "restricted-task" )
-  .call( () => ... )
+  .call( () => createObject( "ReportService" ).generateReport() )
   .everyMinute()
   .between( "09:00", "17:00" )
 ```
 
-#### Disabling/Pausing Tasks
+### Disabling/Pausing Tasks
 
 Every task is runnable from registration according to the frequency you set. However, you can manually disable a task using the `disable()` method:
 
 ```javascript
 task( "my-task" )
-    .call( () => getInstance( "securityService" ).cleanOldUsers() )
+    .call( () => createObject( "SecurityService" ).cleanOldUsers() )
     .daily()
     .disable();
 ```
@@ -423,7 +479,7 @@ myTask.enable()
 Registering a task as disabled can lead to a task continuing to execute if it was later enabled and then removed via `removeTask( name )` and not disabled again before doing so.
 {% endhint %}
 
-#### Task Stats
+### Task Stats
 
 All tasks keep track of themselves and have lovely metrics. You can use the `getStats()` method to get a a snapshot `structure` of the stats in time. Here is what you get in the stats structure:
 
@@ -448,12 +504,11 @@ All tasks keep track of themselves and have lovely metrics. You can use the `get
  * @result The result (if any) that the task produced
  */
 function afterAnyTask( required task, result ){
-	log.info( "task #task.getName()# just ran. Metrics: #task.getStats().toString()# ");
+	logger.info( "task #task.getName()# just ran. Metrics: #task.getStats().toString()#" );
 }
-
 ```
 
-#### Task Helpers
+### Task Helpers
 
 We have created some useful methods that you can use when working with asynchronous tasks:
 
@@ -470,85 +525,357 @@ We have created some useful methods that you can use when working with asynchron
 | `setMetaKey( key, value )` | Set a key on the custom meta struct.                                                                                                                                                 |
 | `deleteMetaKey( key )`     | Delete a key from the custom meta struct.                                                                                                                                            |
 
-### Scheduled Executor Approach
 
-Let's investigate now a second approach to task scheduling. We have seen the `Scheduler` approach which is a self-contained object that can track multiple tasks for you and give you enhanced and fluent approaches to scheduling. However, there are times, where you just want to use a `ScheduledExecutor` to send tasks into for either one-time executions, or also on specific frequencies and skip the `Scheduler.`
+## Global Schedulers
 
-Like with anything in life, there are pros and cons. The Scheduler approach will track all the scheduled future results of each task so you can see their progress, metrics and even cancel them. With this approach, it is more of a set off and forget approach.
+The global schedulers are the default schedulers that are registered upon startup. These are defined in the `schedulers` property of the configuration file we have seen above. You can define multiple global schedulers that can be used throughout your application.
 
-#### Register a Scheduled Executor
+## Per-Application Schedulers
 
-Let's get down to business. The first step is to talk to the AsyncManager and register a scheduled executor. You can do this using two methods:
-
-* `newExecutor( name, type, threads )` - Pass by type
-* `newScheduledExecutor( name, threads )` - Shorthand
+The per-application schedulers are the schedulers that are registered for a specific application using the `Application.bx`.  Just use the `this.schedulers` property to define the schedulers you want to register for your application. This is useful if you want to have different schedulers for different applications in your BoxLang environment.
 
 ```javascript
-// Create it with a default of 20 threads
-application.asyncManager.newExecutor( "myTasks", "scheduled" );
-// Create it with a default of 10 threads
-application.asyncManager.newExecutor( "myTasks", "scheduled", 10 );
-// Create it as a FIFO queue of 1 thread
-application.asyncManager.newExecutor( "myTasks", "scheduled", 1 );
+class{
 
+    this.schedulers = [
+        "config/YourAppScheduler.bx",
+        "/myMapping/YourAppScheduler.bx"
+    ]
 
-// Create it with a default of 20 threads
-application.asyncManager.newScheduledExecutor( "myTasks" );
-// Create it with a default of 10 threads
-application.asyncManager.newScheduledExecutor( "myTasks", 10 );
-// Create it as a FIFO queue of 1 threa,d
-application.asyncManager.newScheduledExecutor( "myTasks", 1 );
+}
 ```
 
-Once you register the executor the Async Manager will track it's persistence and then you can request it's usage anywhere in your app via the `getExecutor( name )` method or inject it using the `executors` injection DSL.
+Please note that you do not need to register absolute paths for schedulers in your application, you can use relative paths or even per-app mappings. The `SchedulerService` will automatically resolve the paths for you.  Once your application starts, the `SchedulerService` will register all the schedulers defined in the `this.schedulers` property.  Once the application stops, the `SchedulerService` will automatically shutdown all the schedulers and their associated executors.
 
-```javascript
-// Request it
-var executor = application.asyncManager.getExecutor( "myTasks" );
+## CLI Runner
 
-// Inject it
-property name="myTasks" inject="executor:myTasks";
+You can also run schedulers from the command line using the BoxLang CLI. This is useful for running scheduled tasks in CI/CD pipelines or for testing purposes.
+
+```bash
+boxlang schedule path/to/MyScheduler.bx
 ```
 
-#### Scheduling
+This will instantiate the scheduler, configure it, start it, and run it until it's manually stopped or all tasks complete (for one-off tasks).
 
-Now that we have a scheduler, we can use the `newTask()` method to get a `ScheduledTask` , configure it, and send it for execution.
+# Scheduler Management BIFs
 
+BoxLang provides several Built-In Functions (BIFs) for managing schedulers at runtime. These functions allow you to interact with the scheduler service programmatically and manage schedulers dynamically.
+
+## schedulerStart()
+
+Creates, registers, and starts a scheduler with the given instantiation class path.
+
+**Syntax:**
 ```javascript
-// Request it
-var executor = application.asyncManager.getExecutor( "myTasks" );
-
-var future = executor.newTask( "cache-reap" )
-    .call( () => application.cacheFactory.reapAll() )
-    .every( 5, "minutes" )
-    .start();
+schedulerStart( className, [name], [force] )
 ```
 
-As you can see, now we are in Scheduling Tasks mode, and all the docs on it apply. Several things are different in this approach:
+**Parameters:**
+- `className` (required): The class name to instantiate (e.g., "models.myapp.MyScheduler")
+- `name` (optional): Override the scheduler name defined in the class
+- `force` (optional): Force start the scheduler (default: true)
 
-1. We talk to the executor via the `newTask()` method to get a new `ScheduledTask` object
-2. We call the `start()` method manually, whenever we want to send the task into scheduling
-3. We get a `ScheduledFuture` result object so we can track the results of the schedule.
+**Returns:** The scheduler object
 
-{% embed url="https://s3.amazonaws.com/apidocs.ortussolutions.com/coldbox/6.4.0/coldbox/system/async/tasks/ScheduledFuture.html" %}
-ScheduledFuture API Docs
-{% endembed %}
+**Example:**
+```javascript
+// Start a scheduler
+myScheduler = schedulerStart( "config.MyScheduler" );
 
-#### Work Queues
+// Start with custom name
+myScheduler = schedulerStart( "config.MyScheduler", "CustomName" );
+```
 
-You can very easily create working queues in this approach by being able to send one-off tasks into the executors and forget about them. Let's say we have an app that needs to do some image processing afte ran image has been uploaded. We don't want to hold up (block) the calling thread with it, we upload, send the task for processing and return back their identifier for the operation.
+## schedulerGet()
+
+Get a specific scheduler by name from the scheduler service.
+
+**Syntax:**
+```javascript
+schedulerGet( name )
+```
+
+**Parameters:**
+- `name` (required): The name of the scheduler to retrieve
+
+**Returns:** The scheduler object
+
+**Throws:** `IllegalArgumentException` if scheduler not found
+
+**Example:**
+```javascript
+try {
+    myScheduler = schedulerGet( "MyScheduler" );
+    println( "Found scheduler: " & myScheduler.getSchedulerName() );
+} catch( any e ) {
+    println( "Scheduler not found: " & e.message );
+}
+```
+
+## schedulerGetAll()
+
+Get all registered schedulers as a struct.
+
+**Syntax:**
+```javascript
+schedulerGetAll()
+```
+
+**Returns:** A struct containing all registered schedulers (key = scheduler name, value = scheduler object)
+
+**Example:**
+```javascript
+allSchedulers = schedulerGetAll();
+for( schedulerName in allSchedulers ) {
+    println( "Scheduler: " & schedulerName );
+    println( "Tasks: " & allSchedulers[ schedulerName ].getRegisteredTasks().toString() );
+}
+```
+
+## schedulerList()
+
+List all the scheduler names registered in the system.
+
+**Syntax:**
+```javascript
+schedulerList()
+```
+
+**Returns:** An array of scheduler names
+
+**Example:**
+```javascript
+schedulerNames = schedulerList();
+println( "Available schedulers: " & schedulerNames.toString() );
+```
+
+## schedulerShutdown()
+
+Shutdown a scheduler by name gracefully or forcefully.
+
+**Syntax:**
+```javascript
+schedulerShutdown( name, [force], [timeout] )
+```
+
+**Parameters:**
+- `name` (required): The name of the scheduler to shutdown
+- `force` (optional): Force shutdown the scheduler (default: false)
+- `timeout` (optional): Timeout in seconds to wait for graceful shutdown (default: 30)
+
+**Example:**
+```javascript
+// Graceful shutdown
+schedulerShutdown( "MyScheduler" );
+
+// Force shutdown with custom timeout
+schedulerShutdown( "MyScheduler", true, 60 );
+```
+
+## schedulerRestart()
+
+Restart a scheduler by name (shutdown then startup).
+
+**Syntax:**
+```javascript
+schedulerRestart( name, [force], [timeout] )
+```
+
+**Parameters:**
+- `name` (required): The name of the scheduler to restart
+- `force` (optional): Force restart the scheduler (default: false)
+- `timeout` (optional): Timeout in seconds to wait for shutdown (default: 30)
+
+**Example:**
+```javascript
+// Graceful restart
+schedulerRestart( "MyScheduler" );
+
+// Force restart with custom timeout
+schedulerRestart( "MyScheduler", true, 60 );
+```
+
+## schedulerStats()
+
+Get statistics for all schedulers or a specific scheduler.
+
+**Syntax:**
+```javascript
+schedulerStats( [name] )
+```
+
+**Parameters:**
+- `name` (optional): The name of the scheduler to get stats for (if not provided, returns stats for all schedulers)
+
+**Returns:** Stats struct(s) containing:
+- `created`: When the task was created
+- `lastExecutionTime`: Duration of last execution
+- `lastResult`: Result of last execution
+- `lastRun`: When the task last ran
+- `name`: Task name
+- `neverRun`: Boolean indicating if task has never run
+- `nextRun`: When the task will run next
+- `totalFailures`: Number of failed executions
+- `totalRuns`: Total number of executions
+- `totalSuccess`: Number of successful executions
+
+**Example:**
+```javascript
+// Get stats for all schedulers
+allStats = schedulerStats();
+
+// Get stats for specific scheduler
+myStats = schedulerStats( "MyScheduler" );
+for( taskName in myStats ) {
+    task = myStats[ taskName ];
+    println( "Task: #taskName# - Runs: #task.totalRuns# - Failures: #task.totalFailures#" );
+}
+```
+
+## Example: Dynamic Scheduler Management
+
+Here's a practical example of how you might use these BIFs to manage schedulers dynamically:
 
 ```javascript
-... Upload File.
+// Check if scheduler exists
+schedulerNames = schedulerList();
+if( !arrayContains( schedulerNames, "MaintenanceScheduler" ) ) {
+    // Start the scheduler if it doesn't exist
+    maintenanceScheduler = schedulerStart( "schedulers.MaintenanceScheduler", "MaintenanceScheduler" );
+    println( "Started maintenance scheduler" );
+} else {
+    // Get existing scheduler
+    maintenanceScheduler = schedulerGet( "MaintenanceScheduler" );
+    println( "Using existing maintenance scheduler" );
+}
 
-// Process Image in the Executor Work Queue
-executor.newSchedule( task : function(){
-        application.wirebox.getInstance( "ImageProcessor" ).processImage( fileName );
-    }).start();
+// Get and display stats
+stats = schedulerStats( "MaintenanceScheduler" );
+println( "Scheduler stats: " & serializeJSON( stats ) );
+
+// Restart scheduler if needed
+if( someCondition ) {
+    println( "Restarting scheduler..." );
+    schedulerRestart( "MaintenanceScheduler", false, 60 );
+}
+```
+
+## Task Records
+
+When tasks are registered in a scheduler, they are wrapped in a `TaskRecord` object that contains metadata about the task's lifecycle and execution state. You can access task records through the scheduler:
+
+```javascript
+// Get a specific task record
+taskRecord = scheduler.getTaskRecord( "my-task" );
+
+// Access task record properties
+println( "Task name: " & taskRecord.name );
+println( "Task group: " & taskRecord.group );
+println( "Registered at: " & taskRecord.registeredAt );
+println( "Scheduled at: " & taskRecord.scheduledAt );
+println( "Is disabled: " & taskRecord.disabled );
+println( "Has error: " & taskRecord.error );
+if( taskRecord.error ) {
+    println( "Error message: " & taskRecord.errorMessage );
+}
+```
+
+### TaskRecord Properties
+
+| Property | Description |
+|----------|-------------|
+| `name` | The task name |
+| `group` | The task group |
+| `task` | The actual ScheduledTask object |
+| `future` | The ScheduledFuture object for the task |
+| `scheduledAt` | When the task was scheduled |
+| `registeredAt` | When the task was registered |
+| `disabled` | Whether the task is disabled |
+| `error` | Whether the task had an error during scheduling |
+| `errorMessage` | The error message if any |
+| `stacktrace` | The full stacktrace if any |
+| `inetHost` | The hostname where the task is running |
+| `localIp` | The IP address of the server |
+
+## Best Practices
+
+Here are some best practices when working with BoxLang scheduled tasks:
+
+### 🎯 Task Design
+* **Keep tasks focused**: Each task should have a single responsibility
+* **Handle errors gracefully**: Use `onFailure()` callbacks to handle exceptions
+* **Use appropriate timing**: Consider system load when scheduling frequent tasks
+* **Leverage constraints**: Use time and date constraints to avoid unnecessary executions
+
+### 🔧 Configuration
+* **Use groups**: Organize related tasks into groups for better management
+* **Set meaningful names**: Use descriptive task names for easier debugging
+* **Configure metadata**: Store relevant information in task metadata
+* **Choose appropriate executors**: Match executor types to your workload patterns
+
+### 📊 Monitoring
+* **Track statistics**: Use `getStats()` to monitor task performance
+* **Implement logging**: Use life-cycle callbacks for comprehensive logging
+* **Monitor for failures**: Set up alerts for task failures
+* **Review execution times**: Watch for tasks that run longer than expected
+
+### 🚀 Performance
+* **Avoid overlaps**: Use `withNoOverlaps()` for long-running tasks
+* **Optimize frequencies**: Don't schedule tasks more frequently than necessary
+* **Use virtual executors**: For I/O-bound tasks, consider virtual thread executors
+* **Clean up resources**: Ensure tasks properly clean up any resources they use
+
+### 🔒 Reliability
+* **Handle timezone changes**: Be aware of daylight saving time impacts
+* **Plan for restarts**: Design tasks to handle application restarts gracefully
+* **Use constraints wisely**: Combine multiple constraints to achieve desired scheduling
+* **Test thoroughly**: Test your schedulers in different scenarios and environments
+
+```javascript
+// Example of a well-designed scheduler
+class {
+    property name="scheduler";
+    property name="logger";
     
-... Continue operation
+    function configure(){
+        // Configure scheduler
+        scheduler.setSchedulerName( "ProductionScheduler" );
+        scheduler.setTimezone( "UTC" );
+        
+        // High-frequency monitoring task
+        scheduler.task( "health-check", "monitoring" )
+            .call( () => performHealthCheck() )
+            .every( 30, "seconds" )
+            .setMeta({ "critical": true })
+            .onFailure( function( task, exception ) {
+                logger.error( "Health check failed: " & exception.getMessage() );
+                alertingService.sendAlert( "CRITICAL", "Health check failure" );
+            });
+        
+        // Daily maintenance task
+        scheduler.task( "daily-cleanup", "maintenance" )
+            .call( () => performDailyCleanup() )
+            .everyDayAt( "02:00" )
+            .withNoOverlaps()
+            .setMeta({ "department": "ops", "notification": true })
+            .before( function( task ) {
+                logger.info( "Starting daily cleanup..." );
+            })
+            .after( function( task, result ) {
+                logger.info( "Daily cleanup completed. Duration: " & task.getStats().lastExecutionTime );
+            });
+        
+        // Business day report
+        scheduler.task( "business-report", "reports" )
+            .call( () => generateBusinessReport() )
+            .weekdays( "17:00" )
+            .when( function() {
+                // Only run if we have data to process
+                return hasDataToProcess();
+            })
+            .setMeta({ "type": "report", "priority": "medium" });
+    }
+}
 ```
 
-{% hint style="info" %}
-Remember you can set how many threads you want in a executor. It doesn't even have to be a scheduled executor, but could be a cached one which can expand and contract according to work loads.
-{% endhint %}
+This comprehensive guide covers all the essential aspects of BoxLang's scheduled tasks framework. Whether you're building simple cron-like jobs or complex distributed scheduling systems, BoxLang's scheduler provides the tools and flexibility you need.
