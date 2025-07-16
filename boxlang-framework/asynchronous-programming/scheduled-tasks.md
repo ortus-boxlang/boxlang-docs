@@ -70,7 +70,7 @@ The `schedulers` property is an array of BoxLang schedulers to register upon sta
 
 The `tasks` property is an object that defines the tasks to register upon startup. Each task is defined by a unique name and can have many properties.  This is an experimental feature that is coming soon.
 
-# 📋 Schedulers
+# ⏳ Schedulers
 
 A `Scheduler` is a self-contained class that can track multiple tasks for you and give you enhanced and fluent approaches to scheduling. It is a powerful tool that allows you to register tasks, configure them, and manage their execution. Each scheduler class inherits from the `BaseScheduler` Java class, giving you access to all of its powerful methods and capabilities.
 
@@ -758,6 +758,54 @@ The CLI runner is ideal for:
 
 This will instantiate the scheduler, configure it, start it, and run it until it's manually stopped or all tasks complete (for one-off tasks).
 
+# 📝 Scheduler Logging
+
+BoxLang provides dedicated logging for all scheduling operations through the `scheduler.log` file located in the `logs` folder of your BoxLang home directory.  Please leverage logging as much as possible, as in async logging is critical for debugging and monitoring executor behavior.
+
+###  Automatic Logging
+
+All scheduler operations are automatically logged:
+
+* Scheduler creation and configuration
+* Task submissions and completions
+* Shutdown events and timing
+* Error conditions and exceptions
+* Performance warnings
+
+###  Manual Logging
+
+You can send custom messages to the scheduler log:
+
+```js
+// Log different message types to scheduler.log
+writeLog( text: "Starting batch processing job",  log: "scheduler" ) // info message
+writeLog( text: "Performance degradation detected", type: "Warning", log: "scheduler" )
+writeLog( text: "Task execution failed", type: "Error", log: "scheduler" )
+writeLog( text: "Debugging scheduler behavior", type: "Debug", log: "scheduler" )
+writeLog( text: "Detailed execution trace", type: "Trace", log: "scheduler" )
+```
+
+**Available Log Types:**
+
+* `"Information"` - General operational messages - (Default)
+* `"Warning"` - Performance issues or concerns
+* `"Error"` - Execution failures and exceptions
+* `"Debug"` - Development and troubleshooting info
+* `"Trace"` - Detailed execution flow information
+
+### 📂 Log File Location
+
+```bash
+{BoxLang-Home}/logs/scheduler.log
+```
+
+Monitor this file for:
+
+* Scheduler performance issues
+* Task execution failures
+* Resource exhaustion warnings
+* Shutdown timing problems
+
 # 🎛️ Scheduler Management BIFs
 
 BoxLang provides several Built-In Functions (BIFs) for managing schedulers at runtime. These functions allow you to interact with the scheduler service programmatically and manage schedulers dynamically.
@@ -998,35 +1046,40 @@ if( taskRecord.error ) {
 | `inetHost` | The hostname where the task is running |
 | `localIp` | The IP address of the server |
 
-## 💎 Best Practices
+# 💎 Best Practices
 
 Here are some best practices when working with BoxLang scheduled tasks:
 
 ### 🎯 Task Design
+
 * **Keep tasks focused**: Each task should have a single responsibility
 * **Handle errors gracefully**: Use `onFailure()` callbacks to handle exceptions
 * **Use appropriate timing**: Consider system load when scheduling frequent tasks
 * **Leverage constraints**: Use time and date constraints to avoid unnecessary executions
 
 ### 🔧 Configuration
+
 * **Use groups**: Organize related tasks into groups for better management
 * **Set meaningful names**: Use descriptive task names for easier debugging
 * **Configure metadata**: Store relevant information in task metadata
 * **Choose appropriate executors**: Match executor types to your workload patterns
 
 ### 📊 Monitoring
+
 * **Track statistics**: Use `getStats()` to monitor task performance
 * **Implement logging**: Use life-cycle callbacks for comprehensive logging
 * **Monitor for failures**: Set up alerts for task failures
 * **Review execution times**: Watch for tasks that run longer than expected
 
 ### 🚀 Performance
+
 * **Avoid overlaps**: Use `withNoOverlaps()` for long-running tasks
 * **Optimize frequencies**: Don't schedule tasks more frequently than necessary
 * **Use virtual executors**: For I/O-bound tasks, consider virtual thread executors
 * **Clean up resources**: Ensure tasks properly clean up any resources they use
 
 ### 🔒 Reliability
+
 * **Handle timezone changes**: Be aware of daylight saving time impacts
 * **Plan for restarts**: Design tasks to handle application restarts gracefully
 * **Use constraints wisely**: Combine multiple constraints to achieve desired scheduling
