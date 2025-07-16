@@ -836,12 +836,12 @@ Here are some best practices when working with BoxLang scheduled tasks:
 class {
     property name="scheduler";
     property name="logger";
-    
+
     function configure(){
         // Configure scheduler
         scheduler.setSchedulerName( "ProductionScheduler" );
         scheduler.setTimezone( "UTC" );
-        
+
         // High-frequency monitoring task
         scheduler.task( "health-check", "monitoring" )
             .call( () => performHealthCheck() )
@@ -851,7 +851,7 @@ class {
                 logger.error( "Health check failed: " & exception.getMessage() );
                 alertingService.sendAlert( "CRITICAL", "Health check failure" );
             });
-        
+
         // Daily maintenance task
         scheduler.task( "daily-cleanup", "maintenance" )
             .call( () => performDailyCleanup() )
@@ -864,7 +864,7 @@ class {
             .after( function( task, result ) {
                 logger.info( "Daily cleanup completed. Duration: " & task.getStats().lastExecutionTime );
             });
-        
+
         // Business day report
         scheduler.task( "business-report", "reports" )
             .call( () => generateBusinessReport() )

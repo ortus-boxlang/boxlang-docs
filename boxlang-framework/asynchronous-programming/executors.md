@@ -145,7 +145,7 @@ It's up to you to create additional executors as needed, but these three cover t
 
 BoxLang provides dedicated logging for all asynchronous operations through the `async.log` file located in the `logs` folder of your BoxLang home directory.  Please leverage logging as much as possible, as in async logging is critical for debugging and monitoring executor behavior.
 
-### 🎯 Automatic Logging
+###  Automatic Logging
 
 All executor operations are automatically logged:
 
@@ -155,7 +155,7 @@ All executor operations are automatically logged:
 * Error conditions and exceptions
 * Performance warnings
 
-### 📊 Manual Logging
+###  Manual Logging
 
 You can send custom messages to the async log:
 
@@ -205,7 +205,7 @@ The `AsyncService` is BoxLang's central service for managing executors and anyth
 | `getExecutorStatusMap( name )`                    | Get statistics for specific executor            | IStruct        |
 | `getExecutorNames()`                                       | List all registered executor names              | List           |
 
-### 🎯 Convenience Builder Methods
+###  Convenience Builder Methods
 
 ```js
 asyncService = getBoxRuntime().getAsyncService()
@@ -226,7 +226,7 @@ All methods return an `ExecutorRecord` instance, which provides enhanced functio
 
 **Important:** BoxLang doesn't return raw Java executors. Instead, you get `ExecutorRecord` instances - enhanced wrappers that provide additional functionality beyond standard Java ExecutorService.  These executor records can be passed around wherever an executor is needed or if you need the raw Java ExecutorService, you can access it via the `executor()` method on the `ExecutorRecord`.
 
-### 🔍 What is ExecutorRecord?
+###  What is ExecutorRecord?
 
 `ExecutorRecord` is BoxLang's enhanced executor wrapper that provides:
 
@@ -237,7 +237,7 @@ All methods return an `ExecutorRecord` instance, which provides enhanced functio
 * **🎯 Task Factory:** Built-in ScheduledTask creation for complex workflows
 * **🔄 State Management:** Comprehensive executor state monitoring
 
-### 🏗️ ExecutorRecord Methods
+###  ExecutorRecord Methods
 
 Here are the key methods available on `ExecutorRecord` instances:
 
@@ -373,7 +373,7 @@ BoxLang provides convenient global functions for executor management and usage:
 
 Remember that if the BIF returns an executor, it will be an `ExecutorRecord` instance, not a raw Java ExecutorService.  This allows you to leverage all the enhanced features and methods provided by BoxLang.
 
-### 🎯 BIF Usage Examples
+###  BIF Usage Examples
 
 ```js
 // Quick executor access
@@ -401,7 +401,7 @@ for ( name in allExecutors ) {
 
 > **🎯 Preferred Approach:** For scheduled tasks, use BoxLang's dedicated Scheduler framework instead of direct executor scheduling. Schedulers provide more features, better management, and integrated lifecycle handling.
 
-### 🔧 Scheduler vs Direct Executor Scheduling
+### Scheduler vs Direct Executor Scheduling
 
 ```js
 // ❌ Direct executor scheduling (basic)
