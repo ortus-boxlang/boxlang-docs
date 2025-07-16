@@ -549,11 +549,212 @@ Please note that you do not need to register absolute paths for schedulers in yo
 
 ## 💻 CLI Runner
 
-You can also run schedulers from the command line using the BoxLang CLI. This is useful for running scheduled tasks in CI/CD pipelines or for testing purposes.
+You can also run schedulers from the command line using the BoxLang CLI. This is useful for running scheduled tasks in CI/CD pipelines, containerized environments, system cron jobs, or for testing purposes. The CLI runner provides a standalone way to execute scheduler files directly from the operating system level.
+
+### Command Syntax
 
 ```bash
-boxlang schedule path/to/MyScheduler.bx
+# Using BoxLang binary
+boxlang schedule <SCHEDULER_FILE>
+
+# Using Java JAR
+java -jar boxlang.jar schedule <SCHEDULER_FILE>
 ```
+
+### Requirements
+
+* **File Extension**: Must be a `.bx` (BoxLang) file
+* **File Content**: Should contain a BoxLang component with scheduler definitions
+* **File Path**: Can be absolute or relative to current directory
+
+### Lifecycle
+
+When you run a scheduler via the CLI, BoxLang follows this lifecycle:
+
+1. **🔍 File Validation**: The file is checked for existence and proper `.bx` extension
+2. **⚙️ Compilation**: File is compiled and validated for syntax errors
+3. **🏗️ Instantiation**: Scheduler component is instantiated with injected dependencies
+4. **📋 Registration**: Scheduler is registered with the BoxLang SchedulerService
+5. **🚀 Startup**: All configured tasks begin execution according to their schedules
+6. **⏳ Blocking**: Process runs continuously until manually stopped
+7. **🛑 Graceful Shutdown**: Press `Ctrl+C` to gracefully shutdown all tasks
+
+### Examples
+
+```bash
+# ⏰ Run a basic scheduler
+boxlang schedule ./schedulers/MainScheduler.bx
+
+# 📁 Run scheduler with absolute path
+boxlang schedule /opt/myapp/schedulers/TaskRunner.bx
+
+# 🔧 Run scheduler in project directory
+cd /my/project && boxlang schedule schedulers/CronJobs.bx
+
+# 🐛 Run with debug mode enabled
+boxlang --bx-debug schedule ./MyScheduler.bx
+
+# ⚙️ Run with custom configuration
+boxlang --bx-config ./custom.json schedule ./MyScheduler.bx
+```
+
+### CLI Help
+
+You can get detailed help for the schedule command:
+
+```bash
+boxlang schedule --help
+# or
+boxlang schedule -h
+```
+
+This displays comprehensive usage information, requirements, and examples.
+
+### Error Handling
+
+The CLI runner provides clear error messages for common issues:
+
+```bash
+# ❌ Wrong file extension
+boxlang schedule myfile.txt
+# Error: Scheduler must be a .bx file, found: myfile.txt
+
+# ❌ File not found
+boxlang schedule nonexistent.bx
+# Error: The template [nonexistent.bx] does not exist.
+
+# ❌ Missing file argument
+boxlang schedule
+# Error: schedule command requires a scheduler file path. Use: boxlang schedule --help
+```
+
+### Integration with System Services
+
+The CLI runner is perfect for integration with system-level schedulers and process managers:
+
+#### **Systemd Service (Linux)**
+
+```ini
+# /etc/systemd/system/myapp-scheduler.service
+[Unit]
+Description=MyApp Scheduler Service
+After=network.target
+
+[Service]
+Type=simple
+User=myapp
+WorkingDirectory=/opt/myapp
+ExecStart=/usr/local/bin/boxlang schedule schedulers/MainScheduler.bx
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### **Docker Container**
+
+```dockerfile
+FROM ortussolutions/boxlang:latest
+
+COPY schedulers/ /app/schedulers/
+WORKDIR /app
+
+# Run the scheduler
+CMD ["boxlang", "schedule", "schedulers/MainScheduler.bx"]
+```
+
+#### **Cron Job (OS Level)**
+
+```bash
+# Run scheduler every hour via cron
+0 * * * * /usr/local/bin/boxlang schedule /opt/myapp/schedulers/HourlyTasks.bx
+
+# Run scheduler at system boot
+@reboot /usr/local/bin/boxlang schedule /opt/myapp/schedulers/StartupTasks.bx
+```
+
+### Environment Variables
+
+You can use BoxLang environment variables with the CLI runner:
+
+```bash
+# Set debug mode
+export BOXLANG_DEBUG=true
+boxlang schedule MyScheduler.bx
+
+# Custom configuration
+export BOXLANG_CONFIG=/path/to/config.json
+boxlang schedule MyScheduler.bx
+
+# Custom runtime home
+export BOXLANG_HOME=/opt/boxlang
+boxlang schedule MyScheduler.bx
+```
+
+### Logging and Monitoring
+
+The CLI runner integrates with BoxLang's logging system:
+
+```javascript
+// In your scheduler class
+class {
+    property name="scheduler";
+    property name="logger";
+
+    function configure(){
+        // Log scheduler startup
+        logger.info( "CLI Scheduler starting up..." );
+
+        scheduler.task( "monitoring-task" )
+            .call( () => {
+                logger.info( "Monitoring task executed at: " & now() );
+                // Your monitoring logic here
+            })
+            .every( 30, "seconds" );
+    }
+
+    void function onStartup(){
+        logger.info( "✅ CLI Scheduler [#scheduler.getSchedulerName()#] is now running" );
+    }
+
+    void function onShutdown(){
+        logger.info( "🛑 CLI Scheduler [#scheduler.getSchedulerName()#] has been stopped" );
+    }
+}
+```
+
+### Process Management
+
+When running via CLI, you can manage the process using standard OS tools:
+
+```bash
+# Run in background
+nohup boxlang schedule MyScheduler.bx > /var/log/myapp/scheduler.log 2>&1 &
+
+# Get process ID
+ps aux | grep "boxlang schedule"
+
+# Stop gracefully (sends SIGTERM)
+kill <PID>
+
+# Force stop (sends SIGKILL)
+kill -9 <PID>
+```
+
+### Use Cases
+
+The CLI runner is ideal for:
+
+* **🐳 Containerized Applications**: Run schedulers in Docker/Kubernetes
+* **☁️ Cloud Functions**: Execute scheduled tasks in serverless environments
+* **🔄 CI/CD Pipelines**: Run maintenance tasks during deployments
+* **🖥️ System Administration**: Replace traditional cron jobs with BoxLang schedulers
+* **🧪 Development & Testing**: Quickly test scheduler configurations
+* **📊 Data Processing**: Run ETL jobs and data synchronization tasks
+* **🔍 Monitoring**: Execute health checks and system monitoring tasks
 
 This will instantiate the scheduler, configure it, start it, and run it until it's manually stopped or all tasks complete (for one-off tasks).
 
