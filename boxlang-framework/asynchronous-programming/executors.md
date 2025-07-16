@@ -14,7 +14,7 @@ Tasks Queue  →  Executor Pool  →  Results
 📋 📋 📋      🔄 🔄 🔄 🔄       ✅ ✅ ✅
 ```
 
-Here is a great video you can check out about Executors: https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s
+Here is a great video you can check out about Executors: [https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s](https://www.youtube.com/watch?v=6Oo-9Can3H8&t=2s)
 
 ### **💡 Why Use Executors?**
 
@@ -224,7 +224,7 @@ All methods return an `ExecutorRecord` instance, which provides enhanced functio
 
 ## 🏗️ ExecutorRecord: Enhanced Executor Management
 
-**Important:** BoxLang doesn't return raw Java executors. Instead, you get `ExecutorRecord` instances - enhanced wrappers that provide additional functionality beyond standard Java ExecutorService.
+**Important:** BoxLang doesn't return raw Java executors. Instead, you get `ExecutorRecord` instances - enhanced wrappers that provide additional functionality beyond standard Java ExecutorService.  These executor records can be passed around wherever an executor is needed or if you need the raw Java ExecutorService, you can access it via the `executor()` method on the `ExecutorRecord`.
 
 ### 🔍 What is ExecutorRecord?
 
