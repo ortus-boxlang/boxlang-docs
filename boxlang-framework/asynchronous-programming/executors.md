@@ -3,9 +3,9 @@ description: Powerful Concurrency Made Simple
 icon: chart-network
 ---
 
-# Executors
+# 🚀 Executors
 
-## 🚀 What Are Executors?
+## What Are Executors?
 
 Executors in Java (and BoxLang) are high-level abstractions for managing and controlling thread execution. They provide a powerful way to handle concurrent tasks without the complexity of manually managing threads. Think of executors as specialized worker pools that can handle different types of workloads efficiently.
 
@@ -25,7 +25,7 @@ Here is a great video you can check out about Executors: [https://www.youtube.co
 * **Statistical Monitoring:** Real-time insights into executor performance
 * **Error Handling:** Centralized exception management and logging
 
-## 🎯 Executor Types & Use Cases
+## Executor Types & Use Cases
 
 Here are all the executors types available in BoxLang, each tailored for specific workloads and performance characteristics:
 
@@ -85,7 +85,7 @@ Here are all the executors types available in BoxLang, each tailored for specifi
 * **Use Case:** Order-dependent operations, logging, state management
 * **Performance:** No concurrency overhead, thread-safe by design
 
-## 🎁 Pre-defined Runtime Executors
+## 🔧 Pre-defined Runtime Executors
 
 BoxLang ships with three carefully curated executors ready for immediate use.  They are defined in the BoxLang's Home `config` folder `boxlang.json.`  Check out the [configuration](../../getting-started/configuration/executors.md) section for more information.
 

@@ -424,7 +424,7 @@ task( "my-task" )
     } );
 ```
 
-### Start and End Dates
+### 📅 Start and End Dates
 
 All scheduled tasks support the ability to seed in the **startOnDateTime** and **endOnDateTime** dates via our DSL:
 
@@ -441,7 +441,7 @@ task( "restricted-task" )
   .endOn( "2022-04-01" )
 ```
 
-### Start and End Times
+### 🕐 Start and End Times
 
 All scheduled tasks support the ability to seed in the **startTime** and **endTime** dates via our DSL:
 
@@ -458,7 +458,7 @@ task( "restricted-task" )
   .between( "09:00", "17:00" )
 ```
 
-### Disabling/Pausing Tasks
+### ⏸️ Disabling/Pausing Tasks
 
 Every task is runnable from registration according to the frequency you set. However, you can manually disable a task using the `disable()` method:
 
@@ -479,7 +479,7 @@ myTask.enable()
 Registering a task as disabled can lead to a task continuing to execute if it was later enabled and then removed via `removeTask( name )` and not disabled again before doing so.
 {% endhint %}
 
-### Task Stats
+### 📊 Task Stats
 
 All tasks keep track of themselves and have lovely metrics. You can use the `getStats()` method to get a a snapshot `structure` of the stats in time. Here is what you get in the stats structure:
 
@@ -508,7 +508,7 @@ function afterAnyTask( required task, result ){
 }
 ```
 
-### Task Helpers
+### 🛠️ Task Helpers
 
 We have created some useful methods that you can use when working with asynchronous tasks:
 
@@ -526,11 +526,11 @@ We have created some useful methods that you can use when working with asynchron
 | `deleteMetaKey( key )`     | Delete a key from the custom meta struct.                                                                                                                                            |
 
 
-## Global Schedulers
+## 🌐 Global Schedulers
 
 The global schedulers are the default schedulers that are registered upon startup. These are defined in the `schedulers` property of the configuration file we have seen above. You can define multiple global schedulers that can be used throughout your application.
 
-## Per-Application Schedulers
+## 📱 Per-Application Schedulers
 
 The per-application schedulers are the schedulers that are registered for a specific application using the `Application.bx`.  Just use the `this.schedulers` property to define the schedulers you want to register for your application. This is useful if you want to have different schedulers for different applications in your BoxLang environment.
 
@@ -547,7 +547,7 @@ class{
 
 Please note that you do not need to register absolute paths for schedulers in your application, you can use relative paths or even per-app mappings. The `SchedulerService` will automatically resolve the paths for you.  Once your application starts, the `SchedulerService` will register all the schedulers defined in the `this.schedulers` property.  Once the application stops, the `SchedulerService` will automatically shutdown all the schedulers and their associated executors.
 
-## CLI Runner
+## 💻 CLI Runner
 
 You can also run schedulers from the command line using the BoxLang CLI. This is useful for running scheduled tasks in CI/CD pipelines or for testing purposes.
 
@@ -557,11 +557,11 @@ boxlang schedule path/to/MyScheduler.bx
 
 This will instantiate the scheduler, configure it, start it, and run it until it's manually stopped or all tasks complete (for one-off tasks).
 
-# Scheduler Management BIFs
+# 🎛️ Scheduler Management BIFs
 
 BoxLang provides several Built-In Functions (BIFs) for managing schedulers at runtime. These functions allow you to interact with the scheduler service programmatically and manage schedulers dynamically.
 
-## schedulerStart()
+## 🚀 schedulerStart()
 
 Creates, registers, and starts a scheduler with the given instantiation class path.
 
@@ -586,7 +586,7 @@ myScheduler = schedulerStart( "config.MyScheduler" );
 myScheduler = schedulerStart( "config.MyScheduler", "CustomName" );
 ```
 
-## schedulerGet()
+## 🔍 schedulerGet()
 
 Get a specific scheduler by name from the scheduler service.
 
@@ -612,7 +612,7 @@ try {
 }
 ```
 
-## schedulerGetAll()
+## 📦 schedulerGetAll()
 
 Get all registered schedulers as a struct.
 
