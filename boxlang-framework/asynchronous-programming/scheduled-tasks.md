@@ -70,7 +70,7 @@ The `schedulers` property is an array of BoxLang schedulers to register upon sta
 
 The `tasks` property is an object that defines the tasks to register upon startup. Each task is defined by a unique name and can have many properties.  This is an experimental feature that is coming soon.
 
-# 📋 Scheduler Class
+# 📋 Schedulers
 
 A `Scheduler` is a self-contained class that can track multiple tasks for you and give you enhanced and fluent approaches to scheduling. It is a powerful tool that allows you to register tasks, configure them, and manage their execution. Each scheduler class inherits from the `BaseScheduler` Java class, giving you access to all of its powerful methods and capabilities.
 
@@ -762,7 +762,7 @@ This will instantiate the scheduler, configure it, start it, and run it until it
 
 BoxLang provides several Built-In Functions (BIFs) for managing schedulers at runtime. These functions allow you to interact with the scheduler service programmatically and manage schedulers dynamically.
 
-## 🚀 schedulerStart()
+## schedulerStart()
 
 Creates, registers, and starts a scheduler with the given instantiation class path.
 
@@ -787,7 +787,7 @@ myScheduler = schedulerStart( "config.MyScheduler" );
 myScheduler = schedulerStart( "config.MyScheduler", "CustomName" );
 ```
 
-## 🔍 schedulerGet()
+## schedulerGet()
 
 Get a specific scheduler by name from the scheduler service.
 
@@ -813,7 +813,7 @@ try {
 }
 ```
 
-## 📦 schedulerGetAll()
+## schedulerGetAll()
 
 Get all registered schedulers as a struct.
 
@@ -833,7 +833,7 @@ for( schedulerName in allSchedulers ) {
 }
 ```
 
-## 📋 schedulerList()
+## schedulerList()
 
 List all the scheduler names registered in the system.
 
@@ -850,7 +850,7 @@ schedulerNames = schedulerList();
 println( "Available schedulers: " & schedulerNames.toString() );
 ```
 
-## 🛑 schedulerShutdown()
+## schedulerShutdown()
 
 Shutdown a scheduler by name gracefully or forcefully.
 
@@ -873,7 +873,7 @@ schedulerShutdown( "MyScheduler" );
 schedulerShutdown( "MyScheduler", true, 60 );
 ```
 
-## 🔄 schedulerRestart()
+## schedulerRestart()
 
 Restart a scheduler by name (shutdown then startup).
 
@@ -896,7 +896,7 @@ schedulerRestart( "MyScheduler" );
 schedulerRestart( "MyScheduler", true, 60 );
 ```
 
-## 📊 schedulerStats()
+## schedulerStats()
 
 Get statistics for all schedulers or a specific scheduler.
 
