@@ -752,7 +752,7 @@
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Async Programming](boxlang-framework/asynchronous-programming/README.md)
   * [Executors](boxlang-framework/asynchronous-programming/executors.md)
-  * [Async Pipelines & BoxFutures](boxlang-framework/asynchronous-programming/async-pipelines-and-boxfutures.md)
+  * [Async Pipelines](boxlang-framework/asynchronous-programming/async-pipelines.md)
   * [Parallel Computations](boxlang-framework/asynchronous-programming/parallel-computations.md)
   * [Scheduled Tasks](boxlang-framework/asynchronous-programming/scheduled-tasks.md)
 * [Components](boxlang-framework/components.md)
