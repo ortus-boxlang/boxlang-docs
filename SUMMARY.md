@@ -874,7 +874,7 @@
   * [ESAPI](boxlang-framework/modularity/esapi.md)
   * [Evaluating Code](boxlang-framework/modularity/evaluating-code.md)
   * [FTP](boxlang-framework/modularity/ftp.md)
-  * [Image Manipulation](boxlang-framework/modularity/image-manipulation/README.md)
+  * [Image Manipulation](boxlang-framework/modularity/image-manipulation.md)
     * [Reference](boxlang-framework/modularity/image-manipulation/reference/README.md)
       * [Built-in Functions](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/README.md)
         * [ImageClearRect](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imageclearrect.md)
