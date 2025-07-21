@@ -5,6 +5,8 @@ icon: waves-sine
 
 # Async Programming
 
+**Note: This section of our documentation covers features coming soon to BoxLang 1.4.0.**
+
 We already covered basic threading in our core syntax and semantics section. In this section, we will discover the power behind the asynchronous framework behind Boxlang which is powered by the JDKs CompletableFutures, Executors, and much more.
 
 {% hint style="success" %}
@@ -19,7 +21,7 @@ Below you can see a diagram of our async framework and a brief description of it
 
 ### Async Service
 
-The AsyncService in BoxLang is in charge of coordinating executors, schedulers and configuration for the runtime.  Any executor you use via our BIFS or internal facitlities will end up being managed by this service.
+The AsyncService in BoxLang is in charge of coordinating executors, schedulers and configuration for the runtime.  Any executor you use via our BIFs or internal facitlities will end up being managed by this service.
 
 ### Executors
 
@@ -27,7 +29,7 @@ All of our tasks and computing futures execute in the server's common `ForkJoin`
 
 ### Scheduler Service
 
-Our scheduler service is in charge of creating and managing all BoxLang schedulers, wether they are global, dynamic or from contributed modules.
+Our scheduler service is in charge of creating and managing all BoxLang schedulers, whether they are global, dynamic or from contributed modules.
 
 ### Schedulers
 
