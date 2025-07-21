@@ -5,12 +5,12 @@ icon: waves-sine
 
 # Async Programming
 
+We've already covered basic threading in our core syntax and semantics section. In this section, we will discover the power behind the asynchronous framework behind Boxlang which is powered by the JDKs CompletableFutures, Executors, and much more.
+
 **Note: This section of our documentation covers features coming soon to BoxLang 1.4.0.**
 
-We already covered basic threading in our core syntax and semantics section. In this section, we will discover the power behind the asynchronous framework behind Boxlang which is powered by the JDKs CompletableFutures, Executors, and much more.
-
 {% hint style="success" %}
-We leverage Java `Executors`, `CompletableFutures` and much more classes from the concurrent packages in the JDK.
+We leverage Java `Executors`, `CompletableFutures` and many more classes from the concurrent packages in the JDK.
 {% endhint %}
 
 ## BoxLang Async Framework
@@ -25,7 +25,7 @@ The AsyncService in BoxLang is in charge of coordinating executors, schedulers a
 
 ### Executors
 
-All of our tasks and computing futures execute in the server's common `ForkJoin` pool the JDK provides. However, the JDK since version 8 provides you a framework for simplifying the execution of asynchronous tasks. It can automatically provide you with a pool of threads and a simple API for assigning tasks or work loads to them.
+All of our tasks and computing futures execute in the server's common `ForkJoin` pool the JDK provides. However, JDK 8+ provides you a framework for simplifying the execution of asynchronous tasks. It can automatically provide you with a pool of threads and a simple API for assigning tasks or work loads to them.
 
 ### Scheduler Service
 
@@ -41,4 +41,4 @@ Schedule tasks execute in an executor of choice and will be most likely managed 
 
 ### BoxFuture
 
-Our `BoxFuture` is a sub-class of the JDKs `CompletableFuture` but enhanced for dynamic programming.\
+Our `BoxFuture` is a subclass of the JDKs `CompletableFuture` but enhanced for dynamic programming.\

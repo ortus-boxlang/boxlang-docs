@@ -87,7 +87,7 @@ Here are all the executors types available in BoxLang, each tailored for specifi
 
 ## 🔧 Pre-defined Runtime Executors
 
-BoxLang ships with three carefully curated executors ready for immediate use.  They are defined in the BoxLang's Home `config` folder `boxlang.json.`  Check out the [configuration](../../getting-started/configuration/executors.md) section for more information.
+BoxLang ships with three carefully curated executors ready for immediate use.  They are defined in `boxlang.json` in the BoxLang's Home `config` folder. Check out the [configuration](../../getting-started/configuration/executors.md) section for more information.
 
 ```json
 "executors": {
@@ -143,7 +143,7 @@ It's up to you to create additional executors as needed, but these three cover t
 
 ## 📝 Async Logging
 
-BoxLang provides dedicated logging for all asynchronous operations through the `async.log` file located in the `logs` folder of your BoxLang home directory.  Please leverage logging as much as possible, as in async logging is critical for debugging and monitoring executor behavior.
+BoxLang provides dedicated logging for all asynchronous operations through the `async.log` file located in the `logs` folder of your BoxLang home directory.  Please leverage logging as much as possible, as in asynchronous environments logging is critical for debugging and monitoring executor behavior.
 
 ###  Automatic Logging
 
@@ -196,14 +196,14 @@ The `AsyncService` is BoxLang's central service for managing executors and anyth
 | Method                                           | Purpose                                         | Returns        |
 | ------------------------------------------------ | ----------------------------------------------- | -------------- |
 | `newExecutor( name, type, threads )`             | Create new executors with custom configurations | ExecutorRecord |
-| `getExecutor( name )`                                         | Retrieve executor instances by name             | ExecutorRecord |
-| `hasExecutor( name )`                                         | Check if an executor exists                               | Boolean        |
-| `deleteExecutor( name )`                                       | Remove and shutdown executors                   | AsyncService   |
+| `getExecutor( name )`                            | Retrieve executor instances by name             | ExecutorRecord |
+| `hasExecutor( name )`                            | Check if an executor exists                     | Boolean        |
+| `deleteExecutor( name )`                         | Remove and shutdown executors                   | AsyncService   |
 | `shutdownExecutor( name, force, timeout, unit )` | Gracefully shutdown specific executors          | AsyncService   |
 | `shutdownAllExecutors( force, timeout, unit )`   | Shutdown all registered executors               | AsyncService   |
-| `getExecutorStatusMap()`                                  | Get detailed statistics for all executors       | IStruct        |
-| `getExecutorStatusMap( name )`                    | Get statistics for specific executor            | IStruct        |
-| `getExecutorNames()`                                       | List all registered executor names              | List           |
+| `getExecutorStatusMap()`                         | Get detailed statistics for all executors       | IStruct        |
+| `getExecutorStatusMap( name )`                   | Get statistics for specific executor            | IStruct        |
+| `getExecutorNames()`                             | List all registered executor names              | List           |
 
 ###  Convenience Builder Methods
 
@@ -220,11 +220,11 @@ asyncService = getBoxRuntime().getAsyncService()
  singleThread = asyncService.newSingleExecutor( "sequential" )
 ```
 
-All methods return an `ExecutorRecord` instance, which provides enhanced functionality beyond standard Java ExecutorService.  Our BoxLang ExecutorRecord is a wrapper around the Java ExecutorService, providing additional features like statistics, logging, and task management.
+All methods return an `ExecutorRecord` instance, which is a wrapper around the Java `ExecutorService` class providing additional features like statistics, logging, and task management.
 
 ## 🏗️ ExecutorRecord: Enhanced Executor Management
 
-**Important:** BoxLang doesn't return raw Java executors. Instead, you get `ExecutorRecord` instances - enhanced wrappers that provide additional functionality beyond standard Java ExecutorService.  These executor records can be passed around wherever an executor is needed or if you need the raw Java ExecutorService, you can access it via the `executor()` method on the `ExecutorRecord`.
+**Important:** BoxLang doesn't return raw Java executors. Instead, you get `ExecutorRecord` instances - enhanced wrappers that provide additional functionality beyond a standard Java `ExecutorService` instance.  These executor records can be passed around wherever an executor is needed or if you need the raw Java `ExecutorService`, you can access it via the `executor()` method on the `ExecutorRecord`.
 
 ###  What is ExecutorRecord?
 
@@ -366,7 +366,7 @@ BoxLang provides convenient global functions for executor management and usage:
 | ---------------------------------------------- | --------------------------------------------------- | -------------- | --------------------------------------- |
 | `executorGet( [name] )`                        | Get ExecutorRecord by name (defaults to "io-tasks") | ExecutorRecord | `executorGet( "cpu-tasks" )`            |
 | `executorHas( name )`                          | Check if executor exists                            | Boolean        | `executorHas( "my-pool" )`              |
-| `executorList()`                                      | List all executor names                             | Array          | `executorList()`                        |
+| `executorList()`                               | List all executor names                             | Array          | `executorList()`                        |
 | `executorNew( name, type, [threads] )`         | Create new executor                                 | ExecutorRecord | `executorNew( "pool", "fixed", 8 )`     |
 | `executorShutdown( name, [force], [timeout] )` | Shutdown executor gracefully or forcefully          | Boolean        | `executorShutdown( "pool", false, 30 )` |
 | `executorStatus( [name] )`                     | Get executor statistics and status                  | Struct         | `executorStatus( "cpu-tasks" )`         |
