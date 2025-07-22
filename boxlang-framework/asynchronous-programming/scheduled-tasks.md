@@ -197,13 +197,30 @@ Your scheduler class has access to all the methods from the `BaseScheduler` clas
 | `hasTask( name )` | Check if a task is registered |
 | `removeTask( name )` | Remove a task from the scheduler |
 | `restart()` | Restart the scheduler |
+| `restart( force, timeout )` | Restart the scheduler with force flag and custom timeout |
+| `clearTasks()` | Clear all tasks from the scheduler (usually done by restart) |
+| `startupTask( task )` | Manually startup a specific task |
+| `startupTask( taskName )` | Manually startup a task by name |
+| `hasStarted()` | Check if the scheduler has been started |
+| `isRunning()` | Alias for `hasStarted()` - check if scheduler is running |
+| `getStartedAt()` | Get the timestamp when the scheduler was started |
 | `setContext( context )` | Set the BoxLang context for task execution |
+| `getContext()` | Get the current BoxLang context |
 | `setSchedulerName( name )` | Set the human-readable name for this scheduler |
 | `setTimezone( timezone )` | Set the timezone for all tasks (default: system timezone) |
+| `setDefaultTimezone()` | Set the timezone to system default |
+| `getAsyncService()` | Get the async service bound to this scheduler |
+| `setExecutor( executor )` | Set the executor record for this scheduler |
+| `getExecutor()` | Get the executor record |
+| `getLogger()` | Get the logger instance for this scheduler |
 | `shutdown()` | Shutdown the scheduler gracefully |
+| `shutdown( force )` | Shutdown with force flag |
+| `shutdown( force, timeout )` | Shutdown with force flag and timeout |
 | `startup()` | Start the scheduler and all its tasks |
 | `task( name )` | Register a new task with the given name |
+| `task( name, group )` | Register a new task with name and group |
 | `xtask( name )` | Register a new task but disable it immediately (useful for debugging) |
+| `xtask( name, group )` | Register a disabled task with name and group |
 
 {% hint style="warning" %}
 We always recommend you give a scheduler a name and a timezone.
@@ -317,6 +334,7 @@ Ok, let's go over the frequency methods:
 | -------------------------------------- | ---------------------------------------------------------------------------- |
 | `every( period, timeunit )`            | Run the task every custom period of execution                                |
 | `spacedDelay( spacedDelay, timeunit )` | Run the task every custom period of execution but with NO overlaps           |
+| `everySecond()`                        | Run the task every second from the time it gets scheduled                    |
 | `everyMinute()`                        | Run the task every minute from the time it get's scheduled                   |
 | `everyHour()`                          | Run the task every hour from the time it get's scheduled                     |
 | `everyHourAt( minutes )`               | Set the period to be hourly at a specific minute mark and 00 seconds         |
@@ -343,6 +361,43 @@ Ok, let's go over the frequency methods:
 {% hint style="success" %}
 All `time` arguments are defaulted to midnight (00:00)
 {% endhint %}
+
+### ⏱️ Time Unit Methods
+
+You can also use fluent time unit methods to set the time unit for your periods when using the `every()` method:
+
+| Time Unit Method     | Description                              |
+| -------------------- | ---------------------------------------- |
+| `inDays()`           | Set the time unit to days                |
+| `inHours()`          | Set the time unit to hours               |
+| `inMinutes()`        | Set the time unit to minutes             |
+| `inSeconds()`        | Set the time unit to seconds             |
+| `inMilliseconds()`   | Set the time unit to milliseconds        |
+| `inMicroseconds()`   | Set the time unit to microseconds        |
+| `inNanoseconds()`    | Set the time unit to nanoseconds         |
+
+**Usage Examples:**
+
+```javascript
+// Using time unit methods with every()
+task( "data-sync" )
+    .call( () => syncData() )
+    .every( 30 )
+    .inMinutes();
+
+// Equivalent to
+task( "data-sync" )
+    .call( () => syncData() )
+    .every( 30, "minutes" );
+
+// Complex example with chaining
+task( "cache-warmup" )
+    .call( () => warmupCache() )
+    .every( 2 )
+    .inHours()
+    .startOnTime( "06:00" )
+    .endOnTime( "22:00" );
+```
 
 ### 🚫 Preventing Overlaps / Stacking
 
