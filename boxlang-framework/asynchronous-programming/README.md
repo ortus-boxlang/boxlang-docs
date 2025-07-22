@@ -15,9 +15,180 @@ We leverage Java `Executors`, `CompletableFutures` and many more classes from th
 
 ## BoxLang Async Framework
 
-Below you can see a diagram of our async framework and a brief description of its capabilities.
+BoxLang's async framework provides a comprehensive suite of tools for modern concurrent programming, built on top of Java's proven concurrency primitives but enhanced with dynamic language features and developer-friendly APIs.
 
 <figure><img src="../../.gitbook/assets/BoxLangAsync.png" alt=""><figcaption></figcaption></figure>
+
+### 🚀 What You Can Build
+
+With BoxLang's async framework, you can create:
+
+#### High-Performance Applications
+
+- **Non-blocking I/O operations** that scale to thousands of concurrent requests
+- **CPU-intensive computations** distributed across multiple cores
+- **Real-time data processing** pipelines with backpressure handling
+- **Microservices** with async inter-service communication
+
+#### Robust Background Processing
+
+- **Scheduled tasks** with cron-like flexibility and fluent configuration
+- **Event-driven workflows** that respond to system changes
+- **Batch processing** jobs that can be paused, resumed, and monitored
+- **Queue-based processing** with automatic retry and error handling
+
+#### Advanced Coordination Patterns
+
+- **Pipeline architectures** for streaming data transformation
+- **Fan-out/Fan-in patterns** for parallel processing and aggregation
+- **Circuit breakers** for fault-tolerant service integration
+- **Rate limiting** and throttling for resource protection
+
+### 🛠️ Core Capabilities
+
+#### ⚡ BoxFutures - Promise-Like Programming
+
+Transform callback hell into readable, chainable operations:
+
+```javascript
+// Sequential async operations
+userProfile = futureNew( () => authenticateUser( credentials ) )
+    .then( token => fetchUserProfile( token ) )
+    .then( profile => enrichWithPermissions( profile ) )
+    .then( enrichedProfile => cacheProfile( enrichedProfile ) )
+    .onError( ex => handleAuthError( ex ) )
+    .orTimeout( 30, "SECONDS" )
+```
+
+#### 🔄 Parallel Computing
+
+Execute operations concurrently with automatic result aggregation:
+
+```javascript
+// Process multiple data sources in parallel
+results = asyncAll([
+    () => fetchFromDatabase(),
+    () => fetchFromAPI(),
+    () => fetchFromCache()
+]).then( dataSources => mergeAndProcess( dataSources ) )
+
+// Transform collections in parallel
+processedUsers = asyncAllApply(
+    userIds,
+    userId => enhanceUserProfile( userId )
+)
+```
+
+#### ⏰ Intelligent Scheduling
+
+Create sophisticated scheduling patterns with minimal code:
+
+```javascript
+// Complex scheduling with conditions
+scheduler.task( "data-sync" )
+    .call( () => syncExternalData() )
+    .every( 15, "MINUTES" )
+    .when( () => isBusinessHours() )
+    .onError( ex => notifyOpsTeam( ex ) )
+```
+
+#### 🎛️ Flexible Executors
+
+Choose the right execution strategy for your workload:
+
+```java
+// I/O intensive tasks - unlimited virtual threads
+ioExecutor = executorGet( "io-tasks" )  // Virtual threads for massive concurrency
+
+// CPU intensive tasks - controlled thread pool
+cpuExecutor = executorGet( "cpu-tasks" )  // Fixed pool for CPU-bound work
+
+// Custom executors for specific needs
+customExecutor = executorNew( "image-processing", "work-stealing", 8 )
+```
+
+### 🎯 Real-World Use Cases
+
+#### API Gateway Pattern
+
+```javascript
+// Orchestrate multiple backend services
+response = asyncAll([
+    () => userService.getProfile( userId ),
+    () => orderService.getOrders( userId ),
+    () => recommendationService.getRecommendations( userId )
+])
+.then( results => aggregateApiResponse( results ) )
+.orTimeout( 5, "SECONDS" )
+.onError( ex => fallbackResponse() )
+```
+
+#### Data Pipeline Processing
+
+```javascript
+// ETL pipeline with error recovery
+pipeline = futureNew( () => extractFromSource() )
+    .then( data => validateData( data ), "cpu-tasks" )
+    .then( validData => transformData( validData ), "cpu-tasks" )
+    .then( transformedData => loadToDestination( transformedData ), "io-tasks" )
+    .onError( ex => handlePipelineFailure( ex ) )
+```
+
+#### Background Job Processing
+
+```javascript
+// Resilient background job with monitoring
+scheduler.task( "report-generation" )
+    .call( () => generateMonthlyReports() )
+    .delay( 5, "MINUTES" )  // Allow system to stabilize
+    .every( 1, "DAYS" )
+    .at( "02:00" )  // Run at 2 AM
+    .onSuccess( result => notifyCompletion( result ) )
+    .onError( ex => escalateFailure( ex ) )
+```
+
+#### Race Conditions and Fallbacks
+
+```javascript
+// Multiple data sources with automatic fallback
+fastestData = asyncAny([
+    () => primaryDatabase.query( sql ),
+    () => readOnlyReplica.query( sql ),
+    () => cache.get( cacheKey )
+])
+.then( data => processData( data ) )
+.onError( ex => useDefaultData() )
+```
+
+### 🔧 Advanced Features
+
+#### Resource Management
+
+- **Automatic cleanup** of threads and resources
+- **Graceful shutdown** with configurable timeouts
+- **Memory-efficient** virtual threads for I/O operations
+- **CPU-aware** thread pools for compute-intensive tasks
+
+#### Error Handling & Resilience
+
+- **Centralized exception management** with typed error handling
+- **Automatic retry logic** with exponential backoff
+- **Circuit breaker patterns** for external service protection
+- **Timeout management** at multiple levels (operation, pipeline, system)
+
+#### Monitoring & Observability
+
+- **Real-time metrics** for executor performance
+- **Task execution statistics** with completion rates
+- **Async logging** for debugging and monitoring
+- **Health checks** for scheduler and executor states
+
+#### Integration & Interoperability
+
+- **Java interop** with existing concurrent libraries
+- **Module system** for extending async capabilities
+- **Configuration-driven** executor and scheduler setup
+- **Hot-swappable** task definitions and schedules
 
 ### Async Service
 
@@ -41,4 +212,63 @@ Schedule tasks execute in an executor of choice and will be most likely managed 
 
 ### BoxFuture
 
-Our `BoxFuture` is a subclass of the JDKs `CompletableFuture` but enhanced for dynamic programming.\
+Our `BoxFuture` is a subclass of the JDKs `CompletableFuture` but enhanced for dynamic programming.
+
+## ⏱️ Time Units Reference
+
+BoxLang's async framework accepts time units in multiple formats for timeouts, delays, and scheduling operations. This applies to all async operations including **BoxFutures**, **parallel computations**, **scheduled tasks**, and **executors**.
+
+### 📋 Available Time Units
+
+| Unit String | Java TimeUnit | Description | Example Usage |
+|-------------|---------------|-------------|---------------|
+| `"NANOSECONDS"` | `TimeUnit.NANOSECONDS` | Nanosecond precision | `future.orTimeout( 500000000, "NANOSECONDS" )` |
+| `"MICROSECONDS"` | `TimeUnit.MICROSECONDS` | Microsecond precision | `future.orTimeout( 500000, "MICROSECONDS" )` |
+| `"MILLISECONDS"` | `TimeUnit.MILLISECONDS` | Millisecond precision (default) | `future.orTimeout( 5000, "MILLISECONDS" )` |
+| `"SECONDS"` | `TimeUnit.SECONDS` | Second precision | `future.orTimeout( 30, "SECONDS" )` |
+| `"MINUTES"` | `TimeUnit.MINUTES` | Minute precision | `future.orTimeout( 5, "MINUTES" )` |
+| `"HOURS"` | `TimeUnit.HOURS` | Hour precision | `future.orTimeout( 2, "HOURS" )` |
+| `"DAYS"` | `TimeUnit.DAYS` | Day precision | `future.orTimeout( 1, "DAYS" )` |
+
+### 🎯 Usage Examples
+
+```javascript
+// Using string units across different async operations
+future = futureNew( () => longRunningTask() )
+    .orTimeout( 30, "SECONDS" )
+    .completeOnTimeout( "TIMEOUT", 1, "MINUTES" )
+
+// Parallel computations with timeout
+results = asyncAllApply(
+    largeDataset,
+    ( item ) => processItem( item ),
+    null, // no error handler
+    "cpu-tasks", // executor
+    45, // timeout value
+    "SECONDS" // timeout unit
+)
+
+// Scheduled tasks with time units
+scheduler.task( "daily-cleanup" )
+    .call( () => performCleanup() )
+    .delay( 2, "HOURS" )
+    .every( 1, "DAYS" )
+
+// Using Java TimeUnit class directly
+import java.util.concurrent.TimeUnit;
+future.orTimeout( 30, TimeUnit.SECONDS )
+```
+
+### 📝 Important Notes
+
+- **Default Unit**: When no unit is specified, **milliseconds** are assumed in multiple contexts. However, please see the specific context for default behavior.
+- **Java Interop**: You can pass actual `java.util.concurrent.TimeUnit` instances
+- **Precision**: Choose appropriate precision for your use case to avoid unnecessary overhead
+
+For detailed examples of time units in specific contexts, see:
+
+- [Async Pipelines](async-pipelines.md) - BoxFuture timeout operations
+- [Box Futures](box-futures.md) - Timeout handling in BoxFutures
+- [Parallel Computations](parallel-computations.md) - Timeout handling in parallel operations
+- [Scheduled Tasks](scheduled-tasks.md) - Task scheduling and delays
+- [Executors](executors.md) - Executor timeout and lifecycle management
