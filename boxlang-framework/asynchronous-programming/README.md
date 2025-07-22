@@ -19,6 +19,30 @@ BoxLang's async framework provides a comprehensive suite of tools for modern con
 
 <figure><img src="../../.gitbook/assets/BoxLangAsync.png" alt=""><figcaption></figcaption></figure>
 
+### Async Service
+
+The AsyncService in BoxLang is in charge of coordinating executors, schedulers and configuration for the runtime.  Any executor you use via our BIFs or internal facitlities will end up being managed by this service.
+
+### Executors
+
+All of our tasks and computing futures execute in the server's common `ForkJoin` pool the JDK provides. However, JDK 8+ provides you a framework for simplifying the execution of asynchronous tasks. It can automatically provide you with a pool of threads and a simple API for assigning tasks or work loads to them.
+
+### Scheduler Service
+
+Our scheduler service is in charge of creating and managing all BoxLang schedulers, whether they are global, dynamic or from contributed modules.
+
+### Schedulers
+
+Schedulers can be written in BoxLang or in Java and will end up being managed by the scheduler service.  Each scheduler has a collection of scheduled tasks it can monitor, execute and manage.  Each scheduler is bound to a specific executor.
+
+### Scheduled Tasks
+
+Schedule tasks execute in an executor of choice and will be most likely managed by a scheduler.  There are times where tasks can be sent for execution directly to executors as well.
+
+### BoxFuture
+
+Our `BoxFuture` is a subclass of the JDKs `CompletableFuture` but enhanced for dynamic programming.
+
 ### 🚀 What You Can Build
 
 With BoxLang's async framework, you can create:
@@ -190,35 +214,11 @@ fastestData = asyncAny([
 - **Configuration-driven** executor and scheduler setup
 - **Hot-swappable** task definitions and schedules
 
-### Async Service
-
-The AsyncService in BoxLang is in charge of coordinating executors, schedulers and configuration for the runtime.  Any executor you use via our BIFs or internal facitlities will end up being managed by this service.
-
-### Executors
-
-All of our tasks and computing futures execute in the server's common `ForkJoin` pool the JDK provides. However, JDK 8+ provides you a framework for simplifying the execution of asynchronous tasks. It can automatically provide you with a pool of threads and a simple API for assigning tasks or work loads to them.
-
-### Scheduler Service
-
-Our scheduler service is in charge of creating and managing all BoxLang schedulers, whether they are global, dynamic or from contributed modules.
-
-### Schedulers
-
-Schedulers can be written in BoxLang or in Java and will end up being managed by the scheduler service.  Each scheduler has a collection of scheduled tasks it can monitor, execute and manage.  Each scheduler is bound to a specific executor.
-
-### Scheduled Tasks
-
-Schedule tasks execute in an executor of choice and will be most likely managed by a scheduler.  There are times where tasks can be sent for execution directly to executors as well.
-
-### BoxFuture
-
-Our `BoxFuture` is a subclass of the JDKs `CompletableFuture` but enhanced for dynamic programming.
-
-## ⏱️ Time Units Reference
+### ⏱️ Time Units Reference
 
 BoxLang's async framework accepts time units in multiple formats for timeouts, delays, and scheduling operations. This applies to all async operations including **BoxFutures**, **parallel computations**, **scheduled tasks**, and **executors**.
 
-### 📋 Available Time Units
+#### Available Time Units
 
 | Unit String | Java TimeUnit | Description | Example Usage |
 |-------------|---------------|-------------|---------------|
@@ -230,36 +230,7 @@ BoxLang's async framework accepts time units in multiple formats for timeouts, d
 | `"HOURS"` | `TimeUnit.HOURS` | Hour precision | `future.orTimeout( 2, "HOURS" )` |
 | `"DAYS"` | `TimeUnit.DAYS` | Day precision | `future.orTimeout( 1, "DAYS" )` |
 
-### 🎯 Usage Examples
-
-```javascript
-// Using string units across different async operations
-future = futureNew( () => longRunningTask() )
-    .orTimeout( 30, "SECONDS" )
-    .completeOnTimeout( "TIMEOUT", 1, "MINUTES" )
-
-// Parallel computations with timeout
-results = asyncAllApply(
-    largeDataset,
-    ( item ) => processItem( item ),
-    null, // no error handler
-    "cpu-tasks", // executor
-    45, // timeout value
-    "SECONDS" // timeout unit
-)
-
-// Scheduled tasks with time units
-scheduler.task( "daily-cleanup" )
-    .call( () => performCleanup() )
-    .delay( 2, "HOURS" )
-    .every( 1, "DAYS" )
-
-// Using Java TimeUnit class directly
-import java.util.concurrent.TimeUnit;
-future.orTimeout( 30, TimeUnit.SECONDS )
-```
-
-### 📝 Important Notes
+#### Important Notes
 
 - **Default Unit**: When no unit is specified, **milliseconds** are assumed in multiple contexts. However, please see the specific context for default behavior.
 - **Java Interop**: You can pass actual `java.util.concurrent.TimeUnit` instances
