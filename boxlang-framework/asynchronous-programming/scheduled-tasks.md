@@ -630,7 +630,7 @@ When you run a scheduler via the CLI, BoxLang follows this lifecycle:
 
 1. **🔍 File Validation**: The file is checked for existence and proper `.bx` extension
 2. **⚙️ Compilation**: File is compiled and validated for syntax errors
-3. **🏗️ Instantiation**: Scheduler component is instantiated with injected dependencies
+3. **🏗️ Instantiation**: Scheduler class is instantiated with injected dependencies
 4. **📋 Registration**: Scheduler is registered with the BoxLang SchedulerService
 5. **🚀 Startup**: All configured tasks begin execution according to their schedules
 6. **⏳ Blocking**: Process runs continuously until manually stopped
@@ -666,24 +666,6 @@ boxlang schedule -h
 ```
 
 This displays comprehensive usage information, requirements, and examples.
-
-### Error Handling
-
-The CLI runner provides clear error messages for common issues:
-
-```bash
-# ❌ Wrong file extension
-boxlang schedule myfile.txt
-# Error: Scheduler must be a .bx file, found: myfile.txt
-
-# ❌ File not found
-boxlang schedule nonexistent.bx
-# Error: The template [nonexistent.bx] does not exist.
-
-# ❌ Missing file argument
-boxlang schedule
-# Error: schedule command requires a scheduler file path. Use: boxlang schedule --help
-```
 
 ### Integration with System Services
 
@@ -783,6 +765,8 @@ class {
 }
 ```
 
+All log files will be stored in the BoxLang Home's `logs` directory under the `scheduler.log` file. You can monitor this file for real-time updates on task execution, errors, and performance metrics.
+
 ### Process Management
 
 When running via CLI, you can manage the process using standard OS tools:
@@ -815,11 +799,11 @@ The CLI runner is ideal for:
 
 This will instantiate the scheduler, configure it, start it, and run it until it's manually stopped or all tasks complete (for one-off tasks).
 
-# 📝 Scheduler Logging
+# 📁 Scheduler Logging
 
 BoxLang provides dedicated logging for all scheduling operations through the `scheduler.log` file located in the `logs` folder of your BoxLang home directory.  Please leverage logging as much as possible, as in async logging is critical for debugging and monitoring executor behavior.
 
-###  Automatic Logging
+## Automatic Logging
 
 All scheduler operations are automatically logged:
 
@@ -829,7 +813,7 @@ All scheduler operations are automatically logged:
 * Error conditions and exceptions
 * Performance warnings
 
-###  Manual Logging
+## Manual Logging
 
 You can send custom messages to the scheduler log:
 
@@ -850,7 +834,7 @@ writeLog( text: "Detailed execution trace", type: "Trace", log: "scheduler" )
 * `"Debug"` - Development and troubleshooting info
 * `"Trace"` - Detailed execution flow information
 
-### 📂 Log File Location
+## Log File Location
 
 ```bash
 {BoxLang-Home}/logs/scheduler.log
@@ -872,18 +856,21 @@ BoxLang provides several Built-In Functions (BIFs) for managing schedulers at ru
 Creates, registers, and starts a scheduler with the given instantiation class path.
 
 **Syntax:**
+
 ```javascript
 schedulerStart( className, [name], [force] )
 ```
 
 **Parameters:**
-- `className` (required): The class name to instantiate (e.g., "models.myapp.MyScheduler")
-- `name` (optional): Override the scheduler name defined in the class
-- `force` (optional): Force start the scheduler (default: true)
+
+* `className` (required): The class name to instantiate (e.g., "models.myapp.MyScheduler")
+* `name` (optional): Override the scheduler name defined in the class
+* `force` (optional): Force start the scheduler (default: true)
 
 **Returns:** The scheduler object
 
 **Example:**
+
 ```javascript
 // Start a scheduler
 myScheduler = schedulerStart( "config.MyScheduler" );
@@ -897,11 +884,13 @@ myScheduler = schedulerStart( "config.MyScheduler", "CustomName" );
 Get a specific scheduler by name from the scheduler service.
 
 **Syntax:**
+
 ```javascript
 schedulerGet( name )
 ```
 
 **Parameters:**
+
 - `name` (required): The name of the scheduler to retrieve
 
 **Returns:** The scheduler object
@@ -909,6 +898,7 @@ schedulerGet( name )
 **Throws:** `IllegalArgumentException` if scheduler not found
 
 **Example:**
+
 ```javascript
 try {
     myScheduler = schedulerGet( "MyScheduler" );
@@ -923,6 +913,7 @@ try {
 Get all registered schedulers as a struct.
 
 **Syntax:**
+
 ```javascript
 schedulerGetAll()
 ```
@@ -930,6 +921,7 @@ schedulerGetAll()
 **Returns:** A struct containing all registered schedulers (key = scheduler name, value = scheduler object)
 
 **Example:**
+
 ```javascript
 allSchedulers = schedulerGetAll();
 for( schedulerName in allSchedulers ) {
@@ -943,6 +935,7 @@ for( schedulerName in allSchedulers ) {
 List all the scheduler names registered in the system.
 
 **Syntax:**
+
 ```javascript
 schedulerList()
 ```
@@ -950,6 +943,7 @@ schedulerList()
 **Returns:** An array of scheduler names
 
 **Example:**
+
 ```javascript
 schedulerNames = schedulerList();
 println( "Available schedulers: " & schedulerNames.toString() );
@@ -960,16 +954,19 @@ println( "Available schedulers: " & schedulerNames.toString() );
 Shutdown a scheduler by name gracefully or forcefully.
 
 **Syntax:**
+
 ```javascript
 schedulerShutdown( name, [force], [timeout] )
 ```
 
 **Parameters:**
+
 - `name` (required): The name of the scheduler to shutdown
 - `force` (optional): Force shutdown the scheduler (default: false)
 - `timeout` (optional): Timeout in seconds to wait for graceful shutdown (default: 30)
 
 **Example:**
+
 ```javascript
 // Graceful shutdown
 schedulerShutdown( "MyScheduler" );
@@ -983,16 +980,19 @@ schedulerShutdown( "MyScheduler", true, 60 );
 Restart a scheduler by name (shutdown then startup).
 
 **Syntax:**
+
 ```javascript
 schedulerRestart( name, [force], [timeout] )
 ```
 
 **Parameters:**
+
 - `name` (required): The name of the scheduler to restart
 - `force` (optional): Force restart the scheduler (default: false)
 - `timeout` (optional): Timeout in seconds to wait for shutdown (default: 30)
 
 **Example:**
+
 ```javascript
 // Graceful restart
 schedulerRestart( "MyScheduler" );
@@ -1006,14 +1006,17 @@ schedulerRestart( "MyScheduler", true, 60 );
 Get statistics for all schedulers or a specific scheduler.
 
 **Syntax:**
+
 ```javascript
 schedulerStats( [name] )
 ```
 
 **Parameters:**
+
 - `name` (optional): The name of the scheduler to get stats for (if not provided, returns stats for all schedulers)
 
 **Returns:** Stats struct(s) containing:
+
 - `created`: When the task was created
 - `lastExecutionTime`: Duration of last execution
 - `lastResult`: Result of last execution
@@ -1026,6 +1029,7 @@ schedulerStats( [name] )
 - `totalSuccess`: Number of successful executions
 
 **Example:**
+
 ```javascript
 // Get stats for all schedulers
 allStats = schedulerStats();
@@ -1107,35 +1111,35 @@ if( taskRecord.error ) {
 
 Here are some best practices when working with BoxLang scheduled tasks:
 
-### 🎯 Task Design
+## 🎯 Task Design
 
 * **Keep tasks focused**: Each task should have a single responsibility
 * **Handle errors gracefully**: Use `onFailure()` callbacks to handle exceptions
 * **Use appropriate timing**: Consider system load when scheduling frequent tasks
 * **Leverage constraints**: Use time and date constraints to avoid unnecessary executions
 
-### 🔧 Configuration
+## 🔧 Configuration
 
 * **Use groups**: Organize related tasks into groups for better management
 * **Set meaningful names**: Use descriptive task names for easier debugging
 * **Configure metadata**: Store relevant information in task metadata
 * **Choose appropriate executors**: Match executor types to your workload patterns
 
-### 📊 Monitoring
+## 📊 Monitoring
 
 * **Track statistics**: Use `getStats()` to monitor task performance
 * **Implement logging**: Use life-cycle callbacks for comprehensive logging
 * **Monitor for failures**: Set up alerts for task failures
 * **Review execution times**: Watch for tasks that run longer than expected
 
-### 🚀 Performance
+## 🚀 Performance
 
 * **Avoid overlaps**: Use `withNoOverlaps()` for long-running tasks
 * **Optimize frequencies**: Don't schedule tasks more frequently than necessary
 * **Use virtual executors**: For I/O-bound tasks, consider virtual thread executors
 * **Clean up resources**: Ensure tasks properly clean up any resources they use
 
-### 🔒 Reliability
+## 🔒 Reliability
 
 * **Handle timezone changes**: Be aware of daylight saving time impacts
 * **Plan for restarts**: Design tasks to handle application restarts gracefully
