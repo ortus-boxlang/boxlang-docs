@@ -23,7 +23,7 @@ The way to do executor tasks is documented in our [Executors Section](executors.
 
 BoxLang provides a `SchedulerService` that manages all the global, application, and module schedulers.  There is really no need to interact with it, but if you want to you can access it via the `boxRuntime().getSchedulerService()` method. This service is responsible for managing all the schedulers in your application, including starting and stopping them, and providing access to the registered tasks.
 
-# ⚙️ Configuration
+# ⚙️ Runtime Configuration
 
 The BoxLang configuration file located at `{BoxLangHome}/config/boxlang.json` contains all the necessary configurations and tunings for the scheduled tasks framework.  Here are the main configurations you can set:
 
@@ -72,7 +72,10 @@ The `tasks` property is an object that defines the tasks to register upon startu
 
 # ⏳ Schedulers
 
-A `Scheduler` is a self-contained class that can track multiple tasks for you and give you enhanced and fluent approaches to scheduling. It is a powerful tool that allows you to register tasks, configure them, and manage their execution. Each scheduler class inherits from the `BaseScheduler` Java class, giving you access to all of its powerful methods and capabilities.
+A `Scheduler` is a self-contained class that can track multiple scheduled tasks for you and give you enhanced and fluent approaches to scheduling. It is a powerful tool that allows you to register tasks, configure them, and manage their execution. Each scheduler class inherits dynamically from the `BaseScheduler` Java class, giving you access to all of its powerful methods and capabilities.
+
+You can find the API Docs here:
+https://s3.amazonaws.com/apidocs.ortussolutions.com/boxlang/1.3.0/ortus/boxlang/runtime/async/tasks/BaseScheduler.html
 
 Let's review the structure of a BoxLang scheduler class:
 
@@ -169,7 +172,7 @@ class {
 }
 ```
 
-## Scheduler Properties
+## 🕹️Properties
 
 The scheduler properties are automatically injected by the BoxLang runtime and provide access to various services:
 
@@ -182,26 +185,46 @@ The scheduler properties are automatically injected by the BoxLang runtime and p
 | `cacheService` | The `CacheService` for distributed scheduling and state management |
 | `interceptorService` | The `InterceptorService` for broadcasting events and interceptors |
 
-## Scheduler Configuration Methods
+## 🔧 Configuration Methods
 
 Your scheduler class has access to all the methods from the `BaseScheduler` class through the `scheduler` property:
 
 | Method | Description |
 |--------|-------------|
-| `setSchedulerName( name )` | Set the human-readable name for this scheduler |
-| `setTimezone( timezone )` | Set the timezone for all tasks (default: system timezone) |
-| `setContext( context )` | Set the BoxLang context for task execution |
-| `task( name )` | Register a new task with the given name |
-| `xtask( name )` | Register a new task but disable it immediately (useful for debugging) |
-| `startup()` | Start the scheduler and all its tasks |
-| `shutdown()` | Shutdown the scheduler gracefully |
-| `restart()` | Restart the scheduler |
-| `removeTask( name )` | Remove a task from the scheduler |
-| `hasTask( name )` | Check if a task is registered |
+| `getRegisteredTasks()` | Get a list of all registered task names |
 | `getTaskRecord( name )` | Get the task record for a specific task |
 | `getTaskStats()` | Get statistics for all tasks |
-| `getRegisteredTasks()` | Get a list of all registered task names |
+| `hasTask( name )` | Check if a task is registered |
+| `removeTask( name )` | Remove a task from the scheduler |
+| `restart()` | Restart the scheduler |
+| `setContext( context )` | Set the BoxLang context for task execution |
+| `setSchedulerName( name )` | Set the human-readable name for this scheduler |
+| `setTimezone( timezone )` | Set the timezone for all tasks (default: system timezone) |
+| `shutdown()` | Shutdown the scheduler gracefully |
+| `startup()` | Start the scheduler and all its tasks |
+| `task( name )` | Register a new task with the given name |
+| `xtask( name )` | Register a new task but disable it immediately (useful for debugging) |
 
+{% hint style="warning" %}
+We always recommend you give a scheduler a name and a timezone.
+{% endhint %}
+
+## 🌍 Timezone
+
+By default, all tasks will ask the scheduler for the timezone to run in, which most likely will be the runtime timezone. However, you can override it on a task-by-task basis using the `setTimezone( timezone )` method:
+
+```javascript
+// Pass a valid Timezone string that can be parsed into a ZoneId
+setTimezone( "America/Chicago" )
+```
+
+{% hint style="success" %}
+You can find all valid time zone Id's here: [https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZoneId.html](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZoneId.html)
+{% endhint %}
+
+{% hint style="warning" %}
+Remember that some timezones utilize daylight savings time. When daylight saving time changes occur, your scheduled task may run twice or even not run at all. For this reason, we recommend avoiding timezone scheduling when possible.
+{% endhint %}
 
 ## 🚀 Scheduling Tasks
 
@@ -242,6 +265,38 @@ task( "my-task" )
 task( "my-task" )
     .call( createObject( "MyTaskObject" ), "reapCache" )
     .everydayAt( "13:00" )
+```
+
+### 📛 Task Names and Groups
+
+Always provide meaningful and unique task names as they serve as the primary identifier for your tasks. Task names are used for:
+
+* **Logging and debugging** - All log entries reference the task by name
+* **Statistics and monitoring** - Task metrics are tracked by name
+* **Management operations** - Starting, stopping, and retrieving tasks by name
+* **Error reporting** - Exception messages include the task name for identification
+
+**Groups provide additional organization benefits:**
+
+* **Logical organization** - Group related tasks together (e.g., "maintenance", "reports", "monitoring")
+* **Bulk operations** - Manage multiple tasks as a group
+* **Statistics aggregation** - View metrics by task group
+* **Easier maintenance** - Quickly identify and manage task categories
+
+```javascript
+// ✅ Good: Descriptive names and logical grouping
+scheduler.task( "cleanup-expired-sessions", "maintenance" )
+scheduler.task( "generate-daily-report", "reports" )
+scheduler.task( "health-check-database", "monitoring" )
+
+// or using chaining
+scheduler.task( "cleanup" ).setGroup( "maintenance" )
+scheduler.task( "health-check-database" ).setGroup( "monitoring" )
+
+// ❌ Bad: Generic names without context
+scheduler.task( "task1" )
+scheduler.task( "job" )
+scheduler.task( "process" )
 ```
 
 ### ⏰ Frequencies
@@ -373,42 +428,26 @@ We already saw that a scheduler has life-cycle methods, but a task can also have
 
 ```javascript
 task( "testharness-Heartbeat" )
-	.call( function() {
+	.call( () => {
 		if ( randRange(1, 5) == 1 ){
 			throw( message = "I am throwing up randomly!", type="RandomThrowup" );
 		}
 		println( "====> I am in a test harness test schedule!" );
 	} )
 	.every( "5", "seconds" )
-	.before( function( task ) {
+	.before( ( task )  => {
 		println( "====> Running before the task!" );
 	} )
-	.after( function( task, results ){
+	.after( ( task, results ) => {
 		println( "====> Running after the task!" );
 	} )
-	.onFailure( function( task, exception ){
+	.onFailure( ( task, exception ) => {
 		println( "====> test schedule just failed!! #exception.message#" );
 	} )
-	.onSuccess( function( task, results ){
+	.onSuccess( ( task, results ) => {
 		println( "====> Test scheduler success : Stats: #task.getStats().toString()#" );
 	} );
 ```
-
-### 🌍 Timezone
-
-By default, all tasks will ask the scheduler for the timezone to run in. However, you can override it on a task-by-task basis using the `setTimezone( timezone )` method:
-
-```javascript
-setTimezone( "America/Chicago" )
-```
-
-{% hint style="success" %}
-You can find all valid time zone Id's here: [https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZoneId.html](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/time/ZoneId.html)
-{% endhint %}
-
-{% hint style="warning" %}
-Remember that some timezones utilize daylight savings time. When daylight saving time changes occur, your scheduled task may run twice or even not run at all. For this reason, we recommend avoiding timezone scheduling when possible.
-{% endhint %}
 
 ### ✅ Truth Test Constraints
 
@@ -418,7 +457,7 @@ There are many ways to constrain the execution of a task. However, you can regis
 task( "my-task" )
     .call( () => createObject( "UserService" ).cleanOldUsers() )
     .daily()
-    .when( function(){
+    .when( () => {
         // Can we run this task?
         return true;
     } );
@@ -486,15 +525,18 @@ All tasks keep track of themselves and have lovely metrics. You can use the `get
 | Metric          | Description                                               |
 | --------------- | --------------------------------------------------------- |
 | `created`       | The timestamp of when the task was created in memory      |
+| `group`        | The name of the task group if any, this can be empty      |
 | `inetHost`      | The hostname of the machine this task is registered with  |
-| `lastRun`       | The last time the task ran                                |
-| `lastResult`    | The last result the task callable produced                |
+| `lastRun`       | The last time the task ran, `null` by default|
+| `lastResult`    | The last result the task callable produced. This is an `Attempt` |
+| `lastExecutionTime` | How long the last execution took in milliseconds |
 | `localIp`       | The ip address of the server this task is registered with |
+| `name`      | The name of the task  |
 | `neverRun`      | A boolean flag indicating if the task has NEVER been ran  |
-| `nextRun`       | When the task will run next                               |
-| `totalFailures` | How many times the task has failed execution              |
-| `totalRuns`     | How many times the task has run                           |
-| `totalSuccess`  | How many times the task has run and succeeded             |
+| `nextRun`       | When the task will run next, `null` by default|
+| `totalFailures` | How many times the task has failed execution, 0 by default |
+| `totalRuns`     | How many times the task has run, 0 by default |
+| `totalSuccess`  | How many times the task has run and succeeded, 0 by default |
 
 ```javascript
 /**
@@ -513,18 +555,33 @@ function afterAnyTask( required task, result ){
 We have created some useful methods that you can use when working with asynchronous tasks:
 
 | Method                     | Description                                                                                                                                                                          |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `debug( boolean )`         | Enable / disable debug output stream                                                                                                                                                 |
-| `err( var )`               | Send output to the error stream                                                                                                                                                      |
-| `hasScheduler()`           | Verifies if the task is assigned a scheduler or not                                                                                                                                  |
-| `isDisabled()`             | Verifies if the task has been disabled by bit                                                                                                                                        |
+| -------------------------- | -------------------------------------------------------------- |
+| `hasScheduler()`           | Verifies if the task is assigned a scheduler or not                           |
+| `isAnnually()`             | If the task is scheduled annually |
+| `isDisabled()`             | Verifies if the task has been disabled by bit                                        |
+| `isEnabled()`              | Verifies if the task has been enabled (opposite of `isDisabled()`)           |
 | `isConstrained()`          | Verifies if the task has been constrained to run by dayOfMonth, dayOfWeek, firstBusinessDay, lastBusinessDay, weekdays, weekends, startOnDateTime, endOnDateTime, startTime, endTime |
-| `out( var )`               | Send output to the output stream                                                                                                                                                     |
-| `start()`                  | This kicks off the task into the scheduled executor manually. This method is called for you by the scheduler upon application startup or module loading.                             |
-| `setMeta( struct )`        | Set the meta struct of the task. This is a placeholder for any data you want to be made available to you when working with a task.                                                   |
-| `setMetaKey( key, value )` | Set a key on the custom meta struct.                                                                                                                                                 |
-| `deleteMetaKey( key )`     | Delete a key from the custom meta struct.                                                                                                                                            |
-
+| `isScheduled()`            | Verifies if the task has been scheduled for execution                        |
+| `isNoOverlaps()`           | Verifies if the task has been configured to prevent overlapping executions   |
+| `start()`                  | This kicks off the task into the scheduled executor manually. This method is called for you by the scheduler upon application startup or module loading. |
+| `enable()`                 | Enable the task for execution (sets disabled flag to false)                  |
+| `disable()`                | Disable the task from execution (sets disabled flag to true)                 |
+| `run( force )`             | Execute the task manually with optional force flag to bypass constraints     |
+| `checkInterrupted()`       | Call periodically in long-running tasks to check if thread has been interrupted |
+| `cleanupTaskRun()`         | Internal cleanup method called after every task execution                    |
+| `getNow()`                 | Get the current date/time in the task's configured timezone                  |
+| `getLastResult()`          | Get the last result of the task execution as an Optional                     |
+| `setMeta( struct )`        | Set the meta struct of the task. This is a placeholder for any data you want to be made available to you when working with a task |
+| `setMetaKey( key, value )` | Set a key on the custom meta struct.                                      |
+| `deleteMetaKey( key )`     | Delete a key from the custom meta struct.                             |
+| `getMeta()`                | Get the complete meta struct for the task                                    |
+| `setTimezone( timezone )`  | Set the timezone for the task (accepts string or ZoneId)                     |
+| `getTimezone()`            | Get the timezone configured for the task                                     |
+| `setName( name )`          | Set the human-readable name of the task                                      |
+| `getName()`                | Get the human-readable name of the task                                      |
+| `setGroup( group )`        | Set the group name for the task for logical organization                     |
+| `getGroup()`               | Get the group name for the task                                              |
+| `getStats()`               | Get the statistics struct for the task containing execution metrics          |
 
 ## 🌐 Global Schedulers
 
@@ -564,7 +621,7 @@ java -jar boxlang.jar schedule <SCHEDULER_FILE>
 ### Requirements
 
 * **File Extension**: Must be a `.bx` (BoxLang) file
-* **File Content**: Should contain a BoxLang component with scheduler definitions
+* **File Content**: Should contain a BoxLang class with scheduler definitions
 * **File Path**: Can be absolute or relative to current directory
 
 ### Lifecycle
