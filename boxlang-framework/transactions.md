@@ -18,7 +18,7 @@ transaction{
 }
 ```
 
-This transaction is a no-op. It begins, tries to set a savepoint, then roll back to the savepoint, then commit... **but never ran any JDBC queries**. Hence, every transactional BIF called above does exactly nothing (besides emit events).
+This transaction is a no-op. It begins, tries to set a savepoint, then roll back to the savepoint, then commit... **but never ran any JDBC queries**. Hence, every transactional BIF called above does exactly nothing (besides [emit events](interceptors/core-interception-points/transaction-events.md)).
 
 ### Datasources
 
