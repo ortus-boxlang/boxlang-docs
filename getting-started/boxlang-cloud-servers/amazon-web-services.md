@@ -1,4 +1,5 @@
 ---
+description: BoxLang Cloud Servers for Amazon Web Services
 icon: aws
 ---
 
@@ -8,27 +9,33 @@ Azure Virtual Machines (Azure VMs) are an Infrastructure as a Service (IaaS) off
 
 ## Ubuntu 24.04 LTS based
 
-#### BoxLang MiniServer with NGINX on Ubuntu 24.04 LTS
+#### BoxLang MiniServer on Ubuntu 24.04 LTS
 
-Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang MiniServer behind NGINX as HTTP Reverse Proxy. Additionally, you can connect to your Virtual Machine to develop and manage it. [Review our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-k5mclsajbxqaa?sr=0-7\&ref_=beagle\&applicationId=AWSMPContessa).
+Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang MiniServer. Additionally, you can connect to your Virtual Machine to develop and manage it. [Review our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-k5mclsajbxqaa?sr=0-7\&ref_=beagle\&applicationId=AWSMPContessa).
 
 #### BoxLang with CommandBox on Ubuntu 24.04 LTS
 
 Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang as the Engine in CommandBox. Also, you can connect to your Virtual Machine to manage and boost your Software Development Life Cycle (SDLC). Review[ our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-juvpk6ysaxl5e?sr=0-5\&ref_=beagle\&applicationId=AWSMPContessa).
 
-Learn how to deploy Ubuntu-based BoxLang Cloud Servers [here](https://cloud-servers.ortusbooks.com/aws/ubuntu-based-images).
+## Windows Server 2019 based
 
-## Windows Server 2019-based
+#### BoxLang MiniServer on Windows 2019
 
-#### BoxLang MiniServer with IIS on Windows 2019
-
-Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang MiniServer behind IIS as an HTTP Reverse Proxy. Additionally, you can connect to your Virtual Machine to develop and manage it. [Review our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-jm57yzrnbubgo?sr=0-4\&ref_=beagle\&applicationId=AWSMPContessa).
+Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang MiniServer. Additionally, you can connect to your Virtual Machine to develop and manage it. [Review our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-jm57yzrnbubgo?sr=0-4\&ref_=beagle\&applicationId=AWSMPContessa).
 
 #### BoxLang with CommandBox on Windows 2019
 
 Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang as the Engine in CommandBox. Also, you can connect to your Virtual Machine to manage and boost your Software Development Life Cycle (SDLC). [Review our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-hd4jh62surh2g?sr=0-6\&ref_=beagle\&applicationId=AWSMPContessa).
 
+## Red Hat 8 based
+
+#### BoxLang MiniServer on Red Hat 8
+
+Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang MiniServer. Additionally, you can connect to your Virtual Machine to develop and manage it. [Review our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-ynpwc2pyatybs?sr=0-8\&ref_=beagle\&applicationId=AWSMPContessa).
+
+#### BoxLang with CommandBox on Red Hat 8
+
+Run BoxLang applications, scheduled tasks, scripting, CFML applications, and more with BoxLang as the Engine in CommandBox. Also, you can connect to your Virtual Machine to manage and boost your Software Development Life Cycle (SDLC). [Review our offer in AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-vj44e6ktz3ynu?sr=0-9\&ref_=beagle\&applicationId=AWSMPContessa).
+
 Learn how to deploy Windows Server-based BoxLang Cloud Servers [here](https://cloud-servers.ortusbooks.com/aws/windows-based-images).
-
-
 

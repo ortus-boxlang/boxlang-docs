@@ -72,6 +72,7 @@
 * [BoxLang Cloud Servers](getting-started/boxlang-cloud-servers/README.md)
   * [Microsoft Azure](getting-started/boxlang-cloud-servers/microsoft-azure.md)
   * [Amazon Web Services](getting-started/boxlang-cloud-servers/amazon-web-services.md)
+  * [Google Cloud](getting-started/boxlang-cloud-servers/google-cloud.md)
 * [IDE & Tooling](getting-started/ide-tooling/README.md)
   * [BoxLang Compiler](getting-started/ide-tooling/boxlang-compiler.md)
   * [BoxLang Debugger](getting-started/ide-tooling/boxlang-debugger/README.md)
