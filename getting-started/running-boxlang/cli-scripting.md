@@ -11,6 +11,22 @@ BoxLang is a modern, dynamic scripting language built for more than just simple 
 
 Whether you're automating repetitive tasks, building interactive command-line tools, or developing complex CLI-driven workflows, BoxLang offers the flexibility, expressiveness, and performance you need. With intuitive syntax, robust error handling, and seamless integration with Java and other JVM-based technologies, BoxLang makes CLI scripting more efficient and enjoyable.
 
+## BoxLang CLI Entry Points & Conventions
+
+BoxLang supports multiple ways to execute code from the command line, making it a flexible tool for scripting, automation, and app development. Here’s a summary of the main entry points and conventions:
+
+### File Execution
+
+You can execute any supported file type directly:
+
+* `*.bx` — BoxLang class with a `main()` method
+* `*.bxs` — BoxLang script
+* `*.bxm` — BoxLang template
+* `*.cfs` / `*.cfm` — CFML script/template (requires `bx-compat-cfml` module)
+* `*.sh` — Shebang script (with `#!/usr/bin/env boxlang`)
+
+BoxLang will automatically detect and run the correct entry point, including shebang scripts and classes with a `main()` method.
+
 ## Script Files <a href="#execute-a-file-9" id="execute-a-file-9"></a>
 
 With BoxLang, you can execute a few types of files right from any OS CLI by adding them as the second argument to our `boxlang`binary:
@@ -56,7 +72,8 @@ java -jar boxlang-1.0.0.jar /full/path/to/test.bxs
 Please note that you have access to other persistent scopes when building CLI applications:
 
 * `application`- This scope lives as long as your application lives as well, but it is technically attached to an `Application.bx`file that activates framework capabilities for your application.
-* `request`- A scope that matches a specific request for your application. We also get one per CLI app since there is no concept of sessions or user state. There is always only one request.
+* `request`- A scope that matches a specific request for your application. We also get one per CLI app since there is no concept of sessions or user state. There is always only one request. It would be up to you to create a session-like mechanism if you need to persist state across multiple executions.
+* `server` - A scope that lives as long as the CLI app is running. This is useful for storing global state or configuration that should persist across multiple requests or executions.
 
 For CLI applications, we recommend you use the `server`or `request` scope for singleton persistence. Also note that you can use all the [caches](../configuration/caches.md) as well for persistence. You can use `application`scope if you have an `Application.bx.`
 
@@ -193,6 +210,27 @@ As you can see from the sample above, the first line is what makes it a SheBang 
 # Execute it with a name argument and a simple option
 ./hola.sh --name=luis -d
 ```
+
+## Inline Code Execution
+
+You can execute BoxLang code directly from the CLI using the `--bx-code` flag:
+
+```bash
+boxlang --bx-code "println('Hello from BoxLang!')"
+```
+
+## Scheduler Files
+
+You can run BoxLang scheduler files using the `schedule` action command. The file must be a `.bx` component with scheduler definitions. The scheduler will run continuously until you press `Ctrl+C`.
+
+```bash
+boxlang schedule ./schedulers/MainScheduler.bx
+```
+
+{% hint style="info" %}
+For more on schedulers, see the [Scheduler documentation](../../boxlang-framework/asynchronous-programming/scheduled-tasks.md).
+{% endhint %}
+
 
 ## CLI Built-In Functions
 
