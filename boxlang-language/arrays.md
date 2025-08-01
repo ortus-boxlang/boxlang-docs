@@ -1,6 +1,6 @@
 ---
 description: An array is a data structure consisting of a collection of elements.
-icon: array
+icon: layer-group
 ---
 
 # Arrays
@@ -444,7 +444,7 @@ writedump( numbers[ -6 ] ) // EXCEPTION!!! Array index out of range
 
 ## Array Slices
 
-BoxLang supports the [slicing](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array/arrayslice) of an array via the `arraySlice()` method or the `slice()` member function, respectively.  Slicing allows you to return a **new** array from the start position up to the count of elements you want.
+BoxLang supports the [slicing](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array/arrayslice) of an array via the `arraySlice()` method or the `slice()` member function, respectively. Slicing allows you to return a **new** array from the start position up to the count of elements you want.
 
 ```java
 // Signature
@@ -498,15 +498,13 @@ arrayEach( array, callback, parallel:boolean, maxThreads:numeric );
 each( collection, callback, parallel:boolean, maxThreads:numeric );
 ```
 
-This is incredibly awesome, as your callback will now be called concurrently! However, please note that once you enter concurrency land, you should shiver and tremble. Thread concurrency will be of the utmost importance, and you must ensure that scoping is done correctly and that appropriate locking strategies are in place when accessing shared scopes and/or resources.  Here is where unmodifiable arrays, structs, and queries can help.
+This is incredibly awesome, as your callback will now be called concurrently! However, please note that once you enter concurrency land, you should shiver and tremble. Thread concurrency will be of the utmost importance, and you must ensure that scoping is done correctly and that appropriate locking strategies are in place when accessing shared scopes and/or resources. Here is where unmodifiable arrays, structs, and queries can help.
 
 ```java
 myArray.each( item => {
    myservice.process( item );
 }, true, 20 );
 ```
-
-
 
 ## Spread Operator
 
@@ -585,7 +583,7 @@ println( myStruct )
 
 ## Change Listeners
 
-All arrays and structures offer the ability to listen to changes to themselves.  This is all done via our `$bx` metadata object available on all arrays/structures.  You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the array.  You can listen:
+All arrays and structures offer the ability to listen to changes to themselves. This is all done via our `$bx` metadata object available on all arrays/structures. You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the array. You can listen:
 
 * To all changes in the array
 * To a specific index in the array
@@ -611,8 +609,7 @@ The signature of the closure/lambda is the following
 ```
 
 {% hint style="success" %}
-Please note that the Key is a BoxLang Key object, which simulates a case-insensitive string.  You can use methods on it like:\
-
+Please note that the Key is a BoxLang Key object, which simulates a case-insensitive string. You can use methods on it like:\\
 
 * `getName()`
 * `getNameNoCase()`

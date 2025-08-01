@@ -1,5 +1,6 @@
 ---
 description: BoxLang provides the easiest way to query a database
+icon: database
 ---
 
 # Queries
@@ -137,7 +138,7 @@ Here are some methods that will allow you to do parallel computations:
 
 ## Using Input
 
-We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL\_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `bx:queryparam` construct/tag ([https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam](https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam)) and always sanitize your input via the `encode` functions in BoxLang.
+We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `bx:queryparam` construct/tag ([https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam](https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam)) and always sanitize your input via the `encode` functions in BoxLang.
 
 ```java
 // Named variable holder
@@ -314,7 +315,7 @@ BoxLang supports the following query options:
 * `fetchSize` - Set a custom result set batch size to improve performance on large queries. Is equivalent to `blockfactor` in CFML, but matches the JDBC statement option name.
 * `cache` - Enable or disable caching
 * `cacheKey` - A unique string used to identify this query for caching purposes.
-* `cacheProvider` - Name of the cache provider used for caching this query. A default cache provider will be assigned if none set, 
+* `cacheProvider` - Name of the cache provider used for caching this query. A default cache provider will be assigned if none set,
 * `cacheTimeout` - Max time, as a duration, to allow cached results to be returned.
 
 For CFML compatibility, the following options are also supported once [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed:

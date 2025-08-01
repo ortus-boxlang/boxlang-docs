@@ -1,5 +1,6 @@
 ---
 description: Strings in BoxLang/Java are immutable! Remember that well!
+icon: spell-check
 ---
 
 # Strings

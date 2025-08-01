@@ -1,5 +1,6 @@
 ---
 description: name = "Amazing Programmer"
+icon: gear-code
 ---
 
 # Variables

@@ -1,5 +1,6 @@
 ---
 description: Operate all things++--==!^%/\
+icon: function
 ---
 
 # Operators

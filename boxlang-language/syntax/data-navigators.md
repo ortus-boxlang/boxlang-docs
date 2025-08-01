@@ -2,6 +2,7 @@
 description: >-
   Data Navigators provide a fluent, safe way to navigate and extract data from
   complex data structures in BoxLang
+icon: map
 ---
 
 # Data Navigators

@@ -1,3 +1,7 @@
+---
+icon: distribute-spacing-vertical
+---
+
 # Includes
 
 If you've used other scripting environments such as PHP, or dynamic HTML, you would be familiar with the concept of **server side includes**. An **include** is a file that is embedded, or **included** within another file making it part of the execution; simple as that.

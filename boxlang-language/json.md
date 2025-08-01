@@ -1,5 +1,6 @@
 ---
 description: JSON all things!
+icon: node-js
 ---
 
 # JSON

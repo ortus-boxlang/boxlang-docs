@@ -1,3 +1,7 @@
+---
+icon: hexagon-exclamation
+---
+
 # Exception Management
 
 ## Try/Catch/Finally
@@ -38,7 +42,7 @@ try{
 
 ### Native Exception Types
 
-[See the reference documentation](https://boxlang.ortusbooks.com/boxlang-language/reference/exceptions) for a list of native exceptions thrown by the BoxLang Core Runtime.  Modules and additional runtimes may also contribute their own native exceptions.
+[See the reference documentation](https://boxlang.ortusbooks.com/boxlang-language/reference/exceptions) for a list of native exceptions thrown by the BoxLang Core Runtime. Modules and additional runtimes may also contribute their own native exceptions.
 
 ### Custom Exception Types
 

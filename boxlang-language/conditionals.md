@@ -1,3 +1,7 @@
+---
+icon: diagram-project
+---
+
 # Conditionals
 
 ## Operators

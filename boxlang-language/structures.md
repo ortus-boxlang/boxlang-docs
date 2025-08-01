@@ -1,5 +1,6 @@
 ---
 description: Collection of key-value pairs; a data dictionary
+icon: book
 ---
 
 # Structures

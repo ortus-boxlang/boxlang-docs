@@ -1,5 +1,6 @@
 ---
 description: They gotta exist somewhere!
+icon: cube
 ---
 
 # Variable Scopes

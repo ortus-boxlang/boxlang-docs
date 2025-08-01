@@ -1,3 +1,7 @@
+---
+icon: plug
+---
+
 # Datasources
 
 A datasource is a **named** connection to a specific database with specified credentials. You can define a datasource in one of three locations:
@@ -43,7 +47,7 @@ this.datasources[ "testDB" ] = {
 
 ## Defining Datasources In `boxlang.json`
 
-You can define a datasource at the BoxLang runtime level by placing it in [your `boxlang.json` configuration file](/getting-started/configuration):
+You can define a datasource at the BoxLang runtime level by placing it in [your `boxlang.json` configuration file](../getting-started/configuration/):
 
 {% code title="boxlang.json" %}
 ```js
@@ -143,7 +147,7 @@ You can also define a default datasource to allow you to omit the `datasource` c
 
 To do this, you'll need to define a default datasource in one of two locations:
 
-1. In [your BoxLang runtime's `boxlang.json` config file](/getting-started/configuration) via the `defaultDatasource` key
+1. In [your BoxLang runtime's `boxlang.json` config file](../getting-started/configuration/) via the `defaultDatasource` key
 2. or, for web server runtimes, in a `this.datasource` variable in your `Application.bx` file
 
 ### Defining a default datasource via boxlang.json
@@ -297,7 +301,7 @@ This returns a struct of pool metadata including the following keys:
 * `maxConnections`
 * `minConnections`
 
-Find out what datasources you have defined by dumping out: 
+Find out what datasources you have defined by dumping out:
 
 ```js
 getBoxContext().getRuntime().getDatasourceService().getNames()

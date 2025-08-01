@@ -1,5 +1,6 @@
 ---
 description: null does mean something!
+icon: helmet-battle
 ---
 
 # Null & Nothingness
@@ -10,7 +11,7 @@ What is nothingness? Is there nothingness only in outer space? If a tree falls i
 
 ## Full-Null Support
 
-Full null support is the default in BoxLang, meaning you can use the `null` keyword and get real `null` values from databases or external services. Note that `null` is a reserved word so can't be used for variable names. 
+Full null support is the default in BoxLang, meaning you can use the `null` keyword and get real `null` values from databases or external services. Note that `null` is a reserved word so can't be used for variable names.
 
 Note that if you are using the compat module then full null support is disabled unless you change the module settings for compat to enable it. You can do this programmatically via the `Application.bx` file, which can be used when building web applications. You can learn more [about it here](../boxlang-framework/applicationbx.md). In reality, you still could simulate `null` without full null support, and sometimes you get an empty string, sometimes a full Java `null`. So basically, the nonfull null support is a partial null support, which makes it hard for developers. **So as a rule of thumb, we always recommend checking for nullness no matter WHAT!**
 

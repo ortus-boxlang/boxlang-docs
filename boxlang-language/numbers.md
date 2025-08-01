@@ -1,5 +1,6 @@
 ---
 description: Integers and floats to rule the world!
+icon: arrow-down-1-9
 ---
 
 # Numbers
@@ -64,7 +65,7 @@ toNumeric( "1010", "bin" )
 The `parseNumber()` is also used to convert a string number into a numeral system ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/parsenumber](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/conversion/parsenumber))
 
 {% hint style="info" %}
-In a [positional numeral system](https://en.wikipedia.org/wiki/Positional\_numeral\_system), the radix or base is the number of unique [digits](https://en.wikipedia.org/wiki/Numerical\_digit), including the digit zero, used to represent numbers. For example, for the [decimal system](https://en.wikipedia.org/wiki/Decimal) (the most common system in use today) the radix is ten, because it uses the ten digits from 0 through 9.
+In a [positional numeral system](https://en.wikipedia.org/wiki/Positional_numeral_system), the radix or base is the number of unique [digits](https://en.wikipedia.org/wiki/Numerical_digit), including the digit zero, used to represent numbers. For example, for the [decimal system](https://en.wikipedia.org/wiki/Decimal) (the most common system in use today) the radix is ten, because it uses the ten digits from 0 through 9.
 {% endhint %}
 
 ## Is it a number?

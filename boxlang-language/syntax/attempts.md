@@ -1,5 +1,6 @@
 ---
 description: A Dynamic holder of a potential value
+icon: list-tree
 ---
 
 # Attempts
