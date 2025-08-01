@@ -5,6 +5,8 @@ icon: list-timeline
 
 # 🔄 Parallel Computations
 
+> Introduced in v1.4.0
+
 BoxLang's async framework provides powerful tools for parallel computing, allowing you to execute multiple operations concurrently and efficiently process large datasets. Whether you're processing arrays, transforming data structures, or running independent computations, BoxLang's parallel computing BIFs give you the tools to maximize performance while maintaining code simplicity.
 
 ```text

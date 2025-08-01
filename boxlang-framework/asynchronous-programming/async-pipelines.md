@@ -5,6 +5,8 @@ icon: diagram-sankey
 
 # 🚀 Async Pipelines and BoxFutures
 
+> Introduced in v1.4.0
+
 ## What Are Async Pipelines?
 
 Async pipelines in BoxLang are powerful chains of asynchronous operations that allow you to compose complex workflows from simple, reusable components. Built on top of **BoxFuture** (which extends Java's `CompletableFuture`), they provide a fluent, functional programming approach to handling asynchronous operations.
