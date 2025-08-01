@@ -2,8 +2,8 @@
 
 This BIF allows you to bind a string with placeholders to a set of values.
 
-Each placeholder is defined as {@code ${placeholder-name\}} and can be used anywhere\
-and multiple times in the string.
+Each placeholder is defined as `${placeholder-name}` and can be used anywhere\
+and multiple times in the string. A placeholder with a default value can defined like so: `${placeholder-name:defaultValue}`.&#x20;
 
 ## Method Signature
 
@@ -19,6 +19,23 @@ StringBind(string=[string], placeholders=[structloose])
 | `placeholders` | `struct` | `true`   | A struct containing the placeholder values |         |
 
 ## Examples
+
+In this example, a template string is defined with three tokens, two of which have defaults. The `stringBind` BIF is then ran and returns a string with values parsed:
+
+```
+templateString = "
+This is a string with a ${name:Nameless} and ${age:0}. Here is a 
+token with no default, ${food}.
+";
+
+parsed = stringBind(templateString, {
+	name:'Ray',
+	food:'sushi'
+});
+
+println(parsed);
+// Returns "This is a string with a Ray and 0. Here is a token with no default, sushi."
+```
 
 ## Related
 
