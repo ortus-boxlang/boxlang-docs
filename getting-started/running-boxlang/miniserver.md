@@ -613,3 +613,402 @@ boxlang-miniserver
 The runtime source code can be found here: [https://github.com/ortus-boxlang/boxlang-miniserver](https://github.com/ortus-boxlang/boxlang-miniserver)
 
 We welcome any pull requests, testing, docs, etc.
+
+## 🌐 Reverse Proxy Setup
+
+For production deployments, it's recommended to place a reverse proxy in front of the BoxLang MiniServer. This provides additional security, SSL termination, load balancing, and better static file serving capabilities.
+
+### 🔧 Nginx Configuration
+
+Nginx is a popular choice for reverse proxying BoxLang applications:
+
+#### Basic Nginx Configuration
+
+```nginx
+# /etc/nginx/sites-available/boxlang-app
+server {
+    listen 80;
+    server_name your-domain.com;
+
+    # Redirect HTTP to HTTPS (recommended)
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name your-domain.com;
+
+    # SSL Configuration
+    ssl_certificate /path/to/your/certificate.crt;
+    ssl_certificate_key /path/to/your/private.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers HIGH:!aNULL:!MD5;
+
+    # Security Headers
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection "1; mode=block";
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains";
+
+    # Static file serving (optional - let nginx handle static assets)
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$ {
+        root /var/www/your-app/static;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+        try_files $uri @boxlang;
+    }
+
+    # WebSocket support
+    location /ws {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+        proxy_read_timeout 86400;
+    }
+
+    # Health checks (restrict to internal networks if needed)
+    location ~ ^/health {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Optional: Restrict health checks to internal IPs
+        # allow 10.0.0.0/8;
+        # allow 172.16.0.0/12;
+        # allow 192.168.0.0/16;
+        # deny all;
+    }
+
+    # Main application proxy
+    location / {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Port $server_port;
+
+        # Timeouts
+        proxy_connect_timeout 30s;
+        proxy_send_timeout 30s;
+        proxy_read_timeout 30s;
+
+        # Buffer settings
+        proxy_buffering on;
+        proxy_buffer_size 128k;
+        proxy_buffers 4 256k;
+        proxy_busy_buffers_size 256k;
+    }
+
+    # Fallback for static files if not found
+    location @boxlang {
+        proxy_pass http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+#### Load Balancing with Multiple MiniServers
+
+```nginx
+# Upstream configuration for load balancing
+upstream boxlang_backend {
+    least_conn;
+    server 127.0.0.1:8080;
+    server 127.0.0.1:8081;
+    server 127.0.0.1:8082;
+
+    # Health checks (nginx plus only)
+    # health_check interval=10s fails=3 passes=2;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name your-domain.com;
+
+    # SSL and security headers (same as above)
+
+    location / {
+        proxy_pass http://boxlang_backend;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+### 🔥 Apache Configuration
+
+Apache HTTP Server with mod_proxy for reverse proxying:
+
+#### Basic Apache Configuration
+
+```apache
+# /etc/apache2/sites-available/boxlang-app.conf
+<VirtualHost *:80>
+    ServerName your-domain.com
+
+    # Redirect HTTP to HTTPS
+    Redirect permanent / https://your-domain.com/
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName your-domain.com
+
+    # SSL Configuration
+    SSLEngine on
+    SSLCertificateFile /path/to/your/certificate.crt
+    SSLCertificateKeyFile /path/to/your/private.key
+    SSLProtocol TLSv1.2 TLSv1.3
+    SSLCipherSuite HIGH:!aNULL:!MD5
+
+    # Security Headers
+    Header always set X-Frame-Options DENY
+    Header always set X-Content-Type-Options nosniff
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+    # Enable required modules
+    LoadModule proxy_module modules/mod_proxy.so
+    LoadModule proxy_http_module modules/mod_proxy_http.so
+    LoadModule proxy_wstunnel_module modules/mod_proxy_wstunnel.so
+
+    # WebSocket support
+    ProxyRequests Off
+    ProxyPreserveHost On
+
+    # WebSocket proxy
+    ProxyPass /ws ws://127.0.0.1:8080/ws
+    ProxyPassReverse /ws ws://127.0.0.1:8080/ws
+
+    # Health check endpoints
+    ProxyPass /health http://127.0.0.1:8080/health
+    ProxyPassReverse /health http://127.0.0.1:8080/health
+
+    # Main application proxy
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / http://127.0.0.1:8080/
+
+    # Set headers for the backend
+    ProxyPassReverse / http://127.0.0.1:8080/
+    ProxyPreserveHost On
+    ProxyAddHeaders On
+
+    # Static file serving (optional)
+    Alias /static /var/www/your-app/static
+    <Directory "/var/www/your-app/static">
+        Options -Indexes
+        AllowOverride None
+        Require all granted
+
+        # Cache static files
+        <FilesMatch "\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$">
+            ExpiresActive On
+            ExpiresDefault "access plus 1 year"
+        </FilesMatch>
+    </Directory>
+
+    # Error and access logs
+    ErrorLog ${APACHE_LOG_DIR}/boxlang-app_error.log
+    CustomLog ${APACHE_LOG_DIR}/boxlang-app_access.log combined
+</VirtualHost>
+```
+
+#### Required Apache Modules
+
+```bash
+# Enable required Apache modules
+sudo a2enmod proxy
+sudo a2enmod proxy_http
+sudo a2enmod proxy_wstunnel
+sudo a2enmod ssl
+sudo a2enmod headers
+sudo a2enmod expires
+sudo a2enmod rewrite
+
+# Enable the site and restart Apache
+sudo a2ensite boxlang-app.conf
+sudo systemctl reload apache2
+```
+
+### 🪟 IIS Configuration
+
+Internet Information Services (IIS) configuration using Application Request Routing (ARR):
+
+#### Prerequisites
+
+1. Install **Application Request Routing (ARR)** module
+2. Install **URL Rewrite** module
+
+#### IIS Configuration Steps
+
+1. **Create a new website** in IIS Manager
+2. **Configure ARR** at the server level:
+
+```xml
+<!-- web.config at server level -->
+<configuration>
+    <system.webServer>
+        <proxy enabled="true" />
+        <rewrite>
+            <globalRules>
+                <rule name="BoxLang Reverse Proxy" stopProcessing="true">
+                    <match url="(.*)" />
+                    <action type="Rewrite" url="http://127.0.0.1:8080/{R:1}" />
+                    <serverVariables>
+                        <set name="HTTP_X_FORWARDED_PROTO" value="https" />
+                        <set name="HTTP_X_FORWARDED_FOR" value="{REMOTE_ADDR}" />
+                        <set name="HTTP_X_REAL_IP" value="{REMOTE_ADDR}" />
+                    </serverVariables>
+                </rule>
+            </globalRules>
+        </rewrite>
+    </system.webServer>
+</configuration>
+```
+
+#### Site-Level web.config
+
+```xml
+<!-- web.config for your BoxLang application site -->
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <rules>
+                <!-- WebSocket support -->
+                <rule name="WebSocket" stopProcessing="true">
+                    <match url="ws(.*)" />
+                    <action type="Rewrite" url="ws://127.0.0.1:8080/ws{R:1}" />
+                </rule>
+
+                <!-- Health check endpoints -->
+                <rule name="Health Checks" stopProcessing="true">
+                    <match url="health(.*)" />
+                    <action type="Rewrite" url="http://127.0.0.1:8080/health{R:1}" />
+                </rule>
+
+                <!-- Static files (optional - let IIS handle) -->
+                <rule name="Static Files" stopProcessing="true">
+                    <match url="^(.*\.(css|js|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot))$" />
+                    <conditions>
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" />
+                    </conditions>
+                    <action type="None" />
+                </rule>
+
+                <!-- Main application -->
+                <rule name="BoxLang Application" stopProcessing="true">
+                    <match url="(.*)" />
+                    <action type="Rewrite" url="http://127.0.0.1:8080/{R:1}" />
+                    <serverVariables>
+                        <set name="HTTP_X_FORWARDED_PROTO" value="https" />
+                        <set name="HTTP_X_FORWARDED_FOR" value="{REMOTE_ADDR}" />
+                        <set name="HTTP_X_REAL_IP" value="{REMOTE_ADDR}" />
+                    </serverVariables>
+                </rule>
+            </rules>
+        </rewrite>
+
+        <!-- Security headers -->
+        <httpProtocol>
+            <customHeaders>
+                <add name="X-Frame-Options" value="DENY" />
+                <add name="X-Content-Type-Options" value="nosniff" />
+                <add name="X-XSS-Protection" value="1; mode=block" />
+                <add name="Strict-Transport-Security" value="max-age=31536000; includeSubDomains" />
+            </customHeaders>
+        </httpProtocol>
+
+        <!-- Static content caching -->
+        <staticContent>
+            <clientCache cacheControlMode="UseMaxAge" cacheControlMaxAge="365.00:00:00" />
+        </staticContent>
+    </system.webServer>
+</configuration>
+```
+
+### 🚀 Production Setup Recommendations
+
+#### 1. Configure MiniServer for Production
+
+```bash
+# Bind to localhost only (behind reverse proxy)
+boxlang-miniserver --host 127.0.0.1 --port 8080 --health-check-secure
+
+# Or using environment variables
+export BOXLANG_HOST=127.0.0.1
+export BOXLANG_PORT=8080
+export BOXLANG_HEALTH_CHECK=true
+export BOXLANG_HEALTH_CHECK_SECURE=true
+boxlang-miniserver
+```
+
+#### 2. System Service Setup
+
+Create a systemd service for automatic startup:
+
+```ini
+# /etc/systemd/system/boxlang-miniserver.service
+[Unit]
+Description=BoxLang MiniServer
+After=network.target
+
+[Service]
+Type=simple
+User=boxlang
+Group=boxlang
+WorkingDirectory=/var/www/your-app
+Environment=BOXLANG_HOST=127.0.0.1
+Environment=BOXLANG_PORT=8080
+Environment=BOXLANG_HEALTH_CHECK=true
+Environment=BOXLANG_HEALTH_CHECK_SECURE=true
+ExecStart=/usr/local/bin/boxlang-miniserver
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+```bash
+# Enable and start the service
+sudo systemctl enable boxlang-miniserver
+sudo systemctl start boxlang-miniserver
+sudo systemctl status boxlang-miniserver
+```
+
+#### 3. Security Considerations
+
+* **Bind to localhost only** when behind a reverse proxy
+* **Enable health check security** to restrict detailed information
+* **Use HTTPS** at the reverse proxy level
+* **Configure proper security headers** in your reverse proxy
+* **Restrict health check endpoints** to internal networks if needed
+* **Regular security updates** for your reverse proxy software
+
+#### 4. Monitoring and Logging
+
+* **Access logs** at the reverse proxy level
+* **Health check monitoring** using `/health/ready` and `/health/live`
+* **Performance monitoring** through reverse proxy metrics
+* **Log aggregation** for centralized monitoring
+
+{% hint style="success" %}
+**Production Tip:** Using a reverse proxy provides additional benefits like SSL termination, static file serving, request compression, security headers, and load balancing capabilities that complement the BoxLang MiniServer's performance.
+{% endhint %}
+
+{% hint style="info" %}
+**WebSocket Note:** All reverse proxy configurations include WebSocket support. Make sure your reverse proxy properly handles WebSocket upgrade requests for real-time features to work correctly.
+{% endhint %}
