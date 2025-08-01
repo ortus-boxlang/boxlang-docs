@@ -22,7 +22,7 @@ StringBind(string=[string], placeholders=[structloose])
 
 In this example, a template string is defined with three tokens, two of which have defaults. The `stringBind` BIF is then ran and returns a string with values parsed:
 
-```
+```java
 templateString = "
 This is a string with a ${name:Nameless} and ${age:0}. Here is a 
 token with no default, ${food}.
