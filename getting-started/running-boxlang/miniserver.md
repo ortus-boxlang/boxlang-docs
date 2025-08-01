@@ -17,7 +17,7 @@ The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web 
 CommandBox is our open-source servlet server implementation. However, with a [Boxlang +/++ subscription](https://boxlang.io/plans), it becomes a powerhouse for mission-critical applications.  Check out all that you get with CommandBox Pro: [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)
 {% endhint %}
 
-## ▶️ Starting a BoxLang MiniServer <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
+## ▶️ Start a Server <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
 
 The BoxLang core OS runtime doesn't know about a web application. Our web support runtime provides this functionality, a crucial part of the MiniServer and the Servlet (JEE, Jakarta, CommandBox) runtime. This runtime enhances the core boxlang runtime, making it multi-runtime and web deployable.
 
@@ -239,7 +239,7 @@ The health check provides:
 * **Memory Usage** - Current memory usage in bytes
 * **Memory Max** - Maximum available memory in bytes
 
-## 🌍 Environment Variable Loading
+## 🌍 Environment Files
 
 The MiniServer automatically loads environment variables from `.env` files located in your webroot directory:
 
