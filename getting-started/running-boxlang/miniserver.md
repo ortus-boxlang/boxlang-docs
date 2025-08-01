@@ -7,7 +7,7 @@ icon: jet-fighter-up
 
 <figure><img src="../../.gitbook/assets/miniserver.png" alt=""><figcaption></figcaption></figure>
 
-The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for fast applications, electron apps, embedded web servers, and development. For those who desire a more robust and feature-rich servlet server implementation, we offer our open-source FREE  [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
+The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for fast applications, desktop apps (Electron/JavaFX), embedded web servers, and development. For those who desire a more robust and feature-rich servlet server implementation, we offer our open-source FREE  [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
 
 {% hint style="success" %}
 **Tip:** Please note that the BoxLang MiniServer is NOT a servlet server.  **There is no servlet container;** the web server is just a simple, fast, and pure Java Undertow server.
