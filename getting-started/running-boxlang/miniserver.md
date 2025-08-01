@@ -375,6 +375,205 @@ The WebSocket server is automatically started when the MiniServer launches, as i
 **WebSocket Note:** The WebSocket endpoint is always enabled and cannot be disabled. This provides a consistent real-time communication channel for all BoxLang applications. For production applications, consider using SocketBox for enhanced features and easier development.
 {% endhint %}
 
+## 🏠 Default Welcome Files
+
+The BoxLang MiniServer automatically serves welcome files when a request is made to a directory. The server looks for these files in the following order:
+
+1. `index.bxm` - BoxLang Markup (preferred)
+2. `index.bxs` - BoxLang Script
+3. `index.cfm` - CFML Markup (legacy compatibility)
+4. `index.cfs` - CFML Script (legacy compatibility)
+5. `index.htm` - HTML
+6. `index.html` - HTML
+
+### Welcome File Behavior
+
+When a request is made to a directory (e.g., `http://localhost:8080/`), the server will:
+
+1. **Check for welcome files** in the order listed above
+2. **Serve the first match** found in the directory
+3. **Enable directory listing** if no welcome file is found (showing folder contents)
+4. **Process BoxLang/CFML files** through the runtime before serving
+5. **Serve static files** (HTML) directly without processing
+
+### Example Directory Structure
+
+```
+webroot/
+├── index.bxm          # ✅ Will be served for /
+├── index.html         # ❌ Will be ignored (index.bxm takes precedence)
+├── subfolder/
+│   ├── index.cfm      # ✅ Will be served for /subfolder/
+│   └── page.bxm       # ✅ Available at /subfolder/page.bxm
+└── static/
+    └── styles.css     # ✅ Available at /static/styles.css
+```
+
+{% hint style="success" %}
+**Tip:** Use `index.bxm` for your main pages to take advantage of BoxLang's modern syntax and features while maintaining compatibility with legacy CFML files.
+{% endhint %}
+
+## 🔀 URL Rewrites
+
+The BoxLang MiniServer supports URL rewrites for creating clean, SEO-friendly URLs and building single-page applications (SPAs):
+
+### Enabling URL Rewrites
+
+Enable URL rewrites with the `--rewrites` flag:
+
+```bash
+# Enable rewrites with default file (index.bxm)
+boxlang-miniserver --rewrites
+
+# Enable rewrites with custom file
+boxlang-miniserver --rewrites app.bxm
+
+# Using environment variable
+BOXLANG_REWRITES=true boxlang-miniserver
+```
+
+### How URL Rewrites Work
+
+When URL rewrites are enabled:
+
+1. **All requests** are routed to your specified rewrite file (default: `index.bxm`)
+2. **Static files** (CSS, JS, images) are served directly without rewriting
+3. **BoxLang/CFML files** that exist are served normally (not rewritten)
+4. **Non-existent URLs** are routed to your rewrite file for custom handling
+
+### URL Rewrite Examples
+
+```javascript
+// In your index.bxm (rewrite handler)
+switch( cgi.path_info ) {
+    case "/":
+        // Home page
+        include "views/home.bxm";
+        break;
+
+    case "/products":
+        // Products listing
+        include "views/products.bxm";
+        break;
+
+    case "/products/":
+        // Individual product (extract ID from URL)
+        var productId = listLast( cgi.path_info, "/" );
+        request.productId = productId;
+        include "views/product-detail.bxm";
+        break;
+
+    default:
+        // 404 page
+        response.setStatus( 404 );
+        include "views/404.bxm";
+}
+```
+
+### Use Cases for URL Rewrites
+
+* **Single Page Applications (SPAs)** - Route all requests to your main app file
+* **Clean URLs** - `/products/123` instead of `/product.bxm?id=123`
+* **Custom routing** - Implement your own URL routing logic
+* **Framework applications** - Perfect for ColdBox, FW/1, or custom frameworks
+
+### Console Output
+
+When rewrites are enabled, you'll see:
+
+```bash
++ Enabling rewrites to /index.bxm
+```
+
+{% hint style="info" %}
+**Rewrite Note:** URL rewrites work best for dynamic applications and frameworks. Static websites typically don't need URL rewriting enabled.
+{% endhint %}
+
+## 🛑 Server Management
+
+### Graceful Shutdown
+
+The BoxLang MiniServer supports graceful shutdown for safe server termination:
+
+```bash
+# Stop the server gracefully
+Press Ctrl+C
+```
+
+When you stop the server, you'll see:
+
+```bash
+Shutting down BoxLang Server...
+BoxLang Server stopped.
+```
+
+The graceful shutdown process:
+
+1. **Stops accepting new requests** immediately
+2. **Completes active requests** before shutting down
+3. **Closes the BoxLang runtime** properly
+4. **Releases all resources** (ports, file handles, etc.)
+
+### Background Execution
+
+For production deployments, you can run the server in the background:
+
+```bash
+# Run in background (Unix/Linux/Mac)
+nohup boxlang-miniserver > server.log 2>&1 &
+
+# Or using screen/tmux
+screen -S boxlang-server
+boxlang-miniserver
+
+# Or using systemd (Linux)
+# Create a service file for automatic startup
+```
+
+{% hint style="warning" %}
+**Production Note:** For production deployments, consider using process managers like systemd, supervisor, or Docker containers for better service management and automatic restarts.
+{% endhint %}
+
+## ⚡ Performance Features
+
+The BoxLang MiniServer includes several built-in performance optimizations:
+
+### Automatic GZIP Compression
+
+The server automatically compresses responses using GZIP compression for better performance:
+
+* **Automatic compression** for responses larger than 1.5KB
+* **Smart content detection** - only compresses suitable content types
+* **Client support detection** - only compresses when client supports it
+* **Bandwidth savings** - typically 60-80% reduction in transfer size
+
+### Performance Characteristics
+
+* **Fast startup times** - typically under 1 second
+* **Low memory footprint** - minimal overhead beyond your application
+* **High concurrency** - built on Undertow's high-performance architecture
+* **Zero-copy static file serving** - optimized static asset delivery
+* **Keep-alive connections** - reduces connection overhead
+
+### Performance Tips
+
+```bash
+# Allocate more memory for better performance
+BOXLANG_MINISERVER_OPTS="-Xmx2g -Xms512m" boxlang-miniserver
+
+# Enable health checks for monitoring
+boxlang-miniserver --health-check
+
+# Use environment variables for configuration
+export BOXLANG_PORT=8080
+export BOXLANG_HOST=0.0.0.0
+boxlang-miniserver
+```
+
+{% hint style="success" %}
+**Performance Tip:** The MiniServer is optimized for development and light production workloads. For high-traffic applications, consider using CommandBox with load balancing and clustering capabilities.
+{% endhint %}
+
 ### Using 3rd Party Jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
 
 You can load up custom third-party JARs into the runtime in two ways
