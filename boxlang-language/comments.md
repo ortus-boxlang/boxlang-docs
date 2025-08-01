@@ -1,5 +1,6 @@
 ---
 description: You shall comment ALL your code!
+icon: comment
 ---
 
 # Comments
@@ -67,12 +68,12 @@ class extends="Base" implements="IHello" singleton{
       * @data The incoming data
       *
       * @throws InvalidException - If the exception is invalid
-      * 
+      *
       * @return A string of data
       */
      function myFunc( string param1, data ){
      }
-     
+
 }
 ```
 

@@ -1,5 +1,6 @@
 ---
 description: An array is a data structure consisting of a collection of elements.
+icon: array
 ---
 
 # Arrays
@@ -247,12 +248,12 @@ matrix.each( (row) => {
 
 ```javascript
 // Transform all elements in a 2D array
-doubled = matrix.map( (row) => 
+doubled = matrix.map( (row) =>
     row.map( (cell) => cell * 2 )
 )
 
 // Filter rows based on criteria
-evenRows = matrix.filter( (row) => 
+evenRows = matrix.filter( (row) =>
     row.every( (cell) => cell % 2 == 0 )
 )
 
@@ -308,7 +309,7 @@ engineers = spreadsheet
 salaries = spreadsheet
     .slice( 2 )
     .map( (row) => row[4] )
-    
+
 avgSalary = salaries.reduce( (sum, salary) => sum + salary, 0 ) / salaries.len()
 ```
 
@@ -352,7 +353,7 @@ function getDimensions( array2D ) {
 // Transpose a 2D array (swap rows and columns)
 function transpose( array2D ) {
     if( array2D.len() == 0 ) return []
-    
+
     result = []
     for( col = 1; col <= array2D[1].len(); col++ ) {
         newRow = []
