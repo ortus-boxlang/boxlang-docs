@@ -236,39 +236,39 @@ writeOutput( '</div>' );
 writeOutput( '</div>' );
 ```
 
-### Component Content: The `thisTag` Scope
+### Component Content: The `thisComponent` Scope
 
-When components have start and end tags, BoxLang provides the `thisTag` scope to manage content and execution. This works the same way in both template and script-based components.
+When components have start and end tags, BoxLang provides the `thisComponent` scope to manage content and execution. This works the same way in both template and script-based components.
 
-**The `thisTag` scope contains:**
+**The `thisComponent` scope contains:**
 
 * `executionMode`: "start" or "end"
 * `hasEndTag`: boolean indicating if component has closing tag
 * `generatedContent`: Content between start and end tags
 
-#### Template-based Component with `thisTag`
+#### Template-based Component with `thisComponent`
 
 **File: `components/boldWrapper.bxm`**
 
 ```xml
 <!-- Component that wraps content in bold tags -->
 
-<bx:if thisTag.executionMode eq "end">
-    <bx:output><b>#thisTag.generatedContent#</b></bx:output>
-    <bx:set thisTag.generatedContent = "">
+<bx:if thisComponent.executionMode eq "end">
+    <bx:output><b>#thisComponent.generatedContent#</b></bx:output>
+    <bx:set thisComponent.generatedContent = "">
 </bx:if>
 ```
 
-#### Script-based Component with `thisTag`
+#### Script-based Component with `thisComponent`
 
 **File: `components/boldWrapper.bxs`**
 
 ```js
 // Component that wraps content in bold tags
 
-if ( thisTag.executionMode == "end" ) {
-    writeOutput( "<b>" & thisTag.generatedContent & "</b>" );
-    thisTag.generatedContent = "";
+if ( thisComponent.executionMode == "end" ) {
+    writeOutput( "<b>" & thisComponent.generatedContent & "</b>" );
+    thisComponent.generatedContent = "";
 }
 ```
 
@@ -293,12 +293,12 @@ Here's an advanced component demonstrating the full execution cycle, shown in bo
 <bx:param name="attributes.collapsible" type="boolean" default="false">
 <bx:param name="attributes.collapsed" type="boolean" default="false">
 
-<bx:if thisTag.executionMode eq "start">
+<bx:if thisComponent.executionMode eq "start">
     <!-- Opening section markup -->
     <section class="content-section">
         <header class="section-header">
             <h2>#attributes.title#</h2>
-            <bx:if thisTag.attributes.collapsible>
+            <bx:if thisComponent.attributes.collapsible>
                 <button class="toggle-btn" data-collapsed="#attributes.collapsed#">
                     #attributes.collapsed ? "Expand" : "Collapse"#
                 </button>
@@ -308,7 +308,7 @@ Here's an advanced component demonstrating the full execution cycle, shown in bo
              style="#attributes.collapsed ? 'display:none' : ''#">
 </bx:if>
 
-<bx:if thisTag.executionMode eq "end">
+<bx:if thisComponent.executionMode eq "end">
 
     <!-- Closing section markup -->
         </div>
@@ -327,7 +327,7 @@ bx:param name="attributes.title" type="string" required="true";
 bx:param name="attributes.collapsible" type="boolean" default="false";
 bx:param name="attributes.collapsed" type="boolean" default="false";
 
-if ( thisTag.executionMode == "start" ) {
+if ( thisComponent.executionMode == "start" ) {
     // Opening section markup
     writeOutput( '<section class="content-section">' );
     writeOutput( '<header class="section-header">' );
@@ -347,7 +347,7 @@ if ( thisTag.executionMode == "start" ) {
     writeOutput( '>' );
 }
 
-if ( thisTag.executionMode == "end" ) {
+if ( thisComponent.executionMode == "end" ) {
 
     // Closing section markup
     writeOutput( '</div>' );
@@ -552,7 +552,7 @@ Provides access to the calling context (use sparingly):
 </bx:if>
 ```
 
-### The `thisTag` Scope
+### The `thisComponent` Scope
 
 Manages component execution and content:
 
@@ -561,7 +561,7 @@ Manages component execution and content:
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.expanded" type="boolean" default="false">
 
-<bx:if thisTag.executionMode eq "start">
+<bx:if thisComponent.executionMode eq "start">
     <div class="accordion-item">
         <button class="accordion-header" onclick="toggleAccordion(this)">
             #attributes.title#
@@ -569,7 +569,7 @@ Manages component execution and content:
         <div class="accordion-content" style="#attributes.expanded ? '' : 'display:none'#">
 </bx:if>
 
-<bx:if thisTag.executionMode eq "end">
+<bx:if thisComponent.executionMode eq "end">
         </div>
     </div>
 </bx:if>
@@ -619,16 +619,16 @@ bx:associate dataCollection="collectionName";
 <bx:param name="attributes.id" type="string" required="true">
 <bx:param name="attributes.class" type="string" default="nav-menu">
 
-<bx:if thisTag.executionMode eq "start">
+<bx:if thisComponent.executionMode eq "start">
     <nav id="#attributes.id#" class="#attributes.class#">
         <ul class="menu-list">
 </bx:if>
 
-<bx:if thisTag.executionMode eq "end">
+<bx:if thisComponent.executionMode eq "end">
 
     <!-- Now render all associated menu items -->
-    <bx:if "#isDefined( 'thisTag.menuItems' ) AND isArray( thisTag.menuItems )#">
-        <bx:loop array="#thisTag.menuItems#" index="menuItem">
+    <bx:if "#isDefined( 'thisComponent.menuItems' ) AND isArray( thisComponent.menuItems )#">
+        <bx:loop array="#thisComponent.menuItems#" index="menuItem">
             <li class="menu-item">
                 <a href="#menuItem.url#"
                    class="#menuItem.class ?: ''#"
@@ -682,7 +682,7 @@ bx:associate dataCollection="collectionName";
 <bx:param name="attributes.class" type="string" default="form">
 <bx:param name="attributes.validateOnSubmit" type="boolean" default="true">
 
-<bx:if thisTag.executionMode eq "start">
+<bx:if thisComponent.executionMode eq "start">
     <form action="#attributes.action#"
           method="#attributes.method#"
           #len( attributes.id ) ? 'id="' & attributes.id & '"' : ''#
@@ -690,11 +690,11 @@ bx:associate dataCollection="collectionName";
           #attributes.validateOnSubmit ? 'data-validate="true"' : ''#>
 </bx:if>
 
-<bx:if thisTag.executionMode eq "end">
+<bx:if thisComponent.executionMode eq "end">
 
     <!-- Render all associated form fields -->
-    <bx:if "#isDefined( 'thisTag.formFields' ) AND isArray( thisTag.formFields )#">
-        <bx:loop array="#thisTag.formFields#" index="field">
+    <bx:if "#isDefined( 'thisComponent.formFields' ) AND isArray( thisComponent.formFields )#">
+        <bx:loop array="#thisComponent.formFields#" index="field">
             <div class="form-group field-type-#field.type#">
                 <bx:if "#len( field.label ?: '' )#">
                     <label for="#field.fieldname#" class="form-label">
@@ -753,9 +753,9 @@ bx:associate dataCollection="collectionName";
     </bx:if>
 
     <!-- Render any additional content (like buttons) -->
-    <bx:if "#isDefined( 'thisTag.formActions' ) AND isArray( thisTag.formActions )#">
+    <bx:if "#isDefined( 'thisComponent.formActions' ) AND isArray( thisComponent.formActions )#">
         <div class="form-actions">
-            <bx:loop array="#thisTag.formActions#" index="action">
+            <bx:loop array="#thisComponent.formActions#" index="action">
                 <button type="#action.type ?: 'button'#"
                         class="btn #action.class ?: 'btn-primary'#"
                         #len( action.onclick ?: '' ) ? 'onclick="' & action.onclick & '"' : ''#>
@@ -856,7 +856,7 @@ bx:associate dataCollection="collectionName";
 
 #### 1. **Data Collection Names**
 
-The `dataCollection` attribute specifies the name of the array that will be created in the parent component's `thisTag` scope.
+The `dataCollection` attribute specifies the name of the array that will be created in the parent component's `thisComponent` scope.
 
 #### 2. **Automatic Array Creation**
 
@@ -882,16 +882,16 @@ You can have multiple levels of association for complex hierarchies.
 <bx:param name="attributes.id" type="string" required="true">
 <bx:param name="attributes.activeTab" type="string" default="">
 
-<bx:if thisTag.executionMode eq "start">
+<bx:if thisComponent.executionMode eq "start">
     <div id="#attributes.id#" class="tab-container">
         <ul class="tab-nav" role="tablist">
 </bx:if>
 
-<bx:if thisTag.executionMode eq "end">
+<bx:if thisComponent.executionMode eq "end">
 
     <!-- Render tab navigation -->
-    <bx:if "#isDefined( 'thisTag.tabs' ) AND isArray( thisTag.tabs )#">
-        <bx:loop array="#thisTag.tabs#" index="tab" item="i">
+    <bx:if "#isDefined( 'thisComponent.tabs' ) AND isArray( thisComponent.tabs )#">
+        <bx:loop array="#thisComponent.tabs#" index="tab" item="i">
             <li class="tab-nav-item">
                 <button class="tab-button #( i EQ 1 OR tab.id EQ attributes.activeTab ) ? 'active' : ''#"
                         data-tab="#tab.id#"
@@ -905,7 +905,7 @@ You can have multiple levels of association for complex hierarchies.
 
         <!-- Render tab content -->
         <div class="tab-content">
-            <bx:loop array="#thisTag.tabs#" index="tab" item="i">
+            <bx:loop array="#thisComponent.tabs#" index="tab" item="i">
                 <div id="#tab.id#"
                      class="tab-pane #( i EQ 1 OR tab.id EQ attributes.activeTab ) ? 'active' : ''#"
                      role="tabpanel">
@@ -926,10 +926,10 @@ You can have multiple levels of association for complex hierarchies.
 <bx:param name="attributes.id" type="string" required="true">
 <bx:param name="attributes.title" type="string" required="true">
 
-<bx:if thisTag.executionMode eq "end">
+<bx:if thisComponent.executionMode eq "end">
     <!-- Capture the tab content -->
-    <bx:set variables.tabContent = thisTag.generatedContent />
-    <bx:set thisTag.generatedContent = "">
+    <bx:set variables.tabContent = thisComponent.generatedContent />
+    <bx:set thisComponent.generatedContent = "">
 
     <!-- Set the content in attributes for association -->
     <bx:set attributes.content = variables.tabContent />
@@ -976,7 +976,7 @@ Components can call other components for powerful composition:
 <bx:param name="attributes.title" type="string" required="true">
 <bx:param name="attributes.showSidebar" type="boolean" default="true">
 
-<bx:if thisTag.executionMode eq "start">
+<bx:if thisComponent.executionMode eq "start">
     <!DOCTYPE html>
     <html>
     <head>
@@ -996,7 +996,7 @@ Components can call other components for powerful composition:
             <main class="content">
 </bx:if>
 
-<bx:if thisTag.executionMode eq "end">
+<bx:if thisComponent.executionMode eq "end">
 
             </main>
         </div>
@@ -1140,7 +1140,7 @@ BoxLang components provide enhanced functionality over CFML custom tags:
 | Template context only        | **Script and template contexts** |
 | `attributes` scope           | `attributes` scope               |
 | `caller` scope               | `caller` scope                   |
-| `thisTag` scope              | `thisTag` scope                  |
+| `thisComponent` scope              | `thisComponent` scope                  |
 | Limited discovery            | **Enhanced discovery system**    |
 
 **Key Advantages in BoxLang:**
