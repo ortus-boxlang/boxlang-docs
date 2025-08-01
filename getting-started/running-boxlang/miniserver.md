@@ -17,7 +17,7 @@ The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web 
 CommandBox is our open-source servlet server implementation. However, with a [Boxlang +/++ subscription](https://boxlang.io/plans), it becomes a powerhouse for mission-critical applications.  Check out all that you get with CommandBox Pro: [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)
 {% endhint %}
 
-### Starting a BoxLang MiniServer <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
+## ▶️ Starting a BoxLang MiniServer <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
 
 The BoxLang core OS runtime doesn't know about a web application. Our web support runtime provides this functionality, a crucial part of the MiniServer and the Servlet (JEE, Jakarta, CommandBox) runtime. This runtime enhances the core boxlang runtime, making it multi-runtime and web deployable.
 
@@ -98,7 +98,7 @@ That's practically it. This is a very lightweight server that can get the job do
 
 <figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption><p>Manage your Servers</p></figcaption></figure>
 
-### Arguments <a href="#web-server-args-13" id="web-server-args-13"></a>
+### 🔧 Arguments <a href="#web-server-args-13" id="web-server-args-13"></a>
 
 These are the supported arguments you can pass into the binary to configure the server.
 
@@ -134,7 +134,7 @@ boxlang-miniserver --health-check --health-check-secure
 boxlang-miniserver --port 8080 --host 0.0.0.0 --health-check-secure
 ```
 
-### Environment Variables
+### 🛡️Environment Variables
 
 The `boxlang-miniserver` binary will also scan for several environment variables as overrides to the execution process.
 
