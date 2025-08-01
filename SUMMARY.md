@@ -111,6 +111,7 @@
   * [Datasources](boxlang-language/datasources.md)
   * [Queries](boxlang-language/queries.md)
   * [JSON](boxlang-language/json.md)
+  *  [XML](boxlang-language/xml.md)
   * [Conditionals](boxlang-language/conditionals.md)
   * [Attempts](boxlang-language/syntax/attempts.md)
   * [Data Navigators](boxlang-language/syntax/data-navigators.md)
