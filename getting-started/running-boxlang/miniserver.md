@@ -7,7 +7,7 @@ icon: jet-fighter-up
 
 <figure><img src="../../.gitbook/assets/miniserver.png" alt=""><figcaption></figcaption></figure>
 
-The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for light-weight applications, electron apps, embedded web servers, and development. For those who desire a more robust and feature-rich servlet server implementation, we offer our [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
+The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for fast applications, electron apps, embedded web servers, and development. For those who desire a more robust and feature-rich servlet server implementation, we offer our open-source FREE  [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
 
 {% hint style="success" %}
 **Tip:** Please note that the BoxLang MiniServer is NOT a servlet server.  **There is no servlet container;** the web server is just a simple, fast, and pure Java Undertow server.
@@ -56,24 +56,32 @@ java -jar /usr/local/lib/boxlang-miniserver-1.0.0.jar
 Once you run the command, the following output will appear in your console:
 
 ```bash
++ Loaded environment variables from: /path/to/webroot/.env
 + Starting BoxLang Server...
-- Web Root: /home/lmajano/Sites/temp
-- Host: localhost
-- Port: 8080
-- Debug: false
-- Config Path: null
-- Server Home: null
+  - Web Root: /home/lmajano/Sites/temp
+  - Host: 0.0.0.0
+  - Port: 8080
+  - Debug: null
+  - Config Path: null
+  - Server Home: null
+  - Health Check: false
+  - Health Check Secure: false
 + Starting BoxLang Runtime...
-+ Runtime Started in 2043ms
-+ BoxLang MiniServer started in 2135ms
-+ BoxLang MiniServer started at: http://localhost:8080
+  - BoxLang Version: 1.4.0-snapshot+0 (Built On: 2025-08-01 16:03:36)
+  - Runtime Started in 652ms
++ Security protection enabled - blocking access to hidden files (starting with .)
++ WebSocket Server started
++ BoxLang MiniServer started in 818ms at: http://localhost:8080
 Press Ctrl+C to stop the server.
 ```
 
 As you can see from the output, this is the result of the command:
 
 * Use the current **working directory** as the web root.
-* Bind to `localhost:8080` by default
+* Bind to `0.0.0.0:8080` by default (accessible from any network interface)
+* **Automatic .env file loading** - Environment variables from `.env` files in the webroot are loaded into system properties
+* **Built-in security protection** - Blocks access to hidden files and directories (starting with `.`) for security
+* **WebSocket support** enabled by default at `/ws` endpoint
 * This configures the web server with some default welcome files and no rewrites.
 * BoxLang will process any BoxLang or CFML files
 * Uses the user's BoxLang home as the default for configuration and modules: `~/.boxlang`
@@ -94,7 +102,17 @@ That's practically it. This is a very lightweight server that can get the job do
 
 These are the supported arguments you can pass into the binary to configure the server.
 
-<table><thead><tr><th width="351">Argument</th><th>Value</th></tr></thead><tbody><tr><td><code>--configPath path/boxlang.json</code><br><code>-c path/boxlang.json</code></td><td>Relative/Absolute location of the <code>boxlang.json</code> to use. By default it uses the <code>~/.boxlang/boxlang.json</code></td></tr><tr><td><code>--debug</code><br><code>-d</code></td><td>Put the runtime into debug mode. By default we use <code>false</code></td></tr><tr><td><code>--host ip|domain</code><br><code>-h ip|domain</code></td><td>Bind the hostname to the mini server. By default we use <code>localhost</code></td></tr><tr><td><code>--port 8080</code><br><code>-p 8080</code></td><td>The port to bind the mini server to. By default we use port <code>8080</code></td></tr><tr><td><code>--rewrites [index.bxm]</code><br><code>-r [index.bxm]</code></td><td>Enable rewrites for applications using <code>index.bxm</code> as the file to use.  You can also pass the name of the file to use: <code>--rewrites myfile.bxm</code></td></tr><tr><td><code>--serverHome path/</code><br><code>-s path/</code></td><td>The location of the BoxLang home for the miniserver. This is where it will look for the <code>boxlang.json</code>, place to put the log files, the compiled classes, load modules, and much more. <br><br>By default, we use the OS home via the <code>BOXLANG_HOME</code> environment variable which usually points to the user's home: <code>~/.boxlang/</code></td></tr><tr><td><code>--webroot path/</code><br><code>-w path/</code></td><td>The webserver root. By default, we use the directory from where you started the command.</td></tr></tbody></table>
+| Argument | Value |
+| --- | --- |
+| `--configPath path/boxlang.json`<br>`-c path/boxlang.json` | Relative/Absolute location of the `boxlang.json` to use. By default it uses the `~/.boxlang/boxlang.json` |
+| `--debug`<br>`-d`                                                                      | Put the runtime into debug mode. By default we use `false` |
+| `--host ip\|domain`                                                                     | Bind the hostname to the mini server. By default we use `0.0.0.0` (all network interfaces) |
+| `--port 8080`<br>`-p 8080`                                                    | The port to bind the mini server to. By default we use port `8080` |
+| `--rewrites [index.bxm]`<br>`-r [index.bxm]`                       | Enable rewrites for applications using `index.bxm` as the file to use. You can also pass the name of the file to use: `--rewrites myfile.bxm` |
+| `--health-check`                                                                       | Enable health check endpoints at `/health`, `/health/ready`, and `/health/live`. These provide detailed server status, readiness, and liveness information in JSON format. |
+| `--health-check-secure`                                                         | Restrict detailed health check information to localhost only. When enabled, non-localhost requests receive basic status only, while localhost gets full system details including JVM metrics and memory usage. |
+| `--serverHome path/`<br>`-s path/`                                     | The location of the BoxLang home for the miniserver. This is where it will look for the `boxlang.json`, place to put the log files, the compiled classes, load modules, and much more.<br><br>By default, we use the OS home via the `BOXLANG_HOME` environment variable which usually points to the user's home: `~/.boxlang/` |
+| `--webroot path/`<br>`-w path/`                                           | The webserver root. By default, we use the directory from where you started the command. |
 
 ```bash
 # Custom port and webroot
@@ -105,6 +123,15 @@ boxlang-miniserver --port 80 --serverHome /var/www/servers/myServer
 
 # Custom port and rewrites enabled
 boxlang-miniserver --port 80 --rewrites
+
+# Enable health check endpoints for monitoring
+boxlang-miniserver --health-check
+
+# Enable secure health checks (detailed info only on localhost)
+boxlang-miniserver --health-check --health-check-secure
+
+# Production server with security and monitoring
+boxlang-miniserver --port 8080 --host 0.0.0.0 --health-check-secure
 ```
 
 ### Environment Variables
@@ -116,17 +143,236 @@ The `boxlang-miniserver` binary will also scan for several environment variables
 | `BOXLANG_CONFIG = PATH`                | Override the `boxlang.json`                                         |
 | `BOXLANG_DEBUG = boolean`              | Enable or disable debug mode                                        |
 | `BOXLANG_HOME = directory`             | Override the server HOME directory                                  |
-| `BOXLANG_HOST = ip or domain`          | Override the `localhost` default to whatever IP or domain you like. |
+| `BOXLANG_HOST = ip or domain`          | Override the `0.0.0.0` default to whatever IP or domain you like. |
 | `BOXLANG_PORT = 8080`                  | Override the default port                                           |
 | `BOXLANG_REWRITES = boolean`           | Enable or disable URL rewrites                                      |
 | `BOXLANG_REWRITE_FILE = file.bxm`      | Choose the rewrite file to use. By default, it uses `index.bxm`     |
 | `BOXLANG_WEBROOT = path`               | Override the location of the web root                               |
+| `BOXLANG_HEALTH_CHECK = boolean`       | Enable or disable health check endpoints                            |
+| `BOXLANG_HEALTH_CHECK_SECURE = boolean`| Enable secure health checks (detailed info only on localhost)      |
 | `BOXLANG_MINISERVER_OPTS = jvmOptions` | A list of Java options to pass to the startup command               |
 
 
 
 {% hint style="danger" %}
 Environment variables are scanned first, then the command arguments. Thus, the command arguments take precedence.
+{% endhint %}
+
+## 🔒 Security Features
+
+The BoxLang MiniServer includes built-in security features to protect your applications:
+
+### Hidden File Protection
+
+The server automatically blocks access to hidden files and directories (those starting with a dot `.`). This security feature protects sensitive files such as:
+
+* `.env` files containing environment variables
+* `.git` directories and configuration
+* `.htaccess` and other web server configuration files
+* Any custom hidden files or directories
+
+When a request is made for a hidden file, the server returns a `404 Not Found` response for security reasons, without revealing whether the file actually exists.
+
+{% hint style="info" %}
+**Security Note:** This protection is enabled by default and cannot be disabled. It's a fundamental security feature designed to prevent accidental exposure of sensitive configuration files.
+{% endhint %}
+
+## 🩺 Health Check Endpoints
+
+The MiniServer provides comprehensive health monitoring capabilities through dedicated endpoints:
+
+### Basic Health Checks
+
+Enable health checks with the `--health-check` flag:
+
+```bash
+boxlang-miniserver --health-check
+```
+
+This enables three endpoints:
+
+* **`/health`** - Complete health information including system metrics, JVM details, and runtime status
+* **`/health/ready`** - Readiness probe for load balancers (simple UP/DOWN status)
+* **`/health/live`** - Liveness probe for container orchestration (simple UP/DOWN status)
+
+### Secure Health Checks
+
+For production environments, use the `--health-check-secure` flag:
+
+```bash
+boxlang-miniserver --health-check --health-check-secure
+```
+
+When secure mode is enabled:
+
+* **Localhost requests** receive full detailed health information
+* **Remote requests** receive only basic status information
+* This prevents sensitive system information from being exposed to external networks
+
+### Health Check Response Format
+
+The `/health` endpoint returns comprehensive JSON information:
+
+```json
+{
+  "status": "UP",
+  "timestamp": "2025-08-01T17:05:47.587438Z",
+  "uptime": "1m 47s",
+  "uptimeMs": 107245,
+  "version": "1.4.0-snapshot+0",
+  "buildDate": "2025-08-01 16:03:36",
+  "javaVersion": "17.0.2",
+  "memoryUsed": 152093696,
+  "memoryMax": 4294967296
+}
+```
+
+The health check provides:
+
+* **Status** - Current server status (UP/DOWN)
+* **Timestamp** - Current server time in ISO format
+* **Uptime** - Human-readable server uptime
+* **UptimeMs** - Server uptime in milliseconds
+* **Version** - BoxLang version information
+* **Build Date** - When BoxLang was built
+* **Java Version** - JVM version information
+* **Memory Usage** - Current memory usage in bytes
+* **Memory Max** - Maximum available memory in bytes
+
+## 🌍 Environment Variable Loading
+
+The MiniServer automatically loads environment variables from `.env` files located in your webroot directory:
+
+### Automatic .env Loading
+
+When you start the server, it will automatically look for and load a `.env` file in the webroot:
+
+```bash
+# If webroot contains a .env file, you'll see:
++ Loaded environment variables from: /path/to/webroot/.env
+```
+
+### .env File Format
+
+Your `.env` file should contain key-value pairs:
+
+```bash
+# .env file example
+DATABASE_URL=jdbc:mysql://localhost:3306/mydb
+API_KEY=your-secret-api-key
+DEBUG_MODE=true
+CUSTOM_SETTING=value
+```
+
+### Accessing Loaded Variables
+
+Environment variables loaded from `.env` files are:
+
+1. **Added to Java System Properties** - Accessible via `System.getProperty("key")`
+2. **Available in BoxLang** - Accessible through the `server.system.properties` struct
+3. **Available to your applications** - Can be used in BoxLang code for configuration
+
+{% hint style="info" %}
+**Privacy Note:** Environment variables are NOT exposed through health check endpoints. Health checks only return basic server metrics and status information for security purposes.
+{% endhint %}
+
+## 🔌 WebSocket Support
+
+The BoxLang MiniServer includes built-in WebSocket support for real-time communication:
+
+### WebSocket Endpoint
+
+WebSocket connections are available at the `/ws` endpoint:
+
+```javascript
+// JavaScript client example
+const socket = new WebSocket('ws://localhost:8080/ws');
+
+socket.onopen = function(event) {
+    console.log('Connected to BoxLang WebSocket server');
+};
+
+socket.onmessage = function(event) {
+    console.log('Message from server:', event.data);
+};
+
+socket.onclose = function(event) {
+    console.log('Disconnected from server');
+};
+```
+
+### SocketBox - BoxLang WebSocket Library
+
+For enhanced WebSocket functionality in your BoxLang applications, we recommend using **SocketBox** - our companion library specifically designed for BoxLang WebSocket development:
+
+{% hint style="success" %}
+**SocketBox** is available on ForgeBox: [https://forgebox.io/view/socketbox](https://forgebox.io/view/socketbox)
+{% endhint %}
+
+SocketBox provides:
+
+* **High-level WebSocket abstractions** for BoxLang applications
+* **Event-driven architecture** with listeners and handlers
+* **Room and namespace management** for organizing connections
+* **Built-in authentication and authorization** support
+* **Message broadcasting** to multiple clients
+* **Connection lifecycle management** with automatic reconnection
+* **Integration with BoxLang frameworks** like ColdBox
+
+#### Installing SocketBox
+
+```bash
+# Install via CommandBox
+box install socketbox
+
+# Or download from ForgeBox
+# https://forgebox.io/view/socketbox
+```
+
+#### SocketBox Example
+
+```javascript
+// BoxLang server-side WebSocket handler using SocketBox
+class {
+
+    function onConnect( socket, data ) {
+        // Handle new WebSocket connection
+        socket.join( "chatRoom" )
+        socket.broadcast( "userJoined", { user: data.username } )
+    }
+
+    function onMessage( socket, message ) {
+        // Handle incoming messages
+        socket.to( "chatRoom" ).emit( "newMessage", {
+            user: socket.data.username,
+            text: message.text,
+            timestamp: now()
+        })
+    }
+
+    function onDisconnect( socket ) {
+        // Handle client disconnection
+        socket.broadcast( "userLeft", { user: socket.data.username } )
+    }
+}
+```
+
+### WebSocket Features
+
+* **Real-time bidirectional communication** between client and server
+* **Automatic connection management** with built-in error handling
+* **Integration with BoxLang runtime** for server-side message processing
+* **Low latency** communication for interactive applications
+* **Enhanced functionality** with SocketBox library for production applications
+
+The WebSocket server is automatically started when the MiniServer launches, as indicated by the console message:
+
+```bash
++ WebSocket Server started
+```
+
+{% hint style="info" %}
+**WebSocket Note:** The WebSocket endpoint is always enabled and cannot be disabled. This provides a consistent real-time communication channel for all BoxLang applications. For production applications, consider using SocketBox for enhanced features and easier development.
 {% endhint %}
 
 ### Using 3rd Party Jars <a href="#using-3rd-party-jars-14" id="using-3rd-party-jars-14"></a>
