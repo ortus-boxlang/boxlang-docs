@@ -79,7 +79,7 @@ If you want to see HTML being produced, then you will need to run the file in ou
 
 {% tabs %}
 {% tab title="myprogram.bxm" %}
-```markup
+```xml
 <bx:set a = [1,2,3,4]>
 <bx:set user = { name : "boxlang", id : createUUID(), age : 3 }>
 <bx:set today = now()>
@@ -94,7 +94,7 @@ If you want to see HTML being produced, then you will need to run the file in ou
 
 Run this in the MiniServer or CommandBox or the REPL tool: `boxlang myprogram.bxm`. You can also leverage scripting in templates by using the `<bx:script>` template:
 
-```markup
+```xml
 <bx:script>
     a = [ 1,2,3,4 ]
     user = { name : "boxlang", id : createUUID(), age : 3 }
@@ -118,7 +118,7 @@ class{
     function hello(){
        return "Hello, World!";
     }
-    
+
     function main( args = [] ){
        return new Sample().hello();
     }
@@ -157,7 +157,17 @@ By default, the return type of every function and/or argument is **any**. Thus, 
 
 ### Semicolons
 
-Please note that semicolons are used to demarcate line endings in BoxLang `;`. They can be optional, however.
+Please note that semicolons are used to demarcate line endings in BoxLang `;`. They can be optional, however, in some cases  it is mandatory to remove ambiguity.
+
+* Component Call Demarcations
+
+```js
+bx:myComponent;
+bx:anotherComponent{
+    bx:childComponent;
+    bx:childComponent;
+}
+```
 
 ## Polyglot References
 
