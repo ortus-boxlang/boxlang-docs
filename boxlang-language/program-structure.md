@@ -21,7 +21,7 @@ Each of these files follow the same program structure with different syntaxes. T
 
 Scripts and templates in BoxLang do not require a class definition and can be executed via the CLI binary directly: `boxlang {script|template}` or ran by the MiniServer/CommandBox/Servlet/Etc.
 
-### 🎯 Scripts
+### Scripts
 
 Script files have a `bxs` file extension and will use script notation, but you can also use the templating language by using opening and closing tag island notations: ` ``` `
 
@@ -29,7 +29,6 @@ Script files have a `bxs` file extension and will use script notation, but you c
 a = [1,2,3,4]
 user = { name : "boxlang", id : createUUID(), age : 3 }
 today = now()
-
 
 ```
 <!--- Now I can do templating --->
@@ -39,15 +38,16 @@ today = now()
   #user.toString()#<br>
 </bx:output>
 ```
+
 // Now I am back in scripts
 echo( "scripts again" )
 ````
 
-### 📄 Templates
+### Templates
 
 Templates have a `bxm` file extension and will use the templating language but can also use scripts via opening and closing `<bx:script></bx:script>` tags.
 
-```markup
+```xml
 <bx:set a = [1,2,3,4]>
 <bx:set user = { name : "boxlang", id : createUUID(), age : 3 }>
 <bx:script>
@@ -101,7 +101,6 @@ script.bxs
 
 Then we can do so by location reference:
 
-{% code title="script.bxs" %}
 ```javascript
 // Create a new user
 user = new models.User( "luis", "majano" )
@@ -110,7 +109,6 @@ println( user.getFullName() )
 // Now I need to include another script here
 include template="scripts/data/bxs"
 ```
-{% endcode %}
 
 These work great but the caveat is that when searching for those files and templates, BoxLang will try to discover them:
 
@@ -125,16 +123,16 @@ Works great, but yes, some lookup is done, but cached.
 Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates. This allows you to fully define the location of a class or template explicitly. This is also used not only for BoxLang classes but for any Java class:
 
 ```java
-import java.time.Instant
-import models.User
-import ortus.boxlang.runtime.scopes.Key
+import java.time.Instant;
+import models.User;
+import ortus.boxlang.runtime.scopes.Key;
 
-today = Instant.now()
-println( today )
+today = Instant.now();
+println( today );
 
-myUser = new User()
+myUser = new User();
 
-caseInsensitiveKey = new Key( "luis" )
+caseInsensitiveKey = new Key( "luis" );
 ```
 
 From the example above I made no distinction on what was a Java class or what was a Boxlang class. By convention BoxLang will auto-discover the class for you according to it's package path. However, you can also use object resolver notation to disambiguiate the location and define it explicitly.
@@ -153,10 +151,10 @@ BoxLang ships with two object resolver prefixes:
 This is useful to disambiguiate paths and make them explicit. You can use it in the import or in the `new() or createObject()` syntax.
 
 ```java
-import java:java.time.Instant
-import java:ortus.boxlang.runtime.scopes.Key
+import java:java.time.Instant;
+import java:ortus.boxlang.runtime.scopes.Key;
 
-import models.User
+import models.User;
 
 
 a = Instant.now()
@@ -170,13 +168,13 @@ caseInsensitiveKey = new java:Key( "luis" )
 In box templates and scripts you can add the `import/<bx:import>` statements ANYWHERE in the file. We will collect them internally for you.
 
 ```java
-import java:java.time.Instant
+import java:java.time.Instant;
 a = Instant.now()
 
-import models.User
+import models.User;
 myUser = new User()
 
-import java:ortus.boxlang.runtime.scopes.Key
+import java:ortus.boxlang.runtime.scopes.Key;
 caseInsensitiveKey = new java:Key( "luis" )
 ```
 
@@ -186,8 +184,8 @@ Boxlang, like Java, allows you to import all classes from a package using the `*
 
 ```java
  // Without star imports
- import java.util.ArrayList
- import java.util.HashMap
+ import java.util.ArrayList;
+ import java.util.HashMap;
 
  myList = new ArrayList()
  myList.add( "apple" )
@@ -201,7 +199,7 @@ Now let's use start imports
 
 ```java
  // Without star imports
- import java.util.*
+ import java.util.*;
 
  myList = new ArrayList()
  myList.add( "apple" )
@@ -218,10 +216,10 @@ This can be for both Java and BoxLang class paths.
 BoxLang allows you to alias your imports in order to break ambiguity and to be able to import classes with the same name but with different aliases.
 
 ```java
-import java.time.Instant as jInstant
-import models.User as BXUser
-import models.util.Key
-import ortus.boxlang.runtime.scopes.Key as jKey
+import java.time.Instant as jInstant;
+import models.User as BXUser;
+import models.util.Key;
+import ortus.boxlang.runtime.scopes.Key as jKey;
 
 result = jInstant.now()
 
@@ -234,8 +232,8 @@ javaKey = new jKey( "java" )
 Here is another example:
 
 ```java
-import java.util.Date
-import java.sql.Date as SQLDate
+import java.util.Date;
+import java.sql.Date as SQLDate;
 
 d1 = new Date( 1000 )
 d2 = new SQLDate( 1000 )
@@ -293,24 +291,24 @@ boxlang MyClass.bx arg1 arg2
 
 ### 🔗 Cross-File Dependencies
 
-```javascript
+```java
 // Good: Explicit and clear
-import models.User
-import services.EmailService
+import models.User;
+import services.EmailService;
 
 // Better: With aliases for clarity
-import models.User as UserModel
-import external.User as ExternalUser
+import models.User as UserModel;
+import external.User as ExternalUser;
 ```
 
 ## 🚨 Common Pitfalls
 
 ### ❌ Avoid These Patterns
 
-```javascript
+```java
 // Don't: Ambiguous star imports
-import java.util.*
-import java.sql.*
+import java.util.*;
+import java.sql.*;
 // This can cause conflicts with Date, List, etc.
 
 // Don't: Missing file extensions in includes
@@ -320,14 +318,14 @@ include template="scripts/helper.bxs" // Correct
 
 ### ✅ Preferred Patterns
 
-```javascript
+```java
 // Do: Specific imports
-import java.util.ArrayList
-import java.util.HashMap
+import java.util.ArrayList;
+import java.util.HashMap;
 
 // Do: Clear aliases
-import java.util.Date as JavaDate
-import java.sql.Date as SQLDate
+import java.util.Date as JavaDate;
+import java.sql.Date as SQLDate;
 ```
 
 ## 🔍 File Discovery Process
@@ -341,7 +339,7 @@ BoxLang follows this discovery order when resolving files:
 
 ### 📋 Mapping Example
 
-```javascript
+```java
 // In Application.bx
 class  {
     this.mappings = {
@@ -351,6 +349,6 @@ class  {
 }
 
 // Now you can use:
-import models.User // Resolves to ./app/models/User.bx
-import utils.Helper // Resolves to ./shared/utilities/Helper.bx
+import models.User; // Resolves to ./app/models/User.bx
+import utils.Helper; // Resolves to ./shared/utilities/Helper.bx
 ```
