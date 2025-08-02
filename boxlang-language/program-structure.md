@@ -3,25 +3,25 @@ description: This section covers the basics of the program structures of BoxLang
 icon: folder-tree
 ---
 
-# Program Structure
+# 🏗️ Program Structure
 
-## File Types
+## 📁 File Types
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>
 
 BoxLang can be written in 3 types of files:
 
-1. Scripts (\*.bxs, or in compat mode \*.cfs)
-2. Templates (\*.bxm, or in compat mode \*.cfm)
-3. Classes (\*.bx or in compat mode \*.cfc)
+1. **Scripts** (\*.bxs, or in compat mode \*.cfs)
+2. **Templates** (\*.bxm, or in compat mode \*.cfm)
+3. **Classes** (\*.bx or in compat mode \*.cfc)
 
 Each of these files follow the same program structure with different syntaxes. The only one of these that you will write using our templating language is the `templates (*.bxm)`.
 
-## Scripts/Templates
+## 📜 Scripts/Templates
 
-Scripts and templates in BoxLang do not require a class definition and can be executed via the CLI binary directly: `boxlang {script|template|` or ran by the MiniServer/CommandBox/Servlet/Etc.
+Scripts and templates in BoxLang do not require a class definition and can be executed via the CLI binary directly: `boxlang {script|template}` or ran by the MiniServer/CommandBox/Servlet/Etc.
 
-### Scripts
+### 🎯 Scripts
 
 Script files have a `bxs` file extension and will use script notation, but you can also use the templating language by using opening and closing tag island notations: ` ``` `
 
@@ -43,7 +43,7 @@ today = now()
 echo( "scripts again" )
 ````
 
-### Templates
+### 📄 Templates
 
 Templates have a `bxm` file extension and will use the templating language but can also use scripts via opening and closing `<bx:script></bx:script>` tags.
 
@@ -60,7 +60,7 @@ today = now();
 </bx:output>
 ```
 
-## Classes
+## ⚡ Classes
 
 Classes have a `.bx` extension and can be executed via the CLI if they have a `main()` method by convention. Unlike Java or other languages, the `main()` method does NOT have to be static, it can be an instance method or a static method, you chose.
 
@@ -74,11 +74,11 @@ class{
 }
 ```
 
-## Package Names
+## 📦 Package Names
 
 Package names are not necessary for these types of files as BoxLang will automatically create them for you. You will refer to these scripts or templates by path location or via mappings.
 
-## Path Imports
+## 🗂️ Path Imports
 
 BoxLang allows you to access any BoxLang class or script/template by location convention first with no need of imports explicitly. The following approaches can be used via path imports:
 
@@ -120,7 +120,7 @@ These work great but the caveat is that when searching for those files and templ
 
 Works great, but yes, some lookup is done, but cached.
 
-## Simple Imports
+## 📁 Simple Imports
 
 Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates. This allows you to fully define the location of a class or template explicitly. This is also used not only for BoxLang classes but for any Java class:
 
@@ -143,7 +143,7 @@ From the example above I made no distinction on what was a Java class or what wa
 The implicit resolver is `bx` meaning a Boxlang class. You don't need to use it if you don't want to.
 {% endhint %}
 
-### Object Resolver Imports
+### 🎯 Object Resolver Imports
 
 BoxLang ships with two object resolver prefixes:
 
@@ -165,7 +165,7 @@ myUser = new User()
 caseInsensitiveKey = new java:Key( "luis" )
 ```
 
-### Location of Imports
+### 📍 Location of Imports
 
 In box templates and scripts you can add the `import/<bx:import>` statements ANYWHERE in the file. We will collect them internally for you.
 
@@ -180,7 +180,7 @@ import java:ortus.boxlang.runtime.scopes.Key
 caseInsensitiveKey = new java:Key( "luis" )
 ```
 
-## Star Imports
+## ⭐ Star Imports
 
 Boxlang, like Java, allows you to import all classes from a package using the `*` after the last package path. All classes within that package/folder will be available for shorthand usage and reserved.
 
@@ -188,11 +188,11 @@ Boxlang, like Java, allows you to import all classes from a package using the `*
  // Without star imports
  import java.util.ArrayList
  import java.util.HashMap
- 
+
  myList = new ArrayList()
  myList.add( "apple" )
  myList.add( "pear" )
- 
+
  myJavaMap = new HashMap()
  myJavaMap.put( "name", "boxlang" )
 ```
@@ -202,18 +202,18 @@ Now let's use start imports
 ```java
  // Without star imports
  import java.util.*
- 
+
  myList = new ArrayList()
  myList.add( "apple" )
  myList.add( "pear" )
- 
+
  myJavaMap = new HashMap()
  myJavaMap.put( "name", "boxlang" )
 ```
 
 This can be for both Java and BoxLang class paths.
 
-## Import Aliases
+## 🏷️ Import Aliases
 
 BoxLang allows you to alias your imports in order to break ambiguity and to be able to import classes with the same name but with different aliases.
 
@@ -242,4 +242,115 @@ d2 = new SQLDate( 1000 )
 
 assert d1 instanceof "java.util.Date"
 assert d2 instanceof "java.sql.Date"
+```
+
+## 🎮 Execution Examples
+
+### Running Scripts
+
+```bash
+# Execute a script directly
+boxlang script.bxs
+
+# Execute with arguments
+boxlang script.bxs arg1 arg2 arg3
+```
+
+### Running Templates
+
+```bash
+# Execute a template
+boxlang template.bxm
+
+# Templates can also be served via web server
+# http://localhost:8080/template.bxm
+```
+
+### Running Classes with Main Method
+
+```bash
+# Execute a class with main() method
+boxlang MyClass.bx
+
+# With arguments
+boxlang MyClass.bx arg1 arg2
+```
+
+## ⚙️ Best Practices
+
+### 🎯 Import Strategy
+
+* **Use explicit imports** for clarity and IDE support
+* **Group imports** logically (Java classes, BoxLang classes, third-party)
+* **Use aliases** to resolve naming conflicts and reduce ambiguity
+* **Prefer specific imports** over star imports for better performance
+
+### 💡 Naming Conventions
+
+* **Scripts**: `CamelCase.bxs` (e.g., `DataProcessor.bxs`)
+* **Classes**: `PascalCase.bx` (e.g., `UserService.bx`)
+* **Templates**: `camelCase.bxm` (e.g., `userProfile.bxm`)
+
+### 🔗 Cross-File Dependencies
+
+```javascript
+// Good: Explicit and clear
+import models.User
+import services.EmailService
+
+// Better: With aliases for clarity
+import models.User as UserModel
+import external.User as ExternalUser
+```
+
+## 🚨 Common Pitfalls
+
+### ❌ Avoid These Patterns
+
+```javascript
+// Don't: Ambiguous star imports
+import java.util.*
+import java.sql.*
+// This can cause conflicts with Date, List, etc.
+
+// Don't: Missing file extensions in includes
+include template="scripts/helper" // Wrong
+include template="scripts/helper.bxs" // Correct
+```
+
+### ✅ Preferred Patterns
+
+```javascript
+// Do: Specific imports
+import java.util.ArrayList
+import java.util.HashMap
+
+// Do: Clear aliases
+import java.util.Date as JavaDate
+import java.sql.Date as SQLDate
+```
+
+## 🔍 File Discovery Process
+
+BoxLang follows this discovery order when resolving files:
+
+1. **Relative paths** (from current file location)
+2. **Application mappings** (defined in Application.bx)
+3. **Global mappings** (server-wide configurations)
+4. **Classpath resolution** (for imported classes)
+
+### 📋 Mapping Example
+
+```javascript
+// In Application.bx
+class  {
+    this.mappings = {
+        "/models": expandPath("./app/models"),
+        "/utils": expandPath("./shared/utilities")
+    };
+}
+
+// Now you can use:
+import models.User // Resolves to ./app/models/User.bx
+import utils.Helper // Resolves to ./shared/utilities/Helper.bx
 ```
