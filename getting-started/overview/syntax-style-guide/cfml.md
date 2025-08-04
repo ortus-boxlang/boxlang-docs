@@ -59,7 +59,7 @@ In CFML, the default assignment scope is always `variables`, but in BL it can di
 
 ## CastAs operator
 
-BoxLang has a new `castAs` binary operator that you can use instead of the `javaCast()` bif.
+BoxLang has a new `castAs` operator that you can use instead of the `javaCast()` bif.
 
 ```jsx
 expression castAs type
