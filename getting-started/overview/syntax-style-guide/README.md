@@ -262,6 +262,7 @@ We ship several components as core:
 * `Exit`- Exit from nested executions of components
 * `File` - File-based calls
 * `Flush`- Force flush the output buffer in BoxLang either to Web or Console or whatever runtime you are on.
+* `Header`- Allows you to specify headers that modify the current response.
 * `HTTP` - HTTP Calls
 * `Include`- Include another template file into another template. Inception.
 * `Invoke`- Invoke dynamic methods on dynamic objects with dynamic arguments
