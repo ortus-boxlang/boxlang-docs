@@ -24,6 +24,6 @@ value=[string] />
 
 Script Syntax
 
-```
+```java
 bx:header name="Content-Type" value="application/pdf";
 ```
