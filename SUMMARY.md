@@ -721,6 +721,7 @@
     * [net](boxlang-language/reference/components/net/README.md)
       * [HTTP](boxlang-language/reference/components/net/HTTP.md)
       * [HTTPParam](boxlang-language/reference/components/net/HTTPParam.md)
+      * [Header](boxlang-language/reference/components/net/header.md)
     * [system](boxlang-language/reference/components/system/README.md)
       * [Abort](boxlang-language/reference/components/system/Abort.md)
       * [Application](boxlang-language/reference/components/system/Application.md)
