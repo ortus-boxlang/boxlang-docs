@@ -912,7 +912,7 @@
           * [SanitizeHTML](boxlang-framework/modularity/esapi/reference/built-in-functions/esapi/SanitizeHTML.md)
   * [Evaluating Code](boxlang-framework/modularity/evaluating-code.md)
   * [FTP](boxlang-framework/modularity/ftp.md)
-  * [Image Manipulation](boxlang-framework/modularity/image-manipulation.md)
+  * [Image Manipulation](boxlang-framework/modularity/image-manipulation/README.md)
     * [Reference](boxlang-framework/modularity/image-manipulation/reference/README.md)
       * [Built-in Functions](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/README.md)
         * [ImageClearRect](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imageclearrect.md)
