@@ -997,7 +997,6 @@
           * [SCryptVerify](boxlang-framework/modularity/password-encryption/reference/built-in-functions/encrypt/SCryptVerify.md)
           * [VerifyBCryptHash](boxlang-framework/modularity/password-encryption/reference/built-in-functions/encrypt/VerifyBCryptHash.md)
           * [VerifySCryptHash](boxlang-framework/modularity/password-encryption/reference/built-in-functions/encrypt/VerifySCryptHash.md)
-
   * [PDF](boxlang-framework/modularity/pdf.md)
   * [Redis](boxlang-framework/modularity/redis.md)
   * [UI Forms](boxlang-framework/modularity/ui-forms.md)
