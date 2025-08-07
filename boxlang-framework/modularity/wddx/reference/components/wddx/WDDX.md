@@ -26,7 +26,7 @@ xmlconform=[boolean] />
 | `toplevelvariable` | `string` | `false` | The name of the top-level variable to be used in the generated JavaScript code |  |
 | `usetimezoneinfo` | `boolean` | `false` | Whether to use timezone information in the generated JavaScript code | `true` |
 | `validate` | `boolean` | `false` | Whether to validate the input XML | `false` |
-| `xmlconform` | `boolean` | `false` | Whether the WDDX input shoud conform to the WDDX DTD | `true` |
+| `xmlconform` | `boolean` | `false` | Whether the WDDX input should conform to the WDDX DTD | `true` |
 
 ## Examples
 
