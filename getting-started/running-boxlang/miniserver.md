@@ -7,21 +7,21 @@ icon: jet-fighter-up
 
 <figure><img src="../../.gitbook/assets/miniserver.png" alt=""><figcaption></figcaption></figure>
 
-The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for fast applications, desktop apps (Electron/JavaFX), embedded web servers, and development. For those who desire a more robust and feature-rich servlet server implementation, we offer our open-source FREE  [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
+The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for fast applications, desktop apps (Electron/JavaFX), embedded web servers, and development. For those who desire a more robust and feature-rich servlet server implementation, we offer our open-source FREE [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
 
 {% hint style="success" %}
-**Tip:** Please note that the BoxLang MiniServer is NOT a servlet server.  **There is no servlet container;** the web server is just a simple, fast, and pure Java Undertow server.
+**Tip:** Please note that the BoxLang MiniServer is NOT a servlet server. **There is no servlet container;** the web server is just a simple, fast, and pure Java Undertow server.
 {% endhint %}
 
 {% hint style="danger" %}
-CommandBox is our open-source servlet server implementation. However, with a [Boxlang +/++ subscription](https://boxlang.io/plans), it becomes a powerhouse for mission-critical applications.  Check out all that you get with CommandBox Pro: [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)
+CommandBox is our open-source servlet server implementation. However, with a [Boxlang +/++ subscription](https://boxlang.io/plans), it becomes a powerhouse for mission-critical applications. Check out all that you get with CommandBox Pro: [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)
 {% endhint %}
 
 ## ▶️ Start a Server <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
 
 The BoxLang core OS runtime doesn't know about a web application. Our web support runtime provides this functionality, a crucial part of the MiniServer and the Servlet (JEE, Jakarta, CommandBox) runtime. This runtime enhances the core boxlang runtime, making it multi-runtime and web deployable.
 
-&#x20;If you use our Windows installer or our Quick Installer, you will have the `boxlang-miniserver` binary installed in your operating system.  You will use this to start servers.  Just navigate to any folder that you want to start a server in and run `boxlang-miniserver`.
+If you use our Windows installer or our Quick Installer, you will have the `boxlang-miniserver` binary installed in your operating system. You will use this to start servers. Just navigate to any folder that you want to start a server in and run `boxlang-miniserver`.
 
 {% hint style="success" %}
 Please note that our [VSCode BoxLang Extension](../ide-tooling/) can also assist you in managing and starting/stopping servers.
@@ -86,8 +86,6 @@ As you can see from the output, this is the result of the command:
 * BoxLang will process any BoxLang or CFML files
 * Uses the user's BoxLang home as the default for configuration and modules: `~/.boxlang`
 
-
-
 {% hint style="warning" %}
 **ALERT:** The BoxLang Core knows nothing of web or HTTP, so the `form`, `url`, `cookie`, and `cgi` scopes will only exist when running the BoxLang web server (but not in the REPL, etc).
 {% endhint %}
@@ -102,17 +100,17 @@ That's practically it. This is a very lightweight server that can get the job do
 
 These are the supported arguments you can pass into the binary to configure the server.
 
-| Argument | Value |
-| --- | --- |
-| `--configPath path/boxlang.json`<br>`-c path/boxlang.json` | Relative/Absolute location of the `boxlang.json` to use. By default it uses the `~/.boxlang/boxlang.json` |
-| `--debug`<br>`-d`                                                                      | Put the runtime into debug mode. By default we use `false` |
-| `--host ip\|domain`                                                                     | Bind the hostname to the mini server. By default we use `0.0.0.0` (all network interfaces) |
-| `--port 8080`<br>`-p 8080`                                                    | The port to bind the mini server to. By default we use port `8080` |
-| `--rewrites [index.bxm]`<br>`-r [index.bxm]`                       | Enable rewrites for applications using `index.bxm` as the file to use. You can also pass the name of the file to use: `--rewrites myfile.bxm` |
-| `--health-check`                                                                       | Enable health check endpoints at `/health`, `/health/ready`, and `/health/live`. These provide detailed server status, readiness, and liveness information in JSON format. |
-| `--health-check-secure`                                                         | Restrict detailed health check information to localhost only. When enabled, non-localhost requests receive basic status only, while localhost gets full system details including JVM metrics and memory usage. |
-| `--serverHome path/`<br>`-s path/`                                     | The location of the BoxLang home for the miniserver. This is where it will look for the `boxlang.json`, place to put the log files, the compiled classes, load modules, and much more.<br><br>By default, we use the OS home via the `BOXLANG_HOME` environment variable which usually points to the user's home: `~/.boxlang/` |
-| `--webroot path/`<br>`-w path/`                                           | The webserver root. By default, we use the directory from where you started the command. |
+| Argument                                                                                | Value                                                                                                                                                                                                                                                                                                                                                                   |
+| --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <p><code>--configPath path/boxlang.json</code><br><code>-c path/boxlang.json</code></p> | Relative/Absolute location of the `boxlang.json` to use. By default it uses the `~/.boxlang/boxlang.json`                                                                                                                                                                                                                                                               |
+| <p><code>--debug</code><br><code>-d</code></p>                                          | Put the runtime into debug mode. By default we use `false`                                                                                                                                                                                                                                                                                                              |
+| `--host ip\|domain`                                                                     | Bind the hostname to the mini server. By default we use `0.0.0.0` (all network interfaces)                                                                                                                                                                                                                                                                              |
+| <p><code>--port 8080</code><br><code>-p 8080</code></p>                                 | The port to bind the mini server to. By default we use port `8080`                                                                                                                                                                                                                                                                                                      |
+| <p><code>--rewrites [index.bxm]</code><br><code>-r [index.bxm]</code></p>               | Enable rewrites for applications using `index.bxm` as the file to use. You can also pass the name of the file to use: `--rewrites myfile.bxm`                                                                                                                                                                                                                           |
+| `--health-check`                                                                        | Enable health check endpoints at `/health`, `/health/ready`, and `/health/live`. These provide detailed server status, readiness, and liveness information in JSON format.                                                                                                                                                                                              |
+| `--health-check-secure`                                                                 | Restrict detailed health check information to localhost only. When enabled, non-localhost requests receive basic status only, while localhost gets full system details including JVM metrics and memory usage.                                                                                                                                                          |
+| <p><code>--serverHome path/</code><br><code>-s path/</code></p>                         | <p>The location of the BoxLang home for the miniserver. This is where it will look for the <code>boxlang.json</code>, place to put the log files, the compiled classes, load modules, and much more.<br><br>By default, we use the OS home via the <code>BOXLANG_HOME</code> environment variable which usually points to the user's home: <code>~/.boxlang/</code></p> |
+| <p><code>--webroot path/</code><br><code>-w path/</code></p>                            | The webserver root. By default, we use the directory from where you started the command.                                                                                                                                                                                                                                                                                |
 
 ```bash
 # Custom port and webroot
@@ -138,21 +136,19 @@ boxlang-miniserver --port 8080 --host 0.0.0.0 --health-check-secure
 
 The `boxlang-miniserver` binary will also scan for several environment variables as overrides to the execution process.
 
-| Env Variable                           | Purpose                                                             |
-| -------------------------------------- | ------------------------------------------------------------------- |
-| `BOXLANG_CONFIG = PATH`                | Override the `boxlang.json`                                         |
-| `BOXLANG_DEBUG = boolean`              | Enable or disable debug mode                                        |
-| `BOXLANG_HOME = directory`             | Override the server HOME directory                                  |
-| `BOXLANG_HOST = ip or domain`          | Override the `0.0.0.0` default to whatever IP or domain you like. |
-| `BOXLANG_PORT = 8080`                  | Override the default port                                           |
-| `BOXLANG_REWRITES = boolean`           | Enable or disable URL rewrites                                      |
-| `BOXLANG_REWRITE_FILE = file.bxm`      | Choose the rewrite file to use. By default, it uses `index.bxm`     |
-| `BOXLANG_WEBROOT = path`               | Override the location of the web root                               |
-| `BOXLANG_HEALTH_CHECK = boolean`       | Enable or disable health check endpoints                            |
-| `BOXLANG_HEALTH_CHECK_SECURE = boolean`| Enable secure health checks (detailed info only on localhost)      |
-| `BOXLANG_MINISERVER_OPTS = jvmOptions` | A list of Java options to pass to the startup command               |
-
-
+| Env Variable                            | Purpose                                                           |
+| --------------------------------------- | ----------------------------------------------------------------- |
+| `BOXLANG_CONFIG = PATH`                 | Override the `boxlang.json`                                       |
+| `BOXLANG_DEBUG = boolean`               | Enable or disable debug mode                                      |
+| `BOXLANG_HOME = directory`              | Override the server HOME directory                                |
+| `BOXLANG_HOST = ip or domain`           | Override the `0.0.0.0` default to whatever IP or domain you like. |
+| `BOXLANG_PORT = 8080`                   | Override the default port                                         |
+| `BOXLANG_REWRITES = boolean`            | Enable or disable URL rewrites                                    |
+| `BOXLANG_REWRITE_FILE = file.bxm`       | Choose the rewrite file to use. By default, it uses `index.bxm`   |
+| `BOXLANG_WEBROOT = path`                | Override the location of the web root                             |
+| `BOXLANG_HEALTH_CHECK = boolean`        | Enable or disable health check endpoints                          |
+| `BOXLANG_HEALTH_CHECK_SECURE = boolean` | Enable secure health checks (detailed info only on localhost)     |
+| `BOXLANG_MINISERVER_OPTS = jvmOptions`  | A list of Java options to pass to the startup command             |
 
 {% hint style="danger" %}
 Environment variables are scanned first, then the command arguments. Thus, the command arguments take precedence.
@@ -436,10 +432,10 @@ BOXLANG_REWRITES=true boxlang-miniserver
 
 When URL rewrites are enabled:
 
-1. **All requests** are routed to your specified rewrite file (default: `index.bxm`)
-2. **Static files** (CSS, JS, images) are served directly without rewriting
-3. **BoxLang/CFML files** that exist are served normally (not rewritten)
-4. **Non-existent URLs** are routed to your rewrite file for custom handling
+1. Any request that does not match an asset will route through your specified rewrite file (default: `index.bxm`)
+2. This includes requests to JavaScript, CSS, images and BXM, BXS, or BX files.
+
+
 
 ### URL Rewrite Examples
 
@@ -458,14 +454,14 @@ switch( cgi.path_info ) {
 
     case "/products/":
         // Individual product (extract ID from URL)
-        var productId = listLast( cgi.path_info, "/" );
+        productId = listLast( cgi.path_info, "/" );
         request.productId = productId;
         include "views/product-detail.bxm";
         break;
 
     default:
         // 404 page
-        response.setStatus( 404 );
+        bx:header statusCode=404;
         include "views/404.bxm";
 }
 ```
@@ -597,7 +593,7 @@ java -cp boxlang-miniserver-1.0.0.jar;/path/to/my.jar;/path/to/another.jar ortus
 
 ### Modules
 
-The MiniServer can use any module you install into the OS home via the `install-bx-module` binary.  However, if you choose your own server home using the `server-home` argument or the environment variable.  Then, place the modules inside a `modules` directory inside the server's home.
+The MiniServer can use any module you install into the OS home via the `install-bx-module` binary. However, if you choose your own server home using the `server-home` argument or the environment variable. Then, place the modules inside a `modules` directory inside the server's home.
 
 ### JVM Options
 
@@ -751,7 +747,7 @@ server {
 
 ### 🔥 Apache Configuration
 
-Apache HTTP Server with mod_proxy for reverse proxying:
+Apache HTTP Server with mod\_proxy for reverse proxying:
 
 #### Basic Apache Configuration
 
