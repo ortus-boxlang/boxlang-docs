@@ -38,14 +38,14 @@ This is the location where BoxLang will store compiled classes.
 "classGenerationDirectory": "${boxlang-home}/classes"
 ```
 
-### Custom Tags Directory
+### Custom Components Directory
 
-BoxLang allows you to register global locations where we can register custom tags for use in your templates:
+BoxLang allows you to register global locations where we can register custom components for use in your templates:
 
 ```json
-// A collection of BoxLang custom tag directories, they must be absolute paths
-"customTagsDirectory": [
-	"${boxlang-home}/customTags"
+// A collection of BoxLang custom components directories, they must be absolute paths
+"customComponentsDirectory": [
+	"${boxlang-home}/global/componentss"
 ],
 ```
 
