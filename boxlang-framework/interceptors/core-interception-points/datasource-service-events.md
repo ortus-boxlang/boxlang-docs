@@ -5,6 +5,7 @@ These events occur around the lifecycle of datasources and the datasource servic
 * [`onDatasourceServiceStartup`](#onDatasourceServiceStartup)
 * [`onDatasourceServiceShutdown`](#onDatasourceServiceShutdown)
 * [`onDatasourceStartup`](#onDatasourceStartup)
+* [`onDatasourceConfigLoad`](#onDatasourceConfigLoad)
 
 ## onDatasourceServiceStartup
 
@@ -61,6 +62,26 @@ This event is triggered immediately prior to datasource startup. You can listen 
 class myDatasourceListener {
     function onDatasourceStartup( struct data ) {
         println("Datasource [#data.name#] is starting up!");
+        println( data.properties );
+    }
+}
+```
+
+## onDatasourceConfigLoad
+
+This event is triggered immediately prior to datasource configuration load. You can use this event to modify the datasource configuration prior to processing
+
+| Data Key          | Type           | Description                                                                                           |
+| ----------------- | -------------- | ----------------------------------------------------------------------------------------------------- |
+| `name`            | String         | Datasource name                                                                                       |
+| `properties`      | Struct         | Datasource configuration properties                                                                   |
+
+### Example
+
+```js
+class myDatasourceListener {
+    function onDatasourceConfigLoad( struct data ) {
+        println("Datasource [#data.name#] is configuring!");
         println( data.properties );
     }
 }
