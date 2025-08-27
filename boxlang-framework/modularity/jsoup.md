@@ -1,7 +1,7 @@
 ---
 description: >-
   A powerful BoxLang module that provides HTML parsing and cleaning capabilities
-  using [Jsoup](https://jsoup.org/).
+  using Jsoup.
 icon: html5
 ---
 
