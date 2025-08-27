@@ -260,7 +260,6 @@ class {
         return true
     }
 }
-}
 ```
 
 ### BDD (Behavior Driven Development)
