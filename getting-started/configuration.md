@@ -97,7 +97,7 @@ Inside your `boxlang.json` configuration file, you can use this to populate data
             password: "${env.MSSQL_PASSWORD:123456Password}"
         }
     },
-    
+
 }
 ```
 
@@ -137,7 +137,10 @@ Here, you will find each segment and its configuration details.
 [modules.md](configuration/modules.md)
 {% endcontent-ref %}
 
+{% content-ref url="configuration/scheduler.md" %}
+[scheduler.md](configuration/scheduler.md)
+{% endcontent-ref %}
+
 {% content-ref url="configuration/security.md" %}
 [security.md](configuration/security.md)
 {% endcontent-ref %}
-

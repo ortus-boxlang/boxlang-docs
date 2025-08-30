@@ -38,6 +38,38 @@ This is the location where BoxLang will store compiled classes.
 "classGenerationDirectory": "${boxlang-home}/classes"
 ```
 
+### Class Paths
+
+BoxLang allows you to register global locations where we can discover BoxLang classes (.bx files). These must be absolute paths or use variable substitutions.
+
+```json
+// A collection of directories to lookup box classes in (.bx files), they must be absolute paths
+"classPaths": [
+	"${boxlang-home}/global/classes"
+]
+```
+
+### Class Resolver Cache
+
+This enables the class locations cache for the runtime, used when resolving class paths, mappings, and per-request mappings. This is recommended for production environments.
+
+```json
+// This enables the class locations cache for the runtime.  It's used when resolving class paths
+// mostly using mappings, per request mappings, etc.
+// We recommend you always enable this setting, unless debugging a very specific issue
+"classResolverCache": true
+```
+
+### Clear Class Files On Startup
+
+This setting will remove all class files from the class generation directory on startup. Useful for debugging and testing, but not recommended for production.
+
+```json
+// This setting if enabled will remove all the class files from the class generation directory
+// This is useful for debugging and testing, but not recommended for production
+"clearClassFilesOnStartup": false
+```
+
 ### Custom Components Directory
 
 BoxLang allows you to register global locations where we can register custom components for use in your templates:
@@ -45,8 +77,57 @@ BoxLang allows you to register global locations where we can register custom com
 ```json
 // A collection of BoxLang custom components directories, they must be absolute paths
 "customComponentsDirectory": [
-	"${boxlang-home}/global/componentss"
-],
+	"${boxlang-home}/global/components"
+]
+```
+
+### Default Datasource
+
+The name of the default datasource to use for database operations when no datasource is explicitly specified.
+
+```json
+"defaultDatasource": ""
+```
+
+### Max Tracked Completed Threads
+
+The maximum number of completed threads to track for a single request. This prevents memory issues by flushing old completed threads.
+
+```json
+// The maximum number of completed threads to track for a single request. Old threads will be flushed out to prevent memory from filling.
+// This only applies to the "thread" component bx:thread name="mythread" {} which tracks execution status and scopes for the remainder of the request that fired it.
+// ONLY threads which have been completed will be eligible to be flushed.
+// Note: when the limit is reached, the thread component and related BIFs will no longer throw exceptions on invalid thread names, they will silently ignore attempts to interrupt or join those threads
+"maxTrackedCompletedThreads": 1000
+```
+
+### Trusted Cache
+
+This enables the runnable loader's cache on disk for compiled BoxLang classes. When enabled, BoxLang will load a class and never inspect the file again. Enable for production, disable for development.
+
+```json
+// This enables the runnable loader's cache on disk for compiled BoxLang classes
+// This means that it will load a Boxlang class and never inspect the file again
+// Turn this on for production, but off for development so you can see your changes
+"trustedCache": false
+```
+
+### Version
+
+The version of the BoxLang runtime (automatically populated during build).
+
+```json
+// The version of the runtime
+"version": "@build.version@"
+```
+
+### Whitespace Compression
+
+Enable whitespace compression in output. Currently only used by web runtimes.
+
+```json
+// Enable whitespace compression in output.  Only in use by the web runtimes currently.
+"whitespaceCompressionEnabled": true
 ```
 
 ### Debug Mode
@@ -62,6 +143,16 @@ This is a powerful setting. It puts the runtime into debug mode, where more verb
 
 
 
+### Default Datasource
+
+The name of the default datasource to use for database operations when no datasource is explicitly specified.
+
+```json
+"defaultDatasource": ""
+```
+
+You can set this to the name of any datasource defined in the `datasources` configuration section. See the [Datasources](datasources.md) section for more details.
+
 ### Default Remote Method Return Format
 
 The default return format for class invocations via web runtimes.
@@ -73,22 +164,25 @@ The default return format for class invocations via web runtimes.
 
 ### Invoke Implicit Accessors
 
-In BoxLang, the default for implicit accessors is `true`. This means that properties on a class can be accessed externally, like field properties for mutation or access.
+In BoxLang, implicit accessors default to `true` for BoxScript (.bx) files and `false` for CFML (.cfc) files. This means that properties on a class can be accessed externally, like field properties for mutation or access. You can override this default behavior by setting this configuration option.
 
 ```json
-"invokeImplicitAccessor" : true
+"invokeImplicitAccessor": true
 ```
+
+{% hint style="info" %}
+This setting is not present in the default `boxlang.json` as BoxLang uses intelligent defaults based on the source file type. Add this setting only if you want to override the default behavior.
+{% endhint %}
 
 Simple example:
 
-```cfscript
-// Class has implicit accessors and mutators by default in BoxLang
+```js
+// Class has implicit accessors and mutators by default in BoxLang (.bx files)
 class{
     property firstName
     property lastName
     property email
 }
-
 
 // Example
 p = new Person()

@@ -94,6 +94,7 @@
   * [Logging](getting-started/configuration/logging.md)
   * [Maven Integration](getting-started/configuration/maven-integration.md)
   * [Modules](getting-started/configuration/modules.md)
+  * [Scheduler](getting-started/configuration/scheduler.md)
   * [Security](getting-started/configuration/security.md)
 
 ## BoxLang Language
