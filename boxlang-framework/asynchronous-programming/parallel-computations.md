@@ -301,6 +301,7 @@ All collection parallel methods support these consistent parameters:
 // Universal parallel parameters (positions vary by collection type)
 parallel: boolean = false        // Enable parallel execution
 maxThreads: integer = null       // Custom thread count (optional)
+virtual: boolean = false         // Use virtual threads (optional)
 ```
 
 **Execution Modes:**
@@ -308,6 +309,8 @@ maxThreads: integer = null       // Custom thread count (optional)
 - **`parallel: false`** - Sequential execution (default)
 - **`parallel: true, maxThreads: null`** - Uses common ForkJoinPool (automatic thread count)
 - **`parallel: true, maxThreads: N`** - Creates custom ForkJoinPool with N threads
+- **`parallel: true, virtual: true`** - Uses virtual threads for unlimited concurrency
+- **`parallel: true, maxThreads: true`** - Shorthand for virtual threads (positional syntax)
 
 ### 🔄 Array Parallel Processing
 
@@ -323,11 +326,36 @@ results = arrayMap(
     8      // maxThreads
 );
 
-// Using member method
+// Using virtual threads for I/O intensive operations
+ioResults = arrayMap(
+    urls,
+    url => httpGet( url ), // Network I/O benefits from virtual threads
+    true,   // parallel
+    null,   // maxThreads (not used with virtual)
+    true    // virtual threads
+);
+
+// Shorthand syntax for virtual threads (using positional)
+virtualResults = arrayMap(
+    urls,
+    url => httpGet( url ),
+    true,  // parallel
+    true   // maxThreads: true = virtual threads
+);
+
+// Using member method with virtual threads
 results = bigData.arrayMap(
     item => expensiveComputation( item ),
     true,  // parallel
     8      // maxThreads
+);
+
+// Member method with virtual threads
+ioResults = urls.arrayMap(
+    url => httpGet( url ),
+    true,  // parallel
+    null,  // maxThreads
+    true   // virtual
 );
 
 // Parallel filtering with automatic thread count
@@ -337,19 +365,12 @@ filtered = arrayFilter(
     true   // parallel, automatic threads
 );
 
-// Using Member Method
-results = bigData.arrayMap(
-    item => expensiveComputation( item ),
-    true,  // parallel
-    8      // maxThreads
-);
-
-// Parallel validation
+// Parallel validation with virtual threads
 allValid = arrayEvery(
     dataItems,
     item => validateBusinessRules( item ),
     true,  // parallel
-    4      // maxThreads
+    true   // virtual threads (shorthand)
 );
 ```
 
@@ -378,6 +399,30 @@ processedUsers = listMap(
     true,    // multiCharacterDelimiter
     true,    // parallel
     6        // maxThreads
+);
+
+// Using virtual threads for I/O heavy list processing
+apiData = "api1.com/users|api2.com/users|api3.com/users";
+apiResults = listMap(
+    apiData,
+    apiUrl => httpGet( apiUrl ), // Network I/O
+    "|",     // delimiter
+    false,   // includeEmptyFields
+    true,    // multiCharacterDelimiter
+    true,    // parallel
+    null,    // maxThreads
+    true     // virtual threads
+);
+
+// Shorthand virtual threads (positional)
+apiResultsShort = listMap(
+    apiData,
+    apiUrl => httpGet( apiUrl ),
+    "|",     // delimiter
+    false,   // includeEmptyFields
+    true,    // multiCharacterDelimiter
+    true,    // parallel
+    true     // maxThreads: true = virtual
 );
 
 // Parallel validation
@@ -413,12 +458,38 @@ enrichedData = queryMap(
     8      // maxThreads
 );
 
-// Parallel filtering
+// Using virtual threads for I/O intensive operations
+apiEnrichedData = queryMap(
+    largeQuery,
+    row => {
+        // Each row requires external API calls
+        return {
+            id: row.id,
+            amount: row.amount,
+            geocode: geocodeAPI( row.location ),      // API call
+            creditCheck: creditAPI( row.customer ),   // API call
+            fraudCheck: fraudAPI( row.details )       // API call
+        };
+    },
+    true,  // parallel
+    true   // virtual threads (shorthand)
+);
+
+// Explicit virtual threads syntax
+virtualEnrichedData = queryMap(
+    largeQuery,
+    row => enrichWithAPIs( row ),
+    true,  // parallel
+    null,  // maxThreads (ignored with virtual)
+    true   // virtual threads
+);
+
+// Parallel filtering with virtual threads
 suspiciousTransactions = queryFilter(
     largeQuery,
-    row => detectFraud( row ),
+    row => detectFraud( row ), // May involve external fraud detection APIs
     true,  // parallel
-    4      // maxThreads
+    true   // virtual threads
 );
 ```
 
@@ -433,7 +504,7 @@ appConfig = {
     api: { host: "api1", port: 8080 }
 };
 
-// Parallel service validation
+// Parallel service validation with platform threads
 serviceStatus = structMap(
     appConfig,
     ( key, config ) => {
@@ -448,11 +519,37 @@ serviceStatus = structMap(
     4      // maxThreads
 );
 
-// Parallel connectivity check
+// Using virtual threads for connection testing
+connectivityStatus = structMap(
+    appConfig,
+    ( key, config ) => {
+        // Each service check involves network I/O
+        return {
+            service: key,
+            connected: testConnection( config ),
+            ping_time: measurePing( config ),
+            ssl_valid: checkSSLCert( config )
+        };
+    },
+    true,  // parallel
+    true   // virtual threads (shorthand)
+);
+
+// Explicit virtual threads syntax
+detailedStatus = structMap(
+    appConfig,
+    ( key, config ) => performDetailedHealthCheck( config ),
+    true,  // parallel
+    null,  // maxThreads (ignored with virtual)
+    true   // virtual threads
+);
+
+// Parallel connectivity check with virtual threads
 allServicesUp = structEvery(
     appConfig,
-    ( key, config ) => testConnection( config ),
-    true   // parallel
+    ( key, config ) => testConnection( config ), // Network I/O
+    true,  // parallel
+    true   // virtual threads
 );
 ```
 
@@ -461,7 +558,7 @@ allServicesUp = structEvery(
 #### `Each` - Side Effects
 
 ```javascript
-// Parallel logging/notification
+// Parallel logging/notification with platform threads
 arrayEach(
     criticalAlerts,
     alert => {
@@ -472,12 +569,29 @@ arrayEach(
     true,  // parallel
     6      // maxThreads
 );
+
+// Using virtual threads for I/O intensive notifications
+arrayEach(
+    criticalAlerts,
+    alert => {
+        // All of these involve network I/O
+        emailAlert( alert );         // SMTP I/O
+        slackNotification( alert );  // HTTP API I/O
+        smsAlert( alert );          // SMS API I/O
+        pushNotification( alert );   // Push service I/O
+    },
+    true,  // parallel
+    true   // virtual threads - perfect for I/O
+);
 ```
 
 #### `Every` - Validation
 
 ```javascript
-// Parallel data validation
+#### ✅ **Every** - Validate All
+
+```javascript
+// Parallel data validation with platform threads
 allDataValid = arrayEvery(
     dataRecords,
     record => {
@@ -488,6 +602,20 @@ allDataValid = arrayEvery(
     true,  // parallel
     8      // maxThreads
 );
+
+// Using virtual threads for external validation services
+allExternallyValid = arrayEvery(
+    dataRecords,
+    record => {
+        // Each validation involves external API calls
+        return validateWithAPI( record ) &&      // HTTP API call
+               checkCreditBureau( record ) &&     // External service
+               verifyWithThirdParty( record );    // Another API
+    },
+    true,  // parallel
+    true   // virtual threads - handles external I/O
+);
+```
 ```
 
 #### `Some` - Existence Check
@@ -531,6 +659,134 @@ Thread 6: [███] Items 6,251-7,500 → (~8x faster)
 Thread 7: [███] Items 7,501-8,750 ↗
 Thread 8: [███] Items 8,751-10,000 ↙
 ⏱️ Time: ~12.5 seconds (8x speedup!)
+
+Virtual Thread Processing (10,000 items, unlimited virtual threads):
+VThread 1: [█] Item 1      ↘
+VThread 2: [█] Item 2       → Nearly
+VThread 3: [█] Item 3       → Instant
+...                         → Results
+VThread 10k: [█] Item 10k  ↙
+⏱️ Time: ~0.5 seconds (200x speedup for I/O intensive!)
+```
+
+## 🌟 Virtual Threads: The Game Changer
+
+> Introduced in BoxLang v1.5.0
+
+Virtual threads are lightweight, managed by the JVM, and perfect for I/O-intensive operations. Unlike platform threads, you can create millions of virtual threads without performance degradation.
+
+### 🎯 When to Use Virtual Threads
+
+**✅ Perfect for Virtual Threads:**
+
+- **Network I/O**: API calls, database queries, file downloads
+- **File Operations**: Reading/writing many files
+- **External Service Calls**: Microservice communication
+- **Blocking Operations**: Any operation that waits
+
+**❌ Better with Platform Threads:**
+
+- **CPU-Intensive Work**: Mathematical calculations, data processing
+- **Memory-Intensive Operations**: Large object manipulation
+- **Short-Running Tasks**: Operations that complete quickly
+
+### 🔄 Virtual Thread Examples
+
+### Network I/O Operations
+
+```javascript
+// Perfect use case: Multiple API calls
+urls = [
+    "https://api1.example.com/data",
+    "https://api2.example.com/users",
+    "https://api3.example.com/config",
+    // ... potentially thousands of URLs
+];
+
+// Virtual threads can handle massive concurrency
+responses = arrayMap(
+    urls,
+    url => httpGet( url ), // Each blocks on network I/O
+    true,  // parallel
+    true   // virtual threads - can handle thousands!
+);
+```
+
+### Database Operations
+
+```javascript
+### Database Operations
+
+```javascript
+// Process many database queries concurrently
+customerIds = arrayRange( 1, 10000 );
+
+customerData = arrayMap(
+    customerIds,
+    id => queryExecute(
+        "SELECT * FROM customers WHERE id = ?",
+        [ id ]
+    ),
+    true,  // parallel
+    true   // virtual threads - perfect for DB I/O
+);
+```
+
+### File Processing
+
+```javascript
+### File Processing
+
+```javascript
+// Process thousands of files
+files = directoryList( "/data/files" );
+
+processedFiles = arrayMap(
+    files,
+    filePath => {
+        content = fileRead( filePath );           // I/O operation
+        processed = processContent( content );     // CPU work
+        fileWrite( filePath & ".processed", processed ); // I/O operation
+        return { file: filePath, status: "complete" };
+    },
+    true,  // parallel
+    true   // virtual threads - handles I/O efficiently
+);
+```
+
+### 🆚 Virtual vs Platform Threads Comparison
+
+| Aspect | Platform Threads | Virtual Threads |
+|--------|------------------|-----------------|
+| **Max Concurrent** | ~1,000-5,000 | Millions+ |
+| **Memory per Thread** | ~2MB stack | ~Few KB |
+| **Creation Cost** | Expensive | Cheap |
+| **Best For** | CPU-intensive | I/O-intensive |
+| **JVM Management** | OS-scheduled | JVM-managed |
+| **Blocking Behavior** | Blocks OS thread | Suspends virtually |
+
+### 📊 Performance Comparison
+
+```javascript
+// Example: Processing 1000 URLs
+
+// Platform threads (limited concurrency)
+platformResults = arrayMap(
+    urls,
+    url => httpGet( url ),
+    true,  // parallel
+    50     // Limited to 50 threads
+);
+// ⏱️ Time: ~20 seconds (limited by thread count)
+
+// Virtual threads (unlimited concurrency)
+virtualResults = arrayMap(
+    urls,
+    url => httpGet( url ),
+    true,  // parallel
+    true   // Virtual threads - all 1000 concurrent!
+);
+// ⏱️ Time: ~2 seconds (limited only by network speed)
 ```
 
 ### 🎛️ Best Practices for Collection Parallel Processing
@@ -827,7 +1083,27 @@ systemOutput( "Memory used: #(memoryAfter - memoryBefore)# bytes" );
    fastResult = asyncAny( [ primarySource, fallbackSource ] );
    ```
 
-2. **Handle Errors Gracefully:**
+2. **Choose the Right Threading Model:**
+
+   ```javascript
+   // CPU-intensive work: use platform threads
+   cpuResults = arrayMap(
+       data,
+       item => intensiveCalculation( item ),
+       true,  // parallel
+       8      // platform threads
+   );
+
+   // I/O-intensive work: use virtual threads
+   ioResults = arrayMap(
+       urls,
+       url => httpGet( url ),
+       true,  // parallel
+       true   // virtual threads
+   );
+   ```
+
+3. **Handle Errors Gracefully:**
 
    ```javascript
    results = asyncAllApply(
@@ -841,7 +1117,7 @@ systemOutput( "Memory used: #(memoryAfter - memoryBefore)# bytes" );
    );
    ```
 
-3. **Use Appropriate Executors:**
+4. **Use Appropriate Executors:**
 
    ```javascript
    // I/O intensive - use more threads
@@ -867,19 +1143,42 @@ systemOutput( "Memory used: #(memoryAfter - memoryBefore)# bytes" );
    } );
    ```
 
-2. **Don't Create Too Many Threads:**
+2. **Don't Use Virtual Threads for CPU-Intensive Work:**
+
+   ```javascript
+   // BAD: Virtual threads for CPU work
+   arrayMap(
+       numbers,
+       n => intensiveMathCalculation( n ),
+       true,  // parallel
+       true   // virtual threads - bad for CPU work
+   );
+
+   // GOOD: Platform threads for CPU work
+   arrayMap(
+       numbers,
+       n => intensiveMathCalculation( n ),
+       true,  // parallel
+       8      // platform threads
+   );
+   ```
+
+3. **Don't Create Too Many Platform Threads:**
 
    ```javascript
    // BAD: One thread per item
    bigData = range( 1, 10000 );
    asyncAllApply( bigData, item => process( item ) ); // 10,000 threads!
 
-   // GOOD: Batch processing
+   // GOOD: Use virtual threads for high concurrency
+   asyncAllApply( bigData, item => process( item ), null, null, true );
+
+   // OR: Batch processing with platform threads
    batches = chunk( bigData, 100 );
    asyncAllApply( batches, batch => processBatch( batch ) );
    ```
 
-3. **Don't Forget Resource Cleanup:**
+4. **Don't Forget Resource Cleanup:**
 
    ```javascript
    // BAD: Executor leaks resources
