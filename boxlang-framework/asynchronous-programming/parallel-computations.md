@@ -588,9 +588,6 @@ arrayEach(
 #### `Every` - Validation
 
 ```javascript
-#### ✅ **Every** - Validate All
-
-```javascript
 // Parallel data validation with platform threads
 allDataValid = arrayEvery(
     dataRecords,
@@ -615,7 +612,6 @@ allExternallyValid = arrayEvery(
     true,  // parallel
     true   // virtual threads - handles external I/O
 );
-```
 ```
 
 #### `Some` - Existence Check
