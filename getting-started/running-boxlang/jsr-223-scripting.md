@@ -1,5 +1,5 @@
 ---
-description: Java scripting with BoxLang
+description: Integrate BoxLang into Java applications using JSR-223 Scripting
 icon: scroll
 ---
 
@@ -7,48 +7,210 @@ icon: scroll
 
 <figure><img src="../../.gitbook/assets/jsr-223.png" alt=""><figcaption></figcaption></figure>
 
-### JSR 223 - Java Scripting
+## 🚀 Getting Started for Java Developers
 
-JSR 223, also known as "**Scripting for the Java Platform,**" is a specification that allows Java applications to integrate with scripting languages such as BoxLang, JavaScript, Groovy, Python, and others. It provides a standard API for accessing and embedding these scripting languages within Java code, enabling developers to mix and match Java and scripting languages seamlessly. This flexibility can enhance productivity and facilitate the rapid development of applications that require dynamic scripting capabilities.
+JSR 223, also known as "**Scripting for the Java Platform,**" enables seamless integration between Java applications and scripting languages like BoxLang. This guide shows Java developers how to embed BoxLang's dynamic capabilities directly into their applications.
 
 {% embed url="https://www.oracle.com/technical-resources/articles/javase/scripting.html" %}
 
+## 📦 Adding BoxLang to Your Project
+
+### Maven Dependency
+
+Add BoxLang to your Maven project's `pom.xml`:
+
+```xml
+<dependency>
+    <groupId>io.boxlang</groupId>
+    <artifactId>boxlang</artifactId>
+    <version>1.5.0</version>
+</dependency>
+```
+
+### Gradle Dependency
+
+For Gradle projects, add to your `build.gradle`:
+
+```groovy
+dependencies {
+    implementation 'io.boxlang:boxlang:1.5.0'
+}
+```
+
+### Direct JAR Download
+
+Download the latest BoxLang JAR from:
+
+- **Releases**: [https://github.com/ortus-boxlang/BoxLang/releases](https://github.com/ortus-boxlang/BoxLang/releases)
+- **Snapshots**: [https://s3.amazonaws.com/downloads.ortussolutions.com/boxlang/](https://s3.amazonaws.com/downloads.ortussolutions.com/boxlang/)
+
+Add the JAR to your project's classpath:
+
+```bash
+# Compile with BoxLang
+javac -cp "boxlang-1.5.0.jar:." MyApp.java
+
+# Run with BoxLang
+java -cp "boxlang-1.5.0.jar:." MyApp
+```
+
+### System Requirements
+
+- **Java 21+** (BoxLang requires JDK 21 or later)
+- **JSR-223 Support** (included in standard Java installations)
+
+## 🏗️ Quick Start Example
+
+Here's a complete Java application demonstrating BoxLang integration:
+
+```java
+import javax.script.*;
+import ortus.boxlang.runtime.scripting.BoxScriptingFactory;
+
+public class BoxLangExample {
+    public static void main( String[] args ) throws ScriptException {
+        // Get BoxLang engine
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+        
+        // Pass data to BoxLang
+        Bindings bindings = engine.createBindings();
+        bindings.put( "name", "Java Developer" );
+        bindings.put( "items", java.util.Arrays.asList( "Spring", "Maven", "BoxLang" ) );
+        
+        // Execute BoxLang code
+        Object result = engine.eval( """
+            message = "Hello " & name & "!"
+            itemCount = items.len()
+            return {
+                greeting: message,
+                totalItems: itemCount,
+                technologies: items.map( ( item ) => item.uCase() )
+            }
+        """, bindings );
+        
+        System.out.println( "Result: " + result );
+    }
+}
+```
+
 {% embed url="https://en.wikipedia.org/wiki/Scripting_for_the_Java_Platform" %}
 
-BoxLang offers the JSR-233 runtime to integrate with BoxLang from any JVM language.
+## 🔧 Architecture Overview
+
+BoxLang offers complete JSR-223 compliance for seamless integration with JVM applications. Understanding the core components helps Java developers leverage BoxLang effectively.
 
 {% embed url="https://s3.amazonaws.com/apidocs.ortussolutions.com/boxlang/1.0.0/ortus/boxlang/runtime/scripting/package-summary.html" %}
-API Docs
+API Documentation
 {% endembed %}
 
-### Scripting Classes
+## 💡 Common Use Cases for Java Developers
 
-The BoxLang scripting package can be found here: `ortus.boxlang.runtime.scripting`.  The classes that will assist you are:
+### Configuration & Rules Engine
 
-* `BoxCompiledScript` - Implements the JSR `CompiledScript` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html))
-* `BoxScopeBindings` - Implements the JSR `Bindings` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html))
-* `BoxScriptingContext` - Implements the JSR `ScriptContext` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html))
-* `BoxScriptingEngine` - Implements the JSR `ScriptEngine` and `Compilable` \
-  [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html)\
+```java
+// Load business rules from external files
+ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+
+Bindings context = engine.createBindings();
+context.put( "order", orderObject );
+context.put( "customer", customerData );
+
+Boolean eligible = ( Boolean ) engine.eval( """
+    // Business logic in BoxLang - easier for business users to modify
+    if ( order.total > 1000 && customer.tier == "GOLD" ) {
+        return true
+    }
+    
+    if ( customer.loyaltyPoints > 5000 ) {
+        return true  
+    }
+    
+    return false
+""", context );
+```
+
+### Template Processing
+
+```java
+// Process templates with BoxLang's powerful string handling
+ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+
+Bindings data = engine.createBindings();
+data.put( "user", userObject );
+data.put( "notifications", notificationList );
+
+String html = ( String ) engine.eval( """
+    template = "
+        <h1>Welcome #{user.name}!</h1>
+        <div class='notifications'>
+        #notifications.map( ( n ) => '<p>' & n.message & '</p>' ).join( '' )#
+        </div>
+    "
+    
+    // Use proper string replacement instead of evaluate() BIF
+    result = template
+    result = result.replace( "#{user.name}", user.name )
+    // Add more replacements as needed
+    
+    return result
+""", data );
+```
+
+### Data Transformation
+
+```java
+// Transform JSON/XML with BoxLang's built-in functions
+ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+
+Bindings bindings = engine.createBindings();
+bindings.put( "jsonData", rawJsonString );
+
+Map result = ( Map ) engine.eval( """
+    data = deserializeJSON( jsonData )
+    
+    return {
+        processedAt: now(),
+        recordCount: data.records.len(),
+        summary: data.records
+            .filter( ( r ) => r.active == true )
+            .groupBy( "category" )
+            .map( ( category, items ) => {
+                category: category,
+                count: items.len(),
+                totalValue: items.sum( "value" )
+            } )
+    }
+""", bindings );
+```
+
+## 📚 Core Scripting Classes
+
+The BoxLang scripting package can be found here: `ortus.boxlang.runtime.scripting`. The classes that will assist you are:
+
+- `BoxCompiledScript` - Implements the JSR `CompiledScript` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html))
+- `BoxScopeBindings` - Implements the JSR `Bindings` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html))
+- `BoxScriptingContext` - Implements the JSR `ScriptContext` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html))
+- `BoxScriptingEngine` - Implements the JSR `ScriptEngine` and `Compilable`  
+  [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html)  
   [https://docs.oracle.com/en/java/javase/17/docs/api//java.scripting/javax/script/Compilable.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Compilable.html)
-* `BoxScriptingFactory` - implements the JSR `ScriptEngineFactory` \
+- `BoxScriptingFactory` - implements the JSR `ScriptEngineFactory`  
   [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html)
 
 ### Definitions
 
-* **Script Factory** - creates scripting engines and gets metadata about scripting engines.
-* **Script Engine** - provides a way to create bindings, scripts, and run statements.&#x20;
-* **Invocable** - Our BoxLang engine also implements the scripting `Invocable` [interface](https://docs.oracle.com/en/java/javase/21/docs/api/java.scripting/javax/script/Invocable.html) so you can declare functions and classes (coming soon) and then execute them from the calling language.&#x20;
-* **Bindings** - these are like scopes to BoxLang. The bridge between Java and BoxLang
-* **Scripting Context** - Like the BoxLang context object, it provides scope lookups and access to bindings.
+- **Script Factory** - creates scripting engines and gets metadata about scripting engines.
+- **Script Engine** - provides a way to create bindings, scripts, and run statements.
+- **Invocable** - Our BoxLang engine also implements the scripting `Invocable` [interface](https://docs.oracle.com/en/java/javase/21/docs/api/java.scripting/javax/script/Invocable.html) so you can declare functions and classes (coming soon) and then execute them from the calling language.
+- **Bindings** - these are like scopes to BoxLang. The bridge between Java and BoxLang
+- **Scripting Context** - Like the BoxLang context object, it provides scope lookups and access to bindings.
 
 ### Bindings
 
-Bindings are under the hood `HashMaps`.  They are used to bind your Java code to the BoxLang code.  By default, in BoxLang, we provide three scopes you can bind bindings to:
+Bindings are under the hood `HashMaps`. They are used to bind your Java code to the BoxLang code. By default, in BoxLang, we provide three scopes you can bind bindings to:
 
-* `Engine Scope` - The **default** scope which maps to the BoxLang `variables` scope
-* `Request Scope` - The JSR request scope maps to the BoxLang `request` scope
-* `Global Scope` - The JSR global scope maps to the BoxLang `server` scope
+- `Engine Scope` - The **default** scope which maps to the BoxLang `variables` scope
+- `Request Scope` - The JSR request scope maps to the BoxLang `request` scope
+- `Global Scope` - The JSR global scope maps to the BoxLang `server` scope
 
 ### Discovering Engines
 
@@ -77,7 +239,7 @@ ScriptEngine engine = new BoxScriptingFactory().getScriptEngine();
 ```
 {% endcode %}
 
-You can also cast it to our class to get enhanced methods and functionality
+You can also cast it to our class to get enhanced methods and functionality:
 
 ```java
 BoxScriptingEngine engine = (BoxScriptingEngine) new BoxScriptingFactory().getScriptEngine();
@@ -94,6 +256,78 @@ ScriptEngine engine = new BoxScriptingFactory().getScriptEngine( true );
 ```
 
 This will start up the `BoxRuntime` in debug mode.
+
+## 🏠 BoxLang Home Configuration
+
+### Default BoxLang Home
+
+When you create a BoxLang scripting engine, it initializes a BoxLang runtime instance that uses a home directory for configuration and modules. By default, BoxLang uses:
+
+```
+{user.home}/.boxlang/
+```
+
+For example:
+
+- **Linux/macOS**: `/home/username/.boxlang/` or `/Users/username/.boxlang/`
+- **Windows**: `C:\Users\username\.boxlang\`
+
+### Custom Home Directory
+
+You can configure a custom BoxLang home directory using system properties or environment variables:
+
+```java
+// Option 1: Set system property before creating engine
+System.setProperty( "boxlang.home", "/custom/boxlang/home" );
+ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+
+// Option 2: Set environment variable (BOXLANG_HOME)
+// Set environment variable before running your Java application
+// export BOXLANG_HOME=/custom/boxlang/home
+```
+
+### Runtime Configuration
+
+The BoxLang home directory contains:
+
+- **`config/boxlang.json`** - Runtime configuration file
+- **`lib/`** - Custom modules and libraries
+- **`logs/`** - Runtime log files (if file logging is enabled)
+
+You can customize the runtime behavior by modifying the `boxlang.json` configuration file:
+
+```java
+// Access runtime configuration through the engine
+BoxScriptingEngine boxEngine = ( BoxScriptingEngine ) engine;
+BoxRuntime runtime = boxEngine.getRuntime();
+// Configuration is automatically loaded from {BOXLANG_HOME}/config/boxlang.json
+```
+
+### Multiple Runtime Instances
+
+For applications requiring isolated BoxLang environments, you can create separate instances:
+
+```java
+// Create first instance with custom home
+System.setProperty( "boxlang.home", "/app1/boxlang" );
+ScriptEngine engine1 = new ScriptEngineManager().getEngineByName( "BoxLang" );
+
+// Note: BoxRuntime is singleton-based, so use separate JVMs or custom factory for true isolation
+// For most use cases, separate bindings provide sufficient isolation
+```
+
+### Configuration Override
+
+You can also override specific configuration settings using system properties or environment variables by prefixing with `boxlang.` or `BOXLANG_`:
+
+```java
+// Override specific settings
+System.setProperty( "boxlang.runtime.debugMode", "true" );
+System.setProperty( "boxlang.runtime.classGenerationDirectory", "/tmp/boxlang-classes" );
+
+// These will override values in boxlang.json
+ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+```
 
 ### Eval() BoxLang Code
 
@@ -144,10 +378,10 @@ public Object eval( Reader reader ) throws ScriptException
  * @return The result of the script evaluation
  */
 @Override
-public Object eval( String script, Bindings n ) throws ScriptException 
+public Object eval( String script, Bindings n ) throws ScriptException
 
 @Override
-public Object eval( Reader reader, Bindings n ) throws ScriptException 
+public Object eval( Reader reader, Bindings n ) throws ScriptException
 
 /**
  * Evaluate a script bound only to the top-level BoxRuntime context
@@ -156,7 +390,7 @@ public Object eval( Reader reader, Bindings n ) throws ScriptException
  *
  * @return The result of the script evaluation
  */
-public Object eval( String script ) throws ScriptException 
+public Object eval( String script ) throws ScriptException
 ```
 
 ### Bindings - Passing Data to the Scripts
@@ -204,7 +438,7 @@ You can also use the `eval()` method to define functions, closures, or lambdas i
 
 ```java
 engine.eval( """
-    function sayHello( name ) { 
+    function sayHello( name ) {
         return 'Hello, ' & name & '!'
     }
 """);
@@ -214,7 +448,7 @@ Object		result		= invocable.invokeFunction( "sayHello", "World" );
 assertThat( result ).isEqualTo( "Hello, World!" );
 ```
 
-### Objects, Functions, Closures, Lambdas, Member Methods, Oh My!
+### Objects, Functions, Closures, Lambdas, Member Methods
 
 You can also use the `invokeMethod( object, name, args )` function, which allows you to target a specific object, such as a BoxLang class, member method, struct, lambda, closure or collection of functions.
 
@@ -269,8 +503,8 @@ runnable.run();
 
 As you can see from the sample above, you can use the `getInterface( class<?> )` method to map the evaluated code to any interface of your choosing.  Here are the two methods you can use for interfaces:
 
-* `getInterface( Class<T> )` - Build a dynamic proxy from the evaluated function and the passed in class
-* `getInterface( Object, Class<T> )` - Build a dynamic proxy from the passed in `Object` and the passed in class.&#x20;
+- `getInterface( Class<T> )` - Build a dynamic proxy from the evaluated function and the passed in class
+- `getInterface( Object, Class<T> )` - Build a dynamic proxy from the passed in `Object` and the passed in class.
 
 Let's finish this section with another example. Using a struct and anonymous functions, let's build a BoxLang virtual object and treat it as a `Runnable` interface.
 
@@ -323,3 +557,156 @@ engine.getContext().setWriter( oldWriter );
 The runtime source code can be found here: [https://github.com/ortus-boxlang/BoxLang/tree/development/src/main/java/ortus/boxlang/runtime/scripting](https://github.com/ortus-boxlang/BoxLang/tree/development/src/main/java/ortus/boxlang/runtime/scripting)
 
 We welcome any pull requests, testing, docs, etc.
+
+## 🏭 Production Considerations
+
+### Performance Optimization
+
+```java
+// Compile once, execute multiple times
+ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+CompiledScript compiled = ( ( Compilable ) engine ).compile( """
+    function processOrder( order ) {
+        // Complex business logic here
+        return {
+            processed: true,
+            total: order.items.sum( "price" ),
+            timestamp: now()
+        }
+    }
+""" );
+
+// Reuse compiled script for better performance
+for ( Order order : orders ) {
+    Bindings context = engine.createBindings();
+    context.put( "order", order );
+    
+    Map result = ( Map ) compiled.eval( context );
+    // Process result...
+}
+```
+
+### Thread Safety
+
+```java
+// BoxLang scripting engines are thread-safe for compilation
+// but each execution should use separate bindings
+public class BoxLangProcessor {
+    private final CompiledScript processor;
+    
+    public BoxLangProcessor() throws ScriptException {
+        ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
+        this.processor = ( ( Compilable ) engine ).compile( loadScript() );
+    }
+    
+    public Object process( Map<String, Object> data ) throws ScriptException {
+        // Create fresh bindings for each execution
+        Bindings bindings = processor.getEngine().createBindings();
+        bindings.putAll( data );
+        
+        return processor.eval( bindings );
+    }
+}
+```
+
+### Error Handling
+
+```java
+try {
+    Object result = engine.eval( boxlangCode, bindings );
+    // Handle success
+} catch ( ScriptException e ) {
+    // BoxLang compilation or runtime error
+    logger.error( "BoxLang script failed: " + e.getMessage(), e );
+    
+    // Get detailed error information
+    if ( e.getCause() != null ) {
+        logger.error( "Root cause: " + e.getCause().getMessage() );
+    }
+    
+    // Line number information (if available)
+    if ( e.getLineNumber() >= 0 ) {
+        logger.error( "Error at line: " + e.getLineNumber() );
+    }
+}
+```
+
+## 🔗 Integration Patterns
+
+### Spring Framework Integration
+
+```java
+@Configuration
+public class BoxLangConfig {
+    
+    @Bean
+    @Scope( "prototype" ) // New engine per injection
+    public ScriptEngine boxLangEngine() {
+        return new ScriptEngineManager().getEngineByName( "BoxLang" );
+    }
+    
+    @Bean
+    public BoxLangService boxLangService() {
+        return new BoxLangService( boxLangEngine() );
+    }
+}
+
+@Service
+public class BoxLangService {
+    private final ScriptEngine engine;
+    
+    public BoxLangService( ScriptEngine engine ) {
+        this.engine = engine;
+    }
+    
+    public Object executeTemplate( String template, Map<String, Object> variables ) {
+        try {
+            Bindings bindings = engine.createBindings();
+            bindings.putAll( variables );
+            return engine.eval( template, bindings );
+        } catch ( ScriptException e ) {
+            throw new RuntimeException( "Template execution failed", e );
+        }
+    }
+}
+```
+
+### Maven Build Integration
+
+```xml
+<!-- pom.xml -->
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>exec-maven-plugin</artifactId>
+    <version>3.1.0</version>
+    <executions>
+        <execution>
+            <id>run-boxlang-scripts</id>
+            <phase>generate-resources</phase>
+            <goals>
+                <goal>java</goal>
+            </goals>
+            <configuration>
+                <mainClass>com.mycompany.BoxLangScriptRunner</mainClass>
+                <arguments>
+                    <argument>${project.basedir}/scripts/generate-config.bx</argument>
+                </arguments>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+```
+
+### Gradle Build Integration
+
+```groovy
+// build.gradle
+task runBoxLangScripts( type: JavaExec ) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'com.mycompany.BoxLangScriptRunner'
+    args = [ 'scripts/data-processing.bx' ]
+}
+
+// Run BoxLang scripts during build
+compileJava.dependsOn runBoxLangScripts
+```
