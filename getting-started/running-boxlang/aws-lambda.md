@@ -64,8 +64,8 @@ The handler will look for a `Lambda.bx`in your package and execute the `run()`me
 class {
 
     function run( event, context, response ){
-    
-    
+
+
     }
 
 }
@@ -147,7 +147,7 @@ The BoxLang AWS Lambda runtime will look for a `Lambda.bx` in your package by co
 **AI-Assisted Development**: The BoxLang AWS Lambda template includes comprehensive GitHub Copilot instructions (`.github/copilot-instructions.md`) that provide AI assistants with detailed context about:
 
 * Project architecture and conventions
-* Build system and deployment workflows  
+* Build system and deployment workflows
 * Pascal case routing patterns
 * Configuration management
 * Testing strategies and file locations
@@ -257,7 +257,7 @@ class{
   function run( event, context, response ){
     return "Hello World!"
   }
-  
+
 }
 
 /**
@@ -272,7 +272,7 @@ class{
       data : [ 12,3234,23423 ]
     };
   }
-  
+
 }
 ```
 {% endcode %}
@@ -338,7 +338,7 @@ When your Lambda is exposed as a URL, the runtime can automatically route to dif
 
 ```javascript
 // URL: /products -> Products.bx
-// URL: /home-savings -> HomeSavings.bx  
+// URL: /home-savings -> HomeSavings.bx
 // URL: /user-profile -> UserProfile.bx
 ```
 
@@ -354,7 +354,7 @@ When your Lambda is exposed as a URL, the runtime can automatically route to dif
 
 Each class should implement a `handler` function (or `run` as fallback):
 
-```javascript
+```groovy
 // Products.bx
 class {
     function handler( event, context ) {
@@ -363,7 +363,7 @@ class {
             "body" : serializeJSON( getProductCatalog() )
         };
     }
-    
+
     function getProductCatalog() {
         return [
             { "id": 1, "name": "BoxLang Runtime" },
@@ -415,7 +415,7 @@ The template provides comprehensive local development and testing capabilities:
 ```bash
 # Test your function locally with different event types
 ./gradlew runLocal          # Basic Lambda execution
-./gradlew runLocalApi       # API Gateway event simulation  
+./gradlew runLocalApi       # API Gateway event simulation
 ./gradlew runLocalLegacy    # Legacy API Gateway event
 
 # Start a local HTTP server for API testing
