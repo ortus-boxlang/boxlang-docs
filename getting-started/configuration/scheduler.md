@@ -1,6 +1,6 @@
 ---
 description: Configure BoxLang's built-in task scheduler
-icon: clock-2
+icon: stopwatch
 ---
 
 # Scheduler
@@ -26,9 +26,7 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 
 ### executor
 
-**Type:** `string`
-**Default:** `"scheduled-tasks"`
-**Description:** The name of the executor to use for running scheduled tasks. This must reference a valid executor defined in the `executors` section.
+**Type:** `string` **Default:** `"scheduled-tasks"` **Description:** The name of the executor to use for running scheduled tasks. This must reference a valid executor defined in the `executors` section.
 
 ```json
 "executor": "scheduled-tasks"
@@ -36,9 +34,7 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 
 ### cacheName
 
-**Type:** `string`
-**Default:** `"default"`
-**Description:** The cache to leverage for server fixation or distribution. This is useful when running BoxLang in clustered environments to coordinate scheduled tasks across multiple instances.
+**Type:** `string` **Default:** `"default"` **Description:** The cache to leverage for server fixation or distribution. This is useful when running BoxLang in clustered environments to coordinate scheduled tasks across multiple instances.
 
 ```json
 "cacheName": "default"
@@ -46,9 +42,7 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 
 ### schedulers
 
-**Type:** `array`
-**Default:** `[]`
-**Description:** An array of absolute paths to BoxLang scheduler files (`.bx`) that should be registered upon runtime startup. You can use variable substitutions like `${user-dir}` or `${boxlang-home}`.
+**Type:** `array` **Default:** `[]` **Description:** An array of absolute paths to BoxLang scheduler files (`.bx`) that should be registered upon runtime startup. You can use variable substitutions like `${user-dir}` or `${boxlang-home}`.
 
 ```json
 "schedulers": [
@@ -61,9 +55,7 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 
 Coming soon.
 
-**Type:** `object`
-**Default:** `{}`
-**Description:** You can define tasks manually in the configuration instead of using scheduler files. Each task is defined as a key-value pair where the key is the unique task name.
+**Type:** `object` **Default:** `{}` **Description:** You can define tasks manually in the configuration instead of using scheduler files. Each task is defined as a key-value pair where the key is the unique task name.
 
 ## Programmatic Scheduling
 
@@ -71,6 +63,6 @@ You can also create and manage scheduled tasks programmatically using BoxLang's 
 
 ## Related Configuration
 
-- [Executors](executors.md) - Configure the thread pools used by the scheduler
-- [Caches](caches.md) - Configure caches used for task coordination
-- [Logging](logging.md) - Configure logging for scheduler operations
+* [Executors](executors.md) - Configure the thread pools used by the scheduler
+* [Caches](caches.md) - Configure caches used for task coordination
+* [Logging](logging.md) - Configure logging for scheduler operations
