@@ -83,12 +83,12 @@ BoxLang allows you to execute any `*.bx`class as long as it has a method called 
 
 {% code title="task.bx" %}
 ```java
-class{
+class {
 
-    function main( args = [] ){
-        println( "Hola from my task! #now()#" )
-        println( "The passed args are: " )
-        println( args )
+    function main( args = [ ] ) {
+        println( "Hola from my task! #now()#" );
+        println( "The passed args are: " );
+        println( args );
     }
 
 }
@@ -104,7 +104,7 @@ boxlang task.bx hola --many options=test
 If you execute this function above, the output will be:
 
 ```bash
-Hola from my task! {ts '2025-02-11 22:15:44'}
+Hola from my task! { ts '2025-02-11 22:15:44' }
 The passed args are:
 [
   hola,
@@ -121,10 +121,10 @@ In addition to executing classes, you can execute `*.bxs`scripts that can do you
 
 {% code title="hello.bxs" %}
 ```groovy
-message = "Hola from my task! #now()#"
-println( message )
-println( "The passed args are: " )
-println( CLIGetArgs() )
+message = "Hola from my task! #now()#";
+println( message );
+println( "The passed args are: " );
+println( CLIGetArgs( ) );
 ```
 {% endcode %}
 
@@ -133,7 +133,7 @@ Then, if we execute it, we can see this output:
 ```bash
 ╰─ boxlang hello.bxs hola luis=majano --test
 
-Hola from my task! {ts '2025-02-11 22:29:44'}
+Hola from my task! { ts '2025-02-11 22:29:44' }
 The passed args are:
 {
   positionals : [
@@ -156,10 +156,10 @@ You can also get the arguments via the `server.cli.parsed`variable, which alread
 {% endhint %}
 
 ```groovy
-message = "Hola from my task! #now()#"
-println( message )
-println( "The passed args are: " )
-println( server.cli.parsed )
+message = "Hola from my task! #now()#";
+println( message );
+println( "The passed args are: " );
+println( server.cli.parsed );
 ```
 
 Here is the output:
@@ -167,7 +167,7 @@ Here is the output:
 ```bash
 ╰─ boxlang hello.bxs hola luis=majano --test
 
-Hola from my task! {ts '2025-02-11 22:29:44'}
+Hola from my task! { ts '2025-02-11 22:29:44' }
 The passed args are:
 {
   positionals : [
@@ -196,8 +196,8 @@ A SheBang script is just basically a `*.bxs`script.
 ```bash
 #!/usr/bin/env boxlang
 
-println( "Hello World! #now()#" )
-println( CLIGetArgs() );
+println( "Hello World! #now()#" );
+println( CLIGetArgs( ) );
 ```
 {% endcode %}
 
@@ -211,12 +211,135 @@ As you can see from the sample above, the first line is what makes it a SheBang 
 ./hola.sh --name=luis -d
 ```
 
+## BoxLang CLI Options and Flags
+
+BoxLang provides a comprehensive set of CLI options and flags for various development and execution scenarios. All BoxLang-specific options are prefixed with `--bx-` to avoid conflicts with other tools.
+
+### Global Options
+
+| Option | Description |
+|--------|-------------|
+| `-h, --help` | Show help message and exit |
+| `--version` | Show version information and exit |
+| `--bx-debug` | Enable debug mode with timing information |
+| `--bx-config <PATH>` | Use custom BoxLang configuration file |
+| `--bx-home <PATH>` | Set BoxLang runtime home directory |
+| `--bx-code <CODE>` | Execute inline BoxLang code directly |
+| `--bx-printAST` | Print Abstract Syntax Tree for code analysis |
+| `--bx-transpile` | Transpile BoxLang code to Java |
+
+### Environment Variables
+
+You can also control BoxLang behavior using environment variables:
+
+| Environment Variable | Description |
+|---------------------|-------------|
+| `BOXLANG_DEBUG=true` | Enable debug mode |
+| `BOXLANG_CONFIG=/path/config.json` | Override configuration file path |
+| `BOXLANG_HOME=/path/to/home` | Set runtime home directory |
+| `BOXLANG_TRANSPILE=true` | Enable transpile mode |
+| `BOXLANG_PRINTAST=true` | Enable AST printing |
+
+### Examples of CLI Options
+
+```bash
+# Execute with debug mode enabled
+boxlang --bx-debug myapp.bx
+
+# Use custom configuration file
+boxlang --bx-config ./custom.json myapp.bx
+
+# Execute inline code
+boxlang --bx-code "println( 'Hello BoxLang!' )"
+
+# Print AST for code analysis
+boxlang --bx-printAST --bx-code "x = 1 + 2"
+
+# Combined options
+boxlang --bx-debug --bx-config ./custom.json myapp.bx
+```
+
+## Action Commands
+
+BoxLang includes several powerful action commands for development workflows:
+
+### Compile Command
+
+Pre-compile BoxLang templates to class files for improved performance:
+
+```bash
+# Get help for compile command
+boxlang compile --help
+
+# Compile source directory to target
+boxlang compile --source ./src --target ./compiled
+```
+
+### CF Transpile Command
+
+Transpile ColdFusion code to BoxLang syntax:
+
+```bash
+# Get help for cftranspile command
+boxlang cftranspile --help
+
+# Transpile legacy CF code to BoxLang
+boxlang cftranspile --source ./legacy --target ./modern
+```
+
+### Feature Audit Command
+
+Audit your code for BoxLang feature compatibility:
+
+```bash
+# Get help for featureaudit command
+boxlang featureaudit --help
+
+# Audit code and generate report
+boxlang featureaudit --source ./myapp --output report.json
+```
+
+## Runtime Mode Detection
+
+BoxLang provides several ways to detect the runtime execution context:
+
+### Server Scope Information
+
+The `server` scope contains detailed information about the runtime environment:
+
+```javascript
+// Check if running in CLI mode
+if ( server.boxlang.cliMode ) {
+    println( "Running in CLI mode" );
+}
+
+// Check if running from JAR
+if ( server.boxlang.jarMode ) {
+    println( "Running in JAR mode" );
+}
+
+// Get runtime home directory
+println( "Runtime home: " & server.boxlang.runtimeHome );
+```
+
+### CLI-Specific Information
+
+When running in CLI mode, additional CLI-specific information is available:
+
+```javascript
+// Access CLI execution details
+println( "Execution path: " & server.cli.executionPath );
+println( "Command: " & server.cli.command );
+println( "Raw args: " & server.cli.args.toString( ) );
+println( "Parsed args: " & server.cli.parsed.toString( ) );
+```
+
 ## Inline Code Execution
 
 You can execute BoxLang code directly from the CLI using the `--bx-code` flag:
 
 ```bash
-boxlang --bx-code "println('Hello from BoxLang!')"
+boxlang --bx-code "println( 'Hello from BoxLang!' )"
 ```
 
 ## Scheduler Files
@@ -231,15 +354,34 @@ boxlang schedule ./schedulers/MainScheduler.bx
 For more on schedulers, see the [Scheduler documentation](../../boxlang-framework/asynchronous-programming/scheduled-tasks.md).
 {% endhint %}
 
+## REPL Mode
+
+When no arguments are provided, BoxLang starts in **REPL mode** (Read-Eval-Print-Loop):
+
+* Interactive environment for testing and development
+* Type expressions and see results immediately
+* Supports multi-line expressions and complex code
+* Press `Ctrl+C` to exit REPL mode
+
+```bash
+# Start REPL mode
+boxlang
+
+# You'll see the REPL prompt
+BoxLang> println( "Hello from REPL!" )
+Hello from REPL!
+BoxLang>
+```
+
 
 ## CLI Built-In Functions
 
 BoxLang also gives you several built-in functions for interacting with the CLI:
 
-* `CLIClear():void` - Clears the console
-* `CLIGetArgs():struct` - Return a structure of the parsed incoming arguments
-* `CLIRead( [prompt] ):any`- Read input from the CLI and return the value
-* `CLIExit( [exitCode=0] )`- Do a `System.exit()`with the passed-in exit code
+* `CLIClear( ):void` - Clears the console
+* `CLIGetArgs( ):struct` - Return a structure of the parsed incoming arguments
+* `CLIRead( [ prompt ] ):any`- Read input from the CLI and return the value
+* `CLIExit( [ exitCode=0 ] )`- Do a `System.exit( )`with the passed-in exit code
 
 {% hint style="warning" %}
 Please note that you have a wealth of built-in functions and components that you can use to build your scripts.
@@ -247,59 +389,111 @@ Please note that you have a wealth of built-in functions and components that you
 
 ## Parsed Arguments
 
-BoxLang will automatically parse the incoming arguments into a structure of two types when using the `CLIGetArgs()`BIF or by using the `server.cli.parsed` variable.
+BoxLang automatically parses incoming arguments into a structured format when using the `CLIGetArgs( )` BIF or by accessing the `server.cli.parsed` variable.
+
+The parsed structure contains:
 
 * `options` - A structure of the options (name-value pairs) used to invoke the script
 * `positionals` - An array of the positional arguments used to invoke the script
 
-The options can be provided in the following formats, which are standard in CLI applications:
+### CLI Argument Formats
 
-* `--option` - A boolean option that is set to `true`
-* `--option=value` - An option with a value
-* `--option="value"` - An option with a quoted value
-* `--option='value'` - An option with a single quoted value
-* `-o=value` - A shorthand option with a value
-* `-o` - A shorthand boolean option that is set to `true`
-* `--!option` - A negation option that is set to `false`
-* `--no-{option}` - A negation option
+BoxLang supports standard CLI argument formats:
 
-For example, the following CLI arguments:
+| Format | Description | Example |
+|--------|-------------|---------|
+| `--option` | Boolean option set to `true` | `--debug` |
+| `--option=value` | Option with a value | `--config=myfile.json` |
+| `--option="value"` | Option with quoted value | `--message="Hello World"` |
+| `--option='value'` | Option with single quoted value | `--message='Hello World'` |
+| `-o=value` | Shorthand option with value | `-c=config.json` |
+| `-o` | Shorthand boolean option set to `true` | `-v` |
+| `--!option` | Negation option set to `false` | `--!verbose` |
+| `--no-{option}` | Negation option set to `false` | `--no-debug` |
+
+### Multi-Character Shorthand Options
+
+You can combine multiple single-character options:
 
 ```bash
---debug --!verbose --bundles=Spec -o='/path/to/file' -v my/path/template
+# This creates: a=true, b=true, c=true
+boxlang myscript.bxs -abc
 ```
 
-Will be parsed into the following struct:
+### Parsing Examples
+
+For the following CLI command:
+
+```bash
+boxlang myscript.bxs --debug --!verbose --config=prod.json -o='/path/to/file' -v my/path/template
+```
+
+The parsed structure will be:
 
 ```json
 {
-"options" :  {
-   	"debug": true,
-  	"verbose": false,
- 	"bundles": "Spec",
-	"o": "/path/to/file",
-	"v": true
-},
-"positionals": [ "my/path/template" ]
+  "options": {
+    "debug": true,
+    "verbose": false,
+    "config": "prod.json",
+    "o": "/path/to/file",
+    "v": true
+  },
+  "positionals": [ "my/path/template" ]
+}
 ```
 
-### Some Ground Rules
+### Accessing Parsed Arguments
 
-* Options are prefixed with `--`
-* Shorthand options are prefixed with `-`
-* Options can be negated with `--!` or `--no-`
-* Options can have values separated by =
-* Values can be quoted with single or double quotes
-* Repeated options will override the previous value
+```javascript
+// In a script file (.bxs)
+var cliArgs = CLIGetArgs( );
+// or
+var cliArgs = server.cli.parsed;
+
+// Check for options
+if ( cliArgs.options.debug ) {
+    println( "Debug mode enabled" );
+}
+
+// Process positional arguments
+cliArgs.positionals.each( function( arg ) {
+    println( "Processing: " & arg );
+} );
+```
+
+### Advanced CLI Information
+
+The `server.cli` structure provides comprehensive CLI context:
+
+```javascript
+// Full CLI context information
+var cliInfo = server.cli;
+
+println( "Execution Path: " & cliInfo.executionPath );
+println( "Full Command: " & cliInfo.command );
+println( "Raw Arguments: " & cliInfo.args.toString( ) );
+println( "Parsed Options: " & cliInfo.parsed.options.toString( ) );
+println( "Positional Args: " & cliInfo.parsed.positionals.toString( ) );
+```
+
+### Ground Rules for CLI Arguments
+
+* Options are prefixed with `--` (long form) or `-` (short form)
+* Shorthand options can be combined (e.g., `-abc` = `-a -b -c`)
+* Options can be negated with `--!` or `--no-` prefix
+* Values can be assigned with `=` and optionally quoted
+* Repeated options will override previous values
+* Everything after options are treated as positional arguments
 
 ## Reading Input
 
-You can easily read input from users by using our handy `CLIRead()`bif. You can also pass in a `prompt`as part of the method call.
+You can easily read input from users by using our handy `CLIRead( )`bif. You can also pass in a `prompt`as part of the method call.
 
 ```groovy
-var exit = cliRead( "Do you want to continue? (Y/N)" ).trueFalseFormat()
-if( exit ){
-  cliExit()
+var exit = cliRead( "Do you want to continue? (Y/N)" ).trueFalseFormat( );
+if ( exit ) {
+  cliExit( );
 }
 ```
 
@@ -307,32 +501,32 @@ if( exit ){
 
 As you navigate all the built-in functions and capabilities of BoxLang, let's learn how to produce output to the system console.
 
-* `printLn()` - Print with a line break to System out
-* `print()` - Print with no line break to System out
-* `writeOutput(), echo()` - Writes to the output buffer (Each runtime decides what its buffer is. The CLI is the system output, the Web is the HTML response buffer, etc)
-* `writeDump()`- Takes any incoming output and will serialize to a nice string output representation. This will also do complex objects deeply.
+* `printLn( )` - Print with a line break to System out
+* `print( )` - Print with no line break to System out
+* `writeOutput( ), echo( )` - Writes to the output buffer (Each runtime decides what its buffer is. The CLI is the system output, the Web is the HTML response buffer, etc)
+* `writeDump( )`- Takes any incoming output and will serialize to a nice string output representation. This will also do complex objects deeply.
 
 ```groovy
-println( "Time is #now()#" )
+println( "Time is #now()#" );
 ```
 
 I get the output:
 
 ```bash
 ╰─ boxlang test.bxs
-Time is {ts '2024-05-22 22:09:56'}
+Time is { ts '2024-05-22 22:09:56' }
 ```
 
-Hooray! You have executed your first script using BoxLang. Now let's build a class with a `main( args=[] )` convention. This is similar to Java or Groovy.
+Hooray! You have executed your first script using BoxLang. Now let's build a class with a `main( args=[ ] )` convention. This is similar to Java or Groovy.
 
 ```java
-class{
+class {
 
-        function main( args=[] ){
+        function main( args=[ ] ) {
 
-               println( "Task called with " & arguments.toString() )
+               println( "Task called with " & arguments.toString( ) );
 
-                writedump( args )
+                writedump( args );
 
         }
 
@@ -343,10 +537,10 @@ You can now call it with zero or more arguments!
 
 ```bash
 ╰─ boxlang Task.bx
-Task called with {ARGS=[]}
+Task called with { ARGS=[ ] }
 
 ╰─ boxlang Task.bx boxlang rocks
-Task called with {ARGS=[boxlang, rocks]}
+Task called with { ARGS=[ boxlang, rocks ] }
 ```
 
 ## Piping code <a href="#piping-code-11" id="piping-code-11"></a>
@@ -391,7 +585,7 @@ This will invoke the `main( args )` method in `ModuleConfig.bx` of the `mytools`
 ```java
 class {
 
-    function main( args = [] ) {
+    function main( args = [ ] ) {
         println( "Module CLI called with args:" );
         writedump( args );
         // Your CLI logic here
@@ -434,12 +628,117 @@ Your CLI scripts and classes can then use any embedded modules as if they were i
 For more on embedding and using modules, see the [BoxLang Modules documentation](../../boxlang-framework/modularity/README.md).
 {% endhint %}
 
+## Additional Resources and Examples
+
+### Modern Development Workflow
+
+BoxLang's CLI capabilities make it ideal for modern development workflows:
+
+```javascript
+// example-workflow.bx
+class {
+
+    function main( args = [ ] ) {
+        var cliArgs = CLIGetArgs( );
+
+        // Environment detection
+        var isDev = cliArgs.options.env == "development";
+        var isDebug = cliArgs.options.debug ?: false;
+
+        if ( isDebug ) {
+            println( "🐛 Debug mode enabled" );
+            println( "⚙️  Runtime Info:" );
+            println( "   - CLI Mode: " & server.boxlang.cliMode );
+            println( "   - JAR Mode: " & server.boxlang.jarMode );
+            println( "   - Runtime Home: " & server.boxlang.runtimeHome );
+        }
+
+        // Process based on environment
+        if ( isDev ) {
+            runDevelopmentTasks( );
+        } else {
+            runProductionTasks( );
+        }
+    }
+
+    private function runDevelopmentTasks( ) {
+        println( "🔨 Running development tasks..." );
+        // Development-specific logic
+    }
+
+    private function runProductionTasks( ) {
+        println( "🚀 Running production tasks..." );
+        // Production-specific logic
+    }
+}
+```
+
+Usage:
+
+```bash
+# Development mode with debug
+boxlang --bx-debug example-workflow.bx --env=development --debug
+
+# Production mode
+boxlang example-workflow.bx --env=production
+```
+
+### Integration Examples
+
+BoxLang CLI can integrate with various tools and workflows:
+
+```bash
+# CI/CD Pipeline Integration
+boxlang --bx-code "
+    println( 'Starting CI/CD Pipeline...' );
+    var result = runTests( );
+    if ( !result.success ) {
+        cliExit( 1 );
+    }
+    deployApplication( );
+    println( 'Pipeline completed successfully!' );
+"
+
+# Database Migrations
+boxlang migrate.bx --action=up --env=production
+
+# Code Generation
+boxlang generate.bx --type=component --name=UserService
+
+# Environment Setup
+boxlang setup.bx --install-deps --configure-db
+```
+
+### Performance and Debug Information
+
+When using `--bx-debug`, BoxLang provides detailed performance metrics:
+
+```bash
+boxlang --bx-debug myapp.bx
+```
+
+This outputs:
+
+* Execution timing information
+* Memory usage statistics
+* Runtime initialization details
+* AST parsing time
+* Module loading performance
+
+### Community Resources
+
+* 📚 **Documentation**: [https://boxlang.ortusbooks.com/](https://boxlang.ortusbooks.com/)
+* 💬 **Community Forum**: [https://community.ortussolutions.com/c/boxlang/42](https://community.ortussolutions.com/c/boxlang/42)
+* 💾 **GitHub Repository**: [https://github.com/ortus-boxlang](https://github.com/ortus-boxlang)
+* 🌐 **Official Website**: [https://boxlang.io](https://boxlang.io)
+* 🎯 **Examples Repository**: [https://github.com/ortus-boxlang/bx-demos](https://github.com/ortus-boxlang/bx-demos)
+
 ## Dad Joke Script
 
 Thanks to our evangelist Raymond Camden, we have a cool dad joke script you can find in our demos: [https://github.com/ortus-boxlang/bx-demos](https://github.com/ortus-boxlang/bx-demos)
 
 ```java
-class{
+class {
     variables.apiURL = "https://icanhazdadjoke.com/";
 
     /**
@@ -447,12 +746,12 @@ class{
      * Example: boxlang DadJoke.bx dad
      * Example: boxlang DadJoke.bx
      */
-    function main( args = [] ) {
+    function main( args = [ ] ) {
         // Use elvis operator to check if a term was passed, else, use an empty string
-        var term = ( args[ 1 ] ?: "" ).trim();
+        var term = ( args[ 1 ] ?: "" ).trim( );
 
-        if( !term.isEmpty() ){
-            apiURL &= "search?term=" & term.urlEncodedFormat()
+        if ( !term.isEmpty( ) ) {
+            apiURL &= "search?term=" & term.urlEncodedFormat( );
         }
 
         println( "Getting dad joke for term [#term#], please wait..." );
@@ -462,13 +761,13 @@ class{
         var data = JSONDeserialize( result.fileContent );
 
          // possible none were found, use safe navigation operator
-         if( data?.results?.len() == 0 ){
+         if ( data?.results?.len( ) == 0 ) {
             println( "No jokes found for term: #term#" );
-            return cliExit();
+            return cliExit( );
          }
 
         // If we searched for a term, we need to get a random joke from the results, otherwise, just .joke
-        var joke = term.isEmpty() ? data.joke : data.results[ randRange( 1, data.results.len() ) ].joke;
+        var joke = term.isEmpty( ) ? data.joke : data.results[ randRange( 1, data.results.len( ) ) ].joke;
         println( joke );
     }
 
@@ -485,8 +784,8 @@ boxlang DadJoke.bx
 boxlang DadJoke.bx ice
 ```
 
-Let's modify it now so that we can prompt the user for the term using the `CLIRead()`BIF instead of passing it:
+Let's modify it now so that we can prompt the user for the term using the `CLIRead( )`BIF instead of passing it:
 
 ```java
-var term = ( CLIRead( "What search term would you like to use? (Leave blank for random joke)") ).trim();
+var term = ( CLIRead( "What search term would you like to use? (Leave blank for random joke)" ) ).trim( );
 ```
