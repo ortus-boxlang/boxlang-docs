@@ -3,6 +3,7 @@
 * [Introduction](README.md)
   * [Contributing Guide](readme/contributing-guide.md)
   * [Release History](readme/release-history/README.md)
+    * [1.5.0](readme/release-history/1.5.0.md)
     * [1.4.0](readme/release-history/1.4.0.md)
     * [1.3.0](readme/release-history/1.3.0.md)
     * [1.2.0](readme/release-history/1.2.0.md)
@@ -1036,7 +1037,6 @@
           * [Cookie](boxlang-framework/modularity/web-support/reference/components/web/Cookie.md)
           * [Header](boxlang-framework/modularity/web-support/reference/components/web/Header.md)
           * [Content](boxlang-framework/modularity/web-support/reference/components/web/Content.md)
-
   * [Yaml](boxlang-framework/modularity/yaml.md)
 
 ## Extra Credit
