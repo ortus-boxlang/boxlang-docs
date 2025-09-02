@@ -268,6 +268,8 @@ Environment variables loaded from `.env` files are:
 2. **Available in BoxLang** - Accessible through the `server.system.properties` struct
 3. **Available to your applications** - Can be used in BoxLang code for configuration
 
+It is important to note that these variables will not exist as "proper" environment variables due to how BoxLang's runtime loads. The structure, `server.system.environment`, contains system level environment variables and will not reflect the values set in your `.env` file. Using `server.system.properties` would work locally, but not in production, as the value would most likely instead be in the `environment` structure. Luckily, BoxLang provides a simple BIF that can work with either, `getSystemSetting()`. Given the example `.env` file above, using `getSystemSetting("API_KEY")` would work both locally using the value loaded from the file and in production using a value loaded as an environment variable.
+
 {% hint style="info" %}
 **Privacy Note:** Environment variables are NOT exposed through health check endpoints. Health checks only return basic server metrics and status information for security purposes.
 {% endhint %}
