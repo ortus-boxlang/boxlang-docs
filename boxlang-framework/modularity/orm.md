@@ -7,6 +7,14 @@ icon: database
 
 # ORM
 
+```
+# For Operating Systems using our Quick Installer.
+install-bx-module bx-orm
+
+# Using CommandBox to install for web servers.
+box install bx-orm
+```
+
 ### BoxLang ORM <a href="#boxlang-orm" id="boxlang-orm"></a>
 
 The [BoxLang ORM module](https://github.com/ortus-boxlang/bx-orm) allows your BoxLang application to integrate with the powerful [Hibernate ORM](https://hibernate.org/orm/). With Hibernate, you can interact with your database records in an object oriented fashion, using a BoxLang class to denote each record and simple getters and setters for each field value:
