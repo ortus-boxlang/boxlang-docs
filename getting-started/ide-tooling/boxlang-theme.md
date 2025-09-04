@@ -30,7 +30,35 @@ Subtle light theme with soft teal and green backgrounds, perfect for daytime dev
 - **Component Support** - Special highlighting for BoxLang components (`<bx:component>` tags)
 - **Eye-friendly** - Carefully selected contrast ratios for comfortable viewing
 
-## 📦 Installation
+## 📦 BoxLang Developer Pack
+
+{% hint style="success" %}
+**Quick Setup**: Get this theme along with all essential BoxLang development tools in one click with the [**BoxLang Developer Pack**](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang-developer-pack)!
+{% endhint %}
+
+The **BoxLang Developer Pack** is a curated extension pack that includes everything you need for BoxLang development:
+
+- 🚀 **BoxLang Language Support** - Complete language server with IntelliSense, syntax highlighting, and error detection
+- 🎨 **BoxLang Theme** - This theme extension with both Dark (Neon) and Light (Muted) variants
+- 🧪 **TestBox Support** - Full TDD/BDD testing framework integration
+- 📦 **CommandBox Integration** - Package management and project scaffolding tools
+
+### Install the Complete Pack
+
+Instead of installing extensions individually, get the full BoxLang development environment:
+
+**VS Code Marketplace**: [BoxLang Developer Pack](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang-developer-pack)
+
+**OpenVSX Registry**: [BoxLang Developer Pack](https://open-vsx.org/extension/ortus-solutions/vscode-boxlang-developer-pack)
+
+```bash
+# Install the complete developer pack
+code --install-extension ortus-solutions.vscode-boxlang-developer-pack
+```
+
+This automatically installs all BoxLang development tools, including this theme, saving you time and ensuring a complete setup.
+
+## 📦 Individual Installation
 
 ### VS Code Marketplace
 
