@@ -1,5 +1,7 @@
 ---
-description: Containerize all things with BoxLang - Professional Docker images for development and production
+description: >-
+  Containerize all things with BoxLang - Professional Docker images for
+  development and production
 icon: docker
 ---
 
@@ -15,17 +17,17 @@ You can find all our published images and tags here: [https://hub.docker.com/r/o
 
 ### **Core Image Types**
 
-- **CLI Images**: [ortussolutions/boxlang:cli](https://hub.docker.com/r/ortussolutions/boxlang/tags?page=1&name=cli) - Full BoxLang CLI runtime
-- **MiniServer Images**: [ortussolutions/boxlang:miniserver](https://hub.docker.com/r/ortussolutions/boxlang/tags?page=1&name=miniserver) - Lightweight web server
-- **MiniServer + Nginx**: [ortussolutions/boxlang:miniserver-nginx](https://hub.docker.com/r/ortussolutions/boxlang/tags?page=1&name=miniserver-nginx) - Production-ready with reverse proxy
+* **CLI Images**: [ortussolutions/boxlang:cli](https://hub.docker.com/r/ortussolutions/boxlang/tags?page=1\&name=cli) - Full BoxLang CLI runtime
+* **MiniServer Images**: [ortussolutions/boxlang:miniserver](https://hub.docker.com/r/ortussolutions/boxlang/tags?page=1\&name=miniserver) - Lightweight web server
+* **MiniServer + Nginx**: [ortussolutions/boxlang:miniserver-nginx](https://hub.docker.com/r/ortussolutions/boxlang/tags?page=1\&name=miniserver-nginx) - Production-ready with reverse proxy
 
 ### **Base Variants**
 
 Each image type is available in multiple variants:
 
-- **Debian Linux** (default) - Full-featured, enterprise-ready
-- **Alpine Linux** (`-alpine` suffix) - Minimal, security-focused
-- **Snapshot versions** (`-snapshot` suffix) - Latest development builds
+* **Debian Linux** (default) - Full-featured, enterprise-ready
+* **Alpine Linux** (`-alpine` suffix) - Minimal, security-focused
+* **Snapshot versions** (`-snapshot` suffix) - Latest development builds
 
 ## 🖥️ CLI Images
 
@@ -33,10 +35,10 @@ The CLI images contain the complete BoxLang CLI runtime, allowing you to run scr
 
 ### **Available CLI Tags**
 
-- `ortussolutions/boxlang:cli` - Latest stable CLI on Debian Linux
-- `ortussolutions/boxlang:cli-alpine` - Latest stable CLI on Alpine Linux
-- `ortussolutions/boxlang:cli-snapshot` - Development snapshot on Debian Linux
-- `ortussolutions/boxlang:cli-alpine-snapshot` - Development snapshot on Alpine Linux
+* `ortussolutions/boxlang:cli` - Latest stable CLI on Debian Linux
+* `ortussolutions/boxlang:cli-alpine` - Latest stable CLI on Alpine Linux
+* `ortussolutions/boxlang:cli-snapshot` - Development snapshot on Debian Linux
+* `ortussolutions/boxlang:cli-alpine-snapshot` - Development snapshot on Alpine Linux
 
 ### **CLI Usage Examples**
 
@@ -69,18 +71,18 @@ The MiniServer images contain the BoxLang MiniServer - a lightweight, high-perfo
 
 ### **Available MiniServer Tags**
 
-- `ortussolutions/boxlang:miniserver` - Latest stable MiniServer on Debian Linux
-- `ortussolutions/boxlang:miniserver-alpine` - Latest stable MiniServer on Alpine Linux
-- `ortussolutions/boxlang:miniserver-snapshot` - Development snapshot on Debian Linux
-- `ortussolutions/boxlang:miniserver-alpine-snapshot` - Development snapshot on Alpine Linux
+* `ortussolutions/boxlang:miniserver` - Latest stable MiniServer on Debian Linux
+* `ortussolutions/boxlang:miniserver-alpine` - Latest stable MiniServer on Alpine Linux
+* `ortussolutions/boxlang:miniserver-snapshot` - Development snapshot on Debian Linux
+* `ortussolutions/boxlang:miniserver-alpine-snapshot` - Development snapshot on Alpine Linux
 
 ### **Key Features**
 
-- **Auto-serving**: The MiniServer loads `/app` as the webroot directory
-- **Default files**: Automatically serves `index.bxm` files
-- **URL Rewrites**: Enabled by default with configurable rewrite files
-- **Health checks**: Built-in health monitoring for container orchestration
-- **Hot reload**: Development mode with automatic code reloading
+* **Auto-serving**: The MiniServer loads `/app` as the webroot directory
+* **Default files**: Automatically serves `index.bxm` files
+* **URL Rewrites**: Enabled by default with configurable rewrite files
+* **Health checks**: Built-in health monitoring for container orchestration
+* **Hot reload**: Development mode with automatic code reloading
 
 ### **MiniServer Usage Examples**
 
@@ -119,10 +121,10 @@ docker run -d --name boxlang-app \
 
 All MiniServer images include built-in health checks that monitor the server's status:
 
-- **Interval**: 20 seconds
-- **Timeout**: 30 seconds
-- **Retries**: 15 attempts before marking as unhealthy
-- **Endpoint**: Configurable via `HEALTHCHECK_URI` (default: `http://127.0.0.1:8080/`)
+* **Interval**: 20 seconds
+* **Timeout**: 30 seconds
+* **Retries**: 15 attempts before marking as unhealthy
+* **Endpoint**: Configurable via `HEALTHCHECK_URI` (default: `http://127.0.0.1:8080/`)
 
 ## 📦 Module Installation
 
@@ -157,12 +159,12 @@ services:
 
 Common modules you can install:
 
-- `bx-compat-cfml` - ColdFusion/CFML compatibility layer
-- `bx-mysql` - MySQL database connectivity
-- `bx-esapi` - Enterprise Security API
-- `bx-redis` - Redis cache and session storage
-- `bx-mail` - Email functionality
-- `bx-derby` - Derby database (development)
+* `bx-compat-cfml` - ColdFusion/CFML compatibility layer
+* `bx-mysql` - MySQL database connectivity
+* `bx-esapi` - Enterprise Security API
+* `bx-redis` - Redis cache and session storage
+* `bx-mail` - Email functionality
+* `bx-derby` - Derby database (development)
 
 ## ⚙️ Environment Variables
 
@@ -170,27 +172,27 @@ The following environment variables can be used to configure the BoxLang Docker 
 
 ### **Core Configuration**
 
-- `BOXLANG_CONFIG_PATH` - Path to BoxLang configuration file (default: `/root/.boxlang/config/boxlang.json`)
-- `BOXLANG_DEBUG` - Enable debugging mode (default: `false`)
-- `BOXLANG_HOME` - BoxLang installation home directory (default: `/root/.boxlang`)
-- `BOXLANG_HOST` - Server host binding (default: `0.0.0.0`)
-- `BOXLANG_MODULES` - Comma-separated list of modules to install (example: `bx-compat-cfml,bx-mysql`)
-- `BOXLANG_PORT` - Server port binding (default: `8080`)
+* `BOXLANG_CONFIG_PATH` - Path to BoxLang configuration file (default: `/root/.boxlang/config/boxlang.json`)
+* `BOXLANG_DEBUG` - Enable debugging mode (default: `false`)
+* `BOXLANG_HOME` - BoxLang installation home directory (default: `/root/.boxlang`)
+* `BOXLANG_HOST` - Server host binding (default: `0.0.0.0`)
+* `BOXLANG_MODULES` - Comma-separated list of modules to install (example: `bx-compat-cfml,bx-mysql`)
+* `BOXLANG_PORT` - Server port binding (default: `8080`)
 
 ### **Server & Performance**
 
-- `DEBUG` - Legacy debug mode flag (default: `false`)
-- `JAVA_OPTS` - JVM options (default: `-Djava.awt.headless=true`)
-- `HEALTHCHECK_URI` - Health check endpoint (default: `http://127.0.0.1:${PORT}/`)
-- `HOST` - Server host (alias for BOXLANG_HOST)
-- `MAX_MEMORY` - Maximum heap size (default: `512m`, example: `2g`)
-- `MIN_MEMORY` - Minimum heap size (default: `512m`, example: `1g`)
-- `PORT` - Server port (alias for BOXLANG_PORT)
+* `DEBUG` - Legacy debug mode flag (default: `false`)
+* `JAVA_OPTS` - JVM options (default: `-Djava.awt.headless=true`)
+* `HEALTHCHECK_URI` - Health check endpoint (default: `http://127.0.0.1:${PORT}/`)
+* `HOST` - Server host (alias for BOXLANG\_HOST)
+* `MAX_MEMORY` - Maximum heap size (default: `512m`, example: `2g`)
+* `MIN_MEMORY` - Minimum heap size (default: `512m`, example: `1g`)
+* `PORT` - Server port (alias for BOXLANG\_PORT)
 
 ### **Web Server Features**
 
-- `REWRITES` - Enable URL rewrites (default: `true`)
-- `REWRITES_FILE` - Rewrite configuration file (default: `index.bxm`)
+* `REWRITES` - Enable URL rewrites (default: `true`)
+* `REWRITE_FILE` - Rewrite configuration file (default: `index.bxm`)
 
 ### **BoxLang Environment Override**
 
@@ -199,9 +201,9 @@ BoxLang supports overriding any configuration setting via environment variables 
 
 Examples:
 
-- `BOXLANG_DEBUGMODE=true`
-- `BOXLANG_RUNTIME_CLASSGENERATION_ENABLED=false`
-- `BOXLANG_RUNTIME_CUSTOMTAGSPATHS=/custom/tags`
+* `BOXLANG_DEBUGMODE=true`
+* `BOXLANG_RUNTIME_CLASSGENERATION_ENABLED=false`
+* `BOXLANG_RUNTIME_CUSTOMTAGSPATHS=/custom/tags`
 {% endhint %}
 
 ## 🚀 Production: MiniServer with Nginx
@@ -214,15 +216,15 @@ For production deployments, we provide an experimental image combining BoxLang M
 
 ### **Available Tags**
 
-- `ortussolutions/boxlang:miniserver-nginx` - Nginx + MiniServer on Debian Linux
+* `ortussolutions/boxlang:miniserver-nginx` - Nginx + MiniServer on Debian Linux
 
 ### **Nginx Configuration**
 
-- **HTTP Port**: 80 (configurable via `NGINX_PORT`)
-- **HTTPS Port**: 443 (configurable via `NGINX_SSL_PORT`)
-- **SSL Certificate**: Self-signed certificate included
-- **Custom SSL**: Mount your certificates to `/etc/nginx/ssl/`
-- **Optimizations**: Production-tuned Nginx configuration for BoxLang
+* **HTTP Port**: 80 (configurable via `NGINX_PORT`)
+* **HTTPS Port**: 443 (configurable via `NGINX_SSL_PORT`)
+* **SSL Certificate**: Self-signed certificate included
+* **Custom SSL**: Mount your certificates to `/etc/nginx/ssl/`
+* **Optimizations**: Production-tuned Nginx configuration for BoxLang
 
 ### **Custom SSL Certificates**
 
@@ -243,31 +245,30 @@ docker run -d -p 80:80 -p 443:443 \
 
 ### **Nginx Environment Variables**
 
-- `NGINX_PORT` - HTTP port for Nginx (default: `80`)
-- `NGINX_SSL_PORT` - HTTPS port for Nginx (default: `443`)
+* `NGINX_PORT` - HTTP port for Nginx (default: `80`)
+* `NGINX_SSL_PORT` - HTTPS port for Nginx (default: `443`)
 
 ## 🔧 Source Code & Contributing
 
 ### **Docker Images Repository**
 
-The complete source code for all BoxLang Docker images is available at:
-[https://github.com/ortus-boxlang/boxlang-docker](https://github.com/ortus-boxlang/boxlang-docker)
+The complete source code for all BoxLang Docker images is available at: [https://github.com/ortus-boxlang/boxlang-docker](https://github.com/ortus-boxlang/boxlang-docker)
 
 This repository contains:
 
-- **Dockerfiles** for all image variants
-- **Build scripts** and automation
-- **Nginx configurations** for production deployments
-- **Testing infrastructure** and examples
-- **Documentation** and contribution guidelines
+* **Dockerfiles** for all image variants
+* **Build scripts** and automation
+* **Nginx configurations** for production deployments
+* **Testing infrastructure** and examples
+* **Documentation** and contribution guidelines
 
 ### **Image Build Process**
 
-- **Base Images**: Eclipse Temurin JRE 21 (Debian Noble & Alpine)
-- **Security**: Regular security updates and dependency patching
-- **Installation**: Uses BoxLang's official quick installer
-- **Optimization**: Multi-stage builds for minimal image sizes
-- **Testing**: Automated testing for all image variants
+* **Base Images**: Eclipse Temurin JRE 21 (Debian Noble & Alpine)
+* **Security**: Regular security updates and dependency patching
+* **Installation**: Uses BoxLang's official quick installer
+* **Optimization**: Multi-stage builds for minimal image sizes
+* **Testing**: Automated testing for all image variants
 
 ### **Contributing**
 
