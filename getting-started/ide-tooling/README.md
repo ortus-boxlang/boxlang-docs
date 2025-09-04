@@ -5,64 +5,115 @@ icon: laptop-code
 
 # IDE & Tooling
 
-In this section of the docs, you will find a collection of tools, IDE integrations, and much more to assist you in your BoxLang adventures.
+Welcome to the comprehensive BoxLang tooling ecosystem! This section covers all the tools, IDE integrations, and utilities designed to enhance your BoxLang development experience across different platforms and editors.
 
-## BoxLang IDE
+## 🚀 Official IDE Support
 
-We have an official first-party extension for Visual Studio Code. You can find it in the Visual Studio Code[ marketplace](https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang).  It also has its documentation website: [https://boxlang-ide.ortusbooks.com/](https://boxlang-ide.ortusbooks.com/)
+BoxLang provides first-class support for modern development environments with our official Visual Studio Code extension, compatible across multiple editors and platforms.
 
-{% embed url="https://boxlang-ide.ortusbooks.com/" %}
+### Supported Platforms
 
-<figure><img src="../../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+We provide a collection of extensions and modules to enhance your BoxLang development experience on many different IDE platforms. The official IDE for BoxLang is based on Visual Studio Code technology and can be installed on any platform that supports VS Code Extensions:
 
-### Features at a Glance
+- **[Visual Studio Code](https://code.visualstudio.com/)** - The primary development platform
+- **[Cursor](https://cursor.com)** - AI-powered code editor with BoxLang support
+- **[Windsurf](https://windsurf.dev/)** - Modern development environment
+- **Any IDE supporting [Open VSX](https://open-vsx.org/)** - Extended compatibility
 
-* Language server integration
-  * Inline documentation
-  * Language hints
-  * Type information
-* [Built-in debugger](boxlang-debugger/)
-* Mini BoxLang web server for quick development/testing
-* BoxLang version manager
-* BoxLang Agentic Coding `@boxlang`
-* Code Highlights and Introspection for supported grammars: Java, HTML, CSS, SQL, CFML
-* So much more.
+### BoxLang IDE Extension
 
-## BoxLang Monaco Editor
+Complete language support with IntelliSense, debugging, and AI-powered development assistance.
 
-Monaco Editor language support for BoxLang - providing syntax highlighting, IntelliSense, and custom themes for BoxLang development.
+{% content-ref url="boxlang-ide.md" %}
+[boxlang-ide.md](boxlang-ide.md)
+{% endcontent-ref %}
+
+### BoxLang Theme Extension
+
+Beautiful dark and light themes specifically crafted for BoxLang syntax highlighting and optimal coding experience.
+
+{% content-ref url="boxlang-theme.md" %}
+[boxlang-theme.md](boxlang-theme.md)
+{% endcontent-ref %}
+
+## 🌐 Web-Based Development
+
+### BoxLang Monaco Editor
+
+Monaco Editor language support for BoxLang - providing syntax highlighting, IntelliSense, and custom themes for web-based BoxLang development and online code editors.
 
 {% content-ref url="boxlang-monaco-editor.md" %}
 [boxlang-monaco-editor.md](boxlang-monaco-editor.md)
 {% endcontent-ref %}
 
-## CLI Tools
+### BoxLang TextMate Bundle
 
-We have a collection of CLI tools available to every OS installation:
+TextMate grammar bundle providing comprehensive syntax highlighting and snippets for BoxLang development across TextMate-compatible editors.
+
+{% content-ref url="boxlang-textmate-bundle.md" %}
+[boxlang-textmate-bundle.md](boxlang-textmate-bundle.md)
+{% endcontent-ref %}
+
+## 🛠️ Command Line Tools
+
+Powerful CLI utilities for BoxLang development, compilation, debugging, and migration tasks.
+
+### BoxLang Compiler
+
+Command-line compiler for BoxLang source code with optimization and build management capabilities.
 
 {% content-ref url="boxlang-compiler.md" %}
 [boxlang-compiler.md](boxlang-compiler.md)
 {% endcontent-ref %}
 
+### BoxLang Debugger
+
+Built-in debugging tools and utilities for troubleshooting BoxLang applications with breakpoint support and variable inspection.
+
 {% content-ref url="boxlang-debugger/" %}
 [boxlang-debugger](boxlang-debugger/)
 {% endcontent-ref %}
+
+### CFML Feature Audit
+
+Comprehensive auditing tool to analyze CFML codebases and assess BoxLang compatibility and migration readiness.
 
 {% content-ref url="cfml-feature-audit.md" %}
 [cfml-feature-audit.md](cfml-feature-audit.md)
 {% endcontent-ref %}
 
+### CFML to BoxLang Transpiler
+
+Automated migration tool for converting CFML code to BoxLang syntax with intelligent transformation and compatibility checks.
+
 {% content-ref url="cfml-to-boxlang-transpiler.md" %}
 [cfml-to-boxlang-transpiler.md](cfml-to-boxlang-transpiler.md)
 {% endcontent-ref %}
 
+## 🎨 Syntax Highlighting
 
+Enhanced syntax highlighting solutions for various platforms and applications.
 
-## Syntax Highlighters
+### Multi-Platform Highlighters
 
-Check out our syntax highlighters page so you can leverage some of them in your applications.
+Collection of syntax highlighters for embedding BoxLang code in documentation, websites, and applications across different platforms and libraries.
 
 {% content-ref url="syntax-highlighters.md" %}
 [syntax-highlighters.md](syntax-highlighters.md)
 {% endcontent-ref %}
 
+## 🚀 Quick Start Guide
+
+### For New BoxLang Developers
+
+1. **Install VS Code** - Download from [code.visualstudio.com](https://code.visualstudio.com/)
+2. **Install BoxLang Extension** - Search for "BoxLang" in the Extensions marketplace
+3. **Install BoxLang Theme** - Apply beautiful BoxLang-specific color schemes
+4. **Start Coding** - Create your first `.bx` file and experience full language support
+
+### For CFML Developers
+
+1. **Audit Your Codebase** - Use the CFML Feature Audit tool to assess migration readiness
+2. **Transpile Code** - Convert existing CFML to BoxLang using the automated transpiler
+3. **Set Up Development Environment** - Install the complete BoxLang toolchain
+4. **Migrate Gradually** - Use both tools to transition your applications systematically
