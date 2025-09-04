@@ -11,9 +11,13 @@ Clean, modern themes designed specifically for BoxLang development. This extensi
 
 ### BoxLang Dark (Neon)
 
+![BoxLang Dark Neon](https://github.com/ortus-boxlang/vscode-boxlang-theme/blob/development/screenshots/boxlang-dark.png?raw=true)
+
 High-contrast dark theme featuring vibrant neon colors with pink, purple, and cyan accents. Optimized for extended coding sessions while maintaining visual appeal and code readability.
 
 ### BoxLang Light (Muted)
+
+![BoxLang Light Muted](https://github.com/ortus-boxlang/vscode-boxlang-theme/blob/development/screenshots/boxlang-light.png?raw=true)
 
 Subtle light theme with soft teal and green backgrounds, perfect for daytime development. Features muted accent colors that reduce eye strain during long coding sessions.
 
@@ -66,28 +70,6 @@ Enable these VS Code settings for the best theme experience:
   "editor.lineHeight": 1.5
 }
 ```
-
-## 📸 Theme Previews
-
-### BoxLang Dark (Neon)
-
-![BoxLang Dark Neon](https://github.com/ortus-boxlang/vscode-boxlang-theme/blob/development/screenshots/boxlang-dark.png?raw=true)
-
-High contrast dark theme with vibrant neon accents, perfect for nighttime coding sessions and those who prefer bold, colorful syntax highlighting.
-
-### BoxLang Light (Muted)
-
-![BoxLang Light Muted](https://github.com/ortus-boxlang/vscode-boxlang-theme/blob/development/screenshots/boxlang-light.png?raw=true)
-
-Gentle light theme with soft colors designed for comfortable daytime development and reduced eye strain during long coding sessions.
-
-![BoxLang Light Muted](https://github.com/ortus-boxlang/vscode-boxlang-theme/blob/development/screenshots/boxlang-light.png)
-
-Gentle light theme with soft colors designed for comfortable daytime development and reduced eye strain during long coding sessions.
-
-![BoxLang Light Muted](screenshots/boxlang-light.png)
-
-Gentle light theme with soft colors designed for comfortable daytime development and reduced eye strain during long coding sessions.
 
 ## 🔧 Theme Selection
 
