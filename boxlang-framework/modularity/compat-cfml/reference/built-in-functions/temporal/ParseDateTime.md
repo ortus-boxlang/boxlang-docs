@@ -1,15 +1,13 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `createDate`
+# Function: `ParseDateTime`
 
-Overload to creatDateTime behavior to account for ACF/Lucee specific manipulations ( e.g.
-
-converting non-century years to current century )
+Parses a locale-specific datetime string or object
 
 ## Method Signature
 
 ```
-createDate(year=[integer], month=[integer], day=[integer], hour=[integer], minute=[integer], second=[integer], millisecond=[integer], timezone=[string])
+ParseDateTime(date=[any], format=[string], timezone=[string], locale=[string])
 ```
 
 ### Arguments
@@ -17,14 +15,10 @@ createDate(year=[integer], month=[integer], day=[integer], hour=[integer], minut
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `year` | `integer` | `false` | The year of the date-time object. | `0` |
-| `month` | `integer` | `false` | The month of the date-time object. | `1` |
-| `day` | `integer` | `false` | The day of the date-time object. | `1` |
-| `hour` | `integer` | `false` | The hour of the date-time object. | `0` |
-| `minute` | `integer` | `false` | The minute of the date-time object. | `0` |
-| `second` | `integer` | `false` | The second of the date-time object. | `0` |
-| `millisecond` | `integer` | `false` |  | `0` |
-| `timezone` | `string` | `false` |  |  |
+| `date` | `any` | `true` | the date, datetime string or an object |  |
+| `format` | `string` | `false` | the format mask to use in parsing |  |
+| `timezone` | `string` | `false` | the timezone to apply to the parsed datetime |  |
+| `locale` | `string` | `false` | optional ISO locale string ( e.g. en-US, en_US, es-SA, es_ES, ru-RU, etc ) used to parse localized formats |  |
 
 ## Examples
 
@@ -32,6 +26,7 @@ createDate(year=[integer], month=[integer], day=[integer], hour=[integer], minut
 
 ## Related
 
+  * [createDate](./createDate.md)
   * [DateCompare](./DateCompare.md)
   * [DateFormat](./DateFormat.md)
   * [DateTimeFormat](./DateTimeFormat.md)
@@ -47,6 +42,5 @@ createDate(year=[integer], month=[integer], day=[integer], hour=[integer], minut
   * [LSWeek](./LSWeek.md)
   * [MonthAsString](./MonthAsString.md)
   * [MonthShortAsString](./MonthShortAsString.md)
-  * [ParseDateTime](./ParseDateTime.md)
   * [TimeFormat](./TimeFormat.md)
   * [ToLegacyDate](./ToLegacyDate.md)

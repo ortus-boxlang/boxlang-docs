@@ -23,12 +23,12 @@ GetComponentMetadata(path=[any])
 
 ## Related
 
-  * [Throw](./Throw.md)
-  * [ObjectSave](./ObjectSave.md)
-  * [GetFunctionData](./GetFunctionData.md)
-  * [GetVariable](./GetVariable.md)
-  * [GetTagData](./GetTagData.md)
   * [GetClientVariablesList](./GetClientVariablesList.md)
   * [GetContextRoot](./GetContextRoot.md)
+  * [GetFunctionData](./GetFunctionData.md)
+  * [GetTagData](./GetTagData.md)
+  * [GetVariable](./GetVariable.md)
   * [ObjectLoad](./ObjectLoad.md)
+  * [ObjectSave](./ObjectSave.md)
   * [SetVariable](./SetVariable.md)
+  * [Throw](./Throw.md)

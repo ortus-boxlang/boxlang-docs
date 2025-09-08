@@ -120,6 +120,62 @@ Arguments:
 
 </details>
 <details>
+<summary><code>format(mask=[string], timezone=[string], locale=[string])</code></summary>
+
+Formats a datetime, date or time
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `mask` | `string` | `false` | `null` |
+| `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
+
+</details>
+<details>
+<summary><code>dateFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
+
+Formats a datetime, date or time
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `mask` | `string` | `false` | `null` |
+| `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
+
+</details>
+<details>
+<summary><code>timeFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
+
+Formats a datetime, date or time
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `mask` | `string` | `false` | `null` |
+| `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
+
+</details>
+<details>
+<summary><code>dateTimeFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
+
+Formats a datetime, date or time
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `mask` | `string` | `false` | `null` |
+| `timezone` | `string` | `false` | `null` |
+| `locale` | `string` | `false` | `null` |
+
+</details>
+<details>
 <summary><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></summary>
 
 Creates an algorithmic hash of an object and returns it in the CFML compat upper case format

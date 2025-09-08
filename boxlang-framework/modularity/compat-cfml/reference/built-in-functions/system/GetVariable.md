@@ -23,12 +23,12 @@ GetVariable(name=[string])
 
 ## Related
 
-  * [Throw](./Throw.md)
-  * [ObjectSave](./ObjectSave.md)
-  * [GetFunctionData](./GetFunctionData.md)
-  * [GetComponentMetadata](./GetComponentMetadata.md)
-  * [GetTagData](./GetTagData.md)
   * [GetClientVariablesList](./GetClientVariablesList.md)
+  * [GetComponentMetadata](./GetComponentMetadata.md)
   * [GetContextRoot](./GetContextRoot.md)
+  * [GetFunctionData](./GetFunctionData.md)
+  * [GetTagData](./GetTagData.md)
   * [ObjectLoad](./ObjectLoad.md)
+  * [ObjectSave](./ObjectSave.md)
   * [SetVariable](./SetVariable.md)
+  * [Throw](./Throw.md)

@@ -27,3 +27,4 @@ Hash40(input=[any], algorithm=[string], encoding=[string], numIterations=[intege
 ## Related
 
   * [Hash](./Hash.md)
+  * [Hmac](./Hmac.md)

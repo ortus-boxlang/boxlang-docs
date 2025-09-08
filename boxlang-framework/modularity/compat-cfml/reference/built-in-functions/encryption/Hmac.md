@@ -1,13 +1,13 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `Hash`
+# Function: `Hmac`
 
 Creates an algorithmic hash of an object and returns it in the CFML compat upper case format
 
 ## Method Signature
 
 ```
-Hash(input=[any], algorithm=[string], encoding=[string], numIterations=[integer])
+Hmac(input=[any], key=[any], algorithm=[string], encoding=[string], numIterations=[integer])
 ```
 
 ### Arguments
@@ -16,7 +16,8 @@ Hash(input=[any], algorithm=[string], encoding=[string], numIterations=[integer]
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `input` | `any` | `true` | The item to be hashed |  |
-| `algorithm` | `string` | `false` | The supported {@link java.security.MessageDigest} algorithm (case-insensitive) or "quick" for an insecure 64-bit hash | `MD5` |
+| `key` | `any` | `true` |  |  |
+| `algorithm` | `string` | `false` | The supported {@link java.security.MessageDigest} algorithm (case-insensitive) | `HmacMD5` |
 | `encoding` | `string` | `false` | Applicable to strings ( default "utf-8" ) | `utf-8` |
 | `numIterations` | `integer` | `false` |  | `1` |
 
@@ -26,5 +27,5 @@ Hash(input=[any], algorithm=[string], encoding=[string], numIterations=[integer]
 
 ## Related
 
+  * [Hash](./Hash.md)
   * [Hash40](./Hash40.md)
-  * [Hmac](./Hmac.md)
