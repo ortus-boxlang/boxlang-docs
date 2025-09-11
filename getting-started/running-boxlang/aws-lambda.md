@@ -13,7 +13,7 @@ icon: aws
 
 AWS Lambda is a serverless computing service provided by Amazon Web Services (AWS) that lets you run code without provisioning or managing servers. It automatically scales applications by running code in response to events and allocates compute resources as needed, allowing developers to focus on writing code rather than managing infrastructure ([https://docs.aws.amazon.com/lambda/](https://docs.aws.amazon.com/lambda/)).
 
-The **BoxLang AWS Runtime** allows you to code in BoxLang and create Lambda functions in this ecosystem.  We provide you a nice template so you can work with serverless: [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template). This template will give you a turnkey application with features like:
+The **BoxLang AWS Runtime** allows you to code in BoxLang and create Lambda functions in this ecosystem.  We provide you a nice template so you can work with serverless: [https://github.com/ortus-boxlang/boxlang-starter-aws-lambda](https://github.com/ortus-boxlang/boxlang-starter-aws-lambda). This template will give you a turnkey application with features like:
 
 * Unit and Integration Testing
 * Java dependency management via Maven
@@ -26,7 +26,7 @@ The **BoxLang AWS Runtime** allows you to code in BoxLang and create Lambda func
 * GitHub actions to: test, build and release automatically to AWS
 * Performance monitoring and debugging capabilities
 
-{% @github-files/github-code-block url="https://github.com/ortus-boxlang/bx-aws-lambda-template" %}
+{% @github-files/github-code-block url="https://github.com/ortus-boxlang/boxlang-starter-aws-lambda" %}
 
 ## BoxLang Lambda Handler
 
@@ -98,7 +98,7 @@ The runtime now includes several performance optimizations that can be controlle
 
 ## BoxLang AWS Template
 
-The BoxLang default template for AWS lambda can be found here: [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template).  The structure of the project is the following:
+The BoxLang default template for AWS lambda can be found here: [https://github.com/ortus-boxlang/boxlang-starter-aws-lambda](https://github.com/ortus-boxlang/boxlang-starter-aws-lambda).  The structure of the project is the following:
 
 ```
 /.vscode - Some useful vscode tasks and settings

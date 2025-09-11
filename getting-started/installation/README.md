@@ -314,7 +314,7 @@ BoxLang can also run on AWS Lambdas. It even powers our entry playground at [htt
 * Runtime:\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/boxlang-aws-lambda-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/boxlang-aws-lambda-latest-all.jar)
 * Template\
-  [https://github.com/ortus-boxlang/bx-aws-lambda-template](https://github.com/ortus-boxlang/bx-aws-lambda-template)
+  [https://github.com/ortus-boxlang/boxlang-starter-aws-lambda](https://github.com/ortus-boxlang/boxlang-starter-aws-lambda)
 
 ### CommandBox BoxLang Server
 
