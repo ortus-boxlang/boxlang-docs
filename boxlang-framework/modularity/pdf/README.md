@@ -22,53 +22,53 @@ This module contributes the following Components to the language:
 * `document` - the wrapping component for creating PDF documents
   * The following attributes are available to the `document` component
     * `format` - The format of the document to generate. This attribute is unused and will be removed in a future release as only PDF generation is supported. Any other format requested will throw an error.
-    * `encryption` - The encryption level to use for the document. Default is none. Possible values are 128-bit, 40-bit, none
-    * `localUrl` - If true, the document will be generated with local URLs. Default is false
-    * `variable` - The name of the variable to store the generated PDF binary
-    * `backgroundVisible` - If true, the background will be visible. Default is true
-    * `bookmark` - If true, bookmarks will be generated. Default is true
-    * `htmlBookmark` - If true, it is possible to convert outlines to a list of named anchors (`<a name="anchor_id">label</a>`) or a headings structure ( `<h1>... <h6>` ). Transforming of HTML hyperlinks to PDF hyperlinks (if not explicitly disabled Hyperlink jumps within the same document are supported as well
+    * `encryption` - The encryption level to use for the document. Default is none. Possible values are 128-bit, 40-bit, none.
+    * `localUrl` - If true, the document will be generated with local URLs. Default is false.
+    * `variable` - The name of the variable to store the generated PDF binary.
+    * `backgroundVisible` - If true, the background will be visible. Default is true.
+    * `bookmark` - If true, bookmarks will be generated. Default is true.
+    * `htmlBookmark` - If true, it is possible to convert outlines to a list of named anchors (`<a name="anchor_id">label</a>`) or a headings structure ( `<h1>... <h6>` ). Hyperlink jumps within the same document are supported as well.
     * `orientation` - The orientation of the document. Default is portrait. Possible values are portrait, landscape
-    * `scale` - The percentage to scale the document. Must be less than 100
-    * `marginBottom` - The bottom margin of the document
-    * `marginLeft` - The left margin of the document
-    * `marginRight` - The right margin of the document
-    * `marginTop` - The top margin of the document
-    * `pageWidth` - The width of the page in inches
-    * `pageHeight` - The height of the page in inches
-    * `fontEmbed` - If true, fonts will be embedded in the document. Default is true
-    * `fontDirectory` - The directory where fonts are located
-    * `openpassword` - The password to open protected documents
-    * `ownerPassword` - The password to access restricted permissions
+    * `scale` - The percentage to scale the document. Must be less than or equal to 100.
+    * `marginBottom` - The bottom margin of the document.
+    * `marginLeft` - The left margin of the document.
+    * `marginRight` - The right margin of the document.
+    * `marginTop` - The top margin of the document.
+    * `pageWidth` - The width of the page in inches.
+    * `pageHeight` - The height of the page in inches.
+    * `fontEmbed` - If true, fonts will be embedded in the document. Default is true.
+    * `fontDirectory` - The directory where fonts are located.
+    * `openpassword` - The password to open protected documents.
+    * `ownerPassword` - The password to access restricted permissions.
     * `pageType` - The type of page to generate. Default is A4.
-    * `pdfa` - If true, the document will be generated as a PDF/A document. Default is false
-    * `filename` - The filename to write the PDF to. If not provided and a `variable` argument is not provided, the PDF will be written to the browser ( Web-context only )
-    * `overwrite` - If true, the file will be overwritten if it exists. Default is false
-    * `saveAsName` - The name to save the PDF as in the browser
-    * `src` - A full URL or path relative to the web root of the source
-    * `srcfile` - The absolute path to a source file
-    * `mimeType` - The mime type of the source. Default is text/html. Possible values are text/html, text/plain, application/xml, image/jpeg, image/png, image/bmp, image/gif
-    * `unit` - The unit of measurement to use. Default is inches. Possible values are in, cm
-  * The following attributes are not currently implemented and will throw an error if used
-    * `permissions` - Granular permissability is not yet supported
-    * `permissionspassword` - Granular permissability is not yet supported
-    * `userPassword` - Granular permissability is not yet supported
-    * `authPassword` - Granular permissability is not yet supported
-    * `authUser` - Granular permissability is not yet supported
-    * `userAgent` - HTTP user agent identifier
-    * `proxyHost` - IP address or server name for proxy host
-    * `proxyPassword` - password for the proxy host
-    * `proxyPort` - port of the proxy host
-    * `proxyUser` - user name for the proxy host
-    * `tagged` - yes|no ACF OpenOffice integration not supported
-    * `formfields` - yes|no Form field attributes are not implemented in standard module
-    * `formsType` - FDF|PDF|HTML|XML Form field attributes are not implemented in standard module
-* `documentitem` - specifies header, footer, and pagebreaks within a document body or `documentsection`
-  * The following attributes are available to the `documentitem` component
-    * `type` A string which dictates the type of item. Accepted values are `pagebreak`|`header`|`footer`
-    * `evalAtPrint` This attribute is deprecated as all content is evaluated when the body of the tag is processed
-* `documentsection` - Divides a PDF document into sections. Used in conjunction with a `documentitem` component, each section can have unique headers, footers, and page numbers. A page break will always precede a section
-  * The following attributes are available to the `documentsection` component
+    * `pdfa` - If true, the document will be generated as a PDF/A document. Default is false.
+    * `filename` - The filename to write the PDF to. If not provided and a `variable` argument is not provided, the PDF will be written to the browser (web-context only ).
+    * `overwrite` - If true, the file will be overwritten if it exists. Default is false.
+    * `saveAsName` - The name to save the PDF as in the browser.
+    * `src` - A full URL or path relative to the web root of the source.
+    * `srcfile` - The absolute path to a source file.
+    * `mimeType` - The mime type of the source. Default is text/html. Possible values are text/html, text/plain, application/xml, image/jpeg, image/png, image/bmp, image/gif.
+    * `unit` - The unit of measurement to use. Default is inches. Possible values are in, cm.
+  * The following attributes are not currently implemented and will throw an error if used:
+    * `permissions` - Granular permissability is not yet supported.
+    * `permissionspassword` - Granular permissability is not yet supported.
+    * `userPassword` - Granular permissability is not yet supported.
+    * `authPassword` - Granular permissability is not yet supported.
+    * `authUser` - Granular permissability is not yet supported.
+    * `userAgent` - HTTP user agent identifier.
+    * `proxyHost` - IP address or server name for proxy host.
+    * `proxyPassword` - password for the proxy host.
+    * `proxyPort` - port of the proxy host.
+    * `proxyUser` - user name for the proxy host.
+    * `tagged` - yes|no ACF OpenOffice integration not supported.
+    * `formfields` - yes|no Form field attributes are not implemented in standard module.
+    * `formsType` - FDF|PDF|HTML|XML Form field attributes are not implemented in standard module.
+* `documentitem` - specifies header, footer, and page breaks within a document body or `documentsection.`
+  * The following attributes are available to the `documentitem` component:
+    * `type` A string which dictates the type of item. Accepted values are `pagebreak`|`header`|`footer.`
+    * `evalAtPrint` This attribute is deprecated as all content is evaluated when the body of the tag is processed.
+* `documentsection` - Divides a PDF document into sections. Used in conjunction with a `documentitem` component, each section can have unique headers, footers, and page numbers. A page break will always precede a section.
+  * The following attributes are available to the `documentsection` component:
     * `marginBottom` - The bottom margin of the section in the unit specified in the `document` component.
     * `marginLeft` - The left margin of the section in the unit specified in the `document` component.
     * `marginRight` - The right margin of the section in the unit specified in the `document` component.
