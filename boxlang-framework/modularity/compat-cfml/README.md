@@ -34,15 +34,29 @@ settings = {
 	clientTimeout = createTimeSpan( 0, 1, 0, 0 ),
 	// Mimic the CF behavior of nulls being undefined.  Set this to false to have full null support
 	nullIsUndefined = true,
-	// Mimic the CF and Lucee 5 behavior of boolean true/false being 1/0 and usable in math operations.  
+	// Mimic the CF and Lucee 5 behavior of boolean true/false being 1/0 and usable in math operations.
 	// Also affects the isNumeric() BIF.  To match Lucee 6, set this to false.
 	booleansAreNumbers = true,
+	// Mimic the CF behavior of Class instances being auto-cast to strings.
+	castClassesToStrings = true,
+	// Mimic the CF behavior of Throwable instances being auto-cast to strings.
+	castThrowablesToStrings = true,
+	// Mimic the CFML behavior of loose date comparison only to the instant level ( and not the TZ)
+	lenientDateComparison = true,
+	// Mimic the CF behavior of null and empty string being equal
+	nullEqualsEmptyString = true,
 	// JSON control character auto-escaping flag
 	// IF you turn to true, be aware that the entire JSON serialization will be escaped and be slower.
 	jsonEscapeControlCharacters = true,
 	// This simulates the query to empty value that Adobe/Lucee do when NOT in full null support
 	// We default it to true to simulate Adobe/Lucee behavior
 	queryNullToEmpty = true,
+	// CF will allow ANY java class to be generically cast into a struct (using public fields and getters) only excepting arrays and "simple" values.
+	// This allows even things like a closure to be passed into a struct BIF.
+	// BL will only use the generic class-to-struct logic for inputs which pass the isObject() test unless this flag is true
+	extraLooseStructCasting = true,
+	// Allow lenient JSON parsing that accepts single quotes, unquoted keys, trailing commas, and leading numeric zeroes
+	lenientJSONParsing = true,
 	// The CF -> BL AST transpiler settings
 	// The transpiler is in the core, but will eventually live in this module, so the settings are here.
 	transpiler = {
