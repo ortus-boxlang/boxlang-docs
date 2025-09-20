@@ -254,7 +254,7 @@ class {
      */
     public boolean function onRequestStart( targetPage ) {
         // Set a high timeout for long running tests
-        setting requestTimeout = "9999"
+        bx:setting requestTimeout = "9999";
         // Any global request start code
         
         return true
