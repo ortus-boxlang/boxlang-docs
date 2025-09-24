@@ -19,8 +19,8 @@ To start we will need to make sure our server is configured properly. You can do
 1. We can add `JVMArgs` to the CLI when starting a BoxLang CommandBox server:
 
 ```bash
-server start cfengine=boxlang 
-  javaVersion=openjdk21_jdk 
+server start cfengine=boxlang
+  javaVersion=openjdk21_jre
   JVMArgs='-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888'
 ```
 
@@ -30,7 +30,7 @@ server start cfengine=boxlang
 {
   "JVM": {
     "args": "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8888",
-    "javaVersion": "openjdk21_jdk"
+    "javaVersion": "openjdk21_jre"
   }
 }
 ```
@@ -52,8 +52,9 @@ We want the `launch.json` to look something like this:
       "name": "Debug CommandBox",
       "type": "boxlang",
       "request": "attach",
-       // make sure this is the same value you configured your server with            
-      "serverPort": "8888"
+       // make sure this is the same value you configured your server with
+      "serverPort": "8888",
+      "program": "${workspaceFolder}"
     }
   ]
 }

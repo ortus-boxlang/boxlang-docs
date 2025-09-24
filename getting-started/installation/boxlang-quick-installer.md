@@ -9,16 +9,13 @@ icon: poo-storm
 
 The BoxLang Quick Installer provides convenient installation scripts for Mac, Linux, and Windows systems to get BoxLang up and running in minutes. Choose between a single-version installer for simplicity or BVM (BoxLang Version Manager) for advanced version management.
 
-### 🚀 Quick Start
+## 🚀 Quick Start
 
 **Mac and Linux:**
 
 ```bash
 # Single version (simple)
 /bin/bash -c "$(curl -fsSL https://install.boxlang.io)"
-
-# Version manager (advanced)
-/bin/bash -c "$(curl -fsSL https://install-bvm.boxlang.io)"
 ```
 
 **Windows:**
@@ -28,7 +25,7 @@ The BoxLang Quick Installer provides convenient installation scripts for Mac, Li
 powershell -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://install-windows.boxlang.io'))"
 ```
 
-#### Verify Installation
+### Verify Installation
 
 ```bash
 # Check BoxLang version
@@ -41,7 +38,7 @@ boxlang
 boxlang-miniserver --port 8080
 ```
 
-### 📋Requirements <a href="#requirements-7" id="requirements-7"></a>
+## 📋Requirements <a href="#requirements-7" id="requirements-7"></a>
 
 You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21)
 
@@ -57,9 +54,9 @@ Once the requirements are installed, move down to the quick installer.
 {% endtab %}
 {% endtabs %}
 
-### 📦 Installation Options
+## 📦 Installation Options
 
-#### Option 1: Single-Version Installer (Recommended for Most Users)
+### Option 1: Single-Version Installer (Recommended for Most Users)
 
 **Choose this if you:**
 
@@ -76,7 +73,7 @@ Once the requirements are installed, move down to the quick installer.
 * ✅ Automatic PATH configuration
 * ✅ User or system-wide installation options
 
-#### Option 2: BVM (BoxLang Version Manager)
+### Option 2: BVM (BoxLang Version Manager)
 
 **Choose this if you:**
 
@@ -94,7 +91,7 @@ Once the requirements are installed, move down to the quick installer.
 * ✅ Clean uninstall capabilities
 * ✅ Health check and diagnostics
 
-### ⚙️ Command Options
+## ⚙️ Command Options
 
 Here are the available options for the install command.
 
@@ -109,26 +106,26 @@ Here are the available options for the install command.
 | `--without-commandbox` |       | Skip CommandBox installation                       |
 | `--yes`                | `-y`  | Use defaults for all prompts (installs CommandBox) |
 
-#### Notes
+### Notes
 
 * Use `--system` when you want to install BoxLang for all users on the system
 * The `--force` option is useful when you need to reinstall or update an existing installation
 * `--yes` automatically accepts all defaults, including installing CommandBox
 * `--with-commandbox` and `--without-commandbox` give you explicit control over CommandBox installation
 
-### 🛠️ What Gets Installed
+## 🛠️ What Gets Installed
 
-#### Core Components
+### Core Components
 
 * **BoxLang Runtime** (`boxlang`, `bx`) - The main BoxLang Runtime Engine
 * **BoxLang MiniServer** (`boxlang-miniserver`, `bx-miniserver`) - Lightweight web application server
 
-#### Helper Scripts
+### Helper Scripts
 
 * **install-bx-module** - Install modules from ForgeBox
 * **install-jre** (Windows) - Install Java Runtime Environment
 
-#### Directory Structure
+### Directory Structure
 
 ```
 ~/.boxlang/           # BoxLang home directory
@@ -143,7 +140,7 @@ Local User: ~/.local/bin/          # Binaries (Linux/Mac)
 C:\BoxLang\  # Installation directory (Windows)
 ```
 
-### 📖 Help Command
+## 📖 Help Command
 
 Always make sure to run the `--help` command to get the latest and greatest command usage.
 
@@ -191,9 +188,9 @@ Non-Interactive Usage:
   🌐 Install with defaults: curl -fsSL https://boxlang.io/install.sh | bash -s -- --yes
 ```
 
-### 🎯 Detailed Usage
+## 🎯 Detailed Usage
 
-#### Single-Version Installer Commands
+### Single-Version Installer Commands
 
 ```bash
 # Install latest stable version
@@ -215,7 +212,7 @@ install-boxlang --uninstall
 install-boxlang --help
 ```
 
-#### Module Management
+### Module Management
 
 ```bash
 # Install a module globally
@@ -234,9 +231,9 @@ install-bx-module bx-orm@1.0.0
 install-bx-module --help
 ```
 
-### 🌐 Running Applications
+## 🌐 Running Applications
 
-#### BoxLang Runtime
+### BoxLang Runtime
 
 ```bash
 # Start REPL
@@ -258,7 +255,7 @@ boxlang compile myscript.bx
 boxlang --version
 ```
 
-#### BoxLang MiniServer
+### BoxLang MiniServer
 
 ```bash
 # Start with default settings
@@ -277,9 +274,9 @@ boxlang-miniserver --dev
 boxlang-miniserver --help
 ```
 
-### 🔧 Configuration
+## 🔧 Configuration
 
-#### Environment Variables
+### Environment Variables
 
 ```bash
 # BoxLang home directory
@@ -292,9 +289,9 @@ export BOXLANG_OPTS="-Xmx2g -Xms512m"
 export BOXLANG_MODULES_PATH="./modules:~/.boxlang/modules"
 ```
 
-### 🐛 Troubleshooting
+## 🐛 Troubleshooting
 
-#### Common Issues
+### Common Issues
 
 **BoxLang not found after installation:**
 
@@ -342,7 +339,7 @@ rm -rf ~/.boxlang/modules/.cache
 install-bx-module bx-orm --verbose
 ```
 
-#### Getting Help
+### Getting Help
 
 ```bash
 # Command-specific help
@@ -358,33 +355,33 @@ install-boxlang --verbose
 install-bx-module --verbose
 ```
 
-### 📚 Resources
+## 📚 Resources
 
-#### Documentation
+### Documentation
 
 * 📖 [Official Documentation](https://boxlang.io/docs)
 * 🚀 [Getting Started Guide](https://boxlang.io/docs/getting-started)
 * 📋 [Language Reference](https://boxlang.io/docs/reference)
 * 🔧 [Module Development](https://boxlang.io/docs/modules)
 
-#### Community
+### Community
 
 * 💬 [Discord Community](https://boxlang.io/discord)
 * 📧 [Mailing List](https://boxlang.io/mailing-list)
 * 🐛 [Issue Tracker](https://github.com/ortus-boxlang/boxlang/issues)
 * 💡 [Feature Requests](https://github.com/ortus-boxlang/boxlang/discussions)
 
-#### Examples
+### Examples
 
 * 🧑‍💻 [Interactive Playground](https://try.boxlang.io)
 * 📁 [Sample Applications](https://github.com/ortus-boxlang/bx-demos)
 * 🎓 [Tutorials](https://learn.boxlang.io)
 
-### 🤝 Contributing
+## 🤝 Contributing
 
 We welcome contributions! Here's how you can help:
 
-#### Reporting Issues
+### Reporting Issues
 
 1. Check existing [issues](https://ortussolutions.atlassian.net/browse/BLINSTALL)
 2. Create a detailed bug report with:
@@ -393,7 +390,7 @@ We welcome contributions! Here's how you can help:
    * Steps to reproduce
    * Expected vs actual behavior
 
-#### Contributing Code
+### Contributing Code
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature/amazing-feature`
@@ -402,7 +399,7 @@ We welcome contributions! Here's how you can help:
 5. Update documentation
 6. Submit a pull request
 
-#### Testing
+### Testing
 
 Help test new features and releases:
 
@@ -414,13 +411,13 @@ bvm use snapshot
 # Report any issues found
 ```
 
-### 📄 License
+## 📄 License
 
 This project is licensed under the Apache License, Version 2.0.
 
-### 🆘 Support
+## 🆘 Support
 
-#### Community Support (Free)
+### Community Support (Free)
 
 * 🌐 Website: https://boxlang.io
 * 📖 Documentation: https://boxlang.ortusbooks.com
@@ -429,7 +426,7 @@ This project is licensed under the Apache License, Version 2.0.
 * 🧑‍💻 Try: https://try.boxlang.io
 * 📧 Mailing List: https://newsletter.boxlang.io
 
-#### Professional Support
+### Professional Support
 
 * 🫶 Enterprise Support: https://boxlang.io/plans
 * 🎓 Training: https://learn.boxlang.io
