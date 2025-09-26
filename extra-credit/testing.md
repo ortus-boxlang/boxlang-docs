@@ -1161,12 +1161,12 @@ For browser-based testing and debugging:
 ```cfscript
 // Create /tests/runner.bxm
 <bx:script>
-param name="url.reporter" default="simple"
-param name="url.directory" default="tests.specs"
-param name="url.recurse" default="true"
+param name="url.reporter" default="simple";
+param name="url.directory" default="tests.specs";
+param name="url.recurse" default="true";
 
 writeOutput(
-    new testbox.TestBox( 
+    new testbox.system.TestBox( 
         directory = url.directory,
         recurse = url.recurse,
         reporter = url.reporter
