@@ -8,7 +8,7 @@ icon: cube
 In the BoxLang language, many persistence and visibility scopes exist for variables to be placed in. These are differentiated by context: in a class, function, tag module, thread, or template.  These scopes are Java maps but enhanced to provide case-insensitivity, member functions and more.&#x20;
 
 {% hint style="info" %}
-All BoxLang scopes are implemented as BoxLang [structures](structures.md), basically case-insensitive concurrent hash maps behind the scenes.&#x20;
+All BoxLang scopes are implemented as BoxLang [structures](structures.md), basically case-insensitive maps behind the scenes.&#x20;
 {% endhint %}
 
 This idea that the variables you declare in templates, classes, and functions are stored in a structure makes your code highly flexible since you can interact with the entire scope fluently and with many different BIFs available.  You can also bind them to function calls, attributes, etc.  Thus, it capitulates on BoxLang being a dynamic language.
@@ -75,24 +75,24 @@ writeOutput( variables.a )
 All classes in BoxLang follow Object-oriented patterns and have the following scopes available.  Another critical aspect of classes is that all declared functions will be placed in a visibility scope.
 
 * `variables` - Private scope, visible internally to the class only
-* `this` - Public scope, visible from the outside world
+* `this` - Public scope, visible from the outside world and a self-reference internally
 * `static` - Store variables in the classes blueprint and not the instance
 * `super`- Only available if you use inheritance
 
 ```java
 class extends="MyParent"{
-    
+
     static {
         className = "MyClass"
     }
-    
+
     variables.created = now()
     this.PUBLIC = "Hola"
 
     function init(){
         super.init()
     }
-    
+
     function main(){
         println( "hello #static.className#" )
     }
@@ -118,7 +118,7 @@ class {
         writedump( var: this, label: "public" );
         writedump( var: variables, label: "private" );
     }
-    
+
     private function test(){}
     public function hello(){}
 
@@ -225,7 +225,7 @@ function testLambdaScope() {
     localVar = "I am local"
 
     // This lambda will fail because it tries to access localVar
-    brokenLambda = () -> localVar 
+    brokenLambda = () -> localVar
 
     println( brokenLambda() ) // This will cause an error
 }
@@ -282,11 +282,11 @@ When you create threads with the `thread`component, you will have these scopes:
 * `this`- The surrounding declared class scope
 
 ```javascript
-bx:thread 
-    name="exampleThread" 
+bx:thread
+    name="exampleThread"
     message="Hello from the thread!"
 {
-    
+
     // You can use var, local or none
     var incomingMessage = attributes.message
 
@@ -328,7 +328,6 @@ If you use a variable name **without** a scope prefix, BoxLang checks the scopes
 9. URL
 10. Form
 11. Cookie
-12. Client
 
 {% hint style="danger" %}
 **IMPORTANT**: Because BoxLang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables. It can also help you avoid nasty lookups or unexpected results.
@@ -339,7 +338,6 @@ If you use a variable name **without** a scope prefix, BoxLang checks the scopes
 Can be used in any context, used for persisting variables for a period of time.
 
 * `session` - stored in server RAM or external storages tracked by unique web visitor
-* `client` - stored in cookies, databases, or external storages (simple values only)
 * `application` - stored in server RAM or external storage tracked by the running BoxLang application
 * `cookie` - stored in a visitor's browser
 * `server` - stored in server RAM for ANY application for that BoxLang instance
@@ -347,3 +345,15 @@ Can be used in any context, used for persisting variables for a period of time.
 * `cgi` - read only scope provided by the servlet container and BoxLang
 * `form` - Variables submitted via HTTP posts
 * `URL` - Variables incoming via HTTP GET operations or the incoming URL
+
+## Client Scope
+
+The `client` scope is not supported in core BoxLang.  This is a CFML legacy scope that is only available via our `bx-compat-cfml` module.  If you would like to use it, please install the module.
+
+```bash
+# Using OS CLI
+install-bx-module bx-compat-cfml
+
+# Using CommandBox
+box bx-compat-cfml
+```
