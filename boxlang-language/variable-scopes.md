@@ -427,8 +427,11 @@ If you use a variable name **without** a scope prefix, BoxLang checks the scopes
 5. Query (variables in active query loops)
 6. Thread
 7. Variables
+
+If the runtime is web-based, it will also check these scopes last:
+
 8. CGI
-9. URL
+9.  URL
 10. Form
 11. Cookie
 
@@ -624,7 +627,346 @@ function efficientScopeUsage() {
 **Performance Tip**: Always scope your variables explicitly. Unscoped variables trigger scope hunting, which impacts performance, especially in complex applications.
 {% endhint %}
 
-## 🚫 Client Scope
+## 🖥️ Server Scope
+
+The `server` scope is a global scope that lives for the entire lifetime of the BoxLang runtime instance. It contains system information, BoxLang runtime details, and can store custom variables that need to persist across all applications and requests.  It contains the following sub-scopes:
+
+* `boxlang` - BoxLang runtime information
+* `cli` - Command line execution details
+* `java` - Java runtime information
+* `os` - Operating system information
+* `separator` - File system separators
+* `system` - System properties and environment
+
+### 🏗️ Server Scope Structure
+
+The server scope is automatically populated with several unmodifiable sub-structures:
+
+#### 🎯 BoxLang Information (`server.boxlang`)
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `buildDate` | string | Build date of the BoxLang runtime |
+| `boxlangId` | string | Unique identifier for this BoxLang instance |
+| `codename` | string | Release codename for this version |
+| `cliMode` | boolean | Whether running in CLI mode |
+| `debugMode` | boolean | Whether debug mode is enabled |
+| `jarMode` | boolean | Whether running from JAR file |
+| `modules` | struct | Information about loaded modules |
+| `runtimeHome` | string | Path to BoxLang runtime directory |
+| `version` | string | BoxLang version number |
+
+```javascript
+// BoxLang runtime information
+println( "BoxLang Version: #server.boxlang.version#" )
+println( "Codename: #server.boxlang.codename#" )
+println( "Build Date: #server.boxlang.buildDate#" )
+println( "Runtime Home: #server.boxlang.runtimeHome#" )
+println( "CLI Mode: #server.boxlang.cliMode#" )
+println( "Debug Mode: #server.boxlang.debugMode#" )
+println( "JAR Mode: #server.boxlang.jarMode#" )
+
+// Access loaded modules
+writeDump( server.boxlang.modules )
+```
+
+#### 🏢 Operating System Information (`server.os`)
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `additionalinformation` | string | Additional OS information |
+| `arch` | string | System architecture (x86, x64, etc.) |
+| `archModel` | string | Architecture model |
+| `hostname` | string | Local machine hostname |
+| `ipAddress` | string | Local machine IP address |
+| `macAddress` | string | Local machine MAC address |
+| `name` | string | Operating system name |
+| `version` | string | Operating system version |
+
+```javascript
+// Operating system details
+println( "OS Name: #server.os.name#" )
+println( "OS Version: #server.os.version#" )
+println( "Architecture: #server.os.arch#" )
+println( "Hostname: #server.os.hostname#" )
+println( "IP Address: #server.os.ipAddress#" )
+println( "MAC Address: #server.os.macAddress#" )
+```
+
+#### ☕ Java Runtime Information (`server.java`)
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `archModel` | string | Architecture model |
+| `availableLocales` | array | List of available locales |
+| `defaultLocale` | string | Default system locale |
+| `executionPath` | string | Java execution path |
+| `freeMemory` | numeric | Available free memory in bytes |
+| `maxMemory` | numeric | Maximum memory available in bytes |
+| `totalMemory` | numeric | Total memory allocated in bytes |
+| `vendor` | string | Java vendor name |
+| `version` | string | Java version number |
+
+```javascript
+// Java environment details
+println( "Java Version: #server.java.version#" )
+println( "Java Vendor: #server.java.vendor#" )
+println( "Available Memory: #server.java.freeMemory# bytes" )
+println( "Max Memory: #server.java.maxMemory# bytes" )
+println( "Total Memory: #server.java.totalMemory# bytes" )
+println( "Default Locale: #server.java.defaultLocale#" )
+
+// Available locales
+for( locale in server.java.availableLocales ) {
+    println( "Locale: #locale#" )
+}
+```
+
+#### 📁 File System Separators (`server.separator`)
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `file` | string | File separator character (/ or \\) |
+| `line` | string | Line separator character(s) |
+| `path` | string | Path separator character (; or :) |
+
+```javascript
+// File system separators
+println( "Path Separator: #server.separator.path#" )
+println( "File Separator: #server.separator.file#" )
+println( "Line Separator: #server.separator.line#" )
+```
+
+#### 💻 CLI Information (`server.cli`)
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `args` | array | Original command line arguments |
+| `command` | string | Full command line used to start BoxLang |
+| `executionPath` | string | Directory from which CLI was executed |
+| `parsed` | struct | Parsed command line arguments |
+
+```javascript
+// CLI execution details (only available in CLI mode)
+if( server.boxlang.cliMode ) {
+    println( "Execution Path: #server.cli.executionPath#" )
+    println( "Command: #server.cli.command#" )
+    writeDump( server.cli.args )
+    writeDump( server.cli.parsed )
+}
+```
+
+#### ⚙️ System Properties and Environment (`server.system`)
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `environment` | struct | System environment variables (if security allows) |
+| `properties` | struct | Java system properties (if security allows) |
+
+{% hint style="warning" %}
+**Security Note**: The `server.system` scope content depends on the `populateServerSystemScope` security setting. When disabled, both `environment` and `properties` will be empty structs.
+{% endhint %}
+
+```javascript
+// System environment and properties (if security allows)
+// Check security setting: populateServerSystemScope
+if( !structIsEmpty( server.system.environment ) ) {
+    println( "Environment Variables Available" )
+    println( "PATH: #server.system.environment.PATH#" )
+}
+
+if( !structIsEmpty( server.system.properties ) ) {
+    println( "System Properties Available" )
+    println( "Java Home: #server.system.properties['java.home']#" )
+}
+```
+
+### 🔧 Custom Server Variables
+
+You can store your own variables in the server scope for cross-application persistence:
+
+```javascript
+// Store custom server-wide data
+server.appStartTime = now()
+server.requestCounter = 0
+server.globalSettings = {
+    "maintenance" : false,
+    "debugEnabled" : true
+}
+
+// Increment request counter
+server.requestCounter++
+
+// Check maintenance mode across applications
+if( server.globalSettings.maintenance ) {
+    abort "System is under maintenance"
+}
+```
+
+### 🔒 Unmodifiable Keys
+
+The following keys cannot be modified once the server scope is initialized:
+
+* `boxlang` - BoxLang runtime information
+* `os` - Operating system information
+* `java` - Java runtime information
+* `separator` - File system separators
+* `system` - System properties and environment
+
+```javascript
+// These will throw errors after initialization:
+// server.boxlang = "modified"  // ❌ Cannot modify
+// server.os.name = "custom"    // ❌ Cannot modify
+
+// But this is allowed:
+server.customData = "allowed"  // ✅ Custom keys are allowed
+```
+
+## 🌐 CGI Scope
+
+The `CGI` scope is a read-only scope available only in web runtimes that contains HTTP request information and server environment variables. It provides access to web server and request details following the Common Gateway Interface standard.
+
+### 📡 Request Information
+
+```javascript
+// Basic request details
+println( "Request Method: #cgi.request_method#" )     // GET, POST, PUT, etc.
+println( "Request URL: #cgi.request_url#" )           // Full request URL
+println( "Script Name: #cgi.script_name#" )           // Request URI
+println( "Query String: #cgi.query_string#" )         // URL parameters
+println( "Path Info: #cgi.path_info#" )               // Additional path info
+
+// Content information
+println( "Content Type: #cgi.content_type#" )         // Request content type
+println( "Content Length: #cgi.content_length#" )     // Request body size
+```
+
+### 🖥️ Server Information
+
+```javascript
+// Server details
+println( "Server Name: #cgi.server_name#" )           // Server hostname
+println( "Server Port: #cgi.server_port#" )           // Server port
+println( "Server Protocol: #cgi.server_protocol#" )   // HTTP/1.1, HTTP/2, etc.
+println( "Server Port Secure: #cgi.server_port_secure#" ) // Secure port if HTTPS
+
+// Local server information
+println( "Local Address: #cgi.local_addr#" )          // Server IP address
+println( "Local Host: #cgi.local_host#" )             // Server hostname
+```
+
+### 👤 Client Information
+
+```javascript
+// Client/remote details
+println( "Remote Address: #cgi.remote_addr#" )        // Client IP address
+println( "Remote Host: #cgi.remote_host#" )           // Client hostname
+println( "Remote User: #cgi.remote_user#" )           // Authenticated user
+
+// Request security
+println( "HTTPS: #cgi.https#" )                       // Boolean - is secure
+println( "HTTP Host: #cgi.http_host#" )               // Host header with port
+```
+
+### 📂 File Path Information
+
+```javascript
+// Template and path information
+println( "Template Path: #cgi.cf_template_path#" )    // Absolute template path
+println( "BX Template Path: #cgi.bx_template_path#" ) // BoxLang template path
+println( "Path Translated: #cgi.path_translated#" )   // Physical path
+```
+
+### 🌐 HTTP Headers
+
+The CGI scope automatically provides access to all HTTP headers using the `http_` prefix:
+
+```javascript
+// Common HTTP headers
+println( "User Agent: #cgi.http_user_agent#" )        // Browser/client info
+println( "Accept: #cgi.http_accept#" )                 // Accepted content types
+println( "Accept Language: #cgi.http_accept_language#" ) // Language preferences
+println( "Accept Encoding: #cgi.http_accept_encoding#" ) // Compression support
+println( "Connection: #cgi.http_connection#" )         // Connection type
+println( "Referer: #cgi.http_referer#" )              // Referring page
+println( "Cookie: #cgi.http_cookie#" )                // Cookie header
+
+// Custom headers are also accessible
+println( "Authorization: #cgi.http_authorization#" )   // Auth header
+println( "X-Forwarded-For: #cgi.http_x_forwarded_for#" ) // Proxy headers
+```
+
+### 🔍 CGI Scope Behavior
+
+```javascript
+// CGI scope never throws errors - returns empty string for missing keys
+println( "Non-existent key: '#cgi.nonexistent#'" )    // Returns: ""
+
+// Check if keys exist
+if( len( cgi.http_user_agent ) ) {
+    println( "User agent is available" )
+}
+
+// Iterate over all CGI variables
+for( key in cgi ) {
+    println( "#key#: #cgi[key]#" )
+}
+
+// Dump all CGI information
+writeDump( var=cgi, label="CGI Scope" )
+```
+
+### 🔐 Security and SSL Information
+
+```javascript
+// SSL/TLS certificate information (when available)
+println( "Auth Type: #cgi.auth_type#" )               // Authentication method
+println( "Auth User: #cgi.auth_user#" )               // Authenticated username
+println( "Cert Issuer: #cgi.cert_issuer#" )           // Certificate issuer
+println( "Cert Subject: #cgi.cert_subject#" )         // Certificate subject
+println( "Cert Key Size: #cgi.cert_keysize#" )        // Certificate key size
+
+// HTTPS specific information
+if( cgi.https == "on" ) {
+    println( "HTTPS Key Size: #cgi.https_keysize#" )
+    println( "HTTPS Secret Key Size: #cgi.https_secretkeysize#" )
+}
+```
+
+### 📊 Available CGI Variables
+
+The CGI scope provides access to these standard variables:
+
+| Variable | Description |
+|----------|-------------|
+| `auth_password` | HTTP authentication password |
+| `auth_type` | HTTP authentication type |
+| `auth_user` | HTTP authenticated username |
+| `bx_template_path` | BoxLang template physical path |
+| `cf_template_path` | CFML-compatible template path |
+| `content_length` | Request content length |
+| `content_type` | Request content type |
+| `context_path` | Web application context path |
+| `gateway_interface` | CGI version |
+| `http_*` | All HTTP headers with `http_` prefix |
+| `https` | Whether request is secure |
+| `local_addr` | Server IP address |
+| `local_host` | Server hostname |
+| `path_info` | Additional path information |
+| `path_translated` | Physical path of template |
+| `query_string` | URL query parameters |
+| `remote_addr` | Client IP address |
+| `remote_host` | Client hostname |
+| `remote_user` | Authenticated remote user |
+| `request_method` | HTTP method (GET, POST, etc.) |
+| `request_url` | Complete request URL |
+| `script_name` | Request URI |
+| `server_name` | Server hostname |
+| `server_port` | Server port number |
+| `server_port_secure` | Secure server port |
+| `server_protocol` | HTTP protocol version |
+
+## �🚫 Client Scope
 
 The `client` scope is not supported in core BoxLang.  This is a CFML legacy scope that is only available via our `bx-compat-cfml` module.  If you would like to use it, please install the module.
 
