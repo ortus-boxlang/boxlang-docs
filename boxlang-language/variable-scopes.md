@@ -52,7 +52,7 @@ function getData(){
 }
 ```
 
-## 📄 Scripts & Template Scopes (`bxm,bxs`)
+## 📄 Template/Scripts (`bxm,bxs`)
 
 All scripts and templates have the following scopes available to them.  Please note that the `variables`scope can also be implicit.  You don't have to declare it.
 
@@ -67,7 +67,25 @@ variables.a = "hello"
 writeOutput( variables.a )
 ```
 
-## 🗳️ Class Scopes (bx)
+## ⚡Templates/Scripts Function Scopes
+
+All user-defined functions declared in templates or scripts will have the following scopes available:
+
+* `variables` - Has access to private variables within a Class or Page
+* `local` - Function-scoped variables only exist within the function execution. Referred to as `var` scoping. The default assignment scope in a function.
+* `arguments` - Incoming variables to a function
+
+```javascript
+function sayHello( required name ){
+    var fullName = "Hello #arguments.name#"
+    // case insensitive
+    return FULLNAME
+}
+
+writeOutput( sayHello( "luis" ) )
+```
+
+## 🗳️ Classes (`bx`)
 
 All classes in BoxLang follow Object-oriented patterns and have the following scopes available.  Another critical aspect of classes is that all declared functions will be placed in a visibility scope.
 
@@ -97,7 +115,7 @@ class extends="MyParent"{
 }
 ```
 
-### Class Function Scopes
+### Function Scopes
 
 Depending on a function’s visibility, BoxLang automatically places a reference (or pointer) to that function in different scopes, within the class ensuring that it can be discovered and invoked appropriately. Why does it do this? Because BoxLang is a dynamic language by design.
 
@@ -126,25 +144,7 @@ class {
 }
 ```
 
-## ⚡Templates/Scripts Function Scopes
-
-All user-defined functions declared in templates or scripts will have the following scopes available:
-
-* `variables` - Has access to private variables within a Class or Page
-* `local` - Function-scoped variables only exist within the function execution. Referred to as `var` scoping. The default assignment scope in a function.
-* `arguments` - Incoming variables to a function
-
-```javascript
-function sayHello( required name ){
-    var fullName = "Hello #arguments.name#"
-    // case insensitive
-    return FULLNAME
-}
-
-writeOutput( sayHello( "luis" ) )
-```
-
-## ⚡Closure Scopes
+## ⚡Closures
 
 All closures in BoxLang are context-aware, which means they carry with them knowledge of the environment in which they were created. In other words, a closure isn’t just a function—it’s a function plus the scope it was born in. This allows closures to maintain access to variables, functions, and references that existed at the time they were defined, even if they are later executed in a completely different context.
 
@@ -191,7 +191,7 @@ println( increment() )  // Output: 3
 
 ```
 
-## 🪶 Lambdas (Pure Function) Scopes
+## 🪶 Lambdas
 
 Lambdas in BoxLang are designed to be pure functions. Unlike closures, they do not capture or carry along the scope in which they were defined. In other words, lambdas don’t “remember” their birthplace or have access to surrounding variables. They exist independently of the context in which they were created.
 
@@ -248,13 +248,13 @@ testLambdaScope()
 
 ```
 
-## 🏷️ Custom Component Scopes
+## 🏷️ Components
 
 In BoxLang, you’re not limited to the built-in components—you can extend the language itself by creating your own custom components. These components can be invoked seamlessly in both script syntax and templating syntax, giving developers a consistent way to encapsulate and reuse functionality across different coding styles.
 
 Custom components are powerful because they allow you to wrap up behavior into a self-contained unit that can handle input, manage its own internal state, and even communicate back to the calling template. This makes them excellent for building reusable UI constructs, workflow blocks, or domain-specific abstractions.  They also do not affect the parser, but rather are invoked at runtime.  This means, that you can create predictable, reusable components without worrying about breaking the syntax of your BoxLang code.
 
-Every custom component automatically has access to a set of special scopes that give it flexibility and power:
+Every custom/core component automatically has access to a set of special scopes that give it flexibility and power:
 
 •	**attributes** – Holds the incoming arguments or attributes passed into the component. This is how you provide input to customize the component’s behavior.
 •	**variables** – Acts as the default scope for variable assignments inside the component, ensuring that the component has its own sandboxed data environment.
@@ -284,7 +284,7 @@ Or you can invoke it using **templating syntax**, which is closer to traditional
 We highly discourage peeking out of your component using the `caller`scope, but it can sometimes be beneficial.  Use with caution.
 {% endhint %}
 
-## 🧵 Thread Scopes
+## 🧵 Thread
 
 When you create threads with the `thread`component, you will have these scopes available to you:
 
@@ -326,7 +326,7 @@ println( "Thread Calculation Result: " & exampleThread.calculationResult )
 
 ```
 
-### 🧵 bxThread Scope
+### 🧵 bxThread
 
 The `bxThread` scope is a special BoxLang scope that provides access to thread metadata and variables from anywhere in your request. It contains a key for every thread that has been executed in the current request, making it easy to access thread data from outside the thread context.
 
@@ -360,11 +360,11 @@ for( threadName in bxThread ) {
 }
 ```
 
-## 🌐 Runtime Context Scopes
+## 🌐 Runtime Scopes
 
 BoxLang runs in different runtime contexts, and the available scopes depend on which runtime you're using. Understanding these differences is crucial for building portable applications.
 
-### 🖥️ Core OS Runtime Scopes
+### 🖥️ Core OS
 
 When running BoxLang in CLI mode or core OS runtime, you have access to these scopes:
 
@@ -387,7 +387,7 @@ application.version = "1.0.0" // Requires Application.bx
 println( "Running in CLI mode with core scopes only" )
 ```
 
-### 🕸️ Web Runtime Scopes
+### 🕸️ Web Runtimes
 
 When running in web runtimes (Servlet, MiniServer, Lambda, Desktop), you get additional web-specific scopes:
 
@@ -416,7 +416,7 @@ println( "Debug Mode: #url.debug#" )
 **Runtime Detection**: You can check your runtime context using `server.boxlang.runtime.name` to conditionally access web scopes.
 {% endhint %}
 
-## 🔍 **Evaluating Unscoped Variables**
+## 🔍 Unscoped Variables
 
 If you use a variable name **without** a scope prefix, BoxLang checks the scopes in the following order to find the variable (When we say `function` it includes closures, UDFs and lambdas):
 
@@ -438,8 +438,6 @@ If the runtime is web-based, it will also check these scopes last:
 {% hint style="danger" %}
 **IMPORTANT**: Because BoxLang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables. It can also help you avoid nasty lookups or unexpected results.
 {% endhint %}
-
-
 
 ## 🔒 Final Variables
 
@@ -502,7 +500,7 @@ Can be used in any context, used for persisting variables for a period of time.
 * `form` - Variables submitted via HTTP posts
 * `URL` - Variables incoming via HTTP GET operations or the incoming URL
 
-### 🌟 Practical Persistence Examples
+### Practical Persistence Examples
 
 ```javascript
 // 🔧 Server Scope - Cross-application persistence
@@ -562,7 +560,7 @@ if( structKeyExists( url, "action" ) ) {
 }
 ```
 
-### 🔄 Scope Interaction Examples
+### Scope Interaction Examples
 
 ```javascript
 // Copy data between scopes
@@ -574,7 +572,7 @@ structAppend( request.allData, url )
 structAppend( request.allData, form )
 ```
 
-### 🐛 Scope Debugging & Performance
+### Scope Debugging & Performance
 
 ```javascript
 // Debugging scopes - dump entire scopes
@@ -966,7 +964,7 @@ The CGI scope provides access to these standard variables:
 | `server_port_secure` | Secure server port |
 | `server_protocol` | HTTP protocol version |
 
-## �🚫 Client Scope
+## 🚫 Client Scope
 
 The `client` scope is not supported in core BoxLang.  This is a CFML legacy scope that is only available via our `bx-compat-cfml` module.  If you would like to use it, please install the module.
 
