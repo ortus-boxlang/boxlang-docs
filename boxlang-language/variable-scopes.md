@@ -5,13 +5,13 @@ icon: cube
 
 # Variable Scopes
 
-In the BoxLang language, many persistence and visibility scopes exist for variables to be placed in. These are differentiated by context: in a class, function, tag module, thread, or template.  These scopes are Java maps but enhanced to provide case-insensitivity, member functions and more.&#x20;
+In the BoxLang language, many persistence and visibility scopes exist for variables to be placed in. These are differentiated by context: in a class, function, component, thread, script or template.  These scopes are Java maps but enhanced to provide case-insensitivity, member functions and more.  There are also different scopes that become alive depending on the execution of certain constructs, such as queries, threads, and http calls.
 
 {% hint style="info" %}
-All BoxLang scopes are implemented as BoxLang [structures](structures.md), basically case-insensitive maps behind the scenes.&#x20;
+All BoxLang scopes are implemented as BoxLang [structures](structures.md), basically case-insensitive maps behind the scenes.
 {% endhint %}
 
-This idea that the variables you declare in templates, classes, and functions are stored in a structure makes your code highly flexible since you can interact with the entire scope fluently and with many different BIFs available.  You can also bind them to function calls, attributes, etc.  Thus, it capitulates on BoxLang being a dynamic language.
+When you declare variables in templates, classes, or functions, they’re stored within a structured scope. This design makes your code highly flexible, allowing you to fluently interact with the entire scope through a wide range of BIFs. You can even bind these variables directly to function calls, attributes, and more—highlighting the dynamic power at the core of BoxLang.
 
 ```javascript
 // Examples
@@ -33,16 +33,13 @@ results = matchClassRules( argumentCollection = myMap );
 
 // I can dump entire scopes
 writedump( variables )
-
 ```
 
-The only language keyword that can be used to tell the variable to store in a function's local scope is called `var`.  However, you can also just use the `local`scope directly or none at all. However, we do recommend being explicit on some occasions to avoid ambiguity.&#x20;
+The only language keyword that can be used to tell the variable to store in a function's local scope is called `var`.  However, you can also just use the `local`scope directly or none at all. However, we do recommend being explicit on some occasions to avoid ambiguity.
 
 {% hint style="warning" %}
 It's a good idea to scope variables to avoid scope lookups, which could in turn create issues or even leaks.
 {% endhint %}
-
-
 
 ```javascript
 function getData(){
@@ -55,7 +52,7 @@ function getData(){
 }
 ```
 
-## Scripts & Template Scopes (bxm,bxs)
+## 📄 Scripts & Template Scopes (`bxm,bxs`)
 
 All scripts and templates have the following scopes available to them.  Please note that the `variables`scope can also be implicit.  You don't have to declare it.
 
@@ -70,7 +67,7 @@ variables.a = "hello"
 writeOutput( variables.a )
 ```
 
-## Class Scopes (bx)
+## 🗳️ Class Scopes (bx)
 
 All classes in BoxLang follow Object-oriented patterns and have the following scopes available.  Another critical aspect of classes is that all declared functions will be placed in a visibility scope.
 
@@ -102,7 +99,11 @@ class extends="MyParent"{
 
 ### Class Function Scopes
 
-Depending on the function's visibility, BoxLang places a pointer for the function in the different scopes below.  Why? Because BoxLang is a dynamic language. Meaning at runtime, you can add/remove/modify functions if you want to.
+Depending on a function’s visibility, BoxLang automatically places a reference (or pointer) to that function in different scopes, within the class ensuring that it can be discovered and invoked appropriately. Why does it do this? Because BoxLang is a dynamic language by design.
+
+In practice, this means that functions in BoxLang are not locked down at compile time. Instead, they remain fully malleable at runtime—you can add new functions, remove existing ones, or even modify their behavior on the fly. This flexibility allows developers to build more adaptive and expressive applications, where behaviors can evolve based on context, configuration, or user interaction.
+
+By managing function pointers across scopes, BoxLang ensures that these runtime changes are immediately reflected wherever the function is expected to live. Whether it’s within a local scope, a component, or a broader application context, the dynamic nature of BoxLang makes it possible to treat functions as living members of your application rather than static, unchangeable artifacts.
 
 * `Private` Function
   * `variables`
@@ -125,7 +126,7 @@ class {
 }
 ```
 
-## Templates/Scripts Function Scopes
+## ⚡Templates/Scripts Function Scopes
 
 All user-defined functions declared in templates or scripts will have the following scopes available:
 
@@ -143,9 +144,15 @@ function sayHello( required name ){
 writeOutput( sayHello( "luis" ) )
 ```
 
-## Closure Scopes
+## ⚡Closure Scopes
 
-All closures are context-aware. Meaning they know about their birthplace and surrounding scopes.  If closures are used in side classes, then they will have access to the class' `variables`and `this`scope.&#x20;
+All closures in BoxLang are context-aware, which means they carry with them knowledge of the environment in which they were created. In other words, a closure isn’t just a function—it’s a function plus the scope it was born in. This allows closures to maintain access to variables, functions, and references that existed at the time they were defined, even if they are later executed in a completely different context.
+
+For example, if you define a closure inside a function, it will continue to “remember” the local variables of that function, making it a powerful tool for encapsulating state and creating reusable logic without polluting the global or class-level scopes.
+
+When closures are defined inside classes, they become even more useful. In this case, closures automatically capture the class’s `variables` scope (the private, per-instance data) as well as the `this` scope (the public interface of the instance). This means closures have seamless access to both the internal state of the class and its public methods, enabling elegant encapsulation of behavior that can directly interact with the object’s data.
+
+This context-awareness is what makes closures in BoxLang so flexible. They’re not isolated pieces of code; they are “living” functions that carry their birthplace with them. This ensures that wherever you pass them—whether into a higher-order function, as an event handler, or across asynchronous execution—they still know exactly where they came from and what they can interact with.
 
 * `variables` - Has access to private variables from where they were created (Classes, scripts or templates)
 * `this` - Has access to public variables from where they were created (Classes)
@@ -184,9 +191,16 @@ println( increment() )  // Output: 3
 
 ```
 
-## Lambdas (Pure Function) Scopes
+## 🪶 Lambdas (Pure Function) Scopes
 
-Lambdas are pure functions in BoxLang, they do not carry their surrounding or birth context.  They are simpler and faster.
+Lambdas in BoxLang are designed to be pure functions. Unlike closures, they do not capture or carry along the scope in which they were defined. In other words, lambdas don’t “remember” their birthplace or have access to surrounding variables. They exist independently of the context in which they were created.
+
+This distinction has two major implications:
+
+1.	**Simplicity** – Because lambdas are context-free, they are lightweight and predictable. They only operate on the `arguments` explicitly passed to them and any values they define internally. You don’t have to worry about hidden dependencies or external scope leaks. This makes them ideal for short, focused operations like transformations, mappings, or small inline computations.
+2.	**Performance** – Without the overhead of capturing surrounding scopes, lambdas are faster to create and execute compared to closures. They don’t need to carry around extra baggage such as references to variables, this, or parent function contexts. This efficiency makes them an excellent choice in performance-sensitive scenarios, especially when used in large iterations, functional pipelines, or hot paths in your application.
+
+In essence, lambdas in BoxLang provide a lean, functional style of programming: self-contained, efficient, and free of side effects. They shine when you need a quick function without any ties to the broader context—perfect for concise logic that should remain pure and context-independent.
 
 * `local` - Function-scoped variables only exist within the function execution. Referred to as `var` scoping. The default assignment scope in a function.
 * `arguments` - Incoming variables to a function
@@ -234,46 +248,45 @@ testLambdaScope()
 
 ```
 
-## Custom Component Scopes
+## 🏷️ Custom Component Scopes
 
-In BoxLang, you can extend the language and create your own custom components that can be used in script or templating syntaxes.  They allow you to encapsulate behavior that can wrap up anything.
+In BoxLang, you’re not limited to the built-in components—you can extend the language itself by creating your own custom components. These components can be invoked seamlessly in both script syntax and templating syntax, giving developers a consistent way to encapsulate and reuse functionality across different coding styles.
 
-* `attributes` - Incoming component attributes
-* `variables` - The default scope for variable assignments inside the component
-* `caller` - Used within a custom component to set or read variables within the template that called it.
+Custom components are powerful because they allow you to wrap up behavior into a self-contained unit that can handle input, manage its own internal state, and even communicate back to the calling template. This makes them excellent for building reusable UI constructs, workflow blocks, or domain-specific abstractions.  They also do not affect the parser, but rather are invoked at runtime.  This means, that you can create predictable, reusable components without worrying about breaking the syntax of your BoxLang code.
 
-```xml
+Every custom component automatically has access to a set of special scopes that give it flexibility and power:
+
+•	**attributes** – Holds the incoming arguments or attributes passed into the component. This is how you provide input to customize the component’s behavior.
+•	**variables** – Acts as the default scope for variable assignments inside the component, ensuring that the component has its own sandboxed data environment.
+•	**caller** – Provides a way for the component to interact with the template that invoked it, allowing you to set or read variables from the caller’s context. This enables two-way communication between the component and the outside world.
+
+### Example Usage
+
+You can call a component using **script syntax,** where it looks and feels like a function call with a block of content:
+
+```js
 // Call a component using script
 bx:component template="path/MyComponent.bxm" name="luis"{
     // Content here or more component calls or whatever
 }
+```
 
-// Call a component in the templating language: thus looks like custom tags
+Or you can invoke it using **templating syntax**, which is closer to traditional custom tags:
+
+```xml
+<!-- Templating syntax: call a component -->
 <bx:component template="path/MyComponent.bxm" name="luis">
-    More content
+    Inner content, text, or other nested components
 </bx:component>
 ```
-
-Here is the component:
-
-{% code title="path/MyComponent" %}
-```xml
-<bx:param name="attributes.name" default="nobody">
-<bx:set fullName = "Welcome #attributes.name#">
-
-<cfoutput>
-Hello from Component world #fullName#
-</cfoutput>
-```
-{% endcode %}
 
 {% hint style="warning" %}
 We highly discourage peeking out of your component using the `caller`scope, but it can sometimes be beneficial.  Use with caution.
 {% endhint %}
 
-## Thread Scopes
+## 🧵 Thread Scopes
 
-When you create threads with the `thread`component, you will have these scopes:
+When you create threads with the `thread`component, you will have these scopes available to you:
 
 * `attributes` - Passed variables via a thread
 * `thread` - A thread-specific scope that can be used for storage and retrieval.  Only the owning thread can write to this scope.  All other threads and the main thread can read the variables.
@@ -313,18 +326,108 @@ println( "Thread Calculation Result: " & exampleThread.calculationResult )
 
 ```
 
-## **Evaluating Unscoped Variables**
+### 🧵 bxThread Scope
 
-If you use a variable name **without** a scope prefix, BoxLang checks the scopes in the following order to find the variable:
+The `bxThread` scope is a special BoxLang scope that provides access to thread metadata and variables from anywhere in your request. It contains a key for every thread that has been executed in the current request, making it easy to access thread data from outside the thread context.
 
-1. Local (function-local, UDFs and Classes only)
-2. Arguments
-3. Thread local (inside threads only)
-4. Query (not a true scope; variables in query loops)
-5. Thread
-6. Variables
-7. CGI
-8. CFFILE
+* `bxThread` - Global scope containing all threads executed in the current request
+* Each thread key contains metadata and variables set from within that thread
+
+```javascript
+// Creating multiple threads
+bx:thread name="dataProcessor" id="123" {
+    thread.processedData = "Data processed for ID: #attributes.id#"
+    thread.timestamp = now()
+}
+
+bx:thread name="emailSender" recipient="user@example.com" {
+    thread.emailSent = true
+    thread.recipient = attributes.recipient
+    thread.sentAt = now()
+}
+
+// Wait for threads to complete
+threadJoin( "dataProcessor,emailSender" )
+
+// Access thread data from anywhere using bxThread scope
+println( "Data Processor Result: " & bxThread.dataProcessor.processedData )
+println( "Email Status: " & bxThread.emailSender.emailSent )
+println( "Email Recipient: " & bxThread.emailSender.recipient )
+
+// You can also iterate over all threads in the current request
+for( threadName in bxThread ) {
+    println( "Thread: #threadName# completed at #bxThread[threadName].timestamp#" )
+}
+```
+
+## 🌐 Runtime Context Scopes
+
+BoxLang runs in different runtime contexts, and the available scopes depend on which runtime you're using. Understanding these differences is crucial for building portable applications.
+
+### 🖥️ Core OS Runtime Scopes
+
+When running BoxLang in CLI mode or core OS runtime, you have access to these scopes:
+
+* `variables` - Default scope for variable assignments
+* `local` - Function-scoped variables
+* `arguments` - Function arguments
+* `application` - Application-wide persistence (requires Application.bx)
+* `session` - Session persistence (requires Application.bx)
+* `request` - Request-scoped variables
+* `server` - Server-wide persistence across all applications
+* `thread` - Thread-specific variables
+* `bxThread` - Global thread metadata scope
+
+```javascript
+// CLI Example - Only core scopes available
+server.appName = "My CLI App"
+request.startTime = now()
+application.version = "1.0.0" // Requires Application.bx
+
+println( "Running in CLI mode with core scopes only" )
+```
+
+### 🕸️ Web Runtime Scopes
+
+When running in web runtimes (Servlet, MiniServer, Lambda, Desktop), you get additional web-specific scopes:
+
+**All Core Scopes PLUS:**
+
+* `url` - HTTP GET parameters from the URL
+* `form` - HTTP POST form data
+* `cgi` - Server and request environment variables
+* `cookie` - Browser cookies
+* `bxFile` - File upload information (during file uploads)
+* `bxHttp` - HTTP request/response data (during HTTP operations)
+
+```javascript
+// Web Example - Full scope access
+url.debug = "true"  // From: myapp.com?debug=true
+form.username = "john.doe"  // From POST form
+cookie.preferences = "dark-mode"  // Browser cookie
+cgi.remote_addr = "192.168.1.1"  // Client IP address
+
+println( "Running in web mode with full scope access" )
+println( "Client IP: #cgi.remote_addr#" )
+println( "Debug Mode: #url.debug#" )
+```
+
+{% hint style="info" %}
+**Runtime Detection**: You can check your runtime context using `server.boxlang.runtime.name` to conditionally access web scopes.
+{% endhint %}
+
+## 🔍 **Evaluating Unscoped Variables**
+
+If you use a variable name **without** a scope prefix, BoxLang checks the scopes in the following order to find the variable (When we say `function` it includes closures, UDFs and lambdas):
+
+1. Local (Functions only)
+2. Arguments (Functions only)
+3. Attributes (Components only)
+4. Thread local (inside threads only)
+5. Query (variables in active query loops)
+6. Thread
+7. Variables
+8. CGI
 9. URL
 10. Form
 11. Cookie
@@ -333,7 +436,57 @@ If you use a variable name **without** a scope prefix, BoxLang checks the scopes
 **IMPORTANT**: Because BoxLang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables. It can also help you avoid nasty lookups or unexpected results.
 {% endhint %}
 
-## Persistence Scopes
+
+
+## 🔒 Final Variables
+
+BoxLang supports the `final` modifier for variables in any scope, which prevents the variable from being reassigned after its initial assignment. This is useful for creating constants and preventing accidental modifications.
+
+```javascript
+// Class scope with final variables
+class {
+    final variables.API_VERSION = "1.0"
+    final this.MAX_RETRIES = 3
+    final static.COMPANY_NAME = "Ortus Solutions"
+
+    function init() {
+        final local.instanceId = createUUID()
+
+        // This would throw an error:
+        // API_VERSION = "2.0"  // Cannot reassign final variable
+
+        return this
+    }
+}
+
+// Function scope with final variables
+function processData( required data ) {
+    final var startTime = now()
+    final local.processId = createUUID()
+
+    // Process data here...
+
+    // These would throw errors:
+    // startTime = now()  // Cannot reassign final variable
+    // processId = "new-id"  // Cannot reassign final variable
+
+    return {
+        "processId" : processId,
+        "duration" : dateDiff( "s", startTime, now() )
+    }
+}
+
+// Persistence scopes with final variables
+final application.appVersion = "1.0.0"
+final session.userType = "premium"
+final request.requestId = createUUID()
+```
+
+{% hint style="warning" %}
+**Important**: Final variables must be assigned a value when declared. Attempting to reassign a final variable will result in a runtime error.
+{% endhint %}
+
+## 💾 Persistence Scopes
 
 Can be used in any context, used for persisting variables for a period of time.
 
@@ -346,7 +499,132 @@ Can be used in any context, used for persisting variables for a period of time.
 * `form` - Variables submitted via HTTP posts
 * `URL` - Variables incoming via HTTP GET operations or the incoming URL
 
-## Client Scope
+### 🌟 Practical Persistence Examples
+
+```javascript
+// 🔧 Server Scope - Cross-application persistence
+server.startupTime = now()
+server.totalRequests = ( server.totalRequests ?: 0 ) + 1
+server.sharedCache = {}
+
+// 📱 Application Scope - Application-wide data
+application.version = "2.1.0"
+application.userCount = 0
+application.settings = {
+    "debugMode" : false,
+    "maxUsers" : 1000
+}
+
+// 👤 Session Scope - User-specific data (Web only)
+session.userId = "user123"
+session.preferences = {
+    "theme" : "dark",
+    "language" : "en"
+}
+session.shoppingCart = []
+
+// 🍪 Cookie Scope - Browser-stored data (Web only)
+cookie.lastVisit = now()
+cookie.userPrefs = "theme=dark;lang=en"
+// Set cookie with options
+bx:cookie name="sessionToken" value="abc123" expires="30" secure="true"
+
+// 📨 Request Scope - Single request data
+request.startTime = now()
+request.userAgent = cgi.http_user_agent
+request.processingSteps = []
+
+// 📊 CGI Scope - Read-only server/request info (Web only)
+println( "Client IP: #cgi.remote_addr#" )
+println( "Request Method: #cgi.request_method#" )
+println( "User Agent: #cgi.http_user_agent#" )
+println( "Server Name: #cgi.server_name#" )
+
+// 📝 Form Scope - POST data (Web only)
+if( structKeyExists( form, "username" ) ) {
+    println( "Username submitted: #form.username#" )
+    println( "Email: #form.email#" )
+}
+
+// 🔗 URL Scope - GET parameters (Web only)
+if( structKeyExists( url, "action" ) ) {
+    switch( url.action ) {
+        case "login":
+            // Handle login
+            break
+        case "logout":
+            // Handle logout
+            break
+    }
+}
+```
+
+### 🔄 Scope Interaction Examples
+
+```javascript
+// Copy data between scopes
+session.userPreferences = duplicate( form )
+
+// Merge scopes
+request.allData = {}
+structAppend( request.allData, url )
+structAppend( request.allData, form )
+```
+
+### 🐛 Scope Debugging & Performance
+
+```javascript
+// Debugging scopes - dump entire scopes
+writeDump( var=variables, label="Variables Scope" )
+writeDump( var=session, label="Session Data", top=10 )
+writeDump( var=application, label="App Settings" )
+
+// Check scope contents
+if( structIsEmpty( session ) ) {
+    println( "No session data found" )
+}
+
+// Performance - scope size monitoring
+function getScopeInfo() {
+    return {
+        "variablesCount" : structCount( variables ),
+        "sessionSize" : structCount( session ),
+        "applicationKeys" : structKeyArray( application ),
+        "requestMemory" : structCount( request )
+    }
+}
+
+// Scope iteration for debugging
+for( key in variables ) {
+    if( isCustomFunction( variables[key] ) ) {
+        println( "Function found: #key#" )
+    }
+}
+
+// Performance best practices
+function efficientScopeUsage() {
+    // ✅ Good - explicit scoping
+    local.result = variables.data.process()
+
+    // ❌ Bad - unscoped variable (scope hunting)
+    result = data.process()  // BoxLang must search scopes
+
+    // ✅ Good - cache scope references
+    local.mySession = session
+    local.mySession.lastAction = now()
+    local.mySession.pageViews++
+
+    // ❌ Bad - repeated scope access
+    session.lastAction = now()
+    session.pageViews++
+}
+```
+
+{% hint style="info" %}
+**Performance Tip**: Always scope your variables explicitly. Unscoped variables trigger scope hunting, which impacts performance, especially in complex applications.
+{% endhint %}
+
+## 🚫 Client Scope
 
 The `client` scope is not supported in core BoxLang.  This is a CFML legacy scope that is only available via our `bx-compat-cfml` module.  If you would like to use it, please install the module.
 
