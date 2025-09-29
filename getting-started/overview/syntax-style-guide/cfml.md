@@ -91,6 +91,12 @@ function myFunc() {
 
 No transpilation changes are needed since this is a BL-only feature.
 
+## No `CLIENT` scope
+
+BoxLang does not implement a native `client` scope.  This decision was made since there is no more difference between `session` scope.  In BoxLang, these persistence scopes can be backed by any Cache Provider and distribute.  The `client` scope was introduced in ColdFusion due to the issue of distributing sessions at the time.  This is no longer a problem and we consider it a legacy scope and completely discourage it. &#x20;
+
+However, if you NEED to leverage it, then you can install the `bx-compat-cfml` module and it will come with a `client` scope.
+
 ## Documentation Comments (Javadoc style)
 
 BL will support documentation comments like CF, but will NOT allow them to actually influence the function’s behavior. When transpiling CFML to BL, any annotations set in a doc comment modifying the function or any arguments need to be moved to proper annotations in BL.
