@@ -30,7 +30,7 @@ The HTTP component provides a comprehensive way to:
 - 📥 Download files and save to disk
 - 🌐 Work with proxy servers
 - ⚡ Support HTTP/1.1 and HTTP/2
-- 🔐 Use client certificates for secure connections
+- 🔐 Use client certificates for secure connections (Coming Soon)
 - ⏱️ Configure timeouts and redirects
 - 📦 Handle binary and text responses automatically
 
@@ -515,7 +515,7 @@ bx:http
     result="result";
 ```
 
-## 🔐 Client Certificates
+## 🔐 Client Certificates (Coming Soon)
 
 For mutual TLS authentication, you can provide a client certificate:
 
