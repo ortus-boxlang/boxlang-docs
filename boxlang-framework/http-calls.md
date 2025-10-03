@@ -25,7 +25,7 @@ You can use ANY HTTP method in the `http` calls. The default method is `GET`, bu
 The HTTP component provides a comprehensive way to:
 
 - 🔄 Make requests using any HTTP method (GET, POST, PUT, DELETE, etc.)
-- 🔒 Handle authentication (Basic, NTLM)
+- 🔒 Handle authentication (Basic)
 - 📤 Upload files with multipart/form-data
 - 📥 Download files and save to disk
 - 🌐 Work with proxy servers
@@ -106,12 +106,12 @@ The HTTP component accepts many attributes to control request behavior. Below ar
 | `redirect` | boolean | true | If `true`, follows HTTP redirects (301, 302, etc.). |
 | `timeout` | numeric | unlimited | The request timeout in seconds. No timeout if not specified. |
 | `getAsBinary` | string | auto | Controls binary response handling: `true`/`yes` (force binary), `false`/`no` (force text), `auto` (detect based on MIME type), `never` (throw error if binary). |
-| `result` | string | bxhttp | The name of the variable to store the result structure. |
+| `result` | string | bxhttp | The name of the variable to store the result structure. If not specified, BoxLang creates a `bxHTTP` variable in the variables scope. **Best practice: Always specify this attribute explicitly.** |
 | `file` | string | | The filename for saving the response. If `path` is not provided, this can be a full file path. |
 | `path` | string | | The directory path where the response file should be saved. If `file` is not specified, the filename is extracted from the Content-Disposition header. |
 | `multipart` | boolean | false | If `true`, sends form fields as multipart/form-data. |
 | `multipartType` | string | form-data | The multipart content type: `form-data` or `related`. |
-| `authType` | string | BASIC | The authentication type to use: `BASIC` or `NTLM`. |
+| `authType` | string | BASIC | The authentication type to use: `BASIC`. |
 | `clientCert` | string | | The path to a client certificate file for SSL/TLS mutual authentication. |
 | `clientCertPassword` | string | | The password for the client certificate. |
 | `compression` | string | | The compression type for the request body. |
@@ -140,6 +140,50 @@ bx:http url="https://legacy-api.example.com" httpVersion="HTTP/1.1" result="resu
 
 {% hint style="warning" %}
 When using HTTP/2, the `TE` header is only supported with the value `trailers`. If you need to use `TE` with other values, BoxLang will automatically downgrade to HTTP/1.1.
+{% endhint %}
+
+### 📝 Result Variable Best Practice
+
+By default, if you don't specify the `result` attribute, BoxLang will create a variable named `bxHTTP` in the variables scope to store the HTTP response.
+
+```js
+// Without result attribute - creates variables.bxHTTP
+bx:http url="https://api.example.com/users";
+dump( bxHTTP ); // Works, but not recommended
+
+// With result attribute - explicit and clear (RECOMMENDED)
+bx:http url="https://api.example.com/users" result="apiResponse";
+dump( apiResponse ); // Better approach
+```
+
+{% hint style="danger" %}
+**Warning: State Bleeding in Classes**
+
+When using the HTTP component inside classes **without** specifying the `result` attribute, the `bxHTTP` variable can bleed into the class's variables scope, potentially causing:
+
+- **Unintended state persistence** across method calls
+- **Memory leaks** if the HTTP response is large
+- **Race conditions** in concurrent scenarios
+- **Difficult debugging** due to implicit variable creation
+
+**Always use the `result` attribute** when making HTTP calls inside classes:
+
+```js
+class UserService {
+    function fetchUsers() {
+        // ❌ BAD - bxHTTP bleeds into class state
+        bx:http url="https://api.example.com/users";
+        return bxHTTP.fileContent;
+    }
+
+    function fetchUsers() {
+        // ✅ GOOD - Explicit result variable
+        bx:http url="https://api.example.com/users" result="response";
+        return response.fileContent;
+    }
+}
+```
+
 {% endhint %}
 
 ## 📤 HTTPParam Component

@@ -38,6 +38,9 @@ Please also note that in BoxLang, you can log data as **text** or as **JSON**.
 	// Default Encoder for file appenders.
 	// The available options are "text" and "json"
 	"defaultEncoder": "text",
+	// Activate the status printer on load to print out the logging configuration
+	// Turn on to debug LogBack and BoxLang logging configurations
+	"statusPrinterOnLoad": false,
 	// A collection of pre-defined loggers and their configurations
 	"loggers": {
 		// The runtime main and default log
@@ -115,7 +118,7 @@ Please also note that in BoxLang, you can log data as **text** or as **JSON**.
 
 ## Global Properties
 
-#### Logs Directory
+### Logs Directory
 
 This is the folder where BoxLang will store its log files.  By default we use the following:
 
@@ -124,7 +127,7 @@ This is the folder where BoxLang will store its log files.  By default we use th
 "logsDirectory": "${boxlang-home}/logs",
 ```
 
-#### Max Log Days
+### Max Log Days
 
 The maximum number of days to keep log files before rotations.  The default is 90 days or 3 months.  If you put a `0` then rotation will never happen and you will log forever!
 
@@ -132,7 +135,7 @@ The maximum number of days to keep log files before rotations.  The default is 9
 "maxLogDays": 90,
 ```
 
-#### Max File Size
+### Max File Size
 
 The maximum filesize for a **single** log file before rotation occurs.  The default is 100 Megabytes.  You can use a number or the following suffixes: KB, MB, GB.
 
@@ -140,7 +143,7 @@ The maximum filesize for a **single** log file before rotation occurs.  The defa
 "maxFileSize": "100MB",
 ```
 
-#### Total Cap Size
+### Total Cap Size
 
 The total cap size of ALL log files before rotation and compression begins.  The default is 5 Gigabytes.  You can use a number or the following suffixes: KB, MB, GB.
 
@@ -148,7 +151,7 @@ The total cap size of ALL log files before rotation and compression begins.  The
 "totalCapSize": "5GB",
 ```
 
-#### Root Level
+### Root Level
 
 This is the level at which the root logger will be allowed to be logged.  By default, it is `WARN`, However, if it detects you are in debug mode, it will bump it to `DEBUG`.
 
@@ -156,12 +159,22 @@ This is the level at which the root logger will be allowed to be logged.  By def
 "rootLevel": "WARN",
 ```
 
-#### Default Encoder
+### Default Encoder
 
 By default, BoxLang is configured to log using a pattern textual encoder.  However, if you want to leverage the new JSON Lines format, you can switch the encoder for ALL loggers to be `JSON`.  Valid values are `text` or `json`
 
 ```json
 "defaultEncoder" : "text"
+```
+
+### Status Printer On Load
+
+Activate the status printer on load to print out the logging configuration. This is useful for debugging LogBack and BoxLang logging configurations. The default is `false`.
+
+```json
+// Activate the status printer on load to print out the logging configuration
+// Turn on to debug LogBack and BoxLang logging configurations
+"statusPrinterOnLoad": false
 ```
 
 ## Loggers
@@ -173,9 +186,12 @@ BoxLang allows you to pre-define named loggers that will be configured when used
 
 However, you can also retrieve named loggers via the `LoggingService.` By default, we will register the following named loggers:
 
-* `application` - Application-specific logs
-* `modules` - For all modular information, activation, etc
 * `runtime` - The default log file for all runtime-related logging
+* `async` - All async operations and facilities will log here
+* `cache` - All cache operations and facilities will log here
+* `datasource` - Used by the creation, debugging, and management of datasources
+* `modules` - For all modular information, activation, etc
+* `application` - Application-specific logs
 * `scheduler` - All tasks and schedulers can log here
 
 ### Logger Properties
@@ -203,5 +219,10 @@ Every logger has the following configuration properties:
 
 Each logger will have the following configuration items:
 
-<table><thead><tr><th width="205">Property</th><th width="129">Default</th><th width="121">Type</th><th>Description</th></tr></thead><tbody><tr><td><strong>additive</strong></td><td><code>true</code></td><td><code>boolean</code></td><td><strong>true</strong> means that this logger will inherit the appenders from the root logger and log through all of them.  <code>false</code> means it doesn't bubble up log messages.</td></tr><tr><td><strong>appender</strong></td><td><code>file</code></td><td><code>string</code></td><td>The type of appender to use for this logger. By default we use the rolling file appender.  <br><br>Valid values are:<br>- file<br>- console<br><br>Coming soon values:<br>- smtp<br>- socket<br>- db<br>- syslog<br>- class name</td></tr><tr><td><strong>appenderArguments</strong></td><td>---</td><td><code>object</code></td><td>Name-value pairs that configure the appender.  Each appender can have different arguments.</td></tr><tr><td><strong>encoder</strong></td><td><code>logging > defaultEncoder</code></td><td><code>text</code> or <code>json</code></td><td>The encoder to use for logging. By default it leverages what was defined in the <code>logging.defaultEncoder</code> configuration.</td></tr><tr><td><strong>level</strong></td><td><code>TRACE</code></td><td><code>logLevel</code></td><td>The log level is to be assigned to the appender.  By default, each appender is wide open to the maximum level of <code>TRACE</code></td></tr></tbody></table>
-
+| Property | Default | Type | Description |
+| :--- | :--- | :--- | :--- |
+| **additive** | `true` | `boolean` | **true** means that this logger will inherit the appenders from the root logger and log through all of them. `false` means it doesn't bubble up log messages. |
+| **appender** | `file` | `string` | The type of appender to use for this logger. By default we use the rolling file appender.<br><br>Valid values are:<br>- file<br>- console<br><br>Coming soon values:<br>- smtp<br>- socket<br>- db<br>- syslog<br>- class name |
+| **appenderArguments** | --- | `object` | Name-value pairs that configure the appender. Each appender can have different arguments. |
+| **encoder** | `logging > defaultEncoder` | `text` or `json` | The encoder to use for logging. By default it leverages what was defined in the `logging.defaultEncoder` configuration. |
+| **level** | `TRACE` | `logLevel` | The log level is to be assigned to the appender. By default, each appender is wide open to the maximum level of `TRACE`. |

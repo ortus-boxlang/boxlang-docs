@@ -11,15 +11,13 @@ Below, you can find all the configuration directives the language supports.
 These directives will be placed in the `boxlang.json`file at the root level:
 
 {% code title="boxlang.json" %}
-```
+```json
 {
     "directive": value
 }
 ```
 {% endcode %}
 {% endhint %}
-
-
 
 ### Application Timeout
 
