@@ -223,17 +223,95 @@ This is the default locale for the runtime. By default, we use the JVM locale. T
 
 ### Mappings
 
-Here is where you can create global class mappings in BoxLang. The value is a JSON object where the key is the name of the mapping, and the value is the absolute path location of the mapping. You can prefix the name of the mapping with `/` or not. Ultimately, we will add it for you as well.
+Here is where you can create global class mappings in BoxLang. Mappings are used to discover BoxLang classes, files, and more. You can prefix the name of the mapping with `/` or not. Ultimately, BoxLang will add leading and trailing slashes for you (e.g., `core` becomes `/core/`).
+
+{% hint style="info" %}
+**New in 1.6.0**: Mappings now support both **simple** and **complex** formats for greater flexibility and control.
+{% endhint %}
+
+#### Simple Mappings
+
+The simple format is a string value representing the absolute path location. These mappings default to `external: true`, meaning they are externally accessible.
 
 ```json
-// A collection of BoxLang mappings, the key is the prefix and the value is the directory
 "mappings": {
 	"/": "${user-dir}",
-	"/core" : "/opt/core"
-},
+	"/core": "/opt/core",
+	"/models": "${user-dir}/models",
+	"/services": "/var/www/shared/services"
+}
 ```
 
-Mappings are used to discover BoxLang classes, files and more.
+#### Complex Mappings
+
+The complex format is a JSON object with the following properties:
+
+| Property | Type | Required | Default | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| `path` | string | ✅ Yes | - | The absolute path location of the mapping |
+| `external` | boolean | No | `true` | Whether this mapping is externally accessible |
+
+```json
+"mappings": {
+	// External mapping (default)
+	"/public": {
+		"path": "${user-dir}/public",
+		"external": true
+	},
+	// Internal-only mapping (not accessible externally)
+	"/internal": {
+		"path": "${user-dir}/internal",
+		"external": false
+	},
+	// Mix simple and complex formats
+	"/api": "/var/www/api",
+	"/secure": {
+		"path": "/var/www/secure",
+		"external": false
+	}
+}
+```
+
+#### External vs Internal Mappings
+
+The `external` flag controls whether a mapping is accessible from external requests (web requests):
+
+* **`external: true`** (default) - The mapping can be accessed by web requests and resolved in templates
+* **`external: false`** - The mapping is only accessible internally to the runtime and not exposed to web requests
+
+{% hint style="warning" %}
+**Security Best Practice**: Use `external: false` for mappings that contain sensitive code, configuration, or internal utilities that should not be accessible via web requests.
+{% endhint %}
+
+#### Complete Example
+
+```json
+"mappings": {
+	// Root mapping (simple)
+	"/": "${user-dir}",
+
+	// Public assets (simple, external by default)
+	"/assets": "${user-dir}/public/assets",
+
+	// Application code (complex, external)
+	"/app": {
+		"path": "${user-dir}/app",
+		"external": true
+	},
+
+	// Internal utilities (complex, internal-only)
+	"/utils": {
+		"path": "${user-dir}/internal/utils",
+		"external": false
+	},
+
+	// Shared libraries (complex, internal-only)
+	"/lib": {
+		"path": "/opt/shared/libraries",
+		"external": false
+	}
+}
+```
 
 ### Modules Directory
 
