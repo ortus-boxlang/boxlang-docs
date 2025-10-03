@@ -38,12 +38,12 @@ writeDump(info);
 
 The image module has a wide variety of BIFs to aid in manipulating images. You can find individual BIF documentation by following the below link.
 
-{% content-ref url="image-manipulation/reference/built-in-functions/" %}
-[built-in-functions](image-manipulation/reference/built-in-functions/)
+{% content-ref url="../csrf/reference/built-in-functions/" %}
+[built-in-functions](../csrf/reference/built-in-functions/)
 {% endcontent-ref %}
 
-{% content-ref url="image-manipulation/reference/components/" %}
-[components](image-manipulation/reference/components/)
+{% content-ref url="reference/components/" %}
+[components](reference/components/)
 {% endcontent-ref %}
 
 ### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
