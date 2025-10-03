@@ -193,24 +193,24 @@ Monitor this file for:
 
 The `AsyncService` is BoxLang's central service for managing executors and anything async related. It provides a unified API to create, retrieve, and control executors programmatically.  This API can be available to you or module authors via the `getBoxRuntime().getAsyncService()` method, but we would highly suggest also using the global built-in functions (BIFs) for convenience.
 
-| Method                                           | Purpose                                         | Returns        |
-| ------------------------------------------------ | ----------------------------------------------- | -------------- |
-| `newExecutor( name, type, threads )`             | Create new executors with custom configurations | ExecutorRecord |
-| `getExecutor( name )`                            | Retrieve executor instances by name             | ExecutorRecord |
-| `hasExecutor( name )`                            | Check if an executor exists                     | Boolean        |
-| `deleteExecutor( name )`                         | Remove and shutdown executors                   | AsyncService   |
-| `shutdownExecutor( name, force, timeout, unit )` | Gracefully shutdown specific executors          | AsyncService   |
-| `shutdownAllExecutors( force, timeout, unit )`   | Shutdown all registered executors               | AsyncService   |
-| `getExecutorStatusMap()`                         | Get detailed statistics for all executors       | IStruct        |
-| `getExecutorStatusMap( name )`                   | Get statistics for specific executor            | IStruct        |
-| `getExecutorNames()`                             | List all registered executor names              | List           |
+| Method                                           | Purpose                                         | Returns      |
+| ------------------------------------------------ | ----------------------------------------------- | ------------ |
+| `newExecutor( name, type, threads )`             | Create new executors with custom configurations | BoxExecutor  |
+| `getExecutor( name )`                            | Retrieve executor instances by name             | BoxExecutor  |
+| `hasExecutor( name )`                            | Check if an executor exists                     | Boolean      |
+| `deleteExecutor( name )`                         | Remove and shutdown executors                   | AsyncService |
+| `shutdownExecutor( name, force, timeout, unit )` | Gracefully shutdown specific executors          | AsyncService |
+| `shutdownAllExecutors( force, timeout, unit )`   | Shutdown all registered executors               | AsyncService |
+| `getExecutorStatusMap()`                         | Get detailed statistics for all executors       | IStruct      |
+| `getExecutorStatusMap( name )`                   | Get statistics for specific executor            | IStruct      |
+| `getExecutorNames()`                             | List all registered executor names              | List         |
 
 ###  Convenience Builder Methods
 
 ```js
 asyncService = getBoxRuntime().getAsyncService()
 
-// Quick executor creation - all return ExecutorRecord
+// Quick executor creation - all return BoxExecutor
  cacheExecutor = asyncService.newCachedExecutor( "my-cache" )
  workerPool = asyncService.newFixedExecutor( "workers", 10 )
  ioPool = asyncService.newVirtualExecutor( "io-pool" )
@@ -220,24 +220,27 @@ asyncService = getBoxRuntime().getAsyncService()
  singleThread = asyncService.newSingleExecutor( "sequential" )
 ```
 
-All methods return an `ExecutorRecord` instance, which is a wrapper around the Java `ExecutorService` class providing additional features like statistics, logging, and task management.
+All methods return a `BoxExecutor` instance, which is a wrapper around the Java `ExecutorService` class providing additional features like statistics, health monitoring, activity tracking, logging, and task management.
 
-## 🏗️ ExecutorRecord: Enhanced Executor Management
+## 🏗️ BoxExecutor: Enhanced Executor Management
 
-**Important:** BoxLang doesn't return raw Java executors. Instead, you get `ExecutorRecord` instances - enhanced wrappers that provide additional functionality beyond a standard Java `ExecutorService` instance.  These executor records can be passed around wherever an executor is needed or if you need the raw Java `ExecutorService`, you can access it via the `executor()` method on the `ExecutorRecord`.
+**Important:** BoxLang doesn't return raw Java executors. Instead, you get `BoxExecutor` instances - enhanced wrappers that provide additional functionality beyond a standard Java `ExecutorService` instance.  These executor instances can be passed around wherever an executor is needed or if you need the raw Java `ExecutorService`, you can access it via the `executor()` method on the `BoxExecutor`.
 
-###  What is ExecutorRecord?
+###  What is BoxExecutor?
 
-`ExecutorRecord` is BoxLang's enhanced executor wrapper that provides:
+`BoxExecutor` (formerly `ExecutorRecord` in versions prior to 1.6.0) is BoxLang's enhanced executor wrapper that provides:
 
-* **📊 Real-time Statistics:** Active threads, completed tasks, pool size metrics
+* **📊 Real-time Statistics:** Active threads, completed tasks, pool size metrics, task submission counts
+* **🏥 Health Monitoring:** Comprehensive health status tracking with degraded/critical state detection
+* **📈 Activity Tracking:** Last activity timestamps and task submission rate monitoring
 * **🔧 Enhanced Control:** Graceful and forceful shutdown capabilities
 * **📝 Integrated Logging:** Automatic logging to `async.log`
 * **⚡ Convenience Methods:** Simplified task submission and result handling
 * **🎯 Task Factory:** Built-in ScheduledTask creation for complex workflows
 * **🔄 State Management:** Comprehensive executor state monitoring
+* **⚠️ Health Reports:** Detailed health analysis with issues, recommendations, and insights
 
-###  ExecutorRecord Methods
+###  BoxExecutor Methods
 
 Here are the key methods available on `ExecutorRecord` instances:
 
@@ -304,22 +307,40 @@ quickTask = executor.newTask()
 
 | Method | Purpose | Returns | Usage |
 |--------|---------|---------|-------|
-| `getStats()` | Get comprehensive executor statistics | `IStruct` | Performance monitoring and debugging |
+| `getStats()` | Get comprehensive executor statistics with health monitoring | `IStruct` | Performance monitoring, debugging, health checks |
+| `isHealthy()` | Quick boolean health check | `Boolean` | Fast health verification |
 | `name()` | Get executor name | `String` | Identification and logging |
 | `type()` | Get executor type | `ExecutorType` | Type checking and decisions |
 | `maxThreads()` | Get maximum thread count | `Integer` | Capacity planning |
 | `executor()` | Get underlying Java ExecutorService | `ExecutorService` | Direct Java interop if needed |
+| `isTerminated()` | Check if all tasks completed after shutdown | `Boolean` | Shutdown verification |
+| `isTerminating()` | Check if executor is shutting down | `Boolean` | State checking |
+| `isShutdown()` | Check if executor has been shut down | `Boolean` | State checking |
 
 ```js
-// Monitor executor health
-stats = executor.getStats();
-println( "Name: #executor.name()#" );
-println( "Type: #executor.type()#" );
-println( "Max Threads: #executor.maxThreads()#" );
-println( "Active: #stats.activeCount#/#stats.maximumPoolSize#" );
+// Quick health check
+if ( executor.isHealthy() ) {
+    println( "Executor is healthy and ready" )
+}
+
+// Detailed health monitoring
+stats = executor.getStats()
+println( "Name: #executor.name()#" )
+println( "Type: #executor.type()#" )
+println( "Max Threads: #executor.maxThreads()#" )
+println( "Active: #stats.activeCount#/#stats.maximumPoolSize#" )
+println( "Health Status: #stats.healthStatus#" )
+println( "Pool Utilization: #stats.poolUtilization#%" )
+
+// Check detailed health report
+healthReport = stats.healthReport
+println( "Health Summary: #healthReport.summary#" )
+if ( arrayLen( healthReport.issues ) > 0 ) {
+    println( "Issues detected: #arrayLen( healthReport.issues )#" )
+}
 
 // Get raw Java executor if needed
-javaExecutor = executor.executor();
+javaExecutor = executor.executor()
 ```
 
 #### 🎯 Specialized Methods
@@ -335,45 +356,292 @@ scheduler = scheduledExec.scheduledExecutor();
 // Access to scheduling-specific methods
 ```
 
-### 📊 ExecutorRecord Statistics
+### 📊 BoxExecutor Statistics & Health Monitoring
 
-Every ExecutorRecord provides detailed runtime statistics:
+Every BoxExecutor provides detailed runtime statistics including comprehensive health monitoring introduced in version 1.6.0:
 
 ```js
 executor = executorGet( "cpu-tasks" )
 stats = executor.getStats()
 
-// Available statistics (varies by executor type)
-println( "Active Threads: #stats.activeCount#" )
-println( "Completed Tasks: #stats.completedTaskCount#" )
-println( "Pool Size: #stats.poolSize#" )
-println( "Maximum Pool Size: #stats.maximumPoolSize#" )
+// ============================================
+// BASIC INFORMATION
+// ============================================
+println( "Name: #stats.name#" )
+println( "Type: #stats.type#" )
+println( "Created: #stats.created#" )
+println( "Uptime (days): #stats.uptimeDays#" )
+println( "Uptime (seconds): #stats.uptimeSeconds#" )
+
+// ============================================
+// ACTIVITY TRACKING (New in 1.6.0)
+// ============================================
+println( "Last Activity: #stats.lastActivity#" )
+println( "Last Activity (minutes ago): #stats.lastActivityMinutesAgo#" )
+println( "Last Activity (seconds ago): #stats.lastActivitySecondsAgo#" )
+println( "Task Submission Count: #stats.taskSubmissionCount#" )
+println( "Average Tasks/Second: #stats.averageTasksPerSecond#" )
+println( "Average Tasks/Minute: #stats.averageTasksPerMinute#" )
+
+// ============================================
+// EXECUTOR STATE
+// ============================================
 println( "Is Shutdown: #stats.isShutdown#" )
 println( "Is Terminated: #stats.isTerminated#" )
+println( "Is Terminating: #stats.isTerminating#" )
 
-// Fork/Join specific stats
-if ( stats.keyExists( "stealCount" ) ) {
-    println( "Work Steal Count: #stats.stealCount#" )
-    println( "Queued Tasks: #stats.queuedTaskCount#" )
+// ============================================
+// POOL METRICS (ThreadPoolExecutor types)
+// ============================================
+println( "Core Pool Size: #stats.corePoolSize#" )
+println( "Current Pool Size: #stats.poolSize#" )
+println( "Maximum Pool Size: #stats.maximumPoolSize#" )
+println( "Largest Pool Size: #stats.largestPoolSize#" )
+println( "Pool Utilization: #stats.poolUtilization#%" )
+
+// ============================================
+// TASK METRICS
+// ============================================
+println( "Active Threads: #stats.activeCount#" )
+println( "Completed Tasks: #stats.completedTaskCount#" )
+println( "Total Tasks: #stats.taskCount#" )
+println( "Task Completion Rate: #stats.taskCompletionRate#%" )
+println( "Thread Utilization: #stats.threadsUtilization#%" )
+
+// ============================================
+// QUEUE METRICS (ThreadPoolExecutor types)
+// ============================================
+println( "Queue Type: #stats.queueType#" )
+println( "Queue Size: #stats.queueSize#" )
+println( "Queue Capacity: #stats.queueCapacity#" )
+println( "Queue Remaining Capacity: #stats.queueRemainingCapacity#" )
+println( "Queue Is Empty: #stats.queueIsEmpty#" )
+println( "Queue Is Full: #stats.queueIsFull#" )
+println( "Queue Utilization: #stats.queueUtilization#%" )
+
+// ============================================
+// HEALTH MONITORING (New in 1.6.0)
+// ============================================
+println( "\n=== HEALTH STATUS ===" )
+println( "Health Status: #stats.healthStatus#" )
+// Possible values: "healthy", "degraded", "critical", "idle", "shutdown", "terminated", "draining"
+
+// Get detailed health report
+healthReport = stats.healthReport
+
+println( "\n=== HEALTH REPORT ===" )
+println( "Status: #healthReport.status#" )
+println( "Summary: #healthReport.summary#" )
+println( "Last Checked: #healthReport.lastChecked#" )
+
+// Display issues if any
+if ( arrayLen( healthReport.issues ) > 0 ) {
+    println( "\nIssues Detected:" )
+    for ( issue in healthReport.issues ) {
+        println( "  - #issue#" )
+    }
 }
+
+// Display recommendations
+if ( arrayLen( healthReport.recommendations ) > 0 ) {
+    println( "\nRecommendations:" )
+    for ( recommendation in healthReport.recommendations ) {
+        println( "  - #recommendation#" )
+    }
+}
+
+// Display critical alerts
+if ( arrayLen( healthReport.alerts ) > 0 ) {
+    println( "\nCRITICAL ALERTS:" )
+    for ( alert in healthReport.alerts ) {
+        println( "  ⚠️ #alert#" )
+    }
+}
+
+// Display performance insights
+if ( arrayLen( healthReport.insights ) > 0 ) {
+    println( "\nPerformance Insights:" )
+    for ( insight in healthReport.insights ) {
+        println( "  💡 #insight#" )
+    }
+}
+
+// ============================================
+// FORK/JOIN SPECIFIC METRICS
+// ============================================
+if ( stats.keyExists( "stealCount" ) ) {
+    println( "\n=== FORK/JOIN METRICS ===" )
+    println( "Active Thread Count: #stats.activeThreadCount#" )
+    println( "Parallelism: #stats.parallelism#" )
+    println( "Pool Size: #stats.poolSize#" )
+    println( "Queued Submission Count: #stats.queuedSubmissionCount#" )
+    println( "Queued Task Count: #stats.queuedTaskCount#" )
+    println( "Running Thread Count: #stats.runningThreadCount#" )
+    println( "Steal Count: #stats.stealCount#" )
+}
+```
+
+#### 🏥 Health Status Values
+
+The `healthStatus` field can return the following values:
+
+* **`"healthy"`** - Executor operating normally within all thresholds
+* **`"degraded"`** - Performance issues detected, action recommended
+* **`"critical"`** - Serious issues requiring immediate attention
+* **`"idle"`** - No recent activity, may be underutilized
+* **`"shutdown"`** - Executor has been shut down, no new tasks accepted
+* **`"terminated"`** - All tasks completed, executor fully terminated
+* **`"draining"`** - Shutting down and processing remaining tasks
+
+#### 🎯 Health Monitoring Thresholds
+
+BoxExecutor uses configurable thresholds to determine health status:
+
+| Metric | Degraded Threshold | Critical Threshold |
+|--------|-------------------|-------------------|
+| **Pool Utilization** | 75% | 95% |
+| **Thread Utilization** | 75% | 95% |
+| **Queue Utilization** | 70% | 95% |
+| **Task Completion Rate** | <50% | <25% |
+| **Inactivity** | 30 minutes | N/A |
+
+#### 📋 Health Report Structure
+
+The health report provides detailed analysis:
+
+```js
+{
+    "status": "healthy|degraded|critical|idle|shutdown|terminated|draining",
+    "summary": "Brief description of health status",
+    "lastChecked": "2025-10-03T14:30:00",
+    "issues": [
+        "High pool utilization: 87%",
+        "Queue approaching capacity"
+    ],
+    "recommendations": [
+        "Consider increasing pool size",
+        "Monitor queue growth"
+    ],
+    "alerts": [
+        "CRITICAL: Queue is full, tasks may be rejected"
+    ],
+    "insights": [
+        "Processing 42.5 tasks per second",
+        "Executor has been running for 5.2 days"
+    ]
+}
+```
+
+#### 🔍 Monitoring Examples
+
+**Check overall health:**
+
+```js
+executor = executorGet( "cpu-tasks" )
+
+// Quick boolean check
+if ( !executor.isHealthy() ) {
+    writeLog(
+        text: "Executor #executor.name()# is unhealthy!",
+        type: "Warning",
+        log: "async"
+    )
+
+    stats = executor.getStats()
+    writeLog(
+        text: "Health Status: #stats.healthStatus#, Issues: #arrayLen( stats.healthReport.issues )#",
+        type: "Warning",
+        log: "async"
+    )
+}
+```
+
+**Monitor specific metrics:**
+
+```js
+stats = executor.getStats()
+
+// Check for high utilization
+if ( stats.poolUtilization > 80 ) {
+    writeLog(
+        text: "High pool utilization: #stats.poolUtilization#%",
+        type: "Warning",
+        log: "async"
+    )
+}
+
+// Check for queue issues
+if ( stats.queueUtilization > 70 ) {
+    writeLog(
+        text: "Queue filling up: #stats.queueSize# tasks queued",
+        type: "Warning",
+        log: "async"
+    )
+}
+
+// Check task completion rate
+if ( stats.taskCount > 10 && stats.taskCompletionRate < 50 ) {
+    writeLog(
+        text: "Low task completion rate: #stats.taskCompletionRate#%",
+        type: "Warning",
+        log: "async"
+    )
+}
+```
+
+**Automated health checks:**
+
+```js
+function performHealthCheck() {
+    allExecutors = executorList()
+
+    for ( executorName in allExecutors ) {
+        executor = executorGet( executorName )
+        stats = executor.getStats()
+
+        writeLog(
+            text: "Health Check - #executorName#: Status=#stats.healthStatus#, Active=#stats.activeCount#, Queue=#stats.queueSize#",
+            type: "Information",
+            log: "async"
+        )
+
+        // Alert on critical status
+        if ( stats.healthStatus == "critical" ) {
+            writeLog(
+                text: "CRITICAL: Executor #executorName# is in critical state!",
+                type: "Error",
+                log: "async"
+            )
+
+            // Send alert to monitoring system
+            sendAlert( executorName, stats )
+        }
+    }
+}
+
+// Schedule health checks every 5 minutes
+healthCheckTask = executorGet( "scheduled-tasks" ).newTask( "health-monitor" )
+healthCheckTask.call( performHealthCheck )
+    .every( 5, "minutes" )
+    .start()
 ```
 
 ## 🌟 Global BIFs (Built-in Functions)
 
 BoxLang provides convenient global functions for executor management and usage:
 
-| Function                                       | Purpose                                             | Returns        | Example                                 |
-| ---------------------------------------------- | --------------------------------------------------- | -------------- | --------------------------------------- |
-| `executorGet( [name] )`                        | Get ExecutorRecord by name (defaults to "io-tasks") | ExecutorRecord | `executorGet( "cpu-tasks" )`            |
-| `executorHas( name )`                          | Check if executor exists                            | Boolean        | `executorHas( "my-pool" )`              |
-| `executorList()`                               | List all executor names                             | Array          | `executorList()`                        |
-| `executorNew( name, type, [threads] )`         | Create new executor                                 | ExecutorRecord | `executorNew( "pool", "fixed", 8 )`     |
-| `executorShutdown( name, [force], [timeout] )` | Shutdown executor gracefully or forcefully          | Boolean        | `executorShutdown( "pool", false, 30 )` |
-| `executorStatus( [name] )`                     | Get executor statistics and status                  | Struct         | `executorStatus( "cpu-tasks" )`         |
+| Function                                       | Purpose                                             | Returns     | Example                                 |
+| ---------------------------------------------- | --------------------------------------------------- | ----------- | --------------------------------------- |
+| `executorGet( [name] )`                        | Get BoxExecutor by name (defaults to "io-tasks")    | BoxExecutor | `executorGet( "cpu-tasks" )`            |
+| `executorHas( name )`                          | Check if executor exists                            | Boolean     | `executorHas( "my-pool" )`              |
+| `executorList()`                               | List all executor names                             | Array       | `executorList()`                        |
+| `executorNew( name, type, [threads] )`         | Create new executor                                 | BoxExecutor | `executorNew( "pool", "fixed", 8 )`     |
+| `executorShutdown( name, [force], [timeout] )` | Shutdown executor gracefully or forcefully          | Boolean     | `executorShutdown( "pool", false, 30 )` |
+| `executorStatus( [name] )`                     | Get executor statistics and status                  | Struct      | `executorStatus( "cpu-tasks" )`         |
 
-Remember that if the BIF returns an executor, it will be an `ExecutorRecord` instance, not a raw Java ExecutorService.  This allows you to leverage all the enhanced features and methods provided by BoxLang.
+Remember that if the BIF returns an executor, it will be a `BoxExecutor` instance, not a raw Java ExecutorService.  This allows you to leverage all the enhanced features and methods provided by BoxLang, including health monitoring, activity tracking, and comprehensive statistics.
 
-###  BIF Usage Examples
+### BIF Usage Examples
 
 ```js
 // Quick executor access
@@ -432,15 +700,23 @@ scheduler.task( "cleanup" )
 // Get the default I/O executor that leverages virtual threads
 virtualExecutor = executorGet()
 
-// Create a custom executor for CPU tasks (returns ExecutorRecord)
+// Create a custom executor for CPU tasks (returns BoxExecutor)
 cpuExecutor = executorNew( "heavy-cpu", "fixed", 4 )
 
-// Check executor status using ExecutorRecord methods
+// Check executor status using BoxExecutor methods
 if ( executorHas( "heavy-cpu" ) ) {
     stats = cpuExecutor.getStats()
     println( "Active threads: #stats.activeCount#" )
     println( "Pool size: #stats.poolSize#" )
     println( "Completed tasks: #stats.completedTaskCount#" )
+
+    // Check health (new in 1.6.0)
+    if ( cpuExecutor.isHealthy() ) {
+        println( "Executor is healthy" )
+    } else {
+        println( "Health Status: #stats.healthStatus#" )
+        println( "Health Report: #stats.healthReport.summary#" )
+    }
 }
 
 // List all available executors
@@ -686,32 +962,78 @@ try {
 ### 📊 Performance Monitoring
 
 ```js
-// Regular performance monitoring
+// Regular performance monitoring with health checks
 function monitorExecutorPerformance() {
     var allStats = executorStatus() // Gets all executor stats
 
     for ( var executorName in allStats ) {
-        var stats = allStats[ executorName ]
+        var executor = executorGet( executorName )
+        var stats = executor.getStats()
+
+        // Quick health check (new in 1.6.0)
+        if ( !executor.isHealthy() ) {
+            writeLog(
+                text: "UNHEALTHY: #executorName# - Status: #stats.healthStatus#",
+                type: "Warning",
+                log: "async"
+            )
+
+            // Log health report issues
+            var healthReport = stats.healthReport
+            if ( arrayLen( healthReport.issues ) > 0 ) {
+                writeLog(
+                    text: "Issues for #executorName#: #arrayToList( healthReport.issues )#",
+                    type: "Warning",
+                    log: "async"
+                )
+            }
+        }
 
         // Check for performance issues
-        if ( stats.activeCount > stats.maximumPoolSize * 0.8 ) {
+        if ( stats.poolUtilization > 80 ) {
             writeLog(
-                text: "High thread utilization in #executorName#: #stats.activeCount#/#stats.maximumPoolSize#",
+                text: "High pool utilization in #executorName#: #stats.poolUtilization#%",
+                type: "Warning",
+                log: "async"
+            )
+        }
+
+        // Check queue health
+        if ( stats.queueUtilization > 70 ) {
+            writeLog(
+                text: "Queue filling in #executorName#: #stats.queueSize# tasks (#stats.queueUtilization#% full)",
                 type: "Warning",
                 log: "async"
             )
         }
 
         // Monitor task completion rate
-        if ( stats.keyExists( "completedTaskCount" ) && stats.completedTaskCount > 0 ) {
-            efficiency = stats.completedTaskCount / stats.taskCount
-            if ( efficiency < 0.7 ) {
+        if ( stats.keyExists( "taskCompletionRate" ) && stats.taskCount > 10 ) {
+            if ( stats.taskCompletionRate < 70 ) {
                 writeLog(
-                    text: "Low task completion efficiency in #executorName#: #efficiency * 100#%",
+                    text: "Low completion rate in #executorName#: #stats.taskCompletionRate#%",
                     type: "Warning",
                     log: "async"
                 )
             }
+        }
+
+        // Monitor activity
+        if ( stats.lastActivityMinutesAgo > 30 && stats.activeCount == 0 ) {
+            writeLog(
+                text: "Executor #executorName# has been idle for #stats.lastActivityMinutesAgo# minutes",
+                type: "Information",
+                log: "async"
+            )
+        }
+
+        // Log healthy status periodically
+        if ( executor.isHealthy() ) {
+            writeLog(
+                text: "Executor #executorName#: Healthy - Active: #stats.activeCount#, Completed: #stats.completedTaskCount#, Queue: #stats.queueSize#",
+                type: "Debug",
+                log: "async"
+            )
         }
     }
 }
@@ -762,7 +1084,7 @@ result = executeWithRetry( () => {
 } );
 ```
 
-## 🔥 Production Best Practices:
+## 🔥 Production Best Practices
 
 * **Use Built-in Executors:** Start with `io-tasks` and `cpu-tasks` for most scenarios
 * **Create Custom Sparingly:** Only create custom executors for specific performance requirements
