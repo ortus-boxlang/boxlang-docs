@@ -104,15 +104,25 @@ These are the supported arguments you can pass into the binary to configure the 
 | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p><code>--configPath path/boxlang.json</code><br><code>-c path/boxlang.json</code></p> | Relative/Absolute location of the `boxlang.json` to use. By default it uses the `~/.boxlang/boxlang.json`                                                                                                                                                                                                                                                               |
 | <p><code>--debug</code><br><code>-d</code></p>                                          | Put the runtime into debug mode. This will also render detailed error messages in the browser.  By default we use `false`                                                                                                                                                                                                                                               |
+| <p><code>--help</code><br><code>-h</code></p>                                           | Display comprehensive help information and exit                                                                                                                                                                                                                                                                                                                         |
 | `--host ip\|domain`                                                                     | Bind the hostname to the mini server. By default we use `0.0.0.0` (all network interfaces)                                                                                                                                                                                                                                                                              |
 | <p><code>--port 8080</code><br><code>-p 8080</code></p>                                 | The port to bind the mini server to. By default we use port `8080`                                                                                                                                                                                                                                                                                                      |
 | <p><code>--rewrites [index.bxm]</code><br><code>-r [index.bxm]</code></p>               | Enable rewrites for applications using `index.bxm` as the file to use. You can also pass the name of the file to use: `--rewrites myfile.bxm`                                                                                                                                                                                                                           |
 | `--health-check`                                                                        | Enable health check endpoints at `/health`, `/health/ready`, and `/health/live`. These provide detailed server status, readiness, and liveness information in JSON format.                                                                                                                                                                                              |
 | `--health-check-secure`                                                                 | Restrict detailed health check information to localhost only. When enabled, non-localhost requests receive basic status only, while localhost gets full system details including JVM metrics and memory usage.                                                                                                                                                          |
 | <p><code>--serverHome path/</code><br><code>-s path/</code></p>                         | <p>The location of the BoxLang home for the miniserver. This is where it will look for the <code>boxlang.json</code>, place to put the log files, the compiled classes, load modules, and much more.<br><br>By default, we use the OS home via the <code>BOXLANG_HOME</code> environment variable which usually points to the user's home: <code>~/.boxlang/</code></p> |
+| <p><code>--version</code><br><code>-v</code></p>                                        | Display version information and exit                                                                                                                                                                                                                                                                                                                                    |
 | <p><code>--webroot path/</code><br><code>-w path/</code></p>                            | The webserver root. By default, we use the directory from where you started the command.                                                                                                                                                                                                                                                                                |
 
 ```bash
+# Get version information
+boxlang-miniserver --version
+boxlang-miniserver -v
+
+# Get help information
+boxlang-miniserver --help
+boxlang-miniserver -h
+
 # Custom port and webroot
 boxlang-miniserver --port 80 --webroot /var/www
 
@@ -282,6 +292,10 @@ The BoxLang MiniServer includes built-in WebSocket support for real-time communi
 
 WebSocket connections are available at the `/ws` endpoint:
 
+{% hint style="info" %}
+**New in 1.6.0**: The MiniServer now properly returns STOMP heartbeat responses, ensuring reliable WebSocket connections with STOMP protocol support.
+{% endhint %}
+
 ```javascript
 // JavaScript client example
 const socket = new WebSocket('ws://localhost:8080/ws');
@@ -359,6 +373,7 @@ class {
 
 * **Real-time bidirectional communication** between client and server
 * **Automatic connection management** with built-in error handling
+* **STOMP protocol support** with proper heartbeat responses for connection reliability
 * **Integration with BoxLang runtime** for server-side message processing
 * **Low latency** communication for interactive applications
 * **Enhanced functionality** with SocketBox library for production applications
