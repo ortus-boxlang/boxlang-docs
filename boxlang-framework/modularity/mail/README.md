@@ -170,6 +170,33 @@ Mail server connectivity may be provided either via runtime configuration ( e.g.
 }
 ```
 
+### Application.bx Configuration <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+
+Mail servers may also be configured at the application level using the `this.mailServers` setting within `Application.bx` :thumbsup:
+
+```
+this.mailServers = [
+	{
+		// The SMTP Server
+		"smtp": "127.0.0.1",
+		// The SMTP Port
+		"port": "25",
+		// The SMTP Username
+		"username": "",
+		// The SMTP Password
+		"password": "",
+		// Whether to use SSL in connection to the SMTP server
+		"ssl": false,
+		// Whether to use TLS in connection to the SMTP server
+		"tls": false,
+		// The idle timeout, in milliseconds, for connection to the mail server
+		"idleTimeout": "10000",
+		// The timeout, in milliseconds before giving up on attempts to connect
+		"lifeTimeout": "60000"
+	}
+]
+```
+
 ### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
 
 Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-mail) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27025\&issuetype=1).
