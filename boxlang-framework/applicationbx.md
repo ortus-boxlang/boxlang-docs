@@ -307,6 +307,8 @@ this.datasources = {
 };
 ```
 
+See [datasource configuration](/boxlang-language/syntax/datasources#datasource-configuration) for full configuration details.
+
 ### Caching
 
 Define application-specific caches that BoxLang manages automatically:
@@ -325,7 +327,7 @@ this.caches = {
 };
 ```
 
-See [Caching documentation](caching/) for full configuration options.
+See [Caching documentation](caching/) for full configuration details.
 
 ### Mappings
 
