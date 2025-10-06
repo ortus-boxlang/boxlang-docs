@@ -394,6 +394,8 @@ See [Asynchronous Programming documentation](asynchronous-programming/) for sche
 | `this.allowedFileOperationExtensions` | array | *Runtime* | File extensions allowed for file operations |
 | `this.disallowedFileOperationExtensions` | array | *Runtime* | File extensions disallowed for file operations |
 
+See [security configuration](/getting-started/configuration/security) for full details.
+
 ### Advanced Settings
 
 | Setting | Type | Description |
