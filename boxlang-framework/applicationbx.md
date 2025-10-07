@@ -1,9 +1,11 @@
 ---
-description: Create virtual applications in memory with isolated settings, lifecycle events, and persistence scopes across all BoxLang runtimes
+description: >-
+  Create virtual applications in memory with isolated settings, lifecycle
+  events, and persistence scopes across all BoxLang runtimes
 icon: rocket-launch
 ---
 
-# 🚀 Application.bx
+# Application.bx
 
 ## 🌏 Overview
 
@@ -26,7 +28,6 @@ icon: rocket-launch
    * Java library integration
    * Security settings
    * Custom schedulers and much more
-
 2. **Lifecycle Event Handlers** - Implement callback methods that BoxLang executes automatically at key points:
    * Application startup/shutdown
    * Session creation/destruction
@@ -90,12 +91,12 @@ class {
 
 `Application.bx` works seamlessly across all BoxLang deployment targets:
 
-| Runtime | Use Case | Application.bx Behavior |
-| :--- | :--- | :--- |
+| Runtime         | Use Case                    | Application.bx Behavior                         |
+| --------------- | --------------------------- | ----------------------------------------------- |
 | **Web Servers** | CommandBox, MiniServer, JEE | Full support with sessions, cookies, web scopes |
-| **CLI** | Scripts, automation, tools | Application scope, no web-specific features |
-| **Lambda** | Serverless functions | Application scope, cold start optimization |
-| **Desktop** | Electron, JavaFX apps | Application scope, local persistence |
+| **CLI**         | Scripts, automation, tools  | Application scope, no web-specific features     |
+| **Lambda**      | Serverless functions        | Application scope, cold start optimization      |
+| **Desktop**     | Electron, JavaFX apps       | Application scope, local persistence            |
 
 {% hint style="warning" %}
 **Web-Only Scopes**: Features like `session`, `cookie`, `form`, `url`, and `cgi` scopes only exist in web runtimes. Structure your code to handle different runtime contexts gracefully.
@@ -104,7 +105,6 @@ class {
 ## 📝 Complete Example
 
 {% code title="Application.bx" %}
-
 ```js
 class {
 
@@ -256,22 +256,22 @@ All configuration settings are defined in the pseudo-constructor using the `this
 
 ### Core Application Settings
 
-| Setting | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `this.name` | string | *Generated* | Unique application name. Defines the memory space reservation |
-| `this.applicationTimeout` | timespan | 0,0,0,0 | Application lifetime. Default `0,0,0,0` = **never expires** (recommended) |
-| `this.locale` | string | JVM locale | Default locale (e.g., "en_US", "es-ES") |
-| `this.timezone` | string | JVM timezone | IANA timezone (e.g., "UTC", "America/New_York") |
+| Setting                   | Type     | Default      | Description                                                               |
+| ------------------------- | -------- | ------------ | ------------------------------------------------------------------------- |
+| `this.name`               | string   | _Generated_  | Unique application name. Defines the memory space reservation             |
+| `this.applicationTimeout` | timespan | 0,0,0,0      | Application lifetime. Default `0,0,0,0` = **never expires** (recommended) |
+| `this.locale`             | string   | JVM locale   | Default locale (e.g., "en\_US", "es-ES")                                  |
+| `this.timezone`           | string   | JVM timezone | IANA timezone (e.g., "UTC", "America/New\_York")                          |
 
 ### Session Management (Web Runtime)
 
-| Setting | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `this.sessionManagement` | boolean | `false` | Enable session tracking |
-| `this.sessionTimeout` | timespan | 0,0,30,0 | Session lifetime (30 minutes default) |
-| `this.sessionStorage` | string | `"memory"` | Cache name for session storage or "memory" |
-| `this.setClientCookies` | boolean | `true` | Automatically set session cookies |
-| `this.setDomainCookies` | boolean | `false` | Share cookies across subdomains |
+| Setting                  | Type     | Default    | Description                                |
+| ------------------------ | -------- | ---------- | ------------------------------------------ |
+| `this.sessionManagement` | boolean  | `false`    | Enable session tracking                    |
+| `this.sessionTimeout`    | timespan | 0,0,30,0   | Session lifetime (30 minutes default)      |
+| `this.sessionStorage`    | string   | `"memory"` | Cache name for session storage or "memory" |
+| `this.setClientCookies`  | boolean  | `true`     | Automatically set session cookies          |
+| `this.setDomainCookies`  | boolean  | `false`    | Share cookies across subdomains            |
 
 ### Session Cookie Configuration (Web Runtime)
 
@@ -287,11 +287,11 @@ this.sessionCookie = {
 
 ### Datasources
 
-| Setting | Type | Description |
-| :--- | :--- | :--- |
-| `this.datasource` | string | Default datasource name |
+| Setting                  | Type   | Description                 |
+| ------------------------ | ------ | --------------------------- |
+| `this.datasource`        | string | Default datasource name     |
 | `this.defaultDatasource` | string | Alias for `this.datasource` |
-| `this.datasources` | struct | Datasource definitions |
+| `this.datasources`       | struct | Datasource definitions      |
 
 **Example:**
 
@@ -307,7 +307,7 @@ this.datasources = {
 };
 ```
 
-See [datasource configuration](/boxlang-language/syntax/datasources#datasource-configuration) for full configuration details.
+See [datasource configuration](../boxlang-language/syntax/datasources/#datasource-configuration) for full configuration details.
 
 ### Caching
 
@@ -388,21 +388,27 @@ See [Asynchronous Programming documentation](asynchronous-programming/) for sche
 
 ### Security Settings
 
-| Setting | Type | Default | Description |
-| :--- | :--- | :--- | :--- |
-| `this.invokeImplicitAccessor` | boolean | *Context* | Enable implicit getters/setters |
-| `this.allowedFileOperationExtensions` | array | *Runtime* | File extensions allowed for file operations |
-| `this.disallowedFileOperationExtensions` | array | *Runtime* | File extensions disallowed for file operations |
+| Setting                                  | Type    | Default   | Description                                    |
+| ---------------------------------------- | ------- | --------- | ---------------------------------------------- |
+| `this.invokeImplicitAccessor`            | boolean | _Context_ | Enable implicit getters/setters                |
+| `this.allowedFileOperationExtensions`    | array   | _Runtime_ | File extensions allowed for file operations    |
+| `this.disallowedFileOperationExtensions` | array   | _Runtime_ | File extensions disallowed for file operations |
 
-See [security configuration](/getting-started/configuration/security) for full details.
+See [security configuration](../getting-started/configuration/security/) for full details.
 
 ### Advanced Settings
 
-| Setting | Type | Description |
-| :--- | :--- | :--- |
-| `this.classPaths` | array | Global class paths for `.bx` files |
-| `this.componentPaths` | array | Alias for `classPaths` |
-| `this.customComponentPaths` | array | Custom component directories |
+| Setting                     | Type  | Description                        |
+| --------------------------- | ----- | ---------------------------------- |
+| `this.classPaths`           | array | Global class paths for `.bx` files |
+| `this.componentPaths`       | array | Alias for `classPaths`             |
+| `this.customComponentPaths` | array | Custom component directories       |
+
+{% hint style="danger" %}
+Please note that **ANY** module can also listen to the Application.bx and be able to provide their own settings and configurations.  Examples of these are the `bx-mail, bx-orm` and other modules.  So make sure you validate those setttings with the appropriate module.
+{% endhint %}
+
+
 
 ## 🔄 Lifecycle Events
 
@@ -649,10 +655,14 @@ One of BoxLang's most powerful capabilities is the ability to create **multiple 
 
 Each `Application.bx` with a unique `this.name` creates a separate virtual application. These applications:
 
-✅ Have their own isolated `application` scope
-✅ Have their own isolated `session` scopes (web runtime)
-✅ Can have completely different settings and configurations
-✅ Share the same JVM but are logically independent
+✅ Have their own isolated `application` scope and timeout
+
+✅ Have their own isolated `session` scopes (web runtime), caches and timeouts
+
+✅ Can have completely different settings and configurations&#x20;
+
+✅ Share the same JVM but are logically independent&#x20;
+
 ✅ Can be nested or side-by-side in the directory structure
 
 ### Example: Multiple Apps in One Server
@@ -675,6 +685,7 @@ Each `Application.bx` with a unique `this.name` creates a separate virtual appli
 ```
 
 **Result**: Three independent applications running in the same JVM:
+
 * `PublicSite` - Public website with 30-day application timeout
 * `AdminConsole` - Admin area with 1-hour session timeout and different datasource
 * `RestAPI` - API endpoints with no session management
@@ -758,6 +769,7 @@ this.applicationTimeout = createTimeSpan( 7, 0, 0, 0 ); // 7 days
 {% endhint %}
 
 **When an application expires:**
+
 1. `onApplicationEnd()` is called
 2. Application scope is destroyed
 3. Next request triggers `onApplicationStart()` and creates a new application instance
@@ -782,12 +794,14 @@ cacheRemoveAll( cacheName = "template" );
 ### Use Cases for Virtual Applications
 
 🎯 **Multi-Tenant SaaS**
+
 ```
 /tenant1/Application.bx (name: "Tenant1", datasource: "tenant1_db")
 /tenant2/Application.bx (name: "Tenant2", datasource: "tenant2_db")
 ```
 
 🎯 **Microservices Architecture**
+
 ```
 /users/Application.bx     (name: "UserService")
 /orders/Application.bx    (name: "OrderService")
@@ -795,6 +809,7 @@ cacheRemoveAll( cacheName = "template" );
 ```
 
 🎯 **Environment Separation**
+
 ```
 /dev/Application.bx  (name: "DevApp", datasource: "dev_db")
 /qa/Application.bx   (name: "QAApp", datasource: "qa_db")
@@ -802,6 +817,7 @@ cacheRemoveAll( cacheName = "template" );
 ```
 
 🎯 **Legacy Migration**
+
 ```
 /legacy/Application.bx (name: "OldApp", CFML compatibility mode)
 /modern/Application.bx (name: "NewApp", pure BoxLang features)
