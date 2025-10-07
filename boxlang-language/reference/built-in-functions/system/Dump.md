@@ -6,7 +6,7 @@ Outputs the contents of a variable (simple or complex) of any type for debugging
 
 <p>
  The available <code>output</code> locations are:
- - <strong>buffer<strong>: The output is written to the buffer, which is the default location. If running on a web server, the output is written to the browser.
+ - <strong>buffer</strong>: The output is written to the buffer, which is the default location. If running on a web server, the output is written to the browser.
  - <strong>console</strong>: The output is printed to the System console.
  - <strong>Absolute File Path</strong> The output is written to a file with the specified absolute file path.
  </p>
