@@ -7,7 +7,7 @@ Trims each item in the list.
 ## Method Signature
 
 ```
-ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean])
+ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -18,6 +18,7 @@ ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 | `list` | `string` | `true` | string list to trim each item |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -96,6 +97,7 @@ writeDump( strList.listItemTrim() );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListLast](./ListLast.md)

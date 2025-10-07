@@ -7,7 +7,7 @@ Inserts a string at the beginning and end of list elements.
 ## Method Signature
 
 ```
-ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[string], includeEmptyFields=[boolean])
+ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -20,6 +20,7 @@ ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[str
 | `delimiter` | `string` | `false` | The delimiter used in the list. | `,` |
 | `elements` | `string` | `false` | The elements to qualify. If set to "char", only elements that are all alphabetic characters will be qualified. | `all` |
 | `includeEmptyFields` | `boolean` | `false` | If true, empty fields will be qualified. | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -97,6 +98,7 @@ writeDump( strlist.listQualify( "|" ) );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

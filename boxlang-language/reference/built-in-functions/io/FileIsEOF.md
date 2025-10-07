@@ -111,3 +111,4 @@ try {
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
   * [GetFileInfo](./GetFileInfo.md)
   * [getTempFile](./getTempFile.md)
+  * [PropertyFile](./PropertyFile.md)

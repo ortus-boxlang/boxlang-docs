@@ -93,6 +93,7 @@ writeDump( strList.listGetAt( 5, "/", true ) );
   * [ListFind](./ListFind.md)
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

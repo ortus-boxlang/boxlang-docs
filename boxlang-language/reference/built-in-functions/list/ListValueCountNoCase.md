@@ -7,7 +7,7 @@ returns a count of the number of occurrences of a value in a list
 ## Method Signature
 
 ```
-ListValueCountNoCase(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean])
+ListValueCountNoCase(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -19,6 +19,7 @@ ListValueCountNoCase(list=[string], value=[string], delimiter=[string], includeE
 | `value` | `string` | `true` | The value to locale |  |
 | `delimiter` | `string` | `false` | The list delimiter(s) | `,` |
 | `includeEmptyFields` | `boolean` | `false` | Whether to include empty fields in the search | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -41,6 +42,7 @@ ListValueCountNoCase(list=[string], value=[string], delimiter=[string], includeE
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

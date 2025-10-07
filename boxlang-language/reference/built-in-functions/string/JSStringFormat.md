@@ -58,6 +58,7 @@ writeOutput( JSStringFormat( str ) );
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

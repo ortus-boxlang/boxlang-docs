@@ -120,5 +120,6 @@ echo( DateDiff( "wd", "2016-06-27 00:00:00", "2016-07-27 01:00:00" ) & "<br>" );
   * [Second](./Second.md)
   * [SetTimezone](./SetTimezone.md)
   * [TimeFormat](./TimeFormat.md)
+  * [TimeUnits](./TimeUnits.md)
   * [Week](./Week.md)
   * [Year](./Year.md)

@@ -1,37 +1,46 @@
-# SchedulerStats
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `SchedulerStats`
 
 Get the stats of all schedulers or a specific scheduler by name.
 
-Each stats structure contains the following fields:
+<p>
+ Each stats structure contains the following fields:
+ <ul>
+ <li>created</li>
+ <li>lastExecutionTime</li>
+ <li>lastResult</li>
+ <li>lastRun</li>
+ <li>name</li>
+ <li>neverRun</li>
+ <li>nextRun</li>
+ <li>totalFailures</li>
+ <li>totalRuns</li>
+ <li>totalSuccess</li>
+ <ul>
 
-* created
-* lastExecutionTime
-* lastResult
-* lastRun
-* name
-* neverRun
-* nextRun
-* totalFailures
-* totalRuns
-* totalSuccess
-*
-  * ### Method Signature
-  * ```
-    SchedulerStats(name=[string])
-    ```
-  * #### Arguments
+## Method Signature
 
-| Argument | Type     | Required | Description                                                                   | Default |
-| -------- | -------- | -------- | ----------------------------------------------------------------------------- | ------- |
-| `name`   | `string` | `false`  | The name of the scheduler to get stats on or if not passed for all schedulers |         |
+```
+SchedulerStats(name=[string])
+```
 
-*
-  * ### Examples
-  * ### Related
-  *
-    * [SchedulerGet](SchedulerGet.md)
-    * [SchedulerGetAll](SchedulerGetAll.md)
-    * [SchedulerList](SchedulerList.md)
-    * [SchedulerRestart](SchedulerRestart.md)
-    * [SchedulerShutdown](SchedulerShutdown.md)
-    * [SchedulerStart](SchedulerStart.md)
+### Arguments
+
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `name` | `string` | `false` | The name of the scheduler to get stats on or if not passed for all schedulers |  |
+
+## Examples
+
+
+
+## Related
+
+  * [SchedulerGet](./SchedulerGet.md)
+  * [SchedulerGetAll](./SchedulerGetAll.md)
+  * [SchedulerList](./SchedulerList.md)
+  * [SchedulerRestart](./SchedulerRestart.md)
+  * [SchedulerShutdown](./SchedulerShutdown.md)
+  * [SchedulerStart](./SchedulerStart.md)

@@ -1,34 +1,38 @@
-# StructFilter
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `StructFilter`
 
 Filters a struct and returns a new struct with the values that pass the filter criteria.
 
 This BIF will invoke the callback function for each entry in the struct, passing the key, value, and the struct itself.
-
-* If the callback returns true, the entry will be included in the new struct.
-* If the callback returns false, the entry will be excluded from the new struct.
-* If the callback requires strict arguments, it will only receive the key and value.
-* If the callback does not require strict arguments, it will receive the key, value, and the original struct.
-
-## Parallel Execution
-
-If the `parallel` argument is set to true, and no `max_threads` are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.\
-If `max_threads` is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.\
-Please note that this may not be the most efficient way to filter, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
+ <ul>
+ <li>If the callback returns true, the entry will be included in the new struct.</li>
+ <li>If the callback returns false, the entry will be excluded from the new struct.</li>
+ <li>If the callback requires strict arguments, it will only receive the key and value.</li>
+ <li>If the callback does not require strict arguments, it will receive the key, value, and the original struct.</li>
+ </ul>
+ <p>
+ <h2>Parallel Execution</h2>
+ If the <code>parallel</code> argument is set to true, and no <code>max_threads</code> are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams.
+ If <code>max_threads</code> is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete.
+ Please note that this may not be the most efficient way to filter, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
 ## Method Signature
 
 ```
-StructFilter(struct=[structloose], callback=[function:BiPredicate], parallel=[boolean], maxThreads=[integer])
+StructFilter(struct=[structloose], callback=[function:BiPredicate], parallel=[boolean], maxThreads=[any], virtual=[boolean])
 ```
 
 ### Arguments
 
-| Argument     | Type                   | Required | Description                                                                                                                                                                                                       | Default |
-| ------------ | ---------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `struct`     | `struct`               | `true`   | The target struct to test                                                                                                                                                                                         |         |
-| `callback`   | `function:BiPredicate` | `true`   | The function used to filter. The function will be passed 3 arguments: the key, the value, the struct. You can alternatively pass a Java BiPredicate which will only receive the first 2 args.                     |         |
-| `parallel`   | `boolean`              | `false`  | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool.                                                                                       | `false` |
-| `maxThreads` | `integer`              | `false`  | <p>The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>If parallel is false, this argument is ignored.</p> |         |
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `struct` | `struct` | `true` | The target struct to test |  |
+| `callback` | `function:BiPredicate` | `true` | The function used to filter. The function will be passed 3 arguments: the key, the value, the struct. You can alternatively pass a Java BiPredicate which will only receive the first 2 args. |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `any` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
+| `virtual` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -36,7 +40,7 @@ StructFilter(struct=[structloose], callback=[function:BiPredicate], parallel=[bo
 
 Take a struct of items with their rating and use structFilter to return ones of a rating 3 and higher.
 
-[Run Example](https://try.boxlang.io/?code=eJxVjUELgkAQhc%2FOr5ijgpeyLonCBhlSqXjpLLnGklmss4aI%2F73Z6FDM5Xvz4HuNNorKilR37THCCcERRXHc4QZXPjhbkfFxWHDIS5HtbbPmcGLOmZfMh%2FScMgYwh9BUw0MrkokVW2VP2lwoUS1J7WLzs%2Beji6Ib8SZH%2FwND1RqJHkYxTuBoSUZ332ccYRDCjF4IL6uvzf3Jtv8xLt%2FF2j2S)
+<a href="https://try.boxlang.io/?code=eJxVjUELgkAQhc%2FOr5ijgpeyLonCBhlSqXjpLLnGklmss4aI%2F73Z6FDM5Xvz4HuNNorKilR37THCCcERRXHc4QZXPjhbkfFxWHDIS5HtbbPmcGLOmZfMh%2FScMgYwh9BUw0MrkokVW2VP2lwoUS1J7WLzs%2Beji6Ib8SZH%2FwND1RqJHkYxTuBoSUZ332ccYRDCjF4IL6uvzf3Jtv8xLt%2FF2j2S" target="_blank">Run Example</a>
 
 ```java
 fruitRatings = { 
@@ -59,7 +63,7 @@ Result: {apple=4,orange=5,kiwi=3}
 
 This is the same example, but using a member function on the struct instead of a standalone function.
 
-[Run Example](https://try.boxlang.io/?code=eJxdjcEKgkAURdfOV9ylggRlbRKFCSqkUnHTWnAmhsximjFE%2FPfeRIuItzn3XThXaqtMVRvVXZ5IMIJ5vCyPW6yxDJm34TkdhTmFouL53jUrCifignhBfMjOGWHEppjJur9rZcTOiZ1S%2FizMpGqN0D588G7AVQzhB%2Fq6tQIBkhQj87QwVnffZ5ogitmEIGYv523s7eHjb4XKN%2FmnOu8%3D)
+<a href="https://try.boxlang.io/?code=eJxdjcEKgkAURdfOV9ylggRlbRKFCSqkUnHTWnAmhsximjFE%2FPfeRIuItzn3XThXaqtMVRvVXZ5IMIJ5vCyPW6yxDJm34TkdhTmFouL53jUrCifignhBfMjOGWHEppjJur9rZcTOiZ1S%2FizMpGqN0D588G7AVQzhB%2Fq6tQIBkhQj87QwVnffZ5ogitmEIGYv523s7eHjb4XKN%2FmnOu8%3D" target="_blank">Run Example</a>
 
 ```java
 fruitRatings = { 
@@ -80,7 +84,7 @@ Result: {apple=4,orange=5,kiwi=3}
 
 ### Additional Examples
 
-[Run Example](https://try.boxlang.io/?code=eJy1kE9LxDAQxc%2FJp3j21EJx7y4Vin%2BW4rIqPYiIhyhTG5qmmqZKWfrdTeLuag8e9zIwb3i%2FmXlCy1aoHhm24Ozi9gFniNqui1LO7oqV7zqpG9%2BWm7xYeyHi05IvFijr7gtCKYgfCL8c2vcYSryQyqL8dxCl%2BBQm23VIgntFdj%2BHrYVFKxqC7mRP3NcxP5xWWjO82mupLJl4b0oRI9cjGhqRIDvHljOHLSpHo6DWoodwm9VAMGQHo%2BFAhDjgd5yEM1nFWJM%2BkJ8gzNvQkrb96c3VI54dP%2FF49oey5Gzie6FyLqdM%2FrVZCJuwKZ%2FFMHvunyyEIXwMkiwP9XhRBPw8ipMjZXEfVs2zmH3nDN8nsNCR)
+<a href="https://try.boxlang.io/?code=eJy1kE9LxDAQxc%2FJp3j21EJx7y4Vin%2BW4rIqPYiIhyhTG5qmmqZKWfrdTeLuag8e9zIwb3i%2FmXlCy1aoHhm24Ozi9gFniNqui1LO7oqV7zqpG9%2BWm7xYeyHi05IvFijr7gtCKYgfCL8c2vcYSryQyqL8dxCl%2BBQm23VIgntFdj%2BHrYVFKxqC7mRP3NcxP5xWWjO82mupLJl4b0oRI9cjGhqRIDvHljOHLSpHo6DWoodwm9VAMGQHo%2BFAhDjgd5yEM1nFWJM%2BkJ8gzNvQkrb96c3VI54dP%2FF49oey5Gzie6FyLqdM%2FrVZCJuwKZ%2FFMHvunyyEIXwMkiwP9XhRBPw8ipMjZXEfVs2zmH3nDN8nsNCR" target="_blank">Run Example</a>
 
 ```java
 animals = { 
@@ -111,34 +115,36 @@ Dump( label="Quiet Animals", var=quietAnimals );
 
 ```
 
+
+
 ## Related
 
-* [StructAppend](StructAppend.md)
-* [StructClear](StructClear.md)
-* [StructCopy](StructCopy.md)
-* [StructDelete](StructDelete.md)
-* [StructEach](StructEach.md)
-* [StructEquals](StructEquals.md)
-* [StructEvery](StructEvery.md)
-* [StructFind](StructFind.md)
-* [StructFindKey](StructFindKey.md)
-* [StructFindValue](StructFindValue.md)
-* [StructGet](StructGet.md)
-* [StructGetMetadata](StructGetMetadata.md)
-* [StructInsert](StructInsert.md)
-* [StructIsCaseSensitive](StructIsCaseSensitive.md)
-* [StructIsOrdered](StructIsOrdered.md)
-* [StructKeyArray](StructKeyArray.md)
-* [StructKeyExists](StructKeyExists.md)
-* [StructKeyList](StructKeyList.md)
-* [StructKeyTranslate](StructKeyTranslate.md)
-* [StructMap](StructMap.md)
-* [StructNew](StructNew.md)
-* [StructNone](StructNone.md)
-* [StructReduce](StructReduce.md)
-* [StructSome](StructSome.md)
-* [StructSort](StructSort.md)
-* [StructToQueryString](StructToQueryString.md)
-* [StructToSorted](StructToSorted.md)
-* [StructUpdate](StructUpdate.md)
-* [StructValueArray](StructValueArray.md)
+  * [StructAppend](./StructAppend.md)
+  * [StructClear](./StructClear.md)
+  * [StructCopy](./StructCopy.md)
+  * [StructDelete](./StructDelete.md)
+  * [StructEach](./StructEach.md)
+  * [StructEquals](./StructEquals.md)
+  * [StructEvery](./StructEvery.md)
+  * [StructFind](./StructFind.md)
+  * [StructFindKey](./StructFindKey.md)
+  * [StructFindValue](./StructFindValue.md)
+  * [StructGet](./StructGet.md)
+  * [StructGetMetadata](./StructGetMetadata.md)
+  * [StructInsert](./StructInsert.md)
+  * [StructIsCaseSensitive](./StructIsCaseSensitive.md)
+  * [StructIsOrdered](./StructIsOrdered.md)
+  * [StructKeyArray](./StructKeyArray.md)
+  * [StructKeyExists](./StructKeyExists.md)
+  * [StructKeyList](./StructKeyList.md)
+  * [StructKeyTranslate](./StructKeyTranslate.md)
+  * [StructMap](./StructMap.md)
+  * [StructNew](./StructNew.md)
+  * [StructNone](./StructNone.md)
+  * [StructReduce](./StructReduce.md)
+  * [StructSome](./StructSome.md)
+  * [StructSort](./StructSort.md)
+  * [StructToQueryString](./StructToQueryString.md)
+  * [StructToSorted](./StructToSorted.md)
+  * [StructUpdate](./StructUpdate.md)
+  * [StructValueArray](./StructValueArray.md)

@@ -7,7 +7,7 @@ Tests whether any item in a string meets the specified callback
 ## Method Signature
 
 ```
-StringSome(list=[string], callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
+StringSome(list=[string], callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], virtual=[boolean])
 ```
 
 ### Arguments
@@ -19,9 +19,10 @@ StringSome(list=[string], callback=[function:Predicate], delimiter=[string], inc
 | `callback` | `function:Predicate` | `true` |  |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `true` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 | `parallel` | `boolean` | `false` |  | `false` |
 | `maxThreads` | `integer` | `false` |  |  |
+| `virtual` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -86,6 +87,7 @@ writeDump( StringSome( myString, callback_1 ) );
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

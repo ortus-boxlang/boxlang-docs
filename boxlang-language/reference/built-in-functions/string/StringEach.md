@@ -7,7 +7,7 @@ Iterates all the elements in a string and runs the passed callback on each chara
 ## Method Signature
 
 ```
-StringEach(list=[string], callback=[function:Consumer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer], ordered=[boolean])
+StringEach(list=[string], callback=[function:Consumer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[any], ordered=[boolean], virtual=[boolean])
 ```
 
 ### Arguments
@@ -19,10 +19,11 @@ StringEach(list=[string], callback=[function:Consumer], delimiter=[string], incl
 | `callback` | `function:Consumer` | `true` | The callback to execute |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `true` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 | `parallel` | `boolean` | `false` |  | `false` |
-| `maxThreads` | `integer` | `false` |  |  |
+| `maxThreads` | `any` | `false` |  |  |
 | `ordered` | `boolean` | `false` |  | `false` |
+| `virtual` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -86,6 +87,7 @@ stringEach( inputString, ( Any val ) => {
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

@@ -85,6 +85,7 @@ dump( BinaryEncode( binary_data, "hex" ) );
   * [BitMaskSet](./BitMaskSet.md)
   * [BitNot](./BitNot.md)
   * [BitOr](./BitOr.md)
+  * [BitSh](./BitSh.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
   * [BitXor](./BitXor.md)

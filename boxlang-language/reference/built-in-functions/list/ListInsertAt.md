@@ -20,7 +20,7 @@ ListInsertAt(list=[string], position=[integer], value=[string], delimiter=[strin
 | `value` | `string` | `true` |  |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `true` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 
 ## Examples
 
@@ -81,6 +81,7 @@ writeDump( strList.listInsertAt( 3, "c", "@" ) );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListItemTrim](./ListItemTrim.md)
   * [ListLast](./ListLast.md)

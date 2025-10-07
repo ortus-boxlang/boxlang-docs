@@ -249,17 +249,9 @@ Arguments:
 
 </details>
 <details>
-<summary><code>getTime(timezone=[string], locale=[string])</code></summary>
+<summary><code>getTime()</code></summary>
 
-Provides the BIF and member functions for all time unit request with no arguments
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `timezone` | `string` | `false` | `null` |
-| `locale` | `string` | `false` | `null` |
-
+Returns the number of milliseconds since January 1, 1970, 00:00:00 GMT represented by this Date object.
 </details>
 <details>
 <summary><code>hash(algorithm=[string], encoding=[string], numIterations=[integer])</code></summary>

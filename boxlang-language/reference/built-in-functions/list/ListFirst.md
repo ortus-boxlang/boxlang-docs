@@ -40,6 +40,7 @@ ListFirst(list=[string], delimiter=[string], includeEmptyFields=[boolean], multi
   * [ListFind](./ListFind.md)
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

@@ -91,3 +91,4 @@ dump( var=FileInfo( file ), label="FileInfo" );
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
   * [GetFileInfo](./GetFileInfo.md)
   * [getTempFile](./getTempFile.md)
+  * [PropertyFile](./PropertyFile.md)

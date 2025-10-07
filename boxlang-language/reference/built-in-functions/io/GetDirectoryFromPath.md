@@ -80,3 +80,4 @@ dump( some_directory );
   * [GetCanonicalPath](./GetCanonicalPath.md)
   * [GetFileInfo](./GetFileInfo.md)
   * [getTempFile](./getTempFile.md)
+  * [PropertyFile](./PropertyFile.md)

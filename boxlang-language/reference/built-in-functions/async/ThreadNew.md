@@ -27,6 +27,10 @@ ThreadNew(runnable=[function], attributes=[struct], name=[string], priority=[str
 
 ## Related
 
+  * [AsyncAll](./AsyncAll.md)
+  * [AsyncAllApply](./AsyncAllApply.md)
+  * [AsyncAny](./AsyncAny.md)
+  * [AsyncRun](./AsyncRun.md)
   * [ExecutorGet](./ExecutorGet.md)
   * [ExecutorHas](./ExecutorHas.md)
   * [ExecutorList](./ExecutorList.md)

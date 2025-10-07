@@ -79,3 +79,4 @@ fileSetAccessMode( "sample_test.txt", "004" );
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
   * [GetFileInfo](./GetFileInfo.md)
   * [getTempFile](./getTempFile.md)
+  * [PropertyFile](./PropertyFile.md)

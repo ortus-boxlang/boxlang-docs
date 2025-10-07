@@ -75,6 +75,7 @@ echo( "<pre>" & wrap( long_string, 20 ) & "</pre>" );
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

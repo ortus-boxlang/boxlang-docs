@@ -78,6 +78,7 @@ writeDump( st.insert( " code", 7 ) );
   * [FindNoCase](./FindNoCase.md)
   * [FindOneOf](./FindOneOf.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

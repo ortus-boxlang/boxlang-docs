@@ -35,7 +35,7 @@ clientInfo=[struct] />
 | `columnKey` | `string` | `false` | The key to use for the column names in the result struct. |  |
 | `dbtype` | `string` | `false` | The type of query to execute. One of: `query`, `hql`. |  |
 | `maxRows` | `integer` | `false` | The maximum number of rows to return. -1 for no limit. | `-1` |
-| `blockfactor` | `integer` | `false` | Maximum rows per block to fetch from the server. Ranges from 1-100. | `[ortus.boxlang.runtime.validation.dynamic.Max@2110b756, ortus.boxlang.runtime.validation.dynamic.Min@33e09baf]` |
+| `blockfactor` | `integer` | `false` | Maximum rows per block to fetch from the server. Ranges from 1-100. | `[ortus.boxlang.runtime.validation.dynamic.Min@14144cc9, ortus.boxlang.runtime.validation.dynamic.Max@259647f2]` |
 | `fetchsize` | `integer` | `false` | The number of rows to fetch at a time. Ranges from 1-100. |  |
 | `timeout` | `integer` | `false` | The timeout for the query in seconds. |  |
 | `cache` | `boolean` | `false` | Whether or not to cache the results of the query. | `false` |

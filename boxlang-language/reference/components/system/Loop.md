@@ -1,7 +1,7 @@
 
 # Component: `Loop`
 
-Different items are required based on loop type.
+Executes the appropriate loop type based on the provided attributes.
 
 ## Component Signature
 
@@ -11,6 +11,7 @@ item=[string]
 index=[string]
 to=[double]
 from=[double]
+step=[number]
 file=[string]
 list=[string]
 delimiters=[string]
@@ -22,8 +23,7 @@ groupCaseSensitive=[boolean]
 startRow=[integer]
 endRow=[integer]
 label=[string]
-times=[integer]
-step=[number] />
+times=[integer] />
 ```
 
 ### Attributes
@@ -31,24 +31,24 @@ step=[number] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `false` |  |  |
-| `item` | `string` | `false` |  |  |
-| `index` | `string` | `false` |  |  |
-| `to` | `double` | `false` |  |  |
-| `from` | `double` | `false` |  |  |
-| `file` | `string` | `false` |  |  |
-| `list` | `string` | `false` |  |  |
-| `delimiters` | `string` | `false` |  |  |
-| `collection` | `collection` | `false` |  |  |
-| `condition` | `function` | `false` |  |  |
-| `query` | `any` | `false` |  |  |
-| `group` | `string` | `false` |  |  |
-| `groupCaseSensitive` | `boolean` | `false` |  | `false` |
-| `startRow` | `integer` | `false` |  |  |
-| `endRow` | `integer` | `false` |  |  |
-| `label` | `string` | `false` |  |  |
-| `times` | `integer` | `false` |  |  |
-| `step` | `number` | `false` |  | `1` |
+| `array` | `array` | `false` | An Array object to iterate over. When specified, the loop will process each element<br>                  in the array. Can be used with <code>item</code> and/or <code>index</code> attributes.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop array="#myArray#" item="element"&gt;</code> |  |
+| `item` | `string` | `false` | Variable name to hold the current item value during iteration. Behavior varies by loop type:<br>                 <ul><br>                 <li><strong>Array loops:</strong> Contains the current array element</li><br>                 <li><strong>List loops:</strong> Contains the current list item</li><br>                 <li><strong>Collection loops:</strong> Contains the current collection key</li><br>                 <li><strong>Times loops:</strong> If no index specified, contains the current iteration number</li><br>                 </ul><br>                 <br><br>                 <strong>Example:</strong> <code>&lt;bx:loop array="#colors#" item="color"&gt;</code> |  |
+| `index` | `string` | `false` | Variable name to hold the current index/position during iteration. Behavior varies by loop type:<br>                  <ul><br>                  <li><strong>Array loops:</strong> Contains the 1-based array index</li><br>                  <li><strong>Numeric range loops:</strong> Contains the current numeric value (required)</li><br>                  <li><strong>File loops:</strong> Contains the current line content (required)</li><br>                  <li><strong>Times loops:</strong> Contains the current iteration number</li><br>                  </ul><br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop from="1" to="10" index="i"&gt;</code> |  |
+| `to` | `double` | `false` | End value for numeric range loops. The loop continues while the index value<br>               has not exceeded this value (considering step direction). Required when using<br>               numeric range loops with <code>from</code> and <code>index</code>.<br>               <br><br>               <strong>Example:</strong> <code>&lt;bx:loop from="1" to="100" step="5" index="i"&gt;</code> |  |
+| `from` | `double` | `false` | Starting value for numeric range loops. Defaults to 0 if not specified.<br>                 Used in conjunction with <code>to</code> and <code>index</code> for numeric iteration.<br>                 <br><br>                 <strong>Example:</strong> <code>&lt;bx:loop from="10" to="1" step="-1" index="i"&gt;</code> |  |
+| `step` | `number` | `false` | Increment/decrement value for numeric range loops. Defaults to 1.<br>                 Positive values increment the index, negative values decrement.<br>                 Zero values are ignored to prevent infinite loops.<br>                 <br><br>                 <strong>Example:</strong> <code>&lt;bx:loop from="0" to="20" step="2" index="even"&gt;</code> | `1` |
+| `file` | `string` | `false` | Absolute path to a text file to read line by line. Each iteration provides<br>                 one line of the file content in the <code>index</code> variable. The file<br>                 is automatically closed when the loop completes. Requires <code>index</code> attribute.<br>                 <br><br>                 <strong>Example:</strong> <code>&lt;bx:loop file="/path/to/data.txt" index="line"&gt;</code> |  |
+| `list` | `string` | `false` | A delimited string to process item by item. Each item becomes available<br>                 through the <code>item</code> or <code>index</code> variable. Use with<br>                 <code>delimiters</code> to specify custom separators.<br>                 <br><br>                 <strong>Example:</strong> <code>&lt;bx:loop list="red,green,blue" item="color"&gt;</code> |  |
+| `delimiters` | `string` | `false` | Characters that separate items in the <code>list</code> attribute.<br>                       Defaults to comma (",") if not specified. Multiple delimiter characters<br>                       can be specified.<br>                       <br><br>                       <strong>Example:</strong> <code>&lt;bx:loop list="a|b|c" delimiters="|" item="letter"&gt;</code> |  |
+| `collection` | `collection` | `false` | A Java Collection object (including BoxLang Structs) to iterate over.<br>                       For Structs, each iteration provides a key. Requires <code>item</code> attribute<br>                       to specify the variable name for the current key.<br>                       <br><br>                       <strong>Example:</strong> <code>&lt;bx:loop collection="#myStruct#" item="key"&gt;</code> |  |
+| `condition` | `function` | `false` | A function/closure that returns a boolean value. The loop continues<br>                      while this condition evaluates to true. The condition is evaluated<br>                      before each iteration.<br>                      <br><br>                      <strong>Example:</strong> <code>&lt;bx:loop condition="#() => hasMoreData()#"&gt;</code> |  |
+| `query` | `any` | `false` | A Query object or variable name containing a query to iterate over.<br>                  Each iteration makes one row of the query available. Can be combined<br>                  with <code>group</code> for grouped processing, or <code>startRow</code>/<br>                  <code>endRow</code> for range constraints.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop query="#employeeQuery#"&gt;</code> |  |
+| `group` | `string` | `false` | Comma-separated list of query column names to group by. When specified,<br>                  the loop processes data in groups, executing the body once per group<br>                  change rather than once per row. Enables nested looping for hierarchical<br>                  data processing. Requires <code>query</code> attribute.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop query="#data#" group="department,manager"&gt;</code> |  |
+| `groupCaseSensitive` | `boolean` | `false` | Boolean flag controlling whether group comparisons are case-sensitive.<br>                               Defaults to false (case-insensitive). Only meaningful when<br>                               <code>group</code> attribute is specified.<br>                               <br><br>                               <strong>Example:</strong> <code>&lt;bx:loop query="#data#" group="name" groupCaseSensitive="true"&gt;</code> | `false` |
+| `startRow` | `integer` | `false` | 1-based starting row number for query loops. Only rows from this<br>                     position onward will be processed. Must be 1 or greater.<br>                     <br><br>                     <strong>Example:</strong> <code>&lt;bx:loop query="#data#" startRow="10" endRow="20"&gt;</code> |  |
+| `endRow` | `integer` | `false` | 1-based ending row number for query loops. Processing stops after<br>                   this row. Must be 1 or greater and typically greater than <code>startRow</code>.<br>                   <br><br>                   <strong>Example:</strong> <code>&lt;bx:loop query="#data#" startRow="1" endRow="50"&gt;</code> |  |
+| `label` | `string` | `false` | Optional label for the loop, used with break and continue statements<br>                  to control nested loop execution. Allows targeting specific loops<br>                  in complex nested structures.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop label="outerLoop" array="#data#"&gt;...&lt;bx:break label="outerLoop"&gt;</code> |  |
+| `times` | `integer` | `false` | Number of iterations to perform. Creates a simple counting loop<br>                  from 1 to the specified number. Can be used with <code>item</code><br>                  or <code>index</code> to access the current iteration number.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop times="5" index="i"&gt;</code> |  |
 
 ## Examples
 

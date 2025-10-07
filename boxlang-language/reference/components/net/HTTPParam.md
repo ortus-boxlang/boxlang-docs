@@ -19,11 +19,11 @@ mimetype =[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `type` | `string` | `true` |  |  |
-| `name` | `string` | `false` |  |  |
-| `value` | `any` | `false` |  |  |
-| `file` | `string` | `false` |  |  |
-| `encoded` | `boolean` | `false` |  | `false` |
+| `type` | `string` | `true` | The type of parameter: header, body, xml, cgi, file, url, formfield, cookie |  |
+| `name` | `string` | `false` | The name of the parameter (not required for body, xml, or file types) |  |
+| `value` | `any` | `false` | The value of the parameter (not required for file type) |  |
+| `file` | `string` | `false` | The path to the file (required for file type) |  |
+| `encoded` | `boolean` | `false` | Whether the value is URL encoded. Applies to CGI Params and Form Fields (default: false). If passed as false to a URL param, it will bypass the default encoding that occurs. |  |
 | `mimetype ` | `string` | `false` |  |  |
 
 ## Examples

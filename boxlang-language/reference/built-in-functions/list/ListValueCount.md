@@ -7,7 +7,7 @@ returns a count of the number of occurrences of a value in a list
 ## Method Signature
 
 ```
-ListValueCount(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean])
+ListValueCount(list=[string], value=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -19,6 +19,7 @@ ListValueCount(list=[string], value=[string], delimiter=[string], includeEmptyFi
 | `value` | `string` | `true` | The value to locale |  |
 | `delimiter` | `string` | `false` | The list delimiter(s) | `,` |
 | `includeEmptyFields` | `boolean` | `false` | Whether to include empty fields in the search | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -80,6 +81,7 @@ writeDump( ListValueCount( list2, "boxlang", "@" ) );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

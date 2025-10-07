@@ -40,6 +40,7 @@ ReplaceListNoCase(string=[string], list1=[string], list2=[string], delimiter_lis
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

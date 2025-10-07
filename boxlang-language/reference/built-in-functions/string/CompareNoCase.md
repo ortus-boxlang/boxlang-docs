@@ -1,10 +1,12 @@
-# CompareNoCase
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
+
+# Function: `CompareNoCase`
 
 Performs a case-insensitive comparison of two strings.
 
--1, if string1 is less than string2\
-0, if string1 is equal to string2\
-1, if string1 is greater than string2
+-1, if string1 is less than string2
+ 0, if string1 is equal to string2
+ 1, if string1 is greater than string2
 
 ## Method Signature
 
@@ -14,16 +16,19 @@ CompareNoCase(string1=[string], string2=[string])
 
 ### Arguments
 
-| Argument  | Type     | Required | Description                  | Default |
-| --------- | -------- | -------- | ---------------------------- | ------- |
-| `string1` | `string` | `true`   | The first string to compare  |         |
-| `string2` | `string` | `true`   | The second string to compare |         |
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `string1` | `string` | `true` | The first string to compare |  |
+| `string2` | `string` | `true` | The second string to compare |  |
 
 ## Examples
 
 ### Tag Syntax
 
-[Run Example](https://try.boxlang.io/?code=eJxLSEjgskmqsCpOLVFIzs8tSCzKLM7PU7CFclL98p0Ti1M1FJSc8ityEvPSlXQUlJKgTAVNBTuw5pTS3AKFssQiWyVlhBnKSvp2XAkJCQBnLyBK)
+
+
+<a href="https://try.boxlang.io?code=eJxLSEjgskmqsCpOLVFIzs8tSCzKLM7PU7CFclL98p0Ti1M1FJSc8ityEvPSlXQUlJKgTAVNBTuw5pTS3AKFssQiWyVlhBnKSvp2XAkJCQBnLyBK" target="_blank">Run Example</a>
 
 ```java
 <bx:set comparison = compareNoCase( "Boxlang", "boxlang" ) >
@@ -34,7 +39,7 @@ Result: 0
 
 ### Additional Examples
 
-[Run Example](https://try.boxlang.io/?code=eJxLKc0t0FBwzs8tSCxK9ct3TixO1VBQMjQwUPB19PRTCA7RU9JRUDIzN1VwdQwOUXAMc%2FULdVVS0FTQtOZS0NdX0DXkAgCIZxCW)
+<a href="https://try.boxlang.io/?code=eJxLKc0t0FBwzs8tSCxK9ct3TixO1VBQMjQwUPB19PRTCA7RU9JRUDIzN1VwdQwOUXAMc%2FULdVVS0FTQtOZS0NdX0DXkAgCIZxCW" target="_blank">Run Example</a>
 
 ```java
 dump( CompareNoCase( "100 MAIN ST.", "675 EAST AVENUE" ) );
@@ -42,65 +47,68 @@ dump( CompareNoCase( "100 MAIN ST.", "675 EAST AVENUE" ) );
 
 ```
 
+
+
 ## Related
 
-* [Ascii](Ascii.md)
-* [CamelCase](CamelCase.md)
-* [Char](Char.md)
-* [CharsetDecode](CharsetDecode.md)
-* [CharsetEncode](CharsetEncode.md)
-* [Compare](Compare.md)
-* [Find](Find.md)
-* [FindNoCase](FindNoCase.md)
-* [FindOneOf](FindOneOf.md)
-* [Insert](Insert.md)
-* [JSStringFormat](JSStringFormat.md)
-* [KebabCase](KebabCase.md)
-* [LCase](LCase.md)
-* [Left](Left.md)
-* [ListReduce](ListReduce.md)
-* [LJustify](LJustify.md)
-* [LTrim](LTrim.md)
-* [Mid](Mid.md)
-* [ParagraphFormat](ParagraphFormat.md)
-* [PascalCase](PascalCase.md)
-* [QueryStringToStruct](QueryStringToStruct.md)
-* [ReEscape](ReEscape.md)
-* [ReFind](ReFind.md)
-* [reFindNoCase](reFindNoCase.md)
-* [ReMatch](ReMatch.md)
-* [reMatchNoCase](reMatchNoCase.md)
-* [RemoveChars](RemoveChars.md)
-* [RepeatString](RepeatString.md)
-* [Replace](Replace.md)
-* [ReplaceList](ReplaceList.md)
-* [ReplaceListNoCase](ReplaceListNoCase.md)
-* [ReplaceNoCase](ReplaceNoCase.md)
-* [ReReplace](ReReplace.md)
-* [reReplaceNoCase](reReplaceNoCase.md)
-* [Reverse](Reverse.md)
-* [Right](Right.md)
-* [RJustify](RJustify.md)
-* [RTrim](RTrim.md)
-* [Slugify](Slugify.md)
-* [SnakeCase](SnakeCase.md)
-* [SpanExcluding](SpanExcluding.md)
-* [SpanIncluding](SpanIncluding.md)
-* [SQLPrettify](SQLPrettify.md)
-* [StringBind](StringBind.md)
-* [StringEach](StringEach.md)
-* [StringEvery](StringEvery.md)
-* [StringFilter](StringFilter.md)
-* [StringMap](StringMap.md)
-* [StringReduce](StringReduce.md)
-* [StringReduceRight](StringReduceRight.md)
-* [StringSome](StringSome.md)
-* [StringSort](StringSort.md)
-* [StripCR](StripCR.md)
-* [Trim](Trim.md)
-* [TrueFalseFormat](TrueFalseFormat.md)
-* [UCase](UCase.md)
-* [UCFirst](UCFirst.md)
-* [Val](Val.md)
-* [Wrap](Wrap.md)
-* [YesNoFormat](YesNoFormat.md)
+  * [Ascii](./Ascii.md)
+  * [CamelCase](./CamelCase.md)
+  * [Char](./Char.md)
+  * [CharsetDecode](./CharsetDecode.md)
+  * [CharsetEncode](./CharsetEncode.md)
+  * [Compare](./Compare.md)
+  * [Find](./Find.md)
+  * [FindNoCase](./FindNoCase.md)
+  * [FindOneOf](./FindOneOf.md)
+  * [Insert](./Insert.md)
+  * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
+  * [KebabCase](./KebabCase.md)
+  * [LCase](./LCase.md)
+  * [Left](./Left.md)
+  * [ListReduce](./ListReduce.md)
+  * [LJustify](./LJustify.md)
+  * [LTrim](./LTrim.md)
+  * [Mid](./Mid.md)
+  * [ParagraphFormat](./ParagraphFormat.md)
+  * [PascalCase](./PascalCase.md)
+  * [QueryStringToStruct](./QueryStringToStruct.md)
+  * [ReEscape](./ReEscape.md)
+  * [ReFind](./ReFind.md)
+  * [reFindNoCase](./reFindNoCase.md)
+  * [ReMatch](./ReMatch.md)
+  * [reMatchNoCase](./reMatchNoCase.md)
+  * [RemoveChars](./RemoveChars.md)
+  * [RepeatString](./RepeatString.md)
+  * [Replace](./Replace.md)
+  * [ReplaceList](./ReplaceList.md)
+  * [ReplaceListNoCase](./ReplaceListNoCase.md)
+  * [ReplaceNoCase](./ReplaceNoCase.md)
+  * [ReReplace](./ReReplace.md)
+  * [reReplaceNoCase](./reReplaceNoCase.md)
+  * [Reverse](./Reverse.md)
+  * [Right](./Right.md)
+  * [RJustify](./RJustify.md)
+  * [RTrim](./RTrim.md)
+  * [Slugify](./Slugify.md)
+  * [SnakeCase](./SnakeCase.md)
+  * [SpanExcluding](./SpanExcluding.md)
+  * [SpanIncluding](./SpanIncluding.md)
+  * [SQLPrettify](./SQLPrettify.md)
+  * [StringBind](./StringBind.md)
+  * [StringEach](./StringEach.md)
+  * [StringEvery](./StringEvery.md)
+  * [StringFilter](./StringFilter.md)
+  * [StringMap](./StringMap.md)
+  * [StringReduce](./StringReduce.md)
+  * [StringReduceRight](./StringReduceRight.md)
+  * [StringSome](./StringSome.md)
+  * [StringSort](./StringSort.md)
+  * [StripCR](./StripCR.md)
+  * [Trim](./Trim.md)
+  * [TrueFalseFormat](./TrueFalseFormat.md)
+  * [UCase](./UCase.md)
+  * [UCFirst](./UCFirst.md)
+  * [Val](./Val.md)
+  * [Wrap](./Wrap.md)
+  * [YesNoFormat](./YesNoFormat.md)

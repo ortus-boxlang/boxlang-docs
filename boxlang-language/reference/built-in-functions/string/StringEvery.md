@@ -7,7 +7,7 @@ Tests a string that all elements meet the specified criteria
 ## Method Signature
 
 ```
-StringEvery(list=[string], callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
+StringEvery(list=[string], callback=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[any], virtual=[boolean])
 ```
 
 ### Arguments
@@ -19,9 +19,10 @@ StringEvery(list=[string], callback=[function:Predicate], delimiter=[string], in
 | `callback` | `function:Predicate` | `true` | The callback to use for the test |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `true` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 | `parallel` | `boolean` | `false` |  | `false` |
-| `maxThreads` | `integer` | `false` |  |  |
+| `maxThreads` | `any` | `false` |  |  |
+| `virtual` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -91,6 +92,7 @@ writeDump( result1 );
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

@@ -7,7 +7,7 @@ Filters all the elements in a string according to a specified callback
 ## Method Signature
 
 ```
-StringFilter(list=[string], filter=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[integer])
+StringFilter(list=[string], filter=[function:Predicate], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[any], virtual=[boolean])
 ```
 
 ### Arguments
@@ -19,9 +19,10 @@ StringFilter(list=[string], filter=[function:Predicate], delimiter=[string], inc
 | `filter` | `function:Predicate` | `true` |  |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `true` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 | `parallel` | `boolean` | `false` |  | `false` |
-| `maxThreads` | `integer` | `false` |  |  |
+| `maxThreads` | `any` | `false` |  |  |
+| `virtual` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -92,6 +93,7 @@ writeDump( result1 );
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

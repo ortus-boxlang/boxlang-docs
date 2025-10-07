@@ -27,9 +27,16 @@ Determine the sign of a number
 Decrement the integer part of a number
 </details>
 <details>
-<summary><code>round()</code></summary>
+<summary><code>round(precision=[integer])</code></summary>
 
 Rounds a number to the closest integer.
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `precision` | `integer` | `false` | `0` |
+
 </details>
 <details>
 <summary><code>cos()</code></summary>
@@ -60,6 +67,30 @@ Returns the arc tangent (inverse tangent) of a number
 <summary><code>fix()</code></summary>
 
 Converts a real number to an integer
+</details>
+<details>
+<summary><code>max(number2=[numeric])</code></summary>
+
+Return larger of two numbers
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `number2` | `numeric` | `true` | `null` |
+
+</details>
+<details>
+<summary><code>min(number2=[numeric])</code></summary>
+
+Return larger of two numbers
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `number2` | `numeric` | `true` | `null` |
+
 </details>
 <details>
 <summary><code>abs()</code></summary>

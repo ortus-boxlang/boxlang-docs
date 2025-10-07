@@ -54,5 +54,6 @@ writeOutput( bitXor( 128, 5 ) );
   * [BitMaskSet](./BitMaskSet.md)
   * [BitNot](./BitNot.md)
   * [BitOr](./BitOr.md)
+  * [BitSh](./BitSh.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)

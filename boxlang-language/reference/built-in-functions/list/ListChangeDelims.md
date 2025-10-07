@@ -7,7 +7,7 @@ Converts the delimiters of a list to the new delimiter.
 ## Method Signature
 
 ```
-ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], includeEmptyFields=[boolean])
+ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -19,6 +19,7 @@ ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], inclu
 | `newDelimiter` | `string` | `true` | string the new list delimiter |  |
 | `delimiter` | `string` | `false` | string the old list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -79,6 +80,7 @@ writeDump( strLst.listChangeDelims( "/", "+" ) );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

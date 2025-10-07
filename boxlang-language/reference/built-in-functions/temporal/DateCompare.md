@@ -130,5 +130,6 @@ writeOutput( d1.Compare( d ) & " Date1 is earlier than date2" );
   * [Second](./Second.md)
   * [SetTimezone](./SetTimezone.md)
   * [TimeFormat](./TimeFormat.md)
+  * [TimeUnits](./TimeUnits.md)
   * [Week](./Week.md)
   * [Year](./Year.md)

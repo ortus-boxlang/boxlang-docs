@@ -7,7 +7,7 @@ Returns the remainder of a list after removing the first item
 ## Method Signature
 
 ```
-ListRest(list=[string], delimiter=[string], includeEmptyFields=[boolean], offset=[integer])
+ListRest(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], offset=[integer])
 ```
 
 ### Arguments
@@ -18,7 +18,8 @@ ListRest(list=[string], delimiter=[string], includeEmptyFields=[boolean], offset
 | `list` | `string` | `true` | The delimited list to perform operations on |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
-| `offset` | `integer` | `false` |  | `0` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
+| `offset` | `integer` | `false` |  | `1` |
 
 ## Examples
 
@@ -92,6 +93,7 @@ writeDump( strlist.listRest() );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

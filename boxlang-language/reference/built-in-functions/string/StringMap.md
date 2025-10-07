@@ -7,7 +7,7 @@ Iterates over all elements in a string and returns a new mapped string
 ## Method Signature
 
 ```
-StringMap(list=[string], callback=[function:Function], delimiter=[string], includeEmptyFields=[boolean], parallel=[boolean], maxThreads=[integer])
+StringMap(list=[string], callback=[function:Function], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean], parallel=[boolean], maxThreads=[any], virtual=[boolean])
 ```
 
 ### Arguments
@@ -19,8 +19,10 @@ StringMap(list=[string], callback=[function:Function], delimiter=[string], inclu
 | `callback` | `function:Function` | `true` | The callback which returns a boolean and filters the string |  |
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 | `parallel` | `boolean` | `false` |  | `false` |
-| `maxThreads` | `integer` | `false` |  |  |
+| `maxThreads` | `any` | `false` |  |  |
+| `virtual` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -86,6 +88,7 @@ writeDump( StringMap( myString, closure ) );
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

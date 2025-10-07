@@ -60,6 +60,7 @@ writeOutput( LCase( foo ) );
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [Left](./Left.md)
   * [ListReduce](./ListReduce.md)

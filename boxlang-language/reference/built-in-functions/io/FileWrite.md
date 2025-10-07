@@ -81,3 +81,4 @@ filewrite( "filepath", "fileContent to be write" );
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
   * [GetFileInfo](./GetFileInfo.md)
   * [getTempFile](./getTempFile.md)
+  * [PropertyFile](./PropertyFile.md)

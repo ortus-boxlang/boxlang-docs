@@ -16,7 +16,7 @@ LSNumberFormat(number=[number], mask=[string], locale=[string])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `number` | `number` | `true` | The number to be formatted |  |
-| `mask` | `string` | `false` | The formatting mask to apply |  |
+| `mask` | `string` | `false` | The formatting mask to apply using the {@link java.text.DecimalFormat} patterns. |  |
 | `locale` | `string` | `false` | An optional locale string to apply to the format |  |
 
 ## Examples

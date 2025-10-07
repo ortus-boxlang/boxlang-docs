@@ -7,7 +7,7 @@ De-duplicates a delimited list - either case-sensitively or case-insenstively
 ## Method Signature
 
 ```
-ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean])
+ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -18,6 +18,8 @@ ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean])
 | `list` | `string` | `true` | The list to deduplicate |  |
 | `delimiter` | `string` | `false` | The delimiter of the list | `,` |
 | `ignoreCase` | `boolean` | `false` | Whether case should be ignored or not during deduplication - defaults to false | `false` |
+| `includeEmptyFields` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -80,6 +82,7 @@ writeoutput( lst );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

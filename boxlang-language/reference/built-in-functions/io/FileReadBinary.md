@@ -60,3 +60,4 @@ FileReadBinary(filepath=[string], charsetOrBufferSize=[string], charset=[string]
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
   * [GetFileInfo](./GetFileInfo.md)
   * [getTempFile](./getTempFile.md)
+  * [PropertyFile](./PropertyFile.md)

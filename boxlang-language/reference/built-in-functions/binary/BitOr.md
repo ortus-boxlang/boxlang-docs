@@ -55,6 +55,7 @@ writeOutput( bitOr( 10, 0 ) );
   * [BitMaskRead](./BitMaskRead.md)
   * [BitMaskSet](./BitMaskSet.md)
   * [BitNot](./BitNot.md)
+  * [BitSh](./BitSh.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
   * [BitXor](./BitXor.md)

@@ -7,7 +7,7 @@ Checks if a list has a given index
 ## Method Signature
 
 ```
-ListIndexExists(list=[string], index=[integer], delimiter=[string], includeEmptyFields=[boolean])
+ListIndexExists(list=[string], index=[integer], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -19,6 +19,7 @@ ListIndexExists(list=[string], index=[integer], delimiter=[string], includeEmpty
 | `index` | `integer` | `true` | numeric The index to check for |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -70,6 +71,7 @@ writeDump( strList.listIndexExists( 6 ) );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)
   * [ListLast](./ListLast.md)

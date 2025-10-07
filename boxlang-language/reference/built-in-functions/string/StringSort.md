@@ -21,7 +21,7 @@ StringSort(list=[string], sortType=[any], sortOrder=[string], delimiter=[string]
 | `delimiter` | `string` | `false` |  | `,` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
-| `localeSensitive` | `boolean` | `false` |  |  |
+| `localeSensitive` | `boolean` | `false` |  | `false` |
 | `callback` | `any` | `false` |  |  |
 
 ## Examples
@@ -79,6 +79,7 @@ writeOutput( result );
   * [FindOneOf](./FindOneOf.md)
   * [Insert](./Insert.md)
   * [JSStringFormat](./JSStringFormat.md)
+  * [Justify](./Justify.md)
   * [KebabCase](./KebabCase.md)
   * [LCase](./LCase.md)
   * [Left](./Left.md)

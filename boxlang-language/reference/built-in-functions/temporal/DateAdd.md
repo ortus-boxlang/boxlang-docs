@@ -139,5 +139,6 @@ dump( dateAdd( "yyyy", 1, now() ) );
   * [Second](./Second.md)
   * [SetTimezone](./SetTimezone.md)
   * [TimeFormat](./TimeFormat.md)
+  * [TimeUnits](./TimeUnits.md)
   * [Week](./Week.md)
   * [Year](./Year.md)

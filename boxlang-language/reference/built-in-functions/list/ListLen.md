@@ -7,7 +7,7 @@ Calculates the length of a list separated by the specified delimiter
 ## Method Signature
 
 ```
-ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean])
+ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCharacterDelimiter=[boolean])
 ```
 
 ### Arguments
@@ -18,6 +18,7 @@ ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean])
 | `list` | `string` | `true` | string list to calculate the length |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
@@ -91,6 +92,7 @@ writeDump( listLen( "susi,,LAS,,." ) );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

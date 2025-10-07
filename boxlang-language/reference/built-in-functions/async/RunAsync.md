@@ -1,9 +1,10 @@
-# RunAsync
+[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-Executes the given code asynchronously and returns to you a BoxFuture object that you can use to interact with the\
-asynchronously executed code.
+# Function: `RunAsync`
 
-A BoxFuture is a subclass of CompletableFuture.
+Executes the given code asynchronously and returns to you a BoxFuture object which inherits from CompletableFuture.
+
+This way you can create fluent asynchronous code that can be chained and composed.
 
 ## Method Signature
 
@@ -13,16 +14,19 @@ RunAsync(callback=[function], executor=[any])
 
 ### Arguments
 
-| Argument   | Type       | Required | Description                                                                                                                                                 | Default |
-| ---------- | ---------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `callback` | `function` | `true`   | The code to execute asynchronously, this can be a closure or lambda.                                                                                        |         |
-| `executor` | `any`      | `false`  | The executor to use for the asynchronous execution. This can be an instance of an Executor class, or the name of a registered executor in the AsyncService. |         |
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `callback` | `function` | `true` | The code to execute asynchronously, this can be a closure<br>                    or lambda. |  |
+| `executor` | `any` | `false` | The executor to use for the asynchronous execution. This<br>                    can be an instance of an Executor class, or the name of a<br>                    registered executor in the AsyncService. |  |
 
 ## Examples
 
 ### Run a function asynchronously and get the result
 
-[Run Example](https://try.boxlang.io/?code=eJxLKy0pLUpVsFUoKs1zLK7MS9ZQ0NBUsLVTqObiLEoFyuUpKHmk5uTkK4TnF%2BWkKCpZc9UqaFpzlRdllqT6l5YUlJZoKKSBDdFLTy0B6gVKAgCTuhrL)
+
+
+<a href="https://try.boxlang.io/?code=eJxLKy0pLUpVsFUoKs1zLK7MS9ZQ0NBUsLVTqObiLEoFyuUpKHmk5uTkK4TnF%2BWkKCpZc9UqaFpzlRdllqT6l5YUlJZoKKSBDdFLTy0B6gVKAgCTuhrL" target="_blank">Run Example</a>
 
 ```java
 future = runAsync( () => {
@@ -36,7 +40,9 @@ Result: Hello World!
 
 ### Run a function after the asynchronous function and use a five milliseconds timeout when calling get()
 
-[Run Example](https://try.boxlang.io/?code=eJxdjUEKwkAMRdfOKf5yBqEFxVWp0BN4iJJqwEbJJEgR795QXbkK%2FPf%2Fy%2BTmSuihLkNdZMzIBf0Z77RTCiY4demD0tiNJCAGWcDydMNf7xvucdj6XVKqfrdQT9uP5kqWcQyCto3LFcYzPdwyC%2BZa0kvZ6OIWmozfOjwr13wyHQ%3D%3D)
+
+
+<a href="https://try.boxlang.io/?code=eJxdjUEKwkAMRdfOKf5yBqEFxVWp0BN4iJJqwEbJJEgR795QXbkK%2FPf%2Fy%2BTmSuihLkNdZMzIBf0Z77RTCiY4demD0tiNJCAGWcDydMNf7xvucdj6XVKqfrdQT9uP5kqWcQyCto3LFcYzPdwyC%2BZa0kvZ6OIWmozfOjwr13wyHQ%3D%3D" target="_blank">Run Example</a>
 
 ```java
 future = runAsync( () => {
@@ -52,6 +58,9 @@ writeOutput( result );
 Result: 5
 
 ### Run a function asynchronously with then() and error()
+
+
+
 
 ```java
 future = runAsync( () => {
@@ -69,7 +78,7 @@ Result: 7
 
 ### Additional Examples
 
-[Run Example](https://try.boxlang.io/?code=eJxdjU0OgkAMhdfOKd5yiAmgLgkmnMBDaNFJpJCZNoQY727HceWufT%2FfG1U0EnpE5SFtfPXwFfozXm4XyTzGoe3cG1UtD2JzMfCGwIsK%2FoJF3ONYCp276bR4jGXC%2FkhJn2JjRarvJN7wZqFp8hESJEw0q%2FjAmFLl1hiELipG9vj1jZTz81fNnVPrPrwgPNQ%3D)
+<a href="https://try.boxlang.io/?code=eJxdjU0OgkAMhdfOKd5yiAmgLgkmnMBDaNFJpJCZNoQY727HceWufT%2FfG1U0EnpE5SFtfPXwFfozXm4XyTzGoe3cG1UtD2JzMfCGwIsK%2FoJF3ONYCp276bR4jGXC%2FkhJn2JjRarvJN7wZqFp8hESJEw0q%2FjAmFLl1hiELipG9vj1jZTz81fNnVPrPrwgPNQ%3D" target="_blank">Run Example</a>
 
 ```java
 future = runAsync( () => {
@@ -84,19 +93,25 @@ writeOutput( result );
 
 ```
 
+
+
 ## Related
 
-* [ExecutorGet](ExecutorGet.md)
-* [ExecutorHas](ExecutorHas.md)
-* [ExecutorList](ExecutorList.md)
-* [ExecutorNew](ExecutorNew.md)
-* [ExecutorShutdown](ExecutorShutdown.md)
-* [ExecutorStatus](ExecutorStatus.md)
-* [FutureNew](FutureNew.md)
-* [IsInThread](IsInThread.md)
-* [isThreadAlive](isThreadAlive.md)
-* [IsThreadInterrupted](IsThreadInterrupted.md)
-* [ThreadInterrupt](ThreadInterrupt.md)
-* [ThreadJoin](ThreadJoin.md)
-* [ThreadNew](ThreadNew.md)
-* [ThreadTerminate](ThreadTerminate.md)
+  * [AsyncAll](./AsyncAll.md)
+  * [AsyncAllApply](./AsyncAllApply.md)
+  * [AsyncAny](./AsyncAny.md)
+  * [AsyncRun](./AsyncRun.md)
+  * [ExecutorGet](./ExecutorGet.md)
+  * [ExecutorHas](./ExecutorHas.md)
+  * [ExecutorList](./ExecutorList.md)
+  * [ExecutorNew](./ExecutorNew.md)
+  * [ExecutorShutdown](./ExecutorShutdown.md)
+  * [ExecutorStatus](./ExecutorStatus.md)
+  * [FutureNew](./FutureNew.md)
+  * [IsInThread](./IsInThread.md)
+  * [isThreadAlive](./isThreadAlive.md)
+  * [IsThreadInterrupted](./IsThreadInterrupted.md)
+  * [ThreadInterrupt](./ThreadInterrupt.md)
+  * [ThreadJoin](./ThreadJoin.md)
+  * [ThreadNew](./ThreadNew.md)
+  * [ThreadTerminate](./ThreadTerminate.md)

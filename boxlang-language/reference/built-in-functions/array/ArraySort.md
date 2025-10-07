@@ -7,7 +7,7 @@ Sorts array elements.
 ## Method Signature
 
 ```
-ArraySort(array=[modifiablearray], sortType=[any], sortOrder=[string], localeSensitive=[boolean], callback=[function:Comparator])
+ArraySort(array=[assignablearray], sortType=[any], sortOrder=[string], localeSensitive=[boolean], callback=[function:Comparator])
 ```
 
 ### Arguments
@@ -15,10 +15,10 @@ ArraySort(array=[modifiablearray], sortType=[any], sortOrder=[string], localeSen
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `modifiablearray` | `true` | The array to sort |  |
+| `array` | `assignablearray` | `true` | The array to sort |  |
 | `sortType` | `any` | `false` | Options are text, numeric, or textnocase | `textnocase` |
 | `sortOrder` | `string` | `false` | Options are asc or desc | `asc` |
-| `localeSensitive` | `boolean` | `false` | Sort based on local rules |  |
+| `localeSensitive` | `boolean` | `false` | Sort based on local rules | `false` |
 | `callback` | `function:Comparator` | `false` | Function to sort by |  |
 
 ## Examples

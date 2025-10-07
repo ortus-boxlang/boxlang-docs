@@ -4,7 +4,7 @@
 
 Creates and registers a new executor by name and type.
 
-The return value is an ExecutorRecord object that can be used to interact with the executor.
+The return value is an BoxExecutor object that can be used to interact with the executor.
 
  Available types are:
  - "cached" - Creates a cached thread pool executor.
@@ -36,6 +36,10 @@ ExecutorNew(name=[string], type=[string], maxThreads=[integer])
 
 ## Related
 
+  * [AsyncAll](./AsyncAll.md)
+  * [AsyncAllApply](./AsyncAllApply.md)
+  * [AsyncAny](./AsyncAny.md)
+  * [AsyncRun](./AsyncRun.md)
   * [ExecutorGet](./ExecutorGet.md)
   * [ExecutorHas](./ExecutorHas.md)
   * [ExecutorList](./ExecutorList.md)

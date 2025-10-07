@@ -82,3 +82,4 @@ writeDump( getfileinfo( expandPath( "./testcase.txt" ) ).LASTMODIFIED );
   * [GetDirectoryFromPath](./GetDirectoryFromPath.md)
   * [GetFileInfo](./GetFileInfo.md)
   * [getTempFile](./getTempFile.md)
+  * [PropertyFile](./PropertyFile.md)

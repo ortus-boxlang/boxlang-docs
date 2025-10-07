@@ -54,6 +54,7 @@ writeOutput( bitNot( 255 ) );
   * [BitMaskRead](./BitMaskRead.md)
   * [BitMaskSet](./BitMaskSet.md)
   * [BitOr](./BitOr.md)
+  * [BitSh](./BitSh.md)
   * [bitShln](./bitShln.md)
   * [bitShrn](./bitShrn.md)
   * [BitXor](./BitXor.md)

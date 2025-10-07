@@ -21,7 +21,7 @@ ListSort(list=[string], sortType=[any], sortOrder=[string], delimiter=[string], 
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
 | `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
-| `localeSensitive` | `boolean` | `false` | Sort based on local rules |  |
+| `localeSensitive` | `boolean` | `false` | Sort based on local rules | `false` |
 | `callback` | `any` | `false` | Optional function to use for sorting - if the sort type is a closure, it will be recognized as a callback |  |
 
 ## Examples
@@ -108,6 +108,7 @@ writeDump( strlist.listSort( "textnocase", "asc" ) );
   * [ListFindNoCase](./ListFindNoCase.md)
   * [ListFirst](./ListFirst.md)
   * [ListGetAt](./ListGetAt.md)
+  * [ListGetEndings](./ListGetEndings.md)
   * [ListIndexExists](./ListIndexExists.md)
   * [ListInsertAt](./ListInsertAt.md)
   * [ListItemTrim](./ListItemTrim.md)

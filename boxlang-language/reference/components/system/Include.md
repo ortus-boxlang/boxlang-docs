@@ -6,7 +6,8 @@ I include a template into the current template
 ## Component Signature
 
 ```
-<bx:Include template=[string] />
+<bx:Include template=[string]
+externalOnly=[boolean] />
 ```
 
 ### Attributes
@@ -15,6 +16,7 @@ I include a template into the current template
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `template` | `string` | `true` |  |  |
+| `externalOnly` | `boolean` | `false` |  | `false` |
 
 ## Examples
 
