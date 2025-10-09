@@ -3,13 +3,130 @@ description: Run BoxLang in your GitHub Actions seamlessly with the official set
 icon: github
 ---
 
-# GitHub Actions
+# ⚡ Setup BoxLang GitHub Action
 
-Integrate BoxLang into your CI/CD workflows with the official **setup-boxlang** GitHub Action. This action provides comprehensive BoxLang runtime setup, module installation, and optional CommandBox integration for your GitHub Actions workflows.
+🚀 **Automate your BoxLang setup** - This GitHub Action sets up the [BoxLang Dynamic JVM Language](https://boxlang.io) runtime for CI/CD workflows with optional CommandBox CLI and module installation.
 
-## 🚀 Quick Start
+## ⌨️ Action Inputs
 
-To run BoxLang in your GitHub Actions workflow, add the setup step to your workflow file. Here's a basic example:
+Configure your BoxLang setup using these input parameters:
+
+| Input                    | Type          | Default       | Description |
+| ------------------------ | ------------- | ------------- | ----------- |
+| `version`                | semver        | `latest`      | The BoxLang version to install, if not passed we use the latest stable. |
+| `modules`              | string        | ---           | If added, a space-delimited list of modules to install upon installation of the binary for you. |
+| `with-commandbox` | boolean       | `false`       | If true, it will install the latest CommandBox as well. |
+| `commandbox_version` | string       | `latest`       | The CommandBox version to install. Only used if `with-commandbox` is true. |
+| `commandbox_modules` | string       | ---           | If added, a comma-delimited list of CommandBox packages to install. Only used if `with-commandbox` is true. |
+| `forgeboxAPIKey` | string       | ---           | If added, it will configure the ForgeBox API Key in CommandBox. Only used if `with-commandbox` is true. |
+
+{% hint style="info" %}
+**Version Options**:
+
+- `latest` - Latest stable release
+- `snapshot` - Latest development build
+- `1.2.0` - Specific version number
+- `1.x` - Latest in major version series
+
+{% endhint %}
+
+## 🔳 Usage Examples
+
+### Simple Setup
+
+```yaml
+- name: Setup BoxLang
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+```
+
+### 📦 With BoxLang Modules
+
+```yaml
+- name: Setup BoxLang
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    modules: bx-ai bx-orm bx-pdf
+```
+
+### 🎯 Specific Version
+
+```yaml
+- name: Setup BoxLang with specific version
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    version: snapshot
+```
+
+### 📦 With CommandBox
+
+```yaml
+- name: Setup BoxLang with CommandBox
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    with-commandbox: true
+```
+
+### 🔧 CommandBox with Specific Version
+
+```yaml
+- name: Setup BoxLang with specific CommandBox version
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    with-commandbox: true
+    commandbox_version: 6.0.0
+```
+
+### 🛠️ CommandBox with Modules
+
+```yaml
+- name: Setup BoxLang with CommandBox and modules
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    with-commandbox: true
+    commandbox_modules: commandbox-cfconfig,commandbox-dotenv
+```
+
+### ⚙️ Full Configuration Example
+
+```yaml
+- name: Setup BoxLang with CommandBox (full setup)
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    with-commandbox: true
+    commandbox_version: 6.0.0
+    commandbox_modules: commandbox-cfconfig,commandbox-dotenv,commandbox-fusionreactor
+```
+
+### 🔑 With ForgeBox API Key
+
+```yaml
+- name: Setup BoxLang with CommandBox and ForgeBox API Key
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    with-commandbox: true
+    forgeboxAPIKey: ${{ secrets.FORGEBOX_API_KEY }}
+```
+
+### 🎯 Specific Version with Modules
+
+```yaml
+- name: Setup BoxLang with specific version
+  uses: ortus-boxlang/setup-boxlang@1.2.0
+  with:
+    version: 1.2.0
+    modules: bx-compat-cfml bx-mail
+```
+
+## 📦 Action Outputs
+
+This action provides the following outputs for use in subsequent workflow steps:
+
+- `boxlang-version`: The version of BoxLang that was installed
+- `installation-path`: The path where BoxLang was installed
+
+## 🔧 Complete CI/CD Examples
+
+### Quick Start Example
 
 ```yaml
 name: BoxLang CI/CD
@@ -25,10 +142,10 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up BoxLang
-      uses: ortus-boxlang/setup-boxlang@1.1.0
+      uses: ortus-boxlang/setup-boxlang@1.2.0
       with:
-        version: latest # or specify a version like '1.5.0'
-        modules: "bx-compat-cfml bx-mail" # optional: install modules
+        version: latest
+        modules: "bx-compat-cfml bx-mail"
 
     - name: Run BoxLang Tests
       run: boxlang test-runner.bx
@@ -36,86 +153,6 @@ jobs:
     - name: Run BoxLang Application
       run: boxlang app.bx
 ```
-
-## 📋 Action Inputs
-
-The following input parameters allow you to customize the BoxLang setup for your specific needs:
-
-| Input | Type | Default | Description |
-|-------|------|---------|-------------|
-| `version` | semver | `latest` | BoxLang version to install. Use `latest` for stable, `snapshot` for bleeding-edge, or specific version like `1.5.0` |
-| `modules` | string | --- | Space-delimited list of BoxLang modules to install automatically |
-| `with-commandbox` | boolean | `false` | When `true`, installs CommandBox alongside BoxLang for enterprise features |
-
-{% hint style="info" %}
-**Version Options**:
-
-- `latest` - Latest stable release
-- `snapshot` - Latest development build
-- `1.5.0` - Specific version number
-- `1.x` - Latest in major version series
-
-{% endhint %}
-
-## 💡 Usage Examples
-
-### Basic Setup
-
-Minimal setup with latest BoxLang version:
-
-```yaml
-- name: Setup BoxLang
-  uses: ortus-boxlang/setup-boxlang@1.1.0
-```
-
-### With Specific Version
-
-Install a specific BoxLang version:
-
-```yaml
-- name: Setup BoxLang 1.5.0
-  uses: ortus-boxlang/setup-boxlang@1.1.0
-  with:
-    version: "1.5.0"
-```
-
-### With Snapshot/Development Version
-
-Use the latest development version:
-
-```yaml
-- name: Setup BoxLang Snapshot
-  uses: ortus-boxlang/setup-boxlang@1.1.0
-  with:
-    version: snapshot
-```
-
-### With BoxLang Modules
-
-Install BoxLang with commonly used modules:
-
-```yaml
-- name: Setup BoxLang with Modules
-  uses: ortus-boxlang/setup-boxlang@1.1.0
-  with:
-    version: latest
-    modules: "bx-compat-cfml bx-mail bx-mysql bx-redis bx-esapi"
-```
-
-### With CommandBox Integration
-
-Enable CommandBox for enterprise servlet deployments:
-
-```yaml
-- name: Setup BoxLang with CommandBox
-  uses: ortus-boxlang/setup-boxlang@1.1.0
-  with:
-    version: latest
-    with-commandbox: true
-    modules: "bx-compat-cfml bx-orm"
-```
-
-## 🔧 Complete CI/CD Examples
 
 ### Web Application Testing
 
@@ -141,7 +178,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup BoxLang ${{ matrix.boxlang-version }}
-      uses: ortus-boxlang/setup-boxlang@1.1.0
+      uses: ortus-boxlang/setup-boxlang@1.2.0
       with:
         version: ${{ matrix.boxlang-version }}
         modules: "bx-compat-cfml bx-mysql bx-mail bx-esapi"
@@ -180,7 +217,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup BoxLang with Development Dependencies
-      uses: ortus-boxlang/setup-boxlang@1.1.0
+      uses: ortus-boxlang/setup-boxlang@1.2.0
       with:
         version: snapshot
         modules: "bx-compat-cfml"
@@ -227,7 +264,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup BoxLang on ${{ matrix.os }}
-      uses: ortus-boxlang/setup-boxlang@1.1.0
+      uses: ortus-boxlang/setup-boxlang@1.2.0
       with:
         version: ${{ matrix.boxlang-version }}
         modules: "bx-compat-cfml bx-mail"
@@ -255,7 +292,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Setup BoxLang with CommandBox
-      uses: ortus-boxlang/setup-boxlang@1.1.0
+      uses: ortus-boxlang/setup-boxlang@1.2.0
       with:
         version: latest
         with-commandbox: true
@@ -338,21 +375,10 @@ Enable debug output for troubleshooting:
 
 ```yaml
 - name: Setup BoxLang with Debug
-  uses: ortus-boxlang/setup-boxlang@1.1.0
+  uses: ortus-boxlang/setup-boxlang@1.2.0
   with:
     version: latest
     modules: "bx-compat-cfml"
   env:
     ACTIONS_RUNNER_DEBUG: true
 ```
-
-## 🔗 Additional Resources
-
-- **Action Repository**: [https://github.com/ortus-boxlang/setup-boxlang](https://github.com/ortus-boxlang/setup-boxlang)
-- **BoxLang Documentation**: [https://boxlang.ortusbooks.com](https://boxlang.ortusbooks.com)
-- **GitHub Actions Marketplace**: [setup-boxlang action](https://github.com/marketplace/actions/setup-boxlang)
-- **BoxLang Community**: [https://community.ortussolutions.com](https://community.ortussolutions.com)
-
-{% hint style="info" %}
-**Professional Support**: BoxLang+ and BoxLang++ subscribers receive priority support for CI/CD integration and GitHub Actions workflows. Visit [boxlang.io/plans](https://boxlang.io/plans) for more information.
-{% endhint %}
