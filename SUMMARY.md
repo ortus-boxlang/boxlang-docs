@@ -897,6 +897,7 @@
       * [Components](boxlang-framework/modularity/compat-cfml/reference/components/README.md)
         * [net](boxlang-framework/modularity/compat-cfml/reference/components/net/README.md)
           * [HTTP](boxlang-framework/modularity/compat-cfml/reference/components/net/HTTP.md)
+  * [Charts](boxlang-framework/modularity/charts.md)
   * [CSRF](boxlang-framework/modularity/csrf/README.md)
     * [Reference](boxlang-framework/modularity/csrf/reference/README.md)
       * [Built-in Functions](boxlang-framework/modularity/csrf/reference/built-in-functions/README.md)
