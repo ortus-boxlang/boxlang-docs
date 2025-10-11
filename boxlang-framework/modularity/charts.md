@@ -1,50 +1,53 @@
 ---
 description: >-
-  The chart module provides chart generation capabilities to the Boxlang language.
-icon: chart
+  The chart module provides chart generation capabilities to the Boxlang
+  language.
+icon: chart-pie-simple
 ---
+
+# Charts
 
 This module provides chart generation capabilities to the Boxlang language
 
-## Components
+### Components
 
 This module contributes the following Components to the language:
 
 * `chart` - renders charts to the browser using the Chart.js library
   * The following attributes are available to the `mail` component
-    * `backgroundColor` - string, optional -  Color of the area between the data background and the chart border, around labels and around the legend. Hexadecimal value or supported named color. For a hex value, use the form: textColor = "##xxxxxx", where x = 0-9 or A-F; use two hash signs or none.
-    * `chartHeight` - number, optional -  Chart height; integer number of pixels
-    * `chartWidth` - number, optional -  Chart width; integer number of pixels
-    * `font` - string, optional -  Font of data in column..
-    * `show3D` - boolean, optional -  Display chart with three-dimensional appearance.
-    * `showLegend` - boolean, optional -  yes: if chart contains more than one data series, display legend
-    * `showXGridlines` - boolean, optional -  yes: display X-axis gridlines
-    * `source` - string, optional -  variable name of the source path
-    * `showYGridlines` - boolean, optional -  yes: display Y-axis gridlines.
-    * `title` - string, optional -  Title of the chart.
-    * `xAxisTitle` - string, optional -  text; X-axis title
-    * `yAxisTitle` - string, optional -  text; Y-axis title
-    * `dataBackgroundColor` - string, optional -  color for control. For a hex value, use the form: textColor = "##xxxxxx", where x = 0-9 or A-F; use two hash signs or none.
-    * `fontBold` - boolean, optional -  Yes: displays grid control text in bold.
-    * `fontItalic` - boolean, optional -  Yes: displays grid control text in italics.
-    * `fontSize` - number, optional -  Size of text in column. Default: 12.
-    * `foregroundColor` - string, optional -  color for control. For a hex value, use the form: textColor = "##xxxxxx", where x = 0-9 or A-F; use two hash signs or none. Default: ##333333.
-    * `labelFormat` - string, optional -  Format for Y-axis labels. Use {value} placeholder for the actual value.
-    * `categoryLabelPositions` - string, optional -  Label position relative to axis: standard, up_45, up_90, down_45, down_90 or horizontal (standard) and vertical (down_90). Default is horizontal.
-    * `markerSize` - number, optional -  Size of data point marker in pixels. Integer. Default: 4.
-    * `scaleFrom` - number, optional -  Y-axis minimum value; integer.
-    * `scaleTo` - number, optional -  Y-axis max value; integer.
-    * `showBorder` - boolean, optional -  Whether to display a border around the chart.
-    * `showMarkers` - boolean, optional -  Applies to chartseries type attribute values line, curve and scatter. yes: display markers at data points. Default: true.
-    * `showXLabel` - boolean, optional -  yes: shows the x-axis labels. Default: true.
-    * `showTooltip` - boolean, optional -  show the tooltip or not. Default: true.
-    * `sortXAxis` - boolean, optional -  Display column labels in alphabetic order along X-axis. Ignored if the xAxisType attribute is scale.
-    * `url` - string, optional -  URL to open if the user clicks item in a data series.
+    * `backgroundColor` - string, optional - Color of the area between the data background and the chart border, around labels and around the legend. Hexadecimal value or supported named color. For a hex value, use the form: textColor = "##xxxxxx", where x = 0-9 or A-F; use two hash signs or none.
+    * `chartHeight` - number, optional - Chart height; integer number of pixels
+    * `chartWidth` - number, optional - Chart width; integer number of pixels
+    * `font` - string, optional - Font of data in column..
+    * `show3D` - boolean, optional - Display chart with three-dimensional appearance.
+    * `showLegend` - boolean, optional - yes: if chart contains more than one data series, display legend
+    * `showXGridlines` - boolean, optional - yes: display X-axis gridlines
+    * `source` - string, optional - variable name of the source path
+    * `showYGridlines` - boolean, optional - yes: display Y-axis gridlines.
+    * `title` - string, optional - Title of the chart.
+    * `xAxisTitle` - string, optional - text; X-axis title
+    * `yAxisTitle` - string, optional - text; Y-axis title
+    * `dataBackgroundColor` - string, optional - color for control. For a hex value, use the form: textColor = "##xxxxxx", where x = 0-9 or A-F; use two hash signs or none.
+    * `fontBold` - boolean, optional - Yes: displays grid control text in bold.
+    * `fontItalic` - boolean, optional - Yes: displays grid control text in italics.
+    * `fontSize` - number, optional - Size of text in column. Default: 12.
+    * `foregroundColor` - string, optional - color for control. For a hex value, use the form: textColor = "##xxxxxx", where x = 0-9 or A-F; use two hash signs or none. Default: ##333333.
+    * `labelFormat` - string, optional - Format for Y-axis labels. Use {value} placeholder for the actual value.
+    * `categoryLabelPositions` - string, optional - Label position relative to axis: standard, up\_45, up\_90, down\_45, down\_90 or horizontal (standard) and vertical (down\_90). Default is horizontal.
+    * `markerSize` - number, optional - Size of data point marker in pixels. Integer. Default: 4.
+    * `scaleFrom` - number, optional - Y-axis minimum value; integer.
+    * `scaleTo` - number, optional - Y-axis max value; integer.
+    * `showBorder` - boolean, optional - Whether to display a border around the chart.
+    * `showMarkers` - boolean, optional - Applies to chartseries type attribute values line, curve and scatter. yes: display markers at data points. Default: true.
+    * `showXLabel` - boolean, optional - yes: shows the x-axis labels. Default: true.
+    * `showTooltip` - boolean, optional - show the tooltip or not. Default: true.
+    * `sortXAxis` - boolean, optional - Display column labels in alphabetic order along X-axis. Ignored if the xAxisType attribute is scale.
+    * `url` - string, optional - URL to open if the user clicks item in a data series.
 * `chartSeries` - used within the `chart` component. defines the style in which chart data displays: bar, line, pie, etc.
   * this component supports the following attributes:
     * `item` - string, required - The name of the data point.
     * `value` - string, required -The value of the data point.
-    * `color` - string, optional  - The color of the data point. Accepts hexadecimal values - e.g., #FF0000`) or named colors.
+    * `color` - string, optional - The color of the data point. Accepts hexadecimal values - e.g., #FF0000\`) or named colors.
     * `markerStyle` - string, optional - Specifies the style of the marker for the data point. Possible values: `circle`, `square`, `diamond`, `triangle`, `plus`, `star`, `cross`.
     * `url` - string, optional - The URL to open when the data point is clicked.
     * `tooltip` - string, optional - The text to display as a tooltip for the data point.
@@ -53,11 +56,11 @@ This module contributes the following Components to the language:
 * `chartData` - used within the `chartSeries` component. defines chart data points for the cfchartseries component.
   * this component supports the following attributes:
     * `item` - string, required - data point name
-   	* `value` - string, required - data point value
+    * `value` - string, required - data point value
 
-## Examples
+### Examples
 
-### Pie Chart with Axis Titles and Custom Colors
+#### Pie Chart with Axis Titles and Custom Colors
 
 ```
 <bx:chart format="png" show3d="false" title="Memory Usage Distribution"
@@ -73,7 +76,7 @@ This module contributes the following Components to the language:
 </bx:chart>
 ```
 
-### Bar Chart with Axis Titles and Grid Lines
+#### Bar Chart with Axis Titles and Grid Lines
 
 ```
 <bx:chart format="png" show3d="false" backgroundcolor="##ffffff"
@@ -91,7 +94,7 @@ This module contributes the following Components to the language:
 </bx:chart>
 ```
 
-### Horizontal Bar Chart
+#### Horizontal Bar Chart
 
 ```
 <bx:chart format="png" title="Department Budgets"
@@ -108,7 +111,7 @@ This module contributes the following Components to the language:
 </bx:chart>
 ```
 
-### Area Chart Example
+#### Area Chart Example
 
 ```
 <bx:chart format="png" title="Website Traffic Over Time"
@@ -128,7 +131,7 @@ This module contributes the following Components to the language:
 </bx:chart>
 ```
 
-### Stacked Bar Chart
+#### Stacked Bar Chart
 
 ```
 <bx:chart format="png" title="Quarterly Sales by Region"
