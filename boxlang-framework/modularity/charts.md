@@ -1,7 +1,7 @@
 ---
 description: >-
   The chart module provides chart generation capabilities to the Boxlang language.
-icon: globe
+icon: chart
 ---
 
 This module provides chart generation capabilities to the Boxlang language
