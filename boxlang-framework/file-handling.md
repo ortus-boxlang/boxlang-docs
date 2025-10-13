@@ -845,6 +845,7 @@ fileName = getFileFromPath( absolutePath )
 | `fileSetLastModified()` | Set modification time |
 | `fileUpload()` | Handle file upload |
 | `fileUploadAll()` | Handle multiple uploads |
+| `createTempFile()` | Create temporary file |
 
 ### Directory Functions
 
@@ -866,7 +867,6 @@ fileName = getFileFromPath( absolutePath )
 | `getCanonicalPath()` | Resolve symbolic links |
 | `getDirectoryFromPath()` | Extract directory from path |
 | `getTempDirectory()` | Get system temp directory |
-| `createTempFile()` | Create temporary file |
 | `createTempDirectory()` | Create temporary directory |
 | `getFreeSpace()` | Get partition free space |
 
