@@ -13,21 +13,19 @@ This module provides powerful chart generation capabilities to the [BoxLang](htt
 
 ## 📋 Table of Contents
 
-- [Features](charts#-features)
-- [Installation](charts#-installation)
-- [Quick Start](charts#-quick-start)
-- [Chart Types](charts#-chart-types)
-- [Choosing the Right Chart Type](charts#-choosing-the-right-chart-type)
-- [Components Reference](charts#-components-reference)
-- [Examples](charts#-examples)
-  - [Basic Examples](#basic-examples)
-  - [Advanced Examples](#advanced-examples)
-- [Advanced Features](charts#-advanced-features)
-- [Chart.js Integration](charts#-chartjs-integration)
-- [Troubleshooting](charts#-troubleshooting)
-- [Contributing](charts#-contributing)
-- [Support & Resources](charts#-support--resources)
-- [License](charts#-license)
+- [Features](##features)
+- [Installation](##installation)
+- [Quick Start](##quick-start)
+- [Chart Types](##chart-types)
+- [Choosing the Right Chart Type](##choosing-the-right-chart-type)
+- [Components Reference](##components-reference)
+- [Examples](##examples)
+- [Advanced Features](##advanced-features)
+- [Chart.js Integration](##chartjs-integration)
+- [Troubleshooting](##troubleshooting)
+- [Contributing](##contributing)
+- [Support & Resources](##support--resources)
+- [License](##license)
 
 ## ✨ Features
 
