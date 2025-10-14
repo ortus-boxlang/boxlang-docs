@@ -13,21 +13,21 @@ This module provides powerful chart generation capabilities to the [BoxLang](htt
 
 ## 📋 Table of Contents
 
-- [Features](#-features)
-- [Installation](#-installation)
-- [Quick Start](#-quick-start)
-- [Chart Types](#-chart-types)
-- [Choosing the Right Chart Type](#-choosing-the-right-chart-type)
-- [Components Reference](#-components-reference)
-- [Examples](#-examples)
+- [Features](charts#features)
+- [Installation](charts#installation)
+- [Quick Start](charts#quick-start)
+- [Chart Types](charts#chart-types)
+- [Choosing the Right Chart Type](charts#choosing-the-right-chart-type)
+- [Components Reference](charts#components-reference)
+- [Examples](charts#examples)
   - [Basic Examples](#basic-examples)
   - [Advanced Examples](#advanced-examples)
-- [Advanced Features](#-advanced-features)
-- [Chart.js Integration](#-chartjs-integration)
-- [Troubleshooting](#-troubleshooting)
-- [Contributing](#-contributing)
-- [Support & Resources](#-support--resources)
-- [License](#-license)
+- [Advanced Features](charts#advanced-features)
+- [Chart.js Integration](charts#chartjs-integration)
+- [Troubleshooting](charts#troubleshooting)
+- [Contributing](charts#contributing)
+- [Support & Resources](charts#support--resources)
+- [License](charts#license)
 
 ## ✨ Features
 
@@ -54,6 +54,16 @@ box install bx-charts
 ```
 
 The module will automatically register and be available as `bxcharts` in your BoxLang applications.
+
+### 🚧 Rewrites CAUTION
+
+If you are using a URL rewriting mechanism (like `.htaccess` for Apache or URL rewrite rules in Nginx), ensure that requests to static assets (like JavaScript and CSS files) are properly routed to the `boxlang_modules/bx-charts/assets/` directory. This is crucial for the Chart.js library and any other assets to load correctly.  Also, make sure you are not rewriting the following directory from which assets are delivered from the module:`
+
+```
+/bxModules/bxCharts/public/index.bxm
+```
+
+The following must passthrough with no rewrites.
 
 ### Local Development Setup
 
