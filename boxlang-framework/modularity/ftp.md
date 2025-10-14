@@ -28,13 +28,23 @@ This module provides powerful FTP client functionality to the [BoxLang](https://
 
 ### Requirements
 
-- **BoxLang**: 1.0.0+
+- **BoxLang**: 1+
 - **Java**: JDK 21+
 
-### Install via CommandBox
+### Install via CommandBox CLI
+
+If you are using CommandBox for your web applications, you can install it via CommandBox:
 
 ```bash
 box install bx-ftp
+```
+
+### Install via BoxLang Binary
+
+If you want to install it globally for the BoxLang OS binary, use the `install-bx-module` command:
+
+```bash
+install-bx-module bx-ftp
 ```
 
 The module will automatically register and be available as `bx:ftp` or `<bx:ftp>` in your BoxLang script and template applications.
