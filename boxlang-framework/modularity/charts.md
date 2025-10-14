@@ -11,22 +11,6 @@ icon: chart-pie-simple
 
 This module provides powerful chart generation capabilities to the [BoxLang](https://boxlang.io) language, making it easy to create stunning data visualizations with minimal code.
 
-## 📋 Table of Contents
-
-- [Features](##features)
-- [Installation](##installation)
-- [Quick Start](##quick-start)
-- [Chart Types](##chart-types)
-- [Choosing the Right Chart Type](##choosing-the-right-chart-type)
-- [Components Reference](##components-reference)
-- [Examples](##examples)
-- [Advanced Features](##advanced-features)
-- [Chart.js Integration](##chartjs-integration)
-- [Troubleshooting](##troubleshooting)
-- [Contributing](##contributing)
-- [Support & Resources](##support--resources)
-- [License](##license)
-
 ## ✨ Features
 
 - 🎨 **10 Chart Types**: pie, bar, line, doughnut, radar, polar area, area, horizontal bar, scatter, and bubble charts
