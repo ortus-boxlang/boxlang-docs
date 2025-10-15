@@ -1029,6 +1029,7 @@
           * [Document](boxlang-framework/modularity/pdf/reference/components/pdf/Document.md)
           * [DocumentSection](boxlang-framework/modularity/pdf/reference/components/pdf/DocumentSection.md)
   * [Redis +](boxlang-framework/modularity/redis.md)
+  * [Spreadsheet +](boxlang-framework/modularity/spreadsheet-+.md)
   * [UI Forms](boxlang-framework/modularity/ui-forms.md)
   * [WDDX](boxlang-framework/modularity/wddx/README.md)
     * [Reference](boxlang-framework/modularity/wddx/reference/README.md)
