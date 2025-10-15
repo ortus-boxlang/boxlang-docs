@@ -8,7 +8,7 @@ icon: address-book
 # LDAP +
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans)&#x20;
+This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans)
 {% endhint %}
 
 This module provides powerful LDAP (Lightweight Directory Access Protocol) capabilities to the [BoxLang](https://boxlang.io) language, making it easy to query, modify, and manage directory services with minimal code.
@@ -34,20 +34,20 @@ This module provides powerful LDAP (Lightweight Directory Access Protocol) capab
 * BoxLang 1.6+
 * Access to an LDAP server (Active Directory, OpenLDAP, etc.)
 
-#### Install via CommandBox
-
-If you are using CommandBox for your web applications, simply run:
-
-```bash
-box install bx-ldap@ortus
-```
-
 #### Install via BoxLang OS Binary
 
 If you are using the BoxLang OS Binary, simply run:
 
 ```bash
 install-bx-module bx-ldap@ortus
+```
+
+#### Install via CommandBox
+
+If you are using CommandBox for your web applications, simply run:
+
+```bash
+box install bx-ldap@ortus
 ```
 
 The module will automatically register and be available as `bxldap` in your BoxLang applications.
@@ -826,53 +826,3 @@ limitations under the License.
 ```
 
 See LICENSE file for full details.
-
-### 💼 Support & Resources
-
-#### 📖 Documentation
-
-* **Module Docs**: You're reading them! 📚
-* **BoxLang Docs**: [https://boxlang.ortusbooks.com/](https://boxlang.ortusbooks.com/)
-* **Apache Directory LDAP API**: [https://directory.apache.org/api/](https://directory.apache.org/api/)
-
-#### 🌐 Links
-
-* **BoxLang Website**: [https://boxlang.io](https://boxlang.io)
-* **Ortus Solutions**: [https://www.ortussolutions.com](https://www.ortussolutions.com)
-* **GitHub Repository**: [https://github.com/ortus-solutions-private/bx-ldap](https://github.com/ortus-solutions-private/bx-ldap)
-* **Issue Tracker**: [https://github.com/ortus-solutions-private/bx-ldap/issues](https://github.com/ortus-solutions-private/bx-ldap/issues)
-
-#### 🎓 Learning Resources
-
-* **BoxLang Training**: [https://www.ortussolutions.com/services/training](https://www.ortussolutions.com/services/training)
-* **LDAP Tutorial**: [https://ldap.com/learn-about-ldap/](https://ldap.com/learn-about-ldap/)
-* **Blog**: [https://www.ortussolutions.com/blog](https://www.ortussolutions.com/blog)
-
-#### 💬 Community Support
-
-* **Ortus Community Discourse**: [https://community.ortussolutions.com](https://community.ortussolutions.com)
-* **Box Team Slack**: [http://boxteam.ortussolutions.com/](http://boxteam.ortussolutions.com/)
-
-#### 💰 Financial Support
-
-You can support BoxLang and all Ortus Solutions open source projects:
-
-* 🌟 [Become a Patron](https://www.patreon.com/ortussolutions)
-* 💵 [One-time PayPal Donation](https://www.paypal.com/paypalme/ortussolutions)
-
-Patrons get exclusive benefits like:
-
-* Priority support
-* Early access to new features
-* FORGEBOX Pro account
-* CFCasts account
-
-#### 🔐 Security Vulnerabilities
-
-If you discover a security vulnerability:
-
-1. **DO NOT** create a public issue
-2. Email [security@ortussolutions.com](mailto:security@ortussolutions.com?subject=security)
-3. Report in `#security` channel on [Box Team Slack](http://boxteam.ortussolutions.com/)
-
-All vulnerabilities will be promptly addressed.
