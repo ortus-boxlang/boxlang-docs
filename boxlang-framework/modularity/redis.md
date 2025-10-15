@@ -2,9 +2,11 @@
 icon: database
 ---
 
-# Redis
+# Redis +
 
-{% hint style="info" %}
+
+
+{% hint style="danger" %}
 This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed to trial purposes.
 {% endhint %}
 
