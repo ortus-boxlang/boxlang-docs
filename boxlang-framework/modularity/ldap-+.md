@@ -56,16 +56,16 @@ The module will automatically register and be available as `bxldap` in your BoxL
 
 Here's how to query an LDAP directory in just a few lines:
 
-```xml
-<bx:ldap
+```java
+bx:ldap
+    action="query"
     server="ldap.example.com"
     port="389"
-    action="query"
     name="result"
     start="dc=example,dc=org"
-    filter="(objectClass=person)">
+    filter="(objectClass=person)";
 
-<bx:output>Found #result.recordCount# users</bx:output>
+println( "Found #result.recordCount# users" );
 ```
 
 That's it! 🎉 You now have LDAP query results in a BoxLang Query object.
@@ -187,16 +187,16 @@ The main component for all LDAP operations.
 
 Find all users in a directory:
 
-```xml
-<bx:ldap
+```java
+bx:ldap
+    action="query"
     server="ldap.example.com"
     port="389"
-    action="query"
     name="users"
     start="ou=users,dc=example,dc=org"
-    filter="(objectClass=person)">
+    filter="(objectClass=person)";
 
-<bx:output>Found #users.recordCount# users</bx:output>
+println( "Found #users.recordCount# users" );
 ```
 
 **💡 Use Case:** Quick directory lookup to list all users.
@@ -205,22 +205,22 @@ Find all users in a directory:
 
 Search for a specific user:
 
-```xml
-<bx:ldap
+```java
+bx:ldap
+    action="query"
     server="ldap.example.com"
     port="389"
-    action="query"
     name="user"
     start="dc=example,dc=org"
     scope="subtree"
     filter="(uid=jdoe)"
-    attributes="cn,mail,telephoneNumber">
+    attributes="cn,mail,telephoneNumber";
 
-<bx:if condition="#user.recordCount GT 0#">
-    <bx:output>Name: #user.cn#, Email: #user.mail#</bx:output>
-<bx:else>
-    <bx:output>User not found</bx:output>
-</bx:if>
+if( user.recordCount > 0 ){
+    println( "Name: #user.cn#, Email: #user.mail#" );
+} else {
+    println( "User not found" );
+}
 ```
 
 **💡 Use Case:** User lookup with specific attributes for profile display.
@@ -229,26 +229,26 @@ Search for a specific user:
 
 Create a new directory entry:
 
-```xml
-<bx:set newUser = {
+```java
+newUser = {
     "objectClass": ["inetOrgPerson", "organizationalPerson", "person", "top"],
     "cn": "John Doe",
     "sn": "Doe",
     "uid": "jdoe",
     "mail": "john.doe@example.com",
     "userPassword": "SecurePassword123"
-}>
+};
 
-<bx:ldap
+bx:ldap
+    action="add"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="add"
     dn="uid=jdoe,ou=users,dc=example,dc=org"
-    attributes="#newUser#">
+    attributes=newUser;
 
-<bx:output>User created successfully!</bx:output>
+println( "User created successfully!" );
 ```
 
 **💡 Use Case:** User registration or bulk user import.
@@ -257,23 +257,23 @@ Create a new directory entry:
 
 Update an existing entry:
 
-```xml
-<bx:set updates = {
+```java
+updates = {
     "mail": "john.newemail@example.com",
     "telephoneNumber": "+1-555-0123"
-}>
+};
 
-<bx:ldap
+bx:ldap
+    action="modify"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="modify"
     dn="uid=jdoe,ou=users,dc=example,dc=org"
     modifyType="replace"
-    attributes="#updates#">
+    attributes=updates;
 
-<bx:output>User updated successfully!</bx:output>
+println( "User updated successfully!" );
 ```
 
 **💡 Use Case:** Profile updates, contact information changes.
@@ -282,16 +282,16 @@ Update an existing entry:
 
 Remove an entry from the directory:
 
-```xml
-<bx:ldap
+```java
+bx:ldap
+    action="delete"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="delete"
-    dn="uid=jdoe,ou=users,dc=example,dc=org">
+    dn="uid=jdoe,ou=users,dc=example,dc=org";
 
-<bx:output>User deleted successfully!</bx:output>
+println( "User deleted successfully!" );
 ```
 
 **💡 Use Case:** Account deactivation, cleanup of obsolete entries.
@@ -300,21 +300,21 @@ Remove an entry from the directory:
 
 Change an entry's RDN (Relative Distinguished Name):
 
-```xml
-<bx:set renameOp = {
+```java
+renameOp = {
     "newRDN": "uid=johnd"
-}>
+};
 
-<bx:ldap
+bx:ldap
+    action="modifydn"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="modifydn"
     dn="uid=jdoe,ou=users,dc=example,dc=org"
-    attributes="#renameOp#">
+    attributes=renameOp;
 
-<bx:output>User renamed from jdoe to johnd!</bx:output>
+println( "User renamed from jdoe to johnd!" );
 ```
 
 **💡 Use Case:** Username changes, standardizing naming conventions.
@@ -325,20 +325,20 @@ Change an entry's RDN (Relative Distinguished Name):
 
 Use advanced LDAP filter syntax:
 
-```xml
-<!--- Find active users in IT department created after a date --->
-<bx:ldap
+```java
+// Find active users in IT department created after a date
+bx:ldap
+    action="query"
     server="ldap.example.com"
     port="389"
-    action="query"
     name="itUsers"
     start="dc=example,dc=org"
     scope="subtree"
     filter="(&(objectClass=person)(department=IT)(!(accountStatus=disabled))(createTimestamp>=20240101000000Z))"
     sort="cn"
-    sortDirection="asc">
+    sortDirection="asc";
 
-<bx:output>Found #itUsers.recordCount# active IT users</bx:output>
+println( "Found #itUsers.recordCount# active IT users" );
 ```
 
 **💡 Use Case:** Department reporting, audit queries, compliance checks.
@@ -360,26 +360,24 @@ Use advanced LDAP filter syntax:
 
 Handle large result sets efficiently:
 
-```xml
-<!--- Get 50 users at a time --->
-<bx:set pageSize = 50>
-<bx:set currentPage = 1>
-<bx:set startRow = ((currentPage - 1) * pageSize) + 1>
+```java
+// Get 50 users at a time
+pageSize = 50;
+currentPage = 1;
+startRow = ((currentPage - 1) * pageSize) + 1;
 
-<bx:ldap
+bx:ldap
+    action="query"
     server="ldap.example.com"
     port="389"
-    action="query"
     name="pagedUsers"
     start="ou=users,dc=example,dc=org"
     filter="(objectClass=person)"
     maxrows="#pageSize#"
     startRow="#startRow#"
-    sort="cn">
+    sort="cn";
 
-<bx:output>
-    Showing #pagedUsers.recordCount# users (Page #currentPage#)
-</bx:output>
+println( "Showing #pagedUsers.recordCount# users (Page #currentPage#)" );
 ```
 
 **💡 Use Case:** User management interfaces, large directory browsing.
@@ -388,17 +386,17 @@ Handle large result sets efficiently:
 
 Connect securely with SSL:
 
-```xml
-<bx:ldap
+```java
+bx:ldap
+    action="query"
     server="ldaps.example.com"
     port="636"
     secure="false"
-    action="query"
     name="secureUsers"
     start="dc=example,dc=org"
-    filter="(objectClass=person)">
+    filter="(objectClass=person)";
 
-<bx:output>Secure query returned #secureUsers.recordCount# users</bx:output>
+println( "Secure query returned #secureUsers.recordCount# users" );
 ```
 
 **💡 Use Case:** Production environments, sensitive data access, compliance requirements.
@@ -407,18 +405,18 @@ Connect securely with SSL:
 
 Use client certificates for authentication:
 
-```xml
-<bx:ldap
+```java
+bx:ldap
+    action="query"
     server="ldaps.example.com"
     port="636"
     secure="true"
     username="cn=app,dc=example,dc=org"
     password="apppass"
-    action="query"
     name="users"
-    start="dc=example,dc=org">
+    start="dc=example,dc=org";
 
-<bx:output>Authenticated with client certificate</bx:output>
+println( "Authenticated with client certificate" );
 ```
 
 **💡 Use Case:** High-security environments, API integrations, service accounts.
@@ -427,8 +425,8 @@ Use client certificates for authentication:
 
 Create an entry with multi-valued attributes:
 
-```xml
-<bx:set newGroup = {
+```java
+newGroup = {
     "objectClass": ["groupOfNames", "top"],
     "cn": "Developers",
     "member": [
@@ -437,18 +435,18 @@ Create an entry with multi-valued attributes:
         "uid=alee,ou=users,dc=example,dc=org"
     ],
     "description": "Development Team"
-}>
+};
 
-<bx:ldap
+bx:ldap
+    action="add"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="add"
     dn="cn=Developers,ou=groups,dc=example,dc=org"
-    attributes="#newGroup#">
+    attributes=newGroup;
 
-<bx:output>Group created with multiple members!</bx:output>
+println( "Group created with multiple members!" );
 ```
 
 **💡 Use Case:** Group management, access control lists, distribution lists.
@@ -457,26 +455,26 @@ Create an entry with multi-valued attributes:
 
 Add values to existing multi-valued attributes:
 
-```xml
-<!--- Add new members to existing group --->
-<bx:set newMembers = {
+```java
+// Add new members to existing group
+newMembers = {
     "member": [
         "uid=bmiller,ou=users,dc=example,dc=org",
         "uid=kchen,ou=users,dc=example,dc=org"
     ]
-}>
+};
 
-<bx:ldap
+bx:ldap
+    action="modify"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="modify"
     dn="cn=Developers,ou=groups,dc=example,dc=org"
     modifyType="add"
-    attributes="#newMembers#">
+    attributes=newMembers;
 
-<bx:output>New members added to group!</bx:output>
+println( "New members added to group!" );
 ```
 
 **💡 Use Case:** Group membership management, role assignments.
@@ -485,23 +483,23 @@ Add values to existing multi-valued attributes:
 
 Remove specific values from multi-valued attributes:
 
-```xml
-<!--- Remove a member from group --->
-<bx:set removeMember = {
+```java
+// Remove a member from group
+removeMember = {
     "member": "uid=jsmith,ou=users,dc=example,dc=org"
-}>
+};
 
-<bx:ldap
+bx:ldap
+    action="modify"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="modify"
     dn="cn=Developers,ou=groups,dc=example,dc=org"
     modifyType="delete"
-    attributes="#removeMember#">
+    attributes=removeMember;
 
-<bx:output>Member removed from group!</bx:output>
+println( "Member removed from group!" );
 ```
 
 **💡 Use Case:** Membership revocation, access control updates.
@@ -510,22 +508,22 @@ Remove specific values from multi-valued attributes:
 
 Move an entry to a different organizational unit:
 
-```xml
-<bx:set moveOp = {
+```java
+moveOp = {
     "newRDN": "uid=jdoe",
     "newParentDN": "ou=contractors,dc=example,dc=org"
-}>
+};
 
-<bx:ldap
+bx:ldap
+    action="modifydn"
     server="ldap.example.com"
     port="389"
     username="cn=admin,dc=example,dc=org"
     password="adminpass"
-    action="modifydn"
     dn="uid=jdoe,ou=employees,dc=example,dc=org"
-    attributes="#moveOp#">
+    attributes=moveOp;
 
-<bx:output>User moved from employees to contractors!</bx:output>
+println( "User moved from employees to contractors!" );
 ```
 
 **💡 Use Case:** Organizational restructuring, employee status changes.
@@ -541,47 +539,44 @@ Move an entry to a different organizational unit:
 * Insufficient permissions (sometimes)
 * Entry was deleted
 
-```xml
-<bx:ldap
+```java
+bx:ldap
+    action="query"
     server="ldap.example.com"
     port="389"
-    action="query"
     name="user"
     start="dc=example,dc=org"
-    filter="(uid=nonexistent)">
+    filter="(uid=nonexistent)";
 
-<!--- Check for empty results --->
-<bx:if condition="#user.recordCount EQ 0#">
-    <bx:output>User not found</bx:output>
-<bx:else>
-    <bx:output>Found user: #user.cn#</bx:output>
-</bx:if>
+// Check for empty results
+if( user.recordCount == 0 ){
+    println( "User not found" );
+} else {
+    println( "Found user: #user.cn#" );
+}
 ```
 
 #### Exception Handling
 
 Handle connection and operation errors:
 
-```xml
-<bx:try>
-    <bx:ldap
+```java
+try {
+    ldap
+        action="modify"
         server="ldap.example.com"
         port="389"
         username="cn=admin,dc=example,dc=org"
         password="adminpass"
-        action="modify"
         dn="uid=jdoe,ou=users,dc=example,dc=org"
-        attributes="#updates#">
+        attributes=updates;
 
-    <bx:output>Operation successful!</bx:output>
+    println( "Operation successful!" );
 
-    <bx:catch type="any">
-        <bx:output>
-            Error: #cfcatch.message#<br>
-            Detail: #cfcatch.detail#
-        </bx:output>
-    </bx:catch>
-</bx:try>
+} catch( any e ) {
+    println( "Error: #e.message#" );
+    println( "Detail: #e.detail#" );
+}
 ```
 
 #### Common Error Scenarios
