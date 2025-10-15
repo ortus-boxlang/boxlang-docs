@@ -8,7 +8,7 @@ icon: file-excel
 The BoxLang Spreadsheet module provides a comprehensive and modern API for working with Microsoft Excel files (`.xls` and `.xlsx`) in BoxLang. Built on top of Apache POI, this module offers both traditional BIF-style functions and a powerful **fluent API** for creating, reading, and manipulating spreadsheet files.
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed to trial purposes.
+This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans) but can be installed to trial purposes.
 {% endhint %}
 
 #### ✨ Key Features
