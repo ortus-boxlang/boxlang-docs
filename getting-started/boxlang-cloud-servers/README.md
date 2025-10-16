@@ -82,7 +82,7 @@ Azure provides Virtual Machines (VMs) for hosting BoxLang:
 2. Select a suitable VM size based on your specific needs.
 3. Set up network security groups to manage inbound and outbound traffic.
 
-## Google Cloud (Coming Soon)
+## [Google Cloud](google-cloud.md)
 
 Google Cloud offers Compute Engine virtual machines for BoxLang deployment:
 
