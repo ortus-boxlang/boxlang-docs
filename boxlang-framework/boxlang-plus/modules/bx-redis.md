@@ -4,7 +4,13 @@ icon: database
 
 # Redis +
 
-This module enhances the BoxLang language by allowing you to connect to Redis instances, clusters, or sentinel instances for distributed caching, locking, and pub/sub functionality. Key features include:
+{% hint style="danger" %}
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited tria.
+{% endhint %}
+
+This module will enhance your language by allowing you to connect to Redis instances, clusters, or sentinel instances. Here are some features:
+
+
 
 * Add native Redis functionality to the language
 * Connect to a Redis server or a Redis cluster, or Redis Sentinel
@@ -14,14 +20,6 @@ This module enhances the BoxLang language by allowing you to connect to Redis in
 * Session variable persistence even after server restarts
 * Cache connection capabilities for providing distributed & highly scalable query, object, template, and function caching
 * Much more
-
-
-
-{% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](boxlang-framework/boxlang-plus/modules/bx-plus.md) with a limited tria.
-{% endhint %}
-
-## Installation
 
 ```
 # For Operating Systems using our Quick Installer.
