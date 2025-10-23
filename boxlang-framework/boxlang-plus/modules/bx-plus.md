@@ -7,7 +7,7 @@ icon: key
 
 The `bx-plus` module is the enterprise licensing and feature management module that unlocks the full potential of BoxLang+ and BoxLang++ subscription plans. This module provides the essential licensing infrastructure, validation, and activation services that enable access to premium enterprise features and functionality across all BoxLang+ and BoxLang++ modules.
 
-### What This Module Enables
+## What This Module Enables
 
 The **bx-plus** module serves as the foundation for enterprise BoxLang subscriptions by providing:
 
@@ -17,9 +17,9 @@ The **bx-plus** module serves as the foundation for enterprise BoxLang subscript
 - **Subscription Status Monitoring** - Real-time validation of license status and subscription benefits
 - **Multi-Environment Support** - License binding and validation across development, staging, and production environments
 
-### Premium Features Unlocked
+## Premium Features Unlocked
 
-With an active BoxLang+ or BoxLang++ subscription and this module, you gain access to enterprise-grade capabilities including:
+With an active BoxLang+ or BoxLang++ subscription and this module, you gain access to enterprise-grade capabilities such as:
 
 - **Advanced Caching & NoSQL** - Redis, MongoDB, and distributed caching solutions
 - **Enhanced Communication Services** - Enterprise messaging and notification systems  
@@ -27,6 +27,20 @@ With an active BoxLang+ or BoxLang++ subscription and this module, you gain acce
 - **Priority Support & SLAs** - Business-grade support with guaranteed response times
 - **Professional Tooling** - Enhanced development and debugging tools for enterprise workflows
 - **Custom Language Parsers** - Support for additional language syntaxes and compatibility modules
+
+## 📦 Installation
+
+### Via CommandBox
+
+```bash
+box install bx-plus
+```
+
+### Via BoxLang
+
+```bash
+install-bx-module bx-plus
+```
 
 For a complete list of features and benefits, visit the [BoxLang Plans](https://boxlang.io/plans) page.
 

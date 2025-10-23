@@ -20,8 +20,16 @@ The `bx-plus-pdf` module equips your BoxLang+ applications with robust PDF creat
 
 ## 📦 Installation
 
+### Via CommandBox
+
 ```bash
 box install bx-plus-pdf
+```
+
+### Via BoxLang
+
+```bash
+install-bx-module bx-plus-pdf
 ```
 
 ## ⚙ Basic PDF Creation

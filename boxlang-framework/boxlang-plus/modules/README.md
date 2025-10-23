@@ -19,10 +19,18 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 
 ## 🚀 Installation Pattern
 
-All premium modules follow a consistent installation workflow using CommandBox:
+All premium modules follow a consistent installation workflow using either CommandBox or BoxLang CLI:
+
+### Via CommandBox
 
 ```bash
 box install <module-name>
+```
+
+### Via BoxLang
+
+```bash
+install-bx-module <module-name>
 ```
 
 After installation, modules register themselves automatically or provide a simple activation step described in their documentation.

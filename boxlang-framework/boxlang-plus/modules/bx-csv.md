@@ -18,8 +18,16 @@ The `bx-csv` module streamlines working with delimited data (CSV/TSV). It emphas
 
 ## 📦 Installation
 
+### Via CommandBox
+
 ```bash
 box install bx-csv
+```
+
+### Via BoxLang
+
+```bash
+install-bx-module bx-csv
 ```
 
 ## 📥 Parsing Example

@@ -19,8 +19,16 @@ The `bx-redis` module adds Redis-backed services to your BoxLang application: ad
 
 ## 📦 Installation
 
+### Via CommandBox
+
 ```bash
 box install bx-redis
+```
+
+### Via BoxLang
+
+```bash
+install-bx-module bx-redis
 ```
 
 ## ⚙ Configuration

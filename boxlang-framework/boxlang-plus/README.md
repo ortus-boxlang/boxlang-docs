@@ -47,6 +47,7 @@ The subscription grants access to a growing catalog of modules that extend the r
 * `bx-spreadsheet` – Read, write, style, and transform spreadsheet data
 * `bx-csv` – Fast, memory-conscious CSV parsing & generation
 * `bx-couchbase` – Distributed caching and NoSQL document access
+* `bx-plus-pdf` – Enhanced PDF features and manipulation
 
 Explore them in the [Modules](modules/README.md) section.
 
@@ -63,18 +64,15 @@ BoxLang+ encourages modern deployment patterns:
 1. Evaluate open source features in a sandbox or dev environment.
 2. Identify premium modules or SLAs your team will benefit from.
 3. Acquire a BoxLang+ subscription via official channels.
-4. Install modules using CommandBox (see individual module docs).
-5. Integrate entitlement validation using the `bx-plus` module.
+4. Install modules using CommandBox or the BoxLang CLI ( see the individual module docs for installation instructions )
+5. Perform license activation the `bx-plus` module built-in functions or CLI methods
 
 ## 📦 Licensing & Compliance
 
 * Open Source core: Apache 2.0 – permissive, commercial friendly.
-* BoxLang+ subscription: Adds closed-distribution premium artifacts.
+* BoxLang+ subscription: Adds closed-distribution premium modular functionality and features.
 * You retain full ownership of your application code.
 
-## 💬 Encouraging, Not Sensational
-
-The goal of BoxLang+ is steady, reliable acceleration—not hype. If the open edition meets your needs today, keep building with it. When scaling introduces friction in operations, performance, or integration, BoxLang+ offers a smooth next step.
 
 ## 🔭 Roadmap & Evolution
 

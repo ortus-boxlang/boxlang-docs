@@ -19,8 +19,16 @@ The `bx-spreadsheet` module enables efficient creation and manipulation of sprea
 
 ## 📦 Installation
 
+### Via CommandBox
+
 ```bash
 box install bx-spreadsheet
+```
+
+### Via BoxLang
+
+```bash
+install-bx-module bx-spreadsheet
 ```
 
 ## ⚙ Basic Workbook Creation

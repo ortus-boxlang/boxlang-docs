@@ -18,8 +18,16 @@ The `bx-couchbase` module integrates Couchbase Server with BoxLang, enabling dis
 
 ## 📦 Installation
 
+### Via CommandBox
+
 ```bash
 box install bx-couchbase
+```
+
+### Via BoxLang
+
+```bash
+install-bx-module bx-couchbase
 ```
 
 ## ⚙ Configuration
