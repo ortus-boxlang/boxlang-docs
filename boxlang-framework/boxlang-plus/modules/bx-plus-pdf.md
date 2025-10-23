@@ -7,6 +7,11 @@ icon: file-pdf
 
 The `bx-plus-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
 
+
+{% hint style="danger" %}
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](boxlang-framework/boxlang-plus/modules/bx-plus.md) with a limited tria.
+{% endhint %}
+
 ## 🚀 Features
 
 * Generate PDFs from dynamic data (tables, paragraphs, headings)

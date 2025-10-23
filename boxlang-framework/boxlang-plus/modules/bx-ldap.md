@@ -8,7 +8,7 @@ icon: address-book
 # LDAP +
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans)
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](boxlang-framework/boxlang-plus/modules/bx-plus.md) with a limited tria.
 {% endhint %}
 
 This module provides powerful LDAP (Lightweight Directory Access Protocol) capabilities to the [BoxLang](https://boxlang.io) language, making it easy to query, modify, and manage directory services with minimal code.
