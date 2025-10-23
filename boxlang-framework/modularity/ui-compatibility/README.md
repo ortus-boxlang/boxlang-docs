@@ -6,31 +6,28 @@ description: >-
 icon: table
 ---
 
-# Compat UI
+# Boxlang UI Compatibility Module
 
 ### 📋 Table of Contents
 
-* Features
-* Installation
-* Quick Start
-* Components Reference
-  * Layout Components
-  * Grid Components
-  * AJAX Components
-  * UI Components
-* Built-In Functions (BIFs)
-  * AJAX BIFs
-  * Grid BIFs
-* Examples
-  * Layout Examples
-  * Grid Examples
-  * AJAX Examples
-  * Complete Application Examples
-* Advanced Features
-* Troubleshooting
-* Contributing
-* Support & Resources
-* License
+* [Features](#-features)
+* [Installation](#-installation)
+* [Quick Start](#-quick-start)
+* [Components Reference](#-components-reference)
+  * [Layout Components](#layout-components)
+  * [Grid Components](#grid-components)
+  * [AJAX Components](#ajax-components)
+  * [UI Components](#ui-components)
+* [Built-In Functions (BIFs)](#-built-in-functions-bifs)
+  * [AJAX BIFs](#ajax-bifs)
+  * [Grid BIFs](#grid-bifs)
+* [Examples](#-examples)
+  * [Layout Examples](#layout-examples)
+  * [Grid Examples](#grid-examples)
+  * [AJAX Examples](#ajax-examples)
+  * [Complete Application Examples](#complete-application-examples)
+* [Advanced Features](#-advanced-features)
+* [Troubleshooting](#-troubleshooting)
 
 ### ✨ Features
 

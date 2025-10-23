@@ -897,7 +897,7 @@
       * [Components](boxlang-framework/modularity/compat-cfml/reference/components/README.md)
         * [net](boxlang-framework/modularity/compat-cfml/reference/components/net/README.md)
           * [HTTP](boxlang-framework/modularity/compat-cfml/reference/components/net/HTTP.md)
-  * [UI Compatability](boxlang-framework/modularity/ui-compatability/README.md)
+  * [UI Compatability](boxlang-framework/modularity/ui-compatibility/README.md)
     * [Reference](boxlang-framework/modularity/ui-compatibility/reference/README.md)
       * [Built-in Functions](boxlang-framework/modularity/ui-compatibility/reference/built-in-functions/README.md)
         * [AjaxLink](boxlang-framework/modularity/ui-compatibility/reference/built-in-functions/AjaxLink.md)
