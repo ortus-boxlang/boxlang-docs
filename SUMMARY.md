@@ -1087,12 +1087,13 @@
   * [Yaml](boxlang-framework/modularity/yaml.md)
 * [BoxLang+](boxlang-framework/boxlang-plus/README.md)
   * [Modules Overview](boxlang-framework/boxlang-plus/modules/README.md)
-    * [bx-plus](boxlang-framework/boxlang-plus/modules/bx-plus.md)
-    * [bx-redis](boxlang-framework/boxlang-plus/modules/bx-redis.md)
-    * [bx-spreadsheet](boxlang-framework/boxlang-plus/modules/bx-spreadsheet.md)
-    * [bx-csv](boxlang-framework/boxlang-plus/modules/bx-csv.md)
-    * [bx-couchbase](boxlang-framework/boxlang-plus/modules/bx-couchbase.md)
-    * [bx-plus-pdf](boxlang-framework/boxlang-plus/modules/bx-plus-pdf.md)
+    * [Plus Core Module](./boxlang-framework/boxlang-plus/modules/bx-plus.md)
+    * [Redis +](./boxlang-framework/boxlang-plus/modules/bx-redis.md)
+    * [Spreadsheet +](./boxlang-framework/boxlang-plus/modules/bx-spreadsheet.md)
+    * [CSV +](./boxlang-framework/boxlang-plus/modules/bx-csv.md)
+    * [LDAP +](./boxlang-framework/boxlang-plus/modules/bx-ldap.md)
+    * [Couchbase +](./boxlang-framework/boxlang-plus/modules/bx-couchbase.md)
+    * [PDF +](./boxlang-framework/boxlang-plus/modules/bx-plus-pdf.md)
 
 ## Extra Credit
 
