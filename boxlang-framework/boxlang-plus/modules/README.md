@@ -16,6 +16,7 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 | `bx-spreadsheet` | Read, write, style spreadsheet documents (XLSX) | `box install bx-spreadsheet` |
 | `bx-csv` | Streaming CSV parsing & generation for large datasets | `box install bx-csv` |
 | `bx-couchbase` | Distributed caching & NoSQL document storage via Couchbase | `box install bx-couchbase` |
+| `bx-plus-pdf` | PDF generation and manipulation for documents, reports, forms | `box install bx-plus-pdf` |
 
 ## 🚀 Installation Pattern
 
@@ -62,6 +63,10 @@ CSV Module
 
 {% content-ref url="bx-couchbase.md" %}
 Couchbase Module
+{% endcontent-ref %}
+
+{% content-ref url="bx-plus-pdf.md" %}
+PDF Module
 {% endcontent-ref %}
 
 ## 🛡 Reliability & Performance
