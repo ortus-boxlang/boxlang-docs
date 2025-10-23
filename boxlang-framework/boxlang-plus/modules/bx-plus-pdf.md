@@ -1,5 +1,5 @@
 ---
-description: Premium PDF generation and manipulation module for BoxLang+ applications: build, merge, stamp, secure, and extract content programmatically.
+description: "Premium PDF generation and manipulation module for BoxLang+ applications: build, merge, stamp, secure, and extract content programmatically."
 icon: file-pdf
 ---
 
