@@ -3,7 +3,7 @@ description: Premium PDF generation and manipulation module for BoxLang+ applica
 icon: file-pdf
 ---
 
-# 📑 `bx-plus-pdf` Module
+# 📑 `bx-plus-pdf` Module ( **Coming Soon!** )
 
 The `bx-plus-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
 

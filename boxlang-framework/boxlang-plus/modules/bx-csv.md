@@ -3,7 +3,7 @@ description: Premium CSV processing module for high-performance parsing and gene
 icon: table
 ---
 
-# 📄 `bx-csv` Module
+# 📄 `bx-csv` Module ( **Coming Soon!** )
 
 The `bx-csv` module streamlines working with delimited data (CSV/TSV). It emphasizes performance, streaming, and memory efficiency for large datasets.
 

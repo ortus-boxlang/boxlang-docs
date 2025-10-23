@@ -3,7 +3,7 @@ description: Premium Couchbase integration module offering distributed caching a
 icon: cluster
 ---
 
-# 🌐 `bx-couchbase` Module
+# 🌐 `bx-couchbase` Module ( **Coming Soon!** )
 
 The `bx-couchbase` module integrates Couchbase Server with BoxLang, enabling distributed caching, key/value storage, and document access patterns for horizontally scaled applications.
 
