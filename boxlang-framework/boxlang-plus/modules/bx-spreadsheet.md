@@ -7,15 +7,6 @@ icon: file-spreadsheet
 
 A powerful BoxLang module for creating, reading, and manipulating Excel spreadsheet files.
 
-
-<blockquote>
-	Copyright Since 2023 by Ortus Solutions, Corp<br>
-	<a href="https://www.boxlang.io">www.boxlang.io</a> |
-	<a href="https://www.ortussolutions.com">www.ortussolutions.com</a>
-</blockquote>
-
----
-
 ## Table of Contents
 
 - [Overview](#overview)
@@ -40,16 +31,16 @@ The **BoxLang Spreadsheet Module** (`bx-spreadsheet`) is a comprehensive library
 
 | API Type | Entry Point | Use Case | Example |
 |----------|-------------|----------|---------|
-| **Fluent API** ✨ | `SpreadsheetFile()` | Modern chainable interface (recommended) | `SpreadsheetFile().load("data.xlsx").toArray()` |
+| **Fluent API** ✨ | `Spreadsheet()` | Modern chainable interface (recommended) | `Spreadsheet("data.xlsx").toArray()` |
 | **BIF Functions** 📚 | `SpreadsheetNew()`, etc. | Traditional function-based approach | `SpreadsheetRead("data.xlsx")` |
 | **Component Tag** 🏷️ | `<bx:spreadsheet>` | Declarative CFML-compatible syntax | `<bx:spreadsheet action="read" src="data.xlsx">` |
 
-> 💡 **Recommended**: Use the **Fluent API** (`SpreadsheetFile()`) for the most modern, readable, and maintainable code.
+> 💡 **Recommended**: Use the **Fluent API** (`Spreadsheet()`) for the most modern, readable, and maintainable code.
 
 ## Features
 
 - ✨ **Fluent Method Chaining** - Intuitive, readable code with chainable methods
-- 📊 **Multiple Formats** - Support for `.xls` (binary) and `.xlsx` (XML) formats
+- 📊 **Multiple Formats** - Support for `.xls` (binary) and `.xlsx` (XML) formatss
 - 🎨 **Rich Formatting** - Fonts, colors, borders, alignments, and cell styles
 - 🔢 **Formula Support** - Set, evaluate, and recalculate Excel formulas
 - 📈 **Data Import/Export** - Convert to/from JSON, CSV, Query, and Array formats
@@ -58,6 +49,7 @@ The **BoxLang Spreadsheet Module** (`bx-spreadsheet`) is a comprehensive library
 - 📄 **Multi-Sheet Support** - Create, manage, copy, and manipulate multiple worksheets
 - 🚀 **High Performance** - Built on Apache POI for reliable, efficient processing
 - 🔧 **Comprehensive API** - 85+ BIF functions and full component support
+- 🤖 **Automatic Resource Management** - No need to manually close workbooks
 - ❄️ **Freeze Panes** - Lock rows/columns for better viewing
 - 📐 **Auto-sizing** - Automatically adjust column widths
 - 🔗 **Hyperlinks** - Add and manage cell hyperlinks
@@ -89,9 +81,8 @@ The fluent API provides a modern, chainable interface for elegant spreadsheet ma
 
 ```javascript
 // Create a new spreadsheet and populate it
-SpreadsheetFile()
-    .createSheet( "Sales Report" )
-    .selectSheet( "Sales Report" )
+Spreadsheet( "sales-report.xlsx" )
+    .createAndSelectSheet( "Sales Report" )
     .setRowData( 1, [ "Product", "Q1", "Q2", "Q3", "Q4", "Total" ] )
     .addRow( [ "Widget A", 1000, 1200, 1100, 1300, 4600 ] )
     .addRow( [ "Widget B", 800, 900, 950, 1050, 3700 ] )
@@ -99,18 +90,17 @@ SpreadsheetFile()
     .setCellFormula( 3, 6, "SUM(B3:E3)" )
     .formatRow( 1, { bold: true, fgcolor: "blue", fontColor: "white" } )
     .autoSizeColumns()
-    .save( "sales-report.xlsx" );
+    .save();
 
 // Read an existing spreadsheet
-data = SpreadsheetFile()
-    .load( "sales-data.xlsx" )
+data = Spreadsheet( "sales-data.xlsx" )
     .selectSheet( "Sheet1" )
     .toArray();
 
 // Export to different formats
-csvData = SpreadsheetFile().load( "report.xlsx" ).toCSV();
-jsonData = SpreadsheetFile().load( "report.xlsx" ).toJson();
-queryData = SpreadsheetFile().load( "report.xlsx" ).toQuery();
+csvData = Spreadsheet( "report.xlsx" ).toCSV();
+jsonData = Spreadsheet( "report.xlsx" ).toJson();
+queryData = Spreadsheet( "report.xlsx" ).toQuery();
 ```
 
 ### Traditional BIF Functions
@@ -170,13 +160,22 @@ bx:spreadsheet action="read" src="data.xlsx" name="importedData" sheet="Sheet1";
 
 ## Fluent API Guide
 
-The fluent API (`SpreadsheetFile()`) is the recommended way to work with spreadsheets. The majority of methods return `this` for easy chaining.
+The fluent API starts off by calling the `Spreadsheet()` BIF, which returns a `SpreadsheetFile` object. You can then chain methods to perform various operations.
+
+### BIF Arguments
+
+| Argument | Type | Description | Default |
+|----------|------|-------------|---------|
+| `path` | String | Path to an existing or new spreadsheet file | N/A |
+| `sheetName` | String | Name of the initial sheet to create | "Sheet1" |
+| `xmlFormat` | Boolean | Use XML (.xlsx) format if true, binary (.xls) if false | true |
+| `password` | String | Password for encrypted files | N/A |
 
 ### Method Reference by Category
 
 | Category | Methods | Description |
 |----------|---------|-------------|
-| **📁 File Operations** | `load()`, `save()`, `overwrite()`, `setPath()`, `getPath()`, `close()` | Load/save files, manage paths, resource cleanup |
+| **📁 File Operations** | `load()`, `save()`, `saveAndClose()`, `overwrite()`, `setPath()`, `getPath()`, `autoCloseOnSave()`, `isAutoCloseOnSave()` | Load/save files, manage paths, auto-cleanup |
 | **📄 Sheet Management** | `createSheet()`, `createAndSelectSheet()`, `selectSheet()`, `removeSheet()`, `renameSheet()`, `copySheet()`, `hideSheet()`, `unhideSheet()`, `moveSheet()` | Create, select, and manipulate worksheets |
 | **📝 Cell Operations** | `setCellValue()`, `getCellValue()`, `clearCell()`, `getCellType()`, `getCellFormat()`, `getCellAddress()`, `getActiveCell()`, `setActiveCell()` | Read/write individual cell values |
 | **📊 Row Operations** | `setRowData()`, `getRowData()`, `addRow()`, `addRows()`, `removeRow()`, `setRowHeight()`, `hideRow()`, `showRow()`, `isRowHidden()`, `shiftRows()`, `getRowCount()`, `getLastRowNumber()` | Manipulate entire rows |
@@ -197,38 +196,56 @@ The fluent API (`SpreadsheetFile()`) is the recommended way to work with spreads
 ### Creating Spreadsheets
 
 ```javascript
-// Create a new .xlsx file
-sheet = SpreadsheetFile();
+// Create a new blank .xlsx file
+sheet = Spreadsheet();
 
-// Create a new .xls file (binary format)
-sheet = SpreadsheetFile( xmlFormat = false );
+// Create with a specific sheet name
+sheet = Spreadsheet( sheetName = "MySheet" );
 
-// Create with an initial sheet
-sheet = SpreadsheetFile( sheetName = "Summary" );
+// Create with .xls format (binary)
+sheet = Spreadsheet( xmlFormat = false );
 
-// Load from an array of data
-data = [
-    [ "Name", "Age", "City" ],
-    [ "John", 30, "NYC" ],
-    [ "Jane", 25, "LA" ]
-];
-sheet = SpreadsheetFile( data = data, sheetName = "People" );
+// Create with a file path - loads if exists, sets path if not
+sheet = Spreadsheet( "reports/monthly.xlsx" );
+
+// Path to existing file - automatically loads it
+sheet = Spreadsheet( "data/existing.xlsx" );
+
+// Path to new file - sets the path for later save()
+sheet = Spreadsheet( "output/new-report.xlsx" );
 ```
+
+**💡 Pro Tips:**
+
+- When you pass a path to `Spreadsheet()`:
+  - If the file exists, it's automatically loaded
+  - If the file doesn't exist, the path is set for when you call `save()`
+  - No need to call `load()` or `setPath()` separately!
+- **No manual cleanup needed** - Resources are automatically managed for you, no need to call `close()`
 
 ### Loading & Saving
 
 ```javascript
-// Load an existing file
-sheet = SpreadsheetFile().load( "data.xlsx" );
+// RECOMMENDED: Pass path directly to Spreadsheet()
+sheet = Spreadsheet( "data.xlsx" ); // Auto-loads if exists, sets path if not
+
+// Alternative: Load explicitly with load()
+sheet = Spreadsheet().load( "data.xlsx" );
 
 // Load with password
-sheet = SpreadsheetFile().load( "protected.xlsx", "password123" );
+sheet = Spreadsheet().load( "protected.xlsx", "password123" );
 
 // Save to a file
 sheet.save( "output.xlsx" );
 
 // Save with password protection
 sheet.save( "protected.xlsx", "secret123" );
+
+// When path is already set, just call save()
+sheet = Spreadsheet( "output.xlsx" )
+    .addRow( [ "Name", "Age" ] )
+    .addRow( [ "John", 30 ] )
+    .save(); // Saves to "output.xlsx"
 
 // Enable overwrite mode (won't throw error if file exists)
 sheet.overwrite( true ).save( "output.xlsx" );
@@ -237,7 +254,23 @@ sheet.overwrite( true ).save( "output.xlsx" );
 sheet.setPath( "reports/monthly.xlsx" );
 // ... do work ...
 sheet.save(); // Saves to previously set path
+
+// Save and close in one operation
+sheet.saveAndClose(); // Uses current path
+sheet.saveAndClose( "output.xlsx" );
+sheet.saveAndClose( "protected.xlsx", "password123" );
+
+// Auto-close on save - workbook closes automatically after save()
+sheet.autoCloseOnSave( true )
+    .addRow( [ "Data" ] )
+    .save( "output.xlsx" ); // Workbook is automatically closed after save
 ```
+
+**💡 Pro Tips:**
+
+- **autoCloseOnSave()** is useful for long-lived objects that should cleanup after saving
+- Use `saveAndClose()` when you want to explicitly save and close in one call
+- No need to manually call `close()` in these patterns
 
 ### Working with Sheets
 
@@ -787,7 +820,7 @@ The `Spreadsheet` component provides a declarative, or a tag-based approach to s
 
 ```javascript
 // Create a comprehensive sales report
-SpreadsheetFile()
+Spreadsheet()
     .createSheet( "Q1 Sales" )
     .selectSheet( "Q1 Sales" )
     .setRowData( 1, [ "Month", "Revenue", "Expenses", "Profit", "Margin %" ] )
@@ -817,7 +850,8 @@ importData = [
     [ "Bob Johnson", "Sales", 75000 ]
 ];
 
-SpreadsheetFile( data = importData, sheetName = "Employees" )
+Spreadsheet( sheetName = "Employees" )
+    .addRows( importData, includeColumnNames = true )
     .formatRow( 1, { bold: true } )
     .addRow( [ "AVERAGE", "", "=AVERAGE(C2:C4)" ] )
     .formatCell( 5, 3, { bold: true, dataformat: "$#,##0" } )
@@ -829,7 +863,7 @@ SpreadsheetFile( data = importData, sheetName = "Employees" )
 
 ```javascript
 // Create workbook with multiple sheets
-workbook = SpreadsheetFile()
+workbook = Spreadsheet()
     .createSheet( "Summary" )
     .createSheet( "Details" )
     .createSheet( "Charts" )
@@ -855,7 +889,7 @@ workbook = SpreadsheetFile()
 
 ```javascript
 // Load and export to different formats
-sheet = SpreadsheetFile().load( "source-data.xlsx" );
+sheet = Spreadsheet( "source-data.xlsx" );
 
 // Export to JSON file
 fileWrite( "data.json", sheet.toJson( pretty = true ) );
@@ -874,8 +908,7 @@ arrayData = sheet.toArray();
 
 ```javascript
 // Load template and fill with data
-report = SpreadsheetFile()
-    .load( "report-template.xlsx" )
+report = Spreadsheet( "report-template.xlsx" )
     .selectSheet( "Data" )
     .setCellValue( 2, 1, "Acme Corp" )
     .setCellValue( 2, 2, dateFormat( now(), "yyyy-mm-dd" ) )
