@@ -1,11 +1,17 @@
 ---
-description: Premium Couchbase integration module offering distributed caching and NoSQL document access for BoxLang+ applications.
-icon: cluster
+description: >-
+  Premium Couchbase integration module offering distributed caching and NoSQL
+  document access for BoxLang+ applications.
+icon: couch
 ---
 
-# 🌐 `bx-couchbase` Module ( **Coming Soon!** )
+# Couchbase +
 
 The `bx-couchbase` module integrates Couchbase Server with BoxLang, enabling distributed caching, key/value storage, and document access patterns for horizontally scaled applications.
+
+{% hint style="danger" %}
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus.md) with a limited tria.
+{% endhint %}
 
 ## 🚀 Features
 
@@ -109,12 +115,13 @@ Requires valid BoxLang+ subscription (`bx-plus`). Entitlement failures provide a
 ## 📎 Related Modules
 
 {% content-ref url="bx-redis.md" %}
-Redis Module
+[bx-redis.md](bx-redis.md)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}
-Subscription Bootstrap
+[bx-plus.md](bx-plus.md)
 {% endcontent-ref %}
 
----
-Return to the [Modules Overview](README.md).
+***
+
+Return to the [Modules Overview](./).
