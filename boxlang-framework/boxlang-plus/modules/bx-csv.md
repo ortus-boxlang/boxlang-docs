@@ -9,7 +9,7 @@ The `bx-csv` module streamlines working with delimited data (CSV/TSV). It emphas
 
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited tria.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited trial.
 {% endhint %}
 
 ## 🚀 Features

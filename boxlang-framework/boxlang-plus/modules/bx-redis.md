@@ -5,7 +5,7 @@ icon: database
 # Redis +
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited tria.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited trial.
 {% endhint %}
 
 This module will enhance your language by allowing you to connect to Redis instances, clusters, or sentinel instances. Here are some features:
@@ -38,7 +38,7 @@ The JSON configuration structure for boxlang for a single redis connection would
 **Single Node Provider Configuration example**
 
 ```
-{ 
+{
   "caches" : {
     "sessions": {
       "provider": "Redis",
@@ -58,7 +58,7 @@ The JSON configuration structure for boxlang for a single redis connection would
         "socketTimeout" : 2000,
         "poolWaittimeout" : 1000,
         "maxAttempts" : 10,
-        "maxConnections": 1000, 
+        "maxConnections": 1000,
         "maxIdleTime" : 30000,
         "maxIdleConnections" : 20
       }
@@ -70,7 +70,7 @@ The JSON configuration structure for boxlang for a single redis connection would
 **Cluster Provider Configuration example**
 
 ```
-{ 
+{
   "caches" : {
     "resources": {
       "provider": "RedisCluster",
@@ -86,7 +86,7 @@ The JSON configuration structure for boxlang for a single redis connection would
         "socketTimeout" : 2000,
         "poolWaittimeout" : 1000,
         "maxAttempts" : 10,
-        "maxConnections": 1000, 
+        "maxConnections": 1000,
         "maxIdleTime" : 30000,
         "maxIdleConnections" : 20
         "cacheKeyCaseSensitivity": "false",
@@ -99,7 +99,7 @@ The JSON configuration structure for boxlang for a single redis connection would
 [**Sentinel**](https://redis.io/docs/latest/operate/oss_and_stack/management/sentinel/) **Provider Configuration example**
 
 ```
-{ 
+{
   "caches" : {
     "resources": {
       "provider": "RedisSentinel",
@@ -121,7 +121,7 @@ The JSON configuration structure for boxlang for a single redis connection would
         "socketTimeout" : 2000,
         "poolWaittimeout" : 1000,
         "maxAttempts" : 10,
-        "maxConnections": 1000, 
+        "maxConnections": 1000,
         "maxIdleTime" : 30000,
         "maxIdleConnections" : 20
       }
@@ -174,7 +174,7 @@ this.caches[ "resources" ] = {
     "socketTimeout" : 2000,
     "poolWaittimeout" : 1000,
     "maxAttempts" : 10,
-    "maxConnections": 1000, 
+    "maxConnections": 1000,
     "maxIdleTime" : 30000,
     "maxIdleConnections" : 20
   }
