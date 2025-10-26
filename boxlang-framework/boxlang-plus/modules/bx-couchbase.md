@@ -7,6 +7,8 @@ icon: couch
 
 # Couchbase +
 
+### \*\*_Coming Soon!\*\*_
+
 The `bx-couchbase` module integrates Couchbase Server with BoxLang, enabling distributed caching, key/value storage, and document access patterns for horizontally scaled applications.
 
 {% hint style="danger" %}

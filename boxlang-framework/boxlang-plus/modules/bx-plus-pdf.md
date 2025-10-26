@@ -1,15 +1,18 @@
 ---
-description: "Premium PDF generation and manipulation module for BoxLang+ applications: build, merge, stamp, secure, and extract content programmatically."
+description: >-
+  Premium PDF generation and manipulation module for BoxLang+ applications:
+  build, merge, stamp, secure, and extract content programmatically.
 icon: file-pdf
 ---
 
-# 📑 `bx-plus-pdf` Module ( **Coming Soon!** )
+# PDF +
+
+### \*\*_Coming Soon!\*\*_
 
 The `bx-plus-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
 
-
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus.md) with a limited trial.
 {% endhint %}
 
 ## 🚀 Features
@@ -111,12 +114,13 @@ Requires active BoxLang+ subscription. Attempts to use premium PDF features with
 ## 📎 Related Modules
 
 {% content-ref url="bx-spreadsheet.md" %}
-Spreadsheet Module
+[bx-spreadsheet.md](bx-spreadsheet.md)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}
-Subscription Bootstrap
+[bx-plus.md](bx-plus.md)
 {% endcontent-ref %}
 
----
-Return to the [Modules Overview](README.md).
+***
+
+Return to the [Modules Overview](./).

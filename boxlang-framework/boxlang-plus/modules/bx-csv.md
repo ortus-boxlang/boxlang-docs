@@ -1,15 +1,18 @@
 ---
-description: Premium CSV processing module for high-performance parsing and generation of delimited datasets in BoxLang+ applications.
+description: >-
+  Premium CSV processing module for high-performance parsing and generation of
+  delimited datasets in BoxLang+ applications.
 icon: table
 ---
 
-# 📄 `bx-csv` Module ( **Coming Soon!** )
+# CSV +
+
+### \*\*_Coming Soon!\*\*_
 
 The `bx-csv` module streamlines working with delimited data (CSV/TSV). It emphasizes performance, streaming, and memory efficiency for large datasets.
 
-
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus.md) with a limited trial.
 {% endhint %}
 
 ## 🚀 Features
@@ -75,12 +78,12 @@ fileWrite( expandPath( "export.csv" ), csvOut );
 
 ## ⚙ Options Overview
 
-| Option | Purpose | Default |
-| ------ | ------- | ------- |
-| `delimiter` | Field separator | `,` |
-| `quoteChar` | Quote character | `"` |
-| `escapeChar` | Escape sequence | `\\` |
-| `hasHeader` | Treat first row as header | `false` |
+| Option        | Purpose                                | Default |
+| ------------- | -------------------------------------- | ------- |
+| `delimiter`   | Field separator                        | `,`     |
+| `quoteChar`   | Quote character                        | `"`     |
+| `escapeChar`  | Escape sequence                        | `\\`    |
+| `hasHeader`   | Treat first row as header              | `false` |
 | `coerceTypes` | Attempt to cast numeric/boolean values | `false` |
 
 ## 🔐 Entitlement
@@ -106,12 +109,13 @@ try {
 ## 📎 Related Modules
 
 {% content-ref url="bx-spreadsheet.md" %}
-Spreadsheet Module
+[bx-spreadsheet.md](bx-spreadsheet.md)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}
-Subscription Bootstrap
+[bx-plus.md](bx-plus.md)
 {% endcontent-ref %}
 
----
+***
+
 Next: Scale distributed operations with the [`bx-couchbase` module](bx-couchbase.md).
