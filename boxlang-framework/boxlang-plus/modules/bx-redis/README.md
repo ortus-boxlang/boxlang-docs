@@ -84,6 +84,68 @@ A high-availability solution for Redis that provides monitoring, notifications, 
 * Notification system for events
 * Provides high availability without clustering
 
+## 🎯 Registered BIFs & Components
+
+This module registers the following Built-In Functions (BIFs) and Components to enhance your BoxLang applications with Redis capabilities.
+
+### 📚 Built-In Functions (BIFs)
+
+| Function | Purpose | Documentation |
+|----------|---------|---------------|
+| `redisGetProvider()` | Get the Redis cache provider instance for advanced operations | [API Usage](api-usage.md#redisgetprovider) |
+| `redisGetConnectionPool()` | Get the Jedis connection pool for non-clustered Redis caches | [API Usage](api-usage.md#redisgetconnectionpool) |
+| `redisGetCluster()` | Get the Redis cluster connection for clustered deployments | [API Usage](api-usage.md#redisgetcluster) |
+| `redisGetClusterNodes()` | Get a map of all cluster node connections | [API Usage](api-usage.md#redisgetclusternodes) |
+| `redisPublish()` | Publish a message to a Redis channel | [Publish/Subscribe](publish-subscribe.md#redispublish) |
+| `redisSubscribe()` | Subscribe to Redis channels using a listener | [Publish/Subscribe](publish-subscribe.md#redissubscribe) |
+
+**Usage Examples:**
+
+```js
+// Get cache provider for advanced operations
+provider = redisGetProvider( "sessions" );
+
+// Publish a message to a channel
+redisPublish( "notifications", { type: "alert", message: "System update" } );
+
+// Subscribe to channels with a listener class
+redisSubscribe(
+    cacheName = "default",
+    channels = [ "notifications", "alerts" ],
+    listenerClass = "MyNotificationListener"
+);
+```
+
+### 🔧 Components
+
+| Component | Purpose | Documentation |
+|-----------|---------|---------------|
+| `bx:RedisLock` | Distributed locking across cluster members using Redis | [Distributed Locking](distributed-locking.md) |
+
+**Usage Example:**
+
+```xml
+<bx:RedisLock
+    name="processOrders"
+    cache="redisCache"
+    timeout="5"
+    expires="30"
+>
+    <!-- Only one server can execute this code at a time -->
+    <bx:set var="orders" value="#orderService.getPendingOrders()#" />
+</bx:RedisLock>
+```
+
+**Script Syntax:**
+
+```js
+redisLock name="processOrders" cache="redisCache" timeout=5 expires=30 {
+    // Only one server can execute this code at a time
+    var orders = orderService.getPendingOrders();
+    orderService.processOrders( orders );
+}
+```
+
 ## ⚙️ Configuration
 
 ### 📋 Configuration Settings Overview
