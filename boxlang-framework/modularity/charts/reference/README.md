@@ -1,3 +1,7 @@
+---
+icon: books
+---
+
 # BoxLang Charts Module Documentation
 
 ## Component Reference
@@ -12,7 +16,7 @@ This documentation provides comprehensive reference information for all componen
 
 The primary component that renders interactive charts using Chart.js. Supports responsive design, extensive styling options, and multiple chart types.
 
-### [bx:chartseries](components/bx-chartseries.md)  
+### [bx:chartseries](components/bx-chartseries.md)
 
 **Chart series definition component**
 
@@ -39,7 +43,7 @@ Represents single data points within chart series. Supports standard value-based
 ## Chart Types Supported
 
 - **pie** - Circular proportional charts
-- **bar** - Vertical bar charts  
+- **bar** - Vertical bar charts
 - **line** - Connected data point charts
 - **doughnut** - Pie charts with center holes
 - **radar** - Multi-variable circular charts
