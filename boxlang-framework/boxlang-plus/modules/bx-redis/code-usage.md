@@ -70,7 +70,7 @@ user = cache( "redis" )
 // Chain with fallback loading
 user = cache( "redis" )
     .get( "user:123" )
-    .orElseGet( function() {
+    .orElseGet( () => {
         var loadedUser = loadUserFromDatabase( 123 );
         cache( "redis" ).set( "user:123", loadedUser, 1800 );
         return loadedUser;
@@ -129,10 +129,10 @@ cachedUsers = cache( "redis" ).get( userIDs );
 // Process results
 for ( var key in cachedUsers ) {
     cachedUsers[ key ]
-        .ifPresent( function( user ) {
+        .ifPresent( ( user ) => {
             writeOutput( "Found: #user.name#<br>" );
         } )
-        .ifEmpty( function() {
+        .ifEmpty( () => {
             writeOutput( "Not cached: #key#<br>" );
         } );
 }
@@ -144,25 +144,19 @@ The `getOrSet()` method provides an atomic operation that retrieves a cached val
 
 ```js
 // Basic get-or-set with default timeouts
-userData = cache( "redis" ).getOrSet( "user:123", function() {
-    return loadUserFromDatabase( 123 );
-} );
+userData = cache( "redis" ).getOrSet( "user:123", () => loadUserFromDatabase( 123 ) );
 
 // With custom timeout (30 minutes)
 productData = cache( "redis" ).getOrSet(
     "product:456",
-    function() {
-        return loadProductFromAPI( 456 );
-    },
+    () => loadProductFromAPI( 456 ),
     1800
 );
 
 // With timeout and idle timeout (1 hour total, 30 min idle)
 reportData = cache( "redis" ).getOrSet(
     "report:monthly",
-    function() {
-        return generateMonthlyReport();
-    },
+    () => generateMonthlyReport(),
     3600,  // timeout
     1800   // idleTimeout
 );
@@ -170,9 +164,7 @@ reportData = cache( "redis" ).getOrSet(
 // With metadata
 apiData = cache( "redis" ).getOrSet(
     "api:response:123",
-    function() {
-        return callExternalAPI( 123 );
-    },
+    () => callExternalAPI( 123 ),
     600,   // 10 minutes
     0,     // no idle timeout
     { "source": "api", "cached": now() }  // metadata
@@ -182,7 +174,7 @@ apiData = cache( "redis" ).getOrSet(
 function getComputedData( key ) {
     return cache( "redis" ).getOrSet(
         "computed:#key#",
-        function() {
+        () => {
             // This expensive operation only runs on cache miss
             var result = performExpensiveCalculation( key );
             writeLog( "Computed data for key: #key#", "info" );
@@ -255,11 +247,22 @@ function getCachedQuery( sql, params = {}, timeout = 1800 ) {
 
     return cache( "redis" )
         .get( cacheKey )
-        .orElseGet( function() {
+        .orElseGet( () => {
             var result = queryExecute( sql, params );
             cache( "redis" ).set( cacheKey, result, timeout );
             return result;
         } );
+}
+
+// Alternative: Using getOrSet() for cleaner code
+function getCachedQuerySimple( sql, params = {}, timeout = 1800 ) {
+    var cacheKey = "query:" & hash( sql & serializeJSON( params ) );
+
+    return cache( "redis" ).getOrSet(
+        cacheKey,
+        () => queryExecute( sql, params ),
+        timeout
+    );
 }
 
 // Usage
@@ -359,7 +362,7 @@ component {
 
         return cache( "redis" )
             .get( cacheKey )
-            .orElseGet( function() {
+            .orElseGet( () => {
                 var html = "";
                 savecontent variable="html" {
                     var product = productService.get( productID );
@@ -391,7 +394,7 @@ function getUserData( userID ) {
     // 1. Try cache first
     return cache( "redis" )
         .get( cacheKey )
-        .orElseGet( function() {
+        .orElseGet( () => {
             // 2. Cache miss - load from database
             var user = queryExecute(
                 "SELECT * FROM users WHERE userID = :id",
@@ -499,9 +502,7 @@ function getDataWithAutoRefresh( key, computeFunction, timeout = 3600 ) {
 // Usage
 reportData = getDataWithAutoRefresh(
     "monthlyReport",
-    function() {
-        return generateMonthlyReport();
-    },
+    () => generateMonthlyReport(),
     86400 // Refresh daily
 );
 ```
@@ -516,7 +517,7 @@ function renderUserProfile( userID ) {
     // Header - cached for 1 hour
     html &= cache( "redis" )
         .get( "fragment:header:#userID#" )
-        .orElseGet( function() {
+        .orElseGet( () => {
             var frag = "";
             savecontent variable="frag" {
                 var user = getUserData( userID );
@@ -529,7 +530,7 @@ function renderUserProfile( userID ) {
     // Recent activity - cached for 5 minutes
     html &= cache( "redis" )
         .get( "fragment:activity:#userID#" )
-        .orElseGet( function() {
+        .orElseGet( () => {
             var frag = "";
             savecontent variable="frag" {
                 var activities = getRecentActivity( userID );
@@ -597,7 +598,7 @@ userKeys = cache( "redis" ).getKeys( cacheFilter( "user:*" ) );
 // Stream processing of keys
 cache( "redis" )
     .getKeysStream( cacheFilter( "session:*" ) )
-    .forEach( function( key ) {
+    .forEach( ( key ) => {
         writeOutput( "Session key: #key.getName()#<br>" );
     } );
 ```

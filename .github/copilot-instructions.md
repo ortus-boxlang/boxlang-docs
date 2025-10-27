@@ -72,6 +72,12 @@ icon: gitbook-icon-name  # From GitBook icon library
 - Structure access: `struct.key` or `struct[ "key" ]`
 - Template syntax: `<bx:component>` for XML-style components
 - Script syntax: Standard BoxLang scripting patterns
+- **Closures vs Lambdas**:
+  - Use **lambdas** (`->`) for deterministic functions that ONLY work with local variables or arguments passed to them
+  - Use **closures** (`=>`) for functions that access variables from enclosing scope OR call external functions/BIFs
+  - Example lambda: `array.map( ( item ) -> item * 2 )` (only uses the item argument)
+  - Example closure: `array.filter( ( item ) => item > threshold )` (accesses threshold from outer scope)
+  - Example closure: `() => loadUserFromDatabase( 123 )` (calls external function)
 
 ### Async Programming Documentation
 - **Executors** - Thread pool management and configuration
