@@ -104,10 +104,6 @@ try {
 }
 ```
 
-## 🔐 Entitlement
-
-Requires valid BoxLang+ subscription (`bx-plus`). Entitlement failures provide actionable messaging.
-
 ## 📏 Performance Tips
 
 * Prefer upsert over separate exists + insert flows

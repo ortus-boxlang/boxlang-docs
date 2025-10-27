@@ -86,10 +86,6 @@ fileWrite( expandPath( "export.csv" ), csvOut );
 | `hasHeader`   | Treat first row as header              | `false` |
 | `coerceTypes` | Attempt to cast numeric/boolean values | `false` |
 
-## 🔐 Entitlement
-
-Requires BoxLang+ subscription. Entitlement failures surface as descriptive exceptions.
-
 ## 🛡 Error Handling
 
 ```js
@@ -108,8 +104,8 @@ try {
 
 ## 📎 Related Modules
 
-{% content-ref url="bx-spreadsheet/README.md" %}
-[bx-spreadsheet/README.md](bx-spreadsheet/README.md)
+{% content-ref url="bx-spreadsheet/" %}
+[bx-spreadsheet](bx-spreadsheet/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}
