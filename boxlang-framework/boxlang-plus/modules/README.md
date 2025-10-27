@@ -18,7 +18,7 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 | [`bx-ldap`](bx-ldap.md) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications! | `box install bx-ldap` |
 | [`bx-plus`](bx-plus.md) | Subscription bootstrap, entitlement validation, shared utilities | `box install bx-plus` |
 | [`bx-plus-pdf`](bx-plus-pdf.md) | **In Development**<br>PDF generation and manipulation for documents, reports, and forms | `box install bx-plus-pdf` |
-| [`bx-redis`](bx-redis.md) | High-performance Redis-backed caching, data structures, pub/sub | `box install bx-redis` |
+| [`bx-redis`](bx-redis/README.md) | High-performance Redis-backed caching, data structures, pub/sub | `box install bx-redis` |
 | [`bx-spreadsheet`](bx-spreadsheet.md) | Read, write, style spreadsheet documents (XLSX) | `box install bx-spreadsheet` |
 
 ## 🚀 Installation Pattern
@@ -68,8 +68,8 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-plus-pdf.md](bx-plus-pdf.md)
 {% endcontent-ref %}
 
-{% content-ref url="bx-redis.md" %}
-[bx-redis.md](bx-redis.md)
+{% content-ref url="bx-redis/README.md" %}
+[bx-redis/README.md](bx-redis/README.md)
 {% endcontent-ref %}
 
 {% content-ref url="bx-spreadsheet.md" %}
