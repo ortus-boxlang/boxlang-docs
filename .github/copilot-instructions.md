@@ -39,6 +39,7 @@ icon: gitbook-icon-name  # From GitBook icon library
 - **Code examples** in `js`/`java` blocks (BoxLang syntax highlighting) until BoxLang is offered by GitBook.  Use `xml` or `html` for markup examples.
 - **Callouts** for important notes, warnings, and tips using GitBook's hint system
 - **GitBook callouts** using `{% hint style="info|warning|danger|success" %}`
+- **Markdown spacing** - All headers must be surrounded by blank lines (before and after). All code blocks must be surrounded by blank lines (before and after the fences).
 
 ### Navigation Integration
 
