@@ -81,11 +81,26 @@ icon: gitbook-icon-name  # From GitBook icon library
 
 ## GitBook Integration
 
+### GitBook MCP Server
+
+This project uses the GitBook Model Context Protocol (MCP) server for enhanced documentation capabilities. The MCP server provides access to GitBook's documentation and best practices.
+
+**Reference:** [GitBook MCP Documentation](https://gitbook.com/docs/~gitbook/mcp)
+
+Use the GitBook MCP to:
+- Learn GitBook-specific syntax and features
+- Understand code block formatting and options
+- Access GitBook blocks and components documentation
+- Follow GitBook best practices for content creation
+
 ### Styling Elements
 - **Hint blocks** for callouts: `{% hint style="type" %}content{% endhint %}`
+  - Available styles: `info`, `warning`, `danger`, `success`
+  - Reference: [GitBook Hint Blocks](https://gitbook.com/docs/creating-content/blocks/hint)
 - **Content references** for internal navigation
 - **Embed blocks** for external resources
 - **Table components** with GitBook-specific formatting
+- **Code blocks** with syntax highlighting and optional features (line numbers, overflow handling)
 
 ### File Organization
 - **README.md files** serve as section introductions
