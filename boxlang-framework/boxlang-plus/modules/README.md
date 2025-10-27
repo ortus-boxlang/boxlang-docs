@@ -11,7 +11,15 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 
 ## 🔍 Module Index
 
-<table><thead><tr><th width="155">Module</th><th>Purpose</th><th>Quick Install</th></tr></thead><tbody><tr><td><code>bx-csv</code></td><td>Streaming CSV parsing &#x26; generation for large datasets</td><td><code>box install bx-csv</code></td></tr><tr><td><code>bx-couchbase</code><br><br></td><td><strong>In Development</strong><br>Distributed caching &#x26; NoSQL document storage via Couchbase</td><td><code>box install bx-couchbase</code></td></tr><tr><td><code>bx-ldap</code></td><td>A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications!</td><td><code>box install bx-ldap</code></td></tr><tr><td><code>bx-plus</code></td><td>Subscription bootstrap, entitlement validation, shared utilities</td><td><code>box install bx-plus</code></td></tr><tr><td><code>bx-plus-pdf</code></td><td><strong>In Development</strong><br>PDF generation and manipulation for documents, reports, and forms</td><td><code>box install bx-plus-pdf</code></td></tr><tr><td><code>bx-redis</code></td><td>High-performance Redis-backed caching, data structures, pub/sub</td><td><code>box install bx-redis</code></td></tr><tr><td><code>bx-spreadsheet</code></td><td>Read, write, style spreadsheet documents (XLSX)</td><td><code>box install bx-spreadsheet</code></td></tr></tbody></table>
+| Module | Purpose | Quick Install |
+|--------|---------|---------------|
+| `bx-csv` | Streaming CSV parsing & generation for large datasets | `box install bx-csv` |
+| `bx-couchbase` | **In Development**<br>Distributed caching & NoSQL document storage via Couchbase | `box install bx-couchbase` |
+| `bx-ldap` | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications! | `box install bx-ldap` |
+| `bx-plus` | Subscription bootstrap, entitlement validation, shared utilities | `box install bx-plus` |
+| `bx-plus-pdf` | **In Development**<br>PDF generation and manipulation for documents, reports, and forms | `box install bx-plus-pdf` |
+| `bx-redis` | High-performance Redis-backed caching, data structures, pub/sub | `box install bx-redis` |
+| `bx-spreadsheet` | Read, write, style spreadsheet documents (XLSX) | `box install bx-spreadsheet` |
 
 ## 🚀 Installation Pattern
 

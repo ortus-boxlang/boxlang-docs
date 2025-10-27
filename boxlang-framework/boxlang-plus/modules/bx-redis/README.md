@@ -489,25 +489,47 @@ Maximum number of connection attempts before failing. Useful for handling:
 * Node failovers in cluster mode
 * Sentinel leader elections
 
+----
+
 ## 💻 Code Usage
 
 For comprehensive information on how to leverage the registered caches using BoxLang code, including examples for common operations like setting, getting, and deleting cache entries, see the [Code Usage](code-usage.md) guide.
+
+{% content-ref url="code-usage.md" %}
+[code-usage.md](code-usage.md)
+{% endcontent-ref %}
 
 ## 🔬 Scope Storage
 
 For comprehensive information on using Redis for session and client storage scopes, including configuration and best practices, see the [Scope Storage](scope-storage.md) guide.
 
+{% content-ref url="scope-storage.md" %}
+[scope-storage.md](scope-storage.md)
+{% endcontent-ref %}
+
 ## 📢 Publish/Subscribe
 
 For comprehensive information on using Redis pub/sub features for real-time messaging and event-driven architectures, see the [Publish/Subscribe](publish-subscribe.md) guide.
+
+{% content-ref url="publish-subscribe.md" %}
+[publish-subscribe.md](publish-subscribe.md)
+{% endcontent-ref %}
 
 ## 🔌 API Usage
 
 For comprehensive information on using the BoxLang Redis Module API, including connection management, cache operations, and advanced features, see the [API Usage](api-usage.md) guide.
 
+{% content-ref url="api-usage.md" %}
+[api-usage.md](api-usage.md)
+{% endcontent-ref %}
+
 ## 🐛 Troubleshooting
 
 For detailed debugging and troubleshooting guidance, including log analysis, CLI tools, web administration tools, and solutions to common issues, see the [Troubleshooting](troubleshooting.md) guide.
+
+{% content-ref url="troubleshooting.md" %}
+[troubleshooting.md](troubleshooting.md)
+{% endcontent-ref %}
 
 ----
 
