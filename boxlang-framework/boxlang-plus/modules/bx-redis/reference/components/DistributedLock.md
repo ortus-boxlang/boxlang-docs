@@ -21,9 +21,11 @@ This component does not support actions. It operates by wrapping the body conten
 
 ## Examples
 
-Basic locking example:
+### Basic Locking
 
-```js
+**Template Syntax:**
+
+```xml
 <bx:RedisLock
     name="account-update-lock"
     cache="myRedisCache"
@@ -36,9 +38,27 @@ Basic locking example:
 </bx:RedisLock>
 ```
 
-Handling lock timeout:
+**Script Syntax:**
 
 ```js
+// Using the component in script context with attributes
+component "bx:RedisLock" {
+    name = "account-update-lock";
+    cache = "myRedisCache";
+    timeout = 5;  // in seconds
+    expires = 60;
+
+    // Lock body logic
+    account.balance = account.balance - 100;
+    account.save();
+};
+```
+
+### Handling Lock Timeout
+
+**Template Syntax:**
+
+```xml
 <bx:RedisLock
     name="report-generation"
     cache="myRedisCache"
@@ -49,16 +69,38 @@ Handling lock timeout:
     // Generate expensive report
     var report = generateMonthlyReport();
     saveReport( report );
+</bx:RedisLock>
 
 <bx:catch type="LockTimeoutException">
     <bx:log text="Could not acquire lock, another process is generating the report" />
 </bx:catch>
-</bx:RedisLock>
 ```
 
-Critical section with automatic bypass:
+**Script Syntax:**
 
 ```js
+// Using the component with error handling
+try {
+    component "bx:RedisLock" {
+        name = "report-generation";
+        cache = "myRedisCache";
+        timeout = 3;
+        expires = 30;
+        throwOnTimeout = false;
+
+        var report = generateMonthlyReport();
+        saveReport( report );
+    };
+} catch ( LockTimeoutException e ) {
+    logError( "Could not acquire lock, another process is generating the report" );
+}
+```
+
+### Critical Section with Automatic Bypass
+
+**Template Syntax:**
+
+```xml
 <bx:RedisLock
     name="cache-refresh"
     cache="myRedisCache"
@@ -69,13 +111,30 @@ Critical section with automatic bypass:
     // Refresh system cache with guaranteed single execution
     clearSystemCache();
     loadSystemCache();
-
 </bx:RedisLock>
 ```
 
-Preventing concurrent operations:
+**Script Syntax:**
 
 ```js
+// Bypass lock during maintenance windows
+component "bx:RedisLock" {
+    name = "cache-refresh";
+    cache = "myRedisCache";
+    timeout = 10;
+    expires = 120;
+    bypass = isMaintenanceWindow();
+
+    clearSystemCache();
+    loadSystemCache();
+};
+```
+
+### Preventing Concurrent Operations
+
+**Template Syntax:**
+
+```xml
 <bx:RedisLock
     name="inventory-deduction-lock"
     cache="myRedisCache"
@@ -91,11 +150,29 @@ Preventing concurrent operations:
     } else {
         order.status = "out-of-stock";
     }
-
 </bx:RedisLock>
 ```
 
-## Related
+**Script Syntax:**
+
+```js
+// Ensure atomic inventory operations
+component "bx:RedisLock" {
+    name = "inventory-deduction-lock";
+    cache = "myRedisCache";
+    timeout = 2;
+    expires = 10;
+
+    var currentStock = inventory.getStock( productId );
+
+    if ( currentStock >= quantity ) {
+        inventory.deductStock( productId, quantity );
+        order.status = "confirmed";
+    } else {
+        order.status = "out-of-stock";
+    }
+};
+```## Related
 
 - [RedisPublish()](../built-in-functions/RedisPublish.md) - Publish messages to channels
 - [RedisSubscribe()](../built-in-functions/RedisSubscribe.md) - Subscribe to channels

@@ -889,7 +889,7 @@
           * [SpreadsheetisColumnHidden](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/built-in-functions/SpreadsheetisColumnHidden.md)
           * [SpreadsheetisRowHidden](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/built-in-functions/SpreadsheetisRowHidden.md)
         * [Components](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/components/README.md)
-          * [Spreadsheet](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/components/spreadsheet.md)
+          * [Spreadsheet](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/components/Spreadsheet.md)
 * [Getting Started](boxlang-framework/getting-started.md)
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Async Programming](boxlang-framework/asynchronous-programming/README.md)
