@@ -48,18 +48,6 @@ After installation, modules register themselves automatically or provide a simpl
 
 ## 📁 Module Docs
 
-{% content-ref url="bx-plus.md" %}
-[bx-plus.md](bx-plus.md)
-{% endcontent-ref %}
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
-{% content-ref url="broken-reference" %}
-[Broken link](broken-reference)
-{% endcontent-ref %}
-
 {% content-ref url="bx-csv.md" %}
 [bx-csv.md](bx-csv.md)
 {% endcontent-ref %}
@@ -68,8 +56,24 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-couchbase.md](bx-couchbase.md)
 {% endcontent-ref %}
 
+{% content-ref url="bx-ldap.md" %}
+[bx-ldap.md](bx-ldap.md)
+{% endcontent-ref %}
+
+{% content-ref url="bx-plus.md" %}
+[bx-plus.md](bx-plus.md)
+{% endcontent-ref %}
+
 {% content-ref url="bx-plus-pdf.md" %}
 [bx-plus-pdf.md](bx-plus-pdf.md)
+{% endcontent-ref %}
+
+{% content-ref url="bx-redis.md" %}
+[bx-redis.md](bx-redis.md)
+{% endcontent-ref %}
+
+{% content-ref url="bx-spreadsheet.md" %}
+[bx-spreadsheet.md](bx-spreadsheet.md)
 {% endcontent-ref %}
 
 ## 🛡 Reliability & Performance
