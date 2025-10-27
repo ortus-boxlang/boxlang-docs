@@ -180,26 +180,26 @@ Manipulates PDF forms created in Adobe Acrobat and Adobe LiveCycle Designer. Sup
 #### Populating Form Fields
 
 ```html
-<bx:pdfform action="populate" 
-            source="/forms/employee-form.pdf" 
+<bx:pdfform action="populate"
+            source="/forms/employee-form.pdf"
             destination="/completed/employee-123.pdf"
             overwrite="true">
-    
+
     <bx:pdfformparam name="employeeId" value="EMP-123" />
     <bx:pdfformparam name="firstName" value="John" />
     <bx:pdfformparam name="lastName" value="Smith" />
     <bx:pdfformparam name="department" value="Engineering" />
     <bx:pdfformparam name="salary" value="$85,000" />
     <bx:pdfformparam name="startDate" value="2024-01-15" />
-    
+
 </bx:pdfform>
 ```
 
 #### Reading Form Data
 
 ```html
-<bx:pdfform action="read" 
-            source="/submitted/employee-form-filled.pdf" 
+<bx:pdfform action="read"
+            source="/submitted/employee-form-filled.pdf"
             result="employeeData" />
 
 <!-- Access extracted data -->
@@ -252,26 +252,26 @@ Specifies individual form field values when populating PDF forms. Must be nested
 
 ```html
 <bx:pdfform action="populate" source="registration-form.pdf" destination="completed-form.pdf">
-    
+
     <!-- Text fields -->
     <bx:pdfformparam name="fullName" value="Jane Doe" />
     <bx:pdfformparam name="email" value="jane.doe@company.com" />
-    
+
     <!-- Checkbox (requires specific values like "Yes"/"No" or "On"/"Off") -->
     <bx:pdfformparam name="agreeToTerms" value="Yes" />
-    
+
     <!-- Dropdown selection -->
     <bx:pdfformparam name="country" value="United States" />
-    
+
     <!-- Radio button -->
     <bx:pdfformparam name="gender" value="Female" />
-    
+
     <!-- Date field -->
     <bx:pdfformparam name="birthDate" value="1985-03-15" />
-    
+
     <!-- Numeric field -->
     <bx:pdfformparam name="yearsExperience" value="8" />
-    
+
 </bx:pdfform>
 ```
 
@@ -322,14 +322,14 @@ Performs advanced PDF operations like merging, splitting, watermarking, and form
 #### Merging PDFs
 
 ```html
-<bx:pdf action="merge" 
-        destination="/combined/merged-document.pdf" 
+<bx:pdf action="merge"
+        destination="/combined/merged-document.pdf"
         overwrite="true">
-    
+
     <bx:pdfparam source="/docs/doc1.pdf" />
     <bx:pdfparam source="/docs/doc2.pdf" />
     <bx:pdfparam source="/docs/doc3.pdf" />
-    
+
 </bx:pdf>
 ```
 
@@ -388,20 +388,20 @@ Specifies parameters for PDF operations, particularly for merge and attachment o
 ### Example
 
 ```html
-<bx:pdf action="addAttachments" 
-        source="/base/document.pdf" 
+<bx:pdf action="addAttachments"
+        source="/base/document.pdf"
         destination="/enhanced/document.pdf">
-    
+
     <bx:pdfparam source="/files/spreadsheet.xlsx"
-                 filename="data.xlsx" 
+                 filename="data.xlsx"
                  mimeType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
                  description="Supporting data analysis" />
-    
+
     <bx:pdfparam source="/images/chart.png"
                  filename="sales-chart.png"
-                 mimeType="image/png" 
+                 mimeType="image/png"
                  description="Q4 Sales Performance Chart" />
-    
+
 </bx:pdf>
 ```
 
@@ -413,37 +413,37 @@ Specifies parameters for PDF operations, particularly for merge and attachment o
 
 ```html
 <bx:set testImage = "https://ortus-public.s3.amazonaws.com/logos/ortus-medium.jpg"/>
-<bx:document format="pdf" 
+<bx:document format="pdf"
              filename="/reports/annual-report.pdf"
              pageType="A4"
              orientation="portrait"
              encryption="128-bit"
              openpassword="company2024"
              fontEmbed="true">
-    
+
     <!-- Global Header -->
     <bx:documentitem type="header">
         <div style="text-align: center; border-bottom: 2px solid #333; padding: 10px;">
             <h2>Annual Business Report 2024</h2>
         </div>
     </bx:documentitem>
-    
+
     <!-- Global Footer -->
     <bx:documentitem type="footer">
         <div style="text-align: center; font-size: 10px;">
             Page #bxdocument.currentpagenumber# of #bxdocument.totalpages#
         </div>
     </bx:documentitem>
-    
+
     <!-- Executive Summary Section -->
     <bx:documentsection name="Executive Summary">
         <h1>Executive Summary</h1>
         <p>This report provides an overview of our performance...</p>
     </bx:documentsection>
-    
+
     <!-- Charts Section -->
     <bx:documentsection name="Performance Charts" src="#testImage#" />
-    
+
 </bx:document>
 ```
 
@@ -481,25 +481,25 @@ Specifies parameters for PDF operations, particularly for merge and attachment o
 
 ```html
 <!-- Process submitted form data -->
-<bx:pdfform action="read" 
-            source="/submissions/application-#url.id#.pdf" 
+<bx:pdfform action="read"
+            source="/submissions/application-#url.id#.pdf"
             result="applicationData" />
 
 <!-- Validate and process data -->
 <bx:if applicationData.status eq "pending">
-    
+
     <!-- Update form with approval stamp -->
     <bx:pdfform action="populate"
                 source="/submissions/application-#url.id#.pdf"
                 destination="/processed/approved-application-#url.id#.pdf"
                 overwriteData="true">
-        
+
         <bx:pdfformparam name="status" value="APPROVED" />
         <bx:pdfformparam name="approvedBy" value="#session.user.name#" />
         <bx:pdfformparam name="approvalDate" value="#dateFormat(now(), 'yyyy-mm-dd')#" />
-        
+
     </bx:pdfform>
-    
+
 </bx:if>
 ```
 
@@ -536,8 +536,8 @@ Migration from ColdFusion requires only prefix changes (`cf` → `bx`).
 
 ## 📎 Related Modules
 
-{% content-ref url="bx-spreadsheet.md" %}
-[bx-spreadsheet.md](bx-spreadsheet.md)
+{% content-ref url="bx-spreadsheet/README.md" %}
+[bx-spreadsheet/README.md](bx-spreadsheet/README.md)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}

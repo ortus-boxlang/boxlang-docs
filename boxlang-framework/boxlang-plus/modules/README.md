@@ -19,7 +19,7 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 | [`bx-plus`](bx-plus.md) | Subscription bootstrap, entitlement validation, shared utilities | `box install bx-plus` |
 | [`bx-plus-pdf`](bx-plus-pdf.md) | **In Development**<br>PDF generation and manipulation for documents, reports, and forms | `box install bx-plus-pdf` |
 | [`bx-redis`](bx-redis/README.md) | High-performance Redis-backed caching, data structures, pub/sub | `box install bx-redis` |
-| [`bx-spreadsheet`](bx-spreadsheet.md) | Read, write, style spreadsheet documents (XLSX) | `box install bx-spreadsheet` |
+| [`bx-spreadsheet`](bx-spreadsheet/README.md) | Read, write, style spreadsheet documents (XLSX) | `box install bx-spreadsheet` |
 
 ## 🚀 Installation Pattern
 
@@ -72,8 +72,8 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-redis/README.md](bx-redis/README.md)
 {% endcontent-ref %}
 
-{% content-ref url="bx-spreadsheet.md" %}
-[bx-spreadsheet.md](bx-spreadsheet.md)
+{% content-ref url="bx-spreadsheet/README.md" %}
+[bx-spreadsheet/README.md](bx-spreadsheet/README.md)
 {% endcontent-ref %}
 
 ## 🛡 Reliability & Performance

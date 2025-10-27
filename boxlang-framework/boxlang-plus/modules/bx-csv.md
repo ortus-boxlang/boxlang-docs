@@ -108,8 +108,8 @@ try {
 
 ## 📎 Related Modules
 
-{% content-ref url="bx-spreadsheet.md" %}
-[bx-spreadsheet.md](bx-spreadsheet.md)
+{% content-ref url="bx-spreadsheet/README.md" %}
+[bx-spreadsheet/README.md](bx-spreadsheet/README.md)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}

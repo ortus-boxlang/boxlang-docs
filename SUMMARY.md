@@ -783,7 +783,7 @@
       * [API Usage](boxlang-framework/boxlang-plus/modules/bx-redis/api-usage.md)
       * [Publish/Subscribe](boxlang-framework/boxlang-plus/modules/bx-redis/publish-subscribe.md)
       * [Troubleshooting](boxlang-framework/boxlang-plus/modules/bx-redis/troubleshooting.md)
-    * [Spreadsheet +](boxlang-framework/boxlang-plus/modules/bx-spreadsheet.md)
+    * [Spreadsheet +](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/README.md)
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Async Programming](boxlang-framework/asynchronous-programming/README.md)
   * [Executors](boxlang-framework/asynchronous-programming/executors.md)
