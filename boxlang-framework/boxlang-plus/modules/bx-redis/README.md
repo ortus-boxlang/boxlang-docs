@@ -2,10 +2,10 @@
 icon: database
 ---
 
-# 🔴 Redis +
+# Redis +
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus.md) with a limited trial.
 {% endhint %}
 
 This module will enhance your language by allowing you to connect to Redis instances, clusters, or sentinel instances. Here are some features:
@@ -89,27 +89,27 @@ A high-availability solution for Redis that provides monitoring, notifications, 
 
 This table shows all available settings across all Redis deployment modes:
 
-| Setting | Standalone | Cluster | Sentinel | Type | Default | Description |
-|---------|------------|---------|----------|------|---------|-------------|
-| `host` | ✅ | ❌ | ❌ | string | `127.0.0.1` | Redis server IP or hostname |
-| `hosts` | ❌ | ✅ | ❌ | string | - | Comma-delimited cluster node list |
-| `sentinels` | ❌ | ❌ | ✅ | string | - | Comma-delimited sentinel servers (host:port) |
-| `port` | ✅ | ✅ | ✅ | numeric | `6379` | Redis server/cluster port |
-| `database` | ✅ | ❌ | ✅ | numeric | `0` | Logical database number (0-15) |
-| `username` | ✅ | ✅ | ✅ | string | - | Redis username (ACL authentication) |
-| `password` | ✅ | ✅ | ✅ | string | - | Redis password |
-| `useSSL` | ✅ | ✅ | ✅ | boolean | `false` | Enable SSL/TLS encryption |
-| `keyprefix` | ✅ | ✅ | ✅ | string | `boxlang-cache` | Prefix for all cache keys |
-| `cacheKeyCaseSensitivity` | ✅ | ✅ | ✅ | boolean | `false` | Enable case-sensitive keys |
-| `timeout` | ✅ | ✅ | ✅ | numeric | `2000` | Connection timeout (ms) |
-| `readTimeout` | ❌ | ✅ | ✅ | numeric | `2000` | Read operation timeout (ms) |
-| `socketTimeout` | ✅ | ✅ | ✅ | numeric | `2000` | Socket timeout (ms) |
-| `poolWaittimeout` | ✅ | ✅ | ✅ | numeric | `1000` | Pool resource wait timeout (ms) |
-| `maxConnections` | ✅ | ✅ | ✅ | numeric | `50` | Maximum connections per pool |
-| `maxIdleConnections` | ✅ | ✅ | ✅ | numeric | `20` | Maximum idle connections |
-| `idleConnections` | ✅ | ❌ | ✅ | numeric | `5` | Initial idle connections |
-| `maxIdleTime` | ❌ | ✅ | ✅ | numeric | `30000` | Max idle time before eviction (ms) |
-| `maxAttempts` | ❌ | ✅ | ✅ | numeric | `10` | Maximum connection attempts |
+| Setting                   | Standalone | Cluster | Sentinel | Type    | Default         | Description                                  |
+| ------------------------- | ---------- | ------- | -------- | ------- | --------------- | -------------------------------------------- |
+| `host`                    | ✅          | ❌       | ❌        | string  | `127.0.0.1`     | Redis server IP or hostname                  |
+| `hosts`                   | ❌          | ✅       | ❌        | string  | -               | Comma-delimited cluster node list            |
+| `sentinels`               | ❌          | ❌       | ✅        | string  | -               | Comma-delimited sentinel servers (host:port) |
+| `port`                    | ✅          | ✅       | ✅        | numeric | `6379`          | Redis server/cluster port                    |
+| `database`                | ✅          | ❌       | ✅        | numeric | `0`             | Logical database number (0-15)               |
+| `username`                | ✅          | ✅       | ✅        | string  | -               | Redis username (ACL authentication)          |
+| `password`                | ✅          | ✅       | ✅        | string  | -               | Redis password                               |
+| `useSSL`                  | ✅          | ✅       | ✅        | boolean | `false`         | Enable SSL/TLS encryption                    |
+| `keyprefix`               | ✅          | ✅       | ✅        | string  | `boxlang-cache` | Prefix for all cache keys                    |
+| `cacheKeyCaseSensitivity` | ✅          | ✅       | ✅        | boolean | `false`         | Enable case-sensitive keys                   |
+| `timeout`                 | ✅          | ✅       | ✅        | numeric | `2000`          | Connection timeout (ms)                      |
+| `readTimeout`             | ❌          | ✅       | ✅        | numeric | `2000`          | Read operation timeout (ms)                  |
+| `socketTimeout`           | ✅          | ✅       | ✅        | numeric | `2000`          | Socket timeout (ms)                          |
+| `poolWaittimeout`         | ✅          | ✅       | ✅        | numeric | `1000`          | Pool resource wait timeout (ms)              |
+| `maxConnections`          | ✅          | ✅       | ✅        | numeric | `50`            | Maximum connections per pool                 |
+| `maxIdleConnections`      | ✅          | ✅       | ✅        | numeric | `20`            | Maximum idle connections                     |
+| `idleConnections`         | ✅          | ❌       | ✅        | numeric | `5`             | Initial idle connections                     |
+| `maxIdleTime`             | ❌          | ✅       | ✅        | numeric | `30000`         | Max idle time before eviction (ms)           |
+| `maxAttempts`             | ❌          | ✅       | ✅        | numeric | `10`            | Maximum connection attempts                  |
 
 ### 🔧 boxlang.json Configuration
 
@@ -283,17 +283,13 @@ this.caches["resources"] = {
 
 #### host
 
-**Applies to:** Standalone only
-**Type:** string
-**Default:** `127.0.0.1`
+**Applies to:** Standalone only **Type:** string **Default:** `127.0.0.1`
 
 The Redis server IP address or hostname for standalone deployments.
 
 #### hosts
 
-**Applies to:** Cluster only
-**Type:** string
-**Required:** Yes
+**Applies to:** Cluster only **Type:** string **Required:** Yes
 
 Comma-delimited list of cluster node IPs or hostnames. You don't need all nodes, but include multiple for redundancy.
 
@@ -301,9 +297,7 @@ Comma-delimited list of cluster node IPs or hostnames. You don't need all nodes,
 
 #### sentinels
 
-**Applies to:** Sentinel only
-**Type:** string
-**Required:** Yes
+**Applies to:** Sentinel only **Type:** string **Required:** Yes
 
 Comma-delimited list of Sentinel servers in `{host}:port` format.
 
@@ -311,17 +305,13 @@ Comma-delimited list of Sentinel servers in `{host}:port` format.
 
 #### port
 
-**Applies to:** All modes
-**Type:** numeric
-**Default:** `6379`
+**Applies to:** All modes **Type:** numeric **Default:** `6379`
 
 The port number for Redis server/cluster connections.
 
 #### database
 
-**Applies to:** Standalone, Sentinel
-**Type:** numeric
-**Default:** `0`
+**Applies to:** Standalone, Sentinel **Type:** numeric **Default:** `0`
 
 The logical database to connect to in Redis (0-15). Redis Cluster does not support multiple databases.
 
@@ -329,25 +319,19 @@ The logical database to connect to in Redis (0-15). Redis Cluster does not suppo
 
 #### username
 
-**Applies to:** All modes
-**Type:** string
-**Default:** Empty
+**Applies to:** All modes **Type:** string **Default:** Empty
 
 The Redis username for [ACL-based authentication](https://docs.redis.com/latest/rs/security/access-control/manage-users/add-users/). Only required when user-level access control is enabled.
 
 #### password
 
-**Applies to:** All modes
-**Type:** string
-**Default:** Empty
+**Applies to:** All modes **Type:** string **Default:** Empty
 
 The password for Redis authentication. Leave empty if no password is set.
 
 #### useSSL
 
-**Applies to:** All modes
-**Type:** boolean
-**Default:** `false`
+**Applies to:** All modes **Type:** boolean **Default:** `false`
 
 Enable SSL/TLS encryption for the connection to Redis. Recommended for production environments.
 
@@ -355,9 +339,7 @@ Enable SSL/TLS encryption for the connection to Redis. Recommended for productio
 
 #### keyprefix
 
-**Applies to:** All modes
-**Type:** string
-**Default:** `boxlang-cache`
+**Applies to:** All modes **Type:** string **Default:** `boxlang-cache`
 
 Prefix automatically added to every cache key. This helps:
 
@@ -370,9 +352,7 @@ Prefix automatically added to every cache key. This helps:
 
 #### cacheKeyCaseSensitivity
 
-**Applies to:** All modes
-**Type:** boolean
-**Default:** `false`
+**Applies to:** All modes **Type:** boolean **Default:** `false`
 
 By default, all cache keys are converted to lowercase to avoid casing issues. Set to `true` to enable case-sensitive keys.
 
@@ -382,33 +362,25 @@ By default, all cache keys are converted to lowercase to avoid casing issues. Se
 
 #### timeout
 
-**Applies to:** All modes
-**Type:** numeric
-**Default:** `2000`
+**Applies to:** All modes **Type:** numeric **Default:** `2000`
 
 Connection timeout in milliseconds. If a connection cannot be established within this time, an exception is thrown.
 
 #### readTimeout
 
-**Applies to:** Cluster, Sentinel
-**Type:** numeric
-**Default:** `2000`
+**Applies to:** Cluster, Sentinel **Type:** numeric **Default:** `2000`
 
 Read operation timeout in milliseconds. Defaults to connection timeout if not specified.
 
 #### socketTimeout
 
-**Applies to:** All modes
-**Type:** numeric
-**Default:** `2000`
+**Applies to:** All modes **Type:** numeric **Default:** `2000`
 
 Socket-level timeout in milliseconds for network operations.
 
 #### poolWaittimeout
 
-**Applies to:** All modes
-**Type:** numeric
-**Default:** `1000`
+**Applies to:** All modes **Type:** numeric **Default:** `1000`
 
 Maximum time in milliseconds to wait for a connection from the pool before throwing an exception.
 
@@ -416,9 +388,7 @@ Maximum time in milliseconds to wait for a connection from the pool before throw
 
 #### maxConnections
 
-**Applies to:** All modes
-**Type:** numeric
-**Default:** `50` (Standalone/Sentinel), `1000` (Cluster)
+**Applies to:** All modes **Type:** numeric **Default:** `50` (Standalone/Sentinel), `1000` (Cluster)
 
 Maximum number of concurrent connections allowed per pool. Adjust based on:
 
@@ -428,25 +398,19 @@ Maximum number of concurrent connections allowed per pool. Adjust based on:
 
 #### maxIdleConnections
 
-**Applies to:** All modes
-**Type:** numeric
-**Default:** `20`
+**Applies to:** All modes **Type:** numeric **Default:** `20`
 
 Maximum number of idle connections to retain in the pool. Idle connections above this limit will be closed.
 
 #### idleConnections
 
-**Applies to:** Standalone, Sentinel
-**Type:** numeric
-**Default:** `5`
+**Applies to:** Standalone, Sentinel **Type:** numeric **Default:** `5`
 
 Initial number of idle connections to create when the pool starts. These connections are immediately available for use.
 
 #### maxIdleTime
 
-**Applies to:** Cluster, Sentinel
-**Type:** numeric
-**Default:** `30000`
+**Applies to:** Cluster, Sentinel **Type:** numeric **Default:** `30000`
 
 Maximum time in milliseconds a connection can remain idle before being evicted from the pool.
 
@@ -454,9 +418,7 @@ Maximum time in milliseconds a connection can remain idle before being evicted f
 
 #### maxAttempts
 
-**Applies to:** Cluster, Sentinel
-**Type:** numeric
-**Default:** `10`
+**Applies to:** Cluster, Sentinel **Type:** numeric **Default:** `10`
 
 Maximum number of connection attempts before failing. Useful for handling:
 
@@ -866,10 +828,10 @@ The Redis module provides native messaging capabilities through Redis Publish/Su
 
 The module provides two main functions for implementing pub/sub patterns:
 
-| Function | Parameters | Returns | Description |
-|----------|-----------|---------|-------------|
-| `redisPublish()` | `channel`, `message`, `cacheName` | numeric | Publishes a message to a Redis channel. Returns the number of subscribers that received the message. |
-| `redisSubscribe()` | `subscriber`, `channels`, `cacheName` | struct | Subscribes to one or more channels using a closure/lambda or listener class. Returns a struct with `future` and `subscriber` keys. |
+| Function           | Parameters                            | Returns | Description                                                                                                                        |
+| ------------------ | ------------------------------------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `redisPublish()`   | `channel`, `message`, `cacheName`     | numeric | Publishes a message to a Redis channel. Returns the number of subscribers that received the message.                               |
+| `redisSubscribe()` | `subscriber`, `channels`, `cacheName` | struct  | Subscribes to one or more channels using a closure/lambda or listener class. Returns a struct with `future` and `subscriber` keys. |
 
 {% hint style="warning" %}
 Pattern-based publishing and subscriptions are not yet implemented in this version.
@@ -1102,14 +1064,14 @@ class {
 
 #### Listener Method Reference
 
-| Method | Parameters | Description | When Called |
-|--------|-----------|-------------|-------------|
-| `onMessage()` | `channel`, `message` | Handles messages from subscribed channels | When a message arrives on a literal channel subscription |
-| `onPMessage()` | `pattern`, `channel`, `message` | Handles messages from pattern subscriptions | When a message arrives on a pattern-matched channel |
-| `onSubscribe()` | `channel`, `subscribedChannels` | Confirms channel subscription | After successfully subscribing to a channel |
-| `onUnsubscribe()` | `channel`, `subscribedChannels` | Confirms channel unsubscription | After unsubscribing from a channel |
-| `onPSubscribe()` | `pattern`, `subscribedChannels` | Confirms pattern subscription | After successfully subscribing to a pattern |
-| `onPUnsubscribe()` | `pattern`, `subscribedChannels` | Confirms pattern unsubscription | After unsubscribing from a pattern |
+| Method             | Parameters                      | Description                                 | When Called                                              |
+| ------------------ | ------------------------------- | ------------------------------------------- | -------------------------------------------------------- |
+| `onMessage()`      | `channel`, `message`            | Handles messages from subscribed channels   | When a message arrives on a literal channel subscription |
+| `onPMessage()`     | `pattern`, `channel`, `message` | Handles messages from pattern subscriptions | When a message arrives on a pattern-matched channel      |
+| `onSubscribe()`    | `channel`, `subscribedChannels` | Confirms channel subscription               | After successfully subscribing to a channel              |
+| `onUnsubscribe()`  | `channel`, `subscribedChannels` | Confirms channel unsubscription             | After unsubscribing from a channel                       |
+| `onPSubscribe()`   | `pattern`, `subscribedChannels` | Confirms pattern subscription               | After successfully subscribing to a pattern              |
+| `onPUnsubscribe()` | `pattern`, `subscribedChannels` | Confirms pattern unsubscription             | After unsubscribing from a pattern                       |
 
 ### 💡 Pub/Sub Best Practices
 

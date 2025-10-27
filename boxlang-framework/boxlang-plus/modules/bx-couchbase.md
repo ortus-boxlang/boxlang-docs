@@ -116,8 +116,8 @@ Requires valid BoxLang+ subscription (`bx-plus`). Entitlement failures provide a
 
 ## 📎 Related Modules
 
-{% content-ref url="bx-redis.md" %}
-[bx-redis.md](bx-redis.md)
+{% content-ref url="bx-redis/" %}
+[bx-redis](bx-redis/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}

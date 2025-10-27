@@ -1,13 +1,17 @@
 ---
-description: Overview of BoxLang+, the professional subscription tier adding enterprise features, support, and premium modules on top of the open core.
+description: >-
+  Overview of BoxLang+, the professional subscription tier adding enterprise
+  features, support, and premium modules on top of the open core.
 icon: medal
 ---
 
-# 🚀 BoxLang+
+# BoxLang+
 
-BoxLang+ is the professional subscription for the BoxLang language and framework. It builds on the fully open-source Apache 2 licensed core to provide production acceleration, premium modules, enhanced tooling, and predictable support SLAs for teams delivering critical applications.
+**BoxLang+/++** is the professional subscription for the BoxLang language and framework. It builds on the fully open-source Apache 2 licensed core to provide production acceleration, premium modules, enhanced tooling, and predictable support SLAs for teams delivering critical applications.
 
-The open-source edition is powerful and will remain free. BoxLang+ simply adds capabilities that help you deploy at scale with confidence.
+{% embed url="https://www.boxlang.io/plans" %}
+
+The open-source edition is powerful and will remain free. **BoxLang+ simply adds capabilities that help you deploy at scale with confidence.**
 
 ## 🎯 Why BoxLang+
 
@@ -21,18 +25,9 @@ BoxLang+ focuses on pragmatic value for engineering teams:
 
 ## 🧩 Open Core + Subscription Model
 
-You can build and ship commercial software with the open-source edition without cost. When you need advanced modules, faster resolutions, or architectural guidance, BoxLang+ is available as an additive layer.
+You can build and ship commercial software with the open-source edition without cost. When you need advanced modules, faster resolutions, enterprise support, or architectural guidance, BoxLang+ is available as an additive layer.
 
-| Area | Open Source | BoxLang+ |
-| ---- | ----------- | -------- |
-| Core Language & Runtime | Included | Included |
-| All Standard BIFs & Components | Included | Included |
-| Premium Modules | Limited | Included |
-| SLA Support | Community | Business SLA |
-| CommandBox PRO Features | Limited | Included |
-| Multi-Site Management | Not Included | Included |
-| Architecture Guidance | Community Only | Available |
-| Roadmap Previews | Public Releases | Early Insights |
+<table><thead><tr><th width="416">Area</th><th>Open Source</th><th>BoxLang+</th></tr></thead><tbody><tr><td>Core Language &#x26; Runtime</td><td>✅</td><td>✅</td></tr><tr><td>All Standard BIFs &#x26; Components</td><td>✅</td><td>✅</td></tr><tr><td>Premium Modules</td><td>🚫</td><td>✅</td></tr><tr><td>SLA Support</td><td>🚫</td><td>✅</td></tr><tr><td>CommandBox PRO Features</td><td>🚫</td><td>✅</td></tr><tr><td>Multi-Site Management</td><td>🚫</td><td>✅</td></tr><tr><td>Dedicated Helpdesk</td><td>🚫</td><td>✅</td></tr><tr><td>Architecture Guidance</td><td>🚫</td><td>✅</td></tr><tr><td>Roadmap Previews</td><td>Public Releases</td><td>Early Insights</td></tr></tbody></table>
 
 ## 🔐 Support & Reliability
 
@@ -40,16 +35,11 @@ BoxLang+ provides structured support processes to help you reduce downtime and a
 
 ## 🛠 Premium Modules Overview
 
-The subscription grants access to a growing catalog of modules that extend the runtime with integration, data handling, and performance features:
+The subscription grants access to a growing catalog of modules that extend the runtime with integration, data handling, and performance features:  Explore them in the [Modules](modules/) section.
 
-* `bx-plus` – Subscription bootstrap & entitlement checks
-* `bx-redis` – High-performance caching & data structures via Redis
-* `bx-spreadsheet` – Read, write, style, and transform spreadsheet data
-* `bx-csv` – Fast, memory-conscious CSV parsing & generation
-* `bx-couchbase` – Distributed caching and NoSQL document access
-* `bx-plus-pdf` – Enhanced PDF features and manipulation
-
-Explore them in the [Modules](modules/README.md) section.
+{% content-ref url="modules/" %}
+[modules](modules/)
+{% endcontent-ref %}
 
 ## 🧪 Development & Environments
 
@@ -73,20 +63,20 @@ BoxLang+ encourages modern deployment patterns:
 * BoxLang+ subscription: Adds closed-distribution premium modular functionality and features.
 * You retain full ownership of your application code.
 
-
 ## 🔭 Roadmap & Evolution
 
 Premium modules and tooling evolve alongside the core language. Subscription users can preview upcoming integration points and participate in feedback loops shaping future capabilities.
 
 ## 📎 Related Resources
 
-{% content-ref url="../modularity/README.md" %}
-Framework Modularity
+{% content-ref url="../modularity/" %}
+[modularity](../modularity/)
 {% endcontent-ref %}
 
-{% content-ref url="../../getting-started/overview/README.md" %}
-Getting Started Overview
+{% content-ref url="../../getting-started/overview/" %}
+[overview](../../getting-started/overview/)
 {% endcontent-ref %}
 
----
-Ready to explore modules? Head to the [Modules Overview](modules/README.md).
+***
+
+Ready to explore modules? Head to the [Modules Overview](modules/).

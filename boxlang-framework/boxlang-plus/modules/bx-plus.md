@@ -1,9 +1,11 @@
 ---
-description: Core subscription bootstrap module enabling entitlement checks, licensing utilities, and shared helpers for premium BoxLang+ modules.
+description: >-
+  Core subscription bootstrap module enabling entitlement checks, licensing
+  utilities, and shared helpers for premium BoxLang+ modules.
 icon: key
 ---
 
-# 🔑 `bx-plus` Module
+# Plus Core
 
 The `bx-plus` module is the enterprise licensing and feature management module that unlocks the full potential of BoxLang+ and BoxLang++ subscription plans. This module provides the essential licensing infrastructure, validation, and activation services that enable access to premium enterprise features and functionality across all BoxLang+ and BoxLang++ modules.
 
@@ -11,22 +13,22 @@ The `bx-plus` module is the enterprise licensing and feature management module t
 
 The **bx-plus** module serves as the foundation for enterprise BoxLang subscriptions by providing:
 
-- **License Activation & Validation** - Secure JWT-based license management with automatic token refresh
-- **Trial Mode Management** - 60-day trial period tracking for evaluation purposes  
-- **Enterprise Feature Gating** - Controls access to premium modules and functionality based on subscription level
-- **Subscription Status Monitoring** - Real-time validation of license status and subscription benefits
-- **Multi-Environment Support** - License binding and validation across development, staging, and production environments
+* **License Activation & Validation** - Secure JWT-based license management with automatic token refresh
+* **Trial Mode Management** - 60-day trial period tracking for evaluation purposes
+* **Enterprise Feature Gating** - Controls access to premium modules and functionality based on subscription level
+* **Subscription Status Monitoring** - Real-time validation of license status and subscription benefits
+* **Multi-Environment Support** - License binding and validation across development, staging, and production environments
 
 ## Premium Features Unlocked
 
 With an active BoxLang+ or BoxLang++ subscription and this module, you gain access to enterprise-grade capabilities such as:
 
-- **Advanced Caching & NoSQL** - Redis, MongoDB, and distributed caching solutions
-- **Enhanced Communication Services** - Enterprise messaging and notification systems  
-- **Premium CommandBox Features** - Multi-site management, advanced deployment tools, and professional server features
-- **Priority Support & SLAs** - Business-grade support with guaranteed response times
-- **Professional Tooling** - Enhanced development and debugging tools for enterprise workflows
-- **Custom Language Parsers** - Support for additional language syntaxes and compatibility modules
+* **Advanced Caching & NoSQL** - Redis, MongoDB, and distributed caching solutions
+* **Enhanced Communication Services** - Enterprise messaging and notification systems
+* **Premium CommandBox Features** - Multi-site management, advanced deployment tools, and professional server features
+* **Priority Support & SLAs** - Business-grade support with guaranteed response times
+* **Professional Tooling** - Enhanced development and debugging tools for enterprise workflows
+* **Custom Language Parsers** - Support for additional language syntaxes and compatibility modules
 
 ## 📦 Installation
 
@@ -44,10 +46,10 @@ install-bx-module bx-plus
 
 For a complete list of features and benefits, visit the [BoxLang Plans](https://boxlang.io/plans) page.
 
-- `bx` - The BoxLang test code
-- `java` - Java test code
-- `resources` - Resources for testing
-  - `libs` - BoxLang binary goes here for now.
+* `bx` - The BoxLang test code
+* `java` - Java test code
+* `resources` - Resources for testing
+  * `libs` - BoxLang binary goes here for now.
 
 ## Getting Started
 
@@ -77,9 +79,9 @@ writeOutput( "Updated license info: " & serializeJSON( refreshResult ) );
 
 This function will attempt to refresh your existing license token using the stored refresh token. It's useful for:
 
-- Extending license validity before expiration
-- Updating license information after subscription changes
-- Ensuring continued access to enterprise features
+* Extending license validity before expiration
+* Updating license information after subscription changes
+* Ensuring continued access to enterprise features
 
 ### Checking License Status
 
@@ -108,12 +110,12 @@ boxlang module:plus activate --email your-email@company.com --licenseKey your-li
 
 **Required Options:**
 
-- `--email` - The email address associated with your license
-- `--licenseKey` - Your BoxLang+ or BoxLang++ license key
+* `--email` - The email address associated with your license
+* `--licenseKey` - Your BoxLang+ or BoxLang++ license key
 
 **Optional Options:**
 
-- `--serverType` - The type of server deployment (default: "Production")
+* `--serverType` - The type of server deployment (default: "Production")
 
 #### `refresh`
 
@@ -135,10 +137,10 @@ boxlang module:plus info
 
 Returns information including:
 
-- License status (active, expired, trial, etc.)
-- Subscription type (BoxLang+, BoxLang++, trial)
-- License expiration date
-- Available features and modules
+* License status (active, expired, trial, etc.)
+* Subscription type (BoxLang+, BoxLang++, trial)
+* License expiration date
+* Available features and modules
 
 #### `help`
 
@@ -152,9 +154,10 @@ boxlang module:plus help
 
 This module is part of the BoxLang+ and BoxLang++ enterprise subscription offerings. For enterprise support, license questions, or to purchase a subscription:
 
-- **Visit**: [BoxLang Plans](https://boxlang.io/plans)
-- **Email**: [boxlang@ortussolutions.com](mailto:boxlang@ortussolutions.com)
-- **Phone**: 1-888-557-8057
+* **Visit**: [BoxLang Plans](https://boxlang.io/plans)
+* **Email**: [boxlang@ortussolutions.com](mailto:boxlang@ortussolutions.com)
+* **Phone**: 1-888-557-8057
 
----
-Next: Explore data caching with the [`bx-redis` module](bx-redis.md).
+***
+
+Next: Explore data caching with the [`bx-redis` module](broken-reference).

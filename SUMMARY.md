@@ -769,6 +769,21 @@
 
 ## BoxLang Framework
 
+* [BoxLang+](boxlang-framework/boxlang-plus/README.md)
+  * [Modules Overview](boxlang-framework/boxlang-plus/modules/README.md)
+    * [CSV +](boxlang-framework/boxlang-plus/modules/bx-csv.md)
+    * [Couchbase +](boxlang-framework/boxlang-plus/modules/bx-couchbase.md)
+    * [LDAP +](boxlang-framework/boxlang-plus/modules/bx-ldap.md)
+    * [Plus Core](boxlang-framework/boxlang-plus/modules/bx-plus.md)
+    * [PDF +](boxlang-framework/boxlang-plus/modules/bx-plus-pdf.md)
+    * [Redis +](boxlang-framework/boxlang-plus/modules/bx-redis/README.md)
+      * [Code Usage](boxlang-framework/boxlang-plus/modules/bx-redis/code-usage.md)
+      * [Distributed Locking](boxlang-framework/boxlang-plus/modules/bx-redis/distributed-locking.md)
+      * [Scope Storage](boxlang-framework/boxlang-plus/modules/bx-redis/scope-storage.md)
+      * [API Usage](boxlang-framework/boxlang-plus/modules/bx-redis/api-usage.md)
+      * [Publish/Subscribe](boxlang-framework/boxlang-plus/modules/bx-redis/publish-subscribe.md)
+      * [Troubleshooting](boxlang-framework/boxlang-plus/modules/bx-redis/troubleshooting.md)
+    * [Spreadsheet +](boxlang-framework/boxlang-plus/modules/bx-spreadsheet.md)
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Async Programming](boxlang-framework/asynchronous-programming/README.md)
   * [Executors](boxlang-framework/asynchronous-programming/executors.md)
@@ -1076,15 +1091,6 @@
           * [Header](boxlang-framework/modularity/web-support/reference/components/web/Header.md)
           * [Content](boxlang-framework/modularity/web-support/reference/components/web/Content.md)
   * [Yaml](boxlang-framework/modularity/yaml.md)
-* [BoxLang+](boxlang-framework/boxlang-plus/README.md)
-  * [Modules Overview](boxlang-framework/boxlang-plus/modules/README.md)
-    * [Plus Core](boxlang-framework/boxlang-plus/modules/bx-plus.md)
-    * [Redis +](boxlang-framework/boxlang-plus/modules/bx-redis.md)
-    * [Spreadsheet +](boxlang-framework/boxlang-plus/modules/bx-spreadsheet.md)
-    * [CSV +](boxlang-framework/boxlang-plus/modules/bx-csv.md)
-    * [LDAP +](boxlang-framework/boxlang-plus/modules/bx-ldap.md)
-    * [Couchbase +](boxlang-framework/boxlang-plus/modules/bx-couchbase.md)
-    * [PDF +](boxlang-framework/boxlang-plus/modules/bx-plus-pdf.md)
 
 ## Extra Credit
 

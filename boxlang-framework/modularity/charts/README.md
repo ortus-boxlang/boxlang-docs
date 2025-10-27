@@ -13,21 +13,21 @@ This module provides powerful chart generation capabilities to the [BoxLang](htt
 
 ## ✨ Features
 
-- 🎨 **10 Chart Types**: pie, bar, line, doughnut, radar, polar area, area, horizontal bar, scatter, and bubble charts
-- 📱 **Responsive Design**: Charts automatically adapt to container sizes and screen dimensions
-- 🎯 **Easy to Use**: Simple BoxLang component syntax with nested data structure
-- 🎭 **Highly Customizable**: Extensive styling options including colors, fonts, axes, and grid lines
-- ⚡ **Powered by Chart.js**: Built on the popular Chart.js library for modern, interactive charts
-- 📊 **Advanced Features**: Stacked/clustered series, axis titles, custom scales, and tooltips
-- 🔧 **Zero Configuration**: Sensible defaults get you started quickly
-- 💪 **Production Ready**: Built by Ortus Solutions with enterprise-grade quality
+* 🎨 **10 Chart Types**: pie, bar, line, doughnut, radar, polar area, area, horizontal bar, scatter, and bubble charts
+* 📱 **Responsive Design**: Charts automatically adapt to container sizes and screen dimensions
+* 🎯 **Easy to Use**: Simple BoxLang component syntax with nested data structure
+* 🎭 **Highly Customizable**: Extensive styling options including colors, fonts, axes, and grid lines
+* ⚡ **Powered by Chart.js**: Built on the popular Chart.js library for modern, interactive charts
+* 📊 **Advanced Features**: Stacked/clustered series, axis titles, custom scales, and tooltips
+* 🔧 **Zero Configuration**: Sensible defaults get you started quickly
+* 💪 **Production Ready**: Built by Ortus Solutions with enterprise-grade quality
 
 ## 📦 Installation
 
 ### Requirements
 
-- BoxLang 1.0.0 or higher
-- Web support enabled (for `htmlHead()` BIF)
+* BoxLang 1.0.0 or higher
+* Web support enabled (for `htmlHead()` BIF)
 
 ### Install via CommandBox
 
@@ -39,7 +39,7 @@ The module will automatically register and be available as `bxcharts` in your Bo
 
 ### 🚧 Rewrites CAUTION
 
-If you are using a URL rewriting mechanism (like `.htaccess` for Apache or URL rewrite rules in Nginx), ensure that requests to static assets (like JavaScript and CSS files) are properly routed to the `boxlang_modules/bx-charts/assets/` directory. This is crucial for the Chart.js library and any other assets to load correctly.  Also, make sure you are not rewriting the following directory from which assets are delivered from the module:`
+If you are using a URL rewriting mechanism (like `.htaccess` for Apache or URL rewrite rules in Nginx), ensure that requests to static assets (like JavaScript and CSS files) are properly routed to the `boxlang_modules/bx-charts/assets/` directory. This is crucial for the Chart.js library and any other assets to load correctly. Also, make sure you are not rewriting the following directory from which assets are delivered from the module:\`
 
 ```
 /bxModules/bxCharts/public/index.bxm
@@ -93,74 +93,74 @@ The module supports 10 different chart types, each optimized for specific data v
 
 Perfect for showing proportions and percentages of a whole.
 
-- **Best for**: Market share, budget allocation, survey results
-- **Data structure**: Single series with multiple data points
+* **Best for**: Market share, budget allocation, survey results
+* **Data structure**: Single series with multiple data points
 
 ### 📊 Bar Chart (`type="bar"`)
 
 Great for comparing values across categories.
 
-- **Best for**: Comparing quantities, showing rankings, temporal data
-- **Features**: Supports stacking and clustering
-- **Data structure**: Single or multiple series
+* **Best for**: Comparing quantities, showing rankings, temporal data
+* **Features**: Supports stacking and clustering
+* **Data structure**: Single or multiple series
 
 ### 📈 Line Chart (`type="line"`)
 
 Ideal for showing trends over time.
 
-- **Best for**: Time series, trend analysis, continuous data
-- **Features**: Multiple series support, customizable markers
-- **Data structure**: One or more series with sequential data points
+* **Best for**: Time series, trend analysis, continuous data
+* **Features**: Multiple series support, customizable markers
+* **Data structure**: One or more series with sequential data points
 
 ### 🍩 Doughnut Chart (`type="doughnut"`)
 
 Similar to pie charts but with a hole in the center.
 
-- **Best for**: Proportions with emphasis on total value
-- **Visual style**: Modern, clean look with central focus area
+* **Best for**: Proportions with emphasis on total value
+* **Visual style**: Modern, clean look with central focus area
 
 ### 🕸️ Radar Chart (`type="radar"`)
 
 Shows multivariate data on a circular grid.
 
-- **Best for**: Comparing multiple variables, skill assessments, product comparisons
-- **Data structure**: Multiple data points forming a polygon
+* **Best for**: Comparing multiple variables, skill assessments, product comparisons
+* **Data structure**: Multiple data points forming a polygon
 
 ### 🎯 Polar Area Chart (`type="polarArea"`)
 
 Like a pie chart but with varying radius.
 
-- **Best for**: Showing proportions where magnitude matters
-- **Visual style**: Circular sectors with different radii
+* **Best for**: Showing proportions where magnitude matters
+* **Visual style**: Circular sectors with different radii
 
 ### 🏔️ Area Chart (`type="area"`)
 
 Line chart with filled area underneath.
 
-- **Best for**: Showing volume over time, cumulative data
-- **Features**: Emphasizes magnitude of change
+* **Best for**: Showing volume over time, cumulative data
+* **Features**: Emphasizes magnitude of change
 
 ### ↔️ Horizontal Bar Chart (`type="horizontalbar"`)
 
 Bar chart with horizontal orientation.
 
-- **Best for**: Long category names, rankings, comparisons
-- **Layout**: Left-to-right instead of bottom-to-top
+* **Best for**: Long category names, rankings, comparisons
+* **Layout**: Left-to-right instead of bottom-to-top
 
 ### 🔵 Scatter Plot (`type="scatter"`)
 
 Shows relationship between two variables.
 
-- **Best for**: Correlation analysis, distribution patterns
-- **Data structure**: X-Y coordinate pairs
+* **Best for**: Correlation analysis, distribution patterns
+* **Data structure**: X-Y coordinate pairs
 
 ### 🫧 Bubble Chart (`type="bubble"`)
 
 Shows three-dimensional data using x, y coordinates and bubble size.
 
-- **Best for**: Multi-dimensional data analysis, comparative metrics, portfolio analysis
-- **Data structure**: X-Y coordinate pairs with radius (r) for bubble size
-- **Usage**: Use `x`, `y`, and `r` attributes in `<bx:chartdata>` instead of just `value`
+* **Best for**: Multi-dimensional data analysis, comparative metrics, portfolio analysis
+* **Data structure**: X-Y coordinate pairs with radius (r) for bubble size
+* **Usage**: Use `x`, `y`, and `r` attributes in `<bx:chartdata>` instead of just `value`
 
 ## 🎯 Choosing the Right Chart Type
 
@@ -168,17 +168,17 @@ Selecting the appropriate chart type is crucial for effective data visualization
 
 ### 📊 Quick Selection Guide
 
-| **Your Goal** | **Recommended Chart Type** | **Why** |
-|--------------|---------------------------|---------|
-| Show parts of a whole | **Pie** or **Doughnut** | Best for displaying percentage distribution of 3-6 categories |
-| Compare values across categories | **Bar** or **Horizontal Bar** | Clear visual comparison of discrete values |
-| Show trends over time | **Line** or **Area** | Excellent for time series and continuous data |
-| Compare multiple variables | **Radar** | Perfect for multi-dimensional comparisons (e.g., product features) |
-| Show proportions with magnitude | **Polar Area** | Like pie chart but size indicates importance |
-| Display correlation | **Scatter** | Shows relationship between two variables |
-| Show 3D relationships | **Bubble** | Displays three metrics simultaneously (x, y, size) |
-| Compare with long labels | **Horizontal Bar** | Better readability for lengthy category names |
-| Emphasize volume/magnitude | **Area** | Highlights total quantity over time |
+| **Your Goal**                    | **Recommended Chart Type**    | **Why**                                                            |
+| -------------------------------- | ----------------------------- | ------------------------------------------------------------------ |
+| Show parts of a whole            | **Pie** or **Doughnut**       | Best for displaying percentage distribution of 3-6 categories      |
+| Compare values across categories | **Bar** or **Horizontal Bar** | Clear visual comparison of discrete values                         |
+| Show trends over time            | **Line** or **Area**          | Excellent for time series and continuous data                      |
+| Compare multiple variables       | **Radar**                     | Perfect for multi-dimensional comparisons (e.g., product features) |
+| Show proportions with magnitude  | **Polar Area**                | Like pie chart but size indicates importance                       |
+| Display correlation              | **Scatter**                   | Shows relationship between two variables                           |
+| Show 3D relationships            | **Bubble**                    | Displays three metrics simultaneously (x, y, size)                 |
+| Compare with long labels         | **Horizontal Bar**            | Better readability for lengthy category names                      |
+| Emphasize volume/magnitude       | **Area**                      | Highlights total quantity over time                                |
 
 ### 💡 Decision Tree
 
@@ -208,13 +208,13 @@ What do you want to visualize?
 
 ### ⚠️ Common Pitfalls to Avoid
 
-| **Don't Use** | **When** | **Use Instead** |
-|--------------|---------|-----------------|
-| Pie Chart | More than 6 categories | Bar Chart |
-| Line Chart | Comparing unrelated categories | Bar Chart |
-| 3D Effects | Accuracy is important | 2D charts (all types) |
-| Radar Chart | Categories aren't comparable | Bar or Column Chart |
-| Bubble Chart | Only 2 dimensions of data | Scatter Plot |
+| **Don't Use** | **When**                       | **Use Instead**       |
+| ------------- | ------------------------------ | --------------------- |
+| Pie Chart     | More than 6 categories         | Bar Chart             |
+| Line Chart    | Comparing unrelated categories | Bar Chart             |
+| 3D Effects    | Accuracy is important          | 2D charts (all types) |
+| Radar Chart   | Categories aren't comparable   | Bar or Column Chart   |
+| Bubble Chart  | Only 2 dimensions of data      | Scatter Plot          |
 
 ### 📏 Best Practices
 
@@ -233,65 +233,65 @@ The main container component that renders charts using Chart.js.
 
 #### Core Attributes
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `title` | string | "" | Chart title displayed at the top |
-| `chartWidth` | number | 400 | Chart width in pixels |
-| `chartHeight` | number | 300 | Chart height in pixels |
-| `backgroundColor` | string | "#ffffff" | Background color (hex or named color) |
-| `showLegend` | boolean | true | Display legend for multi-series charts |
+| Attribute         | Type    | Default   | Description                            |
+| ----------------- | ------- | --------- | -------------------------------------- |
+| `title`           | string  | ""        | Chart title displayed at the top       |
+| `chartWidth`      | number  | 400       | Chart width in pixels                  |
+| `chartHeight`     | number  | 300       | Chart height in pixels                 |
+| `backgroundColor` | string  | "#ffffff" | Background color (hex or named color)  |
+| `showLegend`      | boolean | true      | Display legend for multi-series charts |
 
 #### 📱 Responsive Attributes
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `responsive` | boolean | true | Enable responsive resizing |
-| `maintainAspectRatio` | boolean | true | Maintain width/height ratio |
-| `aspectRatio` | number | 2 | Aspect ratio (width/height) |
-| `resizeDelay` | number | 0 | Delay before resize (ms) |
+| Attribute             | Type    | Default | Description                 |
+| --------------------- | ------- | ------- | --------------------------- |
+| `responsive`          | boolean | true    | Enable responsive resizing  |
+| `maintainAspectRatio` | boolean | true    | Maintain width/height ratio |
+| `aspectRatio`         | number  | 2       | Aspect ratio (width/height) |
+| `resizeDelay`         | number  | 0       | Delay before resize (ms)    |
 
 #### 🎨 Styling Attributes
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `font` | string | - | Font family for chart text |
-| `fontBold` | boolean | false | Bold text |
-| `fontItalic` | boolean | false | Italic text |
-| `fontSize` | number | 12 | Font size in pixels |
-| `foregroundColor` | string | "#333333" | Text color |
-| `dataBackgroundColor` | string | - | Data area background color |
+| Attribute             | Type    | Default   | Description                |
+| --------------------- | ------- | --------- | -------------------------- |
+| `font`                | string  | -         | Font family for chart text |
+| `fontBold`            | boolean | false     | Bold text                  |
+| `fontItalic`          | boolean | false     | Italic text                |
+| `fontSize`            | number  | 12        | Font size in pixels        |
+| `foregroundColor`     | string  | "#333333" | Text color                 |
+| `dataBackgroundColor` | string  | -         | Data area background color |
 
 #### 📏 Axis Configuration
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `xAxisTitle` | string | "" | X-axis title |
-| `yAxisTitle` | string | "" | Y-axis title |
-| `showXGridlines` | boolean | false | Show X-axis grid lines |
-| `showYGridlines` | boolean | true | Show Y-axis grid lines |
-| `showXLabel` | boolean | true | Display X-axis labels |
-| `scaleFrom` | number | - | Y-axis minimum value |
-| `scaleTo` | number | - | Y-axis maximum value |
-| `sortXAxis` | boolean | false | Sort labels alphabetically |
+| Attribute        | Type    | Default | Description                |
+| ---------------- | ------- | ------- | -------------------------- |
+| `xAxisTitle`     | string  | ""      | X-axis title               |
+| `yAxisTitle`     | string  | ""      | Y-axis title               |
+| `showXGridlines` | boolean | false   | Show X-axis grid lines     |
+| `showYGridlines` | boolean | true    | Show Y-axis grid lines     |
+| `showXLabel`     | boolean | true    | Display X-axis labels      |
+| `scaleFrom`      | number  | -       | Y-axis minimum value       |
+| `scaleTo`        | number  | -       | Y-axis maximum value       |
+| `sortXAxis`      | boolean | false   | Sort labels alphabetically |
 
 #### 🎯 Display Options
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `showBorder` | boolean | false | Display chart border |
-| `showMarkers` | boolean | true | Show data point markers |
-| `showTooltip` | boolean | true | Enable tooltips |
-| `markerSize` | number | 4 | Marker size in pixels |
-| `show3D` | boolean | false | 3D appearance (limited support) |
+| Attribute     | Type    | Default | Description                     |
+| ------------- | ------- | ------- | ------------------------------- |
+| `showBorder`  | boolean | false   | Display chart border            |
+| `showMarkers` | boolean | true    | Show data point markers         |
+| `showTooltip` | boolean | true    | Enable tooltips                 |
+| `markerSize`  | number  | 4       | Marker size in pixels           |
+| `show3D`      | boolean | false   | 3D appearance (limited support) |
 
 #### 📐 Advanced Options
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `seriesPlacement` | string | "default" | Series layout: "default", "cluster", "stacked" |
-| `labelFormat` | string | "" | Y-axis label format (use `{value}` placeholder) |
-| `categoryLabelPositions` | string | "horizontal" | Label rotation: "horizontal", "up_45", "up_90", "down_45", "down_90", "vertical" |
-| `url` | string | "" | URL to open when clicking data points |
+| Attribute                | Type   | Default      | Description                                                                          |
+| ------------------------ | ------ | ------------ | ------------------------------------------------------------------------------------ |
+| `seriesPlacement`        | string | "default"    | Series layout: "default", "cluster", "stacked"                                       |
+| `labelFormat`            | string | ""           | Y-axis label format (use `{value}` placeholder)                                      |
+| `categoryLabelPositions` | string | "horizontal" | Label rotation: "horizontal", "up\_45", "up\_90", "down\_45", "down\_90", "vertical" |
+| `url`                    | string | ""           | URL to open when clicking data points                                                |
 
 ### 📈 `<bx:chartseries>` Component
 
@@ -299,11 +299,11 @@ Defines a data series within a chart. Must be nested inside `<bx:chart>`.
 
 #### Attributes
 
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `type` | string | ✅ Yes | Chart type: "pie", "bar", "line", "doughnut", "radar", "polarArea", "area", "horizontalbar", "scatter" |
-| `colorlist` | string | No | Comma-separated color list (hex or named colors) |
-| `serieslabel` | string | No | Label for this data series |
+| Attribute     | Type   | Required | Description                                                                                            |
+| ------------- | ------ | -------- | ------------------------------------------------------------------------------------------------------ |
+| `type`        | string | ✅ Yes    | Chart type: "pie", "bar", "line", "doughnut", "radar", "polarArea", "area", "horizontalbar", "scatter" |
+| `colorlist`   | string | No       | Comma-separated color list (hex or named colors)                                                       |
+| `serieslabel` | string | No       | Label for this data series                                                                             |
 
 **Example:**
 
@@ -319,13 +319,13 @@ Defines individual data points within a series. Must be nested inside `<bx:chart
 
 #### Attributes
 
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `item` | string | ✅ Yes | Data point label/name |
-| `value` | number | ✅ Yes* | Data point value (*Required for all chart types except bubble) |
-| `x` | number | ⚠️ Bubble | X-coordinate (required for bubble charts) |
-| `y` | number | ⚠️ Bubble | Y-coordinate (required for bubble charts) |
-| `r` | number | ⚠️ Bubble | Bubble radius (required for bubble charts) |
+| Attribute | Type   | Required  | Description                                                     |
+| --------- | ------ | --------- | --------------------------------------------------------------- |
+| `item`    | string | ✅ Yes     | Data point label/name                                           |
+| `value`   | number | ✅ Yes\*   | Data point value (\*Required for all chart types except bubble) |
+| `x`       | number | ⚠️ Bubble | X-coordinate (required for bubble charts)                       |
+| `y`       | number | ⚠️ Bubble | Y-coordinate (required for bubble charts)                       |
+| `r`       | number | ⚠️ Bubble | Bubble radius (required for bubble charts)                      |
 
 **Standard Example:**
 
@@ -587,10 +587,10 @@ BoxLang Charts support responsive sizing that adapts to container width and scre
 
 **Responsive Tips:**
 
-- Charts resize automatically to fit their container width (up to `chartWidth`)
-- Use `maintainAspectRatio="false"` to fill specific container heights
-- Set custom aspect ratios: `2` for wide (2:1), `1` for square (1:1), `0.5` for tall (1:2)
-- Add `resizeDelay` for performance optimization on frequently resizing containers
+* Charts resize automatically to fit their container width (up to `chartWidth`)
+* Use `maintainAspectRatio="false"` to fill specific container heights
+* Set custom aspect ratios: `2` for wide (2:1), `1` for square (1:1), `0.5` for tall (1:2)
+* Add `resizeDelay` for performance optimization on frequently resizing containers
 
 ## 🚀 Advanced Features
 
@@ -634,10 +634,10 @@ colorlist="rgb(255,99,132),rgb(54,162,235)"
 
 **Color Best Practices:**
 
-- Use contrasting colors for better accessibility
-- Limit to 5-7 distinct colors for clarity
-- Consider colorblind-friendly palettes for inclusive design
-- Use [ColorBrewer](https://colorbrewer2.org/) for scientifically-designed palettes
+* Use contrasting colors for better accessibility
+* Limit to 5-7 distinct colors for clarity
+* Consider colorblind-friendly palettes for inclusive design
+* Use [ColorBrewer](https://colorbrewer2.org/) for scientifically-designed palettes
 
 ### 📏 Custom Scales and Ranges
 
@@ -652,9 +652,9 @@ Control axis ranges for better data visualization:
 
 **Tips:**
 
-- Set `scaleFrom="0"` for bar charts to avoid misleading visualizations
-- Use custom scales to zoom into specific data ranges
-- Combine with `labelFormat` for custom axis labels
+* Set `scaleFrom="0"` for bar charts to avoid misleading visualizations
+* Use custom scales to zoom into specific data ranges
+* Combine with `labelFormat` for custom axis labels
 
 ### 🔤 Label Formatting and Rotation
 
@@ -670,12 +670,12 @@ Format axis labels and rotate them for better readability:
 
 **Label Position Options:**
 
-- `horizontal` - Standard horizontal labels (default)
-- `up_45` - 45° upward rotation
-- `up_90` - 90° upward (vertical)
-- `down_45` - 45° downward rotation
-- `down_90` - 90° downward
-- `vertical` - Same as `down_90`
+* `horizontal` - Standard horizontal labels (default)
+* `up_45` - 45° upward rotation
+* `up_90` - 90° upward (vertical)
+* `down_45` - 45° downward rotation
+* `down_90` - 90° downward
+* `vertical` - Same as `down_90`
 
 ### 🎯 Interactive Features
 
@@ -720,23 +720,23 @@ This module is built on [Chart.js v4.x](https://www.chartjs.org/), one of the mo
 
 ### 📚 Chart.js Resources
 
-- **Official Documentation**: [https://www.chartjs.org/docs/latest/](https://www.chartjs.org/docs/latest/)
-- **Chart Types Guide**: [https://www.chartjs.org/docs/latest/charts/](https://www.chartjs.org/docs/latest/charts/)
-- **Configuration Options**: [https://www.chartjs.org/docs/latest/configuration/](https://www.chartjs.org/docs/latest/configuration/)
-- **Samples**: [https://www.chartjs.org/samples/](https://www.chartjs.org/samples/)
+* **Official Documentation**: [https://www.chartjs.org/docs/latest/](https://www.chartjs.org/docs/latest/)
+* **Chart Types Guide**: [https://www.chartjs.org/docs/latest/charts/](https://www.chartjs.org/docs/latest/charts/)
+* **Configuration Options**: [https://www.chartjs.org/docs/latest/configuration/](https://www.chartjs.org/docs/latest/configuration/)
+* **Samples**: [https://www.chartjs.org/samples/](https://www.chartjs.org/samples/)
 
 ### 🎨 Chart.js Features Supported
 
 This module exposes most Chart.js capabilities through BoxLang attributes:
 
-- ✅ All major chart types (pie, bar, line, doughnut, radar, polar area, scatter)
-- ✅ Responsive and adaptive sizing
-- ✅ Custom colors and styling
-- ✅ Axis configuration and grid lines
-- ✅ Legends and tooltips
-- ✅ Stacked and grouped series
-- ✅ Custom scales and ranges
-- ✅ Font styling and customization
+* ✅ All major chart types (pie, bar, line, doughnut, radar, polar area, scatter)
+* ✅ Responsive and adaptive sizing
+* ✅ Custom colors and styling
+* ✅ Axis configuration and grid lines
+* ✅ Legends and tooltips
+* ✅ Stacked and grouped series
+* ✅ Custom scales and ranges
+* ✅ Font styling and customization
 
 ### 🔌 How It Works
 
@@ -752,22 +752,22 @@ Based on Chart.js documentation, here are some tips:
 
 **Performance:**
 
-- Use `resizeDelay` for charts that resize frequently
-- Limit data points to 100-200 for smooth animations
-- Disable animations for large datasets
+* Use `resizeDelay` for charts that resize frequently
+* Limit data points to 100-200 for smooth animations
+* Disable animations for large datasets
 
 **Accessibility:**
 
-- Always provide axis titles with `xAxisTitle` and `yAxisTitle`
-- Use `seriesLabel` to describe each data series
-- Ensure color contrasts meet WCAG standards
+* Always provide axis titles with `xAxisTitle` and `yAxisTitle`
+* Use `seriesLabel` to describe each data series
+* Ensure color contrasts meet WCAG standards
 
 **Visual Design:**
 
-- Keep charts simple - one message per chart
-- Use appropriate chart types for your data
-- Add grid lines (`showYGridlines="true"`) for precise reading
-- Limit colors to 5-7 for clarity
+* Keep charts simple - one message per chart
+* Use appropriate chart types for your data
+* Add grid lines (`showYGridlines="true"`) for precise reading
+* Limit colors to 5-7 for clarity
 
 ## ❓ Troubleshooting
 
@@ -777,10 +777,10 @@ Based on Chart.js documentation, here are some tips:
 
 **Solutions:**
 
-- ✅ Ensure BoxLang web support is enabled
-- ✅ Check that `htmlHead()` BIF is available
-- ✅ Verify Chart.js library loads (check browser console)
-- ✅ Make sure chart container has width/height
+* ✅ Ensure BoxLang web support is enabled
+* ✅ Check that `htmlHead()` BIF is available
+* ✅ Verify Chart.js library loads (check browser console)
+* ✅ Make sure chart container has width/height
 
 ### Colors Not Working
 
@@ -788,9 +788,9 @@ Based on Chart.js documentation, here are some tips:
 
 **Solutions:**
 
-- ✅ Use hex format without # or with ## (BoxLang escaping): `colorlist="FF6384,36A2EB"`
-- ✅ Check color format: hex values should be 6 characters (e.g., `FF0000` not `F00`)
-- ✅ Named colors are case-insensitive: `red`, `Red`, `RED` all work
+* ✅ Use hex format without # or with ## (BoxLang escaping): `colorlist="FF6384,36A2EB"`
+* ✅ Check color format: hex values should be 6 characters (e.g., `FF0000` not `F00`)
+* ✅ Named colors are case-insensitive: `red`, `Red`, `RED` all work
 
 ### Responsive Charts Not Resizing
 
@@ -798,10 +798,10 @@ Based on Chart.js documentation, here are some tips:
 
 **Solutions:**
 
-- ✅ Set `responsive="true"` (it's default, but verify)
-- ✅ Ensure parent container has defined width
-- ✅ Use `maintainAspectRatio="false"` if you need to fill specific heights
-- ✅ Check for CSS that might be constraining the chart
+* ✅ Set `responsive="true"` (it's default, but verify)
+* ✅ Ensure parent container has defined width
+* ✅ Use `maintainAspectRatio="false"` if you need to fill specific heights
+* ✅ Check for CSS that might be constraining the chart
 
 ### Multiple Series Not Stacking
 
@@ -809,9 +809,9 @@ Based on Chart.js documentation, here are some tips:
 
 **Solutions:**
 
-- ✅ Add `seriesplacement="stacked"` to `<bx:chart>`
-- ✅ Ensure all series have the same chart type
-- ✅ Stacking only works with `bar`, `line`, and `area` chart types
+* ✅ Add `seriesplacement="stacked"` to `<bx:chart>`
+* ✅ Ensure all series have the same chart type
+* ✅ Stacking only works with `bar`, `line`, and `area` chart types
 
 ### Data Not Showing
 
@@ -819,10 +819,10 @@ Based on Chart.js documentation, here are some tips:
 
 **Solutions:**
 
-- ✅ Verify all `<bx:chartdata>` components have `item` and `value` attributes
-- ✅ Check that values are numeric (not strings)
-- ✅ Ensure `<bx:chartdata>` is nested inside `<bx:chartseries>`
-- ✅ Verify `<bx:chartseries>` is nested inside `<bx:chart>`
+* ✅ Verify all `<bx:chartdata>` components have `item` and `value` attributes
+* ✅ Check that values are numeric (not strings)
+* ✅ Ensure `<bx:chartdata>` is nested inside `<bx:chartseries>`
+* ✅ Verify `<bx:chartseries>` is nested inside `<bx:chart>`
 
 ### Labels Overlapping
 
@@ -830,10 +830,10 @@ Based on Chart.js documentation, here are some tips:
 
 **Solutions:**
 
-- ✅ Use `categoryLabelPositions="up_45"` to rotate labels
-- ✅ Increase `chartWidth` to give more space
-- ✅ Reduce font size with `fontSize="10"`
-- ✅ Consider using `horizontalbar` type for long labels
+* ✅ Use `categoryLabelPositions="up_45"` to rotate labels
+* ✅ Increase `chartWidth` to give more space
+* ✅ Reduce font size with `fontSize="10"`
+* ✅ Consider using `horizontalbar` type for long labels
 
 ## 🤝 Contributing
 
@@ -845,11 +845,11 @@ If you discover a bug, please:
 
 1. **Check existing issues** at [GitHub Issues](https://github.com/ortus-boxlang/bx-charts/issues)
 2. **Create a new issue** with:
-   - Clear title and description
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - BoxLang version and environment details
-   - Sample code that demonstrates the issue
+   * Clear title and description
+   * Steps to reproduce
+   * Expected vs actual behavior
+   * BoxLang version and environment details
+   * Sample code that demonstrates the issue
 
 ### 💡 Have an Enhancement Idea?
 
@@ -866,133 +866,126 @@ Excellent! Here's how to get started:
 
 #### Development Setup
 
-1. **Fork and Clone:**
+1.  **Fork and Clone:**
 
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/bx-charts.git
-   cd bx-charts
-   ```
+    ```bash
+    git clone https://github.com/YOUR-USERNAME/bx-charts.git
+    cd bx-charts
+    ```
+2.  **Set up Local Development Environment:**
 
-2. **Set up Local Development Environment:**
+    ```bash
+    # Creates symbolic link for local module development
+    ./setup.sh
+    ```
 
-   ```bash
-   # Creates symbolic link for local module development
-   ./setup.sh
-   ```
+    This script creates a `boxlang_modules/bx-charts` symbolic link pointing to the current directory, allowing you to test the module locally before publishing.
+3.  **Install Dependencies:**
 
-   This script creates a `boxlang_modules/bx-charts` symbolic link pointing to the current directory, allowing you to test the module locally before publishing.
+    ```bash
+    # Install BoxLang dependencies
+    box install
 
-3. **Install Dependencies:**
+    # Install Node.js dependencies (Chart.js)
+    npm install
+    ```
 
-   ```bash
-   # Install BoxLang dependencies
-   box install
+    The `npm install` command will automatically:
 
-   # Install Node.js dependencies (Chart.js)
-   npm install
-   ```
+    * Download the latest Chart.js library
+    * Copy it to the `public/` folder
+4.  **Update Chart.js (Optional):**
 
-   The `npm install` command will automatically:
-   - Download the latest Chart.js library
-   - Copy it to the `public/` folder
+    To manually update Chart.js to the latest version:
 
-4. **Update Chart.js (Optional):**
+    ```bash
+    npm run update-chartjs
+    ```
+5.  **Test the Module Locally:**
 
-   To manually update Chart.js to the latest version:
+    Start a BoxLang server to test your changes:
 
-   ```bash
-   npm run update-chartjs
-   ```
+    ```bash
+    # Start the BoxLang server (uses server.json configuration)
+    box start
 
-5. **Test the Module Locally:**
+    # Visit test pages in your browser
+    # http://localhost:8080/tests/ - Main test index
+    # http://localhost:8080/tests/test-charts-enhanced.bxm - Advanced chart examples
+    # http://localhost:8080/tests/test-responsive-charts.bxm - Responsive chart tests
+    ```
 
-   Start a BoxLang server to test your changes:
+    The test files in `/tests/` directory provide comprehensive examples of all chart types and features.
+6.  **Build the Module (Optional):**
 
-   ```bash
-   # Start the BoxLang server (uses server.json configuration)
-   box start
+    To build a distributable version of the module:
 
-   # Visit test pages in your browser
-   # http://localhost:8080/tests/ - Main test index
-   # http://localhost:8080/tests/test-charts-enhanced.bxm - Advanced chart examples
-   # http://localhost:8080/tests/test-responsive-charts.bxm - Responsive chart tests
-   ```
+    ```bash
+    # Build with default version (1.0.0)
+    boxlang Build.bx
 
-   The test files in `/tests/` directory provide comprehensive examples of all chart types and features.
+    # Build with specific version
+    boxlang Build.bx --version=1.2.3
 
-6. **Build the Module (Optional):**
+    # Built artifacts will be in build/artifacts/
+    ```
+7.  **Start Format Watcher:**
 
-   To build a distributable version of the module:
-
-   ```bash
-   # Build with default version (1.0.0)
-   boxlang Build.bx
-
-   # Build with specific version
-   boxlang Build.bx --version=1.2.3
-
-   # Built artifacts will be in build/artifacts/
-   ```
-
-7. **Start Format Watcher:**
-
-   ```bash
-   box run-script format:watch
-   ```
+    ```bash
+    box run-script format:watch
+    ```
 
 #### Pull Request Guidelines
 
-- ✅ Create PRs against the `development` branch (NOT `master`)
-- ✅ Follow the existing code style (auto-format with cfformat)
-- ✅ Add tests for new features
-- ✅ Update documentation as needed
-- ✅ Keep commits focused and atomic
-- ✅ Link related issues in PR description
+* ✅ Create PRs against the `development` branch (NOT `master`)
+* ✅ Follow the existing code style (auto-format with cfformat)
+* ✅ Add tests for new features
+* ✅ Update documentation as needed
+* ✅ Keep commits focused and atomic
+* ✅ Link related issues in PR description
 
 #### Code Standards
 
-- **BoxLang/CFML**: Follow [cfformat](.cfformat.json) settings
-- **Formatting**: Auto-format with `box run-script format`
-- **Coding Standards**: Follow [Ortus Coding Standards](https://github.com/Ortus-Solutions/coding-standards)
+* **BoxLang/CFML**: Follow [cfformat](../.cfformat.json) settings
+* **Formatting**: Auto-format with `box run-script format`
+* **Coding Standards**: Follow [Ortus Coding Standards](https://github.com/Ortus-Solutions/coding-standards)
 
 ### 📚 Improve Documentation
 
 Documentation improvements are always welcome:
 
-- Fix typos or unclear explanations
-- Add more examples
-- Improve code comments
-- Create tutorials or guides
+* Fix typos or unclear explanations
+* Add more examples
+* Improve code comments
+* Create tutorials or guides
 
 ### 💰 Financial Support
 
 You can support BoxLang and all Ortus Solutions open source projects:
 
-- 🌟 [Become a Patron](https://www.patreon.com/ortussolutions)
-- 💵 [One-time PayPal Donation](https://www.paypal.com/paypalme/ortussolutions)
+* 🌟 [Become a Patron](https://www.patreon.com/ortussolutions)
+* 💵 [One-time PayPal Donation](https://www.paypal.com/paypalme/ortussolutions)
 
 Patrons get exclusive benefits like:
 
-- Priority support
-- Early access to new features
-- FORGEBOX Pro account
-- CFCasts account
+* Priority support
+* Early access to new features
+* FORGEBOX Pro account
+* CFCasts account
 
 ### 📞 Support Channels
 
 Need help? Don't create an issue—use our support channels:
 
-- 💬 [Ortus Community Discourse](https://community.ortussolutions.com)
-- 📱 [Box Team Slack](http://boxteam.ortussolutions.com/)
-- 🏢 [Professional Support](https://www.ortussolutions.com/services/support)
+* 💬 [Ortus Community Discourse](https://community.ortussolutions.com)
+* 📱 [Box Team Slack](http://boxteam.ortussolutions.com/)
+* 🏢 [Professional Support](https://www.ortussolutions.com/services/support)
 
 ### 🏆 Contributors
 
 Thank you to all our amazing contributors! ❤️
 
-<a href="https://github.com/ortus-boxlang/bx-charts/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ortus-boxlang/bx-charts" alt="Contributors"/>
-</a>
+[![Contributors](https://contrib.rocks/image?repo=ortus-boxlang/bx-charts)](https://github.com/ortus-boxlang/bx-charts/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks)
 
@@ -1026,25 +1019,25 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 
-See [LICENSE](LICENSE) file for full details.
+See [LICENSE](../LICENSE/) file for full details.
 
 ## 💼 Support & Resources
 
 ### 📖 Documentation
 
-- **Module Docs**: You're reading them! 📚
-- **BoxLang Docs**: [https://boxlang.ortusbooks.com/](https://boxlang.ortusbooks.com/)
-- **Chart.js Docs**: [https://www.chartjs.org/docs/](https://www.chartjs.org/docs/)
+* **Module Docs**: You're reading them! 📚
+* **BoxLang Docs**: [https://boxlang.ortusbooks.com/](https://boxlang.ortusbooks.com/)
+* **Chart.js Docs**: [https://www.chartjs.org/docs/](https://www.chartjs.org/docs/)
 
 ### 🌐 Links
 
-- **BoxLang Website**: [https://boxlang.io](https://boxlang.io)
-- **Ortus Solutions**: [https://www.ortussolutions.com](https://www.ortussolutions.com)
-- **GitHub Repository**: [https://github.com/ortus-boxlang/bx-charts](https://github.com/ortus-boxlang/bx-charts)
-- **Issue Tracker**: [https://github.com/ortus-boxlang/bx-charts/issues](https://github.com/ortus-boxlang/bx-charts/issues)
+* **BoxLang Website**: [https://boxlang.io](https://boxlang.io)
+* **Ortus Solutions**: [https://www.ortussolutions.com](https://www.ortussolutions.com)
+* **GitHub Repository**: [https://github.com/ortus-boxlang/bx-charts](https://github.com/ortus-boxlang/bx-charts)
+* **Issue Tracker**: [https://github.com/ortus-boxlang/bx-charts/issues](https://github.com/ortus-boxlang/bx-charts/issues)
 
 ### 🎓 Learning Resources
 
-- **BoxLang Training**: [https://www.ortussolutions.com/services/training](https://www.ortussolutions.com/services/training)
-- **CFCasts**: [https://www.cfcasts.com](https://www.cfcasts.com)
-- **Blog**: [https://www.ortussolutions.com/blog](https://www.ortussolutions.com/blog)
+* **BoxLang Training**: [https://www.ortussolutions.com/services/training](https://www.ortussolutions.com/services/training)
+* **CFCasts**: [https://www.cfcasts.com](https://www.cfcasts.com)
+* **Blog**: [https://www.ortussolutions.com/blog](https://www.ortussolutions.com/blog)
