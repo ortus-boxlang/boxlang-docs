@@ -16,7 +16,7 @@ Activate a new BoxLang+ or BoxLang++ license using an email address and license 
 **Usage:**
 
 ```js
-result = boxlangLicenseActivate( 
+result = boxlangLicenseActivate(
     email = "admin@example.com",
     licenseKey = "XXXX-XXXX-XXXX-XXXX",
     serverType = "Production"

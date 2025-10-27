@@ -34,7 +34,7 @@ Returns a `STRUCT` with the following keys:
 // Check current license status
 <bx:script>
     licenseInfo = boxlangLicenseInfo();
-    
+
     if ( licenseInfo.isValidLicense ) {
         writeOutput( "✓ BoxLang+ License Active" );
         writeOutput( "Email: " & licenseInfo.email );
@@ -91,4 +91,3 @@ if ( licenseInfo.isValidLicense && licenseInfo.licenseType == "BoxLang++" ) {
 
 - [`BoxlangLicenseActivate()`](BoxlangLicenseActivate.md) - Activate a new license with email and key
 - [`BoxlangLicenseRefresh()`](BoxlangLicenseRefresh.md) - Refresh an existing license token
-

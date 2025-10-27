@@ -34,7 +34,7 @@ Returns a `STRUCT` with the following keys:
 <bx:script>
     try {
         result = boxlangLicenseRefresh();
-        
+
         if ( result.success ) {
             writeOutput( "License token refreshed successfully!" );
             writeOutput( "New Expiration: " & result.expirationDate );
@@ -53,7 +53,7 @@ Returns a `STRUCT` with the following keys:
 // Refresh license with error handling
 try {
     refreshResult = boxlangLicenseRefresh();
-    
+
     if ( refreshResult.success ) {
         systemOutput( "✓ License refreshed successfully" );
         systemOutput( "Expiration: " & refreshResult.expirationDate );
@@ -74,7 +74,7 @@ scheduledTask = {
     name = "RefreshBoxLangLicense",
     task = () => {
         licenseInfo = boxlangLicenseInfo();
-        
+
         // Only refresh if license is active
         if ( licenseInfo.isValidLicense ) {
             try {
@@ -96,11 +96,11 @@ scheduledTask = {
 // Complete license management workflow
 function manageLicense() {
     licenseInfo = boxlangLicenseInfo();
-    
+
     // Check license status
     if ( licenseInfo.isValidLicense ) {
         systemOutput( "License Status: Active" );
-        
+
         // Attempt to refresh token proactively
         try {
             refreshResult = boxlangLicenseRefresh();
@@ -109,7 +109,7 @@ function manageLicense() {
             }
         } catch ( Exception e ) {
             systemOutput( "License refresh failed: " & e.message );
-            
+
             // If refresh fails, may need reactivation
             systemOutput( "Please contact Ortus Support" );
         }
@@ -125,4 +125,3 @@ function manageLicense() {
 
 - [`BoxlangLicenseInfo()`](BoxlangLicenseInfo.md) - Get current license status and information
 - [`BoxlangLicenseActivate()`](BoxlangLicenseActivate.md) - Activate a new license with email and key
-

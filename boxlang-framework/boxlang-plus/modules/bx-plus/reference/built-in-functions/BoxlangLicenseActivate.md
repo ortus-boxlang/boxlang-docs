@@ -40,7 +40,7 @@ Returns a `STRUCT` with the following keys:
         licenseKey = "XXXX-XXXX-XXXX-XXXX",
         serverType = "Production"
     );
-    
+
     if ( result.success ) {
         writeOutput( "License activated successfully!" );
     } else {
@@ -77,7 +77,7 @@ try {
         licenseKey = "INVALID-KEY",
         serverType = "Production"
     );
-    
+
     if ( !result.success ) {
         systemOutput( "Activation failed: " & result.message );
     }
@@ -90,4 +90,3 @@ try {
 
 - [`BoxlangLicenseInfo()`](BoxlangLicenseInfo.md) - Get current license status and information
 - [`BoxlangLicenseRefresh()`](BoxlangLicenseRefresh.md) - Refresh an existing license token
-
