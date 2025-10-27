@@ -9,7 +9,7 @@ icon: file-pdf
 
 ### \*\*_Coming Soon!\*\*_
 
-The `bx-plus-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
+The Boxlang+ Licensed edition of the `bx-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
 
 {% hint style="danger" %}
 This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus.md) with a limited trial.
@@ -27,10 +27,10 @@ This module provides comprehensive PDF manipulation and generation functionality
 
 ```bash
 # For Operating Systems using our Quick Installer
-install-bx-module bx-plus-pdf
+install-bx-module bx-plus,bx-pdf
 
 # Using CommandBox to install for web servers
-box install bx-plus-pdf
+box install bx-plus,bx-pdf
 ```
 
 
@@ -38,18 +38,18 @@ box install bx-plus-pdf
 
 This module contributes the following components to the BoxLang runtime:
 
-### Document Generation Components
+### Document Generation Components ( Free Tier )
 
 - [`document`](#document-component) - Main component for creating PDF documents from HTML
 - [`documentitem`](#documentitem-component) - Specifies headers, footers, and page breaks
 - [`documentsection`](#documentsection-component) - Divides documents into sections with unique properties
 
-### PDF Manipulation Components
+### PDF Manipulation Components ( Boxlang+ Only )
 
 - [`pdf`](#pdf-component) - Advanced PDF operations (merge, split, watermark, etc.)
 - [`pdfparam`](#pdfparam-component) - Parameters for PDF operations like attachments
 
-### PDF Form Components
+### PDF Form Components ( Boxlang+ Only )
 
 - [`pdfform`](#pdfform-component) - Manipulate PDF forms (populate/read form fields)
 - [`pdfformparam`](#pdfformparam-component) - Specify individual form field values

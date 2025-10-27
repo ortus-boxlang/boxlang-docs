@@ -5,7 +5,7 @@ icon: file-pdf
 
 # PDF
 
-This module provides PDF generation functionality to Boxlang
+This module provides PDF generation functionality to Boxlang.  In conjunction, [the BoxLang+ licensed version of the module](/boxlang-framework/boxlang-plus/modules/bx-plus-pdf.md) contributes advanced PDF functionality such as watermarking, form field completion and much more. 
 
 ```
 # For Operating Systems using our Quick Installer.
@@ -17,7 +17,7 @@ box install bx-pdf
 
 ### Components
 
-This module contributes the following Components to the language:
+Th free tier version of this module contributes the following Components to the language:
 
 * `document` - the wrapping component for creating PDF documents
   * The following attributes are available to the `document` component
@@ -128,6 +128,6 @@ bx:document format="pdf" variable="myPDF"{
 fileWrite( "/path/to/mydocument.pdf", myPDF );
 ```
 
-### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+### Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
 
-Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-pdf) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27017\&issuetype=1).
+You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27017\&issuetype=1).
