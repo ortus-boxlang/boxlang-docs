@@ -14,13 +14,22 @@ SpreadsheetSetFooter(spreadsheetObj=[any], footer=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `footer` | `STRUCT` | `true` | A structure containing footer configuration (left, center, right text). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `footer` | `STRUCT` | `true` | A structure containing footer configuration (left, center, right text). |  |
 
 
 ## Examples
 
+Set page footer:
 
+```js
+// Add footer with date
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetFooter( spreadsheet, 1, "", "Page &P - &D" );
+```
 
 ## Related
 
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set header
+- [SpreadsheetSetPrintOrientation()](./SpreadsheetSetPrintOrientation.md) - Set orientation
+- [Print Settings Guide](../../print-settings.md) - Printing configuration

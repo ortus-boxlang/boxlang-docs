@@ -14,16 +14,28 @@ SpreadsheetMergeCells(spreadsheetObj=[any], startRow=[any], startColumn=[any], e
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `startRow` | `NUMERIC` | `true` | The starting row number (1-based). * * |  |
-| `startColumn` | `NUMERIC` | `true` | The starting column number (1-based). * * |  |
-| `endRow` | `NUMERIC` | `true` | The ending row number (1-based). * * |  |
-| `endColumn` | `NUMERIC` | `true` | The ending column number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `startRow` | `NUMERIC` | `true` | The starting row number (1-based). |  |
+| `startColumn` | `NUMERIC` | `true` | The starting column number (1-based). |  |
+| `endRow` | `NUMERIC` | `true` | The ending row number (1-based). |  |
+| `endColumn` | `NUMERIC` | `true` | The ending column number (1-based). |  |
 
 
 ## Examples
 
+Merge cells for titles:
 
+```js
+// Merge cells A1:D1 for title
+var spreadsheet = SpreadsheetNew();
+SpreadsheetAddRow( spreadsheet, [ "Report Title", "", "", "" ] );
+
+SpreadsheetMergeCells( spreadsheet, 1, 1, 1, 4 );
+SpreadsheetFormatCell( spreadsheet, 1, 1, { bold = true, alignment = "center" } );
+```
 
 ## Related
 
+- [SpreadsheetFormatCell()](./SpreadsheetFormatCell.md) - Format cell
+- [SpreadsheetFormatCellRange()](./SpreadsheetFormatCellRange.md) - Format range
+- [Formatting Guide](../../formatting.md) - Cell styling

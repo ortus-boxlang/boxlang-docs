@@ -16,7 +16,16 @@ No arguments.
 
 ## Examples
 
+Ungroup columns:
 
+```js
+// Remove grouping from columns 2-4
+var spreadsheet = SpreadsheetNew();
+SpreadsheetGroupColumns( spreadsheet, 2, 4 );
+SpreadsheetUngroupColumns( spreadsheet, 2, 4 );
+```
 
 ## Related
 
+- [SpreadsheetGroupColumns()](./SpreadsheetGroupColumns.md) - Group columns
+- [SpreadsheetUngroupRows()](./SpreadsheetUngroupRows.md) - Ungroup rows

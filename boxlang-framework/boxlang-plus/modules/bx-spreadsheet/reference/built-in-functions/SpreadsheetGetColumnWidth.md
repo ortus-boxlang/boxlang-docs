@@ -14,14 +14,26 @@ SpreadsheetGetColumnWidth(spreadsheetObj=[any], column=[any], returnWidthInPixel
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `column` | `NUMERIC` | `true` | The column number (1-based). * * |  |
-| `returnWidthInPixels` | `BOOLEAN` | `false` | If true, returns width in pixels; if false, returns width in points (default: true). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `column` | `NUMERIC` | `true` | The column number (1-based). |  |
+| `returnWidthInPixels` | `BOOLEAN` | `false` | If true, returns width in pixels; if false, returns width in points (default: true). |  |
 
 
 ## Examples
 
+Get column width:
 
+```js
+// Get width of column A
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetColumnWidth( spreadsheet, 1, 150 );
+
+var width = SpreadsheetGetColumnWidth( spreadsheet, 1 );
+println( "Column width: " & width );
+```
 
 ## Related
 
+- [SpreadsheetSetColumnWidth()](./SpreadsheetSetColumnWidth.md) - Set width
+- [SpreadsheetAddColumn()](./SpreadsheetAddColumn.md) - Add column
+- [SpreadsheetGetColumnCount()](./SpreadsheetGetColumnCount.md) - Get column count

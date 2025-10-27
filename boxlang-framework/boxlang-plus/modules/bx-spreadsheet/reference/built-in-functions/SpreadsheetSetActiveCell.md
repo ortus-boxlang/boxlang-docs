@@ -14,14 +14,22 @@ SpreadsheetSetActiveCell(spreadsheetObj=[any], row=[any], column=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `row` | `NUMERIC` | `true` | The row number (1-based). * * |  |
-| `column` | `NUMERIC` | `true` | The column number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `row` | `NUMERIC` | `true` | The row number (1-based). |  |
+| `column` | `NUMERIC` | `true` | The column number (1-based). |  |
 
 
 ## Examples
 
+Set active cell:
 
+```js
+// Set cursor to cell B3
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetActiveCell( spreadsheet, 3, 2 );
+```
 
 ## Related
 
+- [SpreadsheetGetActiveCell()](./SpreadsheetGetActiveCell.md) - Get active cell
+- [SpreadsheetSetActiveSheet()](./SpreadsheetSetActiveSheet.md) - Set active sheet

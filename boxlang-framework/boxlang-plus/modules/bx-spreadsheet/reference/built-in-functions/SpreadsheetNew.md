@@ -14,13 +14,39 @@ SpreadsheetNew(sheetname=[any], xmlformat=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `sheetname` | `STRING` | `false` | The name of the new sheet. Default is "Sheet1". * * |  |
-| `xmlformat` | `BOOLEAN` | `false` | Whether the spreadsheet should use XML format (.xlsx). Default is true, we use the new standard. * * | true |
-
+| `sheetname` | `STRING` | `false` | The name of the new sheet. Default is "Sheet1". |  |
+| `xmlformat` | `BOOLEAN` | `false` | Whether the spreadsheet should use XML format (.xlsx). Default is true, we use the new standard. | true |
 
 ## Examples
 
+Create a new spreadsheet with default settings:
 
+```js
+// Create a new spreadsheet (XML format by default)
+var spreadsheet = SpreadsheetNew();
+println( "Created new spreadsheet" );
+```
+
+Create a new spreadsheet with a custom sheet name:
+
+```js
+// Create a new spreadsheet with a named sheet
+var spreadsheet = SpreadsheetNew( sheetname = "Sales Data" );
+println( "Created spreadsheet with sheet: " & spreadsheet.getSheetNames() );
+```
+
+Create a spreadsheet in binary format:
+
+```js
+// Create a spreadsheet in legacy Excel format (.xls)
+var spreadsheet = SpreadsheetNew( sheetname = "Reports", xmlformat = false );
+println( "Created binary format spreadsheet" );
+```
 
 ## Related
 
+- [SpreadsheetRead()](./SpreadsheetRead.md) - Read existing spreadsheet files
+- [SpreadsheetWrite()](./SpreadsheetWrite.md) - Save spreadsheets to disk
+- [SpreadsheetInfo()](./SpreadsheetInfo.md) - Get spreadsheet information
+- [IsSpreadsheetObject()](./IsSpreadsheetObject.md) - Check if object is a spreadsheet
+- [Fluent API Guide](../../api-usage.md) - Using SpreadsheetFile class

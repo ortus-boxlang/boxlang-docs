@@ -14,15 +14,26 @@ SpreadsheetSetFitToPage(spreadsheetObj=[any], fitToPage=[any], pagesWide=[any], 
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `fitToPage` | `BOOLEAN` | `true` | True to enable fit-to-page, false to disable. * * |  |
-| `pagesWide` | `NUMERIC` | `true` | Number of pages to fit the sheet's columns (0 for no horizontal constraint). * * |  |
-| `pagesHigh` | `NUMERIC` | `true` | Number of pages to fit the sheet's rows (0 for no vertical constraint). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `fitToPage` | `BOOLEAN` | `true` | True to enable fit-to-page, false to disable. |  |
+| `pagesWide` | `NUMERIC` | `true` | Number of pages to fit the sheet's columns (0 for no horizontal constraint). |  |
+| `pagesHigh` | `NUMERIC` | `true` | Number of pages to fit the sheet's rows (0 for no vertical constraint). |  |
 
 
 ## Examples
 
+Fit spreadsheet to page:
 
+```js
+// Fit content to one page width
+var spreadsheet = SpreadsheetNew();
+SpreadsheetAddRows( spreadsheet, [ ["A", "B", "C", "D"] ] );
+
+SpreadsheetSetFitToPage( spreadsheet, true, true );
+```
 
 ## Related
 
+- [SpreadsheetAddPageBreaks()](./SpreadsheetAddPageBreaks.md) - Add page breaks
+- [SpreadsheetSetPrintOrientation()](./SpreadsheetSetPrintOrientation.md) - Set orientation
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set header

@@ -14,13 +14,23 @@ SpreadsheetSetActiveSheet(spreadsheetObj=[any], sheetName=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `sheetName` | `STRING` | `true` | The name of the sheet to make active. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `sheetName` | `STRING` | `true` | The name of the sheet to make active. |  |
 
 
 ## Examples
 
+Set active sheet:
 
+```js
+// Activate a specific sheet
+var spreadsheet = SpreadsheetNew();
+SpreadsheetCreateSheet( spreadsheet, "Data" );
+SpreadsheetSetActiveSheet( spreadsheet, "Data" );
+```
 
 ## Related
 
+- [SpreadsheetCreateSheet()](./SpreadsheetCreateSheet.md) - Create sheet
+- [SpreadsheetSetActiveCell()](./SpreadsheetSetActiveCell.md) - Set active cell
+- [SpreadsheetGetActiveCell()](./SpreadsheetGetActiveCell.md) - Get active cell

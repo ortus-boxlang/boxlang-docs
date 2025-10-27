@@ -14,9 +14,9 @@ SpreadsheetSetColumnWidth(spreadsheetObj=[any], column=[any], width=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `column` | `NUMERIC` | `true` | The column number (1-based). * * |  |
-| `width` | `NUMERIC` | `true` | The width to set for the column in Excel units. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `column` | `NUMERIC` | `true` | The column number (1-based). |  |
+| `width` | `NUMERIC` | `true` | The width to set for the column in Excel units. |  |
 
 
 ## Examples

@@ -14,14 +14,26 @@ SpreadsheetGetCellFormula(spreadsheetObj=[any], row=[any], column=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `row` | `NUMERIC` | `false` | The row number (1-based). If not specified, returns all formulas. * * |  |
-| `column` | `NUMERIC` | `false` | The column number (1-based). If not specified, returns all formulas. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `row` | `NUMERIC` | `false` | The row number (1-based). If not specified, returns all formulas. |  |
+| `column` | `NUMERIC` | `false` | The column number (1-based). If not specified, returns all formulas. |  |
 
 
 ## Examples
 
+Get a cell formula:
 
+```js
+// Retrieve formula from cell
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetCellFormula( spreadsheet, 1, 1, "=SUM(A1:A10)" );
+
+var formula = SpreadsheetGetCellFormula( spreadsheet, 1, 1 );
+println( formula );  // Output: =SUM(A1:A10)
+```
 
 ## Related
 
+- [SpreadsheetSetCellFormula()](./SpreadsheetSetCellFormula.md) - Set formula
+- [SpreadsheetGetCellValue()](./SpreadsheetGetCellValue.md) - Get cell value
+- [SpreadsheetSetCellValue()](./SpreadsheetSetCellValue.md) - Set cell value

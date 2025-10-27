@@ -16,7 +16,15 @@ No arguments.
 
 ## Examples
 
+Enable/disable auto-calculation:
 
+```js
+// Disable automatic formula calculation
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetAutoCalculate( spreadsheet, false );
+```
 
 ## Related
 
+- [SpreadsheetGetAutoCalculate()](./SpreadsheetGetAutoCalculate.md) - Get setting
+- [SpreadsheetSetCellFormula()](./SpreadsheetSetCellFormula.md) - Set formula

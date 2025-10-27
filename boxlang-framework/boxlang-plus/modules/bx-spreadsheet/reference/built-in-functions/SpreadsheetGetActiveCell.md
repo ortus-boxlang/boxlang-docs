@@ -14,12 +14,22 @@ SpreadsheetGetActiveCell(spreadsheetObj=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
 
 
 ## Examples
 
+Get the active cell:
 
+```js
+// Get currently active cell
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetActiveCell( spreadsheet, 2, 3 );
+var activeCell = SpreadsheetGetActiveCell( spreadsheet );
+println( activeCell );
+```
 
 ## Related
 
+- [SpreadsheetSetActiveCell()](./SpreadsheetSetActiveCell.md) - Set active cell
+- [SpreadsheetSetActiveSheet()](./SpreadsheetSetActiveSheet.md) - Set active sheet

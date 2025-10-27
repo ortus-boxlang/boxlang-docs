@@ -16,7 +16,16 @@ No arguments.
 
 ## Examples
 
+Check force recalculation setting:
 
+```js
+// Check if formulas force recalculation
+var spreadsheet = SpreadsheetNew();
+var forceRecalc = SpreadsheetGetForceFormulaRecalculation( spreadsheet );
+println( "Force recalculation: " & forceRecalc );
+```
 
 ## Related
 
+- [SpreadsheetSetForceFormulaRecalculation()](./SpreadsheetSetForceFormulaRecalculation.md) - Set recalc
+- [SpreadsheetGetAutoCalculate()](./SpreadsheetGetAutoCalculate.md) - Get auto-calc

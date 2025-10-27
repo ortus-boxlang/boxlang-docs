@@ -14,13 +14,22 @@ SpreadsheetSetActiveSheetNumber(spreadsheetObj=[any], sheetNumber=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `sheetNumber` | `NUMERIC` | `true` | The number of the sheet to make active (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `sheetNumber` | `NUMERIC` | `true` | The number of the sheet to make active (1-based). |  |
 
 
 ## Examples
 
+Set active sheet by number:
 
+```js
+// Switch to second sheet
+var spreadsheet = SpreadsheetNew();
+SpreadsheetCreateSheet( spreadsheet, "Data" );
+SpreadsheetSetActiveSheetNumber( spreadsheet, 2 );
+```
 
 ## Related
 
+- [SpreadsheetSetActiveSheet()](./SpreadsheetSetActiveSheet.md) - Set by name
+- [SpreadsheetCreateSheet()](./SpreadsheetCreateSheet.md) - Create sheet

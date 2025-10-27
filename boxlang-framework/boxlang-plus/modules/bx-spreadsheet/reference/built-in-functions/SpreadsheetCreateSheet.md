@@ -14,9 +14,28 @@ SpreadsheetCreateSheet(spreadsheetObj=[any], sheetName=[any], overwrite=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `sheetName` | `STRING` | `true` | The name of the new sheet. * * |  |
-| `overwrite` | `BOOLEAN` | `false` | Whether to overwrite an existing sheet with the same name (optional, default is false). * * | false |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `sheetname` | `STRING` | `false` | The name for the new sheet. If not provided, a default name is generated. |  |
+
+## Examples
+
+Create a new sheet:
+
+```js
+// Add a new sheet to spreadsheet
+var spreadsheet = SpreadsheetNew();
+SpreadsheetCreateSheet( spreadsheet, "Sales" );
+SpreadsheetCreateSheet( spreadsheet, "Expenses" );
+```
+
+## Related
+
+- [SpreadsheetRemoveSheet()](./SpreadsheetRemoveSheet.md) - Delete a sheet
+- [SpreadsheetRenameSheet()](./SpreadsheetRenameSheet.md) - Rename sheet
+- [SpreadsheetSetActiveSheet()](./SpreadsheetSetActiveSheet.md) - Set active sheet
+- [Sheet Operations Guide](../../sheet-operations.md) - Working with sheets
+
+| `overwrite` | `BOOLEAN` | `false` | Whether to overwrite an existing sheet with the same name (optional, default is false). | false |
 
 
 ## Examples
@@ -24,4 +43,3 @@ SpreadsheetCreateSheet(spreadsheetObj=[any], sheetName=[any], overwrite=[any])
 
 
 ## Related
-

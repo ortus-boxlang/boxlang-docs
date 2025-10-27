@@ -14,8 +14,25 @@ SpreadsheetAddPrintGridlines(spreadsheetObj=[any], sheetName=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `sheetName` | `STRING` | `false` | The sheet name (optional). If not provided, operates on active sheet. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+
+## Examples
+
+Enable print gridlines:
+
+```js
+// Display gridlines when printing
+var spreadsheet = SpreadsheetNew();
+SpreadsheetAddPrintGridlines( spreadsheet );
+```
+
+## Related
+
+- [SpreadsheetRemovePrintGridlines()](./SpreadsheetRemovePrintGridlines.md) - Disable gridlines
+- [SpreadsheetSetPrintOrientation()](./SpreadsheetSetPrintOrientation.md) - Set orientation
+- [Print Settings Guide](../../print-settings.md) - Printing configuration
+
+| `sheetName` | `STRING` | `false` | The sheet name (optional). If not provided, operates on active sheet. |  |
 
 
 ## Examples
@@ -23,4 +40,3 @@ SpreadsheetAddPrintGridlines(spreadsheetObj=[any], sheetName=[any])
 
 
 ## Related
-

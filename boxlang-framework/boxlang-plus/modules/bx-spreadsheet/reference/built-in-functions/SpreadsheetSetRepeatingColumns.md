@@ -14,14 +14,22 @@ SpreadsheetSetRepeatingColumns(spreadsheetObj=[any], startColumn=[any], endColum
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `startColumn` | `NUMERIC` | `true` | The starting column number (1-based). * * |  |
-| `endColumn` | `NUMERIC` | `true` | The ending column number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `startColumn` | `NUMERIC` | `true` | The starting column number (1-based). |  |
+| `endColumn` | `NUMERIC` | `true` | The ending column number (1-based). |  |
 
 
 ## Examples
 
+Set repeating columns for printing:
 
+```js
+// Repeat columns A and B on each page
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetRepeatingColumns( spreadsheet, "A:B" );
+```
 
 ## Related
 
+- [SpreadsheetSetRepeatingRows()](./SpreadsheetSetRepeatingRows.md) - Set rows
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set header

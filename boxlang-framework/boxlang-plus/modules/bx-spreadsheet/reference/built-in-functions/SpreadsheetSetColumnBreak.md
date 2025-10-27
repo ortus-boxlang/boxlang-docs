@@ -14,13 +14,21 @@ SpreadsheetSetColumnBreak(spreadsheetObj=[any], column=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `column` | `NUMERIC` | `true` | The column number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `column` | `NUMERIC` | `true` | The column number (1-based). |  |
 
 
 ## Examples
 
+Set column page break:
 
+```js
+// Add page break before column 10
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetColumnBreak( spreadsheet, 10 );
+```
 
 ## Related
 
+- [SpreadsheetRemoveColumnBreak()](./SpreadsheetRemoveColumnBreak.md) - Remove break
+- [SpreadsheetSetRowBreak()](./SpreadsheetSetRowBreak.md) - Set row break

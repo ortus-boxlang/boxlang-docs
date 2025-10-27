@@ -14,14 +14,25 @@ SpreadsheetFormatRow(spreadsheetObj=[any], format=[any], row=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `format` | `STRUCT` | `true` | A structure containing formatting options (bold, italic, color, etc.). * * |  |
-| `row` | `NUMERIC` | `true` | The row number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `format` | `STRUCT` | `true` | A structure containing formatting options (bold, italic, color, etc.). |  |
+| `row` | `NUMERIC` | `true` | The row number (1-based). |  |
 
 
 ## Examples
 
+Format an entire row:
 
+```js
+// Format header row
+var spreadsheet = SpreadsheetNew();
+SpreadsheetAddRow( spreadsheet, [ "Name", "Email", "Phone" ] );
+
+var format = { bold = true, background = "000000", color = "FFFFFF" };
+SpreadsheetFormatRow( spreadsheet, 1, format );
+```
 
 ## Related
 
+- [SpreadsheetFormatRows()](./SpreadsheetFormatRows.md) - Format rows
+- [SpreadsheetFormatCell()](./SpreadsheetFormatCell.md) - Format cell

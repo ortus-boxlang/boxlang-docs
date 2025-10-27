@@ -14,12 +14,21 @@ SpreadsheetGetPrintOrientation(spreadsheetObj=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
 
 
 ## Examples
 
+Get print orientation:
 
+```js
+// Check current print orientation
+var spreadsheet = SpreadsheetNew();
+var orientation = SpreadsheetGetPrintOrientation( spreadsheet );
+println( "Orientation: " & orientation );
+```
 
 ## Related
 
+- [SpreadsheetSetPrintOrientation()](./SpreadsheetSetPrintOrientation.md) - Set orientation
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set header

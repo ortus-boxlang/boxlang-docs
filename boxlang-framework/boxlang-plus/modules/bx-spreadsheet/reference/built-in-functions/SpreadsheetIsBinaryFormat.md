@@ -14,12 +14,22 @@ SpreadsheetIsBinaryFormat(spreadsheetObj=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object to check. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object to check. |  |
 
 
 ## Examples
 
+Check if spreadsheet is binary format:
 
+```js
+// Determine file format
+var spreadsheet = SpreadsheetNew( xmlformat = false );
+if ( SpreadsheetIsBinaryFormat( spreadsheet ) ) {
+    println( "Binary (.xls) format" );
+}
+```
 
 ## Related
 
+- [SpreadsheetIsXMLFormat()](./SpreadsheetIsXMLFormat.md) - Check XML format
+- [SpreadsheetNew()](./SpreadsheetNew.md) - Create spreadsheet

@@ -14,12 +14,21 @@ SpreadsheetReadBinary(src=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `src` | `STRING` | `true` | The path to the spreadsheet file. * * |  |
+| `src` | `STRING` | `true` | The path to the spreadsheet file. |  |
 
 
 ## Examples
 
+Read legacy Excel file:
 
+```js
+// Read .xls file (binary format)
+var spreadsheet = SpreadsheetReadBinary( "/path/to/file.xls" );
+println( "Read legacy Excel file" );
+```
 
 ## Related
 
+- [SpreadsheetRead()](./SpreadsheetRead.md) - Read Excel files
+- [SpreadsheetWrite()](./SpreadsheetWrite.md) - Write files
+- [File Handling Guide](../../file-handling.md) - File operations

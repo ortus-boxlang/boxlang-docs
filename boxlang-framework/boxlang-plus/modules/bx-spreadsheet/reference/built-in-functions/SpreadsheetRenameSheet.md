@@ -14,9 +14,9 @@ SpreadsheetRenameSheet(spreadsheetObj=[any], oldName=[any], newName=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `oldName` | `STRING` | `true` | The current name of the sheet to be renamed. * * |  |
-| `newName` | `STRING` | `true` | The new name for the sheet. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `oldName` | `STRING` | `true` | The current name of the sheet to be renamed. |  |
+| `newName` | `STRING` | `true` | The new name for the sheet. |  |
 
 
 ## Examples

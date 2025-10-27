@@ -14,14 +14,23 @@ SpreadsheetSetFooterImage(spreadsheetObj=[any], alignment=[any], image=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `alignment` | `STRING` | `true` | The image's alignment in the footer. Values: left, center, right. * * |  |
-| `image` | `STRING` | `true` | The filepath of the image to add. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `alignment` | `STRING` | `true` | The image's alignment in the footer. Values: left, center, right. |  |
+| `image` | `STRING` | `true` | The filepath of the image to add. |  |
 
 
 ## Examples
 
+Add image to footer:
 
+```js
+// Add image to footer
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetFooterImage( spreadsheet, "/path/to/image.png" );
+```
 
 ## Related
 
+- [SpreadsheetSetFooter()](./SpreadsheetSetFooter.md) - Set text footer
+- [SpreadsheetSetHeaderImage()](./SpreadsheetSetHeaderImage.md) - Add header image
+- [SpreadsheetAddImage()](./SpreadsheetAddImage.md) - Add image to sheet

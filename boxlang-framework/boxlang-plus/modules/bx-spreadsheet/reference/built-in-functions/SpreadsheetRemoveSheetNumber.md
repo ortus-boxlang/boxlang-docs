@@ -14,13 +14,22 @@ SpreadsheetRemoveSheetNumber(spreadsheetObj=[any], sheetNumber=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `sheetNumber` | `NUMERIC` | `true` | The sheet number to remove (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `sheetNumber` | `NUMERIC` | `true` | The sheet number to remove (1-based). |  |
 
 
 ## Examples
 
+Remove sheet by number:
 
+```js
+// Delete sheet by index
+var spreadsheet = SpreadsheetNew();
+SpreadsheetCreateSheet( spreadsheet, "Data" );
+SpreadsheetRemoveSheetNumber( spreadsheet, 2 );
+```
 
 ## Related
 
+- [SpreadsheetRemoveSheet()](./SpreadsheetRemoveSheet.md) - Remove by name
+- [SpreadsheetCreateSheet()](./SpreadsheetCreateSheet.md) - Create sheet

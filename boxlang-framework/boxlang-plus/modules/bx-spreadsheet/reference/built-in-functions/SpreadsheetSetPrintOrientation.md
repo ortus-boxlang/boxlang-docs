@@ -14,13 +14,22 @@ SpreadsheetSetPrintOrientation(spreadsheetObj=[any], orientation=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `orientation` | `STRING` | `true` | The print orientation: "portrait" or "landscape". * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `orientation` | `STRING` | `true` | The print orientation: "portrait" or "landscape". |  |
 
 
 ## Examples
 
+Set page orientation:
 
+```js
+// Set to landscape
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetPrintOrientation( spreadsheet, "landscape" );
+```
 
 ## Related
 
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set header
+- [SpreadsheetSetFooter()](./SpreadsheetSetFooter.md) - Set footer
+- [SpreadsheetSetFitToPage()](./SpreadsheetSetFitToPage.md) - Fit to page

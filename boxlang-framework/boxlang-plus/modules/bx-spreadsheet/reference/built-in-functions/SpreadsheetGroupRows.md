@@ -16,7 +16,16 @@ No arguments.
 
 ## Examples
 
+Group rows:
 
+```js
+// Group rows 2 through 5
+var spreadsheet = SpreadsheetNew();
+SpreadsheetGroupRows( spreadsheet, 2, 5 );
+```
 
 ## Related
 
+- [SpreadsheetUngroupRows()](./SpreadsheetUngroupRows.md) - Ungroup rows
+- [SpreadsheetGroupColumns()](./SpreadsheetGroupColumns.md) - Group columns
+- [Data Organization Guide](../../data-organization.md) - Organizing data

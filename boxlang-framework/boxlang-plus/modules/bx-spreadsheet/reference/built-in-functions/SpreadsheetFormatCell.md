@@ -14,10 +14,10 @@ SpreadsheetFormatCell(spreadsheetObj=[any], format=[any], row=[any], column=[any
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `format` | `STRUCT` | `true` | A structure containing formatting options (bold, italic, color, etc.). * * |  |
-| `row` | `NUMERIC` | `true` | The row number (1-based). * * |  |
-| `column` | `NUMERIC` | `true` | The column number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `format` | `STRUCT` | `true` | A structure containing formatting options (bold, italic, color, etc.). |  |
+| `row` | `NUMERIC` | `true` | The row number (1-based). |  |
+| `column` | `NUMERIC` | `true` | The column number (1-based). |  |
 
 
 ## Examples

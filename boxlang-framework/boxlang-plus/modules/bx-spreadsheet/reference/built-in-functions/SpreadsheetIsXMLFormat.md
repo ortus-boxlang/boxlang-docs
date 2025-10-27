@@ -14,12 +14,22 @@ SpreadsheetIsXMLFormat(spreadsheetObj=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object to check. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object to check. |  |
 
 
 ## Examples
 
+Check if spreadsheet is XML format:
 
+```js
+// Determine file format
+var spreadsheet = SpreadsheetNew();
+if ( SpreadsheetIsXMLFormat( spreadsheet ) ) {
+    println( "XML (.xlsx) format" );
+}
+```
 
 ## Related
 
+- [SpreadsheetIsBinaryFormat()](./SpreadsheetIsBinaryFormat.md) - Check binary format
+- [SpreadsheetNew()](./SpreadsheetNew.md) - Create spreadsheet

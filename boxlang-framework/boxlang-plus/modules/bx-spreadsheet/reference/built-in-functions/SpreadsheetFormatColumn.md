@@ -14,14 +14,24 @@ SpreadsheetFormatColumn(spreadsheetObj=[any], format=[any], column=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `format` | `STRUCT` | `true` | A structure containing formatting options (bold, italic, color, etc.). * * |  |
-| `column` | `NUMERIC` | `true` | The column number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `format` | `STRUCT` | `true` | A structure containing formatting options (bold, italic, color, etc.). |  |
+| `column` | `NUMERIC` | `true` | The column number (1-based). |  |
 
 
 ## Examples
 
+Format an entire column:
 
+```js
+// Format column B with specific style
+var spreadsheet = SpreadsheetNew();
+var format = { bold = true, background = "CCCCCC" };
+SpreadsheetFormatColumn( spreadsheet, 2, format );
+```
 
 ## Related
 
+- [SpreadsheetFormatColumns()](./SpreadsheetFormatColumns.md) - Format multiple columns
+- [SpreadsheetFormatRow()](./SpreadsheetFormatRow.md) - Format row
+- [SpreadsheetSetColumnWidth()](./SpreadsheetSetColumnWidth.md) - Set width

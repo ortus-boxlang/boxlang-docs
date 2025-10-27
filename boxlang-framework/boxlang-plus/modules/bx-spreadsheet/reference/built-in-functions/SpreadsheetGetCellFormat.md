@@ -14,14 +14,29 @@ SpreadsheetGetCellFormat(spreadsheetObj=[any], row=[any], column=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `row` | `NUMERIC` | `true` | The row number (1-based). * * |  |
-| `column` | `NUMERIC` | `true` | The column number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `row` | `NUMERIC` | `true` | The row number (1-based). |  |
+| `column` | `NUMERIC` | `true` | The column number (1-based). |  |
 
 
 ## Examples
 
+Get cell formatting:
 
+```js
+// Retrieve cell format
+var spreadsheet = SpreadsheetNew();
+SpreadsheetAddRow( spreadsheet, [ "Styled" ] );
+
+var format = { bold = true, color = "0000FF" };
+SpreadsheetFormatCell( spreadsheet, 1, 1, format );
+
+var cellFormat = SpreadsheetGetCellFormat( spreadsheet, 1, 1 );
+println( cellFormat );
+```
 
 ## Related
 
+- [SpreadsheetFormatCell()](./SpreadsheetFormatCell.md) - Format cell
+- [SpreadsheetFormatCellRange()](./SpreadsheetFormatCellRange.md) - Format range
+- [SpreadsheetGetCellValue()](./SpreadsheetGetCellValue.md) - Get cell value

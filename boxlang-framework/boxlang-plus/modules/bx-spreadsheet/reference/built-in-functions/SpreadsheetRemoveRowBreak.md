@@ -14,13 +14,22 @@ SpreadsheetRemoveRowBreak(spreadsheetObj=[any], row=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `row` | `NUMERIC` | `true` | The row number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `row` | `NUMERIC` | `true` | The row number (1-based). |  |
 
 
 ## Examples
 
+Remove a row page break:
 
+```js
+// Remove page break
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetRowBreak( spreadsheet, 20 );
+SpreadsheetRemoveRowBreak( spreadsheet, 20 );
+```
 
 ## Related
 
+- [SpreadsheetSetRowBreak()](./SpreadsheetSetRowBreak.md) - Set row break
+- [SpreadsheetRemoveColumnBreak()](./SpreadsheetRemoveColumnBreak.md) - Remove column break

@@ -14,14 +14,22 @@ SpreadsheetSetRepeatingRows(spreadsheetObj=[any], startRow=[any], endRow=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `startRow` | `NUMERIC` | `true` | The starting row number (1-based). * * |  |
-| `endRow` | `NUMERIC` | `true` | The ending row number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `startRow` | `NUMERIC` | `true` | The starting row number (1-based). |  |
+| `endRow` | `NUMERIC` | `true` | The ending row number (1-based). |  |
 
 
 ## Examples
 
+Set repeating rows for printing:
 
+```js
+// Repeat header row on each page
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetRepeatingRows( spreadsheet, "1:1" );
+```
 
 ## Related
 
+- [SpreadsheetSetRepeatingColumns()](./SpreadsheetSetRepeatingColumns.md) - Set columns
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set header

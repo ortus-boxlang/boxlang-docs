@@ -14,13 +14,21 @@ SpreadsheetSetRowBreak(spreadsheetObj=[any], row=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `row` | `NUMERIC` | `true` | The row number (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `row` | `NUMERIC` | `true` | The row number (1-based). |  |
 
 
 ## Examples
 
+Set row page break:
 
+```js
+// Add page break after row 20
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetRowBreak( spreadsheet, 20 );
+```
 
 ## Related
 
+- [SpreadsheetRemoveRowBreak()](./SpreadsheetRemoveRowBreak.md) - Remove break
+- [SpreadsheetSetColumnBreak()](./SpreadsheetSetColumnBreak.md) - Set column break

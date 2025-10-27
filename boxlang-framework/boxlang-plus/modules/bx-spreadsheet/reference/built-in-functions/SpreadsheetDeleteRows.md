@@ -14,9 +14,9 @@ SpreadsheetDeleteRows(spreadsheetObj=[any], startRow=[any], numRows=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `startRow` | `NUMERIC` | `true` | The starting row number to delete (1-based). * * |  |
-| `numRows` | `NUMERIC` | `false` | The number of rows to delete. Default is 1. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `startRow` | `NUMERIC` | `true` | The starting row number to delete (1-based). |  |
+| `numRows` | `NUMERIC` | `false` | The number of rows to delete. Default is 1. |  |
 
 
 ## Examples

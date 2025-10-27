@@ -14,16 +14,27 @@ SpreadsheetAddFreezePane(spreadsheetObj=[any], column=[any], row=[any], endColum
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `column` | `NUMERIC` | `true` | The column boundary of the freeze pane (columns to the left are frozen). * * |  |
-| `row` | `NUMERIC` | `true` | The row boundary of the freeze pane (rows above are frozen). * * |  |
-| `endColumn` | `NUMERIC` | `false` | An additional column to be included in the freeze pane (optional). * * |  |
-| `endRow` | `NUMERIC` | `false` | An additional row to be included in the freeze pane (optional). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `column` | `NUMERIC` | `true` | The column boundary of the freeze pane (columns to the left are frozen). |  |
+| `row` | `NUMERIC` | `true` | The row boundary of the freeze pane (rows above are frozen). |  |
+| `endColumn` | `NUMERIC` | `false` | An additional column to be included in the freeze pane (optional). |  |
+| `endRow` | `NUMERIC` | `false` | An additional row to be included in the freeze pane (optional). |  |
 
 
 ## Examples
 
+Freeze panes in spreadsheet:
 
+```js
+// Freeze header row
+var spreadsheet = SpreadsheetNew();
+SpreadsheetAddRow( spreadsheet, [ "Name", "Email", "Phone" ] );
+// Add many more rows...
+
+SpreadsheetAddFreezePane( spreadsheet, 2, 1 );  // Freeze row 1
+```
 
 ## Related
 
+- [SpreadsheetAddAutofilter()](./SpreadsheetAddAutofilter.md) - Add filter
+- [SpreadsheetSetActiveCell()](./SpreadsheetSetActiveCell.md) - Set active cell

@@ -14,8 +14,8 @@ SpreadsheetDeleteRow(spreadsheetObj=[any], row=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `row` | `NUMERIC` | `true` | The row number to clear data from (1-based). * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `row` | `NUMERIC` | `true` | The row number to clear data from (1-based). |  |
 
 
 ## Examples

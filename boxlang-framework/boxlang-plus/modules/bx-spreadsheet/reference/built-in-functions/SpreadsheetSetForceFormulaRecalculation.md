@@ -16,7 +16,15 @@ No arguments.
 
 ## Examples
 
+Force formula recalculation:
 
+```js
+// Force Excel to recalculate all formulas on open
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetForceFormulaRecalculation( spreadsheet, true );
+```
 
 ## Related
 
+- [SpreadsheetGetForceFormulaRecalculation()](./SpreadsheetGetForceFormulaRecalculation.md) - Get setting
+- [SpreadsheetSetAutoCalculate()](./SpreadsheetSetAutoCalculate.md) - Set auto-calc

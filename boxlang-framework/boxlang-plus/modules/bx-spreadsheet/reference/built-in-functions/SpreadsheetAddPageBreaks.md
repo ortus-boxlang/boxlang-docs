@@ -14,14 +14,23 @@ SpreadsheetAddPageBreaks(spreadsheetObj=[any], rows=[any], columns=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `rows` | `ANY` | `false` | A number or array of row numbers (1-based) where page breaks should be added. * * |  |
-| `columns` | `ANY` | `false` | A number or array of column numbers (1-based) where page breaks should be added. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `rows` | `ANY` | `false` | A number or array of row numbers (1-based) where page breaks should be added. |  |
+| `columns` | `ANY` | `false` | A number or array of column numbers (1-based) where page breaks should be added. |  |
 
 
 ## Examples
 
+Add page breaks for printing:
 
+```js
+// Add page break after row 20
+var spreadsheet = SpreadsheetNew();
+SpreadsheetAddPageBreaks( spreadsheet, 20, 0 );
+```
 
 ## Related
 
+- [SpreadsheetSetFitToPage()](./SpreadsheetSetFitToPage.md) - Fit to page
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set header
+- [Print Settings Guide](../../print-settings.md) - Printing configuration

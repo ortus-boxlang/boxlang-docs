@@ -14,14 +14,23 @@ SpreadsheetSetHeaderImage(spreadsheetObj=[any], alignment=[any], image=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `alignment` | `STRING` | `true` | The image's alignment in the header. Values: left, center, right. * * |  |
-| `image` | `STRING` | `true` | The filepath of the image to add. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `alignment` | `STRING` | `true` | The image's alignment in the header. Values: left, center, right. |  |
+| `image` | `STRING` | `true` | The filepath of the image to add. |  |
 
 
 ## Examples
 
+Add image to header:
 
+```js
+// Add logo to header
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetHeaderImage( spreadsheet, "/path/to/logo.png" );
+```
 
 ## Related
 
+- [SpreadsheetSetHeader()](./SpreadsheetSetHeader.md) - Set text header
+- [SpreadsheetSetFooterImage()](./SpreadsheetSetFooterImage.md) - Add image to footer
+- [SpreadsheetAddImage()](./SpreadsheetAddImage.md) - Add image to sheet

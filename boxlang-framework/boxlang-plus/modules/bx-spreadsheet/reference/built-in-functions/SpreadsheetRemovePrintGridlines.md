@@ -14,13 +14,21 @@ SpreadsheetRemovePrintGridlines(spreadsheetObj=[any], sheetName=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `sheetName` | `STRING` | `false` | The sheet name (optional). If not provided, operates on active sheet. * * |  |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `sheetName` | `STRING` | `false` | The sheet name (optional). If not provided, operates on active sheet. |  |
 
 
 ## Examples
 
+Remove print gridlines:
 
+```js
+// Disable gridlines for printing
+var spreadsheet = SpreadsheetNew();
+SpreadsheetRemovePrintGridlines( spreadsheet );
+```
 
 ## Related
 
+- [SpreadsheetAddPrintGridlines()](./SpreadsheetAddPrintGridlines.md) - Add gridlines
+- [SpreadsheetSetPrintOrientation()](./SpreadsheetSetPrintOrientation.md) - Set orientation

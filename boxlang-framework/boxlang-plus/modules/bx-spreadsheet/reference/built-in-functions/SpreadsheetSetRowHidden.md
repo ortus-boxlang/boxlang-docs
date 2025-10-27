@@ -14,14 +14,30 @@ SpreadsheetSetRowHidden(spreadsheetObj=[any], row=[any], hide=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|----------|
-| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. * * |  |
-| `row` | `NUMERIC` | `true` | The row number (1-based). * * |  |
-| `hide` | `BOOLEAN` | `false` | True to hide, false to show. Default is true. * * | true |
+| `spreadsheetObj` | `ANY` | `true` | The spreadsheet object. |  |
+| `row` | `NUMERIC` | `true` | The row number (1-based). |  |
+| `hide` | `BOOLEAN` | `false` | True to hide, false to show. Default is true. | true |
 
 
 ## Examples
 
+Hide a row:
 
+```js
+// Hide row 5
+var spreadsheet = SpreadsheetNew();
+SpreadsheetSetRowHidden( spreadsheet, 5, true );
+```
+
+Show hidden rows:
+
+```js
+// Unhide row
+SpreadsheetSetRowHidden( spreadsheet, 5, false );
+```
 
 ## Related
 
+- [SpreadsheetSetColumnHidden()](./SpreadsheetSetColumnHidden.md) - Hide column
+- [SpreadsheetSetRowHeight()](./SpreadsheetSetRowHeight.md) - Set row height
+- [SpreadsheetisRowHidden()](./SpreadsheetisRowHidden.md) - Check if hidden
