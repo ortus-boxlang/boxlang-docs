@@ -1,0 +1,51 @@
+{
+  "DistributedLock": {
+    "name": "DistributedLock",
+    "filename": "DistributedLock.md",
+    "description": "",
+    "attributes": [
+      {
+        "name": "unknown",
+        "type": "string",
+        "required": "false",
+        "default": "Set.of( Validator.REQUIRED"
+      },
+      {
+        "name": "unknown",
+        "type": "string",
+        "required": "false",
+        "default": "Set.of( Validator.REQUIRED"
+      },
+      {
+        "name": "unknown",
+        "type": "boolean",
+        "required": "false",
+        "default": "true"
+      },
+      {
+        "name": "unknown",
+        "type": "Integer",
+        "required": "false",
+        "default": "2"
+      },
+      {
+        "name": "unknown",
+        "type": "Integer",
+        "required": "false",
+        "default": "60"
+      },
+      {
+        "name": "bypass",
+        "type": "boolean",
+        "required": "false",
+        "default": "false"
+      }
+    ],
+    "class_javadoc": "",
+    "supported_actions": [],
+    "raw_javadoc": "",
+    "class_name": "DistributedLock",
+    "allows_body": "true",
+    "requires_body": "true"
+  }
+}
