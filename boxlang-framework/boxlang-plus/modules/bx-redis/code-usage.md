@@ -138,6 +138,66 @@ for ( var key in cachedUsers ) {
 }
 ```
 
+### Get-or-Set Pattern
+
+The `getOrSet()` method provides an atomic operation that retrieves a cached value or computes and stores it if not found - eliminating race conditions and double-lookup patterns:
+
+```js
+// Basic get-or-set with default timeouts
+userData = cache( "redis" ).getOrSet( "user:123", function() {
+    return loadUserFromDatabase( 123 );
+} );
+
+// With custom timeout (30 minutes)
+productData = cache( "redis" ).getOrSet( 
+    "product:456", 
+    function() {
+        return loadProductFromAPI( 456 );
+    }, 
+    1800 
+);
+
+// With timeout and idle timeout (1 hour total, 30 min idle)
+reportData = cache( "redis" ).getOrSet(
+    "report:monthly",
+    function() {
+        return generateMonthlyReport();
+    },
+    3600,  // timeout
+    1800   // idleTimeout
+);
+
+// With metadata
+apiData = cache( "redis" ).getOrSet(
+    "api:response:123",
+    function() {
+        return callExternalAPI( 123 );
+    },
+    600,   // 10 minutes
+    0,     // no idle timeout
+    { "source": "api", "cached": now() }  // metadata
+);
+
+// Practical example: Expensive computation
+function getComputedData( key ) {
+    return cache( "redis" ).getOrSet( 
+        "computed:#key#",
+        function() {
+            // This expensive operation only runs on cache miss
+            var result = performExpensiveCalculation( key );
+            writeLog( "Computed data for key: #key#", "info" );
+            return result;
+        },
+        3600  // Cache for 1 hour
+    );
+}
+
+// Multiple calls - only first one computes
+data1 = getComputedData( "report1" );  // Computes and caches
+data2 = getComputedData( "report1" );  // Returns from cache
+data3 = getComputedData( "report1" );  // Returns from cache
+```
+
 ## 📊 Caching Queries
 
 ### Basic Query Caching
