@@ -27,7 +27,17 @@ BoxLang+ focuses on pragmatic value for engineering teams:
 
 You can build and ship commercial software with the open-source edition without cost. When you need advanced modules, faster resolutions, enterprise support, or architectural guidance, BoxLang+ is available as an additive layer.
 
-<table><thead><tr><th width="416">Area</th><th>Open Source</th><th>BoxLang+</th></tr></thead><tbody><tr><td>Core Language &#x26; Runtime</td><td>✅</td><td>✅</td></tr><tr><td>All Standard BIFs &#x26; Components</td><td>✅</td><td>✅</td></tr><tr><td>Premium Modules</td><td>🚫</td><td>✅</td></tr><tr><td>SLA Support</td><td>🚫</td><td>✅</td></tr><tr><td>CommandBox PRO Features</td><td>🚫</td><td>✅</td></tr><tr><td>Multi-Site Management</td><td>🚫</td><td>✅</td></tr><tr><td>Dedicated Helpdesk</td><td>🚫</td><td>✅</td></tr><tr><td>Architecture Guidance</td><td>🚫</td><td>✅</td></tr><tr><td>Roadmap Previews</td><td>Public Releases</td><td>Early Insights</td></tr></tbody></table>
+| Area | Open Source | BoxLang+ |
+|------|-------------|----------|
+| Core Language & Runtime | ✅ | ✅ |
+| All Standard BIFs & Components | ✅ | ✅ |
+| Premium Modules | 🚫 | ✅ |
+| SLA Support | 🚫 | ✅ |
+| CommandBox PRO Features | 🚫 | ✅ |
+| Multi-Site Management | 🚫 | ✅ |
+| Dedicated Helpdesk | 🚫 | ✅ |
+| Architecture Guidance | 🚫 | ✅ |
+| Roadmap Previews | Public Releases | Early Insights |
 
 ## 🔐 Support & Reliability
 
@@ -62,6 +72,10 @@ BoxLang+ encourages modern deployment patterns:
 * Open Source core: Apache 2.0 – permissive, commercial friendly.
 * BoxLang+ subscription: Adds closed-distribution premium modular functionality and features.
 * You retain full ownership of your application code.
+
+{% hint style="danger" %}
+To activate your BoxLang+ license, please see our [BoxLang Plus Module](modules/bx-plus.md) documentation.
+{% endhint %}
 
 ## 🔭 Roadmap & Evolution
 
