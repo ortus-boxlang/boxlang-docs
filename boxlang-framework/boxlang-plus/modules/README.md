@@ -89,7 +89,3 @@ Modules are tested against real-world workloads and evolve with feedback from pr
 ## 📣 Feedback Loop
 
 Need a new integration or capability? Reach out through official support channels or community discussions. Prioritized enhancements are often driven by real use cases.
-
-***
-
-Select a module above to dive deeper.
