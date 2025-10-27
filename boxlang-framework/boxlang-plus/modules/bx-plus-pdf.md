@@ -521,7 +521,7 @@ Migration from ColdFusion requires only prefix changes (`cf` → `bx`).
 ## Support and Documentation
 
 * **Issue Tracking**: [JIRA](https://ortussolutions.atlassian.net/jira/software/c/projects/BLMODULES)
-* **BoxLang Informationn**: [https://boxlang.io](https://boxlang.io)
+* **BoxLang Information**: [https://boxlang.io](https://boxlang.io)
 * **BoxLang Documentation**: [https://boxlang.ortusbooks.com](https://boxlang.ortusbooks.com)
 * **Ortus Solutions**: [ortussolutions.com](https://www.ortussolutions.com)
 
