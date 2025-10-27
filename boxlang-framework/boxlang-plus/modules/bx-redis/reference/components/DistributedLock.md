@@ -21,6 +21,84 @@ This component does not support actions. It operates by wrapping the body conten
 
 ## Examples
 
+Basic locking example:
 
+```js
+<bx:RedisLock
+    name="account-update-lock"
+    cache="myRedisCache"
+    timeout="5s"
+    expires="60s">
+
+    // This code runs only if the lock is acquired
+    account.balance = account.balance - 100;
+    account.save();
+</bx:RedisLock>
+```
+
+Handling lock timeout:
+
+```js
+<bx:RedisLock
+    name="report-generation"
+    cache="myRedisCache"
+    timeout="3s"
+    expires="30s"
+    throwOnTimeout="false">
+
+    // Generate expensive report
+    var report = generateMonthlyReport();
+    saveReport( report );
+
+<bx:catch type="LockTimeoutException">
+    <bx:log text="Could not acquire lock, another process is generating the report" />
+</bx:catch>
+</bx:RedisLock>
+```
+
+Critical section with automatic bypass:
+
+```js
+<bx:RedisLock
+    name="cache-refresh"
+    cache="myRedisCache"
+    timeout="10s"
+    expires="120s"
+    bypass="isMaintenanceWindow()">
+
+    // Refresh system cache with guaranteed single execution
+    clearSystemCache();
+    loadSystemCache();
+
+</bx:RedisLock>
+```
+
+Preventing concurrent operations:
+
+```js
+<bx:RedisLock
+    name="inventory-deduction-lock"
+    cache="myRedisCache"
+    timeout="2s"
+    expires="10s">
+
+    // Ensure inventory is not over-sold
+    var currentStock = inventory.getStock( productId );
+
+    if ( currentStock >= quantity ) {
+        inventory.deductStock( productId, quantity );
+        order.status = "confirmed";
+    } else {
+        order.status = "out-of-stock";
+    }
+
+</bx:RedisLock>
+```
 
 ## Related
+
+- [RedisPublish()](../built-in-functions/RedisPublish.md) - Publish messages to channels
+- [RedisSubscribe()](../built-in-functions/RedisSubscribe.md) - Subscribe to channels
+- [Distributed Locking Guide](../../distributed-locking.md) - Advanced locking patterns
+- [Concurrency Patterns](../../concurrency.md) - Handling concurrent operations
+- [API Usage Guide](../../api-usage.md) - Redis API documentation

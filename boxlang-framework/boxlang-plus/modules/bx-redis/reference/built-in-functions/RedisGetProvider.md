@@ -18,6 +18,34 @@ RedisGetProvider(cacheName=[any])
 
 ## Examples
 
+Get a Redis cache provider by name:
 
+```js
+// Retrieve the provider for a named Redis cache
+var provider = RedisGetProvider( "myRedisCache" );
+
+// Check if provider is available
+if ( provider != null ) {
+    println( "Successfully retrieved Redis provider" );
+}
+```
+
+Use provider to access cache features:
+
+```js
+// Get the provider
+var provider = RedisGetProvider( "myRedisCache" );
+
+// Access provider capabilities
+var cacheConfig = provider.getCacheConfig();
+println( "Provider type: " & cacheConfig.type );
+println( "Host: " & cacheConfig.host );
+println( "Port: " & cacheConfig.port );
+```
 
 ## Related
+
+- [RedisGetCluster()](./RedisGetCluster.md) - Get the Redis cluster instance
+- [RedisGetConnectionPool()](./RedisGetConnectionPool.md) - Get the connection pool
+- [RedisGetClusterNodes()](./RedisGetClusterNodes.md) - Get cluster node information
+- [API Usage Guide](../../api-usage.md) - Redis API documentation
