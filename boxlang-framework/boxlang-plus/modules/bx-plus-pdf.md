@@ -10,7 +10,7 @@ icon: file-pdf
 The Boxlang+ Licensed edition of the `bx-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus/README.md) with a limited trial.
 {% endhint %}
 
 This module provides comprehensive PDF manipulation and generation functionality for BoxLang, including:
@@ -531,8 +531,8 @@ Migration from ColdFusion requires only prefix changes (`cf` → `bx`).
 [bx-spreadsheet](bx-spreadsheet/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus.md" %}
-[bx-plus.md](bx-plus.md)
+{% content-ref url="bx-plus/README.md" %}
+[bx-plus/README.md](bx-plus/README.md)
 {% endcontent-ref %}
 
 ***

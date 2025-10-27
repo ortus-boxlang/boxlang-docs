@@ -74,7 +74,7 @@ BoxLang+ encourages modern deployment patterns:
 * You retain full ownership of your application code.
 
 {% hint style="danger" %}
-To activate your BoxLang+ license, please see our [BoxLang Plus Module](modules/bx-plus.md) documentation.
+To activate your BoxLang+ license, please see our [BoxLang Plus Module](modules/bx-plus/README.md) documentation.
 {% endhint %}
 
 ## 🔭 Roadmap & Evolution

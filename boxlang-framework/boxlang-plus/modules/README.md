@@ -15,8 +15,8 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 |--------|---------|---------------|
 | [`bx-csv`](bx-csv.md) | Streaming CSV parsing & generation for large datasets | `box install bx-csv` |
 | [`bx-couchbase`](bx-couchbase.md) | **In Development**<br>Distributed caching & NoSQL document storage via Couchbase | `box install bx-couchbase` |
-| [`bx-ldap`](bx-ldap.md) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications! | `box install bx-ldap` |
-| [`bx-plus`](bx-plus.md) | Subscription bootstrap, entitlement validation, shared utilities | `box install bx-plus` |
+| [`bx-ldap`](bx-ldap/README.md) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications! | `box install bx-ldap` |
+| [`bx-plus`](bx-plus/README.md) | Subscription bootstrap, entitlement validation, shared utilities | `box install bx-plus` |
 | [`bx-pdf`](bx-plus-pdf.md) | <br>PDF generation and manipulation for documents, reports, and forms. This module provides free-tier as well as [licensed functionality](bx-plus-pdf.md) | `box install bx-pdf` |
 | [`bx-redis`](bx-redis/README.md) | High-performance Redis-backed caching, data structures, pub/sub | `box install bx-redis` |
 | [`bx-spreadsheet`](bx-spreadsheet/README.md) | Read, write, style spreadsheet documents (XLSX) | `box install bx-spreadsheet` |
@@ -56,12 +56,12 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-couchbase.md](bx-couchbase.md)
 {% endcontent-ref %}
 
-{% content-ref url="bx-ldap.md" %}
-[bx-ldap.md](bx-ldap.md)
+{% content-ref url="bx-ldap/README.md" %}
+[bx-ldap/README.md](bx-ldap/README.md)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus.md" %}
-[bx-plus.md](bx-plus.md)
+{% content-ref url="bx-plus/README.md" %}
+[bx-plus/README.md](bx-plus/README.md)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus-pdf.md" %}

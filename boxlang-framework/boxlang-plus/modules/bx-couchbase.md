@@ -12,7 +12,7 @@ icon: couch
 The `bx-couchbase` module integrates Couchbase Server with BoxLang, enabling distributed caching, key/value storage, and document access patterns for horizontally scaled applications.
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus/README.md) with a limited trial.
 {% endhint %}
 
 ## 🚀 Features
@@ -52,8 +52,8 @@ install-bx-module bx-couchbase
 [bx-redis](bx-redis/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus.md" %}
-[bx-plus.md](bx-plus.md)
+{% content-ref url="bx-plus/README.md" %}
+[bx-plus/README.md](bx-plus/README.md)
 {% endcontent-ref %}
 
 ***

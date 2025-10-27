@@ -12,7 +12,7 @@ icon: table
 The `bx-csv` module streamlines working with delimited data (CSV/TSV). It emphasizes performance, streaming, and memory efficiency for large datasets.
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus/README.md) with a limited trial.
 {% endhint %}
 
 ## 🚀 Features
@@ -108,8 +108,8 @@ try {
 [bx-spreadsheet](bx-spreadsheet/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus.md" %}
-[bx-plus.md](bx-plus.md)
+{% content-ref url="bx-plus/README.md" %}
+[bx-plus/README.md](bx-plus/README.md)
 {% endcontent-ref %}
 
 ***

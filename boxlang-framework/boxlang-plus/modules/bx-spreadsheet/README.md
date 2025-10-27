@@ -8,7 +8,7 @@ icon: file-excel
 A powerful BoxLang module for creating, reading, and manipulating Excel spreadsheet files.
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/README.md) with a limited trial.
 {% endhint %}
 
 ---
