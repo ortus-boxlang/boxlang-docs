@@ -149,12 +149,12 @@ userData = cache( "redis" ).getOrSet( "user:123", function() {
 } );
 
 // With custom timeout (30 minutes)
-productData = cache( "redis" ).getOrSet( 
-    "product:456", 
+productData = cache( "redis" ).getOrSet(
+    "product:456",
     function() {
         return loadProductFromAPI( 456 );
-    }, 
-    1800 
+    },
+    1800
 );
 
 // With timeout and idle timeout (1 hour total, 30 min idle)
@@ -180,7 +180,7 @@ apiData = cache( "redis" ).getOrSet(
 
 // Practical example: Expensive computation
 function getComputedData( key ) {
-    return cache( "redis" ).getOrSet( 
+    return cache( "redis" ).getOrSet(
         "computed:#key#",
         function() {
             // This expensive operation only runs on cache miss
