@@ -25,13 +25,13 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 
 All premium modules follow a consistent installation workflow using either CommandBox or BoxLang CLI:
 
-### Via CommandBox
+### Via CommandBox CLI
 
 ```bash
 box install <module-name>
 ```
 
-### Via BoxLang
+### Via BoxLang OS Binary
 
 ```bash
 install-bx-module <module-name>
@@ -41,8 +41,8 @@ After installation, modules register themselves automatically or provide a simpl
 
 ## 🧪 Common Usage Flow
 
-1. Install module with CommandBox.
-2. Configure via `boxlang.json`, environment variables, or runtime API.
+1. Install module.
+2. Configure via `boxlang.json`, environment variables, or runtime API.  Each module can have different configuration needs; refer to individual module docs for specifics.
 3. Inject or call provided services/components.
 4. Handle errors using standard exception management patterns.
 

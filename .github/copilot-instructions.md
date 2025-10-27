@@ -114,6 +114,100 @@ Use the GitBook MCP to:
 - **Reference materials** organized by functional categories
 - **Progressive disclosure** - overview → details → examples → advanced patterns
 
+## Documentation Automation Tools
+
+### BIF Metadata Extractor
+
+Located at: `workbench/bif_metadata_extractor.py`
+
+This is a reusable Python tool for automatically generating API reference documentation from BoxLang module BIF (Built-In Function) Java files. It extracts metadata from Java source code and generates consistent, well-formatted markdown documentation.
+
+**Features:**
+- Extracts @BoxBIF descriptions and javadoc comments
+- Parses argument declarations with types and defaults
+- Generates method signatures automatically
+- Creates formatted markdown tables for arguments
+- Exports metadata to JSON for cross-referencing
+- Customizable templates for different documentation styles
+
+**Usage:**
+```bash
+python3 workbench/bif_metadata_extractor.py \
+  <path/to/bifs> \
+  <path/to/output> \
+  --template <optional-template-file> \
+  --export-metadata
+```
+
+**Example:**
+```bash
+python3 workbench/bif_metadata_extractor.py \
+  /path/to/bx-spreadsheet/src/main/java/ortus/boxlang/spreadsheet/bifs \
+  /path/to/docs/boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/built-in-functions \
+  --export-metadata
+```
+
+**Generated Documentation Includes:**
+- Function name and description (from @BoxBIF annotation)
+- Method signature with all parameters
+- Arguments table with Type, Required, Description, and Default columns
+- Placeholders for Examples and Related functions sections
+- JSON metadata export for future automation tasks
+
+**When to Use:**
+Use this tool **only for new modules without existing documentation**. Do not use it to regenerate documentation for modules that already have well-written reference docs, as it will strip rich content like syntax examples, detailed action descriptions, and human-curated examples.
+
+### Component Metadata Extractor
+
+Located at: `workbench/component_metadata_extractor.py`
+
+This is a reusable Python tool for automatically generating **initial** API reference documentation from BoxLang Component Java files. It extracts metadata from Java source code and generates a baseline markdown file with component metadata.
+
+**⚠️ Important:** This tool generates simplified skeleton documentation. Existing component documentation should NOT be regenerated with this tool. Only use it for new components that lack documentation entirely.
+
+**Features:**
+- Extracts @BoxComponent descriptions and javadoc comments
+- Parses supported actions from class documentation
+- Extracts attribute declarations with types and defaults
+- Generates formatted markdown tables for attributes
+- Exports metadata to JSON for cross-referencing
+- Customizable templates for different documentation styles
+
+**Usage:**
+```bash
+python3 workbench/component_metadata_extractor.py \
+  <path/to/components> \
+  <path/to/output> \
+  --template <optional-template-file> \
+  --export-metadata
+```
+
+**Example (for new module only):**
+```bash
+python3 workbench/component_metadata_extractor.py \
+  /path/to/new-module/src/main/java/ortus/boxlang/newmodule/components \
+  /path/to/docs/boxlang-framework/boxlang-plus/modules/new-module/reference/components \
+  --export-metadata
+```
+
+**Generated Documentation Includes:**
+- Component name and description (from @BoxComponent annotation)
+- Supported actions with descriptions (extracted from javadoc)
+- Attributes table with Type, Required, Description, and Default columns
+- Placeholders for Examples and Related sections
+- JSON metadata export for future automation tasks
+
+**For New Modules:**
+Use this tool for any new BoxLang module to quickly generate API reference documentation. After generation, you **MUST** enhance with:
+- **Detailed Syntax** - Template and script syntax examples
+- **Comprehensive Actions** - Full documentation for each action with parameters, descriptions, and examples
+- **Real-world Examples** - Working code samples demonstrating common use cases
+- **Cross-references** - Links to related BIFs, components, and fluent API methods
+- **Error Handling** - Examples showing proper error handling patterns
+- **Best Practices** - Performance tips and recommended usage patterns
+
+See the existing Spreadsheet component documentation in `boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/components/` for the expected level of detail and formatting.
+
 ## Contributing Guidelines
 
 ### Content Standards
