@@ -15,11 +15,10 @@ This module is only available to [+/++ subscribers only](https://ww.boxlang.io/p
 
 This module provides comprehensive PDF manipulation and generation functionality for BoxLang, including:
 
-- **PDF Document Generation** - Create PDF documents from HTML content
-- **PDF Form Manipulation** - Populate and extract data from PDF forms
-- **PDF Document Processing** - Advanced PDF operations like merging, splitting, watermarking
-- **Adobe ColdFusion Compatibility** - Full compatibility with ColdFusion PDF tags
-
+* **PDF Document Generation** - Create PDF documents from HTML content
+* **PDF Form Manipulation** - Populate and extract data from PDF forms
+* **PDF Document Processing** - Advanced PDF operations like merging, splitting, watermarking
+* **Adobe ColdFusion Compatibility** - Full compatibility with ColdFusion PDF tags
 
 ## Installation
 
@@ -31,28 +30,27 @@ install-bx-module bx-plus,bx-pdf
 box install bx-plus,bx-pdf
 ```
 
-
 ## Components
 
 This module contributes the following components to the BoxLang runtime:
 
 ### Document Generation Components ( Free Tier )
 
-- [`document`](#document-component) - Main component for creating PDF documents from HTML
-- [`documentitem`](#documentitem-component) - Specifies headers, footers, and page breaks
-- [`documentsection`](#documentsection-component) - Divides documents into sections with unique properties
+* [`document`](bx-plus-pdf.md#document-component) - Main component for creating PDF documents from HTML
+* [`documentitem`](bx-plus-pdf.md#documentitem-component) - Specifies headers, footers, and page breaks
+* [`documentsection`](bx-plus-pdf.md#documentsection-component) - Divides documents into sections with unique properties
 
 ### PDF Manipulation Components ( Boxlang+ Only )
 
-- [`pdf`](#pdf-component) - Advanced PDF operations (merge, split, watermark, etc.)
-- [`pdfparam`](#pdfparam-component) - Parameters for PDF operations like attachments
+* [`pdf`](bx-plus-pdf.md#pdf-component) - Advanced PDF operations (merge, split, watermark, etc.)
+* [`pdfparam`](bx-plus-pdf.md#pdfparam-component) - Parameters for PDF operations like attachments
 
 ### PDF Form Components ( Boxlang+ Only )
 
-- [`pdfform`](#pdfform-component) - Manipulate PDF forms (populate/read form fields)
-- [`pdfformparam`](#pdfformparam-component) - Specify individual form field values
+* [`pdfform`](bx-plus-pdf.md#pdfform-component) - Manipulate PDF forms (populate/read form fields)
+* [`pdfformparam`](bx-plus-pdf.md#pdfformparam-component) - Specify individual form field values
 
----
+***
 
 ## Document Component
 
@@ -60,56 +58,56 @@ The `document` component creates PDF documents from HTML content with extensive 
 
 ### Attributes
 
-| Attribute | Type | Default | Description |
-|-----------|------|---------|-------------|
-| `format` | String | "pdf" | Document format (PDF only) |
-| `filename` | String | - | Output file path |
-| `variable` | String | - | Variable name to store PDF binary |
-| `encryption` | String | "none" | Encryption level: "128-bit", "40-bit", "none" |
-| `orientation` | String | "portrait" | Page orientation: "portrait", "landscape" |
-| `pageType` | String | "A4" | Page size (A4, LETTER, LEGAL, etc.) |
-| `pageWidth` | Numeric | - | Custom page width in inches |
-| `pageHeight` | Numeric | - | Custom page height in inches |
-| `marginTop` | Numeric | - | Top margin |
-| `marginBottom` | Numeric | - | Bottom margin |
-| `marginLeft` | Numeric | - | Left margin |
-| `marginRight` | Numeric | - | Right margin |
-| `scale` | Numeric | 100 | Scaling percentage (≤100) |
-| `backgroundVisible` | Boolean | true | Show background elements |
-| `bookmark` | Boolean | true | Generate bookmarks |
-| `htmlBookmark` | Boolean | false | Convert HTML anchors to bookmarks |
-| `fontEmbed` | Boolean | true | Embed fonts in document |
-| `fontDirectory` | String | - | Custom font directory |
-| `localUrl` | Boolean | false | Generate with local URLs |
-| `openpassword` | String | - | Password to open document |
-| `ownerPassword` | String | - | Owner password for restrictions |
-| `pdfa` | Boolean | false | Generate PDF/A compliant document |
-| `saveAsName` | String | - | Browser save filename |
-| `overwrite` | Boolean | false | Overwrite existing files |
-| `src` | String | - | URL or path to HTML content |
-| `srcfile` | String | - | Absolute path to HTML file |
-| `mimeType` | String | "text/html" | Source content MIME type |
-| `unit` | String | "inches" | Measurement unit: "in", "cm" |
+| Attribute           | Type    | Default     | Description                                   |
+| ------------------- | ------- | ----------- | --------------------------------------------- |
+| `format`            | String  | "pdf"       | Document format (PDF only)                    |
+| `filename`          | String  | -           | Output file path                              |
+| `variable`          | String  | -           | Variable name to store PDF binary             |
+| `encryption`        | String  | "none"      | Encryption level: "128-bit", "40-bit", "none" |
+| `orientation`       | String  | "portrait"  | Page orientation: "portrait", "landscape"     |
+| `pageType`          | String  | "A4"        | Page size (A4, LETTER, LEGAL, etc.)           |
+| `pageWidth`         | Numeric | -           | Custom page width in inches                   |
+| `pageHeight`        | Numeric | -           | Custom page height in inches                  |
+| `marginTop`         | Numeric | -           | Top margin                                    |
+| `marginBottom`      | Numeric | -           | Bottom margin                                 |
+| `marginLeft`        | Numeric | -           | Left margin                                   |
+| `marginRight`       | Numeric | -           | Right margin                                  |
+| `scale`             | Numeric | 100         | Scaling percentage (≤100)                     |
+| `backgroundVisible` | Boolean | true        | Show background elements                      |
+| `bookmark`          | Boolean | true        | Generate bookmarks                            |
+| `htmlBookmark`      | Boolean | false       | Convert HTML anchors to bookmarks             |
+| `fontEmbed`         | Boolean | true        | Embed fonts in document                       |
+| `fontDirectory`     | String  | -           | Custom font directory                         |
+| `localUrl`          | Boolean | false       | Generate with local URLs                      |
+| `openpassword`      | String  | -           | Password to open document                     |
+| `ownerPassword`     | String  | -           | Owner password for restrictions               |
+| `pdfa`              | Boolean | false       | Generate PDF/A compliant document             |
+| `saveAsName`        | String  | -           | Browser save filename                         |
+| `overwrite`         | Boolean | false       | Overwrite existing files                      |
+| `src`               | String  | -           | URL or path to HTML content                   |
+| `srcfile`           | String  | -           | Absolute path to HTML file                    |
+| `mimeType`          | String  | "text/html" | Source content MIME type                      |
+| `unit`              | String  | "inches"    | Measurement unit: "in", "cm"                  |
 
 ### Unsupported Attributes
 
 The following attributes are not currently implemented and will throw an error if used:
 
-- `permissions` - Granular permissibility is not yet supported
-- `permissionspassword` - Granular permissibility is not yet supported
-- `userPassword` - Granular permissibility is not yet supported
-- `authPassword` - Authentication password not supported
-- `authUser` - Authentication user not supported
-- `userAgent` - HTTP user agent identifier not supported
-- `proxyHost` - Proxy server configuration not supported
-- `proxyPassword` - Proxy authentication not supported
-- `proxyPort` - Proxy port configuration not supported
-- `proxyUser` - Proxy user authentication not supported
-- `tagged` - ACF OpenOffice integration not supported
-- `formfields` - Form field attributes not implemented in standard module
-- `formsType` - Form type specification not implemented in standard module
+* `permissions` - Granular permissibility is not yet supported
+* `permissionspassword` - Granular permissibility is not yet supported
+* `userPassword` - Granular permissibility is not yet supported
+* `authPassword` - Authentication password not supported
+* `authUser` - Authentication user not supported
+* `userAgent` - HTTP user agent identifier not supported
+* `proxyHost` - Proxy server configuration not supported
+* `proxyPassword` - Proxy authentication not supported
+* `proxyPort` - Proxy port configuration not supported
+* `proxyUser` - Proxy user authentication not supported
+* `tagged` - ACF OpenOffice integration not supported
+* `formfields` - Form field attributes not implemented in standard module
+* `formsType` - Form type specification not implemented in standard module
 
----
+***
 
 ## DocumentItem Component
 
@@ -117,12 +115,12 @@ Specifies headers, footers, and page breaks within PDF documents.
 
 ### Attributes
 
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `type` | String | Yes | Item type: "header", "footer", "pagebreak" |
-| `evalAtPrint` | Boolean | No | ⚠️ Deprecated - content always evaluated |
+| Attribute     | Type    | Required | Description                                |
+| ------------- | ------- | -------- | ------------------------------------------ |
+| `type`        | String  | Yes      | Item type: "header", "footer", "pagebreak" |
+| `evalAtPrint` | Boolean | No       | ⚠️ Deprecated - content always evaluated   |
 
----
+***
 
 ## DocumentSection Component
 
@@ -130,26 +128,26 @@ Divides PDF documents into sections with unique headers, footers, and page numbe
 
 ### Attributes
 
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `name` | String | Section name (used for bookmarks) |
-| `marginTop` | Numeric | Section top margin |
-| `marginBottom` | Numeric | Section bottom margin |
-| `marginLeft` | Numeric | Section left margin |
-| `marginRight` | Numeric | Section right margin |
-| `src` | String | URL or relative path to content |
-| `srcfile` | String | Absolute path to content file |
-| `mimeType` | String | Content MIME type |
+| Attribute      | Type    | Description                       |
+| -------------- | ------- | --------------------------------- |
+| `name`         | String  | Section name (used for bookmarks) |
+| `marginTop`    | Numeric | Section top margin                |
+| `marginBottom` | Numeric | Section bottom margin             |
+| `marginLeft`   | Numeric | Section left margin               |
+| `marginRight`  | Numeric | Section right margin              |
+| `src`          | String  | URL or relative path to content   |
+| `srcfile`      | String  | Absolute path to content file     |
+| `mimeType`     | String  | Content MIME type                 |
 
 ### Unsupported Attributes
 
 The following attributes are not currently implemented and will throw an error if used:
 
-- `userAgent` - HTTP user agent identifier for URL fetching
-- `authPassword` - Authentication password for URL content
-- `authUser` - Authentication username for URL content
+* `userAgent` - HTTP user agent identifier for URL fetching
+* `authPassword` - Authentication password for URL content
+* `authUser` - Authentication username for URL content
 
----
+***
 
 ## PDFForm Component
 
@@ -157,21 +155,21 @@ Manipulates PDF forms created in Adobe Acrobat and Adobe LiveCycle Designer. Sup
 
 ### Actions
 
-- **populate** - Fill form fields with data
-- **read** - Extract form field data to structures or files
+* **populate** - Fill form fields with data
+* **read** - Extract form field data to structures or files
 
 ### Attributes
 
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `action` | String | Yes | "populate" or "read" |
-| `source` | Any | Yes | Source PDF form (file path, byte array, or variable) |
-| `destination` | String | No | Output file path (populate action) |
-| `result` | String | No | Variable name for extracted data (read action) |
-| `overwrite` | Boolean | No | Overwrite existing files (default: false) |
-| `overwriteData` | Boolean | No | Overwrite existing form data (default: false) |
-| `fdfdata` | String | No | FDF file path for import/export |
-| `XMLdata` | String | No | ⏳ XML data (planned feature) |
+| Attribute       | Type    | Required | Description                                          |
+| --------------- | ------- | -------- | ---------------------------------------------------- |
+| `action`        | String  | Yes      | "populate" or "read"                                 |
+| `source`        | Any     | Yes      | Source PDF form (file path, byte array, or variable) |
+| `destination`   | String  | No       | Output file path (populate action)                   |
+| `result`        | String  | No       | Variable name for extracted data (read action)       |
+| `overwrite`     | Boolean | No       | Overwrite existing files (default: false)            |
+| `overwriteData` | Boolean | No       | Overwrite existing form data (default: false)        |
+| `fdfdata`       | String  | No       | FDF file path for import/export                      |
+| `XMLdata`       | String  | No       | ⏳ XML data (planned feature)                         |
 
 ### Examples
 
@@ -225,7 +223,7 @@ Manipulates PDF forms created in Adobe Acrobat and Adobe LiveCycle Designer. Sup
             fdfdata="/data/survey-responses.fdf" />
 ```
 
----
+***
 
 ## PDFFormParam Component
 
@@ -233,18 +231,18 @@ Specifies individual form field values when populating PDF forms. Must be nested
 
 ### Attributes
 
-| Attribute | Type | Required | Description |
-|-----------|------|----------|-------------|
-| `name` | String | Yes | Form field name |
-| `value` | String | Yes | Value to assign to the field |
-| `index` | Integer | No | Field index for LiveCycle forms (default: 1) |
+| Attribute | Type    | Required | Description                                  |
+| --------- | ------- | -------- | -------------------------------------------- |
+| `name`    | String  | Yes      | Form field name                              |
+| `value`   | String  | Yes      | Value to assign to the field                 |
+| `index`   | Integer | No       | Field index for LiveCycle forms (default: 1) |
 
 ### Usage Notes
 
-- **Acrobat Forms**: Cannot have multiple fields with the same name, so `index` is not applicable
-- **LiveCycle Forms**: Support multiple fields with the same name, use `index` to distinguish them
-- **Case Sensitivity**: Field values are case-sensitive
-- **Data Types**: Component handles various field types (text, checkbox, radio, dropdown, etc.)
+* **Acrobat Forms**: Cannot have multiple fields with the same name, so `index` is not applicable
+* **LiveCycle Forms**: Support multiple fields with the same name, use `index` to distinguish them
+* **Case Sensitivity**: Field values are case-sensitive
+* **Data Types**: Component handles various field types (text, checkbox, radio, dropdown, etc.)
 
 ### Example
 
@@ -273,7 +271,7 @@ Specifies individual form field values when populating PDF forms. Must be nested
 </bx:pdfform>
 ```
 
----
+***
 
 ## PDF Component
 
@@ -281,39 +279,39 @@ Performs advanced PDF operations like merging, splitting, watermarking, and form
 
 ### Supported Actions
 
-| Action | Description |
-|--------|-------------|
-| `addAttachments` | Add file attachments to PDF |
-| `addHeader` | Add headers to pages |
-| `addFooter` | Add footers to pages |
-| `addWatermark` | Add watermark to pages |
-| `deletePages` | Remove specific pages |
-| `export` | Export form data (FDF/XFDF) |
-| `extractText` | Extract text content |
-| `extractimage` | Extract embedded images |
-| `getInfo` | Get PDF metadata |
-| `import` | Import form data |
-| `merge` | Combine multiple PDFs |
-| `protect` | Add password protection |
-| `removePassword` | Remove password protection |
-| `removeWatermark` | Remove watermarks |
-| `removeHeaderFooter` | Remove headers/footers |
-| `thumbnail` | Generate page thumbnails |
-| `transform` | Transform/manipulate pages |
-| `unsign` | Remove digital signatures |
-| `validatesignature` | Validate signatures |
-| `write` | Save PDF to file |
+| Action               | Description                 |
+| -------------------- | --------------------------- |
+| `addAttachments`     | Add file attachments to PDF |
+| `addHeader`          | Add headers to pages        |
+| `addFooter`          | Add footers to pages        |
+| `addWatermark`       | Add watermark to pages      |
+| `deletePages`        | Remove specific pages       |
+| `export`             | Export form data (FDF/XFDF) |
+| `extractText`        | Extract text content        |
+| `extractimage`       | Extract embedded images     |
+| `getInfo`            | Get PDF metadata            |
+| `import`             | Import form data            |
+| `merge`              | Combine multiple PDFs       |
+| `protect`            | Add password protection     |
+| `removePassword`     | Remove password protection  |
+| `removeWatermark`    | Remove watermarks           |
+| `removeHeaderFooter` | Remove headers/footers      |
+| `thumbnail`          | Generate page thumbnails    |
+| `transform`          | Transform/manipulate pages  |
+| `unsign`             | Remove digital signatures   |
+| `validatesignature`  | Validate signatures         |
+| `write`              | Save PDF to file            |
 
 ### Key Attributes
 
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `action` | String | Operation to perform (see actions above) |
-| `source` | Any | Source PDF(s) - file path, binary data, or variable |
-| `destination` | String | Output file path |
-| `pages` | String | Page selection: "1-5", "1,3,5", "*" |
-| `overwrite` | Boolean | Overwrite existing files |
-| `password` | String | Password for encrypted PDFs |
+| Attribute     | Type    | Description                                         |
+| ------------- | ------- | --------------------------------------------------- |
+| `action`      | String  | Operation to perform (see actions above)            |
+| `source`      | Any     | Source PDF(s) - file path, binary data, or variable |
+| `destination` | String  | Output file path                                    |
+| `pages`       | String  | Page selection: "1-5", "1,3,5", "\*"                |
+| `overwrite`   | Boolean | Overwrite existing files                            |
+| `password`    | String  | Password for encrypted PDFs                         |
 
 ### Examples
 
@@ -366,7 +364,7 @@ Performs advanced PDF operations like merging, splitting, watermarking, and form
 </bx:pdf>
 ```
 
----
+***
 
 ## PDFParam Component
 
@@ -374,14 +372,14 @@ Specifies parameters for PDF operations, particularly for merge and attachment o
 
 ### Attributes
 
-| Attribute | Type | Description |
-|-----------|------|-------------|
-| `source` | String | Source file path |
-| `filename` | String | Attachment filename |
-| `encoding` | String | File encoding (default: UTF-8) |
-| `mimeType` | String | File MIME type |
-| `description` | String | Attachment description |
-| `password` | String | Password for encrypted files |
+| Attribute     | Type   | Description                    |
+| ------------- | ------ | ------------------------------ |
+| `source`      | String | Source file path               |
+| `filename`    | String | Attachment filename            |
+| `encoding`    | String | File encoding (default: UTF-8) |
+| `mimeType`    | String | File MIME type                 |
+| `description` | String | Attachment description         |
+| `password`    | String | Password for encrypted files   |
 
 ### Example
 
@@ -403,7 +401,7 @@ Specifies parameters for PDF operations, particularly for merge and attachment o
 </bx:pdf>
 ```
 
----
+***
 
 ## Advanced Examples
 
@@ -501,41 +499,36 @@ Specifies parameters for PDF operations, particularly for merge and attachment o
 </bx:if>
 ```
 
-## 🔐 Entitlement
-
-Requires active BoxLang+ subscription. Attempts to use premium PDF features without entitlement produce clear exceptions.
-
 ## CFML Compatibility
 
 This module provides full compatibility with CFML PDF tags:
 
-- ✅ `cfdocument` → `bx:document`
-- ✅ `cfdocumentitem` → `bx:documentitem`
-- ✅ `cfdocumentsection` → `bx:documentsection`
-- ✅ `cfpdf` → `bx:pdf`
-- ✅ `cfpdfparam` → `bx:pdfparam`
-- ✅ `cfpdfform` → `bx:pdfform`
-- ✅ `cfpdfformparam` → `bx:pdfformparam`
+* ✅ `cfdocument` → `bx:document`
+* ✅ `cfdocumentitem` → `bx:documentitem`
+* ✅ `cfdocumentsection` → `bx:documentsection`
+* ✅ `cfpdf` → `bx:pdf`
+* ✅ `cfpdfparam` → `bx:pdfparam`
+* ✅ `cfpdfform` → `bx:pdfform`
+* ✅ `cfpdfformparam` → `bx:pdfformparam`
 
 Migration from ColdFusion requires only prefix changes (`cf` → `bx`).
 
 ## Technical Requirements
 
-- **BoxLang Runtime** 1.0.0+
-- **Java** 21+
+* **BoxLang Runtime** 1.0.0+
+* **Java** 21+
 
 ## Support and Documentation
 
-- **Issue Tracking**: [JIRA](https://ortussolutions.atlassian.net/jira/software/c/projects/BLMODULES)
-- **BoxLang Informationn**: [https://boxlang.io](https://boxlang.io)
-- **BoxLang Documentation**: [https://boxlang.ortusbooks.com](https://boxlang.ortusbooks.com)
-- **Ortus Solutions**: [ortussolutions.com](https://www.ortussolutions.com)
-
+* **Issue Tracking**: [JIRA](https://ortussolutions.atlassian.net/jira/software/c/projects/BLMODULES)
+* **BoxLang Informationn**: [https://boxlang.io](https://boxlang.io)
+* **BoxLang Documentation**: [https://boxlang.ortusbooks.com](https://boxlang.ortusbooks.com)
+* **Ortus Solutions**: [ortussolutions.com](https://www.ortussolutions.com)
 
 ## 📎 Related Modules
 
-{% content-ref url="bx-spreadsheet/README.md" %}
-[bx-spreadsheet/README.md](bx-spreadsheet/README.md)
+{% content-ref url="bx-spreadsheet/" %}
+[bx-spreadsheet](bx-spreadsheet/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus.md" %}
