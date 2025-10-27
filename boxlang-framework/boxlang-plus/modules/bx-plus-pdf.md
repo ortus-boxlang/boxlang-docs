@@ -7,8 +7,6 @@ icon: file-pdf
 
 # PDF +
 
-### \*\*_Coming Soon!\*\*_
-
 The Boxlang+ Licensed edition of the `bx-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
 
 {% hint style="danger" %}
