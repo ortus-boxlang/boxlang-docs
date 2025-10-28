@@ -29,6 +29,10 @@ This module provides powerful chart generation capabilities to the [BoxLang](htt
 * BoxLang 1.0.0 or higher
 * Web support enabled (for `htmlHead()` BIF)
 
+```bash
+install-bx-module bx-charts
+```
+
 ### Install via CommandBox
 
 ```bash
