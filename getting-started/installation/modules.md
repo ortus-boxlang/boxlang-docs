@@ -55,7 +55,7 @@ Eventually, CommandBox will be the de-facto standard of installation once it's m
 
 {% code title="CommandBox" %}
 ```bash
-box install bx-compat-cfml bx-esapi
+box install bx-compat-cfml,bx-esapi
 ```
 {% endcode %}
 
