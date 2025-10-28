@@ -771,7 +771,11 @@
 
 * [BoxLang+](boxlang-framework/boxlang-plus/README.md)
   * [Modules Overview](boxlang-framework/boxlang-plus/modules/README.md)
-    * [CSV +](boxlang-framework/boxlang-plus/modules/bx-csv.md)
+    * [CSV +](boxlang-framework/boxlang-plus/modules/bx-csv/README.md)
+      * [Reference](boxlang-framework/boxlang-plus/modules/bx-csv/reference/README.md)
+        * [Built-In Functions](boxlang-framework/boxlang-plus/modules/bx-csv/reference/built-in-functions/README.md)
+          * [CSV](boxlang-framework/boxlang-plus/modules/bx-csv/reference/built-in-functions/CSV.md)
+        * [Fluent API](boxlang-framework/boxlang-plus/modules/bx-csv/reference/Fluent%20API/README.md)
     * [Couchbase +](boxlang-framework/boxlang-plus/modules/bx-couchbase.md)
     * [LDAP +](boxlang-framework/boxlang-plus/modules/bx-ldap/README.md)
       * [Reference](boxlang-framework/boxlang-plus/modules/bx-ldap/reference/README.md)
