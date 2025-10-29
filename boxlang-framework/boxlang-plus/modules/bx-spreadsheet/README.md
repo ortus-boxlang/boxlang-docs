@@ -45,6 +45,7 @@ The **BoxLang Spreadsheet Module** (`bx-spreadsheet`) offers three distinct APIs
 - 🔗 **Hyperlinks** - Add and manage cell hyperlinks
 - 💬 **Comments** - Add cell comments with rich formatting
 - 📎 **Merge Cells** - Combine cells for better layout
+- 🚀 **Large File Streaming** - Memory-efficient processing of large spreadsheets using Consumer callbacks
 
 ---
 

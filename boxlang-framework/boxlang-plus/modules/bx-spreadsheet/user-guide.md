@@ -202,6 +202,52 @@ json = sheet.toJson();
 csv = sheet.toCSV();
 ```
 
+### Streaming Large Files
+
+For large spreadsheets with thousands of rows, use the `process()` method to stream data row-by-row without loading the entire file into memory:
+
+```js
+// Stream all rows from a file
+Spreadsheet().process( "large-file.xlsx", ( row ) => {
+    // Process each row immediately
+    println( "Processing: #row[1]#" );
+    saveToDatabase( row );
+});
+
+// Stream specific sheet
+Spreadsheet().process( "report.xlsx", "Sales Data", ( row ) => {
+    processOrder( row );
+});
+
+// Stream with filtering
+rowCount = 0;
+Spreadsheet().process( "huge-file.xlsx", ( row ) => {
+    if ( row[1] != "Header" ) {  // Skip header
+        importData( row );
+        rowCount++;
+    }
+});
+println( "Imported #rowCount# rows" );
+```
+
+{% hint style="success" %}
+**Memory Efficient**: Streaming keeps only ~100 rows in memory at a time, allowing you to process files with millions of rows. See the [Large File Streaming Guide](streaming.md) for complete details.
+{% endhint %}
+
+**When to use streaming:**
+
+- Files with > 10,000 rows
+- Import/export operations
+- Sequential data processing
+- Memory-constrained environments
+
+**When to use traditional loading:**
+
+- Files with < 10,000 rows
+- Random access to rows
+- Modifying and saving files
+- Multiple passes over data
+
 ---
 
 ## 🎨 Formatting
@@ -625,6 +671,7 @@ sheet.save();
 ### 1. Use Method Chaining
 
 **Good:**
+
 ```js
 Spreadsheet( "report.xlsx" )
     .setRowData( 1, headers )
@@ -635,6 +682,7 @@ Spreadsheet( "report.xlsx" )
 ```
 
 **Avoid:**
+
 ```js
 sheet = Spreadsheet( "report.xlsx" );
 sheet.setRowData( 1, headers );
