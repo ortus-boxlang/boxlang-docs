@@ -1,14 +1,12 @@
+# PDFFormParam
 
-# Component: `PDFFormParam`
+***
 
---------------------------------------------------------------------------
- _invoke()
- --------------------------------------------------------------------------
- Provides additional information to the PDFForm component.
+## \_invoke()
 
- {% hint style="danger" %}
-This component is only available to [Boxlang+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](https://forgebox.io/view/bx-plus) with a limited trial.
-{% endhint %}
+Provides additional information to the PDFForm component.
+
+{% include "../../../../../../.gitbook/includes/bx-plus-functionality-notice.md" %}
 
 ## Component Signature
 
@@ -20,12 +18,11 @@ index=[integer] />
 
 ### Attributes
 
-
-| Atrribute | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `name` | `string` | `true` | String - The field name on the PDF form.<br>                 Required. |  |
-| `value` | `string` | `true` | String - The value to associate with the field name.<br>                  For interactive fields, specify a ColdFusion variable.<br>                  Required. |  |
-| `index` | `integer` | `false` | Integer - Index associated with the field name. If multiple<br>                  fields have the same name, use the index value to locate one of them.<br>                  Applies to forms created in LiveCycle only. Forms created in Acrobat<br>                  cannot contain more than one field with the same name.<br>                  Default: 1 | `1` |
+| Atrribute | Type      | Required | Description                                                                                                                                                                                                                                                                                 | Default |
+| --------- | --------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `name`    | `string`  | `true`   | <p>String - The field name on the PDF form.<br>Required.</p>                                                                                                                                                                                                                                |         |
+| `value`   | `string`  | `true`   | <p>String - The value to associate with the field name.<br>For interactive fields, specify a ColdFusion variable.<br>Required.</p>                                                                                                                                                          |         |
+| `index`   | `integer` | `false`  | <p>Integer - Index associated with the field name. If multiple<br>fields have the same name, use the index value to locate one of them.<br>Applies to forms created in LiveCycle only. Forms created in Acrobat<br>cannot contain more than one field with the same name.<br>Default: 1</p> | `1`     |
 
 ## Examples
 
@@ -194,14 +191,12 @@ index=[integer] />
 
 ## Field Naming Best Practices
 
-- Use consistent, descriptive field names
-- Avoid special characters in field names  
-- For repeating sections, use index values consistently
-- Test field names by reading the form structure first
+* Use consistent, descriptive field names
+* Avoid special characters in field names
+* For repeating sections, use index values consistently
+* Test field names by reading the form structure first
 
 ## Related Components
 
-- [PDFForm](PDFForm.md) - Main PDF form manipulation component
-- [PDF](PDF.md) - General PDF manipulation component
-
-
+* [PDFForm](PDFForm.md) - Main PDF form manipulation component
+* [PDF](PDF.md) - General PDF manipulation component

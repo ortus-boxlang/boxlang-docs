@@ -1,14 +1,12 @@
+# PDFForm
 
-# Component: `PDFForm`
+***
 
---------------------------------------------------------------------------
- _invoke()
- --------------------------------------------------------------------------
- Manipulates existing forms created in Adobe Acrobat and Adobe LiveCycle Designer.
+## \_invoke()
 
- {% hint style="danger" %}
-This component is only available to [Boxlang+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](https://forgebox.io/view/bx-plus) with a limited trial.
-{% endhint %}
+Manipulates existing forms created in Adobe Acrobat and Adobe LiveCycle Designer.
+
+{% include "../../../../../../.gitbook/includes/this-component-is-only-avai....md" %}
 
 ## Component Signature
 
@@ -26,18 +24,17 @@ result=[string] />
 
 ### Attributes
 
-
-| Atrribute | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `action` | `string` | `true` | String - The action to perform on the PDF form.<br>                   Valid values: "populate", "read"<br>                   Required. |  |
-| `source` | `any` | `true` | Any - The source PDF document to operate on. Can be a file path,<br>                   byte array, or PDF document variable.<br>                   Required. |  |
-| `destination` | `string` | `false` | String - The output file pathname for populate action.<br>                        File extension determines format (PDF or XDP for LiveCycle forms).<br>                        If not specified, form is displayed in browser. |  |
-| `overwrite` | `boolean` | `false` | Boolean - Whether to overwrite the destination file.<br>                      Default: false | `false` |
-| `overwriteData` | `boolean` | `false` | Boolean - Whether to overwrite existing data in form fields<br>                          with data from the data source (populate action only).<br>                          Default: false | `false` |
-| `XMLdata` | `string` | `false` | String - XML data file pathname, XML object, or XML string.<br>                    For populate: data to populate form fields.<br>                    For read: variable name to store extracted XML data. |  |
-| `fdf` | `boolean` | `false` | Boolean - If true, creates FDF format instead of XML (populate action).<br>                Default: false | `false` |
-| `fdfdata` | `string` | `false` | String - FDF data file pathname.<br>                    For populate: file to import FDF data from.<br>                    For read: file to export FDF data to. |  |
-| `result` | `string` | `false` | String - ColdFusion structure variable name to contain form field values<br>                   (read action). Either result or XMLdata must be specified for read action. |  |
+| Atrribute       | Type      | Required | Description                                                                                                                                                                            | Default |
+| --------------- | --------- | -------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `action`        | `string`  | `true`   | <p>String - The action to perform on the PDF form.<br>Valid values: "populate", "read"<br>Required.</p>                                                                                |         |
+| `source`        | `any`     | `true`   | <p>Any - The source PDF document to operate on. Can be a file path,<br>byte array, or PDF document variable.<br>Required.</p>                                                          |         |
+| `destination`   | `string`  | `false`  | <p>String - The output file pathname for populate action.<br>File extension determines format (PDF or XDP for LiveCycle forms).<br>If not specified, form is displayed in browser.</p> |         |
+| `overwrite`     | `boolean` | `false`  | <p>Boolean - Whether to overwrite the destination file.<br>Default: false</p>                                                                                                          | `false` |
+| `overwriteData` | `boolean` | `false`  | <p>Boolean - Whether to overwrite existing data in form fields<br>with data from the data source (populate action only).<br>Default: false</p>                                         | `false` |
+| `XMLdata`       | `string`  | `false`  | <p>String - XML data file pathname, XML object, or XML string.<br>For populate: data to populate form fields.<br>For read: variable name to store extracted XML data.</p>              |         |
+| `fdf`           | `boolean` | `false`  | <p>Boolean - If true, creates FDF format instead of XML (populate action).<br>Default: false</p>                                                                                       | `false` |
+| `fdfdata`       | `string`  | `false`  | <p>String - FDF data file pathname.<br>For populate: file to import FDF data from.<br>For read: file to export FDF data to.</p>                                                        |         |
+| `result`        | `string`  | `false`  | <p>String - ColdFusion structure variable name to contain form field values<br>(read action). Either result or XMLdata must be specified for read action.</p>                          |         |
 
 ## Examples
 
@@ -219,12 +216,12 @@ result=[string] />
 
 The PDFForm component supports all standard PDF form field types:
 
-- **Text Fields** - Single and multi-line text input
-- **Checkboxes** - Boolean values (true/false)
-- **Radio Buttons** - Single selection from options
-- **Dropdown Lists** - Selection from predefined options
-- **Signature Fields** - Digital signature areas
-- **Date Fields** - Date picker controls
+* **Text Fields** - Single and multi-line text input
+* **Checkboxes** - Boolean values (true/false)
+* **Radio Buttons** - Single selection from options
+* **Dropdown Lists** - Selection from predefined options
+* **Signature Fields** - Digital signature areas
+* **Date Fields** - Date picker controls
 
 ## Data Format Requirements
 
@@ -232,7 +229,5 @@ When populating forms, ensure your data structure matches the field names in the
 
 ## Related Components
 
-- [PDF](PDF.md) - Main PDF manipulation component
-- [PDFFormParam](PDFFormParam.md) - Specify individual form field parameters
-
-
+* [PDF](PDF.md) - Main PDF manipulation component
+* [PDFFormParam](PDFFormParam.md) - Specify individual form field parameters

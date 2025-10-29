@@ -1,11 +1,8 @@
-
-# Component: `PDFParam`
+# PDFParam
 
 Component which specifies header, footer, and pagebreaks within a document body
 
-{% hint style="danger" %}
-This component is only available to [Boxlang+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](https://forgebox.io/view/bx-plus) with a limited trial.
-{% endhint %}
+{% include "../../../../../../.gitbook/includes/this-component-is-only-avai....md" %}
 
 ## Component Signature
 
@@ -23,18 +20,17 @@ note=[string] />
 
 ### Attributes
 
-
-| Atrribute | Type | Required | Description | Default |
-|----------|------|----------|-------------|---------|
-| `source` | `string` | `false` |  |  |
-| `filename` | `string` | `false` |  |  |
-| `encoding` | `string` | `false` |  | `UTF-8` |
-| `mimeType` | `string` | `false` |  |  |
-| `description` | `string` | `false` |  |  |
-| `password` | `string` | `false` |  |  |
-| `iconname` | `string` | `false` |  | `Draft` |
-| `coordinates` | `string` | `false` |  |  |
-| `note` | `string` | `false` |  |  |
+| Atrribute     | Type     | Required | Description | Default |
+| ------------- | -------- | -------- | ----------- | ------- |
+| `source`      | `string` | `false`  |             |         |
+| `filename`    | `string` | `false`  |             |         |
+| `encoding`    | `string` | `false`  |             | `UTF-8` |
+| `mimeType`    | `string` | `false`  |             |         |
+| `description` | `string` | `false`  |             |         |
+| `password`    | `string` | `false`  |             |         |
+| `iconname`    | `string` | `false`  |             | `Draft` |
+| `coordinates` | `string` | `false`  |             |         |
+| `note`        | `string` | `false`  |             |         |
 
 ## Examples
 
@@ -193,22 +189,20 @@ note=[string] />
 
 ## Common Use Cases
 
-- **Document Assembly** - Combining multiple PDF sections into complete reports
-- **Archive Creation** - Merging related documents for storage
-- **Report Generation** - Assembling dynamic reports from template pieces
-- **Workflow Processing** - Combining documents at different workflow stages
+* **Document Assembly** - Combining multiple PDF sections into complete reports
+* **Archive Creation** - Merging related documents for storage
+* **Report Generation** - Assembling dynamic reports from template pieces
+* **Workflow Processing** - Combining documents at different workflow stages
 
 ## Best Practices
 
-- Always specify meaningful descriptions for merged sections
-- Use consistent encoding (UTF-8) for international content
-- Store passwords securely, not in plain text code
-- Test merge operations with sample documents first
-- Handle password-protected sources with appropriate error handling
+* Always specify meaningful descriptions for merged sections
+* Use consistent encoding (UTF-8) for international content
+* Store passwords securely, not in plain text code
+* Test merge operations with sample documents first
+* Handle password-protected sources with appropriate error handling
 
 ## Related Components
 
-- [PDF](PDF.md) - Main PDF manipulation component
-- [PDFForm](PDFForm.md) - PDF form field manipulation
-
-
+* [PDF](PDF.md) - Main PDF manipulation component
+* [PDFForm](PDFForm.md) - PDF form field manipulation
