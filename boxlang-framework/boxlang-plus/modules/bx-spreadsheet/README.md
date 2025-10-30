@@ -257,13 +257,3 @@ Spreadsheet("output.xlsx")
 ```
 
 ---
-
-## 🤝 Contributing
-
-We welcome contributions! Please see the [Contributing Guide](https://github.com/ortus-boxlang/bx-spreadsheet) for details.
-
----
-
-## 📄 License
-
-Apache License 2.0 - See [LICENSE](https://github.com/ortus-boxlang/bx-spreadsheet/blob/main/LICENSE) file for details.
