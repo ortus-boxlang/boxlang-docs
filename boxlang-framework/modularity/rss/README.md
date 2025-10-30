@@ -407,6 +407,7 @@ bx:feed
 The RSS module automatically detects and includes extension fields (iTunes podcast, Media RSS) when they are present in a feed, without requiring you to explicitly enable them.
 
 **Auto-Detection Process**:
+
 1. When no `itunes` or `mediaRss` flags are specified, the module starts with the iTunes reader
 2. It checks the first item and channel for iTunes-specific fields
 3. If no iTunes fields are found, it switches to the Media RSS reader
@@ -426,6 +427,7 @@ bx:feed source="feed.xml" result="data" mediaRss="true";
 When iTunes podcast extensions are detected, these additional fields are available:
 
 **Channel Level** (in `feedData.channel`):
+
 - `itunesAuthor` - Podcast author
 - `itunesSubtitle` - Podcast subtitle
 - `itunesSummary` - Longer description
@@ -436,6 +438,7 @@ When iTunes podcast extensions are detected, these additional fields are availab
 - `itunesOwnerEmail` - Owner email
 
 **Item Level** (in each `feedData.items[]`):
+
 - `itunesTitle` - Episode title
 - `itunesDuration` - Duration (HH:MM:SS format)
 - `itunesEpisode` - Episode number
