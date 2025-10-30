@@ -59,7 +59,7 @@ The module will automatically register and be available as `bxrss` in your BoxLa
 
 The simplest way to read an RSS feed is with the `rss()` function:
 
-```boxlang
+```javascript
 feedData = rss( "https://example.com/feed.xml" );
 
 println( "Found #feedData.items.size()# items" );
@@ -70,7 +70,7 @@ println( "Feed title: #feedData.channel.title#" );
 
 You can also use the `<bx:feed>` component for more control:
 
-```boxlang
+```javascript
 bx:feed
     action="read"
     source="https://example.com/feed.xml"
@@ -114,7 +114,7 @@ Generate new RSS/Atom feeds from your data.
 
 Read and display feed items:
 
-```boxlang
+```javascript
 bx:feed
     action="read"
     source="https://example.com/blog/feed.xml"
@@ -134,7 +134,7 @@ feedData.items.each( function( item ) {
 
 Automatically detects and includes iTunes podcast fields:
 
-```boxlang
+```javascript
 bx:feed
     action="read"
     source="https://feeds.example.com/podcast.xml"
@@ -156,7 +156,7 @@ podcast.items.each( function( episode ) {
 
 Automatically detects and includes Media RSS thumbnail/content fields:
 
-```boxlang
+```javascript
 bx:feed
     action="read"
     source="https://vimeo.com/channels/staffpicks/videos/rss"
@@ -177,7 +177,7 @@ videos.items.each( function( video ) {
 
 Apply custom filters to feed items:
 
-```boxlang
+```javascript
 bx:feed
     action="read"
     source="https://news.example.com/feed.xml"
@@ -196,7 +196,7 @@ recentNews.items.each( function( item ) {
 
 Use different output variables simultaneously:
 
-```boxlang
+```javascript
 bx:feed
     action="read"
     source="https://example.com/feed.xml"
@@ -226,7 +226,7 @@ println( "XML length: #rawXml.len()# characters" );
 
 Generate an RSS 2.0 feed from your data:
 
-```boxlang
+```javascript
 feedProps = {
     "version": "rss_2.0",
     "title": "My Blog",
@@ -271,7 +271,7 @@ println( "Feed created with #feedItems.size()# items" );
 
 Generate a podcast feed with iTunes extensions:
 
-```boxlang
+```javascript
 podcastProps = {
     "version": "rss_2.0",
     "title": "My Podcast",
@@ -320,7 +320,7 @@ bx:feed
 
 Merge items from multiple feeds:
 
-```boxlang
+```javascript
 sources = [
     "https://blog1.example.com/feed.xml",
     "https://blog2.example.com/feed.xml",
@@ -347,7 +347,7 @@ aggregated.items.each( function( item ) {
 
 Generate feed from database query results:
 
-```boxlang
+```javascript
 // Get blog posts from database
 posts = queryExecute(
     "SELECT title, url, content, published_date, author_email
@@ -389,7 +389,7 @@ bx:feed
 
 Use custom User-Agent for HTTP requests:
 
-```boxlang
+```javascript
 bx:feed
     action="read"
     source="https://api.example.com/feed.xml"
@@ -413,7 +413,7 @@ The RSS module automatically detects and includes extension fields (iTunes podca
 4. Extension fields are only included in the output when actually present
 
 **Explicit Override**:
-```boxlang
+```javascript
 // Force iTunes reader (even if feed has no iTunes fields)
 bx:feed source="feed.xml" result="data" itunes="true";
 
