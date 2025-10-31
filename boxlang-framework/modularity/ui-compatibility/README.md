@@ -1,8 +1,7 @@
 ---
 description: >-
   This module provides UI layout, grid, and AJAX capabilities to the BoxLang
-  language, making it easy to create rich, interactive web applications with
-  familiar CFML syntax.
+  language, making it easy for you to migrate your CFML Applications to BoxLang.
 icon: table
 ---
 
