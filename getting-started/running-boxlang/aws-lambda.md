@@ -352,12 +352,12 @@ When your Lambda is exposed as a URL, the runtime can automatically route to dif
   └── UserProfile.bx     # Handles /user-profile
 ```
 
-Each class should implement a `handler` function (or `run` as fallback):
+Each class should implement a `run` function:
 
 ```groovy
 // Products.bx
 class {
-    function handler( event, context ) {
+    function run( event, context, response ) {
         return {
             "statusCode" : 200,
             "body" : serializeJSON( getProductCatalog() )
@@ -380,9 +380,9 @@ The routing follows these conventions:
 * `/products` → `Products.bx`
 * `/home-savings` → `HomeSavings.bx`
 * `/user-profile` → `UserProfile.bx`
-* `/api/users` → `Api/Users.bx`
+* `/user_profile` → `UserProfile.bx`
 
-Hyphens are converted to PascalCase, and forward slashes create subdirectory structure.
+Hyphens and underscores are converted to PascalCase. Subdirectories are not currently supported.
 
 ## Multiple Functions Header
 
