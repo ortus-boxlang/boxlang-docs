@@ -28,7 +28,7 @@ The primary way to access BoxCache instances in BoxLang is through the `cache()`
 // Get the default cache (usually BoxCache provider)
 defaultCache = cache();
 
-// Get a named BoxCache instance  
+// Get a named BoxCache instance
 userCache = cache("userSessions");
 productCache = cache("productCatalog");
 
@@ -275,18 +275,18 @@ reportData = getMemoizedData( "report:monthly:2024", function() {
 function getWithCircuitBreaker( key, fallbackFunction ) {
     var circuitKey = "circuit:" & key
     var circuitState = cache().get( circuitKey ).orElse( "closed" )
-    
+
     if ( circuitState == "open" ) {
         // Circuit is open, use fallback
         return fallbackFunction()
     }
-    
+
     return cache().get( key )
         .ifEmpty( function() {
             // Track failures
             var failures = cache().get( "failures:" & key ).orElse( 0 ) + 1
             cache().set( "failures:" & key, failures, 300 )
-            
+
             if ( failures >= 5 ) {
                 // Open circuit
                 cache().set( circuitKey, "open", 60 )
@@ -298,13 +298,13 @@ function getWithCircuitBreaker( key, fallbackFunction ) {
 // Cached computation with dependency invalidation
 function getCachedWithDependencies( key, dependencies, computeFunction ) {
     var cacheKey = key & ":" & hash( serialize( dependencies ) )
-    
+
     return cache().get( cacheKey )
         .filter( function( cached ) {
             // Validate dependencies haven't changed
             return dependencies.every( function( dep ) {
                 var depValue = cache().get( "dep:" & dep )
-                return depValue.isPresent() && 
+                return depValue.isPresent() &&
                        depValue.get().timestamp == cached.depTimestamp
             } )
         } )
@@ -342,15 +342,15 @@ for ( var key in results ) {
 // Load missing users and cache them
 if ( !arrayIsEmpty( missingKeys ) ) {
     var missingUserIDs = missingKeys.map( ( key ) -> listLast( key, ":" ) )
-    
+
     var loadedUsers = loadUsersFromDatabase( missingUserIDs )
     var cacheEntries = { }
-    
+
     for ( var user in loadedUsers ) {
         arrayAppend( users, user )
         cacheEntries[ "user:" & user.userID ] = user
     }
-    
+
     cache().set( cacheEntries, 3600 )
 }
 ```
@@ -459,7 +459,7 @@ userKeys = cache().getKeys(cacheFilter("user:*"))
 // Stream processing for large caches
 cache().getKeysStream()
     .filter( (key) => {
-        return key.startsWith("temp:") && 
+        return key.startsWith("temp:") &&
                cache().getQuiet(key).isPresent()
     })
     .forEach( (key) => {
@@ -477,7 +477,7 @@ tempFilter = cacheFilter("temp:*")           // All temp keys
 userFilter = cacheFilter("user:session:*")   // User sessions
 apiFilter = cacheFilter("api:v?:*")          // API versions (v1, v2, etc.)
 
-// Regex filters  
+// Regex filters
 emailFilter = cacheFilter(".*@domain\.com$", true )
 idFilter = cacheFilter("^id_\d{4,6}$", true)
 
@@ -485,9 +485,9 @@ idFilter = cacheFilter("^id_\d{4,6}$", true)
 expiredFilter = (key) => {
     var entry = cache().getQuiet(key)
     if (!entry.isPresent()) return false;
-    
+
     var data = entry.get();
-    return structKeyExists(data, "expiry") && 
+    return structKeyExists(data, "expiry") &&
            data.expiry < now();
 };
 
@@ -566,7 +566,7 @@ writeOutput("Object Store: " & properties.objectStore)
 
 // Key configuration properties:
 // - maxObjects: Maximum number of cached objects
-// - defaultTimeout: Default expiration time in seconds  
+// - defaultTimeout: Default expiration time in seconds
 // - defaultLastAccessTimeout: Default idle timeout
 // - evictionPolicy: LRU, MRU, LFU, MFU, FIFO, LIFO, Random
 // - objectStore: ConcurrentHashMap, ConcurrentSoftReference, Disk, Custom
@@ -629,16 +629,16 @@ BoxCache broadcasts events for all major operations:
 // Cache events are automatically announced:
 // - BEFORE_CACHE_ELEMENT_REMOVED / AFTER_CACHE_ELEMENT_REMOVED
 // - AFTER_CACHE_ELEMENT_INSERT
-// - AFTER_CACHE_ELEMENT_UPDATED  
+// - AFTER_CACHE_ELEMENT_UPDATED
 // - AFTER_CACHE_CLEAR_ALL
 
 // Listen to events (if you have interceptor components)
 class {
-    
+
     function afterCacheElementInsert(event, data) {
         writeLog("Cache item added: " & data.key, "info")
     }
-    
+
     function afterCacheElementRemoved(event, data) {
         writeLog("Cache item removed: " & data.key & ", cleared: " & data.cleared, "info")
     }
@@ -651,28 +651,28 @@ class {
 
 ```javascript
 class {
-    
+
     function storeUserSession(sessionID, userData) {
         var sessionKey = "session:" & sessionI
         cache("sessions").set(sessionKey, userData, 3600, 180 ) // 1 hour, 30 min idle
     }
-    
+
     function getUserSession(sessionID) {
         var sessionKey = "session:" & sessionID
         return cache("sessions").get(sessionKey)
     }
-    
+
     function updateSessionActivity(sessionID) {
         var sessionKey = "session:" & sessionID
         var session = cache("sessions").get(sessionKey)
-        
+
         if (session.isPresent()) {
             var sessionData = session.get()
             sessionData.lastActivity = now()
             cache("sessions").set(sessionKey, sessionData, 3600, 1800)
         }
     }
-    
+
     function clearUserSessions(userID) {
         var filter = cacheFilter("session:*:user:" & userID)
         cache("sessions").clear(filter)
@@ -684,15 +684,15 @@ class {
 
 ```javascript
 class {
-    
+
     function getCachedAPIResponse(endpoint, params) {
         var cacheKey = "api:" & endpoint & ":" & hash(serialize(params));
-        
+
         return cache("api").getOrSet(cacheKey, function() {
             return makeAPICall(endpoint, params);
         }, 600); // 10 minutes
     }
-    
+
     function invalidateAPICache(endpoint) {
         if (isNull(endpoint)) {
             // Clear all API cache
@@ -702,10 +702,10 @@ class {
             cache("api").clear(cacheFilter("api:" & endpoint & ":*"));
         }
     }
-    
+
     function warmAPICache() {
         var popularEndpoints = getPopularEndpoints();
-        
+
         for (var endpoint in popularEndpoints) {
             getCachedAPIResponse(endpoint.name, endpoint.defaultParams);
         }
@@ -717,22 +717,22 @@ class {
 
 ```javascript
 class {
-    
+
     function getCachedQuery(sql, params, timeout = 1800) {
         var cacheKey = "query:" & hash(sql & params.tostring() );
-        
+
         return cache("queries").getOrSet(cacheKey, function() {
             return queryExecute(sql, params);
         }, timeout);
     }
-    
+
     function invalidateQueryCache(tables) {
         for (var table in tables) {
             var filter = cacheFilter("query:*" & table & "*");
             cache("queries").clear(filter);
         }
     }
-    
+
     function getQueryCacheStats() {
         var stats = cache("queries").getStats();
         return {
@@ -749,15 +749,15 @@ class {
 
 ```javascript
 class {
-    
+
     function getData(key) {
         // Try L1 cache (fast, small)
         var l1Result = cache("l1").get(key);
         if (l1Result.isPresent()) {
             return l1Result.get();
         }
-        
-        // Try L2 cache (slower, larger)  
+
+        // Try L2 cache (slower, larger)
         var l2Result = cache("l2").get(key);
         if (l2Result.isPresent()) {
             var data = l2Result.get();
@@ -765,17 +765,17 @@ class {
             cache("l1").set(key, data, 300); // 5 minutes in L1
             return data;
         }
-        
+
         // Load from source
         var data = loadFromDatabase(key);
-        
+
         // Store in both levels
         cache("l1").set(key, data, 300);     // 5 minutes
         cache("l2").set(key, data, 3600);    // 1 hour
-        
+
         return data;
     }
-    
+
     function invalidateData(key) {
         cache("l1").clear(key);
         cache("l2").clear(key);
@@ -808,42 +808,42 @@ class {
 function loadMultipleUsers(userIDs) {
     var cacheKeys = {};
     var missingIDs = [];
-    
+
     // Build cache keys
     for (var userID in userIDs) {
         cacheKeys["user:" & userID] = userID;
     }
-    
+
     // Bulk lookup
     var results = cache("users").get(arrayToList(structKeyArray(cacheKeys)));
     var users = {};
-    
+
     // Process results and identify misses
     for (var key in results) {
         var result = results[key];
         var userID = cacheKeys[key];
-        
+
         if (result.isPresent()) {
             users[userID] = result.get();
         } else {
             arrayAppend(missingIDs, userID);
         }
     }
-    
+
     // Load missing users
     if (!arrayIsEmpty(missingIDs)) {
         var missingUsers = loadUsersFromDatabase(missingIDs);
         var entriesToCache = {};
-        
+
         for (var userID in missingUsers) {
             users[userID] = missingUsers[userID];
             entriesToCache["user:" & userID] = missingUsers[userID];
         }
-        
+
         // Bulk cache the missing users
         cache("users").set(entriesToCache, 3600);
     }
-    
+
     return users;
 }
 ```
@@ -855,27 +855,27 @@ function loadMultipleUsers(userIDs) {
 function monitorCacheMemory() {
     var caches = cacheNames();
     var report = {};
-    
+
     for (var cacheName in caches) {
         var cacheInstance = cache(cacheName);
         var config = cacheInstance.getConfig();
         var size = cacheInstance.getSize();
         var maxSize = config.properties.maxObjects;
-        
+
         report[cacheName] = {
             "size": size,
             "maxSize": maxSize,
             "utilizationPercent": (size / maxSize) * 100,
             "stats": cacheInstance.getStats()
         };
-        
+
         // Alert if approaching capacity
         if ((size / maxSize) > 0.8) {
-            writeLog("Cache " & cacheName & " is " & 
+            writeLog("Cache " & cacheName & " is " &
                     numberFormat((size/maxSize)*100, "0.0") & "% full", "warn");
         }
     }
-    
+
     return report;
 }
 ```
@@ -894,17 +894,17 @@ function resilientCacheOperation(key, fallbackFunction) {
     } catch (any e) {
         writeLog("Cache get error for key " & key & ": " & e.message, "error");
     }
-    
+
     // Fallback to direct operation
     var data = fallbackFunction();
-    
+
     // Try to cache the result
     try {
         cache().set(key, data, 1800);
     } catch (any e) {
         writeLog("Cache set error for key " & key & ": " & e.message, "warn");
     }
-    
+
     return data;
 }
 ```
@@ -917,46 +917,46 @@ function checkCacheHealth() {
         "status": "healthy",
         "issues": []
     };
-    
+
     try {
         var testKey = "healthcheck:" & createUUID();
         var testValue = "test";
-        
+
         // Test write
         cache().set(testKey, testValue, 60);
-        
+
         // Test read
         var result = cache().get(testKey);
         if (!result.isPresent() || result.get() != testValue) {
             arrayAppend(health.issues, "Cache read/write test failed");
             health.status = "unhealthy";
         }
-        
+
         // Test delete
         cache().clear(testKey);
-        
+
         // Check stats
         var stats = cache().getStats();
         if (stats.getHitRate() < 0.5 && stats.getHits() > 100) {
             arrayAppend(health.issues, "Low hit rate: " & numberFormat(stats.getHitRate() * 100, "0.00") & "%");
             health.status = "degraded";
         }
-        
+
         // Check size
         var size = cache().getSize();
         var config = cache().getConfig();
         var maxSize = config.properties.maxObjects;
-        
+
         if (size > (maxSize * 0.9)) {
             arrayAppend(health.issues, "Cache nearly full: " & size & "/" & maxSize);
             health.status = "degraded";
         }
-        
+
     } catch (any e) {
         arrayAppend(health.issues, "Cache operation failed: " & e.message);
         health.status = "unhealthy";
     }
-    
+
     return health;
 }
 ```
@@ -968,7 +968,7 @@ function checkCacheHealth() {
 ```javascript
 // Use consistent, hierarchical naming
 "user:profile:" & userID
-"session:data:" & sessionID  
+"session:data:" & sessionID
 "product:details:" & productID
 "api:response:" & version & ":" & endpoint
 
@@ -1014,14 +1014,14 @@ function warmCriticalCaches() {
     // Warm high-traffic reference data
     var appConfig = loadApplicationConfig()
     cache().set("config:app", appConfig, 86400)
-    
+
     // Warm popular user sessions
     var activeUsers = getActiveUserIDs()
     for (var userID in activeUsers) {
         var userData = loadUserProfile(userID)
         cache().set("user:profile:" & userID, userData, 3600)
     }
-    
+
     // Warm frequently accessed products
     var popularProducts = getPopularProductIDs()
     for (var productID in popularProducts) {

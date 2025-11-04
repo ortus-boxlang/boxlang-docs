@@ -1,5 +1,6 @@
 ---
 description: The CacheService manages all the caches in a BoxLang application
+icon: database
 ---
 
 # Cache Service
@@ -49,7 +50,7 @@ cacheService = cacheService()
 // Access the default cache
 defaultCache = cacheService.getDefaultCache()
 
-// Access a named cache  
+// Access a named cache
 myCache = cacheService.getCache( "myCache" )
 
 // Using BIFs (recommended)
@@ -126,8 +127,8 @@ properties = {
 }
 
 cache = cacheService().createCache(
-    "highPerformanceCache", 
-    "BoxLang", 
+    "highPerformanceCache",
+    "BoxLang",
     properties
 )
 ```
@@ -288,20 +289,20 @@ The equivalent direct service operations would require implementing `ICacheKeyFi
 // Application startup - using BIFs
 function initializeApplicationCaches() {
     service = cacheService()
-    
+
     // Create application-specific caches
     service.createCache( "userSessions", "BoxLang", {
         "maxObjects": 10000,
         "defaultTimeout": 1800,
         "evictionPolicy": "LRU"
     } )
-    
+
     service.createCache( "apiResponses", "BoxLang", {
         "maxObjects": 5000,
         "defaultTimeout": 300,
         "evictionPolicy": "LFU"
     } )
-    
+
     // Verify caches were created
     println( "Created caches: " & cacheNames().toList() )
 }
@@ -310,15 +311,15 @@ function initializeApplicationCaches() {
 function getUserData( userID ) {
     var cacheKey = "user:#userID#"
     var userData = cache( "userSessions" ).get( cacheKey )
-    
+
     if ( userData.isPresent() ) {
         return userData.get()
     }
-    
+
     // Load and cache user data
     userData = loadUserFromDatabase( userID )
     cache( "userSessions" ).set( cacheKey, userData, 1800 )
-    
+
     return userData
 }
 ```
@@ -328,13 +329,13 @@ function getUserData( userID ) {
 ```javascript
 // BoxLang service layer calling Java
 class {
-    
+
     property name="cacheManager" inject="CacheManager"
-    
+
     function setupApplicationCaches() {
         // Call Java service to create caches
         cacheManager.setupApplicationCaches()
-        
+
         // The cache will be accessible from BoxLang BIFs
         writeLog( "Created system cache, accessible via cache('systemCache')", "info" )
     }
@@ -348,15 +349,15 @@ cache( "systemCache" ).set( "lastUpdate", now() )
 
 // BoxLang component using mixed approach
 component {
-    
+
     function initializeCaches() {
         // Create some caches via BoxLang
         cacheService().createDefaultCache( "userSessions" )
-        
+
         // Create others via Java (if you have Java modules)
         var javaService = createObject( "java", "com.mycompany.CacheSetupService" )
         javaService.createAdvancedCaches()
-        
+
         // All caches accessible via BIFs
         println( "Available caches: " & cacheNames().toList() )
     }
@@ -406,7 +407,7 @@ try {
 } catch ( any e ) {
     // Handle cache not found
     writeLog( "Cache not found: " & e.message, "warn" )
-    
+
     // Create the cache if needed
     cache = cacheService().createDefaultCache( "nonExistentCache" )
 }
@@ -434,11 +435,11 @@ isEnabled = cache.isEnabled()
 // Monitor cache performance
 function monitorCaches() {
     caches = cacheNames()
-    
+
     for ( var cacheName in caches ) {
         cache = cache( cacheName )
         stats = cache.getStats()
-        
+
         writeLog( "Cache [#cacheName#]: Hits=#stats.getHits()#, Misses=#stats.getMisses()#, Size=#cache.getSize()#", "info" )
     }
 }
@@ -479,7 +480,7 @@ function cleanupTemporaryCache( cacheName ) {
 function createOptimalCache( name, requirements ) {
     var provider = ""
     var properties = {}
-    
+
     if ( requirements.isDistributed ) {
         provider = "Redis"
         properties.host = requirements.redisHost
@@ -492,10 +493,10 @@ function createOptimalCache( name, requirements ) {
         provider = "BoxLang"
         properties.objectStore = "ConcurrentHashMap"
     }
-    
+
     properties.maxObjects = requirements.maxSize
     properties.defaultTimeout = requirements.timeoutSeconds
-    
+
     return cacheService().createCache( name, provider, properties )
 }
 ```
@@ -522,7 +523,7 @@ function getOrCreateCache( cacheName ) {
 // Initialize application-specific caches during startup
 function initializeApplicationCaches() {
     var service = cacheService()
-    
+
     // User session cache
     service.createDefaultCache( "user.sessions", {
         "name": "user.sessions",
@@ -533,10 +534,10 @@ function initializeApplicationCaches() {
             "evictionPolicy": "LRU"
         }
     } )
-    
+
     // API response cache
     service.createDefaultCache( "api.responses", {
-        "name": "api.responses", 
+        "name": "api.responses",
         "provider": "BoxLang",
         "properties": {
             "maxObjects": 5000,
@@ -552,13 +553,13 @@ function initializeApplicationCaches() {
 ```javascript
 // BoxLang component for module integration
 class {
-    
+
     function onStartup( runtime ) {
         var cacheService = runtime.getCacheService()
-        
+
         // Register custom provider
         cacheService.registerProvider( "MyModuleCache", createObject( "java", "com.mymodule.MyModuleCacheProvider" ) )
-        
+
         // Create module-specific caches
         cacheService.createCache( "module.data", "MyModuleCache", moduleConfig )
     }
@@ -572,24 +573,24 @@ class {
 ```javascript
 // Cache-enabled service component
 class {
-    
+
     function getUserById( userID ) {
         var cacheKey = "user:#userID#"
         var result = cache( "users" ).get( cacheKey )
-        
+
         if ( result.isPresent() ) {
             return result.get()
         }
-        
+
         // Load from database
         var user = userDAO.findById( userID )
-        
+
         // Cache for 30 minutes
         cache( "users" ).set( cacheKey, user, 1800 )
-        
+
         return user
     }
-    
+
     function invalidateUser( userID ) {
         var cacheKey = "user:#userID#"
         cache( "users" ).clear( cacheKey )
@@ -602,13 +603,13 @@ class {
 ```javascript
 // Request-level cache management
 class {
-    
+
     function onRequestStart() {
         // Create request-specific cache
         var requestCache = cacheService().createDefaultCache( "request.#createUUID()#" )
         request.cache = requestCache
     }
-    
+
     function onRequestEnd() {
         // Cleanup request cache
         if ( structKeyExists( request, "cache" ) ) {

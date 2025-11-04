@@ -311,38 +311,101 @@ The AST returned by `BoxAST()` contains detailed information about the code stru
 
 ### Node Properties
 
-Each AST node typically includes:
+Each AST node includes detailed metadata about the code structure:
 
-* **Type** - The kind of node (e.g., "FunctionDeclaration", "BinaryExpression", "Assignment")
-* **Position** - Source location information (line, column, offset)
-* **Children** - Nested nodes representing sub-expressions or statements
-* **Value** - Literal values for constants and identifiers
-* **Metadata** - Additional semantic information
+* **ASTType** - The kind of node (e.g., "BoxScript", "BoxAssignment", "BoxBinaryOperation", "BoxIntegerLiteral")
+* **ASTPackage** - The Java package containing the node class
+* **sourceText** - Original source code for this node
+* **position** - Source location with start/end line and column numbers
+* **comments** - Associated comments
+* **Additional Properties** - Node-specific data (name, value, operator, statements, etc.)
 
 ### Example AST Structure
 
-For code: `x = 1 + 2;`
+For code: `x = 1 + 2`
 
 ```js
 {
-    "type": "Program",
-    "body": [
+    "ASTType": "BoxScript",
+    "ASTPackage": "ortus.boxlang.compiler.ast",
+    "sourceText": "x = 1 + 2",
+    "position": {
+        "start": { "line": 1, "column": 0 },
+        "end": { "line": 1, "column": 9 }
+    },
+    "comments": [],
+    "statements": [
         {
-            "type": "Assignment",
-            "left": {
-                "type": "Identifier",
-                "name": "x"
+            "ASTType": "BoxExpressionStatement",
+            "ASTPackage": "ortus.boxlang.compiler.ast.statement",
+            "sourceText": "x = 1 + 2",
+            "position": {
+                "start": { "line": 1, "column": 0 },
+                "end": { "line": 1, "column": 9 }
             },
-            "right": {
-                "type": "BinaryExpression",
-                "operator": "+",
+            "comments": [],
+            "expression": {
+                "ASTType": "BoxAssignment",
+                "ASTPackage": "ortus.boxlang.compiler.ast.expression",
+                "sourceText": "x = 1 + 2",
+                "position": {
+                    "start": { "line": 1, "column": 0 },
+                    "end": { "line": 1, "column": 9 }
+                },
+                "comments": [],
+                "modifiers": [],
                 "left": {
-                    "type": "Literal",
-                    "value": 1
+                    "ASTType": "BoxIdentifier",
+                    "ASTPackage": "ortus.boxlang.compiler.ast.expression",
+                    "sourceText": "x",
+                    "position": {
+                        "start": { "line": 1, "column": 0 },
+                        "end": { "line": 1, "column": 1 }
+                    },
+                    "comments": [],
+                    "name": "x"
+                },
+                "op": {
+                    "ASTType": "BoxAssignment",
+                    "ASTPackage": "ortus.boxlang.compiler.ast.expression",
+                    "sourceText": "Equal"
                 },
                 "right": {
-                    "type": "Literal",
-                    "value": 2
+                    "ASTType": "BoxBinaryOperation",
+                    "ASTPackage": "ortus.boxlang.compiler.ast.expression",
+                    "sourceText": "1 + 2",
+                    "position": {
+                        "start": { "line": 1, "column": 4 },
+                        "end": { "line": 1, "column": 9 }
+                    },
+                    "comments": [],
+                    "left": {
+                        "ASTType": "BoxIntegerLiteral",
+                        "ASTPackage": "ortus.boxlang.compiler.ast.expression",
+                        "sourceText": "1",
+                        "position": {
+                            "start": { "line": 1, "column": 4 },
+                            "end": { "line": 1, "column": 5 }
+                        },
+                        "comments": [],
+                        "value": 1
+                    },
+                    "operator": {
+                        "ASTType": "BoxBinaryOperation",
+                        "ASTPackage": "ortus.boxlang.compiler.ast.expression",
+                        "sourceText": "Plus"
+                    },
+                    "right": {
+                        "ASTType": "BoxIntegerLiteral",
+                        "ASTPackage": "ortus.boxlang.compiler.ast.expression",
+                        "sourceText": "2",
+                        "position": {
+                            "start": { "line": 1, "column": 8 },
+                            "end": { "line": 1, "column": 9 }
+                        },
+                        "comments": [],
+                        "value": 2
+                    }
                 }
             }
         }
