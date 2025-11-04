@@ -1,9 +1,11 @@
 ---
-description: BoxCache object stores provide the storage layer for cached data with different persistence and performance characteristics
-icon: database
+description: >-
+  BoxCache object stores provide the storage layer for cached data with
+  different persistence and performance characteristics
+icon: binary-circle-check
 ---
 
-# BoxCache Object Stores
+# BoxCache Stores
 
 Object stores are the foundational storage layer of the BoxLang cache engine. They provide the actual mechanism for storing, retrieving, and managing cached objects in memory, on disk, or in distributed databases. While cache providers coordinate user interactions and act as a service layer, object stores handle the low-level data persistence and retrieval operations.
 
@@ -18,13 +20,13 @@ BoxCache's flexible architecture allows you to choose the right storage backend 
 
 ## 📦 Available Object Stores
 
-| Store | Type | Distributed | Best For |
-|-------|------|-------------|----------|
-| [ConcurrentStore](concurrent-store.md) | In-Memory | No | High-performance caching, frequently accessed data |
-| [ConcurrentSoftReferenceStore](concurrent-soft-reference-store.md) | In-Memory | No | Memory-sensitive applications, automatic garbage collection support |
-| [FileSystemStore](file-system-store.md) | Disk-Based | No | Persistent caching, application restarts, compiled templates |
-| [JDBCStore](jdbc-store.md) | Database | Yes | Multi-server deployments, load-balanced environments, horizontal scaling |
-| [BlackHoleStore](black-hole-store.md) | Mock | No | Testing, development, cache simulation |
+| Store                                                              | Type       | Distributed | Best For                                                                 |
+| ------------------------------------------------------------------ | ---------- | ----------- | ------------------------------------------------------------------------ |
+| [ConcurrentStore](concurrent-store.md)                             | In-Memory  | No          | High-performance caching, frequently accessed data                       |
+| [ConcurrentSoftReferenceStore](concurrent-soft-reference-store.md) | In-Memory  | No          | Memory-sensitive applications, automatic garbage collection support      |
+| [FileSystemStore](file-system-store.md)                            | Disk-Based | No          | Persistent caching, application restarts, compiled templates             |
+| [JDBCStore](jdbc-store.md)                                         | Database   | Yes         | Multi-server deployments, load-balanced environments, horizontal scaling |
+| [BlackHoleStore](black-hole-store.md)                              | Mock       | No          | Testing, development, cache simulation                                   |
 
 ## 🎯 Choosing the Right Store
 
@@ -92,11 +94,11 @@ Store-specific properties are documented on each store's individual page.
 
 Click on any store below to view detailed configuration options, features, and usage examples:
 
-* **[ConcurrentStore](concurrent-store.md)** - Thread-safe in-memory caching
-* **[ConcurrentSoftReferenceStore](concurrent-soft-reference-store.md)** - Memory-sensitive caching with soft references
-* **[FileSystemStore](file-system-store.md)** - Disk-based persistent caching
-* **[JDBCStore](jdbc-store.md)** - Database-backed distributed caching (New in 1.7.0)
-* **[BlackHoleStore](black-hole-store.md)** - Mock store for testing
+* [**ConcurrentStore**](concurrent-store.md) - Thread-safe in-memory caching
+* [**ConcurrentSoftReferenceStore**](concurrent-soft-reference-store.md) - Memory-sensitive caching with soft references
+* [**FileSystemStore**](file-system-store.md) - Disk-based persistent caching
+* [**JDBCStore**](jdbc-store.md) - Database-backed distributed caching (New in 1.7.0)
+* [**BlackHoleStore**](black-hole-store.md) - Mock store for testing
 
 ## 🚀 Next Steps
 
@@ -105,4 +107,4 @@ Click on any store below to view detailed configuration options, features, and u
 3. **Configure your cache** in `boxlang.json` or `Application.bx`
 4. **Test your configuration** to ensure optimal performance
 
-For general caching concepts and provider configuration, see the [Caching Overview](../README.md).
+For general caching concepts and provider configuration, see the [Caching Overview](../).

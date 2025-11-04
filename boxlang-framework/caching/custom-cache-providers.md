@@ -1,5 +1,6 @@
 ---
 description: Extend the BoxCache your way!
+icon: gear-code
 ---
 
 # Custom Cache Providers

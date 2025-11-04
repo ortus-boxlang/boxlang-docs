@@ -2,6 +2,7 @@
 description: >-
   The BoxCache Provider is BoxLang's default, high-performance cache
   implementation.
+icon: server
 ---
 
 # BoxCache Provider
@@ -70,7 +71,7 @@ myCache.set(entries, 7200, 3600); // 2 hours, 1 hour idle
 
 ### Getting Data
 
-Retrieve data with built-in null safety using the `Attempt` pattern.  Please see the [Attempt](../../boxlang-language/syntax/attempts.md) construct section.
+Retrieve data with built-in null safety using the `Attempt` pattern. Please see the [Attempt](../../boxlang-language/syntax/attempts.md) construct section.
 
 **Basic Retrieval Patterns**
 

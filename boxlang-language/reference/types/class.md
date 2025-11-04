@@ -8,7 +8,7 @@
 
 Converts a BoxLang variable into a JSON (JavaScript Object Notation) string according to the specified options.
 
-### ,Query Format Options,
+#### ,Query Format Options,
 
 , The ,`,queryFormat,`, argument determines how queries are serialized: ,
 
@@ -24,7 +24,7 @@ Converts a BoxLang variable into a JSON (JavaScript Object Notation) string acco
 
 ,
 
-### ,Usage,
+#### ,Usage,
 
 ,
 

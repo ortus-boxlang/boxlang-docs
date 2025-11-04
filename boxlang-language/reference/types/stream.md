@@ -36,7 +36,7 @@ Provide a template query to match the columns and types of the stream. Once the 
 
 ,
 
-### ,Usage,
+#### ,Usage,
 
 ,
 

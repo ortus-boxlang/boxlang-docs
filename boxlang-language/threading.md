@@ -6,7 +6,7 @@ icon: arrows-turn-to-dots
 
 BoxLang allows you create asynchronous threads so you can execute a body of code in a separate thread. This is achieved via the `bx:thread` tag & the `thread` construct. Threads are independent streams of execution, and multiple threads on a page can execute simultaneously and asynchronously, letting you perform asynchronous processing in BoxLang. BoxLang code within the `bx:thread` tag body executes on a separate thread while the page request thread continues processing without waiting for the `bx:thread` body to finish. You can allow the thread body to continue executing in the background or you can wait for it to finish.
 
-![](../.gitbook/assets/screen-shot-2019-08-09-at-2.14.00-pm.png)
+![](<../.gitbook/assets/Screen Shot 2019-08-09 at 2.14.00 PM (1).png>)
 
 {% hint style="danger" %}
 **IMPORTANT:** You cannot spawn a thread from within a thread in BoxLang.

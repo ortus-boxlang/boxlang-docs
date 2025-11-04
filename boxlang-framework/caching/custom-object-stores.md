@@ -1,5 +1,6 @@
 ---
 description: Object stores are the foundational storage layer of the BoxLang cache engine
+icon: gear-code
 ---
 
 # Custom Object Stores
@@ -249,8 +250,6 @@ public void set(IStruct entries) {
     });
 }
 ```
-
-
 
 ## Configuration
 

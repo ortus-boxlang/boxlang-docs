@@ -163,7 +163,7 @@ Used to iterate over a struct and run the function closure for each key/value pa
 
 , ,
 
-### ,Parallel Execution,
+#### ,Parallel Execution,
 
 , If the ,`,parallel,`, argument is set to true, and no ,`,max_threads,`, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams. If ,`,max_threads,`, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete. Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
@@ -205,7 +205,7 @@ The function will be passed 3 arguments: the value, the index, and the struct. Y
 
 , ,
 
-### ,Parallel Execution,
+#### ,Parallel Execution,
 
 , If the ,`,parallel,`, argument is set to true, and no ,`,max_threads,`, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams. If ,`,max_threads,`, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete. This allows for efficient processing of large structs, especially when the test function is computationally expensive or the struct is large.
 
@@ -242,7 +242,7 @@ This BIF will invoke the callback function for each entry in the struct, passing
 
 , ,
 
-### ,Parallel Execution,
+#### ,Parallel Execution,
 
 , If the ,`,parallel,`, argument is set to true, and no ,`,max_threads,`, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams. If ,`,max_threads,`, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete. Please note that this may not be the most efficient way to filter, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
@@ -459,7 +459,7 @@ The callback function will be passed the key, the value, and the original struct
 
 , ,
 
-### ,Parallel Execution,
+#### ,Parallel Execution,
 
 , If the ,`,parallel,`, argument is set to true, and no ,`,max_threads,`, are sent, the map will be executed in parallel using a ForkJoinPool with parallel streams. If ,`,max_threads,`, is specified, it will create a new ForkJoinPool with the specified number of threads to run the map in parallel, and destroy it after the operation is complete. Please note that this may not be the most efficient way to map, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance.
 
@@ -488,7 +488,7 @@ This is the opposite of ,{@link StructSome},. ,
 
 , ,
 
-### ,Parallel Execution,
+#### ,Parallel Execution,
 
 , If the ,`,parallel,`, argument is set to true, and no ,`,max_threads,`, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams. If ,`,max_threads,`, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete. This allows for efficient processing of large structs, especially when the test function is computationally expensive or the struct is large.
 
@@ -530,7 +530,7 @@ The function will be passed 3 arguments: the key, the value, and the struct. You
 
 , ,
 
-### ,Parallel Execution,
+#### ,Parallel Execution,
 
 , If the ,`,parallel,`, argument is set to true, and no ,`,max_threads,`, are sent, the filter will be executed in parallel using a ForkJoinPool with parallel streams. If ,`,max_threads,`, is specified, it will create a new ForkJoinPool with the specified number of threads to run the filter in parallel, and destroy it after the operation is complete. Please note that this may not be the most efficient way to iterate, as it will create a new ForkJoinPool for each invocation of the BIF. You may want to consider using a shared ForkJoinPool for better performance. ,
 
@@ -568,7 +568,7 @@ Arguments:
 
 Converts a BoxLang variable into a JSON (JavaScript Object Notation) string according to the specified options.
 
-### ,Query Format Options,
+#### ,Query Format Options,
 
 , The ,`,queryFormat,`, argument determines how queries are serialized: ,
 
@@ -584,7 +584,7 @@ Converts a BoxLang variable into a JSON (JavaScript Object Notation) string acco
 
 ,
 
-### ,Usage,
+#### ,Usage,
 
 ,
 

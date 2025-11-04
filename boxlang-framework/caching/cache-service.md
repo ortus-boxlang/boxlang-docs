@@ -1,6 +1,6 @@
 ---
 description: The CacheService manages all the caches in a BoxLang application
-icon: database
+icon: brain-circuit
 ---
 
 # Cache Service
