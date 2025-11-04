@@ -28,7 +28,7 @@ Spreadsheet( "calculations.xlsx" )
 ### Reading Formulas
 
 ```js
-sheet = Spreadsheet( "with-formulas.xlsx", load = true );
+sheet = Spreadsheet( "with-formulas.xlsx" );
 
 // Get formula text
 formula = sheet.getCellFormula( 2, 3 );  // Returns: "A2*B2"
@@ -43,7 +43,7 @@ type = sheet.getCellType( 2, 3 );        // Returns: "formula"
 ### Recalculating Formulas
 
 ```js
-sheet = Spreadsheet( "formulas.xlsx", load = true )
+sheet = Spreadsheet( "formulas.xlsx" )
     // Update source data
     .setCellValue( 2, 1, 39.99 )
 

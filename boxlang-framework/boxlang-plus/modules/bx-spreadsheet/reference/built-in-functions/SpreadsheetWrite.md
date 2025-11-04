@@ -41,7 +41,7 @@ var spreadsheet = SpreadsheetRead( "/path/to/original.xlsx" );
 SpreadsheetAddRow( spreadsheet, [ "New Row", "Data" ] );
 
 // Write back to same location (overwrite = true by default)
-SpreadsheetWrite( spreadsheet, "/path/to/original.xlsx", overwrite = true );
+SpreadsheetWrite( spreadsheet, "/path/to/original.xlsx", "", true );
 ```
 
 Save with password protection:
@@ -54,8 +54,8 @@ SpreadsheetAddRows( spreadsheet, [ [ "A", "B" ], [ "1", "2" ] ] );
 SpreadsheetWrite(
     spreadsheet,
     "/path/to/secure.xlsx",
-    password = "myPassword",
-    overwrite = true
+     "myPassword",
+    true
 );
 ```
 

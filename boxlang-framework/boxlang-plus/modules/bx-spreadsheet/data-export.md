@@ -15,7 +15,7 @@ Learn how to export spreadsheet data to various formats using the BoxLang Fluent
 
 ```js
 // Load and export to CSV
-csv = Spreadsheet( "employees.xlsx", load = true ).toCSV();
+csv = Spreadsheet( "employees.xlsx" ).toCSV();
 
 // Save to file
 fileWrite( "employees.csv", csv );
@@ -24,7 +24,7 @@ fileWrite( "employees.csv", csv );
 ### CSV with Custom Delimiter
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Export with semicolon delimiter
 csv = sheet.toCSV( delimiter = ";" );
@@ -38,7 +38,7 @@ fileWrite( "data.csv", csv );
 ### CSV from Specific Sheet
 
 ```js
-sheet = Spreadsheet( "workbook.xlsx", load = true );
+sheet = Spreadsheet( "workbook.xlsx" );
 
 // Select specific sheet
 sheet.selectSheet( "Sales Data" );
@@ -73,7 +73,7 @@ fileWrite( "employees.csv", csv );
 
 ```js
 // Load spreadsheet
-sheet = Spreadsheet( "employees.xlsx", load = true );
+sheet = Spreadsheet( "employees.xlsx" );
 
 // Convert to JSON (uses first row as keys)
 json = sheet.toJson();
@@ -90,7 +90,7 @@ fileWrite( "employees.json", json );
 ### Pretty-Printed JSON
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Get as array first
 data = sheet.toArray();
@@ -104,7 +104,7 @@ fileWrite( "data-pretty.json", json );
 ### JSON with Custom Structure
 
 ```js
-sheet = Spreadsheet( "products.xlsx", load = true );
+sheet = Spreadsheet( "products.xlsx" );
 
 // Convert to array
 products = sheet.toArray();
@@ -127,7 +127,7 @@ fileWrite( "products.json", serializeJSON( output, true ) );
 
 ```js
 // Load and convert to query
-qry = Spreadsheet( "employees.xlsx", load = true ).toQuery();
+qry = Spreadsheet( "employees.xlsx" ).toQuery();
 
 // Now you can use query functions
 writeDump( qry );
@@ -154,7 +154,7 @@ qry = sheet.toQuery();
 ### Query from Specific Range
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Get specific rows as array
 rows = sheet.getRows( startRow = 5, endRow = 20 );
@@ -178,7 +178,7 @@ for ( row in rows ) {
 ### Simple HTML Table
 
 ```js
-html = Spreadsheet( "report.xlsx", load = true ).toHtml();
+html = Spreadsheet( "report.xlsx" ).toHtml();
 
 // Generates complete HTML table
 fileWrite( "report.html", html );
@@ -187,7 +187,7 @@ fileWrite( "report.html", html );
 ### HTML with Custom Styling
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 html = '
 <!DOCTYPE html>
@@ -218,7 +218,7 @@ fileWrite( "styled-report.html", html );
 ### Array of Arrays
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Get all data as array of arrays
 data = sheet.toArray( includeHeaderRow = false );
@@ -234,7 +234,7 @@ for ( row in data ) {
 ### Array of Structs
 
 ```js
-sheet = Spreadsheet( "employees.xlsx", load = true );
+sheet = Spreadsheet( "employees.xlsx" );
 
 // Convert to array of structs (default behavior)
 employees = sheet.toArray();
@@ -253,7 +253,7 @@ for ( employee in employees ) {
 ### Array with Specific Columns
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Get specific columns
 names = sheet.getColumn( 1 );       // First column
@@ -275,7 +275,7 @@ data = names.map( ( name, index ) => {
 ### Export All Sheets to CSV
 
 ```js
-sheet = Spreadsheet( "workbook.xlsx", load = true );
+sheet = Spreadsheet( "workbook.xlsx" );
 
 // Get all sheet names
 sheetNames = sheet.getSheetNames();
@@ -294,7 +294,7 @@ for ( sheetName in sheetNames ) {
 ### Export Multiple Formats
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Export to multiple formats
 formats = [
@@ -317,7 +317,7 @@ for ( format in formats ) {
 
 ```js
 // Load data
-employees = Spreadsheet( "employees.xlsx", load = true ).toArray();
+employees = Spreadsheet( "employees.xlsx" ).toArray();
 
 // Filter data
 engineeringStaff = employees.filter( ( emp ) => emp.Department == "Engineering" );
@@ -335,7 +335,7 @@ Spreadsheet()
 
 ```js
 // Load data
-products = Spreadsheet( "products.xlsx", load = true ).toArray();
+products = Spreadsheet( "products.xlsx" ).toArray();
 
 // Transform data
 transformed = products.map( ( product ) => {
@@ -355,7 +355,7 @@ fileWrite( "products-api.json", serializeJSON( transformed, true ) );
 
 ```js
 // Load and process data
-sheet = Spreadsheet( "sales.xlsx", load = true );
+sheet = Spreadsheet( "sales.xlsx" );
 data = sheet.toArray();
 
 // Create export package
@@ -376,7 +376,7 @@ fileWrite( "sales-export.json", serializeJSON( export, true ) );
 
 ```js
 // Load large dataset
-sheet = Spreadsheet( "large-file.xlsx", load = true );
+sheet = Spreadsheet( "large-file.xlsx" );
 allData = sheet.toArray();
 
 // Export in chunks
@@ -403,7 +403,7 @@ for ( i = 1; i <= chunks; i++ ) {
 
 ```js
 // Load data
-products = Spreadsheet( "products.xlsx", load = true ).toArray();
+products = Spreadsheet( "products.xlsx" ).toArray();
 
 // Transform for API
 apiResponse = {
@@ -427,7 +427,7 @@ return serializeJSON( apiResponse );
 
 ```js
 // Load data
-employees = Spreadsheet( "employees.xlsx", load = true ).toArray();
+employees = Spreadsheet( "employees.xlsx" ).toArray();
 
 // Format for GraphQL
 graphQLResponse = {
@@ -519,7 +519,7 @@ sheet.formatRow( 1, { bold: true } )
 
 ```js
 // Load Excel file
-employees = Spreadsheet( "new-employees.xlsx", load = true ).toArray();
+employees = Spreadsheet( "new-employees.xlsx" ).toArray();
 
 // Insert into database
 for ( emp in employees ) {
@@ -552,7 +552,7 @@ Spreadsheet( "employee-export.xlsx" )
     .save();
 
 // Also export to CSV
-csv = Spreadsheet( "employee-export.xlsx", load = true ).toCSV();
+csv = Spreadsheet( "employee-export.xlsx" ).toCSV();
 fileWrite( "employee-export.csv", csv );
 ```
 

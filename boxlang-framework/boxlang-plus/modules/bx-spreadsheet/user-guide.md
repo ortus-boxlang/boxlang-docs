@@ -20,11 +20,14 @@ This comprehensive guide covers all aspects of working with spreadsheets in BoxL
 The Fluent API centers around the `SpreadsheetFile` object, created using the `Spreadsheet()` function:
 
 ```js
-// Create new spreadsheet
-sheet = Spreadsheet( "myfile.xlsx" );
+// Create new spreadsheet object with a file name
+// Or load the file if it exists
+sheet = Spreadsheet( "myfile.xlsx" )
+// Same as
+sheet = Spreadsheet().setPath( "myfile.xlsx" )
 
 // Load existing spreadsheet
-sheet = Spreadsheet( "existing.xlsx", load = true );
+sheet = Spreadsheet( "existing.xlsx" )
 
 // Create in-memory spreadsheet
 sheet = Spreadsheet();
@@ -144,7 +147,7 @@ sheet.save();
 
 ```js
 // Load file into SpreadsheetFile object
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Or use explicit load method
 sheet = Spreadsheet().load( "data.xlsx" );
@@ -153,7 +156,7 @@ sheet = Spreadsheet().load( "data.xlsx" );
 ### Reading Cell Values
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Read single cell
 value = sheet.getCellValue( 1, 1 );
@@ -168,7 +171,7 @@ type = sheet.getCellType( 1, 1 );  // Returns: "blank", "numeric", "string", "fo
 ### Reading Rows and Columns
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Get entire row as array
 row = sheet.getRow( 1 );
@@ -186,7 +189,7 @@ columns = sheet.getColumns( startColumn = 1, endColumn = 5 );
 ### Converting to Data Structures
 
 ```js
-sheet = Spreadsheet( "employees.xlsx", load = true );
+sheet = Spreadsheet( "employees.xlsx" );
 
 // Convert to array of structs (uses first row as headers)
 employees = sheet.toArray();
@@ -377,7 +380,7 @@ sheet.save();
 ### Working with Formula Results
 
 ```js
-sheet = Spreadsheet( "with-formulas.xlsx", load = true );
+sheet = Spreadsheet( "with-formulas.xlsx" );
 
 // Get formula text
 formula = sheet.getCellFormula( 2, 4 );  // Returns: "B2*C2"
@@ -567,25 +570,26 @@ sheet.save();
 
 ```js
 sheet = Spreadsheet()
-    .setRowData( 1, [ "Data" ] );
+    .setRowData( 1, [ "Data" ] )
 
 // Save to file
-sheet.save( "output.xlsx" );
+sheet.save( "output.xlsx" )
 
-// Save and overwrite
-sheet.save( "output.xlsx", overwrite = true );
+// Save and overwrite by default or be explicit
+sheet.save( "output.xlsx" )
+sheet.overwrite( true ).save( "output.xlsx" )
 
 // Get as binary
-binary = sheet.toBinary();
+binary = sheet.toBinary()
 
 // Save binary manually
-fileWrite( "output.xlsx", binary );
+fileWrite( "output.xlsx", binary )
 ```
 
 ### Export Formats
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Export to CSV
 csv = sheet.toCSV();
@@ -607,7 +611,7 @@ fileWrite( "export.html", html );
 ### Sheet Information
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Get row count
 rowCount = sheet.getRowCount();
@@ -627,7 +631,7 @@ sheetInfo = sheet.getSheetInfo();
 ### Clearing Content
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Clear specific cell
 sheet.clearCell( 1, 1 );
@@ -647,7 +651,7 @@ sheet.save();
 ### Deleting Rows and Columns
 
 ```js
-sheet = Spreadsheet( "data.xlsx", load = true );
+sheet = Spreadsheet( "data.xlsx" );
 
 // Delete row
 sheet.deleteRow( 3 );
@@ -724,7 +728,7 @@ Spreadsheet( "data.xlsx" )
 
 ```js
 try {
-    sheet = Spreadsheet( "data.xlsx", load = true )
+    sheet = Spreadsheet( "data.xlsx" )
         .addRow( newData )
         .save();
 } catch ( any e ) {
@@ -738,7 +742,7 @@ try {
 For very large files, explicitly clear references:
 
 ```js
-sheet = Spreadsheet( "large-file.xlsx", load = true );
+sheet = Spreadsheet( "large-file.xlsx" );
 data = sheet.toArray();
 sheet = null;  // Release memory
 ```
@@ -781,7 +785,7 @@ Spreadsheet( "employee-report.xlsx" )
 
 ```js
 // Load template
-report = Spreadsheet( "monthly-template.xlsx", load = true );
+report = Spreadsheet( "monthly-template.xlsx" );
 
 // Fill in report details
 report.setCellValue( 2, 2, "January 2024" )

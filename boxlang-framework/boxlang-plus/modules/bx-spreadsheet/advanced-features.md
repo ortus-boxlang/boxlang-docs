@@ -212,7 +212,7 @@ Spreadsheet( "partially-locked.xlsx" )
 ### Unprotect Worksheet
 
 ```js
-sheet = Spreadsheet( "protected.xlsx", load = true )
+sheet = Spreadsheet( "protected.xlsx" )
     // Remove protection
     .unprotectSheet( password = "secret123" )
 
@@ -270,7 +270,7 @@ Spreadsheet( "frozen-both.xlsx" )
 ### Remove Freeze Panes
 
 ```js
-sheet = Spreadsheet( "frozen.xlsx", load = true )
+sheet = Spreadsheet( "frozen.xlsx" )
     .removeFreezePane()
     .save();
 ```
@@ -343,7 +343,7 @@ Spreadsheet( "hidden.xlsx" )
 ### Showing Hidden Rows and Columns
 
 ```js
-sheet = Spreadsheet( "hidden.xlsx", load = true )
+sheet = Spreadsheet( "hidden.xlsx" )
     // Show hidden column
     .showColumn( 2 )
 
@@ -376,7 +376,7 @@ Spreadsheet( "with-comments.xlsx" )
 ### Reading Comments
 
 ```js
-sheet = Spreadsheet( "with-comments.xlsx", load = true );
+sheet = Spreadsheet( "with-comments.xlsx" );
 
 // Get comment from cell
 comment = sheet.getCellComment( 2, 2 );
@@ -388,7 +388,7 @@ writeOutput( "Author: #comment.author#" );
 ### Removing Comments
 
 ```js
-sheet = Spreadsheet( "with-comments.xlsx", load = true )
+sheet = Spreadsheet( "with-comments.xlsx" )
     .removeCellComment( 2, 2 )
     .save();
 ```
@@ -445,7 +445,7 @@ Spreadsheet( "report-title.xlsx" )
 ### Unmerge Cells
 
 ```js
-sheet = Spreadsheet( "merged.xlsx", load = true )
+sheet = Spreadsheet( "merged.xlsx" )
     .unmergeCells(
         startRow = 1,
         startColumn = 1,
@@ -566,7 +566,7 @@ Spreadsheet( "named-ranges.xlsx" )
 ### Using Named Ranges
 
 ```js
-sheet = Spreadsheet( "with-named-ranges.xlsx", load = true );
+sheet = Spreadsheet( "with-named-ranges.xlsx" );
 
 // Get named range value
 range = sheet.getNamedRange( "SalesData" );
@@ -604,7 +604,7 @@ sheet.save();
 ### Copy Sheet
 
 ```js
-sheet = Spreadsheet( "workbook.xlsx", load = true );
+sheet = Spreadsheet( "workbook.xlsx" );
 
 // Get data from Sheet1
 sheet.selectSheet( "Sheet1" );
