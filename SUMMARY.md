@@ -961,6 +961,7 @@
     * [Transaction Events](boxlang-framework/interceptors/core-interception-points/transaction-events.md)
   * [Request Interception Points](boxlang-framework/interceptors/request-interception-points.md)
 * [HTTP/S Calls](boxlang-framework/http-calls.md)
+* [Server-Sent Events (SSE)](boxlang-framework/server-sent-events.md)
 * [Java Interop](boxlang-framework/java-integration.md)
 * [JDBC Transactions](boxlang-framework/transactions.md)
 * [Modules](boxlang-framework/modularity/README.md)
