@@ -33,7 +33,7 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 11. Drop-in Replacement for Adobe ColdFusion and Lucee CFML
 
 {% hint style="danger" %}
-**BoxLang can also be used as a drop-in replacement for Adobe ColdFusion or Lucee CFML Engines by leveraging our `bx-compat-cfml`module.  NO CODE CHANGES, FASTER, MODERN AND SAVE MONEY.**
+**BoxLang can also be used as a drop-in replacement for Adobe ColdFusion or Lucee CFML Engines by leveraging our `bx-compat-cfml`module. NO CODE CHANGES, FASTER, MODERN AND SAVE MONEY.**
 {% endhint %}
 
 {% content-ref url="getting-started/overview/" %}
@@ -93,7 +93,7 @@ We all make mistakes from time to time :) So why not let us know about it and he
 
 ## Ortus Solutions, Corp
 
-![](.gitbook/assets/ortus-medium.jpg)
+![](<assets/ortus-medium (1).jpg>)
 
 This book was written and maintained by [Luis Majano](https://www.luismajano.com) and the [Ortus Solutions](https://www.ortussolutions.com) Development Team.
 

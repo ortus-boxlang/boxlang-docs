@@ -92,7 +92,7 @@ As you can see from the output, this is the result of the command:
 
 That's practically it. This is a very lightweight server that can get the job done. You can also start up servers using our VSCode IDE by opening the command palette and clicking **Start** a BoxLang web server.
 
-<figure><img src="../../.gitbook/assets/ide-tooling-context-minserver.png" alt=""><figcaption><p>Command Palette</p></figcaption></figure>
+<figure><img src="../../assets/ide-tooling-context-minserver (1).png" alt=""><figcaption><p>Command Palette</p></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption><p>Manage your Servers</p></figcaption></figure>
 
@@ -103,7 +103,7 @@ These are the supported arguments you can pass into the binary to configure the 
 | Argument                                                                                | Value                                                                                                                                                                                                                                                                                                                                                                   |
 | --------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <p><code>--configPath path/boxlang.json</code><br><code>-c path/boxlang.json</code></p> | Relative/Absolute location of the `boxlang.json` to use. By default it uses the `~/.boxlang/boxlang.json`                                                                                                                                                                                                                                                               |
-| <p><code>--debug</code><br><code>-d</code></p>                                          | Put the runtime into debug mode. This will also render detailed error messages in the browser.  By default we use `false`                                                                                                                                                                                                                                               |
+| <p><code>--debug</code><br><code>-d</code></p>                                          | Put the runtime into debug mode. This will also render detailed error messages in the browser. By default we use `false`                                                                                                                                                                                                                                                |
 | <p><code>--help</code><br><code>-h</code></p>                                           | Display comprehensive help information and exit                                                                                                                                                                                                                                                                                                                         |
 | `--host ip\|domain`                                                                     | Bind the hostname to the mini server. By default we use `0.0.0.0` (all network interfaces)                                                                                                                                                                                                                                                                              |
 | <p><code>--port 8080</code><br><code>-p 8080</code></p>                                 | The port to bind the mini server to. By default we use port `8080`                                                                                                                                                                                                                                                                                                      |
@@ -451,8 +451,6 @@ When URL rewrites are enabled:
 
 1. Any request that does not match an asset will route through your specified rewrite file (default: `index.bxm`)
 2. This includes requests to JavaScript, CSS, images and BXM, BXS, or BX files.
-
-
 
 ### URL Rewrite Examples
 

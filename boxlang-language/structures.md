@@ -55,7 +55,7 @@ produce = {
 };
 ```
 
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.46.02 PM.png>)
+![](<../assets/Screen Shot 2017-10-05 at 4.46.02 PM (1).png>)
 
 The _key_ is the address, and the _value_ is the data at that address. Please note that the _value_ can be ANYTHING. It can be an array, an object, a simple value, or even an embedded structure. It doesn't matter.
 
@@ -210,11 +210,11 @@ myStruct = [:] or [=]
 
 Once you create structures, you can use them in many funky ways. Please check out all the [structure functions](https://boxlang.ortusbooks.com/boxlang-language/reference/types/struct) and all the structure modern [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) that are available to you.
 
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.57.20 PM.png>)
+![](<../assets/Screen Shot 2017-10-05 at 4.57.20 PM (1).png>)
 
 As you can see, there are many cool methods for detecting keys, values, lengths, counts, etc. A very cool method is `keyArray()` which gives you the listing of keys as an array:
 
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.58.09 PM.png>)
+![](<../assets/Screen Shot 2017-10-05 at 4.58.09 PM (1).png>)
 
 ## Looping Over Structures
 
@@ -291,7 +291,7 @@ println( myStruct )
 
 ## Change Listeners
 
-All arrays and structures offer the ability to listen to changes to themselves.  This is all done via our `$bx` metadata object available on all arrays/structures.  You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the struct.  You can listen:
+All arrays and structures offer the ability to listen to changes to themselves. This is all done via our `$bx` metadata object available on all arrays/structures. You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the struct. You can listen:
 
 * To all changes in the structure
 * To a specific key in the structure
@@ -317,8 +317,7 @@ The signature of the closure/lambda is the following
 ```
 
 {% hint style="success" %}
-Please note that the Key is a BoxLang Key object, which simulates a case-insensitive string.  You can use methods on it like:\
-
+Please note that the Key is a BoxLang Key object, which simulates a case-insensitive string. You can use methods on it like:\\
 
 * `getName()`
 * `getNameNoCase()`
