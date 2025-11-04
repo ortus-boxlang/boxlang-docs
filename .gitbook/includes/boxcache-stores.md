@@ -10,6 +10,6 @@ Object stores are the foundational storage layer of the BoxLang cache engine. Th
 | **ConcurrentSoftReferenceStore** | Memory-sensitive storage leveraging Java Soft References. |
 | **ConcurrentStore**              | Leverages concurrent hashmaps for storage.                |
 | **FileSystemStore**              | Stores the cache items in a serialized fashion on disk    |
-| **JDCBStore**                    | Stores caches in JDBC Databases                           |
+| **JDBCStore**                    | Distributed cache store backed by JDBC databases for multi-instance cache sharing |
 
 Each store can have different configuration properties as well.

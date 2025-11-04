@@ -228,13 +228,23 @@ If enabled, the last access timeout will be used to evict objects from the cache
 "useLastAccessTimeouts" : true
 ```
 
+## Object Stores
 
+BoxCache supports multiple object store backends for different caching scenarios. Each store provides different persistence, performance, and distribution characteristics.
 
-### File System Store
+For detailed information about each store type, including configuration examples and best practices, see the [BoxCache Stores](../../boxlang-framework/caching/boxcache-stores/) documentation:
 
-The file system store leverages a destination `directory` and stores all cache items as serialized entities on disk.  It is highly efficient and fast considering it's a disk cache.
+* **[ConcurrentStore](../../boxlang-framework/caching/boxcache-stores/concurrent-store.md)** - High-performance in-memory caching (default)
+* **[ConcurrentSoftReferenceStore](../../boxlang-framework/caching/boxcache-stores/concurrent-soft-reference-store.md)** - Memory-sensitive caching with automatic GC support
+* **[FileSystemStore](../../boxlang-framework/caching/boxcache-stores/file-system-store.md)** - Disk-based persistent caching
+* **[JDBCStore](../../boxlang-framework/caching/boxcache-stores/jdbc-store.md)** - Database-backed distributed caching (New in 1.7.0)
+* **[BlackHoleStore](../../boxlang-framework/caching/boxcache-stores/black-hole-store.md)** - Mock store for testing
 
-#### directory
+Each store page includes:
 
-The absolute path of the directory that will hold all the serialized cache entries on disk.
-
+* Features and capabilities
+* Complete configuration examples
+* Store-specific properties
+* Usage patterns and best practices
+* Performance considerations
+* When to use each store type

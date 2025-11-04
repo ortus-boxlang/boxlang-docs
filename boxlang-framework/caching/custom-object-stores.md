@@ -37,29 +37,29 @@ public interface IObjectStore {
     public String getName();
     public IStruct getConfig();
     public ICacheProvider getProvider();
-    
+
     // Lifecycle methods
     public IObjectStore init(ICacheProvider provider, IStruct config);
     public void shutdown();
-    
+
     // Storage operations
     public void set(Key key, ICacheEntry entry);
     public void set(IStruct entries);
     public ICacheEntry get(Key key);
     public ICacheEntry getQuiet(Key key);
-    
+
     // Bulk operations
     public IStruct get(Key... keys);
     public IStruct get(ICacheKeyFilter filter);
     public IStruct getQuiet(Key... keys);
     public IStruct getQuiet(ICacheKeyFilter filter);
-    
+
     // Cache management
     public boolean clear(Key key);
     public IStruct clear(Key... keys);
     public void clearAll();
     public boolean clearAll(ICacheKeyFilter filter);
-    
+
     // Introspection
     public Key[] getKeys();
     public Key[] getKeys(ICacheKeyFilter filter);
@@ -68,7 +68,7 @@ public interface IObjectStore {
     public boolean lookup(Key key);
     public IStruct lookup(Key... keys);
     public IStruct lookup(ICacheKeyFilter filter);
-    
+
     // Maintenance
     public int getSize();
     public int flush();
@@ -84,24 +84,24 @@ While you can implement `IObjectStore` directly, extending `AbstractStore` provi
 
 ```java
 public class MyCustomStore extends AbstractStore {
-    
+
     private Map<String, ICacheEntry> storage;
-    
+
     @Override
     public IObjectStore init(ICacheProvider provider, IStruct config) {
         // Call parent initialization
         super.init(provider, config);
-        
+
         // Initialize your storage mechanism
         this.storage = new ConcurrentHashMap<>();
-        
+
         // Configure based on properties
         var initialCapacity = config.getAsInteger("initialCapacity", 1000);
         // ... additional configuration
-        
+
         return this;
     }
-    
+
     @Override
     public void shutdown() {
         // Clean up resources
@@ -110,7 +110,7 @@ public class MyCustomStore extends AbstractStore {
             storage = null;
         }
     }
-    
+
     // Implement required methods...
 }
 ```
@@ -201,14 +201,14 @@ Integrate with the eviction policy system:
 @Override
 public void evict() {
     ICachePolicy policy = getPolicy(); // From AbstractStore
-    
+
     if (policy != null && getSize() > 0) {
         // Get eviction candidates
         Key[] candidates = policy.getEvictionCandidates(
-            this, 
+            this,
             getKeysStream().collect(Collectors.toList())
         );
-        
+
         // Remove candidates
         for (Key candidate : candidates) {
             clear(candidate);
@@ -308,11 +308,11 @@ public ICacheEntry get(Key key) {
 public void evict() {
     ICachePolicy policy = getPolicy();
     int maxObjects = getIntProperty("maxObjects", 10000);
-    
+
     if (getSize() > maxObjects) {
         int itemsToEvict = getSize() - maxObjects;
         Key[] candidates = policy.selectEvictionCandidates(this, itemsToEvict);
-        
+
         for (Key candidate : candidates) {
             clear(candidate);
         }
@@ -328,10 +328,10 @@ public void shutdown() {
     try {
         // Flush any pending operations
         flush();
-        
+
         // Close connections/resources
         closeConnections();
-        
+
         // Clear references
         cleanup();
     } catch (Exception e) {
@@ -369,21 +369,21 @@ public void testBasicOperations() {
     // Initialize store
     MyCustomStore store = new MyCustomStore();
     store.init(mockProvider, testConfig);
-    
+
     // Test set/get
     Key testKey = Key.of("testKey");
     ICacheEntry entry = new BoxCacheEntry(/* parameters */);
-    
+
     store.set(testKey, entry);
     ICacheEntry retrieved = store.get(testKey);
-    
+
     assertNotNull(retrieved);
     assertEquals(entry.value(), retrieved.value());
-    
+
     // Test clear
     assertTrue(store.clear(testKey));
     assertNull(store.get(testKey));
-    
+
     // Cleanup
     store.shutdown();
 }

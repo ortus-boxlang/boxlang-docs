@@ -34,18 +34,21 @@ The BoxLang Cache Engine also functions as a powerful cache aggregator. This cap
   * Based on Java Concurrency Classes
   * Multiple [Eviction Policies](http://en.wikipedia.org/wiki/Cache_algorithms): FIFO, LFU, LIFO, LRU, MFU, MRU, Random
   * Memory Management & Memory Sensitive Caching based on [Java Soft References](http://docs.oracle.com/javase/7/docs/api/java/lang/ref/SoftReference.html)
+  * Distributed caching support via JDBC Store
 * **Extensible & Flexible**
   * CachelListeners for event broadcasting
   * Create custom eviction policies
   * Create custom cache providers
   * Create custom cache key filters
   * Create custom object storages
+  * Pluggable storage backends (Memory, Disk, JDBC)
 * **Highly Configurable**
   * JVM Threshold Checks
   * Object Limits
   * Ability to time-expire objects
   * Eternal (singletons) and time-lived objects
   * Fully configurable at runtime via dynamic configurations and hot updates
+  * Database-backed distributed caching
 
 ## Configuration
 
@@ -129,7 +132,7 @@ myCache = cache()
 // Get a named cache
 // Let's assume you have created these caches already in your boxlang.json
 userCache = cache( "userSessions" );
-apiCache = cache( "apiResponses" 
+apiCache = cache( "apiResponses"
 
 // Basic cache operations
 cache().set("user:123", userData)
@@ -146,7 +149,7 @@ cache( "userSessions" )
 if ( cacheNames().contains( "productCache") ) {
     product = cache( "productCache" )
         .get( "product:456" )
-        .getOrDefault( 0 
+        .getOrDefault( 0
 }
 ```
 
@@ -210,7 +213,7 @@ You can also use closures/lambdas as filters:
 ```javascript
 // Custom filter using closure
 customFilter = key -> {
-    return key.getName().startsWith( "special_" ) && 
+    return key.getName().startsWith( "special_" ) &&
            key.getName().length() > 10;
 };
 
@@ -318,8 +321,8 @@ service.createCache( "newCache", "BoxLang", {
 } )
 
 // Register custom providers
-service.registerProvider( 
-    "MyProvider", 
+service.registerProvider(
+    "MyProvider",
     new java:com.mycompany.MyProvider()
 )
 
@@ -340,9 +343,9 @@ service.shutdownCache( "temporaryCache" )
 // Simple get-or-set pattern using getOrSet
 function getUser( userID ) {
     var cacheKey = "user:#userID#"
-    
-    return cache().getOrSet( 
-        cacheKey, 
+
+    return cache().getOrSet(
+        cacheKey,
         () -> userService.loadUser( userID ),
         1800 // Cache for 30 minutes
     )
@@ -386,13 +389,13 @@ function warmupCaches() {
     for ( var user in activeUsers ) {
         cache( "users" ).set( "user:#user.id#", user, 7200 ) // 2 hours
     }
-    
+
     // Warm product cache
     var popularProducts = productService.getPopularProducts()
     for ( var product in popularProducts ) {
         cache( "products" ).set( "product:#product.id#", product, 3600 )
     }
-    
+
     println( "Warmed #activeUsers.len()# users and #popularProducts.len()# products" )
 }
 ```
@@ -403,11 +406,11 @@ function warmupCaches() {
 // Cache monitoring function
 function getCacheReport() {
     var report = {}
-    
+
     for ( var cacheName in cacheNames() ) {
         var cacheInstance = cache( cacheName )
         var stats = cacheInstance.getStats()
-        
+
         report[ cacheName ] = {
             "size": cacheInstance.getSize(),
             "hits": stats.getHits(),
@@ -416,17 +419,17 @@ function getCacheReport() {
             "enabled": cacheInstance.isEnabled()
         }
     }
-    
+
     return report
 }
 
 // Display cache status
 function displayCacheStatus() {
     var report = getCacheReport()
-    
+
     for ( var cacheName in report ) {
         var info = report[ cacheName ]
-        
+
         println( "Cache: #cacheName#" )
         println( " Size: #info.size# items" )
         println( " Hit Rate: #numberFormat( info.hitRate * 100, '0.00' )#%" )
@@ -443,7 +446,7 @@ function displayCacheStatus() {
 // Create caches based on application needs
 function createUserCache( maxUsers ) {
     var service = cacheService()
-    
+
     if ( !service.hasCache( "userCache" ) ) {
         service.createCache( "userCache", "BoxLang", {
             "maxObjects": maxUsers * 2,
@@ -451,10 +454,10 @@ function createUserCache( maxUsers ) {
             "evictionPolicy": "LRU",
             "objectStore": "ConcurrentHashMap"
         } )
-        
+
         println( "Created user cache for #maxUsers# users" )
     }
-    
+
     return cache( "userCache" )
 }
 ```
@@ -487,7 +490,7 @@ function clearUserData( userID ) {
         cacheFilter( "profile:#userID#*" ), // User profiles
         cacheFilter( "pref:#userID#*" ) // User preferences
     ]
-    
+
     for ( var filter in filters ) {
         cache().clear( filter )
     }
@@ -500,7 +503,7 @@ function clearUserData( userID ) {
 // Operate across multiple caches
 function clearAllUserCaches( userID ) {
     var userCaches = cacheNames().filter( name -> name.contains( "user" ) || name.contains( "session" ) )
-    
+
     for ( var cacheName in userCaches ) {
         var userFilter = cacheFilter( "*#userID#*" )
         cache( cacheName ).clear( userFilter )
@@ -514,7 +517,7 @@ function clearAllUserCaches( userID ) {
 // Synchronize data across multiple caches
 function syncUserAcrossCaches( userID, userData ) {
     var caches = [ "primaryUsers", "secondaryUsers", "userProfiles" ]
-    
+
     for ( var cacheName in caches ) {
         if ( cacheNames().contains( cacheName ) ) {
             cache( cacheName ).set( "user:#userID#", userData, 3600 )
@@ -525,7 +528,7 @@ function syncUserAcrossCaches( userID, userData ) {
 
 ## Best Practices
 
-#### 1. Cache Naming Conventions
+### 1. Cache Naming Conventions
 
 ```javascript
 // Use descriptive, hierarchical cache keys
@@ -535,7 +538,7 @@ cache().set( "session:data:#sessionID#", sessionData )
 cache().set( "config:app:#version#", configuration )
 ```
 
-#### 2. Efficient Filter Usage
+### 2. Efficient Filter Usage
 
 ```javascript
 // Prefer specific patterns over broad wildcards
@@ -546,7 +549,7 @@ cache().clear( cacheFilter( "*" ) )                     // Avoid - too broad
 cache().clear( cacheFilter( "^user:temp_\d{8}$", true ) ) // Complex pattern
 ```
 
-#### 3. Error Handling
+### 3. Error Handling
 
 ```javascript
 // Always handle cache failures gracefully
@@ -558,7 +561,7 @@ try {
 }
 ```
 
-#### 4. Performance Monitoring
+### 4. Performance Monitoring
 
 ```javascript
 // Regular cache performance checks
@@ -566,7 +569,7 @@ function monitorCachePerformance() {
     for ( var cacheName in cacheNames() ) {
         var cacheInstance = cache( cacheName )
         var hitRate = cacheInstance.getStats().getHitRate()
-        
+
         if ( hitRate < 0.7 ) { // Less than 70% hit rate
             writeLog( "Cache '#cacheName#' has low hit rate: #hitRate#", "warning" )
         }
@@ -584,4 +587,3 @@ BoxLang's Cache BIFs provide a powerful and intuitive interface for working with
 * **Advanced Management**: Direct access to cache service capabilities
 
 By leveraging these BIFs, developers can implement sophisticated caching strategies while maintaining clean, readable BoxLang code. The functional approach supports both simple use cases and complex enterprise caching scenarios.  Now that we have the basics, we will explore more in-depth how to use the BoxCache engine.
-

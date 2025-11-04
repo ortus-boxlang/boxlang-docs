@@ -30,7 +30,7 @@ The HTTP component provides a comprehensive way to:
 - 📥 Download files and save to disk
 - 🌐 Work with proxy servers
 - ⚡ Support HTTP/1.1 and HTTP/2
-- 🔐 Use client certificates for secure connections (Coming Soon)
+- 🔐 Use client certificates for mutual TLS authentication
 - ⏱️ Configure timeouts and redirects
 - 📦 Handle binary and text responses automatically
 
@@ -515,9 +515,11 @@ bx:http
     result="result";
 ```
 
-## 🔐 Client Certificates (Coming Soon)
+## 🔐 Client Certificates
 
-For mutual TLS authentication, you can provide a client certificate:
+BoxLang supports mutual TLS authentication using client certificates. This allows your application to authenticate to servers that require client-side SSL/TLS certificates, commonly used in enterprise environments and B2B integrations.
+
+### 🔹 Basic Client Certificate Authentication
 
 ```js
 bx:http
@@ -526,6 +528,133 @@ bx:http
     clientCertPassword="certpassword"
     result="result";
 ```
+
+### 🔹 Supported Certificate Formats
+
+BoxLang supports PKCS#12 (`.p12` or `.pfx`) certificate files, which bundle the client certificate and private key in a single encrypted file.
+
+```js
+// Using .p12 format
+bx:http
+    url="https://api.partner.com/secure-endpoint"
+    clientCert="/secure/certs/client-certificate.p12"
+    clientCertPassword="mySecurePassword123"
+    result="result";
+
+// Using .pfx format (same as .p12)
+bx:http
+    url="https://api.partner.com/secure-endpoint"
+    clientCert="/secure/certs/client-certificate.pfx"
+    clientCertPassword="mySecurePassword123"
+    result="result";
+```
+
+### 🔹 Common Use Cases
+
+**Enterprise API Integration:**
+
+```js
+// Connect to corporate API requiring client cert
+bx:http
+    url="https://internal-api.company.com/employee/data"
+    clientCert="/etc/ssl/certs/company-client.p12"
+    clientCertPassword="#getSystemSetting('CERT_PASSWORD')#"
+    result="employeeData" {
+    bx:httpparam type="header" name="Accept" value="application/json";
+}
+```
+
+**B2B Partner Integration:**
+
+```js
+// Secure communication with business partner
+bx:http
+    url="https://partner-api.example.com/orders"
+    method="POST"
+    clientCert="/certs/partner-auth.p12"
+    clientCertPassword="#application.certPassword#"
+    result="orderResult" {
+    bx:httpparam type="header" name="Content-Type" value="application/json";
+    bx:httpparam type="body" value=serializeJson( orderData );
+}
+```
+
+**Government/Regulated APIs:**
+
+```js
+// Access government service requiring client authentication
+bx:http
+    url="https://gov-api.example.gov/verify"
+    clientCert="/secure/gov-client-cert.p12"
+    clientCertPassword="#decrypt(application.encryptedCertPwd, application.certKey)#"
+    timeout="60"
+    result="verificationResult";
+```
+
+### 🔹 Security Best Practices
+
+{% hint style="warning" %}
+**Certificate Security Guidelines:**
+
+1. **Never hardcode passwords** - Use environment variables or encrypted configuration
+2. **Restrict file permissions** - Ensure certificate files are readable only by the application user
+3. **Rotate certificates** - Regularly update certificates before expiration
+4. **Use secure storage** - Store certificates in protected directories outside web root
+5. **Monitor expiration** - Set up alerts for certificate expiration dates
+{% endhint %}
+
+```js
+// ✅ GOOD - Password from environment variable
+bx:http
+    url="https://secure-api.com/data"
+    clientCert="/etc/certs/client.p12"
+    clientCertPassword="#getSystemSetting('CLIENT_CERT_PASSWORD')#"
+    result="result";
+
+// ❌ BAD - Hardcoded password
+bx:http
+    url="https://secure-api.com/data"
+    clientCert="/certs/client.p12"
+    clientCertPassword="password123"
+    result="result";
+```
+
+### 🔹 Error Handling
+
+```js
+try {
+    bx:http
+        url="https://secure-api.example.com/data"
+        clientCert="/path/to/client-cert.p12"
+        clientCertPassword="certpassword"
+        throwOnError="false"
+        result="result";
+
+    if ( result.statusCode == 200 ) {
+        writeOutput( "Authenticated successfully" );
+    } else if ( result.statusCode == 401 || result.statusCode == 403 ) {
+        writeOutput( "Authentication failed - check certificate validity" );
+    }
+} catch ( any e ) {
+    if ( findNoCase( "certificate", e.message ) ) {
+        writeLog( type="error", text="Certificate error: #e.message#" );
+        // Handle certificate-specific errors (wrong password, expired cert, etc.)
+    }
+    rethrow;
+}
+```
+
+### 🔹 Troubleshooting
+
+**Common Issues:**
+
+| Issue | Solution |
+| :--- | :--- |
+| "Certificate password incorrect" | Verify the password matches the certificate file |
+| "Certificate not found" | Check file path is absolute and file exists |
+| "Certificate expired" | Renew and replace the certificate file |
+| "Certificate format not supported" | Ensure certificate is in PKCS#12 (.p12/.pfx) format |
+| "SSL handshake failed" | Verify server trusts your certificate's CA |
 
 ## 📦 Binary Responses
 
