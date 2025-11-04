@@ -79,6 +79,7 @@
 * [IDE & Tooling](getting-started/ide-tooling/README.md)
   * [BoxLang IDE](getting-started/ide-tooling/boxlang-ide.md)
   * [BoxLang Compiler](getting-started/ide-tooling/boxlang-compiler.md)
+  * [BoxLang AST](getting-started/ide-tooling/boxlang-ast.md)
   * [BoxLang Debugger](getting-started/ide-tooling/boxlang-debugger/README.md)
     * [MiniServer Debugging](getting-started/ide-tooling/boxlang-debugger/miniserver-debugging.md)
     * [CommandBox Debugging](getting-started/ide-tooling/boxlang-debugger/commandbox-debugging.md)
