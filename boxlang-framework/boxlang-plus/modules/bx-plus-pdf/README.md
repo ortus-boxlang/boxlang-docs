@@ -10,7 +10,7 @@ icon: file-pdf
 The Boxlang+ Licensed edition of the `bx-pdf` module equips your BoxLang+ applications with robust PDF creation and processing capabilities—ideal for invoices, reports, forms, certificates, and archival workflows.
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus/README.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus/) with a limited trial.
 {% endhint %}
 
 This module provides comprehensive PDF manipulation and generation functionality for BoxLang, including:
@@ -315,56 +315,227 @@ Performs advanced PDF operations like merging, splitting, watermarking, and form
 
 ### Examples
 
-#### Merging PDFs
+#### Reading PDF Information <a href="#reading-pdf-information" id="reading-pdf-information"></a>
 
-```html
-<bx:pdf action="merge"
-        destination="/combined/merged-document.pdf"
-        overwrite="true">
+Copy
 
-    <bx:pdfparam source="/docs/doc1.pdf" />
-    <bx:pdfparam source="/docs/doc2.pdf" />
-    <bx:pdfparam source="/docs/doc3.pdf" />
+```
+<bx:pdf action="getinfo" source="report.pdf" name="pdfInfo" />
 
+<bx:output>
+PDF Title: #pdfInfo.Title#<br>
+Author: #pdfInfo.Author#<br>
+Pages: #pdfInfo.TotalPages#<br>
+Created: #pdfInfo.Created#
+</bx:output>
+```
+
+#### Merging Multiple PDFs <a href="#merging-multiple-pdfs" id="merging-multiple-pdfs"></a>
+
+Copy
+
+```
+<bx:pdf action="merge" destination="combined-report.pdf" overwrite="true">
+    <bx:pdfparam source="section1.pdf" />
+    <bx:pdfparam source="section2.pdf" />
+    <bx:pdfparam source="appendix.pdf" />
 </bx:pdf>
 ```
 
-#### Adding Watermarks
+#### Extracting Text Content <a href="#extracting-text-content" id="extracting-text-content"></a>
 
-```html
-<bx:pdf action="addWatermark"
-        source="/documents/report.pdf"
-        destination="/documents/watermarked-report.pdf"
-        image="/images/confidential.png"
+Copy
+
+```
+<bx:pdf action="extracttext" 
+        source="document.pdf" 
+        name="extractedText" 
+        pages="1-5" />
+
+<bx:output>
+Extracted text: #extractedText#
+</bx:output>
+```
+
+#### Adding Watermarks <a href="#adding-watermarks" id="adding-watermarks"></a>
+
+Copy
+
+```
+<bx:pdf action="addwatermark" 
+        source="original.pdf" 
+        destination="watermarked.pdf"
+        image="watermark.png"
+        pages="*"
         opacity="0.3"
-        position="center"
-        rotation="45">
-</bx:pdf>
+        position="5"
+        overwrite="true" />
 ```
 
-#### Extracting Text
+#### Adding Headers and Footers <a href="#adding-headers-and-footers" id="adding-headers-and-footers"></a>
 
-```html
-<bx:pdf action="extractText"
-        source="/documents/report.pdf"
-        destination="/extracted/report.txt"
-        pages="1-10">
-</bx:pdf>
+Copy
+
+```
+<bx:pdf action="addheader" 
+        source="document.pdf" 
+        destination="document-with-header.pdf"
+        text="Company Confidential"
+        align="center"
+        pages="*"
+        overwrite="true" />
+
+<bx:pdf action="addfooter" 
+        source="document-with-header.pdf" 
+        destination="final-document.pdf"
+        text="Page _PAGENUMBER of _LASTPAGENUMBER"
+        align="center"
+        pages="*"
+        numberformat="numeric"
+        overwrite="true" />
 ```
 
-#### Password Protection
+#### Protecting PDF with Password <a href="#protecting-pdf-with-password" id="protecting-pdf-with-password"></a>
 
-```html
-<bx:pdf action="protect"
-        source="/documents/sensitive.pdf"
-        destination="/documents/protected.pdf"
+Copy
+
+```
+<bx:pdf action="protect" 
+        source="sensitive-data.pdf" 
+        destination="protected-data.pdf"
         newOwnerPassword="admin123"
-        newUserPassword="user123"
-        permissions="print,copy">
-</bx:pdf>
+        newUserPassword="user456"
+        permissions="AllowPrinting,AllowCopy"
+        overwrite="true" />
 ```
 
-***
+#### Removing Password Protection <a href="#removing-password-protection" id="removing-password-protection"></a>
+
+Copy
+
+```
+<bx:pdf action="removepassword" 
+        source="protected-document.pdf" 
+        destination="unlocked-document.pdf"
+        password="user456"
+        overwrite="true" />
+```
+
+#### Generating Thumbnails <a href="#generating-thumbnails" id="generating-thumbnails"></a>
+
+Copy
+
+```
+<bx:pdf action="thumbnail" 
+        source="presentation.pdf" 
+        destination="thumbnails/"
+        pages="1,3,5"
+        format="png"
+        resolution="high"
+        scale="150"
+        imageprefix="slide_" />
+```
+
+#### Deleting Specific Pages <a href="#deleting-specific-pages" id="deleting-specific-pages"></a>
+
+Copy
+
+```
+<bx:pdf action="deletepages" 
+        source="full-report.pdf" 
+        destination="trimmed-report.pdf"
+        pages="2,4-6,10"
+        overwrite="true" />
+```
+
+#### Setting Document Information <a href="#setting-document-information" id="setting-document-information"></a>
+
+Copy
+
+```
+<bx:set docInfo = {
+    "Title": "Annual Financial Report",
+    "Author": "Finance Department",
+    "Subject": "2024 Financial Analysis",
+    "Keywords": "finance, annual, report, 2024"
+} />
+
+<bx:pdf action="setinfo" 
+        source="report.pdf" 
+        destination="report-with-metadata.pdf"
+        info="#docInfo#"
+        overwrite="true" />
+```
+
+#### Using PDF Variables <a href="#using-pdf-variables" id="using-pdf-variables"></a>
+
+Copy
+
+```
+<!-- Read PDF into memory -->
+<bx:pdf action="read" source="input.pdf" name="pdfData" />
+
+<!-- Process the PDF data -->
+<bx:pdf action="addwatermark" 
+        source="#pdfData#" 
+        name="watermarkedPdf"
+        text="DRAFT"
+        opacity="0.5" />
+
+<!-- Write to file -->
+<bx:pdf action="write" 
+        source="#watermarkedPdf#" 
+        destination="output.pdf"
+        overwrite="true" />
+```
+
+#### Complex Multi-Action Example <a href="#complex-multi-action-example" id="complex-multi-action-example"></a>
+
+Copy
+
+```
+<bx:try>
+    <!-- Step 1: Read and get info -->
+    <bx:pdf action="getinfo" source="original.pdf" name="info" />
+    
+    <!-- Step 2: Add header and footer -->
+    <bx:pdf action="addheader" 
+            source="original.pdf" 
+            name="withHeader"
+            text="Document #info.Title#"
+            align="center"
+            pages="*" />
+    
+    <bx:pdf action="addfooter" 
+            source="#withHeader#" 
+            name="withFooter"
+            text="Page _PAGENUMBER of _LASTPAGENUMBER | Confidential"
+            align="center"
+            pages="*" />
+    
+    <!-- Step 3: Add watermark -->
+    <bx:pdf action="addwatermark" 
+            source="#withFooter#" 
+            name="finalPdf"
+            text="INTERNAL USE ONLY"
+            opacity="0.2"
+            pages="*" />
+    
+    <!-- Step 4: Write final document -->
+    <bx:pdf action="write" 
+            source="#finalPdf#" 
+            destination="processed-document.pdf"
+            overwrite="true" />
+    
+    <p>PDF processing completed successfully!</p>
+    
+<bx:catch type="any">
+    <p>Error processing PDF: #cfcatch.message#</p>
+</bx:catch>
+</bx:try>
+```
+
+### &#x20;<a href="#supported-actions" id="supported-actions"></a>
 
 ## PDFParam Component
 
@@ -531,8 +702,8 @@ Migration from ColdFusion requires only prefix changes (`cf` → `bx`).
 [bx-spreadsheet](bx-spreadsheet/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus/README.md" %}
-[bx-plus/README.md](bx-plus/README.md)
+{% content-ref url="bx-plus/" %}
+[bx-plus](bx-plus/)
 {% endcontent-ref %}
 
 ***
