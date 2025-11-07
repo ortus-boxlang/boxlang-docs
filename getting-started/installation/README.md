@@ -86,11 +86,11 @@ Note that you may need to tell the system to use the correct JDK version. This c
 {% tab title="🪟 Windows" %}
 
 
-Use the following PowerShell script to install the JRE 21. \
+Use the following **PowerShell 7.x script** to install the JRE 21.
 **HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 ```powershell
-powershell -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/helpers/install-jre.ps1'))"
+powershell  -NoProfile -ExecutionPolicy Bypass -NoExit -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://downloads.ortussolutions.com/ortussolutions/boxlang-quick-installer/helpers/install-jre.ps1'))"
 ```
 
 * Once this runs, the JRE will be installed in your `C:\Program Files\Java\jre{version}`
