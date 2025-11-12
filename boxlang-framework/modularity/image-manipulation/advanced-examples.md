@@ -1,3 +1,8 @@
+---
+description: "Advanced image manipulation examples using BoxLang's image module."
+icon: user-ninja
+---
+
 # Advanced Examples
 
 Real-world examples demonstrating practical image manipulation techniques.

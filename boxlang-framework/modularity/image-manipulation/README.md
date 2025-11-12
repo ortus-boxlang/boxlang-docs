@@ -1,11 +1,9 @@
-# BoxLang Image Module Documentation
+---
+description: Comprehensive documentation for the BoxLang Image Module, including installation, usage examples, and API reference.
+icon: image
+---
 
-<blockquote>
-	Copyright Since 2023 by Ortus Solutions, Corp
-	<br>
-	<a href="https://www.boxlang.io">www.boxlang.io</a> |
-	<a href="https://www.ortussolutions.com">www.ortussolutions.com</a>
-</blockquote>
+# BoxLang Image Module
 
 ## Overview
 
@@ -304,19 +302,3 @@ for (var file in files) {
 - **[CFDocs](https://cfdocs.org/)** - CFML function reference
 - **[GitHub Repository](https://github.com/ortus-boxlang/bx-image)** - Source code and issues
 - **[Ortus Solutions](https://www.ortussolutions.com)** - Commercial support
-
-## Support & Sponsorship
-
-BoxLang is a professional open-source project funded by the community and Ortus Solutions, Corp.
-
-**Become a Sponsor:** [https://patreon.com/ortussolutions](https://patreon.com/ortussolutions)
-
-**Patreon Benefits:**
-- CFCasts account
-- FORGEBOX Pro account
-- Priority support
-- Exclusive content
-
----
-
-**License:** Apache 2.0 | **Copyright** © 2023 Ortus Solutions, Corp

@@ -1,3 +1,10 @@
+---
+description: >-
+  Learn how to perform image transformations such as resizing, rotating,
+  cropping, flipping, shearing, and translating images using BoxLang.
+icon: tools
+---
+
 # Utilities & Reference
 
 Image properties, format support, validation functions, and color reference.

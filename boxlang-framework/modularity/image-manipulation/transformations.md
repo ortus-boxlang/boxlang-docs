@@ -1,3 +1,10 @@
+---
+description: >-
+  Learn how to perform image transformations such as resizing, rotating,
+  cropping, flipping, shearing, and translating images using BoxLang.
+icon: rotate-reverse
+---
+
 # Image Transformations
 
 Learn how to resize, rotate, crop, flip, and transform images in BoxLang.

@@ -1,3 +1,8 @@
+---
+description: "Learn how to apply filters and effects to images using BoxLang's image manipulation module"
+icon: sparkles
+---
+
 # Filters & Effects
 
 Apply visual effects like blur, sharpen, grayscale, and color adjustments to your images.

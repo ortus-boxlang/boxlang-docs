@@ -1,3 +1,10 @@
+---
+description: >-
+    Guide for migrating from Adobe ColdFusion or Lucee image functions to BoxLang
+    Image Module.
+icon: u-turn-left-down
+---
+
 # Migration Guide
 
 Guide for migrating from Adobe ColdFusion or Lucee image functions to BoxLang Image Module.

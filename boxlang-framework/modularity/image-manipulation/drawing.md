@@ -1,3 +1,8 @@
+---
+description: "Comprehensive guide to drawing operations on images using BoxLang's image manipulation module."
+icon: paintbrush
+---
+
 # Drawing Operations
 
 Learn how to draw shapes, lines, curves, and text on images in BoxLang.

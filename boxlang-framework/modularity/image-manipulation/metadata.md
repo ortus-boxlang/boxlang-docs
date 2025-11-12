@@ -1,3 +1,9 @@
+---
+description: >-
+    Learn how to read and extract EXIF and IPTC metadata from images.
+icon: circle-info
+---
+
 # Image Metadata
 
 Learn how to read and extract EXIF and IPTC metadata from images.

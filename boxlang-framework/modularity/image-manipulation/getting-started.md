@@ -1,3 +1,9 @@
+---
+description: "Getting started guide for image manipulation in BoxLang."
+icon: lightbulb
+---
+
+
 # Getting Started with BoxLang Image
 
 This guide will help you get up and running with image manipulation in BoxLang.
