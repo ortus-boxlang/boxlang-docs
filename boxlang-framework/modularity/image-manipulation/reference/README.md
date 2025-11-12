@@ -7,9 +7,148 @@ icon: book
 
 Complete alphabetical reference for all image manipulation Built-In Functions (BIFs).
 
-## Fluent Builder Reference Table
+## Fluent Builder
 
+The BoxLang Image Manipulation module provides a modern, fluent API through the `BoxImage` class. This chainable interface makes image manipulation code more readable and maintainable.
 
+{% hint style="success" %}
+**The Fluent API is the recommended approach** for all new image manipulation code in BoxLang.
+{% endhint %}
+
+### 🔄 Quick Reference: BIF vs Fluent API
+
+Here's how common BIF patterns translate to the modern Fluent API:
+
+| BIF Approach | Fluent API Equivalent |
+|--------------|----------------------|
+| `ImageNew("photo.jpg")` | `Image("photo.jpg")` or `ImageNew("photo.jpg")` |
+| `ImageResize(img, 800, 600)` | `img.resize(800, 600)` |
+| `ImageScaleToFit(img, 400)` | `img.scaleToFit(400)` |
+| `ImageCrop(img, 10, 10, 200, 200)` | `img.crop(10, 10, 200, 200)` |
+| `ImageRotate(img, 90)` | `img.rotate(90)` |
+| `ImageFlip(img, "horizontal")` | `img.flipHorizontal()` |
+| `ImageAddBorder(img, 5, "black")` | `img.addBorder(5, "black")` |
+| `ImageSetDrawingColor(img, "red")` | `img.setDrawingColor("red")` |
+| `ImageDrawText(img, "Hello", 10, 50)` | `img.drawText("Hello", 10, 50)` |
+| `ImageBlur(img, 3)` | `img.blur(3)` |
+| `ImageSharpen(img, 0.5)` | `img.sharpen(0.5)` |
+| `ImageGrayscale(img)` | `img.grayscale()` |
+| `ImageNegative(img)` | `img.negative()` |
+| `ImageWrite(img, "output.jpg")` | `img.write("output.jpg")` |
+| `ImageGetWidth(img)` | `img.getWidth()` |
+| `ImageGetHeight(img)` | `img.getHeight()` |
+
+### Chaining Example
+
+**BIF Approach - Verbose and Procedural:**
+
+```js
+img = ImageNew("photo.jpg");
+ImageResize(img, 800, 600);
+ImageRotate(img, 90);
+ImageAddBorder(img, 10, "black");
+ImageSetDrawingColor(img, "white");
+ImageDrawText(img, "© 2025", 10, 50, { font: "Arial", size: 14 });
+ImageWrite(img, "output.jpg");
+```
+
+**Fluent API - Concise and Chainable:**
+
+```js
+Image("photo.jpg")
+    .resize(800, 600)
+    .rotate(90)
+    .addBorder(10, "black")
+    .setDrawingColor("white")
+    .drawText("© 2025", 10, 50, { font: "Arial", size: 14 })
+    .write("output.jpg");
+```
+
+---
+
+### 📋 Method Categories
+
+### 🎨 Creation & Loading
+
+- `Image()` / `ImageNew()` - Create/load images from file, URL, base64, or create blank canvas
+- `ImageReadBase64()` - Load image from base64 string
+
+### ✂️ Transformations
+
+- `resize()` - Resize to specific dimensions
+- `scaleToFit()` - Scale proportionally to fit within bounds
+- `crop()` - Extract a rectangular region
+- `rotate()` - Rotate by angle
+- `flipHorizontal()` - Flip horizontally
+- `flipVertical()` - Flip vertically
+- `transpose()` - Transpose (swap X/Y axes)
+- `shear()` - Apply shear transformation
+
+### 🎨 Effects & Filters
+
+- `blur()` - Apply blur effect
+- `sharpen()` - Sharpen the image
+- `grayscale()` - Convert to grayscale
+- `negative()` - Create negative
+- `overlay()` - Overlay another image
+- `paste()` - Paste image at position
+
+### 🖌️ Drawing
+
+- `setDrawingColor()` - Set drawing color
+- `setDrawingStroke()` - Set stroke style
+- `setDrawingTransparency()` - Set transparency
+- `setAntialiasing()` - Enable/disable antialiasing
+- `drawText()` - Draw text
+- `drawLine()` - Draw line
+- `drawRect()` - Draw rectangle
+- `drawRoundRect()` - Draw rounded rectangle
+- `drawOval()` - Draw oval/circle
+- `drawArc()` - Draw arc
+- `drawPoint()` - Draw point
+- `clearRect()` - Clear rectangle area
+
+### 🎀 Decorations
+
+- `addBorder()` - Add border around image
+- `setBackground()` - Set background color
+
+### 💾 Output
+
+- `write()` - Write to file
+- `writeToBrowser()` - Output to HTTP response
+- `writeBase64()` - Export as base64 string
+- `getBufferedImage()` - Get Java BufferedImage
+
+### ℹ️ Information
+
+- `getWidth()` - Get image width
+- `getHeight()` - Get image height
+- `info()` - Get comprehensive image info
+
+---
+
+### 🚀 Complete Example
+
+Here's a real-world example showing the power of method chaining:
+
+```js
+// Create a thumbnail with watermark
+Image("products/large-photo.jpg")
+    .scaleToFit(400)
+    .addBorder(2, "##cccccc")
+    .setDrawingColor("white")
+    .setDrawingTransparency(70)
+    .drawRect(0, getHeight() - 30, getWidth(), 30, true)
+    .setDrawingColor("##333333")
+    .setDrawingTransparency(0)
+    .drawText("© MyCompany 2025", 10, getHeight() - 10, {
+        font: "Arial",
+        size: 12,
+        style: "bold"
+    })
+    .write("products/thumbnails/photo-thumb.jpg");
+```
 
 ## BIF Quick Reference Table
 
