@@ -52,3 +52,6 @@ myImage.rotate( 180 );
 * The operation modifies the image in place when used as a member function.
 * Returns the modified image object for chaining or further processing.
 * Only the `angle` argument is supported; x and y arguments are not implemented.
+* Positive angles rotate clockwise, negative angles rotate counterclockwise.
+* The image dimensions may change after rotation (except for 90° increments).
+* For simple 90°, 180°, 270° rotations, consider using `ImageFlip()` with transpose values.

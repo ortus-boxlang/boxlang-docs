@@ -24,7 +24,15 @@ ImageDrawText(name, str, x, y [, attributeCollection])
 
 ## Description
 
-`ImageDrawText` draws a string of text on the specified image at the given (x, y) coordinates. You can optionally provide an attribute collection struct to control font, size, color, and other text rendering options. The image can be passed directly or referenced by variable name.
+`ImageDrawText` draws a string of text on the specified image at the given (x, y) coordinates. You can optionally provide an attribute collection struct to control font, size, style, and text rendering options. The image can be passed directly or referenced by variable name.
+
+The `attributeCollection` struct supports the following keys:
+
+* `font` (string): Font family name (e.g., "Arial", "Helvetica")
+* `size` (numeric): Font size in points (default: 12)
+* `style` (string): Font style - "plain", "bold", "italic", or "bolditalic" (default: "plain")
+* `underline` (boolean): Whether to underline the text (default: false)
+* `strikethrough` (boolean): Whether to strike through the text (default: false)
 
 ## Example
 
@@ -32,9 +40,19 @@ ImageDrawText(name, str, x, y [, attributeCollection])
 // Draw text at (10, 20)
 img = ImageDrawText(myImage, "Hello World", 10, 20);
 
-// Draw text with attributes
-attrs = { font: "Arial", size: 24, color: "red" };
-img = ImageDrawText(myImage, "Hello World", 10, 20, attrs);
+// Draw text with full styling
+attrs = {
+    font: "Arial",
+    size: 24,
+    style: "bold",
+    underline: true,
+    strikethrough: false
+};
+img = ImageDrawText(myImage, "Styled Text", 10, 20, attrs);
+
+// Chain with color setup
+img.setDrawingColor("blue")
+   .drawText("Blue Text", 100, 100, { size: 18, style: "italic" });
 ```
 
 ## See Also
@@ -46,4 +64,7 @@ img = ImageDrawText(myImage, "Hello World", 10, 20, attrs);
 
 * All arguments except `attributeCollection` are required.
 * The image can be passed as a BoxImage object or as a variable name referencing an image.
-* The attribute collection struct can include font, size, color, and other text properties.
+* The attribute collection struct controls font properties (font, size, style, underline, strikethrough).
+* Text color is set using `ImageSetDrawingColor` before calling this function.
+* Enable anti-aliasing with `ImageSetAntiAliasing` for smoother text rendering.
+* Returns the image object for method chaining.

@@ -58,3 +58,7 @@ imgCopy = ImageNew( img );
 * The `imageType` should match supported types (e.g., "RGB", "ARGB").
 * If loading from a file or URL fails, an error is thrown.
 * The default color for blank images is black unless specified.
+* **File handles are properly managed** - no file locking issues on Windows.
+* Files can be deleted immediately after loading with `ImageNew()`.
+* Images are fully loaded into memory upon creation - no lazy loading issues.
+* Safe to use immediately after creation without needing to call `info()` first.

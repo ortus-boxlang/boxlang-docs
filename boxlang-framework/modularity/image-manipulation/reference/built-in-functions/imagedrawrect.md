@@ -47,3 +47,7 @@ img = ImageDrawRect(myImage, 10, 20, 100, 50);
 * All arguments except `filled` are required.
 * The image can be passed as a BoxImage object or as a variable name referencing an image.
 * The rectangle is drawn at (x, y) with the specified width and height.
+* Uses the current drawing color (set with `ImageSetDrawingColor`).
+* Line thickness and style are controlled by `ImageSetDrawingStroke`.
+* Enable anti-aliasing with `ImageSetAntiAliasing` for smoother edges.
+* Returns the image object for method chaining.

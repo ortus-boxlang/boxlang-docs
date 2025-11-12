@@ -42,3 +42,7 @@ img = ImageCrop(myImage, 10, 20, 100, 50);
 
 * All arguments are required.
 * The image can be passed as a BoxImage object or as a variable name referencing an image.
+* The crop region must be within the image boundaries.
+* Returns the modified image object for method chaining.
+* The cropped image becomes the new image - original content outside the crop area is discarded.
+* Coordinates start at (0, 0) in the top-left corner.

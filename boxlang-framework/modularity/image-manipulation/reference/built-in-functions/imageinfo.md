@@ -20,14 +20,38 @@ ImageInfo(name)
 
 ## Description
 
-`ImageInfo` returns a struct with general properties of the specified image. Typical fields include width, height, format, color model, and other metadata. The image can be passed directly or referenced by variable name.
+`ImageInfo` returns a comprehensive struct with properties and metadata of the specified image. The image can be passed directly or referenced by variable name.
+
+**Returned struct contains:**
+
+* `width` (numeric): Image width in pixels
+* `height` (numeric): Image height in pixels
+* `source` (string): Original source path or URL
+* `colormodel` (struct): Color model information including type and color space
+* `transparency` (boolean): Whether the image supports transparency
+* `EXIF` (struct): EXIF metadata (camera settings, date/time, GPS, etc.) - if available
+* `IPTC` (struct): IPTC metadata (copyright, keywords, author, etc.) - if available
 
 ## Example
 
 ```boxlang
-// Get image info
+// Get comprehensive image info
 info = ImageInfo(myImage);
-// info might contain { width: 800, height: 600, format: "jpg", colorModel: "RGB" }
+
+writeOutput("Dimensions: #info.width# x #info.height#<br>");
+writeOutput("Source: #info.source#<br>");
+writeOutput("Color Model: #info.colormodel.colormodel_type#<br>");
+writeOutput("Has Transparency: #info.transparency#<br>");
+
+// Access EXIF data if available
+if (structKeyExists(info, "EXIF") && !structIsEmpty(info.EXIF)) {
+    writeOutput("Camera: #info.EXIF.Make# #info.EXIF.Model#<br>");
+}
+
+// Access IPTC data if available
+if (structKeyExists(info, "IPTC") && !structIsEmpty(info.IPTC)) {
+    writeOutput("Copyright: #info.IPTC.Copyright#<br>");
+}
 ```
 
 ## See Also
@@ -39,4 +63,7 @@ info = ImageInfo(myImage);
 ## Notes
 
 * The image can be passed as a BoxImage object or as a variable name referencing an image.
-* The returned struct contains general image properties and may vary by image type.
+* The returned struct always contains width, height, source, colormodel, and transparency fields.
+* EXIF and IPTC metadata are included only if present in the image (typically JPEG files).
+* Metadata is extracted automatically when the image is loaded.
+* For specific EXIF or IPTC values, use `ImageGetExifTag` or `ImageGetIPTCTag`.

@@ -20,7 +20,23 @@ ImageGetIPTCMetadata(name)
 
 ## Description
 
-`ImageGetIPTCMetadata` extracts IPTC metadata from the specified image. You can pass a BoxImage object, a variable name referencing an image, or a file path string. The returned struct contains key-value pairs for available IPTC metadata fields, such as copyright, author, headline, caption, keywords, and more.
+`ImageGetIPTCMetadata` extracts IPTC (International Press Telecommunications Council) metadata from the specified image. You can pass a BoxImage object, a variable name referencing an image, or a file path string.
+
+IPTC metadata is commonly used by photographers, photo agencies, and news organizations to embed descriptive information in images. The returned struct contains key-value pairs for available IPTC fields.
+
+**Common IPTC fields include:**
+
+* `Copyright` - Copyright notice
+* `Caption` or `Caption-Abstract` - Image description
+* `Headline` - Brief title or headline
+* `Keywords` - Array or list of keywords
+* `By-line` or `Author` - Photographer/creator name
+* `Credit` - Provider/agency credit
+* `Source` - Original owner
+* `Date Created` - Creation date
+* `City`, `Province-State`, `Country-Primary Location Name` - Location information
+* `Category` - Subject category
+* `Supplemental Category` - Additional categories
 
 ## Example
 
@@ -28,8 +44,17 @@ ImageGetIPTCMetadata(name)
 // Get IPTC metadata from a BoxImage
 meta = ImageGetIPTCMetadata(myImage);
 
-// Get IPTC metadata from an image file path
-meta = ImageGetIPTCMetadata("/path/to/image.jpg");
+if (structKeyExists(meta, "Copyright")) {
+    writeOutput("© #meta.Copyright#<br>");
+}
+
+if (structKeyExists(meta, "Keywords")) {
+    writeOutput("Tags: #arrayToList(meta.Keywords)#<br>");
+}
+
+// Get IPTC metadata directly from a file
+meta = ImageGetIPTCMetadata("/path/to/photo.jpg");
+writeOutput("Caption: #meta["Caption-Abstract"]#");
 ```
 
 ## See Also
@@ -42,3 +67,7 @@ meta = ImageGetIPTCMetadata("/path/to/image.jpg");
 * The image can be passed as a BoxImage object, a variable name referencing an image, or a file path string.
 * If the image cannot be read or metadata cannot be processed, an error is thrown.
 * The returned struct contains only available IPTC fields for the image.
+* Not all images contain IPTC metadata - check for key existence before accessing.
+* IPTC data is primarily found in JPEG files from professional photography workflows.
+* Field names may vary slightly - use `structKeyList()` to see available keys.
+* For individual tag values, use `ImageGetIPTCTag` instead.
