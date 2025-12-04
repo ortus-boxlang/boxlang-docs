@@ -1,9 +1,12 @@
 ---
+description: >-
+  Build AI-powered applications with semantic search using Couchbase's native
+  vector search capabilities. Perfect for RAG (Retrieval Augmented Generation),
+  chatbots, recommendation systems, and semantic
 icon: robot
-description: Build AI-powered applications with semantic search using Couchbase's native vector search capabilities. Perfect for RAG (Retrieval Augmented Generation), chatbots, recommendation systems, and semantic search engines.
 ---
 
-# 🤖 AI Vector Memory
+# AI Memory
 
 Build AI-powered applications with semantic search using Couchbase's native vector search capabilities. Perfect for RAG (Retrieval Augmented Generation), chatbots, recommendation systems, and semantic search engines.
 
@@ -12,9 +15,10 @@ Build AI-powered applications with semantic search using Couchbase's native vect
 Vector search enables semantic similarity matching by comparing numerical representations (embeddings) of text. Unlike keyword search, it understands meaning and context.
 
 **Example:**
-- Query: "machine learning tutorial"
-- Matches: "intro to ML", "AI training guide", "neural network basics"
-- Traditional search would miss these!
+
+* Query: "machine learning tutorial"
+* Matches: "intro to ML", "AI training guide", "neural network basics"
+* Traditional search would miss these!
 
 ## 🚀 Quick Start
 
@@ -47,14 +51,17 @@ for (doc in results) {
 ## 📦 Setup Requirements
 
 ### Couchbase Version
-- Couchbase Server 7.6+ recommended for vector search
-- Vector index support is built-in (no manual FTS setup needed!)
+
+* Couchbase Server 7.6+ recommended for vector search
+* Vector index support is built-in (no manual FTS setup needed!)
 
 ### Get Embeddings
+
 You'll need an embedding model. Popular options:
-- **OpenAI**: text-embedding-3-small (1536 dimensions)
-- **Cohere**: embed-english-v3.0
-- **Local**: sentence-transformers models
+
+* **OpenAI**: text-embedding-3-small (1536 dimensions)
+* **Cohere**: embed-english-v3.0
+* **Local**: sentence-transformers models
 
 ## 🎨 Complete RAG Chatbot Example
 
@@ -480,6 +487,6 @@ results = couchbaseVectorSearch(
 
 ## 🔗 Next Steps
 
-- **[API Usage](api-usage.md)** - Complete BIF documentation
-- **[BIF Reference](reference/built-in-functions/)** - Detailed API reference
-- **[Code Usage](code-usage.md)** - Basic cache operations
+* [**API Usage**](api-usage.md) - Complete BIF documentation
+* [**BIF Reference**](reference/built-in-functions/) - Detailed API reference
+* [**Code Usage**](code-usage.md) - Basic cache operations

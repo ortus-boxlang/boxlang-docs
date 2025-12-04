@@ -93,7 +93,7 @@ We all make mistakes from time to time :) So why not let us know about it and he
 
 ## Ortus Solutions, Corp
 
-![](<assets/ortus-medium (1).jpg>)
+![](<.gitbook/assets/ortus-medium (1).jpg>)
 
 This book was written and maintained by [Luis Majano](https://www.luismajano.com) and the [Ortus Solutions](https://www.ortussolutions.com) Development Team.
 

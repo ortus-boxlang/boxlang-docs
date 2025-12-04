@@ -92,7 +92,7 @@ As you can see from the output, this is the result of the command:
 
 That's practically it. This is a very lightweight server that can get the job done. You can also start up servers using our VSCode IDE by opening the command palette and clicking **Start** a BoxLang web server.
 
-<figure><img src="../../assets/ide-tooling-context-minserver (1).png" alt=""><figcaption><p>Command Palette</p></figcaption></figure>
+<figure><img src="../../.gitbook/assets/ide-tooling-context-minserver (1).png" alt=""><figcaption><p>Command Palette</p></figcaption></figure>
 
 <figure><img src="../../.gitbook/assets/image (2) (2).png" alt=""><figcaption><p>Manage your Servers</p></figcaption></figure>
 

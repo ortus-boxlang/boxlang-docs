@@ -1,4 +1,8 @@
-# BoxImage Fluent API
+---
+icon: confluence
+---
+
+# Fluent Builder
 
 The `BoxImage` class provides a fluent, chainable API for image manipulation in BoxLang. All methods return the `BoxImage` instance, allowing you to chain multiple operations together in a single expression.
 
@@ -26,7 +30,7 @@ img = ImageNew(800, 600, "rgb", "white");
 
 ## Transformations
 
-### resize(width, height, [interpolation], [blurFactor])
+### resize(width, height, \[interpolation], \[blurFactor])
 
 Resize the image to specific dimensions.
 
@@ -38,7 +42,7 @@ img.resize(1200, 800, "highestQuality", 1);
 
 **Interpolation methods:** `nearest`, `bilinear`, `bicubic`, `highestPerformance`, `highestQuality`
 
-### scaleToFit(size, [interpolation])
+### scaleToFit(size, \[interpolation])
 
 Scale image proportionally to fit within a bounding box.
 
@@ -123,7 +127,7 @@ img.negative();
 
 ## Filters & Effects
 
-### blur([radius])
+### blur(\[radius])
 
 Apply a blur effect.
 
@@ -207,16 +211,17 @@ img.setDrawingStroke({
 ```
 
 **Stroke Attributes:**
-- `width` (numeric): Line thickness in pixels (default: 1)
-- `endCaps` (string): Line end style - "butt", "round", "square" (default: "square")
-- `lineJoins` (string): Corner style - "miter", "round", "bevel" (default: "miter")
-- `miterLimit` (numeric): Limit for miter joins (default: 10)
-- `dashArray` (array): Dash pattern [dash, gap, dash, gap...] (default: solid line)
-- `dashPhase` (numeric): Offset for dash pattern (default: 0)
+
+* `width` (numeric): Line thickness in pixels (default: 1)
+* `endCaps` (string): Line end style - "butt", "round", "square" (default: "square")
+* `lineJoins` (string): Corner style - "miter", "round", "bevel" (default: "miter")
+* `miterLimit` (numeric): Limit for miter joins (default: 10)
+* `dashArray` (array): Dash pattern \[dash, gap, dash, gap...] (default: solid line)
+* `dashPhase` (numeric): Offset for dash pattern (default: 0)
 
 ### Shape Drawing
 
-#### drawRect(x, y, width, height, [filled])
+#### drawRect(x, y, width, height, \[filled])
 
 Draw a rectangle.
 
@@ -226,7 +231,7 @@ img.drawRect(50, 50, 200, 100, true);    // Filled
 img.fillRect(50, 50, 200, 100);          // Filled (convenience method)
 ```
 
-#### drawRoundRect(x, y, width, height, arcWidth, arcHeight, [filled])
+#### drawRoundRect(x, y, width, height, arcWidth, arcHeight, \[filled])
 
 Draw a rounded rectangle.
 
@@ -235,7 +240,7 @@ img.drawRoundRect(50, 50, 200, 100, 20, 20);
 img.drawRoundRect(50, 50, 200, 100, 20, 20, true);
 ```
 
-#### drawOval(x, y, width, height, [filled])
+#### drawOval(x, y, width, height, \[filled])
 
 Draw an oval/ellipse.
 
@@ -244,7 +249,7 @@ img.drawOval(100, 100, 150, 100);
 img.drawOval(100, 100, 150, 100, true);
 ```
 
-#### drawBeveledRect(x, y, width, height, raised, [filled])
+#### drawBeveledRect(x, y, width, height, raised, \[filled])
 
 Draw a 3D beveled rectangle.
 
@@ -253,7 +258,7 @@ img.drawBeveledRect(50, 50, 200, 100, true);         // Raised
 img.drawBeveledRect(50, 50, 200, 100, false, true);  // Lowered, filled
 ```
 
-#### drawArc(x, y, width, height, startAngle, arcAngle, [filled])
+#### drawArc(x, y, width, height, startAngle, arcAngle, \[filled])
 
 Draw an arc or pie slice.
 
@@ -272,7 +277,7 @@ Draw a straight line.
 img.drawLine(0, 0, 100, 100);
 ```
 
-#### drawLines(xCoords, yCoords, isPolygon, [filled])
+#### drawLines(xCoords, yCoords, isPolygon, \[filled])
 
 Draw connected lines or polygons.
 
@@ -307,7 +312,7 @@ img.drawQuadraticCurve(150, 200, 50, 50, 250, 50);
 
 ### Text Drawing
 
-#### drawText(text, x, y, [fontConfig])
+#### drawText(text, x, y, \[fontConfig])
 
 Draw text on the image.
 
@@ -327,11 +332,12 @@ img.drawText("Styled Text", 100, 200, {
 ```
 
 **Font config attributes:**
-- `font` (string): Font family name (default: system default)
-- `size` (numeric): Font size in points (default: 12)
-- `style` (string): "plain", "bold", "italic", "bolditalic" (default: "plain")
-- `underline` (boolean): Underline text (default: false)
-- `strikethrough` (boolean): Strikethrough text (default: false)
+
+* `font` (string): Font family name (default: system default)
+* `size` (numeric): Font size in points (default: 12)
+* `style` (string): "plain", "bold", "italic", "bolditalic" (default: "plain")
+* `underline` (boolean): Underline text (default: false)
+* `strikethrough` (boolean): Strikethrough text (default: false)
 
 ### Utility Drawing
 
@@ -391,7 +397,7 @@ img.copy(50, 50, 100, 100, 200, 200);
 
 ## Writing Images
 
-### write([path])
+### write(\[path])
 
 Write the image to disk.
 
@@ -405,9 +411,10 @@ img.write("output/converted.png");
 ```
 
 **Notes:**
-- Parent directories are automatically created
-- Format is determined by file extension
-- File handles are properly closed (no Windows locking issues)
+
+* Parent directories are automatically created
+* Format is determined by file extension
+* File handles are properly closed (no Windows locking issues)
 
 ## Information & Metadata
 
@@ -509,33 +516,33 @@ result = base
 
 ### File Handling
 
-- Images loaded from files are immediately read into memory - no file locking issues
-- Files can be deleted immediately after `ImageNew()` or `ImageRead()`
-- `write()` automatically creates parent directories if they don't exist
+* Images loaded from files are immediately read into memory - no file locking issues
+* Files can be deleted immediately after `ImageNew()` or `ImageRead()`
+* `write()` automatically creates parent directories if they don't exist
 
 ### Lazy Loading
 
-- Images are fully loaded upon creation - no lazy loading issues
-- Safe to use immediately after `ImageNew()` without calling `info()` first
+* Images are fully loaded upon creation - no lazy loading issues
+* Safe to use immediately after `ImageNew()` without calling `info()` first
 
 ### Color Format
 
-- Colors accept both names ("red", "blue", "navy") and hex codes ("#FF0000", "#0000FF")
-- See `BoxImage.COLORS` map for supported color names
+* Colors accept both names ("red", "blue", "navy") and hex codes ("#FF0000", "#0000FF")
+* See `BoxImage.COLORS` map for supported color names
 
 ### Method Chaining
 
-- All transformation and drawing methods return `BoxImage` for chaining
-- Getters (info, getWidth, getBlob, etc.) return their respective types and break the chain
+* All transformation and drawing methods return `BoxImage` for chaining
+* Getters (info, getWidth, getBlob, etc.) return their respective types and break the chain
 
 ### Metadata
 
-- EXIF and IPTC metadata extracted automatically when loading from files
-- Metadata is preserved when copying images
-- Use `info()` to access all metadata in a single struct
+* EXIF and IPTC metadata extracted automatically when loading from files
+* Metadata is preserved when copying images
+* Use `info()` to access all metadata in a single struct
 
 ## Related Documentation
 
-- [Built-In Functions](/docs/reference/built-in-functions/) - Individual BIF documentation
-- [Image Component](/docs/reference/components/image.md) - Tag-based approach
-- [readme.md](/readme.md) - Module overview and quick start
+* [Built-In Functions](../../../../../docs/reference/built-in-functions/) - Individual BIF documentation
+* [Image Component](../../../../../docs/reference/components/image.md) - Tag-based approach
+* [readme.md](../../../../../) - Module overview and quick start

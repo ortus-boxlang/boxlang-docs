@@ -1,4 +1,4 @@
-# 📚 Components
+# Components
 
 Complete reference for all Couchbase module Components.
 
@@ -6,7 +6,7 @@ Complete reference for all Couchbase module Components.
 
 Components for coordinating operations across multiple servers:
 
-- [**CouchbaseLock**](CouchbaseLock.md) - Execute code with automatic distributed lock management
+* [**CouchbaseLock**](CouchbaseLock.md) - Execute code with automatic distributed lock management
 
 ## 📖 Usage
 
@@ -29,6 +29,6 @@ Components for coordinating operations across multiple servers:
 
 ## 🔗 Related Documentation
 
-- [Distributed Locking Guide](../../distributed-locking.md) - Lock patterns and best practices
-- [Built-In Functions](../built-in-functions/README.md) - BIF reference
-- [Reference Overview](../README.md) - Configuration and settings
+* [Distributed Locking Guide](../../distributed-locking.md) - Lock patterns and best practices
+* [Built-In Functions](../built-in-functions/) - BIF reference
+* [Reference Overview](../) - Configuration and settings

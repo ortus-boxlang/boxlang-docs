@@ -2,21 +2,21 @@
 description: >-
   Learn how to perform image transformations such as resizing, rotating,
   cropping, flipping, shearing, and translating images using BoxLang.
-icon: tools
+icon: screwdriver-wrench
 ---
 
-# Utilities & Reference
+# Utilities
 
 Image properties, format support, validation functions, and color reference.
 
 ## Table of Contents
 
-- [Image Properties](#image-properties)
-- [Format Support](#format-support)
-- [Validation Functions](#validation-functions)
-- [Color Reference](#color-reference)
-- [Image Information](#image-information)
-- [Binary Operations](#binary-operations)
+* [Image Properties](utilities.md#image-properties)
+* [Format Support](utilities.md#format-support)
+* [Validation Functions](utilities.md#validation-functions)
+* [Color Reference](utilities.md#color-reference)
+* [Image Information](utilities.md#image-information)
+* [Binary Operations](utilities.md#binary-operations)
 
 ## Image Properties
 
@@ -105,22 +105,22 @@ if (canProcessFormat("PNG")) {
 
 ### Supported Formats Reference
 
-| Format | Read | Write | Notes |
-|--------|------|-------|-------|
-| **BMP** | ✅ | ✅ | Bitmap, no compression |
-| **GIF** | ✅ | ✅ | Supports transparency, animation |
-| **JPEG** | ✅ | ✅ | Lossy compression, no transparency |
-| **PNG** | ✅ | ✅ | Lossless, supports transparency |
-| **TIFF** | ✅ | ✅ | High quality, large files |
-| **WBMP** | ✅ | ✅ | Wireless bitmap, monochrome |
+| Format   | Read | Write | Notes                              |
+| -------- | ---- | ----- | ---------------------------------- |
+| **BMP**  | ✅    | ✅     | Bitmap, no compression             |
+| **GIF**  | ✅    | ✅     | Supports transparency, animation   |
+| **JPEG** | ✅    | ✅     | Lossy compression, no transparency |
+| **PNG**  | ✅    | ✅     | Lossless, supports transparency    |
+| **TIFF** | ✅    | ✅     | High quality, large files          |
+| **WBMP** | ✅    | ✅     | Wireless bitmap, monochrome        |
 
 **Notes:**
 
-- **PNG** - Best for web, supports transparency
-- **JPEG** - Best for photos, smaller file size
-- **GIF** - Best for animations, limited colors
-- **TIFF** - Best for archival, printing
-- **BMP** - Uncompressed, large files
+* **PNG** - Best for web, supports transparency
+* **JPEG** - Best for photos, smaller file size
+* **GIF** - Best for animations, limited colors
+* **TIFF** - Best for archival, printing
+* **BMP** - Uncompressed, large files
 
 ## Validation Functions
 
@@ -209,15 +209,15 @@ img.setDrawingColor("green");
 
 **Available Named Colors:**
 
-| Color | Hex Value | Color | Hex Value |
-|-------|-----------|-------|-----------|
-| `black` | #000000 | `white` | #FFFFFF |
-| `red` | #FF0000 | `green` | #00FF00 |
-| `blue` | #0000FF | `cyan` | #00FFFF |
-| `magenta` | #FF00FF | `yellow` | #FFFF00 |
-| `orange` | #FFA500 | `pink` | #FFC0CB |
-| `gray` | #808080 | `darkgray` | #A9A9A9 |
-| `lightgray` | #D3D3D3 | | |
+| Color       | Hex Value | Color      | Hex Value |
+| ----------- | --------- | ---------- | --------- |
+| `black`     | #000000   | `white`    | #FFFFFF   |
+| `red`       | #FF0000   | `green`    | #00FF00   |
+| `blue`      | #0000FF   | `cyan`     | #00FFFF   |
+| `magenta`   | #FF00FF   | `yellow`   | #FFFF00   |
+| `orange`    | #FFA500   | `pink`     | #FFC0CB   |
+| `gray`      | #808080   | `darkgray` | #A9A9A9   |
+| `lightgray` | #D3D3D3   |            |           |
 
 ### Hex Colors
 
@@ -331,17 +331,17 @@ img2 = ImageReadBase64(base64String);
 
 ## Utility Functions Reference
 
-| Function | Purpose | Example |
-|----------|---------|---------|
-| `GetReadableImageFormats()` | List readable formats | `["BMP", "GIF", ...]` |
-| `GetWriteableImageFormats()` | List writable formats | `["BMP", "GIF", ...]` |
-| `ImageGetWidth(img)` | Get width in pixels | `1920` |
-| `ImageGetHeight(img)` | Get height in pixels | `1080` |
-| `ImageInfo(img)` | Get full image info | `{width: 1920, ...}` |
-| `ImageGetBlob(img)` | Get byte array | `[binary data]` |
-| `ImageGetBufferedImage(img)` | Get Java BufferedImage | Java object |
-| `IsImage(var)` | Check if variable is image | `true/false` |
-| `IsImageFile(path)` | Check if file is image | `true/false` |
+| Function                     | Purpose                    | Example               |
+| ---------------------------- | -------------------------- | --------------------- |
+| `GetReadableImageFormats()`  | List readable formats      | `["BMP", "GIF", ...]` |
+| `GetWriteableImageFormats()` | List writable formats      | `["BMP", "GIF", ...]` |
+| `ImageGetWidth(img)`         | Get width in pixels        | `1920`                |
+| `ImageGetHeight(img)`        | Get height in pixels       | `1080`                |
+| `ImageInfo(img)`             | Get full image info        | `{width: 1920, ...}`  |
+| `ImageGetBlob(img)`          | Get byte array             | `[binary data]`       |
+| `ImageGetBufferedImage(img)` | Get Java BufferedImage     | Java object           |
+| `IsImage(var)`               | Check if variable is image | `true/false`          |
+| `IsImageFile(path)`          | Check if file is image     | `true/false`          |
 
 ## Complete Utility Examples
 
@@ -468,6 +468,6 @@ for (format in byFormat) {
 
 ## Next Steps
 
-- **[Getting Started](getting-started.md)** - Basic image operations
-- **[Advanced Examples](advanced-examples.md)** - Real-world use cases
-- **[BIF Reference](bif-reference.md)** - Complete function reference
+* [**Getting Started**](getting-started.md) - Basic image operations
+* [**Advanced Examples**](advanced-examples.md) - Real-world use cases
+* [**BIF Reference**](bif-reference.md) - Complete function reference

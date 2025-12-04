@@ -802,7 +802,7 @@
           * [CouchbaseVectorList](boxlang-framework/boxlang-plus/modules/bx-couchbase/reference/built-in-functions/CouchbaseVectorList.md)
           * [CouchbaseVectorSearch](boxlang-framework/boxlang-plus/modules/bx-couchbase/reference/built-in-functions/CouchbaseVectorSearch.md)
         * [Components](boxlang-framework/boxlang-plus/modules/bx-couchbase/reference/components/README.md)
-          * [DistributedLock](boxlang-framework/boxlang-plus/modules/bx-couchbase/reference/components/DistributedLock.md)
+          * [DistributedLock](boxlang-framework/boxlang-plus/modules/bx-couchbase/reference/components/distributedlock.md)
     * [LDAP +](boxlang-framework/boxlang-plus/modules/bx-ldap/README.md)
       * [Reference](boxlang-framework/boxlang-plus/modules/bx-ldap/reference/README.md)
         * [Components](boxlang-framework/boxlang-plus/modules/bx-ldap/reference/components/README.md)

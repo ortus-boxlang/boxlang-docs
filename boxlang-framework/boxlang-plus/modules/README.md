@@ -11,15 +11,15 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 
 ## 🔍 Module Index
 
-| Module | Purpose | Quick Install |
-|--------|---------|---------------|
-| [`bx-csv`](bx-csv.md) | Streaming CSV parsing & generation for large datasets | `box install bx-csv` |
-| [`bx-couchbase`](bx-couchbase.md) | **In Development**<br>Distributed caching & NoSQL document storage via Couchbase | `box install bx-couchbase` |
-| [`bx-ldap`](bx-ldap/README.md) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications! | `box install bx-ldap` |
-| [`bx-plus`](bx-plus/README.md) | Subscription bootstrap, entitlement validation, shared utilities | `box install bx-plus` |
-| [`bx-pdf`](bx-plus-pdf.md) | <br>PDF generation and manipulation for documents, reports, and forms. This module provides free-tier as well as [licensed functionality](bx-plus-pdf.md) | `box install bx-pdf` |
-| [`bx-redis`](bx-redis/README.md) | High-performance Redis-backed caching, data structures, pub/sub | `box install bx-redis` |
-| [`bx-spreadsheet`](bx-spreadsheet/README.md) | Read, write, style spreadsheet documents (XLSX) | `box install bx-spreadsheet` |
+| Module                              | Purpose                                                                                                                                                                     | Quick Install                |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| [`bx-csv`](bx-csv.md)               | Streaming CSV parsing & generation for large datasets                                                                                                                       | `box install bx-csv`         |
+| [`bx-couchbase`](bx-couchbase/)     | <p><strong>In Development</strong><br>Distributed caching &#x26; NoSQL document storage via Couchbase</p>                                                                   | `box install bx-couchbase`   |
+| [`bx-ldap`](bx-ldap/)               | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications!                                                               | `box install bx-ldap`        |
+| [`bx-plus`](bx-plus/)               | Subscription bootstrap, entitlement validation, shared utilities                                                                                                            | `box install bx-plus`        |
+| [`bx-pdf`](bx-plus-pdf.md)          | <p><br>PDF generation and manipulation for documents, reports, and forms. This module provides free-tier as well as <a href="bx-plus-pdf.md">licensed functionality</a></p> | `box install bx-pdf`         |
+| [`bx-redis`](bx-redis/)             | High-performance Redis-backed caching, data structures, pub/sub                                                                                                             | `box install bx-redis`       |
+| [`bx-spreadsheet`](bx-spreadsheet/) | Read, write, style spreadsheet documents (XLSX)                                                                                                                             | `box install bx-spreadsheet` |
 
 ## 🚀 Installation Pattern
 
@@ -42,7 +42,7 @@ After installation, modules register themselves automatically or provide a simpl
 ## 🧪 Common Usage Flow
 
 1. Install module.
-2. Configure via `boxlang.json`, environment variables, or runtime API.  Each module can have different configuration needs; refer to individual module docs for specifics.
+2. Configure via `boxlang.json`, environment variables, or runtime API. Each module can have different configuration needs; refer to individual module docs for specifics.
 3. Inject or call provided services/components.
 4. Handle errors using standard exception management patterns.
 
@@ -52,28 +52,28 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-csv.md](bx-csv.md)
 {% endcontent-ref %}
 
-{% content-ref url="bx-couchbase.md" %}
-[bx-couchbase.md](bx-couchbase.md)
+{% content-ref url="bx-couchbase/" %}
+[bx-couchbase](bx-couchbase/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-ldap/README.md" %}
-[bx-ldap/README.md](bx-ldap/README.md)
+{% content-ref url="bx-ldap/" %}
+[bx-ldap](bx-ldap/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus/README.md" %}
-[bx-plus/README.md](bx-plus/README.md)
+{% content-ref url="bx-plus/" %}
+[bx-plus](bx-plus/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus-pdf.md" %}
-[bx-pdf.md](bx-plus-pdf.md)
+[bx-plus-pdf.md](bx-plus-pdf.md)
 {% endcontent-ref %}
 
-{% content-ref url="bx-redis/README.md" %}
-[bx-redis/README.md](bx-redis/README.md)
+{% content-ref url="bx-redis/" %}
+[bx-redis](bx-redis/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-spreadsheet/README.md" %}
-[bx-spreadsheet/README.md](bx-spreadsheet/README.md)
+{% content-ref url="bx-spreadsheet/" %}
+[bx-spreadsheet](bx-spreadsheet/)
 {% endcontent-ref %}
 
 ## 🛡 Reliability & Performance

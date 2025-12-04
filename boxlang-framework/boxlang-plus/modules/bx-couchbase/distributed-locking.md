@@ -1,9 +1,11 @@
 ---
-icon: lock-closed
-description: True distributed locking across multiple servers using Couchbase's native locking mechanism.
+description: >-
+  True distributed locking across multiple servers using Couchbase's native
+  locking mechanism.
+icon: lock-keyhole
 ---
 
-# 🔐 Distributed Locking
+# Distributed Locking
 
 True distributed locking across multiple servers using Couchbase's native locking mechanism.
 
@@ -11,11 +13,11 @@ True distributed locking across multiple servers using Couchbase's native lockin
 
 Distributed locking ensures that only one process across your entire server cluster can execute a critical section of code at a time. This is essential for:
 
-- 💰 **Financial transactions** - Prevent double-charging or race conditions
-- 📦 **Inventory updates** - Avoid overselling products
-- 🔄 **Batch processing** - Ensure only one server runs the job
-- 🎫 **Ticket sales** - Prevent double-booking
-- 👤 **User account updates** - Serialize concurrent modifications
+* 💰 **Financial transactions** - Prevent double-charging or race conditions
+* 📦 **Inventory updates** - Avoid overselling products
+* 🔄 **Batch processing** - Ensure only one server runs the job
+* 🎫 **Ticket sales** - Prevent double-booking
+* 👤 **User account updates** - Serialize concurrent modifications
 
 ## 🚀 Quick Start
 
@@ -330,29 +332,31 @@ function checkRateLimit(userId, maxPerMinute) {
 
 ### Component Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `name` | String | Yes | - | Unique lock name across cluster |
-| `cache` | String | Yes | - | Couchbase cache name |
-| `timeout` | Integer | No | 5 | Seconds to wait for lock |
-| `expires` | Integer | No | 30 | Lock expiration (max 30) |
-| `throwOnTimeout` | Boolean | No | true | Throw exception on timeout |
-| `bypass` | Boolean | No | false | Skip locking (for testing) |
+| Attribute        | Type    | Required | Default | Description                     |
+| ---------------- | ------- | -------- | ------- | ------------------------------- |
+| `name`           | String  | Yes      | -       | Unique lock name across cluster |
+| `cache`          | String  | Yes      | -       | Couchbase cache name            |
+| `timeout`        | Integer | No       | 5       | Seconds to wait for lock        |
+| `expires`        | Integer | No       | 30      | Lock expiration (max 30)        |
+| `throwOnTimeout` | Boolean | No       | true    | Throw exception on timeout      |
+| `bypass`         | Boolean | No       | false   | Skip locking (for testing)      |
 
 ### BIF Parameters
 
 **couchbaseLock():**
-- `cacheName` (String, required) - Cache name
-- `name` (String, required) - Lock name
-- `timeout` (Integer, optional, default: 5) - Acquisition timeout in seconds
-- `expires` (Integer, optional, default: 30) - Lock expiration in seconds
-- `callback` (Function, optional) - Function to execute with lock held
-- `throwOnTimeout` (Boolean, optional, default: true) - Throw on timeout
+
+* `cacheName` (String, required) - Cache name
+* `name` (String, required) - Lock name
+* `timeout` (Integer, optional, default: 5) - Acquisition timeout in seconds
+* `expires` (Integer, optional, default: 30) - Lock expiration in seconds
+* `callback` (Function, optional) - Function to execute with lock held
+* `throwOnTimeout` (Boolean, optional, default: true) - Throw on timeout
 
 **couchbaseUnlock():**
-- `cacheName` (String, required) - Cache name
-- `name` (String, required) - Lock name
-- `cas` (Long, required) - CAS value from lock acquisition
+
+* `cacheName` (String, required) - Cache name
+* `name` (String, required) - Lock name
+* `cas` (Long, required) - CAS value from lock acquisition
 
 ## ⚠️ Important Limitations
 
@@ -373,9 +377,10 @@ Couchbase limits `getAndLock()` to **30 seconds maximum**:
 ```
 
 For operations longer than 30 seconds, consider:
-- Breaking into smaller locked operations
-- Using a different synchronization approach
-- Implementing a heartbeat/renewal pattern
+
+* Breaking into smaller locked operations
+* Using a different synchronization approach
+* Implementing a heartbeat/renewal pattern
 
 ### Lock Expiration
 
@@ -396,6 +401,7 @@ Locks **automatically expire** after the specified duration. If your operation t
 ### ✅ DO
 
 **Use descriptive lock names:**
+
 ```js
 name="user-#userId#-balance-update"
 name="product-#productId#-stock-reservation"
@@ -403,6 +409,7 @@ name="job-#jobName#-execution"
 ```
 
 **Keep critical sections short:**
+
 ```js
 // ✅ Good - minimal lock duration
 <bx:CouchbaseLock name="counter" cache="default">
@@ -420,6 +427,7 @@ name="job-#jobName#-execution"
 ```
 
 **Always use try/finally with manual locks:**
+
 ```js
 lockInfo = couchbaseLock("default", "test", 5, 30);
 if (lockInfo.locked) {
@@ -432,6 +440,7 @@ if (lockInfo.locked) {
 ```
 
 **Set appropriate timeouts:**
+
 ```js
 // Short timeout for high-frequency operations
 timeout = 1
@@ -443,6 +452,7 @@ timeout = 10
 ### ❌ DON'T
 
 **Don't use locks for caching:**
+
 ```js
 // ❌ Wrong use case - use cacheGetOrSet() instead
 <bx:CouchbaseLock name="expensive-calc">
@@ -452,6 +462,7 @@ timeout = 10
 ```
 
 **Don't nest locks (deadlock risk):**
+
 ```js
 // ❌ Potential deadlock
 <bx:CouchbaseLock name="lock-A">
@@ -462,6 +473,7 @@ timeout = 10
 ```
 
 **Don't hold locks during I/O:**
+
 ```js
 // ❌ Don't do I/O while holding lock
 <bx:CouchbaseLock name="data">
@@ -515,6 +527,7 @@ Test lock behavior with short timeouts:
 **Problem**: `Failed to acquire lock within X seconds`
 
 **Solutions:**
+
 1. Increase `timeout` parameter
 2. Ensure locks are being released properly
 3. Check for deadlocks or stuck processes
@@ -527,8 +540,10 @@ Test lock behavior with short timeouts:
 **Cause**: Locks auto-expire after `expires` seconds
 
 **Solution**:
-- Wait for expiration (max 30 seconds)
-- Or manually remove lock document:
+
+* Wait for expiration (max 30 seconds)
+* Or manually remove lock document:
+
 ```js
 couchbaseQuery(
     cacheName = "default",
@@ -541,6 +556,7 @@ couchbaseQuery(
 **Problem**: Locking adds latency
 
 **Solutions:**
+
 1. Reduce lock duration - keep critical sections minimal
 2. Use shorter timeouts for better responsiveness
 3. Consider if locking is really needed
@@ -567,12 +583,12 @@ locks.each(function(lock) {
 
 ## 🔗 Related Functions
 
-- [couchbaseLock](reference/built-in-functions/CouchbaseLock.md) - Acquire lock
-- [couchbaseUnlock](reference/built-in-functions/CouchbaseUnlock.md) - Release lock
-- [CouchbaseLock Component](reference/components/CouchbaseLock.md) - Component reference
+* [couchbaseLock](reference/built-in-functions/CouchbaseLock.md) - Acquire lock
+* [couchbaseUnlock](reference/built-in-functions/CouchbaseUnlock.md) - Release lock
+* [CouchbaseLock Component](reference/components/CouchbaseLock.md) - Component reference
 
 ## 📚 See Also
 
-- [Code Usage](code-usage.md) - Cache operations
-- [Troubleshooting](troubleshooting.md) - Common issues
-- [Couchbase Locking Documentation](https://docs.couchbase.com/java-sdk/current/howtos/concurrent-document-mutations.html#pessimistic-locking)
+* [Code Usage](code-usage.md) - Cache operations
+* [Troubleshooting](troubleshooting.md) - Common issues
+* [Couchbase Locking Documentation](https://docs.couchbase.com/java-sdk/current/howtos/concurrent-document-mutations.html#pessimistic-locking)

@@ -1,11 +1,14 @@
 ---
-description: Abstract constructs in Boxlang allow you to define classes and functions that serve as blueprints for other classes and functions. They cannot be instantiated directly but provide a structure for derived constructs.
+description: >-
+  Abstract constructs in Boxlang allow you to define classes and functions that
+  serve as blueprints for other classes and functions. They cannot be
+  instantiated directly but provide a structure for deri
 icon: cube
 ---
 
 # Abstract Constructs
 
-The main goal of abstraction is to handle complexities by hiding/encapsulating unnecessary details from other users.  Abstraction is implemented in most languages by defining a class that has methods, properties & constructors. &#x20;
+The main goal of abstraction is to handle complexities by hiding/encapsulating unnecessary details from other users. Abstraction is implemented in most languages by defining a class that has methods, properties & constructors.
 
 Abstract will allow you to define two contexts of operation:
 
@@ -16,14 +19,14 @@ Abstract will allow you to define two contexts of operation:
 
 ## Abstract Classes
 
-An abstract class allows you to make a template or blueprint for a class that will be eventually inherited from, so the inheriting class doesn't have to implement all of the methods.  Therefore, abstract classes cannot be instantiated but only extended.
+An abstract class allows you to make a template or blueprint for a class that will be eventually inherited from, so the inheriting class doesn't have to implement all of the methods. Therefore, abstract classes cannot be instantiated but only extended.
 
-Abstract classes can have both abstract and concrete methods defined within it.  Abstract methods have no body, they are just declared, much like interfaces.  Usually, you would do this to satisfy an interface declaration.  In my years of experience, abstract classes usually go hand in hand with interfaces and usually implement [strategy patterns](https://en.wikipedia.org/wiki/Strategy\_pattern).
+Abstract classes can have both abstract and concrete methods defined within it. Abstract methods have no body, they are just declared, much like interfaces. Usually, you would do this to satisfy an interface declaration. In my years of experience, abstract classes usually go hand in hand with interfaces and usually implement [strategy patterns](https://en.wikipedia.org/wiki/Strategy_pattern).
 
 We would suggest that if you define abstract classes that you add the prefix `Abstract` to the class name as best practice: `AbstractAnimal, AbstractLogger, AbstractPerson`. This goes a long way to help with readability and standards.
 
 {% hint style="info" %}
-In an inheritance hierarchy the first non-abstract class should implement **all** the abstract methods.&#x20;
+In an inheritance hierarchy the first non-abstract class should implement **all** the abstract methods.
 {% endhint %}
 
 {% code title="AbstractAnimal.bx" %}
@@ -61,7 +64,7 @@ abstract class implements="IAnimal"{
 
 ## Abstract Functions
 
-As you can see from the example above, abstract functions can be defined ONLY in an abstract class.  These functions are demarcated as abstract so inherited classes can implement them.  You can have many abstract functions in your abstract class and you can also have many concrete functions as well:
+As you can see from the example above, abstract functions can be defined ONLY in an abstract class. These functions are demarcated as abstract so inherited classes can implement them. You can have many abstract functions in your abstract class and you can also have many concrete functions as well:
 
 {% code title="AbstractLogger.bx" %}
 ```java

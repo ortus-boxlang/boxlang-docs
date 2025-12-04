@@ -1,8 +1,8 @@
 ---
 description: >-
-    Guide for migrating from Adobe ColdFusion or Lucee image functions to BoxLang
-    Image Module.
-icon: u-turn-left-down
+  Guide for migrating from Adobe ColdFusion or Lucee image functions to BoxLang
+  Image Module.
+icon: person-walking-arrow-right
 ---
 
 # Migration Guide
@@ -11,13 +11,13 @@ Guide for migrating from Adobe ColdFusion or Lucee image functions to BoxLang Im
 
 ## Table of Contents
 
-- [Compatibility Overview](#compatibility-overview)
-- [Syntax Differences](#syntax-differences)
-- [Function Mapping](#function-mapping)
-- [Component Differences](#component-differences)
-- [Known Limitations](#known-limitations)
-- [Migration Checklist](#migration-checklist)
-- [Common Migration Patterns](#common-migration-patterns)
+* [Compatibility Overview](migration-guide.md#compatibility-overview)
+* [Syntax Differences](migration-guide.md#syntax-differences)
+* [Function Mapping](migration-guide.md#function-mapping)
+* [Component Differences](migration-guide.md#component-differences)
+* [Known Limitations](migration-guide.md#known-limitations)
+* [Migration Checklist](migration-guide.md#migration-checklist)
+* [Common Migration Patterns](migration-guide.md#common-migration-patterns)
 
 ## Compatibility Overview
 
@@ -25,43 +25,44 @@ The BoxLang Image Module aims for **high compatibility** with Adobe ColdFusion a
 
 ### Compatibility Matrix
 
-| Feature | Adobe CF | Lucee | BoxLang | Notes |
-|---------|----------|-------|---------|-------|
-| **ImageNew()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageRead()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageWrite()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageResize()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageRotate()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageCrop()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageFlip()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageBlur()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageSharpen()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageGrayScale()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageNegative()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageOverlay()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImagePaste()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageAddBorder()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageScaleToFit()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageDrawLine()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageDrawRect()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageDrawOval()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageDrawText()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageSetDrawingColor()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageGetExifMetadata()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageGetIPTCMetadata()** | ✅ | ✅ | ✅ | Full compatibility |
-| **ImageInfo()** | ✅ | ✅ | ✅ | Full compatibility |
-| **IsImage()** | ✅ | ✅ | ✅ | Full compatibility |
-| **IsImageFile()** | ✅ | ✅ | ✅ | Full compatibility |
-| **Member Functions** | ✅ | ✅ | ✅ | CF11+, Lucee 4.5+ |
-| **Image Component** | ✅ | ✅ | ✅ | `<cfimage>` → `<bx:image>` |
-| **CAPTCHA** | ✅ | ✅ | ⚠️ | Planned for future release |
-| **ImageFilter()** | ✅ | ⚠️ | ⚠️ | Planned for future release |
-| **ImageXOR()** | ✅ | ⚠️ | ⚠️ | Planned for future release |
+| Feature                    | Adobe CF | Lucee | BoxLang | Notes                      |
+| -------------------------- | -------- | ----- | ------- | -------------------------- |
+| **ImageNew()**             | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageRead()**            | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageWrite()**           | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageResize()**          | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageRotate()**          | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageCrop()**            | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageFlip()**            | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageBlur()**            | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageSharpen()**         | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageGrayScale()**       | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageNegative()**        | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageOverlay()**         | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImagePaste()**           | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageAddBorder()**       | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageScaleToFit()**      | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageDrawLine()**        | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageDrawRect()**        | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageDrawOval()**        | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageDrawText()**        | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageSetDrawingColor()** | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageGetExifMetadata()** | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageGetIPTCMetadata()** | ✅        | ✅     | ✅       | Full compatibility         |
+| **ImageInfo()**            | ✅        | ✅     | ✅       | Full compatibility         |
+| **IsImage()**              | ✅        | ✅     | ✅       | Full compatibility         |
+| **IsImageFile()**          | ✅        | ✅     | ✅       | Full compatibility         |
+| **Member Functions**       | ✅        | ✅     | ✅       | CF11+, Lucee 4.5+          |
+| **Image Component**        | ✅        | ✅     | ✅       | `<cfimage>` → `<bx:image>` |
+| **CAPTCHA**                | ✅        | ✅     | ⚠️      | Planned for future release |
+| **ImageFilter()**          | ✅        | ⚠️    | ⚠️      | Planned for future release |
+| **ImageXOR()**             | ✅        | ⚠️    | ⚠️      | Planned for future release |
 
 **Legend:**
-- ✅ Fully supported
-- ⚠️ Partial support or planned for future release
-- ❌ Not supported
+
+* ✅ Fully supported
+* ⚠️ Partial support or planned for future release
+* ❌ Not supported
 
 ## Syntax Differences
 
@@ -115,24 +116,24 @@ Most functions have identical names and signatures between platforms:
 
 These functions work **identically** in CF, Lucee, and BoxLang:
 
-| Function | CF | Lucee | BoxLang | Notes |
-|----------|-----|-------|---------|-------|
-| `ImageNew()` | ✅ | ✅ | ✅ | No changes |
-| `ImageRead()` | ✅ | ✅ | ✅ | No changes |
-| `ImageWrite()` | ✅ | ✅ | ✅ | No changes |
-| `ImageResize()` | ✅ | ✅ | ✅ | No changes |
-| `ImageRotate()` | ✅ | ✅ | ✅ | No changes |
-| `ImageCrop()` | ✅ | ✅ | ✅ | No changes |
-| `ImageFlip()` | ✅ | ✅ | ✅ | No changes |
-| `ImageBlur()` | ✅ | ✅ | ✅ | No changes |
-| `ImageSharpen()` | ✅ | ✅ | ✅ | No changes |
-| `ImageGrayScale()` | ✅ | ✅ | ✅ | No changes |
-| `ImageNegative()` | ✅ | ✅ | ✅ | No changes |
-| `ImagePaste()` | ✅ | ✅ | ✅ | No changes |
-| `ImageCopy()` | ✅ | ✅ | ✅ | No changes |
-| `ImageGetWidth()` | ✅ | ✅ | ✅ | No changes |
-| `ImageGetHeight()` | ✅ | ✅ | ✅ | No changes |
-| `ImageInfo()` | ✅ | ✅ | ✅ | No changes |
+| Function           | CF | Lucee | BoxLang | Notes      |
+| ------------------ | -- | ----- | ------- | ---------- |
+| `ImageNew()`       | ✅  | ✅     | ✅       | No changes |
+| `ImageRead()`      | ✅  | ✅     | ✅       | No changes |
+| `ImageWrite()`     | ✅  | ✅     | ✅       | No changes |
+| `ImageResize()`    | ✅  | ✅     | ✅       | No changes |
+| `ImageRotate()`    | ✅  | ✅     | ✅       | No changes |
+| `ImageCrop()`      | ✅  | ✅     | ✅       | No changes |
+| `ImageFlip()`      | ✅  | ✅     | ✅       | No changes |
+| `ImageBlur()`      | ✅  | ✅     | ✅       | No changes |
+| `ImageSharpen()`   | ✅  | ✅     | ✅       | No changes |
+| `ImageGrayScale()` | ✅  | ✅     | ✅       | No changes |
+| `ImageNegative()`  | ✅  | ✅     | ✅       | No changes |
+| `ImagePaste()`     | ✅  | ✅     | ✅       | No changes |
+| `ImageCopy()`      | ✅  | ✅     | ✅       | No changes |
+| `ImageGetWidth()`  | ✅  | ✅     | ✅       | No changes |
+| `ImageGetHeight()` | ✅  | ✅     | ✅       | No changes |
+| `ImageInfo()`      | ✅  | ✅     | ✅       | No changes |
 
 ### Parameter Differences
 
@@ -188,15 +189,15 @@ ImageResize(img, 800, 600, "highQuality");
 
 **Interpolation values:**
 
-| Adobe CF | BoxLang | Notes |
-|----------|---------|-------|
-| `"nearest"` | `"nearest"` | No change |
-| `"bilinear"` | `"bilinear"` | No change |
-| `"bicubic"` | `"bicubic"` | No change |
-| `"highestQuality"` | `"highQuality"` | Name difference |
-| `"highQuality"` | `"highQuality"` | No change |
-| `"mediumQuality"` | `"bilinear"` | Use bilinear |
-| `"highestPerformance"` | `"nearest"` | Use nearest |
+| Adobe CF               | BoxLang         | Notes           |
+| ---------------------- | --------------- | --------------- |
+| `"nearest"`            | `"nearest"`     | No change       |
+| `"bilinear"`           | `"bilinear"`    | No change       |
+| `"bicubic"`            | `"bicubic"`     | No change       |
+| `"highestQuality"`     | `"highQuality"` | Name difference |
+| `"highQuality"`        | `"highQuality"` | No change       |
+| `"mediumQuality"`      | `"bilinear"`    | Use bilinear    |
+| `"highestPerformance"` | `"nearest"`     | Use nearest     |
 
 ## Component Differences
 
@@ -216,17 +217,17 @@ ImageResize(img, 800, 600, "highQuality");
 
 ### Supported Actions
 
-| Action | CF | Lucee | BoxLang | Notes |
-|--------|-----|-------|---------|-------|
-| `border` | ✅ | ✅ | ✅ | No changes |
-| `captcha` | ✅ | ✅ | ⚠️ | Planned |
-| `convert` | ✅ | ✅ | ✅ | No changes |
-| `info` | ✅ | ✅ | ✅ | No changes |
-| `read` | ✅ | ✅ | ✅ | No changes |
-| `resize` | ✅ | ✅ | ✅ | No changes |
-| `rotate` | ✅ | ✅ | ✅ | No changes |
-| `write` | ✅ | ✅ | ✅ | No changes |
-| `writeToBrowser` | ✅ | ✅ | ✅ | No changes |
+| Action           | CF | Lucee | BoxLang | Notes      |
+| ---------------- | -- | ----- | ------- | ---------- |
+| `border`         | ✅  | ✅     | ✅       | No changes |
+| `captcha`        | ✅  | ✅     | ⚠️      | Planned    |
+| `convert`        | ✅  | ✅     | ✅       | No changes |
+| `info`           | ✅  | ✅     | ✅       | No changes |
+| `read`           | ✅  | ✅     | ✅       | No changes |
+| `resize`         | ✅  | ✅     | ✅       | No changes |
+| `rotate`         | ✅  | ✅     | ✅       | No changes |
+| `write`          | ✅  | ✅     | ✅       | No changes |
+| `writeToBrowser` | ✅  | ✅     | ✅       | No changes |
 
 ### Action-Specific Attributes
 
@@ -290,11 +291,11 @@ img.drawText("Hello World", 100, 100, {
 BoxLang supports standard color models:
 
 | Color Model | CF | Lucee | BoxLang |
-|-------------|-----|-------|---------|
-| RGB | ✅ | ✅ | ✅ |
-| ARGB | ✅ | ✅ | ✅ |
-| Grayscale | ✅ | ✅ | ✅ |
-| CMYK | ⚠️ | ❌ | ❌ |
+| ----------- | -- | ----- | ------- |
+| RGB         | ✅  | ✅     | ✅       |
+| ARGB        | ✅  | ✅     | ✅       |
+| Grayscale   | ✅  | ✅     | ✅       |
+| CMYK        | ⚠️ | ❌     | ❌       |
 
 **Migration:** Convert CMYK images to RGB before processing.
 
@@ -302,61 +303,59 @@ BoxLang supports standard color models:
 
 ### Pre-Migration Assessment
 
-- [ ] Identify all image manipulation code (BIFs, components, member functions)
-- [ ] Check for CAPTCHA usage (needs alternative in BoxLang)
-- [ ] Check for ImageFilter() usage (needs alternative)
-- [ ] Review custom interpolation values (highestQuality → highQuality)
-- [ ] Identify CMYK images (convert to RGB)
+* [ ] Identify all image manipulation code (BIFs, components, member functions)
+* [ ] Check for CAPTCHA usage (needs alternative in BoxLang)
+* [ ] Check for ImageFilter() usage (needs alternative)
+* [ ] Review custom interpolation values (highestQuality → highQuality)
+* [ ] Identify CMYK images (convert to RGB)
 
 ### Migration Steps
 
-1. **Replace component tags:**
-   ```bash
-   # Find and replace
-   <cfimage → <bx:image
-   </cfimage> → </bx:image>
-   ```
+1.  **Replace component tags:**
 
-2. **Update interpolation values:**
-   ```js
-   // Before
-   img.resize(800, 600, "highestQuality");
+    ```bash
+    # Find and replace
+    <cfimage → <bx:image
+    </cfimage> → </bx:image>
+    ```
+2.  **Update interpolation values:**
 
-   // After
-   img.resize(800, 600, "highQuality");
-   ```
+    ```js
+    // Before
+    img.resize(800, 600, "highestQuality");
 
-3. **Test CAPTCHA alternatives:**
-   If using CAPTCHA, implement alternative until BoxLang support is added:
-   ```js
-   // Alternative: Use external CAPTCHA service
-   // or implement custom text-based CAPTCHA
-   ```
+    // After
+    img.resize(800, 600, "highQuality");
+    ```
+3.  **Test CAPTCHA alternatives:** If using CAPTCHA, implement alternative until BoxLang support is added:
 
-4. **Verify font rendering:**
-   Test text drawing on target platform:
-   ```js
-   img.drawText("Test", 100, 100, {
-       font: "Arial",  // Use web-safe fonts
-       size: 24
-   });
-   ```
+    ```js
+    // Alternative: Use external CAPTCHA service
+    // or implement custom text-based CAPTCHA
+    ```
+4.  **Verify font rendering:** Test text drawing on target platform:
 
-5. **Test metadata extraction:**
-   EXIF/IPTC should work identically:
-   ```js
-   exif = img.getExifMetadata();
-   iptc = img.getIPTCMetadata();
-   ```
+    ```js
+    img.drawText("Test", 100, 100, {
+        font: "Arial",  // Use web-safe fonts
+        size: 24
+    });
+    ```
+5.  **Test metadata extraction:** EXIF/IPTC should work identically:
+
+    ```js
+    exif = img.getExifMetadata();
+    iptc = img.getIPTCMetadata();
+    ```
 
 ### Post-Migration Testing
 
-- [ ] Verify all images load correctly
-- [ ] Check resize/crop operations
-- [ ] Validate drawing operations (text, shapes)
-- [ ] Test metadata extraction (EXIF/IPTC)
-- [ ] Verify file format conversions
-- [ ] Check error handling
+* [ ] Verify all images load correctly
+* [ ] Check resize/crop operations
+* [ ] Validate drawing operations (text, shapes)
+* [ ] Test metadata extraction (EXIF/IPTC)
+* [ ] Verify file format conversions
+* [ ] Check error handling
 
 ## Common Migration Patterns
 
@@ -639,12 +638,12 @@ img.drawText("Text", 100, 100, {
 
 ## Additional Resources
 
-- **[BoxLang Documentation](https://boxlang.io/docs)** - Core BoxLang language reference
-- **[Adobe ColdFusion Image Functions](https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-functions/functions-h-im/image-functions.html)** - Original CF documentation
-- **[Lucee Image Functions](https://docs.lucee.org/)** - Lucee image function reference
-- **[Getting Started Guide](getting-started.md)** - BoxLang image basics
-- **[BIF Reference](bif-reference.md)** - Complete function reference
-- **[Advanced Examples](advanced-examples.md)** - Real-world use cases
+* [**BoxLang Documentation**](https://boxlang.io/docs) - Core BoxLang language reference
+* [**Adobe ColdFusion Image Functions**](https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-functions/functions-h-im/image-functions.html) - Original CF documentation
+* [**Lucee Image Functions**](https://docs.lucee.org/) - Lucee image function reference
+* [**Getting Started Guide**](getting-started.md) - BoxLang image basics
+* [**BIF Reference**](bif-reference.md) - Complete function reference
+* [**Advanced Examples**](advanced-examples.md) - Real-world use cases
 
 ## Summary
 
@@ -653,27 +652,30 @@ img.drawText("Text", 100, 100, {
 Most Adobe ColdFusion and Lucee image code will work in BoxLang with **minimal or no changes**:
 
 ✅ **No changes needed:**
-- BIF function names and signatures
-- Member function syntax
-- Parameter order and types
-- Return values
-- EXIF/IPTC metadata extraction
-- Drawing operations
-- Color handling
+
+* BIF function names and signatures
+* Member function syntax
+* Parameter order and types
+* Return values
+* EXIF/IPTC metadata extraction
+* Drawing operations
+* Color handling
 
 ⚠️ **Minor changes:**
-- Component tags: `<cfimage>` → `<bx:image>`
-- Interpolation: `"highestQuality"` → `"highQuality"`
+
+* Component tags: `<cfimage>` → `<bx:image>`
+* Interpolation: `"highestQuality"` → `"highQuality"`
 
 ❌ **Not yet available:**
-- CAPTCHA generation
-- ImageFilter()
-- ImageXOR()
+
+* CAPTCHA generation
+* ImageFilter()
+* ImageXOR()
 
 **Migration time estimate:** 1-2 hours for typical applications.
 
 ## Next Steps
 
-- **[Getting Started](getting-started.md)** - Learn BoxLang image basics
-- **[BIF Reference](bif-reference.md)** - Complete function reference
-- **[Advanced Examples](advanced-examples.md)** - Real-world patterns
+* [**Getting Started**](getting-started.md) - Learn BoxLang image basics
+* [**BIF Reference**](bif-reference.md) - Complete function reference
+* [**Advanced Examples**](advanced-examples.md) - Real-world patterns

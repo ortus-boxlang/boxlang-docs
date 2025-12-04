@@ -1,4 +1,4 @@
-# 📚 Built-In Functions
+# Built-In Functions
 
 Complete reference for all Couchbase module BIFs.
 
@@ -6,34 +6,34 @@ Complete reference for all Couchbase module BIFs.
 
 Functions to access Couchbase components and manage connections:
 
-- [**couchbaseGetProvider**](CouchbaseGetProvider.md) - Get cache provider instance
-- [**couchbaseGetCluster**](CouchbaseGetCluster.md) - Get cluster connection
-- [**couchbaseGetBucket**](CouchbaseGetBucket.md) - Get bucket instance
-- [**couchbaseGetScope**](CouchbaseGetScope.md) - Get scope instance
-- [**couchbaseGetCollection**](CouchbaseGetCollection.md) - Get collection instance
+* [**couchbaseGetProvider**](CouchbaseGetProvider.md) - Get cache provider instance
+* [**couchbaseGetCluster**](CouchbaseGetCluster.md) - Get cluster connection
+* [**couchbaseGetBucket**](CouchbaseGetBucket.md) - Get bucket instance
+* [**couchbaseGetScope**](CouchbaseGetScope.md) - Get scope instance
+* [**couchbaseGetCollection**](CouchbaseGetCollection.md) - Get collection instance
 
 ## 🤖 Vector Search Functions
 
 AI/ML vector operations for semantic search and RAG applications:
 
-- [**couchbaseVectorSearch**](CouchbaseVectorSearch.md) - Search by vector similarity
-- [**couchbaseVectorAdd**](CouchbaseVectorAdd.md) - Store vector documents
-- [**couchbaseVectorGet**](CouchbaseVectorGet.md) - Retrieve vector document
-- [**couchbaseVectorDelete**](CouchbaseVectorDelete.md) - Delete vector document
-- [**couchbaseVectorList**](CouchbaseVectorList.md) - List vector documents
+* [**couchbaseVectorSearch**](CouchbaseVectorSearch.md) - Search by vector similarity
+* [**couchbaseVectorAdd**](CouchbaseVectorAdd.md) - Store vector documents
+* [**couchbaseVectorGet**](CouchbaseVectorGet.md) - Retrieve vector document
+* [**couchbaseVectorDelete**](CouchbaseVectorDelete.md) - Delete vector document
+* [**couchbaseVectorList**](CouchbaseVectorList.md) - List vector documents
 
 ## 📝 Query Functions
 
 Execute N1QL/SQL++ queries:
 
-- [**couchbaseQuery**](CouchbaseQuery.md) - Execute raw N1QL queries
+* [**couchbaseQuery**](CouchbaseQuery.md) - Execute raw N1QL queries
 
 ## 🔒 Distributed Locking Functions
 
 Coordinate operations across multiple servers with distributed locks:
 
-- [**couchbaseLock**](CouchbaseLock.md) - Acquire distributed lock with optional callback
-- [**couchbaseUnlock**](CouchbaseUnlock.md) - Release distributed lock manually
+* [**couchbaseLock**](CouchbaseLock.md) - Acquire distributed lock with optional callback
+* [**couchbaseUnlock**](CouchbaseUnlock.md) - Release distributed lock manually
 
 ## 📖 Usage Patterns
 
@@ -141,8 +141,8 @@ if (lockInfo.locked) {
 
 ## 🔗 Related Documentation
 
-- [API Usage Guide](../../api-usage.md) - Detailed examples
-- [AI Memory Guide](../../aimemory.md) - Vector search patterns
-- [Distributed Locking Guide](../../distributed-locking.md) - Lock patterns and best practices
-- [Reference Overview](../README.md) - Configuration and settings
-- [Troubleshooting](../../troubleshooting.md) - Common issues
+* [API Usage Guide](../../api-usage.md) - Detailed examples
+* [AI Memory Guide](../../aimemory.md) - Vector search patterns
+* [Distributed Locking Guide](../../distributed-locking.md) - Lock patterns and best practices
+* [Reference Overview](../) - Configuration and settings
+* [Troubleshooting](../../troubleshooting.md) - Common issues

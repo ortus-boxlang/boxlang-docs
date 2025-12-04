@@ -55,7 +55,7 @@ produce = {
 };
 ```
 
-![](<../assets/Screen Shot 2017-10-05 at 4.46.02 PM (1).png>)
+![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.46.02 PM (1).png>)
 
 The _key_ is the address, and the _value_ is the data at that address. Please note that the _value_ can be ANYTHING. It can be an array, an object, a simple value, or even an embedded structure. It doesn't matter.
 
@@ -210,11 +210,11 @@ myStruct = [:] or [=]
 
 Once you create structures, you can use them in many funky ways. Please check out all the [structure functions](https://boxlang.ortusbooks.com/boxlang-language/reference/types/struct) and all the structure modern [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) that are available to you.
 
-![](<../assets/Screen Shot 2017-10-05 at 4.57.20 PM (1).png>)
+![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.57.20 PM (1).png>)
 
 As you can see, there are many cool methods for detecting keys, values, lengths, counts, etc. A very cool method is `keyArray()` which gives you the listing of keys as an array:
 
-![](<../assets/Screen Shot 2017-10-05 at 4.58.09 PM (1).png>)
+![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.58.09 PM (1).png>)
 
 ## Looping Over Structures
 
