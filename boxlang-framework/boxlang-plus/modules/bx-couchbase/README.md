@@ -42,6 +42,9 @@ Built-in support for AI vector embeddings with semantic search using KNN (K-Near
 ### Session Storage
 Use Couchbase as your session or application scope storage backend. Automatic serialization and deserialization of BoxLang data types.
 
+### Distributed Locking
+Coordinate operations across multiple servers with true distributed locks. Prevent race conditions in financial transactions, inventory updates, and batch processing.
+
 ### N1QL Queries
 Execute SQL++ queries (N1QL) directly from BoxLang. Full support for joins, aggregations, and complex filtering.
 
@@ -52,6 +55,7 @@ Configure multi-node clusters with automatic discovery and failover. Supports se
 
 - **[Code Usage](code-usage.md)** - Working with the cache provider
 - **[API Usage](api-usage.md)** - Using Built-In Functions (BIFs)
+- **[Distributed Locking](distributed-locking.md)** - Coordinate operations across servers
 - **[Scope Storage](scope-storage.md)** - Session and application storage
 - **[AI Memory](aimemory.md)** - Vector embeddings and semantic search
 - **[Troubleshooting](troubleshooting.md)** - Common issues and solutions
@@ -81,6 +85,18 @@ cacheSet("user:123", {
 user = cacheGet("user:123");
 println("Welcome, #user.name#!");
 
+// Distributed locking
+couchbaseLock(
+    cacheName = "default",
+    name = "payment-#orderId#",
+    timeout = 5,
+    expires = 30,
+    callback = function() {
+        // Only one server processes this payment at a time
+        processPayment(orderId);
+    }
+);
+
 // Vector search
 embedding = getOpenAIEmbedding("machine learning tutorial");
 similar = couchbaseVectorSearch(
@@ -101,6 +117,9 @@ Store user sessions in a distributed cache that survives application restarts an
 
 ### 🤖 AI/ML Applications
 Store and search vector embeddings for semantic search, recommendation systems, and RAG chatbots.
+
+### 🔒 Distributed Coordination
+Prevent race conditions and double-processing with distributed locks. Perfect for financial transactions, inventory management, and scheduled jobs.
 
 ### 📊 Real-Time Analytics
 Cache aggregated metrics and dashboards with automatic expiration and refresh.
@@ -134,6 +153,7 @@ Ready to dive in? Start with:
 
 1. **[Code Usage](code-usage.md)** - Learn the basic cache operations
 2. **[API Usage](api-usage.md)** - Explore the Built-In Functions
-3. **[AI Memory](aimemory.md)** - Build AI-powered applications
+3. **[Distributed Locking](distributed-locking.md)** - Coordinate operations across servers
+4. **[AI Memory](aimemory.md)** - Build AI-powered applications
 
 Need help? Check out [Troubleshooting](troubleshooting.md) or visit our [community forums](https://community.ortussolutions.com).

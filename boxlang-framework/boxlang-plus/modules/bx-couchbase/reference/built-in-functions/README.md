@@ -28,6 +28,13 @@ Execute N1QL/SQL++ queries:
 
 - [**couchbaseQuery**](CouchbaseQuery.md) - Execute raw N1QL queries
 
+## 🔒 Distributed Locking Functions
+
+Coordinate operations across multiple servers with distributed locks:
+
+- [**couchbaseLock**](CouchbaseLock.md) - Acquire distributed lock with optional callback
+- [**couchbaseUnlock**](CouchbaseUnlock.md) - Release distributed lock manually
+
 ## 📖 Usage Patterns
 
 ### Basic Provider Access
@@ -96,9 +103,46 @@ results = couchbaseQuery(
 );
 ```
 
+### Distributed Locking Patterns
+
+```js
+// Callback mode (automatic lock/unlock)
+result = couchbaseLock(
+    cacheName = "default",
+    name = "user-#userId#-update",
+    timeout = 5,
+    expires = 30,
+    callback = function() {
+        // Critical section - automatically locked
+        user = getUser(userId);
+        user.balance += amount;
+        saveUser(user);
+        return { success: true };
+    }
+);
+
+// Manual mode (you control unlock)
+lockInfo = couchbaseLock(
+    cacheName = "default",
+    name = "inventory-#productId#",
+    timeout = 5,
+    expires = 30
+);
+
+if (lockInfo.locked) {
+    try {
+        // Critical section
+        updateInventory(productId);
+    } finally {
+        couchbaseUnlock("default", "inventory-#productId#", lockInfo.cas);
+    }
+}
+```
+
 ## 🔗 Related Documentation
 
 - [API Usage Guide](../../api-usage.md) - Detailed examples
 - [AI Memory Guide](../../aimemory.md) - Vector search patterns
+- [Distributed Locking Guide](../../distributed-locking.md) - Lock patterns and best practices
 - [Reference Overview](../README.md) - Configuration and settings
 - [Troubleshooting](../../troubleshooting.md) - Common issues

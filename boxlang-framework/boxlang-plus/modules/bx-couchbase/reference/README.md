@@ -9,7 +9,7 @@ Complete reference for all Couchbase module functions and configuration options.
 
 ## 📖 Built-In Functions (BIFs)
 
-The Couchbase module provides 11 BIFs for interacting with Couchbase Server:
+The Couchbase module provides 13 BIFs for interacting with Couchbase Server:
 
 ### 🔌 Provider & Connection Functions
 
@@ -36,6 +36,21 @@ Functions for AI/ML vector operations:
 Functions for N1QL/SQL++ queries:
 
 - [**couchbaseQuery**](built-in-functions/CouchbaseQuery.md) - Execute raw N1QL queries with parameters
+
+### 🔒 Distributed Locking Functions
+
+Functions for coordinating operations across multiple servers:
+
+- [**couchbaseLock**](built-in-functions/CouchbaseLock.md) - Acquire distributed lock with optional callback
+- [**couchbaseUnlock**](built-in-functions/CouchbaseUnlock.md) - Release distributed lock manually
+
+## 🧩 Components
+
+The Couchbase module provides components for advanced functionality:
+
+### 🔒 Distributed Locking Components
+
+- [**CouchbaseLock**](components/CouchbaseLock.md) - Execute code with automatic distributed lock management
 
 ## 🗄️ Cache Provider Functions
 
@@ -209,6 +224,7 @@ couchbaseQuery(
 ## 🔗 Related Documentation
 
 - [Code Usage Guide](../code-usage.md) - Examples and patterns
+- [Distributed Locking Guide](../distributed-locking.md) - Lock patterns and best practices
 - [Scope Storage Guide](../scope-storage.md) - Session and application storage
 - [API Usage](../api-usage.md) - Complete BIF documentation
 - [AI Memory Guide](../aimemory.md) - Vector search and RAG patterns
