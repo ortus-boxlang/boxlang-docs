@@ -1,3 +1,8 @@
+---
+description: Final constructs in BoxLang: final classes, final methods, and final variables (constants).
+icon: lock
+---
+
 # Final Constructs
 
 BoxLang supports the usage of `final` constructs for three contexts:

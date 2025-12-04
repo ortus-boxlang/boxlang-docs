@@ -1,3 +1,8 @@
+---
+description: Abstract constructs in Boxlang allow you to define classes and functions that serve as blueprints for other classes and functions. They cannot be instantiated directly but provide a structure for derived constructs.
+icon: cube
+---
+
 # Abstract Constructs
 
 The main goal of abstraction is to handle complexities by hiding/encapsulating unnecessary details from other users.  Abstraction is implemented in most languages by defining a class that has methods, properties & constructors. &#x20;

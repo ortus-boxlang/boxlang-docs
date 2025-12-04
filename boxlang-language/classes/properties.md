@@ -1,3 +1,8 @@
+---
+description: Class properties in BoxLang are similar to fields in Java. They can have various attributes and can be configured using annotations.
+icon: grip-dots
+---
+
 # Properties
 
 Properties are a way to create attributes/fields/data for your object, which can also adhere to inheritance rules.  They are almost the same as fields in Java. In BoxLang, they can also be used to describe further capabilities for RESTFul/SOAP web services and Hibernate ORM. If `accessors` are enabled, BoxLang will track those properties in the `variables` scope according to their name and create automatic getter and setter methods for those properties. \([https://boxlang.ortusbooks.com/boxlang-language/classes/properties](https://boxlang.ortusbooks.com/boxlang-language/classes/properties)\)

@@ -1,3 +1,8 @@
+---
+description: Learn about static constructs in BoxLang, including static constructors and static methods.
+icon: map
+---
+
 # Static Constructs
 
 ### What is static?

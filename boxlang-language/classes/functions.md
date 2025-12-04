@@ -1,3 +1,8 @@
+---
+description: "BoxLang Annotations allow you to add metadata to classes and functions. Learn how to use BoxLang Annotations with examples."
+icon: bolt-lightning
+---
+
 # Functions
 
 Functions are the way to interact with objects, with no functions we have no object-oriented behaviors, no [abstractions](https://en.wikipedia.org/wiki/Abstraction) and no [encapsulation](https://en.wikipedia.org/wiki/Encapsulation\_\(computer\_programming\)). Functions have an automatic return type of `any` which means it can return any type of variable back to a user and an automatic visibility scope of `public`. They also can take in _ANY_ amount of arguments, which don't even have to be defined in the function signature. WOWZA!
