@@ -129,10 +129,6 @@ Here, you will find each segment and its configuration details.
 [logging.md](configuration/logging.md)
 {% endcontent-ref %}
 
-{% content-ref url="configuration/maven-integration.md" %}
-[maven-integration.md](configuration/maven-integration.md)
-{% endcontent-ref %}
-
 {% content-ref url="configuration/modules.md" %}
 [modules.md](configuration/modules.md)
 {% endcontent-ref %}

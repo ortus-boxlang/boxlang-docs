@@ -1,24 +1,78 @@
 ---
-description: Real-time server-to-client event streaming for building AI agents, live dashboards, and real-time notifications
+description: Real-time server-to-client event streaming and consumption for building AI agents, live dashboards, and real-time notifications
 icon: satellite-dish
 ---
 
 # Server-Sent Events (SSE)
 
-**New in BoxLang 1.7.0** - Server-Sent Events (SSE) enable real-time, unidirectional server-to-client event streaming over HTTP. The `SSE()` BIF and Emitter API provide a simple yet powerful way to build AI agents, live dashboards, progressive loading experiences, and real-time notifications in web applications.
+**New in BoxLang 1.7.0** - Server-Sent Events (SSE) enable real-time, unidirectional event streaming over HTTP. BoxLang provides **two powerful SSE capabilities**:
+
+1. **SSE Creation** (`SSE()` BIF) - Push events from your BoxLang server to clients
+2. **SSE Consumption** (`http()` BIF / `bx:http` component) - Connect to and consume SSE streams from remote servers (**New in BoxLang 1.8.0**)
 
 ## 🌐 What are Server-Sent Events?
 
-Server-Sent Events is a standard web technology that allows servers to push data to web clients over HTTP. Unlike WebSockets (which are bidirectional), SSE provides a simple, efficient one-way communication channel from server to client, perfect for:
+Server-Sent Events is a standard web technology that allows servers to push data to web clients over HTTP. Unlike WebSockets (which are bidirectional), SSE provides a simple, efficient one-way communication channel, perfect for:
 
-* **AI Agent Streaming** - Stream AI responses token-by-token for better UX
-* **Live Dashboards** - Push real-time metrics and updates to dashboards
-* **Progressive Loading** - Load and display content as it becomes available
-* **Real-Time Notifications** - Push notifications without polling
-* **Log Streaming** - Stream server logs to browser console
-* **Status Updates** - Track long-running processes in real-time
+* **AI Agent Streaming** - Stream AI responses token-by-token for better UX (creation & consumption)
+* **Live Dashboards** - Push real-time metrics and updates to dashboards (creation & consumption)
+* **Progressive Loading** - Load and display content as it becomes available (creation)
+* **Real-Time Notifications** - Push notifications without polling (creation)
+* **Log Streaming** - Stream server logs to browser console (creation)
+* **Status Updates** - Track long-running processes in real-time (creation & consumption)
+* **Consuming Third-Party Streams** - Connect to AI APIs (OpenAI, Claude), monitoring services, event feeds (consumption)
 
-## 📋 SSE() BIF
+---
+
+## 🔄 SSE Creation vs Consumption
+
+BoxLang provides both sides of the SSE equation:
+
+### SSE Creation - `SSE()` BIF
+
+**Create SSE streams** that push events to web browsers and clients:
+
+```js
+// Server endpoint: /api/stream
+SSE( ( emitter ) => {
+    emitter.send( "Hello from server!" );
+    emitter.send( { status: "processing" }, "update" );
+    emitter.close();
+} );
+```
+
+**Use cases:**
+
+- Push real-time updates to your web UI
+- Stream AI responses from your BoxLang backend
+- Build live dashboards
+- Send notifications to connected clients
+
+### SSE Consumption - `http()` BIF / `bx:http` Component
+
+**New in BoxLang 1.8.0** - **Consume SSE streams** from remote servers:
+
+```js
+// Connect to external SSE endpoint
+http( "https://api.openai.com/v1/chat/completions" )
+    .post()
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        println( "Received: " & event.data );
+    } )
+    .send();
+```
+
+**Use cases:**
+
+- Consume AI streaming APIs (OpenAI, Claude, Gemini)
+- Connect to real-time monitoring feeds
+- Subscribe to third-party event streams
+- Integrate with microservices using SSE
+
+---
+
+## 📋 SSE() BIF - Creating Streams
 
 The `SSE()` function establishes a Server-Sent Events connection and streams data to the client.
 
@@ -566,4 +620,419 @@ SSE(
 );
 ```
 
-Server-Sent Events in BoxLang provides a powerful, standards-based way to build real-time web applications with minimal complexity. The automatic handling of connection management, keep-alive, and client disconnect detection makes it easy to create robust streaming experiences.
+---
+
+## 📥 SSE Consumption - Connecting to Remote Streams
+
+**New in BoxLang 1.8.0** - BoxLang now provides built-in support for **consuming Server-Sent Events** from remote servers using the `http()` BIF or `bx:http` component.
+
+### Why Consume SSE?
+
+SSE consumption allows you to connect to external SSE endpoints and process events in real-time:
+
+* 🤖 **AI Streaming APIs** - Consume token-by-token responses from OpenAI, Claude, Gemini, and other AI services
+* 📊 **Real-Time Data Feeds** - Connect to stock tickers, weather updates, sports scores
+* 🔔 **Event Notifications** - Subscribe to third-party notification services
+* 📈 **Monitoring Services** - Receive alerts and metrics from monitoring platforms
+* 🔄 **Microservices** - Integrate with SSE-based microservices architecture
+
+### Basic SSE Consumption
+
+#### Using the `http()` BIF
+
+```js
+// Connect to SSE endpoint
+http( "https://api.example.com/events" )
+    .sse( true )
+    .onChunk( ( event, lastEventId, httpResult, httpClient, response ) => {
+        // Process each SSE event as it arrives
+        println( "Event Type: " & event.event );
+        println( "Event Data: " & event.data );
+        println( "Event ID: " & event.id );
+        println( "Last Event ID: " & lastEventId );
+    } )
+    .send();
+```
+
+#### Using the `bx:http` Component
+
+```js
+// Define callback function
+function handleSSEEvent( event, lastEventId, httpResult, httpClient, response ) {
+    println( "Received: " & event.event & " - " & event.data );
+}
+
+// Use component with SSE
+bx:http
+    url="https://api.example.com/events"
+    sse=true
+    onChunk=handleSSEEvent
+    result="result";
+```
+
+### SSE Event Structure
+
+Each event received in the `onChunk` callback contains:
+
+```js
+{
+    data: "Event payload content",
+    event: "message",              // Event type (default: "message")
+    id: "123",                     // Event ID for reconnection
+    retry: 3000                    // Retry interval in ms (optional)
+}
+```
+
+### Callback Parameters
+
+The `onChunk` callback receives five parameters:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `event` | struct | The SSE event (data, event, id, retry) |
+| `lastEventId` | string | Most recent event ID (for reconnection) |
+| `httpResult` | struct | HTTP result structure |
+| `httpClient` | object | BoxHttpClient instance |
+| `response` | object | Raw Java HttpResponse |
+
+### Real-World SSE Consumption Examples
+
+#### OpenAI Streaming Chat
+
+```js
+// Stream AI responses token-by-token
+fullResponse = "";
+
+http( "https://api.openai.com/v1/chat/completions" )
+    .post()
+    .header( "Authorization", "Bearer " & apiKey )
+    .header( "Content-Type", "application/json" )
+    .jsonBody( '{
+        "model": "gpt-4",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "' & userPrompt & '"}
+        ],
+        "stream": true
+    }' )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        // OpenAI sends "[DONE]" when stream completes
+        if ( event.data == "[DONE]" ) {
+            return;
+        }
+
+        try {
+            chunk = deserializeJSON( event.data );
+            if ( structKeyExists( chunk.choices[1].delta, "content" ) ) {
+                token = chunk.choices[1].delta.content;
+                fullResponse &= token;
+
+                // Stream to client in real-time
+                writeOutput( token );
+                flush;
+            }
+        } catch ( any e ) {
+            // Handle parsing errors
+            logger.error( "Error parsing SSE chunk", e );
+        }
+    } )
+    .onComplete( ( httpResult ) => {
+        logger.info( "Stream complete. Tokens received: " & len( fullResponse ) );
+    } )
+    .onError( ( error, httpResult ) => {
+        logger.error( "SSE stream error: " & error.message );
+    } )
+    .send();
+
+println( "\n\nComplete response: " & fullResponse );
+```
+
+#### Claude AI Streaming
+
+```js
+// Consume Claude streaming API
+fullResponse = "";
+
+http( "https://api.anthropic.com/v1/messages" )
+    .post()
+    .header( "x-api-key", claudeApiKey )
+    .header( "anthropic-version", "2023-06-01" )
+    .header( "content-type", "application/json" )
+    .jsonBody( '{
+        "model": "claude-3-opus-20240229",
+        "messages": [
+            {"role": "user", "content": "' & userPrompt & '"}
+        ],
+        "max_tokens": 1024,
+        "stream": true
+    }' )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        if ( event.event == "content_block_delta" ) {
+            data = deserializeJSON( event.data );
+            token = data.delta.text;
+            fullResponse &= token;
+            writeOutput( token );
+            flush;
+        }
+    } )
+    .send();
+```
+
+#### Real-Time Stock Quotes
+
+```js
+// Consume live stock price feed
+http( "https://stockstream.example.com/quotes?symbols=AAPL,GOOGL,MSFT" )
+    .header( "Authorization", "Bearer " & stockAPIKey )
+    .sse( true )
+    .onChunk( ( event, lastEventId, httpResult ) => {
+        if ( event.event == "quote" ) {
+            quote = deserializeJSON( event.data );
+
+            // Update database or cache
+            cacheSet(
+                "stock_" & quote.symbol,
+                quote,
+                createTimeSpan( 0, 0, 0, 10 ) // 10 seconds
+            );
+
+            // Broadcast to connected WebSocket clients
+            broadcastStockUpdate( {
+                symbol: quote.symbol,
+                price: quote.price,
+                change: quote.change,
+                percentChange: quote.percentChange,
+                timestamp: quote.timestamp
+            } );
+        }
+    } )
+    .onError( ( error, httpResult ) => {
+        logger.error( "Stock stream disconnected, reconnecting..." );
+        reconnectStockStream();
+    } )
+    .send();
+```
+
+#### Server Monitoring Feed
+
+```js
+// Consume monitoring metrics stream
+http( "https://monitoring.example.com/metrics/stream" )
+    .header( "X-API-Key", monitoringAPIKey )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        switch ( event.event ) {
+            case "metric":
+                metric = deserializeJSON( event.data );
+
+                // Store in time-series database
+                influxDB.write( {
+                    measurement: metric.name,
+                    tags: metric.tags,
+                    fields: { value: metric.value },
+                    timestamp: metric.timestamp
+                } );
+
+                // Check thresholds
+                if ( metric.value > metric.threshold ) {
+                    sendAlert( "Metric " & metric.name & " exceeded threshold" );
+                }
+                break;
+
+            case "alert":
+                alert = deserializeJSON( event.data );
+                handleAlert( alert );
+                break;
+
+            case "heartbeat":
+                // Update last seen timestamp
+                session.lastHeartbeat = now();
+                break;
+        }
+    } )
+    .onComplete( ( httpResult ) => {
+        logger.info( "Monitoring stream closed" );
+    } )
+    .send();
+```
+
+#### GitHub Events Stream
+
+```js
+// Monitor GitHub repository events
+http( "https://api.github.com/repos/ortus-boxlang/boxlang/events" )
+    .header( "Accept", "text/event-stream" )
+    .header( "Authorization", "Bearer " & githubToken )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        if ( event.event == "push" ) {
+            pushEvent = deserializeJSON( event.data );
+
+            // Notify team
+            slackNotify( {
+                channel: "#github",
+                message: "New push to " & pushEvent.ref & " by " & pushEvent.pusher.name,
+                commits: pushEvent.commits.len()
+            } );
+
+            // Trigger CI/CD
+            if ( pushEvent.ref == "refs/heads/main" ) {
+                triggerBuild( pushEvent.after );
+            }
+        }
+    } )
+    .send();
+```
+
+### Advanced SSE Consumption Patterns
+
+#### Reconnection with Last Event ID
+
+```js
+// Store last event ID for reconnection
+application.lastEventId = "";
+
+function connectToSSE() {
+    request = http( "https://api.example.com/events" );
+
+    // Resume from last event if we have one
+    if ( len( application.lastEventId ) ) {
+        request.header( "Last-Event-ID", application.lastEventId );
+    }
+
+    request
+        .sse( true )
+        .onChunk( ( event, lastEventId ) => {
+            // Store last event ID
+            application.lastEventId = lastEventId;
+
+            // Process event
+            processEvent( event );
+        } )
+        .onError( ( error, httpResult ) => {
+            logger.error( "Connection lost, reconnecting in 5 seconds..." );
+            sleep( 5000 );
+            connectToSSE();  // Reconnect with Last-Event-ID
+        } )
+        .send();
+}
+
+// Start connection
+connectToSSE();
+```
+
+#### Multiple Event Types
+
+```js
+// Handle different event types
+http( "https://api.example.com/events" )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        switch ( event.event ) {
+            case "message":
+                handleMessage( deserializeJSON( event.data ) );
+                break;
+
+            case "notification":
+                handleNotification( deserializeJSON( event.data ) );
+                break;
+
+            case "update":
+                handleUpdate( deserializeJSON( event.data ) );
+                break;
+
+            case "ping":
+                // Keep-alive ping, do nothing
+                break;
+
+            default:
+                logger.warn( "Unknown event type: " & event.event );
+        }
+    } )
+    .send();
+```
+
+#### Timeout and Error Handling
+
+```js
+// Robust SSE connection with comprehensive error handling
+http( "https://api.example.com/events" )
+    .timeout( 300 )  // 5 minute timeout
+    .sse( true )
+    .onRequestStart( () => {
+        logger.info( "Connecting to SSE stream..." );
+    } )
+    .onChunk( ( event, lastEventId, httpResult ) => {
+        try {
+            processEvent( event );
+        } catch ( any e ) {
+            logger.error( "Error processing event", e );
+            // Don't let one bad event break the stream
+        }
+    } )
+    .onError( ( error, httpResult ) => {
+        logger.error( "SSE error: " & error.message );
+
+        // Decide whether to retry based on error type
+        if ( httpResult.statusCode == 429 ) {
+            // Rate limited, wait before retry
+            sleep( 60000 );
+            retryConnection();
+        } else if ( httpResult.statusCode >= 500 ) {
+            // Server error, retry with exponential backoff
+            sleep( retryDelay );
+            retryDelay *= 2;  // Double delay each time
+            retryConnection();
+        } else {
+            // Client error, don't retry
+            logger.error( "Client error, not retrying: " & httpResult.statusCode );
+        }
+    } )
+    .onComplete( ( httpResult ) => {
+        logger.info( "SSE stream completed normally" );
+    } )
+    .send();
+```
+
+### SSE Consumption Best Practices
+
+{% hint style="success" %}
+**Best Practices for SSE Consumption:**
+
+1. **Always handle errors** - Network failures will interrupt streams
+2. **Store `lastEventId`** - Use it to reconnect and resume from last event
+3. **Implement reconnection logic** - Connections will drop, be ready to reconnect
+4. **Parse event types** - Different event types require different handling
+5. **Handle stream termination signals** - Look for `[DONE]`, empty data, or specific event types
+6. **Set appropriate timeouts** - Long-lived streams need longer timeouts
+7. **Use try-catch for parsing** - JSON parsing can fail on malformed data
+8. **Log connection state** - Track connects, disconnects, and errors
+9. **Implement exponential backoff** - Don't hammer failing endpoints
+10. **Monitor memory usage** - Accumulating data can grow quickly
+{% endhint %}
+
+{% hint style="warning" %}
+**Important Considerations:**
+
+- **Unidirectional** - SSE is server → client only (no client → server messages)
+- **Network sensitive** - Interruptions terminate the stream
+- **Proxy buffering** - Some proxies buffer responses (check your infrastructure)
+- **Browser connection limits** - Browsers limit concurrent SSE connections (typically 6 per domain)
+- **Long-lived connections** - Consumes server resources, monitor connection count
+- **Error handling is critical** - Always implement robust retry logic
+- **Memory management** - Process and discard events, don't accumulate indefinitely
+- **Authentication** - Include proper API keys/tokens in headers
+{% endhint %}
+
+---
+
+## 🎯 Summary
+
+Server-Sent Events in BoxLang provides a powerful, standards-based way to build real-time web applications with minimal complexity:
+
+- **SSE Creation** (`SSE()` BIF) - Push events from BoxLang to web clients with automatic connection management, keep-alive, and client disconnect detection
+- **SSE Consumption** (`http()` BIF / `bx:http` component) - Connect to and consume SSE streams from remote servers with built-in event parsing, reconnection support, and error handling
+
+Whether you're building real-time dashboards, streaming AI responses, or integrating with third-party event feeds, BoxLang's SSE support makes it easy to create robust streaming experiences.

@@ -5,38 +5,472 @@ description: Make HTTP/S requests with BoxLang's powerful and flexible HTTP comp
 
 # 🌐 HTTP/S Calls
 
-BoxLang makes it really **easy** to interact with **any** HTTP/S endpoint via the `http` component. The `http` component generates HTTP/S requests and parses responses into convenient BoxLang structures, providing full support for modern HTTP features including HTTP/2, multipart uploads, authentication, proxy servers, and more.
+BoxLang provides **two powerful approaches** for making HTTP/S requests: the **`http()` BIF** for fluent, programmatic requests and the **`bx:http` component** for template-based requests. Both use the same underlying `BoxHttpClient`, ensuring consistent behavior across your application.
 
-## 🚀 Quick Start
+Both approaches provide full support for:
+
+- ⚡ HTTP/1.1 and HTTP/2 protocols
+- 🔄 All HTTP methods (GET, POST, PUT, DELETE, PATCH, HEAD, OPTIONS, TRACE)
+- 🔒 Authentication (Basic Auth)
+- 📤 File uploads (multipart/form-data)
+- 📥 File downloads
+- 🌐 Proxy server support
+- 🔐 Client certificates (mutual TLS)
+- ⏱️ Configurable timeouts and redirects
+- 📡 **Server-Sent Events (SSE) consumption**
+- 🎯 Response streaming with callbacks
+
+## 🚀 Quick Start Examples
+
+### Using the `http()` BIF (Fluent API)
+
+```js
+// Simple GET request
+result = http( "https://api.example.com/users" )
+    .send();
+
+// POST with JSON
+result = http( "https://api.example.com/users" )
+    .post()
+    .jsonBody( '{"name":"John","email":"john@example.com"}' )
+    .send();
+
+// With query parameters
+result = http( "https://api.example.com/users" )
+    .urlParam( "q", "john" )
+    .send();
+```
+
+### Using the `bx:http` Component (Template Syntax)
 
 ```js
 bx:http url="https://api.example.com/users" result="result" {
     bx:httpparam name="q" type="url" value="john";
 }
-dump( result )
+dump( result );
 ```
 
 {% hint style="info" %}
-You can use ANY HTTP method in the `http` calls. The default method is `GET`, but you can specify `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `TRACE`, or `OPTIONS`.
+**When to use which approach:**
+
+- **`http()` BIF**: Best for programmatic code, services, APIs, and fluent chaining patterns
+- **`bx:http` Component**: Best for templates, views, and declarative request configurations
+
+Both approaches support ALL HTTP methods: `GET`, `POST`, `PUT`, `DELETE`, `PATCH`, `HEAD`, `TRACE`, `OPTIONS`
 {% endhint %}
 
-## 📋 Overview
+---
 
-The HTTP component provides a comprehensive way to:
+## 🎯 Choosing Your Approach
 
-- 🔄 Make requests using any HTTP method (GET, POST, PUT, DELETE, etc.)
-- 🔒 Handle authentication (Basic)
-- 📤 Upload files with multipart/form-data
-- 📥 Download files and save to disk
-- 🌐 Work with proxy servers
-- ⚡ Support HTTP/1.1 and HTTP/2
-- 🔐 Use client certificates for mutual TLS authentication
-- ⏱️ Configure timeouts and redirects
-- 📦 Handle binary and text responses automatically
+### The `http()` BIF - Fluent API
 
-## 🎯 HTTP Parameters
+**New in BoxLang 1.8.0** - The `http()` BIF provides a modern, fluent interface for building HTTP requests programmatically.
 
-As you can see from the example above, you can pass parameters to the HTTP request by using the child `httpparam` component. This parameter can be of many different types: `header, body, xml, cgi, file, url, formfield, cookie` depending on the requirements of the http endpoint.
+**Advantages:**
+
+- ✨ Fluent, chainable API for readable code
+- 🎯 Intellisense-friendly method names
+- 🔧 Programmatic request building
+- 🚀 Built-in response transformers (`asJSON()`, `asXML()`, `asText()`)
+- 📡 Native SSE consumption with callbacks
+- ⚡ Async execution with `BoxFuture` integration
+- 🎨 Conditional request building with `when()`, `ifNull()`, `ifNotNull()`
+
+**Example:**
+
+```js
+result = http( "https://api.github.com/repos/ortus-boxlang/boxlang" )
+    .header( "Accept", "application/json" )
+    .userAgent( "BoxLang-App/1.0" )
+    .timeout( 30 )
+    .asJSON() // Auto-parse JSON response
+    .send();
+
+println( result.name ); // Direct access to parsed JSON
+```
+
+### The `bx:http` Component - Template Syntax
+
+The `bx:http` component provides a familiar, tag-based approach for making HTTP requests in templates.
+
+**Advantages:**
+
+- 📝 Declarative, template-friendly syntax
+- 🔄 Familiar to CFML developers
+- 📦 Great for view-layer HTTP calls
+- 🎯 Child `bx:httpparam` components for parameters
+- 📡 SSE consumption with callbacks
+- 🎨 Easy to read and maintain in templates
+
+**Example:**
+
+```js
+bx:http url="https://api.github.com/repos/ortus-boxlang/boxlang" result="repo" {
+    bx:httpparam type="header" name="Accept" value="application/json";
+}
+repoData = deserializeJSON( repo.fileContent );
+println( repoData.name );
+```
+
+---
+
+## 🎯 HTTP Request Callbacks Overview
+
+BoxLang provides **four powerful callbacks** for monitoring and processing HTTP requests in real-time. These callbacks work with both the `http()` BIF and the `bx:http` component, enabling you to:
+
+- 📊 Track request lifecycle events
+- 🌊 Stream and process response data incrementally
+- 📡 Consume Server-Sent Events (SSE) from remote servers
+- ⚠️ Handle errors and implement retry logic
+- 📈 Monitor progress for large uploads/downloads
+
+### Callback Reference
+
+| Callback | When It's Called | Primary Use Cases | Parameters |
+|----------|------------------|-------------------|------------|
+| **`onRequestStart`** | Before the HTTP request begins | Logging, request ID generation, pre-request validation | `httpResult`, `httpClient` |
+| **`onChunk`** | For each chunk of data received | Streaming responses, SSE consumption, progress tracking | `chunk`, `lastEventId`, `httpResult`, `httpClient`, `response` |
+| **`onComplete`** | After successful request completion | Cleanup, final logging, success notifications | `httpResult` |
+| **`onError`** | When an error occurs | Error handling, retry logic, alerting | `error`, `httpResult` |
+
+### Callback Signatures
+
+#### `onRequestStart( httpResult, httpClient )`
+
+Called immediately before the HTTP request is sent to the server.
+
+**Parameters:**
+
+- `httpResult` (struct) - Partial result structure with request details (URL, method, headers, etc.)
+- `httpClient` (BoxHttpClient) - The client instance making the request
+
+**Use Cases:**
+
+- Generate and log request IDs for tracing
+- Validate request configuration before sending
+- Start timing/monitoring operations
+- Log request details for debugging
+
+**Example:**
+
+```js
+http( "https://api.example.com/users" )
+    .onRequestStart( ( httpResult, httpClient ) => {
+        requestId = createUUID();
+        logger.info( "Starting request #requestId# to #httpResult.request.URL#" );
+        startTime = getTickCount();
+    } )
+    .send();
+```
+
+#### `onChunk( chunk, lastEventId, httpResult, httpClient, response )`
+
+Called for each chunk of data received from the server. Essential for streaming and SSE consumption.
+
+**Parameters:**
+
+- `chunk` (any) - The data chunk received:
+  - **Regular HTTP**: String or binary data chunk
+  - **SSE mode**: Struct with `{ data, event, id, retry }` fields
+- `lastEventId` (string) - Most recent SSE event ID (for reconnection support)
+- `httpResult` (struct) - The result structure (partially populated during streaming)
+- `httpClient` (BoxHttpClient) - The client instance
+- `response` (java.net.http.HttpResponse) - Raw Java HTTP response object
+
+**Use Cases:**
+
+- Process streaming API responses (OpenAI, Claude, etc.)
+- Consume Server-Sent Events from remote servers
+- Monitor download progress
+- Process large responses incrementally without loading into memory
+
+**Example (Streaming JSON):**
+
+```js
+fullResponse = "";
+
+http( "https://api.example.com/stream" )
+    .onChunk( ( chunk, lastEventId, httpResult ) => {
+        fullResponse &= chunk;
+        writeOutput( chunk );
+        flush;
+    } )
+    .send();
+```
+
+**Example (SSE Consumption):**
+
+```js
+http( "https://api.example.com/events" )
+    .sse( true )
+    .onChunk( ( event, lastEventId, httpResult ) => {
+        // event is a struct: { data, event, id, retry }
+        println( "Event Type: " & event.event );
+        println( "Event Data: " & event.data );
+        println( "Event ID: " & event.id );
+        println( "Last Event ID: " & lastEventId );
+    } )
+    .send();
+```
+
+#### `onComplete( httpResult )`
+
+Called after the HTTP request completes successfully.
+
+**Parameters:**
+
+- `httpResult` (struct) - Complete result structure with all response data
+
+**Use Cases:**
+
+- Final cleanup operations
+- Success logging and metrics
+- Trigger downstream processes
+- Send completion notifications
+
+**Example:**
+
+```js
+http( "https://api.example.com/process" )
+    .post()
+    .jsonBody( '{"data":"value"}' )
+    .onComplete( ( httpResult ) => {
+        logger.info( "Request completed in #httpResult.executionTime#ms" );
+        logger.info( "Status: #httpResult.statusCode# #httpResult.statusText#" );
+        metrics.recordSuccess( httpResult.executionTime );
+    } )
+    .send();
+```
+
+#### `onError( error, httpResult )`
+
+Called when an error occurs during the HTTP request.
+
+**Parameters:**
+
+- `error` (Exception) - The error/exception that occurred
+- `httpResult` (struct) - Partial result structure (may contain partial data)
+
+**Use Cases:**
+
+- Implement retry logic with exponential backoff
+- Log errors with context
+- Send error notifications/alerts
+- Graceful degradation and fallback handling
+
+**Example:**
+
+```js
+retryCount = 0;
+maxRetries = 3;
+
+function makeRequest() {
+    http( "https://api.example.com/data" )
+        .timeout( 10 )
+        .onError( ( error, httpResult ) => {
+            logger.error( "Request failed: #error.message#" );
+
+            if ( retryCount < maxRetries ) {
+                retryCount++;
+                sleepTime = 2 ^ retryCount * 1000; // Exponential backoff
+                logger.info( "Retrying in #sleepTime#ms (attempt #retryCount#/#maxRetries#)" );
+                sleep( sleepTime );
+                makeRequest(); // Retry
+            } else {
+                logger.error( "Max retries reached, giving up" );
+                throw error;
+            }
+        } )
+        .onComplete( ( httpResult ) => {
+            logger.info( "Request succeeded after #retryCount# retries" );
+        } )
+        .send();
+}
+
+makeRequest();
+```
+
+### Callback Execution Order
+
+The callbacks execute in this order:
+
+1. **`onRequestStart`** - Before request begins
+2. **`onChunk`** - Multiple times during response (if streaming/SSE)
+3. **`onComplete`** OR **`onError`** - After request finishes
+   - `onComplete` for successful requests
+   - `onError` for failed requests
+
+### Using Callbacks with Both Approaches
+
+#### With `http()` BIF (Fluent API)
+
+```js
+http( "https://api.example.com/data" )
+    .onRequestStart( ( httpResult, httpClient ) => {
+        // Pre-request logic
+    } )
+    .onChunk( ( chunk, lastEventId, httpResult ) => {
+        // Process streaming data
+    } )
+    .onComplete( ( httpResult ) => {
+        // Success handling
+    } )
+    .onError( ( error, httpResult ) => {
+        // Error handling
+    } )
+    .send();
+```
+
+#### With `bx:http` Component
+
+```js
+function handleRequestStart( httpResult, httpClient ) {
+    // Pre-request logic
+}
+
+function handleChunk( chunk, lastEventId, httpResult ) {
+    // Process streaming data
+}
+
+function handleComplete( httpResult ) {
+    // Success handling
+}
+
+function handleError( error, httpResult ) {
+    // Error handling
+}
+
+bx:http
+    url="https://api.example.com/data"
+    onRequestStart=handleRequestStart
+    onChunk=handleChunk
+    onComplete=handleComplete
+    onError=handleError
+    result="result";
+```
+
+### Real-World Callback Patterns
+
+#### Pattern 1: Progress Tracking
+
+```js
+bytesReceived = 0;
+totalBytes = 0;
+
+http( "https://example.com/large-file.zip" )
+    .outputFile( "downloads/large-file.zip" )
+    .onRequestStart( ( httpResult, httpClient ) => {
+        println( "Starting download..." );
+    } )
+    .onChunk( ( chunk, lastEventId, httpResult ) => {
+        bytesReceived += len( chunk );
+        if ( totalBytes == 0 && structKeyExists( httpResult.responseHeader, "content-length" ) ) {
+            totalBytes = val( httpResult.responseHeader["content-length"] );
+        }
+        if ( totalBytes > 0 ) {
+            percent = round( ( bytesReceived / totalBytes ) * 100 );
+            println( "Progress: #percent#% (#bytesReceived# / #totalBytes# bytes)" );
+        }
+    } )
+    .onComplete( ( httpResult ) => {
+        println( "Download complete! Total: #bytesReceived# bytes in #httpResult.executionTime#ms" );
+    } )
+    .onError( ( error, httpResult ) => {
+        println( "Download failed: #error.message#" );
+    } )
+    .send();
+```
+
+#### Pattern 2: Request/Response Logging
+
+```js
+http( "https://api.example.com/users" )
+    .post()
+    .jsonBody( userPayload )
+    .onRequestStart( ( httpResult, httpClient ) => {
+        requestId = createUUID();
+        httpResult.requestId = requestId;
+
+        logger.info( "[#requestId#] Starting POST to #httpResult.request.URL#" );
+        logger.debug( "[#requestId#] Headers: #serializeJSON( httpResult.request.headers )#" );
+    } )
+    .onComplete( ( httpResult ) => {
+        logger.info(
+            "[#httpResult.requestId#] Completed: #httpResult.statusCode# " &
+            "in #httpResult.executionTime#ms"
+        );
+    } )
+    .onError( ( error, httpResult ) => {
+        logger.error(
+            "[#httpResult.requestId#] Failed: #error.message#",
+            error
+        );
+    } )
+    .send();
+```
+
+#### Pattern 3: Retry with Circuit Breaker
+
+```js
+circuitBreaker = {
+    failures: 0,
+    threshold: 5,
+    resetAfter: 60000, // 1 minute
+    lastFailureTime: 0,
+    isOpen: false
+};
+
+function checkCircuit() {
+    if ( circuitBreaker.isOpen ) {
+        if ( getTickCount() - circuitBreaker.lastFailureTime > circuitBreaker.resetAfter ) {
+            // Reset circuit after timeout
+            circuitBreaker.isOpen = false;
+            circuitBreaker.failures = 0;
+            logger.info( "Circuit breaker reset" );
+        } else {
+            throw new Exception( "Circuit breaker is OPEN, request blocked" );
+        }
+    }
+}
+
+http( "https://api.example.com/data" )
+    .onRequestStart( ( httpResult, httpClient ) => {
+        checkCircuit();
+    } )
+    .onComplete( ( httpResult ) => {
+        // Success - reset failure count
+        circuitBreaker.failures = 0;
+    } )
+    .onError( ( error, httpResult ) => {
+        circuitBreaker.failures++;
+        circuitBreaker.lastFailureTime = getTickCount();
+
+        if ( circuitBreaker.failures >= circuitBreaker.threshold ) {
+            circuitBreaker.isOpen = true;
+            logger.error( "Circuit breaker OPENED after #circuitBreaker.failures# failures" );
+        }
+
+        logger.error( "Request failed (#circuitBreaker.failures#/#circuitBreaker.threshold#): #error.message#" );
+    } )
+    .send();
+```
+
+{% hint style="success" %}
+
+**Callback Best Practices:**
+
+1. **Keep callbacks lightweight** - Avoid heavy processing in `onChunk` to prevent blocking
+2. **Use try-catch** - Protect against errors in callback code
+3. **Store context carefully** - Use closure variables or pass context through httpResult
+4. **Log appropriately** - Use different log levels (DEBUG for chunks, INFO for completion, ERROR for failures)
+5. **Handle SSE disconnects** - Implement reconnection logic in `onError` for SSE streams
+6. **Monitor memory** - Process and discard data incrementally in `onChunk` for large responses
+7. **Use request IDs** - Generate IDs in `onRequestStart` for correlation across callbacks
+8. **Implement timeouts** - Don't rely solely on callbacks for timeout handling
+{% endhint %}
+
+---
 
 ## 📊 The Result Structure
 
@@ -755,6 +1189,493 @@ bx:http url="https://api.example.com/data" result="result" {
     bx:httpparam type="header" name="X-Client-Version" value="1.0.0";
 }
 ```
+
+---
+
+## 🚀 The `http()` BIF - Fluent API Reference
+
+**New in BoxLang 1.8.0** - The `http()` BIF provides a modern, fluent API for building and executing HTTP requests programmatically.
+
+### Basic Syntax
+
+```js
+result = http( url )
+    .method()        // Chain configuration methods
+    .header()
+    .body()
+    .send();         // Execute the request
+```
+
+### HTTP Method Shortcuts
+
+The BIF provides convenient method shortcuts:
+
+```js
+http( url ).get().send();     // GET request
+http( url ).post().send();    // POST request
+http( url ).put().send();     // PUT request
+http( url ).delete().send();  // DELETE request
+http( url ).patch().send();   // PATCH request
+http( url ).head().send();    // HEAD request
+http( url ).options().send(); // OPTIONS request
+http( url ).trace().send();   // TRACE request
+```
+
+### Configuration Methods
+
+#### Request Configuration
+
+```js
+http( url )
+    .method( "POST" )           // Set HTTP method
+    .timeout( 30 )              // Timeout in seconds
+    .port( 8080 )               // Custom port
+    .httpVersion( "HTTP/1.1" )  // HTTP version
+    .http1()                    // Shortcut for HTTP/1.1
+    .http2()                    // Shortcut for HTTP/2
+    .charset( "UTF-8" )         // Character encoding
+    .userAgent( "MyApp/1.0" )   // Custom user agent
+    .throwOnError( true )       // Throw on 4xx/5xx responses
+    .multipart( true )          // Enable multipart mode
+    .send();
+```
+
+#### Headers and Parameters
+
+```js
+http( url )
+    .header( "Content-Type", "application/json" )
+    .header( "Authorization", "Bearer token123" )
+    .urlParam( "q", "search" )           // Query string parameter
+    .urlParam( "page", "1", false )      // With encoding control
+    .formField( "username", "john" )     // Form field
+    .formField( "email", "j@example.com", true )  // With encoding
+    .cookie( "session", "abc123" )       // Cookie
+    .send();
+```
+
+#### Request Body
+
+```js
+// Plain body
+http( url )
+    .post()
+    .body( "Raw request body" )
+    .send();
+
+// JSON body (auto-sets Content-Type header)
+http( url )
+    .post()
+    .jsonBody( '{"name":"John","age":30}' )
+    .send();
+
+// XML body (auto-sets Content-Type header)
+http( url )
+    .post()
+    .xmlBody( '<user><name>John</name></user>' )
+    .send();
+```
+
+#### File Uploads
+
+```js
+http( url )
+    .post()
+    .multipart( true )
+    .file( "document", "/path/to/file.pdf" )
+    .file( "image", "/path/to/image.png", "image/png" )  // With MIME type
+    .formField( "description", "File upload" )
+    .send();
+```
+
+#### File Downloads
+
+```js
+http( url )
+    .outputDirectory( "/downloads" )
+    .outputFile( "report.pdf" )
+    .send();
+```
+
+#### Authentication
+
+```js
+http( url )
+    .withBasicAuth( "username", "password" )
+    .send();
+```
+
+### Response Transformers
+
+Transform the response automatically before returning:
+
+```js
+// Parse JSON response
+users = http( "https://api.example.com/users" )
+    .asJSON()
+    .send();
+println( users[ 1 ].name );  // Direct access to parsed data
+
+// Get text content only
+content = http( "https://example.com/page.html" )
+    .asText()
+    .send();
+println( content );  // Just the text, not the full result struct
+
+// Parse XML response
+xmlDoc = http( "https://example.com/feed.xml" )
+    .asXML()
+    .send();
+println( xmlDoc.xmlRoot );
+
+// Custom transformer
+result = http( url )
+    .transform( ( httpResult ) => {
+        return {
+            status: httpResult.statusCode,
+            data: deserializeJSON( httpResult.fileContent ),
+            headers: httpResult.responseHeader
+        };
+    } )
+    .send();
+```
+
+### Conditional Building
+
+Build requests conditionally:
+
+```js
+request = http( "https://api.example.com/data" );
+
+// Execute lambda only if condition is true
+request.when( userIsAdmin, ( req ) => {
+    req.header( "X-Admin-Token", adminToken );
+} );
+
+// Execute if value is null
+request.ifNull( customTimeout, ( req ) => {
+    req.timeout( 30 );  // Use default
+} );
+
+// Execute if value is not null
+request.ifNotNull( authToken, ( req ) => {
+    req.header( "Authorization", "Bearer " & authToken );
+} );
+
+result = request.send();
+```
+
+### Streaming and Callbacks
+
+**New in BoxLang 1.8.0** - Stream responses with callbacks:
+
+```js
+http( "https://api.example.com/large-file" )
+    .onRequestStart( () => {
+        println( "Request starting..." );
+    } )
+    .onChunk( ( chunk, httpResult, httpClient, response ) => {
+        println( "Received chunk: " & len( chunk ) & " bytes" );
+        // Process chunk data
+    } )
+    .onComplete( ( httpResult ) => {
+        println( "Request completed. Status: " & httpResult.statusCode );
+    } )
+    .onError( ( error, httpResult ) => {
+        println( "Error occurred: " & error.message );
+    } )
+    .send();
+```
+
+### Server-Sent Events (SSE) Consumption
+
+**New in BoxLang 1.8.0** - Consume SSE streams:
+
+```js
+// Basic SSE consumption
+http( "https://api.example.com/events" )
+    .sse( true )
+    .onChunk( ( event, lastEventId, httpResult, httpClient, response ) => {
+        // event struct contains: data, event (type), id
+        println( "Event: " & event.event );
+        println( "Data: " & event.data );
+        println( "ID: " & event.id );
+        println( "Last Event ID: " & lastEventId );
+    } )
+    .send();
+
+// AI streaming example
+fullResponse = "";
+http( "https://api.openai.com/v1/chat/completions" )
+    .post()
+    .header( "Authorization", "Bearer " & apiKey )
+    .jsonBody( '{
+        "model": "gpt-4",
+        "messages": [{"role": "user", "content": "Tell me a story"}],
+        "stream": true
+    }' )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        if ( event.event == "message" ) {
+            token = deserializeJSON( event.data ).choices[ 1 ].delta.content;
+            fullResponse &= token;
+            writeOutput( token );  // Stream to browser
+            flush;
+        }
+    } )
+    .onComplete( ( httpResult ) => {
+        println( "\n\nFull response length: " & len( fullResponse ) );
+    } )
+    .send();
+```
+
+### Request Inspection
+
+Debug your request before sending:
+
+```js
+requestDetails = http( "https://api.example.com/data" )
+    .post()
+    .header( "Content-Type", "application/json" )
+    .jsonBody( '{"test":"data"}' )
+    .inspect();  // Returns struct of request configuration
+
+dump( requestDetails );
+// Shows: method, url, headers, params, timeout, etc.
+```
+
+### Error Handling
+
+```js
+try {
+    result = http( "https://api.example.com/data" )
+        .throwOnError( true )  // Throws on 4xx/5xx
+        .send();
+
+    println( "Success: " & result.fileContent );
+} catch ( any e ) {
+    println( "Error: " & e.message );
+}
+
+// Or check result manually
+result = http( "https://api.example.com/data" )
+    .throwOnError( false )
+    .send();
+
+if ( result.statusCode >= 400 ) {
+    println( "Error: " & result.statusCode );
+} else {
+    println( "Success: " & result.fileContent );
+}
+```
+
+---
+
+## 📡 Server-Sent Events (SSE) Consumption
+
+**New in BoxLang 1.8.0** - Both the `http()` BIF and `bx:http` component support consuming Server-Sent Events (SSE) streams from remote servers.
+
+### What is SSE Consumption?
+
+While the `SSE()` BIF creates SSE streams (server-to-client), SSE consumption allows you to **connect to existing SSE endpoints** and process events as they arrive. This is perfect for:
+
+- 🤖 Consuming AI streaming APIs (OpenAI, Claude, etc.)
+- 📊 Real-time dashboard data feeds
+- 🔔 Event notifications from third-party services
+- 📈 Live metrics and monitoring streams
+- 🔄 Real-time updates from microservices
+
+### Using the `http()` BIF for SSE
+
+```js
+// Basic SSE consumption
+http( "https://api.example.com/events" )
+    .sse( true )
+    .onChunk( ( event, lastEventId, httpResult, httpClient, response ) => {
+        // event struct contains:
+        // - data: The event data
+        // - event: Event type (e.g., "message", "update", "ping")
+        // - id: Event ID for reconnection
+
+        println( "Received event type: " & event.event );
+        println( "Event data: " & event.data );
+        println( "Event ID: " & event.id );
+    } )
+    .send();
+```
+
+### Using the `bx:http` Component for SSE
+
+```js
+// Declare callback function
+function processEvent( event, lastEventId, httpResult, httpClient, response ) {
+    println( "Event: " & event.event );
+    println( "Data: " & event.data );
+}
+
+// Use component with SSE
+bx:http
+    url="https://api.example.com/events"
+    sse=true
+    onChunk=processEvent
+    result="result";
+```
+
+### Real-World SSE Examples
+
+#### OpenAI Streaming Chat
+
+```js
+// Stream AI responses token-by-token
+fullResponse = "";
+
+http( "https://api.openai.com/v1/chat/completions" )
+    .post()
+    .header( "Authorization", "Bearer " & apiKey )
+    .header( "Content-Type", "application/json" )
+    .jsonBody( '{
+        "model": "gpt-4",
+        "messages": [
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": "Explain quantum computing"}
+        ],
+        "stream": true
+    }' )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        if ( event.data == "[DONE]" ) {
+            return;  // Stream complete
+        }
+
+        try {
+            chunk = deserializeJSON( event.data );
+            if ( structKeyExists( chunk.choices[ 1 ].delta, "content" ) ) {
+                token = chunk.choices[ 1 ].delta.content;
+                fullResponse &= token;
+                writeOutput( token );  // Stream to browser
+                flush;
+            }
+        } catch ( any e ) {
+            // Handle parse errors
+        }
+    } )
+    .onComplete( ( httpResult ) => {
+        println( "\n\nStream complete. Total tokens: " & len( fullResponse ) );
+    } )
+    .onError( ( error, httpResult ) => {
+        println( "Error: " & error.message );
+    } )
+    .send();
+```
+
+#### Live Dashboard Metrics
+
+```js
+// Consume real-time metrics feed
+http( "https://metrics.example.com/stream" )
+    .header( "Authorization", "Bearer " & metricsToken )
+    .sse( true )
+    .onChunk( ( event, lastEventId, httpResult ) => {
+        if ( event.event == "metrics" ) {
+            metrics = deserializeJSON( event.data );
+
+            // Update dashboard
+            updateDashboard( {
+                cpu: metrics.cpu,
+                memory: metrics.memory,
+                requests: metrics.requestsPerSecond,
+                lastUpdate: now()
+            } );
+        }
+    } )
+    .send();
+```
+
+#### Real-Time Notifications
+
+```js
+// Listen for notification events
+http( "https://notifications.example.com/stream" )
+    .header( "X-User-ID", userID )
+    .sse( true )
+    .onChunk( ( event, lastEventId ) => {
+        switch ( event.event ) {
+            case "notification":
+                notification = deserializeJSON( event.data );
+                showNotification( notification.title, notification.body );
+                break;
+
+            case "badge-update":
+                badgeData = deserializeJSON( event.data );
+                updateBadgeCount( badgeData.count );
+                break;
+
+            case "ping":
+                // Keep-alive event, do nothing
+                break;
+        }
+
+        // Store last event ID for reconnection
+        session.lastEventId = lastEventId;
+    } )
+    .onError( ( error, httpResult ) => {
+        // Reconnect with last event ID
+        reconnectSSE( session.lastEventId );
+    } )
+    .send();
+```
+
+### SSE Event Structure
+
+Each SSE event received in the `onChunk` callback contains:
+
+```js
+{
+    data: "Event data content",        // The event payload
+    event: "message",                  // Event type (default: "message")
+    id: "123",                         // Event ID (for reconnection)
+    retry: 3000                        // Retry interval in ms (if specified)
+}
+```
+
+### SSE Callback Parameters
+
+The `onChunk` callback for SSE receives:
+
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `event` | struct | The SSE event structure (data, event, id, retry) |
+| `lastEventId` | string | The most recent event ID received (for reconnection) |
+| `httpResult` | struct | The HTTP result structure |
+| `httpClient` | object | The BoxHttpClient instance |
+| `response` | object | The raw Java HttpResponse object |
+
+### SSE Best Practices
+
+{% hint style="success" %}
+**Best Practices:**
+
+1. **Always handle errors** - Network issues can interrupt streams
+2. **Store `lastEventId`** - Use it to reconnect and resume from last event
+3. **Parse event types** - Different event types may need different handling
+4. **Handle `[DONE]` signals** - Many APIs use this to indicate stream end
+5. **Set appropriate timeouts** - SSE streams can be long-lived
+6. **Flush output immediately** - For real-time display to end users
+7. **Use try-catch** - JSON parsing of event data can fail
+{% endhint %}
+
+{% hint style="warning" %}
+**Important Considerations:**
+
+- SSE connections are **unidirectional** (server → client)
+- Network interruptions will terminate the stream
+- Use `lastEventId` to resume from where you left off
+- Some proxies/firewalls may interfere with long-lived connections
+- Set appropriate timeouts for long-running streams
+- Memory usage grows with accumulated data - process and discard chunks promptly
+{% endhint %}
+
+---
 
 ## 🎪 Interceptor Events
 
