@@ -1,111 +1,292 @@
 ---
 description: >-
-  This module provides the CLI runtime with all the web server BIFS, components
-  and utilities need for mocking, testing and feature auditing.
+  Mock HTTP exchanges for testing web applications in BoxLang CLI runtime without a web server.
 icon: globe-pointer
 ---
 
-# Web Support
+# 🌐 BoxLang Web Support Module
 
-This module provides web support for the BoxLang core OS runtime without needing a web server.&#x20;
+Mock web server for testing BoxLang web applications in CLI runtime. Simulates HTTP requests/responses without needing an actual web server.
 
-This means that it will add all the necessary web support to the BoxLang runtime so you can test, simulate, and mock web requests and responses from the CLI. This is a great way to test your web applications without the need for a web server.
+## 📋 Table of Contents
 
-```
-# For Operating Systems using our Quick Installer.
+- [📋 Table of Contents](#-table-of-contents)
+- [⚠️ Warning](#️-warning)
+- [📦 Installation](#-installation)
+- [⚙️ Configuration](#️-configuration)
+- [🚀 Quick Start](#-quick-start)
+- [🔧 BIF Reference](#-bif-reference)
+  - [mockServerGet()](#mockserverget)
+  - [mockRequestNew()](#mockrequestnew)
+  - [mockRequestRun()](#mockrequestrun)
+- [💡 Examples](#-examples)
+  - [Basic GET Request](#basic-get-request)
+  - [POST with JSON](#post-with-json)
+  - [Request with Authentication](#request-with-authentication)
+  - [Form Submission](#form-submission)
+- [🔗 Fluent API](#-fluent-api)
+- [🧪 Testing Patterns](#-testing-patterns)
+  - [Test Isolation](#test-isolation)
+  - [Multiple Requests](#multiple-requests)
+  - [Response Inspection](#response-inspection)
+- [📚 Resources](#-resources)
+
+## ⚠️ Warning
+
+**DO NOT install this module into a BoxLang web-runtime!** This module is for CLI runtime testing or mocking only and will cause JAR conflicts in web server environments. Not needed for CommandBox or MiniServer.
+
+## 📦 Installation
+
+```bash
+# OS Quick Installer
 install-bx-module bx-web-support
 
-# Using CommandBox to install for web servers.
+# CommandBox
 box install bx-web-support
 ```
 
-{% hint style="danger" %}
-THIS MODULE IS NOT NEEDED FOR COMMANDBOX OR THE MINISERVER. IT'S PURELY FOR TESTING, MOCKING AND AUDITING.
-{% endhint %}
+## ⚙️ Configuration
 
-### Settings
+Configure in your `ModuleConfig.bx`:
 
-Here are the default settings for this module you can configure:
-
-```json
+```js
 settings = {
-    // The default port for the mock web server
-    port = 8080,
-    // The default host for the mock web server
-    host = "localhost",
-    // The default web root for the mock web server
-    webRoot = server.java.executionPath,
-    // If you want your mock web server to be always secure (SSL)
-    secure = false,
-    // The key used in the `server` scope we use to track the mock server
-    requestKey = "bxMockServer"
+    port       : 8080,                          // Mock server port
+    host       : "localhost",                   // Mock server host
+    webRoot    : server.java.executionPath,    // Web root path
+    secure     : false,                         // Enable HTTPS
+    requestKey : "bxMockServer"                 // Request scope key
 };
 ```
 
-### Functions
+## 🚀 Quick Start
 
-Here are some functions collaborated for mocking/testing
+```js
+// Get mock server
+mockServer = mockServerGet()
+    .setRequestMethod( "POST" )
+    .setRequestPath( "/api/users" )
+    .addRequestHeader( "Content-Type", "application/json" )
+    .setRequestBody( '{"name": "John"}' );
 
-#### `getMockServer()`
-
-Creates a new mock server and stores it in the request context.  If it exists already, it will return the existing one.
-
-```java
-/**
- * Creates a new mock server and store it in the request context
- * If it exists already, it will return the existing one
- *
- * @webroot string The webroot to use for the mock server, defaults to the module setting
- * @host string The host to use for the mock server, defaults to the module setting
- * @port numeric The port to use for the mock server, defaults to the module setting
- * @secure boolean Whether the mock server should be secure, defaults to the module setting
- * @force boolean Whether to force the creation of a new mock server
- *
- * @return MockHTTPExchange
- */
-function invoke(
-    string webroot,
-    string host,
-    numeric port,
-    boolean secure,
-    boolean force = false
-){
+// Use web-aware BIFs
+httpData = getHTTPRequestData();
+println( httpData.method ); // POST
 ```
 
-#### `startMockRequest()`
+## 🔧 BIF Reference
 
-Handle the start of a mock request using passed arguments.
+### mockServerGet()
 
-```java
-/**
- * Handle the start of a mock request
- */
-function invoke(
-	// Request Settings
-	string path = "/",
-	string method = "GET",
-	string pathInfo = "",
-	string queryString = "",
-	string contentType = "text/html",
-	string body = "",
-	struct urlScope = {},
-	struct formScope = {},
-	struct cookieScope = {},
-	struct headers = {},
-	// Response Mock Settings
-	numeric responseStatus = 200,
-	string responseContentType = "text/html",
-	string responseBody = "",
-	struct responseHeaders = {},
-	// Web Server Settings
-	string webroot,
-	string host,
-	numeric port,
-	boolean secure,
-	boolean force = false
-){
+Creates or retrieves cached mock server exchange.
+
+**Arguments:**
+
+- `webroot` (string) - Web root path
+- `host` (string) - Server host (default: localhost)
+- `port` (numeric) - Server port (default: 8080)
+- `secure` (boolean) - Enable HTTPS (default: false)
+- `force` (boolean) - Force new instance (default: false)
+
+**Returns:** `MockHTTPExchange`
+
+```js
+// Get or create server
+server = mockServerGet();
+
+// Force new instance
+server = mockServerGet( force: true );
+
+// Custom configuration
+server = mockServerGet( host: "example.com", port: 9090, secure: true );
 ```
 
-### GitHub Repository and Reporting Issues <a href="#github-repository-and-reporting-issues" id="github-repository-and-reporting-issues"></a>
+### mockRequestNew()
 
-Visit the [GitHub repository](https://github.com/ortus-boxlang/bx-web-support) for release notes. You can also file a bug report or improvement suggestion via [Jira](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359\&components=27030\&issuetype=1).
+Creates mock request builder for fluent configuration.
+
+**Arguments:**
+
+- `method` (string) - HTTP method (default: GET)
+- `path` (string) - Request path (default: /)
+- `body` (string) - Request body
+- `contentType` (string) - Content type (default: text/html)
+- `headers` (struct) - Request headers
+- `urlScope` (struct) - URL parameters
+- `formScope` (struct) - Form fields
+- `cookieScope` (struct) - Cookies
+- Plus: `webroot`, `host`, `port`, `secure`
+
+**Returns:** `MockHTTPExchange` (builder pattern)
+
+```js
+// Builder pattern
+mockRequestNew()
+    .setRequestMethod( "POST" )
+    .setRequestBodyJSON( { name: "John" } )
+    .addRequestHeader( "Authorization", "Bearer token" )
+    .execute();
+
+// Inline configuration
+mockRequestNew(
+    method: "PUT",
+    path: "/api/users/123",
+    body: '{"name": "Jane"}',
+    headers: { "Authorization": "Bearer token" }
+).execute();
+```
+
+### mockRequestRun()
+
+Executes full mock request with all-in-one configuration.
+
+**Arguments:**
+
+- **Request:** `path`, `method`, `pathInfo`, `queryString`, `contentType`, `body`, `urlScope`, `formScope`, `cookieScope`, `headers`
+- **Response:** `responseStatus`, `responseContentType`, `responseBody`, `responseHeaders`
+- **Server:** `webroot`, `host`, `port`, `secure`, `force`
+
+**Returns:** `MockHTTPExchange` (executed)
+
+```js
+// Simple request
+mockRequestRun( path: "/api/users", method: "GET" );
+
+// Complex request
+mockRequestRun(
+    path: "/api/data",
+    method: "POST",
+    body: '{"key": "value"}',
+    contentType: "application/json",
+    headers: { "Authorization": "Bearer token" },
+    responseStatus: 201,
+    responseBody: '{"success": true}'
+);
+```
+
+## 💡 Examples
+
+### Basic GET Request
+
+```js
+mockRequestRun( path: "/api/users" );
+httpData = getHTTPRequestData();
+println( httpData.method ); // GET
+```
+
+### POST with JSON
+
+```js
+mockRequestNew(
+    method: "POST",
+    path: "/api/users",
+    contentType: "application/json",
+    body: '{"name": "John", "email": "john@example.com"}'
+).execute();
+```
+
+### Request with Authentication
+
+```js
+mockServer = mockServerGet()
+    .setRequestMethod( "GET" )
+    .setRequestPath( "/api/protected" )
+    .addRequestHeader( "Authorization", "Bearer xyz789" )
+    .addRequestCookie( "sessionId", "sess-123" );
+```
+
+### Form Submission
+
+```js
+mockRequestRun(
+    path: "/contact",
+    method: "POST",
+    formScope: {
+        name: "Jane Doe",
+        email: "jane@example.com",
+        message: "Hello!"
+    }
+);
+```
+
+## 🔗 Fluent API
+
+`MockHTTPExchange` provides fluent methods for request configuration:
+
+**Request Configuration:**
+
+- `setRequestMethod(method)` - Set HTTP method
+- `setRequestPath(path)` - Set request path
+- `setRequestBody(body)` - Set request body
+- `setRequestBodyJSON(struct)` - Set JSON body (auto content-type)
+- `setRequestBodyXML(string)` - Set XML body (auto content-type)
+- `setRequestContentType(type)` - Set content type
+
+**Headers & Parameters:**
+
+- `addRequestHeader(name, value)` - Add single header
+- `addRequestHeaders(struct)` - Add multiple headers
+- `addURLParam(name, value)` - Add URL parameter
+- `addURLParams(struct)` - Add multiple URL parameters
+- `addFormField(name, value)` - Add form field
+- `addFormFields(struct)` - Add multiple form fields
+- `addRequestCookie(name, value)` - Add cookie
+
+**Execution & Inspection:**
+
+- `execute()` - Execute the request
+- `getResponseBody()` - Get response body
+- `getResponseStatus()` - Get status code
+- `getMockRequestHeaders()` - Get request headers
+- `getMockResponseHeaders()` - Get response headers
+- `getMockForm()` - Get form scope
+- `getMockURL()` - Get URL scope
+
+**Test Utilities:**
+
+- `clearRequestData()` - Reset request data
+- `clearResponseData()` - Reset response data
+- `clearAll()` - Reset everything
+
+## 🧪 Testing Patterns
+
+### Test Isolation
+
+```js
+// Reset between tests
+mockServer = mockServerGet();
+mockServer.clearAll();
+
+// Or force new instance
+mockServer = mockServerGet( force: true );
+```
+
+### Multiple Requests
+
+```js
+// Test different methods
+mockRequestNew( method: "GET", path: "/api/users" ).execute();
+mockRequestNew( method: "POST", path: "/api/users", body: "{}" ).execute();
+mockRequestNew( method: "DELETE", path: "/api/users/123" ).execute();
+```
+
+### Response Inspection
+
+```js
+mockServer = mockRequestRun(
+    path: "/api/test",
+    method: "POST",
+    body: '{"test": true}'
+);
+
+// Inspect
+status = mockServer.getResponseStatus();
+body = mockServer.getResponseBody();
+headers = mockServer.getMockResponseHeaders();
+```
+
+## 📚 Resources
+
+- [GitHub Repository](https://github.com/ortus-boxlang/bx-web-support)
+- [Issue Tracker](https://ortussolutions.atlassian.net/secure/CreateIssueDetails!init.jspa?pid=13359&components=27030&issuetype=1)
+- [BoxLang Documentation](https://boxlang.io)
