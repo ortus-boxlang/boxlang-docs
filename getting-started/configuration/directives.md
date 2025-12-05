@@ -58,6 +58,24 @@ This enables the class locations cache for the runtime, used when resolving clas
 "classResolverCache": true
 ```
 
+### Compiler
+
+The compiler to use for BoxLang files. BoxLang supports multiple compilation strategies:
+
+* **`asm`** (default) - Uses ASM bytecode generation for optimal performance and modern JVM features
+* **`java`** - Generates Java source code first, then compiles to bytecode (legacy approach)
+
+```json
+// The compiler to use for BoxLang files
+// Valid values are: "java", "asm"
+// This can be other things later on as we expand the compiler options
+"compiler": "asm"
+```
+
+{% hint style="success" %}
+**Recommendation**: Use the default `asm` compiler for production. It provides better performance and supports modern JVM features. The `java` compiler is primarily maintained for backward compatibility and debugging purposes and requires the boxlang-compiler-java module.
+{% endhint %}
+
 ### Clear Class Files On Startup
 
 This setting will remove all class files from the class generation directory on startup. Useful for debugging and testing, but not recommended for production.
@@ -98,6 +116,20 @@ The maximum number of completed threads to track for a single request. This prev
 // Note: when the limit is reached, the thread component and related BIFs will no longer throw exceptions on invalid thread names, they will silently ignore attempts to interrupt or join those threads
 "maxTrackedCompletedThreads": 1000
 ```
+
+### Store Class Files On Disk
+
+Controls whether compiled class files are stored on disk for reuse between restarts. When enabled, compiled classes persist across runtime restarts, improving startup performance. When disabled, class files are stored in memory only and lost on restart.
+
+```json
+// Store the compiled class files on disk for reuse between restarts
+// If disabled, the class files will be stored in memory only and lost on restart
+"storeClassFilesOnDisk": true
+```
+
+{% hint style="info" %}
+**Performance Impact**: Enabling this setting significantly improves runtime restart performance since classes don't need to be recompiled. Disable only for debugging or when disk space is extremely limited.
+{% endhint %}
 
 ### Trusted Cache
 
