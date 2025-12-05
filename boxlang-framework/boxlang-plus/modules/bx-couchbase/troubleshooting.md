@@ -343,9 +343,9 @@ ping couchbase-server-hostname
 
 4. **Monitor with statistics:**
 ```js
-stats = cacheGetStatistics("default");
-println("Hit Rate: #stats.hitRate#%");
-println("Avg Get Time: #stats.avgGetTime#ms");
+stats = cache("default").getStats();
+println("Object Count: #stats.getObjectCount()#");
+println("Cache Size: #stats.getSize()# bytes");
 ```
 
 ### High memory usage
@@ -355,7 +355,7 @@ println("Avg Get Time: #stats.avgGetTime#ms");
 1. **Set appropriate TTLs:**
 ```js
 // Don't cache forever!
-cacheSet("key", value, 60); // 60 minutes
+cache("default").set("key", value, 60); // 60 minutes
 ```
 
 2. **Use cache eviction:**
@@ -413,14 +413,14 @@ try {
     println("Bucket: #bucket.name()#");
 
     // Test write
-    cacheSet("test_key", { "test": true });
+    cache("default").set("test_key", { "test": true });
 
     // Test read
-    result = cacheGet("test_key");
+    result = cache("default").get("test_key");
     println("✅ Read/Write working!");
 
     // Cleanup
-    cacheDelete("test_key");
+    cache("default").clear("test_key");
 
 } catch (any e) {
     println("❌ Error: #e.message#");

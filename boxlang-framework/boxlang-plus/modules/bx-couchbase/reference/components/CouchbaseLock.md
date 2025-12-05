@@ -172,9 +172,9 @@ Distributed locking component that executes a body of code with automatic lock m
     timeout="5"
     expires="10">
 
-    counter = cacheGet("globalCounter") ?: 0;
+    counter = cache("default").get("globalCounter") ?: 0;
     counter++;
-    cacheSet("globalCounter", counter);
+    cache("default").set("globalCounter", counter);
 
 </bx:CouchbaseLock>
 ```
@@ -189,7 +189,7 @@ Distributed locking component that executes a body of code with automatic lock m
     expires="5">
 
     key = "ratelimit:#userId#";
-    data = cacheGet(key) ?: { count: 0, window: now() };
+    data = cache("default").get(key) ?: { count: 0, window: now() };
 
     if (dateDiff("s", data.window, now()) >= 60) {
         data = { count: 0, window: now() };
@@ -200,7 +200,7 @@ Distributed locking component that executes a body of code with automatic lock m
     }
 
     data.count++;
-    cacheSet(key, data, 1);
+    cache("default").set(key, data, 1);
 
 </bx:CouchbaseLock>
 ```
@@ -383,8 +383,8 @@ try {
 **Keep critical sections short:**
 ```js
 <bx:CouchbaseLock name="counter" cache="default">
-    counter = cacheGet("counter") + 1;
-    cacheSet("counter", counter);
+    counter = cache("default").get("counter") + 1;
+    cache("default").set("counter", counter);
 </bx:CouchbaseLock>
 ```
 
@@ -429,13 +429,15 @@ try {
 <!-- ❌ Wrong use case -->
 <bx:CouchbaseLock name="expensive-calc" cache="default">
     result = expensiveCalculation();
-    cacheSet("calc-result", result);
+    cache("default").set("calc-result", result);
 </bx:CouchbaseLock>
 
-<!-- ✅ Use cacheGetOrSet instead -->
-result = cacheGetOrSet("calc-result", function() {
-    return expensiveCalculation();
-});
+<!-- ✅ Use cache-aside pattern instead -->
+result = cache("default").get("calc-result");
+if (isNull(result)) {
+    result = expensiveCalculation();
+    cache("default").set("calc-result", result);
+}
 ```
 
 ## Comparison with BIF

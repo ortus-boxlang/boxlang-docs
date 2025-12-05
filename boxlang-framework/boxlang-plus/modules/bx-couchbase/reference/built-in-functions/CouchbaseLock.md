@@ -193,7 +193,7 @@ function checkRateLimit(userId, maxPerMinute) {
         expires = 5,
         callback = function() {
             key = "ratelimit:#userId#";
-            data = cacheGet(key) ?: { count: 0, window: now() };
+            data = cache("default").get(key) ?: { count: 0, window: now() };
 
             // Reset if minute passed
             if (dateDiff("s", data.window, now()) >= 60) {
@@ -211,7 +211,7 @@ function checkRateLimit(userId, maxPerMinute) {
 
             // Increment
             data.count++;
-            cacheSet(key, data, 1);
+            cache("default").set(key, data, 1);
 
             return {
                 allowed: true,

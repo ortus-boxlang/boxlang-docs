@@ -54,29 +54,29 @@ The Couchbase module provides components for advanced functionality:
 
 ## 🗄️ Cache Provider Functions
 
-All standard BoxLang cache functions work with Couchbase:
+All standard BoxLang cache operations work with Couchbase:
 
 ```js
 // Set cache value
-cacheSet("key", value, timeoutMinutes);
+cache("default").set("key", value, timeoutMinutes);
 
 // Get cache value
-data = cacheGet("key");
+data = cache("default").get("key");
 
 // Delete cache value
-cacheDelete("key");
+cache("default").clear("key");
 
 // Check if key exists
-exists = cacheKeyExists("key");
+exists = cache("default").lookup("key");
 
 // Clear all cache entries
-cacheClear();
+cache("default").clearAll();
 
 // Get cache statistics
-stats = cacheGetStatistics();
+stats = cache("default").getStats();
 ```
 
-See [BoxLang Cache Documentation](https://boxlang.ortusbooks.com/) for complete cache function reference.
+See [BoxLang Cache Documentation](https://boxlang.ortusbooks.com/) for complete cache API reference.
 
 ## ⚙️ Configuration Reference
 

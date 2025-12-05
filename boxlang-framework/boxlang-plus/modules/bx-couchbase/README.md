@@ -76,13 +76,13 @@ this.caches["default"] = {
 };
 
 // In your code
-cacheSet("user:123", {
+cache("default").set("user:123", {
     name: "John Doe",
     email: "john@example.com",
     role: "admin"
 });
 
-user = cacheGet("user:123");
+user = cache("default").get("user:123");
 println("Welcome, #user.name#!");
 
 // Distributed locking

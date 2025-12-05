@@ -31,10 +31,10 @@ this.caches["default"] = {
 
 ```js
 // Simple value
-cacheSet("username", "john_doe");
+cache("default").set("username", "john_doe");
 
 // Complex data structures
-cacheSet("user:123", {
+cache("default").set("user:123", {
     id: 123,
     name: "John Doe",
     email: "john@example.com",
@@ -45,54 +45,51 @@ cacheSet("user:123", {
 });
 
 // With expiration (in minutes)
-cacheSet("session:abc", sessionData, 60);
+cache("default").set("session:abc", sessionData, 60);
 
-// With specific cache name
-cacheSet("temp:data", value, 5, "default");
+// Using a different cache
+cache("sessions").set("temp:data", value, 5);
 ```
 
 ### Getting Cache Values
 
 ```js
 // Simple get
-username = cacheGet("username");
+username = cache("default").get("username");
 
 // With default value if not found
-username = cacheGet("username", "guest");
-
-// Throw exception if not found
-user = cacheGet("user:123", throwOnError=true);
+username = cache("default").get("username") ?: "guest";
 
 // From specific cache
-data = cacheGet("key", cacheName="default");
+data = cache("products").get("key");
 ```
 
 ### Checking Existence
 
 ```js
-if (cacheKeyExists("user:123")) {
+if (cache("default").lookup("user:123")) {
     println("User exists in cache");
 }
 
-// Count keys matching pattern
-count = cacheCount("user:*");
-println("Total users in cache: #count#");
+// Get keys matching pattern
+keys = cache("default").getKeys("user:*");
+println("Total users in cache: #keys.len()#");
 ```
 
 ### Deleting Cache Values
 
 ```js
 // Delete single key
-cacheDelete("user:123");
+cache("default").clear("user:123");
 
 // Delete multiple keys
-cacheDelete(["user:123", "user:456", "user:789"]);
+keys = ["user:123", "user:456", "user:789"];
+keys.each(function(key) {
+    cache("default").clear(key);
+});
 
 // Clear entire cache
-cacheClear();
-
-// Clear all caches
-cacheClearAll();
+cache("default").clearAll();
 ```
 
 ## 🔍 Advanced Operations
@@ -102,7 +99,7 @@ cacheClearAll();
 ```js
 // Get multiple keys at once
 keys = ["user:123", "user:456", "user:789"];
-users = cacheGetAll(keys);
+users = cache("default").getMulti(keys);
 
 for (key in users) {
     println("#key#: #users[key].name#");
@@ -113,16 +110,16 @@ for (key in users) {
 
 ```js
 // Get all keys (use with caution on large datasets)
-allKeys = cacheGetAllKeys();
+allKeys = cache("default").getKeys();
 
 // Get keys matching a pattern
-userKeys = cacheGetAllKeys("user:*");
+userKeys = cache("default").getKeys("user:*");
 ```
 
 ### Get Cache Metadata
 
 ```js
-metadata = cacheGetMetadata("user:123");
+metadata = cache("default").getCachedObjectMetadata("user:123");
 println("Created: #metadata.createdTime#");
 println("Hits: #metadata.hitCount#");
 println("Expires: #metadata.timeout#");
@@ -137,7 +134,7 @@ function getUser(id) {
     var cacheKey = "user:#id#";
 
     // Try cache first
-    var user = cacheGet(cacheKey, null);
+    var user = cache("default").get(cacheKey);
 
     if (isNull(user)) {
         // Cache miss - load from database
@@ -147,7 +144,7 @@ function getUser(id) {
         ).getRow(1);
 
         // Store in cache for 30 minutes
-        cacheSet(cacheKey, user, 30);
+        cache("default").set(cacheKey, user, 30);
     }
 
     return user;
@@ -158,19 +155,22 @@ function getUser(id) {
 
 ```js
 // Good - organized by prefix
-cacheSet("user:#userId#", userData);
-cacheSet("session:#sessionId#", sessionData);
-cacheSet("product:#sku#", productData);
+cache("default").set("user:#userId#", userData);
+cache("default").set("session:#sessionId#", sessionData);
+cache("default").set("product:#sku#", productData);
 
 // Easier to manage and clear
-cacheDelete(cacheGetAllKeys("user:*"));
+userKeys = cache("default").getKeys("user:*");
+userKeys.each(function(key) {
+    cache("default").clear(key);
+});
 ```
 
 ### Handle Cache Failures Gracefully
 
 ```js
 try {
-    return cacheGet("expensive:calculation");
+    return cache("default").get("expensive:calculation");
 } catch (any e) {
     // Cache is down, compute directly
     logError("Cache error: #e.message#");
@@ -182,13 +182,13 @@ try {
 
 ```js
 // Short-lived - frequently changing data
-cacheSet("stock:price:AAPL", price, 1); // 1 minute
+cache("default").set("stock:price:AAPL", price, 1); // 1 minute
 
 // Medium-lived - relatively stable data
-cacheSet("user:profile:#id#", profile, 60); // 1 hour
+cache("default").set("user:profile:#id#", profile, 60); // 1 hour
 
 // Long-lived - rarely changing data
-cacheSet("config:settings", settings, 1440); // 24 hours
+cache("default").set("config:settings", settings, 1440); // 24 hours
 ```
 
 ## 🔄 Integration with Query Caching
@@ -225,7 +225,7 @@ this.caches["products"] = {
 };
 
 // Use the scoped cache
-cacheSet("SKU12345", productData, cacheName="products");
+cache("products").set("SKU12345", productData);
 ```
 
 ## 📊 Performance Tips
@@ -235,7 +235,7 @@ cacheSet("SKU12345", productData, cacheName="products");
 ```js
 // Instead of multiple individual operations
 for (user in users) {
-    cacheSet("user:#user.id#", user);
+    cache("default").set("user:#user.id#", user);
 }
 
 // Use bulk operations when available
@@ -253,10 +253,9 @@ Connection pooling is automatic! The module manages connections efficiently behi
 ### Monitor Cache Performance
 
 ```js
-stats = cacheGetStatistics();
-println("Hit Rate: #stats.hitRate#%");
-println("Miss Rate: #stats.missRate#%");
-println("Average Get Time: #stats.avgGetTime#ms");
+stats = cache("default").getStats();
+println("Object Count: #stats.getObjectCount()#");
+println("Cache Size: #stats.getSize()# bytes");
 ```
 
 ## 🐛 Debugging

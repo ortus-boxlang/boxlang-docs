@@ -305,9 +305,9 @@ curl -u Administrator:password http://localhost:8091/pools
 Monitor cache statistics:
 
 ```js
-stats = cacheGetStatistics("sessions");
-println("Hit Rate: #stats.hitRate#%");
-println("Avg Response: #stats.avgGetTime#ms");
+stats = cache("sessions").getStats();
+println("Object Count: #stats.getObjectCount()#");
+println("Cache Size: #stats.getSize()# bytes");
 ```
 
 ## 🔗 Next Steps
