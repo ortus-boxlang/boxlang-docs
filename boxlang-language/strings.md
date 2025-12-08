@@ -7,13 +7,40 @@ icon: spell-check
 
 In BoxLang, strings are a type of variable that is used to store collections of letters and numbers. Usually defined within single or double quotes ( `'` or `"` ). Some simple strings would be `"hello"` or `"This sentence is a string!"`. Strings can be anything from `""`, the empty string, to long sets of text.
 
-The underlying type for a string in BoxLang is the Java [String](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html), which is immutable, meaning it can never change. Thus, a new string object is always created when concatenating strings together. This is a warning that if you do many string concatenations, you will have to use a Java data type to accelerate the concatenations ([String Builders](https://www.baeldung.com/java-string-builder-string-buffer)).
+## 🔤 Java String Interoperability
+
+The underlying type for a string in BoxLang is the native Java [String](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html), which is **immutable**, meaning it can never change. Thus, a new string object is always created when concatenating strings together.
 
 {% hint style="info" %}
-More on String Builders: [https://www.baeldung.com/java-string-builder-string-buffer](https://www.baeldung.com/java-string-builder-string-buffer)
+**Important:** Since BoxLang strings are Java strings, you have access to **all Java String methods** directly! This means you can call any method from the [Java String API](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html) on BoxLang strings using member function syntax.
 {% endhint %}
 
-## Character Extractions
+```js
+// Access Java String methods directly
+text = "Hello BoxLang"
+writeOutput( text.toUpperCase() )        // HELLO BOXLANG
+writeOutput( text.substring(0, 5) )      // Hello
+writeOutput( text.contains("Box") )      // true
+writeOutput( text.startsWith("Hello") )  // true
+writeOutput( text.endsWith("Lang") )     // true
+writeOutput( text.indexOf("Box") )       // 6
+writeOutput( text.split(" ") )           // ["Hello", "BoxLang"]
+```
+
+{% hint style="warning" %}
+If you perform many string concatenations in a loop, use Java's `StringBuilder` or `StringBuffer` for better performance. [Learn more about String Builders](https://www.baeldung.com/java-string-builder-string-buffer).
+{% endhint %}
+
+```js
+// For many concatenations, use StringBuilder
+sb = createObject("java", "java.lang.StringBuilder").init()
+for (i = 1; i <= 1000; i++) {
+    sb.append("Item #i#, ")
+}
+result = sb.toString()
+```
+
+## 🔍 Character Extractions
 
 You can reference characters in a string stream via their position in the string using array syntax: `varname[ position ]`. Please note that string and array positions in BoxLang start at 1 and not 0.
 
@@ -24,12 +51,12 @@ writeoutput( name[ 1 ] ) => will produce l
 
 You can use negative indices to get characters from the end backward:
 
-```javascript
+```js
 name = "luis";
 writeoutput( name[ -1 ] ) => will produce s
 ```
 
-## Character Extractions by Range
+## 📏 Character Extractions by Range
 
 BoxLang also supports extraction as ranges using the following array syntax:
 
@@ -39,87 +66,347 @@ array[ start:stop:step ]
 
 Which is extremely useful for doing character extractions in ranges
 
-```javascript
- data = "Hello BoxLang. You Rock!";
+```js
+data = "Hello BoxLang. You Rock!";
 
- writeOutput( data[ 1 ] ) // Returns H
- writeOutput( data[ -3 ] ) // Returns c
- writeOutput( data[ 4:10:2 ] ) // Returns l FL
- writeOutput( data[ 4:12 ] ) // Returns lo BoxLang
- writeOutput( data[ -10:-4:2]) // Returns o o
+writeOutput( data[ 1 ] )        // Returns H
+writeOutput( data[ -3 ] )       // Returns c
+writeOutput( data[ 4:10:2 ] )   // Returns l FL
+writeOutput( data[ 4:12 ] )     // Returns lo BoxLang
+writeOutput( data[ -10:-4:2])   // Returns o o
 ```
 
-## Common String Functions
+[Try it online!](https://try.boxlang.io)
 
-You can find all the available string functions here: [https://boxlang.ortusbooks.com/boxlang-language/reference/types/string](https://boxlang.ortusbooks.com/boxlang-language/reference/types/string). Below are some common ones that are handy to memorize:
+## 📚 String Built-In Functions (BIFs)
 
-### Len
+BoxLang provides a rich set of Built-In Functions for string manipulation. Below is an overview organized by category:
 
-Call `len()` on a string to get back the number of characters in the string. For instance `Len( "Hello ")` would give you back **6** (notice the trailing space is counted). You can also use member functions: `a.len()`. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/type/len](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/type/len)
+### 🔤 Case Conversion
 
-```javascript
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `uCase()` / `lCase()` | Convert to upper/lowercase | `uCase("hello")` → `"HELLO"` |
+| `camelCase()` | Convert to camelCase | `camelCase("hello_world")` → `"helloWorld"` |
+| `pascalCase()` | Convert to PascalCase | `pascalCase("hello_world")` → `"HelloWorld"` |
+| `kebabCase()` | Convert to kebab-case | `kebabCase("helloWorld")` → `"hello-world"` |
+| `snakeCase()` | Convert to snake_case | `snakeCase("helloWorld")` → `"hello_world"` |
+| `ucFirst()` | Uppercase first character | `ucFirst("hello")` → `"Hello"` |
+
+### 🔍 Search & Find
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `find()` / `findNoCase()` | Find substring position | `find("Box", "Hello BoxLang")` → `7` |
+| `reFind()` / `reFindNoCase()` | Find regex pattern position | `reFind("[0-9]+", "Age: 25")` → `6` |
+| `reMatch()` / `reMatchNoCase()` | Get all regex matches | `reMatch("[0-9]+", "123 and 456")` → `["123", "456"]` |
+| `findOneOf()` | Find first char from set | `findOneOf("aeiou", "hello")` → `2` |
+| `spanIncluding()` | Get chars in set | `spanIncluding("0123456789", "123abc")` → `"123"` |
+| `spanExcluding()` | Get chars not in set | `spanExcluding("0123456789", "abc123")` → `"abc"` |
+
+### ✂️ Extraction & Substring
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `left()` / `right()` | Get leftmost/rightmost chars | `left("Hello", 3)` → `"Hel"` |
+| `mid()` | Extract substring | `mid("Hello", 2, 3)` → `"ell"` |
+| `removeChars()` | Remove characters | `removeChars("Hello", 2, 2)` → `"Hlo"` |
+
+### 🔄 Replace & Transform
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `replace()` / `replaceNoCase()` | Replace substring | `replace("Hello", "l", "L")` → `"HeLlo"` |
+| `reReplace()` / `reReplaceNoCase()` | Replace with regex | `reReplace("test123", "[0-9]", "X", "ALL")` → `"testXXX"` |
+| `replaceList()` / `replaceListNoCase()` | Multiple replacements | `replaceList("a,b,c", "a,c", "1,3")` → `"1,b,3"` |
+| `reverse()` | Reverse string | `reverse("Hello")` → `"olleH"` |
+| `insert()` | Insert substring | `insert("XXX", "Hello", 3)` → `"HelXXXlo"` |
+
+### 🎨 Formatting & Padding
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `trim()` / `lTrim()` / `rTrim()` | Remove whitespace | `trim("  hello  ")` → `"hello"` |
+| `justify()` | Center justify | `justify("Hi", 10)` → `"    Hi    "` |
+| `lJustify()` / `rJustify()` | Left/right justify | `rJustify("Hi", 10)` → `"        Hi"` |
+| `repeatString()` | Repeat string | `repeatString("*", 5)` → `"*****"` |
+| `wrap()` | Wrap text to width | `wrap("Long text", 10)` → wrapped text |
+| `paragraphFormat()` | Convert newlines to `<p>` | `paragraphFormat("Line1\nLine2")` |
+| `stripCR()` | Remove carriage returns | `stripCR("hello\r\nworld")` → `"hello\nworld"` |
+
+### 🔢 Comparison & Analysis
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `compare()` / `compareNoCase()` | Lexicographic comparison | `compare("a", "b")` → `-1` |
+| `len()` | Get string length | `len("Hello")` → `5` |
+| `ascii()` | Get ASCII value | `ascii("A")` → `65` |
+| `char()` | Get character from ASCII | `char(65)` → `"A"` |
+| `val()` | Extract numeric value | `val("123abc")` → `123` |
+
+### 🔐 Encoding & Escaping
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `charsetEncode()` / `charsetDecode()` | Character set conversion | `charsetEncode("Hello", "UTF-8")` |
+| `jsStringFormat()` | Escape for JavaScript | `jsStringFormat("He said \"Hi\"")` |
+| `reEscape()` | Escape regex special chars | `reEscape("a.b*c")` → `"a\.b\*c"` |
+
+### 🧮 Advanced String Operations
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `stringEach()` | Iterate over characters | `stringEach("abc", (char) => println(char))` |
+| `stringEvery()` | Test if all chars match | `stringEvery("123", (c) => isNumeric(c))` → `true` |
+| `stringSome()` | Test if any char matches | `stringSome("abc1", (c) => isNumeric(c))` → `true` |
+| `stringFilter()` | Filter characters | `stringFilter("a1b2c3", (c) => !isNumeric(c))` → `"abc"` |
+| `stringMap()` | Transform characters | `stringMap("abc", (c) => uCase(c))` → `"ABC"` |
+| `stringReduce()` / `stringReduceRight()` | Reduce to single value | `stringReduce("123", (acc, c) => acc + val(c), 0)` → `6` |
+| `stringSort()` | Sort characters | `stringSort("dcba")` → `"abcd"` |
+| `stringBind()` | Bind values to placeholders | `stringBind("Hello {1}", ["World"])` → `"Hello World"` |
+| `slugify()` | Create URL-friendly slug | `slugify("Hello World!")` → `"hello-world"` |
+
+### 🔢 Boolean Formatting
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `yesNoFormat()` | Format as Yes/No | `yesNoFormat(true)` → `"Yes"` |
+| `trueFalseFormat()` | Format as True/False | `trueFalseFormat(1)` → `"True"` |
+
+{% hint style="success" %}
+**Complete Reference**: For detailed documentation of each function, visit the [String BIF Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/types/string).
+{% endhint %}
+
+## 🎯 Common String Functions
+
+Below are detailed examples of commonly used string functions:
+
+### 📏 len()
+
+Returns the number of characters in a string. Trailing spaces are counted.
+
+```js
 message = "Hola Luis"
-writeOutput( message.len() )
+writeOutput( message.len() )  // 9
 
-if( len( message ) ){
-
+// Useful in conditionals
+if( len(message) > 0 ) {
+    // String is not empty
 }
 ```
 
-### Trim, LTrim, RTrim
+[Try it online!](https://try.boxlang.io)
 
-The`Trim` function removes leading and trailing spaces and controls characters from a string. You can also use the `ltrim()` to do left trimming and `rtrim()` to do right trimming. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/trim](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/trim)
+### ✂️ trim(), lTrim(), rTrim()
 
-For instance, `Trim("Hello ")` would give you back `Hello` (notice the trailing space is removed). Combine this with `Len` for example `Len( Trim( "Hello ") )` and you would get back `5`. You can also use member functions:
+Remove whitespace and control characters from strings.
 
-```javascript
-a.trim().len()
+```js
+text = "  Hello World  "
+writeOutput( trim(text) )      // "Hello World"
+writeOutput( lTrim(text) )     // "Hello World  "
+writeOutput( rTrim(text) )     // "  Hello World"
+
+// Method chaining
+result = "  BoxLang  ".trim().len()  // 8
 ```
 
-### Replace, ReplaceNoCase, REReplace, REReplaceNoCase
+[Try it online!](https://try.boxlang.io)
 
-The `Replace` instruction replaces occurrences of **substring1** in a string with **substring2**, in a specified scope. The search is case-sensitive and the scoped default is one. If you would like the searches to be case-insensitive just use the `noCase()` suffix. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/replace](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/replace)
+### 🔄 replace(), replaceNoCase(), reReplace(), reReplaceNoCase()
 
-For instance, `Replace("Hello", "l", "")` would give you back **Helo** after replacing the _first occurrence of l_, or `Replace("Good Morning!", "o", "e", "All")` would give you **Geed Merning!**
+Replace substrings or patterns within strings.
 
-`REReplace(), REReplaceNoCase()` are the same functions but using regular expressions:
+```js
+// Simple replacement (first occurrence)
+result = replace("Hello", "l", "L")  // "HeLlo"
 
-```javascript
-reReplace( "test 123!", "[^a-z0-9]", "", "ALL" )
-reReplace( "123abc456", "[0-9]+([a-z]+)[0-9]+", "\1" )
+// Replace all occurrences
+result = replace("Hello", "l", "L", "ALL")  // "HeLLo"
+
+// Case-insensitive replacement
+result = replaceNoCase("Hello WORLD", "world", "Universe")  // "Hello Universe"
+
+// Regex replacement
+result = reReplace("test 123!", "[^a-z0-9]", "", "ALL")  // "test123"
+result = reReplace("123abc456", "[0-9]+([a-z]+)[0-9]+", "\1")  // "abc"
 ```
 
-### RemoveChars
+[Try it online!](https://try.boxlang.io)
 
-`RemoveChars` will remove characters from a string. For instance, `RemoveChars("hello bob", 2, 5)` would give you back **hbob**. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/removechars](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/removechars)
+### 🗑️ removeChars()
 
-### Mid
+Remove characters from a string at a specific position.
 
-The `mid` function extracts a substring from a string. For instance, I could call `Mid("Welcome to BoxLang Jumpstart", 4, 12)` and it would give you back: **come to BoxLang**. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/mid](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/string/mid)
-
-```javascript
-s = "20001122"
-writedump( mid( s, 5, 2 ) )
-// You can also use character extraction
-writedump( s[ 5:6 ] )
+```js
+result = removeChars("hello bob", 2, 5)  // "hbob"
+// Removes 5 characters starting at position 2
 ```
 
-### ListToArray
+[Try it online!](https://try.boxlang.io)
 
-Another great function is `listToArray()` which can take any string and convert it to an array according to a delimiter, empty fields, and even multi-character delimiters. The default delimiter is a comma `,`, but you can use any one or a combination of characters. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/list/listtoarray](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/list/listtoarray)
+### 📋 mid()
 
-```javascript
-a = "luis,majano,lucas,alexia,veronica";
-myArray = a.listToArray();
+Concatenate strings using the `&` operator or string interpolation with `#` symbols.
+
+```js
+name = "Luis"
+greeting = "Hello " & name & " how are you today?"
+
+// Concatenate and assign
+message = "Welcome"
+message &= " to BoxLang!"  // "Welcome to BoxLang!"
+```
+
+String interpolation allows you to embed variables and expressions directly within strings using `#` hash symbols.
+
+```js
+name = "Luis"
+age = 25
+welcome = "Good morning #name#, you are #age# years old!"
+// "Good morning Luis, you are 25 years old!"
+
+// Expressions work too
+message = "The time is #now()# and 2+2 = #2+2#"
+// "The time is {date/time} and 2+2 = 4"
+
+// Complex expressions
+items = ["apple", "banana", "orange"]
+output = "First item: #items[1]#"
+// "First item: apple"
+```
+
+{% hint style="success" %}
+**Note:** Anything between hashes (`#...#`) is interpreted as a **BoxLang expression**, not just simple variables.
+{% endhint %}
+
+BoxLang automatically casts many types to strings, but you can explicitly convert values using `toString()`.
+
+```js
+// Automatic casting
+number = 42
+text = "The answer is " & number  // "The answer is 42"
+
+// Explicit conversion with toString()
+struct = { a: "1", b: "2" }
+writeOutput( toString(struct) )
+writeOutput( struct.toString() )
+
+number = 42222.222
+writeOutput( number.toString() )  // "42222.222"
+
+// Arrays
+arr = [1, 2, 3]
+writeOutput( arr.toString() )  // "[1, 2, 3]"
+```
+
+[Try it online!](https://try.boxlang.io)
+
+## 🔗 Related Documentation
+
+- [String BIF Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/types/string) - Complete list of all string functions
+- [Operators](operators.md) - String concatenation and assignment operators
+- [Java String API](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html) - Native Java methods available on strings
+- [Regular Expressions](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/regex/Pattern.html) - Pattern syntax for regex functionssage = "Data: #toJSON(data)#"
+```
+
+[Try it online!](https://try.boxlang.io)
+
+## 🔄 Castingfunction syntax
+writeOutput( text.left(3) )    // "Box"
+```
+
+[Try it online!](https://try.boxlang.io)
+
+### 📋 listToArray()
+
+Convert a delimited string into an array.
+
+```js
+// Default delimiter (comma)
+list = "luis,majano,lucas,alexia,veronica"
+myArray = list.listToArray()  // ["luis", "majano", "lucas", "alexia", "veronica"]
+
+// Custom delimiter
+names = "John|Jane|Bob"
+myArray = listToArray(names, "|")
 
 // Multi-character delimiter
-list = "boxlang,php,|test,java,|sql";
-getArray = listToArray(list,",|",false,true);
-someJSON = JSONserialize(getArray);
-writeOutput(someJSON);
+list = "boxlang,php,|test,java,|sql"
+getArray = listToArray(list, ",|", false, true)
 ```
 
-## Combining Strings
+[Try it online!](https://try.boxlang.io)
+
+## ⚙️ Member Functions
+
+All string BIFs can be called as member functions on string variables. Additionally, since BoxLang strings are Java strings, you have access to all Java String methods:
+
+### BoxLang String Member Functions
+
+```js
+text = "Hello BoxLang"
+
+// Case conversion
+text.uCase()            // "HELLO BOXLANG"
+text.lCase()            // "hello boxlang"
+text.camelCase()        // "helloBoxlang"
+
+// Search & find
+text.find("Box")        // 7
+text.reFind("[A-Z]+")   // 1
+
+// Extraction
+text.left(5)            // "Hello"
+text.right(7)           // "BoxLang"
+text.mid(7, 3)          // "Box"
+
+// Replace & transform
+text.replace(" ", "_")  // "Hello_BoxLang"
+text.reverse()          // "gnaLxoB olleH"
+
+// Formatting
+"  test  ".trim()       // "test"
+"hi".repeatString(3)    // "hihihi"
+
+// Iteration
+"abc".stringEach((char) => println(char))
+"123".stringEvery((c) => isNumeric(c))  // true
+```
+
+### Java String Member Functions
+
+```js
+text = "Hello BoxLang"
+
+// Java String methods
+text.length()                    // 13
+text.toUpperCase()               // "HELLO BOXLANG"
+text.toLowerCase()               // "hello boxlang"
+text.substring(0, 5)             // "Hello"
+text.contains("Box")             // true
+text.startsWith("Hello")         // true
+text.endsWith("Lang")            // true
+text.indexOf("Box")              // 6
+text.lastIndexOf("o")            // 7
+text.charAt(0)                   // "H"
+text.split(" ")                  // ["Hello", "BoxLang"]
+text.replace("Box", "Test")      // "Hello TestLang"
+text.trim()                      // "Hello BoxLang"
+text.isEmpty()                   // false
+text.matches(".*Box.*")          // true
+text.replaceAll("[aeiou]", "X")  // "HXllX BXxLXng"
+text.replaceFirst("l", "L")      // "HeLlo BoxLang"
+text.concat(" Rocks!")           // "Hello BoxLang Rocks!"
+```
+
+{% hint style="success" %}
+**Pro Tip**: Use member function syntax for cleaner, more readable code with method chaining: `text.trim().uCase().left(10)`
+{% endhint %}
+
+[Try it online!](https://try.boxlang.io)
+
+## 🔗 Combining Strings
 
 Combining and interpolating strings is part of any programming language and an integral part. We can do both by building upon some language [operators](operators.md). If you have two or more strings, you can concatenate them by using the `&` operator:
 
