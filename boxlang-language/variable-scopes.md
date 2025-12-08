@@ -439,6 +439,235 @@ If the runtime is web-based, it will also check these scopes last:
 **IMPORTANT**: Because BoxLang must search for variables when you do not specify the scope, you can improve performance by specifying the scope for all variables. It can also help you avoid nasty lookups or unexpected results.
 {% endhint %}
 
+## 🔍 Query Loop Scope
+
+When you iterate over a query using `bx:loop` or functional methods like `queryEach()`, BoxLang automatically registers the query with the current context and makes the column names available as unscoped variables for the duration of each iteration.
+
+```javascript
+// Create a query
+myQuery = queryNew( "id,name,email", "integer,varchar,varchar", [
+    [ 1, "Luis", "luis@example.com" ],
+    [ 2, "Brad", "brad@example.com" ],
+    [ 3, "Jon", "jon@example.com" ]
+] )
+
+// Loop over query - column names become available as variables
+bx:loop query="myQuery" {
+    // Unscoped column references automatically resolve to current row
+    println( "ID: #id#" )        // Accesses myQuery.id for current row
+    println( "Name: #name#" )    // Accesses myQuery.name for current row
+    println( "Email: #email#" )  // Accesses myQuery.email for current row
+
+    // You can also use explicit query syntax
+    println( "ID: #myQuery.id[queryCurrentRow(myQuery)]#" )
+
+    // Or access via the query scope
+    println( "Current row: #queryCurrentRow(myQuery)#" )
+}
+
+// Script syntax for query loops
+for( row in myQuery ) {
+    println( "Name: #name#" )  // Column names available as variables
+}
+```
+
+### Query Loop Variables
+
+During query iteration, these special variables and functions are available:
+
+| Variable/Function | Description |
+|-------------------|-------------|
+| **Column Names** | All query column names are available as unscoped variables containing the current row's value |
+| `queryCurrentRow(query)` | Returns the current row number (1-based) |
+| `currentRow` | Alias for current row number (when using member function syntax) |
+| `columnArray` | Array of column names in the query |
+| `columnList` | Comma-separated list of column names |
+| `recordCount` | Total number of rows in the query |
+
+### Query Loop Behavior
+
+```javascript
+employees = queryNew( "id,firstName,lastName,salary", "integer,varchar,varchar,numeric", [
+    [ 1, "John", "Doe", 50000 ],
+    [ 2, "Jane", "Smith", 75000 ],
+    [ 3, "Bob", "Johnson", 60000 ]
+] )
+
+// Using column names directly
+bx:loop query="employees" {
+    fullName = "#firstName# #lastName#"
+
+    // Check current row
+    if( queryCurrentRow(employees) == 2 ) {
+        println( "Middle employee: #fullName#" )
+    }
+
+    // Access query metadata
+    println( "Row #queryCurrentRow(employees)# of #recordCount#" )
+}
+
+// Grouped query loops
+sales = queryNew( "region,product,amount", "varchar,varchar,numeric", [
+    [ "North", "Widget", 100 ],
+    [ "North", "Gadget", 200 ],
+    [ "South", "Widget", 150 ],
+    [ "South", "Gadget", 250 ]
+] )
+
+bx:loop query="sales" group="region" {
+    println( "Region: #region#" )
+
+    bx:loop query="sales" group="product" {
+        println( "  Product: #product# - Amount: #amount#" )
+    }
+}
+```
+
+### Member Function Syntax
+
+```javascript
+myQuery = queryNew( "id,name", "integer,varchar", [
+    [ 1, "Alice" ],
+    [ 2, "Bob" ]
+] )
+
+// Using member functions
+myQuery.each( ( row, index ) => {
+    println( "Row #index#: #row.name#" )
+} )
+
+// Map over query
+names = myQuery.map( ( row ) => row.name )
+```
+
+{% hint style="info" %}
+**Performance Tip**: When accessing query columns in loops, unscoped column names are resolved through the query loop scope, which is efficient. However, if you need to access variables from outer scopes, be explicit with your scoping to avoid ambiguity.
+{% endhint %}
+
+<a href="https://try.boxlang.io" target="_blank">Try query loops on try.boxlang.io</a>
+
+## ⚠️ Catch Scope
+
+When an exception is caught in a `try/catch` block, BoxLang creates a special `catch` context that makes the exception variable available. The exception variable contains detailed information about the error.
+
+```javascript
+try {
+    // Code that might throw an error
+    result = 10 / 0
+} catch( any e ) {
+    // 'e' is the exception variable - available as an unscoped variable
+    println( "Error: #e.message#" )
+    println( "Type: #e.type#" )
+    println( "Detail: #e.detail#" )
+
+    // You can also reference it explicitly
+    println( "Stack trace: #e.stackTrace#" )
+}
+```
+
+### Exception Variable Structure
+
+The exception variable (commonly named `e`, `ex`, or `error`) is a struct containing:
+
+| Property | Description |
+|----------|-------------|
+| `message` | The error message |
+| `type` | The exception type (e.g., "Application", "Database", "Expression") |
+| `detail` | Detailed error information |
+| `stackTrace` | Full stack trace as a string |
+| `tagContext` | Array of stack frames with file/line information |
+| `cause` | The underlying Java exception (if applicable) |
+| `errorCode` | Error code (if applicable) |
+| `extendedInfo` | Additional error information (if applicable) |
+
+### Catch Scope Behavior
+
+```javascript
+function divide( a, b ) {
+    try {
+        return a / b
+    } catch( any e ) {
+        // Exception variable available in catch block
+        println( "Division error: #e.message#" )
+        println( "Error occurred at: #e.tagContext[1].template#:#e.tagContext[1].line#" )
+
+        // Rethrow with additional context
+        throw( type="CustomError", message="Division failed", cause=e )
+    }
+}
+
+// Multiple catch blocks with typed exceptions
+try {
+    // Some database operation
+    query = queryExecute( "SELECT * FROM users WHERE id = ?", [ invalidId ] )
+} catch( database e ) {
+    // Handle database-specific errors
+    println( "Database error: #e.message#" )
+    println( "SQL State: #e.sqlState#" )
+} catch( any e ) {
+    // Handle all other errors
+    println( "General error: #e.message#" )
+}
+
+// Nested try/catch blocks
+try {
+    try {
+        // Inner operation
+        throw( type="inner", message="Inner error" )
+    } catch( e ) {
+        // 'e' refers to inner exception
+        println( "Caught inner: #e.message#" )
+
+        // Wrap and rethrow
+        throw( type="outer", message="Outer error", object=e )
+    }
+} catch( outer e ) {
+    // 'e' refers to outer exception
+    println( "Caught outer: #e.message#" )
+    println( "Original cause: #e.cause.message#" )
+}
+```
+
+### CFML Compatibility
+
+In CFML compatibility mode (using the `bx-compat-cfml` module), the exception variable is also available as `cfcatch`:
+
+```javascript
+try {
+    // Some operation
+} catch( any e ) {
+    // Both 'e' and 'cfcatch' reference the same exception
+    println( e.message )        // BoxLang syntax
+    println( cfcatch.message )  // CFML compat syntax
+}
+```
+
+### Rethrowing Exceptions
+
+Within a catch block, you can use the `rethrow` statement to re-throw the current exception:
+
+```javascript
+try {
+    // Risky operation
+    processData()
+} catch( any e ) {
+    // Log the error
+    logger.error( "Error processing data: #e.message#" )
+
+    // Clean up resources
+    cleanup()
+
+    // Rethrow the original exception
+    rethrow
+}
+```
+
+{% hint style="warning" %}
+**Scope Visibility**: The exception variable is only available within the `catch` block. Once execution exits the catch block, the variable is no longer in scope.
+{% endhint %}
+
+<a href="https://try.boxlang.io" target="_blank">Try exception handling on try.boxlang.io</a>
+
 ## 🔒 Final Variables
 
 BoxLang supports the `final` modifier for variables in any scope, which prevents the variable from being reassigned after its initial assignment. This is useful for creating constants and preventing accidental modifications.
