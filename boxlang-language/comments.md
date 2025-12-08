@@ -11,7 +11,7 @@ Comments are necessary for any programming language. BoxLang is no different in 
 
 You can use the `<!---` and `--->` Syntax to comment within a BoxLang template (`.bxm`). This is similar to HTML comments but adds an extra `-` to demarcate it as a BoxLang comment.
 
-```markup
+```xml
 HTML Comment
 <!-- I am an HTML Comment -->
 
@@ -23,7 +23,7 @@ BoxLang Comment
 
 BoxLang supports **nested tag comments**, which is useful when you need to comment out a block of code that already contains comments. The parser tracks the nesting depth and only closes the outer comment when all nested levels are properly terminated.
 
-```markup
+```xml
 <!---
     This is an outer comment
     <bx:set fruit = "apple">
