@@ -56,6 +56,144 @@ timeObj = createTime(15, 30, 45)
 span = createTimeSpan(1, 2, 30, 45)  // 1 day, 2 hours, 30 min, 45 sec
 ```
 
+## 📚 Temporal Built-In Functions (BIFs)
+
+BoxLang provides a comprehensive set of temporal BIFs organized by functionality. All temporal BIFs can also be called as member methods on DateTime objects.
+
+### 🔨 Creation Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `now()` | Current date/time | `now()` → Current DateTime |
+| `createDate()` | Create date from components | `createDate(2023, 12, 25)` |
+| `createDateTime()` | Create date with time | `createDateTime(2023, 12, 25, 15, 30, 45)` |
+| `createTime()` | Create time only | `createTime(15, 30, 45)` |
+| `createTimeSpan()` | Create duration | `createTimeSpan(1, 2, 30, 45)` |
+| `parseDateTime()` | Parse from string | `parseDateTime("2023-12-25")` |
+
+### 🎨 Formatting Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `dateFormat()` | Format date only | `dateFormat(now(), "mm/dd/yyyy")` |
+| `timeFormat()` | Format time only | `timeFormat(now(), "HH:nn:ss")` |
+| `dateTimeFormat()` | Format date and time | `dateTimeFormat(now(), "yyyy-mm-dd HH:nn:ss")` |
+| `lsDateFormat()` | Locale-specific date format | `lsDateFormat(now(), "medium", "en_US")` |
+| `lsTimeFormat()` | Locale-specific time format | `lsTimeFormat(now(), "short", "en_US")` |
+
+### ➕ Manipulation Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `dateAdd()` | Add/subtract date units | `dateAdd("d", 5, now())` |
+| `dateConvert()` | Convert between timezones | `dateConvert("local2utc", now())` |
+
+### 📊 Calculation Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `dateDiff()` | Difference between dates | `dateDiff("d", date1, date2)` |
+| `dateCompare()` | Compare two dates | `dateCompare(date1, date2)` |
+
+### 🔍 Extraction Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `year()` | Extract year | `year(now())` → `2023` |
+| `month()` | Extract month (1-12) | `month(now())` → `12` |
+| `day()` | Extract day of month | `day(now())` → `25` |
+| `hour()` | Extract hour (0-23) | `hour(now())` → `15` |
+| `minute()` | Extract minutes | `minute(now())` → `30` |
+| `second()` | Extract seconds | `second(now())` → `45` |
+| `dayOfWeek()` | Day of week (1-7) | `dayOfWeek(now())` → `3` |
+| `dayOfYear()` | Day of year (1-366) | `dayOfYear(now())` → `359` |
+| `quarter()` | Quarter of year (1-4) | `quarter(now())` → `4` |
+| `week()` | Week of year | `week(now())` → `52` |
+
+### 📝 String Representation Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `monthAsString()` | Full month name | `monthAsString(12)` → `"December"` |
+| `monthShortAsString()` | Abbreviated month | `monthShortAsString(12)` → `"Dec"` |
+| `dayOfWeekAsString()` | Full day name | `dayOfWeekAsString(3)` → `"Tuesday"` |
+| `dayOfWeekShortAsString()` | Abbreviated day | `dayOfWeekShortAsString(3)` → `"Tue"` |
+
+### 📏 Information Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `daysInMonth()` | Days in a month | `daysInMonth(now())` → `31` |
+| `daysInYear()` | Days in a year | `daysInYear(now())` → `365` |
+| `firstDayOfMonth()` | First day of month | `firstDayOfMonth(now())` |
+| `isLeapYear()` | Check if leap year | `isLeapYear(2024)` → `true` |
+
+### 🌍 Timezone Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `setTimezone()` | Set request timezone | `setTimezone("America/New_York")` |
+| `getTimezone()` | Get current timezone | `getTimezone()` → `"EST"` |
+| `getTimezoneInfo()` | Timezone information | `getTimezoneInfo()` |
+| `clearTimezone()` | Clear request timezone | `clearTimezone()` |
+| `offset()` | Get timezone offset | `offset(now())` → `-5` |
+
+### 🔧 Utility Functions
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `getNumericDate()` | Days since epoch | `getNumericDate(now())` |
+| `getTime()` | Milliseconds since epoch | `getTime(now())` |
+
+{% hint style="success" %}
+**Complete Reference**: For detailed documentation of each function, visit the [Temporal BIF Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/temporal).
+{% endhint %}
+
+### ⚙️ Member Functions
+
+All temporal BIFs can be called as member functions on DateTime objects:
+
+```js
+dt = now()
+
+// Formatting
+dt.dateFormat("mm/dd/yyyy")
+dt.timeFormat("HH:nn:ss")
+dt.dateTimeFormat("yyyy-mm-dd HH:nn:ss")
+
+// Extraction
+dt.year()           // 2023
+dt.month()          // 12
+dt.day()            // 25
+dt.hour()           // 15
+dt.minute()         // 30
+dt.second()         // 45
+dt.dayOfWeek()      // 3
+dt.dayOfYear()      // 359
+dt.quarter()        // 4
+
+// Manipulation
+dt.dateAdd("d", 5)        // Add 5 days
+dt.dateAdd("h", -3)       // Subtract 3 hours
+dt.modify("m", 2)         // Add 2 months
+
+// Comparison
+dt.dateCompare(otherDate)
+dt.dateDiff("d", otherDate)
+
+// Information
+dt.daysInMonth()          // 31
+dt.daysInYear()           // 365
+dt.isLeapYear()           // true/false
+
+// Timezone operations
+dt.convertToZone("UTC")
+dt.setTimezone("America/New_York")
+dt.offset()               // -5
+```
+
+[Try it online!](https://try.boxlang.io)
+
 ## Date Time Format Masks
 
 BoxLang supports extensive formatting options through format masks:
