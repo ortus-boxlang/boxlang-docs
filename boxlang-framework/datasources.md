@@ -2,7 +2,7 @@
 icon: plug
 ---
 
-# Datasources
+# 💾 Datasources
 
 A datasource is a **named** connection to a specific database with specified credentials. You can define a datasource in one of three locations:
 
@@ -12,7 +12,7 @@ A datasource is a **named** connection to a specific database with specified cre
 
 The datasource is then used to control the database's connection pool and allow the BoxLang engine to execute JDBC calls against it.
 
-## What Database Vendors Are Supported?
+## 🗄️ What Database Vendors Are Supported?
 
 The following database vendors are supported and available:
 
@@ -31,7 +31,43 @@ Each database we support comes with an installable BoxLang module which either
 
 To use any of these databases you'll need to install its BoxLang module to support JDBC connections to that datasource.
 
-## Make Sure to Specify a Driver
+## 🔧 JDBC Built-In Functions
+
+BoxLang provides several BIFs for working with databases. These are the core functions for executing queries, managing transactions, and working with database connections:
+
+| Function | Purpose | Category |
+|----------|---------|----------|
+| `queryExecute()` | Execute SQL queries against datasources | Query Execution |
+| `isInTransaction()` | Check if currently in a transaction | Transaction State |
+| `isWithinTransaction()` | Alias for `isInTransaction()` | Transaction State |
+| `transactionCommit()` | Commit current transaction | Transaction Control |
+| `transactionRollback()` | Rollback current transaction or to savepoint | Transaction Control |
+| `transactionSetSavepoint()` | Set a savepoint within a transaction | Transaction Control |
+| `preserveSingleQuotes()` | Prevent string escaping in SQL | SQL Utilities |
+
+{% hint style="info" %}
+All JDBC BIFs are documented in detail in the [JDBC Built-In Functions Reference](../boxlang-language/reference/built-in-functions/jdbc/).
+{% endhint %}
+
+## 🧩 JDBC Components
+
+BoxLang provides component-based alternatives to BIFs for database operations:
+
+| Component | Purpose | Documentation |
+|-----------|---------|---------------|
+| `bx:query` | Execute SQL queries | [Query Component](../boxlang-language/reference/components/jdbc/Query.md) |
+| `bx:queryParam` | Define parameterized query values | [QueryParam Component](../boxlang-language/reference/components/jdbc/QueryParam.md) |
+| `bx:transaction` | Manage database transactions | [Transaction Component](../boxlang-language/reference/components/jdbc/Transaction.md) |
+| `bx:storedProc` | Execute stored procedures | [StoredProc Component](../boxlang-language/reference/components/jdbc/StoredProc.md) |
+| `bx:procParam` | Define stored procedure parameters | [ProcParam Component](../boxlang-language/reference/components/jdbc/ProcParam.md) |
+| `bx:procResult` | Capture stored procedure result sets | [ProcResult Component](../boxlang-language/reference/components/jdbc/ProcResult.md) |
+| `bx:dbInfo` | Retrieve database metadata | [DBInfo Component](../boxlang-language/reference/components/jdbc/DBInfo.md) |
+
+{% hint style="success" %}
+Components and BIFs offer the same functionality - choose the style that fits your coding preference. Script syntax typically uses BIFs, while template syntax uses components.
+{% endhint %}
+
+## ⚠️ Make Sure to Specify a Driver
 
 The datasource configuration struct should be defined exactly the same whether you are using an inline, ad-hoc datasource or configuring a datasource in your `boxlang.json` or `Application.bx`. Make sure you have a "driver" key defined OR the driver clearly denoted in the JDBC url:
 
@@ -45,7 +81,7 @@ this.datasources[ "testDB" ] = {
 ```
 {% endcode %}
 
-## Defining Datasources In `boxlang.json`
+## 📝 Defining Datasources In `boxlang.json`
 
 You can define a datasource at the BoxLang runtime level by placing it in [your `boxlang.json` configuration file](../getting-started/configuration/):
 
@@ -70,7 +106,7 @@ You can define a datasource at the BoxLang runtime level by placing it in [your 
 
 Note the use of BoxLang's environment variable replacement syntax for the datasource properties: `${env.MYSQL_HOST:localhost}`. See [Environment Variable Substitution](../getting-started/configuration.md#environment-variable-substitution) for more info.
 
-## Defining Datasources In `Application.bx`
+## 📝 Defining Datasources In `Application.bx`
 
 For web runtimes, you can also define the datasources in the `Application.bx`, which is sometimes our preferred approach as the connections are versioned controlled and more visible than in the admin. You will do this by defining a struct called `this.datasources`. Each **key** will be the name of the datasource to register and the **value** of each key a struct of configuration information for the datasource. However, we recommend that you setup environment variables in order to NOT store your passwords in plain-text in your source code.
 
@@ -120,7 +156,7 @@ class{
 For the inline approach, you will use the struct definition, as you see in the `Application.bx` above and pass it into the `bx:query` or `queryexecute` call.
 {% endhint %}
 
-## Defining Inline Datasources
+## 📝 Defining Inline Datasources
 
 Finally, for smaller or simpler applications with few queries, you may find it useful to define your datasource at query time. So instead of giving the name of the `datasource`, it can be a `struct` definition of the datasource you want to connect to:
 
@@ -141,7 +177,7 @@ queryExecute(
 )
 ```
 
-## Default Datasource
+## 🎯 Default Datasource
 
 You can also define a default datasource to allow you to omit the `datasource` completely from query calls.
 
@@ -182,7 +218,7 @@ class{
 ```
 {% endcode %}
 
-## Portable Datasources
+## 📦 Portable Datasources
 
 You can also make your data sources portable from application to application or BoxLang engine to engine by using our [CFConfig](https://cfconfig.ortusbooks.com/) project. CFConfig allows you to manage almost every setting that shows up in the web administrator, but instead of logging into a web interface, you can manage it from the command line by hand or as part of a scripted server setup. You can seamlessly transfer config for all the following:
 
@@ -200,21 +236,6 @@ You can easily place a `.cfconfig.json` in the web root of your project, and if 
 {% code title=".cfconfig.json" %}
 ```java
 {
-    "requestTimeoutEnabled":true,
-    "whitespaceManagement":"white-space-pref",
-    "requestTimeout":"0,0,5,0",
-    "cacheDefaultObject":"coldbox",
-    "caches":{
-        "coldbox":{
-            "storage":"true",
-            "type":"RAM",
-            "custom":{
-                "timeToIdleSeconds":"1800",
-                "timeToLiveSeconds":"3600"
-            },
-            "readOnly":"false"
-        }
-    },
     "datasources" : {
          "coldbox":{
              "host":"${DB_HOST}",
@@ -236,7 +257,7 @@ You can easily place a `.cfconfig.json` in the web root of your project, and if 
 
 {% embed url="https://cfconfig.ortusbooks.com/using-the-cli/command-overview" %}
 
-## Datasource Configuration
+## ⚙️ Datasource Configuration
 
 ### All Configuration Properties
 
@@ -266,7 +287,7 @@ In addition to the above properties, you can include any [Hikari configuration p
 }
 ```
 
-## Datasource Connection Pooling
+## 🏊 Datasource Connection Pooling
 
 BoxLang uses [HikariCP](https://github.com/brettwooldridge/HikariCP) under the hood for connection pooling. Each datasource gets a dedicated connection pool. Use these configuration properties to adjust the pool size and behavior:
 
@@ -306,3 +327,115 @@ Find out what datasources you have defined by dumping out:
 ```js
 getBoxContext().getRuntime().getDatasourceService().getNames()
 ```
+
+## 🔄 Database Transactions
+
+BoxLang provides comprehensive transaction support for ensuring data integrity and consistency in database operations. Transactions guarantee ACID properties (Atomicity, Consistency, Isolation, Durability) across multiple database operations.
+
+### Transaction Basics
+
+Use the `transaction{}` block or `bx:transaction` component to wrap multiple queries in a single transaction:
+
+```js
+transaction {
+    queryExecute( "UPDATE accounts SET balance = balance - 100 WHERE id = 1" );
+    queryExecute( "UPDATE accounts SET balance = balance + 100 WHERE id = 2" );
+    // Both queries commit together, or roll back together on error
+}
+```
+
+### Transaction Control
+
+- **Automatic Commit**: Transactions automatically commit when the block completes successfully
+- **Automatic Rollback**: Transactions automatically rollback when an exception occurs
+- **Manual Control**: Use `transactionCommit()` and `transactionRollback()` for explicit control
+- **Savepoints**: Use `transactionSetSavepoint()` to create rollback points within a transaction
+- **Nested Transactions**: BoxLang supports nested transactions using the same connection
+
+### Isolation Levels
+
+Control transaction isolation to balance consistency and performance:
+
+```js
+transaction isolation="read_committed" {
+    // Transaction operations here
+}
+```
+
+Available isolation levels:
+- `read_uncommitted` - Lowest isolation, highest performance
+- `read_committed` - Default level, prevents dirty reads
+- `repeatable_read` - Prevents non-repeatable reads
+- `serializable` - Highest isolation, complete isolation from other transactions
+
+{% hint style="info" %}
+For comprehensive transaction documentation, see [JDBC Transactions](transactions.md).
+{% endhint %}
+
+## 🗂️ Stored Procedures
+
+BoxLang supports executing stored procedures through the `bx:storedProc` component:
+
+```xml
+<bx:storedProc procedure="sp_GetEmployees" datasource="myDB" result="employees">
+    <bx:procParam type="in" cfsqltype="varchar" value="Sales" />
+    <bx:procParam type="out" cfsqltype="integer" variable="totalCount" />
+    <bx:procResult name="resultSet" resultset="1" />
+</bx:storedProc>
+```
+
+Or in script syntax:
+
+```js
+bx:storedProce procedure="sp_GetEmployees" datasource="myDB" {
+    bx:procParam type="in" cfsqltype="varchar" value="Sales";
+    bx:procParam type="out" cfsqltype="integer" variable="totalCount";
+    bx:procResult name="resultSet" resultset="1";
+};
+```
+
+### Key Features:
+
+- **IN/OUT/INOUT Parameters**: Support for all parameter types
+- **Multiple Result Sets**: Capture multiple result sets from a single procedure
+- **Return Values**: Access stored procedure return codes
+- **NULL Handling**: Proper NULL value support
+
+{% hint style="success" %}
+Stored procedures are documented in detail in the [StoredProc Component Reference](../boxlang-language/reference/components/jdbc/StoredProc.md).
+{% endhint %}
+
+## 🔍 Query of Queries (QoQ)
+
+Query of Queries allows you to execute SQL queries against in-memory query objects, perfect for filtering and transforming result sets without additional database calls:
+
+```js
+// Original database query
+employees = queryExecute( "SELECT * FROM employees" );
+
+// Query the result set in memory
+salesTeam = queryExecute(
+    "SELECT name, salary FROM employees WHERE department = ?",
+    [ "Sales" ],
+    { dbtype: "query" }
+);
+```
+
+### QoQ Features:
+
+- **Standard SQL Syntax**: Use familiar SELECT, WHERE, ORDER BY, GROUP BY, JOIN operations
+- **No Database Round-trips**: Queries execute entirely in memory
+- **Multi-Query Joins**: Join multiple query objects together
+- **Aggregations**: Support for COUNT, SUM, AVG, MIN, MAX functions
+
+{% hint style="warning" %}
+Query of Queries has some SQL limitations compared to full database engines. Complex queries may not be supported.
+{% endhint %}
+
+## 📚 Related Documentation
+
+- [Queries](../boxlang-language/queries.md) - Comprehensive query documentation
+- [JDBC Transactions](transactions.md) - Detailed transaction management guide
+- [JDBC Built-In Functions](../boxlang-language/reference/built-in-functions/jdbc/) - Complete BIF reference
+- [JDBC Components](../boxlang-language/reference/components/jdbc/) - Complete component reference
+- [Query Type Reference](../boxlang-language/reference/types/query.md) - Query object type documentation

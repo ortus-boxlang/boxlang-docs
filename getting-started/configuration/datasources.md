@@ -31,7 +31,7 @@ Here is where you can register datasources globally in the runtime. You can over
 ```
 {% endcode %}
 
-The key is the name of the datasource and the value is a struct of configuration for the JDBC connection. Most of the items can be different depending on the JDBC module and driver used. However, at the end of the day we need to know at least either the `driver` , the `connectionString` or individual items of the connection. Check out our guide on [defining datasources here](../../boxlang-language/datasources.md).
+The key is the name of the datasource and the value is a struct of configuration for the JDBC connection. Most of the items can be different depending on the JDBC module and driver used. However, at the end of the day we need to know at least either the `driver` , the `connectionString` or individual items of the connection. Check out our guide on [defining datasources here](../../boxlang-framework/datasources.md).
 
 ## Default Datasource
 
