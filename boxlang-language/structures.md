@@ -3,7 +3,7 @@ description: Collection of key-value pairs; a data dictionary
 icon: book
 ---
 
-# Structures
+# 📖 Structures
 
 A structure is a collection of data where each element of data is addressed by a **name or key** and it can hold a value of any type. Like a dictionary but on steroids:
 
@@ -19,13 +19,17 @@ myStruct = {}
 **Tip** Underneath the hood, all BoxLang structures are based on the `java.util.Map` interface. So if you come from a Java background, structures are untyped `HashMaps`.
 {% endhint %}
 
+{% hint style="info" %}
+**Java Map Interoperability**: Any Java `Map` implementation can be used with BoxLang struct functions! This includes `HashMap`, `LinkedHashMap`, `TreeMap`, `ConcurrentHashMap`, `Properties`, and any other class implementing `java.util.Map`. BoxLang struct BIFs and member functions work seamlessly with Java Maps.
+{% endhint %}
+
 As an analogy, think about a refrigerator. If we’re keeping track of the produce inside the fridge, we don’t really care about where the produce is in, or basically: **order doesn’t matter**. Instead, we organize things by name, which are unique, and each name can have any value. The name _grapes_ might have the value 2, then the name _lemons_ might have the value 1, and _eggplants_ the value 6.
 
 {% hint style="info" %}
 All BoxLang structures are passed to functions as memory references, not values. Keep that in mind when working with structures. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
 {% endhint %}
 
-## Key-Value Pairs
+## 🔑 Key-Value Pairs
 
 A structure is an _unordered collection_ where the data gets organized as a key and value pair. BoxLang syntax for structures follows the following syntax:
 
@@ -57,18 +61,18 @@ produce = {
 
 The _key_ is the address, and the _value_ is the data at that address. Please note that the _value_ can be ANYTHING. It can be an array, an object, a simple value, or even an embedded structure. It doesn't matter.
 
-## Retrieving Values
+## 📥 Retrieving Values
 
 Retrieving values from structures can be done via dot or array notation or the `structFind()` function. Let's explore these approaches:
 
-### Array Notation
+### 🔢 Array Notation
 
 ```javascript
 writeOutput( "I have #produce[ "grapes" ]# grapes in my fridge!" );
 writeOutput( "I have #produce[ "eggplants" ]# eggplants in my fridge!" );
 ```
 
-### Dot Notation
+### ⚫ Dot Notation
 
 ```javascript
 writeOutput( "I have #produce.grapes# grapes in my fridge!" );
@@ -96,7 +100,7 @@ However, please be aware that when dealing with native Java hashmaps, we recomme
 BoxLang offers also the `structGet()` function which will search for a key or a key path. If there is no structure or array present in the path, this function creates structures or arrays to make it a valid variable path. [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structget](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structget)
 {% endhint %}
 
-### Safe Navigation
+### 🛡️ Safe Navigation
 
 BoxLang also supports the concept of [safe navigation](operators.md#safe-navigation-operator) when dealing with structures. Sometimes it can be problematic when using dot notation on nested structures since some keys might not exist or be `null`. You can avoid this pain by using the safe navigation operator `?.` instead of the traditional `.` , and combine it with the elvis operator `?:` so if null, then returning a value.
 
@@ -109,7 +113,7 @@ echo( user?.salary ) // nothing, no exception
 echo( user?.salary ?: 0 ) // 0
 ```
 
-## Setting Values
+## 📤 Setting Values
 
 I can also set new or override structure values a la carte. You can do so via array/dot notation or via the `structInsert(), structUpdate()` functions ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structinsert](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structinsert), [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structupdate](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structupdate))
 
@@ -134,34 +138,305 @@ structUpdate( produce, "carrots", 2 )
 **Tip** You can use the `toString()` call on any structure to get a string representation of its keys+values: `produce.toString()`
 {% endhint %}
 
-## Checking Contents & Size
+## 📚 Struct Built-In Functions (BIFs)
 
-BoxLang also offers some useful methods when dealing with structures:
+BoxLang provides a comprehensive set of struct BIFs organized by functionality. All struct BIFs can be called as member methods on Struct objects.
 
-| Function          | Member Function |
-| ----------------- | --------------- |
-| `structIsEmpty()` | `isEmpty()`     |
-| `structCount()`   | `count()`       |
+### 🔨 Creation & Configuration Functions
 
-## Key Values & Existence
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `structNew()` | Create new struct | `structNew("ordered")` → `[:]` |
+| `structCopy()` | Create shallow copy | `structCopy(myStruct)` |
+| `structToSorted()` | Create sorted copy | `structToSorted(myStruct, "text")` |
 
-Here are some great functions that deal with getting all key names, and key values or checking for existence:
+### ➕ Modification Functions
 
-| Function            | Member Function |
-| ------------------- | --------------- |
-| `structKeyArray()`  | `keyArray()`    |
-| `structKeyList()`   | `keyList()`     |
-| `structKeyExists()` | `keyExists()`   |
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `structInsert()` | Insert key-value pair | `structInsert(struct, "key", "value")` |
+| `structUpdate()` | Update existing key | `structUpdate(struct, "key", "newValue")` |
+| `structAppend()` | Merge structs | `structAppend(struct1, struct2)` |
+| `structDelete()` | Remove key | `structDelete(struct, "key")` |
+| `structClear()` | Remove all keys | `structClear(struct)` |
 
-```javascript
-produce.keyArray()
-    .each( (item) => echo( item ) )
+### 🔍 Search & Filter Functions
 
-writeOutput( "My shopping bag has: #produce.keyList()# " )
-writeOutput( "Do you have carrots? #produce.keyExists( 'carrots' )#" )
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `structFind()` | Find value by key | `structFind(struct, "key")` → value |
+| `structGet()` | Get with dot notation | `structGet("struct.nested.key")` |
+| `structFindKey()` | Find keys matching value | `structFindKey(struct, "searchValue")` |
+| `structFindValue()` | Find values matching criteria | `structFindValue(struct, "pattern")` |
+| `structKeyExists()` | Check if key exists | `structKeyExists(struct, "key")` → `true` |
+| `structFilter()` | Filter by condition | `structFilter(struct, (k,v) -> v > 5)` |
+| `structEvery()` | Test all entries | `structEvery(struct, (k,v) -> v > 0)` → `true` |
+| `structSome()` | Test any entry | `structSome(struct, (k,v) -> v > 10)` → `true` |
+| `structNone()` | Test no entries match | `structNone(struct, (k,v) -> v < 0)` → `true` |
+
+### 🔄 Transformation Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `structMap()` | Transform values | `structMap(struct, (k,v) -> v * 2)` |
+| `structReduce()` | Reduce to single value | `structReduce(struct, (acc,k,v) -> acc + v, 0)` |
+| `structKeyTranslate()` | Translate keys | `structKeyTranslate(struct, mapping)` |
+| `structToQueryString()` | Convert to query string | `structToQueryString(struct)` → `"key1=val1&key2=val2"` |
+
+### 📊 Sorting Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `structSort()` | Sort keys to array | `structSort(struct, "text")` → `["key1", "key2"]` |
+
+### 📏 Information Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `structCount()` | Get key count | `structCount(struct)` → `5` |
+| `structIsEmpty()` | Check if empty | `structIsEmpty(struct)` → `false` |
+| `structKeyArray()` | Get keys as array | `structKeyArray(struct)` → `["key1", "key2"]` |
+| `structKeyList()` | Get keys as list | `structKeyList(struct)` → `"key1,key2"` |
+| `structValueArray()` | Get values as array | `structValueArray(struct)` → `[val1, val2]` |
+| `structEquals()` | Compare structs | `structEquals(struct1, struct2)` → `true` |
+| `structIsCaseSensitive()` | Check case sensitivity | `structIsCaseSensitive(struct)` → `false` |
+| `structIsOrdered()` | Check if ordered | `structIsOrdered(struct)` → `true` |
+| `structGetMetadata()` | Get struct metadata | `structGetMetadata(struct)` |
+
+### 🔗 Iteration Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `structEach()` | Iterate each entry | `structEach(struct, (k,v) => println(k & ":" & v))` |
+
+{% hint style="success" %}
+**Complete Reference**: For detailed documentation of each function, visit the [Struct BIF Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct).
+{% endhint %}
+
+## ⚙️ Member Functions
+
+All struct BIFs can be called as member functions on Struct objects for cleaner, more fluent code:
+
+```js
+inventory = {
+    "banana": 12,
+    "apple": 20,
+    "cherry": 15,
+    "date": 8
+}
+
+// Basic operations
+inventory.count()          // 4
+inventory.isEmpty()        // false
+inventory.keyArray()       // ["banana", "apple", "cherry", "date"]
+inventory.keyList()        // "banana,apple,cherry,date"
+
+// Modification
+inventory.insert("grape", 10)
+inventory.update("apple", 25)
+inventory.delete("date")
+inventory.append({"kiwi": 5, "mango": 3})
+
+// Search
+inventory.keyExists("banana")   // true
+inventory.find("apple")         // 25
+
+// Transformation
+doubled = inventory.map((k,v) -> v * 2)
+expensive = inventory.filter((k,v) -> v > 10)
+total = inventory.reduce((acc,k,v) -> acc + v, 0)
+
+// Sorting
+sortedKeys = inventory.sort("text")
+
+// Information
+inventory.isCaseSensitive()     // false
+inventory.isOrdered()           // false
+
+// Iteration
+inventory.each((key, value) => {
+    println("#key#: #value#")
+})
+
+// Chaining operations
+result = inventory
+    .filter((k,v) -> v > 10)
+    .map((k,v) -> v * 2)
+    .keyArray()
 ```
 
-## Structure Types
+## 🔧 Java Map Methods
+
+Since BoxLang structs implement the `java.util.Map` interface, you have access to all Java Map methods:
+
+```js
+import java.util.Collections
+import java.util.Comparator
+
+data = {"name": "BoxLang", "version": "1.0", "type": "JVM"}
+
+// Size and capacity
+data.size()                  // 3
+data.isEmpty()               // false
+
+// Adding/updating elements
+data.put("author", "Ortus")  // Add or update
+data.putIfAbsent("license", "Apache")  // Only if key doesn't exist
+data.putAll({"year": 2024, "platform": "Multi"})
+
+// Removing elements
+data.remove("type")          // Remove by key
+data.remove("version", "1.0") // Remove if value matches
+data.clear()                 // Remove all
+
+// Accessing elements
+data.get("name")             // Get value
+data.getOrDefault("missing", "default")  // With default
+data.getRaw("name")          // Get without unwrapping NullValue
+
+// Checking
+data.containsKey("name")     // true/false
+data.containsValue("BoxLang") // true/false
+
+// Keys and values
+keys = data.keySet()         // Set of keys
+values = data.values()       // Collection of values
+entries = data.entrySet()    // Set of Map.Entry objects
+
+// Iteration
+data.forEach((k, v) => println("#k#: #v#"))
+
+// Compute operations
+data.compute("count", (k, v) -> v == null ? 1 : v + 1)
+data.computeIfAbsent("id", (k) -> createUniqueId())
+data.computeIfPresent("count", (k, v) -> v + 1)
+
+// Merge operation
+data.merge("count", 1, (oldVal, newVal) -> oldVal + newVal)
+
+// Replace operations
+data.replace("version", "2.0")  // Replace if exists
+data.replace("version", "1.0", "2.0")  // Replace if old value matches
+data.replaceAll((k, v) -> v.toString().toUpperCase())
+
+// Stream operations
+data.entrySet().stream()
+    .filter((entry) -> entry.getValue() != null)
+    .forEach((entry) -> println(entry.getKey()))
+```
+
+## 🎯 BoxLang Struct Native Methods
+
+The BoxLang `Struct` type provides additional methods beyond standard Java Map operations:
+
+```js
+config = {"debug": true, "timeout": 30, "retries": 3}
+
+// ===== Type Information =====
+
+// Get struct type
+type = config.getType()           // TYPES.DEFAULT
+typeName = config.getBoxTypeName() // "Struct"
+
+// Type checks
+isCaseSensitive = config.isCaseSensitive()  // false
+isSoftRef = config.isSoftReferenced()       // false
+
+// ===== Key Operations =====
+
+// Get keys as various types
+keyList = config.getKeys()           // List<Key> objects
+keyStrings = config.getKeysAsStrings() // List<String>
+
+// Access with Key objects
+config.containsKey(Key.of("debug")) // true
+config.get(Key.of("timeout"))       // 30
+config.put(Key.of("maxConns"), 100)
+
+// ===== Advanced Get Methods =====
+
+// Type-safe getters (no casting needed)
+config.getAsBoolean(Key.of("debug"))   // true
+config.getAsInteger(Key.of("timeout")) // 30
+config.getAsString(Key.of("mode"))     // "production"
+config.getAsArray(Key.of("hosts"))     // Array object
+config.getAsStruct(Key.of("nested"))   // IStruct object
+config.getAsDateTime(Key.of("created")) // DateTime object
+config.getAsFunction(Key.of("callback")) // Function object
+config.getAsQuery(Key.of("results"))   // Query object
+
+// Generic typed getter
+config.getAs(Integer.class, Key.of("timeout")) // 30
+
+// Optional and Attempt wrappers
+optional = config.getAsOptional(Key.of("missing"))  // Optional.empty()
+attempt = config.getAsAttempt(Key.of("timeout"))    // Attempt<Object>
+attempt = config.getAsAttempt(Key.of("timeout"), Integer.class) // Attempt<Integer>
+
+// ===== Bulk Operations =====
+
+// Add all from another map
+config.addAll({"compression": true, "logging": "verbose"})
+
+// Get wrapped underlying Map
+wrapped = config.getWrapped()  // Map<Key, Object>
+
+// ===== Conversion Operations =====
+
+// Convert to string representation
+str = config.asString()        // Formatted multi-line string
+str = config.toString()        // Same as asString()
+
+// Convert to unmodifiable
+immutable = config.toUnmodifiable()  // UnmodifiableStruct
+
+// ===== Metadata Operations =====
+
+// Get BoxLang metadata
+meta = config.getBoxMeta()     // BoxMeta object
+meta = config.$bx              // Same via property
+
+// ===== Static Factory Methods =====
+
+// Create from key-value pairs
+struct = Struct.of("key1", "value1", "key2", "value2")
+struct = Struct.ofNonConcurrent("k1", "v1")  // Non-thread-safe
+
+// Create linked (ordered) structs
+ordered = Struct.linkedOf("first", 1, "second", 2)
+ordered = Struct.linkedOfNonConcurrent("a", 1)
+
+// Create sorted structs with comparator
+sorted = Struct.sortedOf(comparator, "z", 1, "a", 2)
+sorted = Struct.sortedOf(Struct.KEY_LENGTH_LONGEST_FIRST_COMPARATOR, map)
+
+// Create from Java Map
+struct = Struct.fromMap(javaMap)
+struct = Struct.fromMap(TYPES.LINKED, javaMap)
+
+// ===== Equality and Hashing =====
+
+config1.equals(config2)        // Deep equality check
+hash = config.hashCode()       // Hash code
+```
+
+### 🔑 Key Differences: String Keys vs Key Objects
+
+| Operation | String Key | Key Object |
+|-----------|-----------|------------|
+| Get value | `struct.get("name")` | `struct.get(Key.of("name"))` |
+| Check existence | `struct.containsKey("name")` | `struct.containsKey(Key.of("name"))` |
+| Set value | `struct.put("name", val)` | `struct.put(Key.of("name"), val)` |
+| Remove | `struct.remove("name")` | `struct.remove(Key.of("name"))` |
+| Case handling | Always case-insensitive* | Respects struct type |
+
+*Unless the struct is case-sensitive type
+
+{% hint style="info" %}
+**BoxLang Key Objects**: The `Key` class is a special BoxLang type that simulates a case-insensitive string by default. When working with case-sensitive structs, use `KeyCased` for exact case matching.
+{% endhint %}
+
+## 🗂️ Structure Types
 
 In BoxLang, not only can you create case-insensitive unordered structures but also the following types using the `structNew()` function ([https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structnew](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct/structnew))
 
@@ -191,11 +466,11 @@ pickyProduce = structNew( "casesensitive" )
 
 queue = structNew( "ordered" )
 pickyQueue = structNew( "ordered-casesensitive" )
-linkedList = structNew( 'ordered' );
+linkedList = structnew( 'ordered' );
 cache = structnew( 'soft' );
 ```
 
-### Literal Syntax
+### 💻 Literal Syntax
 
 You can also use literal syntax for some of these types:
 
@@ -204,17 +479,11 @@ You can also use literal syntax for some of these types:
 myStruct = [:] or [=]
 ```
 
-## Common Methods
+{% hint style="success" %}
+**Tip**: Check out all the [structure BIF reference](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/struct) and [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) for more capabilities.
+{% endhint %}
 
-Once you create structures, you can use them in many funky ways. Please check out all the [structure functions](https://boxlang.ortusbooks.com/boxlang-language/reference/types/struct) and all the structure modern [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) that are available to you.
-
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.57.20 PM (1).png>)
-
-As you can see, there are many cool methods for detecting keys, values, lengths, counts, etc. A very cool method is `keyArray()` which gives you the listing of keys as an array:
-
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.58.09 PM (1).png>)
-
-## Looping Over Structures
+## 🔁 Looping Over Structures
 
 You can use different constructs for looping over structures:
 
@@ -232,7 +501,7 @@ produce.each( function( key, value ){
 } );
 ```
 
-### Multi-Threaded Looping
+### ⚡ Multi-Threaded Looping
 
 BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion. The `structEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
 
@@ -251,7 +520,7 @@ myStruct.each( function( key, value ){
 
 Even though this approach to multi-threaded looping is easy, it is not performant and/or flexible. Under the hood, the BoxLang uses a single thread executor for each execution, do not allow you to deal with exceptions, and if an exception occurs in an element processor, good luck; you will never know about it. This approach can be verbose and error-prone, but it's easy. You also don't control where the processing thread runs and are at the mercy of the engine.
 
-### ColdBox Futures Parallel Programming
+### 🚀 ColdBox Futures Parallel Programming
 
 If you would like a functional and much more flexible approach to multi-threaded or parallel programming, consider using the ColdBox Futures approach (usable in ANY framework or non-framework code). You can use it by installing ColdBox or WireBox into any BoxLang application and leveraging our `async` programming constructs, which behind the scenes, leverage the entire Java Concurrency and Completable Futures frameworks.
 
@@ -266,7 +535,7 @@ Here are some methods that will allow you to do parallel computations:
 * `anyOf( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures and will execute them in parallel. However, instead of returning all of the results in an array like `all()`, this method will return the future that executes the fastest! Race Baby!
 * `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations. The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
 
-## Trailing Commas
+## ✨ Trailing Commas
 
 BoxLang supports trailing commas when defining array and struct literals. Just in case you miss a dangling comma, we won't shout at you!
 
@@ -287,7 +556,7 @@ myStruct = {
 println( myStruct )
 ```
 
-## Change Listeners
+## 👂 Change Listeners
 
 All arrays and structures offer the ability to listen to changes to themselves. This is all done via our `$bx` metadata object available on all arrays/structures. You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the struct. You can listen:
 
