@@ -55,8 +55,6 @@ produce = {
 };
 ```
 
-![](<../.gitbook/assets/Screen Shot 2017-10-05 at 4.46.02 PM (1).png>)
-
 The _key_ is the address, and the _value_ is the data at that address. Please note that the _value_ can be ANYTHING. It can be an array, an object, a simple value, or even an embedded structure. It doesn't matter.
 
 ## Retrieving Values

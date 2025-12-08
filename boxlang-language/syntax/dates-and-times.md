@@ -272,7 +272,7 @@ formatted = dateTimeFormat(dt, "iso")     // 2023-12-25T15:30:45-05:00
 dateString = dateFormat(dt, "mm/dd/yyyy")
 dateString = dateFormat(dt, "mmmm d, yyyy")  // December 25, 2023
 
-// Time only formatting  
+// Time only formatting
 timeString = timeFormat(dt, "HH:nn:ss")
 timeString = timeFormat(dt, "h:nn tt")       // 3:30 PM
 
@@ -357,7 +357,7 @@ dt2 = createDate(2023, 12, 30)
 // Equality comparison
 isEqual = dt1.equals(dt2)          // false
 
-// Temporal comparisons  
+// Temporal comparisons
 isAfter = dt2.isAfter(dt1)         // true
 isBefore = dt1.isBefore(dt2)       // true
 isEqualTime = dt1.isEqual(dt2)     // false
@@ -408,7 +408,7 @@ day = dt.getDayOfMonth()             // 25
 dayOfWeek = dt.getDayOfWeek()        // MONDAY (enum)
 dayOfYear = dt.getDayOfYear()        // 359
 
-// Time components  
+// Time components
 hour = dt.getHour()                  // 15 (24-hour format)
 minute = dt.getMinute()              // 30
 second = dt.getSecond()              // 45
@@ -496,7 +496,7 @@ result = dt.plusDays(5)
 // Get first day of month
 firstDay = dt.withDayOfMonth(1)
 
-// Get last day of month  
+// Get last day of month
 lastDay = dt.withDayOfMonth(dt.getMonth().length(dt.isLeapYear()))
 
 // Beginning of day
@@ -541,7 +541,7 @@ A [timespan](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-
 
 ```javascript
 timeNow = now();
-// Addition casts the date to a numeric day value 
+// Addition casts the date to a numeric day value
 // ( example: 20241.89415408551756893278841047638 )
 originalEpochDays = timeNow + 0;
 // Add 2.5 days to the decimal days value
@@ -594,7 +594,7 @@ futureDate = dateAdd("s", 45, dt)    // Add 45 seconds
 
 // Date part units:
 // "yyyy" - years
-// "q" - quarters  
+// "q" - quarters
 // "m" - months
 // "d" - days
 // "w" - weekdays
@@ -693,7 +693,7 @@ futureDate = now() + span
 function addBusinessDays(date, days) {
     result = date
     remaining = days
-    
+
     while (remaining > 0) {
         result = dateAdd("d", 1, result)
         // Skip weekends (Saturday=7, Sunday=1)
@@ -701,7 +701,7 @@ function addBusinessDays(date, days) {
             remaining--
         }
     }
-    
+
     return result
 }
 ```
@@ -714,12 +714,12 @@ function addBusinessDays(date, days) {
 function getDateRange(startDate, endDate) {
     dates = []
     current = startDate
-    
+
     while (dateCompare(current, endDate) <= 0) {
         arrayAppend(dates, current)
         current = dateAdd("d", 1, current)
     }
-    
+
     return dates
 }
 ```
@@ -730,13 +730,13 @@ function getDateRange(startDate, endDate) {
 function calculateAge(birthDate) {
     today = now()
     age = dateDiff("yyyy", birthDate, today)
-    
+
     // Adjust if birthday hasn't occurred this year
     birthdayThisYear = createDate(year(today), month(birthDate), day(birthDate))
     if (dateCompare(today, birthdayThisYear) < 0) {
         age--
     }
-    
+
     return age
 }
 ```
@@ -762,4 +762,3 @@ function formatInTimezone(dt, mask, timezone) {
 * Cache formatted strings if formatting the same date multiple times with `dateTimeFormat()`
 * Be mindful of timezone conversions in loops
 * Use `createTimeSpan()` for duration calculations rather than manual arithmetic
-

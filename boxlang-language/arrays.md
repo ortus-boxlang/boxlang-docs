@@ -52,7 +52,7 @@ Now, have you detected something funny with the ordering of the elements? Come o
 All arrays in BoxLang are passed by **passed by reference**. Please remember this when working with arrays and passing them to functions. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
 {% endhint %}
 
-## Arrays in Code
+## 💻 Arrays in Code
 
 Let's do some code samples:
 
@@ -109,7 +109,424 @@ Please note that all member functions can also be used as traditional [array fun
 **Tip:** You can use the `toString()` call on any array to get a string representation of its values: `grid.toString()`
 {% endhint %}
 
-## Multi-Dimensional Arrays
+## 📚 Array Built-In Functions (BIFs)
+
+BoxLang provides a comprehensive set of array BIFs organized by functionality. All array BIFs can be called as member methods on Array objects.
+
+### 🔨 Creation & Conversion Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arrayNew()` | Create new array | `arrayNew()` |
+| `listToArray()` | Convert list to array | `listToArray("a,b,c")` → `["a", "b", "c"]` |
+| `arrayToList()` | Convert array to list | `arrayToList([1,2,3])` → `"1,2,3"` |
+| `arrayOf()` | Create array from values | `arrayOf(1, 2, 3)` → `[1, 2, 3]` |
+| `arrayCopy()` | Create shallow copy | `arrayCopy(myArray)` |
+| `arraySlice()` | Extract portion of array | `arraySlice(arr, 2, 3)` |
+
+### ➕ Modification Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arrayAppend()` | Add element to end | `arrayAppend(arr, "new")` |
+| `arrayPrepend()` | Add element to start | `arrayPrepend(arr, "first")` |
+| `arrayInsertAt()` | Insert at position | `arrayInsertAt(arr, 2, "item")` |
+| `arrayDeleteAt()` | Remove at position | `arrayDeleteAt(arr, 3)` |
+| `arrayDelete()` | Remove by value | `arrayDelete(arr, "value")` |
+| `arrayClear()` | Remove all elements | `arrayClear(arr)` |
+| `arrayResize()` | Change array size | `arrayResize(arr, 10)` |
+| `arraySet()` | Set range to value | `arraySet(arr, 1, 5, 0)` |
+| `arraySwap()` | Swap two elements | `arraySwap(arr, 1, 3)` |
+
+### 🔍 Search & Filter Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arrayFind()` | Find element index | `arrayFind(arr, "value")` → `3` |
+| `arrayFindNoCase()` | Case-insensitive find | `arrayFindNoCase(arr, "VALUE")` |
+| `arrayFindAll()` | Find all matching | `arrayFindAll(arr, "test")` |
+| `arrayContains()` | Check if contains | `arrayContains(arr, "item")` → `true` |
+| `arrayContainsNoCase()` | Case-insensitive check | `arrayContainsNoCase(arr, "ITEM")` |
+| `arrayFilter()` | Filter by condition | `arrayFilter(arr, (x) -> x > 5)` |
+| `arrayEvery()` | Test all elements | `arrayEvery(arr, (x) -> x > 0)` |
+| `arraySome()` | Test any element | `arraySome(arr, (x) -> x > 10)` |
+
+### 🔄 Transformation Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arrayMap()` | Transform elements | `arrayMap(arr, (x) -> x * 2)` |
+| `arrayReduce()` | Reduce to single value | `arrayReduce(arr, (sum, x) -> sum + x, 0)` |
+| `arrayFlatMap()` | Map and flatten | `arrayFlatMap(arr, (x) -> [x, x*2])` |
+| `arrayReverse()` | Reverse order | `arrayReverse(arr)` |
+| `arrayMerge()` | Merge arrays | `arrayMerge(arr1, arr2)` |
+| `arrayUnique()` | Remove duplicates | `arrayUnique(arr)` |
+
+### 📊 Sorting Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arraySort()` | Sort array | `arraySort(arr, "text")` |
+| `arraySortWithCallback()` | Sort with function | `arraySortWithCallback(arr, comparator)` |
+
+### 📏 Information Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arrayLen()` | Get length | `arrayLen(arr)` → `5` |
+| `arrayIsEmpty()` | Check if empty | `arrayIsEmpty(arr)` → `false` |
+| `arrayFirst()` | Get first element | `arrayFirst(arr)` |
+| `arrayLast()` | Get last element | `arrayLast(arr)` |
+| `arrayMin()` | Find minimum | `arrayMin(arr)` → `1` |
+| `arrayMax()` | Find maximum | `arrayMax(arr)` → `100` |
+| `arraySum()` | Sum all elements | `arraySum(arr)` → `150` |
+| `arrayAvg()` | Calculate average | `arrayAvg(arr)` → `25.5` |
+| `arrayMedian()` | Find median | `arrayMedian(arr)` → `20` |
+
+### 🔗 Iteration Functions
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arrayEach()` | Iterate each element | `arrayEach(arr, (item) => println(item))` |
+| `arrayZip()` | Combine arrays | `arrayZip(arr1, arr2, (a,b) -> a + b)` |
+
+### 🎯 Set Operations
+
+| Function | Purpose | Example |
+|----------|---------|----------|
+| `arrayIntersect()` | Common elements | `arrayIntersect(arr1, arr2)` |
+| `arrayDifference()` | Different elements | `arrayDifference(arr1, arr2)` |
+| `arrayUnion()` | Combine unique | `arrayUnion(arr1, arr2)` |
+
+{% hint style="success" %}
+**Complete Reference**: For detailed documentation of each function, visit the [Array BIF Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array).
+{% endhint %}
+
+## ⚙️ Member Functions
+
+All array BIFs can be called as member functions on Array objects for cleaner, more fluent code:
+
+```js
+fruits = ["banana", "apple", "cherry", "date"]
+
+// Basic operations
+fruits.len()              // 4
+fruits.isEmpty()          // false
+fruits.first()            // "banana"
+fruits.last()             // "date"
+
+// Modification
+fruits.append("elderberry")
+fruits.prepend("apricot")
+fruits.insertAt(3, "blueberry")
+fruits.deleteAt(2)
+fruits.delete("cherry")
+
+// Search
+fruits.find("apple")      // 2
+fruits.findNoCase("APPLE") // 2
+fruits.contains("banana") // true
+
+// Transformation
+upperFruits = fruits.map((f) -> f.ucase())
+longFruits = fruits.filter((f) -> f.len() > 5)
+totalLength = fruits.reduce((sum, f) -> sum + f.len(), 0)
+
+// Sorting
+fruits.sort("textnocase")
+fruits.reverse()
+
+// Information
+fruits.min()              // "apple" (alphabetically)
+fruits.max()              // "date"
+
+// Iteration
+fruits.each((fruit, index) => {
+    println("#index#: #fruit#")
+})
+
+// Set operations
+arr1 = [1, 2, 3, 4]
+arr2 = [3, 4, 5, 6]
+arr1.intersect(arr2)      // [3, 4]
+arr1.difference(arr2)     // [1, 2]
+arr1.union(arr2)          // [1, 2, 3, 4, 5, 6]
+
+// Chaining operations
+result = fruits
+    .filter((f) -> f.len() > 5)
+    .map((f) -> f.ucase())
+    .sort()
+    .slice(1, 3)
+```
+
+### 🔧 Java List Methods
+
+Since BoxLang arrays are Java `List` objects (specifically `ArrayList`), you have access to all Java List methods:
+
+```js
+import java.util.Collections
+import java.util.Comparator
+
+arr = ["banana", "apple", "cherry"]
+
+// Size and capacity
+arr.size()                // 3
+arr.isEmpty()             // false
+
+// Adding elements
+arr.add("date")           // Append to end
+arr.add(1, "apricot")     // Insert at index
+arr.addAll(["elderberry", "fig"])
+
+// Removing elements
+arr.remove(0)             // Remove by index
+arr.remove("apple")       // Remove by value
+arr.removeAll(["banana", "cherry"])
+arr.clear()               // Remove all
+
+// Accessing elements
+arr.get(0)                // Get element at index
+arr.set(1, "grape")       // Set element at index
+
+// Searching
+arr.contains("apple")     // true/false
+arr.indexOf("cherry")     // First occurrence index
+arr.lastIndexOf("apple")  // Last occurrence index
+
+// Bulk operations
+arr.containsAll(["apple", "banana"])
+arr.retainAll(["apple", "cherry"])  // Keep only these
+
+// Sublist operations
+subArr = arr.subList(1, 3)  // Get portion (0-based, end exclusive)
+
+// Conversion
+arr.toArray()             // Convert to native Java array
+arr.toList()              // Return as List (itself)
+
+// Iteration
+iterator = arr.iterator()
+while (iterator.hasNext()) {
+    println(iterator.next())
+}
+
+// ListIterator for bidirectional traversal
+listIterator = arr.listIterator()
+while (listIterator.hasNext()) {
+    item = listIterator.next()
+    if (item == "remove_me") {
+        listIterator.remove()
+    }
+}
+
+// Sorting with Java Collections
+Collections.sort(arr)                    // Natural order
+Collections.sort(arr, Comparator.reverseOrder())
+Collections.shuffle(arr)                 // Random order
+Collections.reverse(arr)                 // Reverse order
+Collections.fill(arr, "value")           // Fill with value
+Collections.replaceAll(arr, "old", "new")
+
+// Searching in sorted arrays
+Collections.binarySearch(arr, "apple")   // Fast search (requires sorted)
+
+// Min/Max
+Collections.min(arr)                     // Minimum element
+Collections.max(arr)                     // Maximum element
+
+// Frequency
+Collections.frequency(arr, "apple")      // Count occurrences
+
+// Streams (Java 8+)
+arr.stream()
+    .filter((s) -> s.startsWith("a"))
+    .map((s) -> s.toUpperCase())
+    .forEach((s) -> println(s))
+
+arr.parallelStream()                     // Parallel processing
+    .map((s) -> s.length())
+    .reduce(0, (a, b) -> a + b)
+```
+
+{% hint style="info" %}
+**BoxLang vs Java Indexing**: Remember that BoxLang arrays use 1-based indexing, while Java List methods use 0-based indexing. When using Java methods directly, adjust your indices accordingly:
+- `arr.get(0)` in Java = `arr[1]` in BoxLang
+- `arr.add(0, item)` in Java = `arr.insertAt(1, item)` in BoxLang
+{% endhint %}
+
+### 🎯 BoxLang Array Native Methods
+
+The BoxLang `Array` type provides additional methods beyond standard Java List operations. These methods are specifically designed for BoxLang's 1-based indexing and functional programming patterns:
+
+```js
+fruits = ["banana", "apple", "cherry"]
+
+// ===== One-Based Index Operations =====
+
+// Insert at 1-based position
+fruits.insertAt(2, "blueberry")     // Insert at position 2
+// Result: ["banana", "blueberry", "apple", "cherry"]
+
+// Get element at 1-based position
+fruit = fruits.getAt(3)              // Get element at position 3
+// Result: "apple"
+
+// Set element at 1-based position
+fruits.setAt(1, "apricot")          // Set position 1
+// Result: ["apricot", "blueberry", "apple", "cherry"]
+
+// Delete at 1-based position
+fruits.deleteAt(2)                   // Remove position 2
+// Result: ["apricot", "apple", "cherry"]
+
+// Push/append element
+fruits.push("date")                  // Append to end
+// Result: ["apricot", "apple", "cherry", "date"]
+
+// ===== Search Operations =====
+
+// Find index by value (1-based)
+index = fruits.findIndex("apple")                    // 2
+index = fruits.findIndex("APPLE", false)             // 2 (case-insensitive)
+
+// Find index by substring
+index = fruits.findIndexWithSubstring("ppl", true)   // 2 (case-sensitive)
+index = fruits.findIndexWithSubstring("PPL", false)  // 2 (case-insensitive)
+
+// Find index using function filter
+index = fruits.findIndex((f) => f.startsWith("a"))   // 1
+
+// ===== Duplicate Removal =====
+
+arr = ["apple", "APPLE", "banana", "Apple", "cherry", "banana"]
+
+// Remove duplicates (case-sensitive)
+unique = arr.removeDuplicates()
+// Result: ["apple", "APPLE", "banana", "Apple", "cherry"]
+
+// Remove duplicates (case-insensitive)
+unique = arr.removeDuplicates(false)
+// Result: ["apple", "banana", "cherry"]
+
+// ===== Stream Operations =====
+
+// Get IntStream of array indices (0-based for Java compatibility)
+arr.intStream()
+    .forEach((i) => println("Index: #i#, Value: #arr.get(i)#"))
+
+// Java Stream operations
+arr.stream()
+    .filter((s) => s.len() > 5)
+    .forEach((s) => println(s))
+
+// Parallel stream for concurrent processing
+arr.parallelStream()
+    .map((s) -> s.ucase())
+    .forEach((s) => println(s))
+
+// ===== Array Manipulation =====
+
+// Reverse array in place
+arr.reverse()                        // Modifies original array
+
+// Convert to List
+list = arr.toList()                  // Return underlying List
+list = arr.asList()                  // Same as toList()
+
+// Convert to native Java array
+nativeArr = arr.toArray()            // Object[]
+typedArr = arr.toArray(new String[0]) // String[]
+
+// Convert to immutable array
+immutable = arr.toUnmodifiable()     // UnmodifiableArray
+
+// ===== Metadata & Comparison =====
+
+// Get BoxLang metadata
+meta = arr.getBoxMeta()              // BoxMeta object
+meta = arr.$bx                       // Same via property
+
+// Get BoxLang type name
+typeName = arr.getBoxTypeName()      // "Array"
+
+// Equality comparison
+arr1 = [1, 2, 3]
+arr2 = [1, 2, 3]
+isEqual = arr1.equals(arr2)          // true
+
+// String representation
+str = arr.toString()                 // "[1, 2, 3]"
+str = arr.asString()                 // Formatted with newlines
+
+// HashCode
+hash = arr.hashCode()                // Integer hash
+hash = arr.computeHashCode(visited)  // With cycle detection
+
+// ===== Copy Operations =====
+
+// Static factory methods
+newArr = Array.of(1, 2, 3)           // Create from values
+newArr = Array.fromArray(javaArray)  // Wrap Java array (unmodifiable)
+newArr = Array.fromList(javaList)    // Wrap Java List
+newArr = Array.fromSet(javaSet)      // Create from Set
+newArr = Array.copyOf(sourceArray)   // Deep copy
+newArr = Array.copyFromList(list)    // Copy from List
+
+// ===== Advanced Features =====
+
+// Sublist operations
+subArr = arr.subList(1, 3)           // Get range (0-based, end exclusive)
+
+// Size information
+size = arr.size()                    // Element count
+empty = arr.isEmpty()                // true/false
+
+// Bulk operations
+arr.containsAll(["apple", "banana"]) // Check multiple
+arr.retainAll(["apple", "cherry"])   // Keep only these
+arr.removeAll(["banana"])            // Remove multiple
+
+// ListIterator with modification
+iter = arr.listIterator()
+while (iter.hasNext()) {
+    item = iter.next()
+    if (item == "remove_me") {
+        iter.remove()                // Safe removal during iteration
+    }
+    if (item == "change_me") {
+        iter.set("changed")          // Safe modification
+    }
+}
+
+// Add during iteration
+iter = arr.listIterator()
+while (iter.hasNext()) {
+    item = iter.next()
+    if (item == "after_this") {
+        iter.add("new_item")         // Insert after current
+    }
+}
+```
+
+{% hint style="success" %}
+**Best Practice**: Use BoxLang's 1-based methods (`getAt()`, `setAt()`, `deleteAt()`, `insertAt()`) for consistency with BoxLang conventions. Use Java's 0-based methods (`get()`, `set()`, `remove()`, `add()`) only when interfacing directly with Java code.
+{% endhint %}
+
+### Key Differences: BoxLang vs Java Methods
+
+| Operation | BoxLang Method (1-based) | Java Method (0-based) |
+|-----------|-------------------------|----------------------|
+| Get element | `arr.getAt(1)` | `arr.get(0)` |
+| Set element | `arr.setAt(1, val)` | `arr.set(0, val)` |
+| Insert element | `arr.insertAt(1, val)` | `arr.add(0, val)` |
+| Remove element | `arr.deleteAt(1)` | `arr.remove(0)` |
+| Find element | `arr.findIndex(val)` → `1` | `arr.indexOf(val)` → `0` |
+| Append element | `arr.push(val)` or `arr.append(val)` | `arr.add(val)` |
+
+[Try it online!](https://try.boxlang.io)
+
+## 🔀 Multi-Dimensional Arrays
 
 While BoxLang arrays are inherently one-dimensional, you can create multi-dimensional structures by nesting arrays within arrays. This approach provides flexibility for representing matrices, tables, grids, and other complex data structures.
 
@@ -384,9 +801,9 @@ function flatten( array2D ) {
 
 Multi-dimensional arrays in BoxLang provide powerful data organization capabilities while maintaining the simplicity of single-dimensional array operations.
 
-## Common Methods
+## 🛠️ Common Operations
 
-The best way to learn about using arrays is to check out the available [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) and [array functions](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array).
+Here are some practical examples combining BIFs, member functions, and Java methods:
 
 ```javascript
 // Sort an array
@@ -427,7 +844,7 @@ complexData = [ {a: 4}, {a: 18}, {a: 51} ];
 writeDump(sum);
 ```
 
-## Negative Indices
+## 🔙 Negative Indices
 
 BoxLang also supports the concept of negative indices. This allows you to retrieve the elements from the end of the array backward. So you can easily count back instead of counting forwards:
 
@@ -442,7 +859,7 @@ writedump( numbers[ -5 ] ) // 1
 writedump( numbers[ -6 ] ) // EXCEPTION!!! Array index out of range
 ```
 
-## Array Slices
+## ✂️ Array Slices
 
 BoxLang supports the [slicing](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array/arrayslice) of an array via the `arraySlice()` method or the `slice()` member function, respectively. Slicing allows you to return a **new** array from the start position up to the count of elements you want.
 
@@ -463,7 +880,7 @@ newArray = array.slice( 2, 3 )
 println( newArray ) // [ 2, 3, 4 ]
 ```
 
-## Looping Over Arrays
+## 🔁 Looping Over Arrays
 
 You can use different constructs for looping over arrays:
 
@@ -489,7 +906,7 @@ bx:loop( from=1, to=meals.len(), index=x ){
 }
 ```
 
-### Multi-Threaded Looping
+### ⚡ Multi-Threaded Looping
 
 BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion. The `arrayEach()` or `each()` functions allow for a `parallel` and `maxThreads` arguments so the iteration can happen concurrently on as many `maxThreads` as supported by your JVM.
 
@@ -506,7 +923,7 @@ myArray.each( item => {
 }, true, 20 );
 ```
 
-## Spread Operator
+## 🌟 Spread Operator
 
 {% hint style="danger" %}
 Coming soon, still in development
@@ -540,7 +957,7 @@ myArray2 = [ ...numbers ]
 myArray2 = [ ...numbers, 4, 66 ]
 ```
 
-## Rest Operator
+## 💤 Rest Operator
 
 {% hint style="danger" %}
 Coming soon, still in development
@@ -560,7 +977,7 @@ function findBy( entityName, ...args ){
 findBy( "Luis", 1, 2, 3, 4, 5 )
 ```
 
-## Trailing Commas
+## ✨ Trailing Commas
 
 BoxLang supports trailing commas when defining array and struct literals. Just in case you miss a dangling comma, we won't shout at you!
 
@@ -581,7 +998,7 @@ myStruct = {
 println( myStruct )
 ```
 
-## Change Listeners
+## 👂 Change Listeners
 
 All arrays and structures offer the ability to listen to changes to themselves. This is all done via our `$bx` metadata object available on all arrays/structures. You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the array. You can listen:
 
