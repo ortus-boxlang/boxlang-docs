@@ -44,15 +44,69 @@ Also, remember that you can use the [Elvis operator](operators.md#elvis-operator
 results = getMaybeData() ?: "default value"
 ```
 
+## Safe Navigation Operator
+
+The [safe navigation operator](operators.md#safe-navigation-operator) (`?.`) is your best friend when dealing with potentially null values in object chains. It prevents null pointer exceptions by returning `null` instead of throwing an error when accessing properties or methods on null objects.
+
+```javascript
+// Without safe navigation - may throw error
+salary = user.getProfile().getSalary()
+
+// With safe navigation - returns null safely
+salary = user?.getProfile()?.getSalary()
+
+// Works with structs too
+name = userData?.profile?.name ?: "Unknown"
+
+// Combine with Elvis operator for defaults
+displayName = user?.getName() ?: "Anonymous"
+```
+
+<a href="https://try.boxlang.io" target="_blank">Try safe navigation on try.boxlang.io</a>
+
 {% hint style="info" %}
 We would recommend that you use `isNull()` as it expresses coherently its purpose. Since `isDefined()` can also evaluate expressions.
 {% endhint %}
+
+## Elvis Operator - Null Coalescing
+
+The [Elvis operator](operators.md#elvis-operator-null-coalescing) (`?:`) provides a concise way to handle null values by providing a default value when the left operand is null. It's named after Elvis Presley because `?:` looks like Elvis's hairstyle when viewed sideways.
+
+```javascript
+// Basic usage - use default if null
+displayName = userName ?: "Anonymous"
+
+// With function calls
+data = fetchData() ?: []
+
+// Chaining with safe navigation
+result = user?.profile?.email ?: "no-email@example.com"
+
+// Multiple levels
+config = getConfig() ?: getDefaultConfig() ?: {}
+
+// In function parameters
+function greet( name ) {
+    println( "Hello, #arguments.name ?: 'Guest'#!" )
+}
+```
+
+{% hint style="success" %}
+The Elvis operator is your go-to solution for providing default values when dealing with potentially null data. It's more concise than ternary operators or if-else statements.
+{% endhint %}
+
+<a href="https://try.boxlang.io" target="_blank">Try the Elvis operator on try.boxlang.io</a>
 
 ## Creating Nulls
 
 You can create nulls in different ways in BoxLang. Let's explore these:
 
-<table><thead><tr><th width="268">Approach</th><th width="98.33333333333331" data-type="checkbox">Full Null</th><th>Description</th></tr></thead><tbody><tr><td><code>null</code> keyword</td><td>true</td><td><code>r = null</code></td></tr><tr><td>Non returning function call</td><td>false</td><td>If a function returns nothing, its assignment will produce a null.<br><code>function getNull(){}</code><br><code>r = getNull()</code></td></tr><tr><td><code>nullValue()</code></td><td>false</td><td><code>r = nullValue()</code></td></tr><tr><td><code>javaCast( "null", "" )</code></td><td>false</td><td><code>r = javaCast( "null", "" )</code></td></tr></tbody></table>
+| Approach | Full Null | Description |
+|----------|:---------:|-------------|
+| `null` keyword | ✅ | `r = null` |
+| Non returning function call | ❌ | If a function returns nothing, its assignment will produce a null.<br>`function getNull(){}`<br>`r = getNull()` |
+| `nullValue()` | ❌ | `r = nullValue()` |
+| `javaCast( "null", "" )` | ❌ | `r = javaCast( "null", "" )` |
 
 ## In Practice
 

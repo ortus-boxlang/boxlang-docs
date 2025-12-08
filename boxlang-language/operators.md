@@ -131,11 +131,13 @@ Comparison operators are used when comparing two values, expressions, or variabl
 | `lte, <=`                                                            | Less than or equal   | If the left operand is less than or equal in value than the right operand                                                              |
 | `contains, ct`                                                       | Contains             | <p>Returns true if the left operand contains the right one.<br><code>'hello' contains 'lo'</code></p>                                  |
 | `does not contain, nct`                                              | Negated contains     | <p>Returns true if the left operand does NOT contain the right one.<br><code>'hello' does not contain 'pio'</code></p>                 |
+| `instanceOf`                                                         | Type checking        | <p>Returns true if the left operand is an instance of the right type.<br><code>true instanceOf 'Boolean'</code><br><code>'brad' instanceOf 'java.lang.String'</code></p> |
+| `castAs`                                                             | Type casting         | <p>Casts the left operand to the type specified on the right.<br><code>value castAs int</code><br><code>5 castAs String</code></p>     |
 | `assert`                                                             | Assert an expression | Evaluate an expression and if the expression is falsey it will throw an assert exceptions.                                             |
 
 ## Assert Statement <a href="#assert" id="assert"></a>
 
-BoxLang offers an `assert` statement that will evaluate an expression, and if the expression is falsey, it will throw an assert exception.
+BoxLang offers an `assert` statement that will evaluate an expression, and if the expression is falsey, it will throw an `AssertionError` exception. The `assert` operator returns `true` if the assertion passes, otherwise throws an exception.
 
 ```java
 // Asserts that the name is truthy
@@ -144,11 +146,73 @@ assert name;
 // Assert an expression
 assert myService.hasData();
 assert name.length() > 3;
+assert 5 == 5;  // Passes
 
-// Assert a lambda/closure result.
-assert ()-> { do something }
-assert ()=> { do something }
+// Assert a lambda/closure result - functions are called automatically
+assert () -> true
+assert () => getUser() != null
 ```
+
+{% hint style="info" %}
+If the assertion expression is a function (closure or lambda), BoxLang automatically invokes it and evaluates the result.
+{% endhint %}
+
+<a href="https://try.boxlang.io" target="_blank">Try it on try.boxlang.io</a>
+
+## InstanceOf Operator
+
+The `instanceOf` operator checks if an object is an instance of a specified type. It works with both BoxLang types and Java classes.
+
+```java
+// BoxLang types
+result = true instanceOf 'Boolean'  // true
+result = "hello" instanceOf 'String'  // true
+
+// Java classes
+result = "brad" instanceOf 'java.lang.String'  // true
+
+// BoxLang classes
+class User {}
+user = new User()
+result = user instanceOf 'User'  // true
+```
+
+{% hint style="info" %}
+The `instanceOf` operator performs case-insensitive class name matching and supports short names (e.g., `String` instead of `java.lang.String`).
+{% endhint %}
+
+<a href="https://try.boxlang.io" target="_blank">Try it on try.boxlang.io</a>
+
+## CastAs Operator
+
+BoxLang provides a native `castAs` operator for type casting. This operator is more fluent and readable than using the `javaCast()` function.
+
+```java
+// Casting to primitives
+age = value castAs int
+price = value castAs double
+active = value castAs boolean
+
+// Casting to objects
+name = value castAs String
+tags = value castAs String[]
+
+// Dynamic type casting
+result = {
+    age: value castAs int,
+    tags: value castAs String[],
+    isActive: "#value#" castAs Boolean
+}
+
+// Unquoted identifiers are treated as string literals
+result = value castAs Long  // Same as castAs "Long"
+```
+
+{% hint style="success" %}
+The `castAs` operator is integrated into the BoxLang language and is preferred over the `javaCast()` BIF for most type casting scenarios.
+{% endhint %}
+
+<a href="https://try.boxlang.io" target="_blank">Try it on try.boxlang.io</a>
 
 ## Ternary Operator
 
