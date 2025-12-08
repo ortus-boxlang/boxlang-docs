@@ -127,7 +127,7 @@
   * [Exception Management](boxlang-language/exception-management.md)
   * [Code Locking](boxlang-language/locking.md)
   * [Closures => Context Aware](boxlang-language/closures.md)
-  * [Lambdas -> Pure Functions](boxlang-language/syntax/lambdas-greater-than-pure-functions.md)
+  * [Lambdas -> Pure Functions](boxlang-language/syntax/lambdas.md)
   * [Includes](boxlang-language/includes.md)
   * [Threading](boxlang-language/threading.md)
 * [Classes & O.O.](boxlang-language/classes/README.md)
