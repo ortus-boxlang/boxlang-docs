@@ -117,12 +117,12 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 
 | Function | Purpose | Example |
 |----------|---------|----------|
-| `arrayNew()` | Create new array | `arrayNew()` |
+| `arrayNew()` | Create new array | `arrayNew()` → `[]` |
 | `listToArray()` | Convert list to array | `listToArray("a,b,c")` → `["a", "b", "c"]` |
 | `arrayToList()` | Convert array to list | `arrayToList([1,2,3])` → `"1,2,3"` |
-| `arrayOf()` | Create array from values | `arrayOf(1, 2, 3)` → `[1, 2, 3]` |
-| `arrayCopy()` | Create shallow copy | `arrayCopy(myArray)` |
-| `arraySlice()` | Extract portion of array | `arraySlice(arr, 2, 3)` |
+| `arraySlice()` | Extract portion of array | `arraySlice(arr, 2, 3)` → `[2, 3, 4]` |
+| `arrayRange()` | Create range of values | `arrayRange(1, 5)` → `[1, 2, 3, 4, 5]` |
+| `arrayToStruct()` | Convert to struct | `arrayToStruct(arr)` |
 
 ### ➕ Modification Functions
 
@@ -130,6 +130,10 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 |----------|---------|----------|
 | `arrayAppend()` | Add element to end | `arrayAppend(arr, "new")` |
 | `arrayPrepend()` | Add element to start | `arrayPrepend(arr, "first")` |
+| `arrayPush()` | Add element to end | `arrayPush(arr, "new")` |
+| `arrayUnshift()` | Add multiple to start | `arrayUnshift(arr, "a", "b")` |
+| `arrayPop()` | Remove & return last | `arrayPop(arr)` → last element |
+| `arrayShift()` | Remove & return first | `arrayShift(arr)` → first element |
 | `arrayInsertAt()` | Insert at position | `arrayInsertAt(arr, 2, "item")` |
 | `arrayDeleteAt()` | Remove at position | `arrayDeleteAt(arr, 3)` |
 | `arrayDelete()` | Remove by value | `arrayDelete(arr, "value")` |
@@ -137,37 +141,38 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 | `arrayResize()` | Change array size | `arrayResize(arr, 10)` |
 | `arraySet()` | Set range to value | `arraySet(arr, 1, 5, 0)` |
 | `arraySwap()` | Swap two elements | `arraySwap(arr, 1, 3)` |
+| `arraySplice()` | Remove/replace elements | `arraySplice(arr, 2, 1, "new")` |
 
 ### 🔍 Search & Filter Functions
 
 | Function | Purpose | Example |
 |----------|---------|----------|
 | `arrayFind()` | Find element index | `arrayFind(arr, "value")` → `3` |
-| `arrayFindNoCase()` | Case-insensitive find | `arrayFindNoCase(arr, "VALUE")` |
-| `arrayFindAll()` | Find all matching | `arrayFindAll(arr, "test")` |
+| `arrayFindNoCase()` | Case-insensitive find | `arrayFindNoCase(arr, "VALUE")` → `3` |
+| `arrayFindAll()` | Find all matching indices | `arrayFindAll(arr, "test")` → `[2, 5]` |
 | `arrayContains()` | Check if contains | `arrayContains(arr, "item")` → `true` |
-| `arrayContainsNoCase()` | Case-insensitive check | `arrayContainsNoCase(arr, "ITEM")` |
+| `arrayContainsNoCase()` | Case-insensitive check | `arrayContainsNoCase(arr, "ITEM")` → `true` |
+| `arrayIndexExists()` | Check if index exists | `arrayIndexExists(arr, 5)` → `true` |
 | `arrayFilter()` | Filter by condition | `arrayFilter(arr, (x) -> x > 5)` |
-| `arrayEvery()` | Test all elements | `arrayEvery(arr, (x) -> x > 0)` |
-| `arraySome()` | Test any element | `arraySome(arr, (x) -> x > 10)` |
+| `arrayEvery()` | Test all elements | `arrayEvery(arr, (x) -> x > 0)` → `true` |
+| `arraySome()` | Test any element | `arraySome(arr, (x) -> x > 10)` → `true` |
+| `arrayNone()` | Test no elements match | `arrayNone(arr, (x) -> x < 0)` → `true` |
 
 ### 🔄 Transformation Functions
 
 | Function | Purpose | Example |
 |----------|---------|----------|
 | `arrayMap()` | Transform elements | `arrayMap(arr, (x) -> x * 2)` |
-| `arrayReduce()` | Reduce to single value | `arrayReduce(arr, (sum, x) -> sum + x, 0)` |
-| `arrayFlatMap()` | Map and flatten | `arrayFlatMap(arr, (x) -> [x, x*2])` |
+| `arrayReduce()` | Reduce left to right | `arrayReduce(arr, (sum, x) -> sum + x, 0)` |
+| `arrayReduceRight()` | Reduce right to left | `arrayReduceRight(arr, (sum, x) -> sum + x, 0)` |
 | `arrayReverse()` | Reverse order | `arrayReverse(arr)` |
-| `arrayMerge()` | Merge arrays | `arrayMerge(arr1, arr2)` |
-| `arrayUnique()` | Remove duplicates | `arrayUnique(arr)` |
+| `arrayMerge()` | Merge arrays | `arrayMerge(arr1, arr2, arr3)` |
 
 ### 📊 Sorting Functions
 
 | Function | Purpose | Example |
 |----------|---------|----------|
-| `arraySort()` | Sort array | `arraySort(arr, "text")` |
-| `arraySortWithCallback()` | Sort with function | `arraySortWithCallback(arr, comparator)` |
+| `arraySort()` | Sort array | `arraySort(arr, "text")` or with callback |
 
 ### 📏 Information Functions
 
@@ -175,28 +180,20 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 |----------|---------|----------|
 | `arrayLen()` | Get length | `arrayLen(arr)` → `5` |
 | `arrayIsEmpty()` | Check if empty | `arrayIsEmpty(arr)` → `false` |
-| `arrayFirst()` | Get first element | `arrayFirst(arr)` |
-| `arrayLast()` | Get last element | `arrayLast(arr)` |
+| `arrayFirst()` | Get first element | `arrayFirst(arr)` → first element |
+| `arrayLast()` | Get last element | `arrayLast(arr)` → last element |
 | `arrayMin()` | Find minimum | `arrayMin(arr)` → `1` |
 | `arrayMax()` | Find maximum | `arrayMax(arr)` → `100` |
 | `arraySum()` | Sum all elements | `arraySum(arr)` → `150` |
-| `arrayAvg()` | Calculate average | `arrayAvg(arr)` → `25.5` |
+| `arrayAvg()` | Calculate average | `arrayAvg(arr)` → `30.0` |
 | `arrayMedian()` | Find median | `arrayMedian(arr)` → `20` |
+| `arrayGetMetadata()` | Get array metadata | `arrayGetMetadata(arr)` |
 
 ### 🔗 Iteration Functions
 
 | Function | Purpose | Example |
 |----------|---------|----------|
 | `arrayEach()` | Iterate each element | `arrayEach(arr, (item) => println(item))` |
-| `arrayZip()` | Combine arrays | `arrayZip(arr1, arr2, (a,b) -> a + b)` |
-
-### 🎯 Set Operations
-
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `arrayIntersect()` | Common elements | `arrayIntersect(arr1, arr2)` |
-| `arrayDifference()` | Different elements | `arrayDifference(arr1, arr2)` |
-| `arrayUnion()` | Combine unique | `arrayUnion(arr1, arr2)` |
 
 {% hint style="success" %}
 **Complete Reference**: For detailed documentation of each function, visit the [Array BIF Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/array).
