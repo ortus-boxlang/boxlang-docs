@@ -1,7 +1,7 @@
 ---
 description: >-
-  Core subscription bootstrap module enabling entitlement checks, licensing
-  utilities, and shared helpers for premium BoxLang+ modules.
+  Core subscription bootstrap module enabling licensing utilities, and shared
+  helpers for premium BoxLang+ modules.
 icon: key
 ---
 
@@ -23,8 +23,8 @@ The **bx-plus** module serves as the foundation for enterprise BoxLang subscript
 
 With an active BoxLang+ or BoxLang++ subscription and this module, you gain access to enterprise-grade capabilities such as:
 
-* **Advanced Caching & NoSQL** - Redis, MongoDB, and distributed caching solutions
-* **Enhanced Communication Services** - Enterprise messaging and notification systems
+* **Advanced Caching & NoSQL** - Redis, Couchbase, MongoDB, and other distributed caching solutions
+* **Enhanced Communication Services** - Enterprise messaging and notification systems ( Redis and Couchbase modules )
 * **Premium CommandBox Features** - Multi-site management, advanced deployment tools, and professional server features
 * **Priority Support & SLAs** - Business-grade support with guaranteed response times
 * **Professional Tooling** - Enhanced development and debugging tools for enterprise workflows
