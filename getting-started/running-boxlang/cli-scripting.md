@@ -11,6 +11,29 @@ BoxLang is a modern, dynamic scripting language built for more than just simple 
 
 Whether you're automating repetitive tasks, building interactive command-line tools, or developing complex CLI-driven workflows, BoxLang offers the flexibility, expressiveness, and performance you need. With intuitive syntax, robust error handling, and seamless integration with Java and other JVM-based technologies, BoxLang makes CLI scripting more efficient and enjoyable.
 
+## 📋 Table of Contents
+
+- [BoxLang CLI Entry Points & Conventions](#boxlang-cli-entry-points--conventions)
+- [Script Files](#script-files)
+- [Other Scopes](#other-scopes)
+- [Executing Classes](#executing-classes)
+- [Executing Scripts / Templates](#executing-scripts--templates)
+- [SheBang Scripts](#shebang-scripts)
+- [BoxLang CLI Options and Flags](#boxlang-cli-options-and-flags)
+- [Action Commands](#action-commands)
+- [Runtime Mode Detection](#runtime-mode-detection)
+- [Inline Code Execution](#inline-code-execution)
+- [Scheduler Files](#scheduler-files)
+- [REPL Mode](#repl-mode)
+- [CLI Built-In Functions](#cli-built-in-functions)
+- [Parsed Arguments](#parsed-arguments)
+- [Reading Input](#reading-input)
+- [Producing Output](#producing-output)
+- [Piping code](#piping-code)
+- [Module CLI Apps](#module-cli-apps)
+- [Embedding Modules in a CLI App](#embedding-modules-in-a-cli-app)
+- [Additional Resources and Examples](#additional-resources-and-examples)
+
 ## BoxLang CLI Entry Points & Conventions
 
 BoxLang supports multiple ways to execute code from the command line, making it a flexible tool for scripting, automation, and app development. Here’s a summary of the main entry points and conventions:

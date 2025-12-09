@@ -38,6 +38,27 @@ BVM is an advanced version manager for BoxLang, similar to `jenv` or `nvm`. It a
 
 The only difference is that BVM adds version management capabilities on top.
 
+## 📋 Table of Contents
+
+- [BVM vs Single-Version Installer](#bvm-vs-single-version-installer)
+- [Features](#features)
+- [Quick Start](#quick-start)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Basic Usage](#basic-usage)
+- [What BVM Installs](#what-bvm-installs)
+- [Examples](#examples)
+- [Security & Reliability](#security--reliability)
+- [Project-Specific Versions (.bvmrc)](#project-specific-versions-bvmrc)
+- [Commands](#commands)
+- [Keeping BVM Updated](#keeping-bvm-updated)
+- [Uninstalling BoxLang Versions and BVM](#uninstalling-boxlang-versions-and-bvm)
+- [Migrating from Single-Version Installer to BVM](#migrating-from-single-version-installer-to-bvm)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [License](#license)
+- [Support](#support)
+
 ## 🛠️ Features
 
 - 📦 **Install complete BoxLang environment** - runtime, MiniServer, and helper scripts

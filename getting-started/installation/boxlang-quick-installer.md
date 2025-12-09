@@ -92,6 +92,22 @@ apk add --no-cache bash curl unzip jq openjdk21
 # Java 21 automatically installed with --with-jre option
 ```
 
+## 📋 Table of Contents
+
+- [Quick Start](#quick-start)
+- [Prerequisites](#prerequisites)
+- [Installation Options](#installation-options)
+- [Command Options](#command-options)
+- [What Gets Installed](#what-gets-installed)
+- [Help Command](#help-command)
+- [Detailed Usage](#detailed-usage)
+- [Running Applications](#running-applications)
+- [Configuration](#configuration)
+- [Troubleshooting](#troubleshooting)
+- [Resources](#resources)
+- [License](#license)
+- [Support](#support)
+
 ## 📦 Installation Options
 
 ### Option 1: Single-Version Installer (Recommended for Most Users)

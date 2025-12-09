@@ -11,6 +11,39 @@ This guide provides a quick overview of BoxLang syntax styles, intricacies, oper
 If you are a CFML developer, check out also our [CFML Guide.](cfml.md)
 {% endhint %}
 
+## 📋 Table of Contents
+
+- [Dynamic & Loose Typing](#dynamic--loose-typing)
+- [Any by default](#any-by-default)
+- [High Precision Mathematics](#high-precision-mathematics)
+- [Numeric Literal Separators](#numeric-literal-separators)
+- [Case Insensitive Functionality](#case-insensitive-functionality)
+- [BIFs = Built-In Functions](#bifs--built-in-functions)
+- [BoxLang Components](#boxlang-components)
+- [Expression Interpolation](#expression-interpolation)
+- [Multi-Line Strings](#multi-line-strings)
+- [Multi-Variable Assignments](#multi-variable-assignments)
+- [Switch Statements](#switch-statements)
+- [Catch any exception](#catch-any-exception)
+- [Multi-Catch Exceptions](#multi-catch-exceptions)
+- [No Semicolons, almost](#no-semicolons-almost)
+- [Scopes](#scopes)
+- [Full Null Support](#full-null-support)
+- [CastAs Operator](#castas-operator)
+- [Human Operators](#human-operators)
+- [InstanceOf Operator](#instanceof-operator)
+- [Data Types](#data-types)
+- [Arrays are Human](#arrays-are-human)
+- [Array/Struct Literal Initializers](#arraystruct-literal-initializers)
+- [Unmodifiable Objects](#unmodifiable-objects)
+- [Truthy/Falsey](#truthyfalsey)
+- [Imports & Class Locators](#imports--class-locators)
+- [Null Coalescing aka Elvis Operator](#null-coalescing-aka-elvis-operator)
+- [Safe Navigation Operator](#safe-navigation-operator)
+- [Assert](#assert)
+- [Functional](#functional)
+- [BoxLang Classes](#boxlang-classes)
+
 ## Dynamic & Loose Typing
 
 BoxLang variables are **dynamic** and **type-inferred**. We try our best to infer which type you are trying to set for variables at compile-time, but they can completely change at runtime. You use the `var` keyword to specify a variable within functions or declare them inline if you are in a `bxs` or `bxm` script file.

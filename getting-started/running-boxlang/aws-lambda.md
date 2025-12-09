@@ -28,6 +28,21 @@ The **BoxLang AWS Runtime** allows you to code in BoxLang and create Lambda func
 
 {% @github-files/github-code-block url="https://github.com/ortus-boxlang/boxlang-starter-aws-lambda" %}
 
+## 📋 Table of Contents
+
+- [What is AWS Lambda?](#what-is-aws-lambda)
+- [BoxLang Lambda Handler](#boxlang-lambda-handler)
+- [Environment Variables](#environment-variables)
+- [BoxLang AWS Template](#boxlang-aws-template)
+- [Lambda.bx](#lambdabx)
+- [Performance Enhancements](#performance-enhancements)
+- [Convention-Based URI Routing](#convention-based-uri-routing)
+- [Multiple Functions Header](#multiple-functions-header)
+- [Lambda Modules](#lambda-modules)
+- [Local Development & Testing](#local-development--testing)
+- [Deploy to AWS](#deploy-to-aws)
+- [Runtime Source Code](#runtime-source-code)
+
 ## BoxLang Lambda Handler
 
 <figure><img src="../../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>

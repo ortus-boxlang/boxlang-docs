@@ -13,6 +13,18 @@ JSR 223, also known as "**Scripting for the Java Platform,**" enables seamless i
 
 {% embed url="https://www.oracle.com/technical-resources/articles/javase/scripting.html" %}
 
+## 📋 Table of Contents
+
+- [Getting Started for Java Developers](#getting-started-for-java-developers)
+- [Adding BoxLang to Your Project](#adding-boxlang-to-your-project)
+- [Quick Start Example](#quick-start-example)
+- [Architecture Overview](#architecture-overview)
+- [Common Use Cases for Java Developers](#common-use-cases-for-java-developers)
+- [Core Scripting Classes](#core-scripting-classes)
+- [BoxLang Home Configuration](#boxlang-home-configuration)
+- [Production Considerations](#production-considerations)
+- [Integration Patterns](#integration-patterns)
+
 ## 📦 Adding BoxLang to Your Project
 
 ### Maven Dependency

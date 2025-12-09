@@ -17,6 +17,20 @@ The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web 
 CommandBox is our open-source servlet server implementation. However, with a [Boxlang +/++ subscription](https://boxlang.io/plans), it becomes a powerhouse for mission-critical applications. Check out all that you get with CommandBox Pro: [https://www.ortussolutions.com/products/commandbox-pro](https://www.ortussolutions.com/products/commandbox-pro)
 {% endhint %}
 
+## 📋 Table of Contents
+
+- [Start a Server](#start-a-server)
+- [JSON Configuration](#json-configuration)
+- [Security Features](#security-features)
+- [Health Check Endpoints](#health-check-endpoints)
+- [Environment Files](#environment-files)
+- [WebSocket Support](#websocket-support)
+- [Default Welcome Files](#default-welcome-files)
+- [URL Rewrites](#url-rewrites)
+- [Server Management](#server-management)
+- [Performance Features](#performance-features)
+- [Reverse Proxy Setup](#reverse-proxy-setup)
+
 ## ▶️ Start a Server <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
 
 The BoxLang core OS runtime doesn't know about a web application. Our web support runtime provides this functionality, a crucial part of the MiniServer and the Servlet (JEE, Jakarta, CommandBox) runtime. This runtime enhances the core boxlang runtime, making it multi-runtime and web deployable.
