@@ -10,7 +10,7 @@ BoxLang emits events during the lifecycle of a JDBC transaction which can be use
 * [`onTransactionAcquire`](#ontransactionacquire)\*
 * [`onTransactionRelease`](#ontransactionrelease)\*
 
-Note that all these events (with the exception of `onTransactionAcquire` and `onTransactionRelease`) have the potential to be acting upon a no-op transaction, with a null `connection` parameter since no connection was ever obtained. ( Read more in [Transaction Behavior](/boxlang-framework/transactions.md#transaction-behavior) for a description of how transactions work. )
+Note that all these events (with the exception of `onTransactionAcquire` and `onTransactionRelease`) have the potential to be acting upon a no-op transaction, with a null `connection` parameter since no connection was ever obtained. ( Read more in [Transaction Behavior](/boxlang-framework/jdbc/transactions.md#transaction-behavior) for a description of how transactions work. )
 
 With this in mind, you'll want to do null checks against the `connection` parameter in case no connection has yet been acquired:
 

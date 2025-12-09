@@ -129,7 +129,7 @@ transaction isolation="serializable" {
 
 ## 🎯 Transaction Behavior
 
-### Connections
+###  🛜 Connections
 
 In BoxLang transactions, _no connection is acquired until the first JDBC query is executed_. Consider this transaction block:
 
@@ -141,7 +141,21 @@ transaction{
 }
 ```
 
-This transaction is a no-op. It begins, tries to set a savepoint, then roll back to the savepoint, then commit... **but never ran any JDBC queries**. Hence, every transactional BIF called above does exactly nothing (besides [emit events](interceptors/core-interception-points/transaction-events.md)).
+This transaction is a no-op. It begins, tries to set a savepoint, then roll back to the savepoint, then commit... **but never ran any JDBC queries**. Hence, every transactional BIF called above does exactly nothing (besides [emit events](../interceptors/core-interception-points/transaction-events.md)).
+
+### 📢Events
+
+BoxLang emits events during the lifecycle of a JDBC transaction which can be used to react to various transaction points in your app:
+
+* [`onTransactionBegin`](#ontransactionbegin)
+* [`onTransactionEnd`](#ontransactionend)
+* [`onTransactionCommit`](#ontransactioncommit)
+* [`onTransactionRollback`](#ontransactionrollback)
+* [`onTransactionSetSavepoint`](#ontransactionsetsavepoint)
+* [`onTransactionAcquire`](#ontransactionacquire)
+* [`onTransactionRelease`](#ontransactionrelease)
+
+Read more about these events in [transaction events](../interceptors/core-interception-points/transaction-events.md).
 
 ### 🗄️ Datasources
 
@@ -499,5 +513,5 @@ function processBatchUpdates( updates ) {
 {% endhint %}
 
 {% hint style="info" %}
-**🔗 Related:** For optimal performance, consider using [connection pooling](datasources.md) and properly configured [query caching](query-caching.md) alongside your transaction management strategy.
+**🔗 Related:** For optimal performance, consider using [connection pooling](datasources.md) and properly configured query caching alongside your transaction management strategy.
 {% endhint %}

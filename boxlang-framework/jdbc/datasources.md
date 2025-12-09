@@ -14,15 +14,17 @@ The datasource is then used to control the database's connection pool and allow 
 
 ## 🗄️ What Database Vendors Are Supported?
 
-The following database vendors are supported and available:
+Any vendor that supports a JDBC driver can be used with BoxLang.  Below you can find the most popular databases along with their BoxLang JDBC module download links:
 
-* [Apache Derby](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-derby/bx-derby-1.0.0.zip)
-* [HyperSQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-hypersql/bx-hypersql-1.0.0.zip)
-* [MariaDB](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-mariadb/bx-mariadb-1.0.0.zip)
-* [Microsoft SQL Server](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-mssql/bx-mssql-1.0.0.zip)
-* [MySQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-mysql/bx-mysql-1.0.0.zip)
-* [Oracle](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-oracle/bx-oracle-1.0.0.zip)
-* [PostgreSQL](https://ortus-temp.s3.amazonaws.com/boxlang-modules/bx-postgresql/bx-postgresql-1.0.0.zip)
+* [Apache Derby](https://forgebox.io/view/bx-derby)
+* [HyperSQL](https://forgebox.io/view/bx-hypersql)
+* [MariaDB](https://forgebox.io/view/bx-mariadb)
+* [Microsoft SQL Server](https://forgebox.io/view/bx-mssql)
+* [MySQL](https://forgebox.io/view/bx-mysql)
+* [Neo4j](https://forgebox.io/view/bx-neo4j)
+* [Oracle](https://forgebox.io/view/bx-oracle)
+* [PostgreSQL](https://forgebox.io/view/bx-postgresql)
+* [SQLite](https://forgebox.io/view/bx-sqlite)
 
 Each database we support comes with an installable BoxLang module which either
 
@@ -220,9 +222,9 @@ class{
 
 ## 📦 Portable Datasources
 
-You can also make your data sources portable from application to application or BoxLang engine to engine by using our [CFConfig](https://cfconfig.ortusbooks.com/) project. CFConfig allows you to manage almost every setting that shows up in the web administrator, but instead of logging into a web interface, you can manage it from the command line by hand or as part of a scripted server setup. You can seamlessly transfer config for all the following:
+If you will be using your datasources from BoxLang in CFML engines, then you can store them in a `.cfconfig.`json file at the root of your project.  This leverages our [CFConfig](https://cfconfig.ortusbooks.com/) project to manage your datasources outside of BoxLang's native configuration files and makes them portable across engines.  You can seamlessly transfer config for all the following:
 
-* CF Mappings
+* Mappings
 * Data sources
 * Mail servers
 * Request, session, or application timeouts
@@ -327,110 +329,6 @@ Find out what datasources you have defined by dumping out:
 ```js
 getBoxContext().getRuntime().getDatasourceService().getNames()
 ```
-
-## 🔄 Database Transactions
-
-BoxLang provides comprehensive transaction support for ensuring data integrity and consistency in database operations. Transactions guarantee ACID properties (Atomicity, Consistency, Isolation, Durability) across multiple database operations.
-
-### Transaction Basics
-
-Use the `transaction{}` block or `bx:transaction` component to wrap multiple queries in a single transaction:
-
-```js
-transaction {
-    queryExecute( "UPDATE accounts SET balance = balance - 100 WHERE id = 1" );
-    queryExecute( "UPDATE accounts SET balance = balance + 100 WHERE id = 2" );
-    // Both queries commit together, or roll back together on error
-}
-```
-
-### Transaction Control
-
-- **Automatic Commit**: Transactions automatically commit when the block completes successfully
-- **Automatic Rollback**: Transactions automatically rollback when an exception occurs
-- **Manual Control**: Use `transactionCommit()` and `transactionRollback()` for explicit control
-- **Savepoints**: Use `transactionSetSavepoint()` to create rollback points within a transaction
-- **Nested Transactions**: BoxLang supports nested transactions using the same connection
-
-### Isolation Levels
-
-Control transaction isolation to balance consistency and performance:
-
-```js
-transaction isolation="read_committed" {
-    // Transaction operations here
-}
-```
-
-Available isolation levels:
-- `read_uncommitted` - Lowest isolation, highest performance
-- `read_committed` - Default level, prevents dirty reads
-- `repeatable_read` - Prevents non-repeatable reads
-- `serializable` - Highest isolation, complete isolation from other transactions
-
-{% hint style="info" %}
-For comprehensive transaction documentation, see [JDBC Transactions](transactions.md).
-{% endhint %}
-
-## 🗂️ Stored Procedures
-
-BoxLang supports executing stored procedures through the `bx:storedProc` component:
-
-```xml
-<bx:storedProc procedure="sp_GetEmployees" datasource="myDB" result="employees">
-    <bx:procParam type="in" cfsqltype="varchar" value="Sales" />
-    <bx:procParam type="out" cfsqltype="integer" variable="totalCount" />
-    <bx:procResult name="resultSet" resultset="1" />
-</bx:storedProc>
-```
-
-Or in script syntax:
-
-```js
-bx:storedProce procedure="sp_GetEmployees" datasource="myDB" {
-    bx:procParam type="in" cfsqltype="varchar" value="Sales";
-    bx:procParam type="out" cfsqltype="integer" variable="totalCount";
-    bx:procResult name="resultSet" resultset="1";
-};
-```
-
-### Key Features:
-
-- **IN/OUT/INOUT Parameters**: Support for all parameter types
-- **Multiple Result Sets**: Capture multiple result sets from a single procedure
-- **Return Values**: Access stored procedure return codes
-- **NULL Handling**: Proper NULL value support
-
-{% hint style="success" %}
-Stored procedures are documented in detail in the [StoredProc Component Reference](../boxlang-language/reference/components/jdbc/StoredProc.md).
-{% endhint %}
-
-## 🔍 Query of Queries (QoQ)
-
-Query of Queries allows you to execute SQL queries against in-memory query objects, perfect for filtering and transforming result sets without additional database calls:
-
-```js
-// Original database query
-employees = queryExecute( "SELECT * FROM employees" );
-
-// Query the result set in memory
-salesTeam = queryExecute(
-    "SELECT name, salary FROM employees WHERE department = ?",
-    [ "Sales" ],
-    { dbtype: "query" }
-);
-```
-
-### QoQ Features:
-
-- **Standard SQL Syntax**: Use familiar SELECT, WHERE, ORDER BY, GROUP BY, JOIN operations
-- **No Database Round-trips**: Queries execute entirely in memory
-- **Multi-Query Joins**: Join multiple query objects together
-- **Aggregations**: Support for COUNT, SUM, AVG, MIN, MAX functions
-
-{% hint style="warning" %}
-Query of Queries has some SQL limitations compared to full database engines. Complex queries may not be supported.
-{% endhint %}
 
 ## 📚 Related Documentation
 
