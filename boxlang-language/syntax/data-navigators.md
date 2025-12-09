@@ -14,11 +14,17 @@ Data Navigators are a powerful BoxLang feature that provides a fluent, chainable
 Data Navigators solve common problems when working with complex data:
 
 ✅ **Safe Navigation** - No more "key doesn't exist" errors when traversing nested structures
+
 ✅ **Fluent Interface** - Chainable methods that read like natural language
+
 ✅ **Dynamic Typing** - BoxLang automatically handles type conversions
+
 ✅ **Multiple Data Sources** - Works with JSON strings, files, structures, maps, and more
+
 ✅ **Flexible Extraction** - Get values with defaults, throw on missing data, or check existence
+
 ✅ **Conditional Processing** - Execute code only when values are present
+
 ✅ **Immutable Navigation** - Each navigation returns a new navigator, safe for concurrent use
 
 ### Traditional vs Navigator Approach
