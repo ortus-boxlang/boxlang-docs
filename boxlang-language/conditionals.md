@@ -1,55 +1,166 @@
 ---
+description: Control program flow with if/else, switch, ternary, elvis, and safe navigation operators
 icon: diagram-project
 ---
 
-# Conditionals
+# 🔀 Conditionals
 
-## Operators
+BoxLang provides powerful conditional expressions and control flow statements to direct program execution based on runtime conditions. From traditional `if/else` blocks to modern operators like elvis (`?:`) and safe navigation (`?.`), BoxLang offers multiple ways to handle conditional logic elegantly.
 
-Conditional statements evaluate to **true** or **false** only. The most common conditional operators are `==` (equal), `!=` (not equal), `>` (greater than), `>=` (greater than or equal to), `<` (less than), and `<=` (less than or equal to). You can also define the operators as abbreviations: `EQ, NEQ, GT, GTE, LT, and LTE`.
+{% hint style="info" %}
+**Modern Operators**: BoxLang supports modern conditional operators including ternary (`? :`), elvis (`?:`), and safe navigation (`?.`) for concise, expressive code. These operators help avoid verbose null checks and make code more readable.
+{% endhint %}
 
-```java
-a = 1;
-if( a == 1 )
-if( a > 2 )
-if( a < 2 )
-if( a != 2 )
-if( a >= 1 )
-if( a <= 1 )
-```
+## 💻 Conditionals in Code
 
-Some instructions return a `true` or `false`, so they're used in conditional statements, for example, `IsArray` which is `true` only when the variable is an "array". Structures have an instruction named `structKeyExists()` or `keyExists()` which returns `true` if a key is present in a structure. Strings can also be used for conditional operations by checking the `.length()` member function.
+Let's explore conditional operations with practical examples:
 
-```java
-a = [1,3];
-
-if( isArray( a ) ){
-    // work on the array
+```js
+// Traditional if/else
+age = 25;
+if ( age >= 18 ) {
+    println( "You are an adult" );
+} else {
+    println( "You are a minor" );
 }
 
+// Ternary operator - compact conditional
+status = ( age >= 18 ) ? "adult" : "minor";
+println( "Status: #status#" );
+
+// Elvis operator - default value assignment
+username = userInput ?: "Anonymous";
+println( "Welcome, #username#!" );
+
+// Safe navigation - avoid null pointer errors
+user = { name: "Alice", profile: { email: "alice@example.com" } };
+email = user?.profile?.email ?: "no-email@example.com";
+println( "Email: #email#" );
+
+// Safe navigation with missing keys - returns undefined instead of error
+missingEmail = user?.settings?.notifications?.email;
+// missingEmail is undefined, not an error!
+
+// Switch statement for multiple conditions
+day = "Monday";
+switch ( day ) {
+    case "Monday":
+    case "Tuesday":
+    case "Wednesday":
+    case "Thursday":
+    case "Friday": {
+        println( "Weekday" );
+        break;
+    }
+    case "Saturday":
+    case "Sunday": {
+        println( "Weekend!" );
+        break;
+    }
+    default: {
+        println( "Invalid day" );
+    }
+}
+```
+
+## 🔍 Comparison Operators
+
+Conditional statements evaluate to **true** or **false** only. BoxLang provides both symbolic and word-based operators for comparisons.
+
+### Operator Reference
+
+| Symbolic | Word Form | Description | Example |
+|----------|-----------|-------------|---------|
+| `==`, `===` | `EQ`, `EQUAL`, `IS` | Equal to | `a == 1` |
+| `!=`, `!==` | `NEQ`, `NOT EQUAL` | Not equal to | `a != 2` |
+| `>` | `GT`, `GREATER THAN` | Greater than | `a > 2` |
+| `>=` | `GTE`, `GREATER THAN OR EQUAL TO` | Greater than or equal | `a >= 1` |
+| `<` | `LT`, `LESS THAN` | Less than | `a < 2` |
+| `<=` | `LTE`, `LESS THAN OR EQUAL TO` | Less than or equal | `a <= 1` |
+| `CONTAINS` | - | String/array contains value | `str CONTAINS "test"` |
+| `DOES NOT CONTAIN` | - | Does not contain value | `str DOES NOT CONTAIN "test"` |
+
+### Basic Comparisons
+
+```js
+a = 1;
+
+// Numeric comparisons
+if ( a == 1 ) { println( "Equal to 1" ); }
+if ( a != 2 ) { println( "Not equal to 2" ); }
+if ( a > 0 ) { println( "Greater than 0" ); }
+if ( a >= 1 ) { println( "Greater than or equal to 1" ); }
+if ( a < 2 ) { println( "Less than 2" ); }
+if ( a <= 1 ) { println( "Less than or equal to 1" ); }
+
+// Word-based operators (same behavior)
+if ( a EQ 1 ) { println( "Equal using EQ" ); }
+if ( a GT 0 ) { println( "Greater than using GT" ); }
+if ( a LT 2 ) { println( "Less than using LT" ); }
+```
+
+### Type Checking Functions
+
+Many BoxLang functions return `true` or `false`, making them ideal for conditional statements:
+
+```js
+// Type checking
+value = [1, 2, 3];
+if ( isArray( value ) ) {
+    println( "It's an array!" );
+}
+
+if ( isStruct( { name: "Alice" } ) ) {
+    println( "It's a struct!" );
+}
+
+if ( isNumeric( "123" ) ) {
+    println( "Can be converted to a number" );
+}
+
+// String checks
+text = "Hello World";
+if ( text.length() > 0 ) {
+    println( "Text is not empty" );
+}
+
+// Struct key existence
 produce = {
-    grapes     = 2,
-    lemons     = 1,
-    eggplants  = 6
+    grapes: 2,
+    lemons: 1,
+    eggplants: 6
 };
 
-if( produce.keyExists( "grapes" ) ){
-    // eat a grape
+if ( produce.keyExists( "grapes" ) ) {
+    println( "We have grapes!" );
     produce.grapes--;
+}
+
+// Alternative syntax
+if ( structKeyExists( produce, "lemons" ) ) {
+    println( "We have lemons!" );
 }
 ```
 
-Also integers can be evaluated as **true** or **false**. In BoxLang, **0 (zero)** is **false** and any other integers are **true**.
+### Truthy and Falsy Values
 
+BoxLang evaluates certain values as boolean:
+
+```js
+// Numbers: 0 is false, everything else is true
+if ( 1 ) { println( "1 is true" ); }      // Executes
+if ( -2 ) { println( "-2 is true" ); }    // Executes
+if ( 0 ) { println( "0 is true" ); }      // Does NOT execute
+
+// Empty strings are false
+if ( "" ) { println( "Empty string" ); }  // Does NOT execute
+if ( "text" ) { println( "Has text" ); }  // Executes
+
+// Null/undefined are false
+if ( nullValue() ) { println( "Null" ); } // Does NOT execute
 ```
-<bx:if 1>I am true so will show</bx:if>
 
-<bx:if -2>I am true so will show</bx:if>
-
-<bx:if 0>I am false so will not show</bx:if>
-```
-
-## If, Else If, & Else
+## 🔀 If, Else If, & Else
 
 Why do we have conditional statements? Most often it's to control conditional instructions, especially `if` / `else if` / `else` expressions. Let's write an example by adding a method to our `PersonalChef.bx` class:
 
@@ -108,105 +219,521 @@ An `if` block has:
 
 Only one section of the `if / else if / else` structure can have its instructions run. If the if is **true**, for instance, BoxLang will never look at the `else if`. Once one block executes, that’s it.
 
-## Ternary Operator
+## ❓ Ternary Operator
 
-The ternary operator is a compact way to do an `if, else, else if` expression statements. It is very common in other languages and can be used for a more fluent expressive conditional expression.
+The ternary operator provides a compact one-line conditional expression: `condition ? trueValue : falseValue`
 
-```
-( condition ) ? trueStatement : falseStatement
-```
+### Syntax
 
-The way it works is that the `condition` is evaluated. If it is **true**, then the true statement executed; if it is **false**, then the false statement executes.
-
-Please note that you can chain the `trueStatement` and the `falseStatement` into more tenrary operations. However, don't abuse it as they will look ugly and just be very complex to debug.
-
-```java
-( 1 == 1 ) ? systemOutput( "true" ) : systemOutput( "false" );
+```js
+result = ( condition ) ? valueIfTrue : valueIfFalse;
 ```
 
-The output of the above statement will be..... `true` of course!
+The `condition` is evaluated. If **true**, the first expression is returned; if **false**, the second expression is returned.
 
-## Elvis Operator
+### Basic Examples
 
-Before Elvis we had `isDefined(), structKeyExists()` and `IF` statements to do these kind of evaluations. They work, but not very expressive or concise.
+```js
+// Simple condition
+age = 20;
+status = ( age >= 18 ) ? "adult" : "minor";
+println( status ); // "adult"
 
-The Elvis operator is primarily used to assign the `right default` for a variable or an expression Or it is a short-hand way to do parameterization. It will allow us to set a value if the variable is `Null` or does not exist.
+// Inline in expressions
+message = "You are " & ( age >= 18 ? "eligible" : "not eligible" ) & " to vote";
 
-For instance,
+// Return from function
+function getDiscount( boolean isMember ) {
+    return isMember ? 0.20 : 0.05;
+}
 
-```java
+// Assign based on null check
+username = inputValue ? inputValue : "Guest";
+```
+
+### Nested Ternary (Use with Caution)
+
+```js
+// Nested ternary for multiple conditions
+score = 85;
+grade = ( score >= 90 ) ? "A" :
+        ( score >= 80 ) ? "B" :
+        ( score >= 70 ) ? "C" :
+        ( score >= 60 ) ? "D" : "F";
+
+println( "Grade: #grade#" ); // "Grade: B"
+```
+
+{% hint style="warning" %}
+**Best Practice**: Avoid deeply nested ternary operators as they become hard to read and debug. For complex conditions with multiple branches, use `if / else if / else` or `switch` statements instead.
+{% endhint %}
+
+### Practical Uses
+
+```js
+// Setting default values
+maxItems = config.maxItems ? config.maxItems : 10;
+
+// Pluralization
+itemCount = 3;
+message = "You have #itemCount# item" & ( itemCount != 1 ? "s" : "" );
+
+// Conditional CSS classes
+class = isActive ? "btn-primary" : "btn-secondary";
+
+// Mathematical operations
+result = ( x > 0 ) ? x * 2 : x / 2;
+```
+
+## 🎸 Elvis Operator
+
+The elvis operator (`?:`) provides elegant null-coalescing and default value assignment. It returns the left operand if it exists and is not null, otherwise returns the right operand.
+
+### Syntax
+
+```js
+result = value ?: defaultValue;
+```
+
+If `value` is **null** or **undefined**, `defaultValue` is used. Otherwise, `value` is used.
+
+### Basic Examples
+
+```js
+// Default username
+myName = userName ?: "Anonymous";
+// If userName is null/undefined, myName = "Anonymous"
+
+// Function parameters with defaults
+function greet( name ) {
+    displayName = name ?: "Guest";
+    println( "Hello, #displayName#!" );
+}
+
+greet( "Alice" ); // "Hello, Alice!"
+greet( null );     // "Hello, Guest!"
+```
+
+### Before Elvis: The Old Way
+
+Before the elvis operator, you had to use verbose checks:
+
+```js
+// Old way - verbose
+if ( isDefined( "userName" ) && !isNull( userName ) ) {
+    myName = userName;
+} else {
+    myName = "Anonymous";
+}
+
+// Elvis way - concise
 myName = userName ?: "Anonymous";
 ```
 
-If `userName` does not exist or evaluates to `null` then the default value of the `myName` will be assigned the right part of the `?:` elvis operator -> `Anonymous`
+### Practical Applications
 
-## Safe Navigation Operator
+```js
+// Configuration with defaults
+config = {
+    timeout: 30,
+    retries: null
+};
 
-The safe navigation operator allows for you to navigate structures by not throwing the dreaded `key not exists` exception but returning an `undefined` or `null` value. You can then combine that with the elvis operator and create nice chainable struct navigation. For example instead of doing things like:
+timeout = config.timeout ?: 60;  // Uses 30 (exists)
+retries = config.retries ?: 3;   // Uses 3 (null)
+maxSize = config.maxSize ?: 100; // Uses 100 (doesn't exist)
 
-```java
+// Function return values
+function getUserEmail( userId ) {
+    user = findUser( userId );
+    return user.email ?: "no-email@example.com";
+}
+
+// Chaining with safe navigation
+email = user?.profile?.email ?: "default@example.com";
+
+// Query results
+qry = queryExecute( "SELECT name FROM users WHERE id = ?" , [userId] );
+userName = qry.name[1] ?: "Unknown User";
+```
+
+### Elvis vs Ternary
+
+```js
+// Elvis - checks for null/undefined
+result = value ?: "default";
+
+// Ternary - checks any boolean condition
+result = ( value > 10 ) ? "big" : "small";
+
+// Equivalent elvis using ternary (more verbose)
+result = ( value != null && isDefined( "value" ) ) ? value : "default";
+```
+
+{% hint style="success" %}
+**Best Practice**: Use elvis (`?:`) for null-checking and default values. Use ternary (`? :`) for conditional logic based on comparisons or boolean conditions.
+{% endhint %}
+
+## ❓ Safe Navigation Operator
+
+The safe navigation operator (`?.`) allows you to safely navigate nested structures without throwing `key not exists` exceptions. If any part of the chain is null or undefined, the entire expression returns `undefined` instead of throwing an error.
+
+### Syntax
+
+```js
+result = object?.property?.nestedProperty;
+```
+
+If `object` or `property` is **null** or **undefined**, the expression returns `undefined` instead of throwing an error.
+
+### Before Safe Navigation: The Old Way
+
+```js
+// Old way - nested checks (verbose and error-prone)
 result = "";
-if( structKeyExists( var, "key" ) ){
-    if( structKeyExists( var.key, "otherkey" ){
+if ( structKeyExists( var, "key" ) ) {
+    if ( structKeyExists( var.key, "otherkey" ) ) {
         result = var.key.otherkey;
     }
 }
-```
 
-You can do things like this:
-
-```java
+// Safe navigation way - clean and concise
 result = var?.key?.otherKey ?: "";
 ```
 
-The hook operator (`?`) along with the dot operator (`.`) is known as safe navigation operator(`?.`). The safe navigation operator makes sure that if the variable used before the operator is not defined or java `null`, then instead of throwing an error, the operator returns `undefined` for that particular access.
+### Basic Examples
 
-## Switch, Case, & Default
+```js
+// Safely access nested properties
+user = {
+    name: "Alice",
+    profile: {
+        email: "alice@example.com"
+    }
+};
 
-Another situation that involves conditional logic is when a single variable or expression that can have a variety of values and different statements or functions needed to be executed depending on what that value is. One way of handling this situation is with a `switch / case / default` block.
+// Safe access - no error if profile or email is missing
+email = user?.profile?.email;
+println( email ); // "alice@example.com"
 
-```java
-switch( expression ){
-    case value : [ case otherValue ] : {
-        // operations
+// Missing property - returns undefined
+phone = user?.profile?.phone;
+println( phone ); // undefined
+
+// Combining with elvis for defaults
+phone = user?.profile?.phone ?: "No phone number";
+println( phone ); // "No phone number"
+```
+
+### Practical Applications
+
+```js
+// API response handling
+apiResponse = {
+    data: {
+        user: {
+            details: {
+                address: {
+                    city: "San Francisco"
+                }
+            }
+        }
+    }
+};
+
+// Safe deep navigation
+city = apiResponse?.data?.user?.details?.address?.city;
+println( city ); // "San Francisco"
+
+// Handle missing data gracefully
+zipCode = apiResponse?.data?.user?.details?.address?.zipCode ?: "Unknown";
+
+// Database query results
+qry = queryExecute( "SELECT * FROM users WHERE id = ?", [userId] );
+firstName = qry?.firstName[1] ?: "Unknown";
+
+// Configuration access
+dbHost = config?.database?.connection?.host ?: "localhost";
+dbPort = config?.database?.connection?.port ?: 3306;
+```
+
+### Chaining with Other Operators
+
+```js
+// Safe navigation + elvis operator
+email = user?.contacts?.email ?: "no-email@example.com";
+
+// Safe navigation + method calls
+upperName = user?.profile?.name?.ucase() ?: "UNKNOWN";
+
+// Array access with safe navigation
+firstItem = data?.items?[1];
+
+// Multiple chains
+street = order?.customer?.billing?.address?.street ?:
+         order?.customer?.shipping?.address?.street ?:
+         "No address provided";
+```
+
+### Error Prevention
+
+```js
+// Without safe navigation - throws error if user is null
+try {
+    city = user.profile.address.city; // ERROR if user, profile, or address is null
+} catch ( any e ) {
+    city = "Unknown";
+}
+
+// With safe navigation - no error, returns undefined
+city = user?.profile?.address?.city ?: "Unknown";
+```
+
+{% hint style="success" %}
+**Best Practice**: Use safe navigation (`?.`) when accessing properties that might not exist. Combine with elvis (`?:`) to provide default values for missing data. This pattern is especially useful for API responses, configuration files, and optional struct properties.
+{% endhint %}
+
+## 🔀 Switch, Case, & Default
+
+The `switch` statement evaluates a single expression and executes different code blocks based on matching case values. It's ideal when you have multiple discrete values to check against a single variable.
+
+### Syntax
+
+```js
+switch ( expression ) {
+    case value1: {
+        // Execute if expression == value1
         break;
     }
-
-    default : {
-        // Default operations
+    case value2:
+    case value3: {
+        // Execute if expression == value2 OR value3
+        break;
+    }
+    default: {
+        // Execute if no case matches
     }
 }
 ```
 
-Much like how the `if` statement marks the start of an `if` block and contains one or more `else if` statements and perhaps one (and only one) `else` statement, the `switch` statement marks the start of a `switch` block and can contain multiple `case` statements and perhaps one (and only one) `default` statement.
+### Structure
 
-The main difference is that `switch / case / default` can only evaluate the resulting value of a single variable or expression, while the `if / else if / else` block lets you evaluate the `true or false` result of different variables or expressions throughout the block.
+- **One `switch` statement** - Evaluates a single expression once
+- **Multiple `case` statements** - Define values to match against
+- **Optional `break`** - Exits the switch block (prevents fall-through)
+- **One optional `default`** - Executes if no case matches
 
-```java
-switch( city ){
+{% hint style="info" %}
+**Switch vs If/Else**: `switch` evaluates a **single expression** against multiple values. `if / else if / else` can evaluate **different conditions** with different variables and comparisons in each branch.
+{% endhint %}
 
+### Basic Example
+
+```js
+day = "Monday";
+
+switch ( day ) {
+    case "Monday": {
+        println( "Start of the work week" );
+        break;
+    }
+    case "Friday": {
+        println( "TGIF!" );
+        break;
+    }
+    case "Saturday":
+    case "Sunday": {
+        println( "Weekend!" );
+        break;
+    }
+    default: {
+        println( "Midweek day" );
+    }
+}
+```
+
+### Multiple Cases (Fall-Through)
+
+```js
+// Group multiple values that execute the same code
+city = "Cleveland";
+
+switch ( city ) {
     case "New York":
-         region= "East Coast";
-         break;
-
-    case "Los Angeles":
-          region= "West Coast";
-         break;
-
-     case "Phoenix":
-          region= "Phoenix";
-         break;
-
-     case "Cleveland" : case "Cincinnati" : {
-          region= "Midwest";
+    case "Boston":
+    case "Philadelphia": {
+        region = "East Coast";
         break;
     }
-     default:
-          region="Unknown";
+    case "Los Angeles":
+    case "San Francisco":
+    case "Seattle": {
+        region = "West Coast";
+        break;
+    }
+    case "Chicago":
+    case "Cleveland":
+    case "Cincinnati": {
+        region = "Midwest";
+        break;
+    }
+    default: {
+        region = "Unknown";
+    }
+}
+
+println( "Region: #region#" ); // "Region: Midwest"
+```
+
+### Break Statement
+
+```js
+// With break - stops after first match
+value = 2;
+result = "";
+
+switch ( value ) {
+    case 1: {
+        result = "one";
+        break;
+    }
+    case 2: {
+        result = "two";
+        break; // Stops here, doesn't continue to case 3
+    }
+    case 3: {
+        result = "three";
+        break;
+    }
+}
+println( result ); // "two"
+
+// Without break - falls through to next case (rare, usually unintended)
+value = 2;
+result = "";
+
+switch ( value ) {
+    case 1: {
+        result &= "one ";
+    }
+    case 2: {
+        result &= "two ";  // Matches here
+        // No break! Falls through to case 3
+    }
+    case 3: {
+        result &= "three "; // Also executes!
+    }
+}
+println( result ); // "two three "
+```
+
+{% hint style="warning" %}
+**Best Practice**: Always include curly braces `{}` for case blocks and use `break` statements unless you specifically want fall-through behavior. Forgetting `break` is a common bug!
+{% endhint %}
+
+### Practical Examples
+
+```js
+// HTTP status code handling
+statusCode = 404;
+
+switch ( statusCode ) {
+    case 200:
+    case 201:
+    case 204: {
+        message = "Success";
+        break;
+    }
+    case 400:
+    case 404: {
+        message = "Client Error";
+        break;
+    }
+    case 500:
+    case 502:
+    case 503: {
+        message = "Server Error";
+        break;
+    }
+    default: {
+        message = "Unknown Status";
+    }
+}
+
+// File extension handling
+fileExt = "pdf";
+
+switch ( fileExt ) {
+    case "jpg":
+    case "jpeg":
+    case "png":
+    case "gif": {
+        contentType = "image";
+        break;
+    }
+    case "pdf": {
+        contentType = "document";
+        break;
+    }
+    case "mp4":
+    case "avi":
+    case "mov": {
+        contentType = "video";
+        break;
+    }
+    default: {
+        contentType = "unknown";
+    }
+}
+
+// User role permissions
+role = "editor";
+
+switch ( role ) {
+    case "admin": {
+        permissions = ["read", "write", "delete", "manage"];
+        break;
+    }
+    case "editor": {
+        permissions = ["read", "write"];
+        break;
+    }
+    case "viewer": {
+        permissions = ["read"];
+        break;
+    }
+    default: {
+        permissions = [];
+    }
 }
 ```
 
-Please note that you can create a body for the `case` statements with curly braces. As best practice, do so for all `case` and/or `default` blocks
+### When to Use Switch vs If/Else
+
+```js
+// Use SWITCH when checking a single variable against multiple discrete values
+switch ( dayOfWeek ) {
+    case "Monday": { /* ... */ break; }
+    case "Tuesday": { /* ... */ break; }
+    // ...
+}
+
+// Use IF/ELSE when evaluating different conditions or ranges
+if ( score >= 90 ) {
+    grade = "A";
+} else if ( score >= 80 ) {
+    grade = "B";
+} else if ( score >= 70 ) {
+    grade = "C";
+}
+
+// Use IF/ELSE when conditions involve different variables
+if ( isLoggedIn && hasPermission ) {
+    // ...
+} else if ( isGuest ) {
+    // ...
+}
+```
 
 ## While Loops
 
@@ -221,7 +748,7 @@ while( testCondition ){
         testCondition = false;
     }
 }
-systemOutput( count );
+println( count );
 ```
 
 ## The `==` and `=` Common Mistake
