@@ -1014,3 +1014,209 @@ if ( score >= 700 && score <= 850 ) {
     approveApplication( score );
 }
 ```
+
+---
+
+## 📚 Best Practices Summary
+
+### When to Use Attempts
+
+✅ **Good Use Cases:**
+- **External API calls** - Network requests that may fail or return null
+- **Database queries** - Queries that may return no results
+- **Configuration lookups** - Config values that may not exist
+- **File operations** - File reads that may fail
+- **User input processing** - Form data that may be missing or invalid
+- **Optional calculations** - Operations that may not produce a result
+- **Service responses** - Backend services that may timeout or error
+
+❌ **Avoid Using Attempts For:**
+- Simple null checks - Use elvis operator instead
+- Values that are never null - Unnecessary overhead
+- Control flow logic - Use conditionals instead
+- Exception handling - Use try/catch for exception control
+
+### Design Patterns
+
+#### 1. 🎯 Fail Fast with `orThrow()`
+
+```js
+// Validate immediately, throw if missing
+config = attempt( getConfig( "apiKey" ) )
+    .orThrow( "Missing API key configuration" );
+```
+
+#### 2. 🔄 Transform Chains
+
+```js
+// Clean transformation pipelines
+result = attempt( getUserId() )
+    .map( id -> loadUser( id ) )
+    .map( user -> user.profile )
+    .filter( profile -> profile.isActive )
+    .orElse( getDefaultProfile() );
+```
+
+#### 3. 🎭 Conditional Logic
+
+```js
+// Handle presence/absence elegantly
+attempt( getOptionalFeature() )
+    .ifPresent( feature -> enableFeature( feature ) )
+    .ifEmpty( () -> useDefaultBehavior() );
+```
+
+#### 4. 🔗 Fallback Chains
+
+```js
+// Try multiple sources in order
+data = attempt( getPrimaryCache() )
+    .or( () -> attempt( getSecondaryCache() ) )
+    .or( () -> attempt( getDatabaseValue() ) )
+    .orElseGet( () -> computeDefault() );
+```
+
+#### 5. ✅ Validation Pipelines
+
+```js
+// Multi-stage validation
+attempt( formData )
+    .toBeType( "struct" )
+    .toSatisfy( data -> data.keyExists( "email" ) )
+    .flatMap( data -> attempt( data.email ).toBeType( "email" ) )
+    .ifValid( data -> processForm( data ) )
+    .ifInvalid( () -> showErrors() );
+```
+
+### Performance Considerations
+
+1. **Immutability Cost** - Each operation creates a new attempt; minimize in hot loops
+2. **Validation Overhead** - Matchers add small overhead; cache validation results if needed
+3. **Closure Creation** - Lambdas in `map`/`flatMap` have allocation cost; extract to functions in tight loops
+4. **Stream Integration** - Converting to streams adds overhead; only use when needed
+
+```js
+// ✅ Good: Single transformation chain
+results = data.map( item -> 
+    attempt( processItem( item ) )
+        .map( result -> transform( result ) )
+        .orElse( defaultValue )
+);
+
+// ❌ Avoid: Creating unnecessary attempts in loops
+for ( item in data ) {
+    // Creates attempt object every iteration even if not needed
+    temp = attempt( item ).orElse( item ); 
+}
+```
+
+### Code Style Guidelines
+
+1. **Use descriptive variable names** for attempts:
+   ```js
+   userAttempt = attempt( loadUser( id ) );
+   configAttempt = attempt( getConfig( key ) );
+   ```
+
+2. **Prefer method chaining** for readability:
+   ```js
+   // ✅ Good
+   attempt( data )
+       .map( transform )
+       .filter( validate )
+       .orElse( defaultValue );
+   ```
+
+3. **Extract complex lambdas** to separate functions:
+   ```js
+   // ✅ Good
+   function validateUser( user ) {
+       return user.age >= 18 && user.email.len() > 0;
+   }
+   
+   attempt( getUser() )
+       .toSatisfy( validateUser )
+       .ifValid( processUser );
+   ```
+
+4. **Use `orElse()` for simple defaults**, `orElseGet()` for computed defaults:
+   ```js
+   // Simple value - use orElse
+   name = attempt( user.name ).orElse( "Anonymous" );
+   
+   // Computed value - use orElseGet (lambda only runs if needed)
+   data = attempt( getCache() ).orElseGet( () -> expensiveComputation() );
+   ```
+
+### Common Mistakes to Avoid
+
+❌ **Don't call `get()` without checking**:
+```js
+// Bad - throws if empty
+value = attempt( data ).get();
+
+// Good - safe default
+value = attempt( data ).orElse( defaultValue );
+```
+
+❌ **Don't use `map()` when you need `flatMap()`**:
+```js
+// Bad - returns Attempt<Attempt<T>>
+attempt( id ).map( id -> attempt( loadUser( id ) ) );
+
+// Good - returns Attempt<T>
+attempt( id ).flatMap( id -> attempt( loadUser( id ) ) );
+```
+
+❌ **Don't ignore validation rules**:
+```js
+// Bad - validation never checked
+attempt( data )
+    .toBeBetween( 1, 100 )
+    .orElse( defaultValue );  // Validation ignored!
+
+// Good - check validation explicitly
+attempt( data )
+    .toBeBetween( 1, 100 )
+    .filter( value -> attempt( value ).toBeBetween( 1, 100 ).isValid() )
+    .orElse( defaultValue );
+```
+
+❌ **Don't create attempts for values you know exist**:
+```js
+// Bad - unnecessary
+value = attempt( 42 ).orElse( 0 );
+
+// Good - direct assignment
+value = 42;
+```
+
+---
+
+## 🔗 Related Documentation
+
+- [Conditionals](../../conditionals.md) - Control flow and logical operators
+- [Exception Management](../../exception-management.md) - Error handling and try/catch
+- [Null and Nothingness](../../null-and-nothingness.md) - Understanding null values in BoxLang
+- [Closures](../../closures.md) - Lambda expressions and functional programming
+- [Operators](../../operators.md) - Elvis operator and safe navigation
+- [isValid() BIF](../../reference/built-in-functions/decision/IsValid.md) - Type validation reference
+
+---
+
+## 🎓 Summary
+
+The **Attempt** class is BoxLang's answer to safe optional value handling with built-in validation. It provides:
+
+- ✅ **Null Safety** - Eliminates null pointer errors
+- ✅ **Validation** - Built-in type and custom validation rules
+- ✅ **Fluent API** - Chainable operations for clean code
+- ✅ **Functional Style** - Map, filter, flatMap for transformations
+- ✅ **Explicit Handling** - Forces you to think about empty cases
+- ✅ **Composability** - Easily combine with other attempts
+
+Use attempts whenever you're dealing with values that **might not exist** or **might be invalid**, and let the type system guide you to handle both cases correctly.
+
+{% hint style="success" %}
+**Pro Tip**: Start using attempts for API calls, database queries, and configuration lookups. Once you're comfortable, expand usage to form validation and data transformation pipelines.
+{% endhint %}
