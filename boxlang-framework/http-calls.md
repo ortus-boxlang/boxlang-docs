@@ -20,6 +20,31 @@ Both approaches provide full support for:
 - 📡 **Server-Sent Events (SSE) consumption**
 - 🎯 Response streaming with callbacks
 
+## 📋 Table of Contents
+
+- [Quick Start Examples](#quick-start-examples)
+- [Choosing Your Approach](#choosing-your-approach)
+- [HTTP Request Callbacks Overview](#http-request-callbacks-overview)
+- [The Result Structure](#the-result-structure)
+- [HTTP Attributes](#http-attributes)
+- [HTTPParam Component](#httpparam-component)
+- [Common Usage Examples](#common-usage-examples)
+- [Downloading Files](#downloading-files)
+- [Authentication](#authentication)
+- [Proxy Server Support](#proxy-server-support)
+- [Timeouts and Error Handling](#timeouts-and-error-handling)
+- [Redirects](#redirects)
+- [Response Caching](#response-caching)
+- [Client Certificates](#client-certificates)
+- [Binary Responses](#binary-responses)
+- [Advanced Examples](#advanced-examples)
+- [The http() BIF - Fluent API Reference](#the-http-bif---fluent-api-reference)
+- [Server-Sent Events (SSE) Consumption](#server-sent-events-sse-consumption)
+- [Interceptor Events](#interceptor-events)
+- [Troubleshooting](#troubleshooting)
+- [Best Practices](#best-practices)
+- [Related Documentation](#related-documentation)
+
 ## 🚀 Quick Start Examples
 
 ### Using the `http()` BIF (Fluent API)

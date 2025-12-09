@@ -38,6 +38,21 @@ This will output:
 
 This simple example illustrates how components allow you to encapsulate functionality and reuse it across your BoxLang applications. Components can be as simple or complex as needed, and they can include attributes, logic, and even nested content.
 
+## 📋 Table of Contents
+
+- [Why Components Matter](#why-components-matter)
+- [Basic Principles](#basic-principles)
+- [Core and Module Components](#core-and-module-components)
+- [Creating Custom Components](#creating-custom-components)
+- [Custom Component Discovery](#custom-component-discovery)
+- [Discovery Configuration](#discovery-configuration)
+- [Calling Custom Components](#calling-custom-components)
+- [Component Scopes Deep Dive](#component-scopes-deep-dive)
+- [Associating Subtag Data with Base Tags](#associating-subtag-data-with-base-tags)
+- [Advanced Component Patterns](#advanced-component-patterns)
+- [Best Practices](#best-practices)
+- [Migration from CFML Custom Tags](#migration-from-cfml-custom-tags)
+
 ## Why Components Matter
 
 Components solve common development challenges:

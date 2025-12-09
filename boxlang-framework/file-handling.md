@@ -27,6 +27,16 @@ Both approaches provide the same functionality - choose based on your preference
 - **Path Expansion** - Automatic resolution of relative and absolute paths
 - **Charset Support** - Full Unicode and encoding support
 
+## 📋 Table of Contents
+
+- [Core Features](#core-features)
+- [File Operations](#file-operations)
+- [Directory Operations](#directory-operations)
+- [Dealing With Large Files](#dealing-with-large-files)
+- [Best Practices](#best-practices)
+- [Function Reference](#function-reference)
+- [Common Use Cases](#common-use-cases)
+
 ## 📁 File Operations
 
 BoxLang provides comprehensive file manipulation capabilities through global functions (BIFs) and the `<bx:file>` component.

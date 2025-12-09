@@ -40,6 +40,15 @@ icon: rocket-launch
 
 When BoxLang executes any code (web request, CLI script, Lambda function), it searches for `Application.bx` starting from the current directory and traversing **upward** through parent directories until found or reaching the root.
 
+## 📋 Table of Contents
+
+- [Overview](#overview)
+- [Complete Example](#complete-example)
+- [Configuration Settings](#configuration-settings)
+- [Lifecycle Events](#lifecycle-events)
+- [Virtual Applications - A Critical Feature](#virtual-applications---a-critical-feature)
+- [Additional Resources](#additional-resources)
+
 ```
 📁 /projects/myapp/
    📄 Application.bx          ← Found! Used for entire app

@@ -36,6 +36,23 @@ dump( countryInfo );
 
 ---
 
+## 📋 Table of Contents
+
+- [Quick Start](#quick-start)
+- [Key Features](#key-features)
+- [The soap() BIF](#the-soap-bif)
+- [Configuration Methods](#configuration-methods)
+- [Invoking SOAP Operations](#invoking-soap-operations)
+- [Real-World Examples](#real-world-examples)
+- [Client Information Methods](#client-information-methods)
+- [Automatic Type Conversion](#automatic-type-conversion)
+- [WSDL Discovery](#wsdl-discovery)
+- [Error Handling](#error-handling)
+- [Best Practices](#best-practices)
+- [Advanced Usage](#advanced-usage)
+- [SOAP vs REST](#soap-vs-rest)
+- [Summary](#summary)
+
 ## 🎯 The `soap()` BIF
 
 The `soap()` BIF creates a fluent SOAP client from a WSDL URL. The client automatically discovers available operations and allows you to invoke them as native BoxLang methods.
