@@ -735,25 +735,225 @@ if ( isLoggedIn && hasPermission ) {
 }
 ```
 
-## While Loops
+## 🔁 While Loops
 
-The `while( conditional )` expression allows you to execute a code block as many times as the `conditional` expression evaluates to **true**. This is a great way to work with queues, stacks or just simple evaluations.
+The `while` loop executes a code block repeatedly as long as the conditional expression evaluates to **true**. It's useful for processing queues, polling, and iterating when the number of iterations isn't known in advance.
 
-```bx:script
-testCondition = true;
-count = 0;
-while( testCondition ){
-    count++;
-    if( count == 5) {
-        testCondition = false;
-    }
+### Syntax
+
+```js
+while ( condition ) {
+    // Execute while condition is true
 }
-println( count );
 ```
 
-## The `==` and `=` Common Mistake
+### Basic Example
 
-The #1 mistake people encounter when writing conditional statements is the difference between `=` and `==`.
+```js
+count = 0;
 
-* `=` is an assignment. It means "take what's on the right side and stick it into whatever is on the left side" (or its telling not asking.)
-* `==` is a question. It means "is the thing on the right equal to the thing on the left" (or its asking not telling.)
+while ( count < 5 ) {
+    println( "Count: #count#" );
+    count++;
+}
+
+/* Output:
+Count: 0
+Count: 1
+Count: 2
+Count: 3
+Count: 4
+*/
+```
+
+### Practical Examples
+
+```js
+// Processing a queue
+queue = ["task1", "task2", "task3"];
+
+while ( queue.len() > 0 ) {
+    task = queue.shift(); // Remove first item
+    println( "Processing: #task#" );
+}
+
+// Reading until a condition is met
+userInput = "";
+
+while ( userInput != "quit" ) {
+    userInput = getInput( "Enter command (or 'quit' to exit): " );
+    if ( userInput != "quit" ) {
+        processCommand( userInput );
+    }
+}
+
+// Polling with timeout
+timeout = 30;
+elapsed = 0;
+ready = false;
+
+while ( !ready && elapsed < timeout ) {
+    ready = checkIfReady();
+    if ( !ready ) {
+        sleep( 1000 ); // Wait 1 second
+        elapsed++;
+    }
+}
+
+if ( ready ) {
+    println( "System ready!" );
+} else {
+    println( "Timeout waiting for system" );
+}
+```
+
+### Do-While Loop
+
+BoxLang also supports `do-while` loops, which execute the block **at least once** before checking the condition:
+
+```js
+// do-while: executes at least once
+count = 0;
+
+do {
+    println( "Count: #count#" );
+    count++;
+} while ( count < 5 );
+
+// Practical use: input validation
+do {
+    userAge = getInput( "Enter your age: " );
+} while ( !isNumeric( userAge ) || userAge < 0 );
+
+println( "Valid age entered: #userAge#" );
+```
+
+### Infinite Loops and Break
+
+```js
+// Infinite loop with break condition
+while ( true ) {
+    data = fetchNextItem();
+
+    if ( !data ) {
+        break; // Exit loop
+    }
+
+    processItem( data );
+}
+
+// Continue to skip iterations
+count = 0;
+
+while ( count < 10 ) {
+    count++;
+
+    if ( count % 2 == 0 ) {
+        continue; // Skip even numbers
+    }
+
+    println( "Odd number: #count#" );
+}
+```
+
+{% hint style="warning" %}
+**Caution**: Ensure your while loop condition will eventually become **false**, or use a `break` statement to exit. Infinite loops without an exit condition will hang your application!
+{% endhint %}
+
+## ⚠️ Common Mistakes
+
+### The `==` vs `=` Confusion
+
+The #1 mistake in conditional statements is confusing assignment (`=`) with comparison (`==`).
+
+| Operator | Purpose | Example |
+|----------|---------|---------|
+| `=` | **Assignment** - "Put value on right into variable on left" | `x = 5` |
+| `==` | **Comparison** - "Is left equal to right?" | `x == 5` |
+
+```js
+// WRONG - Assignment in condition (always true if x is non-zero)
+x = 5;
+if ( x = 10 ) {  // ❌ This assigns 10 to x, doesn't compare!
+    println( "This will execute!" );
+}
+println( x ); // Outputs: 10 (x was changed!)
+
+// CORRECT - Comparison in condition
+x = 5;
+if ( x == 10 ) {  // ✅ This compares x to 10
+    println( "This will NOT execute" );
+}
+println( x ); // Outputs: 5 (x unchanged)
+```
+
+### Other Common Pitfalls
+
+```js
+// 1. Forgetting parentheses in conditions
+if score > 90 { // ❌ Missing parentheses
+    println( "A" );
+}
+
+if ( score > 90 ) { // ✅ Correct
+    println( "A" );
+}
+
+// 2. Using = instead of == in comparisons
+if ( status = "active" ) { // ❌ Assignment, not comparison
+    // ...
+}
+
+if ( status == "active" ) { // ✅ Comparison
+    // ...
+}
+
+// 3. Forgetting break in switch statements
+switch ( value ) {
+    case 1: {
+        result = "one";
+        // ❌ Missing break! Falls through to case 2
+    }
+    case 2: {
+        result = "two";
+        break; // ✅ Proper break
+    }
+}
+
+// 4. Comparing strings case-sensitively when you don't mean to
+name = "Alice";
+if ( name == "alice" ) { // ❌ Won't match due to case
+    println( "Found!" );
+}
+
+if ( name.lcase() == "alice" ) { // ✅ Case-insensitive comparison
+    println( "Found!" );
+}
+```
+
+## 📚 Best Practices Summary
+
+1. ✅ **Use appropriate operators**: `if/else` for complex logic, `switch` for discrete values, ternary/elvis for simple assignments
+2. ✅ **Always use `==` for comparisons**, never `=` in conditions
+3. ✅ **Use safe navigation (`?.`)** to avoid null pointer errors
+4. ✅ **Combine elvis (`?:`) with safe navigation** for elegant default values
+5. ✅ **Include `break` in switch cases** unless you specifically want fall-through
+6. ✅ **Add curly braces `{}`** around all code blocks for clarity
+7. ✅ **Avoid deeply nested ternary operators** - use `if/else` for complex conditions
+8. ✅ **Ensure while loops have exit conditions** to prevent infinite loops
+9. ✅ **Use meaningful variable names** in conditions for readability
+10. ✅ **Format conditions consistently** with spaces: `if ( condition )` not `if(condition)`
+
+## 🔗 Related Documentation
+
+{% content-ref url="operators.md" %}
+[operators.md](operators.md)
+{% endcontent-ref %}
+
+{% content-ref url="program-structure.md" %}
+[program-structure.md](program-structure.md)
+{% endcontent-ref %}
+
+{% content-ref url="exception-management.md" %}
+[exception-management.md](exception-management.md)
+{% endcontent-ref %}
