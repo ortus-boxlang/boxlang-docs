@@ -104,9 +104,8 @@ In addition to the built-in functions (BIFs), the bx-plus module provides comman
 
 Activates your BoxLang+ or BoxLang++ license from the command line.
 
-```bash
-boxlang module:plus activate --email your-email@company.com --licenseKey your-license-key --serverType server
-```
+<pre class="language-bash"><code class="lang-bash"><strong>boxlang module:plus activate --email your-email@company.com --licenseKey your-license-key --serverType server
+</strong></code></pre>
 
 **Required Options:**
 
@@ -150,6 +149,35 @@ Shows usage information and available commands.
 boxlang module:plus help
 ```
 
+### CommandBox CLI Usage
+
+If you are using CommandBox, and wish to activate a server, without installing the core BoxLang binary, you can also use the CLI activation commands.   This is especially useful in activating licenses when building Docker images for deployment.
+
+```shellscript
+box boxlang cli module:bx-plus activate --email=$BX_LICENSE_EMAIL --licenseKey=$BX_LICENSE_KEY --serverType=Development|Staging|Production
+```
+
+All of the commands listed above in the CLI section are available by simply using `boxlang cli`  in place of just `boxlang` . &#x20;
+
+
+
+For example, to build and register a licensed Docker image
+
+```docker
+FROM ortussolutions/commandbox
+
+ARG BX_LICENSE_EMAIL
+ARG BX_LICENSE_KEY
+ARG BX_SERVER_TYPE=Production
+
+ENV BOX_SERVER_APP_CFENGINE=boxlang
+
+RUN ${BUILD_DIR}/util/warmup-server.sh
+
+RUN box boxlang cli module:bx-plus activate --email=$BX_LICENSE_EMAIL --licenseKey=$BX_LICENSE_KEY --serverType=$BX_SERVER_TYPE
+
+```
+
 ### Enterprise Support
 
 This module is part of the BoxLang+ and BoxLang++ enterprise subscription offerings. For enterprise support, license questions, or to purchase a subscription:
@@ -160,4 +188,4 @@ This module is part of the BoxLang+ and BoxLang++ enterprise subscription offeri
 
 ***
 
-Next: Explore data caching with the [`bx-redis` module](broken-reference).
+Next: Explore data caching with the [`bx-redis` module](broken-reference/).
