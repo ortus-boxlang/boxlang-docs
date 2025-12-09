@@ -39,7 +39,7 @@ writeOutput( "Found #employees.recordCount# employees" );
 
 **Template Syntax:**
 
-You can use  the template syntax within code islands <pre>```</pre> or if you are within a `.bxm` template:
+You can use  the template syntax within code islands <pre>\`\`\`</pre> or if you are within a `.bxm` template:
 
 ```xml
 <bx:storedProc
@@ -69,7 +69,7 @@ bx:storedProc
 
     bx:procParam
         type="in"
-        cfsqltype="varchar"
+        sqltype="varchar"
         value=department;
 
     bx:procResult name="employees" resultset="1";
@@ -85,7 +85,7 @@ bx:storedProc
 
     <bx:procParam
         type="in"
-        cfsqltype="varchar"
+        sqltype="varchar"
         value="#department#" />
 
     <bx:procResult name="employees" resultset="1" />
@@ -100,9 +100,9 @@ bx:storedProc
 bx:storedProc procedure="sp_SearchEmployees" datasource="myDB" {
     bx:procParam
         type="in"
-        cfsqltype="varchar"
+        sqltype="varchar"
         value=searchTerm
-        null=isNull( searchTerm );
+        null=searchTerm.isEmpty();
 
     bx:procResult name="results" resultset="1";
 }
@@ -114,7 +114,7 @@ bx:storedProc procedure="sp_SearchEmployees" datasource="myDB" {
 <bx:storedProc procedure="sp_SearchEmployees" datasource="myDB">
     <bx:procParam
         type="in"
-        cfsqltype="varchar"
+        sqltype="varchar"
         value="#searchTerm#"
         null="#isNull( searchTerm )#" />
 
@@ -135,14 +135,14 @@ bx:storedProc
     result="procResult" {
 
     // IN parameters
-    bx:procParam type="in" cfsqltype="varchar" value=firstName;
-    bx:procParam type="in" cfsqltype="varchar" value=lastName;
-    bx:procParam type="in" cfsqltype="varchar" value=email;
+    bx:procParam type="in" sqltype="varchar" value=firstName;
+    bx:procParam type="in" sqltype="varchar" value=lastName;
+    bx:procParam type="in" sqltype="varchar" value=email;
 
     // OUT parameter to get new employee ID
     bx:procParam
         type="out"
-        cfsqltype="integer"
+        sqltype="integer"
         variable="newEmployeeId";
 }
 
@@ -159,14 +159,14 @@ writeOutput( "New employee created with ID: #newEmployeeId#" );
     result="procResult">
 
     <!-- IN parameters -->
-    <bx:procParam type="in" cfsqltype="varchar" value="#firstName#" />
-    <bx:procParam type="in" cfsqltype="varchar" value="#lastName#" />
-    <bx:procParam type="in" cfsqltype="varchar" value="#email#" />
+    <bx:procParam type="in" sqltype="varchar" value="#firstName#" />
+    <bx:procParam type="in" sqltype="varchar" value="#lastName#" />
+    <bx:procParam type="in" sqltype="varchar" value="#email#" />
 
     <!-- OUT parameter to get new employee ID -->
     <bx:procParam
         type="out"
-        cfsqltype="integer"
+        sqltype="integer"
         variable="newEmployeeId" />
 </bx:storedProc>
 
@@ -187,12 +187,12 @@ bx:storedProc
     procedure="sp_UpdateInventory"
     datasource="myDB" {
 
-    bx:procParam type="in" cfsqltype="integer" value=productId;
+    bx:procParam type="in" sqltype="integer" value=productId;
 
     // INOUT parameter - pass in quantity, get back new total
     bx:procParam
         type="inout"
-        cfsqltype="integer"
+        sqltype="integer"
         value=quantityChange
         variable="newTotal";
 }
@@ -207,12 +207,12 @@ writeOutput( "New inventory total: #newTotal#" );
     procedure="sp_UpdateInventory"
     datasource="myDB">
 
-    <bx:procParam type="in" cfsqltype="integer" value="#productId#" />
+    <bx:procParam type="in" sqltype="integer" value="#productId#" />
 
     <!-- INOUT parameter - pass in quantity, get back new total -->
     <bx:procParam
         type="inout"
-        cfsqltype="integer"
+        sqltype="integer"
         value="#quantityChange#"
         variable="newTotal" />
 </bx:storedProc>
@@ -233,7 +233,7 @@ bx:storedProc
     procedure="sp_GetEmployeeDetails"
     datasource="myDB" {
 
-    bx:procParam type="in" cfsqltype="integer" value=employeeId;
+    bx:procParam type="in" sqltype="integer" value=employeeId;
 
     // First result set: Employee basic info
     bx:procResult name="employeeInfo" resultset="1";
@@ -266,7 +266,7 @@ for ( review in employeeReviews ) {
     procedure="sp_GetEmployeeDetails"
     datasource="myDB">
 
-    <bx:procParam type="in" cfsqltype="integer" value="#employeeId#" />
+    <bx:procParam type="in" sqltype="integer" value="#employeeId#" />
 
     <!-- First result set: Employee basic info -->
     <bx:procResult name="employeeInfo" resultset="1" />
@@ -305,16 +305,16 @@ bx:storedProc
     returnCode="true"
     result="procResult" {
 
-    bx:procParam type="in" cfsqltype="varchar" value=username;
-    bx:procParam type="in" cfsqltype="varchar" value=password;
+    bx:procParam type="in" sqltype="varchar" value=username;
+    bx:procParam type="in" sqltype="varchar" value=password;
 
-    bx:procParam type="out" cfsqltype="varchar" variable="message";
+    bx:procParam type="out" sqltype="varchar" variable="message";
 
     bx:procResult name="userData" resultset="1";
 }
 
 // Check the return code
-if ( procResult.statusCode == 0 ) {
+if ( procResult.returnCode == 0 ) {
     writeOutput( "<p>Login successful! Welcome #userData.firstName#</p>" );
 } else {
     writeOutput( "<p>Login failed: #message#</p>" );
@@ -330,16 +330,16 @@ if ( procResult.statusCode == 0 ) {
     returnCode="true"
     result="procResult">
 
-    <bx:procParam type="in" cfsqltype="varchar" value="#username#" />
-    <bx:procParam type="in" cfsqltype="varchar" value="#password#" />
+    <bx:procParam type="in" sqltype="varchar" value="#username#" />
+    <bx:procParam type="in" sqltype="varchar" value="#password#" />
 
-    <bx:procParam type="out" cfsqltype="varchar" variable="message" />
+    <bx:procParam type="out" sqltype="varchar" variable="message" />
 
     <bx:procResult name="userData" resultset="1" />
 </bx:storedProc>
 
 <!-- Check the return code -->
-<bx:if condition="#procResult.statusCode == 0#">
+<bx:if procResult.returnCode == 0>
     <p>Login successful! Welcome #userData.firstName#</p>
 <bx:else>
     <p>Login failed: #message#</p>
@@ -361,15 +361,15 @@ bx:storedProc
     result="procInfo" {
 
     // IN parameters
-    bx:procParam type="in" cfsqltype="integer" value=customerId;
-    bx:procParam type="in" cfsqltype="decimal" value=orderAmount scale="2";
-    bx:procParam type="in" cfsqltype="varchar" value=shippingAddress maxLength="255";
-    bx:procParam type="in" cfsqltype="date" value=orderDate;
+    bx:procParam type="in" sqltype="integer" value=customerId;
+    bx:procParam type="in" sqltype="decimal" value=orderAmount scale="2";
+    bx:procParam type="in" sqltype="varchar" value=shippingAddress maxLength="255";
+    bx:procParam type="in" sqltype="date" value=orderDate;
 
     // OUT parameters
-    bx:procParam type="out" cfsqltype="integer" variable="newOrderId";
-    bx:procParam type="out" cfsqltype="varchar" variable="confirmationCode";
-    bx:procParam type="out" cfsqltype="varchar" variable="errorMessage";
+    bx:procParam type="out" sqltype="integer" variable="newOrderId";
+    bx:procParam type="out" sqltype="varchar" variable="confirmationCode";
+    bx:procParam type="out" sqltype="varchar" variable="errorMessage";
 
     // Result sets
     bx:procResult name="orderDetails" resultset="1";
@@ -406,15 +406,15 @@ if ( procInfo.statusCode == 0 ) {
     result="procInfo">
 
     <!-- IN parameters -->
-    <bx:procParam type="in" cfsqltype="integer" value="#customerId#" />
-    <bx:procParam type="in" cfsqltype="decimal" value="#orderAmount#" scale="2" />
-    <bx:procParam type="in" cfsqltype="varchar" value="#shippingAddress#" maxLength="255" />
-    <bx:procParam type="in" cfsqltype="date" value="#orderDate#" />
+    <bx:procParam type="in" sqltype="integer" value="#customerId#" />
+    <bx:procParam type="in" sqltype="decimal" value="#orderAmount#" scale="2" />
+    <bx:procParam type="in" sqltype="varchar" value="#shippingAddress#" maxLength="255" />
+    <bx:procParam type="in" sqltype="date" value="#orderDate#" />
 
     <!-- OUT parameters -->
-    <bx:procParam type="out" cfsqltype="integer" variable="newOrderId" />
-    <bx:procParam type="out" cfsqltype="varchar" variable="confirmationCode" />
-    <bx:procParam type="out" cfsqltype="varchar" variable="errorMessage" />
+    <bx:procParam type="out" sqltype="integer" variable="newOrderId" />
+    <bx:procParam type="out" sqltype="varchar" variable="confirmationCode" />
+    <bx:procParam type="out" sqltype="varchar" variable="errorMessage" />
 
     <!-- Result sets -->
     <bx:procResult name="orderDetails" resultset="1" />
@@ -422,7 +422,7 @@ if ( procInfo.statusCode == 0 ) {
 </bx:storedProc>
 
 <!-- Check execution status -->
-<bx:if condition="#procInfo.statusCode == 0#">
+<bx:if procInfo.returnCode == 0>
     <h2>Order Confirmed!</h2>
     <p>Order ID: #newOrderId#</p>
     <p>Confirmation Code: #confirmationCode#</p>
@@ -459,7 +459,7 @@ if ( procInfo.statusCode == 0 ) {
 | Attribute | Type | Required | Description |
 |-----------|------|----------|-------------|
 | `type` | string | Yes | Parameter type: "in", "out", or "inout" |
-| `cfsqltype` | string | Yes | SQL data type |
+| `sqltype` | string | Yes | SQL data type |
 | `value` | any | Conditional | Parameter value (required for IN and INOUT) |
 | `variable` | string | Conditional | Variable name for OUT/INOUT results |
 | `null` | boolean | No | Set to true for NULL values (default: false) |
@@ -475,7 +475,7 @@ if ( procInfo.statusCode == 0 ) {
 
 ## 📝 SQL Data Types
 
-Common `cfsqltype` values for parameters:
+Common `sqltype` values for parameters:
 
 | SQL Type | Description | BoxLang Type |
 |----------|-------------|--------------|
@@ -503,7 +503,7 @@ Common `cfsqltype` values for parameters:
 
 ```js
 bx:storedProc procedure="sp_GetCustomerOrders" datasource="mysqlDB" {
-    bx:procParam type="in" cfsqltype="integer" value=customerId;
+    bx:procParam type="in" sqltype="integer" value=customerId;
     bx:procResult name="orders" resultset="1";
 }
 ```
@@ -512,7 +512,7 @@ bx:storedProc procedure="sp_GetCustomerOrders" datasource="mysqlDB" {
 
 ```xml
 <bx:storedProc procedure="sp_GetCustomerOrders" datasource="mysqlDB">
-    <bx:procParam type="in" cfsqltype="integer" value="#customerId#" />
+    <bx:procParam type="in" sqltype="integer" value="#customerId#" />
     <bx:procResult name="orders" resultset="1" />
 </bx:storedProc>
 ```
@@ -523,9 +523,9 @@ bx:storedProc procedure="sp_GetCustomerOrders" datasource="mysqlDB" {
 
 ```js
 bx:storedProc procedure="get_employee_stats" datasource="postgresDB" {
-    bx:procParam type="in" cfsqltype="integer" value=departmentId;
-    bx:procParam type="out" cfsqltype="integer" variable="totalEmployees";
-    bx:procParam type="out" cfsqltype="decimal" variable="avgSalary";
+    bx:procParam type="in" sqltype="integer" value=departmentId;
+    bx:procParam type="out" sqltype="integer" variable="totalEmployees";
+    bx:procParam type="out" sqltype="decimal" variable="avgSalary";
     bx:procResult name="stats" resultset="1";
 }
 ```
@@ -534,9 +534,9 @@ bx:storedProc procedure="get_employee_stats" datasource="postgresDB" {
 
 ```xml
 <bx:storedProc procedure="get_employee_stats" datasource="postgresDB">
-    <bx:procParam type="in" cfsqltype="integer" value="#departmentId#" />
-    <bx:procParam type="out" cfsqltype="integer" variable="totalEmployees" />
-    <bx:procParam type="out" cfsqltype="decimal" variable="avgSalary" />
+    <bx:procParam type="in" sqltype="integer" value="#departmentId#" />
+    <bx:procParam type="out" sqltype="integer" variable="totalEmployees" />
+    <bx:procParam type="out" sqltype="decimal" variable="avgSalary" />
     <bx:procResult name="stats" resultset="1" />
 </bx:storedProc>
 ```
@@ -552,13 +552,13 @@ bx:storedProc
     returnCode="true"
     result="procResult" {
 
-    bx:procParam type="in" cfsqltype="integer" value=productId;
-    bx:procParam type="in" cfsqltype="integer" value=quantity;
-    bx:procParam type="out" cfsqltype="integer" variable="newQuantity";
-    bx:procParam type="out" cfsqltype="varchar" variable="statusMessage";
+    bx:procParam type="in" sqltype="integer" value=productId;
+    bx:procParam type="in" sqltype="integer" value=quantity;
+    bx:procParam type="out" sqltype="integer" variable="newQuantity";
+    bx:procParam type="out" sqltype="varchar" variable="statusMessage";
 }
 
-if ( procResult.statusCode == 0 ) {
+if ( procResult.returnCode == 0 ) {
     writeOutput( "<p>Inventory updated: #statusMessage#</p>" );
     writeOutput( "<p>New quantity: #newQuantity#</p>" );
 }
@@ -573,13 +573,13 @@ if ( procResult.statusCode == 0 ) {
     returnCode="true"
     result="procResult">
 
-    <bx:procParam type="in" cfsqltype="integer" value="#productId#" />
-    <bx:procParam type="in" cfsqltype="integer" value="#quantity#" />
-    <bx:procParam type="out" cfsqltype="integer" variable="newQuantity" />
-    <bx:procParam type="out" cfsqltype="varchar" variable="statusMessage" />
+    <bx:procParam type="in" sqltype="integer" value="#productId#" />
+    <bx:procParam type="in" sqltype="integer" value="#quantity#" />
+    <bx:procParam type="out" sqltype="integer" variable="newQuantity" />
+    <bx:procParam type="out" sqltype="varchar" variable="statusMessage" />
 </bx:storedProc>
 
-<bx:if condition="#procResult.statusCode == 0#">
+<bx:if procResult.returnCode == 0>
     <p>Inventory updated: #statusMessage#</p>
     <p>New quantity: #newQuantity#</p>
 </bx:if>
@@ -595,9 +595,9 @@ bx:storedProc
     datasource="oracleDB"
     returnCode="true" {
 
-    bx:procParam type="in" cfsqltype="integer" value=orderId;
-    bx:procParam type="inout" cfsqltype="varchar" value=status variable="newStatus";
-    bx:procParam type="out" cfsqltype="integer" variable="errorCode";
+    bx:procParam type="in" sqltype="integer" value=orderId;
+    bx:procParam type="inout" sqltype="varchar" value=status variable="newStatus";
+    bx:procParam type="out" sqltype="integer" variable="errorCode";
 
     bx:procResult name="orderDetails" resultset="1";
 }
@@ -611,9 +611,9 @@ bx:storedProc
     datasource="oracleDB"
     returnCode="true">
 
-    <bx:procParam type="in" cfsqltype="integer" value="#orderId#" />
-    <bx:procParam type="inout" cfsqltype="varchar" value="#status#" variable="newStatus" />
-    <bx:procParam type="out" cfsqltype="integer" variable="errorCode" />
+    <bx:procParam type="in" sqltype="integer" value="#orderId#" />
+    <bx:procParam type="inout" sqltype="varchar" value="#status#" variable="newStatus" />
+    <bx:procParam type="out" sqltype="integer" variable="errorCode" />
 
     <bx:procResult name="orderDetails" resultset="1" />
 </bx:storedProc>
@@ -622,24 +622,28 @@ bx:storedProc
 ## 💡 Best Practices
 
 ### Security
+
 - ✅ **Use stored procedures** for complex business logic
 - ✅ **Validate parameters** before passing to procedures
 - ✅ **Limit database permissions** to only required procedures
 - ✅ **Handle OUT parameters** carefully to avoid information disclosure
 
 ### Error Handling
+
 - ✅ **Always check return codes** when `returnCode="true"`
 - ✅ **Wrap procedure calls** in try/catch blocks
 - ✅ **Capture error messages** via OUT parameters
 - ✅ **Log procedure execution** for debugging
 
 ### Performance
+
 - ✅ **Use procedures** for complex multi-query operations
 - ✅ **Minimize result sets** - only return needed data
 - ✅ **Index procedure parameters** in the database
 - ✅ **Monitor execution time** with `result` metadata
 
 ### Code Quality
+
 - ✅ **Document parameter purpose** with comments
 - ✅ **Use consistent naming** for variables
 - ✅ **Handle NULL values** explicitly
@@ -647,29 +651,22 @@ bx:storedProc
 
 ## 🚫 Common Pitfalls
 
-❌ **Forgetting to specify resultset numbers**
-```xml
-<!-- BAD - missing resultset attribute -->
-<bx:procResult name="data" />
-
-<!-- GOOD -->
-<bx:procResult name="data" resultset="1" />
-```
-
 ❌ **Not handling NULL values**
+
 ```xml
 <!-- BAD - will fail if variable is null -->
-<bx:procParam type="in" cfsqltype="varchar" value="#maybeNull#" />
+<bx:procParam type="in" sqltype="varchar" value="#maybeNull#" />
 
 <!-- GOOD -->
 <bx:procParam
     type="in"
-    cfsqltype="varchar"
+    sqltype="varchar"
     value="#maybeNull#"
     null="#isNull( maybeNull )#" />
 ```
 
 ❌ **Ignoring return codes**
+
 ```xml
 <!-- BAD - no error checking -->
 <bx:storedProc procedure="sp_CriticalOperation" returnCode="true">
@@ -684,8 +681,8 @@ bx:storedProc
     ...
 </bx:storedProc>
 
-<bx:if condition="#procResult.statusCode != 0#">
-    <bx:throw message="Procedure failed with code: #procResult.statusCode#" />
+<bx:if procResult.returnCode != 0>
+    <bx:throw message="Procedure failed with code: #procResult.returnCode#" />
 </bx:if>
 ```
 
