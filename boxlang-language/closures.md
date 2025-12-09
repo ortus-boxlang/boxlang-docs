@@ -10,13 +10,34 @@ Closures are one of BoxLang's most powerful features for functional programming.
 
 ## 🎭 What Makes Closures Special?
 
-**Functions (UDFs)** and **closures** are both objects in BoxLang, but there's a crucial difference:
+**Functions (UDFs)**, **closures**, and **lambdas** are all objects in BoxLang, but there are crucial differences:
 
-✅ **Closures** - Have access to the lexical environment where they were declared (capture surrounding scope)
+✅ **Closures (`=>`)** - Have access to the lexical environment where they were declared (capture surrounding scope)
+
+✅ **Lambdas (`->`)** - Are deterministic and only access their own arguments and local variables (no surrounding scope)
 
 ✅ **Functions** - Are static and only access their own arguments and local variables
 
-✅ **Both** - Can be passed around, stored in variables, returned from functions, and manipulated at runtime
+✅ **All Three** - Can be passed around, stored in variables, returned from functions, and manipulated at runtime
+
+{% hint style="warning" %}
+**Important**: Closures (`=>`) and Lambdas (`->`) are **NOT the same** in BoxLang! Closures capture surrounding scope, while lambdas are deterministic and only use arguments and function-local variables. See [Lambdas](syntax/lambdas.md) for more details.
+{% endhint %}
+
+### Closure vs Lambda Example
+
+```js
+multiplier = 10
+
+// ✅ Closure (=>) - captures 'multiplier' from outer scope
+closureFn = ( n ) => n * multiplier
+println( closureFn( 5 ) )  // 50 (uses multiplier from outer scope)
+
+// ❌ Lambda (->) - does NOT capture 'multiplier', only uses arguments
+lambdaFn = ( n ) -> n * multiplier  // Error! multiplier not in scope
+lambdaFn = ( n ) -> n * 2           // ✅ Works - only uses argument 'n'
+println( lambdaFn( 5 ) )            // 10 (deterministic, no scope capture)
+```
 
 ### Key Capabilities
 
@@ -34,7 +55,11 @@ Closures can be:
 
 ## 📝 Closure Syntax
 
-BoxLang provides **two equivalent syntaxes** for creating closures. Both do exactly the same thing - choose whichever you prefer!
+BoxLang provides **two equivalent syntaxes** for creating closures. Both use the **fat arrow (`=>`)** and capture surrounding scope - choose whichever you prefer!
+
+{% hint style="info" %}
+**Closure Arrow**: Closures use the **fat arrow** `=>` which captures surrounding scope. This is different from the **skinny arrow** `->` used for [Lambdas](syntax/lambdas.md), which are deterministic and don't capture scope.
+{% endhint %}
 
 ### Full Syntax (Traditional)
 
@@ -57,9 +82,9 @@ calculate = function( numeric x, numeric y ) {
 };
 ```
 
-### Arrow Syntax (Shortcut)
+### Fat Arrow Syntax (Shortcut)
 
-Use the arrow operator `=>` for more concise syntax:
+Use the fat arrow operator `=>` for more concise syntax:
 
 ```js
 // Arrow syntax - equivalent to above
@@ -90,24 +115,32 @@ complex = ( x, y ) => {
 ```mermaid
 graph LR
     A[Closure Syntax] --> B[Full: function]
-    A --> C[Arrow: =>]
+    A --> C[Fat Arrow: =>]
 
     B --> D[function args { body }]
     C --> E[args => expression]
     C --> F[args => { body }]
 
+    G[NOT Closures] --> H[Skinny Arrow: ->]
+    H --> I[No scope capture]
+
     style A fill:#e1f5ff
     style B fill:#fff4e1
     style C fill:#e1ffe1
+    style G fill:#ffcccc
+    style H fill:#ffcccc
 ```
 
-| Feature | Full Syntax | Arrow Syntax |
-|---------|-------------|---------------|
+| Feature | Full Syntax | Fat Arrow Syntax |
+|---------|-------------|------------------|
 | Keyword | `function( args ) { }` | `( args ) => { }` |
+| Scope Capture | ✅ Yes (surrounding scope) | ✅ Yes (surrounding scope) |
 | Single Expression | Requires `return` | Implicit return |
 | Multi-line | `{ statements; return; }` | `{ statements; return; }` |
 | Readability | More verbose, explicit | More concise |
 | Use Case | Complex logic, clarity | Simple transforms, callbacks |
+
+**Note**: Both closure syntaxes use `=>` (fat arrow) and capture scope. For deterministic functions without scope capture, use [Lambdas](syntax/lambdas.md) with `->` (skinny arrow).
 
 ```js
 // ✅ Both work identically
@@ -337,7 +370,7 @@ result = retry(
 ```
 
 {% hint style="success" %}
-**Pro Tip**: Arrow syntax shines in functional programming patterns - it reduces visual noise and makes data transformations more readable.
+**Pro Tip**: Fat arrow syntax (`=>`) shines in functional programming patterns - it reduces visual noise and makes data transformations more readable. Use lambdas (`->`) when you need deterministic functions without scope capture.
 {% endhint %}
 
 ## ⏰ Delayed Execution
@@ -609,9 +642,13 @@ function myFunction() { return "Hello from function" }
 result = executeIfClosure( myFunction )  // "Not a closure: function"
 ```
 
-## ⚡ Arrow Functions
+## ⚡ Fat Arrow Syntax (Closure Shorthand)
 
-Arrow functions (`=>`) provide a concise syntax for creating closures. They work **identically** to full-syntax closures with one exception: **single-expression arrows have implicit return**.
+The fat arrow (`=>`) provides a concise syntax for creating closures. It works **identically** to full-syntax closures with one exception: **single-expression arrows have implicit return**.
+
+{% hint style="danger" %}
+**Critical Distinction**: The **fat arrow** `=>` creates **closures** that capture surrounding scope. Do NOT confuse this with the **skinny arrow** `->` which creates **lambdas** - deterministic functions that only access arguments and local variables. See [Lambdas](syntax/lambdas.md) for details on `->` syntax.
+{% endhint %}
 
 ### Single Expression (Implicit Return)
 
@@ -664,13 +701,17 @@ println( isOdd( 10 ) )  // "even"
 
 ### Syntax Rules
 
-| Form | Syntax | Return Behavior |
-|------|--------|----------------|
+| Form | Syntax (Closure `=>`) | Return Behavior |
+|------|----------------------|----------------|
 | **Single expression** | `( args ) => expression` | Implicit return |
 | **Multi-line** | `( args ) => { statements }` | Explicit `return` required |
 | **No arguments** | `() => expression` | Parentheses required |
 | **Single argument** | `arg => expression` | Parentheses optional |
 | **Multiple arguments** | `( arg1, arg2 ) => expression` | Parentheses required |
+
+{% hint style="info" %}
+**Reminder**: All these examples use the **fat arrow** `=>` for closures. For lambdas with **skinny arrow** `->`, see [Lambdas](syntax/lambdas.md).
+{% endhint %}
 
 ### Comparison Table
 
@@ -817,7 +858,7 @@ functions.each( fn => fn() )  // Prints: 0, 1, 2
 
 **Closures** are powerful tools for functional programming in BoxLang:
 
-✅ **Two Syntaxes** - `function() {}` and `() => {}` are equivalent
+✅ **Two Syntaxes** - `function() {}` and `() => {}` (fat arrow) are equivalent
 
 ✅ **Scope Capture** - Access variables from surrounding scope
 
@@ -828,15 +869,17 @@ functions.each( fn => fn() )  // Prints: 0, 1, 2
 ✅ **Functional Patterns** - Perfect for `map`, `filter`, `reduce`, callbacks
 
 ✅ **Flexible** - Use whichever syntax fits your style
+⚠️ **Not Lambdas** - Closures (`=>`) capture scope; for deterministic functions use [Lambdas](syntax/lambdas.md) (`->`)
 
 {% hint style="success" %}
-**Pro Tip**: Master closures to unlock BoxLang's functional programming capabilities. They're essential for modern, expressive code!
+**Pro Tip**: Master closures to unlock BoxLang's functional programming capabilities. They're essential for modern, expressive code! Use closures (`=>`) when you need scope access, and [Lambdas](syntax/lambdas.md) (`->`) for pure, deterministic functions.
 {% endhint %}
 
 ---
 
 ## 🔗 Related Documentation
 
+- [Lambdas](syntax/lambdas.md) - Deterministic functions with `->` (skinny arrow)
 - [Functions](../reference/functions.md) - User-defined functions
 - [Variable Scopes](../variable-scopes.md) - Understanding BoxLang scopes
 - [Arrays](../arrays.md) - Array methods that use closures
