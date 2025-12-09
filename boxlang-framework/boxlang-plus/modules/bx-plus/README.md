@@ -46,16 +46,11 @@ install-bx-module bx-plus
 
 For a complete list of features and benefits, visit the [BoxLang Plans](https://boxlang.io/plans) page.
 
-* `bx` - The BoxLang test code
-* `java` - Java test code
-* `resources` - Resources for testing
-  * `libs` - BoxLang binary goes here for now.
-
 ## Getting Started
 
 ### License Activation
 
-To activate your BoxLang+ or BoxLang++ subscription and enable enterprise features:
+To activate your BoxLang+ or BoxLang++ subscription and enable enterprise features you can do so, programmatically, using the built in functions or use the CLI ( see below ) for building hardened images and deployments:
 
 ```javascript
 // Activate your license using the provided BIF
@@ -68,7 +63,7 @@ boxlangLicenseActivate(
 
 ### Refreshing License Token
 
-To refresh your license token and ensure continued access to enterprise features:
+To refresh your license token ( Note: the refresh will automatically be attempted on the day of the previous token expiration):
 
 ```javascript
 // Refresh the current license token
