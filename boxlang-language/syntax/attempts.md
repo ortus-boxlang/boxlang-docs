@@ -1097,7 +1097,7 @@ attempt( formData )
 
 ```js
 // ✅ Good: Single transformation chain
-results = data.map( item -> 
+results = data.map( item ->
     attempt( processItem( item ) )
         .map( result -> transform( result ) )
         .orElse( defaultValue )
@@ -1106,7 +1106,7 @@ results = data.map( item ->
 // ❌ Avoid: Creating unnecessary attempts in loops
 for ( item in data ) {
     // Creates attempt object every iteration even if not needed
-    temp = attempt( item ).orElse( item ); 
+    temp = attempt( item ).orElse( item );
 }
 ```
 
@@ -1133,7 +1133,7 @@ for ( item in data ) {
    function validateUser( user ) {
        return user.age >= 18 && user.email.len() > 0;
    }
-   
+
    attempt( getUser() )
        .toSatisfy( validateUser )
        .ifValid( processUser );
@@ -1143,7 +1143,7 @@ for ( item in data ) {
    ```js
    // Simple value - use orElse
    name = attempt( user.name ).orElse( "Anonymous" );
-   
+
    // Computed value - use orElseGet (lambda only runs if needed)
    data = attempt( getCache() ).orElseGet( () -> expensiveComputation() );
    ```
