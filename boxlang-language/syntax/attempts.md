@@ -1,373 +1,1016 @@
 ---
-description: A Dynamic holder of a potential value
-icon: list-tree
+description: Fluent functional container for handling nullable values with validation pipelines
+icon: shield-check
 ---
 
-# Attempts
+# 🎯 Attempts
 
-Attempts in BoxLang are an enhanced Java [Optional](https://www.developer.com/java/java-optional-object/). It acts as a fluent container of a value or expression that can be null, truthy, falsey, or exist. It then provides fluent methods to interact with the potential value or expression.
-
-Attempts are also unmodifiable, so you can chain methods to handle the value more functionally, but it never mutates the original value. It can also be seeded with validation information to create validation pipelines.
-
-```java
-attempt( userService.get( rc.id ) )
-    .ifPresent( user -> populate( user ).save() )
-    .orThrow( "UserNotFoundException" )
-```
-
-In this example, you can see that the expression creates a value to check if the user requested exists and is loaded. Then, you can fluently populate and save the user if the user is present or throw an exception.
+Attempts in BoxLang are an enhanced Java [Optional](https://www.developer.com/java/java-optional-object/) that provides a **fluent, functional approach** to handling nullable values. Think of an Attempt as a smart container that can hold a value or be empty, with powerful methods for safely working with that value without null pointer exceptions.
 
 {% hint style="success" %}
-BoxLang internally will return `Attempts` in many BIFS and internal operations.
+**Key Benefits**: Attempts eliminate verbose null checks, enable declarative validation pipelines, and make your code more readable and maintainable through functional chaining patterns.
 {% endhint %}
 
-## Why
+## 🌟 Why Use Attempts?
 
-Attempts will allow you to use more declarative and functional programming techniques than dealing with nulls or falsey values. It provides a better API for developers to follow and absorb. You will ultimately write concise and more readable code that is easier to maintain and test.
+Attempts provide several advantages over traditional null handling:
 
-## States
+- ✅ **Eliminate null checks** - No more `if (isNull(value))` everywhere
+- ✅ **Fluent API** - Chain operations naturally: `.map().filter().orElse()`
+- ✅ **Built-in validation** - Attach validation rules to create pipelines
+- ✅ **Immutable** - Chain methods without mutating original values
+- ✅ **Functional programming** - Write declarative, composable code
+- ✅ **Error handling** - Convert missing values to exceptions or defaults gracefully
 
-```mermaid fullWidth="false"
-stateDiagram
-    state "Present" as Present
-    state "Empty" as Empty
+### Traditional vs Attempt Approach
 
-    [*] --> Empty
-    [*] --> Present
-```
-
-An attempt can only have two states: **present** or **empty**. They can be retrieved with two methods:
-
-* `isEmpty():boolean`
-* `isPresent():boolean`
-
-The rules for evaluating that we have a value **present** are:
-
-* The value is not `null`
-
-We also have some fluent aliased methods to create readable chains:
-
-* `isNull():boolean`
-* `hasFailed():boolean`
-* `wasSuccessful():boolean`
-
-```java
-attempt( null )
-    .isEmpty() // true
-
-attempt( null )
-    .isPresent() // false
-
-attempt( "hello" )
-    .isPresent() // true
-```
-
-## Creation
-
-You can create attempts using our BIF `attempt()`.
-
-### Empty
-
-To create empty attempts, don't pass anything:
-
-```java
-emptyAttempt = attempt()
-```
-
-Remember that this is an empty attempt, you can change it's value.
-
-### With Potential Value
-
-If you pass a value into the BIF, that value will be stored in the attempt, which can later be evaluated for existence. You can pass a value or an expression that could be `null`.
-
-```java
-attempt( userService.get( rc.id ) )
-attempt( userService.get( rc.id ).isLoaded() )
-attempt( getBoxCache().get( "my-cache-value" ) )
-attempt( getStudentWithName( "majano" ) )
-```
-
-## Usage
-
-We can interact with it now that we have created an attempt or received one. Here is the arsenal of methods available to create fluent execution chains.
-
-### equals( object ):boolean
-
-This allows you to compare if two attempts are equal.
-
-```java
-if( attempt1.equals( attempt2 ) ){
-    .. do this
+```js
+// ❌ Traditional approach - verbose and error-prone
+user = userService.get( rc.id );
+if ( isNull( user ) ) {
+    throw( "UserNotFoundException" );
 }
-```
+email = user.getEmail();
+if ( isNull( email ) ) {
+    throw( "Email not found" );
+}
+domain = email.listLast( "@" );
 
-### filter( function ):attempt
-
-If a value is present and matches the given closure/lambda, it returns an Attempt describing the value; otherwise, it returns an empty Attempt.
-
-```java
-attempt( userService.findById( 25 ) )
-    .filter( u -> u.getAge() >= 21 )
+// ✅ Attempt approach - clean and declarative
+attempt( userService.get( rc.id ) )
+    .flatMap( user -> user.getEmail() )
+    .map( email -> email.listLast( "@" ) )
     .ifPresentOrElse(
-        u -> println( "The user is of legal drinking age" ),
-        () -> println( "The user is not of legal drinking age" )
-    )
+        domain -> println( "Domain: #domain#" ),
+        () -> throw( "User or email not found" )
+    );
 ```
 
-### flatMap( function ):attempt
+Attempts are also **unmodifiable**, so you can chain methods to handle the value more functionally, but it never mutates the original value. It can also be seeded with validation information to create validation pipelines.
 
-If a value is present, it returns the result of applying the given `Attempt`-bearing mapping function to the value; otherwise, it returns an empty `Attempt`. Using `flatMap` allows you to avoid nested attempt objects and directly get the transformed result. The `getEmail()` method returns an attempt, not a value.
+## 💻 Attempts in Code
 
-{% code title="User.bx" %}
-```java
-class User{
-    property email
+Let's see practical examples of Attempts in action:
 
-    ...
+```js
+// Simple value retrieval with default
+cacheValue = attempt( getBoxCache().get( "user-123" ) )
+    .orElse( "not-found" );
 
-    Attempt getEmail(){
-        return attempt( email )
+// Complex pipeline with validation
+attempt( userService.get( rc.id ) )
+    .filter( user -> user.isActive() )
+    .map( user -> user.getEmail() )
+    .ifPresentOrElse(
+        email -> sendWelcome( email ),
+        () -> logError( "No active user found" )
+    );
+
+// Multi-tier fallback lookup
+data = attempt( dataService.findGlobally( id ) )
+    .or( () -> dataService.findLocally( id ) )
+    .or( () -> dataService.findInCache( id ) )
+    .orElseGet( () -> dataService.createDefault( id ) );
+
+// Validation pipeline
+attempt( getCreditScore() )
+    .toBeBetween( 700, 850 )
+    .ifValid( score -> approveApplication( score ) )
+    .ifInvalid( () -> denyApplication() );
+```
+
+{% hint style="info" %}
+**BoxLang Integration**: Many BoxLang BIFs and internal operations return `Attempts`, making it easy to integrate attempt-based patterns throughout your codebase.
+{% endhint %}
+
+## 🔄 Attempt States
+
+An Attempt can exist in only **two states**:
+
+```mermaid
+stateDiagram-v2
+    [*] --> Empty: attempt() or null value
+    [*] --> Present: attempt(value) with non-null
+
+    Empty --> Present: Never (immutable)
+    Present --> Empty: Never (immutable)
+
+    note right of Empty
+        No value contained
+        Most operations skipped
+        Returns defaults/empties
+    end note
+
+    note right of Present
+        Value contained
+        Operations execute
+        Can be filtered to Empty
+    end note
+```
+
+### State Checking Methods
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `isEmpty()` | boolean | ✅ Core check - true if no value present |
+| `isPresent()` | boolean | ✅ Core check - true if value exists |
+| `isNull()` | boolean | 🔍 Value check - true if value is null |
+| `hasFailed()` | boolean | 📝 Alias for `isEmpty()` - more readable for error handling |
+| `wasSuccessful()` | boolean | 📝 Alias for `isPresent()` - more readable for success cases |
+
+### Rules for Present State
+
+An attempt is **present** if and only if:
+- ✅ The value is **not null**
+
+An attempt is **empty** if:
+- ❌ The value is **null**
+- ❌ Created with `attempt()` (no arguments)
+
+### Examples
+
+```js
+// Empty attempts
+attempt()
+    .isEmpty();           // ✅ true
+    .isPresent();         // ❌ false
+    .hasFailed();         // ✅ true
+    .wasSuccessful();     // ❌ false
+
+attempt( null )
+    .isEmpty();           // ✅ true
+    .isNull();            // ✅ true
+
+// Present attempts
+attempt( "hello" )
+    .isPresent();         // ✅ true
+    .isEmpty();           // ❌ false
+    .wasSuccessful();     // ✅ true
+
+attempt( 0 )              // Even 0 is present!
+    .isPresent();         // ✅ true
+
+attempt( false )          // Even false is present!
+    .isPresent();         // ✅ true
+
+attempt( "" )             // Even empty string is present!
+    .isPresent();         // ✅ true
+```
+
+{% hint style="warning" %}
+**Important**: Only `null` makes an attempt empty. Empty strings, zero, false, and empty arrays/structs are all **present** values!
+{% endhint %}
+
+## 🏗️ Creating Attempts
+
+Create attempts using the `attempt()` BIF (Built-In Function).
+
+### Empty Attempt
+
+Create an empty attempt by calling `attempt()` with no arguments:
+
+```js
+emptyAttempt = attempt();
+
+emptyAttempt.isEmpty();      // true
+emptyAttempt.isPresent();    // false
+```
+
+{% hint style="info" %}
+**Immutability**: Remember that attempts are **immutable** - you cannot change an empty attempt to a present one, or vice versa. Each operation returns a new attempt.
+{% endhint %}
+
+### Attempt with Value
+
+Pass any value or expression to create an attempt that may be present or empty:
+
+```js
+// Direct values
+attempt( "hello" );              // Present
+attempt( 123 );                  // Present
+attempt( null );                 // Empty
+attempt( [ 1, 2, 3 ] );         // Present
+
+// Expressions that might return null
+attempt( userService.get( rc.id ) );
+attempt( getBoxCache().get( "user-123" ) );
+attempt( queryExecute( sql ).recordCount ? query : null );
+
+// Function calls
+attempt( getStudentByName( "luis" ) );
+attempt( apiService.fetchUserData( userId ) );
+
+// Struct access (might not exist)
+attempt( config.database?.host );
+```
+
+### Creation Patterns
+
+```js
+// From service layer - might return null
+user = attempt( userService.findById( 42 ) );
+
+// From cache - might not be cached
+cachedData = attempt( cacheGet( "myKey" ) );
+
+// From API call - might fail
+apiResult = attempt( httpGet( "https://api.example.com/data" ) );
+
+// From database query - might return no rows
+firstRow = attempt( queryExecute( "SELECT * FROM users WHERE id = ?" , [id] ).getRow( 1 ) );
+
+// Conditional creation
+validUser = attempt( user.isActive() ? user : null );
+```
+
+## 🛠️ Working with Attempts
+
+Once you have an attempt, you can interact with it using a rich set of fluent methods. These methods fall into several categories:
+
+```mermaid
+graph LR
+    A[Attempt Methods] --> B[🔍 Checking]
+    A --> C[🎯 Retrieving]
+    A --> D[🔄 Transforming]
+    A --> E[🎭 Conditional Actions]
+    A --> F[✅ Validation]
+    A --> G[🔗 Chaining]
+
+    B --> B1[isEmpty/isPresent]
+    B --> B2[isNull/isValid]
+
+    C --> C1[get/getOrFail]
+    C --> C2[orElse/orElseGet]
+    C --> C3[orThrow]
+
+    D --> D1[map]
+    D --> D2[flatMap]
+    D --> D3[filter]
+
+    E --> E1[ifPresent]
+    E --> E2[ifEmpty]
+    E --> E3[ifPresentOrElse]
+    E --> E4[ifValid/ifInvalid]
+
+    F --> F1[toBe/toBeType]
+    F --> F2[toBeBetween]
+    F --> F3[toMatchRegex]
+    F --> F4[toSatisfy]
+
+    G --> G1[or]
+    G --> G2[stream]
+    G --> G3[toOptional]
+```
+
+## 📖 Method Reference
+
+### 🔍 State Checking Methods
+
+#### `isEmpty():boolean`
+
+Returns `true` if the attempt has no value (is null).
+
+```js
+attempt( null ).isEmpty();        // true
+attempt( "value" ).isEmpty();     // false
+```
+
+#### `isPresent():boolean`
+
+Returns `true` if the attempt contains a value (not null).
+
+```js
+attempt( "hello" ).isPresent();   // true
+attempt( null ).isPresent();      // false
+```
+
+#### `isNull():boolean`
+
+Returns `true` if the value is null.
+
+```js
+attempt( null ).isNull();         // true
+attempt( 0 ).isNull();            // false
+```
+
+#### `hasFailed():boolean` / `wasSuccessful():boolean`
+
+Fluent aliases for `isEmpty()` and `isPresent()` for more readable code.
+
+```js
+attempt( apiCall() )
+    .hasFailed();                  // Same as isEmpty()
+
+attempt( processData() )
+    .wasSuccessful();              // Same as isPresent()
+```
+
+#### `equals( object ):boolean`
+
+Compare two attempts for equality.
+
+```js
+attempt1 = attempt( "hello" );
+attempt2 = attempt( "hello" );
+attempt3 = attempt( "world" );
+
+attempt1.equals( attempt2 );       // true
+attempt1.equals( attempt3 );       // false
+
+// Empty attempts are equal
+attempt().equals( attempt() );     // true
+```
+
+### 🎯 Value Retrieval Methods
+
+#### `get():any` / `getOrFail():any`
+
+Get the value of the attempt. **Throws exception** if the attempt is empty.
+
+```js
+user = attempt( userService.findById( rc.id ) ).get();
+
+// Throws NoElementException if empty
+try {
+    value = attempt( null ).get();  // ❌ Throws!
+} catch ( any e ) {
+    println( "No value present!" );
+}
+
+// getOrFail() is an alias for clarity
+data = attempt( apiCall() ).getOrFail();
+```
+
+{% hint style="danger" %}
+**Warning**: Only use `get()` when you're **certain** the value exists, or wrap in try/catch. Consider using `orElse()`, `orElseGet()`, or `orThrow()` for safer alternatives.
+{% endhint %}
+
+#### `orElse( defaultValue ):any` / `getOrDefault( defaultValue ):any`
+
+Returns the value if present, otherwise returns the provided default.
+
+```js
+// orElse - functional style
+username = attempt( session.username )
+    .orElse( "Anonymous" );
+
+// getOrDefault - more explicit
+cacheValue = attempt( cacheGet( "key" ) )
+    .getOrDefault( "not-found" );
+
+// With complex defaults
+config = attempt( loadConfig() )
+    .orElse( { defaultSettings: true } );
+```
+
+#### `orElseGet( supplier ):any` / `getOrSupply( supplier ):any`
+
+Returns the value if present, otherwise executes the supplier function and returns its result.
+
+```js
+// Only calls createDefault() if attempt is empty
+data = attempt( fetchFromCache( id ) )
+    .orElseGet( () -> createDefault( id ) );
+
+// Expensive operation only when needed
+user = attempt( getUserFromCache( userId ) )
+    .getOrSupply( () -> {
+        // Only runs if cache miss
+        return userService.findById( userId );
+    } );
+
+// Multiple fallback layers
+result = attempt( primarySource() )
+    .orElseGet( () -> backupSource() );
+```
+
+{% hint style="success" %}
+**Performance Tip**: Use `orElseGet()` with a lambda when the default value is expensive to compute. It's only called if the attempt is empty. Use `orElse()` for simple values that are cheap to create.
+{% endhint %}
+
+#### `orThrow( [type], [message|exception] ):any`
+
+Returns the value if present, otherwise throws an exception.
+
+```js
+// Throws NoElementException with default message
+user = attempt( userService.findById( rc.id ) )
+    .orThrow();
+
+// Custom message
+user = attempt( userService.findById( rc.id ) )
+    .orThrow( "User with id [#rc.id#] not found" );
+
+// Custom exception type and message
+user = attempt( userService.findById( rc.id ) )
+    .orThrow( "UserNotFoundException", "User #rc.id# does not exist" );
+
+// Custom exception object
+user = attempt( validateInput( data ) )
+    .orThrow( new ValidationException( "Invalid data provided" ) );
+```
+
+### 🔄 Transformation Methods
+
+#### `map( mapper ):attempt`
+
+Transform the value if present by applying a function. Returns a new attempt with the transformed value.
+
+```js
+// Simple transformation
+upperEmail = attempt( user.getEmail() )
+    .map( email -> email.ucase() )
+    .orElse( "" );
+
+// Chaining transformations
+fullName = attempt( user.getName() )
+    .map( name -> name.trim() )
+    .map( name -> name.ucase() )
+    .orElse( "UNKNOWN" );
+
+// Extract property
+userDTO = attempt( userService.findById( rc.id ) )
+    .map( user -> user.getMemento() )
+    .orElse( {} );
+
+// Multiple steps
+domain = attempt( user.getEmail() )
+    .map( email -> email.listLast( "@" ) )
+    .map( domain -> domain.lcase() )
+    .orElse( "unknown.com" );
+```
+
+{% hint style="info" %}
+**Map vs FlatMap**: Use `map()` when your mapper function returns a **regular value**. Use `flatMap()` when your mapper function returns an **Attempt**.
+{% endhint %}
+
+#### `filter( predicate ):attempt`
+
+If a value is present and matches the given predicate, returns an Attempt with the value; otherwise, returns an empty Attempt.
+
+```js
+// Filter by age
+attempt( userService.findById( 25 ) )
+    .filter( user -> user.getAge() >= 21 )
+    .ifPresentOrElse(
+        user -> println( "User is of legal age" ),
+        () -> println( "User is underage" )
+    );
+
+// Filter active users
+activeUsers = users
+    .map( userId -> attempt( userService.findById( userId ) ) )
+    .filter( attempt -> attempt.isPresent() )
+    .map( attempt -> attempt.get() )
+    .filter( user -> user.isActive() );
+
+// Multiple filters
+validEmail = attempt( user.getEmail() )
+    .filter( email -> email.len() > 0 )
+    .filter( email -> email.findNoCase( "@" ) > 0 )
+    .orElse( "no-email@example.com" );
+```
+
+#### `flatMap( mapper ):attempt`
+
+Apply a function that returns an Attempt, flattening the result to avoid nested Attempts. Use this when your mapping function itself returns an Attempt.
+
+**The Problem:** If `getEmail()` returns an Attempt and you use `map()`, you get `Attempt<Attempt<String>>` (nested).
+
+**The Solution:** `flatMap()` automatically unwraps one level, giving you `Attempt<String>`.
+
+```js
+// Example: User.bx class
+class User {
+    property email;
+
+    function getEmail() {
+        // Returns an Attempt, not a String
+        return attempt( variables.email );
     }
 }
-```
-{% endcode %}
 
-<pre class="language-java"><code class="lang-java">// written without attempts
-var user = userService.findUserById( userId )
-if( isNull( user ) ){
+// ❌ Using map() creates nested Attempt<Attempt<String>>
+nested = attempt( userService.findById( userId ) )
+    .map( user -> user.getEmail() );  // Returns Attempt<Attempt<String>>
+
+// ✅ Using flatMap() flattens to Attempt<String>
+email = attempt( userService.findById( userId ) )
+    .flatMap( user -> user.getEmail() )  // Returns Attempt<String>
+    .orElse( "no-email@example.com" );
+```
+
+### Complete Example: Before and After
+
+```js
+// ❌ Traditional approach - verbose null checks
+user = userService.findUserById( userId );
+if ( isNull( user ) ) {
     throw( "Unable to find user" );
 }
-var email = user.getEmail();
-if( isNull( email ) ){
+
+emailAttempt = user.getEmail();
+if ( emailAttempt.isEmpty() ) {
     throw( "Email not present" );
 }
-var domain = email.getToken( 2, "@" );
-println( "Email domain: " + domain);
 
+email = emailAttempt.get();
+domain = email.listLast( "@" );
+println( "Email domain: #domain#" );
 
-<strong>// Written with Attempts
-</strong>attempt( userService.getUserByEmail( "alice@example.com" ) )
-    .flatMap( .getEmail )
-    .map( .getToken( 2, "@" ) )
+// ✅ Attempt approach - clean and declarative
+attempt( userService.findUserById( userId ) )
+    .flatMap( user -> user.getEmail() )       // Unwraps Attempt<String> from getEmail()
+    .map( email -> email.listLast( "@" ) )    // Regular transformation
     .ifPresentOrElse(
-        domain -> println( "Email domain: " + domain),
-        () -> println("Email not present")
+        domain -> println( "Email domain: #domain#" ),
+        () -> println( "Email not present" )
     );
-</code></pre>
+```
 
-### get():any
+### Chaining Multiple FlatMaps
 
-Get the value of the attempt. If the attempt is empty it will throw an exception.
-
-```java
-user = attempt( userService.findById( rc.id ) ).get()
-myData = getBoxCache().get( "my-id" )
-
-if( myData.exists() ){
-    println( myData.get() )
+```js
+// Assume these methods return Attempts
+class User {
+    function getProfile() { return attempt( variables.profile ); }
 }
+
+class Profile {
+    function getAddress() { return attempt( variables.address ); }
+}
+
+class Address {
+    function getCity() { return attempt( variables.city ); }
+}
+
+// Chain through nested Attempts
+city = attempt( userService.findById( userId ) )
+    .flatMap( user -> user.getProfile() )
+    .flatMap( profile -> profile.getAddress() )
+    .flatMap( address -> address.getCity() )
+    .orElse( "Unknown City" );
 ```
 
-### getOrDefault( other ):any / orElse( other )
+### 🎭 Conditional Action Methods
 
-If a value is present, returns the value, otherwise returns the other passed value passed. You can use the `getOrDefaul() , orElse()` function according to your readability needs.
+#### `ifPresent( action ):attempt` / `ifSuccessful( action ):attempt`
 
-```java
-myData = getBoxCache()
-    .get( "my-id" )
-    .getOrDefault( "not available" );
+Execute an action if a value is present. Returns the same attempt for chaining.
 
-myData = getBoxCache()
-    .get( "my-id" )
-    .orElse( "not found" );
-```
-
-### getOrSupply( supplier ):any
-
-If a value is present, returns the value; otherwise returns the result from the passed function/closure/lambda.
-
-```java
-myData = getBoxCache().get( "my-id" ).getOrSupply( () -> createIt() )
-```
-
-### ifEmpty( consumer ):attempt / ifFailed( consumer )
-
-If the attempt is NOT present, run the consumer. This returns the same attempt.
-
-```java
-user = attempt( userService.findById( rc.id ) )
-    .ifEmpty( () -> println( "The user with id [#rc.id#] was not found" ) )
-
-attempt( dataService.saveData( data ) )
-    .ifFailed( () -> log.error( "the data was not saved correctly" ) )
-
+```js
+// Store data if API call succeeded
 attempt( apiService.getUserData( rc.id ) )
-    .ifFailed( () -> println( "The data call failed" ) )
+    .ifPresent( data -> rc.user = data );
+
+// ifSuccessful is an alias for better readability
+attempt( saveToDatabase( record ) )
+    .ifSuccessful( result -> logSuccess( "Saved record #result.id#" ) );
+
+// Chaining multiple actions
+attempt( userService.findById( rc.id ) )
+    .ifPresent( user -> {
+        populate( user, rc );
+        user.save();
+        logAudit( "User updated" );
+    } );
 ```
 
-### ifPresent( action ):attempt / ifSuccessful()
+#### `ifEmpty( action ):attempt` / `ifFailed( action ):attempt`
 
-If a value is present, performs the given action with the value, otherwise does nothing. You can use either `ifPresent() or ifSuccessful()` depending on your fluency
+Execute an action if the attempt is empty. Returns the same attempt for chaining.
 
-```java
-attempt( apiService.getUserData( rc.id ) )
-    // store the data in my rc scope
-    .ifPresent( data -> rc.user = data )
-    // show an error message
-    .ifFailed( () -> println( "The data call failed" ) )
+```js
+// Log when user not found
+attempt( userService.findById( rc.id ) )
+    .ifEmpty( () -> log.warn( "User #rc.id# not found" ) );
 
-attempt( apiService.getUserData( rc.id ) )
-    // store the data in my rc scope
-    .ifSuccessful( data -> rc.user = data )
-    // show an error message
-    .ifFailed( () -> println( "The data call failed" ) )
+// ifFailed is an alias for error handling contexts
+attempt( apiCall() )
+    .ifFailed( () -> metrics.incrementFailureCount() );
+
+// Combined with ifPresent
+attempt( processPayment( order ) )
+    .ifSuccessful( receipt -> sendConfirmation( receipt ) )
+    .ifFailed( () -> notifyAdmin( "Payment failed for order #order.id#" ) );
 ```
 
-### ifPresentOrElse( action, action ):attempt
+#### `ifPresentOrElse( presentAction, emptyAction ):attempt`
 
-If a value is present, performs the given action with the value, otherwise performs the given empty-based action.
+Execute one of two actions based on whether the value is present.
 
-```java
+```js
+// Handle both success and failure cases
 attempt( apiService.getUserData( rc.id ) )
     .ifPresentOrElse(
         data -> rc.user = data,
-        () -> println( "The data call failed" )
-    )
+        () -> rc.user = getGuestUser()
+    );
+
+// With complex logic
+attempt( fetchLatestData() )
+    .ifPresentOrElse(
+        data -> {
+            cache.set( "latest", data );
+            updateUI( data );
+        },
+        () -> {
+            log.error( "Failed to fetch latest data" );
+            useStaleData();
+        }
+    );
 ```
 
-### map( mapper ):attempt
+### 🔗 Chaining and Fallback Methods
 
-Map the attempt to a new value with a supplier if it exists, else it's ignored and returns the same attempt.
+#### `or( supplier ):attempt`
 
-```java
-attempt( user.getEmail() )
-    .map( .toUpperCase )
-    ifPresent( email -> println( "The email is [#email#]" ) )
+If empty, returns a new Attempt produced by the supplier function. Great for fallback chains.
 
-attempt( userService.findById( rc.id ) )
-    .map( .getMemento )
-    .getOrDefault( {} )
+```js
+// Try multiple sources in order
+data = attempt( findInCache( id ) )
+    .or( () -> attempt( findInDatabase( id ) ) )
+    .or( () -> attempt( findInArchive( id ) ) )
+    .orElse( null );
+
+// Multi-tier lookup with different sources
+user = attempt( userService.findGlobally( userId ) )
+    .or( () -> userService.findLocally( userId ) )
+    .or( () -> userService.findInCache( userId ) )
+    .orThrow( "User not found anywhere" );
+
+// Try primary, then backup server
+apiResult = attempt( primaryAPI.getData() )
+    .or( () -> {
+        log.warn( "Primary API failed, trying backup" );
+        return backupAPI.getData();
+    } )
+    .orElseGet( () -> getDefaultData() );
 ```
 
-### or( supplier ):attempt
+### 🌊 Stream Integration
 
-If a value is present, returns the Attempt, otherwise returns an Attempt produced by the supplying function. This is great for doing n-tier level lookups.
+#### `stream():Stream<T>`
 
-```java
-attempt( dataService.findGlobally() )
-    // If the previous api call produced nothing, try our backup server
-    .or( () -> dataService.findLocally() )
-    .orThrow( "Data not found anywhere" )
-```
+Convert the attempt to a Java Stream. If present, returns a single-element stream; if empty, returns an empty stream.
 
-### orElseGet( supplier ):any
-
-This is similar to the `getOrDefault(), orElse()` methods, but with the caveat that this method calls the supplier closure/lambda, and whatever that produces is used. This is great for dynamically producing the result.
-
-```java
-attempt( dataService.findGlobally() )
-    // If the previous api call produced nothing, try our backup server
-    .or( () -> dataService.findLocally() )
-    // If still not found, then produce it
-    .orElseGet( () -> dataService.produceData() )
-```
-
-### orThrow( \[throwable|message] ):any
-
-If a value is present, returns the value, otherwise throws a `NoElementException` if no exception is passed. If you pass in a **message**, it will throw an exception with that **message.** If you pass in your own **Exception** object, it will throw that exception object.
-
-```java
-function getData(){
-    return attempt( dataService.findGlobally() )
-    // If the previous api call produced nothing, try our backup server
-    .or( () -> dataService.findLocally() )
-    .orThrow()
-}
-
-function getUser( required id ){
-    return attempt( userService.findById( id ) )
-        .orThrow( "User with id [#id#] not found" );
-}
-```
-
-### stream()
-
-If a value is present, returns a sequential Stream containing only that value, otherwise returns an empty Stream. Let's say we have a list of `Person` objects, each with an optional `Address` field. We want to extract a list of all city names from those persons who actually have an address.
-
-```java
+```js
+// Filter out empty attempts when processing collections
 people = [
-    new Person( "Luis", attempt( new Address( "New York" ) ),
-    new Person( "Jaime", attempt() ),
-    new Person( "Jon", attempt( new Address( "Grand Rapids" ) ),
-    new Person( "Ana", attempt() ),
-    new Person( "Mario", attempt() ),
-    new Person( "Edgardo", attempt( new Address( "San Salvador" ) ),
-]
+    { name: "Luis", address: attempt( { city: "New York" } ) },
+    { name: "Jaime", address: attempt() },
+    { name: "Jon", address: attempt( { city: "Grand Rapids" } ) },
+    { name: "Ana", address: attempt() },
+    { name: "Edgardo", address: attempt( { city: "San Salvador" } ) }
+];
 
+// Extract cities from people who have addresses
 cities = people
-    // get a stream of the array of people
     .stream()
-    // extract the address attempt from each person
-    .map( .getAddress )
-    // Flatten the Attempt<Address> into a stream of Address objects
-    // Empty attempts are discarded
-    .flatMap( .stream )
-    // Extract the city from the address
-    .map( .getCity )
-    // convert into a list
-    .toList()
+    .map( person -> person.address )        // Get Attempt<Address>
+    .flatMap( attempt -> attempt.stream() ) // Flatten: discards empties
+    .map( address -> address.city )         // Extract city
+    .toList();
+// Result: ["New York", "Grand Rapids", "San Salvador"]
+
+// Count successful operations
+successCount = operations
+    .stream()
+    .map( op -> attempt( op.execute() ) )
+    .flatMap( attempt -> attempt.stream() )
+    .count();
 ```
 
-### toString()
+#### `toOptional():Optional<T>`
 
-Returns the string representation of the value, if any.
+Convert the attempt to a Java `Optional` for interoperability with Java code.
 
-```java
-println( attempt().toString() ) // Attempt.empty
-println( attempt( "hello" ).toString() ) // Attempt[hello]
+```js
+// When calling Java libraries expecting Optional
+javaService = createObject( "java", "com.example.Service" );
+
+boxlangAttempt = attempt( getData() );
+javaOptional = boxlangAttempt.toOptional();
+
+javaService.processData( javaOptional );
 ```
 
-## Validation Usage
+### 🔧 Utility Methods
 
-The usage section focused on traditional usage for the attempt class. In this section, we will expand the usage to also include custom validation. The process of validation is:
+#### `toString():String`
 
-1. Use the `to{Method}()` matchers to register what the value should match against.
-2. Validate using `isValid():boolean` to see if the value matches your validation matcher.
-3. Use the `ifValid( consumer )` that if the attempt is valid it will call your closure/lambda with the value of the attempt.
-4. Use the `ifInvalid( action )` that if the attempt is invalid it will call the action
+Get a string representation of the attempt.
 
-If the state of the attempt is empty, then `isValid()` will always be **false**.
+```js
+println( attempt().toString() );         // "Attempt.empty"
+println( attempt( "hello" ).toString() ); // "Attempt[hello]"
+println( attempt( 123 ).toString() );     // "Attempt[123]"
+println( attempt( null ).toString() );    // "Attempt.empty"
 
-### Matchers
+// Useful for debugging
+log.debug( "User attempt: #userAttempt.toString()#" );
+```
 
-The available matchers are:
+#### `hashCode():int` / `equals( object ):boolean`
 
-* `toBe( otherValue )` - Stores a value to explicitly match against the `otherValue`
-* `toBeBetween( min, max )` - Validates the attempt to be between a range of numbers This assumes the value is a number or castable to a number. The range is inclusive/boxed.
-* `toBeType( type )` - Validates the attempt to be a specific BoxLang type that you can pass to the `isValid` function. Check out the [isValid](../reference/built-in-functions/decision/IsValid.md) function
-* `toMatchRegex( pattern, [caseSensitive=true] )` - Validates the attempt to match a regex pattern with case sensitivity This assumes the value is a string or castable to a string
-* `toSatisfy( predicate )` - Register a validation function to the attempt. This function will be executed when the attempt is evaluated It must return TRUE for the attempt to be valid. This is the most flexible approach as your closure/lambda will validate the incoming result attempt as it sees fit.
+Standard Java object methods for use in collections and comparisons.
 
-The matcher registration can happen anytime as long as it is before an `isValid()` call.
+```js
+// Create a map with attempts as keys
+attemptMap = {};
+attempt1 = attempt( "key1" );
+attemptMap[ attempt1 ] = "value1";
 
-```java
-attempt( "luis" ).toBe( "luis" ).isValid()
+// Equality comparison
+if ( attempt1.equals( attempt2 ) ) {
+    println( "Attempts are equal" );
+}
+```
 
+## ✅ Validation Pipelines
+
+Attempts provide powerful validation capabilities that let you attach validation rules and create validation pipelines. This is perfect for input validation, business rules, and data quality checks.
+
+### Validation Flow
+
+```mermaid
+graph TD
+    A[Create Attempt] --> B[Attach Validation Matcher]
+    B --> C{Check isValid?}
+    C -->|true| D[ifValid executes]
+    C -->|false| E[ifInvalid executes]
+    D --> F[Continue chain]
+    E --> F
+
+    style A fill:#e1f5ff
+    style B fill:#fff4e1
+    style C fill:#ffe1e1
+    style D fill:#e1ffe1
+    style E fill:#ffe1e1
+```
+
+### Validation Process
+
+1. **Attach Matcher** - Use `to{Method}()` to register validation rules
+2. **Check Validity** - Use `isValid():boolean` to test if value matches rules
+3. **Conditional Actions** - Use `ifValid()` / `ifInvalid()` for conditional execution
+
+{% hint style="warning" %}
+**Important**: If the attempt is **empty**, `isValid()` always returns **false**, regardless of validation rules.
+{% endhint %}
+
+### 🎯 Validation Matchers
+
+#### `toBe( value ):attempt`
+
+Validate that the value exactly equals another value.
+
+```js
+// Exact match validation
+attempt( "admin" )
+    .toBe( "admin" )
+    .isValid();              // true
+
+attempt( getUserRole() )
+    .toBe( "administrator" )
+    .ifValid( role -> grantFullAccess() )
+    .ifInvalid( () -> restrictAccess() );
+
+// Numeric equality
+attempt( getStatusCode() )
+    .toBe( 200 )
+    .ifValid( () -> processSuccess() );
+```
+
+#### `toBeBetween( min, max ):attempt`
+
+Validate that a numeric value falls within a range (inclusive).
+
+```js
+// Credit score validation
 attempt( getCreditScore() )
-    .toBeBetween( 700, 800 )
-    .ifValid( score -> processApplication( score ) )
-    .ifInvalid( denyApplication() )
+    .toBeBetween( 700, 850 )
+    .ifValid( score -> approveApplication( score ) )
+    .ifInvalid( () -> denyApplication() );
 
+// Age verification
+attempt( user.age )
+    .toBeBetween( 18, 120 )
+    .ifValid( age -> processAdultContent() )
+    .ifInvalid( () -> redirectToError() );
 
+// Temperature range check
+attempt( getSensorReading() )
+    .toBeBetween( -50, 50 )
+    .ifInvalid( () -> triggerAlert( "Temperature out of range!" ) );
+
+// Price validation
+attempt( product.price )
+    .toBeBetween( 0.01, 999999.99 )
+    .ifValid( price -> addToCart( product ) );
+```
+
+#### `toBeType( type ):attempt`
+
+Validate against BoxLang types using the `isValid()` BIF type system.
+
+```js
+// Struct validation
 attempt( getUserData() )
     .toBeType( "struct" )
+    .ifValid( data -> processUserData( data ) );
 
-attempt( getHTTPCall().error )
-    .toMatchRegex( "^status\:200" )
-    .ifInvalid( () -> throw( "exception" ) )
+// Email validation
+attempt( input.email )
+    .toBeType( "email" )
+    .ifValid( email -> sendConfirmation( email ) )
+    .ifInvalid( () -> showError( "Invalid email address" ) );
 
+// URL validation
+attempt( config.apiEndpoint )
+    .toBeType( "url" )
+    .ifInvalid( () -> throw( "Invalid API endpoint" ) );
+
+// UUID validation
+attempt( request.sessionId )
+    .toBeType( "uuid" )
+    .ifValid( id -> loadSession( id ) );
+
+// Common types: string, numeric, boolean, date, struct, array, query, email, url, uuid, xml
+```
+
+{% hint style="info" %}
+**Type Reference**: See the [isValid() BIF documentation](../reference/built-in-functions/decision/IsValid.md) for all available type validators.
+{% endhint %}
+
+#### `toMatchRegex( pattern, [caseSensitive=true] ):attempt`
+
+Validate against a regular expression pattern.
+
+```js
+// Phone number format
+attempt( user.phone )
+    .toMatchRegex( "^\d{3}-\d{3}-\d{4}$" )
+    .ifValid( phone -> sendSMS( phone ) );
+
+// HTTP status pattern
+attempt( getHTTPCall().status )
+    .toMatchRegex( "^2\d{2}$" )  // 2xx success codes
+    .ifValid( () -> processSuccessfulResponse() )
+    .ifInvalid( () -> handleError() );
+
+// Case-insensitive matching
+attempt( getCountryCode() )
+    .toMatchRegex( "^(US|CA|MX)$", false )  // case-insensitive
+    .ifValid( code -> setShippingRates( code ) );
+
+// Username format validation
+attempt( input.username )
+    .toMatchRegex( "^[a-zA-Z0-9_]{3,20}$" )
+    .ifInvalid( () -> addError( "Invalid username format" ) );
+
+// Postal code validation
+attempt( address.postalCode )
+    .toMatchRegex( "^\d{5}(-\d{4})?$" )  // US ZIP code
+    .ifValid( zip -> validateAddress() );
+```
+
+#### `toSatisfy( predicate ):attempt`
+
+Custom validation using a closure/lambda. Most flexible approach.
+
+```js
+// Custom business rule
 attempt( getUser() )
-    .toSatisfy( user -> user.age > 4 && user.age < 10 )
-    .ifValid( user -> processRequest( user ) )
+    .toSatisfy( user -> user.age >= 21 && user.country == "US" )
+    .ifValid( user -> allowAlcoholPurchase( user ) );
 
+// Complex validation logic
+attempt( order )
+    .toSatisfy( order -> {
+        return order.total > 0
+            && order.items.len() > 0
+            && !order.isCancelled();
+    } )
+    .ifValid( order -> processPayment( order ) );
+
+// Multiple conditions
+attempt( password )
+    .toSatisfy( pwd -> {
+        hasLength = pwd.len() >= 8;
+        hasUpper = reFind( "[A-Z]", pwd );
+        hasLower = reFind( "[a-z]", pwd );
+        hasNumber = reFind( "[0-9]", pwd );
+        return hasLength && hasUpper && hasLower && hasNumber;
+    } )
+    .ifInvalid( () -> addError( "Password does not meet requirements" ) );
+
+// External validation function
+attempt( userData )
+    .toSatisfy( data -> validationService.validateUser( data ) )
+    .ifValid( data -> createAccount( data ) );
+```
+
+### 🎨 Validation Method Reference
+
+| Method | Returns | Description |
+|--------|---------|-------------|
+| `isValid()` | boolean | ✅ Returns true if value is present AND passes validation rules |
+| `ifValid( action )` | attempt | 🎯 Executes action if value is valid |
+| `ifInvalid( action )` | attempt | ❌ Executes action if value is invalid or empty |
+
+```js
+// Check validity
+isGoodScore = attempt( getCreditScore() )
+    .toBeBetween( 700, 850 )
+    .isValid();  // true or false
+
+// Execute on valid
+attempt( getCreditScore() )
+    .toBeBetween( 700, 850 )
+    .ifValid( score -> println( "Excellent credit: #score#" ) );
+
+// Execute on invalid
+attempt( getCreditScore() )
+    .toBeBetween( 700, 850 )
+    .ifInvalid( () -> println( "Credit score below threshold" ) );
+
+// Both together
+attempt( getCreditScore() )
+    .toBeBetween( 700, 850 )
+    .ifValid( score -> approveApplication( score ) )
+    .ifInvalid( () -> denyApplication() );
+```
+
+### 🔗 Validation Pipeline Examples
+
+#### Multi-Stage Validation
+
+```js
+// Validate user registration
+attempt( registrationForm )
+    .toBeType( "struct" )
+    .toSatisfy( form -> form.keyExists( "email" ) && form.keyExists( "password" ) )
+    .flatMap( form -> attempt( form.email ).toBeType( "email" ) )
+    .flatMap( email -> attempt( form.password ).toSatisfy( pwd -> pwd.len() >= 8 ) )
+    .ifValid( () -> createUser( registrationForm ) )
+    .ifInvalid( () -> showValidationErrors() );
+```
+
+#### API Input Validation
+
+```js
+// Validate API request
+function processAPIRequest( requestData ) {
+    return attempt( requestData )
+        .toBeType( "struct" )
+        .toSatisfy( data -> data.keyExists( "apiKey" ) )
+        .toSatisfy( data -> validateApiKey( data.apiKey ) )
+        .ifValid( data -> executeRequest( data ) )
+        .ifInvalid( () -> throw( type="InvalidRequest", message="Invalid API request" ) )
+        .orThrow();
+}
+```
+
+#### Form Validation Pipeline
+
+```js
+// Age verification form
+attempt( form.age )
+    .toBeType( "numeric" )
+    .toBeBetween( 0, 150 )
+    .toSatisfy( age -> age >= 21 )
+    .ifValid( age -> {
+        session.ageVerified = true;
+        redirectTo( "restricted-content" );
+    } )
+    .ifInvalid( () -> {
+        addError( "Must be 21 or older" );
+        redirectTo( "age-verification" );
+    } );
+```
+
+### 💡 Validation Best Practices
+
+1. ✅ **Attach validators early** - Register validation rules as soon as you create the attempt
+2. ✅ **Use specific validators** - Prefer `toBeType()` and `toMatchRegex()` over generic `toSatisfy()` when possible
+3. ✅ **Chain validations** - Combine multiple validators for complex rules
+4. ✅ **Handle both paths** - Use both `ifValid()` and `ifInvalid()` for complete flow control
+5. ✅ **Return attempts from validators** - Enable fluent validation chains
+6. ✅ **Document validation rules** - Comment complex `toSatisfy()` predicates
+7. ✅ **Test empty cases** - Remember that empty attempts are always invalid
+
+```js
+// ✅ Good: Clear, specific, handles both cases
+attempt( getCreditScore() )
+    .toBeBetween( 700, 850 )
+    .ifValid( score -> approveApplication( score ) )
+    .ifInvalid( () -> denyApplication() );
+
+// ❌ Avoid: Unclear, doesn't handle invalid case
+score = attempt( getCreditScore() ).get();
+if ( score >= 700 && score <= 850 ) {
+    approveApplication( score );
+}
 ```
