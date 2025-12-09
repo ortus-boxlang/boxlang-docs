@@ -7,6 +7,17 @@ icon: gear-code
 
 In BoxLang, variables are just pointers to a piece of data. They can hold **any** value you like and even change their value or **type** at runtime since BoxLang is a dynamic language. In some languages, you need to specify the type of data you want your variable to hold at compile-time and it can never change. You do not need to assign one in BoxLang, as everything is dynamic and/or inferred. It infers types according to the initial value you assign to your variable.
 
+## 📋 Table of Contents
+
+- [Variable Types](#variable-types)
+- [Variable Declaration](#variable-declaration)
+- [Variable Naming Rules](#variable-naming-rules)
+- [Variable Scoping](#variable-scoping)
+- [Type Checking](#type-checking)
+- [Variable Assignment](#variable-assignment)
+- [Complex Variables](#complex-variables)
+- [Best Practices](#best-practices)
+
 ```javascript
 a = "string" // string
 b = now() // datetime

@@ -17,6 +17,17 @@ CFML became famous in its infancy because it was easy to query databases with a 
 All BoxLang queries are passed to functions as memory references, not values. Keep that in mind when working with queries. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
 {% endhint %}
 
+## 📋 Table of Contents
+
+- [Queries in Code](#queries-in-code)
+- [Creating Queries](#creating-queries)
+- [Query Execution](#query-execution)
+- [Query Properties & Metadata](#query-properties--metadata)
+- [Accessing Query Data](#accessing-query-data)
+- [Functional Programming](#functional-programming)
+- [Query Manipulation](#query-manipulation)
+- [Best Practices](#best-practices)
+
 ## 💻 Queries in Code
 
 Let's explore query creation and manipulation:

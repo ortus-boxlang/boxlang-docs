@@ -29,6 +29,17 @@ As an analogy, think about a refrigerator. If we’re keeping track of the produ
 All BoxLang structures are passed to functions as memory references, not values. Keep that in mind when working with structures. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
 {% endhint %}
 
+## 📋 Table of Contents
+
+- [Key-Value Pairs](#key-value-pairs)
+- [Creating Structures](#creating-structures)
+- [Accessing Structure Elements](#accessing-structure-elements)
+- [Structure Built-In Functions](#structure-built-in-functions)
+- [Member Functions](#member-functions)
+- [Looping Over Structures](#looping-over-structures)
+- [Sorting Structures](#sorting-structures)
+- [Advanced Patterns](#advanced-patterns)
+
 ## 🔑 Key-Value Pairs
 
 A structure is an _unordered collection_ where the data gets organized as a key and value pair. BoxLang syntax for structures follows the following syntax:

@@ -11,6 +11,23 @@ In the BoxLang language, many persistence and visibility scopes exist for variab
 All BoxLang scopes are implemented as BoxLang [structures](structures.md), basically case-insensitive maps behind the scenes.
 {% endhint %}
 
+## 📋 Table of Contents
+
+- [Local Scope](#local-scope)
+- [Variables Scope](#variables-scope)
+- [This Scope](#this-scope)
+- [Arguments Scope](#arguments-scope)
+- [Application Scope](#application-scope)
+- [Session Scope](#session-scope)
+- [Request Scope](#request-scope)
+- [Server Scope](#server-scope)
+- [CGI Scope](#cgi-scope)
+- [Form Scope](#form-scope)
+- [URL Scope](#url-scope)
+- [Thread Scopes](#thread-scopes)
+- [Scope Searching](#scope-searching)
+- [Best Practices](#best-practices)
+
 When you declare variables in templates, classes, or functions, they’re stored within a structured scope. This design makes your code highly flexible, allowing you to fluently interact with the entire scope through a wide range of BIFs. You can even bind these variables directly to function calls, attributes, and more—highlighting the dynamic power at the core of BoxLang.
 
 ```javascript
