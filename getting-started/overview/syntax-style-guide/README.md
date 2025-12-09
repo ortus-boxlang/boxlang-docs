@@ -1108,17 +1108,17 @@ class{
 
     @inject
     property name="wirebox";
-    
-    
+
+
     @returnFormat( json )
     function getData(){
         return data
     }
-    
+
     @cache( true )
     @returnFormat( "xml" )
     function getXMLData(){
-    
+
     }
 
 }

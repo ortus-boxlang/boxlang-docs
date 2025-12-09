@@ -199,7 +199,7 @@ Edit the `pom.xml` file and add your dependency inside the `<dependencies>` sect
         <artifactId>commons-text</artifactId>
         <version>1.12.0</version>
     </dependency>
-    
+
     <!-- QR Code generation -->
     <dependency>
         <groupId>com.google.zxing</groupId>
@@ -287,33 +287,33 @@ function createQRCodeGenerator() {
     return {
         "generate": ( text, size = 300 ) -> {
             var writer = new com.google.zxing.qrcode.QRCodeWriter()
-            var bitMatrix = writer.encode( 
-                text, 
-                new com.google.zxing.BarcodeFormat().QR_CODE, 
-                size, 
-                size 
+            var bitMatrix = writer.encode(
+                text,
+                new com.google.zxing.BarcodeFormat().QR_CODE,
+                size,
+                size
             )
-            
+
             return new com.google.zxing.client.j2se.MatrixToImageWriter()
                 .toBufferedImage( bitMatrix )
         },
-        
+
         "saveToFile": ( text, filePath, size = 300 ) -> {
             var image = this.generate( text, size )
             var file = new java.io.File( filePath )
-            
+
             new javax.imageio.ImageIO().write( image, "PNG", file )
             return filePath
         },
-        
+
         "generateDataURL": ( text, size = 300 ) -> {
             var image = this.generate( text, size )
             var baos = new java.io.ByteArrayOutputStream()
-            
+
             new javax.imageio.ImageIO().write( image, "PNG", baos )
             var bytes = baos.toByteArray()
             var encoder = new java.util.Base64().getEncoder()
-            
+
             return "data:image/png;base64," & encoder.encodeToString( bytes )
         }
     }
@@ -323,10 +323,10 @@ function createQRCodeGenerator() {
 qrGenerator = createQRCodeGenerator()
 
 // Generate QR code for a URL
-qrFile = qrGenerator.saveToFile( 
-    "https://boxlang.ortussolutions.com", 
-    "/tmp/boxlang-qr.png", 
-    400 
+qrFile = qrGenerator.saveToFile(
+    "https://boxlang.ortussolutions.com",
+    "/tmp/boxlang-qr.png",
+    400
 )
 println( "QR code saved to: " & qrFile )
 
@@ -355,20 +355,20 @@ function createEncryptionUtil() {
     var provider = new org.bouncycastle.jce.provider.BouncyCastleProvider()
     var security = new java.security.Security()
     security.addProvider( provider )
-    
+
     return {
         "generateKeyPair": () -> {
             var keyGen = new java.security.KeyPairGenerator().getInstance( "RSA", "BC" )
             keyGen.initialize( 2048 )
             return keyGen.generateKeyPair()
         },
-        
+
         "encrypt": ( data, publicKey ) -> {
             var cipher = new javax.crypto.Cipher().getInstance( "RSA/ECB/PKCS1Padding", "BC" )
             cipher.init( new javax.crypto.Cipher().ENCRYPT_MODE, publicKey )
             return cipher.doFinal( data.getBytes() )
         },
-        
+
         "decrypt": ( encryptedData, privateKey ) -> {
             var cipher = new javax.crypto.Cipher().getInstance( "RSA/ECB/PKCS1Padding", "BC" )
             cipher.init( new javax.crypto.Cipher().DECRYPT_MODE, privateKey )
@@ -398,14 +398,14 @@ For large applications, organize dependencies by functionality:
 
 ```xml
 <dependencies>
-    
+
     <!-- QR Code Generation -->
     <dependency>
         <groupId>com.google.zxing</groupId>
         <artifactId>core</artifactId>
         <version>3.5.2</version>
     </dependency>
-    
+
     <!-- Cryptography -->
     <dependency>
         <groupId>org.bouncycastle</groupId>
@@ -431,7 +431,7 @@ Use properties for easier version management:
         <artifactId>core</artifactId>
         <version>${zxing.version}</version>
     </dependency>
-    
+
     <dependency>
         <groupId>org.apache.commons</groupId>
         <artifactId>commons-text</artifactId>
@@ -493,14 +493,14 @@ Add comments explaining why each dependency is needed:
         <artifactId>commons-text</artifactId>
         <version>1.12.0</version>
     </dependency>
-    
+
     <!-- ZXing - Required for QR code generation in reports -->
     <dependency>
         <groupId>com.google.zxing</groupId>
         <artifactId>core</artifactId>
         <version>3.5.2</version>
     </dependency>
-    
+
     <!-- Bouncy Castle - Cryptography for secure operations -->
     <dependency>
         <groupId>org.bouncycastle</groupId>
@@ -521,11 +521,11 @@ function testDependencies() {
         // Test ZXing (QR Codes)
         var qrWriter = new com.google.zxing.qrcode.QRCodeWriter()
         println( "✅ ZXing QR Code library loaded successfully" )
-        
+
         // Test Bouncy Castle
         var provider = new org.bouncycastle.jce.provider.BouncyCastleProvider()
         println( "✅ Bouncy Castle loaded successfully" )
-        
+
         return true
     } catch ( any e ) {
         println( "❌ Dependency loading failed: " & e.message )

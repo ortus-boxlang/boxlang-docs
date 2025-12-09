@@ -83,12 +83,12 @@ public class BoxLangExample {
     public static void main( String[] args ) throws ScriptException {
         // Get BoxLang engine
         ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
-        
+
         // Pass data to BoxLang
         Bindings bindings = engine.createBindings();
         bindings.put( "name", "Java Developer" );
         bindings.put( "items", java.util.Arrays.asList( "Spring", "Maven", "BoxLang" ) );
-        
+
         // Execute BoxLang code
         Object result = engine.eval( """
             message = "Hello " & name & "!"
@@ -99,7 +99,7 @@ public class BoxLangExample {
                 technologies: items.map( ( item ) => item.uCase() )
             }
         """, bindings );
-        
+
         System.out.println( "Result: " + result );
     }
 }
@@ -132,11 +132,11 @@ Boolean eligible = ( Boolean ) engine.eval( """
     if ( order.total > 1000 && customer.tier == "GOLD" ) {
         return true
     }
-    
+
     if ( customer.loyaltyPoints > 5000 ) {
-        return true  
+        return true
     }
-    
+
     return false
 """, context );
 ```
@@ -158,12 +158,12 @@ String html = ( String ) engine.eval( """
         #notifications.map( ( n ) => '<p>' & n.message & '</p>' ).join( '' )#
         </div>
     "
-    
+
     // Use proper string replacement instead of evaluate() BIF
     result = template
     result = result.replace( "#{user.name}", user.name )
     // Add more replacements as needed
-    
+
     return result
 """, data );
 ```
@@ -179,7 +179,7 @@ bindings.put( "jsonData", rawJsonString );
 
 Map result = ( Map ) engine.eval( """
     data = deserializeJSON( jsonData )
-    
+
     return {
         processedAt: now(),
         recordCount: data.records.len(),
@@ -202,10 +202,10 @@ The BoxLang scripting package can be found here: `ortus.boxlang.runtime.scriptin
 - `BoxCompiledScript` - Implements the JSR `CompiledScript` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html))
 - `BoxScopeBindings` - Implements the JSR `Bindings` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html))
 - `BoxScriptingContext` - Implements the JSR `ScriptContext` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html))
-- `BoxScriptingEngine` - Implements the JSR `ScriptEngine` and `Compilable`  
-  [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html)  
+- `BoxScriptingEngine` - Implements the JSR `ScriptEngine` and `Compilable`
+  [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html)
   [https://docs.oracle.com/en/java/javase/17/docs/api//java.scripting/javax/script/Compilable.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Compilable.html)
-- `BoxScriptingFactory` - implements the JSR `ScriptEngineFactory`  
+- `BoxScriptingFactory` - implements the JSR `ScriptEngineFactory`
   [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html)
 
 ### Definitions
@@ -592,7 +592,7 @@ CompiledScript compiled = ( ( Compilable ) engine ).compile( """
 for ( Order order : orders ) {
     Bindings context = engine.createBindings();
     context.put( "order", order );
-    
+
     Map result = ( Map ) compiled.eval( context );
     // Process result...
 }
@@ -605,17 +605,17 @@ for ( Order order : orders ) {
 // but each execution should use separate bindings
 public class BoxLangProcessor {
     private final CompiledScript processor;
-    
+
     public BoxLangProcessor() throws ScriptException {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
         this.processor = ( ( Compilable ) engine ).compile( loadScript() );
     }
-    
+
     public Object process( Map<String, Object> data ) throws ScriptException {
         // Create fresh bindings for each execution
         Bindings bindings = processor.getEngine().createBindings();
         bindings.putAll( data );
-        
+
         return processor.eval( bindings );
     }
 }
@@ -630,12 +630,12 @@ try {
 } catch ( ScriptException e ) {
     // BoxLang compilation or runtime error
     logger.error( "BoxLang script failed: " + e.getMessage(), e );
-    
+
     // Get detailed error information
     if ( e.getCause() != null ) {
         logger.error( "Root cause: " + e.getCause().getMessage() );
     }
-    
+
     // Line number information (if available)
     if ( e.getLineNumber() >= 0 ) {
         logger.error( "Error at line: " + e.getLineNumber() );
@@ -650,13 +650,13 @@ try {
 ```java
 @Configuration
 public class BoxLangConfig {
-    
+
     @Bean
     @Scope( "prototype" ) // New engine per injection
     public ScriptEngine boxLangEngine() {
         return new ScriptEngineManager().getEngineByName( "BoxLang" );
     }
-    
+
     @Bean
     public BoxLangService boxLangService() {
         return new BoxLangService( boxLangEngine() );
@@ -666,11 +666,11 @@ public class BoxLangConfig {
 @Service
 public class BoxLangService {
     private final ScriptEngine engine;
-    
+
     public BoxLangService( ScriptEngine engine ) {
         this.engine = engine;
     }
-    
+
     public Object executeTemplate( String template, Map<String, Object> variables ) {
         try {
             Bindings bindings = engine.createBindings();
