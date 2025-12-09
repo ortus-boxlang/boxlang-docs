@@ -1,9 +1,11 @@
 ---
-description: Execute SQL queries against in-memory query result sets for powerful data manipulation
-icon: database
+description: >-
+  Execute SQL queries against in-memory query result sets for powerful data
+  manipulation
+icon: square-bolt
 ---
 
-# 🔄 Query of Queries (QoQ)
+# Query of Queries
 
 Query of Queries (QoQ) allows you to execute SQL queries against in-memory query result sets, eliminating the need for additional database round trips. BoxLang's QoQ implementation is built from scratch using a high-performance ANTLR grammar based on SQLite, delivering exceptional speed and a comprehensive feature set that surpasses traditional CFML implementations.
 
@@ -11,15 +13,15 @@ Query of Queries (QoQ) allows you to execute SQL queries against in-memory query
 
 BoxLang's Query of Queries provides:
 
-- **Fast Performance**, optimized for large datasets
-- **ANSI JOIN syntax** - INNER, LEFT, RIGHT, FULL, and CROSS joins
-- **Unlimited table joins** - No restrictions on number of tables
-- **Subqueries** - Nested SELECT statements in FROM, JOIN, and IN clauses
-- **CASE statements** - Standard and input-based CASE expressions
-- **Custom functions** - Register your own scalar and aggregate functions
-- **Complete SQL syntax** - TOP/LIMIT, UNION, DISTINCT, GROUP BY, ORDER BY
-- **Bitwise operators** - XOR, AND, OR, NOT operations
-- **Type safety** - Preserves column types and NULL handling
+* **Fast Performance**, optimized for large datasets
+* **ANSI JOIN syntax** - INNER, LEFT, RIGHT, FULL, and CROSS joins
+* **Unlimited table joins** - No restrictions on number of tables
+* **Subqueries** - Nested SELECT statements in FROM, JOIN, and IN clauses
+* **CASE statements** - Standard and input-based CASE expressions
+* **Custom functions** - Register your own scalar and aggregate functions
+* **Complete SQL syntax** - TOP/LIMIT, UNION, DISTINCT, GROUP BY, ORDER BY
+* **Bitwise operators** - XOR, AND, OR, NOT operations
+* **Type safety** - Preserves column types and NULL handling
 
 ## 🚀 Basic Usage
 
@@ -808,34 +810,39 @@ unique = queryExecute(
 ## 💡 Best Practices
 
 ### Performance
-- ✅ **Use JOINs over subqueries** when possible for better performance
-- ✅ **Filter early** - Apply WHERE clauses to reduce row count before JOINs
-- ✅ **Limit columns** - SELECT only needed columns, not SELECT *
-- ✅ **Use indexes** - Original database query results maintain index information
-- ✅ **Minimize DISTINCT** - Use only when necessary as it requires deduplication
+
+* ✅ **Use JOINs over subqueries** when possible for better performance
+* ✅ **Filter early** - Apply WHERE clauses to reduce row count before JOINs
+* ✅ **Limit columns** - SELECT only needed columns, not SELECT \*
+* ✅ **Use indexes** - Original database query results maintain index information
+* ✅ **Minimize DISTINCT** - Use only when necessary as it requires deduplication
 
 ### Memory Management
-- ✅ **Limit result sets** - Use TOP/LIMIT to prevent memory issues
-- ✅ **Process in batches** - For large datasets, break into smaller QoQ operations
-- ✅ **Clean up queries** - Remove references to large query objects when done
-- ✅ **Monitor query size** - Be aware of result set row counts and column widths
+
+* ✅ **Limit result sets** - Use TOP/LIMIT to prevent memory issues
+* ✅ **Process in batches** - For large datasets, break into smaller QoQ operations
+* ✅ **Clean up queries** - Remove references to large query objects when done
+* ✅ **Monitor query size** - Be aware of result set row counts and column widths
 
 ### Code Quality
-- ✅ **Use parameterized queries** - Prevent SQL injection even in QoQ
-- ✅ **Alias tables** - Always use table aliases for clarity and readability
-- ✅ **Format SQL** - Use proper indentation and line breaks
-- ✅ **Document complex logic** - Comment non-obvious CASE statements and subqueries
-- ✅ **Test edge cases** - Verify NULL handling, empty results, and data type conversions
+
+* ✅ **Use parameterized queries** - Prevent SQL injection even in QoQ
+* ✅ **Alias tables** - Always use table aliases for clarity and readability
+* ✅ **Format SQL** - Use proper indentation and line breaks
+* ✅ **Document complex logic** - Comment non-obvious CASE statements and subqueries
+* ✅ **Test edge cases** - Verify NULL handling, empty results, and data type conversions
 
 ### Data Integrity
-- ✅ **Preserve types** - QoQ maintains original column data types
-- ✅ **Handle NULLs** - Use COALESCE or ISNULL for NULL-safe operations
-- ✅ **Validate joins** - Ensure JOIN conditions match appropriate data types
-- ✅ **Check for duplicates** - Use DISTINCT when necessary
+
+* ✅ **Preserve types** - QoQ maintains original column data types
+* ✅ **Handle NULLs** - Use COALESCE or ISNULL for NULL-safe operations
+* ✅ **Validate joins** - Ensure JOIN conditions match appropriate data types
+* ✅ **Check for duplicates** - Use DISTINCT when necessary
 
 ## 🚫 Common Pitfalls
 
 ❌ **Forgetting dbtype option**
+
 ```js
 // BAD - executes against database instead of query
 result = queryExecute( "SELECT * FROM employees" );
@@ -849,6 +856,7 @@ result = queryExecute(
 ```
 
 ❌ **Ambiguous column references with multiple tables**
+
 ```js
 // BAD - name exists in both tables
 result = queryExecute(
@@ -868,6 +876,7 @@ result = queryExecute(
 ```
 
 ❌ **Not handling NULL values**
+
 ```js
 // BAD - math operations with NULL return NULL
 result = queryExecute(
@@ -885,6 +894,7 @@ result = queryExecute(
 ```
 
 ❌ **Using correlated subqueries**
+
 ```js
 // BAD - BoxLang doesn't support correlated subqueries
 result = queryExecute(
@@ -916,22 +926,22 @@ result = queryExecute(
 
 Query of Queries has some limitations to be aware of:
 
-- **No correlated subqueries** - Subqueries cannot reference outer query tables
-- **No window functions** - OVER(), PARTITION BY not supported
-- **No CTEs** - Common Table Expressions (WITH clause) not available
-- **Read-only** - Cannot INSERT, UPDATE, or DELETE rows
-- **No transactions** - All operations are immediate
-- **In-memory only** - Large result sets may impact memory usage
+* **No correlated subqueries** - Subqueries cannot reference outer query tables
+* **No window functions** - OVER(), PARTITION BY not supported
+* **No CTEs** - Common Table Expressions (WITH clause) not available
+* **Read-only** - Cannot INSERT, UPDATE, or DELETE rows
+* **No transactions** - All operations are immediate
+* **In-memory only** - Large result sets may impact memory usage
 
 ## 🔗 Related Documentation
 
-- [Querying](querying.md) - Execute database queries
-- [Datasources](datasources.md) - Configure database connections
-- [Query Type Reference](../../boxlang-language/reference/types/query.md) - Query object methods and properties
-- [queryExecute() BIF](../../boxlang-language/reference/built-in-functions/jdbc/QueryExecute.md) - Complete BIF reference
+* [Querying](querying.md) - Execute database queries
+* [Datasources](datasources.md) - Configure database connections
+* [Query Type Reference](../../boxlang-language/reference/types/query.md) - Query object methods and properties
+* [queryExecute() BIF](../../boxlang-language/reference/built-in-functions/jdbc/QueryExecute.md) - Complete BIF reference
 
 ## 📚 Additional Resources
 
-- [BoxLang QoQ Performance Blog Post](https://www.codersrevolution.com/blog/boxlangs-qoq-is-here-and-its-5x-faster-than-lucee-17x-faster-than-adobe)
-- [BoxLang QoQ Features Blog Post](https://www.codersrevolution.com/blog/boxlang-query-of-query-improvements-and-additions)
-- [SQLite SQL Syntax](https://www.sqlite.org/lang.html) - BoxLang QoQ grammar is based on SQLite
+* [BoxLang QoQ Performance Blog Post](https://www.codersrevolution.com/blog/boxlangs-qoq-is-here-and-its-5x-faster-than-lucee-17x-faster-than-adobe)
+* [BoxLang QoQ Features Blog Post](https://www.codersrevolution.com/blog/boxlang-query-of-query-improvements-and-additions)
+* [SQLite SQL Syntax](https://www.sqlite.org/lang.html) - BoxLang QoQ grammar is based on SQLite

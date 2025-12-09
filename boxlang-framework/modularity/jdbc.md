@@ -1,8 +1,8 @@
 ---
-icon: database
+icon: screwdriver-wrench
 ---
 
-# JDBC
+# JDBC Drivers
 
 We offer several JDBC modules that package the appropriate JDBC driver for your database vendor of choice. You can find all of the modules in [FORGEBOX](https://www.forgebox.io/) as well as our GitHub organization: [https://github.com/ortus-boxlang/bx-{modulename}](https://github.com/ortus-boxlang)
 

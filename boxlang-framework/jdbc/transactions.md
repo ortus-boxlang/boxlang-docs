@@ -1,8 +1,8 @@
 ---
-icon: database
+icon: layer-group
 ---
 
-# 🔄 JDBC Transactions
+# Transactions
 
 Database transactions are one of the most critical features for ensuring **data integrity** and **consistency** in your applications. BoxLang provides comprehensive transaction support through both a modern `transaction{}` block syntax and the underlying `bx:transaction` component.
 
@@ -10,10 +10,10 @@ Database transactions are one of the most critical features for ensuring **data 
 
 Transactions ensure the **ACID properties** of database operations:
 
-- **⚛️ Atomicity**: All operations succeed together or fail together - no partial updates
-- **🔒 Consistency**: Database remains in a valid state before and after the transaction
-- **🏝️ Isolation**: Concurrent transactions don't interfere with each other
-- **💾 Durability**: Committed changes persist even after system failures
+* **⚛️ Atomicity**: All operations succeed together or fail together - no partial updates
+* **🔒 Consistency**: Database remains in a valid state before and after the transaction
+* **🏝️ Isolation**: Concurrent transactions don't interfere with each other
+* **💾 Durability**: Committed changes persist even after system failures
 
 ### 💡 Real-World Examples
 
@@ -89,13 +89,13 @@ try {
 
 ### 📋 Available Attributes
 
-| Attribute | Values | Description |
-|-----------|--------|-------------|
-| `action` | `begin`, `commit`, `rollback`, `setsavepoint` | Action to perform on the transaction |
-| `isolation` | `read_uncommitted`, `read_committed`, `repeatable_read`, `serializable` | Transaction isolation level |
-| `savepoint` | String | Name of the savepoint to create or rollback to |
-| `nested` | Boolean | Whether this is a nested transaction (default: `false`) |
-| `datasource` | String | Specific datasource name for the transaction |
+| Attribute    | Values                                                                  | Description                                             |
+| ------------ | ----------------------------------------------------------------------- | ------------------------------------------------------- |
+| `action`     | `begin`, `commit`, `rollback`, `setsavepoint`                           | Action to perform on the transaction                    |
+| `isolation`  | `read_uncommitted`, `read_committed`, `repeatable_read`, `serializable` | Transaction isolation level                             |
+| `savepoint`  | String                                                                  | Name of the savepoint to create or rollback to          |
+| `nested`     | Boolean                                                                 | Whether this is a nested transaction (default: `false`) |
+| `datasource` | String                                                                  | Specific datasource name for the transaction            |
 
 ### 🔒 Isolation Levels Explained
 
@@ -129,7 +129,7 @@ transaction isolation="serializable" {
 
 ## 🎯 Transaction Behavior
 
-###  🛜 Connections
+### 🛜 Connections
 
 In BoxLang transactions, _no connection is acquired until the first JDBC query is executed_. Consider this transaction block:
 
@@ -147,13 +147,13 @@ This transaction is a no-op. It begins, tries to set a savepoint, then roll back
 
 BoxLang emits events during the lifecycle of a JDBC transaction which can be used to react to various transaction points in your app:
 
-* [`onTransactionBegin`](#ontransactionbegin)
-* [`onTransactionEnd`](#ontransactionend)
-* [`onTransactionCommit`](#ontransactioncommit)
-* [`onTransactionRollback`](#ontransactionrollback)
-* [`onTransactionSetSavepoint`](#ontransactionsetsavepoint)
-* [`onTransactionAcquire`](#ontransactionacquire)
-* [`onTransactionRelease`](#ontransactionrelease)
+* [`onTransactionBegin`](transactions.md#ontransactionbegin)
+* [`onTransactionEnd`](transactions.md#ontransactionend)
+* [`onTransactionCommit`](transactions.md#ontransactioncommit)
+* [`onTransactionRollback`](transactions.md#ontransactionrollback)
+* [`onTransactionSetSavepoint`](transactions.md#ontransactionsetsavepoint)
+* [`onTransactionAcquire`](transactions.md#ontransactionacquire)
+* [`onTransactionRelease`](transactions.md#ontransactionrelease)
 
 Read more about these events in [transaction events](../interceptors/core-interception-points/transaction-events.md).
 
@@ -304,10 +304,10 @@ To achieve all this, BoxLang transactions are savepoint-driven. All savepoints c
 
 ### 📋 Nested Transaction Behaviors
 
-- Rolling back the child transaction will roll back to the `CHILD_{UUID}_BEGIN` savepoint.
-- A transaction commit in the child transaction _does not commit the transaction_, but instead creates a `CHILD_{UUID}_COMMIT` savepoint.
-- Rolling back the (entire) parent transaction will roll back the child transaction.
-- Rolling back the parent transaction to a pre-child savepoint will roll back the entire child transaction.
+* Rolling back the child transaction will roll back to the `CHILD_{UUID}_BEGIN` savepoint.
+* A transaction commit in the child transaction _does not commit the transaction_, but instead creates a `CHILD_{UUID}_COMMIT` savepoint.
+* Rolling back the (entire) parent transaction will roll back the child transaction.
+* Rolling back the parent transaction to a pre-child savepoint will roll back the entire child transaction.
 
 ### 📚 Examples
 
@@ -364,11 +364,11 @@ You can see that regardless of the `transactionCommit()` in the child transactio
 
 See our list of transactional BIFs:
 
-- [`isInTransaction()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/isInTransaction) - Check if currently inside a transaction
-- [`transactionBegin()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionBegin) - Start a new transaction manually
-- [`transactionCommit()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionCommit) - Commit the current transaction
-- [`transactionRollback()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionRollback) - Roll back the current transaction
-- [`transactionSetSavepoint()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionSetSavepoint) - Create a savepoint for partial rollbacks
+* [`isInTransaction()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/isInTransaction) - Check if currently inside a transaction
+* [`transactionBegin()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionBegin) - Start a new transaction manually
+* [`transactionCommit()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionCommit) - Commit the current transaction
+* [`transactionRollback()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionRollback) - Roll back the current transaction
+* [`transactionSetSavepoint()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionSetSavepoint) - Create a savepoint for partial rollbacks
 
 ## 🎨 Common Patterns
 
