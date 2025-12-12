@@ -94,7 +94,6 @@ try {
 | `action`     | `begin`, `commit`, `rollback`, `setsavepoint`                           | Action to perform on the transaction                    |
 | `isolation`  | `read_uncommitted`, `read_committed`, `repeatable_read`, `serializable` | Transaction isolation level                             |
 | `savepoint`  | String                                                                  | Name of the savepoint to create or rollback to          |
-| `nested`     | Boolean                                                                 | Whether this is a nested transaction (default: `false`) |
 | `datasource` | String                                                                  | Specific datasource name for the transaction            |
 
 ### 🔒 Isolation Levels Explained
@@ -300,7 +299,24 @@ See [transaction events](interceptors/core-interception-points/transaction-event
 
 BoxLang fully supports nested or "child" transactions. Nested transactions use the same database connection as the parent transaction, which means queries will run on the same datasource as the parent, using the same connection parameters, and can be rolled back partially or in whole as the parent issues `transactionRollback()` statements.
 
-To achieve all this, BoxLang transactions are savepoint-driven. All savepoints created (and referenced) within child transactions are prefixed within a unique ID to prevent collision. For example, executing `transactionSetSavepoint( 'insert' )` within a child transaction will under the hood create a `CHILD_{UUID}_insert` savepoint. Furthermore, when child transaction begins a `CHILD_{UUID}_BEGIN` savepoint is created which will be used as a rollback point if `transactionRollback()` is called with no savepoint parameter.
+To achieve all this, BoxLang transactions auto-creates savepoints to track each change in transaction state:
+
+* `CHILD_{UUID}_BEGIN` - Created upon initialization of a nested transaction
+* `CHILD_{UUID}_COMMIT` - Created upon commit of a nested transaction
+* `CHILD_{UUID}_END` - Created upon completion of a nested transaction
+
+In addition, each savepoint created within nested transactions are prefixed within a unique ID to prevent collision. For example, executing `transactionSetSavepoint( 'insert' )` within a nested transaction will under the hood create a `CHILD_{UUID}_insert` savepoint:
+
+```js
+transaction{
+    transaction{
+        queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'BMW', 'X3' )", {} );
+        transactionSetSavepoint( 'insert' ); // 🗨 Actual savepoint name is `CHILD_{UUID}_insert`
+        // more stuff...
+        transactionRollback( 'insert' ); // 🗨 Actually rolls back to `CHILD_{UUID}_insert`
+    }
+}
+```
 
 ### 📋 Nested Transaction Behaviors
 
