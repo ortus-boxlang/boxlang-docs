@@ -17,7 +17,7 @@ box install bx-pdf
 
 ### Components
 
-Th free tier version of this module contributes the following Components to the language:
+The free tier version of this module contributes the following Components to the language:
 
 * `document` - the wrapping component for creating PDF documents
   * The following attributes are available to the `document` component
