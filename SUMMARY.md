@@ -137,6 +137,7 @@
   * [Abstract Constructs](boxlang-language/classes/abstract-constructs.md)
   * [Interfaces](boxlang-language/classes/interfaces.md)
   * [Annotations](boxlang-language/classes/annotations.md)
+* [Templating Language](boxlang-language/templating-language.md)
 * [Reference](boxlang-language/reference/README.md)
   * [API Docs](boxlang-language/reference/api-docs.md)
   * [Lexical Elements](boxlang-language/reference/lexical-elements/README.md)
