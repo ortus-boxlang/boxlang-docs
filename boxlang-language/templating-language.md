@@ -460,38 +460,40 @@ For comprehensive documentation on creating and using custom components, includi
     <title>#pageTitle#</title>
 </head>
 <body>
-    <bx:set currentDate = now()>
-    <bx:set userName = session.userName ?: "Guest">
-    
-    <header>
-        <h1>Welcome, #userName#!</h1>
-        <p>Today is #dateFormat( currentDate, "full" )#</p>
-    </header>
-    
-    <bx:if structKeyExists( session, "userId" )>
-        <nav>
-            <ul>
-                <li><a href="/dashboard">Dashboard</a></li>
-                <li><a href="/profile">Profile</a></li>
-                <li><a href="/logout">Logout</a></li>
-            </ul>
-        </nav>
-    <bx:else>
-        <nav>
-            <ul>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
-        </nav>
-    </bx:if>
-    
-    <main>
-        <bx:include template="content/#page#.bxm">
-    </main>
-    
-    <footer>
-        <p>&copy; #year( currentDate )# My Company. All rights reserved.</p>
-    </footer>
+    <bx:output>
+        <bx:set currentDate = now()>
+        <bx:set userName = session.userName ?: "Guest">
+
+        <header>
+            <h1>Welcome, #userName#!</h1>
+            <p>Today is #dateFormat( currentDate, "full" )#</p>
+        </header>
+
+        <bx:if structKeyExists( session, "userId" )>
+            <nav>
+                <ul>
+                    <li><a href="/dashboard">Dashboard</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </nav>
+        <bx:else>
+            <nav>
+                <ul>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Register</a></li>
+                </ul>
+            </nav>
+        </bx:if>
+
+        <main>
+            <bx:include template="content/#page#.bxm">
+        </main>
+
+        <footer>
+            <p>&copy; #year( currentDate )# My Company. All rights reserved.</p>
+        </footer>
+    </bx:output>
 </body>
 </html>
 ```
