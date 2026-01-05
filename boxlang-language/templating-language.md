@@ -18,8 +18,10 @@ Template files (`.bxm`) are designed for content generation and HTML output. Unl
     <title>Welcome to BoxLang</title>
 </head>
 <body>
-    <h1>Hello, #name#!</h1>
-    <p>Today is #dateFormat( now(), "full" )#</p>
+    <bx:output>
+        <h1>Hello, #name#!</h1>
+        <p>Today is #dateFormat( now(), "full" )#</p>
+    </bx:output>
 </body>
 </html>
 ```
