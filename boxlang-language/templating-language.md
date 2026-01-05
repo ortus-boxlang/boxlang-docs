@@ -532,7 +532,7 @@ For comprehensive documentation on creating and using custom components, includi
             </bx:loop>
         </tbody>
     </table>
-    <p>Showing #products.recordCount# products</p>
+    <p>Showing <bx:output>#products.recordCount#</bx:output> products</p>
 <bx:else>
     <p>No products found.</p>
 </bx:if>
