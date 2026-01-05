@@ -31,7 +31,7 @@ Template files (`.bxm`) are designed for content generation and HTML output. Unl
 BoxLang templates use the `#` (hash/pound) character for output interpolation. Any expression wrapped in `#` symbols will be evaluated and output to the page.
 
 {% hint style="info" %}
-**Important**: For interpolation to work in templates, expressions must be surrounded by a `<bx:output>` component or within an outputting component context (like `<bx:loop query="...">`).
+**Important**: For interpolation to work in templates, expressions must be surrounded by a `<bx:output>` component or within an outputting component context (like `<bx:loop query="...">`). Component attribute values are automatically evaluated and support interpolation without requiring `<bx:output>`.
 {% endhint %}
 
 ### Basic Interpolation
