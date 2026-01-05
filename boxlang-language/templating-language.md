@@ -79,10 +79,53 @@ BoxLang provides a rich set of template components using the `bx:` prefix. All t
 
 The `bx:output` component enables output of dynamic content and expressions. Within `bx:output`, the `#` interpolation is automatically enabled.
 
+**Basic Usage:**
+
 ```xml
 <bx:output>
     <h1>Welcome, #user.name#!</h1>
     <p>Your account was created on #dateFormat( user.created, "long" )#</p>
+</bx:output>
+```
+
+**Attributes:**
+
+- `query` - Loop over a query object and output each row
+- `group` - Group query output by a column name
+- `groupCaseSensitive` - Whether group matching is case-sensitive (default: false)
+- `startRow` - Start outputting from this row number
+- `maxRows` - Maximum number of rows to output
+- `encodefor` - Automatically encode output ("html", "javascript", "url", "xml")
+
+**Query Loop Example:**
+
+```xml
+<bx:output query="#products#">
+    <div class="product">
+        <h3>#products.name#</h3>
+        <p>Price: #dollarFormat( products.price )#</p>
+    </div>
+</bx:output>
+```
+
+**Automatic Encoding Example:**
+
+```xml
+<!--- Automatically HTML-encode all interpolated values --->
+<bx:output query="#users#" encodefor="html">
+    <p>#users.name# - #users.email#</p>
+</bx:output>
+```
+
+**Grouped Output Example:**
+
+```xml
+<!--- Group products by category --->
+<bx:output query="#products#" group="category">
+    <h2>#products.category#</h2>
+    <bx:output>
+        <p>#products.name# - #dollarFormat( products.price )#</p>
+    </bx:output>
 </bx:output>
 ```
 
