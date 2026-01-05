@@ -28,13 +28,19 @@ Template files (`.bxm`) are designed for content generation and HTML output. Unl
 
 BoxLang templates use the `#` (hash/pound) character for output interpolation. Any expression wrapped in `#` symbols will be evaluated and output to the page.
 
+{% hint style="info" %}
+**Important**: For interpolation to work in templates, expressions must be surrounded by a `<bx:output>` component or within an outputting component context (like `<bx:loop query="...">`).
+{% endhint %}
+
 ### Basic Interpolation
 
 ```xml
 <bx:set greeting = "Hello, World!">
-<p>#greeting#</p>
-<p>Current time: #now()#</p>
-<p>Random number: #randRange( 1, 100 )#</p>
+<bx:output>
+    <p>#greeting#</p>
+    <p>Current time: #now()#</p>
+    <p>Random number: #randRange( 1, 100 )#</p>
+</bx:output>
 ```
 
 ### Escaping Hash Symbols
@@ -42,8 +48,10 @@ BoxLang templates use the `#` (hash/pound) character for output interpolation. A
 To output a literal `#` character without evaluation, use double hashes `##`:
 
 ```xml
-<p>Use ## for hash symbols in CSS: ##header { color: blue; }</p>
-<p>This outputs: # for hash symbols in CSS: #header { color: blue; }</p>
+<bx:output>
+    <p>Use ## for hash symbols in CSS: ##header { color: blue; }</p>
+    <p>This outputs: # for hash symbols in CSS: #header { color: blue; }</p>
+</bx:output>
 ```
 
 ### Complex Expressions
@@ -52,9 +60,11 @@ You can use any BoxLang expression within interpolation:
 
 ```xml
 <bx:set products = [ "Laptop", "Mouse", "Keyboard" ]>
-<p>We have #products.len()# products</p>
-<p>First product: #products[1]#</p>
-<p>Total price: #calculateTotal( products )#</p>
+<bx:output>
+    <p>We have #products.len()# products</p>
+    <p>First product: #products[1]#</p>
+    <p>Total price: #calculateTotal( products )#</p>
+</bx:output>
 ```
 
 ## 🏷️ Template Components
@@ -163,6 +173,118 @@ Include other template files:
 <bx:include template="layouts/footer.bxm">
 ```
 
+### Additional Template Components
+
+BoxLang provides many more template components for various purposes:
+
+#### bx:param
+
+Validate and set default values for variables:
+
+```xml
+<!--- Require a variable to exist --->
+<bx:param name="userId" type="string" required="true">
+
+<!--- Set a default value if variable doesn't exist --->
+<bx:param name="pageSize" type="numeric" default="10">
+
+<!--- Multiple validations --->
+<bx:param name="email" type="string" required="true">
+<bx:param name="isAdmin" type="boolean" default="false">
+```
+
+#### bx:try / bx:catch / bx:finally
+
+Exception handling in templates:
+
+```xml
+<bx:try>
+    <bx:set result = divide( 10, 0 )>
+    <bx:output>Result: #result#</bx:output>
+<bx:catch type="any">
+    <bx:output>
+        <p class="error">Error occurred: #cfcatch.message#</p>
+    </bx:output>
+<bx:finally>
+    <bx:output><p>Cleanup completed</p></bx:output>
+</bx:finally>
+</bx:try>
+```
+
+#### bx:throw
+
+Throw custom exceptions:
+
+```xml
+<bx:if NOT isValid( "email", form.email )>
+    <bx:throw type="ValidationException" message="Invalid email address provided">
+</bx:if>
+```
+
+#### bx:abort
+
+Stop template execution:
+
+```xml
+<bx:if NOT isUserAuthorized()>
+    <bx:output><p>Access denied</p></bx:output>
+    <bx:abort>
+</bx:if>
+```
+
+#### bx:dump
+
+Debug output for variables:
+
+```xml
+<!--- Simple dump --->
+<bx:dump var="#myVariable#">
+
+<!--- Dump with label --->
+<bx:dump var="#users#" label="User Data">
+
+<!--- Dump without stopping execution --->
+<bx:dump var="#queryResult#" abort="false">
+```
+
+#### bx:exit
+
+Exit from a specific execution context:
+
+```xml
+<!--- Exit current template --->
+<bx:exit>
+
+<!--- Exit to specific method (used in custom components) --->
+<bx:exit method="exitTemplate">
+```
+
+#### bx:savecontent
+
+Capture output into a variable:
+
+```xml
+<bx:savecontent variable="emailBody">
+    <h1>Welcome!</h1>
+    <p>Thank you for registering, #user.name#</p>
+</bx:savecontent>
+
+<!--- Now use the captured content --->
+<bx:set mailService.send( to=user.email, body=emailBody )>
+```
+
+#### bx:silent
+
+Suppress output:
+
+```xml
+<bx:silent>
+    <bx:set complexCalculation = performExpensiveOperation()>
+    <!--- Any output here is suppressed --->
+    Some text that won't be rendered
+</bx:silent>
+```
+
 ## 🔄 Mixing Scripts and Templates
 
 BoxLang allows seamless mixing of script and template syntax within the same file.
@@ -259,13 +381,71 @@ BoxLang includes many built-in components for common tasks:
 
 ### Custom Components
 
-You can also invoke your own custom components in templates:
+You can create your own custom components to extend the templating language with reusable functionality. Custom components are BoxLang templates or scripts that can be invoked like built-in components.
+
+#### Creating a Custom Component
+
+Create a component file (e.g., `greeting.bxm`):
 
 ```xml
-<!--- Assuming you have a custom component at models/EmailService.bx --->
-<bx:set emailService = new models.EmailService()>
-<bx:invoke component="#emailService#" method="sendWelcomeEmail" user="#currentUser#">
+<!--- File: components/greeting.bxm --->
+<bx:param name="attributes.name" type="string" required="true">
+
+<bx:output>
+    <div class="greeting-card">
+        <h2>Hello, #attributes.name#!</h2>
+        <p>Welcome to our application.</p>
+    </div>
+</bx:output>
 ```
+
+#### Using Custom Components
+
+Call your custom component using the `bx:_` prefix:
+
+```xml
+<!--- In a template --->
+<bx:_greeting name="World">
+```
+
+Or using the `bx:component` tag:
+
+```xml
+<bx:component template="greeting" name="World">
+```
+
+#### Component Discovery
+
+BoxLang searches for custom components in several locations:
+
+1. Relative to the current template
+2. Application-defined component paths (via `Application.bx`)
+3. Global component directories
+
+#### Configuring Component Paths
+
+In your `Application.bx`, you can specify custom component directories:
+
+```js
+class {
+    this.name = "MyApp"
+    
+    // Define custom component paths
+    this.customComponentPaths = [
+        expandPath( "/components" ),
+        expandPath( "/shared/components" )
+    ]
+    
+    // For class-based components
+    this.classPaths = [
+        expandPath( "/classes" )
+    ]
+}
+```
+
+{% hint style="info" %}
+For comprehensive documentation on creating and using custom components, including advanced patterns, component scopes, and best practices, see the [Components Framework Documentation](../boxlang-framework/components.md).
+{% endhint %}
 
 ## 💡 Practical Examples
 
