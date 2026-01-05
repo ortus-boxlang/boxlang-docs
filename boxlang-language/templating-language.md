@@ -616,21 +616,23 @@ For comprehensive documentation on creating and using custom components, includi
     </bx:if>
 </bx:if>
 
-<form method="post">
-    <div>
-        <label>Name:</label>
-        <input type="text" name="name" value="#form.name ?: ''#" required>
-    </div>
-    <div>
-        <label>Email:</label>
-        <input type="email" name="email" value="#form.email ?: ''#" required>
-    </div>
-    <div>
-        <label>Message:</label>
-        <textarea name="message" required>#form.message ?: ''#</textarea>
-    </div>
-    <button type="submit" name="submit">Send Message</button>
-</form>
+<bx:output>
+    <form method="post">
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" value="#form.name ?: ''#" required>
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" value="#form.email ?: ''#" required>
+        </div>
+        <div>
+            <label>Message:</label>
+            <textarea name="message" required>#form.message ?: ''#</textarea>
+        </div>
+        <button type="submit" name="submit">Send Message</button>
+    </form>
+</bx:output>
 ```
 
 ## 🔒 Security Considerations
