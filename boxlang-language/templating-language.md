@@ -457,39 +457,41 @@ For comprehensive documentation on creating and using custom components, includi
 <!DOCTYPE html>
 <html>
 <head>
-    <title>#pageTitle#</title>
+    <bx:output><title>#pageTitle#</title></bx:output>
 </head>
 <body>
+    <bx:set currentDate = now()>
+    <bx:set userName = session.userName ?: "Guest">
+    
     <bx:output>
-        <bx:set currentDate = now()>
-        <bx:set userName = session.userName ?: "Guest">
-
         <header>
             <h1>Welcome, #userName#!</h1>
             <p>Today is #dateFormat( currentDate, "full" )#</p>
         </header>
-
-        <bx:if structKeyExists( session, "userId" )>
-            <nav>
-                <ul>
-                    <li><a href="/dashboard">Dashboard</a></li>
-                    <li><a href="/profile">Profile</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                </ul>
-            </nav>
-        <bx:else>
-            <nav>
-                <ul>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Register</a></li>
-                </ul>
-            </nav>
-        </bx:if>
-
-        <main>
-            <bx:include template="content/#page#.bxm">
-        </main>
-
+    </bx:output>
+    
+    <bx:if structKeyExists( session, "userId" )>
+        <nav>
+            <ul>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    <bx:else>
+        <nav>
+            <ul>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+    </bx:if>
+    
+    <main>
+        <bx:include template="content/#page#.bxm">
+    </main>
+    
+    <bx:output>
         <footer>
             <p>&copy; #year( currentDate )# My Company. All rights reserved.</p>
         </footer>
@@ -532,7 +534,7 @@ For comprehensive documentation on creating and using custom components, includi
             </bx:loop>
         </tbody>
     </table>
-    <p>Showing <bx:output>#products.recordCount#</bx:output> products</p>
+    <bx:output><p>Showing #products.recordCount# products</p></bx:output>
 <bx:else>
     <p>No products found.</p>
 </bx:if>
@@ -560,22 +562,24 @@ For comprehensive documentation on creating and using custom components, includi
     </style>
 </head>
 <body>
-    <h1>Welcome to Our Platform, #userName#!</h1>
-    
-    <p>Thank you for registering with email: <strong>#userEmail#</strong></p>
-    
-    <p>Please activate your account by clicking the button below:</p>
-    
-    <p>
-        <a href="#activationLink#" class="button">Activate Account</a>
-    </p>
-    
-    <p>Or copy this link: #activationLink#</p>
-    
-    <p>
-        Best regards,<br>
-        The Team
-    </p>
+    <bx:output>
+        <h1>Welcome to Our Platform, #userName#!</h1>
+        
+        <p>Thank you for registering with email: <strong>#userEmail#</strong></p>
+        
+        <p>Please activate your account by clicking the button below:</p>
+        
+        <p>
+            <a href="#activationLink#" class="button">Activate Account</a>
+        </p>
+        
+        <p>Or copy this link: #activationLink#</p>
+        
+        <p>
+            Best regards,<br>
+            The Team
+        </p>
+    </bx:output>
 </body>
 </html>
 ```
@@ -610,9 +614,9 @@ For comprehensive documentation on creating and using custom components, includi
     </bx:script>
     
     <bx:if result.success>
-        <div class="alert alert-success">#result.message#</div>
+        <bx:output><div class="alert alert-success">#result.message#</div></bx:output>
     <bx:else>
-        <div class="alert alert-error">#result.message#</div>
+        <bx:output><div class="alert alert-error">#result.message#</div></bx:output>
     </bx:if>
 </bx:if>
 
