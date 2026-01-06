@@ -5,7 +5,7 @@ description: >-
 icon: file-lines
 ---
 
-# DocBox
+# DocBox - API Docs
 
 ## 📚 DocBox - API Documentation Generator
 
@@ -33,12 +33,9 @@ You can check out the API Docs for DocBox itself here: [https://s3.amazonaws.com
 
 #### BoxLang Module (Recommended)
 
-Install DocBox as a BoxLang module for CLI access:
+Install DocBox as a BoxLang module for CLI access.  You can find the full documentation here: [https://docbox.ortusbooks.com/getting-started/boxlang-cli](https://docbox.ortusbooks.com/getting-started/boxlang-cli)
 
 ```bash
-# CommandBox web runtimes
-box install bx-docbox
-
 # BoxLang OS runtime
 install-bx-module bx-docbox
 ```
