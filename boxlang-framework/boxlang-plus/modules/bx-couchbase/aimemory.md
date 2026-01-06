@@ -1,9 +1,12 @@
 ---
+description: >-
+  Use Couchbase as a vector memory provider for BoxLang AI applications. Store
+  conversation history with semantic search capabilities for intelligent context
+  retrieval in chatbots, agents, and RAG syste
 icon: robot
-description: Use Couchbase as a vector memory provider for BoxLang AI applications. Store conversation history with semantic search capabilities for intelligent context retrieval in chatbots, agents, and RAG systems.
 ---
 
-# 🤖 AI Vector Memory with Couchbase
+# AI Memory
 
 Use Couchbase as a **vector memory provider** for BoxLang AI applications. Store conversation history with semantic search capabilities for intelligent context retrieval in chatbots, agents, and RAG systems.
 
@@ -13,11 +16,11 @@ Use Couchbase as a **vector memory provider** for BoxLang AI applications. Store
 
 The bx-couchbase module integrates with BoxLang AI's memory system, allowing you to use Couchbase as a vector memory backend. This enables:
 
-- **Semantic Search**: Find relevant conversations based on meaning, not just keywords
-- **Multi-Tenant Isolation**: Separate vector storage per user and conversation
-- **Scalable Storage**: Handle thousands of conversations with Couchbase's performance
-- **Persistent Memory**: Conversation history survives application restarts
-- **Hybrid Search**: Combine vector similarity with metadata filtering
+* **Semantic Search**: Find relevant conversations based on meaning, not just keywords
+* **Multi-Tenant Isolation**: Separate vector storage per user and conversation
+* **Scalable Storage**: Handle thousands of conversations with Couchbase's performance
+* **Persistent Memory**: Conversation history survives application restarts
+* **Hybrid Search**: Combine vector similarity with metadata filtering
 
 ## Installation
 
@@ -505,8 +508,8 @@ for ( message in messages ) {
 
 ### Minimum Version
 
-- **Couchbase Server 7.6+** (for vector search support)
-- **Couchbase SDK 3.6+** (included in bx-couchbase module)
+* **Couchbase Server 7.6+** (for vector search support)
+* **Couchbase SDK 3.6+** (included in bx-couchbase module)
 
 ### Bucket Configuration
 
@@ -588,6 +591,7 @@ this.ai = {
 **Solutions**:
 
 1. **Check embedding dimensions match**:
+
 ```js
 // OpenAI text-embedding-3-small = 1536 dimensions
 memory = aiMemory( "cache", {
@@ -598,6 +602,7 @@ memory = aiMemory( "cache", {
 ```
 
 2. **Verify messages are stored**:
+
 ```js
 var count = memory.count();
 writeOutput( "Total messages: #count#" );
@@ -607,6 +612,7 @@ writeOutput( "Messages: #serializeJSON( allMessages )#" );
 ```
 
 3. **Check search query**:
+
 ```js
 // Use descriptive search queries
 relevant = memory.getRelevant(
@@ -777,9 +783,9 @@ bobConvos = supportService.getUserConversations( "bob" );
 
 ## See Also
 
-- **[BoxLang AI Documentation](https://bx-ai.ortusbooks.com/)** - Complete bx-ai module guide
-- **[Vector Memory Guide](https://bx-ai.ortusbooks.com/main-components/vector-memory)** - All vector memory types
-- **[AI Agents Guide](https://bx-ai.ortusbooks.com/main-components/agents)** - Building autonomous agents
-- **[Code Usage](code-usage.md)** - Basic Couchbase cache operations
-- **[Configuration](configuration.md)** - Couchbase connection settings
-- **[Troubleshooting](troubleshooting.md)** - Common issues and solutions
+* [**BoxLang AI Documentation**](https://bx-ai.ortusbooks.com/) - Complete bx-ai module guide
+* [**Vector Memory Guide**](https://bx-ai.ortusbooks.com/main-components/vector-memory) - All vector memory types
+* [**AI Agents Guide**](https://bx-ai.ortusbooks.com/main-components/agents) - Building autonomous agents
+* [**Code Usage**](code-usage.md) - Basic Couchbase cache operations
+* [**Configuration**](configuration.md) - Couchbase connection settings
+* [**Troubleshooting**](troubleshooting.md) - Common issues and solutions

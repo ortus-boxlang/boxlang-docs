@@ -1,9 +1,11 @@
 ---
-description: BoxLang provides the easiest way to query databases with powerful SQL execution and manipulation capabilities
+description: >-
+  BoxLang provides the easiest way to query databases with powerful SQL
+  execution and manipulation capabilities
 icon: database
 ---
 
-# 🗄️ Queries
+# Queries
 
 A **query** is a BoxLang data type that represents tabular data from database operations or programmatic construction. It stores rows and columns of data along with metadata about the query execution and structure.
 
@@ -19,14 +21,14 @@ All BoxLang queries are passed to functions as memory references, not values. Ke
 
 ## 📋 Table of Contents
 
-- [Queries in Code](#queries-in-code)
-- [Creating Queries](#creating-queries)
-- [Query Execution](#query-execution)
-- [Query Properties & Metadata](#query-properties--metadata)
-- [Accessing Query Data](#accessing-query-data)
-- [Functional Programming](#functional-programming)
-- [Query Manipulation](#query-manipulation)
-- [Best Practices](#best-practices)
+* [Queries in Code](queries.md#queries-in-code)
+* [Creating Queries](queries.md#creating-queries)
+* [Query Execution](queries.md#query-execution)
+* [Query Properties & Metadata](queries.md#query-properties--metadata)
+* [Accessing Query Data](queries.md#accessing-query-data)
+* [Functional Programming](queries.md#functional-programming)
+* [Query Manipulation](queries.md#query-manipulation)
+* [Best Practices](queries.md#best-practices)
 
 ## 💻 Queries in Code
 
@@ -82,78 +84,78 @@ BoxLang provides a comprehensive set of query BIFs organized by functionality. A
 
 ### 🔨 Creation & Conversion Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `queryNew()` | Create new query | `queryNew("id,name", "integer,varchar")` |
-| `queryExecute()` | Execute SQL query | `queryExecute("SELECT * FROM users")` |
-| `queryAddRow()` | Add row(s) | `queryAddRow(qry, {id:1, name:"John"})` |
-| `queryAddColumn()` | Add column | `queryAddColumn(qry, "age", "integer")` |
+| Function           | Purpose           | Example                                  |
+| ------------------ | ----------------- | ---------------------------------------- |
+| `queryNew()`       | Create new query  | `queryNew("id,name", "integer,varchar")` |
+| `queryExecute()`   | Execute SQL query | `queryExecute("SELECT * FROM users")`    |
+| `queryAddRow()`    | Add row(s)        | `queryAddRow(qry, {id:1, name:"John"})`  |
+| `queryAddColumn()` | Add column        | `queryAddColumn(qry, "age", "integer")`  |
 
 ### 🔍 Access & Retrieval Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `queryGetCell()` | Get single cell value | `queryGetCell(qry, "name", 1)` → `"John"` |
-| `querySetCell()` | Set single cell value | `querySetCell(qry, "name", "Jane", 1)` |
-| `queryGetRow()` | Get row as struct | `queryGetRow(qry, 1)` → `{id:1, name:"John"}` |
-| `querySetRow()` | Set entire row values | `querySetRow(qry, 1, {name:"Jane"})` |
-| `queryRowData()` | Get row data (alias) | `queryRowData(qry, 1)` |
-| `queryColumnData()` | Get column as array | `queryColumnData(qry, "name")` → `["John", "Jane"]` |
-| `queryColumnArray()` | Get column as array | `queryColumnArray(qry, "name")` |
+| Function             | Purpose               | Example                                             |
+| -------------------- | --------------------- | --------------------------------------------------- |
+| `queryGetCell()`     | Get single cell value | `queryGetCell(qry, "name", 1)` → `"John"`           |
+| `querySetCell()`     | Set single cell value | `querySetCell(qry, "name", "Jane", 1)`              |
+| `queryGetRow()`      | Get row as struct     | `queryGetRow(qry, 1)` → `{id:1, name:"John"}`       |
+| `querySetRow()`      | Set entire row values | `querySetRow(qry, 1, {name:"Jane"})`                |
+| `queryRowData()`     | Get row data (alias)  | `queryRowData(qry, 1)`                              |
+| `queryColumnData()`  | Get column as array   | `queryColumnData(qry, "name")` → `["John", "Jane"]` |
+| `queryColumnArray()` | Get column as array   | `queryColumnArray(qry, "name")`                     |
 
 ### 📊 Metadata Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `queryRecordCount()` | Get row count | `queryRecordCount(qry)` → `10` |
-| `queryColumnCount()` | Get column count | `queryColumnCount(qry)` → `5` |
-| `queryColumnList()` | Get column names | `queryColumnList(qry)` → `"id,name,email"` |
-| `queryColumnExists()` | Check if column exists | `queryColumnExists(qry, "age")` → `true` |
-| `queryKeyExists()` | Check if key exists | `queryKeyExists(qry, "name")` → `true` |
-| `queryCurrentRow()` | Get current row number | `queryCurrentRow(qry)` → `3` |
-| `queryGetResult()` | Get execution metadata | `queryGetResult(qry)` → `{sql, executionTime, ...}` |
+| Function              | Purpose                | Example                                             |
+| --------------------- | ---------------------- | --------------------------------------------------- |
+| `queryRecordCount()`  | Get row count          | `queryRecordCount(qry)` → `10`                      |
+| `queryColumnCount()`  | Get column count       | `queryColumnCount(qry)` → `5`                       |
+| `queryColumnList()`   | Get column names       | `queryColumnList(qry)` → `"id,name,email"`          |
+| `queryColumnExists()` | Check if column exists | `queryColumnExists(qry, "age")` → `true`            |
+| `queryKeyExists()`    | Check if key exists    | `queryKeyExists(qry, "name")` → `true`              |
+| `queryCurrentRow()`   | Get current row number | `queryCurrentRow(qry)` → `3`                        |
+| `queryGetResult()`    | Get execution metadata | `queryGetResult(qry)` → `{sql, executionTime, ...}` |
 
 ### ➕ Modification Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `queryAddRow()` | Add row(s) | `queryAddRow(qry, 3)` adds 3 empty rows |
-| `queryDeleteRow()` | Delete row | `queryDeleteRow(qry, 2)` |
-| `queryInsertAt()` | Insert row at position | `queryInsertAt(qry, 2, {id:5})` |
-| `queryRowSwap()` | Swap two rows | `queryRowSwap(qry, 1, 3)` |
-| `queryAddColumn()` | Add column | `queryAddColumn(qry, "age", "integer")` |
-| `queryDeleteColumn()` | Delete column | `queryDeleteColumn(qry, "age")` |
-| `queryClear()` | Remove all rows | `queryClear(qry)` |
-| `queryAppend()` | Append another query | `queryAppend(qry1, qry2)` |
-| `queryPrepend()` | Prepend another query | `queryPrepend(qry1, qry2)` |
+| Function              | Purpose                | Example                                 |
+| --------------------- | ---------------------- | --------------------------------------- |
+| `queryAddRow()`       | Add row(s)             | `queryAddRow(qry, 3)` adds 3 empty rows |
+| `queryDeleteRow()`    | Delete row             | `queryDeleteRow(qry, 2)`                |
+| `queryInsertAt()`     | Insert row at position | `queryInsertAt(qry, 2, {id:5})`         |
+| `queryRowSwap()`      | Swap two rows          | `queryRowSwap(qry, 1, 3)`               |
+| `queryAddColumn()`    | Add column             | `queryAddColumn(qry, "age", "integer")` |
+| `queryDeleteColumn()` | Delete column          | `queryDeleteColumn(qry, "age")`         |
+| `queryClear()`        | Remove all rows        | `queryClear(qry)`                       |
+| `queryAppend()`       | Append another query   | `queryAppend(qry1, qry2)`               |
+| `queryPrepend()`      | Prepend another query  | `queryPrepend(qry1, qry2)`              |
 
 ### 🔄 Functional Programming Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `queryEach()` | Execute callback for each row | `queryEach(qry, (row) -> println(row.name))` |
-| `queryMap()` | Transform each row | `queryMap(qry, (row) -> row.name.ucase())` |
-| `queryFilter()` | Filter rows by condition | `queryFilter(qry, (row) -> row.age > 18)` |
-| `queryReduce()` | Reduce to single value | `queryReduce(qry, (sum, row) -> sum + row.age, 0)` |
-| `queryEvery()` | Test if all match | `queryEvery(qry, (row) -> row.age >= 18)` |
-| `querySome()` | Test if any match | `querySome(qry, (row) -> row.age > 50)` |
-| `queryNone()` | Test if none match | `queryNone(qry, (row) -> row.age < 0)` |
+| Function        | Purpose                       | Example                                            |
+| --------------- | ----------------------------- | -------------------------------------------------- |
+| `queryEach()`   | Execute callback for each row | `queryEach(qry, (row) -> println(row.name))`       |
+| `queryMap()`    | Transform each row            | `queryMap(qry, (row) -> row.name.ucase())`         |
+| `queryFilter()` | Filter rows by condition      | `queryFilter(qry, (row) -> row.age > 18)`          |
+| `queryReduce()` | Reduce to single value        | `queryReduce(qry, (sum, row) -> sum + row.age, 0)` |
+| `queryEvery()`  | Test if all match             | `queryEvery(qry, (row) -> row.age >= 18)`          |
+| `querySome()`   | Test if any match             | `querySome(qry, (row) -> row.age > 50)`            |
+| `queryNone()`   | Test if none match            | `queryNone(qry, (row) -> row.age < 0)`             |
 
 ### 📐 Manipulation Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `querySort()` | Sort by column(s) | `querySort(qry, "age DESC, name")` |
-| `queryReverse()` | Reverse row order | `queryReverse(qry)` |
-| `querySlice()` | Extract portion of rows | `querySlice(qry, 1, 10)` → first 10 rows |
+| Function         | Purpose                 | Example                                  |
+| ---------------- | ----------------------- | ---------------------------------------- |
+| `querySort()`    | Sort by column(s)       | `querySort(qry, "age DESC, name")`       |
+| `queryReverse()` | Reverse row order       | `queryReverse(qry)`                      |
+| `querySlice()`   | Extract portion of rows | `querySlice(qry, 1, 10)` → first 10 rows |
 
 ### 🔧 Utility Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `valueList()` | Column values as list | `valueList(qry, "name")` → `"John,Jane,Bob"` |
-| `quotedValueList()` | Quoted column values | `quotedValueList(qry, "name")` → `"'John','Jane'"` |
-| `queryRegisterFunction()` | Register function for QoQ | `queryRegisterFunction("myFunc", myUDF)` |
+| Function                  | Purpose                   | Example                                            |
+| ------------------------- | ------------------------- | -------------------------------------------------- |
+| `valueList()`             | Column values as list     | `valueList(qry, "name")` → `"John,Jane,Bob"`       |
+| `quotedValueList()`       | Quoted column values      | `quotedValueList(qry, "name")` → `"'John','Jane'"` |
+| `queryRegisterFunction()` | Register function for QoQ | `queryRegisterFunction("myFunc", myUDF)`           |
 
 ## 🎯 Core Java Methods
 
@@ -161,74 +163,74 @@ The `Query.java` class provides essential methods for direct query manipulation:
 
 ### Collection Interface Methods
 
-| Method | Purpose | Returns |
-|--------|---------|---------|
-| `size()` | Get number of rows | `int` |
-| `isEmpty()` | Check if query is empty | `boolean` |
-| `contains(Object)` | Check if contains row data | `boolean` |
-| `iterator()` | Get row iterator | `Iterator<IStruct>` |
-| `toArray()` | Convert to array of row data | `Object[]` |
-| `toArrayOfStructs()` | Convert to array of structs | `Array` |
-| `add(IStruct)` | Add row as struct | `boolean` |
-| `remove(Object)` | Remove row by object | `boolean` |
-| `clear()` | Remove all rows | `void` |
+| Method               | Purpose                      | Returns             |
+| -------------------- | ---------------------------- | ------------------- |
+| `size()`             | Get number of rows           | `int`               |
+| `isEmpty()`          | Check if query is empty      | `boolean`           |
+| `contains(Object)`   | Check if contains row data   | `boolean`           |
+| `iterator()`         | Get row iterator             | `Iterator<IStruct>` |
+| `toArray()`          | Convert to array of row data | `Object[]`          |
+| `toArrayOfStructs()` | Convert to array of structs  | `Array`             |
+| `add(IStruct)`       | Add row as struct            | `boolean`           |
+| `remove(Object)`     | Remove row by object         | `boolean`           |
+| `clear()`            | Remove all rows              | `void`              |
 
 ### Query-Specific Methods
 
-| Method | Purpose | Returns |
-|--------|---------|---------|
-| `addRow(Object[])` | Add row from array | `int` (row number) |
-| `addRow(Array)` | Add row from Array | `int` |
-| `addRow(IStruct)` | Add row from struct | `int` |
-| `addRows(int)` | Add N empty rows | `int` (last row) |
-| `addEmptyRow()` | Add one empty row | `int` |
-| `deleteRow(int)` | Delete row at index | `Query` |
-| `swapRow(int, int)` | Swap two rows | `Query` |
-| `getRow(int)` | Get row as array | `Object[]` |
-| `getRowAsStruct(int)` | Get row as struct | `IStruct` |
-| `getCell(Key, int)` | Get cell value | `Object` |
-| `setCell(Key, int, Object)` | Set cell value | `Query` |
+| Method                      | Purpose             | Returns            |
+| --------------------------- | ------------------- | ------------------ |
+| `addRow(Object[])`          | Add row from array  | `int` (row number) |
+| `addRow(Array)`             | Add row from Array  | `int`              |
+| `addRow(IStruct)`           | Add row from struct | `int`              |
+| `addRows(int)`              | Add N empty rows    | `int` (last row)   |
+| `addEmptyRow()`             | Add one empty row   | `int`              |
+| `deleteRow(int)`            | Delete row at index | `Query`            |
+| `swapRow(int, int)`         | Swap two rows       | `Query`            |
+| `getRow(int)`               | Get row as array    | `Object[]`         |
+| `getRowAsStruct(int)`       | Get row as struct   | `IStruct`          |
+| `getCell(Key, int)`         | Get cell value      | `Object`           |
+| `setCell(Key, int, Object)` | Set cell value      | `Query`            |
 
 ### Column Methods
 
-| Method | Purpose | Returns |
-|--------|---------|---------|
-| `addColumn(Key, QueryColumnType)` | Add column | `Query` |
-| `addColumn(Key, QueryColumnType, Object[])` | Add column with data | `Query` |
-| `deleteColumn(Key)` | Delete column | `void` |
-| `getColumn(Key)` | Get QueryColumn object | `QueryColumn` |
-| `getColumnMeta(Key)` | Get column metadata | `IStruct` |
-| `getColumnMeta()` | Get all column metadata | `IStruct` |
-| `getColumnData(Key)` | Get column data as array | `Object[]` |
-| `getColumnDataAsArray(Key)` | Get column as BoxLang Array | `Array` |
-| `getColumnIndex(Key)` | Get column position | `int` |
-| `getColumnList()` | Get column names as string | `String` |
-| `getColumnArray()` | Get column names as Array | `Array` |
-| `getColumnNames()` | Get column names as Array | `Array` |
-| `hasColumn(Key)` | Check if column exists | `boolean` |
-| `hasColumns()` | Check if query has columns | `boolean` |
+| Method                                      | Purpose                     | Returns       |
+| ------------------------------------------- | --------------------------- | ------------- |
+| `addColumn(Key, QueryColumnType)`           | Add column                  | `Query`       |
+| `addColumn(Key, QueryColumnType, Object[])` | Add column with data        | `Query`       |
+| `deleteColumn(Key)`                         | Delete column               | `void`        |
+| `getColumn(Key)`                            | Get QueryColumn object      | `QueryColumn` |
+| `getColumnMeta(Key)`                        | Get column metadata         | `IStruct`     |
+| `getColumnMeta()`                           | Get all column metadata     | `IStruct`     |
+| `getColumnData(Key)`                        | Get column data as array    | `Object[]`    |
+| `getColumnDataAsArray(Key)`                 | Get column as BoxLang Array | `Array`       |
+| `getColumnIndex(Key)`                       | Get column position         | `int`         |
+| `getColumnList()`                           | Get column names as string  | `String`      |
+| `getColumnArray()`                          | Get column names as Array   | `Array`       |
+| `getColumnNames()`                          | Get column names as Array   | `Array`       |
+| `hasColumn(Key)`                            | Check if column exists      | `boolean`     |
+| `hasColumns()`                              | Check if query has columns  | `boolean`     |
 
 ### Metadata & Duplication
 
-| Method | Purpose | Returns |
-|--------|---------|---------|
-| `getMetaData()` | Get query metadata | `IStruct` |
-| `setMetadata(IStruct)` | Set query metadata | `Query` |
-| `duplicate()` | Shallow copy of query | `Query` |
-| `duplicate(boolean)` | Shallow/deep copy | `Query` |
-| `duplicate(IBoxContext)` | Context-aware copy | `Query` |
-| `toUnmodifiable()` | Create immutable copy | `UnmodifiableQuery` |
+| Method                   | Purpose               | Returns             |
+| ------------------------ | --------------------- | ------------------- |
+| `getMetaData()`          | Get query metadata    | `IStruct`           |
+| `setMetadata(IStruct)`   | Set query metadata    | `Query`             |
+| `duplicate()`            | Shallow copy of query | `Query`             |
+| `duplicate(boolean)`     | Shallow/deep copy     | `Query`             |
+| `duplicate(IBoxContext)` | Context-aware copy    | `Query`             |
+| `toUnmodifiable()`       | Create immutable copy | `UnmodifiableQuery` |
 
 ### Advanced Methods
 
-| Method | Purpose | Returns |
-|--------|---------|---------|
-| `sort(Comparator<IStruct>)` | Sort with comparator | `void` |
-| `sortData(Comparator<Object[]>)` | Sort row arrays directly | `void` |
-| `truncate(long)` | Keep only N rows | `Query` |
-| `insertQueryAt(int, Query)` | Insert query at position | `Query` |
+| Method                                   | Purpose                    | Returns          |
+| ---------------------------------------- | -------------------------- | ---------------- |
+| `sort(Comparator<IStruct>)`              | Sort with comparator       | `void`           |
+| `sortData(Comparator<Object[]>)`         | Sort row arrays directly   | `void`           |
+| `truncate(long)`                         | Keep only N rows           | `Query`          |
+| `insertQueryAt(int, Query)`              | Insert query at position   | `Query`          |
 | `fromResultSet(BoxStatement, ResultSet)` | Create from JDBC ResultSet | `Query` (static) |
-| `fromArray(Array, Array, Object)` | Create from arrays | `Query` (static) |
+| `fromArray(Array, Array, Object)`        | Create from arrays         | `Query` (static) |
 
 ## 📖 What is a Query?
 
@@ -277,15 +279,15 @@ this.datasources[ "myDB" ] = {
 
 ### Supported Database Drivers
 
-| Driver | Example URL |
-|--------|-------------|
-| **MySQL** | `jdbc:mysql://localhost:3306/mydb` |
-| **PostgreSQL** | `jdbc:postgresql://localhost:5432/mydb` |
+| Driver                   | Example URL                                         |
+| ------------------------ | --------------------------------------------------- |
+| **MySQL**                | `jdbc:mysql://localhost:3306/mydb`                  |
+| **PostgreSQL**           | `jdbc:postgresql://localhost:5432/mydb`             |
 | **Microsoft SQL Server** | `jdbc:sqlserver://localhost:1433;databaseName=mydb` |
-| **Oracle** | `jdbc:oracle:thin:@localhost:1521:XE` |
-| **Derby** | `jdbc:derby:memory:mydb;create=true` |
-| **H2** | `jdbc:h2:mem:mydb` |
-| **HyperSQL** | `jdbc:hsqldb:mem:mydb` |
+| **Oracle**               | `jdbc:oracle:thin:@localhost:1521:XE`               |
+| **Derby**                | `jdbc:derby:memory:mydb;create=true`                |
+| **H2**                   | `jdbc:h2:mem:mydb`                                  |
+| **HyperSQL**             | `jdbc:hsqldb:mem:mydb`                              |
 
 ### Connection Pool Options (HikariCP)
 
@@ -389,7 +391,8 @@ for ( i = 1; i <= qItems.recordCount; i++ ) {
 
 {% hint style="success" %}
 **Best Practice**: Use for-in loops or `each()` for cleaner, more readable code. Reserve index-based loops for when you need precise position control.
-### 🚀 Multi-Threaded Looping
+
+#### 🚀 Multi-Threaded Looping
 
 BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion. The `queryEach()` or `each()` functions allow for `parallel` and `maxThreads` arguments so the iteration can happen concurrently:
 
@@ -414,16 +417,13 @@ users.each( ( row ) => {
 **Limitation**: This approach uses a single thread executor per execution and does not provide exception handling across threads. For production-grade parallel processing, consider BoxLang's async programming features instead.
 {% endhint %}
 
-### ⚡ BoxLang Async Programming (Recommended for Parallel Operations)
+#### ⚡ BoxLang Async Programming (Recommended for Parallel Operations)
 
 For a functional and much more flexible approach to multi-threaded or parallel programming, use BoxLang's built-in async programming constructs, which leverage the Java Concurrency and CompletableFutures frameworks.
 
-{% content-ref url="../boxlang-framework/asynchronous-programming/" %}
-[asynchronous-programming](../boxlang-framework/asynchronous-programming/)
-{% endcontent-ref %}
-
 **Key async methods for parallel query processing:**
-## 🔒 Using Query Parameters (Preventing SQL Injection)
+
+### 🔒 Using Query Parameters (Preventing SQL Injection)
 
 When using user input in queries, you must prevent [SQL injection attacks](https://owasp.org/www-community/attacks/SQL_Injection). BoxLang provides query parameters for safe SQL execution.
 
@@ -431,7 +431,7 @@ When using user input in queries, you must prevent [SQL injection attacks](https
 **Security Critical**: Never concatenate user input directly into SQL strings! Always use query parameters.
 {% endhint %}
 
-### Named Parameters (Recommended)
+#### Named Parameters (Recommended)
 
 ```js
 // Named parameter with automatic type binding
@@ -450,7 +450,7 @@ users = queryExecute(
 );
 ```
 
-### Positional Parameters
+#### Positional Parameters
 
 ```js
 // Positional placeholders with ?
@@ -469,9 +469,9 @@ users = queryExecute(
 );
 ```
 
-### Using bx:queryParam Component
+#### Using bx:queryParam Component
 
-```js
+````js
 bx:query name="result" {
     writeOutput("
         SELECT * FROM users
@@ -502,51 +502,51 @@ queryExecute(
  "select quantity, item from cupboard where item_id = ?"
  [ { value=arguments.itemID, sqltype="varchar" } ]
 );
-```
+````
 
-### 📋 Available SQL Types
+#### 📋 Available SQL Types
 
 The `sqltype` parameter binds values to specific database types for security and query plan optimization:
-
-| Type | Description | Example |
-|------|-------------|---------|
-| `bigint` | 64-bit integer | `-9223372036854775808` to `9223372036854775807` |
-| `bit` | Boolean/bit value | `true` / `false` |
-| `char` | Fixed-length string | `"ABC  "` (padded) |
-| `varchar` | Variable-length string | `"Hello World"` |
-| `nchar` | Fixed-length Unicode string | `"ABC  "` |
-| `nvarchar` | Variable-length Unicode string | `"Hello 世界"` |
-| `longvarchar` | Long text | Long text content |
-| `longnvarchar` | Long Unicode text | Long Unicode content |
-| `integer` | 32-bit integer | `-2147483648` to `2147483647` |
-| `smallint` | 16-bit integer | `-32768` to `32767` |
-| `tinyint` | 8-bit integer | `-128` to `127` |
-| `numeric` | Fixed precision decimal | `123.45` |
-| `decimal` | Fixed precision decimal | `123.45` |
-| `float` | Floating point | `123.456789` |
-| `double` | Double precision float | `123.456789012345` |
-| `real` | Single precision float | `123.456` |
-| `money` | Currency value | `1234.56` |
-| `money4` | Small currency value | `214748.3647` |
-| `date` | Date only | `2025-12-09` |
-| `time` | Time only | `14:30:00` |
-| `timestamp` | Date and time | `2025-12-09 14:30:00` |
-| `blob` | Binary large object | Binary data |
-| `clob` | Character large object | Large text |
-| `nclob` | Unicode large object | Large Unicode text |
-| `sqlxml` | XML data | `<root><item /></root>` |
-| `refcursor` | Result set reference | Oracle REF CURSOR |
-| `idstamp` | Unique identifier | UUID/GUID |
-
-{% hint style="warning" %}
-The `cf_sql_{type}` syntax (e.g., `cf_sql_varchar`) is only supported when [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed. Use the native type names (e.g., `varchar`) in all new code.
 {% endhint %}
 
-## 🏗️ Building Queries Programmatically
+| Type           | Description                    | Example                                         |
+| -------------- | ------------------------------ | ----------------------------------------------- |
+| `bigint`       | 64-bit integer                 | `-9223372036854775808` to `9223372036854775807` |
+| `bit`          | Boolean/bit value              | `true` / `false`                                |
+| `char`         | Fixed-length string            | `"ABC "` (padded)                               |
+| `varchar`      | Variable-length string         | `"Hello World"`                                 |
+| `nchar`        | Fixed-length Unicode string    | `"ABC "`                                        |
+| `nvarchar`     | Variable-length Unicode string | `"Hello 世界"`                                    |
+| `longvarchar`  | Long text                      | Long text content                               |
+| `longnvarchar` | Long Unicode text              | Long Unicode content                            |
+| `integer`      | 32-bit integer                 | `-2147483648` to `2147483647`                   |
+| `smallint`     | 16-bit integer                 | `-32768` to `32767`                             |
+| `tinyint`      | 8-bit integer                  | `-128` to `127`                                 |
+| `numeric`      | Fixed precision decimal        | `123.45`                                        |
+| `decimal`      | Fixed precision decimal        | `123.45`                                        |
+| `float`        | Floating point                 | `123.456789`                                    |
+| `double`       | Double precision float         | `123.456789012345`                              |
+| `real`         | Single precision float         | `123.456`                                       |
+| `money`        | Currency value                 | `1234.56`                                       |
+| `money4`       | Small currency value           | `214748.3647`                                   |
+| `date`         | Date only                      | `2025-12-09`                                    |
+| `time`         | Time only                      | `14:30:00`                                      |
+| `timestamp`    | Date and time                  | `2025-12-09 14:30:00`                           |
+| `blob`         | Binary large object            | Binary data                                     |
+| `clob`         | Character large object         | Large text                                      |
+| `nclob`        | Unicode large object           | Large Unicode text                              |
+| `sqlxml`       | XML data                       | `<root><item /></root>`                         |
+| `refcursor`    | Result set reference           | Oracle REF CURSOR                               |
+| `idstamp`      | Unique identifier              | UUID/GUID                                       |
+
+{% hint style="success" %}
+\{% hint style="warning" %\} The `cf_sql_{type}` syntax (e.g., `cf_sql_varchar`) is only supported when [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed. Use the native type names (e.g., `varchar`) in all new code. \{% endhint %\}
+
+### 🏗️ Building Queries Programmatically
 
 You can create and manipulate queries without database connections using BoxLang's query construction functions:
 
-### Creating Empty Queries
+#### Creating Empty Queries
 
 ```js
 // Create query with columns only
@@ -564,7 +564,7 @@ querySetCell( news, "title", "Man walks on Moon" );
 writeDump( news );
 ```
 
-### Creating Queries with Data
+#### Creating Queries with Data
 
 ```js
 // Array of structs approach (recommended)
@@ -596,7 +596,7 @@ newsArray = queryNew(
 );
 ```
 
-### Manipulating Query Data
+#### Manipulating Query Data
 
 ```js
 // Add multiple empty rows
@@ -628,7 +628,7 @@ titles = queryColumnData( news, "title" );
 writeDump( titles ); // [ "Updated Title", "Man walks on Moon", ... ]
 ```
 
-### Method Chaining
+#### Method Chaining
 
 ```js
 // Build query fluently
@@ -640,7 +640,7 @@ users = queryNew( "id,name,age", "integer,varchar,integer" )
     .sort( "name ASC" );
 ```
 
-## 🔍 Query of Queries (QoQ)
+### 🔍 Query of Queries (QoQ)
 
 Query existing query objects using SQL without hitting the database. BoxLang's QoQ implementation is extremely fast - **5x faster than Lucee** and **17x faster than Adobe ColdFusion**.
 
@@ -666,7 +666,7 @@ youngUsers = queryExecute(
 writeDump( youngUsers );
 ```
 
-### Advanced QoQ Features
+#### Advanced QoQ Features
 
 BoxLang QoQ supports modern SQL features:
 
@@ -710,19 +710,15 @@ categorized = queryExecute( "
 ", {}, { dbtype: "query" } );
 ```
 
-{% hint style="info" %}
-For complete QoQ documentation including custom functions, bitwise operators, and performance tips, see [Query of Queries](../boxlang-framework/jdbc/query-of-queries.md).
-{% endhint %}
+\{% hint style="info" %\} For complete QoQ documentation including custom functions, bitwise operators, and performance tips, see [Query of Queries](../boxlang-framework/jdbc/query-of-queries.md). \{% endhint %\}
 
-{% hint style="success" %}
-**Performance Tip**: For simple filtering and sorting, use functional methods like `queryFilter()` and `querySort()` instead of QoQ - they're even faster and more type-safe!
-{% endhint %}
+\{% hint style="success" %\} **Performance Tip**: For simple filtering and sorting, use functional methods like `queryFilter()` and `querySort()` instead of QoQ - they're even faster and more type-safe! \{% endhint %\}
 
-## 📦 Alternative Return Types
+### 📦 Alternative Return Types
 
 You can return query results as arrays or structs instead of query objects - perfect for JSON APIs and modern frameworks.
 
-### Return as Array of Structs
+#### Return as Array of Structs
 
 ```js
 // Each row becomes a struct in an array
@@ -741,7 +737,7 @@ users = queryExecute(
 return users.toJSON();
 ```
 
-### Return as Struct of Structs
+#### Return as Struct of Structs
 
 ```js
 // Use a column as the key for a struct of structs
@@ -760,7 +756,7 @@ usersById = queryExecute(
 alice = usersById[ 1 ];
 ```
 
-### Convert Existing Query
+#### Convert Existing Query
 
 ```js
 // Convert query object to array
@@ -773,21 +769,19 @@ arrayData = qry.map( ( row ) -> {
 } );
 ```
 
-{% hint style="success" %}
-**Best Practice**: Use `returntype="array"` for REST APIs and JSON responses. It's cleaner and more compatible with JavaScript frameworks like React, Vue, and Angular.
-{% endhint %}
+\{% hint style="success" %\} **Best Practice**: Use `returntype="array"` for REST APIs and JSON responses. It's cleaner and more compatible with JavaScript frameworks like React, Vue, and Angular. \{% endhint %\}
 
-## 🏗️ QB - Query Builder Module
+### 🏗️ QB - Query Builder Module
 
 **QB** (Query Builder) is a powerful module for building database queries with a fluent, chainable API. It abstracts database differences and makes complex queries readable and maintainable.
 
-### Installation
+#### Installation
 
 ```bash
 box install qb
 ```
 
-### Features
+#### Features
 
 * ✅ Fluent, chainable query building
 * ✅ Database-agnostic (MySQL, PostgreSQL, MSSQL, Oracle, etc.)
@@ -796,7 +790,7 @@ box install qb
 * ✅ Raw expressions when needed
 * ✅ Schema builder for migrations
 
-### Basic Usage
+#### Basic Usage
 
 ```js
 // Inject QB instance
@@ -828,7 +822,7 @@ topAuthors = query.from( "posts" )
     .get();
 ```
 
-### Insert, Update, Delete
+#### Insert, Update, Delete
 
 ```js
 // Insert
@@ -848,36 +842,38 @@ query.table( "users" )
 
 📖 **Full Documentation**: [https://qb.ortusbooks.com/](https://qb.ortusbooks.com/)
 
-{% hint style="success" %}
-**Recommended**: Use QB for complex queries and database migrations. It provides better testability and database portability than raw SQL.
-{% endhint %}
+\{% hint style="success" %\} **Recommended**: Use QB for complex queries and database migrations. It provides better testability and database portability than raw SQL. \{% endhint %\}
 
-## ⚙️ Query Options
+### ⚙️ Query Options
 
 BoxLang supports comprehensive query options for controlling execution behavior:
 
-### Core Options
+#### Core Options
+{% endhint %}
 
-| Option | Type | Description | Example |
-|--------|------|-------------|---------|
-| `result` | String | Variable name to store query metadata | `result: "queryResult"` |
-| `maxRows` | Integer | Limit number of rows returned | `maxRows: 100` |
-| `queryTimeout` | Integer | Max execution time (seconds) | `queryTimeout: 30` |
-| `returnType` | String | Return format: `query`, `array`, `struct` | `returnType: "array"` |
-| `columnKey` | String | Key column for struct return type | `columnKey: "id"` |
-| `fetchSize` | Integer | JDBC batch size for large results | `fetchSize: 500` |
-| `dbtype` | String | Database type (`"query"` for QoQ) | `dbtype: "query"` |
+| Option         | Type    | Description                               | Example                 |
+| -------------- | ------- | ----------------------------------------- | ----------------------- |
+| `result`       | String  | Variable name to store query metadata     | `result: "queryResult"` |
+| `maxRows`      | Integer | Limit number of rows returned             | `maxRows: 100`          |
+| `queryTimeout` | Integer | Max execution time (seconds)              | `queryTimeout: 30`      |
+| `returnType`   | String  | Return format: `query`, `array`, `struct` | `returnType: "array"`   |
+| `columnKey`    | String  | Key column for struct return type         | `columnKey: "id"`       |
+| `fetchSize`    | Integer | JDBC batch size for large results         | `fetchSize: 500`        |
+| `dbtype`       | String  | Database type (`"query"` for QoQ)         | `dbtype: "query"`       |
 
-### Caching Options
+{% hint style="success" %}
+#### Caching Options
+{% endhint %}
 
-| Option | Type | Description | Example |
-|--------|------|-------------|---------|
-| `cache` | Boolean | Enable query caching | `cache: true` |
-| `cacheKey` | String | Unique cache identifier | `cacheKey: "userList"` |
-| `cacheProvider` | String | Cache provider name | `cacheProvider: "default"` |
-| `cacheTimeout` | Duration | Cache expiration time | `cacheTimeout: "1h"` |
+| Option          | Type     | Description             | Example                    |
+| --------------- | -------- | ----------------------- | -------------------------- |
+| `cache`         | Boolean  | Enable query caching    | `cache: true`              |
+| `cacheKey`      | String   | Unique cache identifier | `cacheKey: "userList"`     |
+| `cacheProvider` | String   | Cache provider name     | `cacheProvider: "default"` |
+| `cacheTimeout`  | Duration | Cache expiration time   | `cacheTimeout: "1h"`       |
 
-### Example Usage
+{% hint style="success" %}
+#### Example Usage
 
 ```js
 // Basic query with options
@@ -911,22 +907,23 @@ writeDump( metadata.executionTime );
 writeDump( metadata.cached );
 ```
 
-### CFML Compatibility Options
+#### CFML Compatibility Options
 
 When [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed, these aliases are available:
-
-| CFML Option | BoxLang Equivalent |
-|-------------|-------------------|
-| `blockfactor` | `fetchSize` |
-| `cacheID` | `cacheKey` |
-| `cacheRegion` | `cacheProvider` |
-| `cachedAfter` | Converted to `cacheTimeout` |
-| `cachedWithin` | `cacheTimeout` |
-
-{% hint style="info" %}
-**Future Options**: Support planned for `cachedWithin="request"`, `timezone`, `psq`, and `lazy` loading.
 {% endhint %}
 
-{% hint style="warning" %}
-**Unsupported**: The following CFML options are not supported: `username`, `password`, `debug`, `clientInfo`, `fetchClientInfo`, `ormoptions`.
+| CFML Option    | BoxLang Equivalent          |
+| -------------- | --------------------------- |
+| `blockfactor`  | `fetchSize`                 |
+| `cacheID`      | `cacheKey`                  |
+| `cacheRegion`  | `cacheProvider`             |
+| `cachedAfter`  | Converted to `cacheTimeout` |
+| `cachedWithin` | `cacheTimeout`              |
+
+{% hint style="success" %}
+\{% hint style="info" %\} **Future Options**: Support planned for `cachedWithin="request"`, `timezone`, `psq`, and `lazy` loading. \{% endhint %\}
+
+\{% hint style="warning" %\} **Unsupported**: The following CFML options are not supported: \`
+
+username`,` password`,` debug`,` clientInfo`,` fetchClientInfo`,` ormoptions\`.
 {% endhint %}

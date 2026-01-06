@@ -3,7 +3,7 @@ description: This section covers the basics of the program structures of BoxLang
 icon: folder-tree
 ---
 
-# 🏗️ Program Structure
+# Program Structure
 
 ## 📁 File Types
 
@@ -87,9 +87,7 @@ BoxLang allows you to access any BoxLang class or script/template by location co
 * `include template="path"`
 * `Any BIF that requires a path`
 
-{% hint style="info" %}
-The discovery is done by looking at your global, application mappings and then relative pathing.
-{% endhint %}
+\{% hint style="info" %\} The discovery is done by looking at your global, application mappings and then relative pathing. \{% endhint %\}
 
 ```
 script.bxs
@@ -137,9 +135,7 @@ caseInsensitiveKey = new Key( "luis" );
 
 From the example above I made no distinction on what was a Java class or what was a Boxlang class. By convention BoxLang will auto-discover the class for you according to it's package path. However, you can also use object resolver notation to disambiguiate the location and define it explicitly.
 
-{% hint style="info" %}
-The implicit resolver is `bx` meaning a Boxlang class. You don't need to use it if you don't want to.
-{% endhint %}
+\{% hint style="info" %\} The implicit resolver is `bx` meaning a Boxlang class. You don't need to use it if you don't want to. \{% endhint %\}
 
 ### 🎯 Object Resolver Imports
 

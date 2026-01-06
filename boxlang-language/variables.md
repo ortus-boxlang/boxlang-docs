@@ -9,14 +9,14 @@ In BoxLang, variables are just pointers to a piece of data. They can hold **any*
 
 ## 📋 Table of Contents
 
-- [Variable Types](#variable-types)
-- [Variable Declaration](#variable-declaration)
-- [Variable Naming Rules](#variable-naming-rules)
-- [Variable Scoping](#variable-scoping)
-- [Type Checking](#type-checking)
-- [Variable Assignment](#variable-assignment)
-- [Complex Variables](#complex-variables)
-- [Best Practices](#best-practices)
+* [Variable Types](variables.md#variable-types)
+* [Variable Declaration](variables.md#variable-declaration)
+* [Variable Naming Rules](variables.md#variable-naming-rules)
+* [Variable Scoping](variables.md#variable-scoping)
+* [Type Checking](variables.md#type-checking)
+* [Variable Assignment](variables.md#variable-assignment)
+* [Complex Variables](variables.md#complex-variables)
+* [Best Practices](variables.md#best-practices)
 
 ```javascript
 a = "string" // string
@@ -69,7 +69,7 @@ As you can see, we can create [strings](strings.md), [numerics](numbers.md), [ar
 
 ### BIFs
 
-BoxLang leverages several headless built-in functions that are available anywhere you code.  These will be referred to you as BIFs.  You can see our [reference guide](reference/built-in-functions/) to check them out.  Here are some we used:
+BoxLang leverages several headless built-in functions that are available anywhere you code. These will be referred to you as BIFs. You can see our [reference guide](reference/built-in-functions/) to check them out. Here are some we used:
 
 ```java
 print() // print to the out stream
@@ -107,7 +107,7 @@ Most BoxLang variables have a few requirements imposed by the Virtual Machine (V
 
 ### Reserved Words
 
-As with any programming language, there are specific names you can't use, and some you can use.  Here are the rules:
+As with any programming language, there are specific names you can't use, and some you can use. Here are the rules:
 
 * The name of any of the internal BoxLang persistent scopes: `form, session, cgi, client, url, application, function`
   * Technically you can create the variable by long scoping (`local.form`), but it is confusing and error-prone. So please be careful.
@@ -409,9 +409,10 @@ println( variables.name )  // "Luis"
 
 {% hint style="danger" %}
 **Performance Impact**: Scope hunting has a performance cost! BoxLang must check multiple scopes in order until it finds the variable. **Always explicitly scope your variables** for:
-- Better performance
-- Code clarity
-- Avoiding unexpected variable collisions
+
+* Better performance
+* Code clarity
+* Avoiding unexpected variable collisions
 {% endhint %}
 
 ### Best Practice: Explicit Scoping
@@ -478,9 +479,10 @@ function demo( userId ) {
 {% hint style="danger" %}
 **CRITICAL WARNING**: Creating variables with the same name as methods will cause **collisions** because functions in classes are stored in scopes as variables!
 
-### How Functions Are Stored:
-- **Public/Remote functions** → Stored in **both** `this` AND `variables` scopes
-- **Package/Private functions** → Stored in **`variables`** scope only
+#### How Functions Are Stored:
+
+* **Public/Remote functions** → Stored in **both** `this` AND `variables` scopes
+* **Package/Private functions** → Stored in **`variables`** scope only
 {% endhint %}
 
 ### The Problem
@@ -528,9 +530,10 @@ class UserService {
 ### Variable Names to Avoid
 
 Avoid creating variables with names that match:
-- Any function/method names in your class
-- Common BIF names if you plan to call them unscoped
-- Reserved scope names (`local`, `arguments`, `variables`, `this`, `session`, `cgi`, `session`, `server`, etc.)
+
+* Any function/method names in your class
+* Common BIF names if you plan to call them unscoped
+* Reserved scope names (`local`, `arguments`, `variables`, `this`, `session`, `cgi`, `session`, `server`, etc.)
 
 > See: [Variable Scopes](variable-scopes.md) for more on scopes and best practices.
 
@@ -586,9 +589,9 @@ final config = { api: "v2", timeout: 30 }.toUnmodifiable()
 
 ### Learn More
 
-- [Arrays - Immutability](arrays.md#immutability)
-- [Structures - Immutability](structures.md#immutability)
-- [Queries - Immutability](queries.md#immutability)
+* [Arrays - Immutability](arrays.md#immutability)
+* [Structures - Immutability](structures.md#immutability)
+* [Queries - Immutability](queries.md#immutability)
 
 ## Types
 

@@ -1,5 +1,5 @@
 ---
-icon: screwdriver-wrench
+icon: plug
 ---
 
 # JDBC Drivers

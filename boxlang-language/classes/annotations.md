@@ -1,5 +1,7 @@
 ---
-description: Learn how to use annotations in BoxLang for metadata-driven programming with classes, properties, and functions
+description: >-
+  Learn how to use annotations in BoxLang for metadata-driven programming with
+  classes, properties, and functions
 icon: tag
 ---
 
@@ -11,9 +13,9 @@ Annotations in BoxLang are powerful metadata markers that can be attached to cla
 
 Annotations can be applied to three main constructs in BoxLang:
 
-- **Classes** - Mark classes with metadata for framework behaviors
-- **Properties** - Define metadata for class properties
-- **Functions** - Add metadata to methods and functions
+* **Classes** - Mark classes with metadata for framework behaviors
+* **Properties** - Define metadata for class properties
+* **Functions** - Add metadata to methods and functions
 
 ## 📝 Annotation Syntax
 
@@ -427,7 +429,21 @@ for ( prop in meta.properties ) {
 
 ## 📚 Related Topics
 
-- {% content-ref url="README.md" %}Classes Overview{% endcontent-ref %}
-- {% content-ref url="properties.md" %}Properties{% endcontent-ref %}
-- {% content-ref url="functions.md" %}Functions{% endcontent-ref %}
-- {% content-ref url="../reference/built-in-functions/struct.md" %}Struct Functions{% endcontent-ref %}
+*
+*
+
+{% content-ref url="properties.md" %}
+[properties.md](properties.md)
+{% endcontent-ref %}
+
+*
+
+{% content-ref url="functions.md" %}
+[functions.md](functions.md)
+{% endcontent-ref %}
+
+*
+
+{% content-ref url="../reference/built-in-functions/struct.md" %}
+[struct.md](../reference/built-in-functions/struct.md)
+{% endcontent-ref %}
