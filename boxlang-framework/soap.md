@@ -13,19 +13,19 @@ description: Consume SOAP web services with BoxLang's fluent SOAP client
 // Create SOAP client from WSDL
 ws = soap( "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL" );
 
-// Invoke operations directly as methods
-countries = ws.ListOfContinentsByName();
+// Invoke operations using invoke() method
+countries = ws.invoke( "ListOfContinentsByName" );
 dump( countries );
 
-// Pass arguments
-countryInfo = ws.CountryISOCode( { sCountryName: "United States" } );
+// Pass arguments as struct
+countryInfo = ws.invoke( "CountryISOCode", { sCountryName: "United States" } );
 dump( countryInfo );
 ```
 
 ## 📋 Key Features
 
 - 🔍 **Automatic WSDL Parsing** - Discovers operations, parameters, and types from WSDL
-- 🎯 **Fluent API** - Call SOAP operations as native BoxLang methods
+- 🎯 **Simple Invocation API** - Call SOAP operations using the `invoke()` method
 - 🔄 **Automatic Type Conversion** - Converts SOAP XML types to BoxLang types automatically
 - 📦 **Smart Response Unwrapping** - Automatically unwraps single-property SOAP responses
 - 🔒 **Authentication Support** - HTTP Basic Auth for secured services
@@ -55,7 +55,7 @@ dump( countryInfo );
 
 ## 🎯 The `soap()` BIF
 
-The `soap()` BIF creates a fluent SOAP client from a WSDL URL. The client automatically discovers available operations and allows you to invoke them as native BoxLang methods.
+The `soap()` BIF creates a fluent SOAP client from a WSDL URL. The client automatically discovers available operations and allows you to invoke them using the `invoke()` method.
 
 ### Basic Syntax
 
@@ -137,28 +137,30 @@ result = ws.myOperation( args );
 
 ## 🎬 Invoking SOAP Operations
 
-Once you have a SOAP client, invoke operations directly as methods:
+Once you have a SOAP client, invoke operations using the `invoke()` method:
 
-### Direct Method Invocation
+### Syntax
 
 ```js
 // No arguments
-result = ws.operationName();
+result = ws.invoke( "operationName" );
 
-// With struct of named arguments
-result = ws.operationName( { arg1: "value1", arg2: "value2" } );
+// Single argument
+result = ws.invoke( "operationName", "singleValue" );
 
-// With array of positional arguments
-result = ws.operationName( [ "value1", "value2" ] );
+// Struct/map of named arguments
+result = ws.invoke( "operationName", { arg1: "value1", arg2: "value2" } );
+
+// Array of positional arguments
+result = ws.invoke( "operationName", [ "value1", "value2" ] );
 ```
 
-### Using the `invoke()` Method
+### Parameters
 
-You can also use the `invoke()` method explicitly:
-
-```js
-result = ws.invoke( "operationName", { arg1: "value1" } );
-```
+| Parameter | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `operationName` | string | Yes | The name of the SOAP operation to invoke |
+| `args` | any | No | Arguments for the operation - can be a single value, struct/map of named arguments, or array of positional arguments |
 
 ---
 
@@ -171,19 +173,19 @@ result = ws.invoke( "operationName", { arg1: "value1" } );
 ws = soap( "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL" );
 
 // Get list of continents
-continents = ws.ListOfContinentsByName();
+continents = ws.invoke( "ListOfContinentsByName" );
 dump( continents );
 
 // Get country info by ISO code
-countryInfo = ws.CountryISOCode( { sCountryName: "United States" } );
+countryInfo = ws.invoke( "CountryISOCode", { sCountryName: "United States" } );
 println( "ISO Code: " & countryInfo );
 
 // Get capital city
-capital = ws.CapitalCity( { sCountryISOCode: "US" } );
+capital = ws.invoke( "CapitalCity", { sCountryISOCode: "US" } );
 println( "Capital: " & capital );
 
 // Get country currency
-currency = ws.CountryCurrency( { sCountryISOCode: "US" } );
+currency = ws.invoke( "CountryCurrency", { sCountryISOCode: "US" } );
 dump( currency );
 ```
 
@@ -196,7 +198,7 @@ ws = soap( "http://example.com/weather.wsdl" )
     .timeout( 30 );
 
 // Get weather by zip code
-weather = ws.GetWeatherByZipCode( { zipCode: "90210" } );
+weather = ws.invoke( "GetWeatherByZipCode", { zipCode: "90210" } );
 
 println( "Temperature: " & weather.temperature & "°F" );
 println( "Conditions: " & weather.conditions );
@@ -213,7 +215,7 @@ ws = soap( "https://secure.paymentgateway.com/api/v1?wsdl" )
     .timeout( 45 );
 
 // Process payment
-result = ws.ProcessPayment( {
+result = ws.invoke( "ProcessPayment", {
     amount: 99.99,
     currency: "USD",
     cardNumber: "4111111111111111",
@@ -244,12 +246,12 @@ ws = soap( "https://login.salesforce.com/services/Soap/u/58.0" )
     .header( "X-SFDC-Session", sessionId );
 
 // Query accounts
-accounts = ws.query( {
+accounts = ws.invoke( "query", {
     queryString: "SELECT Id, Name, Industry FROM Account WHERE Industry = 'Technology' LIMIT 10"
 } );
 
 // Create new contact
-newContact = ws.create( {
+newContact = ws.invoke( "create", {
     sObjectType: "Contact",
     FirstName: "John",
     LastName: "Doe",
@@ -269,7 +271,7 @@ ws = soap( "https://shipping.example.com/ShipService?wsdl" )
     .timeout( 30 );
 
 // Get shipping rates
-rates = ws.GetShippingRates( {
+rates = ws.invoke( "GetShippingRates", {
     origin: {
         address: "123 Warehouse Rd",
         city: "Los Angeles",
@@ -297,7 +299,7 @@ rates.each( ( rate ) => {
 } );
 
 // Create shipment
-shipment = ws.CreateShipment( {
+shipment = ws.invoke( "CreateShipment", {
     service: "GROUND",
     origin: originAddress,
     destination: destAddress,
@@ -330,7 +332,7 @@ Check if a specific operation exists.
 
 ```js
 if ( ws.hasOperation( "GetCustomer" ) ) {
-    customer = ws.GetCustomer( { customerId: 123 } );
+    customer = ws.invoke( "GetCustomer", { customerId: 123 } );
 }
 ```
 
@@ -429,7 +431,7 @@ When `xsi:type` information is present in the SOAP response, BoxLang uses it to 
 
 ```js
 // BoxLang automatically converts to integer
-result = ws.myOperation(); // result = 42 (integer, not "42" string)
+result = ws.invoke( "myOperation" ); // result = 42 (integer, not "42" string)
 ```
 
 Without `xsi:type`, BoxLang attempts intelligent casting:
@@ -560,7 +562,7 @@ SOAP faults are automatically converted to BoxLang exceptions:
 
 ```js
 try {
-    result = ws.ProcessPayment( {
+    result = ws.invoke( "ProcessPayment", {
         amount: 99.99,
         cardNumber: "invalid"
     } );
@@ -684,7 +686,7 @@ class WeatherService {
 
     function getCurrentWeather( zipCode ) {
         try {
-            return client.GetCurrentWeather( { zipCode: zipCode } );
+            return client.invoke( "GetCurrentWeather", { zipCode: zipCode } );
         } catch ( any e ) {
             logger.error( "Failed to get weather for #zipCode#: #e.message#" );
             // Return default/cached data or rethrow
@@ -693,7 +695,7 @@ class WeatherService {
     }
 
     function getForecast( zipCode, days = 5 ) {
-        return client.GetForecast( {
+        return client.invoke( "GetForecast", {
             zipCode: zipCode,
             days: days
         } );
@@ -775,8 +777,8 @@ manager = new SoapServiceManager()
     } );
 
 // Call services
-weather = manager.getService( "weather" ).GetCurrentWeather( { zipCode: "90210" } );
-rates = manager.getService( "shipping" ).GetShippingRates( shippingDetails );
+weather = manager.getService( "weather" ).invoke( "GetCurrentWeather", { zipCode: "90210" } );
+rates = manager.getService( "shipping" ).invoke( "GetShippingRates", shippingDetails );
 
 // Monitor all services
 dump( manager.getAllStatistics() );
