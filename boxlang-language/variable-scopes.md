@@ -1210,7 +1210,580 @@ The CGI scope provides access to these standard variables:
 | `server_port_secure` | Secure server port |
 | `server_protocol` | HTTP protocol version |
 
-## 🚫 Client Scope
+## � Form Scope
+
+The `form` scope is a scope available only in web runtimes that contains HTTP POST data submitted from HTML forms. It automatically parses form fields from `application/x-www-form-urlencoded` and `multipart/form-data` requests.
+
+### 🎯 Basic Form Handling
+
+```js
+// HTML form submission
+<form method="POST" action="/process">
+    <input type="text" name="username" value="john.doe" />
+    <input type="email" name="email" value="john@example.com" />
+    <input type="password" name="password" value="secret123" />
+    <button type="submit">Submit</button>
+</form>
+
+// BoxLang processing
+if( structKeyExists( form, "username" ) ) {
+    username = form.username
+    email = form.email
+    password = form.password
+
+    println( "User: #username#" )
+    println( "Email: #email#" )
+}
+```
+
+### 📦 Array-Based Form Fields (New in 1.9.0)
+
+BoxLang automatically parses form fields with array notation (`[]`) into native arrays, making it easy to work with multiple values without manual conversion:
+
+```js
+// HTML form with multiple checkboxes
+<form method="POST" action="/preferences">
+    <h3>Select Your Favorite Colors:</h3>
+    <input type="checkbox" name="colors[]" value="red" />
+    <input type="checkbox" name="colors[]" value="blue" />
+    <input type="checkbox" name="colors[]" value="green" />
+
+    <h3>Select Programming Languages:</h3>
+    <input type="checkbox" name="languages[]" value="boxlang" />
+    <input type="checkbox" name="languages[]" value="java" />
+    <input type="checkbox" name="languages[]" value="javascript" />
+
+    <button type="submit">Save Preferences</button>
+</form>
+
+// BoxLang automatically parses as arrays
+colors = form.colors
+// colors = ["red", "blue", "green"] (if all selected)
+
+languages = form.languages
+// languages = ["boxlang", "java"] (example selection)
+
+// Use array methods directly
+println( "Selected #colors.len()# colors" )
+println( "Color list: #colors.toList()#" )
+
+// Iterate over selections
+for( color in colors ) {
+    println( "User likes: #color#" )
+}
+
+// Filter selections
+modernLanguages = languages.filter( ( lang ) => lang != "javascript" )
+```
+
+### 🎯 Array Notation Examples
+
+```js
+// Multi-select dropdowns
+<select name="categories[]" multiple>
+    <option value="news">News</option>
+    <option value="sports">Sports</option>
+    <option value="tech">Technology</option>
+</select>
+
+// BoxLang processing
+if( structKeyExists( form, "categories" ) ) {
+    categories = form.categories  // Already an array!
+
+    // Save to database
+    for( category in categories ) {
+        queryExecute(
+            "INSERT INTO user_categories (user_id, category) VALUES (?, ?)",
+            [ userId, category ]
+        )
+    }
+}
+
+// Dynamic form fields
+<input type="text" name="emails[]" placeholder="Email 1" />
+<input type="text" name="emails[]" placeholder="Email 2" />
+<input type="text" name="emails[]" placeholder="Email 3" />
+
+// Process email list
+emails = form.emails  // Array of email addresses
+
+// Validate and filter
+validEmails = emails.filter( ( email ) => {
+    return len( email ) && isValid( "email", email )
+} )
+
+println( "Valid emails: #validEmails.toList()#" )
+```
+
+### 📋 Nested Arrays
+
+```js
+// Complex form with grouped data
+<input type="text" name="products[0][name]" value="Widget" />
+<input type="number" name="products[0][qty]" value="5" />
+
+<input type="text" name="products[1][name]" value="Gadget" />
+<input type="number" name="products[1][qty]" value="3" />
+
+// BoxLang creates nested structure
+products = form.products
+// products = [
+//     { "name": "Widget", "qty": 5 },
+//     { "name": "Gadget", "qty": 3 }
+// ]
+
+// Process order items
+total = products.reduce( ( sum, product ) => {
+    return sum + ( product.qty * getPrice( product.name ) )
+}, 0 )
+```
+
+### 🔄 Backward Compatibility
+
+Traditional single-value form fields continue to work as always:
+
+```js
+// Single value form fields (no array notation)
+<input type="text" name="firstName" value="John" />
+<input type="text" name="lastName" value="Doe" />
+
+// BoxLang processing
+firstName = form.firstName  // "John" (string)
+lastName = form.lastName    // "Doe" (string)
+
+// Mixed: some arrays, some single values
+<input type="text" name="username" value="johndoe" />
+<input type="checkbox" name="roles[]" value="admin" />
+<input type="checkbox" name="roles[]" value="editor" />
+
+// Process mixed form
+username = form.username  // String
+roles = form.roles        // Array
+```
+
+### 🎨 Form Scope Methods
+
+Since form is a struct, you have access to all struct methods:
+
+```js
+// Check if form was submitted
+if( !structIsEmpty( form ) ) {
+    println( "Form was submitted" )
+}
+
+// Check for specific fields
+if( structKeyExists( form, "username" ) ) {
+    println( "Username provided" )
+}
+
+// Get field with default
+email = structKeyExists( form, "email" ) ? form.email : ""
+
+// Validate all fields present
+requiredFields = [ "username", "email", "password" ]
+missingFields = requiredFields.filter( ( field ) => {
+    return !structKeyExists( form, field )
+} )
+
+if( missingFields.len() ) {
+    abort "Missing fields: #missingFields.toList()#"
+}
+
+// Dump entire form for debugging
+writeDump( var=form, label="Form Data" )
+```
+
+### 🚨 Security Best Practices
+
+```js
+// Always validate and sanitize form input
+username = form.username ?: ""
+
+// Validate length
+if( len( username ) < 3 || len( username ) > 50 ) {
+    throw( type="ValidationError", message="Invalid username length" )
+}
+
+// HTML encode output to prevent XSS
+safeUsername = encodeForHTML( username )
+
+// Validate array inputs
+colors = form.colors ?: []
+
+// Ensure it's actually an array
+if( !isArray( colors ) ) {
+    colors = [ colors ]  // Convert single value to array
+}
+
+// Validate each item
+validColors = [ "red", "blue", "green", "yellow" ]
+selectedColors = colors.filter( ( color ) => {
+    return arrayContains( validColors, color )
+} )
+
+// SQL injection prevention with parameterized queries
+queryExecute(
+    "INSERT INTO users (username, email) VALUES (?, ?)",
+    [ form.username, form.email ]
+)
+```
+
+### 📤 File Uploads
+
+File uploads create special entries in the form scope:
+
+```js
+// File upload form
+<form method="POST" enctype="multipart/form-data">
+    <input type="file" name="avatar" />
+    <button type="submit">Upload</button>
+</form>
+
+// Access file information
+if( structKeyExists( form, "avatar" ) ) {
+    fileInfo = form.avatar
+
+    println( "Filename: #fileInfo.clientFilename#" )
+    println( "Size: #fileInfo.fileSize# bytes" )
+    println( "Type: #fileInfo.contentType#" )
+
+    // Move uploaded file
+    fileMove( fileInfo.tmpFile, expandPath( "./uploads/#fileInfo.clientFilename#" ) )
+}
+```
+
+{% hint style="info" %}
+**New in 1.9.0**: Array notation automatically converts multiple values into native arrays, eliminating the need for manual `listToArray()` conversions. This works with checkboxes, multi-select dropdowns, and dynamic form fields.
+{% endhint %}
+
+## 🔗 URL Scope
+
+The `url` scope is a scope available only in web runtimes that contains HTTP GET parameters from the query string. It automatically parses URL parameters and makes them available as variables.
+
+### 🎯 Basic URL Parameters
+
+```js
+// URL: https://example.com/page?name=John&age=30&debug=true
+
+// Access URL parameters
+name = url.name      // "John"
+age = url.age        // "30" (string)
+debug = url.debug    // "true" (string)
+
+println( "Name: #name#" )
+println( "Age: #age#" )
+
+// Convert to appropriate types
+ageNumeric = val( url.age )
+debugBoolean = url.debug == "true"
+```
+
+### 📦 Array-Based URL Parameters (New in 1.9.0)
+
+Just like the form scope, the URL scope now automatically parses parameters with array notation (`[]`) into native arrays:
+
+```js
+// URL: /search?tags[]=boxlang&tags[]=java&tags[]=modern&sort=recent
+
+// BoxLang automatically parses as array
+tags = url.tags
+// tags = ["boxlang", "java", "modern"]
+
+sort = url.sort
+// sort = "recent" (single value)
+
+// Use array methods directly
+println( "Searching for #tags.len()# tags" )
+println( "Tags: #tags.toList()#" )
+
+// Build query dynamically
+tagConditions = tags.map( ( tag ) => "tags LIKE '%#tag#%'" )
+whereClause = tagConditions.toList( " OR " )
+
+// Execute search
+results = queryExecute(
+    "SELECT * FROM articles WHERE #whereClause# ORDER BY created #url.sort#",
+    {},
+    { datasource: "mydb" }
+)
+```
+
+### 🎯 Practical URL Array Examples
+
+```js
+// Filter with multiple values
+// URL: /products?categories[]=electronics&categories[]=computers&price=low
+
+categories = url.categories
+// categories = ["electronics", "computers"]
+
+priceFilter = url.price
+// priceFilter = "low"
+
+// Build dynamic query
+products = queryExecute(
+    "SELECT * FROM products
+     WHERE category IN (?)
+     AND price_range = ?
+     ORDER BY price ASC",
+    [ categories.toList(), priceFilter ]
+)
+
+// Pagination with sorting
+// URL: /users?fields[]=name&fields[]=email&fields[]=created&page=2
+
+fields = url.fields ?: [ "*" ]
+// fields = ["name", "email", "created"]
+
+page = val( url.page ?: 1 )
+pageSize = 20
+
+// Build SELECT clause
+selectClause = fields.toList( ", " )
+
+// Paginated query
+users = queryExecute(
+    "SELECT #selectClause# FROM users
+     LIMIT #pageSize# OFFSET #(page - 1) * pageSize#"
+)
+
+// Multiple filters
+// URL: /reports?types[]=sales&types[]=inventory&regions[]=north&regions[]=south
+
+reportTypes = url.types
+regions = url.regions
+
+// Generate report
+report = generateReport(
+    types: reportTypes,
+    regions: regions
+)
+```
+
+### 🔄 URL Parameter Combinations
+
+```js
+// URL: /search?q=boxlang&filters[]=recent&filters[]=popular&limit=50
+
+// Mix of single values and arrays
+searchQuery = url.q              // "boxlang"
+filters = url.filters            // ["recent", "popular"]
+limit = val( url.limit ?: 10 )   // 50
+
+// Complex filtering
+results = searchService.search(
+    query: searchQuery,
+    filters: filters,
+    limit: limit
+)
+
+// URL building helper
+function buildSearchUrl( query, filters, limit ) {
+    params = "q=#urlEncodedFormat(query)#"
+
+    // Add array parameters
+    for( filter in filters ) {
+        params &= "&filters[]=#urlEncodedFormat(filter)#"
+    }
+
+    params &= "&limit=#limit#"
+
+    return "/search?#params#"
+}
+
+// Generate URL with arrays
+searchUrl = buildSearchUrl( "boxlang", [ "recent", "popular" ], 50 )
+// Result: /search?q=boxlang&filters[]=recent&filters[]=popular&limit=50
+```
+
+### 📋 Nested URL Parameters
+
+```js
+// URL: /data?filters[0][field]=status&filters[0][value]=active&filters[1][field]=type&filters[1][value]=premium
+
+// BoxLang creates nested structure
+filters = url.filters
+// filters = [
+//     { "field": "status", "value": "active" },
+//     { "field": "type", "value": "premium" }
+// ]
+
+// Build WHERE clause dynamically
+whereClauses = filters.map( ( filter ) => {
+    return "#filter.field# = '#filter.value#'"
+} )
+
+whereSQL = whereClauses.toList( " AND " )
+
+// Execute query
+records = queryExecute(
+    "SELECT * FROM records WHERE #whereSQL#"
+)
+```
+
+### 🔍 URL Scope Methods
+
+```js
+// Check if parameters exist
+if( !structIsEmpty( url ) ) {
+    println( "URL parameters present" )
+}
+
+// Check specific parameter
+if( structKeyExists( url, "id" ) ) {
+    recordId = val( url.id )
+}
+
+// Get with default value
+page = structKeyExists( url, "page" ) ? val( url.page ) : 1
+sortOrder = url.sort ?: "asc"
+
+// Validate required parameters
+requiredParams = [ "id", "action" ]
+missingParams = requiredParams.filter( ( param ) => {
+    return !structKeyExists( url, param )
+} )
+
+if( missingParams.len() ) {
+    throw(
+        type: "MissingParameter",
+        message: "Missing required parameters: #missingParams.toList()#"
+    )
+}
+
+// Dump all URL parameters for debugging
+writeDump( var=url, label="URL Parameters" )
+```
+
+### 🚨 Security Best Practices
+
+```js
+// Always validate and sanitize URL parameters
+id = val( url.id ?: 0 )
+
+if( id <= 0 ) {
+    throw( type="ValidationError", message="Invalid ID" )
+}
+
+// Whitelist valid values
+validSortOrders = [ "asc", "desc" ]
+sortOrder = url.sort ?: "asc"
+
+if( !arrayContains( validSortOrders, sortOrder ) ) {
+    sortOrder = "asc"  // Default to safe value
+}
+
+// Validate array inputs
+tags = url.tags ?: []
+
+// Ensure it's an array
+if( !isArray( tags ) ) {
+    tags = [ tags ]
+}
+
+// Sanitize each tag
+sanitizedTags = tags.map( ( tag ) => {
+    return encodeForHTML( tag )
+} )
+
+// Use parameterized queries
+results = queryExecute(
+    "SELECT * FROM posts WHERE tags IN (?) ORDER BY created #sortOrder#",
+    [ sanitizedTags.toList() ]
+)
+
+// XSS prevention for display
+safeSearchTerm = encodeForHTML( url.q ?: "" )
+println( "Showing results for: #safeSearchTerm#" )
+```
+
+### 🔗 URL Building Helpers
+
+```js
+// Build URLs with array parameters
+function buildUrl( baseUrl, params ) {
+    queryString = []
+
+    for( key in params ) {
+        value = params[key]
+
+        if( isArray( value ) ) {
+            // Add array parameters
+            for( item in value ) {
+                queryString.append( "#key#[]=#urlEncodedFormat(item)#" )
+            }
+        } else {
+            // Add single parameter
+            queryString.append( "#key#=#urlEncodedFormat(value)#" )
+        }
+    }
+
+    return "#baseUrl#?#queryString.toList('&')#"
+}
+
+// Usage
+searchUrl = buildUrl( "/search", {
+    "q": "boxlang",
+    "tags": [ "java", "modern", "dynamic" ],
+    "sort": "recent",
+    "page": 2
+} )
+
+println( searchUrl )
+// Output: /search?q=boxlang&tags[]=java&tags[]=modern&tags[]=dynamic&sort=recent&page=2
+
+// Link with array parameters
+function filterLink( addFilter ) {
+    currentFilters = url.filters ?: []
+    newFilters = currentFilters.append( addFilter )
+
+    return buildUrl( cgi.script_name, {
+        "filters": newFilters
+    } )
+}
+```
+
+### 🎨 Advanced URL Patterns
+
+```js
+// URL: /api/data?include[]=user&include[]=comments&exclude[]=metadata
+
+// Selective field inclusion
+include = url.include ?: []
+exclude = url.exclude ?: []
+
+// Build field list
+fields = getAllFields()
+    .filter( ( field ) => include.len() == 0 || arrayContains( include, field ) )
+    .filter( ( field ) => !arrayContains( exclude, field ) )
+
+// Fetch data with selected fields
+data = queryExecute(
+    "SELECT #fields.toList()# FROM data WHERE id = ?",
+    [ url.id ]
+)
+
+// URL with operators
+// URL: /filter?age[gte]=18&age[lte]=65&status[in][]=active&status[in][]=pending
+
+// Parse complex filters
+ageMin = val( url[ "age[gte]" ] ?: 0 )
+ageMax = val( url[ "age[lte]" ] ?: 999 )
+statusIn = url[ "status[in]" ] ?: [ "active" ]
+
+// Build WHERE clause
+whereClause = "age BETWEEN #ageMin# AND #ageMax# AND status IN (#statusIn.toList("','")#)"
+```
+
+{% hint style="info" %}
+**New in 1.9.0**: Array notation (`[]`) in URL parameters automatically creates native arrays, making it easier to handle multiple values for filtering, sorting, and complex queries without manual parsing.
+{% endhint %}
+
+{% hint style="warning" %}
+**Security**: Always validate and sanitize URL parameters before using them in queries, file operations, or displaying in output. Use parameterized queries to prevent SQL injection and encode output to prevent XSS attacks.
+{% endhint %}
+
+## �🚫 Client Scope
 
 The `client` scope is not supported in core BoxLang.  This is a CFML legacy scope that is only available via our `bx-compat-cfml` module.  If you would like to use it, please install the module.
 
