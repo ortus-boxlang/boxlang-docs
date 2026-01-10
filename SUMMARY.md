@@ -1069,7 +1069,6 @@
           * [DateTimeFormat](boxlang-framework/modularity/compat-cfml/reference/built-in-functions/temporal/DateTimeFormat.md)
           * [DayOfWeekAsString](boxlang-framework/modularity/compat-cfml/reference/built-in-functions/temporal/DayOfWeekAsString.md)
           * [DayOfWeekShortAsString](boxlang-framework/modularity/compat-cfml/reference/built-in-functions/temporal/DayOfWeekShortAsString.md)
-          * [GetHTTPTimestring](boxlang-framework/modularity/compat-cfml/reference/built-in-functions/temporal/GetHTTPTimestring.md)
           * [LSDateFormat](boxlang-framework/modularity/compat-cfml/reference/built-in-functions/temporal/LSDateFormat.md)
           * [LSDateTimeFormat](boxlang-framework/modularity/compat-cfml/reference/built-in-functions/temporal/LSDateTimeFormat.md)
           * [LSDayOfWeek](boxlang-framework/modularity/compat-cfml/reference/built-in-functions/temporal/LSDayOfWeek.md)
