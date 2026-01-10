@@ -7,7 +7,7 @@ Formats a number with an optional format mask
 ## Method Signature
 
 ```
-NumberFormat(number=[number], mask=[string], locale=[string])
+NumberFormat(number=[any], mask=[string], locale=[string])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ NumberFormat(number=[number], mask=[string], locale=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `number` | `true` | The number to be formatted |  |
+| `number` | `any` | `true` | The number to be formatted, or an empty string which will be treated as 0. |  |
 | `mask` | `string` | `false` | The formatting mask to apply using the {@link java.text.DecimalFormat} patterns. |  |
 | `locale` | `string` | `false` | An optional locale string to apply to the format |  |
 

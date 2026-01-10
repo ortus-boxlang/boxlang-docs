@@ -31,7 +31,7 @@ Compress(format=[string], source=[string], destination=[string], includeBaseFold
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `format` | `string` | `true` | The format to use for the compression: zip or gzip. |  |
+| `format` | `string` | `true` | The format to use for the compression: zip or gzip. Default is zip. | `zip` |
 | `source` | `string` | `true` | The absolute path to the source file or folder to compress. |  |
 | `destination` | `string` | `true` | The absolute path with a file name to save as the compressed file. Extension is optional. |  |
 | `includeBaseFolder` | `boolean` | `false` | Whether to include the base folder as the root of the compressed file. Default is true. | `true` |
@@ -39,7 +39,7 @@ Compress(format=[string], source=[string], destination=[string], includeBaseFold
 | `prefix` | `string` | `false` | The prefix directory to store the compressed files under. Default is empty. |  |
 | `filter` | `any` | `false` | A regular expression to filter the files to compress or a function that receives the file name and returns a boolean. |  |
 | `recurse` | `boolean` | `false` | Whether to compress the files recursively. Default is true. | `true` |
-| `compressionLevel` | `integer` | `false` | The compression level to use for the compression. Default is 6, which is a good balance between speed and compression ratio. | `[ortus.boxlang.runtime.validation.dynamic.Max@2cc9a5a2, 6, ortus.boxlang.runtime.validation.dynamic.Min@42d4de20]` |
+| `compressionLevel` | `integer` | `false` | The compression level to use for the compression. Default is 6, which is a good balance between speed and compression ratio. | `6` |
 
 ## Examples
 

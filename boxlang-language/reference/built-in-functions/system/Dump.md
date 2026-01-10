@@ -10,7 +10,7 @@ Outputs the contents of a variable (simple or complex) of any type for debugging
  - <strong>console</strong>: The output is printed to the System console.
  - <strong>Absolute File Path</strong> The output is written to a file with the specified absolute file path.
  </p>
-
+ 
  The output `format` can be either HTML or plain text.
  
  The default format is HTML if the output location is the buffer or a web server or a file, otherwise it is plain text for the console.
@@ -31,7 +31,7 @@ Dump(var=[any], label=[string], top=[numeric], expand=[boolean], abort=[boolean]
 | `top` | `numeric` | `false` | The number of levels to display when dumping collections. Great to avoid dumping the entire world! Default is inifinity. (Only in HTML output) |  |
 | `expand` | `boolean` | `false` | Whether to expand the dump. Be default, we try to expand as much as possible. (Only in HTML output) | `true` |
 | `abort` | `boolean` | `false` | Whether to do a hard abort the request after dumping. Default is false | `false` |
-| `output` | `string` | `false` | The output format which can be "buffer", "console", or an absolute file path. The default is "buffer". |  |
+| `output` | `string` | `false` | The output format which can be "buffer", "console", or "{absolute file path}". The default is "buffer". |  |
 | `format` | `string` | `false` | The format of the output to a <strong>filename</strong>. Can be "html" or "text". The default is according to the output location. |  |
 | `showUDFs` | `boolean` | `false` | Show UDFs or not. Default is true. (Only in HTML output) | `true` |
 
@@ -68,6 +68,7 @@ writeDump( var=getTimeZoneInfo(), label="Tag label" );
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxAST](./BoxAST.md)
   * [BoxModuleReload](./BoxModuleReload.md)
   * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)

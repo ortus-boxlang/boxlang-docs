@@ -37,6 +37,7 @@ Result: // We don't expect anything to happen after the application has been sto
   * [ApplicationStartTime](./ApplicationStartTime.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxAST](./BoxAST.md)
   * [BoxModuleReload](./BoxModuleReload.md)
   * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)

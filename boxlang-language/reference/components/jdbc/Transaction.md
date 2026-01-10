@@ -9,7 +9,6 @@ Demarcate or manage a JDBC transaction.
 <bx:Transaction action=[string]
 isolation=[string]
 savepoint=[string]
-nested=[boolean]
 datasource=[string] />
 ```
 
@@ -21,7 +20,6 @@ datasource=[string] />
 | `action` | `string` | `false` | When used inside a transaction block, perform some action upon an existing transaction. One of: `begin`, `commit`, `rollback`, or `setsavepoint`. | `begin` |
 | `isolation` | `string` | `false` | The isolation level to use for the transaction. Can only be set upon transaction begin. One of: `read_uncommitted`, `read_committed`, `repeatable_read`, or `serializable`. |  |
 | `savepoint` | `string` | `false` | The name of the savepoint to set or rollback to. Used with `savepoint` or `rollback` actions. |  |
-| `nested` | `boolean` | `false` | Whether or not this transaction is nested within another transaction. Default is `false`. | `false` |
 | `datasource` | `string` | `false` | The name of the datasource to use for the transaction. If not provided, the first query execution inside the transaction will set the datasource. |  |
 
 ## Examples

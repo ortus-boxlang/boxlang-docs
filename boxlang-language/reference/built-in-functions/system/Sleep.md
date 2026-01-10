@@ -61,6 +61,7 @@ bx:timer label="Sleep for 2.5 seconds" type="inline" {
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxAST](./BoxAST.md)
   * [BoxModuleReload](./BoxModuleReload.md)
   * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)

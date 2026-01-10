@@ -9,6 +9,7 @@ Creates a new object representation according to the {@code type} and {@code cla
  <ul>
  <li><strong>class/component</strong> - Creates a new instance of a BoxLang class (Default if not used)</li>
  <li><strong>java</strong> - Creates a new instance of a Java class</li>
+ <li><strong>webservice</strong> - Creates a SOAP web service client from a WSDL URL</li>
  <li><strong>{anything}</strong> - Passes the request to the {@code BoxEvent.ON_CREATEOBJECT_REQUEST} event for further processing</li>
  </ul>
  <p>
@@ -22,15 +23,17 @@ Creates a new object representation according to the {@code type} and {@code cla
  <ul>
  <li><strong>class/component</strong> - The properties are not used</li>
  <li><strong>java</strong> - The properties can be a single or an array of absolute path(s) to a directory containing Jars/Classes, or absolute path(s) to specific Jars/Classes to classload</li>
+ <li><strong>webservice</strong> - The properties are not used</li>
  <li><strong>{anything}</strong> - The properties can be any object that the listener can use to create the object</li>
  </ul>
  <p>
- <strong>IMPORTANT:</strong> This does NOT create an instance of the class, for that you will need to call the {@code init()} method on the returned object.
+ <strong>IMPORTANT:</strong> For class/component types, this does NOT create an instance of the class. For that you will need to call the {@code init()} method on the returned object.
+ For webservice type, a fully configured SoapClient is returned ready for method invocation.
 
 ## Method Signature
 
 ```
-CreateObject(type=[string], className=[string], properties=[any], externalOnly=[boolean])
+CreateObject(type=[string], className=[string], properties=[any], externalOnly=[boolean], classloader=[any])
 ```
 
 ### Arguments
@@ -38,10 +41,11 @@ CreateObject(type=[string], className=[string], properties=[any], externalOnly=[
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `type` | `string` | `false` | The type of object to create: java, class (component), or any other type | `class` |
-| `className` | `string` | `false` | A fully qualified class name to create an instance of |  |
+| `type` | `string` | `false` | The type of object to create: java, class (component), webservice, or any other type | `class` |
+| `className` | `string` | `false` | For java/class types: a fully qualified class name. For webservice type: the WSDL URL. |  |
 | `properties` | `any` | `false` | Depending on the type, this can be used to pass additional properties to the object creation process |  |
 | `externalOnly` | `boolean` | `false` |  |  |
+| `classloader` | `any` | `false` | Optional class loader to use when loading Java classes. Only applicable for type="java". |  |
 
 ## Examples
 
@@ -117,6 +121,7 @@ dump( var=new "#myClass#"(), expand=false );
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxAST](./BoxAST.md)
   * [BoxModuleReload](./BoxModuleReload.md)
   * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)

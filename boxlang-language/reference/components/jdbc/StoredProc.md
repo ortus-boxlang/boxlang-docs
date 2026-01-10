@@ -11,7 +11,9 @@ datasource=[string]
 blockfactor=[integer]
 debug=[boolean]
 returnCode=[boolean]
-result=[string] />
+result=[string]
+username=[string]
+password=[string] />
 ```
 
 ### Attributes
@@ -23,8 +25,10 @@ result=[string] />
 | `datasource` | `string` | `false` | The name of the datasource where the stored procedure is registered. |  |
 | `blockfactor` | `integer` | `false` | The fetch size to use for batching rows and reducing network round trips when reading results. |  |
 | `debug` | `boolean` | `false` | If enabled, list debugging info on each statement. | `false` |
-| `returnCode` | `boolean` | `false` | If enabled, populates `bxstoredproc.statusCode` with status code returned by stored procedure. | `false` |
-| `result` | `string` | `false` | The name of the variable to store the result set in. |  |
+| `returnCode` | `boolean` | `false` | True/false whether to capture the return code of the stored procedure in the result variable. | `false` |
+| `result` | `string` | `false` | The name of the variable to store the result set in. | `bxstoredproc` |
+| `username` | `string` | `false` |  |  |
+| `password` | `string` | `false` |  |  |
 
 ## Examples
 

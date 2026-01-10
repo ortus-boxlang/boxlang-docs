@@ -34,7 +34,7 @@ result=[string] />
 | `file` | `string` | `false` | The file to act on |  |
 | `mode` | `string` | `false` | The mode to open the file in |  |
 | `output` | `string` | `false` | The output of the action |  |
-| `addnewline` | `boolean` | `false` | Add a newline to the end of the file | `false` |
+| `addnewline` | `boolean` | `false` | Add a newline to the end of the file |  |
 | `attributes` | `string` | `false` | Attributes to set on the file |  |
 | `charset` | `string` | `false` | The character set to use | `utf-8` |
 | `source` | `string` | `false` | The source file |  |

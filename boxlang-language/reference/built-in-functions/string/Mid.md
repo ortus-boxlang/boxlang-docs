@@ -17,7 +17,7 @@ Mid(string=[string], start=[integer], count=[integer])
 |----------|------|----------|-------------|---------|
 | `string` | `string` | `true` | The string to extract from |  |
 | `start` | `integer` | `true` | The position of the first character to retrieve. |  |
-| `count` | `integer` | `true` | The number of characters to retrieve. |  |
+| `count` | `integer` | `false` | The number of characters to retrieve. |  |
 
 ## Examples
 

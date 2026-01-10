@@ -2,7 +2,9 @@
 
 # Function: `CreateUUID`
 
-Create a Universally Unique Identifier (UUID).
+Create a Universally Unique Identifier (UUID) in the standard format.
+
+Generates UUIDs in this format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx. Each 'x' is a hexadecimal digit (0-9, a-f).
 
 ## Method Signature
 
@@ -47,6 +49,7 @@ dump( CreateUUID() );
   * [ApplicationStop](./ApplicationStop.md)
   * [BoxAnnounce](./BoxAnnounce.md)
   * [BoxAnnounceAsync](./BoxAnnounceAsync.md)
+  * [BoxAST](./BoxAST.md)
   * [BoxModuleReload](./BoxModuleReload.md)
   * [BoxRegisterInterceptionPoints](./BoxRegisterInterceptionPoints.md)
   * [BoxRegisterInterceptor](./BoxRegisterInterceptor.md)

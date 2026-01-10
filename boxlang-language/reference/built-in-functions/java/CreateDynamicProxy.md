@@ -12,55 +12,38 @@ Dynamic proxy lets you pass Box Classes to Java objects.
 ## Method Signature
 
 ```
-CreateDynamicProxy(class=[any], interfaces=[any], classLoader=[any])
+CreateDynamicProxy(class=[any], interfaces=[any], classloader=[any])
 ```
 
 ### Arguments
 
+
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `class` | `any` | `true` | The Box Class to create a dynamic proxy of. |  |
-| `interfaces` | `any` | `true` | The interfaces that the dynamic proxy should implement. |  |
-| `classLoader` | `any` | `false` | **New in 1.7.0** - Optional Java ClassLoader to use for loading the interfaces. Useful when working with custom ClassLoaders or when interfaces are loaded from non-standard locations. |  |
+| `interfaces` | `any` | `true` | The interfaces that the dynamic proxy should implement. Can be a single class, a single string fqn, or an array of class/string fqns |  |
+| `classloader` | `any` | `false` | The class loader to use when loading the interface classes and creating the proxy. Defaults to the request class loader. |  |
 
 ## Examples
 
 ### Tag Syntax
 
+
+
+
 ```java
-<bx:set instance = new cfc.helloWorld() >
+<bx:set instance = new cfc.helloWorld() > 
  <bx:set dynInstnace = createDynamicProxy( instance, [
 	"MyInterface"
-	] ) >
- <bx:set x = createObject( "java", "InvokeHelloProxy" ).init( dynInstnace ) >
- <bx:set y = x.invokeHello() >
- <bx:output>#y#</bx:output>
-```
+	] ) > 
+ <bx:set x = createObject( "java", "InvokeHelloProxy" ).init( dynInstnace ) > 
+ <bx:set y = x.invokeHello() > 
+ <bx:output>#y#</bx:output> 
 
-### Script Syntax with Custom ClassLoader (New in 1.7.0)
-
-```javascript
-// Create instance of Box Class
-instance = new cfc.helloWorld();
-
-// Get custom ClassLoader if needed
-customClassLoader = createObject( "java", "java.lang.Thread" )
-    .currentThread()
-    .getContextClassLoader();
-
-// Create dynamic proxy with custom ClassLoader
-dynInstance = createDynamicProxy(
-    instance,
-    [ "MyInterface" ],
-    customClassLoader
-);
-
-// Pass to Java library
-x = createObject( "java", "InvokeHelloProxy" ).init( dynInstance );
-y = x.invokeHello();
-echo( y );
 ```
 
 
 
 ## Related
+
+
