@@ -22,7 +22,7 @@ GetHTTPTimeString(date=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `date` | `any` | `false` |  |  |
+| `date` | `any` | `false` | The date object to convert to HTTP time string. If not provided, the current date and time is used. | `now()` |
 
 ## Examples
 
