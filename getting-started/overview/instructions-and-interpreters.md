@@ -69,11 +69,11 @@ println( myCopy.size() )
 
 ### JSR-223
 
-BoxLang is a certified [JSR-223 dynamic language](instructions-and-interpreters.md#jsr-223) that can be used by any JVM language via the Scripting API.
+BoxLang is a certified [JSR-223 dynamic language](../running-boxlang/jsr-223-scripting.md) that can be used by any JVM language via the Scripting API.
 
 ### Multi-Runtime
 
-BoxLang has been designed to run in many [different runtimes](../running-boxlang/) using our multi-runtime approach.  You can run BoxLang in any OS, web server, servlet container, docker engine, AWS Lambda, and more coming soon.
+BoxLang has been designed to run in many [different runtimes](../running-boxlang/README.md) using our multi-runtime approach.  You can run BoxLang in any OS, web server, servlet container, docker engine, AWS Lambda, and more coming soon.
 
 ## Running from the Command Line
 
