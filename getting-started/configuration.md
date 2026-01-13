@@ -13,7 +13,7 @@ BoxLang has an installation-level configuration file that allows developers to a
 All runtimes allow for configuration overrides.
 {% endhint %}
 
-### boxlang.json
+## boxlang.json
 
 Once you startup a runtime, the runtime will find the `BOXLANG_HOME`and create the `config/boxlang.json`file with the defaults that it ships with.  You may also change the granular config settings at runtime using the environment or Java properties by prefixing any configuration item with `BOXLANG_`or `boxlang.`  See below.
 
@@ -23,6 +23,7 @@ If you are running BoxLang within CommandBox, the configuration file will be ins
 ```
 server status property=serverHome
 ```
+
 {% endhint %}
 
 ## Runtime Home Directory
