@@ -218,3 +218,19 @@ Make sure you configure it accordingly by placing these settings in the `.cfconf
     }
 }
 ```
+
+## Step 5: Start & Test Your Application
+
+Now that you have your `server.json` file configured, you can start your BoxLang server using CommandBox.  Navigate to your application directory in the command line and run the following command:
+
+```bash
+box server start --console --debug
+```
+
+Please note that we have added the `--debug` flag to enable debug logging.  This will help you identify any issues that may arise during the startup process.  You can also check the logs in the `logs` directory of your BoxLang server for more information.  We also use the `--console` flag to see the logs in the console as well as in the log files.
+
+Now that your server is started, you can access your application in your web browser at `http://localhost:8599` (or whatever port you configured in your `server.json` file).  Test your application thoroughly to ensure that everything is working as expected.  If you encounter any issues, refer to the logs for troubleshooting information.
+
+{% hint style="info" %}
+Remember to regularly update your BoxLang installation and modules to benefit from the latest features and improvements.
+{% endhint %}
