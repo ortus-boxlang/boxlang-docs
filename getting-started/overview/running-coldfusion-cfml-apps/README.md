@@ -73,6 +73,10 @@ This will scan your codebase and provide you with a detailed report of any poten
 If there is a situation where you are using a feature that is not supported in BoxLang, please [contact us](mailto:boxlang@ortussolutions.com) and we can help you find a solution or workaround.
 {% endhint %}
 
+### Modules
+
+We have an extensive list of modules that provide additional functionality and compatibility for BoxLang applications.  You can find a list of available modules in our [BoxLang Module Repository](../../../boxlang-framework/modularity/README.md) and or [BoxLang +/++ Module Repository](../../../boxlang-framework/boxlang-plus/modules/README.md).  Make sure to include any necessary modules in your `server.json` file or install them via the CommandBox CLI.
+
 ## Step 3: CFML Engine Configuration
 
 CommandBox allows you to easily extract the configuration of your existing ColdFusion or Lucee server and apply it to your BoxLang application using our [CFConfig Module](https://cfconfig.ortusbooks.com/). This ensures that your application runs with the same settings and environment as before.  This is done via the `CFConfig` module that ships with CommandBox.  To make sure we have the latest and greatest, please run the following command:
