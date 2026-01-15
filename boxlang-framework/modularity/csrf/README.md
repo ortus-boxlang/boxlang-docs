@@ -24,18 +24,20 @@ The module may be configured using the following settings in your `boxlang.json`
 "modules": {
 	"csrf": {
 		"settings": {
-			// The cache storage to use can be either a cache ( e.g. `default` ) name or the default "session" to store the keys within the user sessions cache
+			// The cache storage to use for the csrf tokens, by default we use the current session storage cache. You can provide a custom cache to use, as well.
 			"cacheStorage" : "session",
 			// The duration in minutes to perform a cache reap of expired tokens
 			"reapFrequency" : 1,
-			// The interval in minutes to rotate the token if autoRotate is enabled
+			// By default, all csrf tokens have a life-span of 30 minutes. After 30 minutes, they expire and we auto-generate new ones.
 			"rotationInterval" : 30,
+			// The interval in seconds within which, if a token's expiration is impending, we force generate new token for the user.
+			"timeoutSkew" : 120,
 			// Whether the the presence of the token should be verified automatically for the verifyMethods
 			"autoVerify" : false,
 			// The name of the header to check for automatic token verification, if applicable
 			"headerName" : "x-csrf-token",
 			// The methods to verify the token presence, if enabled
-			"verifyMethods" : [ "POST", "PUT", "PATCH", "DELETE" ],
+			"verifyMethods" : [ "POST", "PUT", "PATCH", "DELETE" ]
 		}
 	}
 }
@@ -47,7 +49,7 @@ Tokens may be stored in any named [caches configured](https://boxlang.ortusbooks
 
 ### Token Expiration
 
-By default, the module is configured to rotate all user csrf tokens every 30 minutes. This setting may be changed to another duration of minutes using the `rotationInterval` module setting. If you do NOT want the tokens to EVER expire, then use the value of 0 zero. Note that using in-memory caches will result in token expiration on runtime shutdown.
+By default, the module is configured to rotate all user csrf tokens every 30 minutes. This setting may be changed to another duration of minutes using the `rotationInterval` module setting. If you do NOT want the tokens to EVER expire, then use the value of 0 zero. Note that using in-memory caches will result in token expiration on runtime shutdown. You may adjust the `timeoutSkew` setting in order to ensure tokens expiring in the near future are force rotated if the existing token expiration is within the interval.
 
 ### Auto-Verification
 
