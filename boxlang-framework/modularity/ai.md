@@ -1,5 +1,5 @@
 ---
-description: BoxLang AI is a powerful module that brings enterprise-grade artificial intelligence capabilities to BoxLang applications, featuring seamless integration with multiple AI providers and a fluent, developer-friendly API.
+description: BoxLang AI is a powerful library for building fluent and scalable AI applications with a unified LLM API.
 icon: brain-circuit
 ---
 
@@ -148,6 +148,7 @@ Ready to dive deeper? The full documentation covers:
 - RAG (Retrieval Augmented Generation) patterns
 - Multi-modal AI (text, images, audio)
 - Token optimization strategies
+- AI agents and tool integration
 - Production deployment best practices
 - Integration with BoxLang caching and async features
 

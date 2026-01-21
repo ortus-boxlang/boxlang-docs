@@ -231,3 +231,18 @@ See the existing Spreadsheet component documentation in `boxlang-framework/boxla
 - **Cross-reference accuracy** - Maintain valid internal links
 
 This documentation serves as both user guide and developer reference, emphasizing practical usage patterns while maintaining comprehensive API coverage.
+
+## MCP Integrations
+
+- This book is published at https://boxlang.ortusbooks.com
+- It has its own MCP server: https://boxlang.ortusbooks.com/~gitbook/mcp
+
+Here are other MCP servers to integrate with:
+
+- BoxLang AI: https://ai.ortusbooks.com/~gitbook/mcp
+- CacheBox: https://cachebox.ortusbooks.com/~gitbook/mcp
+- ColdBox: https://coldbox.ortusbooks.com/~gitbook/mcp
+- CommandBox: https://commandbox.ortusbooks.com/~gitbook/mcp
+- LogBox: https://logbox.ortusbooks.com/~gitbook/mcp
+- TestBox: https://testbox.ortusbooks.com/~gitbook/mcp
+- WireBox: https://wirebox.ortusbooks.com/~gitbook/mcp
