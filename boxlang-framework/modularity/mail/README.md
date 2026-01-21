@@ -162,9 +162,9 @@ Mail server connectivity may be provided either via runtime configuration ( e.g.
 			"spoolTimeout" : 0,
 			//  The time in minutes to try resending email before it is considered bounced - defaults to infinite
 			"bounceTimeout" : 0,
-			// Optional directory settings for the spool ( Defaults to BoxLang runtime home )
-			"spoolDirectory" : "/usr/local/boxlang/mail/unsent",
-			"bounceDirectory" : "/usr/local/mail/bounced"
+			// Optional directory settings for the spool ( Defaults to $BOXLANG_HOME/mail/unsent and $BOXLANG_HOME/mail/bounced )
+			"spoolDirectory" : "/usr/local/lib/boxlang/mail/unsent",
+			"bounceDirectory" : "/usr/local/lib/boxlang/mail/bounced"
 		}
 	}
 }
