@@ -113,58 +113,58 @@ Mail server connectivity may be provided either via runtime configuration ( e.g.
 ```json
 {
 	"modules": {
-
 		"mail": {
-			// An array of mail servers
-			"mailServers" : [
-				{
-					// The SMTP Server
-					"smtp": "127.0.0.1",
-					// The SMTP Port
-					"port": "25",
-					// The SMTP Username
-					"username": "",
-					// The SMTP Password
-					"password": "",
-					// Whether to use SSL in connection to the SMTP server
-					"ssl": false,
-					// Whether to use TLS in connection to the SMTP server
-					"tls": false,
-					// The idle timeout, in milliseconds, for connection to the mail server
-					"idleTimeout": "10000",
-					// The timeout, in milliseconds before giving up on attempts to connect
-					"lifeTimeout": "60000"
-				}
-			],
-			// The default encoding to use for outbound email
-			"defaultEncoding" : "utf-8",
-			// Whether to enable spooling of mail - when false, mail will be sent immediately
-			"spoolEnable" : true,
-			// The interval in fractions of seconds to process the spool
-			"spoolInterval" : .50,
-			// The connection timeout - defaults to null, meaning no connection timeout attempting to connect to the mail server
-			"connectionTimeout" : null,
-			// The following attributes are used for signing of all outbound emails
-			"signMesssage" : false,
-			// The signature keystore
-			"signKeystore" : null,
-			// The signature keystore password
-			"signKeystorePassword" : null,
-			// The private key alias within the keystore
-			"signKeyAlias" : null,
-			// The Key password within the keystore
-			"signKeyPassword" : null,
-			// Whether to enable mail logging
-			"logEnabled" : true,
-			// The severity level for logging
-			"logSeverity" : "ERROR",
-			// The time in minutes retain a message in the spool before the message is discarded - defaults to infinite
-			"spoolTimeout" : 0,
-			//  The time in minutes to try resending email before it is considered bounced - defaults to infinite
-			"bounceTimeout" : 0,
-			// Optional directory settings for the spool ( Defaults to $BOXLANG_HOME/mail/unsent and $BOXLANG_HOME/mail/bounced )
-			"spoolDirectory" : "/usr/local/lib/boxlang/mail/unsent",
-			"bounceDirectory" : "/usr/local/lib/boxlang/mail/bounced"
+			"settings" : {
+				"mailServers" : [
+					{
+						// The SMTP Server
+						"smtp": "127.0.0.1",
+						// The SMTP Port
+						"port": "25",
+						// The SMTP Username
+						"username": "",
+						// The SMTP Password
+						"password": "",
+						// Whether to use SSL in connection to the SMTP server
+						"ssl": false,
+						// Whether to use TLS in connection to the SMTP server
+						"tls": false,
+						// The idle timeout, in milliseconds, for connection to the mail server
+						"idleTimeout": "10000",
+						// The timeout, in milliseconds before giving up on attempts to connect
+						"lifeTimeout": "60000"
+					}
+				],
+				// The default encoding to use for outbound email
+				"defaultEncoding" : "utf-8",
+				// Whether to enable spooling of mail - when false, mail will be sent immediately
+				"spoolEnable" : true,
+				// The interval in fractions of seconds to process the spool
+				"spoolInterval" : ".50",
+				// The connection timeout - defaults to null, meaning no connection timeout attempting to connect to the mail server
+				"connectionTimeout" : null,
+				// The following attributes are used for signing of all outbound emails
+				"signMesssage" : false,
+				// The signature keystore
+				"signKeystore" : null,
+				// The signature keystore password
+				"signKeystorePassword" : null,
+				// The private key alias within the keystore
+				"signKeyAlias" : null,
+				// The Key password within the keystore
+				"signKeyPassword" : null,
+				// Whether to enable mail logging
+				"logEnabled" : true,
+				// The severity level for logging
+				"logSeverity" : "ERROR",
+				// The time in minutes retain a message in the spool before the message is discarded - defaults to infinite
+				"spoolTimeout" : 0,
+				//  The time in minutes to try resending email before it is considered bounced - defaults to infinite
+				"bounceTimeout" : 0,
+				// Optional directory settings for the spool ( Defaults to $BOXLANG_HOME/mail/unsent and $BOXLANG_HOME/mail/bounced )
+				"spoolDirectory" : "/usr/local/lib/boxlang/mail/unsent",
+				"bounceDirectory" : "/usr/local/lib/boxlang/mail/bounced"
+			}	
 		}
 	}
 }
