@@ -1,7 +1,6 @@
-# ⚡︎ BoxLang Module: Password Encryption
+# Reference
 
 This module provides password encryption and hashing functionality to Boxlang
-
 
 It contributes the following Built-in-Functions to the language:
 

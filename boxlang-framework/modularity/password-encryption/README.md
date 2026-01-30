@@ -1,6 +1,8 @@
 ---
-description: Boxlang Password Encryption Module
-icon: lock
+description: >-
+  The password encryption module provides password encryption and hashing
+  functionality to Boxlang.
+icon: binary-lock
 ---
 
 # Password Encryption
