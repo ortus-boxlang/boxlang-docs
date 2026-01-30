@@ -58,6 +58,6 @@ Thanks to our multi-parser architecture, the following parsers are currently bei
 
 ### Release Video
 
-We launched an open beta of BoxLang at our developer conference, [Into The Box.](https://www.intothebox.org/)
+We launched an open beta of BoxLang at our 2024 developer conference, [Into The Box.](https://www.intothebox.org/), and then released 1.0 at the 2025 conference.
 
-{% embed url="https://www.youtube.com/watch?v=8M0IdUl7IWg&t=1s" %}
+{% embed url="https://www.youtube.com/live/Bn3gzjzjtuc?t=713s" %}
