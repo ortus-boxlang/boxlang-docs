@@ -1127,7 +1127,7 @@
           * [IsSafeHTML](boxlang-framework/modularity/esapi/reference/built-in-functions/esapi/IsSafeHTML.md)
           * [SanitizeHTML](boxlang-framework/modularity/esapi/reference/built-in-functions/esapi/SanitizeHTML.md)
   * [Evaluating Code](boxlang-framework/modularity/evaluating-code.md)
-  * [FTP](boxlang-framework/modularity/ftp.md)
+  * [FTP/SFTP](boxlang-framework/modularity/ftp.md)
   * [Image Manipulation](boxlang-framework/modularity/image-manipulation/README.md)
     * [Getting Started](boxlang-framework/modularity/image-manipulation/getting-started.md)
     * [Transformations](boxlang-framework/modularity/image-manipulation/transformations.md)

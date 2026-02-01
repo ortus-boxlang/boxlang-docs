@@ -5,20 +5,21 @@ description: >-
 icon: globe
 ---
 
-# ⚡︎ BoxLang FTP Module
+# ⚡︎ BoxLang FTP / SFTP Module
 
 > 📁 A comprehensive FTP client module for BoxLang that brings seamless file transfer capabilities to your applications!
 
-This module provides powerful FTP client functionality to the [BoxLang](https://boxlang.io) language, making it easy to connect to FTP servers, transfer files, and manage remote directories with minimal code.
+This module provides powerful FTP and SFTP client functionality to the [BoxLang](https://boxlang.io) language, making it easy to connect to FTP/SFTP servers, transfer files, and manage remote directories with minimal code.
 
 ## ✨ Features
 
-- 🌐 **FTP/FTPS Support**: Connect to standard FTP and secure FTP servers
-- 📁 **Complete File Operations**: Upload, download, rename, and delete files
-- 📂 **Directory Management**: Create, remove, list, and navigate directories
-- 🔐 **Secure Connections**: Support for passive and active modes
+- 🌐 **FTP/FTPS/SFTP Support**: Connect to standard FTP, secure FTP, and SFTP servers
+- 📁 **Complete File Operations**: Upload, download, rename, and delete files on both FTP and SFTP
+- 📂 **Directory Management**: Create, remove, rename, list, and navigate directories on both FTP and SFTP
+- 🔐 **Secure Connections**: Support for passive/active modes (FTP) and SSH key authentication (SFTP)
+- 🔑 **SSH Key Support**: SFTP with public/private key authentication and optional passphrases
 - 🎯 **Connection Pooling**: Named connections tracked globally via FTPService
-- 🔄 **Proxy Support**: Connect through proxy servers with custom ports
+- 🔄 **Proxy Support**: Connect through proxy servers with custom ports (FTP only)
 - 📊 **Flexible Results**: Query or array return types for directory listings
 - ⚡ **Event-Driven**: Interception points for logging, monitoring, and custom logic
 - 🛠️ **Production Ready**: Built by Ortus Solutions with enterprise-grade quality
@@ -87,6 +88,47 @@ bx:ftp action="close" connection="myFTP";
 ```
 
 That's it! 🎉 You now have a fully functional FTP client.
+
+### SFTP Quick Start
+
+Here's how to connect to an SFTP server with password authentication:
+
+```java
+// Connect to SFTP server with password
+bx:ftp
+    action="open"
+    connection="mySFTP"
+    server="sftp.example.com"
+    username="myuser"
+    password="mypass"
+    secure="true";  // This makes it SFTP!
+
+// Upload a file via SFTP
+bx:ftp
+    action="putfile"
+    connection="mySFTP"
+    localFile="/path/to/local/file.txt"
+    remoteFile="/remote/file.txt";
+
+// Close connection
+bx:ftp action="close" connection="mySFTP";
+```
+
+Or with SSH key authentication:
+
+```java
+// Connect to SFTP server with SSH key
+bx:ftp
+    action="open"
+    connection="mySFTP"
+    server="sftp.example.com"
+    username="myuser"
+    key="/path/to/private/key"
+    passphrase="optional_passphrase"
+    secure="true";
+
+// Now you can use the connection for file operations
+```
 
 ## 💡 Usage Examples
 
@@ -336,15 +378,215 @@ bx:ftp
 bx:ftp action="close" connection="renamer";
 ```
 
+### SFTP Examples
+
+#### 🔐 SFTP with Password Authentication
+
+```java
+// Connect to SFTP server
+bx:ftp
+    action="open"
+    connection="sftpConn"
+    server="sftp.example.com"
+    port="22"  // Default SFTP port
+    username="sftpuser"
+    password="securepass"
+    secure="true";
+
+// Upload a file via SFTP
+bx:ftp
+    action="putfile"
+    connection="sftpConn"
+    localFile="/local/path/document.pdf"
+    remoteFile="/remote/path/document.pdf";
+
+// List directory
+bx:ftp
+    action="listdir"
+    connection="sftpConn"
+    directory="/uploads"
+    name="sftpFiles";
+
+// Close SFTP connection
+bx:ftp action="close" connection="sftpConn";
+```
+
+#### 🔑 SFTP with SSH Key Authentication
+
+```java
+// Connect using SSH private key
+bx:ftp
+    action="open"
+    connection="sftpKey"
+    server="sftp.example.com"
+    username="deployuser"
+    key="/path/to/private/id_rsa"
+    secure="true";
+
+// Or with a passphrase-protected key
+bx:ftp
+    action="open"
+    connection="sftpSecure"
+    server="sftp.example.com"
+    username="deployuser"
+    key="/path/to/private/id_rsa"
+    passphrase="my-key-passphrase"
+    secure="true";
+
+// Use the connection normally
+bx:ftp
+    action="putfile"
+    connection="sftpKey"
+    localFile="/build/app.zip"
+    remoteFile="/deployments/app.zip";
+
+bx:ftp action="close" connection="sftpKey";
+```
+
+#### 🌐 SFTP with Fingerprint Verification
+
+```java
+// Connect with host key fingerprint verification
+bx:ftp
+    action="open"
+    connection="sftpVerified"
+    server="sftp.example.com"
+    username="verifieduser"
+    password="securepass"
+    fingerprint="SHA256:abc123def456..."
+    secure="true";
+
+// Proceed with secure verified connection
+bx:ftp
+    action="listdir"
+    connection="sftpVerified"
+    directory="/"
+    name="files";
+
+bx:ftp action="close" connection="sftpVerified";
+```
+
+#### 📁 SFTP Directory Operations
+
+```java
+// Open SFTP connection
+bx:ftp
+    action="open"
+    connection="sftpMgr"
+    server="sftp.example.com"
+    username="admin"
+    password="adminpass"
+    secure="true";
+
+// Create directory
+bx:ftp
+    action="createdir"
+    connection="sftpMgr"
+    new="/backups/2024";
+
+// Check if directory exists
+bx:ftp
+    action="existsdir"
+    connection="sftpMgr"
+    directory="/backups/2024"
+    result="dirExists";
+
+if (dirExists.returnValue) {
+    writeOutput("Backup directory ready!");
+}
+
+// Remove empty directory
+bx:ftp
+    action="removedir"
+    connection="sftpMgr"
+    directory="/temp/old-data";
+
+bx:ftp action="close" connection="sftpMgr";
+```
+
+#### 🏷️ SFTP File Rename Operations
+
+```java
+// Open SFTP connection
+bx:ftp
+    action="open"
+    connection="sftpRename"
+    server="sftp.example.com"
+    username="admin"
+    password="adminpass"
+    secure="true";
+
+// Rename a file
+bx:ftp
+    action="renamefile"
+    connection="sftpRename"
+    existing="/uploads/draft-report.pdf"
+    new="/uploads/final-report-2026.pdf"
+    result="renameResult";
+
+if (renameResult.returnValue) {
+    writeOutput("File renamed successfully via SFTP");
+}
+
+// Rename a directory
+bx:ftp
+    action="renamedir"
+    connection="sftpRename"
+    existing="/projects/old-project-name"
+    new="/projects/new-project-name"
+    result="dirRenameResult";
+
+if (dirRenameResult.returnValue) {
+    writeOutput("Directory renamed successfully via SFTP");
+}
+
+bx:ftp action="close" connection="sftpRename";
+```
+
+#### 🗑️ SFTP File Removal Operations
+
+```java
+// Open SFTP connection
+bx:ftp
+    action="open"
+    connection="sftpRemove"
+    server="sftp.example.com"
+    username="admin"
+    password="adminpass"
+    secure="true";
+
+// Remove a file
+bx:ftp
+    action="removefile"
+    connection="sftpRemove"
+    remoteFile="/temp/cache-file.tmp"
+    result="removeResult";
+
+if (removeResult.returnValue) {
+    writeOutput("File removed successfully via SFTP");
+} else {
+    writeOutput("Failed to remove file: #removeResult.errorText#");
+}
+
+// Alternative: use 'remove' action (alias)
+bx:ftp
+    action="remove"
+    connection="sftpRemove"
+    remoteFile="/logs/old-log.txt"
+    result="removeResult2";
+
+bx:ftp action="close" connection="sftpRemove";
+```
+
 ## 📚 Available Actions
 
 All actions can use a `result` attribute to store the result of the action in a variable. If not provided, the result will be stored in a variable called `bxftp` (or `cftp` if you are in CFML compat mode).
 
 ### 🔌 Connection Actions
 
-#### `open` - Connect to FTP Server
+#### `open` - Connect to FTP/SFTP Server
 
-Opens a connection to an FTP server and tracks it in the FTPService.
+Opens a connection to an FTP or SFTP server and tracks it in the FTPService.
 
 **Attributes:**
 
@@ -352,18 +594,21 @@ Opens a connection to an FTP server and tracks it in the FTPService.
 |-----------|------|----------|---------|-------------|
 | `connection` | string | ✅ Yes | - | Name of the connection to track |
 | `server` | string | ✅ Yes | - | Server IP or hostname |
-| `port` | numeric | No | 21 | FTP port number |
+| `port` | numeric | No | 21 (FTP)<br>22 (SFTP) | Server port number |
 | `username` | string | ✅ Yes | - | Authentication username |
-| `password` | string | ✅ Yes | - | Authentication password |
+| `password` | string | Conditional | - | Authentication password (required if `key` not provided) |
 | `timeout` | numeric | No | 30 | Connection timeout in seconds |
-| `secure` | boolean | No | false | Use secure FTP (FTPS) |
-| `passive` | boolean | No | true | Use passive mode |
-| `proxyServer` | string | No | - | Proxy server (hostname:port) |
+| `secure` | boolean | No | false | Use SFTP when true, FTP when false |
+| `passive` | boolean | No | true | Use passive mode (FTP only) |
+| `proxyServer` | string | No | - | Proxy server hostname:port (FTP only) |
+| `key` | string | No | - | Path to SSH private key file (SFTP only) |
+| `passphrase` | string | No | - | Passphrase for encrypted SSH key (SFTP only) |
+| `fingerprint` | string | No | - | Server's host key fingerprint for verification (SFTP only) |
 
 **Examples:**
 
 ```java
-// Basic connection
+// Basic FTP connection
 bx:ftp
     action="open"
     connection="myConn"
@@ -371,18 +616,25 @@ bx:ftp
     username="user"
     password="pass";
 
-// Secure connection with custom port
+// SFTP connection with password
 bx:ftp
     action="open"
-    connection="secureConn"
-    server="secure.ftp.example.com"
-    port="990"
-    username="admin"
+    connection="sftpConn"
+    server="sftp.example.com"
+    username="user"
     password="pass"
-    secure="true"
-    timeout="60";
+    secure="true";
 
-// Connection via proxy
+// SFTP connection with SSH key
+bx:ftp
+    action="open"
+    connection="sftpKey"
+    server="sftp.example.com"
+    username="deployuser"
+    key="/path/to/id_rsa"
+    secure="true";
+
+// Connection via proxy (FTP only)
 bx:ftp
     action="open"
     connection="proxyConn"
@@ -392,9 +644,9 @@ bx:ftp
     proxyServer="proxy.company.com:8080";
 ```
 
-#### `close` - Close FTP Connection
+#### `close` - Close FTP/SFTP Connection
 
-Closes an open FTP connection and removes it from the FTPService.
+Closes an open FTP or SFTP connection and removes it from the FTPService.
 
 **Attributes:**
 
@@ -1160,25 +1412,37 @@ switch (ftpResult.statusCode) {
 
 ### Local Development Setup
 
-This module includes Docker configuration for local FTP server testing:
+This module includes Docker configuration for local FTP and SFTP server testing:
 
 ```bash
-# Start FTP test server
+# Copy Docker environment configuration
+cp src/test/resources/.env.docker src/test/resources/.env
+
+# Start FTP and SFTP test servers
 docker-compose up -d --build
 
 # Run tests
 ./gradlew test
 
-# Stop FTP server
+# Stop servers
 docker-compose down
 ```
 
-### Test Server Configuration
+### Test Server Configuration (Docker)
+
+**FTP Server:**
 
 - **Host**: localhost
 - **Control Port**: 2221
 - **Data Port**: 2220
 - **Passive Ports**: 10000-10010
+- **Username**: test_user
+- **Password**: testpass
+
+**SFTP Server:**
+
+- **Host**: localhost
+- **Port**: 2222
 - **Username**: test_user
 - **Password**: testpass
 
@@ -1213,10 +1477,13 @@ docker-compose up -d
 
 ### Testing with Docker
 
-The included Docker setup provides a consistent FTP testing environment:
+The included Docker setup provides a consistent FTP/SFTP testing environment:
 
 ```bash
-# Start FTP server with specific configuration
+# Copy Docker-specific environment configuration
+cp src/test/resources/.env.docker src/test/resources/.env
+
+# Start FTP and SFTP servers with specific configuration
 docker-compose up -d --build
 
 # View logs
@@ -1225,9 +1492,18 @@ docker-compose logs -f
 # Stop and remove containers
 docker-compose down
 
-# Force recreate (after vsftpd.conf changes)
+# Force recreate (after config changes)
 docker-compose up -d --build --force-recreate
 ```
+
+**Docker Port Mapping**:
+
+- FTP Control: `2221` (mapped from container port 21)
+- FTP Data: `2220` (mapped from container port 20)
+- SFTP: `2222` (mapped from container port 22)
+- FTP Passive: `10000-10010`
+
+**CI Environment**: Tests in GitHub Actions use standard ports (21 for FTP, 22 for SFTP) as servers run directly on the Ubuntu runner. The `.env.example` file uses these standard ports by default.
 
 **Important**: The `vsftpd.conf` file includes critical passive mode configuration:
 
@@ -1381,16 +1657,3 @@ See [LICENSE](LICENSE) file for full details.
 - **BoxLang Training**: [https://www.ortussolutions.com/services/training](https://www.ortussolutions.com/services/training)
 - **CFCasts**: [https://www.cfcasts.com](https://www.cfcasts.com)
 - **Blog**: [https://www.ortussolutions.com/blog](https://www.ortussolutions.com/blog)
-
-## THE DAILY BREAD
-
-> "I am the way, and the truth, and the life; no one comes to the Father, but by me (JESUS)" Jn 14:1-12
-
----
-
-<blockquote>
-	Copyright Since 2025 by Ortus Solutions, Corp
-	<br>
-	<a href="https://www.boxlang.io">www.boxlang.io</a> |
-	<a href="https://www.ortussolutions.com">www.ortussolutions.com</a>
-</blockquote>
