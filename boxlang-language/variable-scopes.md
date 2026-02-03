@@ -894,6 +894,7 @@ The server scope is automatically populated with several unmodifiable sub-struct
 | `boxlangId` | string | Unique identifier for this BoxLang instance |
 | `codename` | string | Release codename for this version |
 | `cliMode` | boolean | Whether running in CLI mode |
+| `compiler` | string | Compiler implementation name (e.g., "ASMBoxpiler", "NoOpBoxpiler") **New in 1.10.0** |
 | `debugMode` | boolean | Whether debug mode is enabled |
 | `jarMode` | boolean | Whether running from JAR file |
 | `modules` | struct | Information about loaded modules |
@@ -906,6 +907,7 @@ println( "BoxLang Version: #server.boxlang.version#" )
 println( "Codename: #server.boxlang.codename#" )
 println( "Build Date: #server.boxlang.buildDate#" )
 println( "Runtime Home: #server.boxlang.runtimeHome#" )
+println( "Compiler: #server.boxlang.compiler#" )  // New in 1.10.0
 println( "CLI Mode: #server.boxlang.cliMode#" )
 println( "Debug Mode: #server.boxlang.debugMode#" )
 println( "JAR Mode: #server.boxlang.jarMode#" )
@@ -947,6 +949,7 @@ println( "MAC Address: #server.os.macAddress#" )
 | `executionPath` | string | Java execution path |
 | `freeMemory` | numeric | Available free memory in bytes |
 | `maxMemory` | numeric | Maximum memory available in bytes |
+| `pid` | numeric | Process ID of the running Java Virtual Machine **New in 1.10.0** |
 | `totalMemory` | numeric | Total memory allocated in bytes |
 | `vendor` | string | Java vendor name |
 | `version` | string | Java version number |
@@ -955,6 +958,7 @@ println( "MAC Address: #server.os.macAddress#" )
 // Java environment details
 println( "Java Version: #server.java.version#" )
 println( "Java Vendor: #server.java.vendor#" )
+println( "Process ID: #server.java.pid#" )  // New in 1.10.0
 println( "Available Memory: #server.java.freeMemory# bytes" )
 println( "Max Memory: #server.java.maxMemory# bytes" )
 println( "Total Memory: #server.java.totalMemory# bytes" )

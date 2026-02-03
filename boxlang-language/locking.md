@@ -397,6 +397,188 @@ lock scope="application" timeout=10 type="readonly" {
 }
 ```
 
+## 🌐 Distributed Cache Locking
+
+**New in 1.10.0**: BoxLang provides distributed locking capabilities through the `ILockableCacheProvider` interface, enabling synchronized access to cache entries across multiple servers or application instances.
+
+### When to Use Distributed Cache Locks
+
+Distributed cache locks are essential when:
+
+- ✅ Running multiple application servers behind a load balancer
+- ✅ Preventing duplicate processing across server instances
+- ✅ Coordinating access to shared cache entries
+- ✅ Ensuring atomic operations in clustered environments
+- ✅ Managing distributed rate limiting or quotas
+
+### ILockableCacheProvider Interface
+
+Cache providers implementing the `ILockableCacheProvider` interface support distributed locking:
+
+```java
+// Check if cache supports locking
+cacheInstance = cache( "myDistributedCache" )
+if ( cacheInstance.hasInterface( "ILockableCacheProvider" ) ) {
+    println( "Cache supports distributed locking" )
+}
+```
+
+### Using Cache Locks
+
+#### Basic Cache Lock Syntax
+
+```js
+// Lock a cache entry for exclusive access
+lock cache="myDistributedCache" key="user:123" timeout=10 type="exclusive" {
+    // Synchronized access across all servers
+    user = cache( "myDistributedCache" ).get( "user:123" ).orElse( {} )
+    user.lastAccess = now()
+    cache( "myDistributedCache" ).set( "user:123", user )
+}
+```
+
+#### Readonly Cache Locks
+
+```js
+// Multiple servers can read simultaneously
+lock cache="myDistributedCache" key="config:app" timeout=5 type="readonly" {
+    config = cache( "myDistributedCache" ).get( "config:app" ).get()
+    // Read-only access - multiple servers can enter this block
+    processConfig( config )
+}
+```
+
+### Real-World Distributed Lock Examples
+
+#### Example 1: Distributed Job Processing
+
+Prevent duplicate job execution across multiple servers:
+
+```js
+function processJob( jobId ) {
+    lockKey = "job-lock:#jobId#"
+
+    lock cache="distributed" key=lockKey timeout=300 type="exclusive" throwOnTimeout=false {
+        // Check if job already processed
+        status = cache( "distributed" ).get( "job-status:#jobId#" )
+        if ( status.isPresent() && status.get() == "completed" ) {
+            return // Another server already processed this
+        }
+
+        // Mark as in-progress
+        cache( "distributed" ).set( "job-status:#jobId#", "processing", 300 )
+
+        try {
+            // Process the job
+            result = performExpensiveOperation( jobId )
+
+            // Mark as completed
+            cache( "distributed" ).set( "job-status:#jobId#", "completed", 3600 )
+            cache( "distributed" ).set( "job-result:#jobId#", result, 3600 )
+        } catch ( any e ) {
+            cache( "distributed" ).set( "job-status:#jobId#", "failed", 3600 )
+            rethrow
+        }
+    }
+}
+```
+
+#### Example 2: Distributed Rate Limiting
+
+Limit API requests across all servers:
+
+```js
+function checkRateLimit( userId ) {
+    lockKey = "ratelimit:#userId#"
+    countKey = "requests:#userId#"
+
+    lock cache="distributed" key=lockKey timeout=5 type="exclusive" {
+        // Get current request count
+        requestCount = cache( "distributed" ).get( countKey ).orElse( 0 )
+
+        if ( requestCount >= 100 ) {
+            throw( type="RateLimitExceeded", message="Too many requests" )
+        }
+
+        // Increment counter
+        cache( "distributed" ).set( countKey, requestCount + 1, 3600 )
+    }
+}
+```
+
+#### Example 3: Distributed Cache Warmup
+
+Ensure only one server performs expensive cache population:
+
+```js
+function getExpensiveData() {
+    cacheKey = "expensive-data"
+    lockKey = "lock:expensive-data"
+
+    // Try to get from cache first
+    data = cache( "distributed" ).get( cacheKey )
+    if ( data.isPresent() ) {
+        return data.get()
+    }
+
+    // Lock to prevent multiple servers from loading simultaneously
+    lock cache="distributed" key=lockKey timeout=30 type="exclusive" {
+        // Double-check after acquiring lock
+        data = cache( "distributed" ).get( cacheKey )
+        if ( data.isPresent() ) {
+            return data.get()
+        }
+
+        // Load expensive data (only one server does this)
+        data = performExpensiveQuery()
+
+        // Cache for all servers
+        cache( "distributed" ).set( cacheKey, data, 3600 )
+
+        return data
+    }
+}
+```
+
+### Cache Lock Attributes
+
+| Attribute | Type | Required | Description |
+|-----------|------|----------|-------------|
+| `cache` | string | Yes | Name of the lockable cache provider |
+| `key` | string | Yes | Cache key to lock |
+| `type` | string | Yes | Lock type: `"exclusive"` or `"readonly"` |
+| `timeout` | numeric | Yes | Maximum seconds to wait for lock |
+| `throwOnTimeout` | boolean | No | Throw exception on timeout (default: `true`) |
+
+### Cache Lock Requirements
+
+{% hint style="danger" %}
+**Cache Provider Must Implement ILockableCacheProvider**
+
+Not all cache providers support distributed locking. Ensure your cache provider implements the `ILockableCacheProvider` interface. If it doesn't, a `CacheException` will be thrown.
+{% endhint %}
+
+### Best Practices for Distributed Cache Locks
+
+1. **Use Short Timeouts**: Distributed locks should be fast - keep timeouts under 30 seconds
+2. **Handle Timeout Gracefully**: Use `throwOnTimeout=false` for non-critical operations
+3. **Lock Specific Keys**: Lock the smallest scope possible (specific cache keys, not entire caches)
+4. **Avoid Nested Cache Locks**: Don't lock multiple cache keys in nested blocks (deadlock risk)
+5. **Use Readonly When Possible**: Readonly locks allow concurrent access for read operations
+6. **Monitor Lock Contention**: Track lock wait times and failures in production
+7. **Set Appropriate TTLs**: Cache entries should have appropriate expirations
+
+### Performance Considerations
+
+- **Network Overhead**: Distributed locks require network communication
+- **Lock Latency**: Expect 1-50ms overhead depending on network and cache provider
+- **Contention**: High contention on popular keys can create bottlenecks
+- **Failover**: Ensure cache provider supports proper lock release on server failure
+
+{% hint style="success" %}
+**Tip**: For high-throughput scenarios, consider cache sharding or optimistic locking patterns to reduce lock contention.
+{% endhint %}
+
 ## 🔄 Double-Check Locking Pattern
 
 The **double-check locking** pattern prevents race conditions where multiple threads check a condition, then compete to initialize a resource.
