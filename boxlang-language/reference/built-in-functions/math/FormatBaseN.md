@@ -7,7 +7,7 @@ Converts a number to a string representation in the specified base.
 ## Method Signature
 
 ```
-FormatBaseN(number=[numeric], radix=[integer])
+FormatBaseN(number=[numeric], radix=[integerTruncate])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ FormatBaseN(number=[numeric], radix=[integer])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `number` | `numeric` | `true` |  |  |
-| `radix` | `integer` | `true` |  |  |
+| `radix` | `integerTruncate` | `true` |  |  |
 
 ## Examples
 

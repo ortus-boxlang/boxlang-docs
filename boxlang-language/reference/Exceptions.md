@@ -101,6 +101,12 @@ The underlying Java IOException exception is parsed and is used to provide a mor
 </details>
 
 <details>
+<summary><code>BoxLicenseException</code></summary>
+
+This exception is thrown when there is a license activation or validation failure
+</details>
+
+<details>
 <summary><code>NoMethodException</code></summary>
 
 This exception is thrown when attempting to access a method on a java class that does not exist, is not accessible or does not match the arguments

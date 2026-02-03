@@ -1,15 +1,18 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `ArrayMedian`
+# Function: `ArrayUnique`
 
-Return the median value of an array.
+Returns a new array with duplicate items removed.
 
-Will only work on arrays that contain only numeric values.
+<pre>
+ values = [ 1, 1, 2, 3, 3 ];
+ values.unique(); // [ 1, 2, 3 ]
+ </pre>
 
 ## Method Signature
 
 ```
-ArrayMedian(array=[array])
+ArrayUnique(array=[array])
 ```
 
 ### Arguments
@@ -17,39 +20,9 @@ ArrayMedian(array=[array])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` | The array to get median value from |  |
+| `array` | `array` | `true` | The array to remove duplicate entries from |  |
 
 ## Examples
-
-### Calculates the Median value
-
-Uses the arrayMedian function to calculate the Median value
-
-<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYa5Ya65coGAiSNI3NSUzMU9DoRiuWtOaq7wosyTVv7SkoLREQyEXJAIARXgWXQ%3D%3D" target="_blank">Run Example</a>
-
-```java
-someArray = [ 
-	1,
-	2,
-	2
-];
-m = arrayMedian( someArray );
-writeOutput( m );
-
-```
-
-Result: 2
-
-### Additional Examples
-
-
-```java
-aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
-dump( arrayMedian( aNames ) );
-// member function
-dump( aNames.median() );
-
-```
 
 
 
@@ -83,6 +56,7 @@ dump( aNames.median() );
   * [ArrayLast](./ArrayLast.md)
   * [ArrayMap](./ArrayMap.md)
   * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
   * [ArrayMerge](./ArrayMerge.md)
   * [ArrayMid](./ArrayMid.md)
   * [ArrayMin](./ArrayMin.md)
@@ -108,6 +82,5 @@ dump( aNames.median() );
   * [ArrayToList](./ArrayToList.md)
   * [ArrayToStruct](./ArrayToStruct.md)
   * [ArrayTranspose](./ArrayTranspose.md)
-  * [ArrayUnique](./ArrayUnique.md)
   * [ArrayUnshift](./ArrayUnshift.md)
   * [ArrayZip](./ArrayZip.md)

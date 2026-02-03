@@ -22,7 +22,7 @@ errorVariable=[string] />
 
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `variable` | `string` | `true` | The variable name to produce |  |
+| `variable` | `string` | `false` | The variable name to produce |  |
 | `name` | `string` | `true` | The process name or binary path ( e.g. bash or /bin/sh ) |  |
 | `arguments` | `any` | `false` | The process arguments ( e.g. for `java --version` this would be `--version` ) |  |
 | `timeout` | `long` | `false` | The timeout to wait for the command, in seconds ( default unlimited ) |  |

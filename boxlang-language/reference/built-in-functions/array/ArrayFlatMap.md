@@ -1,15 +1,19 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `ArrayMedian`
+# Function: `ArrayFlatMap`
 
-Return the median value of an array.
+Maps each element and flattens the result one level.
 
-Will only work on arrays that contain only numeric values.
+<pre>
+ values = [ 1, 2, 3 ];
+ values.flatMap( ( value ) => [ value, value * 10 ] );
+ // [ 1, 10, 2, 20, 3, 30 ]
+ </pre>
 
 ## Method Signature
 
 ```
-ArrayMedian(array=[array])
+ArrayFlatMap(array=[array], callback=[function:Function], parallel=[boolean], maxThreads=[any], virtual=[boolean])
 ```
 
 ### Arguments
@@ -17,39 +21,13 @@ ArrayMedian(array=[array])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` | The array to get median value from |  |
+| `array` | `array` | `true` | The array to transform |  |
+| `callback` | `function:Function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the current item, and the<br>                    current index, and the original array. You can alternatively pass a Java Function which will only receive the 1st arg. |  |
+| `parallel` | `boolean` | `false` | If true, the function will be invoked in parallel using multiple threads. Defaults to false. | `false` |
+| `maxThreads` | `any` | `false` | The maximum number of threads to use when parallel is true. If not provided the common thread pool will be used. If a boolean value is passed, it will be assigned as the virtual argument. |  |
+| `virtual` | `boolean` | `false` | If true, the function will be invoked using virtual thread. Defaults to false. Ignored if parallel is false. | `false` |
 
 ## Examples
-
-### Calculates the Median value
-
-Uses the arrayMedian function to calculate the Median value
-
-<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYa5Ya65coGAiSNI3NSUzMU9DoRiuWtOaq7wosyTVv7SkoLREQyEXJAIARXgWXQ%3D%3D" target="_blank">Run Example</a>
-
-```java
-someArray = [ 
-	1,
-	2,
-	2
-];
-m = arrayMedian( someArray );
-writeOutput( m );
-
-```
-
-Result: 2
-
-### Additional Examples
-
-
-```java
-aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
-dump( arrayMedian( aNames ) );
-// member function
-dump( aNames.median() );
-
-```
 
 
 
@@ -73,7 +51,6 @@ dump( aNames.median() );
   * [ArrayFindFirst](./ArrayFindFirst.md)
   * [ArrayFindNoCase](./ArrayFindNoCase.md)
   * [ArrayFirst](./ArrayFirst.md)
-  * [ArrayFlatMap](./ArrayFlatMap.md)
   * [ArrayFlatten](./ArrayFlatten.md)
   * [ArrayGetMetadata](./ArrayGetMetadata.md)
   * [ArrayGroupBy](./ArrayGroupBy.md)
@@ -83,6 +60,7 @@ dump( aNames.median() );
   * [ArrayLast](./ArrayLast.md)
   * [ArrayMap](./ArrayMap.md)
   * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
   * [ArrayMerge](./ArrayMerge.md)
   * [ArrayMid](./ArrayMid.md)
   * [ArrayMin](./ArrayMin.md)

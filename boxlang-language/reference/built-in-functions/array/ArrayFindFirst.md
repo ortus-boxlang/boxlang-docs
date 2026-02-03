@@ -1,15 +1,19 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `ArrayMedian`
+# Function: `ArrayFindFirst`
 
-Return the median value of an array.
+Return first item in array that matches the predicate function.
 
-Will only work on arrays that contain only numeric values.
+<pre>
+ users = [ { name: "Ada" }, { name: "Grace" } ];
+ users.findFirst( ( user ) => user.name == "Grace" ); // { name: "Grace" }
+ users.findFirst( ( user ) => user.name == "Linus", "Unknown" ); // "Unknown"
+ </pre>
 
 ## Method Signature
 
 ```
-ArrayMedian(array=[array])
+ArrayFindFirst(array=[array], callback=[function], defaultValue=[any], parallel=[boolean], maxThreads=[any], virtual=[boolean])
 ```
 
 ### Arguments
@@ -17,39 +21,14 @@ ArrayMedian(array=[array])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` | The array to get median value from |  |
+| `array` | `array` | `true` | The array to get the first item from. |  |
+| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
+| `defaultValue` | `any` | `false` | The default value to use if the array is empty or no value is returned from the predicate function. |  |
+| `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
+| `maxThreads` | `any` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. If a boolean is provided it will be assigned to the virtual argument instead. |  |
+| `virtual` | `boolean` | `false` | (BoxLang only) If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
 
 ## Examples
-
-### Calculates the Median value
-
-Uses the arrayMedian function to calculate the Median value
-
-<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYa5Ya65coGAiSNI3NSUzMU9DoRiuWtOaq7wosyTVv7SkoLREQyEXJAIARXgWXQ%3D%3D" target="_blank">Run Example</a>
-
-```java
-someArray = [ 
-	1,
-	2,
-	2
-];
-m = arrayMedian( someArray );
-writeOutput( m );
-
-```
-
-Result: 2
-
-### Additional Examples
-
-
-```java
-aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
-dump( arrayMedian( aNames ) );
-// member function
-dump( aNames.median() );
-
-```
 
 
 
@@ -70,7 +49,6 @@ dump( aNames.median() );
   * [ArrayFind](./ArrayFind.md)
   * [ArrayFindAll](./ArrayFindAll.md)
   * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
-  * [ArrayFindFirst](./ArrayFindFirst.md)
   * [ArrayFindNoCase](./ArrayFindNoCase.md)
   * [ArrayFirst](./ArrayFirst.md)
   * [ArrayFlatMap](./ArrayFlatMap.md)
@@ -83,6 +61,7 @@ dump( aNames.median() );
   * [ArrayLast](./ArrayLast.md)
   * [ArrayMap](./ArrayMap.md)
   * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
   * [ArrayMerge](./ArrayMerge.md)
   * [ArrayMid](./ArrayMid.md)
   * [ArrayMin](./ArrayMin.md)

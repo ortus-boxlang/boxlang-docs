@@ -1,15 +1,20 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `ArrayMedian`
+# Function: `ArrayChunk`
 
-Return the median value of an array.
+Chunks the array into an array of arrays of the specified size.
 
-Will only work on arrays that contain only numeric values.
+The final chunk may be shorter if the array does not divide evenly.
+
+ <pre>
+ numbers = [ 1, 2, 3, 4, 5 ];
+ numbers.chunk( 2 ); // [ [ 1, 2 ], [ 3, 4 ], [ 5 ] ]
+ </pre>
 
 ## Method Signature
 
 ```
-ArrayMedian(array=[array])
+ArrayChunk(array=[array], length=[integer])
 ```
 
 ### Arguments
@@ -17,39 +22,10 @@ ArrayMedian(array=[array])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` | The array to get median value from |  |
+| `array` | `array` | `true` | The array to chunk. |  |
+| `length` | `integer` | `true` | The size of each chunk. |  |
 
 ## Examples
-
-### Calculates the Median value
-
-Uses the arrayMedian function to calculate the Median value
-
-<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYa5Ya65coGAiSNI3NSUzMU9DoRiuWtOaq7wosyTVv7SkoLREQyEXJAIARXgWXQ%3D%3D" target="_blank">Run Example</a>
-
-```java
-someArray = [ 
-	1,
-	2,
-	2
-];
-m = arrayMedian( someArray );
-writeOutput( m );
-
-```
-
-Result: 2
-
-### Additional Examples
-
-
-```java
-aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
-dump( arrayMedian( aNames ) );
-// member function
-dump( aNames.median() );
-
-```
 
 
 
@@ -57,7 +33,6 @@ dump( aNames.median() );
 
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
-  * [ArrayChunk](./ArrayChunk.md)
   * [ArrayClear](./ArrayClear.md)
   * [ArrayContains](./ArrayContains.md)
   * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
@@ -83,6 +58,7 @@ dump( aNames.median() );
   * [ArrayLast](./ArrayLast.md)
   * [ArrayMap](./ArrayMap.md)
   * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
   * [ArrayMerge](./ArrayMerge.md)
   * [ArrayMid](./ArrayMid.md)
   * [ArrayMin](./ArrayMin.md)

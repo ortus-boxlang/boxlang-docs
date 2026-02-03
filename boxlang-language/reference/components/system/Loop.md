@@ -67,60 +67,6 @@ for( i = 1; i <= 10; i++ ) {
 
 Result: 12345678910
 
-### Destructuring Loop Syntax (Script)
-
-**New in 1.10.0**: Loop destructuring allows you to get multiple values in a single declaration.
-
-#### Array Destructuring
-
-Get both element and index when looping over arrays:
-
-```java
-fruits = [ "apple", "banana", "cherry" ]
-
-// Get both item and index
-for( item, index in fruits ) {
-    writeOutput( "#index#: #item#<br>" )
-}
-```
-
-Result:
-```
-1: apple
-2: banana
-3: cherry
-```
-
-#### Struct Destructuring
-
-Get both key and value when looping over structures:
-
-```java
-produce = {
-    "grapes": 2,
-    "lemons": 1,
-    "eggplants": 6
-}
-
-// Get both key and value
-for( key, value in produce ) {
-    writeOutput( "I have #value# #key#<br>" )
-}
-```
-
-Result:
-```
-I have 2 grapes
-I have 1 lemons
-I have 6 eggplants
-```
-
-{% hint style="info" %}
-**Syntax Note**: The destructuring syntax follows the pattern `for (first, second in collection)` where:
-- For **arrays**: `first` = element value, `second` = 1-based index
-- For **structs**: `first` = key, `second` = value
-{% endhint %}
-
 ### For Loop using Bx:loop Tag
 
 General Purpose Loop
@@ -141,7 +87,7 @@ Array Loop
 <a href="https://try.boxlang.io/?code=eJxlkMGqwjAQRdfmKy5dSEul2uVTK6goCML7AHER64gBk0hI0SL%2Bu5Pap09cZEImN%2BcM0fXUOVmjwAaiE8mox3XX1DIS25Ho97G0Dmtrz5jVUGZPVxy4M1%2F%2BZINsAGn2ONkLOcHdGIpR%2BYi3cQEZ0GsyMXSrSfgmTZHgJjoXpzz9Vv5c%2BVdgww%2B3nBL3IGZfcK9MK8vTp6OsnCPjV80syrzpX9iP5D9sM9lClsc4gSa9I4dDZUqvbHDlLGqZGYUQYkxNDTqRZlqvOTx%2FIkEx%2BbK2OXQRYcir%2BxfmAUJ5AJJxb5I%3D" target="_blank">Run Example</a>
 
 ```java
-myArray = [
+myArray = [ 
 	"a",
 	"b",
 	"c"
@@ -168,20 +114,20 @@ Array Loop
 
 
 ```java
-<bx:set myArray = [
+<bx:set myArray = [ 
 	"a",
 	"b",
 	"c"
-	] >
- <!--- By index --->
- <bx:loop index="i" from="1" to="#arrayLen( myArray )#">
- <bx:output>#myArray[ i ]#</bx:output>
- </bx:loop>
- <!--- By array --->
- <bx:loop index="currentIndex" item="currentItem" array="#myArray#">
- <bx:output>#currentIndex#</bx:output>
-
- <bx:output>#currentItem#</bx:output>
+	] > 
+ <!--- By index ---> 
+ <bx:loop index="i" from="1" to="#arrayLen( myArray )#"> 
+ <bx:output>#myArray[ i ]#</bx:output> 
+ </bx:loop> 
+ <!--- By array ---> 
+ <bx:loop index="currentIndex" item="currentItem" array="#myArray#"> 
+ <bx:output>#currentIndex#</bx:output> 
+ 
+ <bx:output>#currentItem#</bx:output> 
  </bx:loop>
 ```
 
@@ -193,7 +139,7 @@ Struct Loop
 <a href="https://try.boxlang.io/?code=eJx1jk0LgkAQhs%2FOrxh2LwqS9%2FwAA7tEddBbdBDbaFHX2HaLRfzv6ZJkhy7DzPC8H63JldSVwhh7BOeQ7jNcIyk6YYgPTl6khX1sm07yS0lgCCEIcGPwYXVw7aSLlZaSCbVjBrnAdvb0sAfnJbliR63uWrlIooYn9IvT0ZvO%2FGnpc6ZRMLIEvRCGn8isrG6uB7NqxaYbXUyFwZoZ3y7PstFsLBAnfzrUn3ALLrOm8QYmylXE" target="_blank">Run Example</a>
 
 ```java
-myStruct = {
+myStruct = { 
 	NAME : "Tony",
 	STATE : "Florida"
 };
@@ -215,14 +161,14 @@ Loop over a Struct using the collection and item arguments of bx:loop.
 
 
 ```java
-<!--- Define our struct --->
+<!--- Define our struct ---> 
  <bx:set myStruct = {
 	NAME : "Tony",
 	STATE : "Florida"
-	} >
- <!--- By struct --->
- <bx:loop item="currentKey" collection="#myStruct#">
- <bx:output><li>#currentKey# : #myStruct[ currentKey ]#</li></bx:output>
+	} > 
+ <!--- By struct ---> 
+ <bx:loop item="currentKey" collection="#myStruct#"> 
+ <bx:output><li>#currentKey# : #myStruct[ currentKey ]#</li></bx:output> 
  </bx:loop>
 ```
 
@@ -272,15 +218,15 @@ List Loop
 
 
 ```java
-<!--- Define our list --->
- <bx:set myList = "a, b, c" >
- <!--- By list --->
- <bx:loop index="item" list="#myList#">
- <bx:output>#item#</bx:output>
- </bx:loop>
- <!--- By array --->
- <bx:loop index="currentIndex" array="#listToArray( myList, "," )#">
- <bx:output>#currentIndex#</bx:output>
+<!--- Define our list ---> 
+ <bx:set myList = "a, b, c" > 
+ <!--- By list ---> 
+ <bx:loop index="item" list="#myList#"> 
+ <bx:output>#item#</bx:output> 
+ </bx:loop> 
+ <!--- By array ---> 
+ <bx:loop index="currentIndex" array="#listToArray( myList, "," )#"> 
+ <bx:output>#currentIndex#</bx:output> 
  </bx:loop>
 ```
 
@@ -291,7 +237,7 @@ Query Loop use grouping
 
 
 ```java
-q = queryNew( "pk,fk,data", "integer,integer,varchar", [
+q = queryNew( "pk,fk,data", "integer,integer,varchar", [ 
 	[
 		1,
 		10,
@@ -340,21 +286,21 @@ Query Loop
 
 
 ```java
-<!--- Define our query --->
+<!--- Define our query ---> 
  <bx:set platform = [
 	"Adobe ColdFusion",
 	"Railo",
 	"Boxlang"
-	] >
- <bx:set myQuery = queryNew( " " ) >
- <bx:set queryAddColumn( myQuery, "platform", "VARCHAR", platform ) >
- <!--- By row index --->
- <bx:loop index="i" from="1" to="#myQuery.RECORDCOUNT#">
- <bx:output><li>#myQuery[ "platform" ][ i ]#</li></bx:output>
- </bx:loop>
- <!--- By group --->
- <bx:loop query="myQuery" group="platform">
- <bx:output><li>#platform#</li></bx:output>
+	] > 
+ <bx:set myQuery = queryNew( " " ) > 
+ <bx:set queryAddColumn( myQuery, "platform", "VARCHAR", platform ) > 
+ <!--- By row index ---> 
+ <bx:loop index="i" from="1" to="#myQuery.RECORDCOUNT#"> 
+ <bx:output><li>#myQuery[ "platform" ][ i ]#</li></bx:output> 
+ </bx:loop> 
+ <!--- By group ---> 
+ <bx:loop query="myQuery" group="platform"> 
+ <bx:output><li>#platform#</li></bx:output> 
  </bx:loop>
 ```
 
@@ -386,3 +332,5 @@ do {
  while (condition);
 
 ```
+
+

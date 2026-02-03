@@ -7,7 +7,7 @@ Copies a directory from one location to another
 ## Method Signature
 
 ```
-DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[any], createPath=[boolean])
+DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[any], createPath=[boolean], overwrite=[boolean])
 ```
 
 ### Arguments
@@ -17,9 +17,10 @@ DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[
 |----------|------|----------|-------------|---------|
 | `source` | `string` | `true` | The source directory |  |
 | `destination` | `string` | `true` | The destination directory |  |
-| `recurse` | `boolean` | `false` | [ false ] whether to recurse in to sub-directories and create paths | `false` |
-| `filter` | `any` | `false` | [ "*" ] a file or directory filter to pass | `*` |
-| `createPath` | `boolean` | `false` | [ true ] whether to create any nested paths required to the new directory | `true` |
+| `recurse` | `boolean` | `false` | whether to recurse in to sub-directories and create paths | `false` |
+| `filter` | `any` | `false` | A file or directory filter to pass | `*` |
+| `createPath` | `boolean` | `false` | whether to create any nested paths required to the new directory | `true` |
+| `overwrite` | `boolean` | `false` | whether to overwrite existing files at the destination | `false` |
 
 ## Examples
 

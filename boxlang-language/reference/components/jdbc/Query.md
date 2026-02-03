@@ -39,7 +39,7 @@ clientInfo=[struct] />
 | `username` | `string` | `false` |  |  |
 | `password` | `string` | `false` |  |  |
 | `maxRows` | `integer` | `false` | The maximum number of rows to return. -1 for no limit. | `-1` |
-| `blockfactor` | `integer` | `false` | Maximum rows per block to fetch from the server. Ranges from 1-100. | `[ortus.boxlang.runtime.validation.dynamic.Max@c3972d0, ortus.boxlang.runtime.validation.dynamic.Min@1264dbc9]` |
+| `blockfactor` | `integer` | `false` | Maximum rows per block to fetch from the server. Ranges from 1-100. |  |
 | `fetchsize` | `integer` | `false` | The number of rows to fetch at a time. Ranges from 1-100. |  |
 | `timeout` | `integer` | `false` | The timeout for the query in seconds. |  |
 | `cache` | `boolean` | `false` | Whether or not to cache the results of the query. | `false` |

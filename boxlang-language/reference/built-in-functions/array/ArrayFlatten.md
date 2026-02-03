@@ -1,15 +1,21 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `ArrayMedian`
+# Function: `ArrayFlatten`
 
-Return the median value of an array.
+Flattens nested arrays to the specified depth.
 
-Will only work on arrays that contain only numeric values.
+When depth is omitted, the array is flattened completely.
+
+ <pre>
+ nested = [ 1, [ 2, [ 3 ] ] ];
+ nested.flatten(); // [ 1, 2, 3 ]
+ nested.flatten( 1 ); // [ 1, 2, [ 3 ] ]
+ </pre>
 
 ## Method Signature
 
 ```
-ArrayMedian(array=[array])
+ArrayFlatten(array=[array], depth=[integer])
 ```
 
 ### Arguments
@@ -17,39 +23,10 @@ ArrayMedian(array=[array])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` | The array to get median value from |  |
+| `array` | `array` | `true` | The array to flatten. |  |
+| `depth` | `integer` | `false` | The depth to flatten. If omitted, flatten all nested arrays. |  |
 
 ## Examples
-
-### Calculates the Median value
-
-Uses the arrayMedian function to calculate the Median value
-
-<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYa5Ya65coGAiSNI3NSUzMU9DoRiuWtOaq7wosyTVv7SkoLREQyEXJAIARXgWXQ%3D%3D" target="_blank">Run Example</a>
-
-```java
-someArray = [ 
-	1,
-	2,
-	2
-];
-m = arrayMedian( someArray );
-writeOutput( m );
-
-```
-
-Result: 2
-
-### Additional Examples
-
-
-```java
-aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
-dump( arrayMedian( aNames ) );
-// member function
-dump( aNames.median() );
-
-```
 
 
 
@@ -74,7 +51,6 @@ dump( aNames.median() );
   * [ArrayFindNoCase](./ArrayFindNoCase.md)
   * [ArrayFirst](./ArrayFirst.md)
   * [ArrayFlatMap](./ArrayFlatMap.md)
-  * [ArrayFlatten](./ArrayFlatten.md)
   * [ArrayGetMetadata](./ArrayGetMetadata.md)
   * [ArrayGroupBy](./ArrayGroupBy.md)
   * [ArrayIndexExists](./ArrayIndexExists.md)
@@ -83,6 +59,7 @@ dump( aNames.median() );
   * [ArrayLast](./ArrayLast.md)
   * [ArrayMap](./ArrayMap.md)
   * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
   * [ArrayMerge](./ArrayMerge.md)
   * [ArrayMid](./ArrayMid.md)
   * [ArrayMin](./ArrayMin.md)

@@ -7,7 +7,7 @@ Return first item in array
 ## Method Signature
 
 ```
-ArrayFirst(array=[array])
+ArrayFirst(array=[array], defaultValue=[any])
 ```
 
 ### Arguments
@@ -16,6 +16,7 @@ ArrayFirst(array=[array])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to get the first item from. |  |
+| `defaultValue` | `any` | `false` |  |  |
 
 ## Examples
 
@@ -73,6 +74,7 @@ dump( var=arrayFirst( aNames ), label="first element of array aNames" );
 
   * [ArrayAppend](./ArrayAppend.md)
   * [ArrayAvg](./ArrayAvg.md)
+  * [ArrayChunk](./ArrayChunk.md)
   * [ArrayClear](./ArrayClear.md)
   * [ArrayContains](./ArrayContains.md)
   * [ArrayContainsNoCase](./ArrayContainsNoCase.md)
@@ -85,8 +87,12 @@ dump( var=arrayFirst( aNames ), label="first element of array aNames" );
   * [ArrayFind](./ArrayFind.md)
   * [ArrayFindAll](./ArrayFindAll.md)
   * [ArrayFindAllNoCase](./ArrayFindAllNoCase.md)
+  * [ArrayFindFirst](./ArrayFindFirst.md)
   * [ArrayFindNoCase](./ArrayFindNoCase.md)
+  * [ArrayFlatMap](./ArrayFlatMap.md)
+  * [ArrayFlatten](./ArrayFlatten.md)
   * [ArrayGetMetadata](./ArrayGetMetadata.md)
+  * [ArrayGroupBy](./ArrayGroupBy.md)
   * [ArrayIndexExists](./ArrayIndexExists.md)
   * [ArrayInsertAt](./ArrayInsertAt.md)
   * [ArrayIsDefined](./ArrayIsDefined.md)
@@ -105,6 +111,7 @@ dump( var=arrayFirst( aNames ), label="first element of array aNames" );
   * [ArrayRange](./ArrayRange.md)
   * [ArrayReduce](./ArrayReduce.md)
   * [ArrayReduceRight](./ArrayReduceRight.md)
+  * [ArrayReject](./ArrayReject.md)
   * [ArrayResize](./ArrayResize.md)
   * [ArrayReverse](./ArrayReverse.md)
   * [ArraySet](./ArraySet.md)
@@ -117,4 +124,7 @@ dump( var=arrayFirst( aNames ), label="first element of array aNames" );
   * [ArraySwap](./ArraySwap.md)
   * [ArrayToList](./ArrayToList.md)
   * [ArrayToStruct](./ArrayToStruct.md)
+  * [ArrayTranspose](./ArrayTranspose.md)
+  * [ArrayUnique](./ArrayUnique.md)
   * [ArrayUnshift](./ArrayUnshift.md)
+  * [ArrayZip](./ArrayZip.md)

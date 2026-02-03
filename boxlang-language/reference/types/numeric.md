@@ -118,7 +118,7 @@ Returns the arccosine (inverse cosine) of a number
 Returns the absolute value of a number
 </details>
 <details>
-<summary><code>formatBaseN(radix=[integer])</code></summary>
+<summary><code>formatBaseN(radix=[integerTruncate])</code></summary>
 
 Converts a number to a string representation in the specified base.
 
@@ -126,7 +126,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `radix` | `integer` | `true` | `null` |
+| `radix` | `integerTruncate` | `true` | `null` |
 
 </details>
 <details>

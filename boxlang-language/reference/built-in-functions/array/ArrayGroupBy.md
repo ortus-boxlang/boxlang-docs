@@ -1,15 +1,19 @@
 [comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the _invoke method of the BIF class)
 
-# Function: `ArrayMedian`
+# Function: `ArrayGroupBy`
 
-Return the median value of an array.
+Returns a struct of keys returned from the predicate function and values of arrays of matching rows.
 
-Will only work on arrays that contain only numeric values.
+<pre>
+ values = [ 1, 2, 3, 4 ];
+ values.groupBy( ( value ) => value % 2 ? "odd" : "even" );
+ // { odd: [ 1, 3 ], even: [ 2, 4 ] }
+ </pre>
 
 ## Method Signature
 
 ```
-ArrayMedian(array=[array])
+ArrayGroupBy(array=[array], callback=[function])
 ```
 
 ### Arguments
@@ -17,39 +21,10 @@ ArrayMedian(array=[array])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` | The array to get median value from |  |
+| `array` | `array` | `true` | The array to group. |  |
+| `callback` | `function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
 
 ## Examples
-
-### Calculates the Median value
-
-Uses the arrayMedian function to calculate the Median value
-
-<a href="https://try.boxlang.io/?code=eJwrzs9NdSwqSqxUsFWIVuDiNNTh4jQCYa5Ya65coGAiSNI3NSUzMU9DoRiuWtOaq7wosyTVv7SkoLREQyEXJAIARXgWXQ%3D%3D" target="_blank">Run Example</a>
-
-```java
-someArray = [ 
-	1,
-	2,
-	2
-];
-m = arrayMedian( someArray );
-writeOutput( m );
-
-```
-
-Result: 2
-
-### Additional Examples
-
-
-```java
-aNames = array( 10412, 42, 33, 2, 999, 12769, 888 );
-dump( arrayMedian( aNames ) );
-// member function
-dump( aNames.median() );
-
-```
 
 
 
@@ -76,13 +51,13 @@ dump( aNames.median() );
   * [ArrayFlatMap](./ArrayFlatMap.md)
   * [ArrayFlatten](./ArrayFlatten.md)
   * [ArrayGetMetadata](./ArrayGetMetadata.md)
-  * [ArrayGroupBy](./ArrayGroupBy.md)
   * [ArrayIndexExists](./ArrayIndexExists.md)
   * [ArrayInsertAt](./ArrayInsertAt.md)
   * [ArrayIsDefined](./ArrayIsDefined.md)
   * [ArrayLast](./ArrayLast.md)
   * [ArrayMap](./ArrayMap.md)
   * [ArrayMax](./ArrayMax.md)
+  * [ArrayMedian](./ArrayMedian.md)
   * [ArrayMerge](./ArrayMerge.md)
   * [ArrayMid](./ArrayMid.md)
   * [ArrayMin](./ArrayMin.md)
