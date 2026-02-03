@@ -101,6 +101,38 @@ println( "First fruit starting with 'a': " & foundFruit )
 sortedFruits = fruits.sort( (a, b) -> a.compareNoCase(b) )
 println( "Sorted: " & sortedFruits.toString() )
 
+// New in 1.10.0: Advanced array operations
+println( "--- Advanced Operations (1.10.0+) ---" )
+
+// Chunk - split array into smaller arrays
+chunks = fruits.chunk( 2 )
+println( "Chunks of 2: " & chunks.toString() )
+
+// Flatten - flatten nested arrays
+nested = [ [1, 2], [3, [4, 5]], 6 ]
+flat = nested.flatten()
+println( "Flattened: " & flat.toString() )
+
+// GroupBy - group elements by function result
+grouped = fruits.groupBy( (fruit) -> fruit.len() )
+println( "Grouped by length: " & grouped.keyList() )
+
+// Unique - remove duplicates
+duplicates = [ "apple", "banana", "apple", "cherry", "banana" ]
+unique = duplicates.unique()
+println( "Unique: " & unique.toString() )
+
+// Transpose - swap rows and columns
+matrix = [ [1, 2, 3], [4, 5, 6] ]
+transposed = matrix.transpose()
+println( "Transposed: " & transposed.toString() )
+
+// Zip - combine two arrays
+names = [ "Alice", "Bob" ]
+ages = [ 30, 25 ]
+zipped = names.zip( ages )
+println( "Zipped: " & zipped.toString() )
+
 // Chain operations together
 result = fruits
     .filter( fruit -> fruit.len() <= 6 )
@@ -134,6 +166,7 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 | `arrayToList()` | Convert array to list | `arrayToList([1,2,3])` → `"1,2,3"` |
 | `arraySlice()` | Extract portion of array | `arraySlice(arr, 2, 3)` → `[2, 3, 4]` |
 | `arrayRange()` | Create range of values | `arrayRange(1, 5)` → `[1, 2, 3, 4, 5]` |
+| `arrayChunk()` | Split into smaller arrays | `arrayChunk(arr, 2)` → `[[1,2], [3,4]]` **New in 1.10.0** |
 | `arrayToStruct()` | Convert to struct | `arrayToStruct(arr)` |
 
 ### ➕ Modification Functions
@@ -162,10 +195,12 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 | `arrayFind()` | Find element index | `arrayFind(arr, "value")` → `3` |
 | `arrayFindNoCase()` | Case-insensitive find | `arrayFindNoCase(arr, "VALUE")` → `3` |
 | `arrayFindAll()` | Find all matching indices | `arrayFindAll(arr, "test")` → `[2, 5]` |
+| `arrayFindFirst()` | Find first match with callback | `arrayFindFirst(arr, (x) -> x > 5)` → first element **New in 1.10.0** |
 | `arrayContains()` | Check if contains | `arrayContains(arr, "item")` → `true` |
 | `arrayContainsNoCase()` | Case-insensitive check | `arrayContainsNoCase(arr, "ITEM")` → `true` |
 | `arrayIndexExists()` | Check if index exists | `arrayIndexExists(arr, 5)` → `true` |
 | `arrayFilter()` | Filter by condition | `arrayFilter(arr, (x) -> x > 5)` |
+| `arrayReject()` | Reject elements matching condition | `arrayReject(arr, (x) -> x < 5)` **New in 1.10.0** |
 | `arrayEvery()` | Test all elements | `arrayEvery(arr, (x) -> x > 0)` → `true` |
 | `arraySome()` | Test any element | `arraySome(arr, (x) -> x > 10)` → `true` |
 | `arrayNone()` | Test no elements match | `arrayNone(arr, (x) -> x < 0)` → `true` |
@@ -175,6 +210,12 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 | Function | Purpose | Example |
 |----------|---------|----------|
 | `arrayMap()` | Transform elements | `arrayMap(arr, (x) -> x * 2)` |
+| `arrayFlatMap()` | Map and flatten results | `arrayFlatMap(arr, (x) -> [x, x*2])` **New in 1.10.0** |
+| `arrayFlatten()` | Flatten nested arrays | `arrayFlatten([[1,2],[3,4]])` → `[1,2,3,4]` **New in 1.10.0** |
+| `arrayGroupBy()` | Group by function result | `arrayGroupBy(arr, (x) -> x.type)` **New in 1.10.0** |
+| `arrayTranspose()` | Swap rows and columns | `arrayTranspose([[1,2],[3,4]])` → `[[1,3],[2,4]]` **New in 1.10.0** |
+| `arrayUnique()` | Remove duplicates | `arrayUnique([1,2,2,3])` → `[1,2,3]` **New in 1.10.0** |
+| `arrayZip()` | Combine two arrays | `arrayZip([1,2], ["a","b"])` → `[[1,"a"],[2,"b"]]` **New in 1.10.0** |
 | `arrayReduce()` | Reduce left to right | `arrayReduce(arr, (sum, x) -> sum + x, 0)` |
 | `arrayReduceRight()` | Reduce right to left | `arrayReduceRight(arr, (sum, x) -> sum + x, 0)` |
 | `arrayReverse()` | Reverse order | `arrayReverse(arr)` |
@@ -192,7 +233,7 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 |----------|---------|----------|
 | `arrayLen()` | Get length | `arrayLen(arr)` → `5` |
 | `arrayIsEmpty()` | Check if empty | `arrayIsEmpty(arr)` → `false` |
-| `arrayFirst()` | Get first element | `arrayFirst(arr)` → first element |
+| `arrayFirst( [default] )` | Get first element (with optional default) | `arrayFirst(arr, "default")` **Enhanced in 1.10.0** |
 | `arrayLast()` | Get last element | `arrayLast(arr)` → last element |
 | `arrayMin()` | Find minimum | `arrayMin(arr)` → `1` |
 | `arrayMax()` | Find maximum | `arrayMax(arr)` → `100` |
