@@ -34,7 +34,7 @@ By default, once you execute a `boxlang` binary it will look for a `BOXLANG_HOME
 
 {% tab title="Windows" %}
 ```python
-c:/Windows/users/myuser/.boxlang
+C:\Users\myuser\.boxlang
 ```
 {% endtab %}
 {% endtabs %}
