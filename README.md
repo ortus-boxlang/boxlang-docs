@@ -1,5 +1,5 @@
 ---
-description: 'Welcome to BoxLang: A Modern Dynamic JVM Language'
+description: 'Welcome to BoxLang: A Modern Dynamic JVM Language built for productivity'
 icon: house-window
 ---
 
@@ -30,19 +30,15 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 8. Compile down to Java ByteCode
 9. Framework Capabilities (Scheduling, applications, events, async computing, tasks, queues, modules)
 10. [Professional Open-Source Support](https://boxlang.io/plans)
-11. Drop-in Replacement for Adobe ColdFusion and Lucee CFML
+11. Replacement for Adobe ColdFusion and Lucee CFML
 
 {% hint style="danger" %}
-**BoxLang can also be used as a drop-in replacement for Adobe ColdFusion or Lucee CFML Engines by leveraging our `bx-compat-cfml`module. NO CODE CHANGES, FASTER, MODERN AND SAVE MONEY.**
+**BoxLang can also be used as a replacement for Adobe ColdFusion or Lucee CFML Engines by leveraging our `bx-compat-cfml`module. NO CODE CHANGES, FASTER, MODERN AND SAVE MONEY.**
 {% endhint %}
 
 {% content-ref url="getting-started/overview/" %}
 [overview](getting-started/overview/)
 {% endcontent-ref %}
-
-## Launch Video
-
-{% embed url="https://www.youtube.com/live/Bn3gzjzjtuc?si=ahCHxXKqg7_CASkO" %}
 
 ## License
 
