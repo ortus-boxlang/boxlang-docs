@@ -155,6 +155,7 @@ All the following options are supported in the JSON configuration file:
 | `healthCheck` | boolean | false | Enable health check endpoints |
 | `healthCheckSecure` | boolean | false | Restrict detailed health info to localhost only |
 | `envFile` | string | null | Path to custom environment file (relative or absolute) |
+| `warmupURLs` | array | [] | Array of URL paths to request on server startup for application initialization |
 
 ### Example Configuration Files
 
@@ -211,7 +212,12 @@ All the following options are supported in the JSON configuration file:
   "rewriteFileName": "index.bxm",
   "healthCheck": true,
   "healthCheckSecure": false,
-  "envFile": ".env.production"
+  "envFile": ".env.production",
+  "warmupURLs": [
+    "/api/warmup",
+    "/cache/initialize",
+    "/app/preload"
+  ]
 }
 ```
 
@@ -451,6 +457,160 @@ It is important to note that these variables will not exist as "proper" environm
 
 {% hint style="info" %}
 **Privacy Note:** Environment variables are NOT exposed through health check endpoints. Health checks only return basic server metrics and status information for security purposes.
+{% endhint %}
+
+## � Warmup URLs
+
+The MiniServer supports warmup URLs - a feature that automatically requests specific URLs when the server starts. This is useful for pre-loading applications, initializing caches, or warming up services before accepting production traffic.
+
+### Why Use Warmup URLs?
+
+Warmup URLs help with:
+
+* **Faster first requests** - Pre-load application code and dependencies before users arrive
+* **Cache initialization** - Populate caches with frequently accessed data
+* **Service initialization** - Initialize database connections, external API clients, etc.
+* **Application preloading** - Load and compile BoxLang templates ahead of time
+* **Reduce cold start latency** - Ensure the application is fully ready before serving traffic
+
+### Configuring Warmup URLs
+
+Add the `warmupURLs` array to your JSON configuration file:
+
+```json
+{
+  "port": 8080,
+  "webRoot": "./www",
+  "warmupURLs": [
+    "/api/warmup",
+    "/cache/initialize",
+    "/app/preload"
+  ]
+}
+```
+
+### How Warmup Works
+
+When the server starts:
+
+1. **Server initialization** completes first
+2. **Warmup requests** are sent to each URL in the array (in order)
+3. **Sequential execution** - each URL completes before the next starts
+4. **Error handling** - failures are logged but don't stop server startup
+5. **Server ready** - after all warmup URLs complete, the server is fully ready
+
+### Warmup URL Examples
+
+#### Basic Application Preload
+
+```json
+{
+  "warmupURLs": [
+    "/index.bxm"
+  ]
+}
+```
+
+#### Multiple Initialization Endpoints
+
+```json
+{
+  "warmupURLs": [
+    "/api/health",
+    "/cache/warmup",
+    "/db/connect",
+    "/modules/initialize"
+  ]
+}
+```
+
+#### Production Warmup Strategy
+
+```json
+{
+  "port": 8080,
+  "webRoot": "/var/www/myapp",
+  "warmupURLs": [
+    "/api/warmup/database",
+    "/api/warmup/cache",
+    "/api/warmup/services",
+    "/health/ready"
+  ]
+}
+```
+
+### Creating Warmup Endpoints
+
+Create dedicated warmup endpoints in your BoxLang application:
+
+```js
+// /api/warmup.bxm
+header statusCode=200;
+
+// Initialize application services
+application.cacheService = new CacheService();
+application.dbPool = new DatabasePool();
+
+// Preload frequently accessed data
+application.config = loadConfig();
+application.routes = loadRoutes();
+
+// Return success
+writeOutput( serializeJSON( {
+    "status": "ready",
+    "initialized": now(),
+    "services": [
+        "cache",
+        "database",
+        "config"
+    ]
+} ) );
+```
+
+### Warmup Best Practices
+
+1. **Keep warmup URLs lightweight** - Focus on initialization, not heavy processing
+2. **Use dedicated endpoints** - Create specific `/warmup/*` endpoints for initialization
+3. **Sequential dependencies** - Order URLs so dependencies load first (e.g., database before cache)
+4. **Error handling** - Ensure warmup endpoints handle errors gracefully
+5. **Return quickly** - Warmup should complete in seconds, not minutes
+6. **Health checks** - Include a health check endpoint as the final warmup URL to verify readiness
+
+### Console Output
+
+When warmup URLs are configured, you'll see output during server startup:
+
+```bash
++ Starting BoxLang Runtime...
+  - BoxLang Version: 1.10.0 (Built On: 2026-02-02 10:30:15)
+  - Runtime Started in 652ms
++ Executing warmup URLs...
+  - GET /api/warmup [200 OK] in 145ms
+  - GET /cache/initialize [200 OK] in 89ms
+  - GET /app/preload [200 OK] in 203ms
++ Warmup completed in 437ms
++ BoxLang MiniServer started in 1105ms at: http://localhost:8080
+```
+
+### Error Handling
+
+If a warmup URL fails, the error is logged but server startup continues:
+
+```bash
++ Executing warmup URLs...
+  - GET /api/warmup [200 OK] in 145ms
+  - GET /cache/initialize [500 Internal Server Error] in 52ms
+    WARNING: Warmup URL failed but server startup will continue
+  - GET /app/preload [200 OK] in 203ms
++ Warmup completed with errors in 400ms
+```
+
+{% hint style="success" %}
+**Tip:** Use warmup URLs in production deployments to ensure your application is fully initialized before accepting user traffic. This is especially important in containerized environments or auto-scaling scenarios where new instances are frequently created.
+{% endhint %}
+
+{% hint style="info" %}
+**Performance Note:** Warmup URLs are executed sequentially during server startup. Keep individual warmup operations fast to minimize total startup time. For complex initialization, consider using asynchronous initialization within your warmup endpoints.
 {% endhint %}
 
 ## 🔌 WebSocket Support

@@ -57,6 +57,15 @@ Since BoxLang is not a tag-based language but a dynamic language offering a temp
 
 In CFML, the default assignment scope is always `variables`, but in BL it can differ based on the context. For Functions, it will be `local`. The BoxLang runtime will toggle this behavior based on the type of the compiled source code. So for `.cfm` or `.cfc` source files, the default assignment scope in functions will remain `variables` but for code compiled from `.bx`, `.bxs` or `.bxm` files, the default assignment scope in functions will be `local`.
 
+## StructCopy with Components
+
+This only affects users coming from Lucee, where a `structCopy( cfc )` would return a new shallow copy of a CFC.  In BoxLang, this returns a struct representation of the CFC's properties.  To get a shallow copy of a CFC, use the `duplicate()` method.  This is a Lucee undocumented feature, plus semantically a `structCopy` should return a struct, not a CFC.
+
+```js
+var myCFC = new MyComponent();
+var myCFCopy = myCFC.duplicate();
+```
+
 ## CastAs operator
 
 BoxLang has a new `castAs` operator that you can use instead of the `javaCast()` bif.
@@ -145,7 +154,7 @@ Accessors in BoxLang are automatically `true` for all classes by default.  This 
 class{
 
     Property name=“fullName”;
-    
+
 }
 
 // Accessors are on by default
@@ -163,7 +172,7 @@ We also default invoking of implicit accessors by default to `true` .  You can a
 class{
 
     Property name=“fullName”;
-    
+
 }
 
 // Accessors and invoke implicit are on by default
