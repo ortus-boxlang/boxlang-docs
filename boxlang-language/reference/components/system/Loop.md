@@ -67,6 +67,60 @@ for( i = 1; i <= 10; i++ ) {
 
 Result: 12345678910
 
+### Destructuring Loop Syntax (Script)
+
+**New in 1.10.0**: Loop destructuring allows you to get multiple values in a single declaration.
+
+#### Array Destructuring
+
+Get both element and index when looping over arrays:
+
+```java
+fruits = [ "apple", "banana", "cherry" ]
+
+// Get both item and index
+for( item, index in fruits ) {
+    writeOutput( "#index#: #item#<br>" )
+}
+```
+
+Result:
+```
+1: apple
+2: banana
+3: cherry
+```
+
+#### Struct Destructuring
+
+Get both key and value when looping over structures:
+
+```java
+produce = {
+    "grapes": 2,
+    "lemons": 1,
+    "eggplants": 6
+}
+
+// Get both key and value
+for( key, value in produce ) {
+    writeOutput( "I have #value# #key#<br>" )
+}
+```
+
+Result:
+```
+I have 2 grapes
+I have 1 lemons
+I have 6 eggplants
+```
+
+{% hint style="info" %}
+**Syntax Note**: The destructuring syntax follows the pattern `for (first, second in collection)` where:
+- For **arrays**: `first` = element value, `second` = 1-based index
+- For **structs**: `first` = key, `second` = value
+{% endhint %}
+
 ### For Loop using Bx:loop Tag
 
 General Purpose Loop

@@ -353,10 +353,20 @@ The query object can be iterated on like a normal collection through various loo
 ### For-In Loop (Recommended)
 
 ```js
+// Simple iteration (row only)
 for ( row in qItems ) {
     println( "There are #row.quantity# #row.item# in the pantry" );
 }
+
+// Destructuring syntax - get both row and index
+for ( row, index in qItems ) {
+    println( "#index#: There are #row.quantity# #row.item# in the pantry" );
+}
 ```
+
+{% hint style="success" %}
+**New in 1.10.0**: Loop destructuring syntax `for (row, index in query)` allows you to get both the row struct and its 1-based index in a single, clean declaration.
+{% endhint %}
 
 ### Each with Closure
 

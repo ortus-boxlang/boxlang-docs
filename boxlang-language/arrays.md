@@ -898,22 +898,35 @@ You can use different constructs for looping over arrays:
 * `each()` closures
 
 ```javascript
+// Simple iteration (element only)
 for( var thisMeal in meals ){
  systemOutput( "I just had #thisMeal#" );
 }
 
+// Traditional index-based loop
 for( var x = 1; x lte meals.len(); x++ ){
  systemOutput( "I just had #meals[ x ]#" );
 }
 
+// Destructuring syntax - get both element and index
+for( item, index in meals ){
+ systemOutput( "Meal #index#: #item#" );
+}
+
+// Each closure with element and index
 meals.each( function( element, index ){
   systemOutput( "I just had #element#" );
 } );
 
+// Component syntax
 bx:loop( from=1, to=meals.len(), index=x ){
   systemOutput( "I just had #meals[ x ]#" );
 }
 ```
+
+{% hint style="success" %}
+**New in 1.10.0**: Loop destructuring syntax `for (item, index in array)` allows you to get both the element and its index in a single, clean declaration.
+{% endhint %}
 
 ### ⚡ Multi-Threaded Looping
 

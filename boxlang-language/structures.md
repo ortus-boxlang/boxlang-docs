@@ -503,14 +503,25 @@ You can use different constructs for looping over structures:
 * `each()` closures
 
 ```javascript
+// Simple iteration (key only)
 for( var key in produce ){
  systemOutput( "I just had #produce[ key ]# #key#" );
 }
 
+// Destructuring syntax - get both key and value
+for( key, value in produce ){
+ systemOutput( "I just had #value# #key#" );
+}
+
+// Each closure with key and value
 produce.each( function( key, value ){
   systemOutput( "I just had #value# #key#" );
 } );
 ```
+
+{% hint style="success" %}
+**New in 1.10.0**: Loop destructuring syntax `for (key, value in struct)` allows you to get both the key and value in a single, clean declaration without needing array notation lookups.
+{% endhint %}
 
 ### ⚡ Multi-Threaded Looping
 
