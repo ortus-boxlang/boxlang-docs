@@ -22,7 +22,7 @@ This event is triggered before a function is invoked. It allows you to perform a
 ### Example
 
 ```groovy
-cass myListener{
+class myListener{
 
 	function preFunctionInvoke( struct data ){
 		// Access the function name
@@ -54,7 +54,7 @@ This event is triggered after a function has been invoked. It allows you to perf
 ### Example
 
 ```groovy
-cass myListener{
+class myListener{
 	function postFunctionInvoke( struct data ){
 		// Access the function name
 		var functionName = data.name;
@@ -85,7 +85,7 @@ This event is triggered when an exception occurs during the function invocation.
 ### Example
 
 ```groovy
-cass myListener{
+class myListener{
 	function onFunctionException( struct data ){
 		// Access the function name
 		var functionName = data.name;
