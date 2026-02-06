@@ -315,13 +315,13 @@ println( "Tracking number: " & shipment.trackingNumber );
 
 The SOAP client provides several methods to inspect and understand the web service:
 
-### `getOperationNames()`
+### `getOperations()`
 
 Returns an array of all available operation names.
 
 ```js
 ws = soap( "http://example.com/service.wsdl" );
-operations = ws.getOperationNames();
+operations = ws.getOperations();
 dump( operations );
 // Output: ["operationOne", "operationTwo", "operationThree"]
 ```
@@ -543,7 +543,7 @@ println( "SOAP Version: " & info.soapVersion );
 println( "Operations: " & info.operations.len() );
 
 // List all operations
-operations = ws.getOperationNames();
+operations = ws.getOperations();
 operations.each( ( op ) => {
     opInfo = ws.getOperationInfo( op );
     println( "\n#op#:" );
@@ -596,7 +596,7 @@ BoxLang combines these into a single exception message for easy handling.
 1. **Cache clients** - Create SOAP clients once and reuse them (WSDL parsing is expensive)
 2. **Set appropriate timeouts** - SOAP calls can be slow, adjust timeouts accordingly
 3. **Handle faults gracefully** - Always wrap SOAP calls in try-catch blocks
-4. **Inspect operations first** - Use `getOperationNames()` to see what's available
+4. **Inspect operations first** - Use `getOperations()` to see what's available
 5. **Check operation info** - Use `getOperationInfo()` to understand parameters before calling
 6. **Use named arguments** - Struct arguments are clearer than positional arrays
 7. **Monitor statistics** - Track invocations and failures with `getStatistics()`
@@ -679,7 +679,7 @@ class WeatherService {
             .withBasicAuth( "api", apiKey )
             .timeout( 30 );
 
-        logger.info( "WeatherService initialized with #client.getOperationNames().len()# operations" );
+        logger.info( "WeatherService initialized with #client.getOperations().len()# operations" );
 
         return this;
     }
