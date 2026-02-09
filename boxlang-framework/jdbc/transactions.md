@@ -120,13 +120,13 @@ This transaction is a no-op. It begins, tries to set a savepoint, then roll back
 
 BoxLang emits events during the lifecycle of a JDBC transaction which can be used to react to various transaction points in your app:
 
-* [`onTransactionBegin`](transactions.md#ontransactionbegin)
-* [`onTransactionEnd`](transactions.md#ontransactionend)
-* [`onTransactionCommit`](transactions.md#ontransactioncommit)
-* [`onTransactionRollback`](transactions.md#ontransactionrollback)
-* [`onTransactionSetSavepoint`](transactions.md#ontransactionsetsavepoint)
-* [`onTransactionAcquire`](transactions.md#ontransactionacquire)
-* [`onTransactionRelease`](transactions.md#ontransactionrelease)
+* [`onTransactionBegin`](../interceptors/core-interception-points/transaction-events.md#ontransactionbegin)
+* [`onTransactionEnd`](../interceptors/core-interception-points/transaction-events.md#ontransactionend)
+* [`onTransactionCommit`](../interceptors/core-interception-points/transaction-events.md#ontransactioncommit)
+* [`onTransactionRollback`](../interceptors/core-interception-points/transaction-events.md#ontransactionrollback)
+* [`onTransactionSetSavepoint`](../interceptors/core-interception-points/transaction-events.md#ontransactionsetsavepoint)
+* [`onTransactionAcquire`](../interceptors/core-interception-points/transaction-events.md#ontransactionacquire)
+* [`onTransactionRelease`](../interceptors/core-interception-points/transaction-events.md#ontransactionrelease)
 
 Read more about these events in [transaction events](../interceptors/core-interception-points/transaction-events.md).
 
