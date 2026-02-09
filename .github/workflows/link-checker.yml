@@ -1,4 +1,4 @@
-name: Link Checker
+name: Linkspector
 
 on:
   push:
@@ -8,10 +8,14 @@ on:
 
 jobs:
   check-links:
+    name: runner / linkspector
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: 'restqa-404-links'
-      uses: restqa/404-links@3.1.6
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - uses: actions/checkout@v4
+      - name: Run linkspector
+        uses: umbrelladocs/action-linkspector@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          fail_level: any
+          filter_mode: added # Show errors only in the added lines (with the + prefix).
