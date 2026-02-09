@@ -935,7 +935,7 @@ Query of Queries has some limitations to be aware of:
 
 ## 🔗 Related Documentation
 
-* [Querying](querying1.md) - Execute database queries
+* [Querying](querying.md) - Execute database queries
 * [Datasources](datasources.md) - Configure database connections
 * [Query Type Reference](../../boxlang-language/reference/types/query.md) - Query object methods and properties
 * [queryExecute() BIF](../../boxlang-language/reference/built-in-functions/jdbc/QueryExecute.md) - Complete BIF reference
