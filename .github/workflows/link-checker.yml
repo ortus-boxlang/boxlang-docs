@@ -23,4 +23,6 @@ jobs:
       with:
         use-quiet-mode: 'yes' # report only only broken links, not valid ones
         use-verbose-mode: 'yes' # include HTTP status codes and error messages
-        config-file: '.github/linters/.linkcheck.json'
+        config-file: '.github/linters/.linkcheck.json' # specify ignored links and other config
+        check-modified-files-only: 'yes' # only check links in files modified in the current PR or commit
+        base-branch: 'v1.x' # the branch to compare against when determining modified files, typically the main development branch
