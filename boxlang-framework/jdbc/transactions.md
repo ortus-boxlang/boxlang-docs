@@ -127,6 +127,7 @@ BoxLang emits events during the lifecycle of a JDBC transaction which can be use
 * [`onTransactionSetSavepoint`](../interceptors/core-interception-points/transaction-events.md#ontransactionsetsavepoint)
 * [`onTransactionAcquire`](../interceptors/core-interception-points/transaction-events.md#ontransactionacquire)
 * [`onTransactionRelease`](../interceptors/core-interception-points/transaction-events.md#ontransactionrelease)
+* [`bad link test`](../im_a_404.md) - This is a broken link to test the link checker
 
 Read more about these events in [transaction events](../interceptors/core-interception-points/transaction-events.md).
 
