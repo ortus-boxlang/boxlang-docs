@@ -59,32 +59,6 @@ transaction isolation="repeatable_read" {
 }
 ```
 
-### ⚙️ Manual Transaction Control
-
-For complex scenarios, use transaction BIFs directly:
-
-```js
-if ( !isInTransaction() ) {
-    transactionBegin();
-}
-
-try {
-    transactionSetSavepoint( "beforeCriticalOperation" );
-
-    // Critical database operations
-    queryExecute( "UPDATE critical_data SET value = ?", [ newValue ] );
-
-    if ( someCondition ) {
-        transactionRollback( "beforeCriticalOperation" );
-    } else {
-        transactionCommit();
-    }
-} catch ( any e ) {
-    transactionRollback();
-    rethrow;
-}
-```
-
 ## 🔧 Transaction Attributes & Options
 
 ### 📋 Available Attributes
@@ -381,7 +355,6 @@ You can see that regardless of the `transactionCommit()` in the child transactio
 See our list of transactional BIFs:
 
 * [`isInTransaction()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/isInTransaction) - Check if currently inside a transaction
-* [`transactionBegin()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionBegin) - Start a new transaction manually
 * [`transactionCommit()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionCommit) - Commit the current transaction
 * [`transactionRollback()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionRollback) - Roll back the current transaction
 * [`transactionSetSavepoint()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionSetSavepoint) - Create a savepoint for partial rollbacks
