@@ -26,4 +26,4 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           fail_level: any
-          filter_mode: added # Show errors only in the added lines (with the + prefix).
+          filter_mode: nofilter # inspect all links, just to see if it works.
