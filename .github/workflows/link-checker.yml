@@ -1,4 +1,4 @@
-name: Linkspector
+name: Link Checker
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - '**/*.md'
   pull_request:
     types: [assigned, opened, synchronize, reopened]
-    # paths:
-    #   - '**/*.md'
+    paths:
+      - '**/*.md'
 
 permissions:
   contents: read
@@ -21,8 +21,8 @@ jobs:
     - uses: actions/checkout@v4
     - uses: tcort/github-action-markdown-link-check@v1
       with:
-        use-quiet-mode: 'yes' # report only only broken links, not valid ones
+        use-quiet-mode: 'no' # report only only broken links, not valid ones
         use-verbose-mode: 'yes' # include HTTP status codes and error messages
-        config-file: '.github/linters/.linkcheck.json' # specify ignored links and other config
+        # config-file: '.github/linters/.linkcheck.json' # specify ignored links and other config
         check-modified-files-only: 'no' # only check links in files modified in the current PR or commit
         base-branch: 'v1.x' # the branch to compare against when determining modified files, typically the main development branch
