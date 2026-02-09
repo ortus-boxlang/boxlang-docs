@@ -26,4 +26,4 @@ jobs:
         # config-file: '.github/linters/.linkcheck.json' # specify ignored links and other config
         check-modified-files-only: 'no' # only check links in files modified in the current PR or commit
         base-branch: 'v1.x' # the branch to compare against when determining modified files, typically the main development branch
-        folder-path: '*'
+        folder-path: '.gitbook/includes, boxlang-framework, boxlang-language, extra-credit, getting-started, readme'
