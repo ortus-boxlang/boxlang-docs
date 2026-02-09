@@ -145,7 +145,7 @@ transaction{
 }
 ```
 
-In Adobe and Lucee, the first query executed within the datasource determines the transactional datasource; that is, the first query to run sets the datasource to use for that transaction. Any queries which specify a different datasource will execute outside the context of the transaction.
+In Adobe and [Lucee Server](https://www.lucee.org/), the first query executed within the datasource determines the transactional datasource; that is, the first query to run sets the datasource to use for that transaction. Any queries which specify a different datasource will execute outside the context of the transaction.
 
 To improve expectations around this behavior, BoxLang supports a `datasource` attribute on the transaction block:
 
