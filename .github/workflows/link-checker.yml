@@ -1,4 +1,4 @@
-name: Linkspector
+name: Link Checker
 
 on:
   push:
@@ -16,14 +16,13 @@ permissions:
 
 jobs:
   check-links:
-    name: runner / linkspector
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Run linkspector
-        uses: umbrelladocs/action-linkspector@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review
-          fail_level: any
-          filter_mode: added # Show errors only in the added lines (with the + prefix).
+    - uses: actions/checkout@v6
+    - uses: tcort/github-action-markdown-link-check@v1
+      with:
+        use-quiet-mode: 'yes' # report only only broken links, not valid ones
+        use-verbose-mode: 'yes' # include HTTP status codes and error messages
+        config-file: '.github/linters/.linkcheck.json' # specify ignored links and other config
+        check-modified-files-only: 'yes' # only check links in files modified in the current PR or commit
+        base-branch: 'v1.x' # the branch to compare against when determining modified files, typically the main development branch

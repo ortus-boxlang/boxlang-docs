@@ -1,0 +1,16 @@
+{
+  "projectBaseUrl":"${workspaceFolder}",
+  "ignorePatterns": [
+    {
+      "pattern": "^https://claude.ai"
+    }
+  ],
+  "replacementPatterns": [
+  ],
+  "httpHeaders": [],
+  "timeout": "5s",
+  "retryOn429": false,
+  "retryCount": 1,
+  "fallbackRetryDelay": "10s",
+  "aliveStatusCodes": [200, 206]
+}
