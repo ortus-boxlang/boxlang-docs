@@ -68,6 +68,7 @@
   * [CommandBox](getting-started/running-boxlang/commandbox.md)
   * [Chromebooks](getting-started/running-boxlang/chromebooks.md)
   * [CLI Scripting](getting-started/running-boxlang/cli-scripting.md)
+  * [DigitalOcean App](getting-started/running-boxlang/digitalocean-app.md)
   * [Demos](getting-started/running-boxlang/demos.md)
   * [Docker](getting-started/running-boxlang/docker.md)
   * [GitHub Actions](getting-started/running-boxlang/github-actions.md)
