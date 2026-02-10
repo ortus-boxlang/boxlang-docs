@@ -1,6 +1,6 @@
 ---
-icon: crosshairs-simple
 description: A quick overview of the BoxLang Language & Framework
+icon: crosshairs-simple
 ---
 
 # Overview
@@ -56,8 +56,3 @@ Thanks to our multi-parser architecture, the following parsers are currently bei
 * ...
 {% endhint %}
 
-### Release Video
-
-We launched an open beta of BoxLang at our 2024 developer conference, [Into The Box.](https://www.intothebox.org/), and then released 1.0 at the 2025 conference.
-
-{% embed url="https://www.youtube.com/live/Bn3gzjzjtuc?t=713s" %}
