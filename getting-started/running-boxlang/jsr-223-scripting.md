@@ -15,15 +15,15 @@ JSR 223, also known as "**Scripting for the Java Platform,**" enables seamless i
 
 ## 📋 Table of Contents
 
-- [Getting Started for Java Developers](#getting-started-for-java-developers)
-- [Adding BoxLang to Your Project](#adding-boxlang-to-your-project)
-- [Quick Start Example](#quick-start-example)
-- [Architecture Overview](#architecture-overview)
-- [Common Use Cases for Java Developers](#common-use-cases-for-java-developers)
-- [Core Scripting Classes](#core-scripting-classes)
-- [BoxLang Home Configuration](#boxlang-home-configuration)
-- [Production Considerations](#production-considerations)
-- [Integration Patterns](#integration-patterns)
+* [Getting Started for Java Developers](jsr-223-scripting.md#getting-started-for-java-developers)
+* [Adding BoxLang to Your Project](jsr-223-scripting.md#adding-boxlang-to-your-project)
+* [Quick Start Example](jsr-223-scripting.md#quick-start-example)
+* [Architecture Overview](jsr-223-scripting.md#architecture-overview)
+* [Common Use Cases for Java Developers](jsr-223-scripting.md#common-use-cases-for-java-developers)
+* [Core Scripting Classes](jsr-223-scripting.md#core-scripting-classes)
+* [BoxLang Home Configuration](jsr-223-scripting.md#boxlang-home-configuration)
+* [Production Considerations](jsr-223-scripting.md#production-considerations)
+* [Integration Patterns](jsr-223-scripting.md#integration-patterns)
 
 ## 📦 Adding BoxLang to Your Project
 
@@ -35,7 +35,7 @@ Add BoxLang to your Maven project's `pom.xml`:
 <dependency>
     <groupId>io.boxlang</groupId>
     <artifactId>boxlang</artifactId>
-    <version>1.5.0</version>
+    <version>1.10.1</version>
 </dependency>
 ```
 
@@ -45,7 +45,7 @@ For Gradle projects, add to your `build.gradle`:
 
 ```groovy
 dependencies {
-    implementation 'io.boxlang:boxlang:1.5.0'
+    implementation 'io.boxlang:boxlang:1.10.1'
 }
 ```
 
@@ -53,23 +53,23 @@ dependencies {
 
 Download the latest BoxLang JAR from:
 
-- **Releases**: [https://github.com/ortus-boxlang/BoxLang/releases](https://github.com/ortus-boxlang/BoxLang/releases)
-- **Snapshots**: [https://s3.amazonaws.com/downloads.ortussolutions.com/boxlang/](https://s3.amazonaws.com/downloads.ortussolutions.com/boxlang/)
+* **Releases**: [https://github.com/ortus-boxlang/BoxLang/releases](https://github.com/ortus-boxlang/BoxLang/releases)
+* **Snapshots**: [https://s3.amazonaws.com/downloads.ortussolutions.com/boxlang/](https://s3.amazonaws.com/downloads.ortussolutions.com/boxlang/)
 
 Add the JAR to your project's classpath:
 
 ```bash
 # Compile with BoxLang
-javac -cp "boxlang-1.5.0.jar:." MyApp.java
+javac -cp "boxlang-1.10.0.jar:." MyApp.java
 
 # Run with BoxLang
-java -cp "boxlang-1.5.0.jar:." MyApp
+java -cp "boxlang-1.10.0.jar:." MyApp
 ```
 
 ### System Requirements
 
-- **Java 21+** (BoxLang requires JDK 21 or later)
-- **JSR-223 Support** (included in standard Java installations)
+* **Java 21+** (BoxLang requires JDK 21 or later)
+* **JSR-223 Support** (included in standard Java installations)
 
 ## 🏗️ Quick Start Example
 
@@ -199,30 +199,27 @@ Map result = ( Map ) engine.eval( """
 
 The BoxLang scripting package can be found here: `ortus.boxlang.runtime.scripting`. The classes that will assist you are:
 
-- `BoxCompiledScript` - Implements the JSR `CompiledScript` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html))
-- `BoxScopeBindings` - Implements the JSR `Bindings` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html))
-- `BoxScriptingContext` - Implements the JSR `ScriptContext` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html))
-- `BoxScriptingEngine` - Implements the JSR `ScriptEngine` and `Compilable`
-  [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html)
-  [https://docs.oracle.com/en/java/javase/17/docs/api//java.scripting/javax/script/Compilable.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Compilable.html)
-- `BoxScriptingFactory` - implements the JSR `ScriptEngineFactory`
-  [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html)
+* `BoxCompiledScript` - Implements the JSR `CompiledScript` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/CompiledScript.html))
+* `BoxScopeBindings` - Implements the JSR `Bindings` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Bindings.html))
+* `BoxScriptingContext` - Implements the JSR `ScriptContext` interface ([https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptContext.html))
+* `BoxScriptingEngine` - Implements the JSR `ScriptEngine` and `Compilable` [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngine.html) [https://docs.oracle.com/en/java/javase/17/docs/api//java.scripting/javax/script/Compilable.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/Compilable.html)
+* `BoxScriptingFactory` - implements the JSR `ScriptEngineFactory` [https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html](https://docs.oracle.com/en/java/javase/17/docs/api/java.scripting/javax/script/ScriptEngineFactory.html)
 
 ### Definitions
 
-- **Script Factory** - creates scripting engines and gets metadata about scripting engines.
-- **Script Engine** - provides a way to create bindings, scripts, and run statements.
-- **Invocable** - Our BoxLang engine also implements the scripting `Invocable` [interface](https://docs.oracle.com/en/java/javase/21/docs/api/java.scripting/javax/script/Invocable.html) so you can declare functions and classes (coming soon) and then execute them from the calling language.
-- **Bindings** - these are like scopes to BoxLang. The bridge between Java and BoxLang
-- **Scripting Context** - Like the BoxLang context object, it provides scope lookups and access to bindings.
+* **Script Factory** - creates scripting engines and gets metadata about scripting engines.
+* **Script Engine** - provides a way to create bindings, scripts, and run statements.
+* **Invocable** - Our BoxLang engine also implements the scripting `Invocable` [interface](https://docs.oracle.com/en/java/javase/21/docs/api/java.scripting/javax/script/Invocable.html) so you can declare functions and classes (coming soon) and then execute them from the calling language.
+* **Bindings** - these are like scopes to BoxLang. The bridge between Java and BoxLang
+* **Scripting Context** - Like the BoxLang context object, it provides scope lookups and access to bindings.
 
 ### Bindings
 
 Bindings are under the hood `HashMaps`. They are used to bind your Java code to the BoxLang code. By default, in BoxLang, we provide three scopes you can bind bindings to:
 
-- `Engine Scope` - The **default** scope which maps to the BoxLang `variables` scope
-- `Request Scope` - The JSR request scope maps to the BoxLang `request` scope
-- `Global Scope` - The JSR global scope maps to the BoxLang `server` scope
+* `Engine Scope` - The **default** scope which maps to the BoxLang `variables` scope
+* `Request Scope` - The JSR request scope maps to the BoxLang `request` scope
+* `Global Scope` - The JSR global scope maps to the BoxLang `server` scope
 
 ### Discovering Engines
 
@@ -235,7 +232,7 @@ List<ScriptEngineFactory> factories = mgr.getEngineFactories();
 
 ### BoxLang ScriptEngine
 
-To get started, you need to get an instance of the BoxLang Scripting Engine.  You can do so by using the Java `ScriptEngineManager()` class or importing our `BoxScriptingEngine` class.
+To get started, you need to get an instance of the BoxLang Scripting Engine. You can do so by using the Java `ScriptEngineManager()` class or importing our `BoxScriptingEngine` class.
 
 {% code lineNumbers="true" %}
 ```java
@@ -281,8 +278,8 @@ When you create a BoxLang scripting engine, it initializes a BoxLang runtime ins
 
 For example:
 
-- **Linux/macOS**: `/home/username/.boxlang/` or `/Users/username/.boxlang/`
-- **Windows**: `C:\Users\username\.boxlang\`
+* **Linux/macOS**: `/home/username/.boxlang/` or `/Users/username/.boxlang/`
+* **Windows**: `C:\Users\username\.boxlang\`
 
 ### Custom Home Directory
 
@@ -302,9 +299,9 @@ ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
 
 The BoxLang home directory contains:
 
-- **`config/boxlang.json`** - Runtime configuration file
-- **`lib/`** - Custom modules and libraries
-- **`logs/`** - Runtime log files (if file logging is enabled)
+* **`config/boxlang.json`** - Runtime configuration file
+* **`lib/`** - Custom modules and libraries
+* **`logs/`** - Runtime log files (if file logging is enabled)
 
 You can customize the runtime behavior by modifying the `boxlang.json` configuration file:
 
@@ -343,7 +340,7 @@ ScriptEngine engine = new ScriptEngineManager().getEngineByName( "BoxLang" );
 
 ### Eval() BoxLang Code
 
-Once you access the script engine, you can use the plethora of `eval()` methods to execute the BoxLang source and bind with specific dynamic bindings.  You can execute scripts from strings or reader objects.  You can also compile a script/class into a `CompiledScript` and then execute it at a later point in time via the `compile()` methods.
+Once you access the script engine, you can use the plethora of `eval()` methods to execute the BoxLang source and bind with specific dynamic bindings. You can execute scripts from strings or reader objects. You can also compile a script/class into a `CompiledScript` and then execute it at a later point in time via the `compile()` methods.
 
 ```java
 boxlang.eval( "println( 'hello world' )" )
@@ -407,7 +404,7 @@ public Object eval( String script ) throws ScriptException
 
 ### Bindings - Passing Data to the Scripts
 
-Data can be passed into the engine by defining a _Bindings_ object and passing it as a second parameter to the _eval_ function.  You will do so by using the `createBindings()` method.  If you casted the engine to our `BoxScriptingEngine` class, you will also get a `createBindings( Map m )` so you can quickly create bindings from a map of data.
+Data can be passed into the engine by defining a _Bindings_ object and passing it as a second parameter to the _eval_ function. You will do so by using the `createBindings()` method. If you casted the engine to our `BoxScriptingEngine` class, you will also get a `createBindings( Map m )` so you can quickly create bindings from a map of data.
 
 {% code lineNumbers="true" %}
 ```java
@@ -441,12 +438,12 @@ assertThat( engine.getServerBindings().get( "nameTest" ) ).isEqualTo( "World" );
 {% endcode %}
 
 {% hint style="warning" %}
-Once you bind the engine with bindings before execution, you must get the modified bindings via the `engine.getBindings()` method.  If you don't do this, you will only have access to the simple hashmap to bind the engine.
+Once you bind the engine with bindings before execution, you must get the modified bindings via the `engine.getBindings()` method. If you don't do this, you will only have access to the simple hashmap to bind the engine.
 {% endhint %}
 
 ### Calling Functions From Java to BoxLang
 
-You can also use the `eval()` method to define functions, closures, or lambdas in BoxLang and execute them in your host language.  We do so by evaluating the script, casting the engine to `Invocable,` and using the `invokeFunction()` method.
+You can also use the `eval()` method to define functions, closures, or lambdas in BoxLang and execute them in your host language. We do so by evaluating the script, casting the engine to `Invocable,` and using the `invokeFunction()` method.
 
 ```java
 engine.eval( """
@@ -478,7 +475,7 @@ This is indeed truly powerful as you can not only invoke functions on objects, b
 
 ### Compiling Scripts
 
-Apart from executing strings, you can also compile BoxLang scripts and evaluate them using the `compileScript( String ) or compileScript( Reader )` methods.  You will get a `Box CompiledScript` class, which you can then use the `eval()` methods and binding methods at a later point in time.
+Apart from executing strings, you can also compile BoxLang scripts and evaluate them using the `compileScript( String ) or compileScript( Reader )` methods. You will get a `Box CompiledScript` class, which you can then use the `eval()` methods and binding methods at a later point in time.
 
 {% code lineNumbers="true" %}
 ```java
@@ -498,7 +495,7 @@ assertThat( ( Array ) results ).containsExactly( Key.of( "test" ), "Doe", "John"
 
 ### Dynamic Interfaces
 
-JSR223 also allows you to dynamically create interface proxies for any functions or classes you map in the dynamic language.  Let's say you want to create a nice BoxLang function that maps to a Java Runnable.  In our example, we will create the `run` function and then map that via JSR223 to the `Runnable` interface so we can execute it as a runnable object.
+JSR223 also allows you to dynamically create interface proxies for any functions or classes you map in the dynamic language. Let's say you want to create a nice BoxLang function that maps to a Java Runnable. In our example, we will create the `run` function and then map that via JSR223 to the `Runnable` interface so we can execute it as a runnable object.
 
 ```java
 engine.eval("""
@@ -513,10 +510,10 @@ Runnable runnable = invocable.getInterface( Runnable.class );
 runnable.run();
 ```
 
-As you can see from the sample above, you can use the `getInterface( class<?> )` method to map the evaluated code to any interface of your choosing.  Here are the two methods you can use for interfaces:
+As you can see from the sample above, you can use the `getInterface( class<?> )` method to map the evaluated code to any interface of your choosing. Here are the two methods you can use for interfaces:
 
-- `getInterface( Class<T> )` - Build a dynamic proxy from the evaluated function and the passed in class
-- `getInterface( Object, Class<T> )` - Build a dynamic proxy from the passed in `Object` and the passed in class.
+* `getInterface( Class<T> )` - Build a dynamic proxy from the evaluated function and the passed in class
+* `getInterface( Object, Class<T> )` - Build a dynamic proxy from the passed in `Object` and the passed in class.
 
 Let's finish this section with another example. Using a struct and anonymous functions, let's build a BoxLang virtual object and treat it as a `Runnable` interface.
 
@@ -540,7 +537,7 @@ runnable.run();
 
 ### Capturing Output
 
-We have also added the capability for your host language to seed your own String Writers into the engine so you can capture output.  BoxLang can produce two types of output
+We have also added the capability for your host language to seed your own String Writers into the engine so you can capture output. BoxLang can produce two types of output
 
 1. **System output** - Bifs and components that send output to the `System.out`
 2. **Buffer output -** A BoxLang request has an output String buffer that can be used to produce output which can be sent to console, web, etc.

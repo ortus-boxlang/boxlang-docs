@@ -1,5 +1,7 @@
 ---
-description: BoxLang includes a lightning fast web server powered by Undertow!
+description: >-
+  The BoxLang MiniServer runtime is a lightweight, lightning-fast web server
+  powered by Undertow!
 icon: jet-fighter-up
 ---
 
@@ -7,10 +9,10 @@ icon: jet-fighter-up
 
 <figure><img src="../../.gitbook/assets/miniserver.png" alt=""><figcaption></figcaption></figure>
 
-The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for fast applications, desktop apps (Electron/JavaFX), embedded web servers, and development. For those who desire a more robust and feature-rich servlet server implementation, we offer our open-source FREE [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
+The **BoxLang MiniServer** runtime is a **lightweight,** **lightning-fast** web server powered by Undertow. It's ideal for fast applications, desktop apps (Electron/JavaFX), embedded web servers, and development. For those who want a more robust, feature-rich servlet server implementation, we offer our open-source, FREE [CommandBox server](commandbox.md) and [CommandBox PRO](https://boxlang.io/plans) with a BoxLang Subscription.
 
 {% hint style="success" %}
-**Tip:** Please note that the BoxLang MiniServer is NOT a servlet server. **There is no servlet container;** the web server is just a simple, fast, and pure Java Undertow server.
+**Tip:** Please note that the BoxLang MiniServer is NOT a servlet server. **There is no servlet container;** the web server is just a simple, fast, and pure-Java Undertow server.
 {% endhint %}
 
 {% hint style="danger" %}
@@ -19,23 +21,23 @@ CommandBox is our open-source servlet server implementation. However, with a [Bo
 
 ## 📋 Table of Contents
 
-- [Start a Server](#start-a-server)
-- [JSON Configuration](#json-configuration)
-- [Security Features](#security-features)
-- [Health Check Endpoints](#health-check-endpoints)
-- [Environment Files](#environment-files)
-- [WebSocket Support](#websocket-support)
-- [Default Welcome Files](#default-welcome-files)
-- [URL Rewrites](#url-rewrites)
-- [Server Management](#server-management)
-- [Performance Features](#performance-features)
-- [Reverse Proxy Setup](#reverse-proxy-setup)
+* [Start a Server](miniserver.md#start-a-server)
+* [JSON Configuration](miniserver.md#json-configuration)
+* [Security Features](miniserver.md#security-features)
+* [Health Check Endpoints](miniserver.md#health-check-endpoints)
+* [Environment Files](miniserver.md#environment-files)
+* [WebSocket Support](miniserver.md#websocket-support)
+* [Default Welcome Files](miniserver.md#default-welcome-files)
+* [URL Rewrites](miniserver.md#url-rewrites)
+* [Server Management](miniserver.md#server-management)
+* [Performance Features](miniserver.md#performance-features)
+* [Reverse Proxy Setup](miniserver.md#reverse-proxy-setup)
 
 ## ▶️ Start a Server <a href="#starting-a-web-server-12" id="starting-a-web-server-12"></a>
 
 The BoxLang core OS runtime doesn't know about a web application. Our web support runtime provides this functionality, a crucial part of the MiniServer and the Servlet (JEE, Jakarta, CommandBox) runtime. This runtime enhances the core boxlang runtime, making it multi-runtime and web deployable.
 
-If you use our Windows installer or our Quick Installer, you will have the `boxlang-miniserver` binary installed in your operating system. You will use this to start servers. Just navigate to any folder that you want to start a server in and run `boxlang-miniserver`.
+If you use our Windows installer or our [Quick Installer](../installation/boxlang-quick-installer.md), you will have the `boxlang-miniserver` binary installed in your operating system. You will use this to start servers. Just navigate to any folder that you want to start a server in and run `boxlang-miniserver`.
 
 {% hint style="success" %}
 Please note that our [VSCode BoxLang Extension](../ide-tooling/) can also assist you in managing and starting/stopping servers.
@@ -81,7 +83,7 @@ Once you run the command, the following output will appear in your console:
   - Health Check: false
   - Health Check Secure: false
 + Starting BoxLang Runtime...
-  - BoxLang Version: 1.4.0-snapshot+0 (Built On: 2025-08-01 16:03:36)
+  - BoxLang Version: 1.9.0-snapshot+0 (Built On: 2025-08-01 16:03:36)
   - Runtime Started in 652ms
 + Security protection enabled - blocking access to hidden files (starting with .)
 + WebSocket Server started
@@ -93,11 +95,11 @@ As you can see from the output, this is the result of the command:
 
 * Use the current **working directory** as the web root.
 * Bind to `0.0.0.0:8080` by default (accessible from any network interface)
-* **Automatic .env file loading** - Environment variables from `.env` files in the webroot are loaded into system properties
+* **Automatic .env file loading** - Environment variables from `.env` files in the webroot are loaded into the system properties
 * **Built-in security protection** - Blocks access to hidden files and directories (starting with `.`) for security
-* **WebSocket support** enabled by default at `/ws` endpoint
-* This configures the web server with some default welcome files and no rewrites.
-* BoxLang will process any BoxLang or CFML files
+* **WebSocket support** is enabled by default at `/ws` endpoint
+* This configures the web server to serve default welcome files and to perform no rewrites.
+* BoxLang will process any BoxLang or CFML files (bx,bxs,bxm,cfc,cfm)
 * Uses the user's BoxLang home as the default for configuration and modules: `~/.boxlang`
 
 {% hint style="warning" %}
@@ -112,7 +114,7 @@ That's practically it. This is a very lightweight server that can get the job do
 
 ## 📋 JSON Configuration
 
-The BoxLang MiniServer supports loading configuration from a JSON file. This allows you to store all server settings in one place instead of passing them as command-line arguments every time.
+The BoxLang MiniServer supports loading configuration from a JSON file. This allows you to store all server settings in one place rather than passing them as command-line arguments each time.
 
 ### Automatic Loading
 
@@ -120,6 +122,7 @@ If you run `boxlang-miniserver` with no arguments, it will automatically look fo
 
 ```bash
 boxlang-miniserver
+// Searches for a miniserver.json from where the command was ran
 ```
 
 ### Explicit Path
@@ -142,20 +145,20 @@ boxlang-miniserver miniserver.json --port 9090 --debug
 
 All the following options are supported in the JSON configuration file:
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `port` | number | 8080 | The port to listen on |
-| `host` | string | "0.0.0.0" | The host to bind to |
-| `webRoot` | string | current directory | Path to the webroot directory |
-| `debug` | boolean | false | Enable debug mode |
-| `configPath` | string | null | Path to BoxLang configuration file |
-| `serverHome` | string | null | BoxLang server home directory |
-| `rewrites` | boolean | false | Enable URL rewrites |
-| `rewriteFileName` | string | "index.bxm" | Rewrite target file |
-| `healthCheck` | boolean | false | Enable health check endpoints |
-| `healthCheckSecure` | boolean | false | Restrict detailed health info to localhost only |
-| `envFile` | string | null | Path to custom environment file (relative or absolute) |
-| `warmupURLs` | array | [] | Array of URL paths to request on server startup for application initialization |
+| Option              | Type    | Default           | Description                                                                    |
+| ------------------- | ------- | ----------------- | ------------------------------------------------------------------------------ |
+| `port`              | number  | 8080              | The port to listen on                                                          |
+| `host`              | string  | "0.0.0.0"         | The host to bind to                                                            |
+| `webRoot`           | string  | current directory | Path to the webroot directory                                                  |
+| `debug`             | boolean | false             | Enable debug mode                                                              |
+| `configPath`        | string  | null              | Path to BoxLang configuration file                                             |
+| `serverHome`        | string  | null              | BoxLang server home directory                                                  |
+| `rewrites`          | boolean | false             | Enable URL rewrites                                                            |
+| `rewriteFileName`   | string  | "index.bxm"       | Rewrite target file                                                            |
+| `healthCheck`       | boolean | false             | Enable health check endpoints                                                  |
+| `healthCheckSecure` | boolean | false             | Restrict detailed health info to localhost only                                |
+| `envFile`           | string  | null              | Path to custom environment file (relative or absolute)                         |
+| `warmupURLs`        | array   | \[]               | Array of URL paths to request on server startup for application initialization |
 
 ### Example Configuration Files
 
@@ -242,7 +245,7 @@ The server will start on port **9090** (CLI overrides all).
 
 * The JSON file must be valid JSON (no comments allowed in the actual file)
 * All fields are optional - you only need to specify the ones you want to change
-* Null values in the JSON file will be treated as "not set"
+* Null values in the JSON file will be treated as "not set."
 * Boolean values must be lowercase (`true` or `false`)
 * String paths can be relative or absolute
 
@@ -252,7 +255,7 @@ The `envFile` option allows you to specify a custom environment file to load ins
 
 * If `envFile` is not specified, the server looks for `.env` in the webroot directory (default behavior)
 * If `envFile` is specified, it loads that file instead
-* The path can be relative (resolved from current directory) or absolute
+* The path can be relative (resolved from the **current** directory) or absolute
 * Environment variables are loaded as system properties and can be used throughout the application
 
 Example:
@@ -453,15 +456,21 @@ Environment variables loaded from `.env` files are:
 2. **Available in BoxLang** - Accessible through the `server.system.properties` struct
 3. **Available to your applications** - Can be used in BoxLang code for configuration
 
-It is important to note that these variables will not exist as "proper" environment variables due to how BoxLang's runtime loads. The structure, `server.system.environment`, contains system level environment variables and will not reflect the values set in your `.env` file. Using `server.system.properties` would work locally, but not in production, as the value would most likely instead be in the `environment` structure. Luckily, BoxLang provides a simple BIF that can work with either, `getSystemSetting()`. Given the example `.env` file above, using `getSystemSetting("API_KEY")` would work both locally using the value loaded from the file and in production using a value loaded as an environment variable.
+Note that these variables will not be available as "proper" environment variables because BoxLang's runtime loads them differently. The structure, `server.system.environment`, contains system-level environment variables and will not reflect the values set in your `.env` file.&#x20;
+
+Using `server.system.properties` would work locally, but not in production, as the value would most likely instead be in the `environment` structure. Luckily, BoxLang provides a simple BIF that can work with either `getSystemSetting()`. Given the example `.env` file above, using `getSystemSetting("API_KEY")` would work both locally, using the value loaded from the file, and in production, using a value loaded as an environment variable.
+
+```javascript
+getSystemSetting( "My_API_KEY" )
+```
 
 {% hint style="info" %}
 **Privacy Note:** Environment variables are NOT exposed through health check endpoints. Health checks only return basic server metrics and status information for security purposes.
 {% endhint %}
 
-## � Warmup URLs
+## 🌩 Warmup URLs
 
-The MiniServer supports warmup URLs - a feature that automatically requests specific URLs when the server starts. This is useful for pre-loading applications, initializing caches, or warming up services before accepting production traffic.
+The MiniServer supports warmup URLs, which automatically request specific URLs when the server starts up. This is useful for pre-loading applications, initializing caches, or warming up services before accepting production traffic.
 
 ### Why Use Warmup URLs?
 
@@ -496,8 +505,8 @@ When the server starts:
 1. **Server initialization** completes first
 2. **Warmup requests** are sent to each URL in the array (in order)
 3. **Sequential execution** - each URL completes before the next starts
-4. **Error handling** - failures are logged but don't stop server startup
-5. **Server ready** - after all warmup URLs complete, the server is fully ready
+4. **Error handling** - failures are logged, but don't stop server startup
+5. **Server ready** - after all warmup URLs are complete, the server is fully ready
 
 ### Warmup URL Examples
 
@@ -545,7 +554,7 @@ Create dedicated warmup endpoints in your BoxLang application:
 
 ```js
 // /api/warmup.bxm
-header statusCode=200;
+bx:header statusCode=200;
 
 // Initialize application services
 application.cacheService = new CacheService();
@@ -594,7 +603,7 @@ When warmup URLs are configured, you'll see output during server startup:
 
 ### Error Handling
 
-If a warmup URL fails, the error is logged but server startup continues:
+If a warmup URL fails, the error is logged, but server startup continues:
 
 ```bash
 + Executing warmup URLs...
