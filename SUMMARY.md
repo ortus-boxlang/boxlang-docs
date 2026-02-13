@@ -88,6 +88,7 @@
     * [CommandBox Debugging](getting-started/ide-tooling/boxlang-debugger/commandbox-debugging.md)
   * [BoxLang Monaco Editor](getting-started/ide-tooling/boxlang-monaco-editor.md)
   * [BoxLang TextMate Bundle](getting-started/ide-tooling/boxlang-textmate-bundle.md)
+  * [BoxLang Neovim Plugin](getting-started/ide-tooling/boxlang-neovim-plugin.md)
   * [BoxLang Themes](getting-started/ide-tooling/boxlang-theme.md)
   * [CFML Feature Audit](getting-started/ide-tooling/cfml-feature-audit.md)
   * [CFML Transpiler](getting-started/ide-tooling/cfml-to-boxlang-transpiler.md)
