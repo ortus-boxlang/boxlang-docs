@@ -21,7 +21,7 @@ The `property` construct can also have different name-value pair attributes that
 * `setter` - Generate a setter method or not, defaults to true
 * `getter` - Generate a getter method or not, defaults to true
 
-Please note that in BoxLang you can also declare these attributes via annotations in the comments section, weird, I know!
+Please note that in BoxLang you can also declare these attributes via annotations in the comments section:
 
 ```java
 /**
