@@ -12,7 +12,10 @@
         "richquotes",
         "edit-link",
         "github",
-        "advanced-emoji"
+        "advanced-emoji",
+        "sitemap",
+        "collapsible-chapters",
+        "anchors"
     ],
     "pluginsConfig": {
         "edit-link": {
