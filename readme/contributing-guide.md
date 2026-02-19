@@ -56,4 +56,4 @@ Please make sure your code runs on JRE 21+
 You can support BoxLang and all of our Open Source initiatives at Ortus Solutions by becoming a Patreon. You can also get lots of goodies and services depending on the level of contributions.
 
 * [Become a backer or sponsor on Patreon](https://www.patreon.com/ortussolutions)
-* [One-time donations via PayPal](https://www.paypal.com/paypalme/ortussolutions)
+* [One-time donations via PayPal](https://www.paypal.com/paypalme/ortussolutions) massa was here
