@@ -1,6 +1,6 @@
 # Application Events
 
-These events occur around the life cycle of the request listener `Application.bx`:
+hdvcjhvscjhsvdcsvdcsjhdvcshdvcshjdcshese events occur around the life cycle of the request listener `Application.bx`:
 
 * [`beforeApplicationListenerLoad`](application-events.md#beforeapplicationlistenerload)
 * [`afterApplicationListenerLoad`](application-events.md#afterapplicationlistenerload)
