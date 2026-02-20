@@ -955,6 +955,7 @@
           * [SpreadsheetisRowHidden](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/built-in-functions/SpreadsheetisRowHidden.md)
         * [Components](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/components/README.md)
           * [Spreadsheet](boxlang-framework/boxlang-plus/modules/bx-spreadsheet/reference/components/Spreadsheet.md)
+    * [SOAP Compat +](boxlang-framework/boxlang-plus/modules/soap-compat-+.md)
 * [Application.bx](boxlang-framework/applicationbx.md)
 * [Async Programming](boxlang-framework/asynchronous-programming/README.md)
   * [Executors](boxlang-framework/asynchronous-programming/executors.md)
