@@ -5,13 +5,13 @@ icon: sign-posts-wrench
 
 # Installation
 
-BoxLang can be deployed on multiple runtimes, and each runtime can be set up differently.  We recommend you leverage the "Running BoxLang" section for those specific runtimes.  We recommend getting started by installing BoxLang at the global operating system level first.  This is what this guide does! &#x20;
+BoxLang can be deployed on multiple runtimes, and each runtime can be set up differently. We recommend you leverage the "Running BoxLang" section for those specific runtimes. We recommend getting started by installing BoxLang at the global operating system level first. This is what this guide does!
 
 **You can choose to either install a single version of BoxLang (Quick Installer) or our BoxLang Version Manager (BVM), so you can manage multiple versions of BoxLang on your operating system.**
 
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
 
-BoxLang is a JVM language, so we need a JVM.  You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21). Alternatively, see the tabs below for instructions on how to automate it.
+BoxLang is a JVM language, so we need a JVM. You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21). Alternatively, see the tabs below for instructions on automating it.
 
 {% hint style="warning" %}
 To use our BoxLang/CFML to Java transpiler, you must have the JDK installed, not the JRE.
@@ -19,13 +19,19 @@ To use our BoxLang/CFML to Java transpiler, you must have the JDK installed, not
 
 {% tabs %}
 {% tab title="🍎 Mac" %}
-We recommend using [homebrew](https://brew.sh/) to get started on a Mac with the **BoxLang** requirements. If not, you must download the requirements separately from the link above.
+We recommend using [Homebrew](homebrew.md) to get started on a Mac with the **BoxLang** by either installing our [BoxLang Version Manager](./#boxlang-version-manager-bvm) or the [BoxLang Quick Installer](boxlang-quick-installer.md).  It will take care of all the requirements for you.
 
 ```bash
-brew install openjdk@21
-```
+brew tap ortus-boxlang/boxlang
 
-Once the requirements are installed, move down to the quick installer.
+# BVM
+brew install ortus-boxlang/boxlang/bvm
+bvm install latest && bvm use latest
+
+# Quick Installer
+brew install ortus-boxlang/boxlang/boxlang
+install-boxlang
+```
 {% endtab %}
 
 {% tab title="🐧 *Unix/Linux" %}
@@ -84,10 +90,7 @@ Note that you may need to tell the system to use the correct JDK version. This c
 {% endtab %}
 
 {% tab title="🪟 Windows" %}
-
-
-Use the following **PowerShell 7.x script** to install the JRE 21.
-**HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
+Use the following **PowerShell 7.x script** to install the JRE 21. **HOWEVER, MAKE SURE YOU RUN THIS AS AN ADMINISTRATOR.**
 
 **Powershell 7.x:**
 
@@ -112,7 +115,11 @@ Ensure you restart any terminal windows for the changes to take effect.
 
 ## Quick Installer
 
-Once the requirements above are installed, to get started quickly with BoxLang, use our **BoxLang Quick Installer** for Mac, Linux,\* Nix, or Windows.  This will allow you to execute the script in your favorite terminal application.  Please note that some OS will require you to run it as an `administrator` or with `sudo` capabilities.
+Once the requirements above are installed, get started quickly with BoxLang using our BoxLang Quick Installer for Mac, Linux, Unix, or Windows. This will allow you to execute the script in your favorite terminal application.&#x20;
+
+{% hint style="info" %}
+Please note that some OS will require you to run it as an `administrator` or with `sudo` capabilities.
+{% endhint %}
 
 You can see the full documentation for the quick installer in the link below:
 
@@ -127,29 +134,41 @@ Let's get started:
 Just copy the following into your terminal to install by default for your user.
 
 ```bash
-/bin/bash -c "$(curl -fsSL https://install.boxlang.io)"
+curl -fsSL https://install.boxlang.io/ | bash
 ```
 
 If you want a system-wide installation, then prefix it with `sudo`:
 
 ```bash
-sudo /bin/bash -c "$(curl -fsSL https://install.boxlang.io)"
+curl -fsSL https://install.boxlang.io/ | sudo bash
 ```
 
 Please make sure you use the `--help` on our scripts to see everything you can do with them.
 {% endtab %}
 
-{% tab title="SH" %}
-Just copy the following into your terminal to install be default for your user.
+{% tab title="Homebrew" %}
+Make sure you have Homebrew installed:
 
 ```bash
-/bin/sh -c "$(curl -fsSL https://install.boxlang.io)"
+brew tap ortus-boxlang/boxlang
+
+# Quick Installer
+brew install ortus-boxlang/boxlang/boxlang
+install-boxlang
+```
+{% endtab %}
+
+{% tab title="SH" %}
+Just copy the following into your terminal to install byin default for your user.
+
+```bash
+curl -fsSL https://install.boxlang.io/ | sh
 ```
 
-If you want a system-wide installation then prefix it with `sudo`:
+If you want a system-wide installation, then prefix it with `sudo`:
 
 ```bash
-sudo /bin/sh -c "$(curl -fsSL https://install.boxlang.io)"
+curl -fsSL https://install.boxlang.io/ | sudo sh
 ```
 
 Please make sure you use the `--help` on our scripts to see everything you can do with them.
@@ -175,8 +194,8 @@ The quick installer will install the latest stable **BoxLang** **OS** binary and
 
 * `boxlang` - Our BoxLang binary runner, [learn more](../running-boxlang/)
 * `boxlang-miniserver` - Our BoxLang MiniServer binary runner, [learn more](../running-boxlang/miniserver.md)
-* `install-boxlang` - The quick installer so you can reuse it to upgrade your installations or install the `snapshot` version of BoxLang.  Run `install-boxlang --help` for more commands.
-* `install-bx-module` - A module installer. Just pass in the slug of the module, an optional version or a list of modules.  Run `install-bx-module` for more commands.
+* `install-boxlang` - The quick installer so you can reuse it to upgrade your installations or install the `snapshot` version of BoxLang. Run `install-boxlang --help` for more commands.
+* `install-bx-module` - A module installer. Just pass in the slug of the module, an optional version or a list of modules. Run `install-bx-module` for more commands.
 
 ```bash
 # Test BoxLang works:
@@ -212,7 +231,7 @@ install-bx-module --help
 
 ### Upgrading Your Install
 
-The `install-boxlang` script will allow you to upgrade your OS installation easily. If you call it without arguments, it will install the **latest stable** release and override the local install. You can also pass a specific version to install as the second argument, or the word `snapshot`to install the bleeding edge release.  You can find all the latest artifacts here: [https://downloads.ortussolutions.com/#/ortussolutions/boxlang/](https://downloads.ortussolutions.com/#/ortussolutions/boxlang/)
+The `install-boxlang` script will allow you to upgrade your OS installation easily. If you call it without arguments, it will install the **latest stable** release and override the local install. You can also pass a specific version to install as the second argument, or the word `snapshot`to install the bleeding edge release. You can find all the latest artifacts here: [https://downloads.ortussolutions.com/#/ortussolutions/boxlang/](https://downloads.ortussolutions.com/#/ortussolutions/boxlang/)
 
 ```bash
 # Upgrade to the latest stable version
@@ -237,7 +256,7 @@ You can use the `install-bx-module` binary to install modules into your boxlang 
 All our modules are available in the cloud software directory [FORGEBOX](https://forgebox.io/type/boxlang-modules). You can also register and collaborate with modules of your own :person\_raising\_hand:.
 {% endhint %}
 
-#### Install to the BoxLang Home
+#### Install in the BoxLang Home
 
 ```bash
 # install individual modules
@@ -263,23 +282,57 @@ install-bx-module bx-compat-cfml bx-esapi --local
 
 ## BoxLang Version Manager (BVM)
 
-BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang.  Read the full documentation at the link below:
+BVM is a simple version manager for BoxLang, similar to jenv or nvm. It allows you to easily install, manage, and switch between different versions of BoxLang. Read the full documentation at the link below:
 
 {% content-ref url="boxlang-version-manager-bvm.md" %}
 [boxlang-version-manager-bvm.md](boxlang-version-manager-bvm.md)
 {% endcontent-ref %}
 
-To get started easily just follow the instructions:
+To get started easily, just follow the instructions:
 
-```bash
-# Install BVM
-curl -fsSL https://install-bvm.boxlang.io/ | bash
+{% tabs %}
+{% tab title="Bash/Zsh" %}
+Just copy the following into your terminal to install by default for your user.
+
+<pre class="language-bash"><code class="lang-bash"># Install BVM
+<strong>curl -fsSL https://install-bvm.boxlang.io/ | bash
+</strong>
 
 # Or download and run locally
 wget --content-disposition https://install-bvm.boxlang.io/
 chmod +x install-bvm.sh
 ./install-bvm.sh
+</code></pre>
+{% endtab %}
+
+{% tab title="Homebrew" %}
+```bash
+brew tap ortus-boxlang/boxlang
+
+# Quick Installer
+brew install ortus-boxlang/boxlang/bvm
+bvm install latest && bvm use latest
 ```
+{% endtab %}
+
+{% tab title="Sh" %}
+<pre class="language-bash"><code class="lang-bash"># Install BVM
+<strong>curl -fsSL https://install-bvm.boxlang.io/ | sh
+</strong>
+
+# Or download and run locally
+wget --content-disposition https://install-bvm.boxlang.io/
+chmod +x install-bvm.sh
+./install-bvm.sh
+</code></pre>
+{% endtab %}
+
+{% tab title="Windows" %}
+Coming Soon
+{% endtab %}
+{% endtabs %}
+
+
 
 ## R.E.P.L.
 

@@ -20,6 +20,16 @@ The BoxLang Quick Installer provides convenient installation scripts for Mac, Li
 curl -fsSL https://install.boxlang.io | bash -s -- --with-jre
 ```
 
+**Homebrew**
+
+```bash
+brew tap ortus-boxlang/boxlang
+
+# Quick Installer
+brew install ortus-boxlang/boxlang/boxlang
+install-boxlang
+```
+
 **Windows:**
 
 ```powershell
@@ -44,9 +54,9 @@ boxlang-miniserver --port 8080
 
 The installer will attempt to install any missing prerequisites automatically, but there are some that will need to be installed manually depending on your platform.
 
-- **bash** - Required shell execution environment, especially on Alpine Linux
-- **curl** - For downloading releases
-- **PowerShell 6+** - Required for Windows installations
+* **bash** - Required shell execution environment, especially on Alpine Linux
+* **curl** - For downloading releases
+* **PowerShell 6+** - Required for Windows installations
 
 **Alpine Linux** : You will need to install bash manually as it is not included by default.
 
@@ -58,9 +68,9 @@ apk add --no-cache bash curl
 
 The following are automatically installed for you, but you can install them manually if you prefer.
 
-- **Java 21+** - JRE or JDK
-- **unzip** - For extracting downloaded files
-- **jq** - For parsing JSON (BVM only)
+* **Java 21+** - JRE or JDK
+* **unzip** - For extracting downloaded files
+* **jq** - For parsing JSON (BVM only)
 
 ### Manual Installation
 
@@ -94,19 +104,19 @@ apk add --no-cache bash curl unzip jq openjdk21
 
 ## 📋 Table of Contents
 
-- [Quick Start](#quick-start)
-- [Prerequisites](#prerequisites)
-- [Installation Options](#installation-options)
-- [Command Options](#command-options)
-- [What Gets Installed](#what-gets-installed)
-- [Help Command](#help-command)
-- [Detailed Usage](#detailed-usage)
-- [Running Applications](#running-applications)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
-- [Resources](#resources)
-- [License](#license)
-- [Support](#support)
+* [Quick Start](boxlang-quick-installer.md#quick-start)
+* [Prerequisites](boxlang-quick-installer.md#prerequisites)
+* [Installation Options](boxlang-quick-installer.md#installation-options)
+* [Command Options](boxlang-quick-installer.md#command-options)
+* [What Gets Installed](boxlang-quick-installer.md#what-gets-installed)
+* [Help Command](boxlang-quick-installer.md#help-command)
+* [Detailed Usage](boxlang-quick-installer.md#detailed-usage)
+* [Running Applications](boxlang-quick-installer.md#running-applications)
+* [Configuration](boxlang-quick-installer.md#configuration)
+* [Troubleshooting](boxlang-quick-installer.md#troubleshooting)
+* [Resources](boxlang-quick-installer.md#resources)
+* [License](boxlang-quick-installer.md#license)
+* [Support](boxlang-quick-installer.md#support)
 
 ## 📦 Installation Options
 
@@ -114,76 +124,76 @@ apk add --no-cache bash curl unzip jq openjdk21
 
 **Choose this if you:**
 
-- 📌 Need one BoxLang version system-wide
-- 🎯 Want the simplest possible installation
-- 🏢 Are setting up production servers
-- ⚡ Want the fastest installation with minimal overhead
+* 📌 Need one BoxLang version system-wide
+* 🎯 Want the simplest possible installation
+* 🏢 Are setting up production servers
+* ⚡ Want the fastest installation with minimal overhead
 
 **Features:**
 
-- ✅ Installs latest stable BoxLang version
-- ✅ Sets up BoxLang runtime and MiniServer
-- ✅ Includes all helper scripts
-- ✅ Automatic PATH configuration
-- ✅ User or system-wide installation options
+* ✅ Installs latest stable BoxLang version
+* ✅ Sets up BoxLang runtime and MiniServer
+* ✅ Includes all helper scripts
+* ✅ Automatic PATH configuration
+* ✅ User or system-wide installation options
 
 ### Option 2: BVM (BoxLang Version Manager)
 
 **Choose this if you:**
 
-- 🔄 Work on multiple projects needing different BoxLang versions
-- 🧪 Want to test code against different BoxLang releases
-- 🚀 Need to switch between stable and snapshot versions
-- 📦 Want centralized management of BoxLang installations
-- 🛠️ Are a BoxLang developer or advanced user
+* 🔄 Work on multiple projects needing different BoxLang versions
+* 🧪 Want to test code against different BoxLang releases
+* 🚀 Need to switch between stable and snapshot versions
+* 📦 Want centralized management of BoxLang installations
+* 🛠️ Are a BoxLang developer or advanced user
 
 **Features:**
 
-- ✅ Install and manage multiple BoxLang versions
-- ✅ Switch between versions with one command
-- ✅ List local and remote versions
-- ✅ Clean uninstall capabilities
-- ✅ Health check and diagnostics
+* ✅ Install and manage multiple BoxLang versions
+* ✅ Switch between versions with one command
+* ✅ List local and remote versions
+* ✅ Clean uninstall capabilities
+* ✅ Health check and diagnostics
 
 ## ⚙️ Command Options
 
 Here are the available options for the install command.
 
-| Option | Short | Description |
-|--------|-------|-------------|
-| `--help` | `-h` | Show this help message |
-| `--uninstall` | | Remove BoxLang from the system |
-| `--check-update` | | Check if a newer version is available |
-| `--system` | | Force system-wide installation (requires sudo) |
-| `--force` | | Force reinstallation even if already installed |
-| `--with-commandbox` | | Install CommandBox without prompting |
-| `--without-commandbox` | | Skip CommandBox installation |
-| `--with-jre` | | ✨ Automatically install Java 21 JRE if not found |
-| `--without-jre` | | ✨ Skip Java installation (manual installation required) |
-| `--yes` | `-y` | Use defaults for all prompts (installs CommandBox and Java) |
+| Option                 | Short | Description                                                 |
+| ---------------------- | ----- | ----------------------------------------------------------- |
+| `--help`               | `-h`  | Show this help message                                      |
+| `--uninstall`          |       | Remove BoxLang from the system                              |
+| `--check-update`       |       | Check if a newer version is available                       |
+| `--system`             |       | Force system-wide installation (requires sudo)              |
+| `--force`              |       | Force reinstallation even if already installed              |
+| `--with-commandbox`    |       | Install CommandBox without prompting                        |
+| `--without-commandbox` |       | Skip CommandBox installation                                |
+| `--with-jre`           |       | ✨ Automatically install Java 21 JRE if not found            |
+| `--without-jre`        |       | ✨ Skip Java installation (manual installation required)     |
+| `--yes`                | `-y`  | Use defaults for all prompts (installs CommandBox and Java) |
 
 ### Notes
 
-- Use `--system` when you want to install BoxLang for all users on the system
-- The `--force` option is useful when you need to reinstall or update an existing installation
-- `--yes` automatically accepts all defaults, including installing CommandBox and Java
-- `--with-commandbox` and `--without-commandbox` give you explicit control over CommandBox installation
-- ✨ `--with-jre` automatically installs OpenJDK 21 JRE if Java 21+ is not found
-- ✨ `--without-jre` skips Java installation entirely (you must install Java manually)
-- ✨ The installer can detect your OS (macOS/Linux/Alpine) and architecture (x64/ARM64) for Java installation
-- 🐋 **Container-friendly** - Works in Docker containers with minimal base images
+* Use `--system` when you want to install BoxLang for all users on the system
+* The `--force` option is useful when you need to reinstall or update an existing installation
+* `--yes` automatically accepts all defaults, including installing CommandBox and Java
+* `--with-commandbox` and `--without-commandbox` give you explicit control over CommandBox installation
+* ✨ `--with-jre` automatically installs OpenJDK 21 JRE if Java 21+ is not found
+* ✨ `--without-jre` skips Java installation entirely (you must install Java manually)
+* ✨ The installer can detect your OS (macOS/Linux/Alpine) and architecture (x64/ARM64) for Java installation
+* 🐋 **Container-friendly** - Works in Docker containers with minimal base images
 
 ## 🛠️ What Gets Installed
 
 ### Core Components
 
-- **BoxLang Runtime** (`boxlang`, `bx`) - The main BoxLang Runtime Engine
-- **BoxLang MiniServer** (`boxlang-miniserver`, `bx-miniserver`) - Lightweight web application server
+* **BoxLang Runtime** (`boxlang`, `bx`) - The main BoxLang Runtime Engine
+* **BoxLang MiniServer** (`boxlang-miniserver`, `bx-miniserver`) - Lightweight web application server
 
 ### Helper Scripts
 
-- **install-bx-module** - Install modules from ForgeBox.
-- **install-boxlang** - Single-version BoxLang installer, so you can reinstall, install specific versions, uninstall and more.
+* **install-bx-module** - Install modules from ForgeBox.
+* **install-boxlang** - Single-version BoxLang installer, so you can reinstall, install specific versions, uninstall and more.
 
 ### Directory Structure
 
@@ -445,23 +455,23 @@ install-bx-module --verbose
 
 ### Documentation
 
-- 📖 [Official Documentation](https://boxlang.io/docs)
-- 🚀 [Getting Started Guide](https://boxlang.io/docs/getting-started)
-- 📋 [Language Reference](https://boxlang.io/docs/reference)
-- 🔧 [Module Development](https://boxlang.io/docs/modules)
+* 📖 [Official Documentation](https://boxlang.io/docs)
+* 🚀 [Getting Started Guide](https://boxlang.io/docs/getting-started)
+* 📋 [Language Reference](https://boxlang.io/docs/reference)
+* 🔧 [Module Development](https://boxlang.io/docs/modules)
 
 ### Community
 
-- 💬 [Discord Community](https://boxlang.io/discord)
-- 📧 [Mailing List](https://boxlang.io/mailing-list)
-- 🐛 [Issue Tracker](https://github.com/ortus-boxlang/boxlang/issues)
-- 💡 [Feature Requests](https://github.com/ortus-boxlang/boxlang/discussions)
+* 💬 [Discord Community](https://boxlang.io/discord)
+* 📧 [Mailing List](https://boxlang.io/mailing-list)
+* 🐛 [Issue Tracker](https://github.com/ortus-boxlang/boxlang/issues)
+* 💡 [Feature Requests](https://github.com/ortus-boxlang/boxlang/discussions)
 
 ### Examples
 
-- 🧑‍💻 [Interactive Playground](https://try.boxlang.io)
-- 📁 [Sample Applications](https://github.com/ortus-boxlang/bx-demos)
-- 🎓 [Tutorials](https://learn.boxlang.io)
+* 🧑‍💻 [Interactive Playground](https://try.boxlang.io)
+* 📁 [Sample Applications](https://github.com/ortus-boxlang/bx-demos)
+* 🎓 [Tutorials](https://learn.boxlang.io)
 
 ### Testing
 
@@ -483,21 +493,20 @@ This project is licensed under the [Apache License, Version 2.0](license.txt).
 
 ### Community Support (Free)
 
-- 🌐 Website: https://boxlang.io
-- 📖 Documentation: https://boxlang.ortusbooks.com
-- 💾 GitHub: https://github.com/ortus-boxlang/boxlang
-- 💬 Community: https://community.ortussolutions.com/
-- 🧑‍💻 Try: https://try.boxlang.io
-- 📧 Mailing List: https://newsletter.boxlang.io
+* 🌐 Website: https://boxlang.io
+* 📖 Documentation: https://boxlang.ortusbooks.com
+* 💾 GitHub: https://github.com/ortus-boxlang/boxlang
+* 💬 Community: https://community.ortussolutions.com/
+* 🧑‍💻 Try: https://try.boxlang.io
+* 📧 Mailing List: https://newsletter.boxlang.io
 
 ### Professional Support
 
-- 🫶 Enterprise Support: https://boxlang.io/plans
-- 🎓 Training: https://learn.boxlang.io
-- 🔧 Consulting: https://www.ortussolutions.com/services/development
-- 📞 Priority Support: [Available with enterprise plans](https://boxlang.io/plans)
+* 🫶 Enterprise Support: https://boxlang.io/plans
+* 🎓 Training: https://learn.boxlang.io
+* 🔧 Consulting: https://www.ortussolutions.com/services/development
+* 📞 Priority Support: [Available with enterprise plans](https://boxlang.io/plans)
 
-
-----
+***
 
 Made with ♥️ in USA 🇺🇸, El Salvador 🇸🇻 and Spain 🇪🇸

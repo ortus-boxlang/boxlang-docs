@@ -62,6 +62,7 @@
 * [Installation](getting-started/installation/README.md)
   * [BoxLang Quick Installer](getting-started/installation/boxlang-quick-installer.md)
   * [BoxLang Version Manager (BVM)](getting-started/installation/boxlang-version-manager-bvm.md)
+  * [Homebrew](getting-started/installation/homebrew.md)
   * [Modules](getting-started/installation/modules.md)
 * [Running BoxLang](getting-started/running-boxlang/README.md)
   * [AWS Lambda](getting-started/running-boxlang/aws-lambda.md)
