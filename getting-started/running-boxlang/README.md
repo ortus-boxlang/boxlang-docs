@@ -231,6 +231,41 @@ type test.cfs | java -jar boxlang-1.0.0.jar
 type test.cfs | boxlang.bat
 ```
 
+### Printing the Abstract Syntax Tree (AST)
+
+BoxLang can emit the parsed **Abstract Syntax Tree** of any source as JSON, which is useful for tooling, debugging, and editor integrations. There are two ways to access the AST.
+
+#### Via the CLI Flag
+
+Use the `--bx-printAST` flag with any of the three input modes:
+
+```bash
+# From a file
+boxlang --bx-printAST /path/to/MyClass.bx
+
+# From inline code
+boxlang --bx-printAST --bx-code "x = 1 + 2"
+
+# From stdin
+cat MyComponent.bx | boxlang --bx-printAST
+
+# Integrate with jq for targeted inspection
+cat MyComponent.bx | boxlang --bx-printAST | jq '.body[0]'
+```
+
+#### Via the `boxAST()` BIF
+
+You can also retrieve the AST programmatically at runtime using the `boxAST()` built-in function, which returns the JSON AST of any BoxLang source string:
+
+```js
+ast = boxAST( "result = 1 + 2" )
+writeDump( ast )
+```
+
+{% hint style="info" %}
+The `boxAST()` BIF is useful for meta-programming, code analysis tooling, or any scenario where you need to inspect the structure of BoxLang code at runtime.
+{% endhint %}
+
 ### Command Line Arguments <a href="#other-command-line-args-10" id="other-command-line-args-10"></a>
 
 If you interact with the `boxlang` binary then you will be executing the `BoxRunner` class in BoxLang. You can use several options and positional arguments to our runtime. Let's explore them.
@@ -241,7 +276,10 @@ If you interact with the `boxlang` binary then you will be executing the `BoxRun
 * `--bx-config` - Pass a path to a JSON file for BoxLang configuration. See [Runtime Configuration](../configuration.md) for more information.
 * `--bx-debug` - Enable debug mode (more debug logs!)
 * `--bx-home` - Pass a path to a custom runtime home directory for storing modules, configuration, and more. See [Runtime Home Directory](../configuration.md#runtime-home-directory) for more information.
-* `--bx-printAST` - Prints out BoxLang AST in JSON format for code provided via the `-c` flag (for debugging)
+* `--bx-printAST` - Prints out BoxLang AST in JSON format for debugging. Supports three input modes:
+  * **File path**: `boxlang --bx-printAST /path/to/MyClass.bx`
+  * **Inline code**: `boxlang --bx-printAST --bx-code "x = 1 + 2"`
+  * **Stdin piping**: `cat MyComponent.bx | boxlang --bx-printAST`
 * `--bx-transpile` - Prints out transpiled Java source that would be compiled to create the bytecode for the passed template path. (for debugging)
 * `--version` - Output the current runtime's version information
 

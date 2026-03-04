@@ -159,6 +159,90 @@ All the following options are supported in the JSON configuration file:
 | `healthCheckSecure` | boolean | false             | Restrict detailed health info to localhost only                                |
 | `envFile`           | string  | null              | Path to custom environment file (relative or absolute)                         |
 | `warmupURLs`        | array   | \[]               | Array of URL paths to request on server startup for application initialization |
+| `undertow`          | object  | {}                | Low-level Undertow HTTP server options (e.g., `ioThreads`, `workerThreads`, `bufferSize`) |
+| `socket`            | object  | {}                | TCP socket options (e.g., `tcpNoDelay`, `reuseAddress`) |
+| `websocket`         | object  | {}                | WebSocket options (e.g., `maxFrameSize`, `maxTextMessageSize`) |
+
+### `.boxlang.json` Project Convention
+
+When the MiniServer starts, it automatically looks for a **`.boxlang.json`** file in the current working directory. If found, it is merged with the base BoxLang configuration (`boxlang.json`) — providing a portable, project-level configuration override without touching the global runtime settings.
+
+```json
+// .boxlang.json (in your project root)
+{
+  "runtime": {
+    "enforceUDFTypeChecks": false,
+    "defaultDatasource": "mydb",
+    "debugMode": true
+  }
+}
+```
+
+```bash
+# The .boxlang.json is loaded automatically — no extra flags needed
+cd myProject
+boxlang-miniserver
+```
+
+This is ideal for:
+
+* **Containerized deployments** — bundle a project-specific config without baking it into the image
+* **Team environments** — commit `.boxlang.json` to source control for consistent per-project settings
+* **Multiple projects** — each project can override runtime settings independently
+
+{% hint style="info" %}
+The `.boxlang.json` file is merged on top of the global `boxlang.json`. Any settings not specified in `.boxlang.json` fall back to the global config.
+{% endhint %}
+
+### Undertow / Socket / WebSocket Options
+
+For fine-grained control over the underlying Undertow HTTP server, TCP socket, and WebSocket layers, you can specify an `undertow`, `socket`, and/or `websocket` object in your `miniserver.json`:
+
+```json
+{
+  "port": 8080,
+  "webRoot": "./www",
+  "undertow": {
+    "ioThreads": 8,
+    "workerThreads": 64,
+    "bufferSize": 16384
+  },
+  "socket": {
+    "tcpNoDelay": true,
+    "reuseAddress": true
+  },
+  "websocket": {
+    "maxFrameSize": 65536,
+    "maxTextMessageSize": 65536
+  }
+}
+```
+
+**`undertow` options** — map directly to Undertow `UndertowOptions`:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `ioThreads` | integer | Number of I/O threads (default: CPU count) |
+| `workerThreads` | integer | Number of worker/blocking threads |
+| `bufferSize` | integer | Buffer size in bytes for I/O operations |
+
+**`socket` options** — map to standard TCP socket channel options:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `tcpNoDelay` | boolean | Disable Nagle's algorithm for lower latency |
+| `reuseAddress` | boolean | Allow socket address reuse after close |
+
+**`websocket` options** — control WebSocket frame/message limits:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `maxFrameSize` | integer | Maximum WebSocket frame size in bytes |
+| `maxTextMessageSize` | integer | Maximum text message size in bytes |
+
+{% hint style="warning" %}
+These are advanced tuning options. In most cases the defaults are appropriate. Only change these if you understand the implications for concurrency, memory, and throughput.
+{% endhint %}
 
 ### Example Configuration Files
 
@@ -220,7 +304,17 @@ All the following options are supported in the JSON configuration file:
     "/api/warmup",
     "/cache/initialize",
     "/app/preload"
-  ]
+  ],
+  "undertow": {
+    "ioThreads": 8,
+    "workerThreads": 64
+  },
+  "socket": {
+    "tcpNoDelay": true
+  },
+  "websocket": {
+    "maxFrameSize": 65536
+  }
 }
 ```
 
