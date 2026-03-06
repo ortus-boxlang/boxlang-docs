@@ -192,6 +192,15 @@ The default return format for class invocations via web runtimes.
 "defaultRemoteMethodReturnFormat": "json",
 ```
 
+### Enforce UDF Type Checks
+
+By default, BoxLang validates UDF argument types and return types at runtime, throwing type mismatch errors when a value doesn't match a declared type. Setting `enforceUDFTypeChecks` to `false` disables this validation entirely.  This can improve performance across the board, but it also removes the layer of runtime safety checks.
+
+```json
+"enforceUDFTypeChecks": true
+```
+
+
 ### Invoke Implicit Accessors
 
 In BoxLang, implicit accessors default to `true` for BoxScript (.bx) files and `false` for CFML (.cfc) files. This means that properties on a class can be accessed externally, like field properties for mutation or access. You can override this default behavior by setting this configuration option.
@@ -384,6 +393,32 @@ In BoxLang, you can configure your user sessions to be stored in `memory` by def
 // This will apply to ALL applications unless overridden in the Application.cfc
 "sessionStorage": "redis",
 ```
+
+### Session Management
+
+Enable or disable session management globally for the runtime. When disabled, no sessions will be created or tracked for any application. Defaults to `false`.
+
+```json
+// Enable/disable session management globally across all applications
+"sessionManagement": false,
+```
+
+{% hint style="info" %}
+This can be overridden per-application in `Application.bx` via `this.sessionManagement`.
+{% endhint %}
+
+### Session Cluster
+
+Enable distributed session clustering so sessions are shared across multiple BoxLang nodes. When enabled, sessions are stored in a shared, cluster-aware cache rather than the local in-memory store. Defaults to `false`.
+
+```json
+// Enable session clustering across nodes (requires a shared cache provider)
+"sessionCluster": false,
+```
+
+{% hint style="warning" %}
+Enabling `sessionCluster` requires a configured shared cache (e.g., Redis) set as the `sessionStorage`. See [Session Storage](#session-storage) for details.
+{% endhint %}
 
 ### Timezone
 

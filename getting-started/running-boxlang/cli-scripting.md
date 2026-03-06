@@ -248,7 +248,7 @@ BoxLang provides a comprehensive set of CLI options and flags for various develo
 | `--bx-config <PATH>` | Use custom BoxLang configuration file |
 | `--bx-home <PATH>` | Set BoxLang runtime home directory |
 | `--bx-code <CODE>` | Execute inline BoxLang code directly |
-| `--bx-printAST` | Print Abstract Syntax Tree for code analysis |
+| `--bx-printAST` | Print Abstract Syntax Tree (JSON) for a file, inline code (`--bx-code`), or stdin |
 | `--bx-transpile` | Transpile BoxLang code to Java |
 
 ### Environment Variables
@@ -275,8 +275,17 @@ boxlang --bx-config ./custom.json myapp.bx
 # Execute inline code
 boxlang --bx-code "println( 'Hello BoxLang!' )"
 
-# Print AST for code analysis
+# Print AST for inline code
 boxlang --bx-printAST --bx-code "x = 1 + 2"
+
+# Print AST for a file
+boxlang --bx-printAST /path/to/MyClass.bx
+
+# Pipe source code via stdin
+echo 'result = 1 + 2' | boxlang --bx-printAST
+
+# Integrate with build tools or editors
+cat MyComponent.bx | boxlang --bx-printAST | jq '.body[0]'
 
 # Combined options
 boxlang --bx-debug --bx-config ./custom.json myapp.bx
