@@ -1,5 +1,5 @@
 # Application Events
-pablo was here
+
 These events occur around the life cycle of the request listener `Application.bx`:
 
 * [`beforeApplicationListenerLoad`](application-events.md#beforeapplicationlistenerload)
