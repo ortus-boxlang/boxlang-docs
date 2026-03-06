@@ -162,6 +162,25 @@ result = ws.invoke( "operationName", [ "value1", "value2" ] );
 | `operationName` | string | Yes | The name of the SOAP operation to invoke |
 | `args` | any | No | Arguments for the operation - can be a single value, struct/map of named arguments, or array of positional arguments |
 
+### Direct Method Invocation
+
+**New in BoxLang 1.11.0** — You can call SOAP operations directly as methods on the client object, without going through `invoke()`. BoxLang routes the call to the correct operation based on the method name and arguments you pass:
+
+```js
+ws = soap( "http://example.com/DataService?wsdl" )
+
+// Direct invocation — no invoke() needed
+result        = ws.GetCustomer( { customerId: 123 } )
+countries     = ws.ListOfContinentsByName()
+payment       = ws.ProcessPayment( { amount: 99.99, currency: "USD" } )
+```
+
+This is equivalent to using `invoke()` but is more concise and reads naturally as a method call on the service.
+
+{% hint style="info" %}
+Both `invoke()` and direct method calls are supported and interchangeable. Use whichever style suits your code best.
+{% endhint %}
+
 ---
 
 ## 🌍 Real-World Examples
@@ -418,7 +437,57 @@ BoxLang automatically converts XML Schema types to appropriate BoxLang types:
 | `xsd:date`, `xsd:dateTime` | DateTime | `now()` |
 | `xsd:base64Binary` | ByteArray | Binary data |
 | Complex types | Struct | `{ field1: "value", field2: 123 }` |
-| Arrays/Lists | Array | `["item1", "item2", "item3"]` |
+| Arrays / Lists | Array | `["item1", "item2", "item3"]` |
+
+### 🆕 Binary and Map/Struct Complex Type Support
+
+**New in BoxLang 1.11.0** — The SOAP client now fully supports **binary data** and **maps/structs** as request and response parameters, enabling integration with services that transfer documents, images, or structured metadata.
+
+#### Sending Binary Data
+
+Pass binary data directly using `fileReadBinary()` or any BoxLang byte array:
+
+```js
+ws = soap( "http://example.com/DataService?wsdl" )
+
+// Upload a binary file — ByteArray is automatically serialized as xsd:base64Binary
+result = ws.uploadDocument({
+    name: "report.pdf",
+    data: fileReadBinary( "/reports/annual.pdf" )
+})
+
+println( "Document ID: " & result.documentId )
+```
+
+#### Sending Maps / Structs
+
+BoxLang structs are automatically serialized as SOAP complex types:
+
+```js
+// Nested struct is mapped to the matching WSDL complex type
+result = ws.updateRecord({
+    id: 123,
+    metadata: { region: "US", tier: "premium" }
+})
+```
+
+#### Full Example
+
+```js
+ws = soap( "http://example.com/DataService?wsdl" )
+
+// Binary upload
+uploadResult = ws.uploadDocument({
+    name: "report.pdf",
+    data: fileReadBinary( "/reports/annual.pdf" )  // Binary now supported
+})
+
+// Map/struct data
+updateResult = ws.updateRecord({
+    id: 123,
+    metadata: { region: "US", tier: "premium" }   // Map/Struct now supported
+})
+```
 
 ### Intelligent Casting
 
