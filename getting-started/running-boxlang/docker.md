@@ -83,6 +83,7 @@ The MiniServer images contain the BoxLang MiniServer - a lightweight, high-perfo
 * **URL Rewrites**: Enabled by default with configurable rewrite files
 * **Health checks**: Built-in health monitoring for container orchestration
 * **Hot reload**: Development mode with automatic code reloading
+* **MiniServer JSON Config**: Supports a `miniserver.json` configuration file for full server configuration
 
 ### **MiniServer Usage Examples**
 
@@ -106,6 +107,15 @@ docker run --rm -it -p 8080:8080 \
 docker run --rm -it -p 8080:8080 \
   -v $(pwd):/app \
   -v $(pwd)/boxlang.json:/root/.boxlang/config/boxlang.json \
+  ortussolutions/boxlang:miniserver
+
+# Use a miniserver.json config file auto-detected from /app (place it there and it loads automatically)
+docker run --rm -it -p 8080:8080 -v $(pwd):/app ortussolutions/boxlang:miniserver
+
+# Use a miniserver.json at a custom/explicit path
+docker run --rm -it -p 8080:8080 \
+  -e MINISERVER_JSON=/app/config/miniserver.json \
+  -v $(pwd):/app \
   ortussolutions/boxlang:miniserver
 
 # Production deployment with custom memory settings
@@ -192,7 +202,8 @@ The following environment variables can be used to configure the BoxLang Docker 
 ### **Web Server Features**
 
 * `REWRITES` - Enable URL rewrites (default: `true`)
-* `REWRITE_FILE` - Rewrite configuration file (default: `index.bxm`)
+* `REWRITE_FILE` - Rewrite target file (default: `index.bxm`)
+* `MINISERVER_JSON` - Path to a `miniserver.json` configuration file. If set, it is passed as the first argument to `boxlang-miniserver`. If not set, the server auto-detects a `miniserver.json` in `/app` (default: ``)
 
 ### **BoxLang Environment Override**
 
