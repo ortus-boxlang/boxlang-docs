@@ -2,17 +2,22 @@
 
 # Function: `GetTickCount`
 
-Returns the current value of an internal millisecond timer.
+Returns the current value of an internal timer.
+
+The unit argument controls the time unit returned.
 
 ## Method Signature
 
 ```
-GetTickCount()
+GetTickCount(unit=[string])
 ```
 
 ### Arguments
 
-This function does not accept any arguments
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `unit` | `string` | `false` | The time unit to return. Valid values are: nano, milli (default), second. | `milli` |
 
 ## Examples
 

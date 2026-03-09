@@ -37,7 +37,7 @@ onMessage=[function]
 onError=[function]
 onComplete=[function]
 proxyServer=[string]
-proxyPort=[integer]
+proxyPort=[any]
 proxyUser=[string]
 proxyPassword=[string]
 name=[string]
@@ -86,7 +86,7 @@ workstation=[string] />
 | `onError` | `function` | `false` | A callback function to handle errors during the HTTP request. Receives a struct with: error (exception), message (error message), result (HTTPResult struct with partial data). Called for both streaming and non-streaming<br>                    requests. Optional. |  |
 | `onComplete` | `function` | `false` | A callback function called when the HTTP request completes successfully. Receives a struct with: result (HTTPResult struct), statusCode, success (boolean). Called after all chunks in streaming mode. Optional. |  |
 | `proxyServer` | `string` | `false` | The hostname or IP address of the proxy server. Required if using a proxy. |  |
-| `proxyPort` | `integer` | `false` | The port number of the proxy server. Required if using a proxy. |  |
+| `proxyPort` | `any` | `false` | The port number of the proxy server. Required if using a proxy. |  |
 | `proxyUser` | `string` | `false` | The username for proxy authentication. Required if proxyPassword is provided. |  |
 | `proxyPassword` | `string` | `false` | The password for proxy authentication. Required if proxyUser is provided. |  |
 | `name` | `string` | `false` |  |  |

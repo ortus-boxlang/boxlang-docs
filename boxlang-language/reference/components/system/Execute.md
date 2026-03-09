@@ -14,7 +14,8 @@ terminateOnTimeout=[boolean]
 directory=[string]
 outputFile=[string]
 errorFile=[string]
-errorVariable=[string] />
+errorVariable=[string]
+exitCode=[string] />
 ```
 
 ### Attributes
@@ -31,6 +32,7 @@ errorVariable=[string] />
 | `outputFile` | `string` | `false` |  |  |
 | `errorFile` | `string` | `false` | An optional file path to write errors to |  |
 | `errorVariable` | `string` | `false` | Optional variable to produce for error output |  |
+| `exitCode` | `string` | `false` | An optional variable to set the exit code into |  |
 
 ## Examples
 

@@ -4,6 +4,10 @@
 
 Inserts a string at the beginning and end of list elements.
 
+If this BIF is being called from inside of a query component,
+ and the qualifier is a single quote, any single quotes in the values will be escaped by doubling them up.
+ This protects against SQL Injection attacks.
+
 ## Method Signature
 
 ```
