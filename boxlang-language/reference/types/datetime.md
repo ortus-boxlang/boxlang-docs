@@ -69,19 +69,6 @@ Arguments:
 
 </details>
 <details>
-<summary><code>compareTo(date2=[any], datepart=[string])</code></summary>
-
-Compares the difference between two dates - returning 0 if equal, -1 if date2 is less than date1 and 1 if the inverse
-
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `date2` | `any` | `true` | `null` |
-| `datepart` | `string` | `false` | `null` |
-
-</details>
-<details>
 <summary><code>dateFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
 
 Formats a datetime, date or time

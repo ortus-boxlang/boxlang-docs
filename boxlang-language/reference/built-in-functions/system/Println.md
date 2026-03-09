@@ -15,7 +15,7 @@ Println(message=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `message` | `any` | `true` | The message to print |  |
+| `message` | `any` | `false` | The message to print |  |
 
 ## Examples
 

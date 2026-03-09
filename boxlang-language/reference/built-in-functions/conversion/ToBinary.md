@@ -7,7 +7,7 @@ Calculates the binary representation of Base64-encoded data.
 ## Method Signature
 
 ```
-ToBinary(base64_or_object =[any])
+ToBinary(base64_or_object=[any])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ ToBinary(base64_or_object =[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `base64_or_object ` | `any` | `true` |  |  |
+| `base64_or_object` | `any` | `true` | A string containing base64-encoded data. |  |
 
 ## Examples
 

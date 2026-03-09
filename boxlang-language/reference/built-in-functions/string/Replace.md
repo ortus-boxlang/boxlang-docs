@@ -21,7 +21,7 @@ Replace(string=[string], substring1=[string], obj=[any], scope=[string])
 | `string` | `string` | `true` | The string to search |  |
 | `substring1` | `string` | `true` | The substring to search for |  |
 | `obj` | `any` | `true` | The string to replace substring1 with |  |
-| `scope` | `string` | `true` | The scope to search in | `one` |
+| `scope` | `string` | `true` | The scope to search in. Valid values are "one" or "all" | `one` |
 
 ## Examples
 

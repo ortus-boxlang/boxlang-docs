@@ -56,6 +56,7 @@ AsyncAllApply(items=[any], mapper=[function], errorHandler=[function], executor=
   * [AsyncAll](./AsyncAll.md)
   * [AsyncAny](./AsyncAny.md)
   * [AsyncRun](./AsyncRun.md)
+  * [ExecutorDelete](./ExecutorDelete.md)
   * [ExecutorGet](./ExecutorGet.md)
   * [ExecutorHas](./ExecutorHas.md)
   * [ExecutorList](./ExecutorList.md)

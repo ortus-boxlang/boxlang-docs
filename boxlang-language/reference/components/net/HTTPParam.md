@@ -11,7 +11,7 @@ name=[string]
 value=[any]
 file=[string]
 encoded=[boolean]
-mimetype =[string] />
+mimetype=[string] />
 ```
 
 ### Attributes
@@ -24,7 +24,7 @@ mimetype =[string] />
 | `value` | `any` | `false` | The value of the parameter (not required for file type) |  |
 | `file` | `string` | `false` | The path to the file (required for file type) |  |
 | `encoded` | `boolean` | `false` | Whether the value is URL encoded. Applies to CGI Params and Form Fields (default: false). If passed as false to a URL param, it will bypass the default encoding that occurs. |  |
-| `mimetype ` | `string` | `false` |  |  |
+| `mimetype` | `string` | `false` | The MIME type of the file (only used for file type, default: application/octet-stream) |  |
 
 ## Examples
 
