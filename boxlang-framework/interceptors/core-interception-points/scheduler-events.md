@@ -1,6 +1,6 @@
 # Scheduler Events
 
-Scheduler events are fired throughout the lifecycle of schedulers and scheduled task execution. These events allow you to hook into scheduler operations, monitor task execution, and respond to scheduler state changes.
+Scheduler events are fired throughout the lifecycle of schedulers and schedled task execution. these events allow you to hook into scheduler operations, monitor task execution, and respond to scheduler state changes.
 
 ## Scheduler Lifecycle Events
 
