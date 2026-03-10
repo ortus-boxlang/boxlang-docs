@@ -9,7 +9,13 @@ Welcome to the comprehensive BoxLang tooling ecosystem! This section covers all 
 
 ## 🚀 Official IDE Support
 
-BoxLang provides first-class support for modern development environments with our official Visual Studio Code extension, compatible across multiple editors and platforms.
+BoxLang provides first-class support for modern development environments for:
+
+- Vistual Studio Code
+- OpenVSX Compatible Editors
+- IntelliJ
+- Vim/Neovim
+- Textmate
 
 ### Supported Platforms
 
@@ -19,6 +25,8 @@ We provide a collection of extensions and modules to enhance your BoxLang develo
 - **[Cursor](https://cursor.com)** - AI-powered code editor with BoxLang support
 - **[Windsurf](https://windsurf.dev/)** - Modern development environment
 - **Any IDE supporting [Open VSX](https://open-vsx.org/)** - Extended compatibility
+- **[IntelliJ](https://plugins.jetbrains.com/plugin/30311-boxlang-ide) - IntelliJ Official Plugin
+
 
 ### BoxLang IDE Extension
 
@@ -102,18 +110,3 @@ Collection of syntax highlighters for embedding BoxLang code in documentation, w
 [syntax-highlighters.md](syntax-highlighters.md)
 {% endcontent-ref %}
 
-## 🚀 Quick Start Guide
-
-### For New BoxLang Developers
-
-1. **Install VS Code** - Download from [code.visualstudio.com](https://code.visualstudio.com/)
-2. **Install BoxLang Extension** - Search for "BoxLang" in the Extensions marketplace
-3. **Install BoxLang Theme** - Apply beautiful BoxLang-specific color schemes
-4. **Start Coding** - Create your first `.bx` file and experience full language support
-
-### For CFML Developers
-
-1. **Audit Your Codebase** - Use the CFML Feature Audit tool to assess migration readiness
-2. **Transpile Code** - Convert existing CFML to BoxLang using the automated transpiler
-3. **Set Up Development Environment** - Install the complete BoxLang toolchain
-4. **Migrate Gradually** - Use both tools to transition your applications systematically
