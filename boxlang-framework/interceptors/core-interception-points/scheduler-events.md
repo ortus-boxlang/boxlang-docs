@@ -1,340 +1,299 @@
 # Scheduler Events
 
-Scheduler events are fired throughout the lifecycle of schedulers and schedled task execution. these events allow you to hook into scheduler operations, monitor task execution, and respond to scheduler state changes.
+These events fire throughout the lifecycle of schedulers and scheduled task execution. They are announced on the **global interceptor pool**.
 
-## Scheduler Lifecycle Events
+> **Execution order per task run (success):** `schedulerBeforeAnyTask` → task executes → `schedulerOnAnyTaskSuccess` → `schedulerAfterAnyTask`
+>
+> **Execution order per task run (failure):** `schedulerBeforeAnyTask` → task throws → `schedulerOnAnyTaskError` → `schedulerAfterAnyTask`
 
-### `onSchedulerStartup`
-**Event:** `onSchedulerStartup`
+| Event Name                  | Cancellable | Description                                                               |
+| --------------------------- | :---------: | ------------------------------------------------------------------------- |
+| `onSchedulerServiceStartup` |     No      | Fired after the `SchedulerService` starts and all schedulers are running. |
+| `onSchedulerServiceShutdown`|     No      | Fired before the `SchedulerService` shuts down with the runtime.          |
+| `onAllSchedulersStarted`    |     No      | Fired after all registered schedulers have been started.                  |
+| `onSchedulerStartup`        |     No      | Fired after an individual scheduler has been started.                     |
+| `onSchedulerShutdown`       |     No      | Fired before an individual scheduler is shut down.                        |
+| `onSchedulerRestart`        |     No      | Fired before an individual scheduler is restarted.                        |
+| `onSchedulerRegistration`   |     No      | Fired after a scheduler is registered with the `SchedulerService`.        |
+| `onSchedulerRemoval`        |     No      | Fired before a scheduler is removed and shut down.                        |
+| `schedulerBeforeAnyTask`    |     No      | Fired before a scheduled task executes.                                   |
+| `schedulerAfterAnyTask`     |     No      | Fired after a scheduled task finishes — always fires, success or failure. |
+| `schedulerOnAnyTaskSuccess` |     No      | Fired after a task completes successfully.                                |
+| `schedulerOnAnyTaskError`   |     No      | Fired when a task throws an exception during execution.                   |
 
-Fired when a scheduler starts up and begins accepting scheduled tasks for execution.
+* [`onSchedulerServiceStartup`](scheduler-events.md#onschedulerservicestartup)
+* [`onSchedulerServiceShutdown`](scheduler-events.md#onschedulerserviceshutdown)
+* [`onAllSchedulersStarted`](scheduler-events.md#onallschedulersstarted)
+* [`onSchedulerStartup`](scheduler-events.md#onschedulerstartup)
+* [`onSchedulerShutdown`](scheduler-events.md#onschedulershutdown)
+* [`onSchedulerRestart`](scheduler-events.md#onschedulerrestart)
+* [`onSchedulerRegistration`](scheduler-events.md#onschedulerregistration)
+* [`onSchedulerRemoval`](scheduler-events.md#onschedulerremoval)
+* [`schedulerBeforeAnyTask`](scheduler-events.md#schedulerbeforeanytask)
+* [`schedulerAfterAnyTask`](scheduler-events.md#schedulerafteranytask)
+* [`schedulerOnAnyTaskSuccess`](scheduler-events.md#scheduleronanyTasksuccess)
+* [`schedulerOnAnyTaskError`](scheduler-events.md#scheduleronanytaskerror)
 
-**Data Structure:**
-```boxlang
-{
-    scheduler: IScheduler  // The scheduler instance that started
+## onSchedulerServiceStartup
+
+Fired after the `SchedulerService` has started up and all configured schedulers are running.
+
+### Data Structure
+
+| Data Key           | Type               | Description                     |
+| ------------------ | ------------------ | ------------------------------- |
+| `schedulerService` | `SchedulerService` | The scheduler service instance. |
+
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerServiceStartup( struct data ){
+		var schedulerService = data.schedulerService;
+	}
 }
 ```
 
-**Use Cases:**
-- Initialize resources needed for task execution
-- Log scheduler initialization
-- Start monitoring or metrics collection
+## onSchedulerServiceShutdown
 
----
+Fired before the `SchedulerService` begins shutting down all schedulers. Individual `onSchedulerShutdown` events follow for each registered scheduler.
 
-### `onSchedulerShutdown`
-**Event:** `onSchedulerShutdown`
+### Data Structure
 
-Fired when a scheduler is being shut down and will stop executing tasks.
+| Data Key           | Type               | Description                     |
+| ------------------ | ------------------ | ------------------------------- |
+| `schedulerService` | `SchedulerService` | The scheduler service instance. |
 
-**Data Structure:**
-```boxlang
-{
-    scheduler: IScheduler,  // The scheduler instance being shut down
-    force: boolean,         // Whether the shutdown is forced (immediate)
-    timeout: number         // Timeout in milliseconds for graceful shutdown
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerServiceShutdown( struct data ){
+		var schedulerService = data.schedulerService;
+	}
 }
 ```
 
-**Use Cases:**
-- Clean up resources associated with the scheduler
-- Save final state or statistics
-- Log scheduler shutdown
+## onAllSchedulersStarted
 
----
+Fired after all registered schedulers have been started in parallel. At this point every scheduler in the service is running.
 
-### `onSchedulerRestart`
-**Event:** `onSchedulerRestart`
+### Data Structure
 
-Fired when a scheduler is being restarted, stopping and then restarting its execution.
+| Data Key     | Type                   | Description                                            |
+| ------------ | ---------------------- | ------------------------------------------------------ |
+| `schedulers` | `Map<Key, IScheduler>` | The full map of all registered and started schedulers. |
 
-**Data Structure:**
-```boxlang
-{
-    scheduler: IScheduler,  // The scheduler instance being restarted
-    force: boolean,         // Whether the restart is forced (immediate)
-    timeout: number         // Timeout in milliseconds for graceful shutdown before restart
+### Example
+
+```groovy
+class myListener{
+	function onAllSchedulersStarted( struct data ){
+		var schedulers = data.schedulers;
+	}
 }
 ```
 
-**Use Cases:**
-- Reinitialize resources
-- Monitor scheduler restart operations
-- Handle task queue cleanup during restart
+## onSchedulerStartup
 
----
+Fired after an individual scheduler has been started. The scheduler's tasks are now scheduled and running.
 
-## Scheduler Registration Events
+### Data Structure
 
-### `onSchedulerRegistration`
-**Event:** `onSchedulerRegistration`
+| Data Key    | Type         | Description                          |
+| ----------- | ------------ | ------------------------------------ |
+| `scheduler` | `IScheduler` | The scheduler instance that started. |
 
-Fired when a scheduler is registered with the SchedulerService, making it available in the system.
+### Example
 
-**Data Structure:**
-```boxlang
-{
-    scheduler: IScheduler,  // The scheduler being registered
-    force: boolean          // Whether registration forced replacement of existing scheduler
+```groovy
+class myListener{
+	function onSchedulerStartup( struct data ){
+		var scheduler = data.scheduler;
+	}
 }
 ```
 
-**Use Cases:**
-- Track newly registered schedulers
-- Perform validation on scheduler configuration
-- Apply system-wide scheduler policies
+## onSchedulerShutdown
 
----
+Fired before an individual scheduler is shut down. Fires both during explicit removal and during service-level shutdown.
 
-### `onSchedulerRemoval`
-**Event:** `onSchedulerRemoval`
+### Data Structure
 
-Fired when a scheduler is removed from the system.
+| Data Key    | Type         | Description                                                |
+| ----------- | ------------ | ---------------------------------------------------------- |
+| `scheduler` | `IScheduler` | The scheduler being shut down.                             |
+| `force`     | `boolean`    | Whether this is a forced (immediate) shutdown.             |
+| `timeout`   | `long`       | Milliseconds to wait for graceful shutdown before forcing. |
 
-**Data Structure:**
-```boxlang
-{
-    scheduler: IScheduler,  // The scheduler being removed
-    force: boolean,         // Whether removal is forced
-    timeout: number         // Timeout in milliseconds
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerShutdown( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+		var timeout   = data.timeout;
+	}
 }
 ```
 
-**Use Cases:**
-- Clean up scheduler-specific configurations
-- Update monitoring/tracking systems
-- Audit scheduler lifecycle
+## onSchedulerRestart
 
----
+Fired before an individual scheduler is restarted. The scheduler is shut down and started again after this event.
 
-## Task Execution Events
+### Data Structure
 
-### `schedulerBeforeAnyTask`
-**Event:** `schedulerBeforeAnyTask`
+| Data Key    | Type         | Description                                                |
+| ----------- | ------------ | ---------------------------------------------------------- |
+| `scheduler` | `IScheduler` | The scheduler being restarted.                             |
+| `force`     | `boolean`    | Whether the shutdown phase of the restart is forced.       |
+| `timeout`   | `long`       | Milliseconds to wait for graceful shutdown before forcing. |
 
-Fired before a scheduled task begins execution. This is the first event in the task execution lifecycle.
+### Example
 
-**Data Structure:**
-```boxlang
-{
-    task: ScheduledTask  // The task about to execute
+```groovy
+class myListener{
+	function onSchedulerRestart( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+		var timeout   = data.timeout;
+	}
 }
 ```
 
-**Task Object Properties:**
-- `name` - Task name
-- `group` - Task group
-- `status` - Current execution status
-- `stats` - Execution statistics including total runs, successes, failures, etc.
+## onSchedulerRegistration
 
-**Use Cases:**
-- Validate task preconditions
-- Set up task execution context
-- Log task startup
-- Acquire locks or resources needed for task execution
-- Apply rate limiting or throttling
+Fired after a scheduler is registered with the `SchedulerService`. If `force=true`, any previously registered scheduler with the same name was already removed before this fires.
 
----
+### Data Structure
 
-### `schedulerAfterAnyTask`
-**Event:** `schedulerAfterAnyTask`
+| Data Key    | Type         | Description                                                    |
+| ----------- | ------------ | -------------------------------------------------------------- |
+| `scheduler` | `IScheduler` | The scheduler that was registered.                             |
+| `force`     | `boolean`    | Whether an existing scheduler with the same name was replaced. |
 
-Fired after a scheduled task completes execution, whether successfully or with an error.
+### Example
 
-**Data Structure:**
-```boxlang
-{
-    task: ScheduledTask,          // The completed task
-    result: Optional<?> | Exception // Task result or exception if one occurred
+```groovy
+class myListener{
+	function onSchedulerRegistration( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+	}
 }
 ```
 
-**Use Cases:**
-- Release resources acquired before task execution
-- Log task completion
-- Update monitoring metrics
-- Clean up task-specific context
-- Handle both successful and failed task outcomes
+## onSchedulerRemoval
 
----
+Fired before a scheduler is removed from the service and shut down.
 
-### `schedulerOnAnyTaskSuccess`
-**Event:** `schedulerOnAnyTaskSuccess`
+### Data Structure
 
-Fired after a scheduled task completes successfully without throwing an exception.
+| Data Key    | Type         | Description                                |
+| ----------- | ------------ | ------------------------------------------ |
+| `scheduler` | `IScheduler` | The scheduler being removed.               |
+| `force`     | `boolean`    | Whether the shutdown is forced.            |
+| `timeout`   | `long`       | Milliseconds to wait for graceful shutdown.|
 
-**Data Structure:**
-```boxlang
-{
-    task: ScheduledTask,      // The successfully completed task
-    result: Optional<?>       // The task's return value (may be empty if no return)
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerRemoval( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+		var timeout   = data.timeout;
+	}
 }
 ```
 
-**Use Cases:**
-- Record successful task metrics
-- Update statistics or dashboards
-- Trigger success-dependent actions
-- Log successful task completion
-- Send success notifications
+## schedulerBeforeAnyTask
 
----
+Fired before a scheduled task executes. This is the first event in the task execution lifecycle.
 
-### `schedulerOnAnyTaskError`
-**Event:** `schedulerOnAnyTaskError`
+### Data Structure
 
-Fired when a scheduled task throws an exception during execution.
+| Data Key | Type            | Description                |
+| -------- | --------------- | -------------------------- |
+| `task`   | `ScheduledTask` | The task about to execute. |
 
-**Data Structure:**
-```boxlang
-{
-    task: ScheduledTask,      // The failed task
-    exception: Exception      // The exception thrown during execution
+### Example
+
+```groovy
+class myListener{
+	function schedulerBeforeAnyTask( struct data ){
+		var task = data.task;
+		// Log, validate preconditions, acquire resources, etc.
+	}
 }
 ```
 
-**Use Cases:**
-- Record failure metrics and statistics
-- Log error details for debugging
-- Send error alerts or notifications
-- Implement retry logic
-- Update error tracking systems
-- Preserve error context for analysis
+## schedulerAfterAnyTask
 
----
+Fired after a scheduled task finishes — **always fires**, whether the task succeeded or threw an exception. On the error path, `result` wraps the caught exception.
 
-## Service-Level Events
+### Data Structure
 
-### `onSchedulerServiceStartup`
-**Event:** `onSchedulerServiceStartup`
+| Data Key | Type            | Description                                                                                      |
+| -------- | --------------- | ------------------------------------------------------------------------------------------------ |
+| `task`   | `ScheduledTask` | The task that ran.                                                                               |
+| `result` | `Optional<?>`   | The task's last result on success, or `Optional.of(exception)` if the task threw an exception.  |
 
-Fired when the SchedulerService itself starts up during BoxLang runtime initialization.
+### Example
 
-**Use Cases:**
-- Initialize scheduler monitoring
-- Configure service-wide scheduler policies
-- Load scheduler configurations
-
----
-
-### `onSchedulerServiceShutdown`
-**Event:** `onSchedulerServiceShutdown`
-
-Fired when the SchedulerService shuts down with the BoxLang runtime.
-
-**Use Cases:**
-- Gracefully shutdown all schedulers
-- Save scheduler state
-- Clean up service-level resources
-
----
-
-### `onAllSchedulersStarted`
-**Event:** `onAllSchedulersStarted`
-
-Fired after all configured schedulers have been successfully started.
-
-**Use Cases:**
-- Execute initialization logic that depends on all schedulers being ready
-- Trigger dependent systems
-- Log successful service startup
-
----
-
-## Event Interception Pattern
-
-Events follow a **global-to-local** pattern for before events and **local-to-global** for after events:
-
-1. **Global Interceptors** (via `InterceptorService`)
-2. **Local Interceptors** (via callbacks on task or scheduler)
-3. **Local Lifecycle Handlers** (via task configuration)
-
-This ensures proper ordering of side effects and allows both global monitoring and local control.
-
-## Interceptor Implementation Example
-
-```boxlang
-component {
-    function onSchedulerBeforeAnyTask(event) {
-        var task = event.data.task;
-        writeLog(
-            text="Starting task: #task.getName()#",
-            type="information"
-        );
-    }
-
-    function onSchedulerOnAnyTaskSuccess(event) {
-        var task = event.data.task;
-        var result = event.data.result;
-        writeLog(
-            text="Task #task.getName()# completed successfully",
-            type="information"
-        );
-    }
-
-    function onSchedulerOnAnyTaskError(event) {
-        var task = event.data.task;
-        var exception = event.data.exception;
-        writeLog(
-            text="Task #task.getName()# failed: #exception.message#",
-            type="error"
-        );
-    }
+```groovy
+class myListener{
+	function schedulerAfterAnyTask( struct data ){
+		var task   = data.task;
+		var result = data.result;
+		// Release resources, update metrics, etc.
+	}
 }
 ```
 
-## Event Flow for Successful Task Execution
+## schedulerOnAnyTaskSuccess
 
-```
-┌─────────────────────────────────────────┐
-│ schedulerBeforeAnyTask                  │
-│ Data: { task }                          │
-└──────────────┬──────────────────────────┘
-               ↓
-        [Task Executes]
-               ↓
-┌──────────────┬──────────────────────────┐
-│ schedulerAfterAnyTask                   │
-│ Data: { task, result }                  │
-└──────────────┬──────────────────────────┘
-               ↓
-┌──────────────┬──────────────────────────┐
-│ schedulerOnAnyTaskSuccess               │
-│ Data: { task, result }                  │
-└─────────────────────────────────────────┘
-```
+Fired after a task completes successfully without throwing an exception. Always fires before `schedulerAfterAnyTask` on the success path.
 
-## Event Flow for Failed Task Execution
+### Data Structure
 
-```
-┌─────────────────────────────────────────┐
-│ schedulerBeforeAnyTask                  │
-│ Data: { task }                          │
-└──────────────┬──────────────────────────┘
-               ↓
-        [Task Executes & Throws]
-               ↓
-┌──────────────┬──────────────────────────┐
-│ schedulerOnAnyTaskError                 │
-│ Data: { task, exception }               │
-└──────────────┬──────────────────────────┘
-               ↓
-┌──────────────┬──────────────────────────┐
-│ schedulerAfterAnyTask                   │
-│ Data: { task, result: Optional(exception) }
-└─────────────────────────────────────────┘
+| Data Key | Type            | Description                                            |
+| -------- | --------------- | ------------------------------------------------------ |
+| `task`   | `ScheduledTask` | The task that completed successfully.                  |
+| `result` | `Optional<?>`   | The task's return value (may be empty if void return). |
+
+### Example
+
+```groovy
+class myListener{
+	function schedulerOnAnyTaskSuccess( struct data ){
+		var task   = data.task;
+		var result = data.result;
+		// Record metrics, trigger success-dependent actions, etc.
+	}
+}
 ```
 
-## Important Considerations
+## schedulerOnAnyTaskError
 
-- **Event Data Immutability:** Event data passed to interceptors should be treated as read-only. Modifications to the task or other event data may have unintended consequences.
+Fired when a task throws an exception. Fires before `schedulerAfterAnyTask` on the error path. The exception is caught by the task executor — it does not propagate and will not stop other tasks from running.
 
-- **Exception Handling:** Exceptions thrown in event interceptors are caught and logged by the task executor to prevent one interceptor's failure from affecting others.
+### Data Structure
 
-- **Thread Safety:** Events are fired in the context of the task execution thread. If your interceptor accesses shared state, ensure proper synchronization.
+| Data Key    | Type            | Description                            |
+| ----------- | --------------- | -------------------------------------- |
+| `task`      | `ScheduledTask` | The task that failed.                  |
+| `exception` | `Exception`     | The exception thrown during execution. |
 
-- **Performance:** Keep event interceptors lightweight. Heavy operations in `schedulerBeforeAnyTask` or `schedulerAfterAnyTask` will impact task performance.
+### Example
 
-- **Scheduler Context:** The task context is available via `RequestBoxContext.getCurrent()` during task execution events.
-
+```groovy
+class myListener{
+	function schedulerOnAnyTaskError( struct data ){
+		var task      = data.task;
+		var exception = data.exception;
+		// Alert, log, record failure metrics, etc.
+	}
+}
+```

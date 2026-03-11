@@ -1,297 +1,197 @@
 # Scheduler Service Events
 
-These events occur around the management of multiple schedulers in the system.
+These events are announced by the **SchedulerService** to allow interceptors to monitor and react to scheduler lifecycle and management operations. They are announced on the **global interceptor pool**.
 
-| Event Name                   | Data | Description                            |
-| ---------------------------- | :--: | -------------------------------------- |
-| `onSchedulerServiceStartup`  | `schedulerService` | When the scheduler service starts up.  |
-| `onSchedulerServiceShutdown` | `schedulerService` | When the scheduler service shuts down. |
-| `onAllSchedulersStarted`     | `schedulerService` | After all schedulers have started.     |
-| `onSchedulerRemoval`         | `name` | When a scheduler is removed.           |
-| `onSchedulerRegistration`    | `name`, `scheduler` | When a scheduler is registered.        |
-# Scheduler Service Events Documentation
+| Event Name                   | Cancellable | Description                                        |
+| ---------------------------- | :---------: | -------------------------------------------------- |
+| `onSchedulerServiceStartup`  |     No      | When the scheduler service starts up.              |
+| `onSchedulerServiceShutdown` |     No      | When the scheduler service shuts down.             |
+| `onAllSchedulersStarted`     |     No      | After all registered schedulers have been started. |
+| `onSchedulerStartup`         |     No      | When an individual scheduler starts up.            |
+| `onSchedulerShutdown`        |     No      | When an individual scheduler shuts down.           |
+| `onSchedulerRestart`         |     No      | When an individual scheduler is restarted.         |
+| `onSchedulerRegistration`    |     No      | When a scheduler is registered.                    |
+| `onSchedulerRemoval`         |     No      | When a scheduler is removed.                       |
 
-This document outlines all the events that are announced by the **SchedulerService** in BoxLang. These events allow interceptors to monitor and react to scheduler lifecycle and management operations.
+* [`onSchedulerServiceStartup`](#onschedulerservicestartup)
+* [`onSchedulerServiceShutdown`](#onschedulerserviceshutdown)
+* [`onAllSchedulersStarted`](#onallschedulersstarted)
+* [`onSchedulerStartup`](#onschedulerstartup)
+* [`onSchedulerShutdown`](#onschedulershutdown)
+* [`onSchedulerRestart`](#onschedulerrestart)
+* [`onSchedulerRegistration`](#onschedulerregistration)
+* [`onSchedulerRemoval`](#onschedulerremoval)
 
-## Event Overview
+## onSchedulerServiceStartup
 
-The SchedulerService announces events at key points in the scheduler lifecycle:
-- Service startup and shutdown
-- Individual scheduler startup and shutdown
-- Scheduler registration and removal
-- All schedulers startup completion
+Fired when the SchedulerService starts up during runtime initialization — after all registered schedulers have been started.
 
----
+### Data Structure
 
-## Events
+| Data Key           | Type               | Description                    |
+| ------------------ | ------------------ | ------------------------------ |
+| `schedulerService` | `SchedulerService` | The SchedulerService instance. |
 
-### `onSchedulerServiceStartup`
+### Example
 
-**Event Key:** `ON_SCHEDULER_SERVICE_STARTUP`
-
-**Triggered:** When the SchedulerService starts up during runtime initialization.
-
-**Data Payload:**
-
-```java
-{
-  "schedulerService": SchedulerService // The SchedulerService instance
+```groovy
+class myListener{
+	function onSchedulerServiceStartup( struct data ){
+		var schedulerService = data.schedulerService;
+	}
 }
 ```
 
-**Interceptor Method:**
-```boxlang
-function onSchedulerServiceStartup( data ) {
-  var schedulerService = data.schedulerService;
-  // Handle startup logic
+## onSchedulerServiceShutdown
+
+Fired when the SchedulerService begins shutting down. Fires before individual schedulers are shut down.
+
+### Data Structure
+
+| Data Key           | Type               | Description                    |
+| ------------------ | ------------------ | ------------------------------ |
+| `schedulerService` | `SchedulerService` | The SchedulerService instance. |
+
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerServiceShutdown( struct data ){
+		var schedulerService = data.schedulerService;
+	}
 }
 ```
 
-**Location in Code:** [SchedulerService.java:121-123](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/services/SchedulerService.java#L121-L123)
+## onAllSchedulersStarted
 
----
+Fired after all registered schedulers have been started during service startup.
 
-### `onSchedulerServiceShutdown`
+### Data Structure
 
-**Event Key:** `ON_SCHEDULER_SERVICE_SHUTDOWN`
+| Data Key     | Type                   | Description                                     |
+| ------------ | ---------------------- | ----------------------------------------------- |
+| `schedulers` | `Map<Key, IScheduler>` | Map of all registered schedulers keyed by name. |
 
-**Triggered:** When the SchedulerService shuts down during runtime shutdown.
+### Example
 
-**Data Payload:**
-
-```java
-{
-  "schedulerService": SchedulerService // The SchedulerService instance
+```groovy
+class myListener{
+	function onAllSchedulersStarted( struct data ){
+		var schedulers = data.schedulers;
+	}
 }
 ```
 
-**Interceptor Method:**
-```boxlang
-function onSchedulerServiceShutdown( data ) {
-  var schedulerService = data.schedulerService;
-  // Handle shutdown logic
+## onSchedulerStartup
+
+Fired after an individual scheduler has started. Fires once per scheduler during service startup and also when a scheduler is started via `registerAndStartScheduler`.
+
+### Data Structure
+
+| Data Key    | Type         | Description                    |
+| ----------- | ------------ | ------------------------------ |
+| `scheduler` | `IScheduler` | The scheduler that started up. |
+
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerStartup( struct data ){
+		var scheduler = data.scheduler;
+	}
 }
 ```
 
-**Location in Code:** [SchedulerService.java:169-171](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/services/SchedulerService.java#L169-L171)
+## onSchedulerShutdown
 
----
+Fired before an individual scheduler is shut down. Fires both during service shutdown and when a scheduler is explicitly removed.
 
-### `onAllSchedulersStarted`
+### Data Structure
 
-**Event Key:** `ON_ALL_SCHEDULERS_STARTED`
+| Data Key    | Type         | Description                                            |
+| ----------- | ------------ | ------------------------------------------------------ |
+| `scheduler` | `IScheduler` | The scheduler being shut down.                         |
+| `force`     | `boolean`    | Whether the shutdown is forced (no graceful waiting).  |
+| `timeout`   | `long`       | Milliseconds to wait for graceful shutdown.            |
 
-**Triggered:** After all registered schedulers have been successfully started.
+### Example
 
-**Data Payload:**
-
-```java
-{
-  "schedulers": Map<Key, IScheduler> // Map of all schedulers keyed by their names
+```groovy
+class myListener{
+	function onSchedulerShutdown( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+		var timeout   = data.timeout;
+	}
 }
 ```
 
-**Interceptor Method:**
-```boxlang
-function onAllSchedulersStarted( data ) {
-  var allSchedulers = data.schedulers;
-  
-  // Iterate through schedulers
-  for ( var schedulerName in allSchedulers ) {
-    var scheduler = allSchedulers[ schedulerName ];
-    // Access scheduler methods like scheduler.getSchedulerName()
-  }
+## onSchedulerRestart
+
+Fired before an individual scheduler is restarted. The actual restart happens after this event fires.
+
+### Data Structure
+
+| Data Key    | Type         | Description                                            |
+| ----------- | ------------ | ------------------------------------------------------ |
+| `scheduler` | `IScheduler` | The scheduler being restarted.                         |
+| `force`     | `boolean`    | Whether the restart forces an immediate shutdown.      |
+| `timeout`   | `long`       | Milliseconds to wait for the scheduler to stop.        |
+
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerRestart( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+		var timeout   = data.timeout;
+	}
 }
 ```
 
-**Data Structure Details:**
-- `schedulers` is a `Map<Key, IScheduler>` where keys are scheduler names
-- Each `IScheduler` instance provides methods to query scheduler state and configuration
+## onSchedulerRegistration
 
-**Location in Code:** [SchedulerService.java:199-201](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/services/SchedulerService.java#L199-L201)
+Fired when a scheduler is registered with the SchedulerService. If `force=true`, an existing scheduler with the same name was removed first before this event fires.
 
----
+### Data Structure
 
-### `onSchedulerRegistration`
+| Data Key    | Type         | Description                                                       |
+| ----------- | ------------ | ----------------------------------------------------------------- |
+| `scheduler` | `IScheduler` | The scheduler that was registered.                                |
+| `force`     | `Boolean`    | Whether the registration forced replacement of an existing entry. |
 
-**Event Key:** `ON_SCHEDULER_REGISTRATION`
+### Example
 
-**Triggered:** When a new scheduler is registered with the SchedulerService.
-
-**Data Payload:**
-
-```java
-{
-  "scheduler": IScheduler,  // The scheduler instance that was registered
-  "force": Boolean          // Whether the registration was forced (overwrites existing)
+```groovy
+class myListener{
+	function onSchedulerRegistration( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+	}
 }
 ```
 
-**Interceptor Method:**
-```boxlang
-function onSchedulerRegistration( data ) {
-  var scheduler = data.scheduler;
-  var force = data.force;
-  var schedulerName = scheduler.getSchedulerName();
-  
-  if ( force ) {
-    // Handle forced registration (overwrote existing scheduler)
-  }
+## onSchedulerRemoval
+
+Fired when a scheduler is removed from the SchedulerService. Fires before the scheduler is shut down.
+
+### Data Structure
+
+| Data Key    | Type         | Description                                       |
+| ----------- | ------------ | ------------------------------------------------- |
+| `scheduler` | `IScheduler` | The scheduler being removed.                      |
+| `force`     | `boolean`    | Whether the removal forces an immediate shutdown. |
+| `timeout`   | `long`       | Milliseconds to wait for graceful shutdown.       |
+
+### Example
+
+```groovy
+class myListener{
+	function onSchedulerRemoval( struct data ){
+		var scheduler = data.scheduler;
+		var force     = data.force;
+		var timeout   = data.timeout;
+	}
 }
 ```
-
-**Data Structure Details:**
-- `scheduler`: The `IScheduler` instance that provides access to scheduler properties and methods
-  - `getSchedulerName()` - Returns the name of the scheduler
-  - Other scheduler-specific methods for querying state and configuration
-- `force`: Boolean indicating if this registration overwrote an existing scheduler with the same name
-
-**Location in Code:** [SchedulerService.java:398-400](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/services/SchedulerService.java#L398-L400)
-
----
-
-### `onSchedulerRemoval`
-
-**Event Key:** `ON_SCHEDULER_REMOVAL`
-
-**Triggered:** When a scheduler is removed from the SchedulerService.
-
-**Data Payload:**
-
-```java
-{
-  "scheduler": IScheduler,  // The scheduler instance that was removed
-  "force": Boolean,         // Whether the removal was forced
-  "timeout": Long           // Shutdown timeout in seconds (if applicable)
-}
-```
-
-**Interceptor Method:**
-```boxlang
-function onSchedulerRemoval( data ) {
-  var scheduler = data.scheduler;
-  var force = data.force;
-  var timeout = data.timeout;
-  var schedulerName = scheduler.getSchedulerName();
-  
-  writeln( "Scheduler [#schedulerName#] is being removed" );
-  
-  if ( force ) {
-    // Force removal with no waiting
-  } else {
-    // Graceful removal with shutdown timeout
-  }
-}
-```
-
-**Data Structure Details:**
-- `scheduler`: The `IScheduler` instance being removed
-  - `getSchedulerName()` - Returns the name of the scheduler
-  - Other scheduler-specific methods
-- `force`: Boolean indicating if the removal is forced (no graceful shutdown)
-- `timeout`: Long representing the timeout duration in seconds for scheduler shutdown
-
-**Location in Code:** [SchedulerService.java:439-444](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/services/SchedulerService.java#L439-L444)
-
----
-
-## Additional Scheduler Events
-
-While the SchedulerService manages these service-level events, individual schedulers also announce their own events. These include:
-
-- `ON_SCHEDULER_STARTUP` - Individual scheduler startup
-- `ON_SCHEDULER_SHUTDOWN` - Individual scheduler shutdown
-- `ON_SCHEDULER_RESTART` - Individual scheduler restart
-- `SCHEDULER_BEFORE_ANY_TASK` - Before any scheduled task executes
-- `SCHEDULER_AFTER_ANY_TASK` - After any scheduled task executes
-- `SCHEDULER_ON_ANY_TASK_SUCCESS` - When any scheduled task succeeds
-- `SCHEDULER_ON_ANY_TASK_ERROR` - When any scheduled task errors
-
-See [BoxEvent.java](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/events/BoxEvent.java) for complete event definitions.
-
----
-
-## Example Interceptor Implementation
-
-```boxlang
-/**
- * A sample interceptor for Scheduler Service events
- */
-class SchedulerInterceptor {
-
-  function configure() {
-    // Any configuration needed
-  }
-
-  function onSchedulerServiceStartup( data ) {
-    var schedulerService = data.schedulerService;
-    writeln( "Scheduler Service has started" );
-  }
-
-  function onAllSchedulersStarted( data ) {
-    var schedulers = data.schedulers;
-    writeln( "All #schedulers.size()# schedulers have been started" );
-    
-    for ( var name in schedulers ) {
-      writeln( "  - #name#" );
-    }
-  }
-
-  function onSchedulerRegistration( data ) {
-    var scheduler = data.scheduler;
-    var force = data.force;
-    var schedulerName = scheduler.getSchedulerName();
-    
-    writeln( "Scheduler registered: #schedulerName#" & 
-             (force ? " (force overwrite)" : "") );
-  }
-
-  function onSchedulerRemoval( data ) {
-    var scheduler = data.scheduler;
-    var force = data.force;
-    var timeout = data.timeout;
-    var schedulerName = scheduler.getSchedulerName();
-    
-    writeln( "Scheduler removed: #schedulerName#" &
-             (force ? " (forced)" : " (graceful shutdown #timeout#s)") );
-  }
-
-  function onSchedulerServiceShutdown( data ) {
-    var schedulerService = data.schedulerService;
-    writeln( "Scheduler Service has shut down" );
-  }
-
-}
-```
-
----
-
-## Registering an Interceptor
-
-To register an interceptor with the runtime to listen to scheduler service events:
-
-```boxlang
-// In your Application.bx or initialization code
-var interceptor = new SchedulerInterceptor();
-var interceptorService = getRuntimeAttribute( "boxRuntime" ).getInterceptorService();
-interceptorService.register( interceptor );
-```
-
-Or via module configuration:
-
-```boxlang
-// In ModuleConfig.bx
-function configure() {
-  var interceptor = new path.to.SchedulerInterceptor();
-  interceptorService.register( interceptor );
-}
-```
-
----
-
-## Related Resources
-
-- [SchedulerService Source](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/services/SchedulerService.java)
-- [BoxEvent Enum](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/events/BoxEvent.java)
-- [InterceptorService Source](https://github.com/ortus-boxlang/BoxLang/blob/development/src/main/java/ortus/boxlang/runtime/services/InterceptorService.java)
-- [Scheduler Implementation](https://github.com/ortus-boxlang/BoxLang/tree/development/src/main/java/ortus/boxlang/runtime/async/tasks)
