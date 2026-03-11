@@ -1,94 +1,94 @@
 ---
 description: >-
-    Vim syntax highlighting for BoxLang - a dynamic JVM language and runtime. This plugin provides comprehensive syntax support for BoxLang script files (.bx, .bxs) and template files (.bxm), including modern language features, HTML integration, and code folding.
+  Vim syntax highlighting for BoxLang - a dynamic JVM language and runtime. This
+  plugin provides comprehensive syntax support for BoxLang script files (.bx,
+  .bxs) and template files (.bxm), including mo
 icon: terminal
 ---
 
-# 📦 VIM BOXLANG
+# BoxLang Neovim Plugin
 
 Vim syntax highlighting for BoxLang - a dynamic JVM language and runtime.
 
 ## 📑 Table of Contents
 
-- [📑 Table of Contents](#-table-of-contents)
-- [📖 Overview](#-overview)
-- [✨ Features](#-features)
-  - [BoxLang Script Syntax (`.bx`, `.bxs`)](#boxlang-script-syntax-bx-bxs)
-  - [BoxLang Template Syntax (`.bxm`)](#boxlang-template-syntax-bxm)
-- [⚡ Installation](#-installation)
-  - [Using lazy.nvim (Lua)](#using-lazynvim-lua)
-  - [Using vim-plug](#using-vim-plug)
-  - [Using Vundle](#using-vundle)
-  - [Using Pathogen](#using-pathogen)
-  - [Manual Installation](#manual-installation)
-  - [NeoVim](#neovim)
-- [📄 File Extensions](#-file-extensions)
-- [⚙️ Manual Filetype Setting](#️-manual-filetype-setting)
-- [🎨 Syntax Highlighting Examples](#-syntax-highlighting-examples)
-  - [Script Example (`.bx`, `.bxs`)](#script-example-bx-bxs)
-  - [Template Example (`.bxm`)](#template-example-bxm)
-- [🚀 BoxLang-Specific Features](#-boxlang-specific-features)
-- [🎨 Customization](#-customization)
-- [📁 Code Folding](#-code-folding)
-- [🔧 Troubleshooting](#-troubleshooting)
-  - [Syntax highlighting not working](#syntax-highlighting-not-working)
-  - [Colors look wrong](#colors-look-wrong)
-- [🤝 Contributing](#-contributing)
+* [📑 Table of Contents](boxlang-neovim-plugin.md#-table-of-contents)
+* [📖 Overview](boxlang-neovim-plugin.md#-overview)
+* [✨ Features](boxlang-neovim-plugin.md#-features)
+  * [BoxLang Script Syntax (`.bx`, `.bxs`)](boxlang-neovim-plugin.md#boxlang-script-syntax-bx-bxs)
+  * [BoxLang Template Syntax (`.bxm`)](boxlang-neovim-plugin.md#boxlang-template-syntax-bxm)
+* [⚡ Installation](boxlang-neovim-plugin.md#-installation)
+  * [Using lazy.nvim (Lua)](boxlang-neovim-plugin.md#using-lazynvim-lua)
+  * [Using vim-plug](boxlang-neovim-plugin.md#using-vim-plug)
+  * [Using Vundle](boxlang-neovim-plugin.md#using-vundle)
+  * [Using Pathogen](boxlang-neovim-plugin.md#using-pathogen)
+  * [Manual Installation](boxlang-neovim-plugin.md#manual-installation)
+  * [NeoVim](boxlang-neovim-plugin.md#neovim)
+* [📄 File Extensions](boxlang-neovim-plugin.md#-file-extensions)
+* [⚙️ Manual Filetype Setting](boxlang-neovim-plugin.md#️-manual-filetype-setting)
+* [🎨 Syntax Highlighting Examples](boxlang-neovim-plugin.md#-syntax-highlighting-examples)
+  * [Script Example (`.bx`, `.bxs`)](boxlang-neovim-plugin.md#script-example-bx-bxs)
+  * [Template Example (`.bxm`)](boxlang-neovim-plugin.md#template-example-bxm)
+* [🚀 BoxLang-Specific Features](boxlang-neovim-plugin.md#-boxlang-specific-features)
+* [🎨 Customization](boxlang-neovim-plugin.md#-customization)
+* [📁 Code Folding](boxlang-neovim-plugin.md#-code-folding)
+* [🔧 Troubleshooting](boxlang-neovim-plugin.md#-troubleshooting)
+  * [Syntax highlighting not working](boxlang-neovim-plugin.md#syntax-highlighting-not-working)
+  * [Colors look wrong](boxlang-neovim-plugin.md#colors-look-wrong)
+* [🤝 Contributing](boxlang-neovim-plugin.md#-contributing)
 
 ## 📖 Overview
 
-<div class="text-center">
-<img src="../../.gitbook/assets/vim-boxlang-class.png" alt="BoxLang Syntax Highlighting Example" class="rounded-lg shadow-lg">
-</div>
+![BoxLang Syntax Highlighting Example](../../.gitbook/assets/vim-boxlang-class.png)
 
 This plugin provides comprehensive syntax highlighting for BoxLang script files (`.bx`, `.bxs`) and template files (`.bxm`). It includes support for:
 
-- **Script Syntax** - Pure BoxLang script with modern language features
-- **Template Syntax** - Markup-based BoxLang with `bx:` tags and HTML
-- **Cross-Syntax Embedding** - Template islands in script files and `<bx:script>` blocks in templates
+* **Script Syntax** - Pure BoxLang script with modern language features
+* **Template Syntax** - Markup-based BoxLang with `bx:` tags and HTML
+* **Cross-Syntax Embedding** - Template islands in script files and `<bx:script>` blocks in templates
 
 ## ✨ Features
 
 ### BoxLang Script Syntax (`.bx`, `.bxs`)
 
-- **Modern Keywords**: `class`, `interface`, `assert`, `final`, `package`, `abstract`, `static`
-- **Control Flow**: `if`, `else`, `for`, `while`, `do`, `switch`, `case`, `try`, `catch`, `finally`
-- **Operators**:
-  - Standard: `+`, `-`, `*`, `/`, `%`, `^`, `&`, `&&`, `||`, `!`
-  - Comparison: `==`, `!=`, `<>`, `>`, `<`, `>=`, `<=`
-  - Strict equality: `===`, `!==`
-  - Elvis operator: `?:`
-  - Bitwise (BoxLang-specific): `b|`, `b&`, `b^`, `b~`, `b<<`, `b>>`, `b>>>`
-- **Functions**:
-  - Arrow functions: `=>`
-  - Lambda functions: `->`
-  - Static BIF references: `::`
-- **Annotations**: `@name(...)` with complex parameter support
-- **String Interpolation**: `#expression#` within strings
-- **Comments**: `//`, `/* */`, `/** */` (JavaDoc-style)
-- **Component Islands**: Triple backtick template blocks embedded in script
-- **Data Structures**: Arrays, structs, queries
-- **Scopes**: `variables`, `local`, `arguments`, `request`, `session`, `application`, `server`, etc.
+* **Modern Keywords**: `class`, `interface`, `assert`, `final`, `package`, `abstract`, `static`
+* **Control Flow**: `if`, `else`, `for`, `while`, `do`, `switch`, `case`, `try`, `catch`, `finally`
+* **Operators**:
+  * Standard: `+`, `-`, `*`, `/`, `%`, `^`, `&`, `&&`, `||`, `!`
+  * Comparison: `==`, `!=`, `<>`, `>`, `<`, `>=`, `<=`
+  * Strict equality: `===`, `!==`
+  * Elvis operator: `?:`
+  * Bitwise (BoxLang-specific): `b|`, `b&`, `b^`, `b~`, `b<<`, `b>>`, `b>>>`
+* **Functions**:
+  * Arrow functions: `=>`
+  * Lambda functions: `->`
+  * Static BIF references: `::`
+* **Annotations**: `@name(...)` with complex parameter support
+* **String Interpolation**: `#expression#` within strings
+* **Comments**: `//`, `/* */`, `/** */` (JavaDoc-style)
+* **Component Islands**: Triple backtick template blocks embedded in script
+* **Data Structures**: Arrays, structs, queries
+* **Scopes**: `variables`, `local`, `arguments`, `request`, `session`, `application`, `server`, etc.
 
 ### BoxLang Template Syntax (`.bxm`)
 
-- **HTML Support**: Custom lightweight HTML syntax highlighting
-  - Multi-color support: Distinct colors for special tags (`html`, `head`, `body`, `script`, `style`, `link`) vs standard tags
-  - `DOCTYPE` highlighting
-  - Full HTML comments support `<!-- -->`
-  - Integration within BoxLang tags
-- **bx: Tags**: Native BoxLang component tags
-  - Control flow: `<bx:if>`, `<bx:elseif>`, `<bx:else>`, `<bx:for>`, `<bx:while>`, `<bx:switch>`, `<bx:case>`
-  - Output: `<bx:output>`
-  - Functions: `<bx:function>`, `<bx:argument>`, `<bx:return>`
-  - Error handling: `<bx:try>`, `<bx:catch>`, `<bx:finally>`, `<bx:throw>`, `<bx:rethrow>`
-  - Components: `<bx:component>`, `<bx:interface>`, `<bx:property>`
-  - Utility: `<bx:set>`, `<bx:include>`, `<bx:import>`, `<bx:param>`
-  - Advanced: `<bx:lock>`, `<bx:thread>`, `<bx:transaction>`, `<bx:abort>`, `<bx:exit>`
-- **Expression Interpolation**: `#expression#` in text and attributes
-- **Template Comments**: `<!--- ... --->`
-- **Embedded Script**: `<bx:script>` blocks with full script syntax highlighting
-- **Code Folding**: Automatic folding for tag regions
+* **HTML Support**: Custom lightweight HTML syntax highlighting
+  * Multi-color support: Distinct colors for special tags (`html`, `head`, `body`, `script`, `style`, `link`) vs standard tags
+  * `DOCTYPE` highlighting
+  * Full HTML comments support `<!-- -->`
+  * Integration within BoxLang tags
+* **bx: Tags**: Native BoxLang component tags
+  * Control flow: `<bx:if>`, `<bx:elseif>`, `<bx:else>`, `<bx:for>`, `<bx:while>`, `<bx:switch>`, `<bx:case>`
+  * Output: `<bx:output>`
+  * Functions: `<bx:function>`, `<bx:argument>`, `<bx:return>`
+  * Error handling: `<bx:try>`, `<bx:catch>`, `<bx:finally>`, `<bx:throw>`, `<bx:rethrow>`
+  * Components: `<bx:component>`, `<bx:interface>`, `<bx:property>`
+  * Utility: `<bx:set>`, `<bx:include>`, `<bx:import>`, `<bx:param>`
+  * Advanced: `<bx:lock>`, `<bx:thread>`, `<bx:transaction>`, `<bx:abort>`, `<bx:exit>`
+* **Expression Interpolation**: `#expression#` in text and attributes
+* **Template Comments**: `<!--- ... --->`
+* **Embedded Script**: `<bx:script>` blocks with full script syntax highlighting
+* **Code Folding**: Automatic folding for tag regions
 
 ## ⚡ Installation
 
@@ -145,33 +145,32 @@ git clone https://github.com/ortus-solutions/vim-boxlang.git
 
 ### Manual Installation
 
-1. Clone this repository:
+1.  Clone this repository:
 
-   ```bash
-   git clone https://github.com/ortus-solutions/vim-boxlang.git
-   ```
+    ```bash
+    git clone https://github.com/ortus-solutions/vim-boxlang.git
+    ```
+2.  Copy the files to your vim runtime directory:
 
-2. Copy the files to your vim runtime directory:
-
-   ```bash
-   cp -r vim-boxlang/syntax ~/.vim/
-   cp -r vim-boxlang/ftdetect ~/.vim/
-   ```
+    ```bash
+    cp -r vim-boxlang/syntax ~/.vim/
+    cp -r vim-boxlang/ftdetect ~/.vim/
+    ```
 
 ### NeoVim
 
 For NeoVim, use the same installation methods but replace `~/.vim` with:
 
-- Linux/macOS: `~/.config/nvim`
-- Windows: `~/AppData/Local/nvim`
+* Linux/macOS: `~/.config/nvim`
+* Windows: `~/AppData/Local/nvim`
 
 ## 📄 File Extensions
 
 The plugin automatically detects and applies syntax highlighting based on file extensions:
 
-- **`.bx`** - BoxLang script class/component files → Uses `boxlang` syntax
-- **`.bxs`** - BoxLang script files (executable) → Uses `boxlang` syntax
-- **`.bxm`** - BoxLang template/markup files → Uses `boxlangTemplate` syntax
+* **`.bx`** - BoxLang script class/component files → Uses `boxlang` syntax
+* **`.bxs`** - BoxLang script files (executable) → Uses `boxlang` syntax
+* **`.bxm`** - BoxLang template/markup files → Uses `boxlangTemplate` syntax
 
 ## ⚙️ Manual Filetype Setting
 
@@ -273,14 +272,14 @@ class UserService {
 
 This syntax file is specifically designed for **BoxLang**, not CFML/ColdFusion. Key differences:
 
-- Uses `bx:` prefix for tags (not `cf`)
-- Highlights `class` keyword (BoxLang native, vs CFML's `component`)
-- Supports bitwise operators (`b|`, `b&`, `b^`, `b~`, `b<<`, `b>>`, `b>>>`)
-- Strict equality operators (`===`, `!==`)
-- Arrow functions (`=>`) and lambda functions (`->`)
-- `assert` statement
-- `castas` operator
-- Modern keywords: `final`, `package`, `interface` as first-class
+* Uses `bx:` prefix for tags (not `cf`)
+* Highlights `class` keyword (BoxLang native, vs CFML's `component`)
+* Supports bitwise operators (`b|`, `b&`, `b^`, `b~`, `b<<`, `b>>`, `b>>>`)
+* Strict equality operators (`===`, `!==`)
+* Arrow functions (`=>`) and lambda functions (`->`)
+* `assert` statement
+* `castas` operator
+* Modern keywords: `final`, `package`, `interface` as first-class
 
 A separate CFML syntax file is available for ColdFusion compatibility mode.
 
@@ -320,33 +319,31 @@ set foldlevelstart=10
 
 Folds are automatically created for:
 
-- Classes and interfaces
-- Functions
-- Control structures (`if`, `for`, `while`, `switch`, `try`)
-- Tag regions in templates
+* Classes and interfaces
+* Functions
+* Control structures (`if`, `for`, `while`, `switch`, `try`)
+* Tag regions in templates
 
 ## 🔧 Troubleshooting
 
 ### Syntax highlighting not working
 
-1. Verify filetype is set correctly:
+1.  Verify filetype is set correctly:
 
-   ```vim
-   :set filetype?
-   ```
+    ```vim
+    :set filetype?
+    ```
+2.  Check if syntax is enabled:
 
-2. Check if syntax is enabled:
+    ```vim
+    :syntax on
+    ```
+3.  Reload the syntax file:
 
-   ```vim
-   :syntax on
-   ```
-
-3. Reload the syntax file:
-
-   ```vim
-   :syntax clear
-   :edit
-   ```
+    ```vim
+    :syntax clear
+    :edit
+    ```
 
 ### Colors look wrong
 

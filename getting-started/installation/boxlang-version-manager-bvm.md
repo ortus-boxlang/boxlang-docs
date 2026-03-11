@@ -16,66 +16,66 @@ BVM is an advanced version manager for BoxLang, similar to `jenv` or `nvm`. It a
 
 **Choose BVM if you:**
 
-- 🔄 Work on multiple projects that might need different BoxLang versions
-- 🧪 Want to test your code against different BoxLang releases
-- 🚀 Need to switch between stable and snapshot versions
-- 📦 Want centralized management of BoxLang installations
-- 🛠️ Are a BoxLang developer or advanced user
+* 🔄 Work on multiple projects that might need different BoxLang versions
+* 🧪 Want to test your code against different BoxLang releases
+* 🚀 Need to switch between stable and snapshot versions
+* 📦 Want centralized management of BoxLang installations
+* 🛠️ Are a BoxLang developer or advanced user
 
 **Choose the single-version installer (`install-boxlang.sh`) if you:**
 
-- 📌 Only need one BoxLang version system-wide
-- 🎯 Want the simplest possible installation
-- 🏢 Are setting up production servers with a specific BoxLang version
-- ⚡ Want the fastest installation with minimal overhead
+* 📌 Only need one BoxLang version system-wide
+* 🎯 Want the simplest possible installation
+* 🏢 Are setting up production servers with a specific BoxLang version
+* ⚡ Want the fastest installation with minimal overhead
 
 **Both installers provide identical functionality:**
 
-- ✅ Same BoxLang runtime and MiniServer
-- ✅ Same helper scripts (`install-bx-module`, `install-bx-site`, etc.)
-- ✅ Same command-line tools (`boxlang`, `bx`, `boxlang-miniserver`, etc.)
-- ✅ Same installation quality and reliability
+* ✅ Same BoxLang runtime and MiniServer
+* ✅ Same helper scripts (`install-bx-module`, `install-bx-site`, etc.)
+* ✅ Same command-line tools (`boxlang`, `bx`, `boxlang-miniserver`, etc.)
+* ✅ Same installation quality and reliability
 
 The only difference is that BVM adds version management capabilities on top.
 
 ## 📋 Table of Contents
 
-- [BVM vs Single-Version Installer](#bvm-vs-single-version-installer)
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Basic Usage](#basic-usage)
-- [What BVM Installs](#what-bvm-installs)
-- [Examples](#examples)
-- [Security & Reliability](#security--reliability)
-- [Project-Specific Versions (.bvmrc)](#project-specific-versions-bvmrc)
-- [Commands](#commands)
-- [Keeping BVM Updated](#keeping-bvm-updated)
-- [Uninstalling BoxLang Versions and BVM](#uninstalling-boxlang-versions-and-bvm)
-- [Migrating from Single-Version Installer to BVM](#migrating-from-single-version-installer-to-bvm)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
-- [Support](#support)
+* [BVM vs Single-Version Installer](boxlang-version-manager-bvm.md#bvm-vs-single-version-installer)
+* [Features](boxlang-version-manager-bvm.md#features)
+* [Quick Start](boxlang-version-manager-bvm.md#quick-start)
+* [Prerequisites](boxlang-version-manager-bvm.md#prerequisites)
+* [Installation](boxlang-version-manager-bvm.md#installation)
+* [Basic Usage](boxlang-version-manager-bvm.md#basic-usage)
+* [What BVM Installs](boxlang-version-manager-bvm.md#what-bvm-installs)
+* [Examples](boxlang-version-manager-bvm.md#examples)
+* [Security & Reliability](boxlang-version-manager-bvm.md#security--reliability)
+* [Project-Specific Versions (.bvmrc)](boxlang-version-manager-bvm.md#project-specific-versions-bvmrc)
+* [Commands](boxlang-version-manager-bvm.md#commands)
+* [Keeping BVM Updated](boxlang-version-manager-bvm.md#keeping-bvm-updated)
+* [Uninstalling BoxLang Versions and BVM](boxlang-version-manager-bvm.md#uninstalling-boxlang-versions-and-bvm)
+* [Migrating from Single-Version Installer to BVM](boxlang-version-manager-bvm.md#migrating-from-single-version-installer-to-bvm)
+* [Troubleshooting](boxlang-version-manager-bvm.md#troubleshooting)
+* [Contributing](boxlang-version-manager-bvm.md#contributing)
+* [License](boxlang-version-manager-bvm.md#license)
+* [Support](boxlang-version-manager-bvm.md#support)
 
 ## 🛠️ Features
 
-- 📦 **Install complete BoxLang environment** - runtime, MiniServer, and helper scripts
-- 🔄 **Switch between versions easily** - change your active BoxLang version with one command
-- 📋 **List installed versions** - see what's installed locally with `bvm list` or `bvm ls`
-- 🌐 **List remote versions** - see what's available for download with `bvm list-remote` or `bvm ls-remote`
-- 🗑️ **Clean Removal** - remove versions you no longer need with `bvm remove`, or `bvm rm`
-- 🔍 **Health check** - verify your BVM installation with `bvm doctor` or `bvm health`
-- 🧹 **Cache management** - clean up downloaded files with `bvm clean`
-- 🚀 **Execute BoxLang components** - run BoxLang, MiniServer through BVM with version management
-- 🔗 **Seamless integration** - wrapper scripts make all tools available in PATH
-- ⚡ **Command aliases** - convenient short aliases for all major commands
-- 🛠️ **Helper script integration** - all BoxLang helper scripts work with active version
-- 🎯 **Smart version detection** - automatically detects actual version numbers from installations
-- 🆙 **Built-in update checker** - check for BVM updates and upgrade easily
-- ☕ **Automatic Java installation** - installs Java 21 JRE if needed with `--with-jre` option
-- 🗑️ **Uninstall BVM** - Remove completely BVM, versions, etc.
+* 📦 **Install complete BoxLang environment** - runtime, MiniServer, and helper scripts
+* 🔄 **Switch between versions easily** - change your active BoxLang version with one command
+* 📋 **List installed versions** - see what's installed locally with `bvm list` or `bvm ls`
+* 🌐 **List remote versions** - see what's available for download with `bvm list-remote` or `bvm ls-remote`
+* 🗑️ **Clean Removal** - remove versions you no longer need with `bvm remove`, or `bvm rm`
+* 🔍 **Health check** - verify your BVM installation with `bvm doctor` or `bvm health`
+* 🧹 **Cache management** - clean up downloaded files with `bvm clean`
+* 🚀 **Execute BoxLang components** - run BoxLang, MiniServer through BVM with version management
+* 🔗 **Seamless integration** - wrapper scripts make all tools available in PATH
+* ⚡ **Command aliases** - convenient short aliases for all major commands
+* 🛠️ **Helper script integration** - all BoxLang helper scripts work with active version
+* 🎯 **Smart version detection** - automatically detects actual version numbers from installations
+* 🆙 **Built-in update checker** - check for BVM updates and upgrade easily
+* ☕ **Automatic Java installation** - installs Java 21 JRE if needed with `--with-jre` option
+* 🗑️ **Uninstall BVM** - Remove completely BVM, versions, etc.
 
 ## 🚀 Quick Start
 
@@ -83,9 +83,9 @@ The only difference is that BVM adds version management capabilities on top.
 
 The installer will attempt to install any missing prerequisites automatically, but there are some that will need to be installed manually depending on your platform.
 
-- **bash** - Required shell execution environment, especially on Alpine Linux
-- **curl** - For downloading releases
-- **PowerShell 6+** - Required for Windows installations
+* **bash** - Required shell execution environment, especially on Alpine Linux
+* **curl** - For downloading releases
+* **PowerShell 6+** - Required for Windows installations
 
 **Alpine Linux** : You will need to install bash manually as it is not included by default.
 
@@ -95,9 +95,9 @@ apk add --no-cache bash curl
 
 The following are automatically installed for you, but you can install them manually if you prefer.
 
-- **Java 21+** - JRE or JDK
-- **unzip** - For extracting downloaded files
-- **jq** - For parsing JSON (BVM only)
+* **Java 21+** - JRE or JDK
+* **unzip** - For extracting downloaded files
+* **jq** - For parsing JSON (BVM only)
 
 ### Manual Installation
 
@@ -106,7 +106,11 @@ Remember, we do this automatically for you, but if you want to do it manually, h
 **macOS (with Homebrew):**
 
 ```bash
-brew install curl unzip jq openjdk@21
+brew tap ortus-boxlang/boxlang
+
+# Quick Installer
+brew install ortus-boxlang/boxlang/bvm
+bvm install latest && bvm use latest
 ```
 
 **Ubuntu/Debian:**
@@ -182,14 +186,14 @@ When you install a BoxLang version with BVM, it downloads and sets up:
 
 ### Core Components
 
-- **BoxLang Runtime** (`boxlang`, `bx`) - The main BoxLang interpreter
-- **BoxLang MiniServer** (`boxlang-miniserver`, `bx-miniserver`) - Web application server
+* **BoxLang Runtime** (`boxlang`, `bx`) - The main BoxLang interpreter
+* **BoxLang MiniServer** (`boxlang-miniserver`, `bx-miniserver`) - Web application server
 
 ### Helper Scripts
 
-- **install-bx-module** - BoxLang module installer (available in PATH after installation)
-- **install-bvm** - BVM installer script (available in PATH after installation)
-- **Other utility scripts** - Various helper tools
+* **install-bx-module** - BoxLang module installer (available in PATH after installation)
+* **install-bvm** - BVM installer script (available in PATH after installation)
+* **Other utility scripts** - Various helper tools
 
 ## 💡 Examples
 
@@ -290,11 +294,11 @@ BVM includes several security and reliability enhancements to ensure safe and re
 
 ### SHA-256 Checksum Verification
 
-- 🔒 **Automatic verification** - Downloads and verifies SHA-256 checksums for all BoxLang downloads
-- ✅ **Cryptographic integrity** - Ensures downloaded files haven't been tampered with
-- 🛡️ **Security first** - Available for BoxLang 1.3.0 and later versions
-- ⚠️ **Graceful fallback** - Clear warnings for pre-1.3.0 versions without checksums
-- 🔧 **Multiple tools** - Supports both `sha256sum` (Linux) and `shasum` (macOS)
+* 🔒 **Automatic verification** - Downloads and verifies SHA-256 checksums for all BoxLang downloads
+* ✅ **Cryptographic integrity** - Ensures downloaded files haven't been tampered with
+* 🛡️ **Security first** - Available for BoxLang 1.3.0 and later versions
+* ⚠️ **Graceful fallback** - Clear warnings for pre-1.3.0 versions without checksums
+* 🔧 **Multiple tools** - Supports both `sha256sum` (Linux) and `shasum` (macOS)
 
 ### Force Reinstallation
 
@@ -313,10 +317,10 @@ bvm install snapshot --force
 
 **When to use `--force`:**
 
-- 🔄 Recover from corrupted installations
-- 🆙 Get the latest "latest" or "snapshot" builds
-- 🛠️ Troubleshoot installation issues
-- 🧪 Testing and development scenarios
+* 🔄 Recover from corrupted installations
+* 🆙 Get the latest "latest" or "snapshot" builds
+* 🛠️ Troubleshoot installation issues
+* 🧪 Testing and development scenarios
 
 ### Command Aliases
 
@@ -384,10 +388,10 @@ When you install using aliases like "latest" or "snapshot", BVM:
 
 ### Benefits
 
-- 🎯 **Clear version tracking** - `bvm list` shows actual version numbers, not generic aliases
-- 📋 **Accurate history** - see exactly which versions you have installed
-- 🔍 **No confusion** - distinguish between different snapshot builds
-- 🔗 **Smart symlinks** - "latest" symlink for convenience, actual versions for clarity
+* 🎯 **Clear version tracking** - `bvm list` shows actual version numbers, not generic aliases
+* 📋 **Accurate history** - see exactly which versions you have installed
+* 🔍 **No confusion** - distinguish between different snapshot builds
+* 🔗 **Smart symlinks** - "latest" symlink for convenience, actual versions for clarity
 
 ### Example
 
@@ -418,10 +422,10 @@ BVM supports project-specific version configuration through `.bvmrc` files, simi
 
 ### How .bvmrc Works
 
-- 📁 **Per-project configuration** - Each project can have its own BoxLang version
-- 🔍 **Automatic discovery** - BVM searches from current directory up to root for `.bvmrc`
-- 🎯 **Simple format** - Just the version number on the first line
-- 🚀 **Seamless switching** - Use `bvm use` without arguments to activate the project version
+* 📁 **Per-project configuration** - Each project can have its own BoxLang version
+* 🔍 **Automatic discovery** - BVM searches from current directory up to root for `.bvmrc`
+* 🎯 **Simple format** - Just the version number on the first line
+* 🚀 **Seamless switching** - Use `bvm use` without arguments to activate the project version
 
 ### Creating .bvmrc Files
 
@@ -510,50 +514,49 @@ BVM searches for `.bvmrc` files starting from the current directory and walking 
 
 ### Version Management
 
-- `bvm install <version>` - Install a specific BoxLang version
-  - `bvm install latest` - Install latest stable release (detects and installs actual version, e.g., `1.2.0`)
-  - `bvm install snapshot` - Install latest development snapshot (detects and installs actual version, e.g., `1.3.0-snapshot`)
-  - `bvm install 1.2.0` - Install specific version
-  - `bvm install <version> --force` - Force reinstall existing version (useful for updates or corruption recovery)
-
-- `bvm use <version>` - Switch to a specific BoxLang version
-  - Can use actual version numbers (e.g., `1.2.0`, `1.3.0-snapshot`) or `latest` symlink
-  - `bvm use` - Use version from `.bvmrc` file (if present)
-- `bvm local <version>` - Set local BoxLang version for current directory (creates `.bvmrc`)
-  - `bvm local` - Show current `.bvmrc` version
-- `bvm current` - Show currently active BoxLang version
-- `bvm remove <version>` - Remove a specific BoxLang version (use actual version number)
-  - Aliases: `bvm rm <version>`
-- `bvm uninstall` - Completely uninstall BVM and all BoxLang versions
+* `bvm install <version>` - Install a specific BoxLang version
+  * `bvm install latest` - Install latest stable release (detects and installs actual version, e.g., `1.2.0`)
+  * `bvm install snapshot` - Install latest development snapshot (detects and installs actual version, e.g., `1.3.0-snapshot`)
+  * `bvm install 1.2.0` - Install specific version
+  * `bvm install <version> --force` - Force reinstall existing version (useful for updates or corruption recovery)
+* `bvm use <version>` - Switch to a specific BoxLang version
+  * Can use actual version numbers (e.g., `1.2.0`, `1.3.0-snapshot`) or `latest` symlink
+  * `bvm use` - Use version from `.bvmrc` file (if present)
+* `bvm local <version>` - Set local BoxLang version for current directory (creates `.bvmrc`)
+  * `bvm local` - Show current `.bvmrc` version
+* `bvm current` - Show currently active BoxLang version
+* `bvm remove <version>` - Remove a specific BoxLang version (use actual version number)
+  * Aliases: `bvm rm <version>`
+* `bvm uninstall` - Completely uninstall BVM and all BoxLang versions
 
 ### Information
 
-- `bvm list` - List all installed BoxLang versions (shows actual version numbers and symlinks)
-  - Alias: `bvm ls`
-  - Example output: `1.2.0`, `latest → 1.2.0`, `1.3.0-snapshot`
-- `bvm list-remote` - List available BoxLang versions for download
-  - Alias: `bvm ls-remote`
-- `bvm which` - Show path to current BoxLang installation
-- `bvm version` - Show BVM version
-  - Aliases: `bvm --version`, `bvm -v`
+* `bvm list` - List all installed BoxLang versions (shows actual version numbers and symlinks)
+  * Alias: `bvm ls`
+  * Example output: `1.2.0`, `latest → 1.2.0`, `1.3.0-snapshot`
+* `bvm list-remote` - List available BoxLang versions for download
+  * Alias: `bvm ls-remote`
+* `bvm which` - Show path to current BoxLang installation
+* `bvm version` - Show BVM version
+  * Aliases: `bvm --version`, `bvm -v`
 
 ### Execution
 
-- `bvm exec <args>` - Execute BoxLang with current version
-  - Alias: `bvm run <args>`
-- `bvm miniserver <args>` - Start BoxLang MiniServer with current version
-  - Aliases: `bvm mini-server <args>`, `bvm ms <args>`
+* `bvm exec <args>` - Execute BoxLang with current version
+  * Alias: `bvm run <args>`
+* `bvm miniserver <args>` - Start BoxLang MiniServer with current version
+  * Aliases: `bvm mini-server <args>`, `bvm ms <args>`
 
 ### Maintenance
 
-- `bvm check-update` - Check for BVM updates and optionally upgrade
-- `bvm clean` - Clean cache and temporary files
-- `bvm stats` - Show performance and usage statistics
-  - Aliases: `bvm performance`, `bvm usage`
-- `bvm doctor` - Check BVM installation health
-  - Alias: `bvm health`
-- `bvm help` - Show help message
-  - Aliases: `bvm --help`, `bvm -h`
+* `bvm check-update` - Check for BVM updates and optionally upgrade
+* `bvm clean` - Clean cache and temporary files
+* `bvm stats` - Show performance and usage statistics
+  * Aliases: `bvm performance`, `bvm usage`
+* `bvm doctor` - Check BVM installation health
+  * Alias: `bvm health`
+* `bvm help` - Show help message
+  * Aliases: `bvm --help`, `bvm -h`
 
 ## 🔄 Keeping BVM Updated
 
@@ -579,10 +582,10 @@ When you run `bvm check-update`, BVM will:
 
 If a newer version is available, BVM will:
 
-- 🆙 **Display the available update** - shows current and latest version numbers
-- ❓ **Prompt for confirmation** - asks if you want to upgrade
-- 🚀 **Automatically upgrade** - downloads and installs the latest version if you confirm
-- ✅ **Preserve your installations** - keeps all your BoxLang versions intact
+* 🆙 **Display the available update** - shows current and latest version numbers
+* ❓ **Prompt for confirmation** - asks if you want to upgrade
+* 🚀 **Automatically upgrade** - downloads and installs the latest version if you confirm
+* ✅ **Preserve your installations** - keeps all your BoxLang versions intact
 
 ### Example Update Session
 
@@ -608,9 +611,9 @@ Would you like to upgrade to version [1.1.0]? [Y/n]: Y
 
 ### Status Messages
 
-- 🦾 **Up to date**: "You have the latest version of BVM!"
-- 🆙 **Update available**: "A newer version of BVM is available!"
-- 🧑‍💻 **Development version**: "Your BVM version is newer than the latest release"
+* 🦾 **Up to date**: "You have the latest version of BVM!"
+* 🆙 **Update available**: "A newer version of BVM is available!"
+* 🧑‍💻 **Development version**: "Your BVM version is newer than the latest release"
 
 ## 🗑️ Uninstalling BoxLang Versions and BVM
 
@@ -632,9 +635,9 @@ bvm list
 
 #### Important Notes
 
-- **Cannot remove active version**: You cannot remove the currently active BoxLang version
-- **Confirmation required**: BVM will ask for confirmation before removing a version
-- **Use actual version numbers**: Use the actual version number (e.g., `1.2.0`), not aliases like `latest`
+* **Cannot remove active version**: You cannot remove the currently active BoxLang version
+* **Confirmation required**: BVM will ask for confirmation before removing a version
+* **Use actual version numbers**: Use the actual version number (e.g., `1.2.0`), not aliases like `latest`
 
 #### Example Session
 
@@ -660,10 +663,10 @@ bvm uninstall
 
 #### What Gets Removed
 
-- 🗑️ **All BoxLang versions** - every installed version will be deleted
-- 🗑️ **BVM home directory** - `~/.bvm` and all contents
-- 🗑️ **Cache files** - all downloaded installers and temporary files
-- 🗑️ **Version symlinks** - `latest` and other version links
+* 🗑️ **All BoxLang versions** - every installed version will be deleted
+* 🗑️ **BVM home directory** - `~/.bvm` and all contents
+* 🗑️ **Cache files** - all downloaded installers and temporary files
+* 🗑️ **Version symlinks** - `latest` and other version links
 
 #### Complete Uninstall Process
 
@@ -741,7 +744,7 @@ boxlang --version
 
 **Note:** Your BoxLang home directory (`~/.boxlang`) with modules, settings, and data will be preserved during migration.
 
-```
+````
 
 ## 🔧 Troubleshooting
 
@@ -767,7 +770,7 @@ boxlang --version
 
 ```bash
 bvm doctor
-```
+````
 
 This will check your BVM installation and identify any issues.
 
@@ -795,3 +798,4 @@ MIT License - see LICENSE file for details.
 - 💬 Community: https://boxlang.io/community
 - 🧑‍💻 Try: https://try.boxlang.io
 - 🫶 Professional Support: https://boxlang.io/plans
+```

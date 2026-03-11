@@ -402,7 +402,7 @@ for ( i = 1; i <= qItems.recordCount; i++ ) {
 {% hint style="success" %}
 **Best Practice**: Use for-in loops or `each()` for cleaner, more readable code. Reserve index-based loops for when you need precise position control.
 
-#### 🚀 Multi-Threaded Looping
+**🚀 Multi-Threaded Looping**
 
 BoxLang allows you to leverage the `each()` operations in a multi-threaded fashion. The `queryEach()` or `each()` functions allow for `parallel` and `maxThreads` arguments so the iteration can happen concurrently:
 
@@ -427,13 +427,13 @@ users.each( ( row ) => {
 **Limitation**: This approach uses a single thread executor per execution and does not provide exception handling across threads. For production-grade parallel processing, consider BoxLang's async programming features instead.
 {% endhint %}
 
-#### ⚡ BoxLang Async Programming (Recommended for Parallel Operations)
+**⚡ BoxLang Async Programming (Recommended for Parallel Operations)**
 
 For a functional and much more flexible approach to multi-threaded or parallel programming, use BoxLang's built-in async programming constructs, which leverage the Java Concurrency and CompletableFutures frameworks.
 
 **Key async methods for parallel query processing:**
 
-### 🔒 Using Query Parameters (Preventing SQL Injection)
+#### 🔒 Using Query Parameters (Preventing SQL Injection)
 
 When using user input in queries, you must prevent [SQL injection attacks](https://owasp.org/www-community/attacks/SQL_Injection). BoxLang provides query parameters for safe SQL execution.
 
@@ -441,7 +441,7 @@ When using user input in queries, you must prevent [SQL injection attacks](https
 **Security Critical**: Never concatenate user input directly into SQL strings! Always use query parameters.
 {% endhint %}
 
-#### Named Parameters (Recommended)
+**Named Parameters (Recommended)**
 
 ```js
 // Named parameter with automatic type binding
@@ -460,7 +460,7 @@ users = queryExecute(
 );
 ```
 
-#### Positional Parameters
+**Positional Parameters**
 
 ```js
 // Positional placeholders with ?
@@ -479,7 +479,7 @@ users = queryExecute(
 );
 ```
 
-#### Using bx:queryParam Component
+**Using bx:queryParam Component**
 
 ````js
 bx:query name="result" {
@@ -514,7 +514,7 @@ queryExecute(
 );
 ````
 
-#### 📋 Available SQL Types
+**📋 Available SQL Types**
 
 The `sqltype` parameter binds values to specific database types for security and query plan optimization:
 {% endhint %}
@@ -552,11 +552,11 @@ The `sqltype` parameter binds values to specific database types for security and
 {% hint style="success" %}
 \{% hint style="warning" %\} The `cf_sql_{type}` syntax (e.g., `cf_sql_varchar`) is only supported when [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed. Use the native type names (e.g., `varchar`) in all new code. \{% endhint %\}
 
-### 🏗️ Building Queries Programmatically
+#### 🏗️ Building Queries Programmatically
 
 You can create and manipulate queries without database connections using BoxLang's query construction functions:
 
-#### Creating Empty Queries
+**Creating Empty Queries**
 
 ```js
 // Create query with columns only
@@ -574,7 +574,7 @@ querySetCell( news, "title", "Man walks on Moon" );
 writeDump( news );
 ```
 
-#### Creating Queries with Data
+**Creating Queries with Data**
 
 ```js
 // Array of structs approach (recommended)
@@ -606,7 +606,7 @@ newsArray = queryNew(
 );
 ```
 
-#### Manipulating Query Data
+**Manipulating Query Data**
 
 ```js
 // Add multiple empty rows
@@ -638,7 +638,7 @@ titles = queryColumnData( news, "title" );
 writeDump( titles ); // [ "Updated Title", "Man walks on Moon", ... ]
 ```
 
-#### Method Chaining
+**Method Chaining**
 
 ```js
 // Build query fluently
@@ -650,7 +650,7 @@ users = queryNew( "id,name,age", "integer,varchar,integer" )
     .sort( "name ASC" );
 ```
 
-### 🔍 Query of Queries (QoQ)
+#### 🔍 Query of Queries (QoQ)
 
 Query existing query objects using SQL without hitting the database. BoxLang's QoQ implementation is extremely fast - **5x faster than Lucee** and **17x faster than Adobe ColdFusion**.
 
@@ -676,7 +676,7 @@ youngUsers = queryExecute(
 writeDump( youngUsers );
 ```
 
-#### Advanced QoQ Features
+**Advanced QoQ Features**
 
 BoxLang QoQ supports modern SQL features:
 
@@ -724,11 +724,11 @@ categorized = queryExecute( "
 
 \{% hint style="success" %\} **Performance Tip**: For simple filtering and sorting, use functional methods like `queryFilter()` and `querySort()` instead of QoQ - they're even faster and more type-safe! \{% endhint %\}
 
-### 📦 Alternative Return Types
+#### 📦 Alternative Return Types
 
 You can return query results as arrays or structs instead of query objects - perfect for JSON APIs and modern frameworks.
 
-#### Return as Array of Structs
+**Return as Array of Structs**
 
 ```js
 // Each row becomes a struct in an array
@@ -747,7 +747,7 @@ users = queryExecute(
 return users.toJSON();
 ```
 
-#### Return as Struct of Structs
+**Return as Struct of Structs**
 
 ```js
 // Use a column as the key for a struct of structs
@@ -766,7 +766,7 @@ usersById = queryExecute(
 alice = usersById[ 1 ];
 ```
 
-#### Convert Existing Query
+**Convert Existing Query**
 
 ```js
 // Convert query object to array
@@ -781,17 +781,17 @@ arrayData = qry.map( ( row ) -> {
 
 \{% hint style="success" %\} **Best Practice**: Use `returntype="array"` for REST APIs and JSON responses. It's cleaner and more compatible with JavaScript frameworks like React, Vue, and Angular. \{% endhint %\}
 
-### 🏗️ QB - Query Builder Module
+#### 🏗️ QB - Query Builder Module
 
 **QB** (Query Builder) is a powerful module for building database queries with a fluent, chainable API. It abstracts database differences and makes complex queries readable and maintainable.
 
-#### Installation
+**Installation**
 
 ```bash
 box install qb
 ```
 
-#### Features
+**Features**
 
 * ✅ Fluent, chainable query building
 * ✅ Database-agnostic (MySQL, PostgreSQL, MSSQL, Oracle, etc.)
@@ -800,7 +800,7 @@ box install qb
 * ✅ Raw expressions when needed
 * ✅ Schema builder for migrations
 
-#### Basic Usage
+**Basic Usage**
 
 ```js
 // Inject QB instance
@@ -832,7 +832,7 @@ topAuthors = query.from( "posts" )
     .get();
 ```
 
-#### Insert, Update, Delete
+**Insert, Update, Delete**
 
 ```js
 // Insert
@@ -854,11 +854,11 @@ query.table( "users" )
 
 \{% hint style="success" %\} **Recommended**: Use QB for complex queries and database migrations. It provides better testability and database portability than raw SQL. \{% endhint %\}
 
-### ⚙️ Query Options
+#### ⚙️ Query Options
 
 BoxLang supports comprehensive query options for controlling execution behavior:
 
-#### Core Options
+**Core Options**
 {% endhint %}
 
 | Option         | Type    | Description                               | Example                 |
@@ -872,7 +872,7 @@ BoxLang supports comprehensive query options for controlling execution behavior:
 | `dbtype`       | String  | Database type (`"query"` for QoQ)         | `dbtype: "query"`       |
 
 {% hint style="success" %}
-#### Caching Options
+**Caching Options**
 {% endhint %}
 
 | Option          | Type     | Description             | Example                    |
@@ -883,7 +883,7 @@ BoxLang supports comprehensive query options for controlling execution behavior:
 | `cacheTimeout`  | Duration | Cache expiration time   | `cacheTimeout: "1h"`       |
 
 {% hint style="success" %}
-#### Example Usage
+**Example Usage**
 
 ```js
 // Basic query with options
@@ -917,7 +917,7 @@ writeDump( metadata.executionTime );
 writeDump( metadata.cached );
 ```
 
-#### CFML Compatibility Options
+**CFML Compatibility Options**
 
 When [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed, these aliases are available:
 {% endhint %}

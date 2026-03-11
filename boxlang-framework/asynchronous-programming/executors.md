@@ -632,6 +632,7 @@ BoxLang provides convenient global functions for executor management and usage:
 
 | Function                                       | Purpose                                             | Returns     | Example                                 |
 | ---------------------------------------------- | --------------------------------------------------- | ----------- | --------------------------------------- |
+| `executorDelete( name )`                       | Shutdown and remove executor from the registry      | void        | `executorDelete( "my-pool" )`           |
 | `executorGet( [name] )`                        | Get BoxExecutor by name (defaults to "io-tasks")    | BoxExecutor | `executorGet( "cpu-tasks" )`            |
 | `executorHas( name )`                          | Check if executor exists                            | Boolean     | `executorHas( "my-pool" )`              |
 | `executorList()`                               | List all executor names                             | Array       | `executorList()`                        |
@@ -663,6 +664,11 @@ for ( name in allExecutors ) {
     status = executorStatus( name )
     println( "#name#: #status.activeCount# active threads" )
 }
+
+// Delete an executor — shuts it down AND removes it from the registry
+// Unlike executorShutdown(), the name can be reused after executorDelete()
+executorDelete( "batch-processor" )
+batchProcessor = executorNew( "batch-processor", "fixed", 8 )  // safe to recreate
 ```
 
 ## ⏰ Scheduled Tasks: Use BoxLang Schedulers
