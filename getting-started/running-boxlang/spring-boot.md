@@ -41,7 +41,7 @@ Make sure `JAVA_HOME` points to a JDK 21+ installation before building or runnin
 
 ```groovy
 dependencies {
-    implementation 'ortus.boxlang:boxlang-spring-boot-starter:1.0.0'
+    implementation 'io.boxlang:boxlang-spring-boot-starter:1.0.0'
 }
 ```
 
@@ -49,7 +49,7 @@ dependencies {
 
 ```xml
 <dependency>
-    <groupId>ortus.boxlang</groupId>
+    <groupId>io.boxlang</groupId>
     <artifactId>boxlang-spring-boot-starter</artifactId>
     <version>1.0.0</version>
 </dependency>
@@ -163,14 +163,14 @@ Place `.bxm` templates under `src/main/resources/templates/`:
 Start your Spring Boot application as usual.
 
 > **Important JVM Requirements:** BoxLang requires reflective access to JDK internals. Ensure you pass the following JVM arguments when starting the application:
-> 
+>
 > ```
 > --add-opens java.base/java.lang=ALL-UNNAMED
 > --add-opens java.base/java.lang.reflect=ALL-UNNAMED
 > ```
-> 
+>
 > In a Gradle project, this can be added to your `bootRun` task:
-> 
+>
 > ```groovy
 > bootRun {
 >     jvmArgs = [
@@ -184,7 +184,7 @@ Navigate to `http://localhost:8080` in your browser.
 
 ## ⚙️ Configuration (`application.properties`)
 
-The starter registers `BoxLangProperties` under the `boxlang.*` namespace. 
+The starter registers `BoxLangProperties` under the `boxlang.*` namespace.
 
 | Property | Type | Default | Description |
 |---|---|---|---|
@@ -287,4 +287,3 @@ Keep the `classpath:` prefix for production. The `file:` path works for local de
 2. **Runtime lifecycle** — the `BoxRuntime` is started very early in the application lifecycle, ensuring it is ready before the first HTTP request arrives. It shuts down gracefully when the application context stops.
 3. **View resolution** — `BoxLangViewResolver` resolves logical view names to resources using the configured `prefix` + `viewName` + `suffix` pattern. If the resource does not exist, it returns `null` and Spring continues to the next resolver in the chain, enabling seamless coexistence with other view technologies like Thymeleaf or FreeMarker.
 4. **Template rendering** — `BoxLangView` wraps the `HttpServletRequest` and `HttpServletResponse` in a `SpringBoxHTTPExchange`, constructs a `WebRequestBoxContext` (which exposes all BoxLang web scopes), injects the Spring `Model` map into the `variables` scope, executes the template, and flushes the output buffer to the servlet response.
-
