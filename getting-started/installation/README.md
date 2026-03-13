@@ -397,19 +397,40 @@ This is the servlet edition of BoxLang that you can deploy on any servlet contai
 * JAR:\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/boxlang-servlet-latest-all.jar)
 
+### Spring Boot Starter
+
+The BoxLang Spring Boot Starter allows you to use BoxLang as a view engine and runtime inside any Spring Boot 3 web application.
+
+* Spring Boot Starter Integration Guide:\
+  [Spring Boot Integration](../running-boxlang/spring-boot.md)
+
 ### Docker
 
 We have a full [Docker guide you can follow here.](../running-boxlang/docker.md)
 
-## BoxLang IDE
+## BoxLang IDE & Tools
 
-<div align="left"><figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>BoxLang IDE</p></figcaption></figure></div>
+BoxLang provides officially supported tooling for popular IDEs to enhance your development experience.
 
-The BoxLang IDE is a collection of modules for VSCode that will give you a line debugger, LSP (Language Server Protocol), highlighting, introspection, generation, and much more. You can find it here:
+<div align="left"><figure><img src="../../.gitbook/assets/image (8).png" alt=""><figcaption><p>BoxLang IDE for VSCode</p></figcaption></figure></div>
+
+### VSCode Extension
+
+The BoxLang IDE for VSCode is a collection of tools that gives you a line debugger, LSP (Language Server Protocol), highlighting, introspection, generation, and much more. You can find it here:
 
 {% embed url="https://marketplace.visualstudio.com/items?itemName=ortus-solutions.vscode-boxlang" %}
-Install Now
+Install VSCode IDE
 {% endembed %}
+
+### IntelliJ IDEA Plugin
+
+We also have a robust plugin for IntelliJ IDEA and other JetBrains IDEs. It provides syntax highlighting, auto-completion, formatting, and debugging capabilities for your BoxLang projects.
+
+{% embed url="https://plugins.jetbrains.com/plugin/23812-boxlang" %}
+Install IntelliJ Plugin
+{% endembed %}
+
+Learn more about all the available tools in our [IDE & Tooling Section](../ide-tooling/README.md).
 
 ## Core Modules
 
@@ -423,4 +444,18 @@ The BoxLang core is lightweight and fast. Everything that extends the core comes
 
 Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get professional/customized support but also new features, and modules. You can find out more about our subscriptions here: [https://boxlang.io/plans](https://boxlang.io/plans). Here is the collection of modules that you will get with your subscription which are not part of the open source edition.
 
-<table><thead><tr><th width="160">Module</th><th width="424">Description</th><th width="158">Status<select><option value="7PvmwHzSW7tN" label="In Development" color="blue"></option><option value="KAAYVEqj9HUs" label="Done" color="blue"></option><option value="LZpOL7kx2Gyb" label="In Planning" color="blue"></option></select></th></tr></thead><tbody><tr><td><strong>bx-redis</strong></td><td>Native Redis integration is used for caching, session distribution, and publish-subscribe events.<br><br><code>install-bx-module bx-redis</code></td><td><span data-option="KAAYVEqj9HUs">Done</span></td></tr><tr><td><strong>bx-mongo</strong></td><td>Native MongoDB integration for caching, session distribution and advanced MongoDB operations.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-couchbase</strong></td><td>Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr><tr><td><strong>bx-pdftools</strong></td><td>Our collection of enhanced PDF tooling. Includes the ability to extract PDF forms, fill out PDF forms, squash, merge and more.</td><td><span data-option="7PvmwHzSW7tN">In Development</span></td></tr></tbody></table>
+{% content-ref url="../../boxlang-framework/boxlang-plus/modules/README.md" %}
+[BoxLang+ Modules](../../boxlang-framework/boxlang-plus/modules/README.md)
+{% endcontent-ref %}
+
+| Module | Description | Status |
+| :--- | :--- | :--- |
+| [`bx-csv`](../../boxlang-framework/boxlang-plus/modules/bx-csv.md) | Streaming CSV parsing & generation for large datasets | Done |
+| [`bx-couchbase`](../../boxlang-framework/boxlang-plus/modules/bx-couchbase/) | Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage. | In Development |
+| [`bx-ldap`](../../boxlang-framework/boxlang-plus/modules/bx-ldap/) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications. | Done |
+| [`bx-plus`](../../boxlang-framework/boxlang-plus/modules/bx-plus/) | Subscription bootstrap, entitlement validation, shared utilities | Done |
+| [`bx-pdf`](../../boxlang-framework/boxlang-plus/modules/bx-plus-pdf.md) | PDF generation and manipulation for documents, reports, and forms. Includes free-tier and licensed functionality. | Done |
+| [`bx-redis`](../../boxlang-framework/boxlang-plus/modules/bx-redis/) | Native Redis integration is used for caching, session distribution, and publish-subscribe events. | Done |
+| [`bx-spreadsheet`](../../boxlang-framework/boxlang-plus/modules/bx-spreadsheet/) | Read, write, and style spreadsheet documents (XLSX). | Done |
+| [`bx-soap-compat`](../../boxlang-framework/boxlang-plus/modules/soap-compat-+.md) | SOAP compatibility layer for generating, parsing, and communicating with web services. | Done |
+| [`bx-rest-compat`](../../boxlang-framework/boxlang-plus/modules/rest-compat-+/) | REST component compatibility and routing translation layer for running legacy framework-less REST architectures. | Done |

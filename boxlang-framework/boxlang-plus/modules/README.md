@@ -20,6 +20,8 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 | [`bx-pdf`](bx-plus-pdf.md)          | <p><br>PDF generation and manipulation for documents, reports, and forms. This module provides free-tier as well as <a href="bx-plus-pdf.md">licensed functionality</a></p> | `box install bx-pdf`         |
 | [`bx-redis`](bx-redis/)             | High-performance Redis-backed caching, data structures, pub/sub                                                                                                             | `box install bx-redis`       |
 | [`bx-spreadsheet`](bx-spreadsheet/) | Read, write, style spreadsheet documents (XLSX)                                                                                                                             | `box install bx-spreadsheet` |
+| [`bx-soap-compat`](soap-compat-+.md) | SOAP compatibility layer for generating, parsing, and communicating with web services.                                                                                                | `box install bx-soap-compat` |
+| [`bx-rest-compat`](rest-compat-+/) | REST component compatibility and routing translation layer for running legacy framework-less REST architectures.                                                              | `box install bx-rest-compat` |
 
 ## 🚀 Installation Pattern
 
@@ -74,6 +76,14 @@ After installation, modules register themselves automatically or provide a simpl
 
 {% content-ref url="bx-spreadsheet/" %}
 [bx-spreadsheet](bx-spreadsheet/)
+{% endcontent-ref %}
+
+{% content-ref url="soap-compat-+.md" %}
+[soap-compat-+.md](soap-compat-+.md)
+{% endcontent-ref %}
+
+{% content-ref url="rest-compat-+/" %}
+[rest-compat-+](rest-compat-+/)
 {% endcontent-ref %}
 
 ## 🛡 Reliability & Performance
