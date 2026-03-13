@@ -27,7 +27,7 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
    5. DigitalOcean App Platform
    6. Android/iOS Devices
    7. Web assembly
-   8. Etc
+   8. Spring Boot Applications
 8. Compile down to Java ByteCode
 9. Framework Capabilities (Scheduling, applications, events, async computing, tasks, queues, modules)
 10. [Professional Open-Source Support](https://boxlang.io/plans)
