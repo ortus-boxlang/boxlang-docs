@@ -76,6 +76,7 @@
   * [GitHub Actions](getting-started/running-boxlang/github-actions.md)
   * [JSR-223 Scripting](getting-started/running-boxlang/jsr-223-scripting.md)
   * [MiniServer](getting-started/running-boxlang/miniserver.md)
+  * [Spring Boot](getting-started/running-boxlang/spring-boot.md)
   * [Try BoxLang!](getting-started/running-boxlang/try-boxlang.md)
 * [BoxLang Cloud Servers](getting-started/boxlang-cloud-servers/README.md)
   * [Microsoft Azure](getting-started/boxlang-cloud-servers/microsoft-azure.md)
