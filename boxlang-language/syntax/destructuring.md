@@ -2,9 +2,14 @@
 description: >-
   Unpack structs and arrays into variables with defaults, nesting, and rest
   captures.
+icon: pallet-boxes
 ---
 
 # Destructuring
+
+{% hint style="info" %}
+Since BoxLang 1.12.x
+{% endhint %}
 
 Destructuring lets you unpack values from **structs** and **arrays** into variables in a single expression.
 

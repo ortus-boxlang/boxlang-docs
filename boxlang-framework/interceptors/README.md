@@ -7,13 +7,13 @@ icon: jet-fighter-up
 
 # Interceptors
 
-BoxLang is an event-driven language and it emits events throughout many different life-cycles.  The entire framework for events is also extensible and can be used not only by Module developers but by anybody using the language in either BoxLang or Java.  There are several core events that are emitted and you can register your own events we call **interception points**.
+BoxLang is an event-driven language and it emits events throughout many different life-cycles. The entire framework for events is also extensible and can be used not only by Module developers but by anybody using the language in either BoxLang or Java. There are several core events that are emitted and you can register your own events we call **interception points**.
 
 {% hint style="info" %}
 If you are familiar with the intercepting filter pattern, or observer/observable pattern, then that's what BoxLang follows.
 {% endhint %}
 
-<figure><img src="../../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (2) (1).png" alt=""><figcaption></figcaption></figure>
 
 ## Event Driven Programming
 
@@ -33,13 +33,11 @@ BoxLang has 3 interceptor pools that will emit events:
 * `Application.bx Request Listener` - The request listener for an application
 * `CacheProviders` - The BoxCache providers
 
-
-
 When you register interceptors, they will be registered within any of these pools.
 
 ## Interceptors <a href="#resources" id="resources"></a>
 
-In BoxLang, listeners are referred to as **Interceptors.**  These can be built in Java or BoxLang as classes or closures/lambdas.  If they are classes they can listen to multiple interception points and have a `configure` method.
+In BoxLang, listeners are referred to as **Interceptors.** These can be built in Java or BoxLang as classes or closures/lambdas. If they are classes they can listen to multiple interception points and have a `configure` method.
 
 {% tabs %}
 {% tab title="BoxLang" %}
@@ -117,7 +115,7 @@ Interceptors can be registered via the following approaches into the different p
   * `boxRegisterInterceptor()` - Register into the global runtime
   * `boxRegisterRequestInterceptor()` - Register into the request listener
 * Java `InterceptorService`
-  * The interceptor service has several registration method according to different types.  The `InterceptorService` is the global runtime.
+  * The interceptor service has several registration method according to different types. The `InterceptorService` is the global runtime.
   * `register( IInterceptor )`
   * `register( IInterceptor, properties )`
   * `register( IClassRunnable )`
@@ -128,7 +126,7 @@ Interceptors can be registered via the following approaches into the different p
 
 #### ModuleConfig.bx
 
-You can create an `interceptors` array for registration inside the `ModuleConfig.bx`&#x20;
+You can create an `interceptors` array for registration inside the `ModuleConfig.bx`
 
 ```groovy
 // Interceptors registration
@@ -148,7 +146,7 @@ interceptors = [
 * `boxRegisterInterceptor( interceptor, [states=[]] )`
 * `boxRegisterRequestInterceptor( interceptor, [states=[]] )`
 
-The `states` are the interception points to SPECICALLY register an interceptor to.  If you omit it, then we will scan the interceptor for interception point states.
+The `states` are the interception points to SPECICALLY register an interceptor to. If you omit it, then we will scan the interceptor for interception point states.
 
 {% hint style="danger" %}
 A closure/lambda when registered REQUIRES to which states to register to.
@@ -164,7 +162,7 @@ boxRegisterInterceptor( new MyInterceptor() )
 
 ### Configure() <a href="#resources" id="resources"></a>
 
-The `configure()` method in the interceptor can be used to bootstrap anything you might need once the interceptor is loaded and registered by the runtime.  The Java counterparts have a `BaseInterceptor` class and the configurations can have a structure of setup `properties`.
+The `configure()` method in the interceptor can be used to bootstrap anything you might need once the interceptor is loaded and registered by the runtime. The Java counterparts have a `BaseInterceptor` class and the configurations can have a structure of setup `properties`.
 
 {% tabs %}
 {% tab title="BoxLang" %}
@@ -210,8 +208,6 @@ interceptors = [
 If you are building BoxLang interceptors then you get a set of injections into your class' `variables` scope.
 
 <table><thead><tr><th width="200">Name</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>The name of the interceptor, if any</td></tr><tr><td><code>properties</code></td><td>The structure of properties</td></tr><tr><td><code>log</code></td><td>A BoxLang logger that maps to the <code>runtime</code> log file</td></tr><tr><td><code>interceptorService</code></td><td>A reference to the Interceptor Service</td></tr><tr><td><code>boxRuntime</code></td><td>A refernce to the Box Runtime class.</td></tr><tr><td><code>moduleRecord</code></td><td>If this interceptor belongs to a module, a reference to the modules record class will be injected as well.</td></tr></tbody></table>
-
-
 
 ## Resources <a href="#resources" id="resources"></a>
 

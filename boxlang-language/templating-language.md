@@ -1,11 +1,19 @@
 ---
-description: Create dynamic templates with BoxLang's powerful templating language for HTML generation, views, and content rendering
+description: >-
+  Create dynamic templates with BoxLang's powerful templating language for HTML
+  generation, views, and content rendering
 icon: code
 ---
 
 # Templating Language
 
 BoxLang includes a powerful templating language designed for creating dynamic HTML, views, and content rendering. Template files use the `.bxm` extension and provide a natural way to mix static content with dynamic BoxLang code.
+
+{% hint style="success" %}
+![](../.gitbook/assets/image.png)
+
+Please note that we have a [dedicated runtime for Spring Boot 3.x](../getting-started/running-boxlang/spring-boot.md) that allows you to build your entire view layer in Boxlang.
+{% endhint %}
 
 ## 📄 Template File Structure
 
@@ -90,12 +98,12 @@ The `bx:output` component enables output of dynamic content and expressions. Wit
 
 **Attributes:**
 
-- `query` - Loop over a query object and output each row
-- `group` - Group query output by a column name
-- `groupCaseSensitive` - Whether group matching is case-sensitive (default: false)
-- `startRow` - Start outputting from this row number
-- `maxRows` - Maximum number of rows to output
-- `encodefor` - Automatically encode output ("html", "javascript", "url", "xml")
+* `query` - Loop over a query object and output each row
+* `group` - Group query output by a column name
+* `groupCaseSensitive` - Whether group matching is case-sensitive (default: false)
+* `startRow` - Start outputting from this row number
+* `maxRows` - Maximum number of rows to output
+* `encodefor` - Automatically encode output ("html", "javascript", "url", "xml")
 
 **Query Loop Example:**
 
@@ -488,9 +496,7 @@ class {
 }
 ```
 
-{% hint style="info" %}
-For comprehensive documentation on creating and using custom components, including advanced patterns, component scopes, and best practices, see the [Components Framework Documentation](../boxlang-framework/components.md).
-{% endhint %}
+\{% hint style="info" %\} For comprehensive documentation on creating and using custom components, including advanced patterns, component scopes, and best practices, see the [Components Framework Documentation](../boxlang-framework/components.md). \{% endhint %\}
 
 ## 💡 Practical Examples
 
@@ -712,11 +718,11 @@ When outputting user-generated content or data from external sources, always enc
 
 For a complete list of available template components, see:
 
-- [Components Reference](reference/components/)
-- [Output Component](reference/components/system/Output.md)
-- [Loop Component](reference/components/system/Loop.md)
-- [Query Component](reference/components/jdbc/Query.md)
-- [Include Component](reference/components/system/Include.md)
+* [Components Reference](reference/components/)
+* [Output Component](reference/components/system/Output.md)
+* [Loop Component](reference/components/system/Loop.md)
+* [Query Component](reference/components/jdbc/Query.md)
+* [Include Component](reference/components/system/Include.md)
 
 ## 🎓 Best Practices
 
@@ -729,8 +735,8 @@ For a complete list of available template components, see:
 
 ## 🔗 Related Documentation
 
-- [Program Structure](program-structure.md)
-- [Syntax & Semantics](syntax.md)
-- [Components](reference/components/)
-- [Built-in Functions](reference/built-in-functions/)
-- [Variables and Scopes](variable-scopes.md)
+* [Program Structure](program-structure.md)
+* [Syntax & Semantics](syntax.md)
+* [Components](reference/components/)
+* [Built-in Functions](reference/built-in-functions/)
+* [Variables and Scopes](variable-scopes.md)

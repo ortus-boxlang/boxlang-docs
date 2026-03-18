@@ -1,8 +1,13 @@
 ---
 description: Use spread syntax in literals and function calls, plus shorthand struct keys.
+icon: ellipsis
 ---
 
 # Spread Syntax
+
+{% hint style="info" %}
+Since BoxLang 1.12.x
+{% endhint %}
 
 Spread syntax uses `...` to expand arrays and structs into **function calls** and **literals**.
 

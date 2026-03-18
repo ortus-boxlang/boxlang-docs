@@ -1,9 +1,13 @@
 ---
-description: Run BoxLang inside a Spring Boot application
-icon: leaf
+description: >-
+  Use BoxLang as your Spring Boot view layer, with full framework support built
+  in.
+icon: power-off
 ---
 
 # Spring Boot
+
+<figure><img src="../../.gitbook/assets/image (1).png" alt="" width="450"><figcaption></figcaption></figure>
 
 The **BoxLang Spring Boot Starter** is a zero-configuration Spring Boot auto-configuration library that integrates the [BoxLang](https://www.boxlang.io) dynamic JVM language as a view engine inside any Spring Boot 3 web application. Write your templates in BoxLang's expressive `.bxm` markup syntax and let Spring MVC route requests to them — no boilerplate required. You can also leverage any BoxLang features and libraries directly from your Java controllers, services, or any Spring-managed bean by just talking to the `BoxRuntime` API.
 
@@ -13,23 +17,19 @@ BoxRuntime boxlang = BoxRuntime.getInstance();
 
 ## ✨ Features
 
-- ⚙️ **Zero-configuration auto-configuration** — drop the JAR on the classpath and Spring Boot wires everything automatically via `BoxLangAutoConfiguration`.
-- 🖼️ **BoxLang View Resolver** — a `BoxLangViewResolver` resolves logical view names (e.g. `"home"`) to BoxLang `.bxm` templates (e.g. `classpath:/templates/home.bxm`).
-- 🌐 **Full web scopes** — templates have access to the complete set of BoxLang web scopes: `URL`, `Form`, `CGI`, `Cookie`, and `Request`.
-- 🔗 **Spring Model integration** — every attribute added to the Spring `Model` is automatically injected into the BoxLang `variables` scope, accessible as `#variables.myKey#` in the template.
-- 🔄 **Lifecycle-managed runtime** — the `BoxRuntime` starts early in the application lifecycle and shuts down gracefully when the context stops, with no manual wiring needed.
-- 🛠️ **Configurable via `application.properties`** — all settings are controlled through the `boxlang.*` property namespace; sensible defaults require no changes for basic use.
-- 📄 **Custom `boxlang.json` support** — supply your own BoxLang configuration file via classpath, file URI, or absolute path.
-- 🔀 **Pluggable resolver order** — configure the view resolver's position in the Spring MVC resolver chain so BoxLang can coexist with Thymeleaf, FreeMarker, or any other view technology.
-- 🏷️ **Spring Boot 3 / Jakarta EE ready** — built against Spring Boot 3.x and the `jakarta.*` namespace.
+* ⚙️ **Zero-configuration auto-configuration** — drop the JAR on the classpath and Spring Boot wires everything automatically via `BoxLangAutoConfiguration`.
+* 🖼️ **BoxLang View Resolver** — a `BoxLangViewResolver` resolves logical view names (e.g. `"home"`) to BoxLang `.bxm` templates (e.g. `classpath:/templates/home.bxm`).
+* 🌐 **Full web scopes** — templates have access to the complete set of BoxLang web scopes: `URL`, `Form`, `CGI`, `Cookie`, and `Request`.
+* 🔗 **Spring Model integration** — every attribute added to the Spring `Model` is automatically injected into the BoxLang `variables` scope, accessible as `#variables.myKey#` in the template.
+* 🔄 **Lifecycle-managed runtime** — the `BoxRuntime` starts early in the application lifecycle and shuts down gracefully when the context stops, with no manual wiring needed.
+* 🛠️ **Configurable via `application.properties`** — all settings are controlled through the `boxlang.*` property namespace; sensible defaults require no changes for basic use.
+* 📄 **Custom `boxlang.json` support** — supply your own BoxLang configuration file via classpath, file URI, or absolute path.
+* 🔀 **Pluggable resolver order** — configure the view resolver's position in the Spring MVC resolver chain so BoxLang can coexist with Thymeleaf, FreeMarker, or any other view technology.
+* 🏷️ **Spring Boot 3 / Jakarta EE ready** — built against Spring Boot 3.x and the `jakarta.*` namespace.
 
 ## 📋 Requirements
 
-| Dependency | Version |
-|---|---|
-| ☕ Java | 21+ |
-| 🍃 Spring Boot | 3.4.x+ |
-| 🥊 BoxLang | 1.11.0+ |
+<table><thead><tr><th width="374">Dependency</th><th>Version</th></tr></thead><tbody><tr><td>☕ Java</td><td>21+</td></tr><tr><td>🍃 Spring Boot</td><td>3.x+</td></tr><tr><td>🥊 BoxLang</td><td>1.11.0+</td></tr></tbody></table>
 
 {% hint style="info" %}
 Make sure `JAVA_HOME` points to a JDK 21+ installation before building or running.
@@ -65,7 +65,7 @@ Get a BoxLang-powered Spring Boot application running in minutes.
 
 ### Step 1 — Add the dependency
 
-Add `boxlang-spring-boot-starter` to your project as shown in the [Installation](#installation) section.
+Add `boxlang-spring-boot-starter` to your project as shown in the [Installation](spring-boot.md#installation) section.
 
 ### Step 2 — Create a Spring MVC controller
 
@@ -186,14 +186,14 @@ Navigate to `http://localhost:8080` in your browser.
 
 The starter registers `BoxLangProperties` under the `boxlang.*` namespace.
 
-| Property | Type | Default | Description |
-|---|---|---|---|
-| `boxlang.prefix` | `String` | `classpath:/templates/` | Directory path where `.bxm` templates are located. |
-| `boxlang.suffix` | `String` | `.bxm` | File extension for BoxLang templates. |
-| `boxlang.config-path` | `String` | *(none)* | Location of the BoxLang runtime configuration file (e.g., `classpath:/boxlang.json`). If not set, it defaults to checking `classpath:/boxlang.json` and then falls back to internal runtime defaults. |
-| `boxlang.debug-mode` | `boolean` | `false` | Enables BoxLang debug mode. Useful for development logging. |
-| `boxlang.view-resolver-order`| `int` | `2147483642` | The priority of the BoxLang view resolver in Spring’s resolver chain. Default is `Ordered.MAX_VALUE - 5`. |
-| `boxlang.runtime-home` | `String` | *(none)* | Overrides the global `BOXLANG_HOME` environment directory. |
+| Property                      | Type      | Default                 | Description                                                                                                                                                                                           |
+| ----------------------------- | --------- | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `boxlang.prefix`              | `String`  | `classpath:/templates/` | Directory path where `.bxm` templates are located.                                                                                                                                                    |
+| `boxlang.suffix`              | `String`  | `.bxm`                  | File extension for BoxLang templates.                                                                                                                                                                 |
+| `boxlang.config-path`         | `String`  | _(none)_                | Location of the BoxLang runtime configuration file (e.g., `classpath:/boxlang.json`). If not set, it defaults to checking `classpath:/boxlang.json` and then falls back to internal runtime defaults. |
+| `boxlang.debug-mode`          | `boolean` | `false`                 | Enables BoxLang debug mode. Useful for development logging.                                                                                                                                           |
+| `boxlang.view-resolver-order` | `int`     | `2147483642`            | The priority of the BoxLang view resolver in Spring’s resolver chain. Default is `Ordered.MAX_VALUE - 5`.                                                                                             |
+| `boxlang.runtime-home`        | `String`  | _(none)_                | Overrides the global `BOXLANG_HOME` environment directory.                                                                                                                                            |
 
 ### Example `application.properties`
 
@@ -218,14 +218,14 @@ Place `boxlang.json` at `src/main/resources/boxlang.json` to customise language 
 
 BoxLang templates rendered through the view engine have access to all standard BoxLang web scopes:
 
-| Scope | Description |
-|---|---|
+| Scope       | Description                                                          |
+| ----------- | -------------------------------------------------------------------- |
 | `variables` | Contains all Spring `Model` attributes plus template-local variables |
-| `url` | Query string parameters from the HTTP request |
-| `form` | Form POST data |
-| `cgi` | CGI/server environment variables |
-| `cookie` | HTTP cookies |
-| `request` | Request-scoped storage (per HTTP request) |
+| `url`       | Query string parameters from the HTTP request                        |
+| `form`      | Form POST data                                                       |
+| `cgi`       | CGI/server environment variables                                     |
+| `cookie`    | HTTP cookies                                                         |
+| `request`   | Request-scoped storage (per HTTP request)                            |
 
 **Accessing Spring Model attributes:**
 

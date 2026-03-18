@@ -69,6 +69,10 @@ These operators are used to perform arithmetic/mathematical operations on operan
 
 ### 🔢 Range Operator
 
+{% hint style="info" %}
+Since BoxLang 1.12.x
+{% endhint %}
+
 BoxLang supports the inclusive `..` range operator in BoxScript expressions.
 
 ```javascript
@@ -84,12 +88,12 @@ Use this when you want a compact way to create integer ranges without calling a 
 
 #### Notes on mathematical casting:
 
-For basic arithmetic operations ( addition, subtraction, multiplication and division ) dates and timespans may be cast as numeric values. In BoxLang the numeric value of a [DateTime](../boxlang-framework/modularity/compat-cfml/reference/types/datetime.md) object is a representation of the decimal days since the Unix epoch time. A [timespan](reference/built-in-functions/temporal/CreateTimeSpan.md) or Java [Duration](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html) object is represented as decimal days for the purpose of mathematical operations.
+For basic arithmetic operations (addition, subtraction, multiplication, and division), dates and time spans may be cast as numeric values. In BoxLang, the numeric value of a [DateTime](../boxlang-framework/modularity/compat-cfml/reference/types/datetime.md) object represents the number of decimal days since the Unix epoch. A [timespan](reference/built-in-functions/temporal/CreateTimeSpan.md) or Java [Duration](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html) object is represented as decimal days for the purpose of mathematical operations.
 
 ## 🔢 Bitwise Operators
 
 {% hint style="info" %}
-BoxLang has native [bitwise](https://en.wikipedia.org/wiki/Bitwise_operation) operators and it also implements bitwise operations via functions (since functions can also be operators in BoxLang): `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math)
+BoxLang has native [bitwise](https://en.wikipedia.org/wiki/Bitwise_operation) operators, and it also implements bitwise operations via functions (since functions can also be operators in BoxLang): `bitAnd, bitMaskClear, bitMaskRead, bitMaskSet, bitNot, bitOr, bitSHLN, bitSHRN, bitXOR` . You can find much more information here: [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math)
 {% endhint %}
 
 These operators are used to perform bitwise operations on operands.
@@ -309,6 +313,10 @@ echo( s?.name )
 
 ### 🌟 Spread Operator
 
+{% hint style="info" %}
+Since BoxLang 1.12.x
+{% endhint %}
+
 The spread operator expands arrays and structs into function calls and literals.
 
 See [Spread Syntax](syntax/spread-syntax.md) for full coverage.
@@ -346,6 +354,10 @@ result = { ...left, ...right, shared: "literal" }
 ```
 
 ### 💤 Rest Operator
+
+{% hint style="info" %}
+Since BoxLang 1.12.x
+{% endhint %}
 
 The rest operator collects the remaining values into one binding.
 
