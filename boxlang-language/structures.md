@@ -3,7 +3,7 @@ description: Collection of key-value pairs; a data dictionary
 icon: book
 ---
 
-# 📖 Structures
+# Structures
 
 A structure is a collection of data where each element of data is addressed by a **name or key** and it can hold a value of any type. Like a dictionary but on steroids:
 
@@ -31,14 +31,17 @@ All BoxLang structures are passed to functions as memory references, not values.
 
 ## 📋 Table of Contents
 
-- [Key-Value Pairs](#key-value-pairs)
-- [Creating Structures](#creating-structures)
-- [Accessing Structure Elements](#accessing-structure-elements)
-- [Structure Built-In Functions](#structure-built-in-functions)
-- [Member Functions](#member-functions)
-- [Looping Over Structures](#looping-over-structures)
-- [Sorting Structures](#sorting-structures)
-- [Advanced Patterns](#advanced-patterns)
+* [Key-Value Pairs](structures.md#key-value-pairs)
+* [Creating Structures](structures.md#creating-structures)
+* [Accessing Structure Elements](structures.md#accessing-structure-elements)
+* [Struct Shorthand Keys](structures.md#-struct-shorthand-keys)
+* [Struct Spread](structures.md#-struct-spread)
+* [Struct Destructuring](structures.md#-struct-destructuring)
+* [Structure Built-In Functions](structures.md#structure-built-in-functions)
+* [Member Functions](structures.md#member-functions)
+* [Looping Over Structures](structures.md#looping-over-structures)
+* [Sorting Structures](structures.md#sorting-structures)
+* [Advanced Patterns](structures.md#advanced-patterns)
 
 ## 🔑 Key-Value Pairs
 
@@ -149,75 +152,158 @@ structUpdate( produce, "carrots", 2 )
 **Tip** You can use the `toString()` call on any structure to get a string representation of its keys+values: `produce.toString()`
 {% endhint %}
 
+## ✨ Struct Shorthand Keys
+
+Struct literals support JavaScript-style shorthand keys.
+
+```javascript
+host = "localhost"
+port = 5432
+
+config = { host, port }
+```
+
+That is equivalent to:
+
+```javascript
+config = { host: host, port: port }
+```
+
+Shorthand keeps the identifier name as the key.
+
+```javascript
+fooBar = "value"
+result = { fooBar }
+```
+
+## 🌟 Struct Spread
+
+Struct literals support spread syntax for merging one or more sources.
+
+```javascript
+defaults = { retries: 2, ssl: false }
+overrides = { ssl: true }
+
+config = { host: "localhost", ...defaults, ...overrides }
+```
+
+Ordered struct literals support spread as well.
+
+```javascript
+base = [ first: 1, second: 2 ]
+result = [ ...base, third: 3 ]
+```
+
+Later entries win.
+
+```javascript
+result = { ...left, ...right, shared: "literal" }
+```
+
+## 🧩 Struct Destructuring
+
+Struct destructuring lets you bind keys directly into variables.
+
+```javascript
+user = { name: "Luis", role: "admin" }
+var { name, role } = user
+```
+
+You can rename keys, provide defaults, and capture the rest.
+
+```javascript
+options = { host: "localhost" }
+var { host, port = 5432, ...rest } = options
+```
+
+Nested patterns are supported.
+
+```javascript
+user = { profile: { email: "box@lang.io" } }
+var { profile: { email } } = user
+```
+
+Non-declaration struct assignments must be wrapped in parentheses.
+
+```javascript
+({ name, role } = user)
+```
+
+{% hint style="info" %}
+Quoted, spaced, or numeric keys cannot use shorthand destructuring. Use explicit renaming instead.
+{% endhint %}
+
+See [Destructuring](syntax/destructuring.md) for full syntax and scoped-target behavior.
+
 ## 📚 Struct Built-In Functions (BIFs)
 
 BoxLang provides a comprehensive set of struct BIFs organized by functionality. All struct BIFs can be called as member methods on Struct objects.
 
 ### 🔨 Creation & Configuration Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `structNew()` | Create new struct | `structNew("ordered")` → `[:]` |
-| `structCopy()` | Create shallow copy | `structCopy(myStruct)` |
-| `structToSorted()` | Create sorted copy | `structToSorted(myStruct, "text")` |
+| Function           | Purpose             | Example                            |
+| ------------------ | ------------------- | ---------------------------------- |
+| `structNew()`      | Create new struct   | `structNew("ordered")` → `[:]`     |
+| `structCopy()`     | Create shallow copy | `structCopy(myStruct)`             |
+| `structToSorted()` | Create sorted copy  | `structToSorted(myStruct, "text")` |
 
 ### ➕ Modification Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `structInsert()` | Insert key-value pair | `structInsert(struct, "key", "value")` |
-| `structUpdate()` | Update existing key | `structUpdate(struct, "key", "newValue")` |
-| `structAppend()` | Merge structs | `structAppend(struct1, struct2)` |
-| `structDelete()` | Remove key | `structDelete(struct, "key")` |
-| `structClear()` | Remove all keys | `structClear(struct)` |
+| Function         | Purpose               | Example                                   |
+| ---------------- | --------------------- | ----------------------------------------- |
+| `structInsert()` | Insert key-value pair | `structInsert(struct, "key", "value")`    |
+| `structUpdate()` | Update existing key   | `structUpdate(struct, "key", "newValue")` |
+| `structAppend()` | Merge structs         | `structAppend(struct1, struct2)`          |
+| `structDelete()` | Remove key            | `structDelete(struct, "key")`             |
+| `structClear()`  | Remove all keys       | `structClear(struct)`                     |
 
 ### 🔍 Search & Filter Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `structFind()` | Find value by key | `structFind(struct, "key")` → value |
-| `structGet()` | Get with dot notation | `structGet("struct.nested.key")` |
-| `structFindKey()` | Find keys matching value | `structFindKey(struct, "searchValue")` |
-| `structFindValue()` | Find values matching criteria | `structFindValue(struct, "pattern")` |
-| `structKeyExists()` | Check if key exists | `structKeyExists(struct, "key")` → `true` |
-| `structFilter()` | Filter by condition | `structFilter(struct, (k,v) -> v > 5)` |
-| `structEvery()` | Test all entries | `structEvery(struct, (k,v) -> v > 0)` → `true` |
-| `structSome()` | Test any entry | `structSome(struct, (k,v) -> v > 10)` → `true` |
-| `structNone()` | Test no entries match | `structNone(struct, (k,v) -> v < 0)` → `true` |
+| Function            | Purpose                       | Example                                        |
+| ------------------- | ----------------------------- | ---------------------------------------------- |
+| `structFind()`      | Find value by key             | `structFind(struct, "key")` → value            |
+| `structGet()`       | Get with dot notation         | `structGet("struct.nested.key")`               |
+| `structFindKey()`   | Find keys matching value      | `structFindKey(struct, "searchValue")`         |
+| `structFindValue()` | Find values matching criteria | `structFindValue(struct, "pattern")`           |
+| `structKeyExists()` | Check if key exists           | `structKeyExists(struct, "key")` → `true`      |
+| `structFilter()`    | Filter by condition           | `structFilter(struct, (k,v) -> v > 5)`         |
+| `structEvery()`     | Test all entries              | `structEvery(struct, (k,v) -> v > 0)` → `true` |
+| `structSome()`      | Test any entry                | `structSome(struct, (k,v) -> v > 10)` → `true` |
+| `structNone()`      | Test no entries match         | `structNone(struct, (k,v) -> v < 0)` → `true`  |
 
 ### 🔄 Transformation Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `structMap()` | Transform values | `structMap(struct, (k,v) -> v * 2)` |
-| `structReduce()` | Reduce to single value | `structReduce(struct, (acc,k,v) -> acc + v, 0)` |
-| `structKeyTranslate()` | Translate keys | `structKeyTranslate(struct, mapping)` |
+| Function                | Purpose                 | Example                                                 |
+| ----------------------- | ----------------------- | ------------------------------------------------------- |
+| `structMap()`           | Transform values        | `structMap(struct, (k,v) -> v * 2)`                     |
+| `structReduce()`        | Reduce to single value  | `structReduce(struct, (acc,k,v) -> acc + v, 0)`         |
+| `structKeyTranslate()`  | Translate keys          | `structKeyTranslate(struct, mapping)`                   |
 | `structToQueryString()` | Convert to query string | `structToQueryString(struct)` → `"key1=val1&key2=val2"` |
 
 ### 📊 Sorting Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
+| Function       | Purpose            | Example                                           |
+| -------------- | ------------------ | ------------------------------------------------- |
 | `structSort()` | Sort keys to array | `structSort(struct, "text")` → `["key1", "key2"]` |
 
 ### 📏 Information Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `structCount()` | Get key count | `structCount(struct)` → `5` |
-| `structIsEmpty()` | Check if empty | `structIsEmpty(struct)` → `false` |
-| `structKeyArray()` | Get keys as array | `structKeyArray(struct)` → `["key1", "key2"]` |
-| `structKeyList()` | Get keys as list | `structKeyList(struct)` → `"key1,key2"` |
-| `structValueArray()` | Get values as array | `structValueArray(struct)` → `[val1, val2]` |
-| `structEquals()` | Compare structs | `structEquals(struct1, struct2)` → `true` |
-| `structIsCaseSensitive()` | Check case sensitivity | `structIsCaseSensitive(struct)` → `false` |
-| `structIsOrdered()` | Check if ordered | `structIsOrdered(struct)` → `true` |
-| `structGetMetadata()` | Get struct metadata | `structGetMetadata(struct)` |
+| Function                  | Purpose                | Example                                       |
+| ------------------------- | ---------------------- | --------------------------------------------- |
+| `structCount()`           | Get key count          | `structCount(struct)` → `5`                   |
+| `structIsEmpty()`         | Check if empty         | `structIsEmpty(struct)` → `false`             |
+| `structKeyArray()`        | Get keys as array      | `structKeyArray(struct)` → `["key1", "key2"]` |
+| `structKeyList()`         | Get keys as list       | `structKeyList(struct)` → `"key1,key2"`       |
+| `structValueArray()`      | Get values as array    | `structValueArray(struct)` → `[val1, val2]`   |
+| `structEquals()`          | Compare structs        | `structEquals(struct1, struct2)` → `true`     |
+| `structIsCaseSensitive()` | Check case sensitivity | `structIsCaseSensitive(struct)` → `false`     |
+| `structIsOrdered()`       | Check if ordered       | `structIsOrdered(struct)` → `true`            |
+| `structGetMetadata()`     | Get struct metadata    | `structGetMetadata(struct)`                   |
 
 ### 🔗 Iteration Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
+| Function       | Purpose            | Example                                             |
+| -------------- | ------------------ | --------------------------------------------------- |
 | `structEach()` | Iterate each entry | `structEach(struct, (k,v) => println(k & ":" & v))` |
 
 {% hint style="success" %}
@@ -433,15 +519,15 @@ hash = config.hashCode()       // Hash code
 
 ### 🔑 Key Differences: String Keys vs Key Objects
 
-| Operation | String Key | Key Object |
-|-----------|-----------|------------|
-| Get value | `struct.get("name")` | `struct.get(Key.of("name"))` |
+| Operation       | String Key                   | Key Object                           |
+| --------------- | ---------------------------- | ------------------------------------ |
+| Get value       | `struct.get("name")`         | `struct.get(Key.of("name"))`         |
 | Check existence | `struct.containsKey("name")` | `struct.containsKey(Key.of("name"))` |
-| Set value | `struct.put("name", val)` | `struct.put(Key.of("name"), val)` |
-| Remove | `struct.remove("name")` | `struct.remove(Key.of("name"))` |
-| Case handling | Always case-insensitive* | Respects struct type |
+| Set value       | `struct.put("name", val)`    | `struct.put(Key.of("name"), val)`    |
+| Remove          | `struct.remove("name")`      | `struct.remove(Key.of("name"))`      |
+| Case handling   | Always case-insensitive\*    | Respects struct type                 |
 
-*Unless the struct is case-sensitive type
+\*Unless the struct is case-sensitive type
 
 {% hint style="info" %}
 **BoxLang Key Objects**: The `Key` class is a special BoxLang type that simulates a case-insensitive string by default. When working with case-sensitive structs, use `KeyCased` for exact case matching.

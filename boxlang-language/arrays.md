@@ -9,15 +9,18 @@ Almost every programming language allows you to represent different types of col
 
 ## 📋 Table of Contents
 
-- [The Story of One](#the-story-of-one)
-- [Arrays in Code](#arrays-in-code)
-- [Array Built-In Functions (BIFs)](#array-built-in-functions-bifs)
-- [Member Functions](#member-functions)
-- [Multi-Dimensional Arrays](#multi-dimensional-arrays)
-- [Looping Over Arrays](#looping-over-arrays)
-- [Functional Programming](#functional-programming)
-- [Parallel Programming](#parallel-programming)
-- [Array Reduction](#array-reduction)
+* [The Story of One](arrays.md#the-story-of-one)
+* [Arrays in Code](arrays.md#arrays-in-code)
+* [Array Built-In Functions (BIFs)](arrays.md#array-built-in-functions-bifs)
+* [Member Functions](arrays.md#member-functions)
+* [Multi-Dimensional Arrays](arrays.md#multi-dimensional-arrays)
+* [Array Destructuring](arrays.md#-array-destructuring)
+* [Looping Over Arrays](arrays.md#looping-over-arrays)
+* [Spread Operator](arrays.md#-spread-operator)
+* [Rest Operator](arrays.md#-rest-operator)
+* [Functional Programming](arrays.md#functional-programming)
+* [Parallel Programming](arrays.md#parallel-programming)
+* [Array Reduction](arrays.md#array-reduction)
 
 An array is a number-indexed list. Imagine you had a blank piece of paper and drew a set of three small boxes in a line:
 
@@ -159,93 +162,93 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 
 ### 🔨 Creation & Conversion Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `arrayNew()` | Create new array | `arrayNew()` → `[]` |
-| `listToArray()` | Convert list to array | `listToArray("a,b,c")` → `["a", "b", "c"]` |
-| `arrayToList()` | Convert array to list | `arrayToList([1,2,3])` → `"1,2,3"` |
-| `arraySlice()` | Extract portion of array | `arraySlice(arr, 2, 3)` → `[2, 3, 4]` |
-| `arrayRange()` | Create range of values | `arrayRange(1, 5)` → `[1, 2, 3, 4, 5]` |
-| `arrayChunk()` | Split into smaller arrays | `arrayChunk(arr, 2)` → `[[1,2], [3,4]]` **New in 1.10.0** |
-| `arrayToStruct()` | Convert to struct | `arrayToStruct(arr)` |
+| Function          | Purpose                   | Example                                                   |
+| ----------------- | ------------------------- | --------------------------------------------------------- |
+| `arrayNew()`      | Create new array          | `arrayNew()` → `[]`                                       |
+| `listToArray()`   | Convert list to array     | `listToArray("a,b,c")` → `["a", "b", "c"]`                |
+| `arrayToList()`   | Convert array to list     | `arrayToList([1,2,3])` → `"1,2,3"`                        |
+| `arraySlice()`    | Extract portion of array  | `arraySlice(arr, 2, 3)` → `[2, 3, 4]`                     |
+| `arrayRange()`    | Create range of values    | `arrayRange(1, 5)` → `[1, 2, 3, 4, 5]`                    |
+| `arrayChunk()`    | Split into smaller arrays | `arrayChunk(arr, 2)` → `[[1,2], [3,4]]` **New in 1.10.0** |
+| `arrayToStruct()` | Convert to struct         | `arrayToStruct(arr)`                                      |
 
 ### ➕ Modification Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `arrayAppend()` | Add element to end | `arrayAppend(arr, "new")` |
-| `arrayPrepend()` | Add element to start | `arrayPrepend(arr, "first")` |
-| `arrayPush()` | Add element to end | `arrayPush(arr, "new")` |
-| `arrayUnshift()` | Add multiple to start | `arrayUnshift(arr, "a", "b")` |
-| `arrayPop()` | Remove & return last | `arrayPop(arr)` → last element |
-| `arrayShift()` | Remove & return first | `arrayShift(arr)` → first element |
-| `arrayInsertAt()` | Insert at position | `arrayInsertAt(arr, 2, "item")` |
-| `arrayDeleteAt()` | Remove at position | `arrayDeleteAt(arr, 3)` |
-| `arrayDelete()` | Remove by value | `arrayDelete(arr, "value")` |
-| `arrayClear()` | Remove all elements | `arrayClear(arr)` |
-| `arrayResize()` | Change array size | `arrayResize(arr, 10)` |
-| `arraySet()` | Set range to value | `arraySet(arr, 1, 5, 0)` |
-| `arraySwap()` | Swap two elements | `arraySwap(arr, 1, 3)` |
-| `arraySplice()` | Remove/replace elements | `arraySplice(arr, 2, 1, "new")` |
+| Function          | Purpose                 | Example                           |
+| ----------------- | ----------------------- | --------------------------------- |
+| `arrayAppend()`   | Add element to end      | `arrayAppend(arr, "new")`         |
+| `arrayPrepend()`  | Add element to start    | `arrayPrepend(arr, "first")`      |
+| `arrayPush()`     | Add element to end      | `arrayPush(arr, "new")`           |
+| `arrayUnshift()`  | Add multiple to start   | `arrayUnshift(arr, "a", "b")`     |
+| `arrayPop()`      | Remove & return last    | `arrayPop(arr)` → last element    |
+| `arrayShift()`    | Remove & return first   | `arrayShift(arr)` → first element |
+| `arrayInsertAt()` | Insert at position      | `arrayInsertAt(arr, 2, "item")`   |
+| `arrayDeleteAt()` | Remove at position      | `arrayDeleteAt(arr, 3)`           |
+| `arrayDelete()`   | Remove by value         | `arrayDelete(arr, "value")`       |
+| `arrayClear()`    | Remove all elements     | `arrayClear(arr)`                 |
+| `arrayResize()`   | Change array size       | `arrayResize(arr, 10)`            |
+| `arraySet()`      | Set range to value      | `arraySet(arr, 1, 5, 0)`          |
+| `arraySwap()`     | Swap two elements       | `arraySwap(arr, 1, 3)`            |
+| `arraySplice()`   | Remove/replace elements | `arraySplice(arr, 2, 1, "new")`   |
 
 ### 🔍 Search & Filter Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `arrayFind()` | Find element index | `arrayFind(arr, "value")` → `3` |
-| `arrayFindNoCase()` | Case-insensitive find | `arrayFindNoCase(arr, "VALUE")` → `3` |
-| `arrayFindAll()` | Find all matching indices | `arrayFindAll(arr, "test")` → `[2, 5]` |
-| `arrayFindFirst()` | Find first match with callback | `arrayFindFirst(arr, (x) -> x > 5)` → first element **New in 1.10.0** |
-| `arrayContains()` | Check if contains | `arrayContains(arr, "item")` → `true` |
-| `arrayContainsNoCase()` | Case-insensitive check | `arrayContainsNoCase(arr, "ITEM")` → `true` |
-| `arrayIndexExists()` | Check if index exists | `arrayIndexExists(arr, 5)` → `true` |
-| `arrayFilter()` | Filter by condition | `arrayFilter(arr, (x) -> x > 5)` |
-| `arrayReject()` | Reject elements matching condition | `arrayReject(arr, (x) -> x < 5)` **New in 1.10.0** |
-| `arrayEvery()` | Test all elements | `arrayEvery(arr, (x) -> x > 0)` → `true` |
-| `arraySome()` | Test any element | `arraySome(arr, (x) -> x > 10)` → `true` |
-| `arrayNone()` | Test no elements match | `arrayNone(arr, (x) -> x < 0)` → `true` |
+| Function                | Purpose                            | Example                                                               |
+| ----------------------- | ---------------------------------- | --------------------------------------------------------------------- |
+| `arrayFind()`           | Find element index                 | `arrayFind(arr, "value")` → `3`                                       |
+| `arrayFindNoCase()`     | Case-insensitive find              | `arrayFindNoCase(arr, "VALUE")` → `3`                                 |
+| `arrayFindAll()`        | Find all matching indices          | `arrayFindAll(arr, "test")` → `[2, 5]`                                |
+| `arrayFindFirst()`      | Find first match with callback     | `arrayFindFirst(arr, (x) -> x > 5)` → first element **New in 1.10.0** |
+| `arrayContains()`       | Check if contains                  | `arrayContains(arr, "item")` → `true`                                 |
+| `arrayContainsNoCase()` | Case-insensitive check             | `arrayContainsNoCase(arr, "ITEM")` → `true`                           |
+| `arrayIndexExists()`    | Check if index exists              | `arrayIndexExists(arr, 5)` → `true`                                   |
+| `arrayFilter()`         | Filter by condition                | `arrayFilter(arr, (x) -> x > 5)`                                      |
+| `arrayReject()`         | Reject elements matching condition | `arrayReject(arr, (x) -> x < 5)` **New in 1.10.0**                    |
+| `arrayEvery()`          | Test all elements                  | `arrayEvery(arr, (x) -> x > 0)` → `true`                              |
+| `arraySome()`           | Test any element                   | `arraySome(arr, (x) -> x > 10)` → `true`                              |
+| `arrayNone()`           | Test no elements match             | `arrayNone(arr, (x) -> x < 0)` → `true`                               |
 
 ### 🔄 Transformation Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `arrayMap()` | Transform elements | `arrayMap(arr, (x) -> x * 2)` |
-| `arrayFlatMap()` | Map and flatten results | `arrayFlatMap(arr, (x) -> [x, x*2])` **New in 1.10.0** |
-| `arrayFlatten()` | Flatten nested arrays | `arrayFlatten([[1,2],[3,4]])` → `[1,2,3,4]` **New in 1.10.0** |
-| `arrayGroupBy()` | Group by function result | `arrayGroupBy(arr, (x) -> x.type)` **New in 1.10.0** |
-| `arrayTranspose()` | Swap rows and columns | `arrayTranspose([[1,2],[3,4]])` → `[[1,3],[2,4]]` **New in 1.10.0** |
-| `arrayUnique()` | Remove duplicates | `arrayUnique([1,2,2,3])` → `[1,2,3]` **New in 1.10.0** |
-| `arrayZip()` | Combine two arrays | `arrayZip([1,2], ["a","b"])` → `[[1,"a"],[2,"b"]]` **New in 1.10.0** |
-| `arrayReduce()` | Reduce left to right | `arrayReduce(arr, (sum, x) -> sum + x, 0)` |
-| `arrayReduceRight()` | Reduce right to left | `arrayReduceRight(arr, (sum, x) -> sum + x, 0)` |
-| `arrayReverse()` | Reverse order | `arrayReverse(arr)` |
-| `arrayMerge()` | Merge arrays | `arrayMerge(arr1, arr2, arr3)` |
+| Function             | Purpose                  | Example                                                              |
+| -------------------- | ------------------------ | -------------------------------------------------------------------- |
+| `arrayMap()`         | Transform elements       | `arrayMap(arr, (x) -> x * 2)`                                        |
+| `arrayFlatMap()`     | Map and flatten results  | `arrayFlatMap(arr, (x) -> [x, x*2])` **New in 1.10.0**               |
+| `arrayFlatten()`     | Flatten nested arrays    | `arrayFlatten([[1,2],[3,4]])` → `[1,2,3,4]` **New in 1.10.0**        |
+| `arrayGroupBy()`     | Group by function result | `arrayGroupBy(arr, (x) -> x.type)` **New in 1.10.0**                 |
+| `arrayTranspose()`   | Swap rows and columns    | `arrayTranspose([[1,2],[3,4]])` → `[[1,3],[2,4]]` **New in 1.10.0**  |
+| `arrayUnique()`      | Remove duplicates        | `arrayUnique([1,2,2,3])` → `[1,2,3]` **New in 1.10.0**               |
+| `arrayZip()`         | Combine two arrays       | `arrayZip([1,2], ["a","b"])` → `[[1,"a"],[2,"b"]]` **New in 1.10.0** |
+| `arrayReduce()`      | Reduce left to right     | `arrayReduce(arr, (sum, x) -> sum + x, 0)`                           |
+| `arrayReduceRight()` | Reduce right to left     | `arrayReduceRight(arr, (sum, x) -> sum + x, 0)`                      |
+| `arrayReverse()`     | Reverse order            | `arrayReverse(arr)`                                                  |
+| `arrayMerge()`       | Merge arrays             | `arrayMerge(arr1, arr2, arr3)`                                       |
 
 ### 📊 Sorting Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
+| Function      | Purpose    | Example                                   |
+| ------------- | ---------- | ----------------------------------------- |
 | `arraySort()` | Sort array | `arraySort(arr, "text")` or with callback |
 
 ### 📏 Information Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
-| `arrayLen()` | Get length | `arrayLen(arr)` → `5` |
-| `arrayIsEmpty()` | Check if empty | `arrayIsEmpty(arr)` → `false` |
+| Function                  | Purpose                                   | Example                                             |
+| ------------------------- | ----------------------------------------- | --------------------------------------------------- |
+| `arrayLen()`              | Get length                                | `arrayLen(arr)` → `5`                               |
+| `arrayIsEmpty()`          | Check if empty                            | `arrayIsEmpty(arr)` → `false`                       |
 | `arrayFirst( [default] )` | Get first element (with optional default) | `arrayFirst(arr, "default")` **Enhanced in 1.10.0** |
-| `arrayLast()` | Get last element | `arrayLast(arr)` → last element |
-| `arrayMin()` | Find minimum | `arrayMin(arr)` → `1` |
-| `arrayMax()` | Find maximum | `arrayMax(arr)` → `100` |
-| `arraySum()` | Sum all elements | `arraySum(arr)` → `150` |
-| `arrayAvg()` | Calculate average | `arrayAvg(arr)` → `30.0` |
-| `arrayMedian()` | Find median | `arrayMedian(arr)` → `20` |
-| `arrayGetMetadata()` | Get array metadata | `arrayGetMetadata(arr)` |
+| `arrayLast()`             | Get last element                          | `arrayLast(arr)` → last element                     |
+| `arrayMin()`              | Find minimum                              | `arrayMin(arr)` → `1`                               |
+| `arrayMax()`              | Find maximum                              | `arrayMax(arr)` → `100`                             |
+| `arraySum()`              | Sum all elements                          | `arraySum(arr)` → `150`                             |
+| `arrayAvg()`              | Calculate average                         | `arrayAvg(arr)` → `30.0`                            |
+| `arrayMedian()`           | Find median                               | `arrayMedian(arr)` → `20`                           |
+| `arrayGetMetadata()`      | Get array metadata                        | `arrayGetMetadata(arr)`                             |
 
 ### 🔗 Iteration Functions
 
-| Function | Purpose | Example |
-|----------|---------|----------|
+| Function      | Purpose              | Example                                   |
+| ------------- | -------------------- | ----------------------------------------- |
 | `arrayEach()` | Iterate each element | `arrayEach(arr, (item) => println(item))` |
 
 {% hint style="success" %}
@@ -401,8 +404,9 @@ arr.parallelStream()                     // Parallel processing
 
 {% hint style="info" %}
 **BoxLang vs Java Indexing**: Remember that BoxLang arrays use 1-based indexing, while Java List methods use 0-based indexing. When using Java methods directly, adjust your indices accordingly:
-- `arr.get(0)` in Java = `arr[1]` in BoxLang
-- `arr.add(0, item)` in Java = `arr.insertAt(1, item)` in BoxLang
+
+* `arr.get(0)` in Java = `arr[1]` in BoxLang
+* `arr.add(0, item)` in Java = `arr.insertAt(1, item)` in BoxLang
 {% endhint %}
 
 ### 🎯 BoxLang Array Native Methods
@@ -565,14 +569,14 @@ while (iter.hasNext()) {
 
 ### Key Differences: BoxLang vs Java Methods
 
-| Operation | BoxLang Method (1-based) | Java Method (0-based) |
-|-----------|-------------------------|----------------------|
-| Get element | `arr.getAt(1)` | `arr.get(0)` |
-| Set element | `arr.setAt(1, val)` | `arr.set(0, val)` |
-| Insert element | `arr.insertAt(1, val)` | `arr.add(0, val)` |
-| Remove element | `arr.deleteAt(1)` | `arr.remove(0)` |
-| Find element | `arr.findIndex(val)` → `1` | `arr.indexOf(val)` → `0` |
-| Append element | `arr.push(val)` or `arr.append(val)` | `arr.add(val)` |
+| Operation      | BoxLang Method (1-based)             | Java Method (0-based)    |
+| -------------- | ------------------------------------ | ------------------------ |
+| Get element    | `arr.getAt(1)`                       | `arr.get(0)`             |
+| Set element    | `arr.setAt(1, val)`                  | `arr.set(0, val)`        |
+| Insert element | `arr.insertAt(1, val)`               | `arr.add(0, val)`        |
+| Remove element | `arr.deleteAt(1)`                    | `arr.remove(0)`          |
+| Find element   | `arr.findIndex(val)` → `1`           | `arr.indexOf(val)` → `0` |
+| Append element | `arr.push(val)` or `arr.append(val)` | `arr.add(val)`           |
 
 [Try it online!](https://try.boxlang.io)
 
@@ -930,6 +934,34 @@ newArray = array.slice( 2, 3 )
 println( newArray ) // [ 2, 3, 4 ]
 ```
 
+## 🔓 Array Destructuring
+
+Array destructuring lets you bind values by position.
+
+```javascript
+coords = [ 10, 20 ]
+var [ x, y ] = coords
+```
+
+It supports defaults, nesting, and rest capture.
+
+```javascript
+values = [ null, [ 3, 4 ], 9 ]
+var [ first = 1, [ x, y ], last ] = values
+
+numbers = [ 1, 2, 3, 4, 5 ]
+var [ head, ...tail ] = numbers
+```
+
+Middle rest is also supported.
+
+```javascript
+numbers = [ 1, 2, 3, 4, 5, 6 ]
+var [ first, ...middle, last ] = numbers
+```
+
+See [Destructuring](syntax/destructuring.md) for full syntax and edge cases.
+
 ## 🔁 Looping Over Arrays
 
 You can use different constructs for looping over arrays:
@@ -988,13 +1020,13 @@ myArray.each( item => {
 
 ## 🌟 Spread Operator
 
-{% hint style="danger" %}
-Coming soon, still in development
-{% endhint %}
+Arrays support spread syntax in both function calls and array literals.
 
-Arrays also allow the usage of the spread operator syntax to quickly copy all or part of an existing array or object into another array or object. This operator is used by leveraging three dots `...` in specific expressions.
-
-The Spread syntax allows an iterable such as an array expression or string, to be expanded in places where zero or more arguments (for function calls) or elements (for array literals) are expected. Here are some examples to help you understand this operator:
+```javascript
+numbers = [ 1, 2, 3 ]
+copy = [ ...numbers ]
+merged = [ 0, ...numbers, 4, 5 ]
+```
 
 #### Function Calls
 
@@ -1020,13 +1052,13 @@ myArray2 = [ ...numbers ]
 myArray2 = [ ...numbers, 4, 66 ]
 ```
 
+See [Spread Syntax](syntax/spread-syntax.md) for function-call spread, struct spread, shorthand keys, and bracket-literal behavior.
+
 ## 💤 Rest Operator
 
-{% hint style="danger" %}
-Coming soon, still in development
-{% endhint %}
+The rest operator collects the remaining array items into a single binding.
 
-The rest operator is similar to the spread operator but behaves oppositely. Instead of expanding the literals, it contracts them into an array you designate via the `...{name}` syntax. You can use this to define endless arguments for a function, for example. In this case, I can create a dynamic `findBy` function that takes in multiple criteria name-value pairs.
+Use it in function parameters:
 
 ```javascript
 function findBy( ...args ){
@@ -1039,6 +1071,15 @@ function findBy( entityName, ...args ){
 }
 findBy( "Luis", 1, 2, 3, 4, 5 )
 ```
+
+Use it in array destructuring:
+
+```javascript
+[ first, ...rest ] = values
+[ first, ...middle, last ] = values
+```
+
+See [Destructuring](syntax/destructuring.md) for the full array destructuring syntax.
 
 ## ✨ Trailing Commas
 

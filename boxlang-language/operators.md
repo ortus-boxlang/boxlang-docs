@@ -31,6 +31,7 @@ The order of precedence exists in BoxLang, just like in mathematics. You can als
 \
 MOD
 +, -
+..
 &
 EQ, NEQ, LT, LTE, GT, GTE, CONTAINS, DOES NOT CONTAIN, ==, !=, >, >=, <, <=
 NOT, !
@@ -59,15 +60,31 @@ These operators are used to perform arithmetic/mathematical operations on operan
 | `^`      | Exponentiate        | `a = 2^2 // 4`                                                                                                                                                                                  |
 | `%, MOD` | Modulus / Remainder | `5 % 2 = 1` or `5 mod 2`                                                                                                                                                                        |
 | `\`      | Integer Divide      | `a = 7 \ 3` is 2. Please note it does not round off the integer.                                                                                                                                |
+| `..`     | Inclusive Range     | <p>Creates an inclusive integer range.<br><code>1..5</code> → <code>[1,2,3,4,5]</code><br><code>5..1</code> → <code>[5,4,3,2,1]</code></p>                                                      |
 | `++`     | Increment           | <p><code>a = b++</code> assign b to a and THEN increment b<br><code>a = ++b</code> increment b and THEN assign to a</p>                                                                         |
 | `--`     | Decrement           | <p><code>a = b--</code> assign b to a and THEN decrement b<br><code>a = --b</code> decrement b and THEN assign to a</p>                                                                         |
 | `-`      | Negate              | `a = -b` Negate the value of b                                                                                                                                                                  |
 | `+`      | Positive            | `a = +b` Make the value of b a positive number                                                                                                                                                  |
 | `()`     | Grouping            | <p>The grouping operator is used just like in mathematics, to give precedence to operations.<br><code>result = 3 * (2+3)</code> which is not the same as<br><code>result = 3 * 2 + 3</code></p> |
 
-#### Notes on mathematical casting:&#x20;
+### 🔢 Range Operator
 
-For basic arithmetic operations ( addition, subtraction, multiplication and division ) dates and timespans may be cast as numeric values.  In BoxLang the numeric value of a [DateTime](../boxlang-framework/modularity/compat-cfml/reference/types/datetime.md) object is a representation of the decimal days since the Unix epoch time.  A [timespan](reference/built-in-functions/temporal/CreateTimeSpan.md) or Java [Duration](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html) object is represented as decimal days for the purpose of mathematical operations. &#x20;
+BoxLang supports the inclusive `..` range operator in BoxScript expressions.
+
+```javascript
+1..5   // [1, 2, 3, 4, 5]
+5..1   // [5, 4, 3, 2, 1]
+
+a = 2
+b = 4
+result = a..b  // [2, 3, 4]
+```
+
+Use this when you want a compact way to create integer ranges without calling a helper function.
+
+#### Notes on mathematical casting:
+
+For basic arithmetic operations ( addition, subtraction, multiplication and division ) dates and timespans may be cast as numeric values. In BoxLang the numeric value of a [DateTime](../boxlang-framework/modularity/compat-cfml/reference/types/datetime.md) object is a representation of the decimal days since the Unix epoch time. A [timespan](reference/built-in-functions/temporal/CreateTimeSpan.md) or Java [Duration](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html) object is represented as decimal days for the purpose of mathematical operations.
 
 ## 🔢 Bitwise Operators
 
@@ -117,21 +134,21 @@ Logical operators perform logic between values or values, usually denoting a `bo
 
 Comparison operators are used when comparing two values, expressions, or variables. The return of a comparison is either `true` or `false`.
 
-| Operator                                                             | Name                 | Description                                                                                                                            |
-| -------------------------------------------------------------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `eq, ==`                                                             | Equality             | True if `a eq b` or `a == b`                                                                                                           |
-| <p><code>neq,</code><br><code>!=,</code><br><code>&#x3C;></code></p> | Not Equal            | The opposite of equality: `a neq b, a != b, a <> b`                                                                                    |
-| `===`                                                                | Identity             | <p>Returns true if the operands are equal in value and in type.<br><code>2 === "2" // false</code><br><code>2 === 2 // true</code></p> |
-| `!===`                                                               | Negated Identity     | Same as the identity operator but negating the result.                                                                                 |
-| `gt, >`                                                              | Greater than         | If the left operand is greater in value than the right operand                                                                         |
-| `gte, >=`                                                            | Greater than o equal | If the left operand is greater than or equal in value than the right operand                                                           |
-| `lt, <`                                                              | Less than            | If the left operand is less than in value than the right operand                                                                       |
-| `lte, <=`                                                            | Less than or equal   | If the left operand is less than or equal in value than the right operand                                                              |
-| `contains, ct`                                                       | Contains             | <p>Returns true if the left operand contains the right one.<br><code>'hello' contains 'lo'</code></p>                                  |
-| `does not contain, nct`                                              | Negated contains     | <p>Returns true if the left operand does NOT contain the right one.<br><code>'hello' does not contain 'pio'</code></p>                 |
+| Operator                                                             | Name                 | Description                                                                                                                                                              |
+| -------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `eq, ==`                                                             | Equality             | True if `a eq b` or `a == b`                                                                                                                                             |
+| <p><code>neq,</code><br><code>!=,</code><br><code>&#x3C;></code></p> | Not Equal            | The opposite of equality: `a neq b, a != b, a <> b`                                                                                                                      |
+| `===`                                                                | Identity             | <p>Returns true if the operands are equal in value and in type.<br><code>2 === "2" // false</code><br><code>2 === 2 // true</code></p>                                   |
+| `!===`                                                               | Negated Identity     | Same as the identity operator but negating the result.                                                                                                                   |
+| `gt, >`                                                              | Greater than         | If the left operand is greater in value than the right operand                                                                                                           |
+| `gte, >=`                                                            | Greater than o equal | If the left operand is greater than or equal in value than the right operand                                                                                             |
+| `lt, <`                                                              | Less than            | If the left operand is less than in value than the right operand                                                                                                         |
+| `lte, <=`                                                            | Less than or equal   | If the left operand is less than or equal in value than the right operand                                                                                                |
+| `contains, ct`                                                       | Contains             | <p>Returns true if the left operand contains the right one.<br><code>'hello' contains 'lo'</code></p>                                                                    |
+| `does not contain, nct`                                              | Negated contains     | <p>Returns true if the left operand does NOT contain the right one.<br><code>'hello' does not contain 'pio'</code></p>                                                   |
 | `instanceOf`                                                         | Type checking        | <p>Returns true if the left operand is an instance of the right type.<br><code>true instanceOf 'Boolean'</code><br><code>'brad' instanceOf 'java.lang.String'</code></p> |
-| `castAs`                                                             | Type casting         | <p>Casts the left operand to the type specified on the right.<br><code>value castAs int</code><br><code>5 castAs String</code></p>     |
-| `assert`                                                             | Assert an expression | Evaluate an expression and if the expression is falsey it will throw an assert exceptions.                                             |
+| `castAs`                                                             | Type casting         | <p>Casts the left operand to the type specified on the right.<br><code>value castAs int</code><br><code>5 castAs String</code></p>                                       |
+| `assert`                                                             | Assert an expression | Evaluate an expression and if the expression is falsey it will throw an assert exceptions.                                                                               |
 
 ## ✅ Assert Statement <a href="#assert" id="assert"></a>
 
@@ -155,7 +172,7 @@ assert () => getUser() != null
 If the assertion expression is a function (closure or lambda), BoxLang automatically invokes it and evaluates the result.
 {% endhint %}
 
-<a href="https://try.boxlang.io" target="_blank">Try it on try.boxlang.io</a>
+[Try it on try.boxlang.io](https://try.boxlang.io)
 
 ## 🏷️ InstanceOf Operator
 
@@ -179,7 +196,7 @@ result = user instanceOf 'User'  // true
 The `instanceOf` operator performs case-insensitive class name matching and supports short names (e.g., `String` instead of `java.lang.String`).
 {% endhint %}
 
-<a href="https://try.boxlang.io" target="_blank">Try it on try.boxlang.io</a>
+[Try it on try.boxlang.io](https://try.boxlang.io)
 
 ## 🔄 CastAs Operator
 
@@ -210,7 +227,7 @@ result = value castAs Long  // Same as castAs "Long"
 The `castAs` operator is integrated into the BoxLang language and is preferred over the `javaCast()` BIF for most type casting scenarios.
 {% endhint %}
 
-<a href="https://try.boxlang.io" target="_blank">Try it on try.boxlang.io</a>
+[Try it on try.boxlang.io](https://try.boxlang.io)
 
 ## ❓ Ternary Operator
 
@@ -292,90 +309,61 @@ echo( s?.name )
 
 ### 🌟 Spread Operator
 
-{% hint style="warning" %}
-Feature coming soon
-{% endhint %}
+The spread operator expands arrays and structs into function calls and literals.
 
-The spread operator allows an iterable object to expand and merge in certain declarations in code. These objects in BoxLang are mostly arrays and structures. This operator can quickly merge all or parts of an existing array or object into another array or object. This operator is used by leveraging three dots `...` in specific expressions.
-
-```javascript
-// Spread
-var variableName = [ ...myArray ]
-// Traditional
-var variableName = [].append( myArray )
-
-// Spread
-var mergedObject = { ...obj1, ...obj2 }
-// Traditional
-mergedObject.append( obj1 ).append( obj2 )
-```
-
-You can accomplish the result of the spread operator with the `append()` member function or traditional function in a very elegant and user-friendly syntax. It also allows you NOT to do chaining but inline expressions.
-
-,The Spread syntax also allows an iterable such as an array expression or string, to be expanded in places where zero or more arguments (for function calls) are expected. Here are some examples to help you understand this operator:
+See [Spread Syntax](syntax/spread-syntax.md) for full coverage.
 
 #### Function Calls
 
+Spread an array as positional arguments.
+
 ```javascript
 numbers = [ 1, 2, 3 ]
-function sum( x, y, z ){
-    return x + y + z;
-}
-// Call the function using the spread operator
-results = sum( ...numbers ) // 6
-
-// Ignore the others
-numbers = [ 1, 2, 3, 4, 5 ]
-results = sum( ...numbers ) // 6
+result = sum( ...numbers )
 ```
 
-#### Array Definitions
+Spread a struct as named arguments.
 
 ```javascript
-numbers = [ 1, 2, 3 ]
+person = { first: "Jane", last: "Smith" }
+result = greet( ...person )
+```
+
+#### Literals
+
+Spread also works inside array and struct literals.
+
+```javascript
 myArray = [ 3, 4, ...numbers ]
-myArray2 = [ ...numbers ]
-myArray2 = [ ...numbers, 4, 66 ]
+mergedStruct = { ...defaults, ...overrides }
+orderedStruct = [ ...defaults, retries: 5 ]
 ```
 
-#### Struct Definitions
+Declaration order wins. Later keys overwrite earlier keys.
 
 ```javascript
-var mergedObject = { ...obj1, ...obj2 }
-
-user1 = { name : "luis", age: 15 }
-user2 = { name : "joe", location : "miami" }
-
-mergedUsers = { ...user1, ...user2 }
-// What will the output be?
-writeDump( mergedUsers )
-// { name : "joe" , age : 15, location : "miami" }
+result = { ...left, ...right, shared: "literal" }
 ```
 
 ### 💤 Rest Operator
 
-{% hint style="warning" %}
-Feature coming soon
-{% endhint %}
+The rest operator collects the remaining values into one binding.
 
-The Rest function operator is similar to the Spread Operator but behaves oppositely. The spread syntax expands the iterable constructs into individual elements, and the Rest syntax collects and condenses them into a single construct, usually an array.
-
-Imagine I need to create a function that takes in an unlimited number of Identifiers so I can return all items that have that ID:
+It is available in function parameters and destructuring patterns.
 
 ```javascript
-function findById( ...ids ){
-}
-
-findById( 1 ) // ids is a single value of 1
-findById( 1, 23, 34, 456 ) // ids is an array of values
-```
-
-You can also combine them in functions with other arguments:
-
-```java
 function findById( entityName, ...ids ){
+    return ids
 }
 
-findById( "User", 1 ) // ids is a single value of 1
-findById( "Car", 1, 23, 34, 456 ) // ids is an array of values
+findById( "User", 1, 2, 3 ) // [ 1, 2, 3 ]
 ```
+
+It also works in destructuring:
+
+```javascript
+[ first, ...rest ] = values
+({ id, ...rest } = payload)
+```
+
+See [Destructuring](syntax/destructuring.md) for nested patterns, defaults, and middle-rest behavior.
