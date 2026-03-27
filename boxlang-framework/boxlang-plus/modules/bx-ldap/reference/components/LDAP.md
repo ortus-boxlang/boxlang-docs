@@ -1,9 +1,11 @@
 ---
-description: Complete reference for the LDAP component - perform directory operations including query, add, modify, delete, and connection management
+description: >-
+  Complete reference for the LDAP component - perform directory operations
+  including query, add, modify, delete, and connection management
 icon: address-book
 ---
 
-# LDAP Component
+# LDAP
 
 The `<bx:ldap>` component provides comprehensive LDAP (Lightweight Directory Access Protocol) operations for directory services integration. It supports querying, adding, modifying, and deleting directory entries, as well as connection management for efficient multi-operation workflows.
 
@@ -25,7 +27,7 @@ The `<bx:ldap>` component provides comprehensive LDAP (Lightweight Directory Acc
 ### Script Syntax
 
 ```javascript
-ldap
+bx:ldap
     action="query"
     server="ldap.example.com"
     port="389"
@@ -42,136 +44,136 @@ The LDAP component supports seven core operations:
 
 Search the directory with filters, scopes, and attribute selection.
 
-- **Use Case**: Find users, groups, or any directory objects
-- **Returns**: BoxLang Query object with results (contains matched LDAP entries as rows with their attributes as columns)
-- **Features**: Filtering, sorting, pagination, scope control
-- **Empty Results**: Returns a Query with `recordCount=0` if no entries match (no exception thrown)
+* **Use Case**: Find users, groups, or any directory objects
+* **Returns**: BoxLang Query object with results (contains matched LDAP entries as rows with their attributes as columns)
+* **Features**: Filtering, sorting, pagination, scope control
+* **Empty Results**: Returns a Query with `recordCount=0` if no entries match (no exception thrown)
 
 ### add
 
 Create new entries in the directory.
 
-- **Use Case**: Add new users, groups, organizational units
-- **Supports**: Multi-valued attributes, all attribute types
-- **Returns**: Boolean `true` on success
-- **Error Handling**: Throws exception if entry already exists or DN is invalid
+* **Use Case**: Add new users, groups, organizational units
+* **Supports**: Multi-valued attributes, all attribute types
+* **Returns**: Boolean `true` on success
+* **Error Handling**: Throws exception if entry already exists or DN is invalid
 
 ### modify
 
 Update existing directory entries.
 
-- **Use Case**: Update user information, group memberships
-- **Operations**: Replace, add, or delete attributes
-- **Returns**: Boolean `true` on success
-- **Flexibility**: Modify multiple attributes in one operation
-- **Error Handling**: Throws exception if entry does not exist or modification type is invalid
+* **Use Case**: Update user information, group memberships
+* **Operations**: Replace, add, or delete attributes
+* **Returns**: Boolean `true` on success
+* **Flexibility**: Modify multiple attributes in one operation
+* **Error Handling**: Throws exception if entry does not exist or modification type is invalid
 
 ### delete
 
 Remove entries from the directory.
 
-- **Use Case**: Delete obsolete users, groups, or objects
-- **Returns**: Boolean `true` on success
-- **Safety**: Validates entry exists before deletion (throws exception if not found)
-- **Note**: Cannot delete entries with children (delete children first)
-- **Error Handling**: Throws exception if entry has subordinate entries or does not exist
+* **Use Case**: Delete obsolete users, groups, or objects
+* **Returns**: Boolean `true` on success
+* **Safety**: Validates entry exists before deletion (throws exception if not found)
+* **Note**: Cannot delete entries with children (delete children first)
+* **Error Handling**: Throws exception if entry has subordinate entries or does not exist
 
 ### modifydn
 
 Rename entries or move them within the directory tree.
 
-- **Use Case**: Rename users, reorganize directory structure
-- **Returns**: Boolean `true` on success
-- **Operations**: Rename (change RDN) or move to different parent
-- **Flexibility**: Supports both rename and move operations
-- **Error Handling**: Throws exception if new DN is invalid or already exists
+* **Use Case**: Rename users, reorganize directory structure
+* **Returns**: Boolean `true` on success
+* **Operations**: Rename (change RDN) or move to different parent
+* **Flexibility**: Supports both rename and move operations
+* **Error Handling**: Throws exception if new DN is invalid or already exists
 
 ### open
 
 Create and store a named connection for reuse across multiple operations.
 
-- **Use Case**: Establish a connection with credentials that can be reused without repetition
-- **Required Attributes**: `connection` (connection name), `server`, plus authentication details
-- **Returns**: Connection object if `result` attribute is specified, otherwise ignored
-- **Benefits**: Simplifies multi-operation workflows by eliminating credential repetition
-- **Note**: Connection remains open until explicitly closed or application terminates
+* **Use Case**: Establish a connection with credentials that can be reused without repetition
+* **Required Attributes**: `connection` (connection name), `server`, plus authentication details
+* **Returns**: Connection object if `result` attribute is specified, otherwise ignored
+* **Benefits**: Simplifies multi-operation workflows by eliminating credential repetition
+* **Note**: Connection remains open until explicitly closed or application terminates
 
 ### close
 
 Close and release a named connection.
 
-- **Use Case**: Explicitly close a named connection to free resources
-- **Required Attributes**: `connection` (connection name to close)
-- **Returns**: Boolean `true` on success
-- **Benefits**: Allows proper resource management for long-running applications
-- **Note**: Once closed, connection can be reopened with same name if needed
+* **Use Case**: Explicitly close a named connection to free resources
+* **Required Attributes**: `connection` (connection name to close)
+* **Returns**: Boolean `true` on success
+* **Benefits**: Allows proper resource management for long-running applications
+* **Note**: Once closed, connection can be reopened with same name if needed
 
 ## Attributes
 
 ### Core Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `action` | string | ✅ Yes | - | LDAP operation: "query", "add", "modify", "delete", "modifydn", "open", "close" |
-| `server` | string | ⚠️ Conditional | - | LDAP server hostname or IP address. Required if `connection` is not provided. |
-| `connection` | string | ⚠️ Conditional | - | Named connection to an LDAP server (previously created). Required if `server` is not provided. Allows reusing connection credentials across multiple operations. |
-| `port` | number | No | 389 (636 for SSL) | LDAP server port |
-| `result` | string | ⚠️ Query | - | Variable name to store query results (primary attribute for result handling) |
-| `name` | string | No | - | **Deprecated**: Use `result` instead. Maintained for backwards compatibility with query actions only |
-| `start` | string | ✅ Yes | - | Starting DN (Distinguished Name) for search or operation |
+| Attribute    | Type   | Required       | Default           | Description                                                                                                                                                      |
+| ------------ | ------ | -------------- | ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `action`     | string | ✅ Yes          | -                 | LDAP operation: "query", "add", "modify", "delete", "modifydn", "open", "close"                                                                                  |
+| `server`     | string | ⚠️ Conditional | -                 | LDAP server hostname or IP address. Required if `connection` is not provided.                                                                                    |
+| `connection` | string | ⚠️ Conditional | -                 | Named connection to an LDAP server (previously created). Required if `server` is not provided. Allows reusing connection credentials across multiple operations. |
+| `port`       | number | No             | 389 (636 for SSL) | LDAP server port                                                                                                                                                 |
+| `result`     | string | ⚠️ Query       | -                 | Variable name to store query results (primary attribute for result handling)                                                                                     |
+| `name`       | string | No             | -                 | **Deprecated**: Use `result` instead. Maintained for backwards compatibility with query actions only                                                             |
+| `start`      | string | ✅ Yes          | -                 | Starting DN (Distinguished Name) for search or operation                                                                                                         |
 
 ### Authentication Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `username` | string | No | "" (anonymous) | Bind DN for authentication (e.g., "cn=admin,dc=example,dc=org") |
-| `password` | string | No | "" (anonymous) | Password for authentication |
-| `secure` | boolean/string | No | false | Security mode: `false` (no SSL), `true` (SSL), "CFSSL_BASIC" (server auth only), "CFSSL_CLIENT_AUTH" (mutual TLS) |
-| `useTls` | boolean | No | false | Whether to use StartTLS extension to initiate SSL/TLS over normal port |
-| `clientCert` | string | No | - | Full path to keystore file containing client certificate |
-| `clientCertPassword` | string | No | - | Password for client certificate keystore |
-| `timeout` | integer | No | 60000 | Operation timeout in milliseconds |
+| Attribute            | Type           | Required | Default        | Description                                                                                                          |
+| -------------------- | -------------- | -------- | -------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `username`           | string         | No       | "" (anonymous) | Bind DN for authentication (e.g., "cn=admin,dc=example,dc=org")                                                      |
+| `password`           | string         | No       | "" (anonymous) | Password for authentication                                                                                          |
+| `secure`             | boolean/string | No       | false          | Security mode: `false` (no SSL), `true` (SSL), "CFSSL\_BASIC" (server auth only), "CFSSL\_CLIENT\_AUTH" (mutual TLS) |
+| `useTls`             | boolean        | No       | false          | Whether to use StartTLS extension to initiate SSL/TLS over normal port                                               |
+| `clientCert`         | string         | No       | -              | Full path to keystore file containing client certificate                                                             |
+| `clientCertPassword` | string         | No       | -              | Password for client certificate keystore                                                                             |
+| `timeout`            | integer        | No       | 60000          | Operation timeout in milliseconds                                                                                    |
 
 ### Query-Specific Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `filter` | string | No | "(objectClass=*)" | LDAP search filter (e.g., "(uid=jdoe)") |
-| `scope` | string | No | "onelevel" | Search scope: "base", "onelevel", "subtree" |
-| `attributes` | string | No | "*" | Comma-separated list of attributes to return |
-| `sort` | string | No | - | Attribute name to sort results by |
-| `sortDirection` | string | No | "asc" | Sort direction: "asc" or "desc" |
-| `maxrows` | number | No | - | Maximum number of results to return |
-| `startRow` | number | No | 1 | Starting row for pagination |
-| `returnFormat` | string | No | "query" | Result format: "query" (Query object) or "array" (Array of structs) |
+| Attribute       | Type   | Required | Default            | Description                                                         |
+| --------------- | ------ | -------- | ------------------ | ------------------------------------------------------------------- |
+| `filter`        | string | No       | "(objectClass=\*)" | LDAP search filter (e.g., "(uid=jdoe)")                             |
+| `scope`         | string | No       | "onelevel"         | Search scope: "base", "onelevel", "subtree"                         |
+| `attributes`    | string | No       | "\*"               | Comma-separated list of attributes to return                        |
+| `sort`          | string | No       | -                  | Attribute name to sort results by                                   |
+| `sortDirection` | string | No       | "asc"              | Sort direction: "asc" or "desc"                                     |
+| `maxrows`       | number | No       | -                  | Maximum number of results to return                                 |
+| `startRow`      | number | No       | 1                  | Starting row for pagination                                         |
+| `returnFormat`  | string | No       | "query"            | Result format: "query" (Query object) or "array" (Array of structs) |
 
 ### Modify-Specific Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `dn` | string | ✅ Yes | - | Distinguished Name of entry to modify |
-| `attributes` | struct | ✅ Yes | - | Struct of attributes to modify (key=attribute, value=new value) |
-| `modifyType` | string | No | "replace" | Modification type: "replace", "add", "delete" |
+| Attribute    | Type   | Required | Default   | Description                                                     |
+| ------------ | ------ | -------- | --------- | --------------------------------------------------------------- |
+| `dn`         | string | ✅ Yes    | -         | Distinguished Name of entry to modify                           |
+| `attributes` | struct | ✅ Yes    | -         | Struct of attributes to modify (key=attribute, value=new value) |
+| `modifyType` | string | No       | "replace" | Modification type: "replace", "add", "delete"                   |
 
 ### Add-Specific Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `dn` | string | ✅ Yes | - | Distinguished Name for new entry |
-| `attributes` | struct | ✅ Yes | - | Struct of attributes for new entry |
+| Attribute    | Type   | Required | Default | Description                        |
+| ------------ | ------ | -------- | ------- | ---------------------------------- |
+| `dn`         | string | ✅ Yes    | -       | Distinguished Name for new entry   |
+| `attributes` | struct | ✅ Yes    | -       | Struct of attributes for new entry |
 
 ### Delete-Specific Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `dn` | string | ✅ Yes | - | Distinguished Name of entry to delete |
+| Attribute | Type   | Required | Default | Description                           |
+| --------- | ------ | -------- | ------- | ------------------------------------- |
+| `dn`      | string | ✅ Yes    | -       | Distinguished Name of entry to delete |
 
 ### ModifyDN-Specific Attributes
 
-| Attribute | Type | Required | Default | Description |
-|-----------|------|----------|---------|-------------|
-| `dn` | string | ✅ Yes | - | Current Distinguished Name |
-| `attributes` | struct | ✅ Yes | - | Struct with "newRDN" and optionally "newParentDN" |
+| Attribute    | Type   | Required | Default | Description                                       |
+| ------------ | ------ | -------- | ------- | ------------------------------------------------- |
+| `dn`         | string | ✅ Yes    | -       | Current Distinguished Name                        |
+| `attributes` | struct | ✅ Yes    | -       | Struct with "newRDN" and optionally "newParentDN" |
 
 ## Examples
 
@@ -638,16 +640,16 @@ The LDAP filter attribute supports standard LDAP filter operators:
 
 ### Filter Operators
 
-- `&` - AND (all conditions must match)
-- `|` - OR (any condition matches)
-- `!` - NOT (negation)
-- `=` - Equals
-- `>=` - Greater than or equal
-- `<=` - Less than or equal
-- `=*` - Presence check (attribute exists)
-- `=value*` - Starts with
-- `=*value` - Ends with
-- `=*value*` - Contains
+* `&` - AND (all conditions must match)
+* `|` - OR (any condition matches)
+* `!` - NOT (negation)
+* `=` - Equals
+* `>=` - Greater than or equal
+* `<=` - Less than or equal
+* `=*` - Presence check (attribute exists)
+* `=value*` - Starts with
+* `=*value` - Ends with
+* `=*value*` - Contains
 
 ### Example Filters
 
@@ -685,10 +687,10 @@ filter="(createTimestamp>=20240101000000Z)"
 
 **Important:** LDAP queries return **empty Query objects** (recordCount=0) instead of throwing exceptions when:
 
-- Entry does not exist
-- Filter matches no entries
-- Insufficient permissions (sometimes)
-- Entry was deleted
+* Entry does not exist
+* Filter matches no entries
+* Insufficient permissions (sometimes)
+* Entry was deleted
 
 ```javascript
 ldap
@@ -732,14 +734,14 @@ try {
 
 ### Common Error Scenarios
 
-| Error | Cause | Solution |
-|-------|-------|----------|
-| Connection timeout | Server unreachable | Check server hostname, port, firewall |
-| Invalid credentials | Wrong username/password | Verify bind DN and password |
-| Entry already exists | Duplicate DN in add | Use unique DN or modify existing entry |
-| No such object | DN doesn't exist | Verify DN syntax and entry existence |
-| Insufficient access | Permission denied | Check ACLs and bind user permissions |
-| Invalid DN syntax | Malformed DN | Validate DN format: `uid=user,ou=org,dc=example,dc=org` |
+| Error                | Cause                   | Solution                                                |
+| -------------------- | ----------------------- | ------------------------------------------------------- |
+| Connection timeout   | Server unreachable      | Check server hostname, port, firewall                   |
+| Invalid credentials  | Wrong username/password | Verify bind DN and password                             |
+| Entry already exists | Duplicate DN in add     | Use unique DN or modify existing entry                  |
+| No such object       | DN doesn't exist        | Verify DN syntax and entry existence                    |
+| Insufficient access  | Permission denied       | Check ACLs and bind user permissions                    |
+| Invalid DN syntax    | Malformed DN            | Validate DN format: `uid=user,ou=org,dc=example,dc=org` |
 
 ## Event Handling
 
@@ -777,4 +779,4 @@ Announced when an LDAP connection is closed.
 
 ## Related
 
-- [LDAP Module Overview](../../README.md)
+* [LDAP Module Overview](../../)
