@@ -1004,6 +1004,7 @@
   * [Query of Queries](boxlang-framework/jdbc/query-of-queries.md)
   * [JDBC Drivers](boxlang-framework/modularity/jdbc.md)
 * [Java Interop](boxlang-framework/java-integration.md)
+* [Logging](boxlang-framework/logging.md)
 * [Interceptors](boxlang-framework/interceptors/README.md)
   * [Core Interception Points](boxlang-framework/interceptors/core-interception-points/README.md)
     * [Application Events](boxlang-framework/interceptors/core-interception-points/application-events.md)
