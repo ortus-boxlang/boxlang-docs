@@ -20,6 +20,7 @@ BoxLang logging is powered by **Logback** under the hood, which means all of its
 - [Built-In Named Loggers](#built-in-named-loggers)
 - [Configuration Reference](#configuration-reference)
 - [Custom Named Loggers](#custom-named-loggers)
+- [Logger Categories](#logger-categories)
 - [JSON Structured Logging](#json-structured-logging)
 - [LoggingService API](#loggingservice-api)
 - [Logging Interceptors](#logging-interceptors)
@@ -267,6 +268,7 @@ Each named logger under `loggers` supports:
 | `appenderArguments` | `object` | `{}` | Appender-specific key-value configuration. |
 | `encoder` | `string` | `defaultEncoder` | Override the encoder for this logger: `"text"` or `"json"`. |
 | `additive` | `boolean` | `true` | When `true` the logger propagates messages to its parent loggers (including root). Set to `false` to isolate this logger's output. |
+| `categories` | `array` | `[]` | List of Java package or class names whose log output should be routed to this logger. Entries are matched by logger name prefix. Leading/trailing whitespace is trimmed automatically. |
 
 ---
 
@@ -311,6 +313,116 @@ writeLog( text="Admin #adminID# deleted record #recordID#", type="warning", log=
 {% hint style="success" %}
 Setting `"additive": false` on a custom logger stops its messages from also appearing in the root/runtime log, keeping your custom log files clean and focused.
 {% endhint %}
+
+---
+
+## Logger Categories
+
+Logger categories let you route third-party Java library log output into a BoxLang-managed logger. Any Java package or class name listed in a logger's `categories` array will be redirected to that logger — using its configured level and appender — instead of being handled by the default Logback root configuration.
+
+This is especially useful for silencing chatty libraries or capturing their output in a dedicated file.
+
+### How It Works
+
+- Each entry in `categories` is a Java package or class name (e.g. `"com.zaxxer.hikari"`).
+- Log events originating from that package or any sub-package are captured by the target logger.
+- The category logger inherits the target logger's **level** threshold and **appender**.
+- Routing is non-additive: matched events do not bubble up further.
+- Leading/trailing whitespace in category names is trimmed automatically.
+- Loggers with `"level": "OFF"` skip appender creation entirely, making them a zero-overhead sink.
+
+### Routing Noisy Libraries
+
+Configure a dedicated logger to capture (or suppress) output from a specific library:
+
+{% code title="boxlang.json" %}
+```json
+"logging": {
+    "loggers": {
+        "hikari": {
+            "level": "WARN",
+            "appender": "file",
+            "encoder": "text",
+            "additive": false,
+            "categories": [
+                "com.zaxxer.hikari"
+            ]
+        }
+    }
+}
+```
+{% endcode %}
+
+All log events from `com.zaxxer.hikari.*` will now be written to `hikari.log` at `WARN` level or above, and will not appear in `runtime.log`.
+
+### The Built-In Blackhole Logger
+
+BoxLang ships with a pre-configured `blackhole` logger in the default `boxlang.json`. Its level is set to `OFF`, so any categories assigned to it are completely silenced with no I/O overhead:
+
+```json
+"blackhole": {
+    "level": "OFF",
+    "appender": "file",
+    "appenderArguments": {},
+    "encoder": "text",
+    "additive": false,
+    "categories": []
+}
+```
+
+To suppress a noisy library, add its package to the `blackhole` categories list:
+
+```json
+"blackhole": {
+    "level": "OFF",
+    "appender": "file",
+    "appenderArguments": {},
+    "encoder": "text",
+    "additive": false,
+    "categories": [
+        "com.zaxxer.hikari",
+        "org.springframework"
+    ]
+}
+```
+
+{% hint style="warning" %}
+`additive` must be `false` on the blackhole logger (and any silencing logger) to prevent matched events from propagating to the root logger and appearing in `runtime.log`.
+{% endhint %}
+
+### Multiple Categories Across Loggers
+
+You can spread categories across multiple loggers. For example, route database connection pool noise to a dedicated file while silencing framework internals entirely:
+
+{% code title="boxlang.json" %}
+```json
+"logging": {
+    "loggers": {
+        "thirdparty-db": {
+            "level": "WARN",
+            "appender": "file",
+            "encoder": "text",
+            "additive": false,
+            "categories": [
+                "com.zaxxer.hikari",
+                "org.apache.commons.dbcp2"
+            ]
+        },
+        "blackhole": {
+            "level": "OFF",
+            "appender": "file",
+            "appenderArguments": {},
+            "encoder": "text",
+            "additive": false,
+            "categories": [
+                "org.springframework",
+                "io.netty"
+            ]
+        }
+    }
+}
+```
+{% endcode %}
 
 ---
 
