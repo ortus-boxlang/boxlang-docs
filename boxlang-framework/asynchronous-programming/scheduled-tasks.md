@@ -68,7 +68,23 @@ The `schedulers` property is an array of BoxLang schedulers to register upon sta
 
 ## Tasks
 
-The `tasks` property is an object that defines the tasks to register upon startup. Each task is defined by a unique name and can have many properties.  This is an experimental feature that is coming soon.
+The `tasks` property is an object that defines HTTP-driven tasks to register upon startup. Each task is defined by a unique name and a set of properties (url, crontime, interval, startDate, endDate, etc.). This block is typically populated automatically by the `bx:schedule` component — BoxLang writes task definitions to the file configured by `tasksFile` (default: `${boxLangHome}/config/tasks.json`) and reloads them on startup.
+
+See the [bx:schedule component guide](./scheduling-component.md) for the recommended way to create and manage these tasks at runtime.
+
+## bx:schedule Component
+
+For HTTP-driven scheduled tasks, BoxLang provides the `bx:schedule` component (also available as `cfschedule` for CFML compatibility). This tag/script API lets you create, update, delete, pause, resume, and list scheduled tasks without writing a Scheduler class. Tasks created this way persist automatically to disk and survive runtime restarts.
+
+```javascript
+// Create a task that runs every night at 2 AM
+bx:schedule action="create"
+    task="nightlyCleanup"
+    url="https://myapp.com/tasks/cleanup"
+    cronTime="0 2 * * *";
+```
+
+See the full [Schedule Component Guide](./scheduling-component.md) and the [bx:schedule reference](../../boxlang-language/reference/components/async/Schedule.md) for all available attributes and actions.
 
 # ⏳ Schedulers
 
@@ -333,6 +349,7 @@ Ok, let's go over the frequency methods:
 | Frequency Method                       | Description                                                                  |
 | -------------------------------------- | ---------------------------------------------------------------------------- |
 | `every( period, timeunit )`            | Run the task every custom period of execution                                |
+| `cron( expression )`                   | Schedule the task using a cron expression (5-field Unix or 6-field Quartz)  |
 | `spacedDelay( spacedDelay, timeunit )` | Run the task every custom period of execution but with NO overlaps           |
 | `everySecond()`                        | Run the task every second from the time it gets scheduled                    |
 | `everyMinute()`                        | Run the task every minute from the time it get's scheduled                   |
@@ -361,6 +378,24 @@ Ok, let's go over the frequency methods:
 {% hint style="success" %}
 All `time` arguments are defaulted to midnight (00:00)
 {% endhint %}
+
+### 🗓️ Cron Expression Scheduling
+
+Use `.cron( expression )` to schedule a task using a standard cron expression instead of the named frequency methods. Both 5-field Unix and 6-field Quartz formats are supported.
+
+```javascript
+// 5-field Unix: minute hour day month weekday
+// Run at 2:30 AM every day
+task( "nightly-report" )
+    .call( () => generateReport() )
+    .cron( "30 2 * * *" );
+
+// 6-field Quartz: second minute hour day month weekday
+// Run at noon on the first day of every month
+task( "monthly-summary" )
+    .call( () => generateMonthlySummary() )
+    .cron( "0 0 12 1 * ?" );
+```
 
 ### ⏱️ Time Unit Methods
 
