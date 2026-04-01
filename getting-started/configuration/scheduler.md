@@ -17,7 +17,8 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
     "executor": "scheduled-tasks",
     "cacheName": "default",
     "schedulers": [],
-    "tasks": {}
+    "tasks": {},
+    "tasksFile": "${boxlang-home}/config/tasks.json"
   }
 }
 ```
@@ -53,13 +54,44 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 
 ### tasks
 
-Coming soon.
+**Type:** `object` **Default:** `{}`
 
-**Type:** `object` **Default:** `{}` **Description:** You can define tasks manually in the configuration instead of using scheduler files. Each task is defined as a key-value pair where the key is the unique task name.
+A map of scheduled tasks keyed by unique task name. Tasks defined here are registered on startup in addition to any tasks persisted by the `bx:schedule` component. In most cases you will not edit this block directly — instead, use `bx:schedule` (or `cfschedule`) to create and manage tasks at runtime; BoxLang writes the resulting task definitions to the file configured by `tasksFile` and reloads them automatically.
+
+Each task entry supports the following properties:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `url` | string | URL to GET on each execution |
+| `crontime` | string | Cron expression (5-field Unix or 6-field Quartz) |
+| `interval` | string | `once`, `daily`, `weekly`, `monthly`, or seconds ≥ 60 |
+| `startDate` | string | Date on which the task becomes active |
+| `endDate` | string | Date on which the task is deactivated |
+| `exclude` | string | Comma-separated dates or ranges to skip |
+| `group` | string | Group label for organising tasks |
+| `eventHandler` | string | Path to BoxLang file called on exception (when `onException="invokeHandler"`) |
+| `file` | string | Filename for published HTTP response output |
+
+### tasksFile
+
+**Type:** `string` **Default:** `${boxlang-home}/config/tasks.json`
+
+Path to the JSON file where the `bx:schedule` component persists task definitions. Tasks are written to this file on every create, update, or delete operation and reloaded from it on runtime startup.
+
+```json
+"tasksFile": "${boxlang-home}/config/tasks.json"
+```
+
+Override this path when you want multiple BoxLang instances to share a common task store (for example, via a shared mounted volume in a cluster).
 
 ## Programmatic Scheduling
 
-You can also create and manage scheduled tasks programmatically using BoxLang's scheduling functions and components. The configuration above provides the foundation and default settings for the scheduler service.
+You can create and manage scheduled tasks at runtime using:
+
+* **[bx:schedule component](../../boxlang-framework/asynchronous-programming/scheduling-component.md)** — tag/script API for HTTP-driven tasks; changes persist automatically to `tasksFile`
+* **[Scheduler DSL](../../boxlang-framework/asynchronous-programming/scheduled-tasks.md)** — fluent class-based API for running arbitrary BoxLang code on a schedule
+
+The configuration above provides the foundation and default settings for the scheduler service.
 
 ## Related Configuration
 
