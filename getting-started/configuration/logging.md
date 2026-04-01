@@ -224,5 +224,45 @@ Each logger will have the following configuration items:
 | **additive** | `true` | `boolean` | **true** means that this logger will inherit the appenders from the root logger and log through all of them. `false` means it doesn't bubble up log messages. |
 | **appender** | `file` | `string` | The type of appender to use for this logger. By default we use the rolling file appender.<br><br>Valid values are:<br>- file<br>- console<br><br>Coming soon values:<br>- smtp<br>- socket<br>- db<br>- syslog<br>- class name |
 | **appenderArguments** | --- | `object` | Name-value pairs that configure the appender. Each appender can have different arguments. |
+| **categories** | `[]` | `array` | A list of Java package or class names whose log output will be routed to this logger. Whitespace is trimmed from each entry. Loggers with `level: OFF` skip appender creation entirely. |
 | **encoder** | `logging > defaultEncoder` | `text` or `json` | The encoder to use for logging. By default it leverages what was defined in the `logging.defaultEncoder` configuration. |
 | **level** | `TRACE` | `logLevel` | The log level is to be assigned to the appender. By default, each appender is wide open to the maximum level of `TRACE`. |
+
+### Logger Categories
+
+The `categories` property lets you redirect third-party Java library log output to a specific BoxLang logger. Any Java package or class name listed in `categories` will have its events captured by that logger at the configured level, with no propagation to parent loggers (non-additive routing).
+
+BoxLang ships with a built-in `blackhole` logger configured at `level: OFF`. Add any noisy library package to its `categories` to silence it completely with zero I/O overhead:
+
+```json
+"blackhole": {
+    "level": "OFF",
+    "appender": "file",
+    "appenderArguments": {},
+    "encoder": "text",
+    "additive": false,
+    "categories": [
+        "com.zaxxer.hikari",
+        "org.springframework"
+    ]
+}
+```
+
+To route library output to a dedicated file instead of suppressing it:
+
+```json
+"thirdparty-db": {
+    "level": "WARN",
+    "appender": "file",
+    "encoder": "text",
+    "additive": false,
+    "categories": [
+        "com.zaxxer.hikari",
+        "org.apache.commons.dbcp2"
+    ]
+}
+```
+
+{% hint style="warning" %}
+Always set `"additive": false` on loggers used for category routing. Otherwise matched events will also propagate up to the root logger.
+{% endhint %}
