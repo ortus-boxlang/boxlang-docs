@@ -39,6 +39,8 @@ You can build and ship commercial software with the open-source edition without 
 | Architecture Guidance | 🚫 | ✅ |
 | Roadmap Previews | Public Releases | Early Insights |
 
+You can see a full comparison of features and benefits on our [plans page](https://www.boxlang.io/plans).
+
 ## 🔐 Support & Reliability
 
 BoxLang+ provides structured support processes to help you reduce downtime and accelerate issue resolution. With defined SLAs and escalation access, you spend less time blocked and more time shipping features.

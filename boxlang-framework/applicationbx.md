@@ -11,6 +11,31 @@ icon: rocket-launch
 
 `Application.bx` is BoxLang's **application framework** - a powerful feature that allows you to define virtual applications in memory with isolated settings, lifecycle events, and persistence scopes. This works across **all BoxLang runtimes**: web servers (CommandBox, MiniServer), CLI applications, Lambda functions, desktop applications, and more.
 
+### The Big Picture: Virtual Applications
+
+BoxLang creates isolated virtual applications within a single JVM process:
+
+```
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                    BoxLang Runtime (JVM)                 ┃
+┃                                                          ┃
+┃  ┌──────────────────────-┐   ┌──────────────────────┐    ┃
+┃  │  Application: "App1"  │   │  Application: "App2" │    ┃
+┃  │  ───────────────────  │   │  ─────────────────── │    ┃
+┃  │  📦 application{}     │   │  📦 application{}    │    ┃
+┃  │  👤 session{}         │   │  👤 session{}        │    ┃
+┃  │  ⚙️  Config Settings  │   │  ⚙️  Config Settings │    ┃
+┃  │  🗄️  Datasources      │   │  🗄️  Datasources     │    ┃
+┃  │  🧩 Lifecycle Events  │   │  🧩 Lifecycle Events │    ┃
+┃  └───────────────────────┘   └──────────────────────┘    ┃
+┃          ↑ ↑ ↑                     ↑ ↑ ↑                 ┃
+┃       Requests from              Requests from           ┃
+┃       /app1/** tree              /app2/** tree           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+Each `Application.bx` creates a completely isolated virtual application with its own memory space, configuration, and lifecycle - all running in the same JVM.
+
 {% hint style="success" %}
 **Key Feature**: With a single `Application.bx` file or a hierarchy of them, you can create virtual applications in memory, each with its own isolated `application`, `session`, and configuration space - all within the same JVM process.
 {% endhint %}
@@ -40,6 +65,19 @@ icon: rocket-launch
 
 When BoxLang executes any code (web request, CLI script, Lambda function), it searches for `Application.bx` starting from the current directory and traversing **upward** through parent directories until found or reaching the root.
 
+#### Application.bx Discovery Process
+
+```
+Request: /projects/myapp/api/users/handler.bx
+
+Step 1: Check /projects/myapp/api/users/Application.bx    ❌ Not found
+Step 2: Check /projects/myapp/api/Application.bx          ❌ Not found
+Step 3: Check /projects/myapp/Application.bx              ✅ Found!
+        └─> Use this Application.bx for the request
+```
+
+#### Nested Applications Example
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -66,7 +104,7 @@ When BoxLang executes any code (web request, CLI script, Lambda function), it se
 
 ### Transient Nature
 
-`Application.bx` is **instantiated on every request** - this is a critical feature that provides:
+`Application.bx` is **instantiated on every request** - this is a critical feature that provides multi-tenancy for any BoxLang web application out of the box:
 
 ✅ **Dynamic Configuration** - Modify settings per-request based on conditions:
 
@@ -78,6 +116,40 @@ When BoxLang executes any code (web request, CLI script, Lambda function), it se
 ✅ **Request-Level Customization** - Each request can have unique behavior while sharing the same application memory space
 
 ⚠️ **Performance Consideration** - Since it runs on every request, keep the pseudo-constructor logic optimized. Use the `application` scope for expensive operations that should only run once.
+
+#### Application.bx Instantiation vs Application Memory
+
+```
+Request #1                Request #2                Request #3
+    │                         │                         │
+    ▼                         ▼                         ▼
+┌─────────┐              ┌─────────┐              ┌─────────┐
+│ App.bx  │ New Instance │ App.bx  │ New Instance │ App.bx  │
+│Instance │◄─────────────│Instance │◄─────────────│Instance │
+└────┬────┘              └────┬────┘              └────┬────┘
+     │                        │                        │
+     │  Sets this.name        │  Sets this.name        │  Sets this.name
+     │  Reads this.settings   │  Reads this.settings   │  Reads this.settings
+     │                        │                        │
+     └────────┬───────────────┴────────────┬───────────┘
+              │                            │
+              ▼                            ▼
+     ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+     ┃        Persistent Application Memory      ┃
+     ┃  ──────────────────────────────────────── ┃
+     ┃  application.startedAt = "2024-01-01"     ┃
+     ┃  application.cachedData = [...]           ┃
+     ┃  application.version = "1.0.0"            ┃
+     ┃                                           ┃
+     ┃  ← Shared across ALL requests             ┃
+     ┃  ← Survives until applicationTimeout      ┃
+     ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+```
+
+**The Key Insight**:
+
+- 🔄 **Application.bx class** = Created and destroyed with **every request**
+- 💾 **`application` scope** = Persists in memory and shared across all requests
 
 ```js
 class {
