@@ -113,6 +113,7 @@
   * [Logging](getting-started/configuration/logging.md)
   * [Modules](getting-started/configuration/modules.md)
   * [Scheduler](getting-started/configuration/scheduler.md)
+  * [Watchers](getting-started/configuration/watcher.md)
   * [Security](getting-started/configuration/security.md)
 
 ## BoxLang Language
@@ -978,6 +979,7 @@
   * [BoxFutures](boxlang-framework/asynchronous-programming/box-futures.md)
   * [Async Pipelines](boxlang-framework/asynchronous-programming/async-pipelines.md)
   * [Parallel Computations](boxlang-framework/asynchronous-programming/parallel-computations.md)
+  * [Directory + File Watchers](boxlang-framework/asynchronous-programming/directory-file-watchers.md)
   * [Scheduled Tasks](boxlang-framework/asynchronous-programming/scheduled-tasks.md)
   * [Schedule Component](boxlang-framework/asynchronous-programming/scheduling-component.md)
 * [Components](boxlang-framework/components.md)

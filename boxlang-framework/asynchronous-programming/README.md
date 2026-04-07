@@ -39,6 +39,12 @@ Schedulers can be written in BoxLang or in Java and will end up being managed by
 
 Schedule tasks execute in an executor of choice and will be most likely managed by a scheduler.  There are times where tasks can be sent for execution directly to executors as well.
 
+### Directory + File Watchers
+
+The watcher service monitors one or more directories and dispatches filesystem change events to BoxLang listeners. This allows you to react to file creations, updates, and deletions in near real time.
+
+Learn more in [Directory + File Watchers](directory-file-watchers.md).
+
 ### BoxFuture
 
 Our `BoxFuture` is a subclass of the JDKs `CompletableFuture` but enhanced for dynamic programming.
@@ -220,15 +226,13 @@ BoxLang's async framework accepts time units in multiple formats for timeouts, d
 
 #### Available Time Units
 
-| Unit String | Java TimeUnit | Description | Example Usage |
-|-------------|---------------|-------------|---------------|
-| `"NANOSECONDS"` | `TimeUnit.NANOSECONDS` | Nanosecond precision | `future.orTimeout( 500000000, "NANOSECONDS" )` |
-| `"MICROSECONDS"` | `TimeUnit.MICROSECONDS` | Microsecond precision | `future.orTimeout( 500000, "MICROSECONDS" )` |
-| `"MILLISECONDS"` | `TimeUnit.MILLISECONDS` | Millisecond precision (default) | `future.orTimeout( 5000, "MILLISECONDS" )` |
-| `"SECONDS"` | `TimeUnit.SECONDS` | Second precision | `future.orTimeout( 30, "SECONDS" )` |
-| `"MINUTES"` | `TimeUnit.MINUTES` | Minute precision | `future.orTimeout( 5, "MINUTES" )` |
-| `"HOURS"` | `TimeUnit.HOURS` | Hour precision | `future.orTimeout( 2, "HOURS" )` |
-| `"DAYS"` | `TimeUnit.DAYS` | Day precision | `future.orTimeout( 1, "DAYS" )` |
+- `"NANOSECONDS"` (`TimeUnit.NANOSECONDS`): Nanosecond precision. Example: `future.orTimeout( 500000000, "NANOSECONDS" )`
+- `"MICROSECONDS"` (`TimeUnit.MICROSECONDS`): Microsecond precision. Example: `future.orTimeout( 500000, "MICROSECONDS" )`
+- `"MILLISECONDS"` (`TimeUnit.MILLISECONDS`): Millisecond precision (default). Example: `future.orTimeout( 5000, "MILLISECONDS" )`
+- `"SECONDS"` (`TimeUnit.SECONDS`): Second precision. Example: `future.orTimeout( 30, "SECONDS" )`
+- `"MINUTES"` (`TimeUnit.MINUTES`): Minute precision. Example: `future.orTimeout( 5, "MINUTES" )`
+- `"HOURS"` (`TimeUnit.HOURS`): Hour precision. Example: `future.orTimeout( 2, "HOURS" )`
+- `"DAYS"` (`TimeUnit.DAYS`): Day precision. Example: `future.orTimeout( 1, "DAYS" )`
 
 #### Important Notes
 

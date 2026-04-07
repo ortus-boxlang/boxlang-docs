@@ -138,6 +138,10 @@ Here, you will find each segment and its configuration details.
 [scheduler.md](configuration/scheduler.md)
 {% endcontent-ref %}
 
+{% content-ref url="configuration/watcher.md" %}
+[watcher.md](configuration/watcher.md)
+{% endcontent-ref %}
+
 {% content-ref url="configuration/security.md" %}
 [security.md](configuration/security.md)
 {% endcontent-ref %}
