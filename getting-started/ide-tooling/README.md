@@ -117,4 +117,3 @@ Collection of syntax highlighters for embedding BoxLang code in documentation, w
 {% content-ref url="syntax-highlighters.md" %}
 [syntax-highlighters.md](syntax-highlighters.md)
 {% endcontent-ref %}
-

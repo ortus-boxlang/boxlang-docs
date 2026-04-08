@@ -56,4 +56,3 @@ Thanks to our multi-parser architecture, the following parsers are currently bei
 * COBOL (yes, finally migrate to a modern language easily!)
 * ...
 {% endhint %}
-
