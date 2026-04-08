@@ -7,6 +7,10 @@ icon: rectangle-terminal
 
 <figure><img src="../../.gitbook/assets/BL-CLI.png" alt=""><figcaption></figcaption></figure>
 
+{% hint style="info" %}
+Looking for a real BoxLang CLI app to study and practice with? Check out [BoxLings](https://github.com/ortus-boxlang/boxlings), an interactive learning tool built in BoxLang.
+{% endhint %}
+
 BoxLang is a modern, dynamic scripting language built for more than just simple automation—it empowers you to create full-fledged, high-performance CLI applications with ease. Designed to run seamlessly on the JVM, BoxLang provides powerful scripting capabilities, a rich standard library, and first-class support for modular development.
 
 Whether you're automating repetitive tasks, building interactive command-line tools, or developing complex CLI-driven workflows, BoxLang offers the flexibility, expressiveness, and performance you need. With intuitive syntax, robust error handling, and seamless integration with Java and other JVM-based technologies, BoxLang makes CLI scripting more efficient and enjoyable.

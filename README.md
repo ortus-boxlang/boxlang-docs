@@ -41,6 +41,14 @@ BoxLang has been designed to be a highly adaptable and dynamic language to take 
 [overview](getting-started/overview/)
 {% endcontent-ref %}
 
+## Interactive Learning
+
+{% hint style="success" %}
+Learn BoxLang hands-on with **BoxLings**, our interactive CLI learning tool with progressive exercises and test-driven feedback.
+
+Start here: [https://github.com/ortus-boxlang/boxlings](https://github.com/ortus-boxlang/boxlings)
+{% endhint %}
+
 ## License
 
 BoxLang is open source and licensed under the [Apache 2 ](https://www.apache.org/licenses/LICENSE-2.0.html)License. Copyright and Registered Trademark by Ortus Solutions, Corp.

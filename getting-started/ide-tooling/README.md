@@ -7,6 +7,14 @@ icon: laptop-code
 
 Welcome to the comprehensive BoxLang tooling ecosystem! This section covers all the tools, IDE integrations, and utilities designed to enhance your BoxLang development experience across different platforms and editors.
 
+## 🎓 Interactive Learning
+
+Start learning BoxLang interactively with BoxLings, a CLI-first training tool with progressive exercises and visible TestBox specs.
+
+{% content-ref url="boxlings.md" %}
+[boxlings.md](boxlings.md)
+{% endcontent-ref %}
+
 ## 🚀 Official IDE Support
 
 BoxLang provides first-class support for modern development environments for:

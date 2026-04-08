@@ -7,6 +7,10 @@ icon: vest
 
 This guide provides a quick overview of BoxLang syntax styles, intricacies, operators, and features. It aims to assist developers from other languages in their BoxLang development journey. BoxLang has been heavily inspired by many different languages, including Java, CFML, Groovy, Kotlin, Ruby, PHP, and more.
 
+{% hint style="info" %}
+After reviewing this guide, reinforce the concepts with [BoxLings](https://github.com/ortus-boxlang/boxlings), an interactive CLI exercise tool for learning BoxLang by doing.
+{% endhint %}
+
 {% hint style="success" %}
 If you are a CFML developer, check out also our [CFML Guide.](cfml.md)
 {% endhint %}

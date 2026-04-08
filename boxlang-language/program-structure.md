@@ -5,6 +5,10 @@ icon: folder-tree
 
 # Program Structure
 
+{% hint style="info" %}
+These same file types are used throughout [BoxLings](https://github.com/ortus-boxlang/boxlings), so you can practice each structure (`.bxs`, `.bxm`, `.bx`) with guided, hands-on exercises.
+{% endhint %}
+
 ## 📁 File Types
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1) (1) (1).png" alt="" width="563"><figcaption></figcaption></figure>

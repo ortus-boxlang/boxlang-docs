@@ -90,6 +90,7 @@
   * [Google Cloud](getting-started/boxlang-cloud-servers/google-cloud.md)
 * [IDE & Tooling](getting-started/ide-tooling/README.md)
   * [BoxLang IDE](getting-started/ide-tooling/boxlang-ide.md)
+  * [Interactive Learning with BoxLings](getting-started/ide-tooling/boxlings.md)
   * [BoxLang IntelliJ](getting-started/ide-tooling/boxlang-intellij.md)
   * [BoxLang Compiler](getting-started/ide-tooling/boxlang-compiler.md)
   * [BoxLang AST](getting-started/ide-tooling/boxlang-ast.md)

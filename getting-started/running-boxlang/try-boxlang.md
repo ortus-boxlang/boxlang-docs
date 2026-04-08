@@ -14,3 +14,7 @@ Interested in playing with BoxLang? You can test the syntax in a BoxLang interpr
 {% hint style="success" %}
 Our BoxLang playground was built with our AWS Lambda runtime microservice and our BoxLang Docker Containers.
 {% endhint %}
+
+{% hint style="info" %}
+Want a guided, hands-on learning path after the playground? Use [BoxLings](https://github.com/ortus-boxlang/boxlings), our interactive CLI exercise tool for learning BoxLang fundamentals.
+{% endhint %}

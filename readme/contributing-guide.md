@@ -7,6 +7,10 @@ description: The best way to contribute to BoxLang!
 
 Hola amigo! I'm excited that you are interested in contributing to **BoxLang**. Before submitting your contribution, please make sure to take a moment and read through the following guidelines:
 
+{% hint style="info" %}
+If you are new to BoxLang, start with [BoxLings](https://github.com/ortus-boxlang/boxlings) to build confidence with the language and testing workflow before contributing to core projects.
+{% endhint %}
+
 ### Code Of Conduct <a href="#code-of-conduct" id="code-of-conduct"></a>
 
 This project is open source, and as such, the maintainers give their free time to build and maintain the source code held within. They make the code freely available in the hope that it will be useful to other developers and/or businesses. Your contributions are crucial in maintaining the integrity of BoxLang. Be considerate towards maintainers when raising issues or presenting pull requests. **We all follow the Golden Rule: Do to others as you want them to do to you.**

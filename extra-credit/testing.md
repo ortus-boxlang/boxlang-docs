@@ -9,6 +9,10 @@ icon: flask-vial
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>www.testbox.run</p></figcaption></figure>
 
+{% hint style="success" %}
+Want to learn these testing ideas hands-on? [BoxLings](https://github.com/ortus-boxlang/boxlings) teaches BoxLang with visible TestBox specs so you can practice BDD/TDD while learning the language.
+{% endhint %}
+
 ### Table of Contents
 
 1. [Why Testing Matters](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#why-testing-matters)

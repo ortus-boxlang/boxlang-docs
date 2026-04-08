@@ -9,6 +9,19 @@ BoxLang can be deployed on multiple runtimes, and each runtime can be set up dif
 
 **You can choose to either install a single version of BoxLang (Quick Installer) or our BoxLang Version Manager (BVM), so you can manage multiple versions of BoxLang on your operating system.**
 
+## Next Step: Learn with BoxLings
+
+{% hint style="success" %}
+Once BoxLang is installed, jump into [BoxLings](https://github.com/ortus-boxlang/boxlings), our interactive CLI learning tool.
+
+```bash
+git clone https://github.com/ortus-boxlang/boxlings.git
+cd boxlings
+boxlang BoxLings.bx init
+boxlang BoxLings.bx
+```
+{% endhint %}
+
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
 
 BoxLang is a JVM language, so we need a JVM. You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21). Alternatively, see the tabs below for instructions on automating it.

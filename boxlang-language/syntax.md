@@ -7,6 +7,10 @@ icon: brackets-curly
 
 BoxLang is a dynamic language that is fluent with a low verbosity syntax. It will feel like a very lean Java syntax. Check out our quick [style guide](../getting-started/overview/syntax-style-guide/) if you are a Java/Kotlin/Python/PHP/Ruby/CFML/Rust developer, this will give you a first-hand look at the major semantics of the language.
 
+{% hint style="info" %}
+Want guided practice while learning syntax? Use [BoxLings](https://github.com/ortus-boxlang/boxlings), our interactive CLI learning tool with progressive exercises and test-driven feedback.
+{% endhint %}
+
 ## Syntax Files
 
 BoxLang can be written in either templates, scripts, or classes. You will write one or more instructions in a file (`.bx`, `.bxs`, `.bxm`), then run the file through a BoxLang engine or Command Line Interpreter like our REPL.
