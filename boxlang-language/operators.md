@@ -176,6 +176,18 @@ assert () => getUser() != null
 If the assertion expression is a function (closure or lambda), BoxLang automatically invokes it and evaluates the result.
 {% endhint %}
 
+### Custom Assertion Messages
+
+You can include a custom message to display if the assertion fails, separated by a colon:
+
+```js
+assert user != null : "User must be provided before processing"
+assert user.isActive() : "Cannot process an inactive user: #user.name#"
+assert price > 0 : "Price must be greater than zero"
+```
+
+If the assertion fails, the message is included in the thrown `AssertionError` exception, making it easier to debug failures.
+
 [Try it on try.boxlang.io](https://try.boxlang.io)
 
 ## 🏷️ InstanceOf Operator
