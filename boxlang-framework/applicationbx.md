@@ -274,6 +274,23 @@ class {
     this.schedulers = [ "tasks.MaintenanceScheduler" ];
 
     // ========================================
+    // CUSTOM WATCHERS
+    // ========================================
+
+    watcherListener = new app.listeners.HotReloadListener()
+
+    this.watchers = {
+        sourceWatcher : {
+            paths : [ expandPath( "./src" ) ],
+            listener : watcherListener,
+            recursive : true,
+            debounce : 250,
+            atomicWrites : true,
+            errorThreshold : 10
+        }
+    }
+
+    // ========================================
     // LIFECYCLE EVENTS
     // ========================================
 
@@ -466,6 +483,61 @@ this.schedulers = [
 ```
 
 See [Asynchronous Programming documentation](asynchronous-programming/) for scheduler details.
+
+### Custom Watchers
+
+Register application-scoped file watchers that auto-start when the application starts:
+
+```js
+watcherListener = new app.listeners.HotReloadListener()
+
+this.watchers = {
+    sourceWatcher : {
+        paths : [ expandPath( "./src" ) ],
+        listener : watcherListener,
+        recursive : true,
+        debounce : 250,
+        throttle : 0,
+        atomicWrites : true,
+        errorThreshold : 10
+    },
+    assetsWatcher : {
+        paths : [ expandPath( "./resources" ) ],
+        listener : {
+            onModify : ( event ) => rebuildAsset( event.path ),
+            onEvent : ( event ) => writeLog( text: "Watcher event [#event.kind#] #event.relativePath#", level: "debug" )
+        },
+        recursive : false
+    }
+}
+```
+
+Watcher listener values support these forms:
+
+| Listener Form         | Example                                         | Notes                                          |
+| --------------------- | ----------------------------------------------- | ---------------------------------------------- |
+| Closure               | `listener : ( event ) => println( event.kind )` | Handles all events through a single function.  |
+| Struct of closures    | `listener : { onModify : ( e ) => ... }`        | Event-specific handlers such as `onModify()`.  |
+| Class name string     | `listener : "app.listeners.HotReloadListener"`  | Runtime instantiates the class automatically.  |
+| Class instance        | `listener : new app.listeners.HotReloadListener()` | Reuses the already created class instance.   |
+
+Watcher definition keys in `this.watchers.<watcherName>` support these values:
+
+| Key              | Type            | Required | Default | Description |
+| ---------------- | --------------- | -------- | ------- | ----------- |
+| `paths`          | string or array | Yes      | -       | Directory path or array of directory paths to watch. |
+| `listener`       | any             | Yes      | -       | Closure, struct of closures, class name string, or class instance. |
+| `recursive`      | boolean         | No       | `true`  | Watch subdirectories recursively. |
+| `debounce`       | long            | No       | `0`     | Debounce window in milliseconds. |
+| `throttle`       | long            | No       | `0`     | Throttle window in milliseconds. |
+| `atomicWrites`   | boolean         | No       | `true`  | Reduce noisy temp-file/rename save events. |
+| `errorThreshold` | integer         | No       | `10`    | Consecutive listener errors before watcher auto-stops (`0` disables auto-stop). |
+
+{% hint style="info" %}
+Application watchers are namespaced per app as `applicationName:watcherName` and are started automatically during application startup.
+{% endhint %}
+
+See [Directory + File Watchers](asynchronous-programming/directory-file-watchers.md) for listener method contracts and complete runtime APIs.
 
 ### Security Settings
 

@@ -102,7 +102,7 @@ watcher = watcherNew(
 
 ## Watcher Listeners
 
-BoxLang watchers support three listener patterns: **closures**, **struct of closures**, and **listener classes**. Choose the pattern that fits your complexity and reusability needs.
+BoxLang watchers support four listener patterns: **closures**, **struct of closures**, **class name strings**, and **class instances**. Choose the pattern that fits your complexity and reusability needs.
 
 ### 🔹 Closure Listener
 
@@ -145,7 +145,7 @@ watcher = watcherNew(
       println( "🗑️  Deleted: " & event.relativePath )
       cleanCache( event.path )
     },
-    "overflow": ( event ) => {
+    "onOverflow": ( event ) => {
       println( "⚠️  Event overflow detected—resyncing..." )
       fullBuildSync()
     },
@@ -175,6 +175,7 @@ The available methods are:
 | `onModify()`  | No       | Called for `modified` events. Receives event struct.                 |
 | `onDelete()`  | No       | Called for `deleted` events. Receives event struct.                  |
 | `onOverflow()` | No       | Called for `overflow` events. Receives event struct.                 |
+| `onError()`   | No       | Called when listener execution throws an exception.                  |
 
 {% hint style="info" %}
 When specific event methods (`onCreate()`, `onModify()`, `onDelete()`, `onOverflow()`) are defined, they are called **in addition to** `onEvent()`. Use `onEvent()` for centralized routing or implement specific methods for targeted handling.
@@ -238,13 +239,26 @@ class {
 }
 ```
 
-**Usage:**
+**Usage with class instance:**
 
 ```js
 watcher = watcherNew(
   name = "hotReloadWatcher",
   paths = [ "./src" ],
   listener = new HotReloadListener(),
+  recursive = true,
+  debounce = 250,
+  atomicWrites = true
+).start()
+```
+
+**Usage with class name string:**
+
+```js
+watcher = watcherNew(
+  name = "hotReloadWatcher",
+  paths = [ "./src" ],
+  listener = "app.listeners.HotReloadListener",
   recursive = true,
   debounce = 250,
   atomicWrites = true
@@ -273,6 +287,12 @@ You can register auto-start watchers in `boxlang.json`:
 ```
 
 See [Watcher configuration](../../getting-started/configuration/watcher.md) for all options.
+
+## Application Watchers
+
+If you want watchers to be app-scoped and auto-started from your `Application.bx`, define them in `this.watchers`.
+
+See [Application.bx Custom Watchers](../applicationbx.md#custom-watchers) for full syntax, supported listener forms, and definition keys.
 
 ## Watcher BIFs
 

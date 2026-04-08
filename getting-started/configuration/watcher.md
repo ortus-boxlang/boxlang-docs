@@ -123,6 +123,10 @@ Each entry supports:
 Inside `boxlang.json`, the `listener` must be a class name string. If you want to use closures or struct listeners, create watchers programmatically with `watcherNew()`.
 {% endhint %}
 
+{% hint style="info" %}
+Programmatic `watcherNew()` listeners support closures, structs of closures, class name strings, and class instances.
+{% endhint %}
+
 ## Definition Example
 
 ```json
