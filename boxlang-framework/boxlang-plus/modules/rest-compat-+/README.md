@@ -34,9 +34,32 @@ This module provides CFML-compatible REST services for BoxLang web applications,
 }
 ```
 
-#### Install the module on your initial server start
+#### Add a [web.xml override](https://commandbox.ortusbooks.com/embedded-server/configuring-your-server/web.xml-overrides) to your `server.json` to allow the servlet to pass REST routes to BoxLang
 
-`.server.json` scripts block:
+Place the following in a file ( for example `.rest-override.xml` )
+
+```
+<web-app>
+  <servlet-mapping>
+	<servlet-name>BoxLangServlet</servlet-name>
+	<url-pattern>rest/*</url-pattern>
+  </servlet-mapping>
+</web-app>
+```
+
+Then update your `server.json` to point to your override file - which will append to the existing servlet mappings
+
+```
+"app" : {
+	"webXMLOverride" : "./.rest-override.xml",
+	...
+}
+
+```
+
+#### Update your server file to install the module on your initial server start
+
+`server.json` scripts block:
 
 ```
 "scripts" : {
@@ -45,29 +68,7 @@ This module provides CFML-compatible REST services for BoxLang web applications,
 }
 ```
 
-#### Seed your server directory with a dryRun start and update the `web.xml` file
-
-```
-box server start --dryRun
-```
-
-Once the server is seeded, open the `web.xml` file in the server home ( e.g. `{server-home}/WEB-INF/web.xml`) and update the `servlet-mapping` section to add the `url-pattern` node for the REST prefix:
-
-```xml
-<servlet-mapping>
-	<servlet-name>BoxLangServlet</servlet-name>
-	<url-pattern>*.cfc</url-pattern>
-	<url-pattern>*.cfm</url-pattern>
-	<url-pattern>*.cfs</url-pattern>
-	<url-pattern>*.cfml</url-pattern>
-	<url-pattern>*.bx</url-pattern>
-	<url-pattern>*.bxm</url-pattern>
-	<url-pattern>*.bxs</url-pattern>
-	<url-pattern>rest/*</url-pattern>
-</servlet-mapping>
-```
-
-#### Start your server and go
+#### Start your server and go!
 
 ### Configuration
 
