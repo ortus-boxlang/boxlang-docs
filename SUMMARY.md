@@ -75,6 +75,7 @@
   * [Demos](getting-started/running-boxlang/demos.md)
   * [Docker](getting-started/running-boxlang/docker.md)
   * [GitHub Actions](getting-started/running-boxlang/github-actions.md)
+  * [Google Cloud Functions](getting-started/running-boxlang/google-cloud-functions.md)
   * [JSR-223 Scripting](getting-started/running-boxlang/jsr-223-scripting.md)
   * [MiniServer](getting-started/running-boxlang/miniserver.md)
   * [Spring Boot](getting-started/running-boxlang/spring-boot.md)
