@@ -390,6 +390,15 @@ BoxLang can also run on AWS Lambdas. It even powers our entry playground at [htt
 * Template\
   [https://github.com/ortus-boxlang/boxlang-starter-aws-lambda](https://github.com/ortus-boxlang/boxlang-starter-aws-lambda)
 
+### Google Cloud Functions Runtime
+
+BoxLang can also run on Google Cloud Functions using our Java 21 runtime integration.
+
+* Runtime Source:\
+  [https://github.com/ortus-boxlang/boxlang-google-functions](https://github.com/ortus-boxlang/boxlang-google-functions)
+* Starter Template\
+  [https://github.com/ortus-boxlang/boxlang-starter-google-functions](https://github.com/ortus-boxlang/boxlang-starter-google-functions)
+
 ### CommandBox BoxLang Server
 
 BoxLang can also be deployed using [CommandBox](https://www.ortussolutions.com/products/commandbox). This is our preferred way to deploy web applications using BoxLang. BoxLang +/++ Subscribers even get access to [CommandBox Pro](https://www.ortussolutions.com/products/commandbox-pro). Note: This installation method is typically tailored for a specific web application and is not typically accessible by other applications.

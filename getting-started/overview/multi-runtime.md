@@ -23,7 +23,7 @@ The currently available and in-development runtimes are the following:
 | **Desktop** | BoxLang native Desktop Applications | *In Progress* |
 | [**DigitalOcean App Platform**](../running-boxlang/digitalocean-app.md) | DigitalOcean App Platform applications | **Done** |
 | **iOS** | Ability to run BoxLang in iOS Devices | *In Planning* |
-| **Google Cloud Functions** | Ability to run BoxLang with Google Cloud Functions | *In Progress* |
+| [**Google Cloud Functions**](../running-boxlang/google-cloud-functions.md) | Ability to run BoxLang with Google Cloud Functions | **Done** |
 | [**JSR-223**](../running-boxlang/jsr-223-scripting.md) | Java scripting interfaces | **Done** |
 | [**MiniServer**](../running-boxlang/miniserver.md) | A pure Java webserver built with BoxLang | **Done** |
 | [**Spring Boot**](../running-boxlang/spring-boot.md) | A Spring Boot starter and auto configurator | **Done** |

@@ -14,7 +14,11 @@ Here you can find the collection of links to the BoxLang APIDocs
 
 ### AWS Lambda
 
-https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-aws-lambda/latest.html[^1]
+https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-aws-lambda/latest.html
+
+### Google Cloud Functions
+
+https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-google-functions/latest.html
 
 ### Web Core Support
 
@@ -27,10 +31,3 @@ https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-aws-lambda/latest.ht
 ### Servlet
 
 [https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-servlet/latest.html](https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-servlet/latest.html)
-
-
-
-
-
-[^1]: 
-

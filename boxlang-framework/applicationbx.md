@@ -172,12 +172,13 @@ class {
 
 `Application.bx` works seamlessly across all BoxLang deployment targets:
 
-| Runtime         | Use Case                    | Application.bx Behavior                         |
-| --------------- | --------------------------- | ----------------------------------------------- |
-| **Web Servers** | CommandBox, MiniServer, JEE | Full support with sessions, cookies, web scopes |
-| **CLI**         | Scripts, automation, tools  | Application scope, no web-specific features     |
-| **Lambda**      | Serverless functions        | Application scope, cold start optimization      |
-| **Desktop**     | Electron, JavaFX apps       | Application scope, local persistence            |
+| Runtime                    | Use Case                    | Application.bx Behavior                         |
+| -------------------------- | --------------------------- | ----------------------------------------------- |
+| **Web Servers**            | CommandBox, MiniServer, JEE | Full support with sessions, cookies, web scopes |
+| **CLI**                    | Scripts, automation, tools  | Application scope, no web-specific features     |
+| **AWS Lambda**             | Serverless functions        | Application scope, cold start optimization      |
+| **Google Cloud Functions** | Serverless functions        | Application scope, cold start optimization      |
+| **Desktop**                | Electron, JavaFX apps       | Application scope, local persistence            |
 
 {% hint style="warning" %}
 **Web-Only Scopes**: Features like `session`, `cookie`, `form`, `url`, and `cgi` scopes only exist in web runtimes. Structure your code to handle different runtime contexts gracefully.

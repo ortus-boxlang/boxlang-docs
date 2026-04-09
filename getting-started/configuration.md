@@ -7,7 +7,7 @@ icon: wrench-simple
 
 BoxLang has an installation-level configuration file that allows developers to adjust various settings from the compiler to default cache providers, runtime-wide data sources, and much more.  Depending on which runtime you are using, the configuration file location might change, but the configuration segments remain  the same.
 
-<table><thead><tr><th width="237">Runtime</th><th>Default Config Location</th></tr></thead><tbody><tr><td><strong>AWS Lamba</strong></td><td><code>{lambdaRoot}/boxlang.json</code></td></tr><tr><td><strong>Operating System</strong></td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td><strong>MiniServer</strong></td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td><strong>CommandBox</strong></td><td><code>~/.commandbox/servers/{serverHome}/WEB-INF/boxlang/config/boxlang.json</code></td></tr></tbody></table>
+<table><thead><tr><th width="237">Runtime</th><th>Default Config Location</th></tr></thead><tbody><tr><td><strong>AWS Lambda</strong></td><td><code>{lambdaRoot}/boxlang.json</code></td></tr><tr><td><strong>Google Cloud Functions</strong></td><td><code>{gcfRoot}/boxlang.json</code></td></tr><tr><td><strong>Operating System</strong></td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td><strong>MiniServer</strong></td><td><code>~/.boxlang/config/boxlang.json</code></td></tr><tr><td><strong>CommandBox</strong></td><td><code>~/.commandbox/servers/{serverHome}/WEB-INF/boxlang/config/boxlang.json</code></td></tr></tbody></table>
 
 {% hint style="info" %}
 All runtimes allow for configuration overrides.
