@@ -63,20 +63,20 @@ Spreadsheet( "fonts.xlsx" )
     .setRowData( 1, [ "Bold", "Italic", "Underline", "Strikeout" ] )
 
     // Bold text
-    .setCellValue( 2, 1, "Important" )
-    .formatCell( 2, 1, { bold: true } )
+    .setCellValue( "Important", 2, 1 )
+    .formatCell( { bold: true }, 2, 1 )
 
     // Italic text
-    .setCellValue( 2, 2, "Emphasis" )
-    .formatCell( 2, 2, { italic: true } )
+    .setCellValue( "Emphasis", 2, 2 )
+    .formatCell( { italic: true }, 2, 2 )
 
     // Underlined text
-    .setCellValue( 2, 3, "Underlined" )
-    .formatCell( 2, 3, { underline: true } )
+    .setCellValue( "Underlined", 2, 3 )
+    .formatCell( { underline: true }, 2, 3 )
 
     // Strikethrough text
-    .setCellValue( 2, 4, "Removed" )
-    .formatCell( 2, 4, { strikeout: true } )
+    .setCellValue( "Removed", 2, 4 )
+    .formatCell( { strikeout: true }, 2, 4 )
 
     .save();
 ```
@@ -88,12 +88,12 @@ Spreadsheet( "font-styles.xlsx" )
     .setRowData( 1, [ "Default", "Large", "Custom Font" ] )
 
     // Large font
-    .setCellValue( 2, 2, "Title Text" )
-    .formatCell( 2, 2, { fontsize: 18, bold: true } )
+    .setCellValue( "Title Text", 2, 2 )
+    .formatCell( { fontsize: 18, bold: true }, 2, 2 )
 
     // Custom font family
-    .setCellValue( 2, 3, "Courier Text" )
-    .formatCell( 2, 3, { font: "Courier New", fontsize: 12 } )
+    .setCellValue( "Courier Text", 2, 3 )
+    .formatCell( { font: "Courier New", fontsize: 12 }, 2, 3 )
 
     .save();
 ```
@@ -105,18 +105,18 @@ Spreadsheet( "colors.xlsx" )
     .setRowData( 1, [ "Red", "Blue", "Green", "Custom" ] )
 
     // Named colors
-    .setCellValue( 2, 1, "Error" )
-    .formatCell( 2, 1, { fontColor: "red", bold: true } )
+    .setCellValue( "Error", 2, 1 )
+    .formatCell( { fontColor: "red", bold: true }, 2, 1 )
 
-    .setCellValue( 2, 2, "Info" )
-    .formatCell( 2, 2, { fontColor: "blue" } )
+    .setCellValue( "Info", 2, 2 )
+    .formatCell( { fontColor: "blue" }, 2, 2 )
 
-    .setCellValue( 2, 3, "Success" )
-    .formatCell( 2, 3, { fontColor: "green", bold: true } )
+    .setCellValue( "Success", 2, 3 )
+    .formatCell( { fontColor: "green", bold: true }, 2, 3 )
 
     // Hex color
-    .setCellValue( 2, 4, "Custom" )
-    .formatCell( 2, 4, { fontColor: "##FF6600" } )
+    .setCellValue( "Custom", 2, 4 )
+    .formatCell( { fontColor: "##FF6600" }, 2, 4 )
 
     .save();
 ```
@@ -143,22 +143,22 @@ Spreadsheet( "backgrounds.xlsx" )
     .addRow( [ "Active", "High", "Sales" ] )
 
     // Green background for status
-    .formatCell( 2, 1, {
+    .formatCell( {
         fgcolor: "lightgreen",
         bold: true
-    } )
+    }, 2, 1 )
 
     // Red background for high priority
-    .formatCell( 2, 2, {
+    .formatCell( {
         fgcolor: "red",
         fontColor: "white",
         bold: true
-    } )
+    }, 2, 2 )
 
     // Blue background for category
-    .formatCell( 2, 3, {
+    .formatCell( {
         fgcolor: "lightblue"
-    } )
+    }, 2, 3 )
 
     .save();
 ```
@@ -197,23 +197,23 @@ Spreadsheet( "alignment.xlsx" )
     .setRowData( 1, [ "Left", "Center", "Right", "Justify" ] )
 
     // Left aligned (default)
-    .setCellValue( 2, 1, "Left aligned text" )
-    .formatCell( 2, 1, { alignment: "left" } )
+    .setCellValue( "Left aligned text", 2, 1 )
+    .formatCell( { alignment: "left" }, 2, 1 )
 
     // Center aligned
-    .setCellValue( 2, 2, "Centered" )
-    .formatCell( 2, 2, { alignment: "center" } )
+    .setCellValue( "Centered", 2, 2 )
+    .formatCell( { alignment: "center" }, 2, 2 )
 
     // Right aligned
-    .setCellValue( 2, 3, "Right aligned" )
-    .formatCell( 2, 3, { alignment: "right" } )
+    .setCellValue( "Right aligned", 2, 3 )
+    .formatCell( { alignment: "right" }, 2, 3 )
 
     // Justified (for multi-line cells)
-    .setCellValue( 2, 4, "Justified text wraps" )
-    .formatCell( 2, 4, {
+    .setCellValue( "Justified text wraps", 2, 4 )
+    .formatCell( {
         alignment: "justify",
         wraptext: true
-    } )
+    }, 2, 4 )
     .setColumnWidth( 4, 20 )
 
     .save();
@@ -227,16 +227,16 @@ Spreadsheet( "vertical.xlsx" )
     .setRowHeight( 2, 40 )  // Make row taller
 
     // Top aligned (default)
-    .setCellValue( 2, 1, "Top" )
-    .formatCell( 2, 1, { verticalalignment: "top" } )
+    .setCellValue( "Top", 2, 1 )
+    .formatCell( { verticalalignment: "top" }, 2, 1 )
 
     // Center aligned
-    .setCellValue( 2, 2, "Middle" )
-    .formatCell( 2, 2, { verticalalignment: "center" } )
+    .setCellValue( "Middle", 2, 2 )
+    .formatCell( { verticalalignment: "center" }, 2, 2 )
 
     // Bottom aligned
-    .setCellValue( 2, 3, "Bottom" )
-    .formatCell( 2, 3, { verticalalignment: "bottom" } )
+    .setCellValue( "Bottom", 2, 3 )
+    .formatCell( { verticalalignment: "bottom" }, 2, 3 )
 
     .save();
 ```
@@ -245,12 +245,12 @@ Spreadsheet( "vertical.xlsx" )
 
 ```js
 Spreadsheet( "wrapped.xlsx" )
-    .setCellValue( 1, 1, "This is a long text that will wrap within the cell" )
-    .formatCell( 1, 1, {
+    .setCellValue( "This is a long text that will wrap within the cell", 1, 1 )
+    .formatCell( {
         wraptext: true,
         alignment: "left",
         verticalalignment: "top"
-    } )
+    }, 1, 1 )
     .setColumnWidth( 1, 30 )
     .save();
 ```
@@ -271,19 +271,19 @@ Spreadsheet( "numbers.xlsx" )
     .addRow( [ "Fraction", 0.75 ] )
 
     // Integer with thousands separator
-    .formatCell( 2, 2, { dataformat: "#,##0" } )
+    .formatCell( { dataformat: "#,##0" }, 2, 2 )
 
     // Two decimal places
-    .formatCell( 3, 2, { dataformat: "#,##0.00" } )
+    .formatCell( { dataformat: "#,##0.00" }, 3, 2 )
 
     // Percentage
-    .formatCell( 4, 2, { dataformat: "0.00%" } )
+    .formatCell( { dataformat: "0.00%" }, 4, 2 )
 
     // Scientific notation
-    .formatCell( 5, 2, { dataformat: "0.00E+00" } )
+    .formatCell( { dataformat: "0.00E+00" }, 5, 2 )
 
     // Fraction
-    .formatCell( 6, 2, { dataformat: "# ?/?" } )
+    .formatCell( { dataformat: "# ?/?" }, 6, 2 )
 
     .save();
 ```
@@ -299,16 +299,16 @@ Spreadsheet( "currency.xlsx" )
     .addRow( [ "Yen", 123456 ] )
 
     // US Dollar
-    .formatCell( 2, 2, { dataformat: "$#,##0.00" } )
+    .formatCell( { dataformat: "$#,##0.00" }, 2, 2 )
 
     // Euro
-    .formatCell( 3, 2, { dataformat: "€#,##0.00" } )
+    .formatCell( { dataformat: "€#,##0.00" }, 3, 2 )
 
     // British Pound
-    .formatCell( 4, 2, { dataformat: "£#,##0.00" } )
+    .formatCell( { dataformat: "£#,##0.00" }, 4, 2 )
 
     // Japanese Yen (no decimal)
-    .formatCell( 5, 2, { dataformat: "¥#,##0" } )
+    .formatCell( { dataformat: "¥#,##0" }, 5, 2 )
 
     .save();
 ```
@@ -327,19 +327,19 @@ Spreadsheet( "dates.xlsx" )
     .addRow( [ "Custom", now ] )
 
     // Short date: 01/15/2024
-    .formatCell( 2, 2, { dataformat: "mm/dd/yyyy" } )
+    .formatCell( { dataformat: "mm/dd/yyyy" }, 2, 2 )
 
     // Long date: January 15, 2024
-    .formatCell( 3, 2, { dataformat: "mmmm dd, yyyy" } )
+    .formatCell( { dataformat: "mmmm dd, yyyy" }, 3, 2 )
 
     // Date and time: 01/15/2024 14:30
-    .formatCell( 4, 2, { dataformat: "mm/dd/yyyy hh:mm" } )
+    .formatCell( { dataformat: "mm/dd/yyyy hh:mm" }, 4, 2 )
 
     // Time only: 2:30 PM
-    .formatCell( 5, 2, { dataformat: "h:mm AM/PM" } )
+    .formatCell( { dataformat: "h:mm AM/PM" }, 5, 2 )
 
     // Custom: Monday, Jan 15, 2024
-    .formatCell( 6, 2, { dataformat: "dddd, mmm dd, yyyy" } )
+    .formatCell( { dataformat: "dddd, mmm dd, yyyy" }, 6, 2 )
 
     .save();
 ```
@@ -368,21 +368,21 @@ Spreadsheet( "custom.xlsx" )
 
     // Positive/Negative/Zero different colors
     .addRow( [ "Colored Numbers", 100 ] )
-    .formatCell( 2, 2, {
+    .formatCell( {
         dataformat: "[Green]#,##0;[Red](#,##0);[Blue]0"
-    } )
+    }, 2, 2 )
 
     // Text format with prefix
     .addRow( [ "With Text", 12345 ] )
-    .formatCell( 3, 2, {
+    .formatCell( {
         dataformat: '"Order "#0000'
-    } )
+    }, 3, 2 )
 
     // Conditional format
     .addRow( [ "Conditional", 75 ] )
-    .formatCell( 4, 2, {
+    .formatCell( {
         dataformat: '[>=80]"Pass";[<80]"Fail"'
-    } )
+    }, 4, 2 )
 
     .save();
 ```
@@ -399,17 +399,17 @@ Spreadsheet( "borders.xlsx" )
     .addRow( [ "Cell 1", "Cell 2", "Cell 3" ] )
 
     // All borders
-    .formatCell( 2, 2, {
+    .formatCell( {
         leftborder: "thin",
         rightborder: "thin",
         topborder: "thin",
         bottomborder: "thin"
-    } )
+    }, 2, 2 )
 
     // Bottom border only (underline effect)
-    .formatCell( 2, 3, {
+    .formatCell( {
         bottomborder: "medium"
-    } )
+    }, 2, 3 )
 
     .save();
 ```
@@ -422,28 +422,28 @@ Spreadsheet( "border-styles.xlsx" )
     .addRow( [ "Style 1", "Style 2", "Style 3" ] )
 
     // Thin borders
-    .formatCell( 2, 1, {
+    .formatCell( {
         leftborder: "thin",
         rightborder: "thin",
         topborder: "thin",
         bottomborder: "thin"
-    } )
+    }, 2, 1 )
 
     // Medium borders
-    .formatCell( 2, 2, {
+    .formatCell( {
         leftborder: "medium",
         rightborder: "medium",
         topborder: "medium",
         bottomborder: "medium"
-    } )
+    }, 2, 2 )
 
     // Thick borders
-    .formatCell( 2, 3, {
+    .formatCell( {
         leftborder: "thick",
         rightborder: "thick",
         topborder: "thick",
         bottomborder: "thick"
-    } )
+    }, 2, 3 )
 
     .save();
 ```
@@ -462,7 +462,7 @@ Spreadsheet( "border-styles.xlsx" )
 ```js
 Spreadsheet( "border-colors.xlsx" )
     .setRowData( 1, [ "Colored Borders" ] )
-    .formatCell( 1, 1, {
+    .formatCell( {
         leftborder: "thick",
         leftbordercolor: "red",
         rightborder: "thick",
@@ -471,7 +471,7 @@ Spreadsheet( "border-colors.xlsx" )
         topbordercolor: "green",
         bottomborder: "thick",
         bottombordercolor: "orange"
-    } )
+    }, 1, 1 )
     .save();
 ```
 
@@ -510,7 +510,7 @@ for ( row = 1; row <= data.len(); row++ ) {
 }
 
 // Bold header
-sheet.formatRow( 1, { bold: true } );
+sheet.formatRow( { bold: true }, 1 );
 
 sheet.save();
 ```
@@ -523,13 +523,13 @@ sheet.save();
 
 ```js
 sheet = Spreadsheet( "single.xlsx" )
-    .setCellValue( 1, 1, "Formatted Cell" )
-    .formatCell( 1, 1, {
+    .setCellValue( "Formatted Cell", 1, 1 )
+    .formatCell( {
         bold: true,
         fontColor: "white",
         fgcolor: "darkblue",
         alignment: "center"
-    } );
+    }, 1, 1 );
 ```
 
 ### Row Formatting
@@ -540,11 +540,11 @@ sheet = Spreadsheet( "rows.xlsx" )
     .setRowData( 2, [ "Data1", "Data2", "Data3" ] )
 
     // Format entire row
-    .formatRow( 1, {
+    .formatRow( {
         bold: true,
         fgcolor: "lightblue",
         alignment: "center"
-    } );
+    }, 1 );
 ```
 
 ### Column Formatting
@@ -555,15 +555,15 @@ sheet = Spreadsheet( "columns.xlsx" )
     .addRow( [ "Widget", 29.99, 5 ] )
 
     // Format single column
-    .formatColumn( 2, {
+    .formatColumn( {
         dataformat: "$#,##0.00",
         alignment: "right"
-    } )
+    }, 2 )
 
     // Format multiple columns
-    .formatColumns( "1,3", {
+    .formatColumns( {
         alignment: "center"
-    } );
+    }, "1,3" );
 ```
 
 ### Range Formatting
@@ -597,7 +597,7 @@ sheet = Spreadsheet( "range.xlsx" )
 ```js
 Spreadsheet( "headers.xlsx" )
     .setRowData( 1, [ "Employee", "Department", "Salary", "Start Date" ] )
-    .formatRow( 1, {
+    .formatRow( {
         bold: true,
         fontsize: 12,
         fontColor: "white",
@@ -608,7 +608,7 @@ Spreadsheet( "headers.xlsx" )
         bottomborder: "medium",
         leftborder: "thin",
         rightborder: "thin"
-    } )
+    }, 1 )
     .setRowHeight( 1, 20 )
     .save();
 ```
@@ -623,25 +623,25 @@ Spreadsheet( "financial.xlsx" )
     .addRow( [ "Net Income", "", 25000 ] )
 
     // Header formatting
-    .formatRow( 1, {
+    .formatRow( {
         bold: true,
         fgcolor: "darkgreen",
         fontColor: "white",
         alignment: "center"
-    } )
+    }, 1 )
 
     // Currency formatting
-    .formatColumns( "2-3", {
+    .formatColumns( {
         dataformat: "$#,##0.00",
         alignment: "right"
-    } )
+    }, "2-3" )
 
     // Total row
-    .formatRow( 4, {
+    .formatRow( {
         bold: true,
         topborder: "double",
         fgcolor: "lightgray"
-    } )
+    }, 4 )
 
     .autoSizeColumns()
     .save();
