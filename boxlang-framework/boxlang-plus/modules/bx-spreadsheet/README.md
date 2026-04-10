@@ -77,8 +77,8 @@ Spreadsheet( "sales-report.xlsx" )
     .setRowData( 1, [ "Product", "Revenue", "Profit" ] )
     .addRow( [ "Widget A", 50000, 20000 ] )
     .addRow( [ "Widget B", 45000, 18000 ] )
-    .setCellFormula( 2, 3, "B2-20000" )
-    .formatRow( 1, { bold: true, fgcolor: "blue", fontColor: "white" } )
+    .setCellFormula( "B2-20000", 2, 3 )
+    .formatRow( { bold: true, fgcolor: "blue", fontColor: "white" }, 1 )
     .autoSizeColumns()
     .save();
 
@@ -95,11 +95,11 @@ sheet = Spreadsheet( "data.xlsx" );
 
 // Chain multiple operations
 Spreadsheet()
-    .setCellValue( 1, 1, "Name" )
-    .setCellValue( 1, 2, "Age" )
+    .setCellValue( "Name", 1, 1 )
+    .setCellValue( "Age", 1, 2 )
     .addRow( [ "John Doe", 30 ] )
     .addRow( [ "Jane Smith", 25 ] )
-    .formatRow( 1, { bold: true } )
+    .formatRow( { bold: true }, 1 )
     .save( "employees.xlsx" );
 
 // Export to different formats
@@ -160,7 +160,7 @@ The modern, chainable interface for working with spreadsheets:
 
 ```js
 Spreadsheet( "file.xlsx" )
-    .setCellValue( 1, 1, "Hello" )
+    .setCellValue( "Hello", 1, 1 )
     .addRow( [ "Data", "Here" ] )
     .save();
 ```
@@ -223,7 +223,7 @@ The Fluent API provides several advantages over traditional approaches:
 |-----------|------------|----------------|
 | Create new | `Spreadsheet()` | `SpreadsheetNew()` |
 | Load file | `Spreadsheet("file.xlsx")` | `SpreadsheetRead()` |
-| Set cell | `.setCellValue(1, 1, "Value")` | `SpreadsheetSetCellValue()` |
+| Set cell | `.setCellValue( "Value", 1, 1 )` | `SpreadsheetSetCellValue()` |
 | Add row | `.addRow(["A", "B"])` | `SpreadsheetAddRow()` |
 | Save | `.save("file.xlsx")` | `SpreadsheetWrite()` |
 | Export | `.toArray()` | N/A |
