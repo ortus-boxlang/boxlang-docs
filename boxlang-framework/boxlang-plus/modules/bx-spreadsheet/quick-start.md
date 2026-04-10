@@ -29,7 +29,7 @@ Spreadsheet( "employees.xlsx" )
     .addRow( [ "John Doe", "Engineering", 95000 ] )
     .addRow( [ "Jane Smith", "Marketing", 85000 ] )
     .addRow( [ "Bob Johnson", "Sales", 75000 ] )
-    .formatRow( 1, { bold: true, fgcolor: "blue", fontColor: "white" ] )
+    .formatRow( { bold: true, fgcolor: "blue", fontColor: "white" }, 1 )
     .autoSizeColumns()
     .save();
 ```
@@ -86,14 +86,14 @@ Spreadsheet( "styled-report.xlsx" )
     .addRow( [ "Widget A", 1000, 1200, 1100, 1300 ] )
     .addRow( [ "Widget B", 800, 900, 950, 1050 ] )
     // Format header row
-    .formatRow( 1, {
+    .formatRow( {
         bold: true,
         fgcolor: "darkblue",
         fontColor: "white",
         alignment: "center"
-    } )
+    }, 1 )
     // Format data columns
-    .formatColumns( "2-5", { dataformat: "#,##0", alignment: "right" } )
+    .formatColumns( { dataformat: "#,##0", alignment: "right" }, "2-5" )
     .autoSizeColumns()
     .save();
 ```
@@ -110,12 +110,12 @@ Spreadsheet( "calculations.xlsx" )
     .addRow( [ "Widget", 29.99, 5 ] )
     .addRow( [ "Gadget", 49.99, 3 ] )
     // Add formulas for totals
-    .setCellFormula( 2, 4, "B2*C2" )
-    .setCellFormula( 3, 4, "B3*C3" )
+    .setCellFormula( "B2*C2", 2, 4 )
+    .setCellFormula( "B3*C3", 3, 4 )
     // Add summary row
     .setRowData( 4, [ "TOTAL", "", "", "=SUM(D2:D3)" ] )
-    .formatRow( 1, { bold: true } )
-    .formatRow( 4, { bold: true, fgcolor: "lightgray" } )
+    .formatRow( { bold: true }, 1 )
+    .formatRow( { bold: true, fgcolor: "lightgray" }, 4 )
     .save();
 ```
 
@@ -131,7 +131,7 @@ Spreadsheet( "multi-sheet.xlsx" )
     .createAndSelectSheet( "Summary" )
     .setRowData( 1, [ "Report Summary" ] )
     .mergeCells( 1, 1, 1, 5 )
-    .formatCell( 1, 1, { bold: true, fontsize: 16 } )
+    .formatCell( { bold: true, fontsize: 16 }, 1, 1 )
 
     // Create and populate second sheet
     .createAndSelectSheet( "Details" )
@@ -154,9 +154,9 @@ Spreadsheet( "employees.xlsx" )
     // Add new employee
     .addRow( [ "Alice Cooper", "HR", 80000 ] )
     // Update a cell
-    .setCellValue( 2, 3, 98000 ) // Give John a raise!
+    .setCellValue( 98000, 2, 3 ) // Give John a raise!
     // Add a comment
-    .setCellComment( 2, 3, "Annual raise applied", "Manager" )
+    .setCellComment( "Annual raise applied", 2, 3, "Manager" )
     .save(); // Overwrites the file
 ```
 
@@ -179,7 +179,7 @@ for ( line in lines ) {
     sheet.addRow( line.split( "," ) );
 }
 
-sheet.formatRow( 1, { bold: true } )
+sheet.formatRow( { bold: true }, 1 )
     .autoSizeColumns()
     .save();
 ```
@@ -195,7 +195,7 @@ employees = queryExecute(
 // Export to Excel
 Spreadsheet( "employee-export.xlsx" )
     .addRows( employees, includeColumnNames = true )
-    .formatRow( 1, { bold: true } )
+    .formatRow( { bold: true }, 1 )
     .autoSizeColumns()
     .save();
 ```
@@ -206,8 +206,8 @@ Spreadsheet( "employee-export.xlsx" )
 // Load template
 report = Spreadsheet( "template.xlsx" )
     // Fill in placeholders
-    .setCellValue( 2, 2, "Q1 2024" ) // Report period
-    .setCellValue( 3, 2, dateFormat( now(), "yyyy-mm-dd" ) ) // Date
+    .setCellValue( "Q1 2024", 2, 2 ) // Report period
+    .setCellValue( dateFormat( now(), "yyyy-mm-dd" ), 3, 2 ) // Date
 
     // Add data starting at row 5
     .selectSheet( "Data" )
