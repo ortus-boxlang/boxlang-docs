@@ -41,7 +41,7 @@ Most methods return the `SpreadsheetFile` object, enabling fluent chaining:
 Spreadsheet( "report.xlsx" )
     .setRowData( 1, [ "Name", "Value" ] )
     .addRow( [ "Item 1", 100 ] )
-    .formatRow( 1, { bold: true } )
+    .formatRow( { bold: true }, 1 )
     .autoSizeColumns()
     .save();
 ```
@@ -82,9 +82,9 @@ sheet.save( "output.xlsx" );
 sheet = Spreadsheet( "data.xlsx" );
 
 // Set individual cell
-sheet.setCellValue( 1, 1, "Hello" );        // Row 1, Column 1
-sheet.setCellValue( 1, 2, 42 );             // Row 1, Column 2
-sheet.setCellValue( 1, 3, now() );          // Row 1, Column 3
+sheet.setCellValue( "Hello", 1, 1 );        // Row 1, Column 1
+sheet.setCellValue( 42, 1, 2 );             // Row 1, Column 2
+sheet.setCellValue( now(), 1, 3 );          // Row 1, Column 3
 
 // Set entire row
 sheet.setRowData( 2, [ "Value1", "Value2", "Value3" ] );
@@ -263,7 +263,7 @@ sheet = Spreadsheet( "styled.xlsx" )
     .addRow( [ "Widget", 29.99, "Available" ] );
 
 // Format single cell
-sheet.formatCell( 1, 1, {
+sheet.formatCell( {
     bold: true,
     italic: false,
     underline: false,
@@ -274,12 +274,12 @@ sheet.formatCell( 1, 1, {
     fgcolor: "blue",
     alignment: "center",
     verticalalignment: "center"
-} );
+}, 1, 1 );
 
 // Format with data format
-sheet.formatCell( 2, 2, {
+sheet.formatCell( {
     dataformat: "$#,##0.00"  // Currency format
-} );
+}, 2, 2 );
 
 sheet.save();
 ```
@@ -292,24 +292,24 @@ sheet = Spreadsheet( "report.xlsx" )
     .addRow( [ 1000, 1200, 1100, 1300, 4600 ] );
 
 // Format entire row
-sheet.formatRow( 1, {
+sheet.formatRow( {
     bold: true,
     fgcolor: "darkblue",
     fontColor: "white",
     alignment: "center"
-} );
+}, 1 );
 
 // Format specific column
-sheet.formatColumn( 2, {
+sheet.formatColumn( {
     dataformat: "#,##0",
     alignment: "right"
-} );
+}, 2 );
 
 // Format multiple columns
-sheet.formatColumns( "2-5", {
+sheet.formatColumns( {
     dataformat: "#,##0",
     alignment: "right"
-} );
+}, "2-5" );
 
 sheet.save();
 ```
@@ -368,11 +368,11 @@ sheet = Spreadsheet( "calculations.xlsx" )
     .addRow( [ "Gadget", 49.99, 3 ] );
 
 // Add formula to cell
-sheet.setCellFormula( 2, 4, "B2*C2" );
-sheet.setCellFormula( 3, 4, "B3*C3" );
+sheet.setCellFormula( "B2*C2", 2, 4 );
+sheet.setCellFormula( "B3*C3", 3, 4 );
 
 // Add SUM formula
-sheet.setCellFormula( 4, 4, "SUM(D2:D3)" );
+sheet.setCellFormula( "SUM(D2:D3)", 4, 4 );
 
 sheet.save();
 ```
@@ -400,7 +400,7 @@ sheet = Spreadsheet( "advanced.xlsx" )
     .addRow( [ 85 ] );
 
 // IF formula
-sheet.setCellFormula( 2, 2, "IF(A2>=90,'Excellent',IF(A2>=70,'Good','Needs Improvement'))" );
+sheet.setCellFormula( "IF(A2>=90,'Excellent',IF(A2>=70,'Good','Needs Improvement'))", 2, 2 );
 
 // VLOOKUP example
 sheet.createSheet( "Lookup" )
@@ -411,7 +411,7 @@ sheet.createSheet( "Lookup" )
 sheet.selectSheet( "Sheet1" )
     .setRowData( 1, [ "ID", "Product Name" ] )
     .addRow( [ 2 ] )
-    .setCellFormula( 2, 2, "VLOOKUP(A2,Lookup!A:B,2,FALSE)" );
+    .setCellFormula( "VLOOKUP(A2,Lookup!A:B,2,FALSE)", 2, 2 );
 
 sheet.save();
 ```
@@ -464,7 +464,7 @@ sheet.createAndSelectSheet( "Details" )
 
 // Use cross-sheet formulas
 sheet.selectSheet( "Sheet1" )
-    .setCellFormula( 2, 2, "SUM(Details!B2:B100)" );
+    .setCellFormula( "SUM(Details!B2:B100)", 2, 2 );
 
 sheet.save();
 ```
@@ -477,18 +477,18 @@ sheet.save();
 
 ```js
 sheet = Spreadsheet( "merged.xlsx" )
-    .setCellValue( 1, 1, "Merged Header" )
+    .setCellValue( "Merged Header", 1, 1 )
     .mergeCells(
         startRow = 1,
         startColumn = 1,
         endRow = 1,
         endColumn = 5
     )
-    .formatCell( 1, 1, {
+    .formatCell( {
         bold: true,
         alignment: "center",
         fontsize: 16
-    } )
+    }, 1, 1 )
     .save();
 ```
 
@@ -500,10 +500,10 @@ sheet = Spreadsheet( "with-comments.xlsx" )
     .addRow( [ "John Doe", 95000 ] );
 
 // Add comment to cell
-sheet.setCellComment( 2, 2, "Includes annual bonus", "Manager" );
+sheet.setCellComment( "Includes annual bonus", 2, 2, "Manager" );
 
 // Add comment without author
-sheet.setCellComment( 2, 1, "Employee of the month" );
+sheet.setCellComment( "Employee of the month", 2, 1 );
 
 sheet.save();
 ```
@@ -680,7 +680,7 @@ sheet.save();
 Spreadsheet( "report.xlsx" )
     .setRowData( 1, headers )
     .addRows( data )
-    .formatRow( 1, { bold: true } )
+    .formatRow( { bold: true }, 1 )
     .autoSizeColumns()
     .save();
 ```
@@ -691,7 +691,7 @@ Spreadsheet( "report.xlsx" )
 sheet = Spreadsheet( "report.xlsx" );
 sheet.setRowData( 1, headers );
 sheet.addRows( data );
-sheet.formatRow( 1, { bold: true } );
+sheet.formatRow( { bold: true }, 1 );
 sheet.autoSizeColumns();
 sheet.save();
 ```
@@ -706,8 +706,8 @@ Spreadsheet( "report.xlsx" )
     .setRowData( 1, headers )
     .addRows( data )
     // Then format
-    .formatRow( 1, { bold: true } )
-    .formatColumns( "2-5", { dataformat: "#,##0" } )
+    .formatRow( { bold: true }, 1 )
+    .formatColumns( { dataformat: "#,##0" }, "2-5" )
     .autoSizeColumns()
     .save();
 ```
@@ -766,16 +766,16 @@ Spreadsheet( "employee-report.xlsx" )
     // Add data
     .addRows( employees )
     // Format header
-    .formatRow( 1, {
+    .formatRow( {
         bold: true,
         fgcolor: "darkblue",
         fontColor: "white",
         alignment: "center"
-    } )
+    }, 1 )
     // Format currency column
-    .formatColumn( 3, { dataformat: "$#,##0.00" } )
+    .formatColumn( { dataformat: "$#,##0.00" }, 3 )
     // Format date column
-    .formatColumn( 4, { dataformat: "mm/dd/yyyy" } )
+    .formatColumn( { dataformat: "mm/dd/yyyy" }, 4 )
     // Auto-size
     .autoSizeColumns()
     .save();
@@ -788,8 +788,8 @@ Spreadsheet( "employee-report.xlsx" )
 report = Spreadsheet( "monthly-template.xlsx" );
 
 // Fill in report details
-report.setCellValue( 2, 2, "January 2024" )
-    .setCellValue( 3, 2, dateFormat( now(), "yyyy-mm-dd" ) );
+report.setCellValue( "January 2024", 2, 2 )
+    .setCellValue( dateFormat( now(), "yyyy-mm-dd" ), 3, 2 );
 
 // Add data to specific sheet and location
 report.selectSheet( "Data" )
@@ -812,7 +812,7 @@ workbook = Spreadsheet( "annual-report.xlsx" );
 workbook.createAndSelectSheet( "Summary" )
     .setRowData( 1, [ "Annual Summary 2024" ] )
     .mergeCells( 1, 1, 1, 5 )
-    .formatCell( 1, 1, { bold: true, fontsize: 16, alignment: "center" } )
+    .formatCell( { bold: true, fontsize: 16, alignment: "center" }, 1, 1 )
     .addRow( [ "Total Revenue:", "=SUM(Q1!B:B,Q2!B:B,Q3!B:B,Q4!B:B)" ] );
 
 // Quarterly sheets
@@ -820,7 +820,7 @@ workbook.createAndSelectSheet( "Summary" )
     workbook.createAndSelectSheet( quarter )
         .setRowData( 1, [ "Month", "Revenue" ] )
         .addRows( getQuarterlyData( quarter ) )
-        .formatRow( 1, { bold: true } );
+        .formatRow( { bold: true }, 1 );
 } );
 
 workbook.save();
