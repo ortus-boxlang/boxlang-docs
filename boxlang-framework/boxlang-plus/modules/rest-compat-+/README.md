@@ -36,14 +36,14 @@ This module provides CFML-compatible REST services for BoxLang web applications,
 
 #### Add a [web.xml override](https://commandbox.ortusbooks.com/embedded-server/configuring-your-server/web.xml-overrides) to your `server.json` to allow the servlet to pass REST routes to BoxLang
 
-Place the following in a file ( for example `.rest-override.xml` )
+Place the following in a file ( for example `.rest-override.xml` ).  Note the presence of the XML namespaces.  They are required.
 
 ```
-<web-app>
-  <servlet-mapping>
-	<servlet-name>BoxLangServlet</servlet-name>
-	<url-pattern>rest/*</url-pattern>
-  </servlet-mapping>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" metadata-complete="true" version="5.0" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd">
+    <servlet-mapping>
+        <servlet-name>BoxLangServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
+    </servlet-mapping>
 </web-app>
 ```
 
