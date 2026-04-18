@@ -42,15 +42,10 @@ The BoxLang configuration file located at `{BoxLangHome}/config/boxlang.json` co
     // You can use the ${user-dir} or ${boxlang-home} variables or any other environment variable
     // Example: "schedulers": [ "/path/to/Scheduler.bx" ]
     "schedulers": [],
-    // You can also define tasks manually here
-    // Every task is an object defined by a unique name
-    // The task object is a struct with the following properties:
-    // - `crontime:string` - The cron time to run the task (optional), defaults to empty string
-    // - `eventhandler:path` - The absolute path to the task event handler(optional), defaults to empty string
-    // - `exclude:any` - Comma-separated list of dates or date range (d1 to d2) on which to not execute the scheduled task
-    // - `file:name` - Name of the log file to store output of the task (optional), defaults to `scheduler`
-    // - `group:string` - The group name of the task (optional), defaults to empty string
-    "tasks": {}
+    // HTTP-driven tasks to register upon startup. This block is typically populated automatically by the bx:schedule component
+    // BoxLang writes task definitions to the file configured by tasksFile (default: ${boxLangHome}/config/tasks.json)
+    // and reloads them on startup.
+    "tasksFile": "${boxlang-home}/config/tasks.json"
 },
 ```
 
@@ -66,9 +61,9 @@ The `cacheName` property defines the cache to use for server fixation or distrib
 
 The `schedulers` property is an array of BoxLang schedulers to register upon startup. Each scheduler is defined by an absolute path to the scheduler class (e.g. `/path/to/Scheduler.bx`). You can use the `${user-dir}` or `${boxlang-home}` variables or any other environment variable to define the path. This allows you to define multiple schedulers that can be registered and managed by the `SchedulerService` at runtime startup.
 
-## Tasks
+## TasksFile
 
-The `tasks` property is an object that defines HTTP-driven tasks to register upon startup. Each task is defined by a unique name and a set of properties (url, crontime, interval, startDate, endDate, etc.). This block is typically populated automatically by the `bx:schedule` component — BoxLang writes task definitions to the file configured by `tasksFile` (default: `${boxLangHome}/config/tasks.json`) and reloads them on startup.
+The `tasksFile` property defines the file where HTTP-driven tasks are registered. This is typically managed by the `bx:schedule` component, which writes task definitions to this file and reloads them on startup.  By default, this file is located at `${boxLangHome}/config/tasks.json`.  This file contains the definitions of tasks that are created and managed via the `bx:schedule` component, which allows you to create and manage scheduled tasks at runtime without needing to define them in a scheduler class.
 
 See the [bx:schedule component guide](./scheduling-component.md) for the recommended way to create and manage these tasks at runtime.
 

@@ -17,7 +17,6 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
     "executor": "scheduled-tasks",
     "cacheName": "default",
     "schedulers": [],
-    "tasks": {},
     "tasksFile": "${boxlang-home}/config/tasks.json"
   }
 }
@@ -51,26 +50,6 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
   "/path/to/custom/MyScheduler.bx"
 ]
 ```
-
-### tasks
-
-**Type:** `object` **Default:** `{}`
-
-A map of scheduled tasks keyed by unique task name. Tasks defined here are registered on startup in addition to any tasks persisted by the `bx:schedule` component. In most cases you will not edit this block directly — instead, use `bx:schedule` (or `cfschedule`) to create and manage tasks at runtime; BoxLang writes the resulting task definitions to the file configured by `tasksFile` and reloads them automatically.
-
-Each task entry supports the following properties:
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `url` | string | URL to GET on each execution |
-| `crontime` | string | Cron expression (5-field Unix or 6-field Quartz) |
-| `interval` | string | `once`, `daily`, `weekly`, `monthly`, or seconds ≥ 60 |
-| `startDate` | string | Date on which the task becomes active |
-| `endDate` | string | Date on which the task is deactivated |
-| `exclude` | string | Comma-separated dates or ranges to skip |
-| `group` | string | Group label for organising tasks |
-| `eventHandler` | string | Path to BoxLang file called on exception (when `onException="invokeHandler"`) |
-| `file` | string | Filename for published HTTP response output |
 
 ### tasksFile
 
