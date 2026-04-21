@@ -97,7 +97,20 @@ Java 21+ must be installed on every machine that runs the desktop app. Only the 
 
 ## ⚡ Quick Start
 
-### 1. Clone the starter
+### 1. Get the starter
+
+The starter lives at [https://github.com/ortus-boxlang/boxlang-starter-desktop-electron](https://github.com/ortus-boxlang/boxlang-starter-desktop-electron). You have two options:
+
+**Option A — Use as a GitHub Template (recommended for new projects)**
+
+Click the **"Use this template"** button on the GitHub repository page to create your own repository pre-populated with all the starter files, then clone your new repo:
+
+```bash
+git clone https://github.com/<your-org>/<your-repo>.git mydesktopapp
+cd mydesktopapp
+```
+
+**Option B — Clone directly**
 
 ```bash
 git clone https://github.com/ortus-boxlang/boxlang-starter-desktop-electron.git mydesktopapp
