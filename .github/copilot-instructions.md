@@ -232,6 +232,37 @@ See the existing Spreadsheet component documentation in `boxlang-framework/boxla
 
 This documentation serves as both user guide and developer reference, emphasizing practical usage patterns while maintaining comprehensive API coverage.
 
+## AI Skills
+
+This repository ships AI skill packs that teach coding agents specialized BoxLang and Ortus domain knowledge. Skills are stored in `.agents/skills/` (the canonical location) and mirrored into `.claude/skills/` via symlinks.
+
+**BLOCKING REQUIREMENT:** When a skill applies to the user's request, load the relevant `SKILL.md` file **immediately** as your first action — before generating any response or writing code. Use `read_file` to load it.
+
+### Available Skills
+
+| Skill | Path | When to use |
+| --- | --- | --- |
+| `boxlang-core-dev-async-tasks` | `.agents/skills/boxlang-core-dev-async-tasks/SKILL.md` | BoxFuture, AsyncService, executor types, BaseScheduler, ScheduledTask fluent API, scheduling with cron constraints, task lifecycle callbacks, registering schedulers via ModuleConfig.bx |
+| `boxlang-core-dev-bif-development` | `.agents/skills/boxlang-core-dev-bif-development/SKILL.md` | Creating custom BoxLang BIFs: @BoxBIF annotation, invoke() method, argument handling, accessing BoxRuntime, member functions, registering BIFs via modules |
+| `boxlang-core-dev-component-development` | `.agents/skills/boxlang-core-dev-component-development/SKILL.md` | Creating custom BoxLang components (tags): file structure, attribute declarations, body/output handling, registering component paths in modules, testing custom components |
+| `boxlang-core-dev-interceptors` | `.agents/skills/boxlang-core-dev-interceptors/SKILL.md` | Creating BoxLang interceptors: Observer/Intercepting Filter patterns, interceptor pools, BoxLang class vs Java interceptors, lambda interceptors, registration via BIFs/InterceptorService/ModuleConfig |
+| `boxlang-core-dev-logging` | `.agents/skills/boxlang-core-dev-logging/SKILL.md` | BoxLang logging: LoggingService, BoxLangLogger (trace/debug/info/warn/error), pre-configured common loggers, named loggers, parameterized messages, logging configuration in boxlang.json |
+| `boxlang-core-dev-module-development` | `.agents/skills/boxlang-core-dev-module-development/SKILL.md` | Creating a BoxLang module: ModuleConfig.bx structure, lifecycle methods (configure/onLoad/onUnload), module metadata, registering interceptors and BIFs, Gradle build setup, publishing to ForgeBox |
+| `boxlang-core-dev-runtime-architecture` | `.agents/skills/boxlang-core-dev-runtime-architecture/SKILL.md` | BoxLang internals: BoxRuntime services, IBoxContext hierarchy, scope chain resolution, DynamicObject, type system, parsing pipeline, class loader isolation, virtual threads, AST debugging |
+| `ortus-java-coding-standards` | `.agents/skills/ortus-java-coding-standards/SKILL.md` | Writing, reviewing, or formatting any Ortus Solutions code (BoxLang, CFML, or Java): indentation, spacing, brace placement, naming, alignment, comments, and structural conventions |
+
+### Adding New Skills
+
+To add a new skill to this repository:
+
+1. Create the skill folder and `SKILL.md` in `.agents/skills/<skill-name>/`.
+2. Add a symlink in `.claude/skills/` pointing to the same folder:
+   ```bash
+   cd .claude/skills
+   ln -s ../../.agents/skills/<skill-name> <skill-name>
+   ```
+3. Register the skill in the `Available Skills` table above.
+
 ## MCP Integrations
 
 - This book is published at https://boxlang.ortusbooks.com
@@ -239,6 +270,7 @@ This documentation serves as both user guide and developer reference, emphasizin
 
 Here are other MCP servers to integrate with:
 
+- GitBook Docs: https://gitbook.com/docs/~gitbook/mcp
 - BoxLang AI: https://ai.ortusbooks.com/~gitbook/mcp
 - CacheBox: https://cachebox.ortusbooks.com/~gitbook/mcp
 - ColdBox: https://coldbox.ortusbooks.com/~gitbook/mcp

@@ -73,6 +73,7 @@
   * [CLI Scripting](getting-started/running-boxlang/cli-scripting.md)
   * [DigitalOcean App](getting-started/running-boxlang/digitalocean-app.md)
   * [Demos](getting-started/running-boxlang/demos.md)
+  * [Desktop Applications](getting-started/running-boxlang/desktop-applications.md)
   * [Docker](getting-started/running-boxlang/docker.md)
   * [GitHub Actions](getting-started/running-boxlang/github-actions.md)
   * [Google Cloud Functions](getting-started/running-boxlang/google-cloud-functions.md)
