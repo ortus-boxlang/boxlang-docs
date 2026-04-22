@@ -33,7 +33,12 @@ Everything the starter gives you out of the box:
 - [Desktop Layer](#desktop-layer)
 - [Development Workflow](#development-workflow)
 - [Coding Your Application](#coding-your-application)
+- [Electron Forge](#electron-forge)
 - [Building and Distributing](#building-and-distributing)
+- [Code Signing](#code-signing)
+- [Auto Updates](#auto-updates)
+- [Debugging](#debugging)
+- [Publishers](#publishers)
 - [Cross-Platform Considerations](#cross-platform-considerations)
 - [Troubleshooting](#troubleshooting)
 - [Resources](#resources)
@@ -470,16 +475,21 @@ Registers global shortcuts that fire even when the app window is not focused.
 | Script | What it does |
 | --- | --- |
 | `npm run dev` | Start Vite + Electron in development mode (HMR enabled) |
-| `npm run build` | Build frontend assets into `public/includes/resources/` |
 | `npm run start` | Start Electron only (assumes Vite dev server is already running) |
-| `npm run prod` | Build assets then start Electron |
-| `npm run package:miniserver` | Download MiniServer from `.bvmrc` into `runtime/` |
-| `npm run package:miniserver:force` | Force re-download even if already present |
-| `npm run package` | Build assets and run electron-builder |
-| `npm run package:full` | Package MiniServer then package the app (full distribution build) |
+| `npm run build` | Build frontend assets into `public/includes/resources/` |
+| `npm run prod` | Build assets then start Electron in production mode |
+| `npm run preview` | Preview the Vite production build in a local server |
 | `npm run lint` | Lint JS files with ESLint |
 | `npm run lint:fix` | Auto-fix lint errors |
-| `npm run generate:icons` | Regenerate app icons from source |
+| `npm run generate:icons` | Regenerate app icons from a source PNG |
+| `npm run package:miniserver` | Download MiniServer from `.bvmrc` into `runtime/` |
+| `npm run package:miniserver:force` | Force re-download even if already present |
+| `npm run package` | Build assets and run `electron-forge make` for all platforms |
+| `npm run package:mac` | Build macOS distributions only (`--platform darwin`) |
+| `npm run package:win` | Build Windows distributions only (`--platform win32`) |
+| `npm run package:linux` | Build Linux distributions only (`--platform linux`) |
+| `npm run package:linux:docker` | Build Linux distributions via Docker (for cross-platform builds) |
+| `npm run package:full` | Package MiniServer then build all distributions |
 
 ### Typical development loop
 
@@ -644,28 +654,89 @@ Edit `app/electron/TrayMenu.js`. Add items to the `contextMenu` template array:
 
 ### Application name and app ID
 
-Edit `package.json` under the `build` key:
+Edit `forge.config.cjs` in the `packagerConfig` section:
 
-```json
-"build": {
-    "productName": "My Desktop App",
-    "appId": "com.example.mydesktopapp"
+```js
+packagerConfig: {
+    name  : "My Desktop App",
+    appId : "com.example.mydesktopapp",
+    // ...
 }
 ```
 
 Also update `this.name` in `public/Application.bx`.
 
+## ⚙️ Electron Forge
+
+The starter uses [Electron Forge](https://www.electronforge.io/) as its build and packaging toolchain. Forge replaced the older `electron-builder` workflow and provides:
+
+- A single `electron-forge make` command that packages, makes, and signs artifacts in the correct order
+- First-class maker plugins for every platform (DMG, Squirrel, DEB, RPM, Flatpak, ZIP)
+- A built-in publisher system for uploading artifacts to GitHub, S3, and more
+- Hooks for injecting custom post-build logic at any step
+
+The config lives in `forge.config.cjs` (CommonJS format — required by Forge):
+
+```js
+// forge.config.cjs (simplified)
+module.exports = {
+    packagerConfig: {
+        name          : "BoxLang Starter Desktop",
+        appId         : "io.boxlang.starter",
+        asar          : false,   // CRITICAL — must stay false (MiniServer binary)
+        icon          : "./public/includes/icon",
+        osxSign       : {},      // macOS code signing (when identity is set)
+        osxNotarize   : { ... }  // macOS notarization (when credentials are set)
+    },
+    makers : [ /* platform makers — see below */ ],
+    hooks  : { postMake },       // bundles unsigned-build helpers into ZIP artifacts
+    outDir : "dist/electron"
+};
+```
+
+{% hint style="warning" %}
+`asar` must remain `false`. `BoxLang.js` spawns `runtime/bin/boxlang-miniserver` as a real filesystem executable — enabling asar archiving would break that path lookup entirely.
+{% endhint %}
+
+### Platform makers
+
+The starter ships makers for every supported platform:
+
+| Maker | Platform | Output | Notes |
+| --- | --- | --- | --- |
+| `maker-dmg` | macOS | `.dmg` | Primary macOS distribution format |
+| `maker-pkg` | macOS | `.pkg` | Alternate installer; only included when `MAC_SIGNING_IDENTITY` env var is set |
+| `maker-squirrel` | Windows | `.exe` + `win-unpacked/` | No-admin, no-prompt Squirrel installer |
+| `maker-zip` | All platforms | `.zip` | Universal fallback; used for auto-update distribution and CI archiving |
+| `maker-deb` | Linux | `.deb` | Debian / Ubuntu |
+| `maker-rpm` | Linux | `.rpm` | RHEL / Fedora (Linux hosts only) |
+| `maker-flatpak` | Linux | Flatpak bundle | Sandboxed; skipped when `SKIP_FLATPAK=1` |
+
+### `postMake` hook
+
+After every build, the `postMake` hook automatically copies three helper files into each ZIP artifact:
+
+| File | Purpose |
+| --- | --- |
+| `scripts/mac-open.sh` | Shell script to bypass macOS Gatekeeper on unsigned builds |
+| `scripts/win-unblock.ps1` | PowerShell script to unblock unsigned Windows apps |
+| `scripts/UNSIGNED-BUILD.md` | Instructions for users who receive an unsigned build |
+
+{% hint style="info" %}
+These helpers ensure users always have the workaround at hand when distributing unsigned CI artifacts, without having to find them in docs.
+{% endhint %}
+
 ## 📦 Building and Distributing
 
-### Build assets
+### Build assets only
 
 ```bash
 npm run build
 ```
 
-This produces hashed JS and SCSS bundles in `public/includes/resources/` and writes the Vite manifest.
+Produces hashed JS and SCSS bundles in `public/includes/resources/` and writes the Vite manifest. This step is required before packaging.
 
-### Package the full app
+### Package for all platforms
 
 ```bash
 npm run package:full
@@ -674,25 +745,272 @@ npm run package:full
 This runs in sequence:
 
 1. `npm run package:miniserver` — downloads and extracts the BoxLang MiniServer into `runtime/`.
-2. `npm run package` — runs `vite build` then `electron-builder`.
+2. `npm run build` — compiles frontend assets.
+3. `electron-forge make` — packages and signs the app for the current host platform.
 
-Installers and binaries land in `dist/electron/`:
+### Package for a specific platform
 
-| Platform | Output |
+```bash
+# macOS only
+npm run package:mac
+
+# Windows only
+npm run package:win
+
+# Linux only
+npm run package:linux
+
+# Linux via Docker (for cross-platform builds from macOS or Windows)
+npm run package:linux:docker
+```
+
+Installers land in `dist/electron/`:
+
+| Platform | Outputs |
 | --- | --- |
-| macOS | `.dmg` and `mac/` folder |
-| Windows | `.exe` installer and `win-unpacked/` folder |
-| Linux | `.AppImage` and/or `.deb` |
+| macOS | `.dmg`, `.pkg` (if `MAC_SIGNING_IDENTITY` is set), `.zip` |
+| Windows | `.exe` (Squirrel installer), `.zip` |
+| Linux | `.deb`, `.rpm`, Flatpak bundle, `.zip` |
 
 {% hint style="warning" %}
-`electron-builder` produces platform-specific artifacts. To build a macOS `.dmg` you must be on macOS. Use CI (for example, GitHub Actions with matrix builds) to produce all three platforms from a single pipeline.
+Electron Forge produces platform-specific artifacts. To build a macOS `.dmg` you must be on macOS. Use CI with a matrix build — for example, GitHub Actions with `macos-latest`, `windows-latest`, and `ubuntu-latest` runners — to produce all three platforms from a single pipeline.
 {% endhint %}
 
 ### Updating the MiniServer version
 
 1. Edit `.bvmrc` to the desired version number.
 2. Run `npm run package:miniserver:force`.
-3. Rebuild the app with `npm run package:full`.
+3. Rebuild with `npm run package:full`.
+
+## 🔐 Code Signing
+
+Unsigned applications trigger security warnings on both macOS (Gatekeeper) and Windows (SmartScreen). Electron Forge handles signing and notarization at the correct build step automatically once credentials are configured.
+
+{% hint style="warning" %}
+Code signing is a **prerequisite for auto-updates on macOS**. Without a valid signing identity, macOS blocks auto-update payloads entirely.
+{% endhint %}
+
+### macOS
+
+macOS requires two layers: **code signing** (certifies the author's identity) and **notarization** (Apple's automated malware scan, mandatory since macOS 10.15 Catalina).
+
+#### Prerequisites
+
+1. Purchase a membership in the [Apple Developer Program](https://developer.apple.com/programs/).
+2. Obtain a **Developer ID Application** certificate (for distribution outside the Mac App Store).
+3. Install it into your keychain via Xcode.
+4. Verify it is installed: `security find-identity -p codesigning -v`
+
+#### Configuring `forge.config.cjs`
+
+Add `osxSign` and `osxNotarize` to `packagerConfig`. Both are already stubbed in the starter — supply credentials via environment variables:
+
+```js
+packagerConfig: {
+    osxSign: {},  // empty object enables signing with auto-detected keychain identity
+    osxNotarize: {
+        appleId        : process.env.APPLE_ID,
+        appleIdPassword: process.env.APPLE_PASSWORD,
+        teamId         : process.env.APPLE_TEAM_ID
+    }
+}
+```
+
+{% hint style="danger" %}
+Never store credentials in plaintext in `forge.config.cjs`. Always supply them as environment variables or use a stored keychain profile.
+{% endhint %}
+
+Alternative `osxNotarize` authentication options:
+
+```js
+// Option 2 — App Store Connect API key
+osxNotarize: {
+    appleApiKey    : process.env.APPLE_API_KEY,
+    appleApiKeyId  : process.env.APPLE_API_KEY_ID,
+    appleApiIssuer : process.env.APPLE_API_ISSUER
+}
+
+// Option 3 — stored keychain profile (created via `notarytool store-credentials`)
+osxNotarize: {
+    keychainProfile: "my-keychain-profile"
+}
+```
+
+The starter's `forge.config.cjs` already conditionally includes `maker-pkg` (for `.pkg` output) when `MAC_SIGNING_IDENTITY` is set as an environment variable in CI.
+
+{% embed url="https://www.electronforge.io/guides/code-signing/code-signing-macos" %}
+
+### Windows
+
+Windows signing is applied to the installer artifact at the Make step.
+
+#### Prerequisites
+
+1. Obtain a Windows Authenticode certificate (`.pfx`) from a vendor such as [DigiCert](https://www.digicert.com/dc/code-signing/microsoft-authenticode.htm) or [Sectigo](https://sectigo.com/ssl-certificates-tls/code-signing).
+
+{% hint style="info" %}
+Since June 2023, private keys must be stored on FIPS 140 Level 2+ hardware storage modules. Software-based OV certificates are no longer available for purchase.
+{% endhint %}
+
+2. Install Visual Studio (free [Community Edition](https://visualstudio.microsoft.com/vs/community/) is sufficient) to get `signtool.exe`.
+
+#### Configuring `forge.config.cjs`
+
+The `maker-squirrel` config already accepts certificate settings via environment variables:
+
+```js
+{
+    name   : "@electron-forge/maker-squirrel",
+    config : {
+        certificateFile    : process.env.WIN_CERT_FILE || undefined,
+        certificatePassword: process.env.WIN_CERT_PASS || undefined
+    }
+}
+```
+
+Set `WIN_CERT_FILE` (path to your `.pfx` file) and `WIN_CERT_PASS` in your CI environment or a local `.env` file that is excluded from version control.
+
+#### Azure Trusted Signing (modern cloud alternative)
+
+[Azure Trusted Signing](https://azure.microsoft.com/en-us/products/trusted-signing) is Microsoft's cloud-based signing service and the most cost-effective option for eliminating SmartScreen warnings. Available to US/Canada organizations with 3+ years of verifiable business history.
+
+{% embed url="https://www.electronforge.io/guides/code-signing/code-signing-windows" %}
+
+## 🔄 Auto Updates
+
+Electron Forge integrates with Electron's built-in auto-update API. The recommended approach depends on your distribution model.
+
+{% hint style="warning" %}
+A **signed application** is required for auto-updates on macOS. Configure code signing before enabling auto-updates.
+{% endhint %}
+
+### Open source apps (GitHub)
+
+Open source desktop apps hosted on GitHub can use the free [update.electronjs.org](https://update.electronjs.org) service:
+
+1. Configure the [GitHub Publisher](#publishers) in `forge.config.cjs`.
+2. Install the `update-electron-app` package:
+
+```bash
+npm install update-electron-app
+```
+
+3. Call it at startup in `app/electron/Main.js`:
+
+```js
+import { updateElectronApp } from "update-electron-app"
+updateElectronApp()
+```
+
+### Static storage (S3)
+
+If you use the S3 publisher, refer to its documentation for configuring the app to auto-update from uploaded artifacts.
+
+### Self-hosted update server
+
+For private apps where you need more control (percentage rollouts, multiple release channels):
+
+| Server | Publisher to use |
+| --- | --- |
+| [Nucleus](https://github.com/atlassian/nucleus) | `@electron-forge/publisher-nucleus` |
+| [Nuts](https://github.com/GitbookIO/nuts) | GitHub publisher |
+| [electron-release-server](https://github.com/ArekSredzki/electron-release-server) | Electron Release Server publisher |
+| [Hazel](https://github.com/vercel/hazel) | GitHub publisher |
+
+{% embed url="https://www.electronforge.io/advanced/auto-update" %}
+
+## 🐛 Debugging
+
+Electron apps have two separate processes, each with its own debugging approach.
+
+### Renderer process (Chromium DevTools)
+
+Open DevTools from inside the running app:
+
+- **Keyboard shortcut**: `Ctrl+Shift+I` (Windows/Linux) or `Cmd+Option+I` (macOS)
+- **App menu**: View → Developer Tools (registered by `AppMenu.js`)
+
+### Main process — command line
+
+Use the `--inspect-electron` flag when starting via Forge:
+
+```bash
+npm run dev -- --inspect-electron
+```
+
+Then open [chrome://inspect](chrome://inspect/) in any Chromium-based browser and click **inspect** next to your app to attach a debugger. Use `--inspect-brk-electron` to pause at the very first line of execution.
+
+### Main process — VS Code
+
+Add a launch configuration to `.vscode/launch.json`:
+
+```json
+{
+    "configurations": [
+        {
+            "type"             : "node",
+            "request"          : "launch",
+            "name"             : "Electron Main",
+            "runtimeExecutable": "${workspaceFolder}/node_modules/@electron-forge/cli/script/vscode.sh",
+            "windows": {
+                "runtimeExecutable": "${workspaceFolder}/node_modules/@electron-forge/cli/script/vscode.cmd"
+            },
+            "cwd"    : "${workspaceFolder}",
+            "console": "integratedTerminal"
+        }
+    ]
+}
+```
+
+Open the **Run and Debug** view (`Ctrl+Shift+D`), select **Electron Main**, and press **F5** to start debugging with full breakpoint support.
+
+### BoxLang template debugging
+
+- Enable `"debugMode": true` in `.boxlang-dev.json` for stack traces in BoxLang template output.
+- Check the MiniServer log piped to the Electron terminal for request errors.
+
+{% embed url="https://www.electronforge.io/advanced/debugging" %}
+
+## 📤 Publishers
+
+Publishers take the artifacts produced by `electron-forge make` and upload them to a distribution service. Configure them in the `publishers` array of `forge.config.cjs`:
+
+```js
+module.exports = {
+    // ...
+    publishers: [
+        {
+            name  : "@electron-forge/publisher-github",
+            config: {
+                repository: { owner: "your-org", name: "your-repo" },
+                prerelease: false
+            }
+        }
+    ]
+};
+```
+
+Run publishing with:
+
+```bash
+npx electron-forge publish
+```
+
+### Available publishers
+
+| Publisher | Package | Best for |
+| --- | --- | --- |
+| GitHub Releases | `@electron-forge/publisher-github` | Open source; pairs with `update.electronjs.org` for free auto-updates |
+| Amazon S3 | `@electron-forge/publisher-s3` | Private distribution + S3-hosted auto-updates |
+| Electron Release Server | `@electron-forge/publisher-electron-release-server` | Self-hosted update server |
+| Nucleus | `@electron-forge/publisher-nucleus` | Full-featured self-hosted update + release management |
+| Bitbucket | `@electron-forge/publisher-bitbucket` | Bitbucket-hosted distribution |
+
+{% hint style="info" %}
+All publishers default to publishing artifacts for all platforms. Add a `platforms` key to restrict which platform artifacts a specific publisher uploads.
+{% endhint %}
+
+{% embed url="https://www.electronforge.io/config/publishers" %}
 
 ## 🌍 Cross-Platform Considerations
 
@@ -727,7 +1045,7 @@ Installers and binaries land in `dist/electron/`:
 
 - Confirm Java 21+ is installed on the target machine.
 - Open the packaged app's log file (macOS: `~/Library/Logs/<AppName>/main.log`; Windows: `%APPDATA%\<AppName>\logs\main.log`) for startup errors.
-- Check that `asar: false` is set in `package.json` so the runtime files are accessible to the child process.
+- Verify that `asar: false` is set in `forge.config.cjs` so the runtime files are accessible to the child process.
 
 ### BoxLang template errors
 
@@ -753,7 +1071,12 @@ Installers and binaries land in `dist/electron/`:
 - [Tray API](https://www.electronjs.org/docs/latest/api/tray)
 - [globalShortcut API](https://www.electronjs.org/docs/latest/api/global-shortcut)
 - [NativeImage API](https://www.electronjs.org/docs/latest/api/native-image)
-- [electron-builder packaging](https://www.electron.build/)
+- [Electron Forge](https://www.electronforge.io/)
+- [Code Signing (macOS)](https://www.electronforge.io/guides/code-signing/code-signing-macos)
+- [Code Signing (Windows)](https://www.electronforge.io/guides/code-signing/code-signing-windows)
+- [Auto Update](https://www.electronforge.io/advanced/auto-update)
+- [Debugging](https://www.electronforge.io/advanced/debugging)
+- [Publishers](https://www.electronforge.io/config/publishers)
 
 ### Frontend
 
