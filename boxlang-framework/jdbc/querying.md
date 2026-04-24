@@ -255,6 +255,13 @@ categories = queryExecute(
 Be cautious caching queries with user-specific data. Cache keys should include relevant user identifiers when needed.
 {% endhint %}
 
+### Cache Timeouts
+
+Note cache timeout behavior varies based on duration values:
+- **Positive duration** - Cache for specified duration - `createTimeSpan( 0, 1, 0, 0 )`
+- **Zero** - Cache indefinitely - `createTimeSpan( 0, 0, 0, 0 )`
+- **Negative duration** - Never cache - `createTimeSpan( 0, 0, 0, -1 )`
+
 ## 🔄 Query of Queries (QoQ)
 
 Execute SQL queries against in-memory query objects without hitting the database:
