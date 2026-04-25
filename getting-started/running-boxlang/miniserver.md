@@ -305,6 +305,10 @@ These are advanced tuning options. In most cases the defaults are appropriate. O
     "/cache/initialize",
     "/app/preload"
   ],
+  "aliases": {
+    "/docs": "/var/www/documentation",
+    "/shared": "../shared-assets"
+  },
   "undertow": {
     "ioThreads": 8,
     "workerThreads": 64
@@ -930,6 +934,61 @@ When rewrites are enabled, you'll see:
 
 {% hint style="info" %}
 **Rewrite Note:** URL rewrites work best for dynamic applications and frameworks. Static websites typically don't need URL rewriting enabled.
+{% endhint %}
+
+## 🗂️ Folder Aliases
+
+Folder aliases map URL path prefixes to arbitrary directories on disk, letting the MiniServer serve static **and** executable BoxLang/CFML content from locations outside the webroot.
+
+### Configuration
+
+Aliases are defined under the `aliases` key in `miniserver.json`. Both a struct and an array form are supported — pick whichever is more readable for your config.
+
+**Struct form** (concise):
+
+```json
+{
+  "webRoot": "./www",
+  "aliases": {
+    "/docs": "/var/www/documentation",
+    "/shared": "../shared-assets",
+    "/api": "/srv/api"
+  }
+}
+```
+
+**Array form** (explicit):
+
+```json
+{
+  "webRoot": "./www",
+  "aliases": [
+    { "from": "/docs",   "to": "/var/www/documentation" },
+    { "from": "/shared", "to": "../shared-assets" },
+    { "from": "/api",    "to": "/srv/api" }
+  ]
+}
+```
+
+### Matching Behavior
+
+* **Longest prefix wins** — with both `/api` and `/api/v2` configured, a request for `/api/v2/spec.json` resolves through `/api/v2`.
+* **Segment-boundary aware** — `/docs` matches `/docs` and `/docs/...` but never `/documentation`.
+* **Path resolution** — absolute `to` paths are used as-is; relative paths resolve against the `webRoot`.
+
+### Example
+
+Given the struct config above, requests are served from disk like so:
+
+| Request URL | Served from |
+|-------------|-------------|
+| `/docs/index.bxm` | `/var/www/documentation/index.bxm` |
+| `/shared/css/site.css` | `<webRoot>/../shared-assets/css/site.css` |
+| `/api/v1/users.bxm` | `/srv/api/v1/users.bxm` |
+| `/about.bxm` | `<webRoot>/about.bxm` *(no alias match — falls back to webroot)* |
+
+{% hint style="info" %}
+**Validation:** Alias targets are checked at startup. Entries pointing at a non-existent path or a regular file are logged as a warning and skipped — the server still starts with the remaining valid aliases.
 {% endhint %}
 
 ## 🛑 Server Management
