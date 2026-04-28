@@ -297,6 +297,144 @@ This is useful in clustered environments where multiple instances share a mounte
 
 ---
 
+## 📋 Tasks File Reference (`tasks.json`)
+
+Every `create`, `update`, and `delete` operation writes the full task registry to disk at `${boxLangHome}/config/tasks.json` (configurable via `scheduler.tasksFile`). The file is a JSON array — one object per task — and is re-read on every runtime startup to restore all persisted tasks.
+
+Below is a fully annotated example of a single task entry, followed by a field-by-field reference.
+
+### Annotated Example
+
+```json
+[
+  {
+    "task"          : "nightlyCleanup",
+    "scheduler"     : "default",
+    "group"         : "maintenance",
+    "url"           : "https://myapp.com/tasks/cleanup",
+    "interval"      : null,
+    "cronTime"      : "0 2 * * *",
+    "startDate"     : "2026-01-01",
+    "startTime"     : "00:00",
+    "endDate"       : "2026-12-31",
+    "endTime"       : "23:59",
+    "repeat"        : 0,
+    "exclude"       : "2026-07-04,2026-12-25",
+    "port"          : 443,
+    "username"      : "ENC:a3g...==",
+    "password"      : "ENC:b7k...==",
+    "proxyServer"   : "proxy.corp.com",
+    "proxyPort"     : 8080,
+    "proxyUser"     : null,
+    "proxyPassword" : null,
+    "publish"       : true,
+    "path"          : "/var/log/tasks",
+    "file"          : "cleanup-output.html",
+    "overwrite"     : true,
+    "resolveURL"    : false,
+    "retryCount"    : 3,
+    "onException"   : "invokeHandler",
+    "oncomplete"    : null,
+    "eventhandler"  : "/handlers/TaskErrorHandler.bx",
+    "cluster"       : false,
+    "isDaily"       : false,
+    "paused"        : false
+  }
+]
+```
+
+{% hint style="warning" %}
+**Never edit `username`, `password`, `proxyUser`, or `proxyPassword` values by hand.** These are encrypted with AES using the runtime's `.seed` file. Always use `bx:schedule action="update"` to change credentials.
+{% endhint %}
+
+### Field Reference
+
+#### 🗂️ Identity
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `task` | `string` | _(required)_ | Unique task name within the scheduler. Used as the primary identifier for all actions. |
+| `scheduler` | `string` | `"default"` | Name of the `BaseScheduler` instance that owns this task. Automatically created if it does not exist. |
+| `group` | `string` | `null` | Logical grouping label. Lets you `pauseall`/`resumeall` a subset of tasks at once. |
+| `paused` | `boolean` | `false` | Runtime paused state. Set to `true` by `action="pause"` and back to `false` by `action="resume"`. Restored on startup. |
+
+#### ⏰ Scheduling
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `interval` | `string` | `null` | Repeat interval in **seconds**, or a named value: `once`, `daily`, `weekly`, `monthly`. Mutually exclusive with `cronTime`. |
+| `cronTime` | `string` | `null` | Cron expression. Accepts 5-field Unix (`minute hour dom month dow`) or 6-field Quartz (`second minute hour dom month dow`). Mutually exclusive with `interval`. |
+| `startDate` | `string` | `null` | ISO-8601 date (`YYYY-MM-DD`). Task will not fire before this date. |
+| `startTime` | `string` | `null` | Time-of-day (`HH:mm`) paired with `startDate` to form the activation instant. |
+| `endDate` | `string` | `null` | ISO-8601 date after which no more firings occur. |
+| `endTime` | `string` | `null` | Time-of-day paired with `endDate` to form the deactivation instant. |
+| `repeat` | `integer` | `0` | Maximum number of executions. `0` (or `null`) means unlimited. |
+| `exclude` | `string` | `null` | Comma-separated dates or ranges to skip. Example: `"2026-07-04,2026-12-24 to 2026-12-26"`. |
+| `isDaily` | `boolean` | `false` | Derived convenience flag; `true` when the task fires once per day regardless of cron/interval. Managed by the runtime. |
+
+#### 🌐 HTTP Request
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `url` | `string` | _(required)_ | Full URL that the scheduler fires via HTTP GET on each execution. |
+| `port` | `integer` | `null` | Override the URL's default port (e.g., `8080` for HTTP, `443` for HTTPS). |
+| `resolveURL` | `boolean` | `false` | When `true`, relative URLs in the HTTP response are rewritten to absolute URLs before any output is captured. |
+
+#### 🔐 Credentials
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `username` | `string` | `null` | HTTP Basic Auth username. Stored as `ENC:<base64>` — AES-encrypted with the runtime seed. |
+| `password` | `string` | `null` | HTTP Basic Auth password. Same encryption scheme as `username`. |
+| `proxyServer` | `string` | `null` | Proxy server hostname or IP. |
+| `proxyPort` | `integer` | `null` | Proxy server port. |
+| `proxyUser` | `string` | `null` | Proxy authentication username. Encrypted at rest. |
+| `proxyPassword` | `string` | `null` | Proxy authentication password. Encrypted at rest. |
+
+#### 📄 Output Publishing
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `publish` | `boolean` | `false` | When `true`, the HTTP response body is written to disk after each run. |
+| `path` | `string` | `null` | Directory path to write the published file to. Required when `publish` is `true`. |
+| `file` | `string` | `null` | Filename for the published output. Required when `publish` is `true`. |
+| `overwrite` | `boolean` | `true` | Whether to overwrite an existing file at `path/file` on each run. Set to `false` to append/skip. |
+
+#### 🔁 Error Handling & Callbacks
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `retryCount` | `integer` | `0` | Number of times to retry a failed HTTP request before triggering `onException` behaviour. |
+| `onException` | `string` | `"refire"` | What to do when all retries are exhausted. Values: `refire` (try again next interval), `pause` (auto-pause the task), `invokeHandler` (call `eventhandler`). |
+| `eventhandler` | `string` | `null` | Absolute path to a BoxLang file (`.bx`) invoked when `onException` is `invokeHandler`. Receives the task context as an argument. |
+| `oncomplete` | `string` | `null` | Absolute path to a BoxLang file invoked after **every successful** execution, regardless of retry behaviour. |
+
+#### 🌍 Cluster
+
+| Field | Type | Default | Description |
+|-------|------|---------|-------------|
+| `cluster` | `boolean` | `false` | When `true`, the `SchedulerService` uses the configured `cacheName` to ensure the task fires on only one node at a time in a cluster. |
+
+### Minimal Task Entry
+
+The smallest valid `tasks.json` entry that will be re-loaded on startup:
+
+```json
+[
+  {
+    "task"     : "pingHealth",
+    "scheduler": "default",
+    "url"      : "https://myapp.com/health",
+    "interval" : "300",
+    "paused"   : false
+  }
+]
+```
+
+All other fields default to `null` / `false` / `0` and are safe to omit.
+
+---
+
 ## Related
 
 * [bx:schedule Component Reference](../../boxlang-language/reference/components/async/Schedule.md)

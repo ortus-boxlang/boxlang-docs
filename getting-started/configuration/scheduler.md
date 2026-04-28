@@ -68,6 +68,7 @@ Override this path when you want multiple BoxLang instances to share a common ta
 You can create and manage scheduled tasks at runtime using:
 
 * **[bx:schedule component](../../boxlang-framework/asynchronous-programming/scheduling-component.md)** — tag/script API for HTTP-driven tasks; changes persist automatically to `tasksFile`
+* **[Tasks File Reference](../../boxlang-framework/asynchronous-programming/scheduling-component.md#tasks-file-reference-tasksjson)** — full `tasks.json` field-by-field schema with examples
 * **[Scheduler DSL](../../boxlang-framework/asynchronous-programming/scheduled-tasks.md)** — fluent class-based API for running arbitrary BoxLang code on a schedule
 
 The configuration above provides the foundation and default settings for the scheduler service.
