@@ -260,7 +260,7 @@ Be cautious caching queries with user-specific data. Cache keys should include r
 Note cache timeout behavior varies based on duration values:
 - **Positive duration** - Cache for specified duration - `createTimeSpan( 0, 1, 0, 0 )`
 - **Zero** - Cache indefinitely - `createTimeSpan( 0, 0, 0, 0 )`
-- **Negative duration** - Never cache - `createTimeSpan( 0, 0, 0, -1 )`
+- **Negative duration** - Do not cache, and evict cache entry - `createTimeSpan( 0, 0, 0, -1 )`
 
 ## 🔄 Query of Queries (QoQ)
 
