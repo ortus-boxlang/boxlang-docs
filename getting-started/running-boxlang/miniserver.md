@@ -148,24 +148,24 @@ All the following options are supported in the JSON configuration file:
 
 | Option              | Type    | Default           | Description                                                                    |
 | ------------------- | ------- | ----------------- | ------------------------------------------------------------------------------ |
-| `port`              | number  | 8080              | The port to listen on                                                          |
-| `host`              | string  | "0.0.0.0"         | The host to bind to                                                            |
-| `webRoot`           | string  | current directory | Path to the webroot directory                                                  |
-| `debug`             | boolean | false             | Enable debug mode                                                              |
+| `aliases`           | object  | {}                | URL-prefix to filesystem-path mappings (struct or array form)                  |
 | `configPath`        | string  | null              | Path to BoxLang configuration file                                             |
-| `serverHome`        | string  | null              | BoxLang server home directory                                                  |
-| `rewrites`          | boolean | false             | Enable URL rewrites                                                            |
-| `rewriteFileName`   | string  | "index.bxm"       | Rewrite target file                                                            |
+| `debug`             | boolean | false             | Enable debug mode                                                              |
+| `envFile`           | string  | null              | Path to custom environment file (relative or absolute)                         |
 | `healthCheck`       | boolean | false             | Enable health check endpoints                                                  |
 | `healthCheckSecure` | boolean | false             | Restrict detailed health info to localhost only                                |
-| `envFile`           | string  | null              | Path to custom environment file (relative or absolute)                         |
+| `host`              | string  | "0.0.0.0"         | The host to bind to                                                            |
 | `passPredicate`     | string  | *(see below)*     | Undertow predicate expression that determines which requests are routed to BoxLang |
+| `port`              | number  | 8080              | The port to listen on                                                          |
+| `rewriteFileName`   | string  | "index.bxm"       | Rewrite target file                                                            |
+| `rewrites`          | boolean | false             | Enable URL rewrites                                                            |
+| `serverHome`        | string  | null              | BoxLang server home directory                                                  |
+| `socketOptions`     | object  | {}                | XNIO socket-level options keyed by `Options` constant names                    |
+| `undertowOptions`   | object  | *(see below)*     | Undertow server-level options keyed by `UndertowOptions` constant names        |
 | `warmupUrl`         | string  | null              | Single URL path to request on server startup (shorthand for one URL)           |
 | `warmupUrls`        | array   | \[]               | Array of URL paths to request on server startup for application initialization |
-| `aliases`           | object  | {}                | URL-prefix to filesystem-path mappings (struct or array form)                  |
-| `undertowOptions`   | object  | *(see below)*     | Undertow server-level options keyed by `UndertowOptions` constant names        |
+| `webRoot`           | string  | current directory | Path to the webroot directory                                                  |
 | `workerOptions`     | object  | {}                | XNIO worker-level options keyed by `Options` constant names                    |
-| `socketOptions`     | object  | {}                | XNIO socket-level options keyed by `Options` constant names                    |
 
 ### `.boxlang.json` Project Convention
 
