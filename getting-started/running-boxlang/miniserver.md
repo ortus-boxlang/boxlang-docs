@@ -29,6 +29,7 @@ CommandBox is our open-source servlet server implementation. However, with a [Bo
 * [WebSocket Support](miniserver.md#websocket-support)
 * [Default Welcome Files](miniserver.md#default-welcome-files)
 * [URL Rewrites](miniserver.md#url-rewrites)
+* [Folder Aliases](miniserver.md#folder-aliases)
 * [Server Management](miniserver.md#server-management)
 * [Performance Features](miniserver.md#performance-features)
 * [Reverse Proxy Setup](miniserver.md#reverse-proxy-setup)
@@ -158,10 +159,13 @@ All the following options are supported in the JSON configuration file:
 | `healthCheck`       | boolean | false             | Enable health check endpoints                                                  |
 | `healthCheckSecure` | boolean | false             | Restrict detailed health info to localhost only                                |
 | `envFile`           | string  | null              | Path to custom environment file (relative or absolute)                         |
-| `warmupURLs`        | array   | \[]               | Array of URL paths to request on server startup for application initialization |
-| `undertow`          | object  | {}                | Low-level Undertow HTTP server options (e.g., `ioThreads`, `workerThreads`, `bufferSize`) |
-| `socket`            | object  | {}                | TCP socket options (e.g., `tcpNoDelay`, `reuseAddress`) |
-| `websocket`         | object  | {}                | WebSocket options (e.g., `maxFrameSize`, `maxTextMessageSize`) |
+| `passPredicate`     | string  | *(see below)*     | Undertow predicate expression that determines which requests are routed to BoxLang |
+| `warmupUrl`         | string  | null              | Single URL path to request on server startup (shorthand for one URL)           |
+| `warmupUrls`        | array   | \[]               | Array of URL paths to request on server startup for application initialization |
+| `aliases`           | object  | {}                | URL-prefix to filesystem-path mappings (struct or array form)                  |
+| `undertowOptions`   | object  | *(see below)*     | Undertow server-level options keyed by `UndertowOptions` constant names        |
+| `workerOptions`     | object  | {}                | XNIO worker-level options keyed by `Options` constant names                    |
+| `socketOptions`     | object  | {}                | XNIO socket-level options keyed by `Options` constant names                    |
 
 ### `.boxlang.json` Project Convention
 
@@ -194,51 +198,69 @@ This is ideal for:
 The `.boxlang.json` file is merged on top of the global `boxlang.json`. Any settings not specified in `.boxlang.json` fall back to the global config.
 {% endhint %}
 
-### Undertow / Socket / WebSocket Options
+### Undertow, Worker & Socket Options
 
-For fine-grained control over the underlying Undertow HTTP server, TCP socket, and WebSocket layers, you can specify an `undertow`, `socket`, and/or `websocket` object in your `miniserver.json`:
+For fine-grained control over the underlying Undertow HTTP server, XNIO worker, and TCP socket layers, you can specify `undertowOptions`, `workerOptions`, and/or `socketOptions` objects in your `miniserver.json`. Keys must match the constant names used in Undertow and XNIO (upper-case, e.g. `MAX_ENTITY_SIZE`). Keys are case-insensitive in the JSON — they are normalized to `UPPER_CASE` automatically.
 
 ```json
 {
   "port": 8080,
   "webRoot": "./www",
-  "undertow": {
-    "ioThreads": 8,
-    "workerThreads": 64,
-    "bufferSize": 16384
+  "undertowOptions": {
+    "MAX_ENTITY_SIZE": 52428800,
+    "MULTIPART_MAX_ENTITY_SIZE": 209715200,
+    "IDLE_TIMEOUT": 30000
   },
-  "socket": {
-    "tcpNoDelay": true,
-    "reuseAddress": true
+  "workerOptions": {
+    "WORKER_TASK_MAX_THREADS": 200,
+    "WORKER_IO_THREADS": 8
   },
-  "websocket": {
-    "maxFrameSize": 65536,
-    "maxTextMessageSize": 65536
+  "socketOptions": {
+    "TCP_NODELAY": true,
+    "BACKLOG": 10000
   }
 }
 ```
 
-**`undertow` options** — map directly to Undertow `UndertowOptions`:
+**`undertowOptions`** — applied via `builder.setServerOption()`. Keys match [`io.undertow.UndertowOptions`](https://github.com/undertow-io/undertow/blob/main/core/src/main/java/io/undertow/UndertowOptions.java) constants.
+
+The following defaults replace Undertow's built-in 2 MB limits:
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| `MAX_ENTITY_SIZE` | 25 MB | Maximum HTTP entity body size (JSON, form posts, etc.) |
+| `MULTIPART_MAX_ENTITY_SIZE` | 100 MB | Maximum `multipart/form-data` upload size |
+
+Other commonly useful options:
 
 | Key | Type | Description |
 |-----|------|-------------|
-| `ioThreads` | integer | Number of I/O threads (default: CPU count) |
-| `workerThreads` | integer | Number of worker/blocking threads |
-| `bufferSize` | integer | Buffer size in bytes for I/O operations |
+| `MAX_HEADER_SIZE` | int | Max HTTP request header size in bytes (default: 1 MB) |
+| `IDLE_TIMEOUT` | int | Idle connection timeout in milliseconds |
+| `REQUEST_PARSE_TIMEOUT` | int | Max time to parse a request in milliseconds |
+| `MAX_PARAMETERS` | int | Max query/POST parameters (default: 1000) |
+| `MAX_HEADERS` | int | Max request headers (default: 200) |
+| `ENABLE_HTTP2` | boolean | Enable HTTP/2 for HTTPS connections |
 
-**`socket` options** — map to standard TCP socket channel options:
-
-| Key | Type | Description |
-|-----|------|-------------|
-| `tcpNoDelay` | boolean | Disable Nagle's algorithm for lower latency |
-| `reuseAddress` | boolean | Allow socket address reuse after close |
-
-**`websocket` options** — control WebSocket frame/message limits:
+**`workerOptions`** — applied via `builder.setWorkerOption()`. Keys match [`org.xnio.Options`](https://github.com/xnio/xnio/blob/3.x/api/src/main/java/org/xnio/Options.java) constants.
 
 | Key | Type | Description |
 |-----|------|-------------|
-| `maxFrameSize` | integer | Maximum WebSocket frame size in bytes |
-| `maxTextMessageSize` | integer | Maximum text message size in bytes |
+| `WORKER_IO_THREADS` | int | Number of I/O threads |
+| `WORKER_TASK_CORE_THREADS` | int | Core worker thread pool size |
+| `WORKER_TASK_MAX_THREADS` | int | Maximum worker thread pool size |
+| `WORKER_TASK_KEEPALIVE` | int | Milliseconds to keep idle threads alive |
+
+**`socketOptions`** — applied via `builder.setSocketOption()`. Keys match [`org.xnio.Options`](https://github.com/xnio/xnio/blob/3.x/api/src/main/java/org/xnio/Options.java) constants.
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `TCP_NODELAY` | boolean | Disable Nagle's algorithm for lower latency |
+| `RECEIVE_BUFFER` | int | TCP receive buffer size in bytes |
+| `SEND_BUFFER` | int | TCP send buffer size in bytes |
+| `KEEP_ALIVE` | boolean | Enable TCP keep-alive |
+| `BACKLOG` | int | Accept backlog (max queued connections) |
+| `REUSE_ADDRESSES` | boolean | Reuse addresses in TIME_WAIT state |
 
 {% hint style="warning" %}
 These are advanced tuning options. In most cases the defaults are appropriate. Only change these if you understand the implications for concurrency, memory, and throughput.
@@ -300,7 +322,8 @@ These are advanced tuning options. In most cases the defaults are appropriate. O
   "healthCheck": true,
   "healthCheckSecure": false,
   "envFile": ".env.production",
-  "warmupURLs": [
+  "passPredicate": "regex( '^(/.+?\\.cfml|/.+?\\.cf[cms]|.+?\\.bx[ms]{0,1})(/.*)?$' )",
+  "warmupUrls": [
     "/api/warmup",
     "/cache/initialize",
     "/app/preload"
@@ -309,15 +332,15 @@ These are advanced tuning options. In most cases the defaults are appropriate. O
     "/docs": "/var/www/documentation",
     "/shared": "../shared-assets"
   },
-  "undertow": {
-    "ioThreads": 8,
-    "workerThreads": 64
+  "undertowOptions": {
+    "MAX_ENTITY_SIZE": 52428800,
+    "MULTIPART_MAX_ENTITY_SIZE": 209715200
   },
-  "socket": {
-    "tcpNoDelay": true
+  "workerOptions": {
+    "WORKER_TASK_MAX_THREADS": 200
   },
-  "websocket": {
-    "maxFrameSize": 65536
+  "socketOptions": {
+    "TCP_NODELAY": true
   }
 }
 ```
