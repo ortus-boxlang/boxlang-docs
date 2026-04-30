@@ -18,7 +18,7 @@ Whether you're automating repetitive tasks, building interactive command-line to
 ## 📋 Table of Contents
 
 - [BoxLang CLI Entry Points & Conventions](#boxlang-cli-entry-points--conventions)
-- [Script Files](#script-files)
+- [Script Files](#execute-a-file-9)
 - [Other Scopes](#other-scopes)
 - [Executing Classes](#executing-classes)
 - [Executing Scripts / Templates](#executing-scripts--templates)
@@ -33,7 +33,7 @@ Whether you're automating repetitive tasks, building interactive command-line to
 - [Parsed Arguments](#parsed-arguments)
 - [Reading Input](#reading-input)
 - [Producing Output](#producing-output)
-- [Piping code](#piping-code)
+- [Piping code](#piping-code-11)
 - [Module CLI Apps](#module-cli-apps)
 - [Embedding Modules in a CLI App](#embedding-modules-in-a-cli-app)
 - [Additional Resources and Examples](#additional-resources-and-examples)
@@ -46,11 +46,11 @@ BoxLang supports multiple ways to execute code from the command line, making it 
 
 You can execute any supported file type directly:
 
-* `*.bx` — BoxLang class with a `main()` method
-* `*.bxs` — BoxLang script
-* `*.bxm` — BoxLang template
-* `*.cfs` / `*.cfm` — CFML script/template (requires `bx-compat-cfml` module)
-* `*.sh` — Shebang script (with `#!/usr/bin/env boxlang`)
+- `*.bx` — BoxLang class with a `main()` method
+- `*.bxs` — BoxLang script
+- `*.bxm` — BoxLang template
+- `*.cfs` / `*.cfm` — CFML script/template (requires `bx-compat-cfml` module)
+- `*.sh` — Shebang script (with `#!/usr/bin/env boxlang`)
 
 BoxLang will automatically detect and run the correct entry point, including shebang scripts and classes with a `main()` method.
 
@@ -68,6 +68,7 @@ Here are some examples of executing the files. Just pass in the file by relative
 
 {% tabs %}
 {% tab title="Mac / *Unix" %}
+
 ```bash
 boxlang task.bx
 boxlang myscript.bxs
@@ -76,21 +77,26 @@ boxlang mytemplate.bxm
 boxlang /full/path/to/test.bxs
 boxlang /full/path/to/Task.bx
 ```
+
 {% endtab %}
 
 {% tab title="Windows" %}
+
 ```powershell
 boxlang.bat task.bx
 boxlang.bat myscript.bxs
 boxlang.bat mytemplate.bxm
 ```
+
 {% endtab %}
 
 {% tab title="Jar" %}
+
 ```ruby
 java -jar boxlang-1.0.0.jar task.bx
 java -jar boxlang-1.0.0.jar /full/path/to/test.bxs
 ```
+
 {% endtab %}
 {% endtabs %}
 
@@ -98,9 +104,9 @@ java -jar boxlang-1.0.0.jar /full/path/to/test.bxs
 
 Please note that you have access to other persistent scopes when building CLI applications:
 
-* `application`- This scope lives as long as your application lives as well, but it is technically attached to an `Application.bx`file that activates framework capabilities for your application.
-* `request`- A scope that matches a specific request for your application. We also get one per CLI app since there is no concept of sessions or user state. There is always only one request. It would be up to you to create a session-like mechanism if you need to persist state across multiple executions.
-* `server` - A scope that lives as long as the CLI app is running. This is useful for storing global state or configuration that should persist across multiple requests or executions.
+- `application`- This scope lives as long as your application lives as well, but it is technically attached to an `Application.bx`file that activates framework capabilities for your application.
+- `request`- A scope that matches a specific request for your application. We also get one per CLI app since there is no concept of sessions or user state. There is always only one request. It would be up to you to create a session-like mechanism if you need to persist state across multiple executions.
+- `server` - A scope that lives as long as the CLI app is running. This is useful for storing global state or configuration that should persist across multiple requests or executions.
 
 For CLI applications, we recommend you use the `server`or `request` scope for singleton persistence. Also note that you can use all the [caches](../configuration/caches.md) as well for persistence. You can use `application`scope if you have an `Application.bx.`
 
@@ -109,6 +115,7 @@ For CLI applications, we recommend you use the `server`or `request` scope for si
 BoxLang allows you to execute any `*.bx`class as long as it has a method called `main()`by convention. All the arguments passed into the file execution will be collected and passed into the function via the `args`argument.
 
 {% code title="task.bx" %}
+
 ```java
 class {
 
@@ -120,6 +127,7 @@ class {
 
 }
 ```
+
 {% endcode %}
 
 The `args`argument is an array and it will contain all the arguments passed to the execution of the class.
@@ -147,12 +155,14 @@ Class executions are a great way to build tasks that have a deterministic approa
 In addition to executing classes, you can execute `*.bxs`scripts that can do your bidding. The difference is that this is a flat source code script that executes from the top down. It can contain functions, scope usage, imports, and create any class.
 
 {% code title="hello.bxs" %}
+
 ```groovy
 message = "Hola from my task! #now()#";
 println( message );
 println( "The passed args are: " );
 println( CLIGetArgs( ) );
 ```
+
 {% endcode %}
 
 Then, if we execute it, we can see this output:
@@ -175,8 +185,8 @@ The passed args are:
 
 What do you see that's different? We don't have the incoming arguments as an argument since it's a script. However, we can use the `CLIGetArgs()`BIF, and it will give you a structure of two keys:
 
-* `positionals`- An array of positional values passed to the script
-* `options`- Name value pairs detected as options
+- `positionals`- An array of positional values passed to the script
+- `options`- Name value pairs detected as options
 
 {% hint style="info" %}
 You can also get the arguments via the `server.cli.parsed`variable, which already contains this structure.
@@ -220,12 +230,14 @@ A SheBang script is just basically a `*.bxs`script.
 {% endhint %}
 
 {% code title="hola.sh" %}
+
 ```bash
 #!/usr/bin/env boxlang
 
 println( "Hello World! #now()#" );
 println( CLIGetArgs( ) );
 ```
+
 {% endcode %}
 
 As you can see from the sample above, the first line is what makes it a SheBang script the operating system can use. It passes it to the `boxlang`binary for interpretation. Also, note that you can pass arguments to these scripts like any other script and the `CLIGetArgs()`or the `server.cli.parsed` variables will be there for you to use.
@@ -323,6 +335,23 @@ boxlang cftranspile --help
 boxlang cftranspile --source ./legacy --target ./modern
 ```
 
+### Formatter Command
+
+Format BoxLang and CFML code, or enforce formatting in CI with check mode:
+
+```bash
+# Get help for format command
+boxlang format --help
+
+# Format project files in place
+boxlang format --input ./
+
+# Lint-style enforcement for CI
+boxlang format --check --input ./
+```
+
+For full formatter configuration, migration guidance from cfformat, and IDE auto-format setup, see [BoxLang Formatter](../ide-tooling/boxlang-formatter.md).
+
 ### Feature Audit Command
 
 Audit your code for BoxLang feature compatibility:
@@ -394,10 +423,10 @@ For more on schedulers, see the [Scheduler documentation](../../boxlang-framewor
 
 When no arguments are provided, BoxLang starts in **REPL mode** (Read-Eval-Print-Loop):
 
-* Interactive environment for testing and development
-* Type expressions and see results immediately
-* Supports multi-line expressions and complex code
-* Press `Ctrl+C` to exit REPL mode
+- Interactive environment for testing and development
+- Type expressions and see results immediately
+- Supports multi-line expressions and complex code
+- Press `Ctrl+C` to exit REPL mode
 
 ```bash
 # Start REPL mode
@@ -414,10 +443,10 @@ BoxLang>
 
 BoxLang also gives you several built-in functions for interacting with the CLI:
 
-* `CLIClear( ):void` - Clears the console
-* `CLIGetArgs( ):struct` - Return a structure of the parsed incoming arguments
-* `CLIRead( [ prompt ] ):any`- Read input from the CLI and return the value
-* `CLIExit( [ exitCode=0 ] )`- Do a `System.exit( )`with the passed-in exit code
+- `CLIClear( ):void` - Clears the console
+- `CLIGetArgs( ):struct` - Return a structure of the parsed incoming arguments
+- `CLIRead( [ prompt ] ):any`- Read input from the CLI and return the value
+- `CLIExit( [ exitCode=0 ] )`- Do a `System.exit( )`with the passed-in exit code
 
 {% hint style="warning" %}
 Please note that you have a wealth of built-in functions and components that you can use to build your scripts.
@@ -429,8 +458,8 @@ BoxLang automatically parses incoming arguments into a structured format when us
 
 The parsed structure contains:
 
-* `options` - A structure of the options (name-value pairs) used to invoke the script
-* `positionals` - An array of the positional arguments used to invoke the script
+- `options` - A structure of the options (name-value pairs) used to invoke the script
+- `positionals` - An array of the positional arguments used to invoke the script
 
 ### CLI Argument Formats
 
@@ -515,12 +544,12 @@ println( "Positional Args: " & cliInfo.parsed.positionals.toString( ) );
 
 ### Ground Rules for CLI Arguments
 
-* Options are prefixed with `--` (long form) or `-` (short form)
-* Shorthand options can be combined (e.g., `-abc` = `-a -b -c`)
-* Options can be negated with `--!` or `--no-` prefix
-* Values can be assigned with `=` and optionally quoted
-* Repeated options will override previous values
-* Everything after options are treated as positional arguments
+- Options are prefixed with `--` (long form) or `-` (short form)
+- Shorthand options can be combined (e.g., `-abc` = `-a -b -c`)
+- Options can be negated with `--!` or `--no-` prefix
+- Values can be assigned with `=` and optionally quoted
+- Repeated options will override previous values
+- Everything after options are treated as positional arguments
 
 ## Reading Input
 
@@ -537,10 +566,10 @@ if ( exit ) {
 
 As you navigate all the built-in functions and capabilities of BoxLang, let's learn how to produce output to the system console.
 
-* `printLn( )` - Print with a line break to System out
-* `print( )` - Print with no line break to System out
-* `writeOutput( ), echo( )` - Writes to the output buffer (Each runtime decides what its buffer is. The CLI is the system output, the Web is the HTML response buffer, etc)
-* `writeDump( )`- Takes any incoming output and will serialize to a nice string output representation. This will also do complex objects deeply.
+- `printLn( )` - Print with a line break to System out
+- `print( )` - Print with no line break to System out
+- `writeOutput( ), echo( )` - Writes to the output buffer (Each runtime decides what its buffer is. The CLI is the system output, the Web is the HTML response buffer, etc)
+- `writeDump( )`- Takes any incoming output and will serialize to a nice string output representation. This will also do complex objects deeply.
 
 ```groovy
 println( "Time is #now()#" );
@@ -606,7 +635,7 @@ BoxLang allows you to build CLI applications as modules, making it easy to packa
 
 When you want to execute a module as a CLI app, use the following convention:
 
-* `module:{name}` - This will execute the module's `ModuleConfig.main( args )` method, passing any CLI arguments to it.
+- `module:{name}` - This will execute the module's `ModuleConfig.main( args )` method, passing any CLI arguments to it.
 
 For example, if you have a module named `mytools`, you can run its CLI entry point like this:
 
@@ -755,19 +784,19 @@ boxlang --bx-debug myapp.bx
 
 This outputs:
 
-* Execution timing information
-* Memory usage statistics
-* Runtime initialization details
-* AST parsing time
-* Module loading performance
+- Execution timing information
+- Memory usage statistics
+- Runtime initialization details
+- AST parsing time
+- Module loading performance
 
 ### Community Resources
 
-* 📚 **Documentation**: [https://boxlang.ortusbooks.com/](https://boxlang.ortusbooks.com/)
-* 💬 **Community Forum**: [https://community.ortussolutions.com/c/boxlang/42](https://community.ortussolutions.com/c/boxlang/42)
-* 💾 **GitHub Repository**: [https://github.com/ortus-boxlang](https://github.com/ortus-boxlang)
-* 🌐 **Official Website**: [https://boxlang.io](https://boxlang.io)
-* 🎯 **Examples Repository**: [https://github.com/ortus-boxlang/bx-demos](https://github.com/ortus-boxlang/bx-demos)
+- 📚 **Documentation**: [https://boxlang.ortusbooks.com/](https://boxlang.ortusbooks.com/)
+- 💬 **Community Forum**: [https://community.ortussolutions.com/c/boxlang/42](https://community.ortussolutions.com/c/boxlang/42)
+- 💾 **GitHub Repository**: [https://github.com/ortus-boxlang](https://github.com/ortus-boxlang)
+- 🌐 **Official Website**: [https://boxlang.io](https://boxlang.io)
+- 🎯 **Examples Repository**: [https://github.com/ortus-boxlang/bx-demos](https://github.com/ortus-boxlang/bx-demos)
 
 ## Dad Joke Script
 

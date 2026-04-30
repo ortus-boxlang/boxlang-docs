@@ -137,7 +137,7 @@ BoxLang provides a rich set of Built-In Functions for string manipulation. Below
 
 | Function | Purpose | Example |
 |----------|---------|---------|
-| `trim()` / `lTrim()` / `rTrim()` | Remove whitespace | `trim("  hello  ")` → `"hello"` |
+| `trim()` / `lTrim()` / `rTrim()` | Remove whitespace (or custom chars) | `trim("  hello  ")` → `"hello"`, `trim("**hi**", "*")` → `"hi"` |
 | `justify()` | Center justify | `justify("Hi", 10)` → `"    Hi    "` |
 | `lJustify()` / `rJustify()` | Left/right justify | `rJustify("Hi", 10)` → `"        Hi"` |
 | `repeatString()` | Repeat string | `repeatString("*", 5)` → `"*****"` |
@@ -210,7 +210,7 @@ if( len(message) > 0 ) {
 
 ### ✂️ trim(), lTrim(), rTrim()
 
-Remove whitespace and control characters from strings.
+Remove whitespace and control characters from strings. As of BoxLang 1.13.0, an optional `chars` argument lets you trim any custom character set instead of just whitespace.
 
 ```js
 text = "  Hello World  "
@@ -220,6 +220,11 @@ writeOutput( rTrim(text) )     // "  Hello World"
 
 // Method chaining
 result = "  BoxLang  ".trim().len()  // 8
+
+// Trim custom characters (1.13.0+)
+"**Urgent**".trim( "*" )       // "Urgent"
+"000123".lTrim( "0" )          // "123"
+"report....".rTrim( "." )      // "report"
 ```
 
 [Try it online!](https://try.boxlang.io)
