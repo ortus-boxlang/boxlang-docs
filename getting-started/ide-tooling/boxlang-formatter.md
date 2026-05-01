@@ -368,7 +368,140 @@ Recommended split of responsibilities:
 - IDE format-on-save for fast local feedback
 - CLI `--check` mode for authoritative CI enforcement
 
-## 📚 Related Tooling
+## � Complete `.bxformat.json` Schema Template
+
+Copy this file to your project root as `.bxformat.json` and remove or adjust only the keys you want to override. All values shown are the Ortus gold-standard defaults.
+
+{% hint style="info" %}
+Run `boxlang format --initConfig` to generate this file automatically in your current directory instead of copy-pasting.
+{% endhint %}
+
+```json
+{
+  "indentSize": 4,
+  "tabIndent": true,
+  "maxLineLength": 120,
+  "newLine": "os",
+  "singleQuote": false,
+  "preserveStringQuotes": false,
+  "alignConsecutiveAssignments": true,
+  "alignConsecutiveProperties": true,
+  "bracketPadding": true,
+  "parensPadding": true,
+  "binaryOperatorsPadding": true,
+  "semicolons": true,
+  "cfFormatCompatibility": false,
+  "sourceType": null,
+
+  "struct": {
+    "padding": true,
+    "empty_padding": false,
+    "quote_keys": false,
+    "separator": ": ",
+    "multiline": {
+      "element_count": 2,
+      "comma_dangle": false,
+      "leading_comma": { "enabled": false, "padding": true },
+      "min_length": 40
+    }
+  },
+
+  "array": {
+    "padding": true,
+    "empty_padding": false,
+    "multiline": {
+      "element_count": 2,
+      "comma_dangle": false,
+      "leading_comma": { "enabled": false, "padding": true },
+      "min_length": 40
+    }
+  },
+
+  "property": {
+    "multiline": {
+      "element_count": 4,
+      "comma_dangle": false,
+      "leading_comma": { "enabled": false, "padding": true },
+      "min_length": 40
+    },
+    "key_value": { "padding": false }
+  },
+
+  "for_loop_semicolons": { "padding": true },
+
+  "function": {
+    "style": "preserve",
+    "parameters": {
+      "padding": true,
+      "empty_padding": false,
+      "comma_dangle": false,
+      "multiline_count": 3,
+      "multiline_length": 40
+    },
+    "arrow": { "parens": "always" }
+  },
+
+  "arguments": {
+    "padding": true,
+    "empty_padding": false,
+    "comma_dangle": false,
+    "multiline_count": 3,
+    "multiline_length": 40
+  },
+
+  "braces": {
+    "style": "same-line",
+    "require_for_single_statement": true,
+    "else": { "style": "same-line" }
+  },
+
+  "operators": {
+    "position": "end",
+    "comparison_style": "symbols",
+    "ternary": {
+      "style": "flat",
+      "question_position": "start"
+    }
+  },
+
+  "chain": {
+    "break_count": 3,
+    "break_length": 60
+  },
+
+  "template": {
+    "component_prefix": "bx",
+    "indent_content": true,
+    "single_attribute_per_line": false,
+    "self_closing": true
+  },
+
+  "import": {
+    "sort": false,
+    "group": false
+  },
+
+  "comments": {
+    "preserve_blank_lines": true,
+    "wrap": false
+  },
+
+  "class": {
+    "member_order": "preserve",
+    "member_spacing": 1,
+    "property_order": "preserve",
+    "method_order": "preserve",
+    "method_grouping": false
+  },
+
+  "sql": {
+    "uppercase_keywords": true,
+    "indent_clauses": true
+  }
+}
+```
+
+## �📚 Related Tooling
 
 - [BoxLang Compiler](boxlang-compiler.md)
 - [BoxLang AST](boxlang-ast.md)

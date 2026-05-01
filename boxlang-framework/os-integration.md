@@ -338,10 +338,30 @@ if ( !len( apiKey ) ) {
 **Notes:**
 - Key names are **case-sensitive**
 - Namespace support via `.` separator (e.g., custom provider registered under `myapp`)
-- Since BoxLang 1.13.0, the CLI loads `~/.box.env` on startup — variables defined there are available via `getSystemSetting()`
 
 {% hint style="success" %}
 Use `getSystemSetting()` for targeted lookups. It is more secure than enabling `server.system` scope population, since it does not expose all environment variables to templates.
+{% endhint %}
+
+### `.env` File Auto-Loading (CLI)
+
+When running in CLI mode, BoxLang automatically loads environment variables from `.env` files before your script executes. Two files are loaded in order — user-level first, then project-level:
+
+| File | Description |
+|------|-------------|
+| `~/.box.env` | User-level defaults — loaded on every CLI invocation (since BoxLang 1.13.0) |
+| `.env` | Project-level file in the current working directory — values override user-level |
+
+All values are available immediately via `getSystemSetting()`:
+
+```js
+// Reads from ~/.box.env, .env, Java system properties, or OS environment — in that priority
+dbHost = getSystemSetting( "DB_HOST", "localhost" )
+apiKey = getSystemSetting( "OPENAI_API_KEY" )
+```
+
+{% hint style="info" %}
+The MiniServer has its own `.env` loading from the webroot — see the [MiniServer documentation](../getting-started/running-boxlang/miniserver.md) for details. For CLI `.env` behavior, see [CLI Scripting](../getting-started/running-boxlang/cli-scripting.md).
 {% endhint %}
 
 ---

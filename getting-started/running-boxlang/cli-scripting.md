@@ -279,6 +279,47 @@ You can also control BoxLang behavior using environment variables:
 | `BOXLANG_TRANSPILE=true` | Enable transpile mode |
 | `BOXLANG_PRINTAST=true` | Enable AST printing |
 
+### `.env` Files
+
+The BoxLang CLI automatically loads environment variables from two `.env` files on every startup, in this order:
+
+| File | Scope | Loaded When |
+|------|-------|-------------|
+| `~/.box.env` | User-level — applies to every CLI invocation for your account | Always |
+| `.env` | Project-level — located in the directory where you run `boxlang` | When present |
+
+Project-level values take precedence over user-level values when the same key appears in both files.
+
+```bash
+# ~/.box.env  — personal defaults that follow you everywhere
+DB_HOST=localhost
+DB_PORT=5432
+OPENAI_API_KEY=sk-...
+```
+
+```bash
+# .env  — project-specific overrides (keep this next to your scripts)
+DB_HOST=staging.example.com
+APP_ENV=staging
+```
+
+All variables loaded from either file are accessible via `getSystemSetting()`:
+
+```js
+// Works for both user-level (~/.box.env) and project-level (.env) values
+dbHost = getSystemSetting( "DB_HOST", "localhost" )
+dbPort = getSystemSetting( "DB_PORT", 5432 )
+apiKey = getSystemSetting( "OPENAI_API_KEY" )
+```
+
+{% hint style="info" %}
+The `.env` format is `KEY=VALUE`, one per line. Lines starting with `#` are comments. Quoting values is optional. These files are loaded as Java system properties, so use `getSystemSetting()` rather than `server.system.environment` to access them portably.
+{% endhint %}
+
+{% hint style="warning" %}
+Never commit `~/.box.env` or a project `.env` containing real secrets to version control. Add `.env` to your `.gitignore`.
+{% endhint %}
+
 ### Examples of CLI Options
 
 ```bash
