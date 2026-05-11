@@ -189,6 +189,6 @@ for ( key in keys.results ) {
 
 ## Additional Resources
 
-- [Meilisearch Module Documentation](boxlang-framework/boxlang-plus/modules/bx-meilisearch/README.md) - Complete module overview and installation guide
-- [Meilisearch API Documentation](boxlang-framework/boxlang-plus/modules/bx-meilisearch/api-usage.md) - Detailed API wrapper usage patterns
+- [Meilisearch Module Documentation](/boxlang-framework/boxlang-plus/modules/bx-meilisearch/README.md) - Complete module overview and installation guide
+- [Meilisearch API Documentation](/boxlang-framework/boxlang-plus/modules/bx-meilisearch/reference/fluent-api/README.md) - Detailed API wrapper usage patterns
 - [Official Meilisearch Documentation](https://www.meilisearch.com/docs) - Meilisearch API reference

@@ -135,9 +135,9 @@ bx-meilisearch will auto-configure using these environment variables, or you can
 
 ## 📖 API Documentation
 
-For endpoint coverage and wrapper usage patterns, see the [API Documentation](api-usage.md) section.
+For endpoint coverage and wrapper usage patterns, see the [API Documentation](/boxlang-framework/boxlang-plus/modules/bx-meilisearch/reference/fluent-api/README.md) section.
 
 ## 📚 Built-In Function Reference
 
-For generated reference documentation covering the module's built-in functions, see the [Built-In Function Reference](reference/built-in-functions/).
+For generated reference documentation covering the module's built-in functions, see the [Built-In Function Reference](/boxlang-framework/boxlang-plus/modules/bx-meilisearch/reference/built-in-functions/README.md).
 

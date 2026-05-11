@@ -3,7 +3,7 @@ description: API wrapper documentation for the BoxLang Meilisearch module.
 icon: book-open
 ---
 
-# API Documentation
+# Fluent API Reference
 
 ## Indexes
 

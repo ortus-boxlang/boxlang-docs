@@ -978,6 +978,10 @@
   * [SOAP Compat +](boxlang-framework/boxlang-plus/modules/soap-compat-+.md)
   * [REST Compat +](boxlang-framework/boxlang-plus/modules/rest-compat-+/README.md)
     * [Reference](boxlang-framework/boxlang-plus/modules/rest-compat-+/reference.md)
+  * [Meilisearch +](boxlang-framework/boxlang-plus/modules/bx-meilisearch/README.md)
+    * [API Reference](boxlang-framework/boxlang-plus/modules/bx-meilisearch/reference/fluent-api/README.md)
+    * [Built-In Functions](boxlang-framework/boxlang-plus/modules/bx-meilisearch/reference/built-in-functions/README.md)
+      * [Meilisearch](boxlang-framework/boxlang-plus/modules/bx-meilisearch/reference/built-in-functions/Meilisearch.md)
 
 ## BoxLang Framework
 
