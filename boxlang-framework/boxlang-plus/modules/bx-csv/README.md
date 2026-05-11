@@ -8,7 +8,7 @@ icon: table
 # CSV +
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](./bx-plus/README.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/) with a limited trial.
 {% endhint %}
 
 The BoxLang CSV module provides a comprehensive and modern API for working with CSV (Comma-Separated Values) files in BoxLang. Built on top of Apache Commons CSV, this module offers both traditional BIF-style functions and a powerful **fluent API** for creating, reading, parsing, and manipulating CSV files.

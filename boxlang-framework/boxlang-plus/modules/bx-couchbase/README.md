@@ -8,7 +8,7 @@ description: With the BoxLang Couchbase Module, connect to Couchbase clusters fo
 Welcome to the BoxLang Couchbase Module! This module provides enterprise-grade caching, session storage, and AI vector memory capabilities powered by Couchbase's distributed NoSQL database.
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](bx-plus/README.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/) with a limited trial.
 {% endhint %}
 
 ## 🎯 What is Couchbase?

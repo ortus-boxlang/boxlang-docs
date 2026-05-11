@@ -6,7 +6,7 @@ description: With the BoxLang Redis Module, connect to Redis instances, clusters
 # Redis +
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/README.md) with a limited trial.
+This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/) with a limited trial.
 {% endhint %}
 
 This module will enhance your language by allowing you to connect to Redis instances, clusters, or sentinel instances. Here are some features:
