@@ -22,7 +22,7 @@ BoxLang+ includes a curated set of modules that extend the platform with integra
 | [`bx-spreadsheet`](bx-spreadsheet/) | Read, write, style spreadsheet documents (XLSX)                                                                                                                             | `box install bx-spreadsheet` |
 | [`bx-soap-compat`](soap-compat-+/) | SOAP compatibility layer for generating, parsing, and communicating with web services.                                                                                                | `box install bx-soap-compat` |
 | [`bx-rest-compat`](rest-compat-+/) | REST component compatibility and routing translation layer for running legacy framework-less REST architectures.                                                              | `box install bx-rest-compat` |
-| [`bx-meilisearch`](meilisearch-+/) | [Meilisearch](https://www.meilisearch.com/) integration for fast, full-text search capabilities within BoxLang applications.                                                              | `box install bx-meilisearch` |
+| [`bx-meilisearch`](meilisearch/) | [Meilisearch](https://www.meilisearch.com/) integration for fast, full-text search capabilities within BoxLang applications.                                                              | `box install bx-meilisearch` |
 
 ## 🚀 Installation Pattern
 
