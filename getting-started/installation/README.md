@@ -476,7 +476,7 @@ Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get profes
 | [`bx-couchbase`](../../boxlang-framework/boxlang-plus/modules/bx-couchbase/) | Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage. | In Development |
 | [`bx-ldap`](../../boxlang-framework/boxlang-plus/modules/bx-ldap/) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications. | Done |
 | [`bx-plus`](../../boxlang-framework/boxlang-plus/modules/bx-plus/) | Subscription bootstrap, entitlement validation, shared utilities | Done |
-| [`bx-pdf`](../../boxlang-framework/boxlang-plus/modules/bx-plus-pdf.md) | PDF generation and manipulation for documents, reports, and forms. Includes free-tier and licensed functionality. | Done |
+| [`bx-pdf`](../../boxlang-framework/boxlang-plus/modules/bx-plus-pdf) | PDF generation and manipulation for documents, reports, and forms. Includes free-tier and licensed functionality. | Done |
 | [`bx-redis`](../../boxlang-framework/boxlang-plus/modules/bx-redis/) | Native Redis integration is used for caching, session distribution, and publish-subscribe events. | Done |
 | [`bx-spreadsheet`](../../boxlang-framework/boxlang-plus/modules/bx-spreadsheet/) | Read, write, and style spreadsheet documents (XLSX). | Done |
 | [`bx-soap-compat`](../../boxlang-framework/boxlang-plus/modules/soap-compat-+.md) | SOAP compatibility layer for generating, parsing, and communicating with web services. | Done |
