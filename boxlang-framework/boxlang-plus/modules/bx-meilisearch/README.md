@@ -93,7 +93,7 @@ Meilisearch is lightweight enough for teams that want a straightforward path to 
 
 ## 🔧 Requirements
 
-- BoxLang 1.0.0+
+- BoxLang 1.13.0+
 - A running Meilisearch instance reachable over HTTP or HTTPS
 - A Meilisearch master key or API key for authenticated requests
 - Java 21+
