@@ -7,36 +7,40 @@ icon: puzzle
 
 # Modules Overview
 
-BoxLang+ includes a curated set of modules that extend the platform with integration points, productivity accelerators, and enterprise-grade features. Each module is versioned independently and installed on demand.
+BoxLang+/Starter includes a curated set of modules that extend the platform with integration points, productivity accelerators, and enterprise-grade features. Each module is versioned independently and installed on demand.
 
 ## 🔍 Module Index
 
-| Module                              | Purpose                                                                                                                                                                     | Quick Install                |
-| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------- |
-| [`bx-csv`](bx-csv/)               | Streaming CSV parsing & generation for large datasets                                                                                                                       | `box install bx-csv`         |
-| [`bx-couchbase`](bx-couchbase/)     | <p><strong>In Development</strong><br>Distributed caching &#x26; NoSQL document storage via Couchbase</p>                                                                   | `box install bx-couchbase`   |
-| [`bx-ldap`](bx-ldap/)               | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications!                                                               | `box install bx-ldap`        |
-| [`bx-plus`](bx-plus/)               | Subscription bootstrap, entitlement validation, shared utilities                                                                                                            | `box install bx-plus`        |
-| [`bx-pdf`](bx-plus-pdf/)          | <p><br>PDF generation and manipulation for documents, reports, and forms. This module provides free-tier as well as <a href="bx-plus-pdf.md">licensed functionality</a></p> | `box install bx-pdf`         |
-| [`bx-redis`](bx-redis/)             | High-performance Redis-backed caching, data structures, pub/sub                                                                                                             | `box install bx-redis`       |
-| [`bx-spreadsheet`](bx-spreadsheet/) | Read, write, style spreadsheet documents (XLSX)                                                                                                                             | `box install bx-spreadsheet` |
-| [`bx-soap-compat`](soap-compat-+.md) | SOAP compatibility layer for generating, parsing, and communicating with web services.                                                                                                | `box install bx-soap-compat` |
-| [`bx-rest-compat`](rest-compat-+/) | REST component compatibility and routing translation layer for running legacy framework-less REST architectures.                                                              | `box install bx-rest-compat` |
-| [`bx-meilisearch`](bx-meilisearch/) | [Meilisearch](https://www.meilisearch.com/) integration for fast, full-text search capabilities within BoxLang applications.                                                              | `box install bx-meilisearch` |
+| Module | Purpose |
+| --- | --- |
+| [`bx-couchbase`](bx-couchbase/) | Distributed caching and NoSQL document storage via Couchbase. |
+| [`bx-csv`](bx-csv/) | Streaming CSV parsing and generation for large datasets. |
+| [`bx-ldap`](bx-ldap/) | Full-featured LDAP directory access for BoxLang applications. |
+| [`bx-meilisearch`](bx-meilisearch/) | [Meilisearch](https://www.meilisearch.com/) integration for fast full-text search in BoxLang applications. |
+| [`bx-pdf`](bx-plus-pdf/) | PDF generation and manipulation for documents, reports, and forms, including [licensed functionality](bx-plus-pdf/). |
+| [`bx-plus`](bx-plus/) | Subscription bootstrap, entitlement validation, and shared utilities. |
+| [`bx-redis`](bx-redis/) | Redis-backed caching, data structures, and pub/sub messaging. |
+| [`bx-rest-compat`](rest-compat-+/) | REST component compatibility and routing translation for legacy framework-less REST architectures. |
+| [`bx-soap-compat`](soap-compat-+.md) | SOAP compatibility layer for generating, parsing, and communicating with web services. |
+| [`bx-spreadsheet`](bx-spreadsheet/) | Read, write, and style spreadsheet documents (XLSX). |
 
 ## 🚀 Installation Pattern
 
-All premium modules follow a consistent installation workflow using either CommandBox or BoxLang CLI:
+All premium modules follow a consistent installation workflow using either CommandBox / BoxLang CLI. Our recommended approach is CommandBox as it takes care of all dependencies.
 
 ### Via CommandBox CLI
 
 ```bash
+# Install bx-plus as a dependency for license management and the target module.
 box install <module-name>
 ```
 
 ### Via BoxLang OS Binary
 
 ```bash
+# Install bx-plus module first to enable license management
+install-bx-module bx-plus
+# Then install other modules
 install-bx-module <module-name>
 ```
 
@@ -85,6 +89,10 @@ After installation, modules register themselves automatically or provide a simpl
 
 {% content-ref url="rest-compat-+/" %}
 [rest-compat-+](rest-compat-+/)
+{% endcontent-ref %}
+
+{% content-ref url="bx-meilisearch/" %}
+[bx-meilisearch](bx-meilisearch/)
 {% endcontent-ref %}
 
 ## 🛡 Reliability & Performance

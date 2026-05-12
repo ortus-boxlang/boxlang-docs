@@ -27,7 +27,7 @@ BoxLang+ focuses on pragmatic value for engineering teams:
 
 You can build and ship commercial software with the open-source edition without cost. When you need advanced modules, faster resolutions, enterprise support, or architectural guidance, BoxLang+ is available as an additive layer.
 
-| Area | Open Source | BoxLang+ |
+| Area | Open Source | BoxLang+/++/Starter |
 |------|-------------|----------|
 | Core Language & Runtime | ✅ | ✅ |
 | All Standard BIFs & Components | ✅ | ✅ |
@@ -43,7 +43,7 @@ You can see a full comparison of features and benefits on our [plans page](https
 
 ## 🔐 Support & Reliability
 
-BoxLang+ provides structured support processes to help you reduce downtime and accelerate issue resolution. With defined SLAs and escalation access, you spend less time blocked and more time shipping features.
+BoxLang+ provides structured support processes to help you reduce downtime and accelerate issue resolution. With defined SLAs and escalation access, you spend less time blocked and more time shipping features.  Our BoxLang starter plan offers a great entry point for teams looking to dip their toes into the subscription benefits with a lower commitment, access to all premium modules, but limited support hours and no guaranteed SLAs.
 
 ## 🛠 Premium Modules Overview
 
@@ -72,11 +72,11 @@ BoxLang+ encourages modern deployment patterns:
 ## 📦 Licensing & Compliance
 
 * Open Source core: Apache 2.0 – permissive, commercial friendly.
-* BoxLang+ subscription: Adds closed-distribution premium modular functionality and features.
+* BoxLang+/Starter subscription: Adds closed-distribution premium modular functionality and features.
 * You retain full ownership of your application code.
 
 {% hint style="danger" %}
-To activate your BoxLang+ license, please see our [BoxLang Plus Module](modules/bx-plus/README.md) documentation.
+To activate your BoxLang+/Starter license, please see our [BoxLang Plus Module](modules/bx-plus/README.md) documentation.
 {% endhint %}
 
 ## 🔭 Roadmap & Evolution
