@@ -116,15 +116,49 @@ This module contributes the following ESAPI decoding BIFs:
 
 This module contributes these remaining ESAPI BIFs:
 
-* `getSafeHTML( string, [policy='ebay'] )` - Sanitize HTML content using the AntiSamy library
+* `getSafeHTML( string, [policy='ebay'], [throwOnError=false], [force=false] )` - Sanitize HTML content using the AntiSamy library
   * `string` - The HTML string to sanitize
-  * `policy` - The policy to use for sanitization. The default is 'ebay', which is the most restrictive policy. The available policies are: `anythingoes,ebay,myspace,slashdot,tinymce`. However you can pass a custom policy by using an absolute path to the policy file.
-* `isSafeHTML( string, [policy='ebay'] )` - Validate HTML content using the AntiSamy library
-  * `string` - The HTML string to sanitize
-  * `policy` - The policy to use for sanitization. The default is 'ebay', which is the most restrictive policy. The available policies are: `anythingoes,ebay,myspace,slashdot,tinymce`. However you can pass a custom policy by using an absolute path to the policy file.
+  * `policy` - The policy to use for sanitization. Can be a string (built-in policy name or file path) or a struct for programmatic configuration. Default is `'ebay'` (most restrictive). Built-in policies: `anythinggoes`, `ebay`, `myspace`, `slashdot`, `tinymce`
+  * `throwOnError` - When `true`, throws an exception if HTML violates policy rules. Default is `false` (silently sanitizes)
+  * `force` - When `true` and using a struct policy, evicts the cached compiled policy and rebuilds it. Default is `false`. Useful for dynamic policy configuration or testing
+* `isSafeHTML( string, [policy='ebay'], [force=false] )` - Validate HTML content using the AntiSamy library
+  * `string` - The HTML string to validate
+  * `policy` - The policy to use for validation. Can be a string (built-in policy name or file path) or a struct for programmatic configuration. Default is `'ebay'` (most restrictive)
+  * `force` - When `true` and using a struct policy, evicts the cached compiled policy and rebuilds it. Default is `false`
 * `sanitizeHTML( string, [policy='ALL'] )` - Sanitizes unsafe HTML to protect against XSS attacks
   * `string` - The HTML string to sanitize
-  * `policy` - The policy to use for sanitization. The default is 'ALL', which is the most restrictive policy. The available policies are: `BLOCKS, FORMATTING, IMAGES, LINKS, STYLES, TABLES`. You can also pass a `PolicyFactory` object to use a custom policy (https://javadoc.io/static/com.googlecode.owasp-java-html-sanitizer/owasp-java-html-sanitizer/20191001.1/org/owasp/html/PolicyFactory.html)
+  * `policy` - The policy to use for sanitization. Default is `'ALL'` (most restrictive). Available policies: `BLOCKS`, `FORMATTING`, `IMAGES`, `LINKS`, `STYLES`, `TABLES`. Can also pass a `PolicyFactory` object for custom policies
+
+### Struct-Based Policy Configuration
+
+For advanced use cases, `getSafeHTML()` and `isSafeHTML()` support struct-based policy configuration. This allows you to build custom policies programmatically:
+
+```js
+// Custom policy configuration struct
+policyConfig = {
+    basePolicy: "ebay",              // Start from a built-in policy ("ebay", "myspace", etc.) or "none"
+    overrideMode: "merge",           // "merge" or "override" - how to apply overrides
+    directives: {
+        maxInputSize: 200000         // Custom directive overrides
+    },
+    allowTags: [ "b", "i", "em", "strong" ],
+    tagRules: { ... },               // Custom tag rules
+    globalAttributes: { ... },       // Attributes valid on all tags
+    cssRules: { ... },               // CSS property rules
+    allowedEmptyTags: [ "br", "hr" ],
+    requireClosingTags: [ "p", "div" ],
+    tagsToEncode: [ "script", "style" ]
+};
+
+// Use the custom policy
+safeHTML = getSafeHTML( userInput, policyConfig );
+isValid = isSafeHTML( userInput, policyConfig );
+
+// Force cache eviction if policy changes frequently
+safeHTML = getSafeHTML( userInput, policyConfig, false, true );
+```
+
+**Policy Caching:** Struct-based policies are automatically cached for performance. The same policy configuration will be recompiled only once and reused. Use `force=true` to bypass the cache and rebuild the policy on each call (useful for dynamic policies or testing).
 
 ### **Examples**
 
@@ -148,8 +182,27 @@ This module contributes these remaining ESAPI BIFs:
 </bx:output>
 
 <bx:script>
+	// Built-in policy
 	comment = getSafeHTML( form.comment, "myspace" );
+	
+	// Custom policy file
 	comment = getSafeHTML( form.comment, "C:/path/to/policy.xml" );
+	
+	// Programmatic struct policy
+	comment = getSafeHTML( form.comment, {
+	    basePolicy: "ebay",
+	    directives: { maxInputSize: 100000 }
+	} );
+	
+	// With error throwing
+	try {
+	    comment = getSafeHTML( form.comment, "ebay", true );
+	} catch ( any e ) {
+	    writeln( "Policy violation: " & e.message );
+	}
+	
+	// Force rebuild struct policy (disable caching)
+	comment = getSafeHTML( form.comment, policyConfig, false, true );
 </bx:script>
 ```
 
