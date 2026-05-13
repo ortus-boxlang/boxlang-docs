@@ -184,23 +184,23 @@ safeHTML = getSafeHTML( userInput, policyConfig, false, true );
 <bx:script>
 	// Built-in policy
 	comment = getSafeHTML( form.comment, "myspace" );
-	
+
 	// Custom policy file
 	comment = getSafeHTML( form.comment, "C:/path/to/policy.xml" );
-	
+
 	// Programmatic struct policy
 	comment = getSafeHTML( form.comment, {
 	    basePolicy: "ebay",
 	    directives: { maxInputSize: 100000 }
 	} );
-	
+
 	// With error throwing
 	try {
 	    comment = getSafeHTML( form.comment, "ebay", true );
 	} catch ( any e ) {
 	    writeln( "Policy violation: " & e.message );
 	}
-	
+
 	// Force rebuild struct policy (disable caching)
 	comment = getSafeHTML( form.comment, policyConfig, false, true );
 </bx:script>
