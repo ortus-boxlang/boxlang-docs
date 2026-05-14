@@ -46,7 +46,7 @@ if ( structKeyExists( config, "database" ) ) {
 }
 
 // ✅ With Navigator: Clean and safe
-maxSize = dataNavigate( config ).get( "database", "connection", "pool", "maxSize", 10 );
+maxSize = dataNavigate( config ).get( ["database", "connection", "pool", "maxSize"], 10 );
 ```
 
 ## 🚀 Getting Started
@@ -142,7 +142,7 @@ appConfig = {
 nav = dataNavigate( appConfig );
 
 // Navigate to a specific section
-loggingNav = nav.from( "application", "features", "logging" );
+loggingNav = nav.from( ["application", "features", "logging"] );
 
 // Get values with defaults
 logLevel = loggingNav.get( "level", "DEBUG" );
@@ -193,7 +193,7 @@ When a single string argument contains `.` or `[`, it is treated as a path expre
 
 ## 🧭 Core Navigation Methods
 
-### `from( ...path ):Navigator`
+### `from( key ):Navigator` / `from( [key1, key2, ...] ):Navigator`
 
 Navigate to a specific segment in the data structure. Returns a new navigator scoped to that segment.
 
@@ -203,7 +203,7 @@ userNav = dataNavigate( userData ).from( "profile" );
 dbNav = dataNavigate( config ).from( "database" );
 
 // Multi-level navigation (nested path)
-loggingNav = dataNavigate( config ).from( "application", "features", "logging" );
+loggingNav = dataNavigate( config ).from( ["application", "features", "logging"] );
 
 // Chained navigation (multiple calls)
 deepNav = dataNavigate( complexData )
@@ -213,7 +213,7 @@ deepNav = dataNavigate( complexData )
     .from( "users" );
 
 // Safe navigation - returns empty navigator if path doesn't exist
-missingNav = dataNavigate( config ).from( "nonexistent", "path" );
+missingNav = dataNavigate( config ).from( ["nonexistent", "path"] );
 println( missingNav.isEmpty() ); // true
 ```
 
@@ -221,7 +221,7 @@ println( missingNav.isEmpty() ); // true
 **Type Safety**: The `from()` method requires the target to be a struct/map. If you navigate to a non-struct value (like a string or number), it throws a `BoxRuntimeException`.
 {% endhint %}
 
-### `has( ...path ):boolean`
+### `has( key ):boolean` / `has( [key1, key2, ...] ):boolean`
 
 Check if a key or nested path exists in the current segment. Supports variadic keys and JSONPath-style path expressions.
 
@@ -232,7 +232,7 @@ nav = dataNavigate( config );
 hasDatabase = nav.has( "database" );        // true/false
 
 // Check nested path (variadic)
-hasSSLConfig = nav.has( "database", "ssl", "enabled" );
+hasSSLConfig = nav.has( ["database", "ssl", "enabled"] );
 
 // JSONPath-style path expressions
 nav.has( "boxlang.settings.hello" );            // true
@@ -244,14 +244,14 @@ nav.has( "items[?(@.active == true)].name" );   // true - filter + key
 nav.has( "settings.nullable" );                 // true, even when value is null
 
 // Use in conditionals
-if ( nav.has( "features", "caching" ) ) {
+if ( nav.has( ["features", "caching"] ) ) {
     setupCaching();
 }
 
 // Combined with from()
 cacheNav = nav.from( "cache" );
-if ( cacheNav.has( "redis", "host" ) ) {
-    connectToRedis( cacheNav.get( "redis", "host" ) );
+if ( cacheNav.has( ["redis", "host"] ) ) {
+    connectToRedis( cacheNav.get( ["redis", "host"] ) );
 }
 ```
 
@@ -284,7 +284,7 @@ if ( cacheNav.isPresent() ) {
 
 ## 🎯 Data Extraction Methods
 
-### `get( ...keys, [defaultValue] ):Object`
+### `get( key, [default] ):Object` / `get( [key1, key2, ...], [default] ):Object`
 
 Get a value from the data structure using nested keys. Returns the value or default if not found. When called with a single string containing `.` or `[`, it is treated as a JSONPath-style path expression.
 
@@ -295,8 +295,8 @@ nav = dataNavigate( appConfig );
 appName = nav.get( "name" );                    // Raw value or null
 
 // Nested keys (variadic path navigation)
-dbHost = nav.get( "database", "host" );         // Traverse nested structure
-sslEnabled = nav.get( "database", "ssl", "enabled" );
+dbHost = nav.get( ["database", "host"] );         // Traverse nested structure
+sslEnabled = nav.get( ["database", "ssl", "enabled"] );
 
 // JSONPath-style path expressions (single string with dots/brackets)
 dotPath = nav.get( "boxlang.settings.hello" );  // "luis"
@@ -304,9 +304,9 @@ arrayItem = nav.get( "keywords[1]" );           // 1-based index
 recursive = nav.get( "..hello" );               // Deep search, first match
 
 // With default value
-timeout = nav.get( "application", "timeout", 30 );
-retries = nav.get( "application", "retries", 3 );
-apiUrl = nav.get( "api", "baseUrl", "https://api.example.com" );
+timeout = nav.get( ["application", "timeout"], 30 );
+retries = nav.get( ["application", "retries"], 3 );
+apiUrl = nav.get( ["api", "baseUrl"], "https://api.example.com" );
 
 // Complex types work too (automatic casting)
 dbConfig = nav.get( "database" );               // Returns struct
@@ -317,7 +317,7 @@ serverList = nav.get( "servers" );              // Returns array
 **Dynamic Typing**: BoxLang's dynamic nature means `get()` automatically handles type conversions. Maps become Structs, Lists become Arrays. You usually don't need the typed getters unless you need explicit casting.
 {% endhint %}
 
-### `getOrThrow( ...keys ):Object`
+### `getOrThrow( key ):Object` / `getOrThrow( [key1, key2, ...] ):Object`
 
 Get a value or throw a `BoxRuntimeException` if the key doesn't exist. Use for required configuration.
 
@@ -352,15 +352,24 @@ For explicit type conversion, use typed getters. Each method casts the value to 
 
 | Method | Return Type | Purpose |
 |--------|-------------|---------|
-| `getAsString( ...keys, [default] )` | String | Cast to string |
-| `getAsBoolean( ...keys, [default] )` | Boolean | Cast to boolean |
-| `getAsInteger( ...keys, [default] )` | Integer | Cast to integer (32-bit) |
-| `getAsLong( ...keys, [default] )` | Long | Cast to long (64-bit) |
-| `getAsDouble( ...keys, [default] )` | Double | Cast to double/decimal |
-| `getAsDate( ...keys, [default] )` | DateTime | Cast to DateTime object |
-| `getAsStruct( ...keys, [default] )` | IStruct | Cast to struct/map |
-| `getAsArray( ...keys, [default] )` | Array | Cast to array |
-| `getAsKey( ...keys, [default] )` | Key | Cast to Key object |
+| `getAsString( key, [default] )` | String | Cast to string |
+| `getAsString( [key1, key2, ...], [default] )` | String | Cast to string (nested path) |
+| `getAsBoolean( key, [default] )` | Boolean | Cast to boolean |
+| `getAsBoolean( [key1, key2, ...], [default] )` | Boolean | Cast to boolean (nested path) |
+| `getAsInteger( key, [default] )` | Integer | Cast to integer (32-bit) |
+| `getAsInteger( [key1, key2, ...], [default] )` | Integer | Cast to integer (nested path) |
+| `getAsLong( key, [default] )` | Long | Cast to long (64-bit) |
+| `getAsLong( [key1, key2, ...], [default] )` | Long | Cast to long (nested path) |
+| `getAsDouble( key, [default] )` | Double | Cast to double/decimal |
+| `getAsDouble( [key1, key2, ...], [default] )` | Double | Cast to double/decimal (nested path) |
+| `getAsDate( key, [default] )` | DateTime | Cast to DateTime object |
+| `getAsDate( [key1, key2, ...], [default] )` | DateTime | Cast to DateTime (nested path) |
+| `getAsStruct( key, [default] )` | IStruct | Cast to struct/map |
+| `getAsStruct( [key1, key2, ...], [default] )` | IStruct | Cast to struct/map (nested path) |
+| `getAsArray( key, [default] )` | Array | Cast to array |
+| `getAsArray( [key1, key2, ...], [default] )` | Array | Cast to array (nested path) |
+| `getAsKey( key, [default] )` | Key | Cast to Key object |
+| `getAsKey( [key1, key2, ...], [default] )` | Key | Cast to Key object (nested path) |
 
 ```js
 nav = dataNavigate( serverConfig );
@@ -531,18 +540,18 @@ function loadAppConfig( configPath ) {
     var nav = dataNavigate( configPath )
 
     return {
-        "appName": nav.get( "app", "name", "Unknown App" ),
-        "version": nav.get( "app", "version", "1.0.0" ),
-        "debug": nav.get( "app", "debug", false ),
+        "appName": nav.get( ["app", "name"], "Unknown App" ),
+        "version": nav.get( ["app", "version"], "1.0.0" ),
+        "debug": nav.get( ["app", "debug"], false ),
         "database": {
-            "host": nav.get( "database", "host", "localhost" ),
-            "port": nav.get( "database", "port", 5432 ),
-            "ssl": nav.get( "database", "ssl", true )
+            "host": nav.get( ["database", "host"], "localhost" ),
+            "port": nav.get( ["database", "port"], 5432 ),
+            "ssl": nav.get( ["database", "ssl"], true )
         },
         "cache": {
-            "enabled": nav.get( "cache", "enabled", true ),
-            "provider": nav.get( "cache", "provider", "memory" ),
-            "ttl": nav.get( "cache", "ttl", 3600 )
+            "enabled": nav.get( ["cache", "enabled"], true ),
+            "provider": nav.get( ["cache", "provider"], "memory" ),
+            "ttl": nav.get( ["cache", "ttl"], 3600 )
         }
     }
 }
@@ -563,7 +572,7 @@ function processUserData( apiResponse ) {
     // Check if response is successful
     if ( nav.getAsBoolean( "success", false ) ) {
         // Navigate to user data
-        var userNav = nav.from( "data", "users" )
+        var userNav = nav.from( ["data", "users"] )
 
         if ( userNav.isPresent() ) {
             var userArray = userNav.getAsArray( "items", [ ] )
@@ -573,10 +582,10 @@ function processUserData( apiResponse ) {
 
                 users.append( {
                     "id": userDataNav.get( "id" ),
-                    "name": userDataNav.get( "profile", "fullName", "Unknown" ),
-                    "email": userDataNav.get( "contact", "email" ),
-                    "active": userDataNav.get( "status", "active", false ),
-                    "lastLogin": userDataNav.get( "activity", "lastLogin" )
+                    "name": userDataNav.get( ["profile", "fullName"], "Unknown" ),
+                    "email": userDataNav.get( ["contact", "email"] ),
+                    "active": userDataNav.get( ["status", "active"], false ),
+                    "lastLogin": userDataNav.get( ["activity", "lastLogin"] )
                 } )
             }
         }
@@ -617,11 +626,11 @@ function createFeatureManager( configData ) {
 
     return {
         "isEnabled": ( feature ) -> {
-            return nav.get( "features", feature, "enabled", false )
+            return nav.get( ["features", feature, "enabled"], false )
         },
 
         "getConfig": ( feature ) -> {
-            var featureNav = nav.from( "features", feature )
+            var featureNav = nav.from( ["features", feature] )
             if ( featureNav.isEmpty() ) {
                 return { }
             }
@@ -674,7 +683,7 @@ if ( features.isEnabled( "newDashboard" ) ) {
 // Multi-environment database configuration
 function getDatabaseConfig( environment = "development" ) {
     var nav = dataNavigate( "/config/database.json" )
-    var envNav = nav.from( "environments", environment )
+    var envNav = nav.from( ["environments", environment] )
 
     // Fallback to default if environment not found
     if ( envNav.isEmpty() ) {
@@ -690,9 +699,9 @@ function getDatabaseConfig( environment = "development" ) {
         "password": envNav.get( "password", "" ),
         "ssl": envNav.get( "ssl", false ),
         "pooling": {
-            "enabled": envNav.get( "pool", "enabled", true ),
-            "maxConnections": envNav.get( "pool", "max", 10 ),
-            "timeout": envNav.get( "pool", "timeout", 30 )
+            "enabled": envNav.get( ["pool", "enabled"], true ),
+            "maxConnections": envNav.get( ["pool", "max"], 10 ),
+            "timeout": envNav.get( ["pool", "timeout"], 30 )
         }
     }
 
@@ -719,10 +728,10 @@ function setupLogging( logConfigPath ) {
     var loggers = [ ]
 
     // Get global log level
-    var globalLevel = nav.get( "logging", "level", "INFO" )
+    var globalLevel = nav.get( ["logging", "level"], "INFO" )
 
     // Process appenders
-    var appendersNav = nav.from( "logging", "appenders" )
+    var appendersNav = nav.from( ["logging", "appenders"] )
     if ( appendersNav.isPresent() ) {
 
         // Console appender
@@ -773,11 +782,11 @@ function getSecureConfig( configPath ) {
         return {
             "encryption": {
                 "algorithm": secNav.getOrThrow( "encryption", "algorithm" ),
-                "keyLength": secNav.get( "encryption", "keyLength", 256 ) // Keep as number
+                "keyLength": secNav.get( ["encryption", "keyLength"], 256 ) // Keep as number
             },
             "authentication": {
-                "provider": secNav.get( "auth", "provider", "local" ),
-                "timeout": secNav.get( "auth", "timeout", 3600 ) // Keep as number
+                "provider": secNav.get( ["auth", "provider"], "local" ),
+                "timeout": secNav.get( ["auth", "timeout"], 3600 ) // Keep as number
             }
         }
 
@@ -834,7 +843,7 @@ function loadConfigWithFallbacks( primaryPath, fallbackPath ) {
 function extractConfig( nav ) {
     return {
         "app": nav.get( "name", "DefaultApp" ),
-        "port": nav.get( "server", "port", 8080 ),
+        "port": nav.get( ["server", "port"], 8080 ),
         "debug": nav.get( "debug", false )
     }
 }
@@ -857,7 +866,7 @@ function buildInheritedConfig( environment ) {
     }
 
     // Apply environment-specific overrides
-    var envNav = nav.from( "environments", environment )
+    var envNav = nav.from( ["environments", environment] )
     if ( envNav.isPresent() ) {
         var envConfig = extractAllSettings( envNav )
         config = mergeConfigs( config, envConfig )
@@ -892,7 +901,7 @@ function validateConfig( configData ) {
     ]
 
     for ( var path in required ) {
-        if ( !nav.has( path[ 1 ], path[ 2 ] ?: "" ) ) {
+        if ( !nav.has( path ) ) {
             errors.append( "Missing required field: " & path.toList( "." ) )
         }
     }
@@ -931,9 +940,9 @@ serverConfig = nav.get( "server", {
 } );
 
 // ✅ Good: Individual defaults for each value
-host = nav.get( "server", "host", "localhost" );
-port = nav.get( "server", "port", 8080 );
-ssl = nav.get( "server", "ssl", false );
+host = nav.get( ["server", "host"], "localhost" );
+port = nav.get( ["server", "port"], 8080 );
+ssl = nav.get( ["server", "ssl"], false );
 ```
 
 ### 2. Validate Critical Configuration
@@ -947,7 +956,7 @@ dbHost = nav.getOrThrow( "database", "host" );
 secretToken = nav.getOrThrow( "security", "token" );
 
 // ❌ Avoid: Silent failures on critical config
-apiKey = nav.get( "api", "key" ); // Returns null, error happens later
+apiKey = nav.get( ["api", "key"] ); // Returns null, error happens later
 ```
 
 ### 3. Leverage Dynamic Typing
@@ -956,9 +965,9 @@ BoxLang automatically handles type conversions with `get()` - use typed getters 
 
 ```js
 // ✅ Good: Simple get() for most cases (dynamic typing handles it)
-enabled = nav.get( "feature", "enabled", false );      // boolean
-maxRetries = nav.get( "http", "maxRetries", 3 );       // number
-serverName = nav.get( "server", "name", "default" );   // string
+enabled = nav.get( ["feature", "enabled"], false );      // boolean
+maxRetries = nav.get( ["http", "maxRetries"], 3 );       // number
+serverName = nav.get( ["server", "name"], "default" );   // string
 dbConfig = nav.get( "database" );                       // struct
 
 // ⚠️ Only use typed getters when you need explicit casting
@@ -1010,15 +1019,15 @@ Navigate to sections once and reuse the navigator.
 
 ```js
 // ✅ Good: Navigate once, reuse
-dbNav = nav.from( "database", "connection" );
+dbNav = nav.from( ["database", "connection"] );
 host = dbNav.get( "host", "localhost" );
 port = dbNav.get( "port", 5432 );
-maxPool = dbNav.get( "pool", "max", 10 );
+maxPool = dbNav.get( ["pool", "max"], 10 );
 
 // ❌ Avoid: Repeated navigation
-host = nav.get( "database", "connection", "host", "localhost" );
-port = nav.get( "database", "connection", "port", 5432 );
-maxPool = nav.get( "database", "connection", "pool", "max", 10 );
+host = nav.get( ["database", "connection", "host"], "localhost" );
+port = nav.get( ["database", "connection", "port"], 5432 );
+maxPool = nav.get( ["database", "connection", "pool", "max"], 10 );
 ```
 
 ### 7. Log Configuration Decisions
@@ -1076,10 +1085,10 @@ function loadValidatedConfig( configPath ) {
     nav = dataNavigate( configPath );
 
     // Validate required sections exist
-    if ( !nav.has( "app", "name" ) ) {
+    if ( !nav.has( ["app", "name"] ) ) {
         throw( type="ConfigError", message="Missing app.name" );
     }
-    if ( !nav.has( "database", "host" ) ) {
+    if ( !nav.has( ["database", "host"] ) ) {
         throw( type="ConfigError", message="Missing database.host" );
     }
 
@@ -1107,24 +1116,37 @@ cacheConfig = nav.from( "application" ).from( "features" ).get( "caching" );
 
 | Category | Method | Returns | Description |
 |----------|--------|---------|-------------|
-| **Navigation** | `from( ...path )` | Navigator | Navigate to nested segment |
-| | `has( ...path )` | boolean | Check if path exists (supports JSONPath expressions) |
+| **Navigation** | `from( key )` | Navigator | Navigate to a single nested segment |
+| | `from( [key1, key2, ...] )` | Navigator | Navigate to a nested segment using an array path |
+| | `has( key )` | boolean | Check if a single key exists |
+| | `has( [key1, key2, ...] )` | boolean | Check if a nested path exists (supports JSONPath expressions) |
 | | `hasByKey( key )` | boolean | Check if exact key exists (no path parsing) |
 | | `isEmpty()` | boolean | Check if segment is empty |
 | | `isPresent()` | boolean | Check if segment has data |
-| **Retrieval** | `get( ...keys, [default] )` | Object | Get value with optional default (supports JSONPath expressions) |
-| | `getOrThrow( ...keys )` | Object | Get value or throw exception |
+| **Retrieval** | `get( key, [default] )` | Object | Get single key value with optional default (supports JSONPath expressions) |
+| | `get( [key1, key2, ...], [default] )` | Object | Get nested value with optional default |
+| | `getOrThrow( key )` | Object | Get single key value or throw exception |
+| | `getOrThrow( [key1, key2, ...] )` | Object | Get nested value or throw exception |
 | | `getByKey( key )` | Object | Get value by exact key lookup (no path parsing) |
 | | `query( path )` | Array | Get all matching values as array (JSONPath multi-result) |
-| | `getAsString( ...keys, [default] )` | String | Get value as string |
-| | `getAsBoolean( ...keys, [default] )` | Boolean | Get value as boolean |
-| | `getAsInteger( ...keys, [default] )` | Integer | Get value as integer |
-| | `getAsLong( ...keys, [default] )` | Long | Get value as long |
-| | `getAsDouble( ...keys, [default] )` | Double | Get value as double |
-| | `getAsDate( ...keys, [default] )` | DateTime | Get value as date |
-| | `getAsStruct( ...keys, [default] )` | IStruct | Get value as struct |
-| | `getAsArray( ...keys, [default] )` | Array | Get value as array |
-| | `getAsKey( ...keys, [default] )` | Key | Get value as Key object |
+| | `getAsString( key, [default] )` | String | Get value as string |
+| | `getAsString( [key1, key2, ...], [default] )` | String | Get nested value as string |
+| | `getAsBoolean( key, [default] )` | Boolean | Get value as boolean |
+| | `getAsBoolean( [key1, key2, ...], [default] )` | Boolean | Get nested value as boolean |
+| | `getAsInteger( key, [default] )` | Integer | Get value as integer |
+| | `getAsInteger( [key1, key2, ...], [default] )` | Integer | Get nested value as integer |
+| | `getAsLong( key, [default] )` | Long | Get value as long |
+| | `getAsLong( [key1, key2, ...], [default] )` | Long | Get nested value as long |
+| | `getAsDouble( key, [default] )` | Double | Get value as double |
+| | `getAsDouble( [key1, key2, ...], [default] )` | Double | Get nested value as double |
+| | `getAsDate( key, [default] )` | DateTime | Get value as date |
+| | `getAsDate( [key1, key2, ...], [default] )` | DateTime | Get nested value as date |
+| | `getAsStruct( key, [default] )` | IStruct | Get value as struct |
+| | `getAsStruct( [key1, key2, ...], [default] )` | IStruct | Get nested value as struct |
+| | `getAsArray( key, [default] )` | Array | Get value as array |
+| | `getAsArray( [key1, key2, ...], [default] )` | Array | Get nested value as array |
+| | `getAsKey( key, [default] )` | Key | Get value as Key object |
+| | `getAsKey( [key1, key2, ...], [default] )` | Key | Get nested value as Key object |
 | **Conditional** | `ifPresent( key, consumer )` | Navigator | Execute if key exists |
 | | `ifPresentOrElse( key, consumer, orElse )` | Navigator | Execute with fallback |
 
