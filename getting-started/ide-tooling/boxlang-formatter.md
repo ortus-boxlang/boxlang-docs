@@ -45,25 +45,40 @@ Use `boxlang format --help` to view the complete option set available in your in
 
 | Option | Description | Typical Usage |
 | :--- | :--- | :--- |
-| `--help` | Show formatter help and exit | `boxlang format --help` |
-| `--source <PATH[,PATH,...]>` | Comma-delimited list of files or directories to process (BoxLang v1.14+) | `boxlang format --source ./src` or `boxlang format --source commands,models,services` |
+| `-h`, `--help` | Show formatter help and exit | `boxlang format --help` |
+| `--source <PATH[,PATH,...]>` | Comma-delimited list of files or directories to process (BoxLang v1.14+). Defaults to current directory if omitted | `boxlang format --source ./src` or `boxlang format --source commands,models,services` |
 | `--excludes <PATH[,PATH,...]>` | Comma-delimited list of files or directories to skip (BoxLang v1.14+) | `boxlang format --source . --excludes generated,vendor` |
-| `--target <PATH>` | Output path (optional). If omitted, source files are overwritten | `boxlang format --source ./src --target ./formatted` |
-| `--check` | Check-only mode; exits non-zero when formatting drift exists | `boxlang format --check --source ./` |
+| `--target <PATH>` | Output path (optional). If omitted, source files are overwritten. Must be a directory when processing multiple source files | `boxlang format --source ./src --target ./formatted` |
+| `--check` | Check-only mode; exits non-zero when formatting drift exists | `boxlang format --check` |
 | `--overwrite <BOOL>` | When `false`, write formatted output to stdout instead of rewriting files | `boxlang format --overwrite false --source ./models/User.cfc` |
-| `--config <PATH>` | Explicit `.bxformat.json` or `.cfformat.json` path | `boxlang format --config ./.bxformat.json --source ./` |
+| `-c`, `--config <PATH>` | Explicit `.bxformat.json` or `.cfformat.json` path | `boxlang format --config ./.bxformat.json --source ./` |
 | `--initConfig` | Create starter formatter config in current workspace | `boxlang format --initConfig` |
-| `--convertConfig` | Convert legacy `.cfformat.json` into `.bxformat.json` | `boxlang format --convertConfig --source ./` |
+| `--convertConfig` | Convert legacy `.cfformat.json` into `.bxformat.json` | `boxlang format --convertConfig` |
+
+### Behavior Notes
+
+- Directory formatting processes supported files **recursively**
+- `--source` defaults to the current directory when omitted
+- `--target` must be a directory when multiple source files are being processed
+- Missing or unset configuration falls back to built-in default formatter settings
 
 ## 🧪 Core Workflows
 
-### Format In Place (Project-Wide)
+### Format In Place (Default Directory)
+
+```bash
+boxlang format
+```
+
+This is the simplest invocation — it processes all supported files in the current directory and its subdirectories using the default settings.
+
+### Format In Place (Explicit Path)
 
 ```bash
 boxlang format --source ./
 ```
 
-Use this as your default command to normalize project style before commit.
+Use this when you want to be explicit about the source path, or when formatting a different directory.
 
 ### Format a Single File
 
