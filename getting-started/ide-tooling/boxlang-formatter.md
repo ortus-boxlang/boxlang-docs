@@ -37,12 +37,17 @@ The formatter can process these extensions:
 
 ## 📋 CLI Options
 
+{% hint style="info" %}
+**BoxLang v1.14+** — The `--source` flag now accepts a comma-delimited list of paths, and the new `--excludes` flag lets you skip specific files or directories during formatting.
+{% endhint %}
+
 Use `boxlang format --help` to view the complete option set available in your installed version.
 
 | Option | Description | Typical Usage |
 | :--- | :--- | :--- |
 | `--help` | Show formatter help and exit | `boxlang format --help` |
-| `--source <PATH>` | File or directory to process | `boxlang format --source ./src` |
+| `--source <PATH[,PATH,...]>` | Comma-delimited list of files or directories to process (BoxLang v1.14+) | `boxlang format --source ./src` or `boxlang format --source commands,models,services` |
+| `--excludes <PATH[,PATH,...]>` | Comma-delimited list of files or directories to skip (BoxLang v1.14+) | `boxlang format --source . --excludes generated,vendor` |
 | `--target <PATH>` | Output path (optional). If omitted, source files are overwritten | `boxlang format --source ./src --target ./formatted` |
 | `--check` | Check-only mode; exits non-zero when formatting drift exists | `boxlang format --check --source ./` |
 | `--overwrite <BOOL>` | When `false`, write formatted output to stdout instead of rewriting files | `boxlang format --overwrite false --source ./models/User.cfc` |
@@ -359,16 +364,48 @@ This gives deterministic formatting without requiring a separate linter for styl
 
 ## 🧠 IDE Auto-Formatting (VS Code / BoxLang IDE)
 
-For editor-on-save workflows and IDE formatter setup, use the official BoxLang IDE formatting guide:
+For editor-on-save workflows and IDE formatter setup, the BoxLang LSP supports experimental formatting. Because this feature is still in beta, you need to explicitly enable it with a few steps.
 
-- [BoxLang IDE Formatting Setup](https://boxlang-ide.ortusbooks.com/language-tools/formatting)
+### Enabling Experimental Formatting in VS Code
 
-Recommended split of responsibilities:
+1. **Enable formatting in `.bxlint.json`** — Add the following to your project's `.bxlint.json`:
+
+   ```json
+   {
+       "formatting": {
+           "experimental": {
+               "enabled": true
+           }
+       }
+   }
+   ```
+
+2. **Enable format-on-save in VS Code** — Add this override to your VS Code `settings.json` (Workspace or User):
+
+   ```json
+   {
+       "[boxlang]": {
+           "editor.formatOnSave": true
+       },
+       "[boxlang-template]": {
+           "editor.formatOnSave": true
+       }
+   }
+   ```
+
+3. **Update BoxLang & LSP versions** — Open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and run:
+   - `BoxLang: Select BoxLang Version` — choose the latest available version
+   - `BoxLang: Select LSP Version` — choose the latest available version
+   - `Developer: Reload Window` — to pick up the changes
+
+Once these steps are completed, the formatter will run automatically when you save `.bx`, `.bxs`, `.bxm`, `.cfc`, `.cfm`, or `.cfs` files.
+
+### Recommended Split of Responsibilities
 
 - IDE format-on-save for fast local feedback
 - CLI `--check` mode for authoritative CI enforcement
 
-## � Complete `.bxformat.json` Schema Template
+## 🧩 Complete `.bxformat.json` Schema Template
 
 Copy this file to your project root as `.bxformat.json` and remove or adjust only the keys you want to override. All values shown are the Ortus gold-standard defaults.
 
@@ -501,7 +538,7 @@ Run `boxlang format --initConfig` to generate this file automatically in your cu
 }
 ```
 
-## �📚 Related Tooling
+## 📚 Related Tooling
 
 - [BoxLang Compiler](boxlang-compiler.md)
 - [BoxLang AST](boxlang-ast.md)
