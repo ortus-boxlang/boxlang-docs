@@ -42,6 +42,14 @@ Learn more about BoxLang AI features, pricing, and use cases:
 
 🔗 [**BoxLang AI Official Site**](https://ai.boxlang.io)
 
+### BoxLang MCP Runtime Server
+
+If you want MCP clients to introspect and operate a running BoxLang runtime, install the `bx-mcp` module.
+
+{% content-ref url="../boxlang-plus/modules/bx-mcp/" %}
+[bx-mcp](../boxlang-plus/modules/bx-mcp/)
+{% endcontent-ref %}
+
 ### Professional Services
 
 Need help implementing AI solutions in your enterprise? Our team provides consulting, training, and custom development:

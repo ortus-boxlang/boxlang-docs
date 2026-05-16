@@ -849,6 +849,7 @@
     * [Reference](boxlang-framework/boxlang-plus/modules/bx-ldap/reference/README.md)
     * [Components](boxlang-framework/boxlang-plus/modules/bx-ldap/reference/components/README.md)
       * [LDAP](boxlang-framework/boxlang-plus/modules/bx-ldap/reference/components/LDAP.md)
+  * [MCP +](boxlang-framework/boxlang-plus/modules/bx-mcp/README.md)
   * [PDF +](boxlang-framework/boxlang-plus/modules/bx-plus-pdf/README.md)
     * [🔌 Reference](boxlang-framework/boxlang-plus/modules/bx-plus-pdf/reference/README.md)
     * [Components](boxlang-framework/boxlang-plus/modules/bx-plus-pdf/reference/components/README.md)

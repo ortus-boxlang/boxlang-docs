@@ -48,3 +48,31 @@ BoxLang is a modular language. Each module can have a configuration structure fo
 }
 ```
 {% endcode %}
+
+## Example: bx-mcp Settings
+
+The `bx-mcp` module uses the `bxmcp` module key and exposes security and tool-filtering settings for MCP clients.
+
+{% code title="boxlang.json" %}
+```json
+"modules": {
+    "bxmcp": {
+        "enabled": true,
+        "settings": {
+            "enabled": true,
+            "authToken": "FILL_THIS_OUT_ALWAYS",
+            "allowedIPs": ["127.0.0.1"],
+            "corsAllowedOrigins": [],
+            "enableStats": true,
+            "maxRequestBodySize": 0,
+            "includedTools": ["*"],
+            "excludedTools": []
+        }
+    }
+}
+```
+{% endcode %}
+
+{% hint style="warning" %}
+For non-local deployments, always define `authToken`, restrict `allowedIPs`, and consider `excludedTools` for sensitive operations.
+{% endhint %}

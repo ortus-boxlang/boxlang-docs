@@ -16,6 +16,7 @@ BoxLang+/Starter includes a curated set of modules that extend the platform with
 | [`bx-couchbase`](bx-couchbase/) | Distributed caching and NoSQL document storage via Couchbase. |
 | [`bx-csv`](bx-csv/) | Streaming CSV parsing and generation for large datasets. |
 | [`bx-ldap`](bx-ldap/) | Full-featured LDAP directory access for BoxLang applications. |
+| [`bx-mcp`](bx-mcp/) | Model Context Protocol server for runtime diagnostics, introspection, and operational automation. |
 | [`bx-meilisearch`](bx-meilisearch/) | [Meilisearch](https://www.meilisearch.com/) integration for fast full-text search in BoxLang applications. |
 | [`bx-pdf`](bx-plus-pdf/) | PDF generation and manipulation for documents, reports, and forms, including [licensed functionality](bx-plus-pdf/). |
 | [`bx-plus`](bx-plus/) | Subscription bootstrap, entitlement validation, and shared utilities. |
@@ -65,6 +66,10 @@ After installation, modules register themselves automatically or provide a simpl
 
 {% content-ref url="bx-ldap/" %}
 [bx-ldap](bx-ldap/)
+{% endcontent-ref %}
+
+{% content-ref url="bx-mcp/" %}
+[bx-mcp](bx-mcp/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-plus/" %}
