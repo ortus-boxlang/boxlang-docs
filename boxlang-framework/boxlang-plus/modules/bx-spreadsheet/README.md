@@ -49,6 +49,18 @@ The **BoxLang Spreadsheet Module** (`bx-spreadsheet`) offers three distinct APIs
 
 ---
 
+## 🤖 BoxLang AI Loader Integration
+
+The spreadsheet module now includes a new loader for BoxLang AI document loading workflows:
+
+- New `SpreadsheetLoader` in `src/main/bx/loaders/SpreadsheetLoader.bx` for BoxLang AI document loading workflows
+- Loads spreadsheet content as AI `Document` objects
+- Supports one document per sheet (default) or one document per row (`rowsAsDocuments`)
+- Supports header-aware row formatting (`hasHeaders`) and sheet filtering (`sheets`)
+- Inherits the `IDocumentLoader` contract via `BaseDocumentLoader`
+
+---
+
 ## 📋 Requirements
 
 - **BoxLang Runtime** 1.0.0 or higher
