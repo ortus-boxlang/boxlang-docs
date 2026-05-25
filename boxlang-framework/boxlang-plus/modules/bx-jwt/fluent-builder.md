@@ -1,4 +1,5 @@
 ---
+icon: link
 description: Compose JWTs fluently with jwtNew() — chain claim methods and terminate with .sign() or .encrypt().
 ---
 

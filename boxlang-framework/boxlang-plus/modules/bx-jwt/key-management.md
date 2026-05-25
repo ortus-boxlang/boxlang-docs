@@ -1,4 +1,5 @@
 ---
+icon: key
 description: The bx-jwt named key registry — define keys once, reference them everywhere.
 ---
 

@@ -1,4 +1,5 @@
 ---
+icon: gear
 description: Complete reference for every bx-jwt ModuleConfig.bx setting.
 ---
 

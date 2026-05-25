@@ -1,4 +1,5 @@
 ---
+icon: lock
 description: Encrypt and decrypt JWTs using RSA-OAEP key wrap or direct symmetric encryption.
 ---
 

@@ -1,4 +1,5 @@
 ---
+icon: shield
 description: Production hardening checklist for bx-jwt — allowlists, key sizes, clock skew, and common pitfalls.
 ---
 

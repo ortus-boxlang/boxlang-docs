@@ -1,4 +1,5 @@
 ---
+icon: arrows-rotate
 description: Rotate JWT signing keys without invalidating in-flight tokens using the kid header.
 ---
 

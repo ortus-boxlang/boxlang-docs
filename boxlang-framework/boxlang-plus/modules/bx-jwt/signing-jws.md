@@ -1,4 +1,5 @@
 ---
+icon: pen
 description: Sign and verify JWTs with HMAC, RSA, and EC keys.
 ---
 
