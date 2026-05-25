@@ -135,7 +135,7 @@ base.overlay(overlay, "normal", 0.8)
 - **[Metadata](metadata.md)** - EXIF, IPTC metadata reading and tag access
 - **[Utilities](utilities.md)** - Format support, validation, color reference
 - **[Advanced Examples](advanced-examples.md)** - Watermarking, thumbnails, batch processing
-- **[BIF Reference](bif-reference.md)** - Complete alphabetical BIF listing
+- **[BIF Reference](reference/README.md)** - Complete alphabetical BIF listing
 - **[Migration Guide](migration-guide.md)** - Migrating from Adobe ColdFusion/Lucee
 
 ## BIF & Component Reference

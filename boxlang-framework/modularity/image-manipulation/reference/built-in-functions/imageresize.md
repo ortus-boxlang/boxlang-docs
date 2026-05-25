@@ -35,8 +35,8 @@ Resizes an image to the specified width and height using the chosen interpolatio
 * `nearest` - Fastest but lowest quality (blocky/pixelated)
 * `bilinear` - Good balance of speed and quality (default)
 * `bicubic` - Higher quality, slower than bilinear
-* `highestPerformance` - Optimized for speed
-* `highestQuality` - Best quality, slowest performance
+
+Any other value falls back to `bicubic`.
 
 For proportional scaling that maintains aspect ratio, see `ImageScaleToFit`.
 
@@ -62,7 +62,7 @@ myImage.resize( 800, 600, "bilinear", 1 );
 ## Notes
 
 * The `name` argument can be a `BoxImage` object or the name of an image variable in the current context.
-* Supported interpolation methods: nearest, bilinear, bicubic, highestPerformance, highestQuality
+* Supported interpolation methods: nearest, bilinear, bicubic
 * The operation modifies the image in place when used as a member function.
 * Returns the modified image object for chaining or further processing.
 * For proportional scaling, use `ImageScaleToFit` instead.

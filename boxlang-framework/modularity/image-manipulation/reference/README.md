@@ -191,8 +191,10 @@ Image("products/large-photo.jpg")
 | `ImageReadBase64()` | Creation | N/A | Read image from Base64 |
 | `ImageResize()` | Transformations | `img.resize()` | Resize to dimensions |
 | `ImageRotate()` | Transformations | `img.rotate()` | Rotate by angle |
+| `ImageGenerateCaptcha()` | Creation | N/A | Generate CAPTCHA image |
 | `ImageRotateDrawingAxis()` | Drawing | `img.rotateDrawingAxis()` | Rotate coordinate system |
 | `ImageScaleToFit()` | Transformations | `img.scaleToFit()` | Scale to fit dimensions |
+| `ImageSplitGrid()` | Utilities | `img.splitGrid()` | Split image into tile grid |
 | `ImageSetAntiAliasing()` | Configuration | `img.setAntialiasing()` | Enable/disable antialiasing |
 | `ImageSetBackgroundColor()` | Configuration | `img.setBackgroundColor()` | Set background color |
 | `ImageSetDrawingColor()` | Configuration | `img.setDrawingColor()` | Set drawing color |

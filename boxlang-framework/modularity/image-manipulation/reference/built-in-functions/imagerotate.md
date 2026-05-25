@@ -6,7 +6,7 @@
 ImageRotate( name, angle )
 ```
 
-Or as a member:
+Or via the `BoxImage` fluent API:
 
 ```
 someImage.rotate( angle )
@@ -36,7 +36,7 @@ result = ImageRotate( myImage, 90 );
 // Rotate image 45 degrees counterclockwise
 result = ImageRotate( myImage, -45 );
 
-// As a member function
+// As a fluent method on BoxImage
 myImage.rotate( 180 );
 ```
 
@@ -49,7 +49,7 @@ myImage.rotate( 180 );
 ## Notes
 
 * The `name` argument can be a `BoxImage` object or the name of an image variable in the current context.
-* The operation modifies the image in place when used as a member function.
+* The operation modifies the image in place.
 * Returns the modified image object for chaining or further processing.
 * Only the `angle` argument is supported; x and y arguments are not implemented.
 * Positive angles rotate clockwise, negative angles rotate counterclockwise.

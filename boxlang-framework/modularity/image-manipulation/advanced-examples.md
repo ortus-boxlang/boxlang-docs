@@ -14,6 +14,8 @@ Real-world examples demonstrating practical image manipulation techniques.
 - [Image Compositing](#image-compositing)
 - [Dynamic Graphics](#dynamic-graphics)
 - [Photo Processing Pipelines](#photo-processing-pipelines)
+- [CAPTCHA Generation](#captcha-generation)
+- [Grid Splitting](#grid-splitting)
 - [Batch Processing](#batch-processing)
 - [Image Optimization](#image-optimization)
 
@@ -62,7 +64,7 @@ addTextWatermark(
 ### Image Watermark
 
 ```js
-function addLogoWatermark(sourcePath, logoPath, position, opacity) {
+function addLogoWatermark(sourcePath, logoPath, position) {
     img = ImageNew(sourcePath);
     logo = ImageNew(logoPath);
 
@@ -98,8 +100,8 @@ function addLogoWatermark(sourcePath, logoPath, position, opacity) {
             break;
     }
 
-    // Apply watermark with opacity
-    img.paste(logo, x, y, opacity);
+    // Apply watermark
+    img.paste(logo, x, y);
 
     return img;
 }
@@ -108,8 +110,7 @@ function addLogoWatermark(sourcePath, logoPath, position, opacity) {
 watermarked = addLogoWatermark(
     "photo.jpg",
     "logo.png",
-    "bottomRight",
-    50  // 50% opacity
+    "bottomRight"
 );
 
 watermarked.write("watermarked.jpg");
@@ -157,7 +158,7 @@ function createThumbnail(sourcePath, size, outputPath) {
     img = ImageNew(sourcePath);
 
     // Resize to fit within size x size
-    img.scaleToFit(size, size, "highQuality");
+    img.scaleToFit(size, size, "bicubic");
 
     // Optional: add border
     img.addBorder(2, "gray", "constant");
@@ -182,7 +183,7 @@ function createSquareThumbnail(sourcePath, size, outputPath) {
     y = (img.getHeight() - dimension) / 2;
 
     img.crop(x, y, dimension, dimension)
-       .resize(size, size, "highQuality");
+    .resize(size, size, "bicubic");
 
     img.write(outputPath);
     return outputPath;
@@ -202,7 +203,7 @@ function generateThumbnailSet(sourcePath, sizes) {
     for (size in sizes) {
         // Create copy for each size
         thumb = img.copy();
-        thumb.scaleToFit(size, size, "highQuality");
+        thumb.scaleToFit(size, size, "bicubic");
 
         // Generate filename
         dir = getDirectoryFromPath(sourcePath);
@@ -577,7 +578,7 @@ function applyVintageFilter(sourcePath, outputPath) {
            .setDrawingTransparency(60);
     overlay.drawRect(0, 0, img.getWidth(), img.getHeight(), true);
 
-    img.paste(overlay, 0, 0, 30);
+    img.overlay(overlay, "SRC_OVER", 0.3);
 
     // Add vignette effect
     vignette = ImageNew(img.getWidth(), img.getHeight(), "argb", "transparent");
@@ -619,7 +620,7 @@ function applyHDREffect(sourcePath, outputPath) {
     img.sharpen(1.5);
 
     // Blend with original at 50%
-    img.paste(original, 0, 0, 50);
+    img.overlay(original, "SRC_OVER", 0.5);
 
     // Enhance again
     img.sharpen(0.8);
@@ -627,6 +628,53 @@ function applyHDREffect(sourcePath, outputPath) {
     img.write(outputPath);
     return outputPath;
 }
+```
+
+## CAPTCHA Generation
+
+```js
+function buildCaptchaChallenge(text, outputPath) {
+    captcha = ImageGenerateCaptcha(
+        75,
+        240,
+        text,
+        "medium",
+        "Arial,Verdana,Georgia",
+        24,
+        outputPath,
+        true
+    );
+
+    return {
+        image: captcha,
+        output: outputPath
+    };
+}
+
+challenge = buildCaptchaChallenge("BX42QK", "captchas/challenge.png");
+writeDump(challenge.output);
+```
+
+## Grid Splitting
+
+```js
+function splitSpriteSheet(sourcePath, columns, rows, outputDir) {
+    sprite = ImageNew(sourcePath);
+    tiles = sprite.splitGrid(columns, rows);
+
+    for (rowIndex = 1; rowIndex <= arrayLen(tiles); rowIndex++) {
+        rowTiles = tiles[rowIndex];
+
+        for (colIndex = 1; colIndex <= arrayLen(rowTiles); colIndex++) {
+            tile = rowTiles[colIndex];
+            tile.write("#outputDir#/tile-#rowIndex#-#colIndex#.png");
+        }
+    }
+
+    return true;
+}
+
+splitSpriteSheet("sprites/player-sheet.png", 4, 3, "sprites/output");
 ```
 
 ### Photo Restoration Pipeline
@@ -672,7 +720,7 @@ function batchResize(sourceDir, targetDir, maxWidth, maxHeight) {
 
         try {
             img = ImageNew(file);
-            img.scaleToFit(maxWidth, maxHeight, "highQuality");
+            img.scaleToFit(maxWidth, maxHeight, "bicubic");
 
             filename = getFileFromPath(file);
             outputPath = "#targetDir#/#filename#";
@@ -720,7 +768,7 @@ function batchWatermark(sourceDir, targetDir, logoPath, position) {
         y = img.getHeight() - logoResized.getHeight() - margin;
 
         // Apply watermark
-        img.paste(logoResized, x, y, 50);
+        img.paste(logoResized, x, y);
 
         // Save
         filename = getFileFromPath(file);
@@ -748,7 +796,7 @@ function optimizeForWeb(sourcePath, outputPath, quality) {
     // Limit dimensions
     maxDimension = 1920;
     if (img.getWidth() > maxDimension || img.getHeight() > maxDimension) {
-        img.scaleToFit(maxDimension, maxDimension, "highQuality");
+        img.scaleToFit(maxDimension, maxDimension, "bicubic");
     }
 
     // Convert to RGB if needed (remove alpha channel)
@@ -792,7 +840,7 @@ function createResponsiveSet(sourcePath, outputDir) {
 
     for (size in sizes) {
         resized = img.copy();
-        resized.scaleToFit(size.width, 9999, "highQuality");
+        resized.scaleToFit(size.width, 9999, "bicubic");
 
         outputPath = "#outputDir#/#filename#-#size.name#.jpg";
         resized.write(outputPath, 0.85);
@@ -816,5 +864,5 @@ writeDump(set);
 ## Next Steps
 
 - **[Utilities](utilities.md)** - Format support and validation
-- **[BIF Reference](bif-reference.md)** - Complete function reference
+- **[BIF Reference](reference/README.md)** - Complete function reference
 - **[Migration Guide](migration-guide.md)** - CF/Lucee compatibility

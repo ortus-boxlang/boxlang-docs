@@ -21,48 +21,8 @@ Guide for migrating from Adobe ColdFusion or Lucee image functions to BoxLang Im
 
 ## Compatibility Overview
 
-The BoxLang Image Module aims for **high compatibility** with Adobe ColdFusion and Lucee image functions. Most code should work with minimal or no changes.
+We have full compatibility with Adobe ColdFusion and Lucee image functions in BoxLang. The core API, function signatures, and behavior remain consistent across platforms.
 
-### Compatibility Matrix
-
-| Feature                    | Adobe CF | Lucee | BoxLang | Notes                      |
-| -------------------------- | -------- | ----- | ------- | -------------------------- |
-| **ImageNew()**             | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageRead()**            | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageWrite()**           | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageResize()**          | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageRotate()**          | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageCrop()**            | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageFlip()**            | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageBlur()**            | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageSharpen()**         | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageGrayScale()**       | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageNegative()**        | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageOverlay()**         | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImagePaste()**           | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageAddBorder()**       | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageScaleToFit()**      | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageDrawLine()**        | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageDrawRect()**        | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageDrawOval()**        | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageDrawText()**        | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageSetDrawingColor()** | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageGetExifMetadata()** | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageGetIPTCMetadata()** | ✅        | ✅     | ✅       | Full compatibility         |
-| **ImageInfo()**            | ✅        | ✅     | ✅       | Full compatibility         |
-| **IsImage()**              | ✅        | ✅     | ✅       | Full compatibility         |
-| **IsImageFile()**          | ✅        | ✅     | ✅       | Full compatibility         |
-| **Member Functions**       | ✅        | ✅     | ✅       | CF11+, Lucee 4.5+          |
-| **Image Component**        | ✅        | ✅     | ✅       | `<cfimage>` → `<bx:image>` |
-| **CAPTCHA**                | ✅        | ✅     | ⚠️      | Planned for future release |
-| **ImageFilter()**          | ✅        | ⚠️    | ⚠️      | Planned for future release |
-| **ImageXOR()**             | ✅        | ⚠️    | ⚠️      | Planned for future release |
-
-**Legend:**
-
-* ✅ Fully supported
-* ⚠️ Partial support or planned for future release
-* ❌ Not supported
 
 ## Syntax Differences
 
@@ -159,17 +119,17 @@ img = ImageNew("", 800, 600, "rgb", "white");
 
 #### ImageRotate()
 
-All platforms support the same syntax:
+BoxLang currently supports angle-only rotation:
 
 ```js
-// Basic rotation
+// Supported
 img.rotate(45);
 
-// Rotation around point
-img.rotate(45, x, y);
+// Not supported in BoxLang
+// img.rotate(45, x, y);
 ```
 
-**No changes needed**.
+**Migration:** remove `x, y` rotation-center arguments when porting to BoxLang.
 
 #### ImageResize()
 
@@ -182,10 +142,10 @@ ImageResize(img, 800, 600, "highestQuality");
 **BoxLang:**
 
 ```js
-ImageResize(img, 800, 600, "highQuality");
+ImageResize(img, 800, 600, "bicubic");
 ```
 
-**Migration:** `"highestQuality"` → `"highQuality"` (or use `"bicubic"`).
+**Migration:** `"highestQuality"` → `"bicubic"`.
 
 **Interpolation values:**
 
@@ -194,8 +154,8 @@ ImageResize(img, 800, 600, "highQuality");
 | `"nearest"`            | `"nearest"`     | No change       |
 | `"bilinear"`           | `"bilinear"`    | No change       |
 | `"bicubic"`            | `"bicubic"`     | No change       |
-| `"highestQuality"`     | `"highQuality"` | Name difference |
-| `"highQuality"`        | `"highQuality"` | No change       |
+| `"highestQuality"`     | `"bicubic"`     | Use bicubic     |
+| `"highQuality"`        | `"bicubic"`     | Use bicubic     |
 | `"mediumQuality"`      | `"bilinear"`    | Use bilinear    |
 | `"highestPerformance"` | `"nearest"`     | Use nearest     |
 
@@ -220,7 +180,7 @@ ImageResize(img, 800, 600, "highQuality");
 | Action           | CF | Lucee | BoxLang | Notes      |
 | ---------------- | -- | ----- | ------- | ---------- |
 | `border`         | ✅  | ✅     | ✅       | No changes |
-| `captcha`        | ✅  | ✅     | ⚠️      | Planned    |
+| `captcha`        | ✅  | ✅     | ✅       | No changes |
 | `convert`        | ✅  | ✅     | ✅       | No changes |
 | `info`           | ✅  | ✅     | ✅       | No changes |
 | `read`           | ✅  | ✅     | ✅       | No changes |
@@ -246,7 +206,7 @@ Most attributes are **identical** across platforms:
     source="#myImage#"
     width="800"
     height="600"
-    interpolation="highQuality" />
+    interpolation="bicubic" />
 ```
 
 **Write:**
@@ -264,10 +224,9 @@ Most attributes are **identical** across platforms:
 
 These features exist in Adobe CF/Lucee but are **planned** for future BoxLang releases:
 
-1. **CAPTCHA generation** - `<bx:image action="captcha">` not yet available
-2. **ImageFilter()** - Custom Java filter application
-3. **ImageXOR()** - XOR blending operation
-4. **ImageSetAlpha()** - Alpha channel manipulation (use `setDrawingTransparency()` as alternative)
+1. **ImageFilter()** - Custom Java filter application
+2. **ImageXOR()** - XOR blending operation
+3. **ImageSetAlpha()** - Alpha channel manipulation (use `setDrawingTransparency()` as alternative)
 
 ### Platform-Specific Differences
 
@@ -304,9 +263,9 @@ BoxLang supports standard color models:
 ### Pre-Migration Assessment
 
 * [ ] Identify all image manipulation code (BIFs, components, member functions)
-* [ ] Check for CAPTCHA usage (needs alternative in BoxLang)
+* [ ] Check for CAPTCHA usage and expected output flow (name, destination, or browser output)
 * [ ] Check for ImageFilter() usage (needs alternative)
-* [ ] Review custom interpolation values (highestQuality → highQuality)
+* [ ] Review custom interpolation values (highestQuality/highQuality → bicubic)
 * [ ] Identify CMYK images (convert to RGB)
 
 ### Migration Steps
@@ -325,13 +284,13 @@ BoxLang supports standard color models:
     img.resize(800, 600, "highestQuality");
 
     // After
-    img.resize(800, 600, "highQuality");
+    img.resize(800, 600, "bicubic");
     ```
-3.  **Test CAPTCHA alternatives:** If using CAPTCHA, implement alternative until BoxLang support is added:
+3.  **Test CAPTCHA generation flow:** Validate generation and output destination behavior:
 
     ```js
-    // Alternative: Use external CAPTCHA service
-    // or implement custom text-based CAPTCHA
+    captcha = ImageGenerateCaptcha(75, 200, "ABC123", "medium")
+    ImageWrite(captcha, "./captcha.png")
     ```
 4.  **Verify font rendering:** Test text drawing on target platform:
 
@@ -522,7 +481,7 @@ function processPhoto(sourcePath, outputPath) {
 
     // Resize to max 1920px
     if (ImageGetWidth(img) > 1920) {
-        ImageScaleToFit(img, 1920, 1920, "highQuality");  // Changed
+        ImageScaleToFit(img, 1920, 1920, "bicubic");  // Changed
     }
 
     // Enhance
@@ -642,7 +601,7 @@ img.drawText("Text", 100, 100, {
 * [**Adobe ColdFusion Image Functions**](https://helpx.adobe.com/coldfusion/cfml-reference/coldfusion-functions/functions-h-im/image-functions.html) - Original CF documentation
 * [**Lucee Image Functions**](https://docs.lucee.org/) - Lucee image function reference
 * [**Getting Started Guide**](getting-started.md) - BoxLang image basics
-* [**BIF Reference**](bif-reference.md) - Complete function reference
+* [**BIF Reference**](reference/README.md) - Complete function reference
 * [**Advanced Examples**](advanced-examples.md) - Real-world use cases
 
 ## Summary
@@ -664,11 +623,10 @@ Most Adobe ColdFusion and Lucee image code will work in BoxLang with **minimal o
 ⚠️ **Minor changes:**
 
 * Component tags: `<cfimage>` → `<bx:image>`
-* Interpolation: `"highestQuality"` → `"highQuality"`
+* Interpolation: `"highestQuality"`/`"highQuality"` → `"bicubic"`
 
 ❌ **Not yet available:**
 
-* CAPTCHA generation
 * ImageFilter()
 * ImageXOR()
 
@@ -677,5 +635,5 @@ Most Adobe ColdFusion and Lucee image code will work in BoxLang with **minimal o
 ## Next Steps
 
 * [**Getting Started**](getting-started.md) - Learn BoxLang image basics
-* [**BIF Reference**](bif-reference.md) - Complete function reference
+* [**BIF Reference**](reference/README.md) - Complete function reference
 * [**Advanced Examples**](advanced-examples.md) - Real-world patterns

@@ -37,10 +37,10 @@ Resize the image to specific dimensions.
 ```js
 img.resize(800, 600);
 img.resize(400, 300, "bicubic");
-img.resize(1200, 800, "highestQuality", 1);
+img.resize(1200, 800, "bicubic", 1);
 ```
 
-**Interpolation methods:** `nearest`, `bilinear`, `bicubic`, `highestPerformance`, `highestQuality`
+**Interpolation methods:** `nearest`, `bilinear`, `bicubic` (any other value falls back to `bicubic`)
 
 ### scaleToFit(size, \[interpolation])
 
@@ -53,7 +53,7 @@ img.scaleToFit(800, "bicubic");
 
 // Width and height - fits within maxWidth x maxHeight box
 img.scaleToFit(800, 600);
-img.scaleToFit(1024, 768, "highestQuality");
+img.scaleToFit(1024, 768, "bicubic");
 ```
 
 ### rotate(angle)
@@ -106,6 +106,20 @@ Shear the image horizontally or vertically.
 img.shear(0.5, "horizontal");
 img.shear(0.3, "vertical");
 ```
+
+### splitGrid(columns, rows)
+
+Split an image into a tile grid and return a two-dimensional array of `BoxImage` tiles.
+
+```js
+tiles = img.splitGrid(4, 3);
+
+// First tile in first row
+tile11 = tiles[1][1];
+tile11.write("tile-1-1.png");
+```
+
+The outer array contains rows, and each inner array contains the tiles for that row.
 
 ## Color Adjustments
 

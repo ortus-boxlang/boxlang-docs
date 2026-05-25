@@ -470,4 +470,4 @@ for (format in byFormat) {
 
 * [**Getting Started**](getting-started.md) - Basic image operations
 * [**Advanced Examples**](advanced-examples.md) - Real-world use cases
-* [**BIF Reference**](bif-reference.md) - Complete function reference
+* [**BIF Reference**](reference/README.md) - Complete function reference

@@ -58,3 +58,4 @@ image1.drawImage( image2, 0, 0 );
 * The operation modifies the base image in place when used as a member function.
 * Returns the modified image object for chaining or further processing.
 * This BIF is also available as `ImageDrawImage` and as member functions `paste` and `drawImage`.
+* Current implementation note: the BIF currently applies the `x` value to both axes, so `y` is effectively ignored.
