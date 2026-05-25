@@ -12,4 +12,3 @@ Complete reference pages for the BoxLang Image module BIFs.
 Use the quick reference table in the parent reference page for a full alphabetical overview:
 
 - [Reference Home](../README.md)
-
