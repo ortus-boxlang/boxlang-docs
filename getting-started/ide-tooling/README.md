@@ -34,7 +34,7 @@ We provide a collection of extensions and modules to enhance your BoxLang develo
 - **[Windsurf](https://windsurf.dev/)** - Modern development environment
 - **Any IDE supporting [Open VSX](https://open-vsx.org/)** - Extended compatibility
 - **[IntelliJ](https://plugins.jetbrains.com/plugin/30311-boxlang-ide) - IntelliJ Official Plugin
-
+- **[Sublime Text 4](https://www.sublimetext.com/)** - Full-featured BoxLang package with completions, docs, and build tools
 
 ### BoxLang IDE Extension
 
@@ -50,6 +50,14 @@ Beautiful dark and light themes specifically crafted for BoxLang syntax highligh
 
 {% content-ref url="boxlang-theme.md" %}
 [boxlang-theme.md](boxlang-theme.md)
+{% endcontent-ref %}
+
+### BoxLang Sublime Text Package
+
+Comprehensive BoxLang language support for Sublime Text 4, including syntax highlighting, 825+ BIF completions, inline documentation, code formatting, type inference, and a full build system.
+
+{% content-ref url="boxlang-sublime-text.md" %}
+[boxlang-sublime-text.md](boxlang-sublime-text.md)
 {% endcontent-ref %}
 
 ## 🌐 Web-Based Development
