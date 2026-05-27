@@ -271,84 +271,19 @@ See [transaction events](interceptors/core-interception-points/transaction-event
 
 ## 🏗️ Nested Transactions
 
-BoxLang fully supports nested or "child" transactions. Nested transactions use the same database connection as the parent transaction, which means queries will run on the same datasource as the parent, using the same connection parameters, and can be rolled back partially or in whole as the parent issues `transactionRollback()` statements.
-
-To achieve all this, BoxLang transactions auto-creates savepoints to track each change in transaction state:
-
-* `CHILD_{UUID}_BEGIN` - Created upon initialization of a nested transaction
-* `CHILD_{UUID}_COMMIT` - Created upon commit of a nested transaction
-* `CHILD_{UUID}_END` - Created upon completion of a nested transaction
-
-In addition, each savepoint created within nested transactions are prefixed within a unique ID to prevent collision. For example, executing `transactionSetSavepoint( 'insert' )` within a nested transaction will under the hood create a `CHILD_{UUID}_insert` savepoint:
+BoxLang does not support true nested transactions. If you call `transaction{}` blocks within another `transaction{}` block, they will share the same transaction context. This means that if an inner block rolls back, it will roll back the entire transaction, including any operations performed in the outer block.
 
 ```js
-transaction{
-    transaction{
-        queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'BMW', 'X3' )", {} );
-        transactionSetSavepoint( 'insert' ); // 🗨 Actual savepoint name is `CHILD_{UUID}_insert`
-        // more stuff...
-        transactionRollback( 'insert' ); // 🗨 Actually rolls back to `CHILD_{UUID}_insert`
+transaction {
+    queryExecute( "INSERT INTO orders (customer_id) VALUES (?)", [ 123 ] );
+
+    transaction {
+        queryExecute( "INSERT INTO order_items (order_id, product_id) VALUES (?, ?)", [ orderId, 456 ] );
+        transactionRollback(); // This will roll back the entire transaction, including the parent transaction's order insert
     }
 }
 ```
 
-### 📋 Nested Transaction Behaviors
-
-* Rolling back the child transaction will roll back to the `CHILD_{UUID}_BEGIN` savepoint.
-* A transaction commit in the child transaction _does not commit the transaction_, but instead creates a `CHILD_{UUID}_COMMIT` savepoint.
-* Rolling back the (entire) parent transaction will roll back the child transaction.
-* Rolling back the parent transaction to a pre-child savepoint will roll back the entire child transaction.
-
-### 📚 Examples
-
-Check out a few examples to hammer home the behaviors of a nested transaction:
-
-```js
-transaction{
-    queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'Ford', 'Fusion' )", {} );
-    transaction{
-        queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'BMW', 'X3' )", {} );
-        transactionRollback();
-    }
-}
-```
-
-In this example, the 'BMW X3' insert is rolled back by the unqualified `transactionRollback()` call, but the 'Ford Fusion' insert in the parent transaction is still committed to the database when the parent transaction completes:
-
-| Make | Model  |
-| ---- | ------ |
-| Ford | Fusion |
-
-Note that we would get the same result if the child transaction threw an exception instead of rolling back:
-
-```js
-transaction{
-    queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'Ford', 'Fusion' )", {} );
-    transaction{
-        queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'BMW', 'X3' )", {} );
-        doSomethingThatThrows();
-    }
-}
-```
-
-| Make | Model  |
-| ---- | ------ |
-| Ford | Fusion |
-
-Let's run this same one again, but replace the child rollback with a commit, and add a rollback to the parent transaction:
-
-```js
-transaction{
-    queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'Ford', 'Fusion' )", {} );
-    transaction{
-        queryExecute( "INSERT INTO vehicles ( make, model ) VALUES ( 'BMW', 'X3' )", {} );
-        transactionCommit();
-    }
-    transactionRollback();
-}
-```
-
-You can see that regardless of the `transactionCommit()` in the child transaction, **both** inserts are rolled back:
 
 ## 🧰 Transactional BIFs
 
