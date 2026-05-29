@@ -356,6 +356,9 @@ scheduler = scheduledExec.scheduledExecutor();
 // Access to scheduling-specific methods
 ```
 
+<details>
+<summary>📊 BoxExecutor Statistics & Health Monitoring</summary>
+
 ### 📊 BoxExecutor Statistics & Health Monitoring
 
 Every BoxExecutor provides detailed runtime statistics including comprehensive health monitoring introduced in version 1.6.0:
@@ -422,14 +425,14 @@ println( "Queue Utilization: #stats.queueUtilization#%" )
 // ============================================
 // HEALTH MONITORING (New in 1.6.0)
 // ============================================
-println( "\n=== HEALTH STATUS ===" )
+println( "\n=== HEALTH STATUS ==" )
 println( "Health Status: #stats.healthStatus#" )
 // Possible values: "healthy", "degraded", "critical", "idle", "shutdown", "terminated", "draining"
 
 // Get detailed health report
 healthReport = stats.healthReport
 
-println( "\n=== HEALTH REPORT ===" )
+println( "\n=== HEALTH REPORT ==" )
 println( "Status: #healthReport.status#" )
 println( "Summary: #healthReport.summary#" )
 println( "Last Checked: #healthReport.lastChecked#" )
@@ -470,7 +473,7 @@ if ( arrayLen( healthReport.insights ) > 0 ) {
 // FORK/JOIN SPECIFIC METRICS
 // ============================================
 if ( stats.keyExists( "stealCount" ) ) {
-    println( "\n=== FORK/JOIN METRICS ===" )
+    println( "\n=== FORK/JOIN METRICS ==" )
     println( "Active Thread Count: #stats.activeThreadCount#" )
     println( "Parallelism: #stats.parallelism#" )
     println( "Pool Size: #stats.poolSize#" )
@@ -480,6 +483,153 @@ if ( stats.keyExists( "stealCount" ) ) {
     println( "Steal Count: #stats.stealCount#" )
 }
 ```
+
+#### 🏥 Health Status Values
+
+The `healthStatus` field can return the following values:
+
+* **`"healthy"`** - Executor operating normally within all thresholds
+* **`"degraded"`** - Performance issues detected, action recommended
+* **`"critical"`** - Serious issues requiring immediate attention
+* **`"idle"`** - No recent activity, may be underutilized
+* **`"shutdown"`** - Executor has been shut down, no new tasks accepted
+* **`"terminated"`** - All tasks completed, executor fully terminated
+* **`"draining"`** - Shutting down and processing remaining tasks
+
+#### 🎯 Health Monitoring Thresholds
+
+BoxExecutor uses configurable thresholds to determine health status:
+
+| Metric | Degraded Threshold | Critical Threshold |
+|--------|-------------------|-------------------|
+| **Pool Utilization** | 75% | 95% |
+| **Thread Utilization** | 75% | 95% |
+| **Queue Utilization** | 70% | 95% |
+| **Task Completion Rate** | <50% | <25% |
+| **Inactivity** | 30 minutes | N/A |
+
+#### 📋 Health Report Structure
+
+The health report provides detailed analysis:
+
+```js
+{
+    "status": "healthy|degraded|critical|idle|shutdown|terminated|draining",
+    "summary": "Brief description of health status",
+    "lastChecked": "2025-10-03T14:30:00",
+    "issues": [
+        "High pool utilization: 87%",
+        "Queue approaching capacity"
+    ],
+    "recommendations": [
+        "Consider increasing pool size",
+        "Monitor queue growth"
+    ],
+    "alerts": [
+        "CRITICAL: Queue is full, tasks may be rejected"
+    ],
+    "insights": [
+        "Processing 42.5 tasks per second",
+        "Executor has been running for 5.2 days"
+    ]
+}
+```
+
+#### 🔍 Monitoring Examples
+
+**Check overall health:**
+
+```js
+executor = executorGet( "cpu-tasks" )
+
+// Quick boolean check
+if ( !executor.isHealthy() ) {
+    writeLog(
+        text: "Executor #executor.name()# is unhealthy!",
+        type: "Warning",
+        log: "async"
+    )
+
+    stats = executor.getStats()
+    writeLog(
+        text: "Health Status: #stats.healthStatus#, Issues: #arrayLen( stats.healthReport.issues )#",
+        type: "Warning",
+        log: "async"
+    )
+}
+```
+
+**Monitor specific metrics:**
+
+```js
+stats = executor.getStats()
+
+// Check for high utilization
+if ( stats.poolUtilization > 80 ) {
+    writeLog(
+        text: "High pool utilization: #stats.poolUtilization#%",
+        type: "Warning",
+        log: "async"
+    )
+}
+
+// Check for queue issues
+if ( stats.queueUtilization > 70 ) {
+    writeLog(
+        text: "Queue filling up: #stats.queueSize# tasks queued",
+        type: "Warning",
+        log: "async"
+    )
+}
+
+// Check task completion rate
+if ( stats.taskCount > 10 && stats.taskCompletionRate < 50 ) {
+    writeLog(
+        text: "Low task completion rate: #stats.taskCompletionRate#%",
+        type: "Warning",
+        log: "async"
+    )
+}
+```
+
+**Automated health checks:**
+
+```js
+function performHealthCheck() {
+    allExecutors = executorList()
+
+    for ( executorName in allExecutors ) {
+        executor = executorGet( executorName )
+        stats = executor.getStats()
+
+        writeLog(
+            text: "Health Check - #executorName#: Status=#stats.healthStatus#, Active=#stats.activeCount#, Queue=#stats.queueSize#",
+            type: "Information",
+            log: "async"
+        )
+
+        // Alert on critical status
+        if ( stats.healthStatus == "critical" ) {
+            writeLog(
+                text: "CRITICAL: Executor #executorName# is in critical state!",
+                type: "Error",
+                log: "async"
+            )
+
+            // Send alert to monitoring system
+            sendAlert( executorName, stats )
+        }
+    }
+}
+
+// Schedule health checks every 5 minutes
+healthCheckTask = executorGet( "scheduled-tasks" ).newTask( "health-monitor" )
+healthCheckTask.call( performHealthCheck )
+    .every( 5, "minutes" )
+    .start()
+```
+
+</details>
 
 #### 🏥 Health Status Values
 
@@ -697,6 +847,9 @@ scheduler.task( "cleanup" )
 * **Error Handling:** Built-in retry logic and error recovery
 * **Monitoring:** Enhanced logging and statistics
 * **Persistence:** Optional task persistence across restarts
+
+<details>
+<summary>📚 Practical Examples</summary>
 
 ## 📚 Practical Examples
 
@@ -937,6 +1090,11 @@ try {
 }
 ```
 
+</details>
+
+<details>
+<summary>⚡ Performance Considerations & Best Practices</summary>
+
 ## ⚡ Performance Considerations & Best Practices
 
 ### **🚨 Critical Guidelines:**
@@ -1090,6 +1248,11 @@ result = executeWithRetry( () => {
 } );
 ```
 
+</details>
+
+<details open>
+<summary>🔥 Production Best Practices</summary>
+
 ## 🔥 Production Best Practices
 
 * **Use Built-in Executors:** Start with `io-tasks` and `cpu-tasks` for most scenarios
@@ -1099,6 +1262,8 @@ result = executeWithRetry( () => {
 * **Log Comprehensively:** Use async logging for all important operations
 * **Test Under Load:** Validate executor behavior under realistic workloads
 * **Size Appropriately:** Match thread counts to actual hardware capabilities
+
+</details>
 
 ## 🎉 Quick Start Template
 
