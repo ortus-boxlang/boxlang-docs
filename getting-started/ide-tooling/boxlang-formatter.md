@@ -383,7 +383,12 @@ For editor-on-save workflows and IDE formatter setup, the BoxLang LSP supports e
 
 ### Enabling Experimental Formatting in VS Code
 
-1. **Enable formatting in `.bxlint.json`** — Add the following to your project's `.bxlint.json`:
+{% stepper %}
+
+{% step %}
+### Enable formatting in `.bxlint.json`
+
+Add the following to your project's `.bxlint.json`:
 
    ```json
    {
@@ -395,7 +400,12 @@ For editor-on-save workflows and IDE formatter setup, the BoxLang LSP supports e
    }
    ```
 
-2. **Enable format-on-save in VS Code** — Add this override to your VS Code `settings.json` (Workspace or User):
+{% endstep %}
+
+{% step %}
+### Enable format-on-save in VS Code
+
+Add this override to your VS Code `settings.json` (Workspace or User):
 
    ```json
    {
@@ -408,10 +418,18 @@ For editor-on-save workflows and IDE formatter setup, the BoxLang LSP supports e
    }
    ```
 
-3. **Update BoxLang & LSP versions** — Open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and run:
+{% endstep %}
+
+{% step %}
+### Update BoxLang & LSP versions
+
+Open the Command Palette (`Cmd+Shift+P` / `Ctrl+Shift+P`) and run:
    - `BoxLang: Select BoxLang Version` — choose the latest available version
    - `BoxLang: Select LSP Version` — choose the latest available version
    - `Developer: Reload Window` — to pick up the changes
+
+{% endstep %}
+{% endstepper %}
 
 Once these steps are completed, the formatter will run automatically when you save `.bx`, `.bxs`, `.bxm`, `.cfc`, `.cfm`, or `.cfs` files.
 

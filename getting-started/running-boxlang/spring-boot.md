@@ -63,11 +63,17 @@ No `@EnableBoxLang` annotation or manual bean registration is required. Spring B
 
 Get a BoxLang-powered Spring Boot application running in minutes.
 
-### Step 1 — Add the dependency
+{% stepper %}
+
+{% step %}
+### Add the dependency
 
 Add `boxlang-spring-boot-starter` to your project as shown in the [Installation](spring-boot.md#installation) section.
 
-### Step 2 — Create a Spring MVC controller
+{% endstep %}
+
+{% step %}
+### Create a Spring MVC controller
 
 ```java
 import org.springframework.stereotype.Controller;
@@ -104,7 +110,10 @@ public class HomeController {
 }
 ```
 
-### Step 3 — Create BoxLang templates
+{% endstep %}
+
+{% step %}
+### Create BoxLang templates
 
 Place `.bxm` templates under `src/main/resources/templates/`:
 
@@ -158,7 +167,10 @@ Place `.bxm` templates under `src/main/resources/templates/`:
 </bx:output>
 ```
 
-### Step 4 — Run your application
+{% endstep %}
+
+{% step %}
+### Run your application
 
 Start your Spring Boot application as usual.
 
@@ -181,6 +193,9 @@ Start your Spring Boot application as usual.
 > ```
 
 Navigate to `http://localhost:8080` in your browser.
+
+{% endstep %}
+{% endstepper %}
 
 ## ⚙️ Configuration (`application.properties`)
 

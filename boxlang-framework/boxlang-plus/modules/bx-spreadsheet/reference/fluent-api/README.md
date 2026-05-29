@@ -31,6 +31,9 @@ The **Fluent API** is the modern, recommended way to work with spreadsheets in B
 
 ## Creating & Loading
 
+<details>
+<summary>Creating & Loading</summary>
+
 ### `Spreadsheet()`
 
 Creates a new empty spreadsheet in XLSX format with a default sheet named "Sheet1".
@@ -219,6 +222,8 @@ qry = queryExecute( "SELECT name, email FROM users" );
 sheet = SpreadsheetFile.fromQuery( qry ).save( "users.xlsx" );
 ```
 
+</details>
+
 ---
 
 ## Saving
@@ -311,6 +316,9 @@ sheet.setCellValue( 1, 1, "Final" ).saveAndClose();
 ---
 
 ## Sheet Management
+
+<details>
+<summary>Sheet Management</summary>
 
 ### `createSheet( sheetName )`
 
@@ -535,6 +543,8 @@ sheet.moveSheet( sheetName, toIndex );
 sheet.moveSheet( "Summary", 0 );  // Move to first position
 ```
 
+</details>
+
 ---
 
 ## Cell Operations
@@ -620,6 +630,9 @@ sheet.formatCell( 1, 1, {
 ---
 
 ## Row Operations
+
+<details>
+<summary>Row Operations</summary>
 
 ### `addRow( values )`
 
@@ -785,9 +798,14 @@ data = [
 sheet.addRows( data );
 ```
 
+</details>
+
 ---
 
 ## Column Operations
+
+<details>
+<summary>Column Operations</summary>
 
 ### `formatColumn( column, format )`
 
@@ -899,9 +917,14 @@ sheet.addRows( data )
     .save();
 ```
 
+</details>
+
 ---
 
 ## Data Conversion
+
+<details>
+<summary>Data Conversion</summary>
 
 ### `toArray()`
 
@@ -1053,6 +1076,8 @@ csv = sheet.toCSV({
 });
 ```
 
+</details>
+
 ---
 
 ## Formatting
@@ -1102,6 +1127,9 @@ sheet.formatCell( 1, 1, {
 ---
 
 ## Advanced Features
+
+<details>
+<summary>Advanced Features</summary>
 
 ### `addFreezePane( column, row )`
 
@@ -1216,9 +1244,14 @@ sheet.setCellValue( 1, 3, "=A1+B1" )
     .recalculateAllFormulas();
 ```
 
+</details>
+
 ---
 
 ## Large File Streaming
+
+<details>
+<summary>Large File Streaming</summary>
 
 ### `process( path, consumer )`
 
@@ -1301,9 +1334,14 @@ sheet.process( ( row ) => {
 **Memory Efficient**: Streaming keeps only ~100 rows in memory at a time. See the [Large File Streaming Guide](../../streaming.md) for complete details.
 {% endhint %}
 
+</details>
+
 ---
 
 ## Information & Accessors
+
+<details>
+<summary>Information & Accessors</summary>
 
 ### `getSheetNames()`
 
@@ -1429,6 +1467,8 @@ if ( sheet.hasSheet( "Summary" ) ) {
     sheet.selectSheet( "Summary" );
 }
 ```
+
+</details>
 
 ---
 

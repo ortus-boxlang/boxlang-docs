@@ -200,6 +200,9 @@ bx:ftp action="close" connection="downloader";
 
 ### Advanced Examples
 
+<details>
+<summary>Advanced Examples</summary>
+
 #### 🔐 Secure Connection with Passive Mode
 
 ```java
@@ -376,9 +379,13 @@ bx:ftp
     result="dirRenameResult";
 
 bx:ftp action="close" connection="renamer";
-```
+
+</details>
 
 ### SFTP Examples
+
+<details>
+<summary>SFTP Examples</summary>
 
 #### 🔐 SFTP with Password Authentication
 
@@ -576,9 +583,13 @@ bx:ftp
     result="removeResult2";
 
 bx:ftp action="close" connection="sftpRemove";
-```
+
+</details>
 
 ## 📚 Available Actions
+
+<details>
+<summary>Available Actions</summary>
 
 All actions can use a `result` attribute to store the result of the action in a variable. If not provided, the result will be stored in a variable called `bxftp` (or `cftp` if you are in CFML compat mode).
 
@@ -963,6 +974,8 @@ if (renameResult.returnValue) {
 }
 ```
 
+</details>
+
 ## 📊 Result Object
 
 All FTP actions return a result object with the following structure:
@@ -1012,6 +1025,9 @@ if (bxftp.succeeded) {
 ```
 
 ## 🎯 Interception Points
+
+<details>
+<summary>Interception Points</summary>
 
 The FTP module announces several interception points that allow you to hook into the FTP operation lifecycle for logging, monitoring, metrics, or custom logic.
 
@@ -1243,7 +1259,12 @@ component {
 }
 ```
 
+</details>
+
 ## 🔗 Connection Management
+
+<details>
+<summary>Connection Management</summary>
 
 The FTP module uses the **FTPService** to manage **named** connections globally across your application.
 
@@ -1287,7 +1308,12 @@ writeDump( info );
 // Outputs connection details: server, port, username, status, etc.
 ```
 
+</details>
+
 ## ❌ Error Handling
+
+<details>
+<summary>Error Handling</summary>
 
 ### Common Connection Issues
 
@@ -1350,7 +1376,12 @@ switch (ftpResult.statusCode) {
 }
 ```
 
+</details>
+
 ## ❓ Troubleshooting
+
+<details>
+<summary>Troubleshooting</summary>
 
 ### Connection Refused Errors
 
@@ -1408,7 +1439,12 @@ switch (ftpResult.statusCode) {
 - ✅ Ensure proxy authentication (if required) is configured
 - ✅ Test proxy with other FTP clients
 
+</details>
+
 ## 🛠️ Development & Testing
+
+<details>
+<summary>Development & Testing</summary>
 
 ### Local Development Setup
 
@@ -1514,7 +1550,12 @@ pasv_max_port=10010
 pasv_address=127.0.0.1
 ```
 
+</details>
+
 ## 🔄 CFML Compatibility
+
+<details>
+<summary>CFML Compatibility</summary>
 
 This module will require the `bx-cfml-compat` module if you want it to work like Adobe ColdFusion/Lucee in your CFML applications.
 
@@ -1538,6 +1579,8 @@ All CFML `<cfftp>` should work with no changes when using `bx-cfml-compat`. Howe
 // BoxLang (native)
 <bx:ftp action="open" connection="myConn" server="ftp.example.com" username="user" password="pass">
 ```
+
+</details>
 
 ## 🤝 Contributing
 

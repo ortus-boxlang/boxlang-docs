@@ -124,7 +124,10 @@ public interface ICacheEntry extends Serializable {
 
 ## Step-by-Step Implementation Guide
 
-#### Step 1: Create the Provider Class
+{% stepper %}
+
+{% step %}
+### Create the Provider Class
 
 Create a new class that extends `AbstractCacheProvider` (recommended) or implements `ICacheProvider` directly:
 
@@ -225,7 +228,10 @@ public class CaffeineCacheProvider extends AbstractCacheProvider {
 }
 ```
 
-#### Step 2: Implement Core Cache Operations
+{% endstep %}
+
+{% step %}
+### Implement Core Cache Operations
 
 ```java
 @Override
@@ -355,7 +361,10 @@ public void clearAll() {
 }
 ```
 
-#### Step 3: Implement Bulk Operations
+{% endstep %}
+
+{% step %}
+### Implement Bulk Operations
 
 ```java
 @Override
@@ -447,7 +456,10 @@ public boolean lookupQuiet( String key ) {
 }
 ```
 
-#### Step 4: Implement Advanced Features
+{% endstep %}
+
+{% step %}
+### Implement Advanced Features
 
 ```java
 @Override
@@ -579,7 +591,10 @@ private boolean isExpired( ICacheEntry entry ) {
 }
 ```
 
-#### Step 5: Implement Statistics and Reporting
+{% endstep %}
+
+{% step %}
+### Implement Statistics and Reporting
 
 ```java
 @Override
@@ -726,8 +741,14 @@ public Object getOrSet( String key, Supplier<Object> provider, Object timeout ) 
 @Override
 public Object getOrSet( String key, Supplier<Object> provider, Object timeout, Object lastAccessTimeout ) {
     return getOrSet( key, provider, timeout, lastAccessTimeout, new Struct() );
+    }
 }
+
 ```
+
+{% endstep %}
+
+{% endstepper %}
 
 ## Configuration
 

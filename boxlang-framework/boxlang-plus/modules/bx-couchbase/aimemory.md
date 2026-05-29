@@ -24,19 +24,28 @@ The bx-couchbase module integrates with BoxLang AI's memory system, allowing you
 
 ## Installation
 
-### 1. Install BoxLang AI Module
+{% stepper %}
+
+{% step %}
+### Install BoxLang AI Module
 
 ```bash
 boxlang install bx-ai
 ```
 
-### 2. Install Couchbase Module
+{% endstep %}
+
+{% step %}
+### Install Couchbase Module
 
 ```bash
 boxlang install bx-couchbase
 ```
 
-### 3. Configure Couchbase Cache
+{% endstep %}
+
+{% step %}
+### Configure Couchbase Cache
 
 In your `Application.bx`:
 
@@ -57,7 +66,12 @@ component {
         }
     };
 }
+
 ```
+
+{% endstep %}
+
+{% endstepper %}
 
 ## Basic Usage
 

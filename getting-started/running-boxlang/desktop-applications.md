@@ -102,7 +102,10 @@ Java 21+ must be installed on every machine that runs the desktop app. Only the 
 
 ## ⚡ Quick Start
 
-### 1. Get the starter
+{% stepper %}
+
+{% step %}
+### Get the starter
 
 The starter lives at [https://github.com/ortus-boxlang/boxlang-starter-desktop-electron](https://github.com/ortus-boxlang/boxlang-starter-desktop-electron). You have two options:
 
@@ -122,7 +125,10 @@ git clone https://github.com/ortus-boxlang/boxlang-starter-desktop-electron.git 
 cd mydesktopapp
 ```
 
-### 2. Install dependencies
+{% endstep %}
+
+{% step %}
+### Install dependencies
 
 ```bash
 # BoxLang module dependencies (if any)
@@ -132,7 +138,10 @@ box install
 npm install
 ```
 
-### 3. Package the MiniServer runtime
+{% endstep %}
+
+{% step %}
+### Package the MiniServer runtime
 
 The starter ships without a pre-built MiniServer. Run this once to download and extract it from the version pinned in `.bvmrc`:
 
@@ -150,13 +159,19 @@ This downloads MiniServer into `runtime/bin` and `runtime/lib`. The version is r
 Use `npm run package:miniserver:force` to re-download over an existing runtime.
 {% endhint %}
 
-### 4. Start development mode
+{% endstep %}
+
+{% step %}
+### Start development mode
 
 ```bash
 npm run dev
 ```
 
 This launches Vite (with HMR on `127.0.0.1:3000`) and Electron in parallel. Electron waits for Vite to be ready before starting the MiniServer and loading the window.
+
+{% endstep %}
+{% endstepper %}
 
 ## 📁 Project Structure
 

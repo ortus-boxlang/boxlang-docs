@@ -849,7 +849,9 @@ function extractConfig( nav ) {
 }
 ```
 
-## Advanced Patterns
+<details>
+
+<summary>Advanced Patterns</summary>
 
 #### Configuration Inheritance
 
@@ -923,7 +925,11 @@ function validateConfig( configData ) {
 }
 ```
 
-## 💡 Best Practices
+</details>
+
+<details open>
+
+<summary>💡 Best Practices</summary>
 
 ### 1. Use Meaningful Defaults
 
@@ -1109,6 +1115,8 @@ cacheConfig = featuresNav.get( "caching" );
 // ❌ Avoid: Long, hard-to-read chains
 cacheConfig = nav.from( "application" ).from( "features" ).get( "caching" );
 ```
+
+</details>
 
 ---
 

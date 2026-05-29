@@ -497,6 +497,9 @@ SSE(
 * **Security**: Implement authentication/authorization before establishing SSE connections
 {% endhint %}
 
+<details>
+<summary>🔒 Security Considerations</summary>
+
 ## 🔒 Security Considerations
 
 ### Authentication
@@ -566,12 +569,17 @@ SSE( callback: ( emitter ) => {
 } );
 ```
 
+</details>
+
 ## 🔗 Related Resources
 
 * [HTTP/S Calls](http-calls.md)
 * [Asynchronous Programming](asynchronous-programming/)
 * [BoxLang Web Runtime](../getting-started/running-boxlang/)
 * [Release Notes 1.7.0](../readme/release-history/1.7.0.md)
+
+<details>
+<summary>📚 Additional Examples</summary>
 
 ## 📚 Additional Examples
 
@@ -635,7 +643,10 @@ SSE(
 );
 ```
 
----
+</details>
+
+<details>
+<summary>📥 SSE Consumption - Connecting to Remote Streams</summary>
 
 ## 📥 SSE Consumption - Connecting to Remote Streams
 
@@ -1040,6 +1051,8 @@ http( "https://api.example.com/events" )
 - **Memory management** - Process and discard events, don't accumulate indefinitely
 - **Authentication** - Include proper API keys/tokens in headers
 {% endhint %}
+
+</details>
 
 ---
 

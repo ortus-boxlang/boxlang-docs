@@ -689,7 +689,9 @@ class{
 
 Please note that you do not need to register absolute paths for schedulers in your application, you can use relative paths or even per-app mappings. The `SchedulerService` will automatically resolve the paths for you.  Once your application starts, the `SchedulerService` will register all the schedulers defined in the `this.schedulers` property.  Once the application stops, the `SchedulerService` will automatically shutdown all the schedulers and their associated executors.
 
-## 💻 CLI Runner
+<details>
+
+<summary>💻 CLI Runner</summary>
 
 You can also run schedulers from the command line using the BoxLang CLI. This is useful for running scheduled tasks in CI/CD pipelines, containerized environments, system cron jobs, or for testing purposes. The CLI runner provides a standalone way to execute scheduler files directly from the operating system level.
 
@@ -884,6 +886,8 @@ The CLI runner is ideal for:
 
 This will instantiate the scheduler, configure it, start it, and run it until it's manually stopped or all tasks complete (for one-off tasks).
 
+</details>
+
 # 📁 Scheduler Logging
 
 BoxLang provides dedicated logging for all scheduling operations through the `scheduler.log` file located in the `logs` folder of your BoxLang home directory.  Please leverage logging as much as possible, as in async logging is critical for debugging and monitoring executor behavior.
@@ -932,7 +936,9 @@ Monitor this file for:
 * Resource exhaustion warnings
 * Shutdown timing problems
 
-# 🎛️ Scheduler Management BIFs
+<details>
+
+<summary>🎛️ Scheduler Management BIFs</summary>
 
 BoxLang provides several Built-In Functions (BIFs) for managing schedulers at runtime. These functions allow you to interact with the scheduler service programmatically and manage schedulers dynamically.
 
@@ -1192,7 +1198,11 @@ if( taskRecord.error ) {
 | `inetHost` | The hostname where the task is running |
 | `localIp` | The IP address of the server |
 
-# 💎 Best Practices
+</details>
+
+<details open>
+
+<summary>💎 Best Practices</summary>
 
 Here are some best practices when working with BoxLang scheduled tasks:
 
@@ -1279,3 +1289,5 @@ class {
 ```
 
 This comprehensive guide covers all the essential aspects of BoxLang's scheduled tasks framework. Whether you're building simple cron-like jobs or complex distributed scheduling systems, BoxLang's scheduler provides the tools and flexibility you need.
+
+</details>

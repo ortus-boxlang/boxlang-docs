@@ -665,7 +665,9 @@ VThread 10k: [█] Item 10k  ↙
 ⏱️ Time: ~0.5 seconds (200x speedup for I/O intensive!)
 ```
 
-## 🌟 Virtual Threads: The Game Changer
+<details>
+
+<summary>🌟 Virtual Threads: The Game Changer</summary>
 
 > Introduced in BoxLang v1.5.0
 
@@ -840,6 +842,8 @@ arrayMap(
 );
 ```
 
+</details>
+
 ## ⚡ Single Async Operations
 
 ### `asyncRun()` - Basic Async Execution
@@ -888,7 +892,9 @@ emptyFuture = futureNew();
 emptyFuture.complete( "Result" );
 ```
 
-## 🎛️ Advanced Patterns
+<details>
+
+<summary>🎛️ Advanced Patterns</summary>
 
 ### Pipeline Processing
 
@@ -946,7 +952,11 @@ function retryOperation( operation, maxRetries = 3 ) {
 result = retryOperation( () => unreliableAPICall() ).get();
 ```
 
-## 🛠️ Executor Management
+</details>
+
+<details>
+
+<summary>🛠️ Executor Management</summary>
 
 ### Using Custom Executors
 
@@ -1028,6 +1038,8 @@ function cancellableTask( data ) {
 }
 ```
 
+</details>
+
 ## 📊 Performance Monitoring
 
 ### Timing Parallel Operations
@@ -1062,7 +1074,9 @@ memoryAfter = getMemoryUsage();
 systemOutput( "Memory used: #(memoryAfter - memoryBefore)# bytes" );
 ```
 
-## 🎯 Best Practices
+<details open>
+
+<summary>🎯 Best Practices (Do's and Don'ts)</summary>
 
 ### ✅ Do's
 
@@ -1189,7 +1203,9 @@ systemOutput( "Memory used: #(memoryAfter - memoryBefore)# bytes" );
    } finally {
        executorShutdown( "temp-executor" );
    }
-   ```
+    ```
+
+</details>
 
 ## 🔗 Related Documentation
 

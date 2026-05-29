@@ -66,7 +66,10 @@ Click on the **Penguin** tab to access your Linux environment:
 
 ## Setting Up the Development Environment
 
-### Step 1: System Updates and Essential Tools
+{% stepper %}
+
+{% step %}
+### System Updates and Essential Tools
 
 Start by updating your system and installing essential development tools:
 
@@ -88,7 +91,10 @@ sudo apt install -y \
     gnome-keyring
 ```
 
-### Step 2: Installing Java 21
+{% endstep %}
+
+{% step %}
+### Installing Java 21
 
 Modern Debian distributions now include OpenJDK 21. Try the simple installation first:
 
@@ -150,7 +156,10 @@ java -version
 **Modern Note**: Most current Debian-based distributions now include OpenJDK 21 in their repositories, making the simple `apt install` method the preferred approach.
 {% endhint %}
 
-### Step 3: Installing BoxLang
+{% endstep %}
+
+{% step %}
+### Installing BoxLang
 
 BoxLang installation is straightforward with the official installer script:
 
@@ -173,9 +182,12 @@ boxlang
 
 The REPL (Read-Eval-Print Loop) opens, allowing you to start coding immediately, run BoxLang files, start web servers, and much more!
 
+{% endstep %}
+
 ## Setting Up VS Code with BoxLang
 
-### Step 4: Installing Visual Studio Code
+{% step %}
+### Installing Visual Studio Code
 
 VS Code provides excellent BoxLang development support with syntax highlighting, debugging, and integrated development features.
 
@@ -205,7 +217,10 @@ sudo apt-get install -f
 
 <figure><img src="../../.gitbook/assets/image (1) (1) (1) (1) (1) (1) (1) (1) (1) (1).png" alt=""><figcaption><p>VS Code Installation</p></figcaption></figure>
 
-### Step 5: Installing the BoxLang Extension
+{% endstep %}
+
+{% step %}
+### Installing the BoxLang Extension
 
 1. **Open VS Code** from your applications menu
 2. **Access Extensions**: Click the Extensions icon (⬜) or press `Ctrl+Shift+X`
@@ -225,9 +240,12 @@ The BoxLang extension provides:
 * **Web Server Integration**: Start and manage BoxLang web servers
 * **REPL Integration**: Interactive BoxLang development
 
+{% endstep %}
+
 ## Creating Your First BoxLang Application
 
-### Step 6: Your First BoxLang Class
+{% step %}
+### Your First BoxLang Class
 
 Let's create your first BoxLang application to test everything is working correctly.
 
@@ -280,7 +298,10 @@ class {
 BoxLang is running perfectly on your Chromebook! 🎉
 ```
 
-### Step 7: Creating a Web Application
+{% endstep %}
+
+{% step %}
+### Creating a Web Application
 
 Now let's create a web application using BoxLang's templating system.
 
@@ -347,7 +368,10 @@ Now let's create a web application using BoxLang's templating system.
 </bx:output>
 ```
 
-### Step 8: Starting the BoxLang Web Server
+{% endstep %}
+
+{% step %}
+### Starting the BoxLang Web Server
 
 **Start the integrated web server:**
 
@@ -380,6 +404,9 @@ VS Code will automatically open your browser, or you can manually navigate to `h
 <figure><img src="../../.gitbook/assets/image (6).png" alt=""><figcaption><p>BoxLang Web Application Running</p></figcaption></figure>
 
 Congratulations! 🎉 You've successfully created and deployed your first BoxLang web application on a Chromebook!
+
+{% endstep %}
+{% endstepper %}
 
 ## Next Steps and Development Tips
 

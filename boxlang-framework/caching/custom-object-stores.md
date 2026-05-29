@@ -79,7 +79,10 @@ public interface IObjectStore {
 
 ## Creating a Custom Object Store
 
-### Step 1: Extend AbstractStore (Recommended)
+{% stepper %}
+
+{% step %}
+### Extend AbstractStore (Recommended)
 
 While you can implement `IObjectStore` directly, extending `AbstractStore` provides useful functionality like eviction policy management:
 
@@ -116,7 +119,10 @@ public class MyCustomStore extends AbstractStore {
 }
 ```
 
-### Step 2: Implement Core Storage Methods
+{% endstep %}
+
+{% step %}
+### Implement Core Storage Methods
 
 The most critical methods to implement are the storage operations:
 
@@ -158,7 +164,10 @@ public int getSize() {
 }
 ```
 
-### Step 3: Implement Introspection Methods
+{% endstep %}
+
+{% step %}
+### Implement Introspection Methods
 
 Provide methods for cache inspection and filtering:
 
@@ -194,7 +203,10 @@ public boolean lookup(Key key) {
 }
 ```
 
-### Step 4: Implement Eviction Support
+{% endstep %}
+
+{% step %}
+### Implement Eviction Support
 
 Integrate with the eviction policy system:
 
@@ -218,7 +230,10 @@ public void evict() {
 }
 ```
 
-### Step 5: Handle Bulk Operations
+{% endstep %}
+
+{% step %}
+### Handle Bulk Operations
 
 Implement bulk operations for better performance:
 
@@ -249,7 +264,12 @@ public void set(IStruct entries) {
         }
     });
 }
+
 ```
+
+{% endstep %}
+
+{% endstepper %}
 
 ## Configuration
 

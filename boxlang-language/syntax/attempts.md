@@ -262,7 +262,9 @@ graph LR
     G --> G3[toOptional]
 ```
 
-## 📖 Method Reference
+<details>
+
+<summary>📖 Method Reference</summary>
 
 ### 🔍 State Checking Methods
 
@@ -728,7 +730,11 @@ if ( attempt1.equals( attempt2 ) ) {
 }
 ```
 
-## ✅ Validation Pipelines
+</details>
+
+<details>
+
+<summary>✅ Validation Pipelines</summary>
 
 Attempts provide powerful validation capabilities that let you attach validation rules and create validation pipelines. This is perfect for input validation, business rules, and data quality checks.
 
@@ -1014,10 +1020,13 @@ if ( score >= 700 && score <= 850 ) {
     approveApplication( score );
 }
 ```
+</details>
 
 ---
 
-## 📚 Best Practices Summary
+<details open>
+
+<summary>📚 Best Practices Summary</summary>
 
 ### When to Use Attempts
 
@@ -1190,6 +1199,8 @@ value = attempt( 42 ).orElse( 0 );
 // Good - direct assignment
 value = 42;
 ```
+
+</details>
 
 ---
 

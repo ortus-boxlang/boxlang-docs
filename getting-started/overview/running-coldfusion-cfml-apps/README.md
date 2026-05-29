@@ -21,7 +21,10 @@ With its straightforward syntax and comprehensive toolset, BoxLang empowers deve
 There could be situations where certain functionality in Adobe/Lucee might not be available in BoxLang due to proprietary technology.  Please contact us to see if this will be supported or not.  We have tried to document as much as we can, but there are always edge-cases we have not covered.
 {% endhint %}
 
-## Step 1: Install BoxLang OS & CommandBox
+{% stepper %}
+
+{% step %}
+## Install BoxLang OS & CommandBox
 
 <figure><img src="../../../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>
 
@@ -45,7 +48,10 @@ Follow these instructions to install CommandBox: [CommandBox Installation Guide]
 BoxLang +/++ subscribers get access to premium features in CommandBox such as multi-site support, clustering, advanced monitoring, and more.
 {% endhint %}
 
-## Step 2: Audit Your Application
+{% endstep %}
+
+{% step %}
+## Audit Your Application
 
 We have provided a CFML auditor in order to help you identify potential compatibility issues when migrating your ColdFusion/CFML applications to BoxLang. This tool scans your codebase and generates a report highlighting areas that may require attention or modification.
 
@@ -77,7 +83,10 @@ If there is a situation where you are using a feature that is not supported in B
 
 We have an extensive list of modules that provide additional functionality and compatibility for BoxLang applications.  You can find a list of available modules in our [BoxLang Module Repository](../../../boxlang-framework/modularity/README.md) and or [BoxLang +/++ Module Repository](../../../boxlang-framework/boxlang-plus/modules/README.md).  Make sure to include any necessary modules in your `server.json` file or install them via the CommandBox CLI.
 
-## Step 3: CFML Engine Configuration
+{% endstep %}
+
+{% step %}
+## CFML Engine Configuration
 
 CommandBox allows you to easily extract the configuration of your existing ColdFusion or Lucee server and apply it to your BoxLang application using our [CFConfig Module](https://cfconfig.ortusbooks.com/). This ensures that your application runs with the same settings and environment as before.  This is done via the `CFConfig` module that ships with CommandBox.  To make sure we have the latest and greatest, please run the following command:
 
@@ -134,7 +143,10 @@ server set jvm.args=["-XX:-CreateMinidumpOnCrash"] --append
 server set jvm.args=["--add-opens=java.base/java.net=ALL-UNNAMED"] --append
 ```
 
-## Step 4: Server.json Configuration
+{% endstep %}
+
+{% step %}
+## Server.json Configuration
 
 Now that we have audited our application and exported our server settings, we can now create a `server.json` file to configure our BoxLang server.  This file is used by CommandBox to configure the server settings for your BoxLang application.  It is extremely powerful and flexible, allowing you to customize your server settings to fit your specific needs.  Here is the basics that you will need to get started:
 
@@ -223,7 +235,10 @@ Make sure you configure it accordingly by placing these settings in the `.cfconf
 }
 ```
 
-## Step 5: Start & Test Your Application
+{% endstep %}
+
+{% step %}
+## Start & Test Your Application
 
 Now that you have your `server.json` file configured, you can start your BoxLang server using CommandBox.  Navigate to your application directory in the command line and run the following command:
 
@@ -238,3 +253,6 @@ Now that your server is started, you can access your application in your web bro
 {% hint style="info" %}
 Remember to regularly update your BoxLang installation and modules to benefit from the latest features and improvements.
 {% endhint %}
+
+{% endstep %}
+{% endstepper %}

@@ -144,7 +144,10 @@ class implements="java:ortus.boxlang.runtime.cache.policies.ICachePolicy" {
 }
 ```
 
-#### Step 1: Implement the Interface (Java)
+{% stepper %}
+
+{% step %}
+### Implement the Interface (Java)
 
 ```java
 package com.mycompany.cache.policies;
@@ -185,7 +188,10 @@ public class CustomEvictionPolicy implements ICachePolicy {
 }
 ```
 
-#### Step 2: Implement Selection Logic
+{% endstep %}
+
+{% step %}
+### Implement Selection Logic
 
 Here are several examples of custom eviction policies:
 
@@ -378,7 +384,10 @@ public class TimeWindowEvictionPolicy implements ICachePolicy {
 }
 ```
 
-#### Step 3: Advanced Pattern - Adaptive Policy
+{% endstep %}
+
+{% step %}
+### Advanced Pattern - Adaptive Policy
 
 An adaptive policy that changes behavior based on cache performance:
 
@@ -452,7 +461,12 @@ public class AdaptiveEvictionPolicy implements ICachePolicy {
         lastHitRate = 0.0;
     }
 }
+
 ```
+
+{% endstep %}
+
+{% endstepper %}
 
 ## Configuration
 

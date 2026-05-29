@@ -430,6 +430,9 @@ Defines individual data points within a series. Must be nested inside `<bx:chart
 
 **💡 Use Case:** Similar to pie charts but with a modern look, great for dashboards.
 
+<details>
+<summary>Advanced Examples</summary>
+
 ### Advanced Examples
 
 #### 🏔️ Area Chart with Styling
@@ -590,11 +593,15 @@ BoxLang Charts support responsive sizing that adapts to container width and scre
 **💡 Use Case:** Perfect for dashboards and mobile-friendly layouts where charts need to adapt to different screen sizes.
 
 **Responsive Tips:**
-
 * Charts resize automatically to fit their container width (up to `chartWidth`)
 * Use `maintainAspectRatio="false"` to fill specific container heights
 * Set custom aspect ratios: `2` for wide (2:1), `1` for square (1:1), `0.5` for tall (1:2)
 * Add `resizeDelay` for performance optimization on frequently resizing containers
+
+</details>
+
+<details>
+<summary>🚀 Advanced Features</summary>
 
 ## 🚀 Advanced Features
 
@@ -718,6 +725,11 @@ Customize data point markers for line and scatter charts:
 </bx:chart>
 ```
 
+</details>
+
+<details>
+<summary>🔧 Chart.js Integration</summary>
+
 ## 🔧 Chart.js Integration
 
 This module is built on [Chart.js v4.x](https://www.chartjs.org/), one of the most popular JavaScript charting libraries.
@@ -772,6 +784,11 @@ Based on Chart.js documentation, here are some tips:
 * Use appropriate chart types for your data
 * Add grid lines (`showYGridlines="true"`) for precise reading
 * Limit colors to 5-7 for clarity
+
+</details>
+
+<details>
+<summary>❓ Troubleshooting</summary>
 
 ## ❓ Troubleshooting
 
@@ -838,6 +855,8 @@ Based on Chart.js documentation, here are some tips:
 * ✅ Increase `chartWidth` to give more space
 * ✅ Reduce font size with `fontSize="10"`
 * ✅ Consider using `horizontalbar` type for long labels
+
+</details>
 
 ## 🤝 Contributing
 

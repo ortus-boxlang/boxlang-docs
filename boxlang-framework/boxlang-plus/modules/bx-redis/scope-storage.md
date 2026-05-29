@@ -34,7 +34,10 @@ Share session data across different applications or microservices by using the s
 
 ## ⚙️ Configuration
 
-### Step 1: Configure Redis Cache
+{% stepper %}
+
+{% step %}
+### Configure Redis Cache
 
 First, configure your Redis cache(s) as per the [Configuration](README.md#configuration) instructions. You can configure caches for session and client storage separately or use a single cache for both.
 
@@ -94,7 +97,10 @@ This is only if you have CFML applications and are using the `bx-compat-cfml` mo
 }
 ```
 
-### Step 2: Configure Session Storage
+{% endstep %}
+
+{% step %}
+### Configure Session Storage
 
 You can configure session storage in two ways: using `Application.bx` or using `boxlang.json` for runtime-level configuration.
 
@@ -130,7 +136,10 @@ See the [BoxLang Configuration Documentation](https://boxlang.ortusbooks.com/get
 "sessionCluster": true
 ```
 
-### Step 3: Configure Client Storage (Optional)
+{% endstep %}
+
+{% step %}
+### Configure Client Storage (Optional)
 
 {% hint style="warning" %}
 **Client Scope Compatibility:** The `client` scope is ONLY supported when using the `bx-compat-cfml` module for CFML application modes. This is a legacy CFML feature and is not available in native BoxLang applications.
@@ -150,7 +159,12 @@ class {
     this.clientStorage = "clients"; // Name of the Redis cache
     this.clientCluster = true;      // Enable distributed client scopes
 }
+
 ```
+
+{% endstep %}
+
+{% endstepper %}
 
 ## 🔧 Session Storage Settings
 

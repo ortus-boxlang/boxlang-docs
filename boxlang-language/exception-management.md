@@ -598,7 +598,9 @@ try {
 **Rethrow Without Catch**: You can only use `rethrow` inside a catch block or after an exception has been caught. Using it outside a catch context will result in an error.
 {% endhint %}
 
-## ☕ Java Exception Interop
+<details>
+
+<summary>☕ Java Exception Interop</summary>
 
 BoxLang provides **seamless interoperability** with Java exceptions, allowing you to catch and throw Java exceptions just like native BoxLang exceptions.
 
@@ -761,7 +763,11 @@ try {
 }
 ```
 
-## 🪆 Nested Exception Handling
+</details>
+
+<details>
+
+<summary>🪆 Nested Exception Handling</summary>
 
 BoxLang supports **nested try/catch blocks**, allowing you to handle exceptions at multiple levels with different strategies.
 
@@ -949,7 +955,11 @@ function processFiles( fileList ) {
 }
 ```
 
-## 💡 Best Practices
+</details>
+
+<details open>
+
+<summary>💡 Best Practices</summary>
 
 ### 1. Catch Specific Exceptions First
 
@@ -1164,7 +1174,11 @@ function processOrder( orderId ) {
 }
 ```
 
-## 📊 Exception Handling Patterns
+</details>
+
+<details>
+
+<summary>📊 Exception Handling Patterns</summary>
 
 ### Pattern 1: Try-Catch-Log-Rethrow
 
@@ -1234,6 +1248,8 @@ if ( errors.len() > 0 ) {
     )
 }
 ```
+
+</details>
 
 ## 🔗 Related Documentation
 

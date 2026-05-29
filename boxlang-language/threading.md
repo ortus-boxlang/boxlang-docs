@@ -438,6 +438,9 @@ thread name="worker" action="run" {
 threadInterrupt( "worker" )
 ```
 
+<details>
+<summary>🔭 Thread Scopes</summary>
+
 ## 🔭 Thread Scopes
 
 BoxLang provides three scopes for managing thread data:
@@ -647,6 +650,11 @@ thread name="demo" customAttr="passed value" {
 // ✅ Can read: application.config (shared scope)
 ```
 
+</details>
+
+<details>
+<summary>🧪 Built-In Functions (BIFs)</summary>
+
 ## 🧪 Built-In Functions (BIFs)
 
 BoxLang provides several BIFs for thread management:
@@ -775,6 +783,8 @@ threadInterrupt( "processor" )
 threadJoin( "processor", 5000 )
 ```
 
+</details>
+
 ## ☁️ Virtual Threads (Java 21+)
 
 BoxLang supports **virtual threads** (Project Loom) for lightweight, scalable concurrency.
@@ -888,6 +898,9 @@ if ( errorTest.status == "TERMINATED" && structKeyExists( errorTest, "error" ) )
 }
 ```
 
+<details open>
+<summary>✅ Best Practices</summary>
+
 ## ✅ Best Practices
 
 ### 1. Always Name Your Threads
@@ -989,6 +1002,11 @@ if ( isThreadAlive( "worker" ) ) {
 }
 ```
 
+</details>
+
+<details>
+<summary>⚠️ Common Pitfalls</summary>
+
 ## ⚠️ Common Pitfalls
 
 ### 1. ❌ Race Conditions on Shared State
@@ -1084,6 +1102,8 @@ thread name="processor" {
     thread.result = processData( hugeDataset )  // Only result shared
 }
 ```
+
+</details>
 
 ## 🔗 Next Steps: Advanced Async Programming
 

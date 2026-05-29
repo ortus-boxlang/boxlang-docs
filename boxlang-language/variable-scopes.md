@@ -873,6 +873,9 @@ function efficientScopeUsage() {
 
 ## 🖥️ Server Scope
 
+<details>
+<summary>Server Scope Details</summary>
+
 The `server` scope is a global scope that lives for the entire lifetime of the BoxLang runtime instance. It contains system information, BoxLang runtime details, and can store custom variables that need to persist across all applications and requests.  It contains the following sub-scopes:
 
 * `boxlang` - BoxLang runtime information
@@ -1070,7 +1073,12 @@ The following keys cannot be modified once the server scope is initialized:
 server.customData = "allowed"  // ✅ Custom keys are allowed
 ```
 
+</details>
+
 ## 🌐 CGI Scope
+
+<details>
+<summary>CGI Scope</summary>
 
 The `CGI` scope is a read-only scope available only in web runtimes that contains HTTP request information and server environment variables. It provides access to web server and request details following the Common Gateway Interface standard.
 
@@ -1214,7 +1222,12 @@ The CGI scope provides access to these standard variables:
 | `server_port_secure` | Secure server port |
 | `server_protocol` | HTTP protocol version |
 
-## � Form Scope
+</details>
+
+## 📝 Form Scope
+
+<details>
+<summary>Form Scope</summary>
 
 The `form` scope is a scope available only in web runtimes that contains HTTP POST data submitted from HTML forms. It automatically parses form fields from `application/x-www-form-urlencoded` and `multipart/form-data` requests.
 
@@ -1460,7 +1473,12 @@ if( structKeyExists( form, "avatar" ) ) {
 **New in 1.9.0**: Array notation automatically converts multiple values into native arrays, eliminating the need for manual `listToArray()` conversions. This works with checkboxes, multi-select dropdowns, and dynamic form fields.
 {% endhint %}
 
+</details>
+
 ## 🔗 URL Scope
+
+<details>
+<summary>URL Scope</summary>
 
 The `url` scope is a scope available only in web runtimes that contains HTTP GET parameters from the query string. It automatically parses URL parameters and makes them available as variables.
 
@@ -1787,7 +1805,9 @@ whereClause = "age BETWEEN #ageMin# AND #ageMax# AND status IN (#statusIn.toList
 **Security**: Always validate and sanitize URL parameters before using them in queries, file operations, or displaying in output. Use parameterized queries to prevent SQL injection and encode output to prevent XSS attacks.
 {% endhint %}
 
-## �🚫 Client Scope
+</details>
+
+## 🚫 Client Scope
 
 The `client` scope is not supported in core BoxLang.  This is a CFML legacy scope that is only available via our `bx-compat-cfml` module.  If you would like to use it, please install the module.
 

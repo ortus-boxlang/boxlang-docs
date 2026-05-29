@@ -580,7 +580,9 @@ while (iter.hasNext()) {
 
 [Try it online!](https://try.boxlang.io)
 
-## 🔀 Multi-Dimensional Arrays
+<details>
+
+<summary>🔀 Multi-Dimensional Arrays</summary>
 
 While BoxLang arrays are inherently one-dimensional, you can create multi-dimensional structures by nesting arrays within arrays. This approach provides flexibility for representing matrices, tables, grids, and other complex data structures.
 
@@ -855,6 +857,8 @@ function flatten( array2D ) {
 
 Multi-dimensional arrays in BoxLang provide powerful data organization capabilities while maintaining the simplicity of single-dimensional array operations.
 
+</details>
+
 ## 🛠️ Common Operations
 
 Here are some practical examples combining BIFs, member functions, and Java methods:
@@ -1102,7 +1106,9 @@ myStruct = {
 println( myStruct )
 ```
 
-## 👂 Change Listeners
+<details>
+
+<summary>👂 Change Listeners</summary>
 
 All arrays and structures offer the ability to listen to changes to themselves. This is all done via our `$bx` metadata object available on all arrays/structures. You will call the `registerChangeListener()` function to register a closure/lambda that will listen to changes on the array. You can listen:
 
@@ -1173,3 +1179,5 @@ fruits.append( "luis" )
 fruits.deleteAt( 1 )
 fruits.insertAt( 1, "hello" )
 ```
+
+</details>

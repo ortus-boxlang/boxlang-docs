@@ -159,7 +159,8 @@ BoxLang provides **four powerful callbacks** for monitoring and processing HTTP 
 | **`onComplete`** | After successful request completion | Cleanup, final logging, success notifications | `httpResult` |
 | **`onError`** | When an error occurs | Error handling, retry logic, alerting | `error`, `httpResult` |
 
-### Callback Signatures
+<details open>
+<summary>Callback Signatures</summary>
 
 #### `onRequestStart( httpResult, httpClient )`
 
@@ -316,6 +317,8 @@ function makeRequest() {
 makeRequest();
 ```
 
+</details>
+
 ### Callback Execution Order
 
 The callbacks execute in this order:
@@ -375,7 +378,8 @@ bx:http
     result="result";
 ```
 
-### Real-World Callback Patterns
+<details>
+<summary>Real-World Callback Patterns</summary>
 
 #### Pattern 1: Progress Tracking
 
@@ -494,6 +498,8 @@ http( "https://api.example.com/data" )
 7. **Use request IDs** - Generate IDs in `onRequestStart` for correlation across callbacks
 8. **Implement timeouts** - Don't rely solely on callbacks for timeout handling
 {% endhint %}
+
+</details>
 
 ---
 
@@ -974,7 +980,8 @@ bx:http
     result="result";
 ```
 
-## 🔐 Client Certificates
+<details>
+<summary>Client Certificates</summary>
 
 BoxLang supports mutual TLS authentication using client certificates. This allows your application to authenticate to servers that require client-side SSL/TLS certificates, commonly used in enterprise environments and B2B integrations.
 
@@ -1115,6 +1122,8 @@ try {
 | "Certificate format not supported" | Ensure certificate is in PKCS#12 (.p12/.pfx) format |
 | "SSL handshake failed" | Verify server trusts your certificate's CA |
 
+</details>
+
 ## 📦 Binary Responses
 
 Control how binary content is handled:
@@ -1135,7 +1144,8 @@ bx:http url="https://example.com/might-be-binary" getAsBinary="never" result="re
 // Throws error if response is binary
 ```
 
-## 🎯 Advanced Examples
+<details>
+<summary>Advanced Examples</summary>
 
 ### 🔹 RESTful API CRUD Operations
 
@@ -1215,9 +1225,12 @@ bx:http url="https://api.example.com/data" result="result" {
 }
 ```
 
+</details>
+
 ---
 
-## 🚀 The `http()` BIF - Fluent API Reference
+<details>
+<summary>The `http()` BIF - Fluent API Reference</summary>
 
 **New in BoxLang 1.8.0** - The `http()` BIF provides a modern, fluent API for building and executing HTTP requests programmatically.
 
@@ -1494,9 +1507,12 @@ if ( result.statusCode >= 400 ) {
 }
 ```
 
+</details>
+
 ---
 
-## 📡 Server-Sent Events (SSE) Consumption
+<details>
+<summary>Server-Sent Events (SSE) Consumption</summary>
 
 **New in BoxLang 1.8.0** - Both the `http()` BIF and `bx:http` component support consuming Server-Sent Events (SSE) streams from remote servers.
 
@@ -1700,6 +1716,8 @@ The `onChunk` callback for SSE receives:
 - Memory usage grows with accumulated data - process and discard chunks promptly
 {% endhint %}
 
+</details>
+
 ---
 
 ## 🎪 Interceptor Events
@@ -1739,7 +1757,8 @@ component {
 }
 ```
 
-## 🔍 Troubleshooting
+<details>
+<summary>Troubleshooting</summary>
 
 ### Common Issues
 
@@ -1781,6 +1800,8 @@ bx:http url="https://api.com/search" result="result" {
 }
 // Results in: ?query=hello+%26+goodbye
 ```
+
+</details>
 
 ## 🎓 Best Practices
 

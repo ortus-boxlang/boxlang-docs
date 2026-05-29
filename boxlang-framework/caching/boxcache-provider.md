@@ -646,6 +646,9 @@ class {
 }
 ```
 
+<details>
+<summary>Practical Usage Patterns</summary>
+
 ## Practical Usage Patterns
 
 #### User Session Management
@@ -784,6 +787,11 @@ class {
 }
 ```
 
+</details>
+
+<details>
+<summary>Performance Optimization</summary>
+
 ## Performance Optimization
 
 #### Efficient Key Design
@@ -881,6 +889,11 @@ function monitorCacheMemory() {
 }
 ```
 
+</details>
+
+<details>
+<summary>Error Handling and Resilience</summary>
+
 ## Error Handling and Resilience
 
 #### Graceful Degradation
@@ -962,6 +975,11 @@ function checkCacheHealth() {
 }
 ```
 
+</details>
+
+<details open>
+<summary>Best Practices</summary>
+
 ## Best Practices
 
 #### 1. Key Naming Conventions
@@ -1031,6 +1049,8 @@ function warmCriticalCaches() {
     }
 }
 ```
+
+</details>
 
 ## Conclusion
 

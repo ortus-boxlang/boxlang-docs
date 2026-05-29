@@ -95,7 +95,10 @@ The following configuration items are supported and can be configured in the `mo
 
 ### Quick Start
 
-#### 1. Create a REST-Enabled Component
+{% stepper %}
+
+{% step %}
+### Create a REST-Enabled Component
 
 ```java
 // HelloService.bx
@@ -113,7 +116,10 @@ component rest="true" restPath="hello" {
 }
 ```
 
-#### 2. Register Your REST Application
+{% endstep %}
+
+{% step %}
+### Register Your REST Application
 
 In your `Application.cfc`:
 
@@ -131,12 +137,19 @@ component {
 }
 ```
 
-#### 3. Access Your REST Endpoints
+{% endstep %}
+
+{% step %}
+### Access Your REST Endpoints
 
 ```
 GET  /rest/api/hello
 GET  /rest/api/hello/John
 ```
+
+{% endstep %}
+
+{% endstepper %}
 
 ### Built-in Functions (BIFs)
 

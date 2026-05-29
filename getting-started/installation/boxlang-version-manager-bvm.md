@@ -711,7 +711,10 @@ After running `bvm uninstall`, you may need to manually:
 
 If you currently have BoxLang installed via `install-boxlang.sh` and want to switch to BVM for version management:
 
-### 1. Uninstall Current BoxLang (Recommended)
+{% stepper %}
+
+{% step %}
+### Uninstall Current BoxLang (Recommended)
 
 ```bash
 # Remove system-wide installation
@@ -721,13 +724,19 @@ sudo install-boxlang.sh --uninstall
 install-boxlang.sh --uninstall
 ```
 
-### 2. Install BVM
+{% endstep %}
+
+{% step %}
+### Install BVM
 
 ```bash
 curl -fsSL https://install-bvm.boxlang.io | bash
 ```
 
-### 3. Install Your Preferred BoxLang Version
+{% endstep %}
+
+{% step %}
+### Install Your Preferred BoxLang Version
 
 ```bash
 # Install the same version you had before
@@ -735,7 +744,10 @@ bvm install latest  # or specific version like 1.2.0
 bvm use latest
 ```
 
-### 4. Verify Everything Works
+{% endstep %}
+
+{% step %}
+### Verify Everything Works
 
 ```bash
 bvm doctor
@@ -743,6 +755,9 @@ boxlang --version
 ```
 
 **Note:** Your BoxLang home directory (`~/.boxlang`) with modules, settings, and data will be preserved during migration.
+
+{% endstep %}
+{% endstepper %}
 
 ````
 

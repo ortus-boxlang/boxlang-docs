@@ -810,6 +810,9 @@ describe( "Expectations Examples", () => {
 
 #### **Advanced Expectation Patterns**
 
+<details>
+<summary>Advanced Expectation Patterns</summary>
+
 ```cfscript
 describe( "Advanced Expectations", () => {
 
@@ -875,6 +878,8 @@ describe( "Advanced Expectations", () => {
     } )
 } )
 ```
+
+</details>
 
 ### Mocking and Stubbing
 
@@ -1001,6 +1006,9 @@ describe( "Payment Processing with Stubs", () => {
 
 #### **Advanced Mocking Patterns**
 
+<details>
+<summary>Advanced Mocking Patterns</summary>
+
 ```cfscript
 describe( "Advanced Mocking Scenarios", () => {
 
@@ -1078,6 +1086,8 @@ describe( "Advanced Mocking Scenarios", () => {
 } )
 ```
 
+</details>
+
 #### **Spy Pattern for Existing Objects**
 
 ```cfscript
@@ -1138,6 +1148,9 @@ The fastest way to run tests is with the BoxLang CLI runner:
 
 #### **Advanced CLI Options**
 
+<details>
+<summary>Advanced CLI Options</summary>
+
 ```bash
 # Fail fast - stop on first failure
 ./testbox/run --eager-failure=true
@@ -1157,6 +1170,8 @@ The fastest way to run tests is with the BoxLang CLI runner:
 # Pass options to test runner
 ./testbox/run --runner-timeout=30 --runner-debug=true
 ```
+
+</details>
 
 #### **Web Runner**
 
@@ -1254,6 +1269,9 @@ jobs:
 ```
 
 ### Best Practices
+
+<details open>
+<summary>Best Practices</summary>
 
 #### **Test Organization**
 
@@ -1489,6 +1507,8 @@ describe( "Shopping Cart Business Rules", () => {
     } )
 } )
 ```
+
+</details>
 
 ### Conclusion
 

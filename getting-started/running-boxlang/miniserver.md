@@ -268,6 +268,9 @@ These are advanced tuning options. In most cases the defaults are appropriate. O
 
 ### Example Configuration Files
 
+<details>
+<summary>Example Configuration Files</summary>
+
 #### Basic Configuration
 
 ```json
@@ -344,6 +347,8 @@ These are advanced tuning options. In most cases the defaults are appropriate. O
   }
 }
 ```
+
+</details>
 
 ### Configuration Priority
 
@@ -745,6 +750,9 @@ If a warmup URL fails, the error is logged, but server startup continues:
 
 ## 🔌 WebSocket Support
 
+<details>
+<summary>WebSocket Support / SocketBox</summary>
+
 The BoxLang MiniServer includes built-in WebSocket support for real-time communication:
 
 ### WebSocket Endpoint
@@ -847,6 +855,8 @@ The WebSocket server is automatically started when the MiniServer launches, as i
 **WebSocket Note:** The WebSocket endpoint is always enabled and cannot be disabled. This provides a consistent real-time communication channel for all BoxLang applications. For production applications, consider using SocketBox for enhanced features and easier development.
 {% endhint %}
 
+</details>
+
 ## 🏠 Default Welcome Files
 
 The BoxLang MiniServer automatically serves welcome files when a request is made to a directory. The server looks for these files in the following order:
@@ -886,6 +896,9 @@ webroot/
 {% endhint %}
 
 ## 🔀 URL Rewrites
+
+<details>
+<summary>URL Rewrites</summary>
 
 The BoxLang MiniServer supports URL rewrites for creating clean, SEO-friendly URLs and building single-page applications (SPAs):
 
@@ -958,6 +971,8 @@ When rewrites are enabled, you'll see:
 {% hint style="info" %}
 **Rewrite Note:** URL rewrites work best for dynamic applications and frameworks. Static websites typically don't need URL rewriting enabled.
 {% endhint %}
+
+</details>
 
 ## 🗂️ Folder Aliases
 
@@ -1061,6 +1076,9 @@ boxlang-miniserver
 
 ## ⚡ Performance Features
 
+<details>
+<summary>Performance Features</summary>
+
 The BoxLang MiniServer includes several built-in performance optimizations:
 
 ### Automatic GZIP Compression
@@ -1139,7 +1157,12 @@ The runtime source code can be found here: [https://github.com/ortus-boxlang/box
 
 We welcome any pull requests, testing, docs, etc.
 
+</details>
+
 ## 🌐 Reverse Proxy Setup
+
+<details>
+<summary>Reverse Proxy Setup</summary>
 
 For production deployments, it's recommended to place a reverse proxy in front of the BoxLang MiniServer. This provides additional security, SSL termination, load balancing, and better static file serving capabilities.
 
@@ -1464,9 +1487,17 @@ Internet Information Services (IIS) configuration using Application Request Rout
 </configuration>
 ```
 
+</details>
+
 ### 🚀 Production Setup Recommendations
 
-#### 1. Configure MiniServer for Production
+<details open>
+<summary>Production Setup Recommendations</summary>
+
+{% stepper %}
+
+{% step %}
+#### Configure MiniServer for Production
 
 ```bash
 # Bind to localhost only (behind reverse proxy)
@@ -1480,7 +1511,10 @@ export BOXLANG_HEALTH_CHECK_SECURE=true
 boxlang-miniserver
 ```
 
-#### 2. System Service Setup
+{% endstep %}
+
+{% step %}
+#### System Service Setup
 
 Create a systemd service for automatic startup:
 
@@ -1514,7 +1548,10 @@ sudo systemctl start boxlang-miniserver
 sudo systemctl status boxlang-miniserver
 ```
 
-#### 3. Security Considerations
+{% endstep %}
+
+{% step %}
+#### Security Considerations
 
 * **Bind to localhost only** when behind a reverse proxy
 * **Enable health check security** to restrict detailed information
@@ -1523,12 +1560,18 @@ sudo systemctl status boxlang-miniserver
 * **Restrict health check endpoints** to internal networks if needed
 * **Regular security updates** for your reverse proxy software
 
-#### 4. Monitoring and Logging
+{% endstep %}
+
+{% step %}
+#### Monitoring and Logging
 
 * **Access logs** at the reverse proxy level
 * **Health check monitoring** using `/health/ready` and `/health/live`
 * **Performance monitoring** through reverse proxy metrics
 * **Log aggregation** for centralized monitoring
+
+{% endstep %}
+{% endstepper %}
 
 {% hint style="success" %}
 **Production Tip:** Using a reverse proxy provides additional benefits like SSL termination, static file serving, request compression, security headers, and load balancing capabilities that complement the BoxLang MiniServer's performance.
@@ -1537,3 +1580,5 @@ sudo systemctl status boxlang-miniserver
 {% hint style="info" %}
 **WebSocket Note:** All reverse proxy configurations include WebSocket support. Make sure your reverse proxy properly handles WebSocket upgrade requests for real-time features to work correctly.
 {% endhint %}
+
+</details>

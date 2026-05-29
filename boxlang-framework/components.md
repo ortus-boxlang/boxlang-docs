@@ -590,7 +590,9 @@ Manages component execution and content:
 </bx:if>
 ```
 
-## Associating Subtag Data with Base Tags
+<details>
+
+<summary>Associating Subtag Data with Base Tags</summary>
 
 BoxLang provides the `bx:associate` component to create relationships between child components and their parent components. This powerful feature allows you to build hierarchical component structures where child components can pass data up to their parent components.
 
@@ -980,7 +982,11 @@ You can have multiple levels of association for complex hierarchies.
 
 This association pattern enables powerful component composition where child components contribute data to their parents, creating flexible and reusable component hierarchies.
 
-## Advanced Component Patterns
+</details>
+
+<details>
+
+<summary>Advanced Component Patterns</summary>
 
 ### Component Composition
 
@@ -1042,7 +1048,11 @@ Components can call other components for powerful composition:
 </bx:switch>
 ```
 
-## Best Practices
+</details>
+
+<details open>
+
+<summary>Best Practices</summary>
 
 ### 1. Always Use `bx:param` for Attribute Validation
 
@@ -1144,7 +1154,11 @@ bx:param name="attributes.data" type="array" required="true";
 // variables.data = caller.variables.someData;
 ```
 
-## Migration from CFML Custom Tags
+</details>
+
+<details>
+
+<summary>Migration from CFML Custom Tags</summary>
 
 BoxLang components provide enhanced functionality over CFML custom tags:
 
@@ -1164,3 +1178,5 @@ BoxLang components provide enhanced functionality over CFML custom tags:
 * Enhanced parameter validation with `bx:param`
 * Improved discovery system with multiple lookup paths
 * Better error handling and debugging support
+
+</details>

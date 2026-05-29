@@ -581,6 +581,9 @@ Not all cache providers support distributed locking. Ensure your cache provider 
 
 ## 🔄 Double-Check Locking Pattern
 
+<details>
+<summary>Double-Check Locking Pattern</summary>
+
 The **double-check locking** pattern prevents race conditions where multiple threads check a condition, then compete to initialize a resource.
 
 ### The Problem: Race Condition
@@ -728,7 +731,12 @@ function onApplicationStart() {
 **Best Practice**: Always use double-check locking when initializing expensive resources that multiple threads might try to create simultaneously!
 {% endhint %}
 
+</details>
+
 ## ⚠️ Deadlock Prevention
+
+<details>
+<summary>Deadlock Prevention</summary>
 
 A **deadlock** occurs when threads are waiting for locks held by each other, creating a cycle that cannot be broken.
 
@@ -870,7 +878,12 @@ try {
 **Critical**: BoxLang uses Java's `ReentrantReadWriteLock` internally, which **automatically releases locks** on timeout or thread termination, preventing infinite deadlocks. However, large timeouts can still block threads and reduce throughput!
 {% endhint %}
 
+</details>
+
 ## ☕ Advanced: Java Interop Locking
+
+<details>
+<summary>Advanced: Java Interop Locking</summary>
 
 BoxLang's full Java interop allows you to use **native Java synchronization** mechanisms directly for advanced locking scenarios.
 
@@ -1136,7 +1149,12 @@ component {
 }
 ```
 
+</details>
+
 ## 💡 Best Practices
+
+<details>
+<summary>Best Practices</summary>
 
 ### 1. Use Minimum Timeouts
 
@@ -1281,6 +1299,8 @@ limiter = new java:java.util.concurrent.Semaphore( 100 )
 // ❌ For basic locking, use BoxLang lock component
 lock name="simple" timeout=10 { }
 ```
+
+</details>
 
 ## 📋 Summary
 

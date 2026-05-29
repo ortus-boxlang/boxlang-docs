@@ -349,6 +349,9 @@ class {
 ```
 {% endcode %}
 
+<details>
+<summary>⚙️ Configuration Settings</summary>
+
 ## ⚙️ Configuration Settings
 
 All configuration settings are defined in the pseudo-constructor using the `this` scope. Here's a comprehensive reference of available settings:
@@ -562,7 +565,10 @@ See [security configuration](../getting-started/configuration/security/) for ful
 Please note that **ANY** module can also listen to the Application.bx and be able to provide their own settings and configurations.  Examples of these are the `bx-mail, bx-orm` and other modules.  So make sure you validate those setttings with the appropriate module.
 {% endhint %}
 
+</details>
 
+<details>
+<summary>🔄 Lifecycle Events</summary>
 
 ## 🔄 Lifecycle Events
 
@@ -801,6 +807,11 @@ function onClassRequest( className, method, struct args ) {
 **Framework Integration**: The [ColdBox HMVC Framework](https://www.coldbox.org) leverages these lifecycle methods to provide a rich event-driven architecture. Create a ColdBox app: `coldbox create app MyApp`
 {% endhint %}
 
+</details>
+
+<details>
+<summary>🏗️ Virtual Applications - A Critical Feature</summary>
+
 ## 🏗️ Virtual Applications - A Critical Feature
 
 One of BoxLang's most powerful capabilities is the ability to create **multiple virtual applications** within a single JVM process. Each application is a **memory space reservation** with isolated scopes and settings.
@@ -980,6 +991,8 @@ cacheRemoveAll( cacheName = "template" );
 {% hint style="success" %}
 **Best Practice**: Use descriptive, unique application names. Avoid dynamic names unless you understand the implications for memory management.
 {% endhint %}
+
+</details>
 
 ## 📚 Additional Resources
 
