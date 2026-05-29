@@ -4,37 +4,56 @@
     "boxlang-core-dev-async-tasks": {
       "source": "ortus-boxlang/skills",
       "sourceType": "github",
+      "skillPath": "boxlang-core-development/async-tasks/SKILL.md",
       "computedHash": "9d03964b731d646a2f8edd7138d7c9119d6794e55ccd5568a0301dd3b4f24719"
     },
     "boxlang-core-dev-bif-development": {
       "source": "ortus-boxlang/skills",
       "sourceType": "github",
+      "skillPath": "boxlang-core-development/bif-development/SKILL.md",
       "computedHash": "3f556aa99230914e3094c5dfa1d68b57ea18ec0fce21b1c4b094b98bc321dd57"
     },
     "boxlang-core-dev-component-development": {
       "source": "ortus-boxlang/skills",
       "sourceType": "github",
+      "skillPath": "boxlang-core-development/component-development/SKILL.md",
       "computedHash": "847787c789a383960218ba55c70e798056939e64c5d8a60223480c8a546ce51c"
     },
     "boxlang-core-dev-interceptors": {
       "source": "ortus-boxlang/skills",
       "sourceType": "github",
+      "skillPath": "boxlang-core-development/interceptors/SKILL.md",
       "computedHash": "7ca2cdabcfe81fff96662bd34935cabb8b67b7e9adc7e13a723576df2740846c"
     },
     "boxlang-core-dev-logging": {
       "source": "ortus-boxlang/skills",
       "sourceType": "github",
+      "skillPath": "boxlang-core-development/logging/SKILL.md",
       "computedHash": "9cc2cc625f5c88a184f9d91bb96fc5d9b290e486e368ef30a2f9f212b53dee47"
     },
     "boxlang-core-dev-module-development": {
       "source": "ortus-boxlang/skills",
       "sourceType": "github",
+      "skillPath": "boxlang-core-development/module-development/SKILL.md",
       "computedHash": "9306f832c820b6f7fc7b077af2941c90e828822baf28ba7c164dd97e853a3db7"
     },
     "boxlang-core-dev-runtime-architecture": {
       "source": "ortus-boxlang/skills",
       "sourceType": "github",
+      "skillPath": "boxlang-core-development/runtime-architecture/SKILL.md",
       "computedHash": "ab17b6e1b2559fe5abda5e01b2811f1d883b72caa0883ce32bd7d90c6944fd8e"
+    },
+    "code-documenter": {
+      "source": "ortus-solutions/skills",
+      "sourceType": "github",
+      "skillPath": "code-documenter/SKILL.md",
+      "computedHash": "de7138ac479b9ed08b420fad5d849e8a40557b7bed76df92e6d3fe3c999fbc15"
+    },
+    "gitbook-docs-expert": {
+      "source": "ortus-solutions/skills",
+      "sourceType": "github",
+      "skillPath": "gitbook-docs-expert/SKILL.md",
+      "computedHash": "0d24d67da01cb1a55958e227e56f78a5e00b85892386d59e3f5234ba729a5c73"
     }
   }
 }
