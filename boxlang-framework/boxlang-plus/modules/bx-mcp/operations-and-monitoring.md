@@ -225,7 +225,67 @@ Returns worker pool metrics (core, max, busy, queue depth), IO pool, listener co
 
 ---
 
-## 📋 Daily Health Check Script
+## �️ Route Metrics
+
+The `routeMetrics` setting enables per-route request metrics — count, error rate, and latency histograms (p50/p95/p99) — captured by the `RouteMetricsCollector` interceptor. Routes are identified as `METHOD /normalized-path`.
+
+### Enable Route Metrics
+
+```json
+{
+  "modules": {
+    "bxmcp": {
+      "settings": {
+        "routeMetrics": {
+          "enabled": true,
+          "maxRoutes": 200,
+          "normalizePathParams": true
+        }
+      }
+    }
+  }
+}
+```
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| `enabled` | `true` | Enable per-route inbound request metrics |
+| `maxRoutes` | `200` | Maximum unique routes tracked; least-recently-seen evicted |
+| `normalizePathParams` | `true` | Replace digit-only and UUID segments with `{id}` (e.g., `/users/123` → `/users/{id}`) |
+
+### Query Route Metrics
+
+```bash
+# List all tracked routes with their metrics
+curl -s http://localhost:8080/~bxmcp/boxlang.bxm \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your-token" \
+  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"routes_get_all","arguments":{}},"id":"1"}'
+
+# Get names of all tracked routes (lightweight listing)
+curl -s http://localhost:8080/~bxmcp/boxlang.bxm \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your-token" \
+  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"routes_get_names","arguments":{}},"id":"2"}'
+
+# Get detailed stats for a specific route
+curl -s http://localhost:8080/~bxmcp/boxlang.bxm \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your-token" \
+  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"routes_get_stats","arguments":{"route":"GET /api/users/{id}"}},"id":"3"}'
+
+# Clear all route metrics (resets counters and histograms)
+curl -s http://localhost:8080/~bxmcp/boxlang.bxm \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer your-token" \
+  -d '{"jsonrpc":"2.0","method":"tools/call","params":{"name":"routes_clear","arguments":{}},"id":"4"}'
+```
+
+Route normalization prevents metric table explosion on REST APIs — `/users/123/orders/abc-123` becomes `/users/{id}/orders/{id}`.
+
+---
+
+## �📋 Daily Health Check Script
 
 Here's a BoxLang script that performs a comprehensive daily health check:
 
