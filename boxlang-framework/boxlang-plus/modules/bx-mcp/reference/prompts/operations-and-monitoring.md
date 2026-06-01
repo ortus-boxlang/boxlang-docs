@@ -1,5 +1,5 @@
 ---
-icon: heartbeat
+icon: heart-pulse
 description: Pre-built prompts for runtime health checks, system audits, performance troubleshooting, and deployment validation.
 ---
 

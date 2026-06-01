@@ -1,6 +1,6 @@
 ---
 description: Configure VS Code, Claude Desktop, Cursor, and other MCP clients to connect to your BoxLang MCP server.
-icon: monitor
+icon: display
 ---
 
 # 💻 Client Configuration

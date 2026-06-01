@@ -1,6 +1,6 @@
 ---
 description: Monitor your BoxLang runtime with health checks, performance snapshots, JVM diagnostics, and scheduler oversight.
-icon: heartbeat
+icon: heart-pulse
 ---
 
 # ⚡ Operations & Monitoring
