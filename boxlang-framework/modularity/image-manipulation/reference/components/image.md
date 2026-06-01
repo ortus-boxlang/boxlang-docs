@@ -1,11 +1,11 @@
 # Image
 
-The `<bx:Image>` component provides tag-based image manipulation in BoxLang.
+The `<bx:image>` component provides tag-based image manipulation in BoxLang.
 
 ## Syntax
 
 ```boxlang
-<bx:Image action="read" source="images/photo.png" name="myImage" />
+<bx:image action="read" source="images/photo.png" name="myImage" />
 ```
 
 ## Attributes
@@ -44,9 +44,9 @@ The `Image` component provides a flexible, tag-based interface for image process
 Loads an image from a file, URL, or base64 string and assigns it to a variable.
 
 ```boxlang
-<bx:Image action="read" source="images/photo.png" name="myImage" />
-<bx:Image action="read" source="https://example.com/image.jpg" name="remoteImage" />
-<bx:Image action="read" source="#base64String#" isBase64="true" name="decodedImage" />
+<bx:image action="read" source="images/photo.png" name="myImage" />
+<bx:image action="read" source="https://example.com/image.jpg" name="remoteImage" />
+<bx:image action="read" source="#base64String#" isBase64="true" name="decodedImage" />
 ```
 
 **Required Attributes:** `source`, `name`
@@ -56,8 +56,8 @@ Loads an image from a file, URL, or base64 string and assigns it to a variable.
 Resizes an image to the specified dimensions.
 
 ```boxlang
-<bx:Image action="resize" source="#myImage#" width="400" height="300" />
-<bx:Image action="resize" source="#myImage#" width="800" height="600" interpolation="bicubic" />
+<bx:image action="resize" source="#myImage#" width="400" height="300" />
+<bx:image action="resize" source="#myImage#" width="800" height="600" interpolation="bicubic" />
 ```
 
 **Required Attributes:** `source`, `width`, `height`
@@ -68,8 +68,8 @@ Resizes an image to the specified dimensions.
 Rotates an image by the specified angle (in degrees).
 
 ```boxlang
-<bx:Image action="rotate" source="#myImage#" angle="45" />
-<bx:Image action="rotate" source="#myImage#" angle="90" destination="rotated.jpg" />
+<bx:image action="rotate" source="#myImage#" angle="45" />
+<bx:image action="rotate" source="#myImage#" angle="90" destination="rotated.jpg" />
 ```
 
 **Required Attributes:** `source`, `angle`
@@ -80,8 +80,8 @@ Rotates an image by the specified angle (in degrees).
 Adds a solid border around the image.
 
 ```boxlang
-<bx:Image action="border" source="#myImage#" color="black" thickness="5" />
-<bx:Image action="border" source="#myImage#" color="#FF0000" thickness="10" />
+<bx:image action="border" source="#myImage#" color="black" thickness="5" />
+<bx:image action="border" source="#myImage#" color="#FF0000" thickness="10" />
 ```
 
 **Required Attributes:** `source`, `color`, `thickness`
@@ -91,8 +91,8 @@ Adds a solid border around the image.
 Writes the image to a file on disk.
 
 ```boxlang
-<bx:Image action="write" source="#myImage#" destination="output/photo.jpg" />
-<bx:Image action="write" source="#myImage#" destination="output/photo.jpg" overwrite="true" />
+<bx:image action="write" source="#myImage#" destination="output/photo.jpg" />
+<bx:image action="write" source="#myImage#" destination="output/photo.jpg" overwrite="true" />
 ```
 
 **Required Attributes:** `source`, `destination`
@@ -103,7 +103,7 @@ Writes the image to a file on disk.
 Extracts metadata and information about the image (dimensions, color model, EXIF data, etc.).
 
 ```boxlang
-<bx:Image action="info" source="#myImage#" structName="imageInfo" />
+<bx:image action="info" source="#myImage#" structName="imageInfo" />
 <cfoutput>Width: #imageInfo.width#, Height: #imageInfo.height#</cfoutput>
 ```
 
@@ -111,62 +111,72 @@ Extracts metadata and information about the image (dimensions, color model, EXIF
 
 ### convert
 
-Converts the image to a different format.
+Converts the image to a different format. The format is auto-detected from the destination file extension.
 
 ```boxlang
-<bx:Image action="convert" source="#myImage#" destination="output/photo.png" format="png" />
+<bx:image action="convert" source="#myImage#" destination="output/photo.png" format="png" />
+<bx:image action="convert" source="#myImage#" destination="output/photo.webp" />
+<bx:image action="convert" source="#myImage#" destination="output/photo.gif" />
 ```
 
-**Required Attributes:** `source`, `destination`, `format`
+**Required Attributes:** `source`, `destination`
+**Optional Attributes:** `format` (auto-detected from extension if omitted)
 
 ### captcha
 
-Generates a CAPTCHA image with the specified text.
+Generates a CAPTCHA image with the specified text. When neither `name` nor `destination` is specified, the image is automatically streamed to the browser.
 
 ```boxlang
-<bx:Image action="captcha" text="ABC123" difficulty="high" fontSize="24" name="captchaImage" />
+<bx:image action="captcha" text="ABC123" difficulty="high" fontSize="24" name="captchaImage" />
+<bx:image action="captcha" text="ABC123" width="250" height="80" name="captchaImage" />
+<bx:image action="captcha" text="ABC123" destination="/path/to/captcha.png" overwrite="true" />
+
+<!-- Auto-streams to browser (no name or destination) -->
+<bx:image action="captcha" text="ABC123" difficulty="medium" />
 ```
 
-**Required Attributes:** `text`, `name`
-**Optional Attributes:** `difficulty`, `fontSize`, `fonts`
+**Required Attributes:** `text`
+**Optional Attributes:** `name`, `destination`, `width`, `height`, `fontSize`, `difficulty` ("low"/"medium"/"high"), `fonts`, `overwrite`
 
 ### writeToBrowser
 
 Streams the image directly to the browser response. Returns an `<img>` tag with the image URL or inline data.
 
 ```boxlang
-<bx:Image action="writeToBrowser" source="#myImage#" />
-<bx:Image action="writeToBrowser" source="#myImage#" writeType="base64" alt="My Image" />
-<bx:Image action="writeToBrowser" source="#myImage#" writeType="url" width="400" height="300" />
+<bx:image action="writeToBrowser" source="#myImage#" />
+<bx:image action="writeToBrowser" source="#myImage#" format="webp" />
+<bx:image action="writeToBrowser" source="#myImage#" format="jpg" quality="0.8" />
+<bx:image action="writeToBrowser" source="#myImage#" writeType="base64" alt="My Image" />
+<bx:image action="writeToBrowser" source="#myImage#" writeType="url" width="400" height="300" />
 ```
 
 **Required Attributes:** `source`
-**Optional Attributes:** `writeType` ("url" or "base64"), plus any HTML img attributes (alt, class, style, etc.)
+**Optional Attributes:** `format` (output format: "png", "jpg", "webp", "gif"), `quality` (0.0–1.0 for lossy formats), `writeType` ("url" or "base64"), plus any HTML img attributes (alt, class, style, etc.)
 
 ## Complete Example
 
 ```boxlang
 <!-- Read an image -->
-<bx:Image action="read" source="images/photo.jpg" name="myImage" />
+<bx:image action="read" source="images/photo.jpg" name="myImage" />
 
 <!-- Resize it -->
-<bx:Image action="resize" source="#myImage#" width="800" height="600" interpolation="bicubic" />
+<bx:image action="resize" source="#myImage#" width="800" height="600" interpolation="bicubic" />
 
 <!-- Add a border -->
-<bx:Image action="border" source="#myImage#" color="navy" thickness="5" />
+<bx:image action="border" source="#myImage#" color="navy" thickness="5" />
 
 <!-- Write to disk -->
-<bx:Image action="write" source="#myImage#" destination="output/photo-processed.jpg" overwrite="true" />
+<bx:image action="write" source="#myImage#" destination="output/photo-processed.jpg" overwrite="true" />
 
 <!-- Get image information -->
-<bx:Image action="info" source="#myImage#" structName="imgInfo" />
+<bx:image action="info" source="#myImage#" structName="imgInfo" />
 <cfoutput>
     <p>Dimensions: #imgInfo.width# x #imgInfo.height#</p>
     <p>Color Model: #imgInfo.colormodel.colormodel_type#</p>
 </cfoutput>
 
 <!-- Display in browser -->
-<bx:Image action="writeToBrowser" source="#myImage#" alt="Processed Photo" class="img-responsive" />
+<bx:image action="writeToBrowser" source="#myImage#" alt="Processed Photo" class="img-responsive" />
 ```
 
 ## Related Functions

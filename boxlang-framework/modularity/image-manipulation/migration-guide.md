@@ -91,6 +91,8 @@ These functions work **identically** in CF, Lucee, and BoxLang:
 | `ImageNegative()`  | ✅  | ✅     | ✅       | No changes |
 | `ImagePaste()`     | ✅  | ✅     | ✅       | No changes |
 | `ImageCopy()`      | ✅  | ✅     | ✅       | No changes |
+| `ImageSplitGrid()` | ✅  | ✅     | ✅       | No changes |
+| `ImageGenerateCaptcha()` | ✅ | ✅  | ✅       | No changes |
 | `ImageGetWidth()`  | ✅  | ✅     | ✅       | No changes |
 | `ImageGetHeight()` | ✅  | ✅     | ✅       | No changes |
 | `ImageInfo()`      | ✅  | ✅     | ✅       | No changes |

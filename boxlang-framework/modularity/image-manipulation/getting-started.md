@@ -134,11 +134,11 @@ if (IsImageFile("photo.jpg")) {
 ```js
 // Get list of readable formats
 readableFormats = GetReadableImageFormats();
-// Returns: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WBMP"]
+// Returns: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WEBP", "WBMP"]
 
 // Get list of writable formats
 writeableFormats = GetWriteableImageFormats();
-// Returns: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WBMP"]
+// Returns: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WEBP"]
 ```
 
 ## Method Chaining
@@ -202,6 +202,12 @@ ImageWrite(img, "output/processed.jpg");
 
 // Or using member function
 img.write("output/processed.jpg");
+
+// Output format is auto-detected from file extension
+img.write("output/photo.webp");   // → WebP
+img.write("output/photo.gif");    // → GIF
+img.write("output/photo.bmp");    // → BMP
+img.write("output/photo.tiff");   // → TIFF
 ```
 
 ### Convert to Base64
@@ -209,7 +215,8 @@ img.write("output/processed.jpg");
 ```js
 // Get Base64 encoded string
 img = ImageNew("photo.jpg");
-base64String = ImageWriteBase64(img);
+base64String = ImageWriteBase64(img);         // Uses source format
+base64String = ImageWriteBase64(img, "webp"); // Explicit format
 
 // Use in HTML
 html = "<img src='data:image/png;base64,#base64String#' />";

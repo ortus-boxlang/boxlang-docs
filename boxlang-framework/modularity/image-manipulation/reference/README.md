@@ -21,20 +21,22 @@ Here's how common BIF patterns translate to the modern Fluent API:
 
 | BIF Approach | Fluent API Equivalent |
 |--------------|----------------------|
-| `ImageNew("photo.jpg")` | `Image("photo.jpg")` or `ImageNew("photo.jpg")` |
+| `ImageNew("photo.jpg")` | `ImageNew("photo.jpg")` |
 | `ImageResize(img, 800, 600)` | `img.resize(800, 600)` |
 | `ImageScaleToFit(img, 400)` | `img.scaleToFit(400)` |
 | `ImageCrop(img, 10, 10, 200, 200)` | `img.crop(10, 10, 200, 200)` |
 | `ImageRotate(img, 90)` | `img.rotate(90)` |
-| `ImageFlip(img, "horizontal")` | `img.flipHorizontal()` |
+| `ImageFlip(img, "horizontal")` | `img.flip("horizontal")` |
+| `ImageSplitGrid(img, 4, 3)` | `img.splitGrid(4, 3)` |
 | `ImageAddBorder(img, 5, "black")` | `img.addBorder(5, "black")` |
 | `ImageSetDrawingColor(img, "red")` | `img.setDrawingColor("red")` |
 | `ImageDrawText(img, "Hello", 10, 50)` | `img.drawText("Hello", 10, 50)` |
 | `ImageBlur(img, 3)` | `img.blur(3)` |
 | `ImageSharpen(img, 0.5)` | `img.sharpen(0.5)` |
-| `ImageGrayscale(img)` | `img.grayscale()` |
+| `ImageGrayScale(img)` | `img.grayScale()` |
 | `ImageNegative(img)` | `img.negative()` |
 | `ImageWrite(img, "output.jpg")` | `img.write("output.jpg")` |
+| `ImageWriteBase64(img)` | `img.toBase64String()` |
 | `ImageGetWidth(img)` | `img.getWidth()` |
 | `ImageGetHeight(img)` | `img.getHeight()` |
 
@@ -79,16 +81,15 @@ Image("photo.jpg")
 - `scaleToFit()` - Scale proportionally to fit within bounds
 - `crop()` - Extract a rectangular region
 - `rotate()` - Rotate by angle
-- `flipHorizontal()` - Flip horizontally
-- `flipVertical()` - Flip vertically
-- `transpose()` - Transpose (swap X/Y axes)
+- `flip()` / `transpose()` - Flip horizontally/vertically/diagonally, or rotate in 90° increments
 - `shear()` - Apply shear transformation
+- `splitGrid()` - Split image into a grid of tiles
 
 ### 🎨 Effects & Filters
 
 - `blur()` - Apply blur effect
 - `sharpen()` - Sharpen the image
-- `grayscale()` - Convert to grayscale
+- `grayScale()` - Convert to grayscale
 - `negative()` - Create negative
 - `overlay()` - Overlay another image
 - `paste()` - Paste image at position
@@ -98,7 +99,8 @@ Image("photo.jpg")
 - `setDrawingColor()` - Set drawing color
 - `setDrawingStroke()` - Set stroke style
 - `setDrawingTransparency()` - Set transparency
-- `setAntialiasing()` - Enable/disable antialiasing
+- `setAntiAliasing()` - Enable/disable anti-aliasing
+- `setBackgroundColor()` - Set background color
 - `drawText()` - Draw text
 - `drawLine()` - Draw line
 - `drawRect()` - Draw rectangle
@@ -111,13 +113,12 @@ Image("photo.jpg")
 ### 🎀 Decorations
 
 - `addBorder()` - Add border around image
-- `setBackground()` - Set background color
 
 ### 💾 Output
 
-- `write()` - Write to file
-- `writeToBrowser()` - Output to HTTP response
-- `writeBase64()` - Export as base64 string
+- `write()` - Write to file (format auto-detected from extension)
+- `toBase64String()` - Export as base64 string (format auto-detected, overridable)
+- `getBlob()` - Get raw byte array
 - `getBufferedImage()` - Get Java BufferedImage
 
 ### ℹ️ Information
@@ -125,6 +126,14 @@ Image("photo.jpg")
 - `getWidth()` - Get image width
 - `getHeight()` - Get image height
 - `info()` - Get comprehensive image info
+- `getExifMetadata()` / `getExifTag()` - Read EXIF metadata
+- `getIPTCMetadata()` / `getIPTCTag()` - Read IPTC metadata
+
+### ⚡ Utilities (BIF only)
+
+- `ImageGenerateCaptcha()` - Generate CAPTCHA images with configurable difficulty
+- `ImageWriteToBrowser()` - Stream image to HTTP response
+- `GetReadableImageFormats()` / `GetWriteableImageFormats()` - List supported formats (includes WebP, GIF, BMP, TIFF)
 
 ---
 
@@ -134,20 +143,21 @@ Here's a real-world example showing the power of method chaining:
 
 ```js
 // Create a thumbnail with watermark
-Image("products/large-photo.jpg")
+ImageNew("products/large-photo.jpg")
     .scaleToFit(400)
     .addBorder(2, "##cccccc")
     .setDrawingColor("white")
     .setDrawingTransparency(70)
-    .drawRect(0, getHeight() - 30, getWidth(), 30, true)
+    .fillRect(0, img.getHeight() - 30, img.getWidth(), 30)
     .setDrawingColor("##333333")
     .setDrawingTransparency(0)
-    .drawText("© MyCompany 2025", 10, getHeight() - 10, {
+    .drawText("© MyCompany 2025", 10, img.getHeight() - 10, {
         font: "Arial",
         size: 12,
         style: "bold"
     })
     .write("products/thumbnails/photo-thumb.jpg");
+```
 ```
 
 ## BIF Quick Reference Table

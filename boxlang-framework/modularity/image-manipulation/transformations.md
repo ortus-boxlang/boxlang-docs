@@ -17,6 +17,7 @@ Learn how to resize, rotate, crop, flip, and transform images in BoxLang.
 - [Cropping Images](#cropping-images)
 - [Flipping & Transposing](#flipping--transposing)
 - [Shearing](#shearing)
+- [Image Splitting](#image-splitting)
 - [Translation](#translation)
 - [Drawing Axis Transformations](#drawing-axis-transformations)
 
@@ -288,6 +289,64 @@ ImageWrite(img, "sheared.jpg");
 - Positive values shear in one direction
 - Negative values shear in opposite direction
 - Typical range: -1.0 to 1.0
+
+## Image Splitting
+
+### Split into a Grid
+
+Divide an image into equally sized tiles:
+
+```js
+// Split image into a grid of tiles
+ImageNew("panorama.jpg")
+    .splitGrid(4, 3);  // 4 columns × 3 rows = 12 tiles
+
+// Returns a 2D array: tiles[row][column]
+tiles = ImageSplitGrid(img, 4, 3);
+
+// Access individual tiles
+topLeft     = tiles[1][1];
+topCenter   = tiles[1][2];
+bottomRight = tiles[3][4];
+
+// Each tile is a full BoxImage object
+topLeft.blur(5).write("tile-blurred.png");
+```
+
+**BIF Syntax:**
+
+```js
+img = ImageRead("panorama.jpg");
+tiles = ImageSplitGrid(img, columns=4, rows=3);
+ImageWrite(tiles[2][2], "center-tile.png");
+```
+
+**Use Cases:**
+
+- Splitting sprite sheets into individual frames
+- Creating puzzle effects
+- Generating tiled thumbnails
+- Per-tile image processing
+- Extracting cells from sprite atlases
+
+### Practical SplitGrid Example
+
+```js
+// Split a sprite sheet and process each tile
+spriteSheet = ImageNew("sprites.png");
+tiles = spriteSheet.splitGrid(8, 6);  // 8×6 grid = 48 tiles
+
+// Apply grayscale to all tiles in the first row
+for (col = 1; col <= tiles[1].len(); col++) {
+    tiles[1][col]
+        .grayScale()
+        .write("row1-col#col#.png");
+}
+
+// Find and save a specific tile
+centerTile = tiles[4][4];  // Row 4, Column 4
+centerTile.resize(128, 128).write("sprite-icon.png");
+```
 
 ## Translation
 

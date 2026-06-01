@@ -24,15 +24,17 @@ This BIF does not accept any arguments.
 
 ```boxlang
 formats = GetReadableImageFormats();
-// formats might be ["png", "jpg", "gif", ...]
+// formats might be ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WEBP", "WBMP"]
 ```
 
 ## See Also
 
-* GetWritableImageFormats
+* GetWriteableImageFormats
 * ImageRead
+* IsImageFile
 
 ## Notes
 
-* The list of formats depends on the Java runtime and any installed imageio plugins.
-* Common formats include "png", "jpg", "gif", but may include others depending on the environment.
+* The list of formats depends on the Java runtime and any installed ImageIO plugins.
+* BoxLang ships with `com.twelvemonkeys.imageio:imageio-webp` for cross-platform WebP reading (including macOS ARM64 / Apple Silicon).
+* Common formats include "png", "jpg", "gif", "webp", "bmp", "tiff", but may include others depending on the environment.

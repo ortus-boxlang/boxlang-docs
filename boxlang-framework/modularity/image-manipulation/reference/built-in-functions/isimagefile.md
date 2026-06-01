@@ -45,3 +45,4 @@ if ( IsImageFile( "https://example.com/image.jpg" ) ) {
 * Returns `true` for valid image files or URLs that can be read as images.
 * Returns `false` if the file or URL is not a valid image or cannot be read.
 * Use this BIF to validate paths before calling image-related functions.
+* Supports all registered ImageIO formats including PNG, JPEG, WebP, GIF, BMP, and TIFF. WebP reading works cross-platform (including macOS ARM64) via the bundled TwelveMonkeys ImageIO plugin.

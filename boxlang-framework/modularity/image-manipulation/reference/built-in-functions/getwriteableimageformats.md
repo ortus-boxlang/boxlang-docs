@@ -24,15 +24,18 @@ This BIF does not accept any arguments.
 
 ```boxlang
 formats = GetWriteableImageFormats();
-// formats might be ["png", "jpg", "gif", ...]
+// formats might be ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WEBP"]
 ```
 
 ## See Also
 
 * GetReadableImageFormats
 * ImageWrite
+* ImageWriteBase64
 
 ## Notes
 
-* The list of formats depends on the Java runtime and any installed imageio plugins.
-* Common formats include "png", "jpg", "gif", but may include others depending on the environment.
+* The list of formats depends on the Java runtime and any installed ImageIO plugins.
+* BoxLang's `ImageWrite` auto-detects the output format from the file extension and writes to any registered ImageIO format.
+* Common writable formats include "png", "jpg", "gif", "webp", "bmp", "tiff", but may include others depending on the environment.
+* Images with alpha channels written to formats without transparency support (JPEG, BMP) are automatically composited onto a white background.

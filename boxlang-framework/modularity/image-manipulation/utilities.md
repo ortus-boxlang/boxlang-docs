@@ -74,7 +74,7 @@ writeDump(info);
 // Get list of formats that can be read
 readableFormats = GetReadableImageFormats();
 
-// Returns array: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WBMP"]
+// Returns array: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WEBP", "WBMP"]
 
 writeDump(readableFormats);
 ```
@@ -85,7 +85,7 @@ writeDump(readableFormats);
 // Get list of formats that can be written
 writeableFormats = GetWriteableImageFormats();
 
-// Returns array: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WBMP"]
+// Returns array: ["BMP", "GIF", "JPEG", "PNG", "TIFF", "WEBP"]
 
 writeDump(writeableFormats);
 ```
@@ -105,22 +105,24 @@ if (canProcessFormat("PNG")) {
 
 ### Supported Formats Reference
 
-| Format   | Read | Write | Notes                              |
-| -------- | ---- | ----- | ---------------------------------- |
-| **BMP**  | ✅    | ✅     | Bitmap, no compression             |
-| **GIF**  | ✅    | ✅     | Supports transparency, animation   |
-| **JPEG** | ✅    | ✅     | Lossy compression, no transparency |
-| **PNG**  | ✅    | ✅     | Lossless, supports transparency    |
-| **TIFF** | ✅    | ✅     | High quality, large files          |
-| **WBMP** | ✅    | ✅     | Wireless bitmap, monochrome        |
+| Format   | Read | Write | Notes                                                |
+| -------- | ---- | ----- | ---------------------------------------------------- |
+| **BMP**  | ✅    | ✅     | Bitmap, no compression. Alpha auto-composited on write. |
+| **GIF**  | ✅    | ✅     | Supports transparency, limited to 256 colors          |
+| **JPEG** | ✅    | ✅     | Lossy compression, no transparency. Alpha auto-composited on write. |
+| **PNG**  | ✅    | ✅     | Lossless, supports transparency                      |
+| **TIFF** | ✅    | ✅     | High quality, suitable for archival/printing          |
+| **WebP** | ✅    | ✅     | Modern format, lossy & lossless, smaller than PNG/JPEG |
+| **WBMP** | ✅    |        | Wireless bitmap, monochrome (read-only)               |
 
 **Notes:**
 
-* **PNG** - Best for web, supports transparency
+* **PNG** - Best for web graphics, supports full transparency
 * **JPEG** - Best for photos, smaller file size
-* **GIF** - Best for animations, limited colors
-* **TIFF** - Best for archival, printing
-* **BMP** - Uncompressed, large files
+* **WebP** - Modern replacement for PNG/JPEG, excellent compression. Reading works cross-platform; writing requires native library (Linux/macOS Intel supported, Apple Silicon throws a clear error).
+* **GIF** - Best for simple animations, limited color palette
+* **TIFF** - Best for archival, printing, high-quality master files
+* **BMP** - Uncompressed, large files, simple format
 
 ## Validation Functions
 

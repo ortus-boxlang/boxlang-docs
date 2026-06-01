@@ -27,16 +27,21 @@ someImage.write( [path] )
 
 Writes the specified image to disk. The function has two modes:
 
-- **With path parameter**: Writes the image to the specified file location
-- **Without path parameter**: Writes the image back to its original source location (requires the image was loaded from a file)
+- **With path parameter**: Writes the image to the specified file location. The output format is **auto-detected from the file extension** (e.g., `.png` → PNG, `.jpg` → JPEG, `.webp` → WebP, `.gif` → GIF, `.bmp` → BMP, `.tiff` → TIFF).
+- **Without path parameter**: Writes the image back to its original source location (requires the image was loaded from a file).
 
 Parent directories are automatically created if they don't exist. The file stream is properly closed after writing, so the file can be safely deleted or moved immediately after writing.
+
+**Alpha Channel Handling:** When writing to formats that do not support transparency (JPEG, BMP), images with alpha channels are automatically composited onto a white background before encoding, preventing write failures.
 
 ## Example
 
 ```boxlang
-// Write image to a specific file
+// Write image to a specific file (format auto-detected from extension)
 ImageWrite( myImage, "output/photo.png" );
+ImageWrite( myImage, "output/photo.jpg" );   // → JPEG
+ImageWrite( myImage, "output/photo.webp" );  // → WebP
+ImageWrite( myImage, "output/photo.gif" );   // → GIF
 
 // Write image back to its original location (modify in place)
 img = ImageRead("photo.jpg");

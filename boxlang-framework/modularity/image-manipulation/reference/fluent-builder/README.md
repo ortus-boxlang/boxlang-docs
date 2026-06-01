@@ -413,22 +413,41 @@ img.copy(50, 50, 100, 100, 200, 200);
 
 ### write(\[path])
 
-Write the image to disk.
+Write the image to disk with format auto-detected from extension.
 
 ```js
 // Write to original source path (if loaded from file)
 img.write();
 
-// Write to specific path
-img.write("output/processed.jpg");
-img.write("output/converted.png");
+// Write to specific path — format auto-detected
+img.write("output/processed.jpg");   // → JPEG
+img.write("output/converted.png");   // → PNG
+img.write("output/photo.webp");      // → WebP
+img.write("output/photo.gif");       // → GIF
+img.write("output/photo.bmp");       // → BMP
+img.write("output/photo.tiff");      // → TIFF
 ```
 
 **Notes:**
 
 * Parent directories are automatically created
-* Format is determined by file extension
+* Output format is auto-detected from the file extension
+* Images with alpha channels are automatically composited onto white for JPEG/BMP
 * File handles are properly closed (no Windows locking issues)
+
+### toBase64String(\[format])
+
+Export image as a Base64-encoded string.
+
+```js
+// Auto-detect format from source
+base64 = img.toBase64String();
+
+// Specify output format
+base64 = img.toBase64String("png");
+base64 = img.toBase64String("webp");
+base64 = img.toBase64String("jpg");
+```
 
 ## Information & Metadata
 
