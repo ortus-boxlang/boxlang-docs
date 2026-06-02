@@ -151,6 +151,10 @@ BoxLang provides a rich set of Built-In Functions for string manipulation. Below
 |----------|---------|---------|
 | `compare()` / `compareNoCase()` | Lexicographic comparison | `compare("a", "b")` → `-1` |
 | `len()` | Get string length | `len("Hello")` → `5` |
+| `stringStartsWith()` | Check if string starts with prefix | `stringStartsWith("Hello", "Hel")` → `true` |
+| `stringStartsWithNoCase()` | Case-insensitive prefix check | `stringStartsWithNoCase("HELLO", "hel")` → `true` |
+| `stringEndsWith()` | Check if string ends with suffix | `stringEndsWith("BoxLang", "Lang")` → `true` |
+| `stringEndsWithNoCase()` | Case-insensitive suffix check | `stringEndsWithNoCase("BOXLANG", "lang")` → `true` |
 | `ascii()` | Get ASCII value | `ascii("A")` → `65` |
 | `char()` | Get character from ASCII | `char(65)` → `"A"` |
 | `val()` | Extract numeric value | `val("123abc")` → `123` |
@@ -192,7 +196,53 @@ BoxLang provides a rich set of Built-In Functions for string manipulation. Below
 
 Below are detailed examples of commonly used string functions:
 
-### 📏 len()
+### � Prefix and Suffix Checking
+
+{% hint style="info" %}
+**Since BoxLang 1.14.0**. These BIFs provide explicit prefix/suffix checking with case-sensitive and case-insensitive variants.
+{% endhint %}
+
+```js
+// Case-sensitive prefix check
+stringStartsWith( "Hello World", "Hello" )     // true
+stringStartsWith( "Hello World", "hello" )     // false
+"Hello World".startsWith( "Hello" )            // true (member method)
+
+// Case-insensitive prefix check
+stringStartsWithNoCase( "HELLO", "hello" )     // true
+stringStartsWithNoCase( "Hello", "hel" )       // true
+"HELLO".startsWithNoCase( "hello" )            // true (member method)
+
+// Case-sensitive suffix check
+stringEndsWith( "Hello World", "World" )       // true
+stringEndsWith( "Hello World", "world" )       // false
+"Hello World".endsWith( "World" )              // true (member method)
+
+// Case-insensitive suffix check
+stringEndsWithNoCase( "WORLD", "world" )       // true
+stringEndsWithNoCase( "Hello", "Lo" )          // true
+"WORLD".endsWithNoCase( "world" )              // true (member method)
+
+// Practical usage
+function startsWithHttp( url ) {
+    return url.startsWithNoCase( "http://" ) || url.startsWithNoCase( "https://" )
+}
+
+function isImageFile( filename ) {
+    return filename.endsWithNoCase( ".jpg" )
+        || filename.endsWithNoCase( ".png" )
+        || filename.endsWithNoCase( ".gif" )
+}
+
+startsWithHttp( "HTTP://boxlang.io" )    // true
+isImageFile( "photo.JPG" )                // true
+```
+
+{% hint style="success" %}
+**Java Compatibility**: BoxLang's `stringStartsWith()` and `stringEndsWith()` wrap Java's `String.startsWith()` and `String.endsWith()`. The member method names `.startsWith()` and `.endsWith()` are shared with Java — the BIF and Java method are interchangeable. The `NoCase` variants are BoxLang-only additions.
+{% endhint %}
+
+### �📏 len()
 
 Returns the number of characters in a string. Trailing spaces are counted.
 
