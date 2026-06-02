@@ -679,7 +679,7 @@ getSystemSetting( "My_API_KEY" )
 ```
 
 {% hint style="info" %}
-**Privacy Note:** Environment variables are NOT exposed through health check endpoints. Health checks only return basic server metrics and status information for security purposes.
+**Privacy Note:** Environment variables are NOT exposed through health check endpoints. Health checks return server metrics (JVM, Undertow worker pool, listener stats, request timing, WebSocket sessions) but never application data, secrets, or environment variables. Use `--health-check-secure` in production to restrict detailed metrics to localhost only.
 {% endhint %}
 
 ## 🌩 Warmup URLs

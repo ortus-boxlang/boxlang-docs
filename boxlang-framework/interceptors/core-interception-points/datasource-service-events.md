@@ -6,6 +6,7 @@ These events occur around the lifecycle of datasources and the datasource servic
 * [`onDatasourceServiceShutdown`](#onDatasourceServiceShutdown)
 * [`onDatasourceStartup`](#onDatasourceStartup)
 * [`onDatasourceConfigLoad`](#onDatasourceConfigLoad)
+* [`onDatasourceInitialized`](#onDatasourceInitialized)
 
 ## onDatasourceServiceStartup
 
@@ -83,6 +84,46 @@ class myDatasourceListener {
     function onDatasourceConfigLoad( struct data ) {
         println("Datasource [#data.name#] is configuring!");
         println( data.properties );
+    }
+}
+```
+
+## onDatasourceInitialized
+
+{% hint style="success" %}
+New in BoxLang 1.14.0
+{% endhint %}
+
+This event is triggered after the datasource configuration has been loaded and processed but **before** the HikariCP connection pool is established. This interception point gives modules and interceptors full access to the raw HikariCP configuration for advanced customization — connection pool sizing, statement caching, timeouts, and any other HikariCP-specific settings.
+
+| Data Key          | Type           | Description                                                                                           |
+| ----------------- | -------------- | ----------------------------------------------------------------------------------------------------- |
+| `name`            | String         | Datasource name                                                                                       |
+| `properties`      | Struct         | Datasource configuration properties                                                                   |
+| `hikariConfig`    | Java class     | The raw `com.zaxxer.hikari.HikariConfig` instance, fully configured but not yet used to create a pool |
+
+### Example
+
+```js
+class myDatasourceListener {
+    function onDatasourceInitialized( struct data ) {
+        var hikariConfig = data.hikariConfig
+
+        // Customize connection pool size
+        hikariConfig.setMaximumPoolSize( 50 )
+        hikariConfig.setMinimumIdle( 10 )
+
+        // Enable statement caching
+        hikariConfig.addDataSourceProperty( "cachePrepStmts", true )
+        hikariConfig.addDataSourceProperty( "prepStmtCacheSize", 250 )
+        hikariConfig.addDataSourceProperty( "prepStmtCacheSqlLimit", 2048 )
+
+        // Adjust timeouts (milliseconds)
+        hikariConfig.setConnectionTimeout( 30000 )
+        hikariConfig.setIdleTimeout( 600000 )
+        hikariConfig.setMaxLifetime( 1800000 )
+
+        println( "Datasource [#data.name#] initialized with custom HikariCP settings" )
     }
 }
 ```
