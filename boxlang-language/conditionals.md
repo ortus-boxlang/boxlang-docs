@@ -964,6 +964,10 @@ if ( name.lcase() == "alice" ) { // ✅ Case-insensitive comparison
 [operators.md](operators.md)
 {% endcontent-ref %}
 
+{% content-ref url="ranges.md" %}
+[ranges.md](ranges.md)
+{% endcontent-ref %}
+
 {% content-ref url="program-structure.md" %}
 [program-structure.md](program-structure.md)
 {% endcontent-ref %}

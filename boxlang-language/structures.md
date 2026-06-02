@@ -752,3 +752,21 @@ inventory["banana"] = 30
 
 println( inventory )
 ```
+
+## 🔗 Related Documentation
+
+{% content-ref url="arrays.md" %}
+[arrays.md](arrays.md)
+{% endcontent-ref %}
+
+{% content-ref url="sets.md" %}
+[sets.md](sets.md)
+{% endcontent-ref %}
+
+{% content-ref url="ranges.md" %}
+[ranges.md](ranges.md)
+{% endcontent-ref %}
+
+{% content-ref url="queries.md" %}
+[queries.md](queries.md)
+{% endcontent-ref %}

@@ -559,3 +559,21 @@ thawed.add( 4 )         // works
 {% hint style="success" %}
 **Tip**: Check out all the [Set BIF reference](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/set) and [member functions](https://boxlang.ortusbooks.com/getting-started/overview/syntax-style-guide#member-functions) for more capabilities.
 {% endhint %}
+
+## 🔗 Related Documentation
+
+{% content-ref url="arrays.md" %}
+[arrays.md](arrays.md)
+{% endcontent-ref %}
+
+{% content-ref url="structures.md" %}
+[structures.md](structures.md)
+{% endcontent-ref %}
+
+{% content-ref url="ranges.md" %}
+[ranges.md](ranges.md)
+{% endcontent-ref %}
+
+{% content-ref url="queries.md" %}
+[queries.md](queries.md)
+{% endcontent-ref %}

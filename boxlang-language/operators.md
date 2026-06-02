@@ -60,31 +60,64 @@ These operators are used to perform arithmetic/mathematical operations on operan
 | `^`      | Exponentiate        | `a = 2^2 // 4`                                                                                                                                                                                  |
 | `%, MOD` | Modulus / Remainder | `5 % 2 = 1` or `5 mod 2`                                                                                                                                                                        |
 | `\`      | Integer Divide      | `a = 7 \ 3` is 2. Please note it does not round off the integer.                                                                                                                                |
-| `..`     | Inclusive Range     | <p>Creates an inclusive integer range.<br><code>1..5</code> → <code>[1,2,3,4,5]</code><br><code>5..1</code> → <code>[5,4,3,2,1]</code></p>                                                      |
+| `..`     | Inclusive Range     | <p>Creates a lazy Range object (not an array).<br><code>1..5</code> → Range(1,2,3,4,5)<br><code>5..1</code> → Range(5,4,3,2,1)<br>See <a href="ranges.md">Ranges</a> for full documentation.</p>                                                      |
+| `>..`    | Range (exclude start) | <p>Range excluding the start value.<br><code>1>..5</code> → Range(2,3,4,5)</p> |
+| `..<`    | Range (exclude end) | <p>Range excluding the end value.<br><code>1..<5</code> → Range(1,2,3,4)</p> |
+| `>..<`   | Range (exclude both) | <p>Range excluding both boundaries.<br><code>1>..<5</code> → Range(2,3,4)</p> |
 | `++`     | Increment           | <p><code>a = b++</code> assign b to a and THEN increment b<br><code>a = ++b</code> increment b and THEN assign to a</p>                                                                         |
 | `--`     | Decrement           | <p><code>a = b--</code> assign b to a and THEN decrement b<br><code>a = --b</code> decrement b and THEN assign to a</p>                                                                         |
 | `-`      | Negate              | `a = -b` Negate the value of b                                                                                                                                                                  |
 | `+`      | Positive            | `a = +b` Make the value of b a positive number                                                                                                                                                  |
 | `()`     | Grouping            | <p>The grouping operator is used just like in mathematics, to give precedence to operations.<br><code>result = 3 * (2+3)</code> which is not the same as<br><code>result = 3 * 2 + 3</code></p> |
 
-### 🔢 Range Operator
+### 📏 Range Operators
 
 {% hint style="info" %}
-Since BoxLang 1.12.x
+Since BoxLang 1.14.0
 {% endhint %}
 
-BoxLang supports the inclusive `..` range operator in BoxScript expressions.
+BoxLang supports **Range operators** that create first-class `Range` objects — lazy, iterable intervals that support multiple types (integers, decimals, characters, dates, and custom `IRangeable` types), exclusive boundaries, custom stepping, and Java Stream integration.
+
+**Basic range syntax:**
 
 ```javascript
-1..5   // [1, 2, 3, 4, 5]
-5..1   // [5, 4, 3, 2, 1]
+// Inclusive range (both ends included)
+1..5   // Range: 1, 2, 3, 4, 5
+5..1   // Range: 5, 4, 3, 2, 1 (descending)
 
+// Exclusive boundaries
+1>..5   // Exclude start: 2, 3, 4, 5
+1..<5   // Exclude end:   1, 2, 3, 4
+1>..<5  // Exclude both:  2, 3, 4
+
+// Half-bounded and unbounded
+1..     // Open-ended from 1 (infinite)
+..10    // Open-start up to 10 (not iterable)
+..      // Fully unbounded (contains everything)
+
+// Using expressions
 a = 2
 b = 4
-result = a..b  // [2, 3, 4]
+result = a..b  // Range: 2, 3, 4
 ```
 
-Use this when you want a compact way to create integer ranges without calling a helper function.
+Ranges are **not arrays** — they're lightweight objects that generate values on demand:
+
+```javascript
+// Coerce to array when needed
+arrayLen( 1..10 )          // 10
+arrayToList( 1..5, "," )   // "1,2,3,4,5"
+
+// Lazy iteration
+for( i in 1..100_000_000_000 ) {
+    result = i
+    break  // instant — no memory allocation
+}
+```
+
+{% hint style="success" %}
+For complete documentation on Ranges including custom stepping, typed ranges, Java Stream integration, and creating custom `IRangeable` types, see **[Ranges](ranges.md)**.
+{% endhint %}
 
 #### Notes on mathematical casting:
 

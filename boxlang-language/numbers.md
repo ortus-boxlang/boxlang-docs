@@ -375,9 +375,16 @@ BoxLang provides multiple looping constructs. You can also iterate over arrays, 
 
 ## 🔗 Related Documentation
 
+{% content-ref url="ranges.md" %}
+[ranges.md](ranges.md)
+{% endcontent-ref %}
+
+{% content-ref url="operators.md" %}
+[operators.md](operators.md)
+{% endcontent-ref %}
+
 - [Math BIF Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/math) - Complete list of mathematical functions
 - [Numeric Type Reference](https://boxlang.ortusbooks.com/boxlang-language/reference/types/numeric) - Member function documentation
-- [Operators](operators.md) - Arithmetic and bitwise operators
 - [Java Number API](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Number.html) - Native Java methods
 - [Java BigDecimal API](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/math/BigDecimal.html) - High precision arithmetic
 - [Java Math API](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Math.html) - Java Math class methods

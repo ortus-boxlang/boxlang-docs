@@ -954,6 +954,24 @@ newArray = array.slice( 2, 3 )
 println( newArray ) // [ 2, 3, 4 ]
 ```
 
+## 🔗 Related Documentation
+
+{% content-ref url="structures.md" %}
+[structures.md](structures.md)
+{% endcontent-ref %}
+
+{% content-ref url="sets.md" %}
+[sets.md](sets.md)
+{% endcontent-ref %}
+
+{% content-ref url="ranges.md" %}
+[ranges.md](ranges.md)
+{% endcontent-ref %}
+
+{% content-ref url="queries.md" %}
+[queries.md](queries.md)
+{% endcontent-ref %}
+
 ## 🔓 Array Destructuring
 
 Array destructuring lets you bind values by position.
