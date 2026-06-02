@@ -1,6 +1,6 @@
 ---
 description: A collection of unique elements with algebra operations
-icon: set-square
+icon: layer-group
 ---
 
 # Sets
