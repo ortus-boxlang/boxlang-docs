@@ -161,17 +161,33 @@ if ( loggingNav.has( "appenders" ) ) {
 
 ## JSONPath-Style Path Expressions
 
-In addition to variadic-key navigation, DataNavigator supports JSONPath-style expressions in `get()`, `has()`, and `query()`. These expressions let you navigate nested data using a compact string syntax with dot notation, array indexing, recursive descent, wildcards, slices, and filters.
+{% hint style="info" %}
+**Since BoxLang 1.14.0**. JSONPath-style expression support is available in `get()`, `getOrDefault()`, `has()`, `from()`, and `query()`.
+{% endhint %}
 
-| Syntax | Description | Example |
-|--------|-------------|---------|
-| **Dot notation** | Navigate nested object keys | `boxlang.settings.hello` |
-| **Array index** | Access a 1-based array element | `keywords[1]` |
-| **Recursive descent** | Find the first or all matching keys anywhere in the tree | `..hello` |
-| **Wildcard** | Match all struct values or array items | `boxlang.settings.*`, `keywords[*]` |
-| **Slice** | Match a range of array elements | `keywords[1:2]` |
-| **Filter** | Match array elements by condition | `items[?(@.active == true)]` |
-| **Whitespace tolerance** | Ignore leading/trailing and separator-adjacent whitespace | `..hello`, `keywords [ * ]` |
+In addition to variadic-key navigation, DataNavigator supports JSONPath-style expressions in `get()`, `getOrDefault()`, `has()`, `from()`, and `query()`. These expressions let you navigate nested data using a compact string syntax with dot notation, array indexing, recursive descent, wildcards, slices, and filters.
+
+When a single string argument contains `.` or `[`, it is treated as a path expression. Plain keys without these characters and multi-argument calls use the original variadic-key behavior unchanged.
+
+### Expression Syntax Reference
+
+| Syntax | Description | Example | Matches |
+|--------|-------------|---------|---------|
+| **Dot notation** | Navigate nested object keys | `boxlang.settings.hello` | Value at `{ boxlang: { settings: { hello: ... } } }` |
+| **Array index** | Access a 1-based array element | `keywords[1]` | First element of `keywords` array |
+| **Recursive descent** | Find the first matching key anywhere in the tree | `..hello` | Any `hello` key at any nesting depth |
+| | Recursive descent with filtering | `..items[?(@.active)].name` | All `name` values inside active items |
+| **Wildcard `*`** | Match all struct values | `boxlang.settings.*` | All values in the `settings` struct |
+| | Match all array elements | `keywords[*]` | Every element in the `keywords` array |
+| **Slice `[n:m]`** | 1-based inclusive range of array elements | `keywords[1:2]` | First two elements |
+| | Open-ended slice | `keywords[2:]` | From index 2 to end |
+| **Filter `[?()]`** | Match array elements by condition | `items[?(@.active == true)]` | All items where `active` is `true` |
+| | Filter with nested path | `items[?(@.meta.priority > 5)]` | Items with priority > 5 |
+| | Filter with existence check | `items[?(@.email)]` | Items that have an `email` field |
+| | Combined filter + key | `items[?(@.active == true)].name` | Names of active items |
+| **Whitespace tolerance** | Leading/trailing/separator-adjacent whitespace ignored | `..hello`, `keywords [ * ]` | Same as `..hello`, `keywords[*]` |
+
+### Basic Path Expressions
 
 ```js
 nav = dataNavigate( config );
@@ -181,29 +197,197 @@ nav.get( "boxlang.settings.hello" );   // "luis"
 
 // 1-based array indexing
 nav.get( "keywords[1]" );              // "test"
+nav.get( "keywords[2]" );              // "example"
 
 // Recursive descent — finds first match anywhere in the tree
 nav.get( "..hello" );                  // "luis"
+nav.has( "..hello" );                  // true
 
-// Whitespace tolerant
+// Whitespace tolerant — all equivalent
+nav.get( "..hello" );                  // "luis"
 nav.get( "   ..hello" );               // "luis"
+nav.get( "..hello   " );               // "luis"
+nav.get( "boxlang . settings . hello" ); // "luis"
 ```
 
-When a single string argument contains `.` or `[`, it is treated as a path expression. Plain keys without these characters and multi-argument calls use the original variadic-key behavior unchanged.
+### Wildcard Expressions
+
+```js
+nav = dataNavigate( config );
+
+// Wildcard on struct values — returns all values in the struct
+nav.get( "boxlang.settings.*" );       // [ "luis" ] — single match, still an array
+nav.query( "boxlang.settings.*" );     // [ "luis" ]
+
+// Wildcard on array — returns every element
+nav.query( "keywords[*]" );            // [ "test", "example" ]
+
+// Wildcard combined with deeper keys
+nav.query( "modules[*].name" );        // all module name values
+```
+
+### Array Slicing
+
+```js
+nav = dataNavigate( {
+    primes: [ 2, 3, 5, 7, 11, 13, 17, 19 ]
+} );
+
+// 1-based inclusive slice
+nav.get( "primes[1:3]" );            // [ 2, 3, 5 ]
+nav.query( "primes[1:3]" );          // [ 2, 3, 5 ]
+
+// Single-element slice
+nav.get( "primes[2:2]" );            // [ 3 ]
+
+// Open-ended slice (from index to end)
+nav.get( "primes[5:]" );             // [ 11, 13, 17, 19 ]
+
+// Slice with JSONPath wildcard after
+nav.query( "orders[*].items[1:2]" ); // first 2 items from every order
+```
+
+### Filter Expressions
+
+{% hint style="success" %}
+Filters use `@` to reference the current element. Supported operators: `==`, `!=`, `>`, `<`, `>=`, `<=`, `&&`, `||`, `!`.
+{% endhint %}
+
+```js
+nav = dataNavigate( {
+    items: [
+        { name: "alpha",   active: true,  priority: 1, tags: [ "a", "b" ] },
+        { name: "beta",    active: false, priority: 3, tags: [ "c" ] },
+        { name: "gamma",   active: true,  priority: 5, tags: [ "a", "d" ] },
+        { name: "delta",   active: false, priority: 2, tags: [] }
+    ]
+} );
+
+// Equality filter
+nav.query( "items[?(@.active == true)]" );
+// [ { name: "alpha", ... }, { name: "gamma", ... } ]
+
+// Numeric comparison
+nav.query( "items[?(@.priority > 2)]" );
+// [ { name: "beta", ... }, { name: "gamma", ... } ]
+
+// Combined conditions with AND
+nav.query( "items[?(@.active == true && @.priority > 2)]" );
+// [ { name: "gamma", ... } ]
+
+// Combined conditions with OR
+nav.query( "items[?(@.priority == 1 || @.priority == 5)]" );
+// [ { name: "alpha", ... }, { name: "gamma", ... } ]
+
+// Negation
+nav.query( "items[?(!@.active)]" );
+// [ { name: "beta", ... }, { name: "delta", ... } ]
+
+// Existence check — matches if field exists and is truthy
+nav.query( "items[?(@.tags)]" );
+// items with non-empty tags array
+
+// Filter + key extraction
+nav.query( "items[?(@.active == true)].name" );
+// [ "alpha", "gamma" ]
+
+// Nested path in filter
+nav.query( "items[?(@.meta.priority >= 3)].name" );
+
+// get() always returns the first match
+nav.get( "items[?(@.active == true)]" );
+// { name: "alpha", active: true, priority: 1, ... }
+```
+
+### Recursive Descent Patterns
+
+```js
+nav = dataNavigate( {
+    api: {
+        v1: {
+            endpoints: {
+                users: { id: "users-v1", active: true },
+                orders: { id: "orders-v1", active: false }
+            }
+        },
+        v2: {
+            endpoints: {
+                users: { id: "users-v2", active: true },
+                products: { id: "products-v2", active: true }
+            }
+        }
+    }
+} );
+
+// Find first matching key anywhere in the tree
+nav.get( "..users" );
+// { id: "users-v1", active: true }  — first match (v1)
+
+// Find ALL matching keys anywhere in the tree
+nav.query( "..users" );
+// [ { id: "users-v1", ... }, { id: "users-v2", ... } ]
+
+// Recursive descent with filter — find all active endpoints
+nav.query( "..active" );
+// [ true, false, true, true ]
+
+// Find all endpoints that are active
+nav.query( "..endpoints[?(@.active == true)]" );
+// nested endpoint objects where active is true
+
+// Deep search for a specific key
+nav.has( "..products" );    // true
+nav.get( "..products" );    // { id: "products-v2", active: true }
+```
+
+### `from()` with JSONPath
+
+{% hint style="info" %}
+**Since BoxLang 1.14.0**. The `from()` method also accepts JSONPath-style path expressions.
+{% endhint %}
+
+```js
+nav = dataNavigate( {
+    app: {
+        modules: {
+            auth: { enabled: true, version: "2.1" },
+            cache: { enabled: false, version: "1.0" }
+        }
+    }
+} );
+
+// Navigate with a dot-path expression
+authNav = nav.from( "app.modules.auth" );
+authNav.get( "enabled" );   // true
+authNav.get( "version" );   // "2.1"
+
+// Equivalent to variadic keys
+authNav = nav.from( ["app", "modules", "auth"] );
+
+// JSONPath from() is scoped — further navigation is relative
+cacheNav = nav.from( "app.modules.cache" );
+cacheNav.get( "enabled" );  // false
+```
 
 ## 🧭 Core Navigation Methods
 
 ### `from( key ):Navigator` / `from( [key1, key2, ...] ):Navigator`
 
-Navigate to a specific segment in the data structure. Returns a new navigator scoped to that segment.
+Navigate to a specific segment in the data structure. Returns a new navigator scoped to that segment. Since BoxLang 1.14.0, `from()` also supports JSONPath-style path expressions.
 
 ```js
 // Single-level navigation
 userNav = dataNavigate( userData ).from( "profile" );
 dbNav = dataNavigate( config ).from( "database" );
 
-// Multi-level navigation (nested path)
+// Multi-level navigation (variadic keys)
 loggingNav = dataNavigate( config ).from( ["application", "features", "logging"] );
+
+// JSONPath-style dot-path navigation (since 1.14.0)
+loggingNav = dataNavigate( config ).from( "application.features.logging" );
+
+// Both styles are equivalent and can be mixed
+nav.from( "api.v1" ).from( ["endpoints", "users"] );
 
 // Chained navigation (multiple calls)
 deepNav = dataNavigate( complexData )
@@ -223,7 +407,7 @@ println( missingNav.isEmpty() ); // true
 
 ### `has( key ):boolean` / `has( [key1, key2, ...] ):boolean`
 
-Check if a key or nested path exists in the current segment. Supports variadic keys and JSONPath-style path expressions.
+Check if a key or nested path exists in the current segment. Since BoxLang 1.14.0, `has()` supports JSONPath-style path expressions including dot notation, array indexing, recursive descent, wildcards, slices, and filters.
 
 ```js
 nav = dataNavigate( config );
@@ -286,7 +470,9 @@ if ( cacheNav.isPresent() ) {
 
 ### `get( key, [default] ):Object` / `get( [key1, key2, ...], [default] ):Object`
 
-Get a value from the data structure using nested keys. Returns the value or default if not found. When called with a single string containing `.` or `[`, it is treated as a JSONPath-style path expression.
+Get a value from the data structure using nested keys. Returns the value or default if not found.
+
+Since BoxLang 1.14.0, when called with a **single string containing `.` or `[`**, it is treated as a JSONPath-style path expression supporting dot notation, array indexing, recursive descent, wildcards, slices, and filters. Plain keys without these characters and multi-argument calls use the original variadic-key behavior unchanged.
 
 ```js
 nav = dataNavigate( appConfig );
@@ -316,6 +502,49 @@ serverList = nav.get( "servers" );              // Returns array
 {% hint style="success" %}
 **Dynamic Typing**: BoxLang's dynamic nature means `get()` automatically handles type conversions. Maps become Structs, Lists become Arrays. You usually don't need the typed getters unless you need explicit casting.
 {% endhint %}
+
+### `getOrDefault( key, defaultValue ):Object` / `getOrDefault( [key1, key2, ...], defaultValue ):Object`
+
+{% hint style="info" %}
+**Since BoxLang 1.14.0**. Complements `getOrThrow()` for safe navigation with explicit fallbacks.
+{% endhint %}
+
+Get a value from the data structure or return the provided default if the key doesn't exist. Unlike `get()` which returns `null` when no default is supplied, `getOrDefault()` guarantees a non-null return value by requiring a default.
+
+```js
+nav = dataNavigate( appConfig );
+
+// Single key with default
+timeout = nav.getOrDefault( "timeout", 30 );                          // 30 if missing
+retries = nav.getOrDefault( "retries", 3 );                           // 3 if missing
+
+// Nested paths with default (variadic keys)
+dbHost = nav.getOrDefault( ["database", "host"], "localhost" );       // "localhost" if missing
+maxPool = nav.getOrDefault( ["database", "pool", "max"], 10 );        // 10 if missing
+
+// JSONPath-style path expressions also work
+sslEnabled = nav.getOrDefault( "database.ssl.enabled", true );        // true if missing
+firstUser  = nav.getOrDefault( "users[1].name", "Unknown" );          // "Unknown" if missing
+```
+
+{% hint style="success" %}
+**Why `getOrDefault`?** Use `get()` when you want to check for `null` yourself, `getOrThrow()` when the value must exist, and `getOrDefault()` when you want a clean one-liner with a guaranteed fallback value.
+{% endhint %}
+
+```js
+// Comparison of retrieval styles
+nav = dataNavigate( config );
+
+// get() — returns null, you handle the check
+port = nav.get( "port" );
+if ( port == null ) { port = 8080; }
+
+// getOrDefault() — one-liner, guaranteed non-null
+port = nav.getOrDefault( "port", 8080 );
+
+// getOrThrow() — fail fast for required config
+port = nav.getOrThrow( "port" );
+```
 
 ### `getOrThrow( key ):Object` / `getOrThrow( [key1, key2, ...] ):Object`
 
@@ -1124,19 +1353,21 @@ cacheConfig = nav.from( "application" ).from( "features" ).get( "caching" );
 
 | Category | Method | Returns | Description |
 |----------|--------|---------|-------------|
-| **Navigation** | `from( key )` | Navigator | Navigate to a single nested segment |
+| **Navigation** | `from( key )` | Navigator | Navigate to a single nested segment (supports JSONPath since 1.14.0) |
 | | `from( [key1, key2, ...] )` | Navigator | Navigate to a nested segment using an array path |
-| | `has( key )` | boolean | Check if a single key exists |
+| | `has( key )` | boolean | Check if a single key exists (supports JSONPath expressions since 1.14.0) |
 | | `has( [key1, key2, ...] )` | boolean | Check if a nested path exists (supports JSONPath expressions) |
-| | `hasByKey( key )` | boolean | Check if exact key exists (no path parsing) |
+| | `hasByKey( key )` | boolean | Check if exact key exists — no path parsing (since 1.14.0) |
 | | `isEmpty()` | boolean | Check if segment is empty |
 | | `isPresent()` | boolean | Check if segment has data |
-| **Retrieval** | `get( key, [default] )` | Object | Get single key value with optional default (supports JSONPath expressions) |
+| **Retrieval** | `get( key, [default] )` | Object | Get single key value with optional default (supports JSONPath expressions since 1.14.0) |
 | | `get( [key1, key2, ...], [default] )` | Object | Get nested value with optional default |
+| | `getOrDefault( key, defaultValue )` | Object | Get single key value or return default — guaranteed non-null (since 1.14.0) |
+| | `getOrDefault( [key1, key2, ...], defaultValue )` | Object | Get nested value or return default (supports JSONPath since 1.14.0) |
 | | `getOrThrow( key )` | Object | Get single key value or throw exception |
 | | `getOrThrow( [key1, key2, ...] )` | Object | Get nested value or throw exception |
-| | `getByKey( key )` | Object | Get value by exact key lookup (no path parsing) |
-| | `query( path )` | Array | Get all matching values as array (JSONPath multi-result) |
+| | `getByKey( key )` | Object | Get value by exact key lookup — no path parsing (since 1.14.0) |
+| | `query( path )` | Array | Get all matching values as array — JSONPath multi-result (since 1.14.0) |
 | | `getAsString( key, [default] )` | String | Get value as string |
 | | `getAsString( [key1, key2, ...], [default] )` | String | Get nested value as string |
 | | `getAsBoolean( key, [default] )` | Boolean | Get value as boolean |
@@ -1170,12 +1401,13 @@ Data Navigators offer a robust and fluent way to work with complex data structur
 ✅ **Dynamic Typing** - Automatic type conversion for most use cases
 ✅ **Fluent API** - Chainable methods that read naturally
 ✅ **Flexible Sources** - JSON files, strings, structures, and maps
-✅ **Error Handling** - Graceful fallbacks and validation capabilities
+✅ **Error Handling** - Graceful fallbacks (`getOrDefault()`) and strict access (`getOrThrow()`)
 ✅ **Immutable** - Thread-safe navigation operations
 ✅ **Conditional Processing** - Execute code only when data is present
-✅ **JSONPath Expressions** - Compact syntax for dot notation, indexing, wildcards, slices, and filters
+✅ **JSONPath Expressions** - Compact string syntax: dot notation, array indexing, recursive descent (`..`), wildcards (`*`), slices (`[1:3]`), and filters (`[?(@.active)]`)
 ✅ **Exact-Key Access** - `getByKey()` / `hasByKey()` for keys containing dots or brackets
 ✅ **Multi-Result Queries** - `query()` returns all matching values as an array
+✅ **Whitespace Tolerant** - Path expressions handle whitespace gracefully
 
 Whether you're processing API responses, managing application configuration, or working with complex data structures, Data Navigators make your code more robust and maintainable.
 
