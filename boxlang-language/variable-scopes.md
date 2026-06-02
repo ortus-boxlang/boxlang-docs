@@ -897,6 +897,7 @@ The server scope is automatically populated with several unmodifiable sub-struct
 | `boxlangId` | string | Unique identifier for this BoxLang instance |
 | `codename` | string | Release codename for this version |
 | `cliMode` | boolean | Whether running in CLI mode |
+| `webMode` | boolean | Whether running in web (servlet/MiniServer) mode |
 | `compiler` | string | Compiler implementation name (e.g., "ASMBoxpiler", "NoOpBoxpiler") **New in 1.10.0** |
 | `debugMode` | boolean | Whether debug mode is enabled |
 | `jarMode` | boolean | Whether running from JAR file |
@@ -912,6 +913,7 @@ println( "Build Date: #server.boxlang.buildDate#" )
 println( "Runtime Home: #server.boxlang.runtimeHome#" )
 println( "Compiler: #server.boxlang.compiler#" )  // New in 1.10.0
 println( "CLI Mode: #server.boxlang.cliMode#" )
+println( "Web Mode: #server.boxlang.webMode#" )  // New in 1.14.0
 println( "Debug Mode: #server.boxlang.debugMode#" )
 println( "JAR Mode: #server.boxlang.jarMode#" )
 

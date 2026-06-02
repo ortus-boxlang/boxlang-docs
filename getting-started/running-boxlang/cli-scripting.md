@@ -419,6 +419,11 @@ if ( server.boxlang.cliMode ) {
     println( "Running in CLI mode" );
 }
 
+// Check if running in web (servlet/MiniServer) mode — since 1.14.0
+if ( server.boxlang.webMode ) {
+    println( "Running in web mode" );
+}
+
 // Check if running from JAR
 if ( server.boxlang.jarMode ) {
     println( "Running in JAR mode" );
