@@ -171,6 +171,7 @@ BoxLang provides a comprehensive set of array BIFs organized by functionality. A
 | `arrayRange()`    | Create range of values    | `arrayRange(1, 5)` → `[1, 2, 3, 4, 5]`                    |
 | `arrayChunk()`    | Split into smaller arrays | `arrayChunk(arr, 2)` → `[[1,2], [3,4]]` **New in 1.10.0** |
 | `arrayToStruct()` | Convert to struct         | `arrayToStruct(arr)`                                      |
+| `arrayToSet()`    | Convert to Set            | `arr.toSet()` → `{1, 2, 3}`                               |
 
 ### ➕ Modification Functions
 
@@ -304,6 +305,11 @@ arr2 = [3, 4, 5, 6]
 arr1.intersect(arr2)      // [3, 4]
 arr1.difference(arr2)     // [1, 2]
 arr1.union(arr2)          // [1, 2, 3, 4, 5, 6]
+
+// Convert to Set (deduplicates elements)
+s = [1, 2, 2, 3].toSet()           // {1, 2, 3}
+s = [1, 2, 3].toSet("linked")      // insertion-ordered Set
+s = [9, 1, 5, 3].toSet("sorted")   // sorted Set
 
 // Chaining operations
 result = fruits
@@ -526,6 +532,16 @@ newArr = Array.fromList(javaList)    // Wrap Java List
 newArr = Array.fromSet(javaSet)      // Create from Set
 newArr = Array.copyOf(sourceArray)   // Deep copy
 newArr = Array.copyFromList(list)    // Copy from List
+
+// ===== Set Conversion =====
+
+// Convert Array to Set (deduplicates elements)
+s = arr.toSet()                      // Default (hash) Set
+s = arr.toSet("linked")              // Insertion-ordered Set
+s = arr.toSet("sorted")              // Sorted Set
+
+// From Array.fromSet() - creates Array from a Java Set
+newArr = Array.fromSet(javaSet)
 
 // ===== Advanced Features =====
 

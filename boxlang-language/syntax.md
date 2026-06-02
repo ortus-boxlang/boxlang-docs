@@ -29,6 +29,8 @@ Also, note that you can use all the BoxLang types naturally with no imports:
 
 * Structs - (Maps)
 * Arrays - (Starting with an index of 1, not 0)
+* Sets - (Unique collections with algebra operations)
+* Ranges - (A range of values with algebra operations)
 * Strings
 * Dates
 * Numerics (Floats, shorts, integers, longs, etc)
