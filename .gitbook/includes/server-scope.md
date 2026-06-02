@@ -55,4 +55,3 @@ The following variables are in this structure.
 The following variables are in this structure.
 
 <table><thead><tr><th width="216">Variable</th><th width="100"><select><option value="M25oLpjbfLeo" label="String" color="blue"></option><option value="FKu4P8Bcnsat" label="Number" color="blue"></option><option value="3aeCl3Vi6Hn0" label="Boolean" color="blue"></option><option value="aGop9y9MZCRu" label="Timestamp" color="blue"></option><option value="aC32fOXQJVht" label="Path" color="blue"></option><option value="NsqJAGMFv1VJ" label="Struct" color="blue"></option></select></th><th>Hint</th></tr></thead><tbody><tr><td><code>environment</code></td><td><span data-option="NsqJAGMFv1VJ">Struct</span></td><td>A struct of ALL the environment vairables found when creating the runtime.</td></tr><tr><td><code>properties</code></td><td><span data-option="NsqJAGMFv1VJ">Struct</span></td><td>All the Java properties</td></tr></tbody></table>
-

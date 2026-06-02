@@ -13,6 +13,23 @@ You have three main approaches to scheduling tasks in BoxLang:
 2. **⚡ Scheduled Executor Approach**: Create a `ScheduledExecutor` and send task objects into it
 3. **🖥️ CLI Runner Approach**: Use the `boxlang schedule {path.to.Scheduler.bx}` command to run tasks from the CLI
 
+And with **BoxLang 1.14.0**, you can create ad-hoc schedulers on the fly using the new `schedulerNew()` BIF — no class file required:
+
+```js
+// Create a named scheduler with a specific timezone
+myScheduler = schedulerNew(
+    name     = "email-scheduler",
+    timezone = "America/Chicago",
+    force    = false
+)
+
+// Register tasks directly on the scheduler
+myScheduler.task( "nightly-report" )
+    .call( () => generateReport() )
+    .everyDayAt( "02:30" )
+myScheduler.startup()
+```
+
 {% hint style="success" %}
 With our scheduled tasks you can run either one-off tasks or periodically tasks.
 {% endhint %}
@@ -941,6 +958,55 @@ Monitor this file for:
 <summary>🎛️ Scheduler Management BIFs</summary>
 
 BoxLang provides several Built-In Functions (BIFs) for managing schedulers at runtime. These functions allow you to interact with the scheduler service programmatically and manage schedulers dynamically.
+
+## schedulerNew()
+
+{% hint style="info" %}
+**Since BoxLang 1.14.0**. Creates and registers a new empty scheduler — no class file required.
+{% endhint %}
+
+**Syntax:**
+
+```javascript
+schedulerNew( name, [timezone], [force] )
+```
+
+**Parameters:**
+
+* `name` (required): The unique name for the scheduler
+* `timezone` (optional): The timezone for the scheduler (e.g., "America/Chicago"). Defaults to the system timezone.
+* `force` (optional): Whether to replace an existing scheduler with the same name. Default: `false`
+
+**Returns:** The newly created scheduler object (a `BaseScheduler` instance)
+
+**Example:**
+
+```javascript
+// Create a simple scheduler
+myScheduler = schedulerNew( "email-scheduler" )
+
+// Register tasks and start
+myScheduler.task( "welcome-email" )
+    .call( () => sendWelcomeEmails() )
+    .everyHour()
+myScheduler.startup()
+
+// Create with timezone and force replacement
+myScheduler = schedulerNew(
+    name     = "reports-scheduler",
+    timezone = "America/Chicago",
+    force    = true
+)
+
+// Create multiple schedulers for different concerns
+emailScheduler  = schedulerNew( "email-scheduler", "UTC" )
+reportScheduler = schedulerNew( "report-scheduler", "America/New_York" )
+cleanupScheduler = schedulerNew( "cleanup-scheduler", "Asia/Tokyo" )
+```
+
+{% hint style="success" %}
+**Use `schedulerNew()` vs `schedulerStart()`**: Use `schedulerNew()` for lightweight, ad-hoc schedulers created at runtime without a class file. Use `schedulerStart()` when your scheduler needs a dedicated class with lifecycle callbacks (`onStartup`, `onShutdown`, `onAnyTaskError`, etc.).
+{% endhint %}
 
 ## schedulerStart()
 
