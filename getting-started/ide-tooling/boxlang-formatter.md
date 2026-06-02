@@ -109,6 +109,52 @@ In `--check` mode, the command behaves as a lint-style quality gate:
 
 This allows direct integration with CI jobs that should fail on style drift.
 
+## 🚫 Ignore Comments
+
+{% hint style="info" %}
+**BoxLang v1.14+** — Three styles of formatter-ignore comments are supported, matching the most popular conventions from the CFML and wider ecosystems.
+{% endhint %}
+
+When the formatter encounters an ignore directive, it emits the enclosed code **exactly as written** — no reformatting, no re-indentation, no quote normalization.
+
+### `@formatter:off` / `@formatter:on`
+
+The universal formatter directive, recognized by many language tooling ecosystems:
+
+```js
+// @formatter:off
+uglyCode =    {foo:   "bar"}
+// @formatter:on
+```
+
+### `bxformat-ignore-start` / `bxformat-ignore-end`
+
+BoxLang-native ignore markers:
+
+```js
+// bxformat-ignore-start
+legacyQuery = "SELECT  * FROM    users"
+// bxformat-ignore-end
+```
+
+### `cfformat-ignore-start` / `cfformat-ignore-end`
+
+Legacy cfformat compatibility — existing ignore blocks from cfformat projects work out of the box:
+
+```js
+// cfformat-ignore-start
+{ unformatted:   true }
+// cfformat-ignore-end
+```
+
+### How Ignore Blocks Work
+
+- The **start** marker must appear as a comment on the line **immediately before** the code to skip
+- The **end** marker must appear as a comment on the line **immediately after** the code to skip
+- Everything between the markers — including indentation, spacing, and quote style — is preserved verbatim
+- Ignore blocks can span multiple statements, not just single lines
+- Nested ignore blocks are not supported; the first start marker opens the region and the first end marker closes it
+
 ## ⚙️ Configuration Model
 
 The formatter auto-discovers configuration using this precedence order:
@@ -550,6 +596,7 @@ Run `boxlang format --initConfig` to generate this file automatically in your cu
   },
 
   "template": {
+    "enabled": false,
     "component_prefix": "bx",
     "indent_content": true,
     "single_attribute_per_line": false,
@@ -570,6 +617,7 @@ Run `boxlang format --initConfig` to generate this file automatically in your cu
     "member_order": "preserve",
     "member_spacing": 1,
     "property_order": "preserve",
+    "property_spacing": 1,
     "method_order": "preserve",
     "method_grouping": false
   },
