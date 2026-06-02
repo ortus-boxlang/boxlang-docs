@@ -19,18 +19,6 @@ CFML became famous in its infancy because it was easy to query databases with a 
 All BoxLang queries are passed to functions as memory references, not values. Keep that in mind when working with queries. There is also the `passby=reference|value` attribute to function arguments where you can decide whether to pass by reference or value.
 {% endhint %}
 
-## 📋 Table of Contents
-
-* [Queries in Code](queries.md#queries-in-code)
-* [Creating Queries](queries.md#creating-queries)
-* [Query Execution](queries.md#query-execution)
-* [Query Properties & Metadata](queries.md#query-properties--metadata)
-* [Query Transformers](queries.md#-query-transformers--custom-result-formatting)
-* [Accessing Query Data](queries.md#accessing-query-data)
-* [Functional Programming](queries.md#functional-programming)
-* [Query Manipulation](queries.md#query-manipulation)
-* [Best Practices](queries.md#best-practices)
-
 ## 💻 Queries in Code
 
 Let's explore query creation and manipulation:
@@ -412,34 +400,47 @@ queryEach( qry, callback, parallel:boolean, maxThreads:numeric );
 qry.each( callback, parallel:boolean, maxThreads:numeric );
 ```
 
+{% endhint %}
+
+**🚀 Multi-Threaded Looping**
+
+BoxLang allows you to leverage `each()` operations in a multi-threaded fashion. The `queryEach()` and `each()` functions support `parallel` and `maxThreads` arguments so iteration can happen concurrently:
+
+```js
+queryEach( qry, callback, parallel:boolean, maxThreads:numeric )
+qry.each( callback, parallel:boolean, maxThreads:numeric )
+```
+
 **Example:**
 
 ```js
 users.each( ( row ) => {
-    userService.process( row );
-}, true, 20 );
+    userService.process( row )
+}, true, 20 )
 ```
 
 {% hint style="warning" %}
-**Thread Safety Warning**: When using parallel execution, ensure proper var scoping and implement appropriate locking strategies. Thread concurrency requires careful attention to shared state and race conditions.
+**Thread Safety Warning**: When using parallel execution, ensure proper variable scoping and implement appropriate locking strategies. Thread concurrency requires careful attention to shared state and race conditions.
 {% endhint %}
 
 {% hint style="info" %}
-**Limitation**: This approach uses a single thread executor per execution and does not provide exception handling across threads. For production-grade parallel processing, consider BoxLang's async programming features instead.
+**Limitation**: This approach uses a single thread executor per execution and does not provide exception handling across threads. For production-grade parallel processing, consider BoxLang async programming features instead.
 {% endhint %}
 
 **⚡ BoxLang Async Programming (Recommended for Parallel Operations)**
 
-For a functional and much more flexible approach to multi-threaded or parallel programming, use BoxLang's built-in async programming constructs, which leverage the Java Concurrency and CompletableFutures frameworks.
+For a more flexible approach to parallel programming, use BoxLang async programming constructs built on Java Concurrency and `CompletableFuture`.
 
-**Key async methods for parallel query processing:**
+{% content-ref url="../boxlang-framework/asynchronous-programming/" %}
+[asynchronous-programming](../boxlang-framework/asynchronous-programming/)
+{% endcontent-ref %}
 
 #### 🔒 Using Query Parameters (Preventing SQL Injection)
 
 When using user input in queries, you must prevent [SQL injection attacks](https://owasp.org/www-community/attacks/SQL_Injection). BoxLang provides query parameters for safe SQL execution.
 
 {% hint style="danger" %}
-**Security Critical**: Never concatenate user input directly into SQL strings! Always use query parameters.
+**Security Critical**: Never concatenate user input directly into SQL strings. Always use query parameters.
 {% endhint %}
 
 **Named Parameters (Recommended)**
@@ -449,7 +450,7 @@ When using user input in queries, you must prevent [SQL injection attacks](https
 result = queryExecute(
     "SELECT quantity, item FROM cupboard WHERE item_id = :itemID",
     { itemID: { value: arguments.itemID, sqltype: "integer" } }
-);
+)
 
 // Multiple named parameters
 users = queryExecute(
@@ -458,7 +459,7 @@ users = queryExecute(
         minAge: { value: 18, sqltype: "integer" },
         status: { value: "active", sqltype: "varchar" }
     }
-);
+)
 ```
 
 **Positional Parameters**
@@ -468,7 +469,7 @@ users = queryExecute(
 result = queryExecute(
     "SELECT quantity, item FROM cupboard WHERE item_id = ?",
     [ { value: arguments.itemID, sqltype: "integer" } ]
-);
+)
 
 // Multiple positional parameters
 users = queryExecute(
@@ -477,48 +478,25 @@ users = queryExecute(
         { value: 18, sqltype: "integer" },
         { value: "active", sqltype: "varchar" }
     ]
-);
+)
 ```
 
-**Using bx:queryParam Component**
+**Using `bx:queryParam` Component**
 
-````js
+```js
 bx:query name="result" {
-    writeOutput("
+    writeOutput( "
         SELECT * FROM users
-        WHERE age >= ");
-    bx:queryParam value=18 sqltype="integer";
-    writeOutput(" AND email LIKE ");
-    bx:queryParam value="%@example.com" sqltype="varchar";
+        WHERE age >= " )
+    bx:queryParam value=18 sqltype="integer"
+    writeOutput( " AND email LIKE " )
+    bx:queryParam value="%@example.com" sqltype="varchar"
 }
-``` .get();
-```em and must return a result. Consider this a parallel `map()` operation.
-* `anyOf( a1, a2, ... ):Future` : This method accepts an infinite amount of future objects, closures, or an array of closures/futures and will execute them in parallel. However, instead of returning all of the results in an array like `all()`, this method will return the future that executes the fastest! Race Baby!
-* `withTimeout( timeout, timeUnit )` : Apply a timeout to `all()` or `allApply()` operations. The `timeUnit` can be days, hours, microseconds, milliseconds, minutes, nanoseconds, and seconds. The default is milliseconds.
-
-## Using Input
-
-We usually won't have the luxury of simple queries; we will need user input to construct our queries. Here is where you need to be extra careful not to allow for [SQL injection.](https://owasp.org/www-community/attacks/SQL_Injection) BoxLang has several ways to help you prevent SQL Injection, whether using tags or script calls. Leverage the `bx:queryparam` construct/tag ([https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam](https://boxlang.ortusbooks.com/boxlang-language/reference/types/queryparam)) and always sanitize your input via the `encode` functions in BoxLang.
-
-```java
-// Named variable holder
-// automatic parameterization via inline struct definitions
-queryExecute(
- "select quantity, item from cupboard where item_id = :itemID"
- { itemID = { value=arguments.itemID, sqltype="numeric" } }
-);
-
-// Positional placeholder
-queryExecute(
- "select quantity, item from cupboard where item_id = ?"
- [ { value=arguments.itemID, sqltype="varchar" } ]
-);
-````
+```
 
 **📋 Available SQL Types**
 
 The `sqltype` parameter binds values to specific database types for security and query plan optimization:
-{% endhint %}
 
 | Type           | Description                    | Example                                         |
 | -------------- | ------------------------------ | ----------------------------------------------- |
@@ -550,18 +528,21 @@ The `sqltype` parameter binds values to specific database types for security and
 | `refcursor`    | Result set reference           | Oracle REF CURSOR                               |
 | `idstamp`      | Unique identifier              | UUID/GUID                                       |
 
-{% hint style="success" %}
-\{% hint style="warning" %\} The `cf_sql_{type}` syntax (e.g., `cf_sql_varchar`) is only supported when [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed. Use the native type names (e.g., `varchar`) in all new code. \{% endhint %\}
+{% hint style="warning" %}
+The `cf_sql_{type}` syntax (e.g., `cf_sql_varchar`) is only supported when [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed. Use the native type names (e.g., `varchar`) in all new code.
+
+{% endhint %}
 
 #### 🏗️ Building Queries Programmatically
 
-You can create and manipulate queries without database connections using BoxLang's query construction functions:
+You can create and manipulate queries without database connections using BoxLang query construction functions:
 
 **Creating Empty Queries**
 
 ```js
 // Create query with columns only
-news = queryNew( "id,title", "integer,varchar" );
+news = queryNew( "id,title", "integer,varchar" )
+
 
 // Add rows one at a time
 queryAddRow( news );
@@ -721,9 +702,13 @@ categorized = queryExecute( "
 ", {}, { dbtype: "query" } );
 ```
 
-\{% hint style="info" %\} For complete QoQ documentation including custom functions, bitwise operators, and performance tips, see [Query of Queries](../boxlang-framework/jdbc/query-of-queries.md). \{% endhint %\}
+{% hint style="info" %}
+For complete QoQ documentation including custom functions, bitwise operators, and performance tips, see [Query of Queries](../boxlang-framework/jdbc/query-of-queries.md).
+{% endhint %}
 
-\{% hint style="success" %\} **Performance Tip**: For simple filtering and sorting, use functional methods like `queryFilter()` and `querySort()` instead of QoQ - they're even faster and more type-safe! \{% endhint %\}
+{% hint style="success" %}
+**Performance Tip**: For simple filtering and sorting, use functional methods like `queryFilter()` and `querySort()` instead of QoQ. They are often faster and more type-safe.
+{% endhint %}
 
 #### 📦 Alternative Return Types
 
@@ -780,7 +765,9 @@ arrayData = qry.map( ( row ) -> {
 } );
 ```
 
-\{% hint style="success" %\} **Best Practice**: Use `returntype="array"` for REST APIs and JSON responses. It's cleaner and more compatible with JavaScript frameworks like React, Vue, and Angular. \{% endhint %\}
+{% hint style="success" %}
+**Best Practice**: Use `returntype="array"` for REST APIs and JSON responses. It is cleaner and more compatible with JavaScript frameworks like React, Vue, and Angular.
+{% endhint %}
 
 #### 🔄 Query Transformers — Custom Result Formatting
 
@@ -1058,14 +1045,16 @@ query.table( "users" )
 
 📖 **Full Documentation**: [https://qb.ortusbooks.com/](https://qb.ortusbooks.com/)
 
-\{% hint style="success" %\} **Recommended**: Use QB for complex queries and database migrations. It provides better testability and database portability than raw SQL. \{% endhint %\}
+{% hint style="success" %}
+**Recommended**: Use QB for complex queries and database migrations. It provides better testability and database portability than raw SQL.
+{% endhint %}
 
 #### ⚙️ Query Options
 
 BoxLang supports comprehensive query options for controlling execution behavior:
 
 **Core Options**
-{% endhint %}
+
 
 | Option         | Type    | Description                               | Example                 |
 | -------------- | ------- | ----------------------------------------- | ----------------------- |
@@ -1077,7 +1066,7 @@ BoxLang supports comprehensive query options for controlling execution behavior:
 | `fetchSize`    | Integer | JDBC batch size for large results         | `fetchSize: 500`        |
 | `dbtype`       | String  | Database type (`"query"` for QoQ)         | `dbtype: "query"`       |
 
-{% hint style="success" %}
+{% hint style="info" %}
 **Caching Options**
 {% endhint %}
 
@@ -1118,9 +1107,9 @@ queryExecute(
 );
 
 // Access metadata
-writeDump( metadata.sql );
-writeDump( metadata.executionTime );
-writeDump( metadata.cached );
+writeDump( metadata.sql )
+writeDump( metadata.executionTime )
+writeDump( metadata.cached )
 ```
 
 **CFML Compatibility Options**
@@ -1136,10 +1125,10 @@ When [bx-compat-cfml](https://forgebox.io/view/bx-compat-cfml) is installed, the
 | `cachedAfter`  | Converted to `cacheTimeout` |
 | `cachedWithin` | `cacheTimeout`              |
 
-{% hint style="success" %}
-\{% hint style="info" %\} **Future Options**: Support planned for `cachedWithin="request"`, `timezone`, `psq`, and `lazy` loading. \{% endhint %\}
+{% hint style="info" %}
+**Future Options**: Support is planned for `cachedWithin="request"`, `timezone`, `psq`, and `lazy` loading.
+{% endhint %}
 
-\{% hint style="warning" %\} **Unsupported**: The following CFML options are not supported: \`
-
-username`,` password`,` debug`,` clientInfo`,` fetchClientInfo`,` ormoptions\`.
+{% hint style="warning" %}
+**Unsupported**: The following CFML options are not supported: `username`, `password`, `debug`, `clientInfo`, `fetchClientInfo`, `ormoptions`.
 {% endhint %}
