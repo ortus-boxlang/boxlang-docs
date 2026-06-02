@@ -248,8 +248,13 @@ Some keys may not appear in the generated `--initConfig` scaffold but are still 
 
 ### `template` Rules
 
+{% hint style="info" %}
+**BoxLang v1.14+** — The `template.enabled` flag gates template (`.bxm` / `.cfm`) formatting. It defaults to `false` until template formatting exits experimental mode. Set it to `true` to enable.
+{% endhint %}
+
 | Key | Type | Default | Allowed / Notes |
 | :--- | :--- | :--- | :--- |
+| `template.enabled` | boolean | `false` | Enable/disable template (`.bxm` / `.cfm`) formatting (BoxLang v1.14+) |
 | `template.component_prefix` | string | `"bx"` | Commonly `"bx"` or `"cf"` |
 | `template.indent_content` | boolean | `true` | Indent tag body content |
 | `template.single_attribute_per_line` | boolean | `false` | One attribute per line in tags |
@@ -271,11 +276,16 @@ Some keys may not appear in the generated `--initConfig` scaffold but are still 
 
 ### `class` Rules
 
+{% hint style="info" %}
+**BoxLang v1.14+** — The `class.property_spacing` rule controls blank lines between property declarations in class bodies. Default is `1` (single blank line), matching Ortus coding standards.
+{% endhint %}
+
 | Key | Type | Default | Allowed / Notes |
 | :--- | :--- | :--- | :--- |
 | `class.member_order` | string | `"preserve"` | Member ordering strategy |
 | `class.member_spacing` | number | `1` | Blank lines between members |
 | `class.property_order` | string | `"preserve"` | `"preserve"`, `"alphabetical"`, `"length"`, `"type"` |
+| `class.property_spacing` | number | `1` | Blank lines between property declarations (BoxLang v1.14+) |
 | `class.method_order` | string | `"preserve"` | `"preserve"` or `"alphabetical"` |
 | `class.method_grouping` | boolean | `false` | Group methods by modifier/type before ordering |
 
