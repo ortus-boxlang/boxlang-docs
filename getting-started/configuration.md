@@ -134,6 +134,10 @@ Here, you will find each segment and its configuration details.
 [modules.md](configuration/modules.md)
 {% endcontent-ref %}
 
+{% content-ref url="configuration/queries.md" %}
+[queries.md](configuration/queries.md)
+{% endcontent-ref %}
+
 {% content-ref url="configuration/scheduler.md" %}
 [scheduler.md](configuration/scheduler.md)
 {% endcontent-ref %}

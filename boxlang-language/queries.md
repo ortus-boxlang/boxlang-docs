@@ -25,6 +25,7 @@ All BoxLang queries are passed to functions as memory references, not values. Ke
 * [Creating Queries](queries.md#creating-queries)
 * [Query Execution](queries.md#query-execution)
 * [Query Properties & Metadata](queries.md#query-properties--metadata)
+* [Query Transformers](queries.md#-query-transformers--custom-result-formatting)
 * [Accessing Query Data](queries.md#accessing-query-data)
 * [Functional Programming](queries.md#functional-programming)
 * [Query Manipulation](queries.md#query-manipulation)
@@ -780,6 +781,211 @@ arrayData = qry.map( ( row ) -> {
 ```
 
 \{% hint style="success" %\} **Best Practice**: Use `returntype="array"` for REST APIs and JSON responses. It's cleaner and more compatible with JavaScript frameworks like React, Vue, and Angular. \{% endhint %\}
+
+#### 🔄 Query Transformers — Custom Result Formatting
+
+{% hint style="info" %}
+**Since BoxLang 1.14.0**. Query Transformers let you process query result sets natively and return exactly what you need — eliminating boilerplate post-processing.
+{% endhint %}
+
+BoxLang's `queryExecute()` and `bx:query` are locked into three hardcoded return types: `query`, `array`, and `struct`. Users who want tabular arrays, rich column descriptors, JSON, domain objects, or any other format must post-process results in a separate step — doubling memory and CPU for large queries. Adding new native return types for every use case is unsustainable.
+
+Query Transformers solve this by allowing you to provide a **transformer** option that receives the raw query and execution metadata, giving you complete control over the result format.
+
+**Transformer input types:**
+
+1. **Closure/Lambda** — `(query, metadata) => any` or `(query, metadata) → any`
+2. **Class instance** — any class with a `transform(query, metadata)` method
+3. **String** — name of a registered transformer from `this.queryTransformers` in `Application.bx`
+
+When `transformer` is provided, it **takes precedence** over `returnType`. The transformer receives two arguments:
+
+- **`query`** — the raw Query object (`.recordCount`, `.toArrayOfStructs()`, `.getData()`, `.getColumnNames()`, `.getColumnMeta()`, etc.)
+- **`metadata`** — a struct containing `sql`, `parameters`, `executionTime`, `columnMetadata`, and more
+
+{% hint style="success" %}
+**Why transformers?** Instead of hardcoding every possible return format, transformers give you the flexibility to produce tabular arrays, domain objects, JSON payloads, enriched metadata structures, or any custom format — all in a single pass.
+{% endhint %}
+
+##### Inline Closure Transformers
+
+**Custom Struct with Metadata:**
+
+```js
+var result = queryExecute( "SELECT * FROM users", [], {
+    datasource: "app",
+    transformer: ( query, meta ) => {
+        return {
+            data: query.toArrayOfStructs(),
+            total: query.recordCount,
+            executedAt: now(),
+            sql: meta.sql
+        }
+    }
+} )
+// => { data: [...], total: 42, executedAt: ..., sql: "SELECT..." }
+```
+
+**Domain Objects:**
+
+```js
+var users = queryExecute( "SELECT * FROM users", [], {
+    datasource: "app",
+    transformer: ( query, meta ) => query.toArrayOfStructs().map( row => new User( row ) )
+} )
+// => [ User{...}, User{...}, ... ]
+```
+
+**Tabular Format (Near Zero-Copy):**
+
+```js
+var tabular = queryExecute( "SELECT id, name, price FROM products", [], {
+    datasource: "app",
+    transformer: ( query, meta ) => {
+        return {
+            columns: query.getColumnNames(),
+            data: query.getData().map( row => arrayNew( row ) )
+        }
+    }
+} )
+// => { columns: ["id","name","price"], data: [[1,"Widget",9.99],[2,"Gadget",19.99]] }
+```
+
+**Rich Format with Column Descriptors:**
+
+```js
+var rich = queryExecute( "SELECT id, name, price, status FROM products", [], {
+    datasource: "app",
+    transformer: ( query, meta ) => {
+        var colMeta = query.getColumnMeta()
+        return {
+            count: query.recordCount,
+            columns: query.getColumnNames().map( name => {
+                var info = colMeta[ name ]
+                return {
+                    name: name,
+                    type: info.type,
+                    nullable: info.nullable,
+                    readOnly: info.readOnly,
+                    decimals: info.decimals,
+                    maxLength: info.maxLength
+                }
+            } ),
+            data: query.getData().map( row => arrayNew( row ) )
+        }
+    }
+} )
+// => {
+//   count: 3,
+//   columns: [
+//     { name: "id", type: "INTEGER", nullable: false, readOnly: true, ... },
+//     { name: "name", type: "VARCHAR", nullable: false, readOnly: null, ... },
+//     ...
+//   ],
+//   data: [[1,"Widget",9.99,"active"], ...]
+// }
+```
+
+##### Class Instance Transformers
+
+Create reusable transformer classes for complex formatting logic:
+
+```js
+// RichTransformer.bx
+class RichTransformer {
+    function transform( query, metadata ) {
+        var colMeta = query.getColumnMeta()
+        return {
+            count: query.recordCount,
+            columns: query.getColumnNames().map( name => {
+                var info = colMeta[ name ]
+                return {
+                    name: name, type: info.type,
+                    nullable: info.nullable, readOnly: info.readOnly,
+                    decimals: info.decimals, maxLength: info.maxLength
+                }
+            } ),
+            data: query.getData().map( row => arrayNew( row ) )
+        }
+    }
+}
+
+// Usage
+var transformer = new RichTransformer()
+var result = queryExecute( sql, params, { transformer: transformer } )
+```
+
+##### Registered Transformers (Application.bx)
+
+Register transformers globally in your application for reuse across the entire codebase:
+
+```js
+// In Application.bx
+this.queryTransformers = {
+    "rich": new RichTransformer(),
+    "tabular": ( query, meta ) => {
+        return {
+            columns: query.getColumnNames(),
+            data: query.getData().map( row => arrayNew( row ) )
+        }
+    },
+    "json": ( query, meta ) => serializeJson( query.toArrayOfStructs() ),
+    "domainUsers": "models.transformers.UserTransformer"
+}
+
+// Usage anywhere in the app:
+var rich    = queryExecute( sql, params, { transformer: "rich" } )
+var tabular = queryExecute( sql, params, { transformer: "tabular" } )
+var json    = queryExecute( sql, params, { transformer: "json" } )
+var users   = queryExecute( sql, params, { transformer: "domainUsers" } )
+```
+
+{% hint style="warning" %}
+**Precedence**: When `transformer` is provided, the `returnType` option is **ignored**. The transformer always takes precedence.
+{% endhint %}
+
+##### bx:query Component Support
+
+Transformers also work with the `bx:query` component:
+
+```html
+<bx:query name="result" datasource="app"
+    transformer=(( q, m ) => serializeJson( q.toArrayOfStructs() ))>
+    SELECT * FROM users
+</bx:query>
+```
+
+##### JDBC Metadata Enhancement
+
+As a prerequisite for rich column descriptors, `QueryColumn` now captures JDBC metadata that was previously discarded after the `ResultSet` was closed — exposed via `query.getColumnMeta()`:
+
+| Property | Source | Description |
+|----------|--------|-------------|
+| `nullable` | `ResultSetMetaData.isNullable()` | Whether the column accepts NULL |
+| `readOnly` | `ResultSetMetaData.isReadOnly()` / `isAutoIncrement()` | Whether the column is read-only |
+| `decimals` | `ResultSetMetaData.getScale()` | Number of decimal digits (numeric types) |
+| `maxLength` | `ResultSetMetaData.getColumnDisplaySize()` | Maximum column width (string types) |
+
+```js
+var colMeta = query.getColumnMeta()
+for ( var name in query.getColumnNames() ) {
+    var info = colMeta[ name ]
+    println( "#name# — type: #info.type#, nullable: #info.nullable#, decimals: #info.decimals#" )
+}
+```
+
+{% hint style="success" %}
+**Transformer Resolution Order**:
+
+```
+transformer input:
+  ├── instanceof Function    → invoke( query, metadata )
+  ├── Object with "transform" key → invoke transform( query, metadata )
+  └── instanceof String      → lookup in this.queryTransformers
+                                  └── resolves to Function, class instance, or class path
+                                      └── resolved transformer is invoked
+```
+{% endhint %}
 
 #### 🏗️ QB - Query Builder Module
 

@@ -119,6 +119,7 @@
   * [Executors](getting-started/configuration/executors.md)
   * [Logging](getting-started/configuration/logging.md)
   * [Modules](getting-started/configuration/modules.md)
+  * [Queries](getting-started/configuration/queries.md)
   * [Scheduler](getting-started/configuration/scheduler.md)
   * [Watchers](getting-started/configuration/watcher.md)
   * [Security](getting-started/configuration/security.md)
