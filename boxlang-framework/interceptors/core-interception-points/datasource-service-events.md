@@ -10,7 +10,7 @@ These events occur around the lifecycle of datasources and the datasource servic
 
 ## onDatasourceServiceStartup
 
-This event is triggered immediately after the datasource service has started. You could use this event to register custom datasources after the service has started, for example. 
+This event is triggered immediately after the datasource service has started. You could use this event to register custom datasources after the service has started, for example.
 
 | Data Key          | Type           | Description                               |
 | ----------------- | -------------- | ----------------------------------------- |
