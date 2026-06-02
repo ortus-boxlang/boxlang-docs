@@ -521,33 +521,121 @@ When secure mode is enabled:
 
 ### Health Check Response Format
 
+{% hint style="info" %}
+**BoxLang v1.14+** — The `/health` endpoint now includes Undertow worker pool statistics, listener metrics, request timing data, and WebSocket session counts.
+{% endhint %}
+
 The `/health` endpoint returns comprehensive JSON information:
 
 ```json
 {
   "status": "UP",
-  "timestamp": "2025-08-01T17:05:47.587438Z",
-  "uptime": "1m 47s",
-  "uptimeMs": 107245,
-  "version": "1.4.0-snapshot+0",
-  "buildDate": "2025-08-01 16:03:36",
-  "javaVersion": "17.0.2",
-  "memoryUsed": 152093696,
-  "memoryMax": 4294967296
+  "timestamp": "2026-05-21T16:49:36.072938Z",
+  "uptime": "1m 8s",
+  "uptimeMs": 68318,
+  "version": "1.14.0-snapshot+4432",
+  "buildDate": "2026-05-21 11:50:35",
+  "javaVersion": "21.0.10",
+  "memoryUsed": 54973848,
+  "memoryMax": 17179869184,
+  "activeRequests": 1,
+  "workerPool": {
+    "core": 128,
+    "max": 128,
+    "current": 1,
+    "busy": -1,
+    "ioThreadCount": 16,
+    "queueSize": 0
+  },
+  "listeners": [
+    {
+      "name": "http",
+      "requestCount": 14,
+      "errorCount": 0,
+      "bytesSent": 912159,
+      "bytesReceived": 9000,
+      "activeConnections": 1,
+      "activeRequests": 1
+    }
+  ],
+  "requestMetrics": {
+    "totalRequests": 13,
+    "totalErrors": 1,
+    "totalRequestTime": 535,
+    "maxRequestTime": 418,
+    "minRequestTime": 0
+  },
+  "websocket": {
+    "activeConnections": 0,
+    "openConnections": 0
+  }
 }
 ```
 
 The health check provides:
 
-* **Status** - Current server status (UP/DOWN)
-* **Timestamp** - Current server time in ISO format
-* **Uptime** - Human-readable server uptime
-* **UptimeMs** - Server uptime in milliseconds
-* **Version** - BoxLang version information
-* **Build Date** - When BoxLang was built
-* **Java Version** - JVM version information
-* **Memory Usage** - Current memory usage in bytes
-* **Memory Max** - Maximum available memory in bytes
+#### Core Metrics
+
+| Field | Description |
+| :--- | :--- |
+| `status` | Current server status (`UP` / `DOWN`) |
+| `timestamp` | Current server time in ISO 8601 format |
+| `uptime` | Human-readable server uptime |
+| `uptimeMs` | Server uptime in milliseconds |
+| `version` | BoxLang version information |
+| `buildDate` | When BoxLang was built |
+| `javaVersion` | JVM version information |
+| `memoryUsed` | Current JVM memory usage in bytes |
+| `memoryMax` | Maximum available JVM memory in bytes |
+| `activeRequests` | Number of requests currently being processed |
+
+#### Worker Pool (`workerPool`)
+
+Undertow XNIO worker thread pool statistics:
+
+| Field | Description |
+| :--- | :--- |
+| `core` | Core thread pool size |
+| `max` | Maximum thread pool size |
+| `current` | Current number of threads in the pool |
+| `busy` | Number of busy threads (`-1` if unavailable) |
+| `ioThreadCount` | Number of I/O threads handling network operations |
+| `queueSize` | Number of tasks waiting in the worker queue |
+
+#### Listeners (`listeners`)
+
+Per-listener Undertow statistics (array — one entry per configured listener):
+
+| Field | Description |
+| :--- | :--- |
+| `name` | Listener name (e.g., `"http"`, `"https"`) |
+| `requestCount` | Total number of requests handled by this listener |
+| `errorCount` | Total number of errors returned by this listener |
+| `bytesSent` | Total bytes sent to clients |
+| `bytesReceived` | Total bytes received from clients |
+| `activeConnections` | Currently open TCP connections |
+| `activeRequests` | Requests currently being processed on this listener |
+
+#### Request Metrics (`requestMetrics`)
+
+Aggregate request timing statistics:
+
+| Field | Description |
+| :--- | :--- |
+| `totalRequests` | Total number of requests processed since startup |
+| `totalErrors` | Total number of error responses returned |
+| `totalRequestTime` | Cumulative request processing time (ms) |
+| `maxRequestTime` | Slowest single request time (ms) |
+| `minRequestTime` | Fastest single request time (ms) |
+
+#### WebSocket (`websocket`)
+
+WebSocket session counts:
+
+| Field | Description |
+| :--- | :--- |
+| `activeConnections` | Currently active WebSocket connections |
+| `openConnections` | Total open WebSocket sessions |
 
 ## 🌍 Environment Files
 
