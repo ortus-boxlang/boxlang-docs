@@ -14,19 +14,30 @@ class package="com.example" {
 
 This code defines a package named `com.example`. All components and functions defined within this package will be part of the `com.example` namespace.
 
-Importing in BoxLang is done using the `import` keyword. The `import` statement is used to bring in a package or a specific component from a package into the current scope. For example:
+Importing in BoxLang is done using the `import` keyword. The `import` statement is used to bring a package or a specific class into the current scope. Imported BoxLang and Java classes become class references, which can be used with `new`, `.init()`, or direct functional constructor syntax. For example:
 
 ```BoxLang
-import "com.example.*";
+import com.example.*;
 ```
 
 This statement imports all components from the `com.example` package. If you want to import a specific component, you can do so like this:
 
 ```BoxLang
-import "com.example.MyComponent";
+import com.example.MyComponent;
 ```
 
 This statement imports only the `MyComponent` component from the `com.example` package.
+
+```BoxLang
+import models.User;
+import java:java.lang.StringBuilder;
+
+// BoxLang class reference
+user = User( "Luis" );
+
+// Java class reference
+builder = StringBuilder( "hello" );
+```
 
 It's important to note that BoxLang is a dynamic language, and as such, it resolves package and component names at runtime, not at compile time. This means that you can use dynamic strings in your `import` statements, like so:
 

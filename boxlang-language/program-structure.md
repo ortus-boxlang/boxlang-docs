@@ -88,6 +88,8 @@ BoxLang allows you to access any BoxLang class or script/template by location co
 
 * `new class_path()`
 * `createObject( "class", path )`
+* `class_path.init()` when the path resolves to a class reference
+* `class_path()` when the path resolves to a callable class reference
 * `include template="path"`
 * `Any BIF that requires a path`
 
@@ -122,7 +124,7 @@ Works great, but yes, some lookup is done, but cached.
 
 ## 📁 Simple Imports
 
-Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates. This allows you to fully define the location of a class or template explicitly. This is also used not only for BoxLang classes but for any Java class:
+Another approach in BoxLang is to use the `import` statement or the `<bx:import>` template statement if you are in templates. This allows you to fully define the location of a class or template explicitly. Imports resolve to usable class references, and this applies to both BoxLang classes and Java classes:
 
 ```java
 import java.time.Instant;
@@ -132,7 +134,7 @@ import ortus.boxlang.runtime.scopes.Key;
 today = Instant.now();
 println( today );
 
-myUser = new User();
+myUser = User( "Luis" );
 
 caseInsensitiveKey = new Key( "luis" );
 ```
@@ -148,7 +150,7 @@ BoxLang ships with two object resolver prefixes:
 * `java:` - To demarcate a Java class path
 * `bx:` - To demarcate a BoxLang class path
 
-This is useful to disambiguiate paths and make them explicit. You can use it in the import or in the `new() or createObject()` syntax.
+This is useful to disambiguiate paths and make them explicit. You can use it in imports, `new`, `createObject()`, `.init()` calls on class references, or direct functional constructor calls.
 
 ```java
 import java:java.time.Instant;
@@ -158,7 +160,7 @@ import models.User;
 
 
 a = Instant.now()
-myUser = new User()
+myUser = User( "Luis" )
 
 caseInsensitiveKey = new java:Key( "luis" )
 ```
@@ -223,11 +225,13 @@ import ortus.boxlang.runtime.scopes.Key as jKey;
 
 result = jInstant.now()
 
-user = new BXUser()
+user = BXUser( "Luis" )
 
 caseInsensitiveKey = new Key( "luis" )
 javaKey = new jKey( "java" )
 ```
+
+Aliases are class references too, so they support the same construction forms as the original import: `new BXUser()`, `BXUser.init()`, and `BXUser()`.
 
 Here is another example:
 

@@ -83,23 +83,59 @@ Get into the habit of inline documentation, it can go a long way for automatic g
 
 ### Creating Instances
 
-The _User.bx_ class above is a representation of _any_ user or the _idea_ of a user. In order to bring it to life we will create an [**instance**](https://en.wikipedia.org/wiki/Instance_\(computer_science\)) of it, populate it with instance data and then use it.
+The _User.bx_ class above is a representation of _any_ user or the _idea_ of a user. In order to bring it to life we create an [**instance**](https://en.wikipedia.org/wiki/Instance_\(computer_science\)) of it, populate it with instance data, and then use it.
 
-An instance, is a copy of that blueprint that you are bringing to life that will be stored in memory and used by the language during a set of executions. Usually via a `new` or `createObject()` keyword operation from another file, which can be a template or yet another class.
+An instance is a copy of that blueprint stored in memory. BoxLang supports several equivalent construction forms for class references:
 
 ```java
-// Create a new instance of the User class
-user = new User( name="luis" );
-// execute a function within it
-user.run();
+import models.User
+
+// Traditional constructor syntax
+user = new User( name="luis" )
+
+// Explicit constructor call on the class reference
+user = User.init( name="luis" )
+
+// Functional constructor syntax: the class reference is callable
+user = User( name="luis" )
+
+// Execute a function within it
+user.run()
 ```
 
-* See [https://cfdocs.org/new](https://cfdocs.org/new) and [https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/system/createobject](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/system/createobject)
-
-Please note that the `new` keyword will automatically call an object's constructor: the `init()` method. The `createObject()` will not, you will have to call the constructor manually:
+These forms work for BoxLang classes and Java classes. The `new` keyword remains fully supported, but imported class references are also first-class callable objects. Calling `.init()` on a class reference, or invoking the class reference directly, delegates to the same constructor pipeline as `new`.
 
 ```java
-user = createObject( "class", "User" ).init();
+import models.User
+import java:java.lang.StringBuilder
+
+// BoxLang class
+u1 = new User( "Luis" )
+u2 = User.init( "Luis" )
+u3 = User( "Luis" )
+
+// Java class
+b1 = new StringBuilder( "abc" )
+b2 = StringBuilder.init( "abc" )
+b3 = StringBuilder( "abc" )
+```
+
+Because class references are callable, they can also be stored, passed around, and used in functional pipelines:
+
+```java
+import models.User
+
+factory = User
+user    = factory( "Luis" )
+
+names = [ "Alice", "Bob", "Charlie" ]
+users = names.map( User )
+```
+
+The `createObject()` function is still valid and useful for dynamic, legacy, or intercepted creation paths. Unlike `new` or direct class-reference invocation, `createObject()` returns a class reference and does not call the constructor automatically. Call `.init()` explicitly when you need an initialized instance:
+
+```java
+user = createObject( "class", "User" ).init( name="luis" )
 ```
 
 In later chapters we will investigate the concept of [dependency injection](../../extra-credit/dependency-injection.md). Please also note that the `createObject()` function can also be used to create different types of objects in BoxLang like:
@@ -132,15 +168,30 @@ obj
  .setValue( 'otherValue' );
 ```
 
-By default when using the `new Object()` operator, the Object's `init()` function will be called for you automatically. If you use the `createObject()` then the `init()` is NOT called automatically for you, you will call it explicitly.
+By default when using the `new Object()` operator, the object's `init()` function will be called for you automatically. You can also call `init()` directly on a class reference, or call the class reference itself as a functional constructor.
 
 ```java
 // Implicit Constructor
-var obj = new Object();
+var obj = new Object()
 
-// Explicit Constructor
-var obj = createObject( "class", "Object" ).init();
+// Explicit constructor on a class reference
+var obj = Object.init()
+
+// Functional constructor syntax
+var obj = Object()
+
+// Named and positional arguments both work for BoxLang class constructors
+var user = User( name="luis" )
+var user = User( "luis" )
 ```
+
+If you use `createObject()`, then the `init()` is NOT called automatically for you; call it explicitly.
+
+```java
+var obj = createObject( "class", "Object" ).init()
+```
+
+Java classes follow the same class-reference model when imported. See the [Java Interop](../../boxlang-framework/java-integration.md) guide for Java-specific constructor and overload details.
 
 ### Pseudo-Constructor
 
@@ -202,4 +253,3 @@ class{
 
 }
 ```
-

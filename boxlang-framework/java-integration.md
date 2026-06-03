@@ -117,6 +117,47 @@ var className = "java.util.ArrayList";
 var list      = new "#className#"();
 ```
 
+### Class References as Constructors
+
+Imported Java classes are class references, and class references are callable constructors. This gives Java classes the same construction model as BoxLang classes: use `new`, call `.init()` on the class reference, or invoke the class reference directly.
+
+```java
+import java:java.lang.StringBuilder;
+
+// These three forms are equivalent
+var b1 = new StringBuilder( "abc" );
+var b2 = StringBuilder.init( "abc" );
+var b3 = StringBuilder( "abc" );
+```
+
+The same pattern applies to BoxLang classes:
+
+```java
+import models.User;
+
+var u1 = new User( "Luis" );
+var u2 = User.init( "Luis" );
+var u3 = User( "Luis" );
+```
+
+Because class references are callable, they can be passed directly to higher-order functions. This is useful when mapping raw data into Java objects without wrapping the constructor in a lambda.
+
+```java
+import java:java.math.BigDecimal;
+
+var values   = [ "1.25", "2.50" ];
+var decimals = values.map( BigDecimal );
+```
+
+If the class reference is stored in a variable or returned from a function, invoke that reference the same way:
+
+```java
+import java:java.lang.StringBuilder;
+
+var builderClass = StringBuilder;
+var builder      = builderClass( "hello" );
+```
+
 ### `createObject()`
 
 ```java
@@ -141,8 +182,15 @@ Side-by-side comparison:
 // new — single call, always initialized
 var a = new java:java.util.HashMap( 16 );
 
+// imported class reference — explicit init()
+import java:java.util.HashMap;
+var b = HashMap.init( 16 );
+
+// imported class reference — functional constructor
+var c = HashMap( 16 );
+
 // createObject — two calls needed when a constructor is required
-var b = createObject( "java", "java.util.HashMap" ).init( 16 );
+var d = createObject( "java", "java.util.HashMap" ).init( 16 );
 
 // createObject — static access needs no init()
 var sys = createObject( "java", "java.lang.System" );

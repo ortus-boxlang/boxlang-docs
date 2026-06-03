@@ -723,6 +723,9 @@ import java:java.nio.file.Path
 // Import BoxLang classes
 import models.User
 import models.cborm.MyService
+
+// Imported classes are class references
+user = User( "Luis" )
 ```
 
 Works just like Java. However, you will notice a nice `java:` prefix. This is called an class locator prefix. BoxLang supports these out of the box:
@@ -749,7 +752,7 @@ myBxPath = new Path()
 
 All the object resolvers prefixes can be used anywhere a class or path is expected:
 
-* Creating classes and instances: `createObject(), new`
+* Creating classes and instances: `createObject(), new, Class.init(), Class()`
 * Using `imports`
 * Extending classes
 * Implementing interfaces
@@ -1062,7 +1065,7 @@ Our dependency injection framework does this.
 
 ### Automatic Constructor
 
-Constructors in classes for BoxLang are not overloads but a single `init()` method. However, by default we create one for you. It can also take in named parameters or an `argumentCollection` to initialize all properties.
+Constructors in classes for BoxLang are not overloads but a single `init()` method. However, by default we create one for you. It can also take in named parameters or an `argumentCollection` to initialize all properties. You can construct BoxLang and Java classes with `new`, by calling `.init()` on the class reference, or by invoking the class reference directly.
 
 {% code title="User.bx" lineNumbers="true" %}
 ```cfscript
@@ -1076,13 +1079,19 @@ class{
 
 // Create a new user with no data
 user = new User()
+user = User.init()
+user = User()
 
 // Create one with named params
 user = new User( name: "BoxLang", email: "info@boxlang.io", isActive: true )
+user = User.init( name: "BoxLang", email: "info@boxlang.io", isActive: true )
+user = User( name: "BoxLang", email: "info@boxlang.io", isActive: true )
 
 // Create one with an arg collection
 myArgs = { name: "BoxLang", email: "info@boxlang.io", isActive: true }
 user = new User( argumentCollection: myArgs )
+user = User.init( argumentCollection: myArgs )
+user = User( argumentCollection: myArgs )
 ```
 {% endcode %}
 

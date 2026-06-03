@@ -11,6 +11,8 @@ Key interop features at a glance:
 
 - **`java:` prefix** — force the Java class resolver: `new java:java.util.HashMap()`.
 - **`new` operator** — instantiate a Java class and call its constructor in one step.
+- **BoxLang class references** — imported BoxLang classes can call constructors with `User.init(args)` or `User(args)`.
+- **Java class references** — imported Java classes support the same constructor forms: `StringBuilder.init(args)` or `StringBuilder(args)`.
 - **`createObject()`** — retrieve an uninitialized `DynamicObject`; call `.init()` to construct.
 - **`extends="java:..."`** — a BoxLang class can extend a Java class; use `@overrideJava` on overriding methods.
 - **`implements="java:..."`** — a BoxLang class can implement one or more Java interfaces.
