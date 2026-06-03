@@ -5,7 +5,17 @@ icon: layer-group
 
 # Sets
 
-A Set is a collection of **unique elements** where duplicates are automatically removed. Sets are ideal when you need to track membership, perform algebra operations (union, intersection, difference), or work with distinct values.
+BoxLang 1.14.0 introduces `BoxSet` as a brand-new first-class type, wrapping `java.util.Set` with full BoxLang integration including member-function dispatch, change listeners, metadata, and JSON serialization. Sets provide a powerful collection model for working with **unique values**, making them ideal for deduplication, membership testing, tagging systems, permissions, caching, filtering,  mathematics, and data comparison workflows.
+
+Unlike arrays, sets enforce uniqueness by design and offer highly efficient lookup operations. BoxLang elevates sets to a first-class citizen with literal syntax, functional collection operations, and rich operator overloads for set algebra—including unions, intersections, differences, and symmetric differences—making complex data manipulation both expressive and concise.
+
+Whether you're comparing datasets, managing unique identifiers, processing large collections, implementing access-control rules, or building recommendation and analytics engines, `BoxSet` provides a performant and elegant foundation for working with distinct values at scale.
+
+Sets support three backing variants:
+
+* `DEFAULT` — `HashSet`, fastest, no ordering
+* `LINKED` — `LinkedHashSet`, preserves insertion order
+* `SORTED` — `TreeSet`, natural ordering via `Compare.invoke`
 
 ```javascript
 // Create a Set via function
@@ -22,21 +32,6 @@ s = set{ 1, 2, 3 }
 {% hint style="info" %}
 **Java Set Interoperability**: Any Java `Set` implementation can be used with BoxLang set functions! BoxLang set BIFs and member functions work seamlessly with Java Sets.
 {% endhint %}
-
-## 📋 Table of Contents
-
-* [Creating Sets](sets.md#creating-sets)
-* [Set Types](sets.md#set-types)
-* [Set Literals](sets.md#set-literals)
-* [Accessing Set Elements](sets.md#accessing-set-elements)
-* [Set Built-In Functions](sets.md#set-built-in-functions)
-* [Member Functions](sets.md#member-functions)
-* [Set Algebra](sets.md#set-algebra)
-* [Operators](sets.md#operators)
-* [Functional Programming](sets.md#functional-programming)
-* [Conversion](sets.md#conversion)
-* [Case Sensitivity](sets.md#case-sensitivity)
-* [Java Interop](sets.md#java-interop)
 
 ## 📥 Creating Sets
 
@@ -538,6 +533,8 @@ Sets serialize to JSON arrays:
 s = setNew( type="linked", values=[ "a", "b", "c" ] )
 json = jsonSerialize( s )
 // Result: ["a","b","c"]
+// or the member method
+json = s.toJson()
 ```
 
 ## 🛡️ Unmodifiable Sets
