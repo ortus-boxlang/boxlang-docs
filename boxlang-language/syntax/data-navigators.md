@@ -250,7 +250,7 @@ nav.query( "orders[*].items[1:2]" ); // first 2 items from every order
 ### Filter Expressions
 
 {% hint style="success" %}
-Filters use `@` to reference the current element. Supported operators: `==`, `!=`, `>`, `<`, `>=`, `<=`, `&&`, `||`, `!`.
+Filters use `@` to reference the current element. Supported operators: `==`, `!=`, `>`, `<`, `>=`, `<=`.
 {% endhint %}
 
 ```js
