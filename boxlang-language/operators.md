@@ -175,7 +175,7 @@ Comparison operators are used when comparing two values, expressions, or variabl
 | -------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `eq, ==`                                                             | Equality             | True if `a eq b` or `a == b`                                                                                                                                             |
 | <p><code>neq,</code><br><code>!=,</code><br><code>&#x3C;></code></p> | Not Equal            | The opposite of equality: `a neq b, a != b, a <> b`                                                                                                                      |
-| `===`                                                                | Identity             | <p>Returns true if the operands are equal in value and in type.<br><code>2 === "2" // false</code><br><code>2 === 2 // true</code></p>                                   |
+| `===`                                                                | Identity / Strict Equality | <p>Returns true if the operands are equal in value and type, with type-aware normalization within BoxLang type families (no cross-type coercion). See type rules below.<br><code>2 === "2" // false</code><br><code>2 === 2 // true</code><br><code>1 === 1.0 // true</code><br><code>"brad" === "BRAD" // true</code></p> |
 | `!===`                                                               | Negated Identity     | Same as the identity operator but negating the result.                                                                                                                   |
 | `gt, >`                                                              | Greater than         | If the left operand is greater in value than the right operand                                                                                                           |
 | `gte, >=`                                                            | Greater than o equal | If the left operand is greater than or equal in value than the right operand                                                                                             |
@@ -186,6 +186,40 @@ Comparison operators are used when comparing two values, expressions, or variabl
 | `instanceOf`                                                         | Type checking        | <p>Returns true if the left operand is an instance of the right type.<br><code>true instanceOf 'Boolean'</code><br><code>'brad' instanceOf 'java.lang.String'</code></p> |
 | `castAs`                                                             | Type casting         | <p>Casts the left operand to the type specified on the right.<br><code>value castAs int</code><br><code>5 castAs String</code></p>                                       |
 | `assert`                                                             | Assert an expression | Evaluate an expression and if the expression is falsey it will throw an assert exceptions.                                                                               |
+
+### Type-Aware Equality Rules for `===`
+
+BoxLang's `===` operator normalizes values within the language's type families before comparing, avoiding cross-type coercion while correctly handling type variants within each family:
+
+| Type Family | Includes | Comparison Rule |
+|-------------|----------|-----------------|
+| **String** | `java.lang.String`, `java.lang.Character`, `char[]` | Case-insensitive comparison |
+| **Numeric** | `Integer`, `Short`, `Long`, `Double`, `Float`, `BigInteger`, `BigDecimal` | Compared by numeric value |
+| **DateTime** | `DateTime`, `ZonedDateTime`, `Calendar`, `LocalDateTime`, `LocalDate`, etc. | Compared by epoch millis |
+| **Array** | BoxLang Array, `java.util.List` | Falls back to object's `equals()` |
+| **Struct** | BoxLang Struct, `java.util.Map` | Falls back to object's `equals()` |
+| **All Others** | Same class + `Comparable` | Uses `compareTo()` |
+| **All Others** | Same class, not `Comparable` | Falls back to object's `equals()` |
+
+```javascript
+// String family — case-insensitive
+"brad" === "BRAD"      // true
+"B" === javacast("char", "B")   // true (char is treated as string)
+
+// Numeric family — compared by value
+1 === 1.0              // true
+1 === 01               // true
+2 === "2"              // false (different type families)
+
+// No cross-type coercion
+true === "true"        // false (boolean vs string)
+true === 1             // false (boolean vs numeric)
+
+// DateTime
+now() === now()        // true (same moment)
+```
+
+This `===` operator is also what BoxLang Sets use internally to determine set membership and uniqueness. See [Sets Equality and Uniqueness](sets.md#equality-and-uniqueness).
 
 ## ✅ Assert Statement <a href="#assert" id="assert"></a>
 

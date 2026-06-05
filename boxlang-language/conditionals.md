@@ -85,8 +85,10 @@ Conditional statements evaluate to **true** or **false** only. BoxLang provides 
 
 | Symbolic | Word Form | Description | Example |
 |----------|-----------|-------------|---------|
-| `==`, `===` | `EQ`, `EQUAL`, `IS` | Equal to | `a == 1` |
-| `!=`, `!==` | `NEQ`, `NOT EQUAL` | Not equal to | `a != 2` |
+| `==` | `EQ`, `EQUAL`, `IS` | Equal to (with type coercion) | `a == 1` |
+| `===` | - | Identity / Strict equality (no cross-type coercion, type-aware normalization) | `a === 1` |
+| `!=` | `NEQ`, `NOT EQUAL` | Not equal to (with type coercion) | `a != 2` |
+| `!==` | - | Negated identity / strict equality | `a !== 2` |
 | `>` | `GT`, `GREATER THAN` | Greater than | `a > 2` |
 | `>=` | `GTE`, `GREATER THAN OR EQUAL TO` | Greater than or equal | `a >= 1` |
 | `<` | `LT`, `LESS THAN` | Less than | `a < 2` |

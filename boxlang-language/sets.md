@@ -490,6 +490,67 @@ s.contains( "hello" )    // false
 **Numeric normalization**: Case sensitivity does not affect numeric normalization. `1`, `1L`, and `1.0` are always treated as the same numeric value regardless of case sensitivity setting.
 {% endhint %}
 
+## ⚖️ Equality and Uniqueness
+
+BoxLang Sets determine membership using the **`===` (strict equality / identity) operator**, not Java's `equals()` method. This ensures Set behavior is consistent with BoxLang's type system and loose typing conventions, unlike Adobe CF which delegates directly to `java.util.Set.equals()`.
+
+### How `===` Determines Set Membership
+
+BoxLang's `===` operator normalizes values along the language's type system before comparing:
+
+| Type Family | Includes | Comparison Rule |
+|-------------|----------|-----------------|
+| **String** | `java.lang.String`, `java.lang.Character`, `char[]` | Case-insensitive comparison |
+| **Numeric** | `Integer`, `Short`, `Long`, `Double`, `Float`, `BigInteger`, `BigDecimal` | Compared by numeric value |
+| **DateTime** | `DateTime`, `ZonedDateTime`, `Calendar`, `LocalDateTime`, `LocalDate` | Compared by epoch millis |
+| **Array** | BoxLang Array, `java.util.List` | Falls back to Java's `equals()` |
+| **Struct** | BoxLang Struct, `java.util.Map` | Falls back to Java's `equals()` |
+| **All Others** | Same class + `Comparable` | Uses `compareTo()` |
+| **All Others** | Same class, not `Comparable` | Falls back to Java's `equals()` |
+
+### Practical Implications
+
+```javascript
+// These are ALL the same value in a Set (case-insensitive strings)
+s = setNew( values=[ "brad", "BRAD", "Brad" ] )
+s.size()    // 1
+
+// Booleans and strings are NOT the same type
+s = setNew( values=[ true, "true" ] )
+s.size()    // 2 — true !== "true"
+
+// All numeric forms are the same value
+s = setNew( values=[ 1, 01, 1.0 ] )
+s.size()    // 1 — all compared by numeric value
+
+// Strings and numbers are NOT the same
+s = setNew( values=[ 1, "1" ] )
+s.size()    // 2 — 1 !== "1"
+```
+
+This approach follows the same precedent as JavaScript, Ruby, and PHP — using a strict-type-aware equality check for Set membership, rather than Java's type-sensitive `equals()`.
+
+### Why Not Java's `equals()`?
+
+Adobe CF delegates uniqueness to Java's `HashSet.equals()`, which considers Java type and hashCode. This leads to counter-intuitive behavior for CFML developers:
+
+```javascript
+// CF behavior (NOT BoxLang)
+setNew( [ true, "yes", "true", 1, 1.0, "1" ] )
+// Result: 6 values — all considered different!
+// "brad" and "BRAD" are also different (case-sensitive)
+
+// BoxLang behavior
+setNew( [ true, "yes", "true", 1, 1.0, "1" ] )
+// Result: 4 values — true, "yes", 1, "1" (grouped by type family)
+```
+
+BoxLang Sets are **case-insensitive by default**, matching BoxLang's case-insensitive string comparison semantics. See [Case Sensitivity](#-case-sensitivity) for opt-in case-sensitive behavior.
+
+{% hint style="info" %}
+**Java Set Wrapping**: If you pass a native Java `Set` to a BoxLang Set BIF or call member methods on a Java `Set` instance, BoxLang respects the Java class's own equality and case-sensitivity behavior.
+{% endhint %}
+
 ## 🔧 Java Interop
 
 A `java.util.Set` passed to a Set-typed BIF argument is **wrapped** (not copied) so that mutations propagate back to the underlying Java object — same contract as `Array` wrapping a Java `List`.
