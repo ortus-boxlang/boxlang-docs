@@ -532,7 +532,7 @@ This approach follows the same precedent as JavaScript, Ruby, and PHP — using 
 
 ### Why Not Java's `equals()`?
 
-Adobe CF delegates uniqueness to Java's `HashSet.equals()`, which considers Java type and hashCode. This leads to counter-intuitive behavior for CFML developers:
+If you delegate uniqueness to Java's `HashSet.equals()`, which considers Java type and hashCode, this will lead to counter-intuitive behavior:
 
 ```javascript
 // CF behavior (NOT BoxLang)
