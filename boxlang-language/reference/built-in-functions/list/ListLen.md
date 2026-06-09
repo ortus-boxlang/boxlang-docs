@@ -18,7 +18,7 @@ ListLen(list=[string], delimiter=[string], includeEmptyFields=[boolean], multiCh
 | `list` | `string` | `true` | string list to calculate the length |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean true means the entire string is treated as a single delimiter | `false` |
 
 ## Examples
 
@@ -55,7 +55,7 @@ Get the number of elements in this list, including empty values
 <a href="https://try.boxlang.io/?code=eJzLySwu8UnN01BQSsvP10lKLNLRATKMlHQUlHRARKRrsJKCpjUXAPzbCqY%3D" target="_blank">Run Example</a>
 
 ```java
-listLen( "foo,bar,,foo2", ",", "YES" );
+listLen( "foo,bar,,foo2", ",", true );
 
 ```
 
