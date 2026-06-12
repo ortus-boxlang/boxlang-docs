@@ -13,6 +13,7 @@ BoxLang+/Starter includes a curated set of modules that extend the platform with
 
 | Module | Purpose |
 | --- | --- |
+| [`bx-aws-secrets`](bx-aws-secrets/) | AWS Secrets Manager provider for `getSystemSetting()` with the `aws.` namespace. |
 | [`bx-couchbase`](bx-couchbase/) | Distributed caching and NoSQL document storage via Couchbase. |
 | [`bx-csv`](bx-csv/) | Streaming CSV parsing and generation for large datasets. |
 | [`bx-ldap`](bx-ldap/) | Full-featured LDAP directory access for BoxLang applications. |
@@ -58,6 +59,10 @@ After installation, modules register themselves automatically or provide a simpl
 
 {% content-ref url="bx-csv.md" %}
 [bx-csv.md](bx-csv.md)
+{% endcontent-ref %}
+
+{% content-ref url="bx-aws-secrets/" %}
+[bx-aws-secrets](bx-aws-secrets/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-couchbase/" %}

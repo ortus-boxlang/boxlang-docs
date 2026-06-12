@@ -858,6 +858,8 @@
       * [BoxlangLicenseActivate](boxlang-framework/boxlang-plus/modules/bx-plus/reference/built-in-functions/BoxlangLicenseActivate.md)
       * [BoxlangLicenseInfo](boxlang-framework/boxlang-plus/modules/bx-plus/reference/built-in-functions/BoxlangLicenseInfo.md)
       * [BoxlangLicenseRefresh](boxlang-framework/boxlang-plus/modules/bx-plus/reference/built-in-functions/BoxlangLicenseRefresh.md)
+  * [AWS Secrets +](boxlang-framework/boxlang-plus/modules/bx-aws-secrets/README.md)
+    * [Configuration & Usage](boxlang-framework/boxlang-plus/modules/bx-aws-secrets/configuration-and-usage.md)
   * [CSV +](boxlang-framework/boxlang-plus/modules/bx-csv/README.md)
     * [Reference](boxlang-framework/boxlang-plus/modules/bx-csv/reference/README.md)
     * [Built-In Functions](boxlang-framework/boxlang-plus/modules/bx-csv/reference/built-in-functions/README.md)
