@@ -18,7 +18,7 @@ The open-source edition is powerful and will remain free. **BoxLang+ simply adds
 BoxLang+ focuses on pragmatic value for engineering teams:
 
 * ✅ Enterprise-ready support with defined response windows
-* ✅ Premium language and framework modules (Redis, Spreadsheet, CSV, Couchbase, AWS Secrets, etc.)
+* ✅ Premium language and framework modules (Redis, Spreadsheet, CSV, Couchbase, AWS Secrets, Azure Secrets, Google Secrets, etc.)
 * ✅ Enhanced operational tooling (CommandBox PRO features, multi-site management)
 * ✅ Performance, security, and resilience enhancements
 * ✅ Predictable upgrade path and roadmap insights
@@ -28,7 +28,7 @@ BoxLang+ focuses on pragmatic value for engineering teams:
 You can build and ship commercial software with the open-source edition without cost. When you need advanced modules, faster resolutions, enterprise support, or architectural guidance, BoxLang+ is available as an additive layer.
 
 | Area | Open Source | BoxLang+/++/Starter |
-|------|-------------|----------|
+| --- | --- | --- |
 | Core Language & Runtime | ✅ | ✅ |
 | All Standard BIFs & Components | ✅ | ✅ |
 | Premium Modules | 🚫 | ✅ |

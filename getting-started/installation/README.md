@@ -472,7 +472,9 @@ Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get profes
 
 | Module | Description | Status |
 | :--- | :--- | :--- |
+| [`bx-azure-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-azure-secrets/) | Azure Key Vault integration for `getSystemSetting()` using the `azure.` namespace. | Done |
 | [`bx-aws-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-aws-secrets/) | AWS Secrets Manager integration for `getSystemSetting()` using the `aws.` namespace. | Done |
+| [`bx-google-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-google-secrets/) | Google Secret Manager integration for `getSystemSetting()` using the `google.` namespace. | Done |
 | [`bx-csv`](../../boxlang-framework/boxlang-plus/modules/bx-csv.md) | Streaming CSV parsing & generation for large datasets | Done |
 | [`bx-couchbase`](../../boxlang-framework/boxlang-plus/modules/bx-couchbase/) | Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage. | In Development |
 | [`bx-ldap`](../../boxlang-framework/boxlang-plus/modules/bx-ldap/) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications. | Done |

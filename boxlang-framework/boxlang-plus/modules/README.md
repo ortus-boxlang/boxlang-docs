@@ -13,7 +13,9 @@ BoxLang+/Starter includes a curated set of modules that extend the platform with
 
 | Module | Purpose |
 | --- | --- |
+| [`bx-azure-secrets`](bx-azure-secrets/) | Azure Key Vault provider for `getSystemSetting()` with the `azure.` namespace. |
 | [`bx-aws-secrets`](bx-aws-secrets/) | AWS Secrets Manager provider for `getSystemSetting()` with the `aws.` namespace. |
+| [`bx-google-secrets`](bx-google-secrets/) | Google Secret Manager provider for `getSystemSetting()` with the `google.` namespace. |
 | [`bx-couchbase`](bx-couchbase/) | Distributed caching and NoSQL document storage via Couchbase. |
 | [`bx-csv`](bx-csv/) | Streaming CSV parsing and generation for large datasets. |
 | [`bx-ldap`](bx-ldap/) | Full-featured LDAP directory access for BoxLang applications. |
@@ -61,8 +63,16 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-csv.md](bx-csv.md)
 {% endcontent-ref %}
 
+{% content-ref url="bx-azure-secrets/" %}
+[bx-azure-secrets](bx-azure-secrets/)
+{% endcontent-ref %}
+
 {% content-ref url="bx-aws-secrets/" %}
 [bx-aws-secrets](bx-aws-secrets/)
+{% endcontent-ref %}
+
+{% content-ref url="bx-google-secrets/" %}
+[bx-google-secrets](bx-google-secrets/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-couchbase/" %}
