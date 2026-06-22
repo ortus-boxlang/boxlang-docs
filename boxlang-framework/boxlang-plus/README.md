@@ -7,7 +7,7 @@ icon: medal
 
 # BoxLang+
 
-**BoxLang+/++** is the professional subscription for the BoxLang language and framework. It builds on the fully open-source Apache 2 licensed core to provide production acceleration, premium modules, enhanced tooling, and predictable support SLAs for teams delivering critical applications.
+**BoxLang+/++/starter** is the professional subscription for the BoxLang language and framework. It builds on the fully open-source Apache 2 licensed core to provide production acceleration, premium modules, enhanced tooling, and predictable support SLAs for teams delivering critical applications.
 
 {% embed url="https://www.boxlang.io/plans" %}
 
