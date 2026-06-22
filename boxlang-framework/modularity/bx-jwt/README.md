@@ -1,14 +1,14 @@
 ---
 icon: key
 description: >-
-  JWT module for BoxLang providing complete JWS signing, JWE
+  Premium JWT module for BoxLang+ providing complete JWS signing, JWE
   encryption, and a fluent token builder with RFC 7518 / RFC 7519 compliance.
 ---
 
 # JWT +
 
 {% hint style="danger" %}
-We have open-sourced this module, and it's now available and FREE for all: [`bx-jwt`](../../../modularity/bx-jwt/README.md).
+This module is only available to [+/++ subscribers](https://www.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/) with a limited trial.
 {% endhint %}
 
 The `bx-jwt` module is a production-ready BoxLang library for creating, signing, verifying, encrypting, and decrypting JSON Web Tokens (JWT/JWE). It implements:
@@ -120,3 +120,8 @@ payload = jwtDecrypt( token, secret, { keyAlgorithm: "dir", encAlgorithm: "A256G
 ## ✅ Requirements
 
 * **BoxLang Runtime** 1.0.0+
+* **BoxLang+ License** ([learn more](https://www.boxlang.io/plans))
+
+## 📄 License
+
+Licensed under the [BoxLang Plus Subscription License](https://www.boxlang.io/license).
