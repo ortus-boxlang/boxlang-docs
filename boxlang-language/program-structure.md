@@ -1,5 +1,7 @@
 ---
-description: This section covers the basics of the program structures of BoxLang
+description: >-
+  This section introduces the core structural elements of a BoxLang program and
+  how they work together to create applications.
 icon: folder-tree
 ---
 
