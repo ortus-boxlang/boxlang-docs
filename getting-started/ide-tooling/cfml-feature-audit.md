@@ -13,7 +13,7 @@ Before you run the tool, install the appropriate BoxLang modules so our tool can
 
 ```bash
 # Install the modules to simulate a CFML server (Adobe, Lucee)
-install-bx-module bx-compat-cfml bx-password-encrypt bx-esapi bx-image bx-ini bx-mail bx-pdf bx-unsafe-evaluate bx-wddx bx-web-support bx-orm bx-rss
+install-bx-module bx-compat-cfml bx-password-encrypt bx-esapi bx-image bx-ini bx-mail bx-pdf bx-unsafe-evaluate bx-wddx bx-web-support bx-orm bx-rss bx-charts
 ```
 
 {% hint style="info" %}
