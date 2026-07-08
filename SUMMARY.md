@@ -134,6 +134,7 @@
   * [Variable Scopes](boxlang-language/variable-scopes.md)
   * [Operators](boxlang-language/operators.md)
   * [Strings](boxlang-language/strings.md)
+  * [StringBuilder](boxlang-language/string-builder.md)
   * [Numbers](boxlang-language/numbers.md)
   * [Dates & Times](boxlang-language/syntax/dates-and-times.md)
   * [Arrays](boxlang-language/arrays.md)

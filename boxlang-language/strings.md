@@ -17,6 +17,7 @@ In BoxLang, strings are a type of variable that is used to store collections of 
 - [String Member Functions](#string-member-functions)
 - [String Case Methods](#string-case-methods)
 - [Common String Operations](#common-string-operations)
+- [StringBuilder (Fast Concatenation)](string-builder.md)
 
 ## 🔤 Java String Interoperability
 
@@ -38,17 +39,24 @@ writeOutput( text.indexOf("Box") )       // 6
 writeOutput( text.split(" ") )           // ["Hello", "BoxLang"]
 ```
 
-{% hint style="warning" %}
-If you perform many string concatenations in a loop, use Java's `StringBuilder` or `StringBuffer` for better performance. [Learn more about String Builders](https://www.baeldung.com/java-string-builder-string-buffer).
+{% hint style="success" %}
+**BoxLang 1.15.0+** ships with a first-class **`BoxStringBuilder`** type and automatic compile-time optimizations that make string-heavy code faster with no changes required. For loops and accumulators, use `BoxStringBuilder` instead of raw Java StringBuilder for a fully integrated, 1-based API.
+
+👉 See the [StringBuilder](string-builder.md) documentation for the complete guide.
 {% endhint %}
 
 ```js
-// For many concatenations, use StringBuilder
-sb = createObject("java", "java.lang.StringBuilder").init()
-for (i = 1; i <= 1000; i++) {
-    sb.append("Item #i#, ")
+// BoxLang 1.15+ — use the native BoxStringBuilder type
+sb = sb{ "Items: " }
+for ( i = 1; i <= 1000; i++ ) {
+    sb.append( "Item #i#, " )
 }
 result = sb.toString()
+
+// BoxLang also automatically uses StringBuilder under the hood
+// for any string concatenation with 4 or more segments — no manual effort needed!
+result = "Hello" & " " & firstName & " " & lastName & "!"
+// ↑ compiled to use StringBuilder automatically
 ```
 
 ## 🔍 Character Extractions
