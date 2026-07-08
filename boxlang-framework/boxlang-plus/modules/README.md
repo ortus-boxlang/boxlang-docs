@@ -27,6 +27,7 @@ BoxLang+/Starter includes a curated set of modules that extend the platform with
 | [`bx-rest-compat`](rest-compat-+/) | REST component compatibility and routing translation for legacy framework-less REST architectures. |
 | [`bx-soap-compat`](soap-compat-+.md) | SOAP compatibility layer for generating, parsing, and communicating with web services. |
 | [`bx-spreadsheet`](bx-spreadsheet/) | Read, write, and style spreadsheet documents (XLSX). |
+| [`bx-word`](bx-word/) | Read, write, and style Word documents (DOCX). |
 
 ## 🚀 Installation Pattern
 
@@ -101,6 +102,10 @@ After installation, modules register themselves automatically or provide a simpl
 
 {% content-ref url="bx-spreadsheet/" %}
 [bx-spreadsheet](bx-spreadsheet/)
+{% endcontent-ref %}
+
+{% content-ref url="bx-word/" %}
+[bx-word](bx-word/)
 {% endcontent-ref %}
 
 {% content-ref url="soap-compat-+.md" %}

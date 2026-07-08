@@ -476,11 +476,12 @@ Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get profes
 | [`bx-aws-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-aws-secrets/) | AWS Secrets Manager integration for `getSystemSetting()` using the `aws.` namespace. | Done |
 | [`bx-google-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-google-secrets/) | Google Secret Manager integration for `getSystemSetting()` using the `google.` namespace. | Done |
 | [`bx-csv`](../../boxlang-framework/boxlang-plus/modules/bx-csv.md) | Streaming CSV parsing & generation for large datasets | Done |
-| [`bx-couchbase`](../../boxlang-framework/boxlang-plus/modules/bx-couchbase/) | Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage. | In Development |
+| [`bx-couchbase`](../../boxlang-framework/boxlang-plus/modules/bx-couchbase/) | Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage. | Done |
 | [`bx-ldap`](../../boxlang-framework/boxlang-plus/modules/bx-ldap/) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications. | Done |
 | [`bx-plus`](../../boxlang-framework/boxlang-plus/modules/bx-plus/) | Subscription bootstrap, entitlement validation, shared utilities | Done |
 | [`bx-pdf`](../../boxlang-framework/boxlang-plus/modules/bx-plus-pdf) | PDF generation and manipulation for documents, reports, and forms. Includes free-tier and licensed functionality. | Done |
 | [`bx-redis`](../../boxlang-framework/boxlang-plus/modules/bx-redis/) | Native Redis integration is used for caching, session distribution, and publish-subscribe events. | Done |
+| [`bx-rest-compat`](../../boxlang-framework/boxlang-plus/modules/rest-compat-+/) | REST component compatibility and routing translation layer for running legacy framework-less REST architectures. | Done |
 | [`bx-spreadsheet`](../../boxlang-framework/boxlang-plus/modules/bx-spreadsheet/) | Read, write, and style spreadsheet documents (XLSX). | Done |
 | [`bx-soap-compat`](../../boxlang-framework/boxlang-plus/modules/soap-compat-+.md) | SOAP compatibility layer for generating, parsing, and communicating with web services. | Done |
-| [`bx-rest-compat`](../../boxlang-framework/boxlang-plus/modules/rest-compat-+/) | REST component compatibility and routing translation layer for running legacy framework-less REST architectures. | Done |
+| [`bx-word`](../../boxlang-framework/boxlang-plus/modules/bx-word/) | Read, write, and style Word documents (DOCX). | Done |
