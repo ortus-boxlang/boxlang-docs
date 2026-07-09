@@ -49,11 +49,41 @@
       "skillPath": "code-documenter/SKILL.md",
       "computedHash": "de7138ac479b9ed08b420fad5d849e8a40557b7bed76df92e6d3fe3c999fbc15"
     },
+    "configure-site": {
+      "source": "GitBookIO/gitbook-skills",
+      "sourceType": "github",
+      "skillPath": "skills/configure-site/SKILL.md",
+      "computedHash": "2591a1b3eb9eb74cce4118b730fed6ce3af14202f794a50d1ac0bb54fdb268a8"
+    },
+    "cr-create": {
+      "source": "GitBookIO/gitbook-skills",
+      "sourceType": "github",
+      "skillPath": "skills/cr-create/SKILL.md",
+      "computedHash": "fdcc20832c0fb050881b0629963c2e27dda89a27d04efc4b8aab813501881545"
+    },
+    "cr-review": {
+      "source": "GitBookIO/gitbook-skills",
+      "sourceType": "github",
+      "skillPath": "skills/cr-review/SKILL.md",
+      "computedHash": "1d1c6285b6cccd4c25ad34c9f9f25e1838fa153f4684261223d0f6bb3b11927a"
+    },
     "gitbook-docs-expert": {
       "source": "ortus-solutions/skills",
       "sourceType": "github",
       "skillPath": "gitbook-docs-expert/SKILL.md",
       "computedHash": "0d24d67da01cb1a55958e227e56f78a5e00b85892386d59e3f5234ba729a5c73"
+    },
+    "write-docs": {
+      "source": "GitBookIO/gitbook-skills",
+      "sourceType": "github",
+      "skillPath": "skills/write-docs/SKILL.md",
+      "computedHash": "ed696d33f8417054a32cab7d1f5fcc6ff475ed25c48466df10c789e4830d8f8c"
+    },
+    "write-openapi": {
+      "source": "GitBookIO/gitbook-skills",
+      "sourceType": "github",
+      "skillPath": "skills/write-openapi/SKILL.md",
+      "computedHash": "76584c99669810d391897964a55fe4f8d958a15d4eb4c85b6dc56c2c531d3e50"
     }
   }
 }
