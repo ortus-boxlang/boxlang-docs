@@ -18,6 +18,7 @@ BoxLang provides **native threading constructs** for simple asynchronous executi
 - [Built-In Functions (BIFs)](#built-in-functions-bifs)
 - [Virtual Threads (Java 21+)](#virtual-threads-java-21)
 - [Thread Metadata](#thread-metadata)
+- [`threadCurrent()`](#threadcurrent) — Get current JVM Thread
 - [Best Practices](#best-practices)
 - [Common Pitfalls](#common-pitfalls)
 
@@ -667,6 +668,7 @@ BoxLang provides several BIFs for thread management:
 | `threadJoin()` | Wait for thread completion | `threadJoin( "myThread", 5000 )` |
 | `threadTerminate()` | Force stop a thread | `threadTerminate( "myThread" )` |
 | `threadInterrupt()` | Signal thread to stop | `threadInterrupt( "myThread" )` |
+| `threadCurrent()` | Get current JVM Thread object | `threadCurrent()` |
 | `isInThread()` | Check if in thread context | `if ( isInThread() ) { ... }` |
 | `isThreadAlive()` | Check if thread is running | `if ( isThreadAlive( "myThread" ) ) { ... }` |
 | `isThreadInterrupted()` | Check interrupt status | `if ( isThreadInterrupted() ) { break }` |
@@ -720,6 +722,83 @@ threadJoin( "thread1,thread2,thread3", 10000 )
 // Join all threads (no name)
 threadJoin()  // Wait for all threads indefinitely
 ```
+
+### `threadCurrent()` - Current Thread Access
+
+Returns the currently executing **native Java `Thread`** object — the same `java.lang.Thread` that the JVM uses internally. This gives you direct access to the full Java Thread API from BoxLang without any wrapping or indirection.
+
+```js
+// Get the current thread
+t = threadCurrent()
+println( "Running on thread: " & t.getName() )
+```
+
+{% hint style="success" %}
+**Before BoxLang 1.15.0**, accessing the current thread required dropping to Java interop via `createObject("java", "java.lang.Thread").currentThread()`. The `threadCurrent()` BIF removes that ceremony entirely.
+{% endhint %}
+
+**Syntax:**
+
+```js
+threadCurrent()
+```
+
+**Inspecting thread properties:**
+
+```js
+t = threadCurrent()
+
+// Basic thread identity
+println( "Thread name: #t.getName()#" )
+println( "Thread ID: #t.threadId()#" )
+println( "Thread state: #t.getState()#" )
+println( "Priority: #t.getPriority()#" )
+println( "Is daemon: #t.isDaemon()#" )
+
+// Java 21+: detect virtual threads
+println( "Is virtual: #t.isVirtual()#" )
+println( "Thread group: #t.getThreadGroup().getName()#" )
+```
+
+**Thread-aware helpers:**
+
+```js
+// Build a thread-aware logging prefix
+function getThreadPrefix() {
+    t = threadCurrent()
+    if ( t.isVirtual() ) {
+        return "[virtual:#t.threadId()#]"
+    }
+    return "[platform:#t.threadId()#]"
+}
+
+// Conditionally log based on executor type
+function logWithContext( message ) {
+    t = threadCurrent()
+    prefix = t.isVirtual() ? "[VThread]" : "[PThread]"
+    writeLog( text = "#prefix# #message#" )
+}
+```
+
+**Use in async/parallel scenarios:**
+
+```js
+// Track which thread processed each item
+items = [ "a", "b", "c", "d", "e" ]
+results = items.map( ( item ) -> {
+    t = threadCurrent()
+    return {
+        item: item,
+        processedBy: t.getName(),
+        threadId: t.threadId(),
+        isVirtual: t.isVirtual()
+    }
+} )
+```
+
+{% hint style="info" %}
+`threadCurrent()` returns the raw `java.lang.Thread` — the same object `Thread.currentThread()` returns in Java. Every method on `java.lang.Thread` is available directly via BoxLang's Java interop member-function syntax.
+{% endhint %}
 
 ### `isInThread()` - Context Detection
 
