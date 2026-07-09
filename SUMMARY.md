@@ -1439,7 +1439,7 @@
   * [Architecture](boxlang-framework/module-development/architecture.md)
   * [Module Descriptor](boxlang-framework/module-development/module-descriptor.md)
   * [Lifecycle](boxlang-framework/module-development/lifecycle.md)
-  * [Capabilities](boxlang-framework/module-development/capabilities/bifs.md)
+  * [Capabilities](boxlang-framework/module-development/capabilities/README.md)
     * [BIFs](boxlang-framework/module-development/capabilities/bifs.md)
     * [Components](boxlang-framework/module-development/capabilities/components.md)
     * [Interceptors](boxlang-framework/module-development/capabilities/interceptors.md)

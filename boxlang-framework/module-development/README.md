@@ -21,18 +21,18 @@ No compilation required. Perfect for utilities, configurations, and simple BIFs/
 
 **Best for:** Rapid prototyping, simple logic, no external dependencies
 
-✅ BIFs (`.bx` files)
-✅ Components (`.bx` files)
-✅ Interceptors (via `configure()`)
-✅ Custom interception points
-✅ Settings & configuration
-✅ Public web folders
-✅ Libs/JARs
+* ✅ BIFs (`.bx` files)
+* ✅ Components (`.bx` files)
+* ✅ Interceptors (via `configure()`)
+* ✅ Custom interception points
+* ✅ Settings & configuration
+* ✅ Public web folders
+* ✅ Libs/JARs
 
-❌ Services (Java only)
-❌ Schedulers (Java only)
-❌ Cache Providers (Java only)
-❌ JDBC Drivers (Java only)
+* ❌ Services (Java only)
+* ❌ Schedulers (Java only)
+* ❌ Cache Providers (Java only)
+* ❌ JDBC Drivers (Java only)
 
 [→ Start with Pure BoxLang](getting-started.md#pure-boxlang-modules)
 {% endtab %}
@@ -42,13 +42,13 @@ Gradle-based with shadow JAR support. For complex logic and advanced integration
 
 **Best for:** Performance-critical code, external libraries, services, JDBC drivers
 
-✅ Everything from Pure BoxLang
-✅ Services (`IService`)
-✅ Schedulers (`IScheduler`)
-✅ Cache Providers (`ICacheProvider`)
-✅ JDBC Drivers (`java.sql.Driver`)
-✅ Advanced Java library integration
-✅ ServiceLoader discovery
+* ✅ Everything from Pure BoxLang
+* ✅ Services (`IService`)
+* ✅ Schedulers (`IScheduler`)
+* ✅ Cache Providers (`ICacheProvider`)
+* ✅ JDBC Drivers (`java.sql.Driver`)
+* ✅ Advanced Java library integration
+* ✅ ServiceLoader discovery
 
 [→ Start with Java Modules](getting-started.md#javaboxlang-modules)
 {% endtab %}
