@@ -378,6 +378,12 @@ Incompatible types return false (same as `contains()`):
 | `isHalfBounded()` | True if exactly one bound is present |
 | `hasFrom()` / `hasTo()` | Check individual bounds |
 
+### Type Checking
+
+| Function | Description |
+|----------|-------------|
+| `isRange(value)` | BIF to test if a value is a Range instance |
+
 ### Accessors
 
 | Method | Description |

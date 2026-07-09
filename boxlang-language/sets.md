@@ -212,6 +212,12 @@ BoxLang provides a comprehensive set of Set BIFs organized by functionality. All
 | `boxSetIsSupersetOf()` | Test superset | `boxSetIsSupersetOf( a, b )` → `true` |
 | `boxSetIsDisjointFrom()` | Test no overlap | `boxSetIsDisjointFrom( a, b )` → `true` |
 
+### ✅ Type Checking
+
+| Function | Purpose | Example |
+|----------|---------|---------|
+| `isBoxSet()` | Check if value is a BoxSet | `isBoxSet( value )` → `true` |
+
 ### 🔀 Algebra Functions
 
 | Function | Purpose | Example |
