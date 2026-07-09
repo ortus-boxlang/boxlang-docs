@@ -267,6 +267,7 @@ Some keys may not appear in the generated `--initConfig` scaffold but are still 
 | `arguments.comma_dangle` | boolean | `false` | Trailing comma in multiline arguments |
 | `arguments.multiline_count` | number | `3` | Break threshold by argument count |
 | `arguments.multiline_length` | number | `50` | Break threshold by flattened length |
+| `arguments.separator` | string | `" = "` | `"="` or `":"` |
 
 ### `braces` Rules
 
@@ -572,7 +573,8 @@ Run `boxlang format --initConfig` to generate this file automatically in your cu
     "empty_padding": false,
     "comma_dangle": false,
     "multiline_count": 3,
-    "multiline_length": 40
+    "multiline_length": 40,
+    "separator": " = "
   },
 
   "braces": {
