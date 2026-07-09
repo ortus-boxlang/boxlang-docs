@@ -39,17 +39,17 @@ BoxLang provides multiple ways to create Sets:
 
 ### setNew()
 
-Creates a new Set with optional type, values, and case-sensitivity settings.
+Creates a new Set with optional type, values, case-sensitivity settings, and synchronization behavior.
 
 ```javascript
 // Empty default (hash) Set
 s = setNew()
 
 // Linked (insertion-ordered) Set seeded with values
-s = setNew( type="linked", values=[ "c", "a", "b", "a" ] )
+s = setNew( type="linked", values=[ "c", "a", "b", "a" ], isSynchronized=true )
 
 // Sorted Set
-s = setNew( type="sorted", values=[ 9, 1, 5, 3 ] )
+s = setNew( type="sorted", values=[ 9, 1, 5, 3 ], isSynchronized=false )
 
 // Case-sensitive Set
 s = setNew( values=[ "Hello", "hello", "HELLO" ], caseSensitive=true )
