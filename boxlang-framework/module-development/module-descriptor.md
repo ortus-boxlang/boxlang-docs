@@ -59,7 +59,7 @@ The `ModuleConfig.bx` file defines your module's behavior through properties and
 
 ### Anatomy
 
-```boxlang
+```js
 class {
     // ── Injected Properties ──────────────────────────
     property name="moduleRecord";

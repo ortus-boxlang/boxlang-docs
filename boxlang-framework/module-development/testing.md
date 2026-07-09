@@ -28,7 +28,7 @@ my-module/
 
 **File:** `tests/specs/GreetBIFTest.bx`
 
-```boxlang
+```js
 describe( "Greet BIF", () => {
     beforeEach( () => {
         variables.result = greet( "World" )
@@ -51,7 +51,7 @@ describe( "Greet BIF", () => {
 
 ### xUnit-Style Test Example
 
-```boxlang
+```js
 class {
 
     function testGreetReturnsString() {
@@ -108,7 +108,7 @@ Run JUnit tests:
 
 Test your module loaded in a running BoxLang runtime:
 
-```boxlang
+```js
 class {
 
     function beforeAll() {
@@ -191,7 +191,7 @@ Verify compatibility by testing alongside modules your module depends on or comm
 
 Use MockBox to mock external services in tests:
 
-```boxlang
+```js
 var mockService = createMock( "models.ExternalService" )
     .$( "call", { status: "ok" } )
 ```

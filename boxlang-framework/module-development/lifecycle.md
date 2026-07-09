@@ -46,7 +46,7 @@ Each module is registered in the order discovered. Registration loads the descri
 
 Fires before the module descriptor is loaded. The `moduleRecord` and `moduleName` are available in the event data.
 
-```boxlang
+```js
 function preModuleRegistration( event ) {
     var moduleName = event.getData().moduleName
     log.info( "About to register: #moduleName#" )
@@ -215,7 +215,7 @@ Fires after cleanup is complete.
 
 Your `ModuleConfig.bx` can listen to any lifecycle event by defining a matching method:
 
-```boxlang
+```js
 class {
     // Called when any module finishes loading
     function postModuleLoad( event ) {

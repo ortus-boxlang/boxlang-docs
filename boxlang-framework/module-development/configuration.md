@@ -13,7 +13,7 @@ Define settings in your descriptor's `configure()` method:
 
 {% tabs %}
 {% tab title="ModuleConfig.bx" %}
-```boxlang
+```js
 function configure() {
     settings = {
         apiKey: "",
@@ -94,7 +94,7 @@ The module is still discovered but skipped during registration — no BIFs, comp
 
 Access module settings from anywhere:
 
-```boxlang
+```js
 // From ModuleConfig.bx
 var timeout = settings.timeout
 
@@ -110,7 +110,7 @@ Declare module dependencies to control activation order:
 
 {% tabs %}
 {% tab title="ModuleConfig.bx" %}
-```boxlang
+```js
 class {
     this.dependencies = [ "bx-plus", "bx-compat-cfml" ];
 }
@@ -139,7 +139,7 @@ public class MyModuleConfig implements IModuleConfig { }
 
 Check for and interact with other loaded modules:
 
-```boxlang
+```js
 function onLoad() {
     var moduleService = boxRuntime.getModuleService()
 

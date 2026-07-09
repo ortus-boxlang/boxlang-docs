@@ -76,7 +76,7 @@ Once registered, users can configure your cache provider in `boxlang.json`:
 }
 ```
 
-```boxlang
+```js
 // Use the custom cache
 cachePut( "myKey", "myValue", 60, "custom" )
 result = cacheGet( "myKey", "custom" )

@@ -14,7 +14,7 @@ Place `.bx` files in your module's `components/` folder. Auto-discovered at runt
 
 **File:** `components/Greet.bx`
 
-```boxlang
+```js
 /**
  * A custom greeting component
  *
@@ -113,7 +113,7 @@ ortus.boxlang.modules.mymodule.components.Greet
 
 Components can also be invoked in script syntax:
 
-```boxlang
+```js
 bx:greet name="World" greeting="Hi"
 
 // With a body block

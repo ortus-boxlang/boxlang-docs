@@ -14,7 +14,7 @@ Place `.bx` files in your module's `bifs/` folder. They are auto-discovered and 
 
 **File:** `bifs/Greet.bx`
 
-```boxlang
+```js
 /**
  * Returns a greeting message
  *
@@ -32,7 +32,7 @@ function invoke(
 ```
 
 **Usage from BoxLang:**
-```boxlang
+```js
 result = greet( "World" )
 // → "Hello, World!"
 
@@ -105,7 +105,7 @@ Register BIFs as member methods on BoxLang types:
 
 {% tabs %}
 {% tab title="BoxLang" %}
-```boxlang
+```js
 /**
  * @BoxMember string
  */

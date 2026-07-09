@@ -40,7 +40,7 @@ Override defaults in your module descriptor:
 
 {% tabs %}
 {% tab title="ModuleConfig.bx" %}
-```boxlang
+```js
 class {
     // Override internal mapping name
     this.mapping = "customName";
@@ -80,7 +80,7 @@ BoxLang provides a powerful syntax for explicitly addressing classes from specif
 {% column %}
 
 **Without @moduleName:**
-```boxlang
+```js
 import models.UserService
 ```
 
@@ -93,7 +93,7 @@ import models.UserService
 {% column %}
 
 **With @moduleName:**
-```boxlang
+```js
 import models.UserService@myModule
 ```
 
@@ -105,7 +105,7 @@ import models.UserService@myModule
 
 ### Importing BoxLang Classes
 
-```boxlang
+```js
 // Import from a specific module
 import models.ActiveEntity@cborm
 entity = new ActiveEntity()
@@ -123,7 +123,7 @@ table = new DataTable()
 
 The same notation works for Java classes packaged in modules:
 
-```boxlang
+```js
 // Import Java class from module
 import org.owasp.esapi.ESAPI@bx-esapi
 encoder = ESAPI.encoder()
@@ -138,7 +138,7 @@ encoder = new java:org.owasp.esapi.reference.DefaultEncoder@bx-esapi()
 
 ### Using createObject()
 
-```boxlang
+```js
 // Create BoxLang class from a module
 service = createObject( "component", "models.UserService@myModule" )
 

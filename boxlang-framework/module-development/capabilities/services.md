@@ -62,7 +62,7 @@ MyService service = (MyService) BoxRuntime.getInstance()
     .getGlobalService( Key.of( "MyService" ) );
 ```
 
-```boxlang
+```js
 // From BoxLang
 var service = boxRuntime.getGlobalService( "MyService" )
 ```

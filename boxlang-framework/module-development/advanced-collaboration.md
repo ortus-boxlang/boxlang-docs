@@ -1,5 +1,5 @@
 ---
-description: Advanced integration patterns: system setting providers, custom class resolvers, and inter-module communication
+description: Advanced integration patterns, system setting providers, custom class resolvers, and inter-module communication
 icon: handshake
 ---
 
@@ -19,7 +19,7 @@ The `getSystemSetting()` BIF checks registered providers in order before falling
 
 {% tabs %}
 {% tab title="ModuleConfig.bx" %}
-```boxlang
+```js
 function onLoad() {
     boxRuntime.getConfiguration().registerSystemSettingProvider(
         "my-settings",
@@ -126,7 +126,7 @@ public class CustomResolver implements IClassResolver {
 
 **Registration in ModuleConfig.bx:**
 
-```boxlang
+```js
 function onLoad() {
     var classLocator = boxRuntime.getClassLocator()
     classLocator.registerResolver(
@@ -143,7 +143,7 @@ function onUnload() {
 
 ### Usage After Registration
 
-```boxlang
+```js
 // Import using your custom prefix
 import custom:MyService
 service = new MyService()
@@ -156,7 +156,7 @@ service = new custom:MyService( arg1 = "value" )
 
 ### Registering Additional Mappings
 
-```boxlang
+```js
 function onLoad() {
     // Register a custom mapping beyond the defaults
     boxRuntime.getConfiguration().registerMapping(
@@ -168,7 +168,7 @@ function onLoad() {
 
 ### Modifying Runtime Settings
 
-```boxlang
+```js
 function onLoad() {
     var config = boxRuntime.getConfiguration()
 

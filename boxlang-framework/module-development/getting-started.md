@@ -38,7 +38,7 @@ Edit `box.json` with your module details:
 
 ### 3. Configure ModuleConfig.bx
 
-```boxlang
+```js
 class {
     property name="moduleRecord";
     property name="boxRuntime";
@@ -68,7 +68,7 @@ class {
 
 Create `bifs/HelloWorld.bx`:
 
-```boxlang
+```js
 /**
  * Returns a greeting message
  *
@@ -82,7 +82,7 @@ function invoke( required string name ) {
 
 ### 5. Test Locally
 
-```boxlang
+```js
 // Load the module
 moduleService.loadModule(
     createObject( "java", "java.nio.file.Paths" ).get( "/path/to/my-module" )
@@ -127,7 +127,7 @@ Edit `box.json` and `gradle.properties`:
 
 Same as the pure BoxLang approach — place it at `src/main/bx/ModuleConfig.bx`:
 
-```boxlang
+```js
 class {
     property name="moduleRecord";
     property name="boxRuntime";

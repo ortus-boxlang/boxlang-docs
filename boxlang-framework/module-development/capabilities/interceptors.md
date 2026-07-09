@@ -13,7 +13,7 @@ Interceptors follow the Observer/Intercepting Filter pattern, letting your modul
 Register interceptors in your `ModuleConfig.bx` `configure()` method:
 
 **ModuleConfig.bx:**
-```boxlang
+```js
 function configure() {
     settings = {};
 
@@ -38,7 +38,7 @@ function configure() {
 
 **File:** `interceptors/RequestLogger.bx`
 
-```boxlang
+```js
 class {
     property name="logHeaders";
     property name="logBody";
@@ -99,7 +99,7 @@ ortus.boxlang.modules.mymodule.interceptors.RequestLogger
 
 Register inline closures as interceptors for quick event handling:
 
-```boxlang
+```js
 function configure() {
     interceptors = [
         {
@@ -116,7 +116,7 @@ function configure() {
 
 Declare your own events that other code can listen to:
 
-```boxlang
+```js
 function configure() {
     customInterceptionPoints = [
         "onBeforeGreeting",
@@ -140,7 +140,7 @@ function doGreeting( required string name ) {
 
 Your `ModuleConfig.bx` is automatically registered as an interceptor, so you can add any event method directly:
 
-```boxlang
+```js
 class {
     // Listen for other modules loading
     function postModuleLoad( event ) {

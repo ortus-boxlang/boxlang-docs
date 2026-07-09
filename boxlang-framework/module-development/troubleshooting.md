@@ -42,12 +42,12 @@ Solutions for common issues when developing BoxLang modules.
 **Solutions:**
 
 1. **Verify the module is loaded and activated** — `@moduleName` only works for active modules
-   ```boxlang
+   ```js
    boxRuntime.getModuleService().hasModule( "myModule" )
    ```
 
 2. **Check the class path** — Path is relative to the module root
-   ```boxlang
+   ```js
    // Module root: /path/to/myModule/
    // Class at:    /path/to/myModule/models/MyClass.bx
    // Import:      import models.MyClass@myModule ✅
@@ -122,7 +122,7 @@ Solutions for common issues when developing BoxLang modules.
 **Solutions:**
 
 1. **Verify interceptor registration** — In `configure()`:
-   ```boxlang
+   ```js
    interceptors = [
        { class: "interceptors.MyListener", properties: {} }
    ]
@@ -141,7 +141,7 @@ Solutions for common issues when developing BoxLang modules.
 **Solutions:**
 
 1. **Wrap cleanup in try/catch** — An unhandled exception in `onUnload()` will abort cleanup
-   ```boxlang
+   ```js
    function onUnload() {
        try { cleanupResource1() } catch ( e ) { log.warn( "Cleanup failed", e ) }
        try { cleanupResource2() } catch ( e ) { log.warn( "Cleanup failed", e ) }
