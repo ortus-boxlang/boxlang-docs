@@ -878,13 +878,15 @@ For enhanced WebSocket functionality in your BoxLang applications, we recommend 
 
 SocketBox provides:
 
-* **High-level WebSocket abstractions** for BoxLang applications
-* **Event-driven architecture** with listeners and handlers
-* **Room and namespace management** for organizing connections
-* **Built-in authentication and authorization** support
-* **Message broadcasting** to multiple clients
-* **Connection lifecycle management** with automatic reconnection
-* **Integration with BoxLang frameworks** like ColdBox
+* **Core WebSocket lifecycle hooks** (`onConnect`, `onMessage`, `onClose`)
+* **Low-level channel messaging** with `sendMessage()` and `broadcastMessage()`
+* **Connection inspection** via `getAllConnections()`
+* **Optional STOMP broker mode** for subscriptions, routing, auth, and heartbeats
+* **Integration with BoxLang and CFML runtimes**
+
+{% hint style="info" %}
+SocketBox core keeps the API intentionally simple: handle lifecycle events with a `channel`, send targeted replies with `sendMessage()`, broadcast with `broadcastMessage()`, and inspect active connections with `getAllConnections()`.
+{% endhint %}
 
 #### Installing SocketBox
 
@@ -899,30 +901,33 @@ box install socketbox
 #### SocketBox Example
 
 ```javascript
-// BoxLang server-side WebSocket handler using SocketBox
-class {
+// WebSocket.cfc (or equivalent) using SocketBox core support
+class extends="modules.socketbox.models.WebSocketCore" {
 
-    function onConnect( socket, data ) {
-        // Handle new WebSocket connection
-        socket.join( "chatRoom" )
-        socket.broadcast( "userJoined", { user: data.username } )
+    // Called for every new remote connection
+    function onConnect( required channel ) {
+        broadcastMessage( "A client connected" )
     }
 
-    function onMessage( socket, message ) {
-        // Handle incoming messages
-        socket.to( "chatRoom" ).emit( "newMessage", {
-            user: socket.data.username,
-            text: message.text,
-            timestamp: now()
-        })
+    // Called whenever a text message is received
+    function onMessage( required message, required channel ) {
+        if ( arguments.message == "Ping" ) {
+            sendMessage( "Pong", arguments.channel )
+            return
+        }
+
+        // Echo to all connected clients
+        broadcastMessage( "Client says: #arguments.message#" )
     }
 
-    function onDisconnect( socket ) {
-        // Handle client disconnection
-        socket.broadcast( "userLeft", { user: socket.data.username } )
+    // Called when a connection closes
+    function onClose( required channel ) {
+        broadcastMessage( "A client disconnected" )
     }
 }
 ```
+
+If you need topic subscriptions, destination routing, and protocol-level auth/authorization, use SocketBox's STOMP mode by extending `WebSocketSTOMP` instead of core `WebSocketCore`.
 
 ### WebSocket Features
 
