@@ -238,9 +238,57 @@ install-bx-module --remove bx-esapi
 # List your modules
 install-bx-module --list
 
+# Check for outdated modules
+install-bx-module --outdated
+
+# Update outdated modules
+install-bx-module --update
+
+# Update modules without confirmation
+install-bx-module --update --force
+
 # Get all the help
 install-bx-module --help
 ```
+
+### Module Dependency Management
+
+The Quick Installer now tracks installed modules in a `box.json` dependencies manifest. Global modules use:
+
+```text
+~/.boxlang/modules/box.json
+```
+
+For project-specific modules, use the `--local` flag. Local modules are managed in:
+
+```text
+./boxlang_modules/box.json
+```
+
+Installing or removing a module updates its dependency entry. The `--list` command reads from this manifest and can generate one automatically when modules were installed before manifest tracking was added.
+
+Use `--outdated` to compare the installed versions with the latest versions available from ForgeBox:
+
+```bash
+install-bx-module --outdated
+install-bx-module --outdated --local
+```
+
+Use `--update` to update outdated modules. The command asks for confirmation before making changes; add `--force` for unattended workflows:
+
+```bash
+install-bx-module --update
+install-bx-module --update --force
+install-bx-module --update --force --local
+```
+
+Explicit module versions continue to be supported, including versions resolved during updates:
+
+```bash
+install-bx-module bx-compat-cfml@1.11.0
+```
+
+The installer uses the correct ForgeBox version endpoint for pinned installs and falls back to the direct module artifact when ForgeBox does not provide a download URL.
 
 ### Upgrading Your Install
 
