@@ -23,7 +23,6 @@ GetMetaData(value=[any])
 
 ### Dump Metadata of CFC Instance
 
-CF9+
 
 
 ```java

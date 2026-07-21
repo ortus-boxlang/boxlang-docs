@@ -20,7 +20,16 @@ BoxUnregisterInterceptor(interceptor=[any], states=[any])
 
 ## Examples
 
+### Unregister a global interceptor
 
+```java
+boxRegisterInterceptor( "tempInterceptor", "path.to.Temp" );
+boxUnregisterInterceptor( "tempInterceptor" );
+writeOutput( "unregistered" );
+
+```
+
+Result: unregistered
 
 ## Related
 

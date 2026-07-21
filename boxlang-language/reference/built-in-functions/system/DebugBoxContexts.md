@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Debug BoxLang context information
 
+```java
+debug = debugBoxContexts();
+writeOutput( isArray( debug ) );
+
+```
+
+Result: true
 
 ## Related
 

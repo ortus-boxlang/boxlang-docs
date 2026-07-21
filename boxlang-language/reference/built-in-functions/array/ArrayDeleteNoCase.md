@@ -17,7 +17,7 @@ ArrayDeleteNoCase(array=[modifiableArray], value=[any], scope=[string])
 |----------|------|----------|-------------|---------|
 | `array` | `modifiableArray` | `true` | The array to be deleted from. |  |
 | `value` | `any` | `true` | The value to deleted. |  |
-| `scope` | `string` | `false` |  | `one` |
+| `scope` | `string` | `false` | Which matches to delete: "one" (default) deletes the first matching value, "all" deletes every matching value. | `one` |
 
 ## Examples
 

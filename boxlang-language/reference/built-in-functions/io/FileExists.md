@@ -7,7 +7,7 @@ Determines whether a file exists
 ## Method Signature
 
 ```
-FileExists(source=[string], allowRealPath=[boolean])
+FileExists(source=[any], allowRealPath=[boolean])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileExists(source=[string], allowRealPath=[boolean])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `source` | `string` | `true` | The file path |  |
+| `source` | `any` | `true` | The file path |  |
 | `allowRealPath` | `boolean` | `true` | Whether to allow an absolute path as the path argument | `true` |
 
 ## Examples

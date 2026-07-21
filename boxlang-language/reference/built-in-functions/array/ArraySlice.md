@@ -15,9 +15,9 @@ ArraySlice(array=[array], start=[integer], length=[integer])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` |  |  |
-| `start` | `integer` | `true` |  | `1` |
-| `length` | `integer` | `false` |  | `0` |
+| `array` | `array` | `true` | The array to slice. |  |
+| `start` | `integer` | `true` | The position to start the slice from. Negative values count from the end of the array. | `1` |
+| `length` | `integer` | `false` | The number of elements to return. 0 (default) returns all elements from start to the end of the array. | `0` |
 
 ## Examples
 
@@ -95,7 +95,7 @@ Result: [4,5,6]
 
 ### Slice an array using member function
 
-CF11+ calling the slice member function on an array.
+Calling the slice member function on an array.
 
 <a href="https://try.boxlang.io/?code=eJxLLCpKrFSwVYhW4OI01OHiNAJiYyA2AWJTIDYDYnMgtuCKtebKSy13hKpPBNF6xTmZyakaCkY6CsYKmtZc5UWZJakppbkFGgpwpUBhAFFlGN4%3D" target="_blank">Run Example</a>
 

@@ -7,7 +7,7 @@ Sets a file access attribute
 ## Method Signature
 
 ```
-FileSetAttribute(file=[any], attribute=[string])
+FileSetAttribute(file=[boxfile], attribute=[string])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileSetAttribute(file=[any], attribute=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | The file path or File instance |  |
+| `file` | `boxfile` | `true` | The file path or File instance |  |
 | `attribute` | `string` | `true` | The attribute to set true |  |
 
 ## Examples

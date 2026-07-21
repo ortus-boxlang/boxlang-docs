@@ -7,7 +7,7 @@ Gets the MIME type for the file path/file object you have specified.
 ## Method Signature
 
 ```
-FileGetMimeType(file=[string], strict=[boolean])
+FileGetMimeType(file=[any], strict=[boolean])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileGetMimeType(file=[string], strict=[boolean])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `string` | `true` | The file path or file object to get the MIME type for. |  |
+| `file` | `any` | `true` | The file path or file object to get the MIME type for. |  |
 | `strict` | `boolean` | `false` | If true, throws an exception if the file does not exist or is empty. If false, returns "application/octet-stream" for non-existent or empty files. | `true` |
 
 ## Examples

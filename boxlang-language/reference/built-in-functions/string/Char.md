@@ -19,7 +19,25 @@ Char(number=[integer])
 
 ## Examples
 
+### Get the character for an ASCII code
 
+```java
+result = char( 65 );
+writeOutput( result );
+
+```
+
+Result: A
+
+### Multiple character codes
+
+```java
+result = char( 65 ) & char( 66 ) & char( 67 );
+writeOutput( result );
+
+```
+
+Result: ABC
 
 ## Related
 
@@ -69,6 +87,8 @@ Char(number=[integer])
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -76,9 +96,10 @@ Char(number=[integer])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

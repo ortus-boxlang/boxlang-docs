@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the list of registered components
 
+```java
+components = getComponentList();
+writeOutput( isArray( components ) );
+
+```
+
+Result: true
 
 ## Related
 

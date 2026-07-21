@@ -18,7 +18,7 @@ Hash(input=[any], algorithm=[string], encoding=[string], numIterations=[integer]
 | `input` | `any` | `true` | The item to be hashed |  |
 | `algorithm` | `string` | `false` | The supported {@link java.security.MessageDigest} algorithm (case-insensitive) or "quick" for an insecure 64-bit hash | `MD5` |
 | `encoding` | `string` | `false` | Applicable to strings ( default "utf-8" ) | `utf-8` |
-| `numIterations` | `integer` | `false` |  | `1` |
+| `numIterations` | `integer` | `false` | The number of iterations to re-digest the object ( default 1 ); | `1` |
 
 ## Examples
 

@@ -148,3 +148,14 @@ This is exception is thrown when an attempt to validate inbound attributes or ar
 Validation upon these attributes or arguments is declared within the respective component or BIF.
 </details>
 
+<details>
+<summary><code>WatcherException</code></summary>
+
+Exception thrown by the WatcherService when an error occurs during file watching.
+
+<p>,
+ Extends ,{@link BoxRuntimeException}, so it integrates with BoxLang's standard
+ exception handling and can be serialized via ,{@code ExceptionUtil.throwableToStruct()},.
+ ,</p>
+</details>
+

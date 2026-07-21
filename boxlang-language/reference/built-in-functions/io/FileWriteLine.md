@@ -7,7 +7,7 @@ Writes a line of data to a file
 ## Method Signature
 
 ```
-FileWriteLine(file=[any], data=[string])
+FileWriteLine(file=[boxfile], data=[string])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileWriteLine(file=[any], data=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | An existing file object or a path to a file |  |
+| `file` | `boxfile` | `true` | An existing file object or a path to a file |  |
 | `data` | `string` | `true` | The line of data to be written |  |
 
 ## Examples

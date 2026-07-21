@@ -16,7 +16,16 @@ This function does not accept any arguments
 
 ## Examples
 
+### Restart the current application
 
+```java
+startTime = applicationStartTime();
+applicationRestart();
+writeOutput( "restarted" );
+
+```
+
+Result: restarted
 
 ## Related
 

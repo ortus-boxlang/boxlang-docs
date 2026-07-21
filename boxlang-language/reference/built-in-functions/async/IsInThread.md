@@ -55,6 +55,7 @@ Result: falsetrue
   * [isThreadAlive](./isThreadAlive.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)

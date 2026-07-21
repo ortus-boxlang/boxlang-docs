@@ -9,7 +9,7 @@ Different values are returned for FileInfo and GetFileInfo
 ## Method Signature
 
 ```
-FileInfo(file=[any])
+FileInfo(file=[boxfile])
 ```
 
 ### Arguments
@@ -17,7 +17,7 @@ FileInfo(file=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | The filepath or file object to retrieve info upon |  |
+| `file` | `boxfile` | `true` | The filepath or file object to retrieve info upon |  |
 
 ## Examples
 

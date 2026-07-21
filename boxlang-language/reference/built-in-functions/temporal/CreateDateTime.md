@@ -24,8 +24,8 @@ CreateDateTime(year=[integer], month=[integer], day=[integer], hour=[integer], m
 | `hour` | `integer` | `false` | The hour of the date-time object. | `0` |
 | `minute` | `integer` | `false` | The minute of the date-time object. | `0` |
 | `second` | `integer` | `false` | The second of the date-time object. | `0` |
-| `millisecond` | `integer` | `false` |  | `0` |
-| `timezone` | `string` | `false` |  |  |
+| `millisecond` | `integer` | `false` | The millisecond of the date-time object. | `0` |
+| `timezone` | `string` | `false` | The timezone to apply to the date-time object. Defaults to the system default timezone. |  |
 
 ## Examples
 

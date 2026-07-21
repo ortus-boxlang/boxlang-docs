@@ -7,7 +7,7 @@ Execute a stored procedure.
 
 ```
 <bx:StoredProc procedure=[string]
-datasource=[string]
+datasource=[any]
 blockfactor=[integer]
 debug=[boolean]
 returnCode=[boolean]
@@ -22,7 +22,7 @@ password=[string] />
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `procedure` | `string` | `true` | The name of the procedure to execute. |  |
-| `datasource` | `string` | `false` | The name of the datasource where the stored procedure is registered. |  |
+| `datasource` | `any` | `false` | The name of the datasource where the stored procedure is registered, or a struct of datasource settings for on-the-fly connections. |  |
 | `blockfactor` | `integer` | `false` | The fetch size to use for batching rows and reducing network round trips when reading results. |  |
 | `debug` | `boolean` | `false` | If enabled, list debugging info on each statement. | `false` |
 | `returnCode` | `boolean` | `false` | True/false whether to capture the return code of the stored procedure in the result variable. | `false` |

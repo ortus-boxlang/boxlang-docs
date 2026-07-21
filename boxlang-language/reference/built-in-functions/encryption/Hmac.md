@@ -16,10 +16,10 @@ Hmac(input=[any], key=[any], algorithm=[string], encoding=[string], numIteration
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `input` | `any` | `true` | The item to be hashed |  |
-| `key` | `any` | `true` |  |  |
+| `key` | `any` | `true` | The secret key used to generate the HMAC. Can be a string or a binary value. |  |
 | `algorithm` | `string` | `false` | The supported {@link java.security.MessageDigest} algorithm (case-insensitive) | `HmacMD5` |
 | `encoding` | `string` | `false` | Applicable to strings ( default "utf-8" ) | `utf-8` |
-| `numIterations` | `integer` | `false` |  | `1` |
+| `numIterations` | `integer` | `false` | The number of iterations to re-digest the object ( default 1 ); | `1` |
 
 ## Examples
 

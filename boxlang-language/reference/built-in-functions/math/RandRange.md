@@ -15,9 +15,9 @@ RandRange(number1=[numeric], number2=[numeric], algorithm=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number1` | `numeric` | `true` |  |  |
-| `number2` | `numeric` | `true` |  |  |
-| `algorithm` | `string` | `false` |  |  |
+| `number1` | `numeric` | `true` | The lower bound of the range. |  |
+| `number2` | `numeric` | `true` | The upper bound of the range. |  |
+| `algorithm` | `string` | `false` | The algorithm to use to generate the random number. |  |
 
 ## Examples
 

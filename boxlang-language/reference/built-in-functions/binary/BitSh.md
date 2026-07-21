@@ -15,7 +15,7 @@ BitSh(number=[integer], count=[integer])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `integer` | `true` | Numeric value to shift. |  |
+| `number` | `integer` | `true` | 32-bit signed integer value to shift. |  |
 | `count` | `integer` | `true` | Number of bits to shift (Integer in the range 0-31, inclusive). |  |
 
 ## Examples

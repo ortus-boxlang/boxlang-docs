@@ -15,7 +15,7 @@ StructKeyArray(structure=[structloose])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `structure` | `struct` | `true` |  |  |
+| `structure` | `struct` | `true` | The struct whose keys are returned. |  |
 
 ## Examples
 

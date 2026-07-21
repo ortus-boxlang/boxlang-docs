@@ -29,7 +29,24 @@ isThreadAlive(name=[string])
 
 ## Examples
 
+### Check if the current thread is alive
 
+```java
+alive = isThreadAlive();
+writeOutput( isBoolean( alive ) );
+
+```
+
+Result: true
+
+### Returns true when called from the main thread
+
+```java
+writeOutput( isThreadAlive() );
+
+```
+
+Result: true
 
 ## Related
 
@@ -48,6 +65,7 @@ isThreadAlive(name=[string])
   * [IsInThread](./IsInThread.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)

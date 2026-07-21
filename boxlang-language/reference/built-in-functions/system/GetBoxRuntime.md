@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the BoxLang runtime struct
 
+```java
+runtime = getBoxRuntime();
+writeOutput( runtime.containsKey( "version" ) );
+
+```
+
+Result: true
 
 ## Related
 

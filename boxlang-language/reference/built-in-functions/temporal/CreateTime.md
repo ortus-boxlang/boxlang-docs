@@ -19,7 +19,7 @@ CreateTime(hour=[integer], minute=[integer], second=[integer], millisecond=[inte
 | `minute` | `integer` | `false` | The minute of the date-time object. | `0` |
 | `second` | `integer` | `false` | The second of the date-time object. | `0` |
 | `millisecond` | `integer` | `false` | The millisecond of the date-time object. | `0` |
-| `timezone` | `string` | `false` |  |  |
+| `timezone` | `string` | `false` | The timezone to apply to the date-time object. Defaults to the system default timezone. |  |
 
 ## Examples
 

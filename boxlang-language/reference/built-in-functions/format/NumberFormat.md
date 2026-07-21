@@ -202,3 +202,4 @@ dump( NumberFormat( 1, "C000" ) );
   * [BooleanFormat](./BooleanFormat.md)
   * [DecimalFormat](./DecimalFormat.md)
   * [LSNumberFormat](./LSNumberFormat.md)
+  * [TrueFalseFormat](./TrueFalseFormat.md)

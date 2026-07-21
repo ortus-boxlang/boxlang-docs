@@ -15,7 +15,7 @@ ArraySum(array=[array])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` |  |  |
+| `array` | `array` | `true` | The array to sum the values of. |  |
 
 ## Examples
 

@@ -19,7 +19,7 @@ ListValueCountNoCase(list=[string], value=[string], delimiter=[string], includeE
 | `value` | `string` | `true` | The value to locale |  |
 | `delimiter` | `string` | `false` | The list delimiter(s) | `,` |
 | `includeEmptyFields` | `boolean` | `false` | Whether to include empty fields in the search | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 
 ## Examples
 

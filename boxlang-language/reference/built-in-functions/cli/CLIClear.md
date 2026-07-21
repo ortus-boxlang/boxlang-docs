@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Clear the CLI console screen
 
+```java
+cliClear();
+writeOutput( "cleared" );
+
+```
+
+Result: cleared
 
 ## Related
 

@@ -16,12 +16,22 @@ This function does not accept any arguments
 
 ## Examples
 
+### List all registered schedulers
 
+```java
+schedulerNew( "listSched", 2 );
+list = schedulerList();
+writeOutput( isArray( list ) );
+
+```
+
+Result: true
 
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
   * [SchedulerGetAll](./SchedulerGetAll.md)
+  * [SchedulerNew](./SchedulerNew.md)
   * [SchedulerRestart](./SchedulerRestart.md)
   * [SchedulerShutdown](./SchedulerShutdown.md)
   * [SchedulerStart](./SchedulerStart.md)

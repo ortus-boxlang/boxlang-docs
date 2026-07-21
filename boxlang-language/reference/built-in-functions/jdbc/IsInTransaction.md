@@ -16,7 +16,14 @@ This function does not accept any arguments
 
 ## Examples
 
+### Check if within a database transaction
 
+```java
+writeOutput( isBoolean( isInTransaction() ) );
+
+```
+
+Result: true
 
 ## Related
 

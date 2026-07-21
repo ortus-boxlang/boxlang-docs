@@ -2,12 +2,19 @@
 
 # Function: `FileRead`
 
-Reads the contents of a file and returns it as a string or binary object
+Reads the contents of a file and returns it as a string or binary object.
+
+<p>
+ When called with a <b>file path</b> (string, Path, or File), the entire file is read from disk.
+ HTTP URLs are also supported as string paths.
+ When called with an <b>open BoxFile object</b> (from {@code fileOpen()}), the remaining content
+ is read from the current stream position to EOF. For text mode files, returns a String.
+ For binary mode files, returns a byte[]. The caller is responsible for closing the file object afterward.
 
 ## Method Signature
 
 ```
-FileRead(filepath=[string], charsetOrBufferSize=[string], charset=[string], buffersize=[string])
+FileRead(filepath=[any], charsetOrBufferSize=[string], charset=[string], buffersize=[string])
 ```
 
 ### Arguments
@@ -15,10 +22,10 @@ FileRead(filepath=[string], charsetOrBufferSize=[string], charset=[string], buff
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `filepath` | `string` | `true` | The path to the file to read. |  |
-| `charsetOrBufferSize` | `string` | `false` | Either the charset to use when reading the file, or the buffer size to use when reading the file. If providing a buffer size, the next argument can be the charset. |  |
-| `charset` | `string` | `false` | The explicit charset to use when reading the file. |  |
-| `buffersize` | `string` | `false` | The explicit buffer size to use when reading the file. |  |
+| `filepath` | `any` | `true` | A file path (string, Path, File, or HTTP URL) to read entirely, or an open BoxFile object to read remaining content from. |  |
+| `charsetOrBufferSize` | `string` | `false` | Either the charset to use when reading the file, or the buffer size. Only applies to path-based reads. |  |
+| `charset` | `string` | `false` | The explicit charset to use when reading the file. Only applies to path-based reads. |  |
+| `buffersize` | `string` | `false` | The explicit buffer size to use when reading the file. Only applies to path-based reads. |  |
 
 ## Examples
 

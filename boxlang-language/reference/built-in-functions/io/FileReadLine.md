@@ -7,7 +7,7 @@ Returns the next line from the file object stream
 ## Method Signature
 
 ```
-FileReadLine(file=[any])
+FileReadLine(file=[boxfile])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileReadLine(file=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | The currently open file object |  |
+| `file` | `boxfile` | `true` | The currently open file object |  |
 
 ## Examples
 

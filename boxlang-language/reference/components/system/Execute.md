@@ -15,7 +15,9 @@ directory=[string]
 outputFile=[string]
 errorFile=[string]
 errorVariable=[string]
-exitCode=[string] />
+exitCode=[string]
+inheritEnvironment=[boolean]
+environment=[struct] />
 ```
 
 ### Attributes
@@ -33,6 +35,8 @@ exitCode=[string] />
 | `errorFile` | `string` | `false` | An optional file path to write errors to |  |
 | `errorVariable` | `string` | `false` | Optional variable to produce for error output |  |
 | `exitCode` | `string` | `false` | An optional variable to set the exit code into |  |
+| `inheritEnvironment` | `boolean` | `false` | Whether to inherit the parent process environment variables. Defaults to true. | `true` |
+| `environment` | `struct` | `false` | A struct of environment variables to pass to the process. Merged in after the inherit decision. | `{}` |
 
 ## Examples
 

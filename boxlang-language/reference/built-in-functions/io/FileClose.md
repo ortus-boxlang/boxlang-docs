@@ -7,7 +7,7 @@ Closes an on-disk or in-memory file that is open.
 ## Method Signature
 
 ```
-FileClose(file=[any])
+FileClose(file=[boxfile])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileClose(file=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | The file to close. |  |
+| `file` | `boxfile` | `true` | The file to close. |  |
 
 ## Examples
 

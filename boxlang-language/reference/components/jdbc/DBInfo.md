@@ -8,7 +8,7 @@ Retrieve database metadata for a given datasource.
 ```
 <bx:DBInfo type=[string]
 name=[string]
-datasource=[string]
+datasource=[any]
 table=[string]
 pattern=[string]
 dbname=[string]
@@ -22,7 +22,7 @@ filter=[string] />
 |----------|------|----------|-------------|---------|
 | `type` | `string` | `true` | Type of metadata to retrieve. One of: `columns`, `dbnames`, `tables`, `foreignkeys`, `index`, `procedures`, or `version`. |  |
 | `name` | `string` | `true` | Name of the variable to which the result will be assigned. Required. |  |
-| `datasource` | `string` | `false` | Name of the datasource to check metadata on. If not provided, the default datasource will be used. |  |
+| `datasource` | `any` | `false` | Name of the datasource to check metadata on, or a struct of datasource settings for on-the-fly connections. If not provided, the default datasource will be used. |  |
 | `table` | `string` | `false` | Table name for which to retrieve metadata. Required for `columns`, `foreignkeys`, and `index` types. |  |
 | `pattern` | `string` | `false` | Table name pattern to filter by. Can use wildcards or any `LIKE`-compatible pattern such as `tbl_%`. Can use `schemaName.tableName` syntax to additionally filter by schema. |  |
 | `dbname` | `string` | `false` | Name of the database to check for tables. If not provided, the database name from the connection will be used. |  |

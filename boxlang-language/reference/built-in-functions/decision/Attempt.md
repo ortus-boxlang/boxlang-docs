@@ -20,7 +20,65 @@ Attempt(value=[any])
 
 ## Examples
 
+### Create an Attempt with a value
 
+Wraps a value in an Attempt object for fluent error-safe operations.
+
+```java
+attempt = attempt( 42 );
+writeOutput( attempt.get() );
+
+```
+
+Result: 42
+
+### Create an Attempt with a closure
+
+The closure is executed and its result (or exception) is captured.
+
+```java
+attempt = attempt( () => 10 / 2 );
+writeOutput( attempt.get() );
+
+```
+
+Result: 5
+
+### Attempt that catches an exception
+
+When the closure throws, the Attempt captures the failure instead of crashing.
+
+```java
+attempt = attempt( () => 10 / 0 );
+writeOutput( attempt.hasError() );
+
+```
+
+Result: true
+
+### Fluent chaining with Attempt
+
+```java
+result = attempt( () => "hello".len() )
+    .map( (x) => x * 2 )
+    .getOrDefault( 0 );
+writeOutput( result );
+
+```
+
+Result: 10
+
+### Attempt with no value
+
+Creates an empty Attempt object for later use.
+
+```java
+attempt = attempt();
+writeOutput( attempt.isEmpty() );
+
+```
+
+Result: true
 
 ## Related
 
@@ -29,6 +87,7 @@ Attempt(value=[any])
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
+  * [IsBoxSet](./IsBoxSet.md)
   * [IsClosure](./IsClosure.md)
   * [IsCustomFunction](./IsCustomFunction.md)
   * [IsDate](./IsDate.md)
@@ -46,7 +105,9 @@ Attempt(value=[any])
   * [IsNumericDate](./IsNumericDate.md)
   * [IsObject](./IsObject.md)
   * [IsQuery](./IsQuery.md)
+  * [IsRange](./IsRange.md)
   * [IsSimpleValue](./IsSimpleValue.md)
+  * [IsStringBuilder](./IsStringBuilder.md)
   * [IsStruct](./IsStruct.md)
   * [IsValid](./IsValid.md)
   * [IsXML](./IsXML.md)

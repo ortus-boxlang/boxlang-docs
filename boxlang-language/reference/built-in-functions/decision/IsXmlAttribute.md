@@ -21,7 +21,15 @@ IsXmlAttribute(value=[any])
 
 ## Examples
 
+### Check if a value is an XML attribute
 
+```java
+xml = xmlParse( "<root attr='value'/>" );
+writeOutput( isXmlAttribute( xml.xmlRoot.xmlAttributes.attr ) );
+
+```
+
+Result: true
 
 ## Related
 
@@ -31,6 +39,7 @@ IsXmlAttribute(value=[any])
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
+  * [IsBoxSet](./IsBoxSet.md)
   * [IsClosure](./IsClosure.md)
   * [IsCustomFunction](./IsCustomFunction.md)
   * [IsDate](./IsDate.md)
@@ -48,7 +57,9 @@ IsXmlAttribute(value=[any])
   * [IsNumericDate](./IsNumericDate.md)
   * [IsObject](./IsObject.md)
   * [IsQuery](./IsQuery.md)
+  * [IsRange](./IsRange.md)
   * [IsSimpleValue](./IsSimpleValue.md)
+  * [IsStringBuilder](./IsStringBuilder.md)
   * [IsStruct](./IsStruct.md)
   * [IsValid](./IsValid.md)
   * [IsXML](./IsXML.md)

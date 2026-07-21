@@ -2,12 +2,14 @@
 
 # Function: `Trim`
 
-Trim whitespace from the beginning and end of a string
+Trim whitespace from the beginning and end of a string.
+
+If chars is provided, each character in the string is treated as a character to trim instead of whitespace.
 
 ## Method Signature
 
 ```
-Trim(string=[string])
+Trim(string=[string], chars=[string])
 ```
 
 ### Arguments
@@ -16,6 +18,7 @@ Trim(string=[string])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `string` | `string` | `true` | The string to trim |  |
+| `chars` | `string` | `false` | An optional string of characters to trim. Each character is treated individually. |  |
 
 ## Examples
 
@@ -97,6 +100,8 @@ writeDump( "-" & Trim( foo ) & "-" );
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -104,8 +109,9 @@ writeDump( "-" & Trim( foo ) & "-" );
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

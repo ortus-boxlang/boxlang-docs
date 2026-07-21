@@ -19,7 +19,35 @@ KebabCase(string=[string])
 
 ## Examples
 
+### Convert a string to kebab-case
 
+```java
+result = kebabCase( "helloWorld" );
+writeOutput( result );
+
+```
+
+Result: hello-world
+
+### Convert snake_case to kebab-case
+
+```java
+result = kebabCase( "my_variable_name" );
+writeOutput( result );
+
+```
+
+Result: my-variable-name
+
+### Using the member function
+
+```java
+result = "fooBarBaz".kebabCase();
+writeOutput( result );
+
+```
+
+Result: foo-bar-baz
 
 ## Related
 
@@ -69,6 +97,8 @@ KebabCase(string=[string])
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -76,9 +106,10 @@ KebabCase(string=[string])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

@@ -15,6 +15,9 @@ By default with no arguments, it will clear all caches.
  <li><code>template</code> - Clear all the templates cached using the bx:cache component</li>
  <li><code>query</code> - Clears the cache storing queries</li>
  <li><code>object</code> - Clear the default cache region</li>
+ <li><code>http</code> - Clear all cached HTTP clients</li>
+ <li><code>methodhandle</code> - Clear the method handle cache used for dynamic interop calls</li>
+ <li><code>applicationdescriptor</code> - Clear the application descriptor cache used for storing parsed application descriptors</li>
  </ul>
 
 ## Method Signature

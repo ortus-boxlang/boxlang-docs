@@ -17,7 +17,7 @@ DateCompare(date1=[any], date2=[any], datepart=[string])
 |----------|------|----------|-------------|---------|
 | `date1` | `any` | `true` | The reference date object |  |
 | `date2` | `any` | `true` | The date which to compare against date1 |  |
-| `datepart` | `string` | `false` |  |  |
+| `datepart` | `string` | `false` | The precision to compare down to. Accepts y, yyyy, m, d, h, n, s (default). |  |
 
 ## Examples
 

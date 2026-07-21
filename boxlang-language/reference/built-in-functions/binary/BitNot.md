@@ -7,7 +7,7 @@ Performs a bitwise logical NOT operation.
 ## Method Signature
 
 ```
-BitNot(number=[integer])
+BitNot(number=[long])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ BitNot(number=[integer])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `integer` | `true` | Numeric value for bitwise NOT. |  |
+| `number` | `long` | `true` | Numeric value for bitwise NOT. |  |
 
 ## Examples
 

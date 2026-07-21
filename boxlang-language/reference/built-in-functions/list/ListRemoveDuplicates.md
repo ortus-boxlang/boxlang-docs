@@ -19,7 +19,7 @@ ListRemoveDuplicates(list=[string], delimiter=[string], ignoreCase=[boolean], in
 | `delimiter` | `string` | `false` | The delimiter of the list | `,` |
 | `ignoreCase` | `boolean` | `false` | Whether case should be ignored or not during deduplication - defaults to false | `false` |
 | `includeEmptyFields` | `boolean` | `false` |  | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 
 ## Examples
 

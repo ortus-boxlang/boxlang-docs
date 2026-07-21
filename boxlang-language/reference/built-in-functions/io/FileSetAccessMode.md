@@ -7,7 +7,7 @@ Sets the Posix permissions on a file
 ## Method Signature
 
 ```
-FileSetAccessMode(file=[any], mode=[string])
+FileSetAccessMode(file=[boxfile], mode=[string])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileSetAccessMode(file=[any], mode=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | A file path or object |  |
+| `file` | `boxfile` | `true` | A file path or object |  |
 | `mode` | `string` | `true` | The three-digit permission designations for the file or directory |  |
 
 ## Examples

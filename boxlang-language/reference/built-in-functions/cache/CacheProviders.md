@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get all available cache providers
 
+```java
+providers = cacheProviders();
+writeOutput( isArray( providers ) );
+
+```
+
+Result: true
 
 ## Related
 

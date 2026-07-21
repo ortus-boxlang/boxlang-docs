@@ -32,11 +32,40 @@ ArrayNone(array=[array], callback=[function:Predicate], parallel=[boolean], maxT
 | `callback` | `function:Predicate` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Predicate which will only receive the 1st arg. |  |
 | `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
 | `maxThreads` | `any` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
-| `virtual` | `boolean` | `false` |  | `false` |
+| `virtual` | `boolean` | `false` | If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
 
 ## Examples
 
+### Test that no elements satisfy a predicate
 
+Returns `true` when the callback returns `false` for every element.
+
+```java
+numbers = [ 1, 2, 3, 4 ];
+writeOutput( numbers.none( ( n ) => n > 100 ) );
+
+```
+
+Result: true
+
+### Returns false when at least one element matches
+
+```java
+numbers = [ 1, 2, 3 ];
+writeOutput( numbers.none( ( n ) => n > 2 ) );
+
+```
+
+Result: false
+
+### Using the global function form
+
+```java
+writeOutput( arrayNone( [ "a", "b" ], ( s ) => len( s ) > 5 ) );
+
+```
+
+Result: true
 
 ## Related
 

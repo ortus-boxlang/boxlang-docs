@@ -17,7 +17,7 @@ Converts a BoxLang variable into a JSON (JavaScript Object Notation) string acco
  </ul>
 
  <h2>Usage</h2>
- 
+
  <pre>
  // Convert a query to JSON
  myQuery = ...;
@@ -39,14 +39,34 @@ JSONSerialize(data=[any], queryFormat=[string], useSecureJSONPrefix=[string], us
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `data` | `any` | `true` | The variable to convert to a JSON string. |  |
-| `queryFormat` | `string` | `false` | If the variable is a query, specifies whether to serialize the query by rows or by columns. Valid values are:<br>                       <code>row</code> same as <code>false</code>, <code>column</code> same as <code>true</code>, or <code>struct</code>. Defaults to <code>row</code>. | `row` |
+| `queryFormat` | `string` | `false` | If the variable is a query, specifies whether to serialize the query by rows or by columns. Valid values are:<br>                       <code>row</code> same as <code>false</code>, <code>column</code> same as <code>true</code>, or <code>struct</code>. Defaults to <code>row</code>. |  |
 | `useSecureJSONPrefix` | `string` | `false` | If true, the JSON string is prefixed with a secure JSON prefix. (Not implemented yet) | `false` |
 | `useCustomSerializer` | `boolean` | `false` | If true, the JSON string is serialized using a custom serializer. (Not implemented yet) |  |
 | `pretty` | `boolean` | `false` | If true, the JSON string is formatted with indentation and line breaks for readability. Defaults to false. | `false` |
 
 ## Examples
 
+### Serialize a struct to JSON
 
+```java
+data = { name: "Luis", age: 42 };
+result = jsonSerialize( data );
+writeOutput( result.contains( "Luis" ) );
+
+```
+
+Result: true
+
+### Serialize an array to JSON
+
+```java
+items = [ 1, 2, 3 ];
+result = jsonSerialize( items );
+writeOutput( result );
+
+```
+
+Result: [1,2,3]
 
 ## Related
 

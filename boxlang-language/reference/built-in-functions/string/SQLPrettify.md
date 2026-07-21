@@ -19,7 +19,37 @@ SQLPrettify(sql=[string])
 
 ## Examples
 
+### Prettify and format SQL queries
 
+```java
+sql = "SELECT id, name FROM users WHERE active = 1 ORDER BY name";
+result = sqlPrettify( sql );
+writeOutput( result.contains( "SELECT" ) );
+
+```
+
+Result: true
+
+### Complex query formatting
+
+```java
+sql = "SELECT u.name, o.total FROM users u JOIN orders o ON u.id = o.user_id WHERE o.total > 100";
+result = sqlPrettify( sql );
+writeOutput( isString( result ) );
+
+```
+
+Result: true
+
+### Using the member function
+
+```java
+result = "SELECT * FROM users".sqlPrettify();
+writeOutput( result.len() > 20 );
+
+```
+
+Result: true
 
 ## Related
 
@@ -69,6 +99,8 @@ SQLPrettify(sql=[string])
   * [SpanIncluding](./SpanIncluding.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -76,9 +108,10 @@ SQLPrettify(sql=[string])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

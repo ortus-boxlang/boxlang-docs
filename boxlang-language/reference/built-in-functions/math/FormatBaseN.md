@@ -15,8 +15,8 @@ FormatBaseN(number=[numeric], radix=[integerTruncate])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `numeric` | `true` |  |  |
-| `radix` | `integerTruncate` | `true` |  |  |
+| `number` | `numeric` | `true` | The number to convert to the specified base. |  |
+| `radix` | `integerTruncate` | `true` | The base to convert the number to, in the range 2-36. |  |
 
 ## Examples
 

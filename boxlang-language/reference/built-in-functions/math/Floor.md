@@ -2,7 +2,7 @@
 
 # Function: `Floor`
 
-Returns the absolute value of a number
+Round a number down to the nearest integer
 
 ## Method Signature
 
@@ -15,7 +15,7 @@ Floor(number=[numeric])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number` | `numeric` | `true` |  |  |
+| `number` | `numeric` | `true` | The number to round down to the nearest integer |  |
 
 ## Examples
 

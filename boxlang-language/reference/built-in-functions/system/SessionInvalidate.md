@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Invalidate the current session
 
+```java
+sessionInvalidate();
+writeOutput( "session invalidated" );
+
+```
+
+Result: session invalidated
 
 ## Related
 

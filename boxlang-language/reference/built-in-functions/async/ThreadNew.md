@@ -23,7 +23,31 @@ ThreadNew(runnable=[function], attributes=[struct], name=[string], priority=[str
 
 ## Examples
 
+### Create a new thread
 
+```java
+t = threadNew( () => {
+    sleep( 100 );
+    println( "thread running" );
+} );
+threadJoin( t );
+writeOutput( "done" );
+
+```
+
+Result: done
+
+### Named thread
+
+```java
+t = threadNew( "myThread", () => {
+    return "hello";
+} );
+writeOutput( t.getName() );
+
+```
+
+Result: myThread
 
 ## Related
 
@@ -43,6 +67,7 @@ ThreadNew(runnable=[function], attributes=[struct], name=[string], priority=[str
   * [isThreadAlive](./isThreadAlive.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadTerminate](./ThreadTerminate.md)

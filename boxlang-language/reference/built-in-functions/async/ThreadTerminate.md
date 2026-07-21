@@ -19,7 +19,19 @@ ThreadTerminate(threadName=[string])
 
 ## Examples
 
+### Terminate a thread
 
+```java
+future = asyncRun( () => {
+    sleep( 10000 );
+    return "never reached";
+} );
+threadTerminate( future.getThread() );
+writeOutput( "terminated" );
+
+```
+
+Result: terminated
 
 ## Related
 
@@ -39,6 +51,7 @@ ThreadTerminate(threadName=[string])
   * [isThreadAlive](./isThreadAlive.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)
