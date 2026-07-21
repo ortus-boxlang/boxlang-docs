@@ -17,7 +17,7 @@ Returns a struct with the following keys:
 ## Method Signature
 
 ```
-SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout=[boolean], directory=[string], output=[string], error=[string])
+SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout=[boolean], directory=[string], output=[string], error=[string], inheritEnvironment=[boolean], environment=[struct])
 ```
 
 ### Arguments
@@ -32,10 +32,30 @@ SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout
 | `directory` | `string` | `false` | A working directory to execute the command from |  |
 | `output` | `string` | `false` |  |  |
 | `error` | `string` | `false` | An optional file path to write errors to |  |
+| `inheritEnvironment` | `boolean` | `false` | Whether to inherit the parent process environment variables. Defaults to true. | `true` |
+| `environment` | `struct` | `false` | A struct of environment variables to pass to the process. Merged in after the inherit decision. | `{}` |
 
 ## Examples
 
+### Execute a system command
 
+```java
+result = systemExecute( "echo hello" );
+writeOutput( result.output.contains( "hello" ) );
+
+```
+
+Result: true
+
+### Execute with working directory
+
+```java
+result = systemExecute( "pwd", getCanonicalPath( "." ) );
+writeOutput( isStruct( result ) );
+
+```
+
+Result: true
 
 ## Related
 

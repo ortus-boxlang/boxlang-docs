@@ -7,7 +7,7 @@ Determines whether the end of the file has been reached while reading it.
 ## Method Signature
 
 ```
-FileIsEOF(file=[any])
+FileIsEOF(file=[boxfile])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileIsEOF(file=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | The currently open file object |  |
+| `file` | `boxfile` | `true` | The currently open file object |  |
 
 ## Examples
 

@@ -18,7 +18,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the context root of the current request
 
+```java
+root = getContextRoot();
+writeOutput( isString( root ) );
+
+```
+
+Result: true
 
 ## Related
 

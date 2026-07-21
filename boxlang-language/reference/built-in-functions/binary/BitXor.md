@@ -7,7 +7,7 @@ Performs a bitwise logical XOR operation.
 ## Method Signature
 
 ```
-BitXor(number1=[integer], number2=[integer])
+BitXor(number1=[long], number2=[long])
 ```
 
 ### Arguments
@@ -15,8 +15,8 @@ BitXor(number1=[integer], number2=[integer])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number1` | `integer` | `true` | Numeric value for bitwise XOR. |  |
-| `number2` | `integer` | `true` | Numeric value for bitwise XOR. |  |
+| `number1` | `long` | `true` | Numeric value for bitwise XOR. |  |
+| `number2` | `long` | `true` | Numeric value for bitwise XOR. |  |
 
 ## Examples
 

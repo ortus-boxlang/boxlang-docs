@@ -30,7 +30,25 @@ QueryStringToStruct(target=[string], delimiter=[string])
 
 ## Examples
 
+### Convert a query string to a struct
 
+```java
+result = queryStringToStruct( "name=Luis&age=42&city=NYC" );
+writeOutput( result.name );
+
+```
+
+Result: Luis
+
+### Using the member function
+
+```java
+result = "foo=bar&baz=qux".queryStringToStruct();
+writeOutput( result.foo & "," & result.baz );
+
+```
+
+Result: bar,qux
 
 ## Related
 
@@ -80,6 +98,8 @@ QueryStringToStruct(target=[string], delimiter=[string])
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -87,9 +107,10 @@ QueryStringToStruct(target=[string], delimiter=[string])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

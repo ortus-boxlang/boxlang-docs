@@ -64,7 +64,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get parsed command-line arguments
 
+```java
+args = cliGetArgs();
+writeOutput( isStruct( args ) );
+
+```
+
+Result: true
 
 ## Related
 

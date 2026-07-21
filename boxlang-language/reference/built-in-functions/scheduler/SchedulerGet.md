@@ -19,12 +19,22 @@ SchedulerGet(name=[string])
 
 ## Examples
 
+### Get a registered scheduler by name
 
+```java
+schedulerNew( "myScheduler", 2 );
+sched = schedulerGet( "myScheduler" );
+writeOutput( sched.getName() );
+
+```
+
+Result: myScheduler
 
 ## Related
 
   * [SchedulerGetAll](./SchedulerGetAll.md)
   * [SchedulerList](./SchedulerList.md)
+  * [SchedulerNew](./SchedulerNew.md)
   * [SchedulerRestart](./SchedulerRestart.md)
   * [SchedulerShutdown](./SchedulerShutdown.md)
   * [SchedulerStart](./SchedulerStart.md)

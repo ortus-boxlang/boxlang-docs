@@ -26,11 +26,44 @@ ArrayFindFirst(array=[array], callback=[function], defaultValue=[any], parallel=
 | `defaultValue` | `any` | `false` | The default value to use if the array is empty or no value is returned from the predicate function. |  |
 | `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
 | `maxThreads` | `any` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. If a boolean is provided it will be assigned to the virtual argument instead. |  |
-| `virtual` | `boolean` | `false` | (BoxLang only) If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
+| `virtual` | `boolean` | `false` | If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
 
 ## Examples
 
+### Find the first element matching a predicate
 
+Returns the first element for which the callback returns `true`.
+
+```java
+users = [ { name: "Ada" }, { name: "Grace" }, { name: "Linus" } ];
+found = users.findFirst( ( user ) => user.name == "Grace" );
+writeOutput( found.name );
+
+```
+
+Result: Grace
+
+### With a default value when nothing matches
+
+```java
+users = [ { name: "Ada" } ];
+found = users.findFirst( ( user ) => user.name == "Nobody", "Unknown" );
+writeOutput( found.name );
+
+```
+
+Result: Unknown
+
+### Find the first even number
+
+```java
+numbers = [ 1, 3, 5, 6, 7, 8 ];
+found = numbers.findFirst( ( n ) => n % 2 == 0 );
+writeOutput( found );
+
+```
+
+Result: 6
 
 ## Related
 

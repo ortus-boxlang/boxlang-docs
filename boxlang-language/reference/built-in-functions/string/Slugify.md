@@ -21,7 +21,35 @@ Slugify(string=[string], maxLength=[integer], allow=[string])
 
 ## Examples
 
+### Convert a string to a URL-friendly slug
 
+```java
+result = slugify( "Hello World! This is a Test." );
+writeOutput( result );
+
+```
+
+Result: hello-world-this-is-a-test
+
+### Handle special characters
+
+```java
+result = slugify( "Café & Restaurant — New York" );
+writeOutput( result );
+
+```
+
+Result: cafe-restaurant-new-york
+
+### Using the member function
+
+```java
+result = "My Blog Post Title".slugify();
+writeOutput( result );
+
+```
+
+Result: my-blog-post-title
 
 ## Related
 
@@ -71,6 +99,8 @@ Slugify(string=[string], maxLength=[integer], allow=[string])
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -78,9 +108,10 @@ Slugify(string=[string], maxLength=[integer], allow=[string])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

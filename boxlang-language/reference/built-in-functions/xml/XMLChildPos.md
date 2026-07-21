@@ -23,7 +23,16 @@ XMLChildPos(elem=[XML], childname=[string], n=[integer])
 
 ## Examples
 
+### Get the position of an XML child element
 
+```java
+xml = xmlParse( "<root><a/><b/><c/></root>" );
+result = xmlChildPos( xml.xmlRoot, "b" );
+writeOutput( result );
+
+```
+
+Result: 2
 
 ## Related
 

@@ -66,7 +66,15 @@ BoxAST(source=[string], filepath=[string], returnType=[string], sourceType=[stri
 
 ## Examples
 
+### Get the AST for BoxLang source code
 
+```java
+ast = boxAST( "x = 1 + 2" );
+writeOutput( ast.containsKey( "type" ) );
+
+```
+
+Result: true
 
 ## Related
 

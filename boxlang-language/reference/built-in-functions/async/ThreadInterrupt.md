@@ -37,7 +37,20 @@ ThreadInterrupt(name=[string])
 
 ## Examples
 
+### Interrupt a thread by ID
 
+```java
+future = asyncRun( () => {
+    sleep( 5000 );
+    return "done";
+} );
+threadId = future.getThread().getId();
+threadInterrupt( threadId );
+writeOutput( "interrupted" );
+
+```
+
+Result: interrupted
 
 ## Related
 
@@ -57,6 +70,7 @@ ThreadInterrupt(name=[string])
   * [isThreadAlive](./isThreadAlive.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)
   * [ThreadTerminate](./ThreadTerminate.md)

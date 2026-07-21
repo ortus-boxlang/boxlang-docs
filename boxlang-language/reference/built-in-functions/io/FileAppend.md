@@ -7,7 +7,7 @@ Appends new contents to a file starting at the last character in the file
 ## Method Signature
 
 ```
-FileAppend(file=[any], data=[any], charset=[string], addnewline=[boolean])
+FileAppend(file=[boxfile], data=[any], charset=[string], addnewline=[boolean])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileAppend(file=[any], data=[any], charset=[string], addnewline=[boolean])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | The file object or string file path |  |
+| `file` | `boxfile` | `true` | The file object or string file path |  |
 | `data` | `any` | `true` | The data to append |  |
 | `charset` | `string` | `false` | [utf-8] the default charset to open the file for writing | `utf-8` |
 | `addnewline` | `boolean` | `false` |  | `false` |

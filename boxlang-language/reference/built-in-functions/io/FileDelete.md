@@ -9,7 +9,7 @@ Throws an exception if the file doesn't exist.
 ## Method Signature
 
 ```
-FileDelete(file=[string])
+FileDelete(file=[boxfile])
 ```
 
 ### Arguments
@@ -17,7 +17,7 @@ FileDelete(file=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `string` | `true` | The file to delete. |  |
+| `file` | `boxfile` | `true` | The file to delete. |  |
 
 ## Examples
 

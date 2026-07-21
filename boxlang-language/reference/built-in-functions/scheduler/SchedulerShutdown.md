@@ -28,13 +28,23 @@ SchedulerShutdown(name=[string], force=[boolean], timeout=[integer])
 
 ## Examples
 
+### Shutdown a scheduler
 
+```java
+schedulerNew( "shutdownSched", 2 );
+schedulerShutdown( "shutdownSched" );
+writeOutput( "shutdown" );
+
+```
+
+Result: shutdown
 
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
   * [SchedulerGetAll](./SchedulerGetAll.md)
   * [SchedulerList](./SchedulerList.md)
+  * [SchedulerNew](./SchedulerNew.md)
   * [SchedulerRestart](./SchedulerRestart.md)
   * [SchedulerStart](./SchedulerStart.md)
   * [SchedulerStats](./SchedulerStats.md)

@@ -2,12 +2,18 @@
 
 # Function: `FileWrite`
 
-Writes the contents of a string or binary data to a file
+Writes the contents of a string or binary data to a file.
+
+<p>
+ When called with a <b>file path</b> (string, Path, or File), the file is created/overwritten on disk.
+ When called with an <b>open BoxFile object</b> (from {@code fileOpen()}), the data is written through
+ the file's existing stream, respecting the current mode (write or append) and position.
+ The caller is responsible for closing the file object afterward.
 
 ## Method Signature
 
 ```
-FileWrite(file=[string], data=[any], charset=[string], createPath=[boolean])
+FileWrite(file=[boxfile], data=[any], charset=[string], createPath=[boolean])
 ```
 
 ### Arguments
@@ -15,10 +21,10 @@ FileWrite(file=[string], data=[any], charset=[string], createPath=[boolean])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `string` | `true` | The string path of the file - either root relative or absolute |  |
-| `data` | `any` | `true` | The string or binary byte array of the file content |  |
-| `charset` | `string` | `false` | The charset encoding ( ignored for binary data ) | `UTF-8` |
-| `createPath` | `boolean` | `false` |  | `false` |
+| `file` | `boxfile` | `true` | A file path (string, Path, File) to create/overwrite, or an open BoxFile object to write through its stream. |  |
+| `data` | `any` | `true` | The string or binary byte array of the file content. |  |
+| `charset` | `string` | `false` | The charset encoding (ignored for binary data). Only applies to path-based writes. | `UTF-8` |
+| `createPath` | `boolean` | `false` | When true, ensures all directories to the file destination are created. Only applies to path-based writes. | `false` |
 
 ## Examples
 

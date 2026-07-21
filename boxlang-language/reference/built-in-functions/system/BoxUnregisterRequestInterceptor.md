@@ -20,7 +20,15 @@ BoxUnregisterRequestInterceptor(interceptor=[any], states=[any])
 
 ## Examples
 
+### Unregister a request-scoped interceptor
 
+```java
+boxUnregisterRequestInterceptor( "myRequestInterceptor" );
+writeOutput( "unregistered" );
+
+```
+
+Result: unregistered
 
 ## Related
 

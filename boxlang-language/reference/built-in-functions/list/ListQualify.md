@@ -24,7 +24,7 @@ ListQualify(list=[string], qualifier=[string], delimiter=[string], elements=[str
 | `delimiter` | `string` | `false` | The delimiter used in the list. | `,` |
 | `elements` | `string` | `false` | The elements to qualify. If set to "char", only elements that are all alphabetic characters will be qualified. | `all` |
 | `includeEmptyFields` | `boolean` | `false` | If true, empty fields will be qualified. | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 
 ## Examples
 

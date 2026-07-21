@@ -10,7 +10,7 @@ The destionation can be a file or a directory.
 ## Method Signature
 
 ```
-FileCopy(source=[string], destination=[string], createPath=[boolean], overwrite=[boolean], accept=[string])
+FileCopy(source=[boxfile], destination=[boxfile], createPath=[boolean], overwrite=[boolean], accept=[string])
 ```
 
 ### Arguments
@@ -18,8 +18,8 @@ FileCopy(source=[string], destination=[string], createPath=[boolean], overwrite=
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `source` | `string` | `true` | The source file |  |
-| `destination` | `string` | `true` | A destionation file or directory, if it's a directory, the suorce file name will be appended |  |
+| `source` | `boxfile` | `true` | The source file |  |
+| `destination` | `boxfile` | `true` | A destionation file or directory, if it's a directory, the suorce file name will be appended |  |
 | `createPath` | `boolean` | `false` | [ true ] whether to create any nested paths required to the new file | `true` |
 | `overwrite` | `boolean` | `false` | Whether to overwrite the destination file if it exists. Defaults to true. | `true` |
 | `accept` | `string` | `false` | A comma separated list of file extensions to accept - which will override runtime security settings |  |

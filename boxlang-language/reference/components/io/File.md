@@ -7,9 +7,9 @@ Manages interactions with server files.
 
 ```
 <bx:File action=[string]
-file=[string]
+file=[any]
 mode=[string]
-output=[string]
+output=[any]
 addnewline=[boolean]
 attributes=[string]
 charset=[string]
@@ -31,9 +31,9 @@ result=[string] />
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `action` | `string` | `true` | The action to take. One of: append, copy, delete, move, read, readbinary, rename, upload, uploadall, write |  |
-| `file` | `string` | `false` | The file to act on |  |
+| `file` | `any` | `false` | The file to act on |  |
 | `mode` | `string` | `false` | The mode to open the file in |  |
-| `output` | `string` | `false` | The output of the action |  |
+| `output` | `any` | `false` | The output of the action |  |
 | `addnewline` | `boolean` | `false` | Add a newline to the end of the file |  |
 | `attributes` | `string` | `false` | Attributes to set on the file |  |
 | `charset` | `string` | `false` | The character set to use | `utf-8` |
@@ -238,7 +238,7 @@ Upload the file contained in the myFile field. Always upload to a directory outs
 
 ### Tag Syntax (action=upload) with accept
 
-CF10+ Checks file extensions against a whitelist of allowed file extensions. You must set `strict=false` when specifying a file extension list.
+Checks file extensions against a whitelist of allowed file extensions. You must set `strict=false` when specifying a file extension list.
 
 
 ```java

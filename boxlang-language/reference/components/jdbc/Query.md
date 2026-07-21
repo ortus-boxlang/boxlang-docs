@@ -7,9 +7,10 @@ Execute a SQL query to the default or specified datasource.
 
 ```
 <bx:Query name=[string]
-datasource=[string]
+datasource=[any]
 returnType=[string]
 columnKey=[string]
+transformer=[any]
 dbtype=[string]
 username=[string]
 password=[string]
@@ -32,18 +33,19 @@ clientInfo=[struct] />
 | Atrribute | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `name` | `string` | `false` | The name of the variable to store the query results in. |  |
-| `datasource` | `string` | `false` | The datasource to execute the query against. |  |
+| `datasource` | `any` | `false` | The name of the datasource to execute the query against, or a struct of datasource settings for on-the-fly connections. |  |
 | `returnType` | `string` | `false` | The type of the result to return. One of: `query`, `struct`, `array`. | `query` |
 | `columnKey` | `string` | `false` | The key to use for the column names in the result struct. |  |
+| `transformer` | `any` | `false` |  |  |
 | `dbtype` | `string` | `false` | The type of query to execute. One of: `query`, `hql`. |  |
 | `username` | `string` | `false` |  |  |
 | `password` | `string` | `false` |  |  |
 | `maxRows` | `integer` | `false` | The maximum number of rows to return. -1 for no limit. | `-1` |
-| `blockfactor` | `integer` | `false` | Maximum rows per block to fetch from the server. Ranges from 1-100. |  |
-| `fetchsize` | `integer` | `false` | The number of rows to fetch at a time. Ranges from 1-100. |  |
+| `blockfactor` | `integer` | `false` | Maximum rows per block to fetch from the server. Ranges from 1-100. (0 means use default) |  |
+| `fetchsize` | `integer` | `false` | The number of rows to fetch at a time. Ranges from 1-100. (0 means use default) |  |
 | `timeout` | `integer` | `false` | The timeout for the query in seconds. |  |
 | `cache` | `boolean` | `false` | Whether or not to cache the results of the query. | `false` |
-| `cacheTimeout` | `duration` | `false` | The timeout for the cached query, using a duration object like `createTimespan( 0, 1, 0, 0 )`. |  |
+| `cacheTimeout` | `duration` | `false` | The timeout for the cached query, using a duration object like `createTimespan( 0, 1, 0, 0 )`.<br>                         If the timeout duration is zero (aka `createTimespan( 0, 0, 0, 0 )`), the cache will never expire<br>                         based on time, but can still be evicted based on other factors like memory pressure.<br>                         If the timeout duration is negative (aka `createTimespan( 0, -1, 0, 0 )`), the item will not be cached. |  |
 | `cacheLastAccessTimeout` | `duration` | `false` | The timeout for the cached query, using a duration object like `createTimespan( 0, 1, 0, 0 )`. |  |
 | `cacheKey` | `string` | `false` | The key to use for the cached query. |  |
 | `cacheProvider` | `string` | `false` | String name of the cache provider to use. Defaults to the default cache provider. |  |

@@ -23,7 +23,35 @@ StringBind(string=[string], placeholders=[structloose])
 
 ## Examples
 
+### Bind values into a string template
 
+```java
+result = stringBind( "Hello, {name}! You have {count} messages.", { name: "Luis", count: 5 } );
+writeOutput( result );
+
+```
+
+Result: Hello, Luis! You have 5 messages.
+
+### Using the member function
+
+```java
+result = "Welcome, {user}!".stringBind( { user: "World" } );
+writeOutput( result );
+
+```
+
+Result: Welcome, World!
+
+### Missing keys remain as placeholders
+
+```java
+result = stringBind( "Hello, {name}!", {} );
+writeOutput( result );
+
+```
+
+Result: Hello, {name}!
 
 ## Related
 
@@ -73,6 +101,8 @@ StringBind(string=[string], placeholders=[structloose])
   * [SpanIncluding](./SpanIncluding.md)
   * [SQLPrettify](./SQLPrettify.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -80,9 +110,10 @@ StringBind(string=[string], placeholders=[structloose])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

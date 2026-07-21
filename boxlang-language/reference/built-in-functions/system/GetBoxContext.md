@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the current BoxLang context
 
+```java
+ctx = getBoxContext();
+writeOutput( isObject( ctx ) );
+
+```
+
+Result: true
 
 ## Related
 

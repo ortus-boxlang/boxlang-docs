@@ -19,7 +19,7 @@ ListIndexExists(list=[string], index=[integer], delimiter=[string], includeEmpty
 | `index` | `integer` | `true` | numeric The index to check for |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 
 ## Examples
 

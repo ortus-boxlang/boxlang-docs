@@ -19,7 +19,35 @@ CamelCase(string=[string])
 
 ## Examples
 
+### Convert a string to camelCase
 
+```java
+result = camelCase( "hello_world" );
+writeOutput( result );
+
+```
+
+Result: helloWorld
+
+### Convert kebab-case to camelCase
+
+```java
+result = camelCase( "my-variable-name" );
+writeOutput( result );
+
+```
+
+Result: myVariableName
+
+### Using the member function
+
+```java
+result = "foo_bar_baz".camelCase();
+writeOutput( result );
+
+```
+
+Result: fooBarBaz
 
 ## Related
 
@@ -69,6 +97,8 @@ CamelCase(string=[string])
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -76,9 +106,10 @@ CamelCase(string=[string])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

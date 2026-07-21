@@ -24,13 +24,23 @@ SchedulerStart(className=[string], name=[string], force=[boolean])
 
 ## Examples
 
+### Start a scheduler
 
+```java
+schedulerNew( "startSched", 2 );
+schedulerStart( "startSched" );
+writeOutput( "started" );
+
+```
+
+Result: started
 
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
   * [SchedulerGetAll](./SchedulerGetAll.md)
   * [SchedulerList](./SchedulerList.md)
+  * [SchedulerNew](./SchedulerNew.md)
   * [SchedulerRestart](./SchedulerRestart.md)
   * [SchedulerShutdown](./SchedulerShutdown.md)
   * [SchedulerStats](./SchedulerStats.md)

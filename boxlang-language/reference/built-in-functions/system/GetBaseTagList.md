@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the list of base tags in the call stack
 
+```java
+tags = getBaseTagList();
+writeOutput( isArray( tags ) );
+
+```
+
+Result: true
 
 ## Related
 

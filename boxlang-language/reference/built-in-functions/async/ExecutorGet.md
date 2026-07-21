@@ -27,7 +27,27 @@ ExecutorGet(name=[string])
 
 ## Examples
 
+### Get a registered executor by name
 
+```java
+executorNew( "myPool", "fixed", 4 );
+exec = executorGet( "myPool" );
+writeOutput( exec.name() );
+
+```
+
+Result: myPool
+
+### Get executor details
+
+```java
+executorNew( "workPool", "cached" );
+exec = executorGet( "workPool" );
+writeOutput( exec.type() );
+
+```
+
+Result: CACHED
 
 ## Related
 
@@ -46,6 +66,7 @@ ExecutorGet(name=[string])
   * [isThreadAlive](./isThreadAlive.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)

@@ -112,6 +112,7 @@ writeOutput( result );
   * [IsInThread](./IsInThread.md)
   * [isThreadAlive](./isThreadAlive.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)

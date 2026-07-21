@@ -12,7 +12,7 @@ Returns a new array with duplicate items removed.
 ## Method Signature
 
 ```
-ArrayUnique(array=[array])
+ArrayUnique(array=[array], caseSensitive=[boolean])
 ```
 
 ### Arguments
@@ -21,10 +21,41 @@ ArrayUnique(array=[array])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to remove duplicate entries from |  |
+| `caseSensitive` | `boolean` | `false` | Whether string element comparisons are case-sensitive. Defaults to false. | `false` |
 
 ## Examples
 
+### Remove duplicate values from an array
 
+```java
+items = [ "apple", "banana", "apple", "cherry", "banana" ];
+result = items.unique();
+writeOutput( result.len() );
+
+```
+
+Result: 3
+
+### Case-insensitive deduplication (default)
+
+```java
+words = [ "Hello", "hello", "HELLO", "World" ];
+result = words.unique();
+writeOutput( result.len() );
+
+```
+
+Result: 2
+
+### Using the global function form
+
+```java
+result = arrayUnique( [ 1, 2, 2, 3, 3, 3 ] );
+writeOutput( result.toString() );
+
+```
+
+Result: [1, 2, 3]
 
 ## Related
 

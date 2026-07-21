@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the session start time
 
+```java
+startTime = sessionStartTime();
+writeOutput( isDate( startTime ) );
+
+```
+
+Result: true
 
 ## Related
 

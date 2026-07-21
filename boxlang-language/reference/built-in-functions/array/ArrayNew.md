@@ -2,17 +2,21 @@
 
 # Function: `ArrayNew`
 
-Return new array
+Create a new array.
 
 ## Method Signature
 
 ```
-ArrayNew()
+ArrayNew(dimensions=[integer], isSynchronized=[boolean])
 ```
 
 ### Arguments
 
-This function does not accept any arguments
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `dimensions` | `integer` | `false` | The dimension of the array to create (currently only 1 is supported). | `1` |
+| `isSynchronized` | `boolean` | `false` | Whether the array should be thread-safe (synchronized). Default is false. | `true` |
 
 ## Examples
 

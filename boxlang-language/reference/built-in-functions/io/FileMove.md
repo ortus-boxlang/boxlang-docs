@@ -10,7 +10,7 @@ The destination can be a file or a directory. If the destination is a directory,
 ## Method Signature
 
 ```
-FileMove(source=[string], destination=[string], overwrite=[boolean], accept=[string])
+FileMove(source=[boxfile], destination=[boxfile], overwrite=[boolean], accept=[string])
 ```
 
 ### Arguments
@@ -18,8 +18,8 @@ FileMove(source=[string], destination=[string], overwrite=[boolean], accept=[str
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `source` | `string` | `true` | The source file path. |  |
-| `destination` | `string` | `true` | The destination file path or directory path. |  |
+| `source` | `boxfile` | `true` | The source file path. |  |
+| `destination` | `boxfile` | `true` | The destination file path or directory path. |  |
 | `overwrite` | `boolean` | `true` | Whether to overwrite the destination file if it exists. Defaults to true. | `true` |
 | `accept` | `string` | `false` | A comma separated list of file extensions to accept - which will override runtime security settings |  |
 

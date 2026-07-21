@@ -7,7 +7,7 @@ Moves the buffer cursor position forward the number of characters specified by t
 ## Method Signature
 
 ```
-FileSkipBytes(file=[any], position=[integer])
+FileSkipBytes(file=[boxfile], position=[integer])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileSkipBytes(file=[any], position=[integer])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | The File instance |  |
+| `file` | `boxfile` | `true` | The File instance |  |
 | `position` | `integer` | `true` | The cursor position to move forward in the file |  |
 
 ## Examples

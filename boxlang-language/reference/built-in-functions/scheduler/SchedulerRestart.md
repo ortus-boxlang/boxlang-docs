@@ -28,13 +28,23 @@ SchedulerRestart(name=[string], force=[boolean], timeout=[integer])
 
 ## Examples
 
+### Restart a scheduler
 
+```java
+schedulerNew( "restartSched", 2 );
+schedulerRestart( "restartSched" );
+writeOutput( "restarted" );
+
+```
+
+Result: restarted
 
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
   * [SchedulerGetAll](./SchedulerGetAll.md)
   * [SchedulerList](./SchedulerList.md)
+  * [SchedulerNew](./SchedulerNew.md)
   * [SchedulerShutdown](./SchedulerShutdown.md)
   * [SchedulerStart](./SchedulerStart.md)
   * [SchedulerStats](./SchedulerStats.md)

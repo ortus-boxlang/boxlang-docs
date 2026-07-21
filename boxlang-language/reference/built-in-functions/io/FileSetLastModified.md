@@ -7,7 +7,7 @@ Sets the last modified time of a file
 ## Method Signature
 
 ```
-FileSetLastModified(file=[any], date=[any])
+FileSetLastModified(file=[boxfile], date=[any])
 ```
 
 ### Arguments
@@ -15,7 +15,7 @@ FileSetLastModified(file=[any], date=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `file` | `any` | `true` | A file path or object |  |
+| `file` | `boxfile` | `true` | A file path or object |  |
 | `date` | `any` | `true` | A date time object or string |  |
 
 ## Examples

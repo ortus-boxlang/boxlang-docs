@@ -20,7 +20,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the request class loader
 
+```java
+loader = getRequestClassLoader();
+writeOutput( isObject( loader ) );
+
+```
+
+Result: true
 
 ## Related
 

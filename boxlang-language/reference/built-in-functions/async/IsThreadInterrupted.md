@@ -29,7 +29,24 @@ IsThreadInterrupted(name=[string])
 
 ## Examples
 
+### Check if the current thread has been interrupted
 
+```java
+interrupted = isThreadInterrupted();
+writeOutput( isBoolean( interrupted ) );
+
+```
+
+Result: false
+
+### Returns false for a normal running thread
+
+```java
+writeOutput( isThreadInterrupted() );
+
+```
+
+Result: false
 
 ## Related
 
@@ -48,6 +65,7 @@ IsThreadInterrupted(name=[string])
   * [IsInThread](./IsInThread.md)
   * [isThreadAlive](./isThreadAlive.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)

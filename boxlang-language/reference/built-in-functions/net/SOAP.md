@@ -41,8 +41,17 @@ SOAP(URL=[string])
 
 ## Examples
 
+### Make a SOAP web service call
 
+```java
+// result = soap( url: "http://example.com/service.asmx", method: "GetData" );
+writeOutput( "soap call" );
+
+```
+
+Result: soap call
 
 ## Related
 
+  * [GetLocalhostIp](./GetLocalhostIp.md)
   * [HTTP](./HTTP.md)

@@ -2,7 +2,7 @@
 
 # Function: `ToModifiable`
 
-Convert an array, struct or query to its Modifiable counterpart.
+Convert an array, struct, query or set to its Modifiable counterpart.
 
 ## Method Signature
 
@@ -15,11 +15,22 @@ ToModifiable(value=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `value` | `any` | `true` | The array, struct or query to convert. |  |
+| `value` | `any` | `true` | The array, struct, query or set to convert. |  |
 
 ## Examples
 
+### Convert to a modifiable copy
 
+```java
+data = { name: "test" };
+frozen = toUnmodifiable( data );
+modifiable = toModifiable( frozen );
+modifiable.name = "changed";
+writeOutput( modifiable.name );
+
+```
+
+Result: changed
 
 ## Related
 

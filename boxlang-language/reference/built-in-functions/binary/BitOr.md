@@ -7,7 +7,7 @@ Performs a bitwise logical OR operation.
 ## Method Signature
 
 ```
-BitOr(number1=[integer], number2=[integer])
+BitOr(number1=[long], number2=[long])
 ```
 
 ### Arguments
@@ -15,8 +15,8 @@ BitOr(number1=[integer], number2=[integer])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `number1` | `integer` | `true` | Numeric value for bitwise OR. |  |
-| `number2` | `integer` | `true` | Numeric value for bitwise OR. |  |
+| `number1` | `long` | `true` | Numeric value for bitwise OR. |  |
+| `number2` | `long` | `true` | Numeric value for bitwise OR. |  |
 
 ## Examples
 

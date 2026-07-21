@@ -33,7 +33,7 @@ ListSome(list=[string], callback=[function:Predicate], delimiter=[string], inclu
 | `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 | `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
 | `maxThreads` | `integer` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. If a boolean is provided it will be assigned to the virtual argument instead. |  |
-| `virtual` | `boolean` | `false` | ( BoxLang only) If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
+| `virtual` | `boolean` | `false` | If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
 
 ## Examples
 

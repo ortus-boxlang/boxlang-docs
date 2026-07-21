@@ -19,7 +19,24 @@ ExecutorHas(name=[string])
 
 ## Examples
 
+### Check if an executor exists by name
 
+```java
+executorNew( "myPool", "fixed", 4 );
+writeOutput( executorHas( "myPool" ) );
+
+```
+
+Result: true
+
+### Returns false for non-existent executor
+
+```java
+writeOutput( executorHas( "nonexistent" ) );
+
+```
+
+Result: false
 
 ## Related
 
@@ -38,6 +55,7 @@ ExecutorHas(name=[string])
   * [isThreadAlive](./isThreadAlive.md)
   * [IsThreadInterrupted](./IsThreadInterrupted.md)
   * [RunAsync](./RunAsync.md)
+  * [ThreadCurrent](./ThreadCurrent.md)
   * [ThreadInterrupt](./ThreadInterrupt.md)
   * [ThreadJoin](./ThreadJoin.md)
   * [ThreadNew](./ThreadNew.md)

@@ -115,7 +115,7 @@ Returns the arccosine (inverse cosine) of a number
 <details>
 <summary><code>floor()</code></summary>
 
-Returns the absolute value of a number
+Round a number down to the nearest integer
 </details>
 <details>
 <summary><code>formatBaseN(radix=[integerTruncate])</code></summary>

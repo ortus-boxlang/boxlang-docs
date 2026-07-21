@@ -30,10 +30,10 @@ ListMap(list=[string], callback=[function:Function], delimiter=[string], include
 | `callback` | `function:Function` | `true` | The function to invoke for each item. The function will be passed 3 arguments: the value, the index, the array. You can alternatively pass a Java Function which will only receive the 1st arg. |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 | `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
 | `maxThreads` | `any` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. If a boolean is provided it will be assigned to the virtual argument instead. |  |
-| `virtual` | `boolean` | `false` | ( BoxLang only) If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
+| `virtual` | `boolean` | `false` | If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
 
 ## Examples
 

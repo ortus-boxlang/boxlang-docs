@@ -16,7 +16,7 @@ ArrayFirst(array=[array], defaultValue=[any])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `array` | `true` | The array to get the first item from. |  |
-| `defaultValue` | `any` | `false` |  |  |
+| `defaultValue` | `any` | `false` | The value to return when the array is empty. If omitted, an exception is thrown for an empty array. |  |
 
 ## Examples
 

@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the list of loaded modules
 
+```java
+modules = getModuleList();
+writeOutput( isStruct( modules ) );
+
+```
+
+Result: true
 
 ## Related
 

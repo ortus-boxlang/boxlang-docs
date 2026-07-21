@@ -19,7 +19,35 @@ SnakeCase(string=[string])
 
 ## Examples
 
+### Convert a string to snake_case
 
+```java
+result = snakeCase( "helloWorld" );
+writeOutput( result );
+
+```
+
+Result: hello_world
+
+### Convert PascalCase to snake_case
+
+```java
+result = snakeCase( "MyVariableName" );
+writeOutput( result );
+
+```
+
+Result: my_variable_name
+
+### Using the member function
+
+```java
+result = "fooBarBaz".snakeCase();
+writeOutput( result );
+
+```
+
+Result: foo_bar_baz
 
 ## Related
 
@@ -69,6 +97,8 @@ SnakeCase(string=[string])
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -76,9 +106,10 @@ SnakeCase(string=[string])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

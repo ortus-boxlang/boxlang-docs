@@ -22,7 +22,7 @@ ArraySet(array=[assignablearray], start=[any], end=[any], value=[any])
 | `array` | `assignablearray` | `true` | The array to modify |  |
 | `start` | `any` | `true` | The starting index |  |
 | `end` | `any` | `true` | The ending index |  |
-| `value` | `any` | `true` |  |  |
+| `value` | `any` | `true` | The value to set |  |
 
 ## Examples
 

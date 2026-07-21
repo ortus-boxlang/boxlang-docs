@@ -16,7 +16,14 @@ This function does not accept any arguments
 
 ## Examples
 
+### Check if debug mode is enabled
 
+```java
+writeOutput( isBoolean( isDebugMode() ) );
+
+```
+
+Result: true
 
 ## Related
 
@@ -26,6 +33,7 @@ This function does not accept any arguments
   * [IsArray](./IsArray.md)
   * [IsBinary](./IsBinary.md)
   * [IsBoolean](./IsBoolean.md)
+  * [IsBoxSet](./IsBoxSet.md)
   * [IsClosure](./IsClosure.md)
   * [IsCustomFunction](./IsCustomFunction.md)
   * [IsDate](./IsDate.md)
@@ -42,7 +50,9 @@ This function does not accept any arguments
   * [IsNumericDate](./IsNumericDate.md)
   * [IsObject](./IsObject.md)
   * [IsQuery](./IsQuery.md)
+  * [IsRange](./IsRange.md)
   * [IsSimpleValue](./IsSimpleValue.md)
+  * [IsStringBuilder](./IsStringBuilder.md)
   * [IsStruct](./IsStruct.md)
   * [IsValid](./IsValid.md)
   * [IsXML](./IsXML.md)

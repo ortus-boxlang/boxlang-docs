@@ -24,7 +24,6 @@ This function does not accept any arguments
 
 ```java
 getBaseTemplatePath();
-
 ```
 
 
@@ -34,7 +33,6 @@ getBaseTemplatePath();
 
 ```java
 writeDump( getBaseTemplatePath() );
-
 ```
 
 

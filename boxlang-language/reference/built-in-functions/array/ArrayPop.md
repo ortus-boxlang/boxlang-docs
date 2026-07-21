@@ -16,7 +16,7 @@ ArrayPop(array=[modifiablearray], defaultValue=[any])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `modifiablearray` | `true` | The array to get the last |  |
-| `defaultValue` | `any` | `false` |  |  |
+| `defaultValue` | `any` | `false` | The value to return when the array is empty. If omitted, an exception is thrown for an empty array. |  |
 
 ## Examples
 
@@ -41,7 +41,7 @@ Result: 42
 
 ### Member function version.
 
-Using the member function. This version also works in ACF2018.
+Using the member function.
 
 <a href="https://try.boxlang.io/?code=eJxLLCpSsFWIVuDiNNTh4jQCYhMjrlhrrgKgaGJRkV5BfoGGpjVXeVFmSap%2FaUlBaYmGQoECUAQAf3kOiw%3D%3D" target="_blank">Run Example</a>
 

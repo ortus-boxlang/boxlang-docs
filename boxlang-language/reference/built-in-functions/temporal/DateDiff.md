@@ -15,7 +15,7 @@ DateDiff(datepart=[string], date1=[any], date2=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `datepart` | `string` | `true` |  |  |
+| `datepart` | `string` | `true` | The datepart code in which to express the difference (yyyy, q, m, d, y, w, ww, wd, h, n, s, l). |  |
 | `date1` | `any` | `true` | The reference date object |  |
 | `date2` | `any` | `true` | The date which to compare against date1 |  |
 

@@ -20,8 +20,8 @@ condition=[function]
 query=[any]
 group=[string]
 groupCaseSensitive=[boolean]
-startRow=[integer]
-endRow=[integer]
+startRow=[integerTruncate]
+endRow=[integerTruncate]
 label=[string]
 times=[integer] />
 ```
@@ -45,8 +45,8 @@ times=[integer] />
 | `query` | `any` | `false` | A Query object or variable name containing a query to iterate over.<br>                  Each iteration makes one row of the query available. Can be combined<br>                  with <code>group</code> for grouped processing, or <code>startRow</code>/<br>                  <code>endRow</code> for range constraints.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop query="#employeeQuery#"&gt;</code> |  |
 | `group` | `string` | `false` | Comma-separated list of query column names to group by. When specified,<br>                  the loop processes data in groups, executing the body once per group<br>                  change rather than once per row. Enables nested looping for hierarchical<br>                  data processing. Requires <code>query</code> attribute.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop query="#data#" group="department,manager"&gt;</code> |  |
 | `groupCaseSensitive` | `boolean` | `false` | Boolean flag controlling whether group comparisons are case-sensitive.<br>                               Defaults to false (case-insensitive). Only meaningful when<br>                               <code>group</code> attribute is specified.<br>                               <br><br>                               <strong>Example:</strong> <code>&lt;bx:loop query="#data#" group="name" groupCaseSensitive="true"&gt;</code> | `false` |
-| `startRow` | `integer` | `false` | 1-based starting row number for query loops. Only rows from this<br>                     position onward will be processed. Must be 1 or greater.<br>                     <br><br>                     <strong>Example:</strong> <code>&lt;bx:loop query="#data#" startRow="10" endRow="20"&gt;</code> |  |
-| `endRow` | `integer` | `false` | 1-based ending row number for query loops. Processing stops after<br>                   this row. Must be 1 or greater and typically greater than <code>startRow</code>.<br>                   <br><br>                   <strong>Example:</strong> <code>&lt;bx:loop query="#data#" startRow="1" endRow="50"&gt;</code> |  |
+| `startRow` | `integerTruncate` | `false` | 1-based starting row number for query loops. Only rows from this<br>                     position onward will be processed. Must be 1 or greater.<br>                     <br><br>                     <strong>Example:</strong> <code>&lt;bx:loop query="#data#" startRow="10" endRow="20"&gt;</code> |  |
+| `endRow` | `integerTruncate` | `false` | 1-based ending row number for query loops. Processing stops after<br>                   this row. Must be 1 or greater and typically greater than <code>startRow</code>.<br>                   <br><br>                   <strong>Example:</strong> <code>&lt;bx:loop query="#data#" startRow="1" endRow="50"&gt;</code> |  |
 | `label` | `string` | `false` | Optional label for the loop, used with break and continue statements<br>                  to control nested loop execution. Allows targeting specific loops<br>                  in complex nested structures.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop label="outerLoop" array="#data#"&gt;...&lt;bx:break label="outerLoop"&gt;</code> |  |
 | `times` | `integer` | `false` | Number of iterations to perform. Creates a simple counting loop<br>                  from 1 to the specified number. Can be used with <code>item</code><br>                  or <code>index</code> to access the current iteration number.<br>                  <br><br>                  <strong>Example:</strong> <code>&lt;bx:loop times="5" index="i"&gt;</code> |  |
 

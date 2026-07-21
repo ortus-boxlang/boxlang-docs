@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the cache service instance
 
+```java
+service = cacheService();
+writeOutput( isObject( service ) );
+
+```
+
+Result: true
 
 ## Related
 

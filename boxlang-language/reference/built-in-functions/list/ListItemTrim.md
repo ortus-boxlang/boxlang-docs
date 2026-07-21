@@ -18,7 +18,7 @@ ListItemTrim(list=[string], delimiter=[string], includeEmptyFields=[boolean], mu
 | `list` | `string` | `true` | string list to trim each item |  |
 | `delimiter` | `string` | `false` | string the list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 
 ## Examples
 

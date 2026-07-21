@@ -32,7 +32,7 @@ StructFilter(struct=[structloose], callback=[function:BiPredicate], parallel=[bo
 | `callback` | `function:BiPredicate` | `true` | The function used to filter. The function will be passed 3 arguments: the key, the value, the struct. You can alternatively pass a Java BiPredicate which will only receive the first 2 args. |  |
 | `parallel` | `boolean` | `false` | Whether to run the filter in parallel. Defaults to false. If true, the filter will be run in parallel using a ForkJoinPool. | `false` |
 | `maxThreads` | `any` | `false` | The maximum number of threads to use when running the filter in parallel. If not passed it will use the default number of threads for the ForkJoinPool.<br>                      If parallel is false, this argument is ignored. |  |
-| `virtual` | `boolean` | `false` |  | `false` |
+| `virtual` | `boolean` | `false` | If true, the function will be invoked using virtual threads. Defaults to false. Ignored if parallel is false. | `false` |
 
 ## Examples
 

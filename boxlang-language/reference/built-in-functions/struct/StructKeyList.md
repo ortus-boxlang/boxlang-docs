@@ -15,8 +15,8 @@ StructKeyList(structure=[structloose], delimiter=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `structure` | `struct` | `true` |  |  |
-| `delimiter` | `string` | `false` |  | `,` |
+| `structure` | `struct` | `true` | The struct whose keys are returned. |  |
+| `delimiter` | `string` | `false` | The delimiter to use between the keys in the returned list. Defaults to a comma. | `,` |
 
 ## Examples
 

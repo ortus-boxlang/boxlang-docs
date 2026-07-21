@@ -19,7 +19,7 @@ ArrayShift(array=[modifiablearray], defaultValue=[any])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `array` | `modifiablearray` | `true` | The array to shift |  |
-| `defaultValue` | `any` | `false` |  |  |
+| `defaultValue` | `any` | `false` | The value to return when the array is empty. If omitted, an exception is thrown for an empty array. |  |
 
 ## Examples
 

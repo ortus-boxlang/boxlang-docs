@@ -2,7 +2,7 @@
 
 # Function: `GetClassMetadata`
 
-Returns the current value of an internal millisecond timer.
+Get metadata about a instance or class given an instantiation path, an absolute OS filesystem path, or an instance of the object.
 
 ## Method Signature
 
@@ -15,11 +15,33 @@ GetClassMetadata(path=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `path` | `any` | `true` | The path to the class or interface or an instance of the object to get the metadata for. |  |
+| `path` | `any` | `true` | The path to the class or interface.,or an instance of the object to get the metadata for. |  |
 
 ## Examples
 
+### Get metadata for a class by name
 
+```java
+class Person {
+    property name="firstName";
+    function init() { return this; }
+}
+meta = getClassMetadata( "Person" );
+writeOutput( meta.name );
+
+```
+
+Result: Person
+
+### Get metadata for a Java class
+
+```java
+meta = getClassMetadata( "java.util.HashMap" );
+writeOutput( meta.type );
+
+```
+
+Result: Class
 
 ## Related
 

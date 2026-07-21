@@ -7,7 +7,7 @@ Create a string that contains a specified number of repetitions of the specified
 ## Method Signature
 
 ```
-RepeatString(string=[string], count=[integer])
+RepeatString(string=[string], count=[integerTruncate])
 ```
 
 ### Arguments
@@ -16,7 +16,7 @@ RepeatString(string=[string], count=[integer])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `string` | `string` | `true` | The string to repeat. |  |
-| `count` | `integer` | `true` | The number of times to repeat the string. |  |
+| `count` | `integerTruncate` | `true` | The number of times to repeat the string. |  |
 
 ## Examples
 
@@ -95,6 +95,8 @@ writeDump( str.repeatString( 3 ) );
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -102,9 +104,10 @@ writeDump( str.repeatString( 3 ) );
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)

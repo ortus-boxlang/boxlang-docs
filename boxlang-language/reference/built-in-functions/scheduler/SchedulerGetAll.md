@@ -16,12 +16,23 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get all registered schedulers
 
+```java
+schedulerNew( "sched1", 2 );
+schedulerNew( "sched2", 4 );
+all = schedulerGetAll();
+writeOutput( all.len() gte 2 );
+
+```
+
+Result: true
 
 ## Related
 
   * [SchedulerGet](./SchedulerGet.md)
   * [SchedulerList](./SchedulerList.md)
+  * [SchedulerNew](./SchedulerNew.md)
   * [SchedulerRestart](./SchedulerRestart.md)
   * [SchedulerShutdown](./SchedulerShutdown.md)
   * [SchedulerStart](./SchedulerStart.md)

@@ -19,7 +19,7 @@ ListChangeDelims(list=[string], newDelimiter=[string], delimiter=[string], inclu
 | `newDelimiter` | `string` | `true` | string the new list delimiter |  |
 | `delimiter` | `string` | `false` | string the old list delimiter | `,` |
 | `includeEmptyFields` | `boolean` | `false` | boolean whether to include empty fields in the returned result | `false` |
-| `multiCharacterDelimiter` | `boolean` | `false` |  | `false` |
+| `multiCharacterDelimiter` | `boolean` | `false` | boolean whether the delimiter is multi-character | `false` |
 
 ## Examples
 

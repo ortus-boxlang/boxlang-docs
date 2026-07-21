@@ -27,7 +27,15 @@ BoxRegisterInterceptionPoints(states=[any], poolname=[string])
 
 ## Examples
 
+### Register interception points globally
 
+```java
+boxRegisterInterceptionPoints( [ "onApplicationStart", "onRequestStart" ] );
+writeOutput( "registered" );
+
+```
+
+Result: registered
 
 ## Related
 

@@ -16,7 +16,15 @@ This function does not accept any arguments
 
 ## Examples
 
+### Get the application start time
 
+```java
+startTime = applicationStartTime();
+writeOutput( isDate( startTime ) );
+
+```
+
+Result: true
 
 ## Related
 

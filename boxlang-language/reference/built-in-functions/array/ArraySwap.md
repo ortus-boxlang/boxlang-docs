@@ -17,7 +17,7 @@ ArraySwap(array=[array], position1=[any], position2=[any])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `array` | `array` | `true` |  |  |
+| `array` | `array` | `true` | The array containing the elements to swap. |  |
 | `position1` | `any` | `true` | The first position to swap |  |
 | `position2` | `any` | `true` | The second position to swap |  |
 

@@ -19,7 +19,32 @@ ParagraphFormat(string=[string])
 
 ## Examples
 
+### Format text into paragraphs
 
+Inserts paragraph tags around blocks of text separated by line breaks.
+
+```java
+text = "First paragraph.
+
+Second paragraph.";
+result = paragraphFormat( text );
+writeOutput( result.contains( "<p>" ) );
+
+```
+
+Result: true
+
+### Using the member function
+
+```java
+result = "Line one.
+
+Line two.".paragraphFormat();
+writeOutput( result.contains( "</p>" ) );
+
+```
+
+Result: true
 
 ## Related
 
@@ -69,6 +94,8 @@ ParagraphFormat(string=[string])
   * [SQLPrettify](./SQLPrettify.md)
   * [StringBind](./StringBind.md)
   * [StringEach](./StringEach.md)
+  * [StringEndsWith](./StringEndsWith.md)
+  * [StringEndsWithNoCase](./StringEndsWithNoCase.md)
   * [StringEvery](./StringEvery.md)
   * [StringFilter](./StringFilter.md)
   * [StringMap](./StringMap.md)
@@ -76,9 +103,10 @@ ParagraphFormat(string=[string])
   * [StringReduceRight](./StringReduceRight.md)
   * [StringSome](./StringSome.md)
   * [StringSort](./StringSort.md)
+  * [StringStartsWith](./StringStartsWith.md)
+  * [StringStartsWithNoCase](./StringStartsWithNoCase.md)
   * [StripCR](./StripCR.md)
   * [Trim](./Trim.md)
-  * [TrueFalseFormat](./TrueFalseFormat.md)
   * [UCase](./UCase.md)
   * [UCFirst](./UCFirst.md)
   * [Val](./Val.md)
