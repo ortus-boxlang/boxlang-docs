@@ -48,10 +48,11 @@ class MyFunkyCalculator{
 
 
     public static function calculate( a ){
-        return static.multiplier * a;
-    };
+        return static.multiplier * a
+    }
+
     public static function getGlobalCacheKey(){
-        return static.CACHE_KEY;
+        return static.CACHE_KEY
     }
 
 }
@@ -63,6 +64,6 @@ We have seen how to declare the static constructor and static methods, but how i
 
 ```java
 // Refer to the class by path, then use the :: and call a function or variable
-MyFunkyCalculator::CACHE_KEY;
-MyFunkyCalculator::calculateValues( 1 );
+MyFunkyCalculator::CACHE_KEY
+MyFunkyCalculator::calculateValues( 1 )
 ```

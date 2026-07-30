@@ -155,8 +155,8 @@ Template classes support static blocks, static variables, and static methods:
 ```javascript
 class Config {
     static {
-        static.MAX_RETRIES = 5;
-        static.APP_NAME = "MyApp";
+        static.MAX_RETRIES = 5
+        static.APP_NAME = "MyApp"
     }
 }
 
@@ -169,16 +169,16 @@ Config::APP_NAME;       // "MyApp"
 ```javascript
 class MathUtil {
     static function add( a, b ) {
-        return a + b;
+        return a + b
     }
 
     static function multiply( a, b ) {
-        return a * b;
+        return a * b
     }
 }
 
-MathUtil::add( 3, 4 );        // 7
-MathUtil::multiply( 5, 6 );   // 30
+MathUtil::add( 3, 4 )       // 7
+MathUtil::multiply( 5, 6 )   // 30
 ```
 
 ## 🔗 Inheritance
@@ -188,17 +188,17 @@ MathUtil::multiply( 5, 6 );   // 30
 ```javascript
 class Animal {
     function speak() {
-        return "...";
+        return "..."
     }
 }
 
 class Dog extends="Animal" {
     function speak() {
-        return "Woof!";
+        return "Woof!"
     }
 }
 
-new Dog().speak();    // "Woof!"
+new Dog().speak()    // "Woof!"
 ```
 
 ### Multi-Level Inheritance
@@ -206,23 +206,23 @@ new Dog().speak();    // "Woof!"
 ```javascript
 class A {
     function getValue() {
-        return "A";
+        return "A"
     }
 }
 
 class B extends="A" {
     function getValueB() {
-        return this.getValue() & "B";
+        return this.getValue() & "B"
     }
 }
 
 class C extends="B" {
     function getValueC() {
-        return this.getValueB() & "C";
+        return this.getValueB() & "C"
     }
 }
 
-new C().getValueC();    // "ABC"
+new C().getValueC()    // "ABC"
 ```
 
 ### Using `super()`
@@ -230,28 +230,28 @@ new C().getValueC();    // "ABC"
 ```javascript
 class Vehicle {
     function init( make ) {
-        variables.make = make;
-        return this;
+        variables.make = make
+        return this
     }
 
     function getMake() {
-        return variables.make;
+        return variables.make
     }
 }
 
 class Car extends="Vehicle" {
     function init( make, model ) {
-        super.init( make );
-        variables.model = model;
-        return this;
+        super.init( make )
+        variables.model = model
+        return this
     }
 
     function getInfo() {
-        return this.getMake() & " " & variables.model;
+        return this.getMake() & " " & variables.model
     }
 }
 
-new Car( "Toyota", "Camry" ).getInfo();    // "Toyota Camry"
+new Car( "Toyota", "Camry" ).getInfo()    // "Toyota Camry"
 ```
 
 ## 🔒 Final and Abstract
@@ -263,11 +263,11 @@ A `final` class cannot be extended:
 ```javascript
 final class Immutable {
     function getValue() {
-        return "fixed";
+        return "fixed"
     }
 }
 
-new Immutable().getValue();    // "fixed"
+new Immutable().getValue()    // "fixed"
 
 // ERROR: Cannot extend a final class
 class Child extends="Immutable" {}    // throws Exception
@@ -280,28 +280,28 @@ An `@abstract` class cannot be instantiated directly but can be extended:
 ```javascript
 @abstract class Shape {
     function describe() {
-        return "I am a shape";
+        return "I am a shape"
     }
 }
 
 class Circle extends="Shape" {
     function init( radius ) {
-        variables.radius = radius;
-        return this;
+        variables.radius = radius
+        return this
     }
 
     function getRadius() {
-        return variables.radius;
+        return variables.radius
     }
 }
 
 // ERROR: Cannot instantiate abstract class
-new Shape();    // throws Exception
+new Shape()    // throws Exception
 
 // Works: instantiate the concrete subclass
-circle = new Circle( 5 );
-circle.describe();      // "I am a shape"
-circle.getRadius();     // 5
+circle = new Circle( 5 )
+circle.describe()      // "I am a shape"
+circle.getRadius()     // 5
 ```
 
 ## ☕ Java Interoperability
