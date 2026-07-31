@@ -38,27 +38,6 @@ BVM is an advanced version manager for BoxLang, similar to `jenv` or `nvm`. It a
 
 The only difference is that BVM adds version management capabilities on top.
 
-## 📋 Table of Contents
-
-* [BVM vs Single-Version Installer](boxlang-version-manager-bvm.md#bvm-vs-single-version-installer)
-* [Features](boxlang-version-manager-bvm.md#features)
-* [Quick Start](boxlang-version-manager-bvm.md#quick-start)
-* [Prerequisites](boxlang-version-manager-bvm.md#prerequisites)
-* [Installation](boxlang-version-manager-bvm.md#installation)
-* [Basic Usage](boxlang-version-manager-bvm.md#basic-usage)
-* [What BVM Installs](boxlang-version-manager-bvm.md#what-bvm-installs)
-* [Examples](boxlang-version-manager-bvm.md#examples)
-* [Security & Reliability](boxlang-version-manager-bvm.md#security--reliability)
-* [Project-Specific Versions (.bvmrc)](boxlang-version-manager-bvm.md#project-specific-versions-bvmrc)
-* [Commands](boxlang-version-manager-bvm.md#commands)
-* [Keeping BVM Updated](boxlang-version-manager-bvm.md#keeping-bvm-updated)
-* [Uninstalling BoxLang Versions and BVM](boxlang-version-manager-bvm.md#uninstalling-boxlang-versions-and-bvm)
-* [Migrating from Single-Version Installer to BVM](boxlang-version-manager-bvm.md#migrating-from-single-version-installer-to-bvm)
-* [Troubleshooting](boxlang-version-manager-bvm.md#troubleshooting)
-* [Contributing](boxlang-version-manager-bvm.md#contributing)
-* [License](boxlang-version-manager-bvm.md#license)
-* [Support](boxlang-version-manager-bvm.md#support)
-
 ## 🛠️ Features
 
 * 📦 **Install complete BoxLang environment** - runtime, MiniServer, and helper scripts
@@ -72,7 +51,12 @@ The only difference is that BVM adds version management capabilities on top.
 * 🔗 **Seamless integration** - wrapper scripts make all tools available in PATH
 * ⚡ **Command aliases** - convenient short aliases for all major commands
 * 🛠️ **Helper script integration** - all BoxLang helper scripts work with active version
+* 📦 **Module dependency tracking** - module installs and removals maintain a `box.json` manifest
+* 🔄 **Module updates** - find outdated modules with `--outdated` and update them with `--update`
 * 🎯 **Smart version detection** - automatically detects actual version numbers from installations
+* 🚀 **First-install activation** - automatically activates the first BoxLang version you install
+* 🐚 **Shell initialization** - centralizes BVM and BoxLang PATH setup for Bash, Zsh, and Fish
+* ⌨️ **Command completion** - provides BVM command and version completion for Bash and Zsh
 * 🆙 **Built-in update checker** - check for BVM updates and upgrade easily
 * ☕ **Automatic Java installation** - installs Java 21 JRE if needed with `--with-jre` option
 * 🗑️ **Uninstall BVM** - Remove completely BVM, versions, etc.
@@ -103,35 +87,42 @@ The following are automatically installed for you, but you can install them manu
 
 Remember, we do this automatically for you, but if you want to do it manually, here are the commands:
 
-**macOS (with Homebrew):**
+{% tabs %}
+{% tab title="macOS (Homebrew)" %}
 
 ```bash
 brew tap ortus-boxlang/boxlang
 
 # Quick Installer
 brew install ortus-boxlang/boxlang/bvm
-bvm install latest && bvm use latest
+bvm install latest
 ```
 
-**Ubuntu/Debian:**
+{% endtab %}
+{% tab title="Ubuntu/Debian" %}
 
 ```bash
 sudo apt update && sudo apt install curl unzip jq default-jdk
 ```
 
-**RHEL/CentOS/Fedora:**
+{% endtab %}
+{% tab title="RHEL/CentOS/Fedora" %}
 
 ```bash
 sudo dnf install curl unzip jq java-21-openjdk
 ```
 
-**Alpine Linux:**
+{% endtab %}
+{% tab title="Alpine Linux" %}
 
 ```bash
 # Prerequisites automatically installed by installer
 apk add --no-cache bash curl unzip jq openjdk21
 # Java 21 automatically installed with --with-jre option
 ```
+
+{% endtab %}
+{% endtabs %}
 
 ## ⬇️ Installation
 
@@ -153,6 +144,7 @@ chmod +x install-bvm.sh
 ```bash
 # Install the latest stable BoxLang version
 bvm install latest
+# If this is the first installed version, BVM activates it automatically
 
 # Switch to the latest version
 bvm use latest
@@ -178,6 +170,31 @@ bvm help
 # or use aliases
 bvm --help
 bvm -h
+```
+
+## 🐚 Shell Initialization
+
+The Unix installer creates a single initialization hook at
+`~/.bvm/scripts/bvm-init.sh` and adds it to the detected shell profile. The
+Fish equivalent is `~/.bvm/scripts/bvm-init.fish`.
+
+The initialization hook:
+
+* Exports `BVM_HOME` and `BOXLANG_HOME` with defaults of `~/.bvm` and `~/.boxlang`.
+* Adds the BVM wrapper directory, active version, and BoxLang home `bin` directory to `PATH`.
+* Loads BVM command and installed-version completions for Bash and Zsh.
+
+For an existing terminal, reload the profile path printed by the installer or
+open a new terminal session:
+
+```bash
+source ~/.bashrc  # or ~/.zshrc
+```
+
+Fish users can reload their configuration with:
+
+```fish
+source ~/.config/fish/config.fish
 ```
 
 ## 📂 What BVM Installs
