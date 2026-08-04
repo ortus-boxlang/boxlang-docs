@@ -162,6 +162,7 @@ All the following options are supported in the JSON configuration file:
 | `serverHome`        | string  | null              | BoxLang server home directory                                                  |
 | `socketOptions`     | object  | {}                | XNIO socket-level options keyed by `Options` constant names                    |
 | `undertowOptions`   | object  | *(see below)*     | Undertow server-level options keyed by `UndertowOptions` constant names        |
+| `useProxyHeaders`   | boolean | false             | Trust forwarded headers from a reverse proxy for the client IP, protocol, and host |
 | `warmupUrl`         | string  | null              | Single URL path to request on server startup (shorthand for one URL)           |
 | `warmupUrls`        | array   | \[]               | Array of URL paths to request on server startup for application initialization |
 | `webRoot`           | string  | current directory | Path to the webroot directory                                                  |
@@ -305,6 +306,7 @@ These are advanced tuning options. In most cases the defaults are appropriate. O
   "rewriteFileName": "index.bxm",
   "healthCheck": true,
   "healthCheckSecure": true,
+  "useProxyHeaders": true,
   "serverHome": "/opt/boxlang",
   "envFile": "/etc/boxlang/.env.production"
 }
@@ -1258,6 +1260,18 @@ We welcome any pull requests, testing, docs, etc.
 <summary>Reverse Proxy Setup</summary>
 
 For production deployments, it's recommended to place a reverse proxy in front of the BoxLang MiniServer. This provides additional security, SSL termination, load balancing, and better static file serving capabilities.
+
+When MiniServer runs behind a trusted reverse proxy such as Nginx, Traefik, or an AWS Application Load Balancer, enable `useProxyHeaders` so BoxLang can honor the forwarded headers sent by that proxy. The client IP, protocol, and host will then reflect the original request instead of the proxy connection. This setting was added in BoxLang 1.16.0 as part of [BL-2598](https://ortussolutions.atlassian.net/browse/BL-2598).
+
+```json
+{
+  "useProxyHeaders": true
+}
+```
+
+{% hint style="warning" %}
+Only enable `useProxyHeaders` when requests can reach MiniServer through a trusted proxy. The setting trusts forwarded header values, so exposing MiniServer directly to untrusted clients can allow them to spoof the original request information.
+{% endhint %}
 
 ### 🔧 Nginx Configuration
 
