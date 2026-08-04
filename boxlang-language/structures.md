@@ -41,6 +41,7 @@ All BoxLang structures are passed to functions as memory references, not values.
 * [Member Functions](structures.md#member-functions)
 * [Looping Over Structures](structures.md#looping-over-structures)
 * [Sorting Structures](structures.md#sorting-structures)
+* [Struct Streams](structures.md#struct-streams)
 * [Advanced Patterns](structures.md#advanced-patterns)
 
 ## 🔑 Key-Value Pairs
@@ -415,11 +416,49 @@ data.merge("count", 1, (oldVal, newVal) -> oldVal + newVal)
 data.replace("version", "2.0")  // Replace if exists
 data.replace("version", "1.0", "2.0")  // Replace if old value matches
 data.replaceAll((k, v) -> v.toString().toUpperCase())
+```
 
-// Stream operations
-data.entrySet().stream()
-    .filter((entry) -> entry.getValue() != null)
-    .forEach((entry) -> println(entry.getKey()))
+## 🌊 Struct Streams
+
+Structs provide first-class Java Stream support through three members: `stream()`, `keyStream()`, and `valueStream()`.
+
+* `stream()` returns a stream of `java.util.Map.Entry` objects.
+* `keyStream()` returns a stream of the struct's keys.
+* `valueStream()` returns a stream of the struct's values.
+
+```js
+inventory = {
+    widgets: 42,
+    gadgets: 7,
+    sprockets: 0,
+    gizmos: 118
+}
+
+// Keys with zero stock
+outOfStock = inventory.stream()
+    .filter(entry -> entry.getValue() == 0)
+    .map(entry -> entry.getKey())
+    .toList()
+
+// Total units on hand
+totalUnits = inventory.valueStream()
+    .mapToInt(qty -> qty)
+    .sum()
+
+// Sorted key listing
+sortedKeys = inventory.keyStream()
+    .sorted()
+    .toList()
+```
+
+You can also use the streams with standard Java Stream terminal operations:
+
+```js
+data = { name: "BoxLang", version: "1.0", type: "JVM" }
+
+data.stream()
+    .filter(entry -> entry.getValue() != null)
+    .forEach(entry -> println(entry.getKey()))
 ```
 
 ## 🎯 BoxLang Struct Native Methods

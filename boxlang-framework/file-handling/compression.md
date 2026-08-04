@@ -1,6 +1,6 @@
 ---
 description: Compress, extract, and manage ZIP and archive files with BoxLang
-icon: archive
+icon: file-zip
 ---
 
 # Compression and Archives
