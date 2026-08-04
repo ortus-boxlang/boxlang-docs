@@ -576,9 +576,7 @@ class {
             expandPath( "./jars/mylib.jar" )
         ],
         loadSystemClassPath : false,      // include JVM system classpath — default: false
-        reloadOnChange      : false,      // hot-reload on file change — default: false
-        watchInterval       : 60,         // seconds between change checks — default: 60
-        watchExtensions     : ".class,.jar"  // file types to monitor — default: .class,.jar
+        reloadOnChange      : false       // reload changed files — default: false
     };
 
 }
@@ -590,9 +588,11 @@ class {
 | --- | --- | --- | --- |
 | `loadPaths` | Array | `[]` | Dirs, JARs, or individual `.class` files. Missing paths are silently ignored. |
 | `loadSystemClassPath` | Boolean | `false` | Include the JVM system classpath in the application loader. |
-| `reloadOnChange` | Boolean | `false` | Hot-reload updated classes and JARs without restarting. |
-| `watchInterval` | Numeric | `60` | Seconds between file-change checks (requires `reloadOnChange = true`). |
-| `watchExtensions` | String | `.class,.jar` | Comma-separated extensions to watch. |
+| `reloadOnChange` | Boolean | `false` | Include file modification timestamps when caching the application classloader, so changed classes and JARs receive a new classloader on the next application classloader initialization. |
+
+When `reloadOnChange` is `false`, BoxLang still creates a new classloader when the `loadPaths` list itself changes. When it is `true`, BoxLang also detects changes to the files at those paths by including their last-modified timestamps in the cache key. Older classloaders for the same file set are removed from the cache after the replacement loader is created.
+
+This check happens while the application classloader is initialized; `reloadOnChange` does not start a continuous filesystem watcher or poll at a configurable interval.
 
 See [Application.bx](applicationbx.md) for the full reference.
 

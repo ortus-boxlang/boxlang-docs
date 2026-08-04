@@ -473,6 +473,10 @@ this.javaSettings = {
 };
 ```
 
+`reloadOnChange` defaults to `false`. When enabled, BoxLang includes the last-modified timestamp of each path in the application classloader cache key. If a JAR or class file changes, BoxLang creates a new application classloader the next time the application classloader is initialized, without requiring a runtime restart. Older classloaders for the same file set are removed from the cache after the new loader is created.
+
+This is a load-time check, not a continuous filesystem watcher. The setting is useful during development when libraries are rebuilt in place. Keep it disabled in production unless applications intentionally replace their Java libraries while running.
+
 See [Java Integration documentation](java-integration.md) for details.
 
 ### Custom Schedulers
