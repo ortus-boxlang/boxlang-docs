@@ -4,9 +4,18 @@
 
 Extract the source file or folder to the destination folder using the specified format:
 
+The `destination` argument is the directory where extracted entries are written. Older code may use `target`; the transpiler maps `target` to `destination` for compatibility.
+
 <p>
  - zip
  - gzip
+ - bzip
+ - bzip2
+ - tar
+ - tbz
+ - tbz2
+ - tgz
+ - tar.gz
  <p>
  The {@code overwrite} argument is used to overwrite the destination
  file if it already exists, else it will throw an exception. The default is {@code false}.
@@ -32,9 +41,9 @@ Extract(format=[string], source=[string], destination=[string], overwrite=[boole
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `format` | `string` | `true` | The format to use for the compression: zip or gzip. |  |
-| `source` | `string` | `true` | The absolute path to the source file or folder to compress. |  |
-| `destination` | `string` | `true` | The absolute path with a file name to save as the compressed file. Extension is optional. |  |
+| `format` | `string` | `true` | The format to use for extraction: zip, gzip, bzip, bzip2, tar, tbz, tbz2, tgz, or tar.gz. |  |
+| `source` | `string` | `true` | The absolute path to the archive file or folder to extract. |  |
+| `destination` | `string` | `true` | The absolute path to the directory where extracted files are written. |  |
 | `overwrite` | `boolean` | `false` | Whether to overwrite the destination file if it already exists. Default is false. | `false` |
 | `recurse` | `boolean` | `false` | Whether to extract the files recursively. Default is true. | `true` |
 | `filter` | `any` | `false` | A regular expression or a Function/Lambda to filter the files to extract. |  |
@@ -48,7 +57,11 @@ Extract a zip-file and save the data in the "output-directory".
 
 
 ```java
-extract( "zip", "test.zip", "output-directory" );
+extract(
+  source = "test.zip",
+  destination = "output-directory",
+  format = "zip"
+)
 
 ```
 
@@ -59,16 +72,34 @@ Extract all zip-files, which are stored in the "multiple-directory" and save the
 
 
 ```java
-extract( "zip", "multiple-directory", "output-directory" );
+extract(
+  source = "multiple-directory",
+  destination = "output-directory",
+  format = "zip"
+)
 
 ```
 
 
 ### Additional Examples
 
+Extract a tbz2 archive:
 
 ```java
-extract( "zip", "D:\test.zip", "D:\zipresult" );
+extract(
+  source = "/tmp/project.tbz2",
+  destination = "/tmp/project-out",
+  format = "tbz2"
+)
+```
+
+
+```java
+extract(
+  source = "D:\\test.zip",
+  destination = "D:\\zipresult",
+  format = "zip"
+)
 
 ```
 

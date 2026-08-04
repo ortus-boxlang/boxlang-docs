@@ -8,6 +8,14 @@ Compress the source file or folder to the destination file or folder using
 <p>
  - zip
  - gzip (It will all files separately to the destination folder)
+ - bzip
+ - bzip2
+ - tar
+ - tar.bz
+ - tbz
+ - tbz2
+ - tgz
+ - tar.gz
  <p>
  The {@code includeBaseFolder} argument is used to include the base folder as the root
  of the compressed file. The default is {@code true}.
@@ -31,7 +39,7 @@ Compress(format=[string], source=[string], destination=[string], includeBaseFold
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `format` | `string` | `true` | The format to use for the compression: zip or gzip. Default is zip. | `zip` |
+| `format` | `string` | `true` | The format to use for the compression: zip, gzip, bzip, bzip2, tar, tar.bz, tbz, tbz2, tgz, or tar.gz. Default is zip. | `zip` |
 | `source` | `string` | `true` | The absolute path to the source file or folder to compress. |  |
 | `destination` | `string` | `true` | The absolute path with a file name to save as the compressed file. Extension is optional. |  |
 | `includeBaseFolder` | `boolean` | `false` | Whether to include the base folder as the root of the compressed file. Default is true. | `true` |
@@ -49,7 +57,11 @@ Compress the file "example.txt" to a zip-file.
 
 
 ```java
-compress( "zip", "example.txt", "output.zip" );
+compress(
+  source = "example.txt",
+  destination = "output.zip",
+  format = "zip"
+)
 
 ```
 
@@ -60,12 +72,26 @@ Compress the "example-directory" to a zip-file.
 
 
 ```java
-compress( "zip", "example-directory", "output.zip" );
+compress(
+  source = "example-directory",
+  destination = "output.zip",
+  format = "zip"
+)
 
 ```
 
 
 ### Additional Examples
+
+Compress a directory into a tar.gz archive:
+
+```java
+compress(
+  source = "/tmp/project",
+  destination = "/tmp/project.tar.gz",
+  format = "tar.gz"
+)
+```
 
 
 ## Related

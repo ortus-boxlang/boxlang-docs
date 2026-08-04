@@ -1818,7 +1818,7 @@ bx:http url="https://api.com/search" result="result" {
 
 ## 📚 Related Documentation
 
-- [File Handling](file-handling.md) - For working with uploaded/downloaded files
+- [File Handling](file-handling/README.md) - For working with uploaded/downloaded files
 - [Caching](caching/) - For understanding response caching strategies
 - [Interceptors](interceptors/) - For advanced request/response manipulation
 - [Java Integration](java-integration.md) - For accessing Java HTTP client directly

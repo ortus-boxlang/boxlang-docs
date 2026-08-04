@@ -31,6 +31,7 @@ Both approaches provide the same functionality - choose based on your preference
 
 - [Core Features](#core-features)
 - [File Operations](#file-operations)
+- [Compression and Archives](compression.md)
 - [Directory Operations](#directory-operations)
 - [Dealing With Large Files](#dealing-with-large-files)
 - [Best Practices](#best-practices)
@@ -44,8 +45,8 @@ BoxLang provides comprehensive file manipulation capabilities through global fun
 {% hint style="info" %}
 **Reference Documentation**:
 
-- [File Functions Reference](../boxlang-language/reference/built-in-functions/io/)
-- [File Component Reference](../boxlang-language/reference/components/io/File.md)
+- [File Functions Reference](../../boxlang-language/reference/built-in-functions/io/)
+- [File Component Reference](../../boxlang-language/reference/components/io/File.md)
 
 {% endhint %}
 
@@ -72,7 +73,7 @@ bx:file action="read" file="/path/to/file.txt" variable="fileContent";
 <bx:file action="read" file="/path/to/file.txt" variable="fileContent">
 ```
 
-**Reference**: [`fileRead()`](../boxlang-language/reference/built-in-functions/io/FileRead.md)
+**Reference**: [`fileRead()`](../../boxlang-language/reference/built-in-functions/io/FileRead.md)
 
 ### Writing Files
 
@@ -106,7 +107,7 @@ bx:file
     output="Hello BoxLang!">
 ```
 
-**Reference**: [`fileWrite()`](../boxlang-language/reference/built-in-functions/io/FileWrite.md)
+**Reference**: [`fileWrite()`](../../boxlang-language/reference/built-in-functions/io/FileWrite.md)
 
 ### Appending to Files
 
@@ -137,7 +138,7 @@ bx:file
     output="Additional content">
 ```
 
-**Reference**: [`fileAppend()`](../boxlang-language/reference/built-in-functions/io/FileAppend.md)
+**Reference**: [`fileAppend()`](../../boxlang-language/reference/built-in-functions/io/FileAppend.md)
 
 ### File Operations
 
@@ -172,7 +173,7 @@ fileSetAccessMode( "/path/to/script.sh", "755" )
 fileSetLastModified( "/path/to/file.txt", now() )
 ```
 
-**Reference**: [`fileExists()`](../boxlang-language/reference/built-in-functions/io/FileExists.md), [`fileCopy()`](../boxlang-language/reference/built-in-functions/io/FileCopy.md), [`fileMove()`](../boxlang-language/reference/built-in-functions/io/FileMove.md), [`fileDelete()`](../boxlang-language/reference/built-in-functions/io/FileDelete.md), [`fileInfo()`](../boxlang-language/reference/built-in-functions/io/FileInfo.md)
+**Reference**: [`fileExists()`](../../boxlang-language/reference/built-in-functions/io/FileExists.md), [`fileCopy()`](../../boxlang-language/reference/built-in-functions/io/FileCopy.md), [`fileMove()`](../../boxlang-language/reference/built-in-functions/io/FileMove.md), [`fileDelete()`](../../boxlang-language/reference/built-in-functions/io/FileDelete.md), [`fileInfo()`](../../boxlang-language/reference/built-in-functions/io/FileInfo.md)
 
 ### Working with File Handles
 
@@ -202,7 +203,7 @@ data = fileRead( file )
 fileClose( file )
 ```
 
-**Reference**: [`fileOpen()`](../boxlang-language/reference/built-in-functions/io/FileOpen.md), [`fileClose()`](../boxlang-language/reference/built-in-functions/io/FileClose.md), [`fileReadLine()`](../boxlang-language/reference/built-in-functions/io/FileReadLine.md), [`fileWriteLine()`](../boxlang-language/reference/built-in-functions/io/FileWriteLine.md), [`fileIsEOF()`](../boxlang-language/reference/built-in-functions/io/FileIsEOF.md), [`fileSeek()`](../boxlang-language/reference/built-in-functions/io/FileSeek.md)
+**Reference**: [`fileOpen()`](../../boxlang-language/reference/built-in-functions/io/FileOpen.md), [`fileClose()`](../../boxlang-language/reference/built-in-functions/io/FileClose.md), [`fileReadLine()`](../../boxlang-language/reference/built-in-functions/io/FileReadLine.md), [`fileWriteLine()`](../../boxlang-language/reference/built-in-functions/io/FileWriteLine.md), [`fileIsEOF()`](../../boxlang-language/reference/built-in-functions/io/FileIsEOF.md), [`fileSeek()`](../../boxlang-language/reference/built-in-functions/io/FileSeek.md)
 
 ### File Upload Handling
 
@@ -250,7 +251,7 @@ results.each( function( uploadResult ){
 } )
 ```
 
-**Reference**: [`fileUpload()`](../boxlang-language/reference/built-in-functions/io/FileUpload.md), [`fileUploadAll()`](../boxlang-language/reference/built-in-functions/io/FileUploadAll.md)
+**Reference**: [`fileUpload()`](../../boxlang-language/reference/built-in-functions/io/FileUpload.md), [`fileUploadAll()`](../../boxlang-language/reference/built-in-functions/io/FileUploadAll.md)
 
 ### Temporary Files
 
@@ -270,7 +271,7 @@ fileWrite( tempFile, "temporary data" )
 fileDelete( tempFile )
 ```
 
-**Reference**: [`getTempDirectory()`](../boxlang-language/reference/built-in-functions/io/GetTempDirectory.md), [`createTempFile()`](../boxlang-language/reference/built-in-functions/io/CreateTempFile.md), [`createTempDirectory()`](../boxlang-language/reference/built-in-functions/io/CreateTempDirectory.md)
+**Reference**: [`getTempDirectory()`](../../boxlang-language/reference/built-in-functions/io/GetTempDirectory.md), [`createTempFile()`](../../boxlang-language/reference/built-in-functions/io/CreateTempFile.md), [`createTempDirectory()`](../../boxlang-language/reference/built-in-functions/io/CreateTempDirectory.md)
 
 ## 📂 Directory Operations
 
@@ -279,8 +280,8 @@ Manage directory structures with powerful listing, filtering, and manipulation c
 {% hint style="info" %}
 **Reference Documentation**:
 
-- [Directory Functions Reference](../boxlang-language/reference/built-in-functions/io/)
-- [Directory Component Reference](../boxlang-language/reference/components/io/Directory.md)
+- [Directory Functions Reference](../../boxlang-language/reference/built-in-functions/io/)
+- [Directory Component Reference](../../boxlang-language/reference/components/io/Directory.md)
 
 {% endhint %}
 
@@ -324,7 +325,7 @@ bx:directory action="delete" directory="/path/to/dir" recurse="true";
 <bx:directory action="delete" directory="/path/to/dir" recurse="true">
 ```
 
-**Reference**: [`directoryExists()`](../boxlang-language/reference/built-in-functions/io/DirectoryExists.md), [`directoryCreate()`](../boxlang-language/reference/built-in-functions/io/DirectoryCreate.md), [`directoryCopy()`](../boxlang-language/reference/built-in-functions/io/DirectoryCopy.md), [`directoryMove()`](../boxlang-language/reference/built-in-functions/io/DirectoryMove.md), [`directoryDelete()`](../boxlang-language/reference/built-in-functions/io/DirectoryDelete.md)
+**Reference**: [`directoryExists()`](../../boxlang-language/reference/built-in-functions/io/DirectoryExists.md), [`directoryCreate()`](../../boxlang-language/reference/built-in-functions/io/DirectoryCreate.md), [`directoryCopy()`](../../boxlang-language/reference/built-in-functions/io/DirectoryCopy.md), [`directoryMove()`](../../boxlang-language/reference/built-in-functions/io/DirectoryMove.md), [`directoryDelete()`](../../boxlang-language/reference/built-in-functions/io/DirectoryDelete.md)
 
 ### Listing Directory Contents
 
@@ -374,7 +375,7 @@ sorted = directoryList(
 // Sort directions: asc, desc
 ```
 
-**Reference**: [`directoryList()`](../boxlang-language/reference/built-in-functions/io/DirectoryList.md)
+**Reference**: [`directoryList()`](../../boxlang-language/reference/built-in-functions/io/DirectoryList.md)
 
 ### Filtering with Closures/Lambdas
 
@@ -492,7 +493,7 @@ directory = getDirectoryFromPath( "/path/to/file.txt" )
 freeBytes = getFreeSpace( "/data/partition" )
 ```
 
-**Reference**: [`expandPath()`](../boxlang-language/reference/built-in-functions/io/ExpandPath.md), [`getCanonicalPath()`](../boxlang-language/reference/built-in-functions/io/GetCanonicalPath.md), [`contractPath()`](../boxlang-language/reference/built-in-functions/io/ContractPath.md), [`getDirectoryFromPath()`](../boxlang-language/reference/built-in-functions/io/GetDirectoryFromPath.md)
+**Reference**: [`expandPath()`](../../boxlang-language/reference/built-in-functions/io/ExpandPath.md), [`getCanonicalPath()`](../../boxlang-language/reference/built-in-functions/io/GetCanonicalPath.md), [`contractPath()`](../../boxlang-language/reference/built-in-functions/io/ContractPath.md), [`getDirectoryFromPath()`](../../boxlang-language/reference/built-in-functions/io/GetDirectoryFromPath.md)
 
 ## 🌊 Dealing With Large Files
 

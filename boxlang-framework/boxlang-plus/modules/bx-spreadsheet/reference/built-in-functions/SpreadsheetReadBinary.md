@@ -31,4 +31,4 @@ println( "Read legacy Excel file" );
 
 - [SpreadsheetRead()](./SpreadsheetRead.md) - Read Excel files
 - [SpreadsheetWrite()](./SpreadsheetWrite.md) - Write files
-- [File Handling Guide](../../file-handling.md) - File operations
+- [File Handling Guide](../../../../file-handling/README.md) - File operations

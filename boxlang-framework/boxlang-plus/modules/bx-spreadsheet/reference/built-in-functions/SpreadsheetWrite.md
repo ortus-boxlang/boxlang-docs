@@ -64,5 +64,5 @@ SpreadsheetWrite(
 - [SpreadsheetNew()](./SpreadsheetNew.md) - Create spreadsheet
 - [SpreadsheetRead()](./SpreadsheetRead.md) - Read spreadsheet files
 - [SpreadsheetWriteBinary()](./SpreadsheetWriteBinary.md) - Write binary format
-- [File Handling Guide](../../file-handling.md) - File operations
+- [File Handling Guide](../../../../file-handling/README.md) - File operations
 - [I/O Operations](../../io-operations.md) - Reading and writing

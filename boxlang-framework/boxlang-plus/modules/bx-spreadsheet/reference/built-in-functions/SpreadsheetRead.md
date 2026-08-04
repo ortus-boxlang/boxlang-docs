@@ -68,4 +68,4 @@ var spreadsheet = SpreadsheetRead(
 - [SpreadsheetReadBinary()](./SpreadsheetReadBinary.md) - Read binary format files
 - [SpreadsheetWrite()](./SpreadsheetWrite.md) - Save spreadsheets
 - [SpreadsheetInfo()](./SpreadsheetInfo.md) - Get spreadsheet information
-- [File Handling Guide](../../file-handling.md) - Working with spreadsheet files
+- [File Handling Guide](../../../../file-handling/README.md) - Working with spreadsheet files

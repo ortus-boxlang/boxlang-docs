@@ -717,12 +717,12 @@ Additional guidelines:
 [cli-scripting.md](../getting-started/running-boxlang/cli-scripting.md)
 {% endcontent-ref %}
 
-{% content-ref url="file-handling.md" %}
-[file-handling.md](file-handling.md)
+{% content-ref url="file-handling/README.md" %}
+[README.md](file-handling/README.md)
 {% endcontent-ref %}
 
-{% content-ref url="property-files.md" %}
-[property-files.md](property-files.md)
+{% content-ref url="file-handling/property-files.md" %}
+[property-files.md](file-handling/property-files.md)
 {% endcontent-ref %}
 
 {% content-ref url="../boxlang-language/variable-scopes.md" %}
