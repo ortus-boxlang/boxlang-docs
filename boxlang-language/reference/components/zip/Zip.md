@@ -74,5 +74,3 @@ Uses `action="list"` in the bx:zip tag to list the zip contents.
 bx:zip action="list" file="zipFileName" name="zipList";
 
 ```
-
-
