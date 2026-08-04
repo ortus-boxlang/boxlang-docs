@@ -1,7 +1,7 @@
 
 # Component: `Zip`
 
-The BoxLang Zip component is a powerful component that allows you to interact with zip/gzip files.
+The BoxLang Zip component creates and manages ZIP archives. See the [Compression and Archives](../../../../boxlang-framework/file-handling/compression.md) guide for an overview of all available actions and practical workflows.
 
 ## Component Signature
 

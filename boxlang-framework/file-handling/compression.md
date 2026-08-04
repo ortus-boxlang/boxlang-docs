@@ -78,7 +78,20 @@ When an archive is created inside the directory being compressed, BoxLang avoids
 
 ## ZIP components
 
-The `<bx:zip>` component supports actions for zipping, unzipping, listing, reading, and deleting ZIP entries.
+The `<bx:zip>` component creates and manages ZIP archives. Use its `action` attribute to choose whether to create an archive, extract it, inspect its entries, read entry content, or remove entries.
+
+### Actions
+
+| Action | Purpose | Common attributes | Result |
+| --- | --- | --- | --- |
+| `zip` | Add a file or directory to a ZIP archive. Use `<bx:zipParam>` for in-memory content or per-entry filters. | `file`, `source`, `recurse`, `overwrite`, `prefix`, `filter` | Creates or updates the archive. |
+| `unzip` | Extract all or selected entries from a ZIP archive into a directory. | `file`, `destination`, `entryPath`, `recurse`, `overwrite`, `filter` | Writes extracted files to `destination`. |
+| `list` | List the entries in an archive. | `file`, `entryPath`, `filter`, `flatList`, `recurse`, `result` | Stores entry metadata or paths in `result`. |
+| `read` | Read an entry as text. | `file`, `entryPath`, `charset`, `variable` | Stores the entry content in `variable`. |
+| `readBinary` | Read an entry as binary data. | `file`, `entryPath`, `variable` | Stores the binary content in `variable`. |
+| `delete` | Remove one or more entries from an archive. | `file`, `entryPath`, `filter` | Updates the archive without the deleted entries. |
+
+The default action is `zip`. For `zip`, `file` is the archive to create or update and `source` identifies the input. For `unzip`, `destination` is the output directory. The `entryPath` attribute accepts a single path or an array of paths for entry-specific operations.
 
 ### Zip a file or directory
 
