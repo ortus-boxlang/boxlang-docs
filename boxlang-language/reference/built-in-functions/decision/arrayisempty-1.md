@@ -1,2 +1,2 @@
-# ArrayIsEmpty
+# arrayIsEmpty
 

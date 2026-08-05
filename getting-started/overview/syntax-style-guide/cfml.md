@@ -59,7 +59,7 @@ In CFML, the default assignment scope is always `variables`, but in BL it can di
 
 ## StructCopy with Components
 
-This only affects users coming from Lucee, where a `structCopy( cfc )` would return a new shallow copy of a CFC.  In BoxLang, this returns a struct representation of the CFC's properties.  To get a shallow copy of a CFC, use the `duplicate()` method.  This is a Lucee undocumented feature, plus semantically a `structCopy` should return a struct, not a CFC.
+This only affects users coming from Lucee, where a `structCopy( cfc )` would return a new shallow copy of a CFC. In BoxLang, this returns a struct representation of the CFC's properties. To get a shallow copy of a CFC, use the `duplicate()` method. This is a Lucee undocumented feature, plus semantically a `structCopy` should return a struct, not a CFC.
 
 ```js
 var myCFC = new MyComponent();
@@ -102,7 +102,7 @@ No transpilation changes are needed since this is a BL-only feature.
 
 ## No `CLIENT` scope
 
-BoxLang does not implement a native `client` scope.  This decision was made since there is no more difference between `session` scope.  In BoxLang, these persistence scopes can be backed by any Cache Provider and distribute.  The `client` scope was introduced in ColdFusion due to the issue of distributing sessions at the time.  This is no longer a problem and we consider it a legacy scope and completely discourage it. &#x20;
+BoxLang does not implement a native `client` scope. This decision was made since there is no more difference between `session` scope. In BoxLang, these persistence scopes can be backed by any Cache Provider and distribute. The `client` scope was introduced in ColdFusion due to the issue of distributing sessions at the time. This is no longer a problem and we consider it a legacy scope and completely discourage it.
 
 However, if you NEED to leverage it, then you can install the `bx-compat-cfml` module and it will come with a `client` scope.
 
@@ -147,7 +147,7 @@ The `output` of functions will be false in BL. The BoxLang runtime will toggle t
 
 ## Accessors True
 
-Accessors in BoxLang are automatically `true` for all classes by default.  This is `false` for CFML.  You can also disable as normal if needed.
+Accessors in BoxLang are automatically `true` for all classes by default. This is `false` for CFML. You can also disable as normal if needed.
 
 ```groovy
 @displayName( “user” )
@@ -165,7 +165,7 @@ println( user.getFullName() )
 
 ## Invoke Implicit Accessors True
 
-We also default invoking of implicit accessors by default to `true` .  You can also disable this at the class level or at the runtime level in the configuration.  This is a syntactic sugar to make a delegated call to the accessor/mutator by making it look like if they are property access.
+We also default invoking of implicit accessors by default to `true` . You can also disable this at the class level or at the runtime level in the configuration. This is a syntactic sugar to make a delegated call to the accessor/mutator by making it look like if they are property access.
 
 ```groovy
 @displayName( “user” )
@@ -346,13 +346,13 @@ You can use the `blockfactor` nomenclature by installing the `bx-compat-cfml` mo
 
 ## Date and Time Handling
 
-Legacy CFML engines use the `java.util.Date` class as a backing object for their date and time handling.  BoxLang uses the `java.time` [classes](https://app.gitbook.com/s/w0xLWagNejhYiMyofb0V/readme/about-this-book/author), more specifically the [ZonedDateTime class](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZonedDateTime.html) as the backing date object.  This offers greater precision and localization/internationalization capabilities than the Timezone-unaware `java.util` classes  can provide.\
+Legacy CFML engines use the `java.util.Date` class as a backing object for their date and time handling. BoxLang uses the `java.time` [classes](https://app.gitbook.com/s/w0xLWagNejhYiMyofb0V/readme/about-this-book/author), more specifically the [ZonedDateTime class](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZonedDateTime.html) as the backing date object. This offers greater precision and localization/internationalization capabilities than the Timezone-unaware `java.util` classes can provide.\
 \
-If interacting with Java classes which use `java.util.Date`, Boxlang will automatically coerce the runtime date object to the correct type.  In some circumstances you may need to retrieve the object manually.  You may do so with the `toLegacyDate( myDate )`  method which will return the legacy Date class.
+If interacting with Java classes which use `java.util.Date`, Boxlang will automatically coerce the runtime date object to the correct type. In some circumstances you may need to retrieve the object manually. You may do so with the `toLegacyDate( myDate )` method which will return the legacy Date class.
 
 ### Date Modification and Addition Operations
 
-In BoxLang dates operation and comparison precision is to the millisecond level, compared to the legacy behavior of precision to the second.   With the CFML compat module, date comparison functions will revert to using second-level precision.
+In BoxLang dates operation and comparison precision is to the millisecond level, compared to the legacy behavior of precision to the second. With the CFML compat module, date comparison functions will revert to using second-level precision.
 
 In addition rounding behavior of date addition may be different than other CFML engines, but in a good way.\
 \
@@ -364,4 +364,22 @@ updatedDate = dateAdd( "s", 500/1000, epochDate );
 result = dateTimeFormat( updatedDate, "yyyy-MM-dd'T'HH:mm:ss.SSSX", "UTC" );
 ```
 
-will produce an incorrect rounding to the minute ( e.g. `1970-01-01T00:01:00.000Z` ).  In BoxLang, the addition of ½ second produces a correctly rounded result to the second of `1970-01-01T00:00:01.000Z`&#x20;
+will produce an incorrect rounding to the minute ( e.g. `1970-01-01T00:01:00.000Z` ). In BoxLang, the addition of ½ second produces a correctly rounded result to the second of `1970-01-01T00:00:01.000Z`
+
+### Regex Escapes
+
+There is a difference between how Lucee and Adobe CF handle backslashes in regex replacements.  Given the following code:
+
+```javascript
+reReplaceNoCase( "${boxlang.home}/logs", '(\$\{.*?})', '\\1', 'all' )
+```
+
+that code produces
+
+* Lucee - `\${boxlang.home}/logs`&#x20;
+* Adobe - `\1/logs`
+* BoxLang (we matched Adobe, which is arguably more correct) - `\1/logs`
+
+So in Adobe or BoxLang, you'd need to double up the `\` literal as well, so it doesn't escape the backreference (`'\\\1'`)&#x20;
+
+If you are migration from Adobe CF to BoxLang, this should not affect you.  If you are migration from Lucee to Boxlang, check any backslash literals before special sequences.
