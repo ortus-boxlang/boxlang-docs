@@ -366,7 +366,7 @@ result = dateTimeFormat( updatedDate, "yyyy-MM-dd'T'HH:mm:ss.SSSX", "UTC" );
 
 will produce an incorrect rounding to the minute ( e.g. `1970-01-01T00:01:00.000Z` ). In BoxLang, the addition of ½ second produces a correctly rounded result to the second of `1970-01-01T00:00:01.000Z`
 
-### Regex Escapes
+## Regex Escapes
 
 There is a difference between how Lucee and Adobe CF handle backslashes in regex replacements.  Given the following code:
 
