@@ -9,21 +9,39 @@ Defines a column in a data grid component.
     name="string"
     header="string"
     width="string"
-    editable="boolean"
     sortable="boolean"
-    display="boolean" />
+    editable="boolean"
+    dataAlign="string"
+    headerAlign="string"
+    display="boolean"
+    type="string"
+    numberFormat="string"
+    dateFormat="string"
+    values="string"
+    valuesDisplay="string"
+    href="string"
+    target="string" />
 ```
 
 ## Attributes
 
 | Attribute | Type | Required | Description | Default |
 |-----------|------|----------|-------------|---------|
-| `name` | `string` | Yes | Column field name from query | |
-| `header` | `string` | No | Column header text | Column name |
-| `width` | `string` | No | Column width (CSS value) | Auto |
-| `editable` | `boolean` | No | Enable cell editing | `false` |
-| `sortable` | `boolean` | No | Enable column sorting | `true` |
-| `display` | `boolean` | No | Show/hide column | `true` |
+| `name` | `string` | Yes | Column data field name | |
+| `header` | `string` | No | Column header text | `name` |
+| `width` | `string` | No | Column width (CSS value) | |
+| `sortable` | `boolean` | No | Enable sorting for this column | `true` |
+| `editable` | `boolean` | No | Enable editing for this column | `false` |
+| `dataAlign` | `string` | No | Data alignment: `left`, `center`, `right` | `left` |
+| `headerAlign` | `string` | No | Header alignment: `left`, `center`, `right` | `left` |
+| `display` | `boolean` | No | Whether to display this column | `true` |
+| `type` | `string` | No | Data type: `string`, `html`, `numeric`, `date`, `boolean`. If `html`, the content will not be HTML-encoded | `string` |
+| `numberFormat` | `string` | No | Number format mask for numeric columns | |
+| `dateFormat` | `string` | No | Date format mask for date columns | |
+| `values` | `string` | No | Comma-delimited list of values for dropdown editing | |
+| `valuesDisplay` | `string` | No | Display values corresponding to `values` list | |
+| `href` | `string` | No | URL pattern for making column data into links | |
+| `target` | `string` | No | Link target (`_blank`, `_self`, etc.) | |
 
 ## Usage Notes
 

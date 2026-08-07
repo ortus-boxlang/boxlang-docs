@@ -7,10 +7,17 @@ Generates a pod (content container with title bar).
 ```boxlang
 <bx:pod 
     title="string"
+    name="string"
     height="string"
     width="string"
-    style="string"
-    class="string">
+    bodyStyle="string"
+    headerStyle="string"
+    overflow="string"
+    source="string"
+    onBindError="string"
+    id="string"
+    class="string"
+    style="string">
     <!-- Content -->
 </bx:pod>
 ```
@@ -19,11 +26,18 @@ Generates a pod (content container with title bar).
 
 | Attribute | Type | Required | Description | Default |
 |-----------|------|----------|-------------|---------|
-| `title` | `string` | No | Pod title displayed in header | |
-| `height` | `string` | No | CSS height value | |
-| `width` | `string` | No | CSS width value | |
-| `style` | `string` | No | Additional CSS styles | |
-| `class` | `string` | No | Additional CSS classes | |
+| `title` | `string` | No | Text to display in the pod's title bar | `""` |
+| `name` | `string` | No | The name assigned to the pod control | `""` |
+| `height` | `string` | No | Height of the control in pixels | `""` |
+| `width` | `string` | No | Width of the control in pixels | `""` |
+| `bodyStyle` | `string` | No | CSS style specification for the pod body | `""` |
+| `headerStyle` | `string` | No | CSS style specification for the pod header | `""` |
+| `overflow` | `string` | No | How to display child content that overflows: `auto`, `hidden`, `scroll`, `visible` | `auto` |
+| `source` | `string` | No | URL that returns the content of the pod | `""` |
+| `onBindError` | `string` | No | JavaScript function to execute if evaluating bind expression results in error | `""` |
+| `id` | `string` | No | HTML element ID | Auto-generated |
+| `class` | `string` | No | Additional CSS classes | `""` |
+| `style` | `string` | No | Additional CSS styles | `""` |
 
 ## Examples
 

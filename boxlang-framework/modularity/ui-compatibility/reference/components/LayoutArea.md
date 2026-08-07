@@ -7,13 +7,16 @@ Defines areas within a layout container component.
 ```boxlang
 <bx:layoutarea 
     title="string"
-    position="string"
-    selected="boolean"
-    collapsed="boolean"
+    align="string"
     collapsible="boolean"
-    height="string"
-    width="string"
-    flex="numeric">
+    initcollapsed="boolean"
+    source="string"
+    position="string"
+    size="string"
+    splitter="boolean"
+    minsize="string"
+    maxsize="string"
+    id="string">
     <!-- Content -->
 </bx:layoutarea>
 ```
@@ -22,14 +25,17 @@ Defines areas within a layout container component.
 
 | Attribute | Type | Required | Description | Default |
 |-----------|------|----------|-------------|---------|
-| `title` | `string` | No | Area title (for tabs/accordion) | |
-| `position` | `string` | No | Position for border layouts (north, south, east, west, center) | |
-| `selected` | `boolean` | No | Initially selected (for tabs) | `false` |
-| `collapsed` | `boolean` | No | Initially collapsed (for accordion) | `false` |
-| `collapsible` | `boolean` | No | Allow collapse/expand | `true` |
-| `height` | `string` | No | CSS height value | |
-| `width` | `string` | No | CSS width value | |
-| `flex` | `numeric` | No | Flex grow factor (for hbox/vbox) | `1` |
+| `title` | `string` | No | Area title (used for tabs/accordion headers) | `""` |
+| `align` | `string` | No | Content alignment within the area | `""` |
+| `collapsible` | `boolean` | No | Whether area can be collapsed (accordion) | `false` |
+| `initcollapsed` | `boolean` | No | Start in collapsed state | `false` |
+| `source` | `string` | No | URL to load content from | `""` |
+| `position` | `string` | No | Position for border layout: `bottom`, `center`, `left`, `right`, `top` | `""` |
+| `size` | `string` | No | CSS size for border layout regions | `""` |
+| `splitter` | `boolean` | No | Show splitter for border layout | `false` |
+| `minsize` | `string` | No | Minimum size constraint | `""` |
+| `maxsize` | `string` | No | Maximum size constraint | `""` |
+| `id` | `string` | No | HTML element ID | Auto-generated |
 
 ## Usage Notes
 
