@@ -6,8 +6,9 @@ Creates an AJAX proxy for client-server communication, allowing JavaScript to ca
 
 ```boxlang
 <bx:ajaxproxy 
-    bind="string"
+    cfc="string"
     jsclassname="string"
+    bind="string"
     onError="string"
     onSuccess="string" />
 ```
@@ -16,15 +17,32 @@ Creates an AJAX proxy for client-server communication, allowing JavaScript to ca
 
 | Attribute | Type | Required | Description | Default |
 |-----------|------|----------|-------------|---------|
-| `bind` | `string` | Yes | Server-side method to bind to | |
-| `jsclassname` | `string` | No | JavaScript class name | Auto-generated |
-| `onError` | `string` | No | Error callback function | |
-| `onSuccess` | `string` | No | Success callback function | |
+| `cfc` | `string` | No* | The CFC for which to create a proxy (dot-delimited path) | `""` |
+| `jsclassname` | `string` | No | Name for the JavaScript proxy class (defaults to CFC name) | `""` |
+| `bind` | `string` | No* | Bind expression for CFC method, JavaScript function, or URL | `""` |
+| `onError` | `string` | No | JavaScript function to execute if bind fails | `""` |
+| `onSuccess` | `string` | No | JavaScript function to execute if bind succeeds | `""` |
+
+**Note:** Either `cfc` or `bind` is required.
 
 ## Examples
 
+### CFC-based proxy
+
+```boxlang
+<bx:ajaxproxy cfc="UserService" jsclassname="UserProxy" />
+```
+
+### Bind-based proxy
+
 ```boxlang
 <bx:ajaxproxy bind="cfc:UserService.getUser" jsclassname="UserProxy" />
+```
+
+### With callbacks
+
+```boxlang
+<bx:ajaxproxy bind="cfc:myComponent.getData()" onSuccess="handleSuccess" onError="handleError" />
 ```
 
 ## Related Components

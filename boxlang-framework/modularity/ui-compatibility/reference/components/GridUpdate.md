@@ -34,7 +34,7 @@ Handles AJAX-based updates for Grid components, enabling real-time synchronizati
 | `username` | string | No | `""` | Database username |
 | `password` | string | No | `""` | Database password |
 | `url` | string | No* | `""` | URL endpoint for HTTP-based updates |
-| `method` | string | No | `"POST"` | HTTP method: POST, PUT, or PATCH |
+| `method` | string | No | `"POST"` | HTTP method for URL updates: `POST`, `PUT` |
 | `onSuccess` | string | No | `""` | JavaScript function to call on successful update |
 | `onError` | string | No | `""` | JavaScript function to call on update error |
 
