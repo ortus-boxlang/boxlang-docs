@@ -1,9 +1,11 @@
 ---
-description: Powerful JSON serialization and deserialization with automatic class conversion and custom formatting
+description: >-
+  Powerful JSON serialization and deserialization with automatic class
+  conversion and custom formatting
 icon: node-js
 ---
 
-# 📋 JSON
+# JSON
 
 BoxLang provides comprehensive JSON (JavaScript Object Notation) support with automatic serialization of BoxLang data types, including classes, queries, arrays, structs, and more. The JSON engine is built on Jackson Jr and includes custom serializers for BoxLang-specific types.
 
@@ -13,14 +15,14 @@ BoxLang provides comprehensive JSON (JavaScript Object Notation) support with au
 
 ## 📋 Table of Contents
 
-- [JSON in Code](#json-in-code)
-- [JSON Built-In Functions (BIFs)](#json-built-in-functions-bifs)
-- [JSON Serialization](#json-serialization-jsonserialize--tojson)
-- [Class Serialization](#class-serialization-the-magic)
-- [JSON Deserialization](#json-deserialization-jsondeserialize--fromjson)
-- [Advanced Features](#advanced-features)
-- [Best Practices](#best-practices)
-- [Common Patterns](#common-patterns)
+* [JSON in Code](json.md#json-in-code)
+* [JSON Built-In Functions (BIFs)](json.md#json-built-in-functions-bifs)
+* [JSON Serialization](json.md#json-serialization-jsonserialize--tojson)
+* [Class Serialization](json.md#class-serialization-the-magic)
+* [JSON Deserialization](json.md#json-deserialization-jsondeserialize--fromjson)
+* [Advanced Features](json.md#advanced-features)
+* [Best Practices](json.md#best-practices)
+* [Common Patterns](json.md#common-patterns)
 
 ## 💻 JSON in Code
 
@@ -69,26 +71,28 @@ BoxLang provides JSON BIFs that can be called as functions or member methods on 
 
 ### Core JSON Functions
 
-| Function | Purpose | Member Method Available |
-|----------|---------|------------------------|
-| `jsonSerialize()` | Convert data to JSON string | `toJSON()` on most types |
-| `jsonDeserialize()` | Parse JSON string to data | `fromJSON()` on strings |
-| `isJSON()` | Validate JSON string | No |
-| `jsonPrettify()` | Format JSON for readability | `jsonPrettify()` on strings |
+| Function            | Purpose                     | Member Method Available     |
+| ------------------- | --------------------------- | --------------------------- |
+| `jsonSerialize()`   | Convert data to JSON string | `toJSON()` on most types    |
+| `jsonDeserialize()` | Parse JSON string to data   | `fromJSON()` on strings     |
+| `isJSON()`          | Validate JSON string        | No                          |
+| `jsonPrettify()`    | Format JSON for readability | `jsonPrettify()` on strings |
 
 ### Member Method Support
 
 The `toJSON()` member method is available on:
-- ✅ **Structs** - `myStruct.toJSON()`
-- ✅ **Arrays** - `myArray.toJSON()`
-- ✅ **Queries** - `myQuery.toJSON()`
-- ✅ **Classes** - `myClass.toJSON()` (with automatic property serialization)
-- ✅ **Numbers** - `123.toJSON()`
-- ✅ **Booleans** - `true.toJSON()`
-- ✅ **Strings** - `"text".listToJSON()` (converts list to JSON array)
+
+* ✅ **Structs** - `myStruct.toJSON()`
+* ✅ **Arrays** - `myArray.toJSON()`
+* ✅ **Queries** - `myQuery.toJSON()`
+* ✅ **Classes** - `myClass.toJSON()` (with automatic property serialization)
+* ✅ **Numbers** - `123.toJSON()`
+* ✅ **Booleans** - `true.toJSON()`
+* ✅ **Strings** - `"text".listToJSON()` (converts list to JSON array)
 
 The `fromJSON()` member method is available on:
-- ✅ **Strings** - `jsonString.fromJSON()`
+
+* ✅ **Strings** - `jsonString.fromJSON()`
 
 ## 📤 JSON Serialization (jsonSerialize / toJSON)
 
@@ -419,11 +423,7 @@ json = company.toJSON();
 
 ### 📋 Class Serialization Annotations Reference
 
-| Annotation | Scope | Purpose | Example |
-|------------|-------|---------|---------|------|
-| `@serializable` | Class/Property | Enable/disable serialization | `@serializable( false )` |
-| `@jsonExclude` | Class/Property | Exclude from JSON | `@jsonExclude( true )` |
-| `@jsonExclude` (list) | Class | Exclude multiple properties | `@jsonExclude( "password,secret" )` |
+\| Annotation | Scope | Purpose | Example | |------------|-------|---------|---------|------| | `@serializable` | Class/Property | Enable/disable serialization | `@serializable( false )` | | `@jsonExclude` | Class/Property | Exclude from JSON | `@jsonExclude( true )` | | `@jsonExclude` (list) | Class | Exclude multiple properties | `@jsonExclude( "password,secret" )` |
 
 {% hint style="success" %}
 **Best Practice**: Use property-level `@jsonExclude( true )` for individual fields and class-level `@jsonExclude( "field1,field2" )` with a comma-separated list for multiple fields. Implement custom `toJSON()` methods for complex transformation logic.
@@ -675,55 +675,60 @@ fileWrite( "results.json", results.toJSON( pretty: true ) );
 
 BoxLang uses custom serializers for specific types. You can examine these in the BoxLang source:
 
-- **`BoxClassSerializer`** - Handles class instances with property introspection
-- **`BoxQuerySerializer`** - Handles query objects with format options
-- **`BoxStructSerializer`** - Handles structs and maps
-- **`BoxArraySerializer`** - Handles arrays and lists
-- **`DynamicObjectSerializer`** - Handles Java object proxies
-- **`ExceptionSerializer`** - Handles exception objects
-- **`JavaArraySerializer`** - Handles native Java arrays
+* **`BoxClassSerializer`** - Handles class instances with property introspection
+* **`BoxQuerySerializer`** - Handles query objects with format options
+* **`BoxStructSerializer`** - Handles structs and maps
+* **`BoxArraySerializer`** - Handles arrays and lists
+* **`DynamicObjectSerializer`** - Handles Java object proxies
+* **`ExceptionSerializer`** - Handles exception objects
+* **`JavaArraySerializer`** - Handles native Java arrays
 
 These serializers are automatically invoked when their respective types are encountered during JSON serialization.
 
 ## 📖 Function Reference
 
-### jsonSerialize( data, [queryFormat], [useSecureJSONPrefix], [useCustomSerializer], [pretty] )
+### jsonSerialize( data, \[queryFormat], \[useSecureJSONPrefix], \[useCustomSerializer], \[pretty] )
 
 Convert BoxLang data to JSON string.
 
 **Arguments:**
-- `data` (any, required) - Data to serialize
-- `queryFormat` (string) - Query format: `"struct"`, `"row"`, `"column"`, `"true"`, `"false"` (default: `"row"`)
-- `useSecureJSONPrefix` (string/boolean) - Add secure prefix (not implemented)
-- `useCustomSerializer` (boolean) - Use custom serializer (not implemented)
-- `pretty` (boolean) - Pretty print with indentation (default: `false`)
+
+* `data` (any, required) - Data to serialize
+* `queryFormat` (string) - Query format: `"struct"`, `"row"`, `"column"`, `"true"`, `"false"` (default: `"row"`)
+* `useSecureJSONPrefix` (string/boolean) - Add secure prefix (not implemented)
+* `useCustomSerializer` (boolean) - Use custom serializer (not implemented)
+* `pretty` (boolean) - Pretty print with indentation (default: `false`)
 
 **Returns:** String (JSON)
 
 **Member Methods:**
-- `data.toJSON()` - Available on most types
-- `"list,items".listToJSON()` - Convert delimited string to JSON array
 
-### jsonDeserialize( json, [strictMapping], [useCustomSerializer] )
+* `data.toJSON()` - Available on most types
+* `"list,items".listToJSON()` - Convert delimited string to JSON array
+
+### jsonDeserialize( json, \[strictMapping], \[useCustomSerializer] )
 
 Parse JSON string to BoxLang data.
 
 **Arguments:**
-- `json` (string, required) - JSON string to parse
-- `strictMapping` (boolean) - Force all objects to structs (default: `true`)
-- `useCustomSerializer` (string) - Custom serializer name (not implemented)
+
+* `json` (string, required) - JSON string to parse
+* `strictMapping` (boolean) - Force all objects to structs (default: `true`)
+* `useCustomSerializer` (string) - Custom serializer name (not implemented)
 
 **Returns:** Any (native BoxLang types)
 
 **Member Methods:**
-- `jsonString.fromJSON()` - Parse JSON string
+
+* `jsonString.fromJSON()` - Parse JSON string
 
 ### isJSON( var )
 
 Validate if string is valid JSON.
 
 **Arguments:**
-- `var` (any, required) - Value to test
+
+* `var` (any, required) - Value to test
 
 **Returns:** Boolean
 
@@ -732,12 +737,18 @@ Validate if string is valid JSON.
 Format JSON string with indentation.
 
 **Arguments:**
-- `var` (string, required) - JSON string to format
+
+* `var` (string, required) - JSON string to format
 
 **Returns:** String (formatted JSON)
 
 **Member Methods:**
-- `jsonString.jsonPrettify()` - Format JSON string
+
+* `jsonString.jsonPrettify()` - Format JSON string
+
+{% hint style="info" %}
+JSON deseriallization in BoxLang will always use ordered structs for objects which will preserve the key order of the original JSON string.  This is handy when reading a JSON file, modyfing it, and writing it back out. &#x20;
+{% endhint %}
 
 ## 🎓 Best Practices
 
