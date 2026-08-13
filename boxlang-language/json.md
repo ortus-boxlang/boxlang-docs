@@ -747,7 +747,7 @@ Format JSON string with indentation.
 * `jsonString.jsonPrettify()` - Format JSON string
 
 {% hint style="info" %}
-JSON deseriallization in BoxLang will always use ordered structs for objects which will preserve the key order of the original JSON string.  This is handy when reading a JSON file, modyfing it, and writing it back out. &#x20;
+JSON deserialization in BoxLang will always use ordered structs for objects which will preserve the key order of the original JSON string.  This is handy when reading a JSON file, modifying it, and writing it back out.
 {% endhint %}
 
 ## 🎓 Best Practices
