@@ -90,6 +90,14 @@ Command-line compiler for BoxLang source code with optimization and build manage
 [boxlang-compiler.md](boxlang-compiler.md)
 {% endcontent-ref %}
 
+### BoxLang Syntax Check
+
+Fast, execution-free syntax validation for BoxLang and CFML source files - the BoxLang equivalent of `bash -n` or `node --check`, ideal for git hooks and CI.
+
+{% content-ref url="boxlang-syntax-check.md" %}
+[boxlang-syntax-check.md](boxlang-syntax-check.md)
+{% endcontent-ref %}
+
 ### BoxLang Formatter
 
 Command-line formatter for BoxLang and CFML code with check-mode support for CI lint-style enforcement and cfformat migration utilities.
