@@ -13,7 +13,7 @@ Example:
     python3 bif_metadata_extractor.py \
         /path/to/bifs \
         /path/to/output \
-        --template /path/to/template.md
+        --template /path/to/template.md 
 """
 
 import re

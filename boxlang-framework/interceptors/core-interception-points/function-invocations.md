@@ -1,6 +1,14 @@
 # Function Invocations
 
-These events occur when a function is about to be executed or has finished executing.
+These events occur when a user-defined function is about to be executed or has finished executing. They are announced on the **global interceptor pool**.
+
+> **Performance guard:** `preFunctionInvoke`, `postFunctionInvoke`, and `onFunctionException` are only announced when at least one listener is registered for any of the three events. If no listeners exist, this code path is skipped entirely. Keep function interceptors lightweight as they fire on every user-defined function call.
+
+| Event Name            | Cancellable | Description                                                                                      |
+| --------------------- | :---------: | ------------------------------------------------------------------------------------------------ |
+| `preFunctionInvoke`   |     No      | Fired before a user-defined function executes.                                                   |
+| `postFunctionInvoke`  |   **Yes**   | Fired after a function returns successfully. Interceptors can override the return value.         |
+| `onFunctionException` |     No      | Fired when a function throws an exception. The exception is re-thrown after the event completes. |
 
 * [`preFunctionInvoke`](function-invocations.md#prefunctioninvoke) - This event is triggered before a function is invoked.
 * [`postFunctionInvoke`](function-invocations.md#postfunctioninvoke) - This event is triggered after a function has been invoked.
@@ -8,16 +16,16 @@ These events occur when a function is about to be executed or has finished execu
 
 ## preFunctionInvoke
 
-This event is triggered before a function is invoked. It allows you to perform actions or modifications before the function execution begins.
+This event is triggered before a function is invoked. It allows you to perform actions or modifications before the function execution begins. The arguments scope has already been created and populated at this point, so arguments can be inspected or mutated before the function body runs.
 
 ### Data Structure
 
-| Data Key    | Type             | Description                             |
-| ----------- | ---------------- | --------------------------------------- |
-| `arguments` | `ArgumentsScope` | The arguments scope                     |
-| `context`   | `IBoxContext`    | The BoxLang Request context             |
-| `function`  | `Function`       | The UDF/Function/Closure/Lambda invoked |
-| `name`      | `String`         | The name of the function invoked        |
+| Data Key    | Type                 | Description                             |
+| ----------- | -------------------- | --------------------------------------- |
+| `arguments` | `ArgumentsScope`     | The arguments scope                     |
+| `context`   | `FunctionBoxContext` | The function-specific context           |
+| `function`  | `Function`           | The UDF/Function/Closure/Lambda invoked |
+| `name`      | `String`             | The name of the function invoked        |
 
 ### Example
 
@@ -27,10 +35,10 @@ class myListener{
 	function preFunctionInvoke( struct data ){
 		// Access the function name
 		var functionName = data.name;
-		
+
 		// Log the function invocation
 		log.info("Function invoked: " & functionName);
-		
+
 		// You can modify arguments if needed
 		data.arguments.set("newArg", "value");
 	}
@@ -39,17 +47,19 @@ class myListener{
 
 ## postFunctionInvoke
 
-This event is triggered after a function has been invoked. It allows you to perform actions or modifications after the function execution has completed.
+This event is triggered after a function has returned **successfully**. Does not fire if the function threw an exception — use `onFunctionException` for that. The same event data struct from `preFunctionInvoke` is reused with `result` added.
+
+The `result` key is **mutable** — setting it in the event data overrides the value returned to the caller.
 
 ### Data Structure
 
-| Data Key    | Type             | Description                             |
-| ----------- | ---------------- | --------------------------------------- |
-| `arguments` | `ArgumentsScope` | The arguments scope                     |
-| `context`   | `IBoxContext`    | The BoxLang Request context             |
-| `function`  | `Function`       | The UDF/Function/Closure/Lambda invoked |
-| `name`      | `String`         | The name of the function invoked        |
-| `result`    | `Any`            | The result of the function call         |
+| Data Key    | Type                 | Description                                                                              |
+| ----------- | -------------------- | ---------------------------------------------------------------------------------------- |
+| `arguments` | `ArgumentsScope`     | The arguments scope                                                                      |
+| `context`   | `FunctionBoxContext` | The function-specific context                                                            |
+| `function`  | `Function`           | The UDF/Function/Closure/Lambda invoked                                                  |
+| `name`      | `String`             | The name of the function invoked                                                         |
+| `result`    | `Any`                | The return value of the function (absent if the function returned `null`). **Set this key to override the return value.** |
 
 ### Example
 
@@ -58,10 +68,10 @@ class myListener{
 	function postFunctionInvoke( struct data ){
 		// Access the function name
 		var functionName = data.name;
-		
+
 		// Log the function invocation result
 		log.info("Function invoked: " & functionName & ", Result: " & data.result);
-		
+
 		// You can modify the result if needed
 		data.result = "Modified Result";
 	}
@@ -70,17 +80,17 @@ class myListener{
 
 ## onFunctionException
 
-This event is triggered when an exception occurs during the function invocation. It allows you to handle exceptions gracefully.
+This event is triggered when an exception occurs during the function invocation. The exception is **not suppressed** — it is re-thrown after the event completes. The same event data struct from `preFunctionInvoke` is reused with `exception` added.
 
 ### Data Structure
 
-| Data Key    | Type             | Description                                                |
-| ----------- | ---------------- | ---------------------------------------------------------- |
-| `arguments` | `ArgumentsScope` | The arguments scope                                        |
-| `context`   | `IBoxContext`    | The BoxLang Request context                                |
-| `function`  | `Function`       | The UDF/Function/Closure/Lambda invoked                    |
-| `name`      | `String`         | The name of the function invoked                           |
-| `exception` | `Exception`      | The exception that occurred during the function invocation |
+| Data Key    | Type                 | Description                                                |
+| ----------- | -------------------- | ---------------------------------------------------------- |
+| `arguments` | `ArgumentsScope`     | The arguments scope                                        |
+| `context`   | `FunctionBoxContext` | The function-specific context                              |
+| `function`  | `Function`           | The UDF/Function/Closure/Lambda invoked                    |
+| `name`      | `String`             | The name of the function invoked                           |
+| `exception` | `Throwable`          | The exception that occurred during the function invocation |
 
 ### Example
 
@@ -89,12 +99,11 @@ class myListener{
 	function onFunctionException( struct data ){
 		// Access the function name
 		var functionName = data.name;
-		
+
 		// Log the exception
 		log.error("Exception in function: " & functionName & ", Message: " & data.exception.message);
-		
-		// You can handle the exception or modify the response if needed
-		data.exception.message = "Custom error message";
+
+		// Note: the exception will still be thrown after this event completes.
 	}
 }
 ```
