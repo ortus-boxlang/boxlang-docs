@@ -91,3 +91,7 @@ You can customize the boxlang module directory by changing the `runtime.modulesD
 ## Core Modules
 
 Visit the [Modules](../../boxlang-framework/modularity/) section of our docs for the most up to date listing of our supported modules.
+
+## CLI Executables and Bash Completions
+
+When you install a module with `install-bx-module`, it can also come with its own CLI wrapper executable(s) and a bash completion script, both wired up automatically. See [CLI Executables and Completions](../../boxlang-framework/module-development/module-descriptor.md#cli-executables-and-completions) in the module authoring docs for how a module declares these in its `box.json`.
