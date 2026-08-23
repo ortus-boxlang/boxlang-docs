@@ -27,7 +27,11 @@ Solutions for common issues when developing BoxLang modules.
 
 5. **Verify ModuleConfig.bx exists** at the module root
 
-6. **Check logs** — Enable debug logging for the module service:
+6. **If the module is nested inside another** — check the containing module too. A disabled or failed parent skips every module nested inside it, since their class loaders chain to its own. Its parent may also have disabled it via `this.modules`. See [Module Inception](module-inception.md)
+
+7. **If the module is a JAR** — it must expose an `IModuleConfig` through `META-INF/services/ortus.boxlang.runtime.modules.IModuleConfig`. A JAR without one is disabled with a warning. Note the module is named after the JAR file unless `@BoxModule( name )` says otherwise
+
+8. **Check logs** — Enable debug logging for the module service:
    ```json
    { "logging": { "loggers": { "modules": { "level": "DEBUG" } } } }
    ```
@@ -111,6 +115,8 @@ Solutions for common issues when developing BoxLang modules.
 2. **Shadow conflicting dependencies** — The shadow JAR plugin can relocate packages to avoid conflicts
 3. **Isolate your classes** — Ensure compiled classes use the `modules.{moduleName}` package prefix
 4. **Move JARs to `libs/`** — External JARs in `libs/` are loaded with module-level isolation
+5. **Check the containing module** — A [nested module](module-inception.md) inherits its parent's class loader, so a conflicting JAR in the parent's `libs/` is visible to it. Sibling modules are still isolated from each other
+6. **Walk the chain correctly** — Module loaders track their parent themselves, so `getParent()` returns `null`. Use `DynamicClassLoader.getDynamicParent()` when inspecting the hierarchy
 
 </details>
 

@@ -156,9 +156,10 @@ When resolving a class with `@moduleName`, BoxLang searches:
 
 1. **Module's compiled classes** (`modules.{moduleName}` package prefix)
 2. **Module's `libs/` folder** (JAR dependencies)
-3. **Parent class loader** (runtime classes — fallback)
+3. **Parent class loader** — for a module nested inside another, that is the containing module's loader, which then falls back to *its* parent, and so on up to the runtime class loader
+4. **Runtime class loader** (BoxLang core classes — final fallback)
 
-This isolation ensures modules don't interfere with each other's dependencies.
+This isolation ensures modules don't interfere with each other's dependencies. A [nested module](module-inception.md) is the deliberate exception: it can see what its parent bundles, while staying isolated from its siblings.
 
 ## Custom Class Resolvers
 

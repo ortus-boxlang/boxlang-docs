@@ -365,6 +365,8 @@ BoxLang will search your home for a `modules` folder and register the modules fo
 ],
 ```
 
+Each modules folder can hold module directories and module JARs alike, and every module found is scanned for a `modules` folder of its own, recursively. See [Module Inception](../../boxlang-framework/module-development/module-inception.md).
+
 ### Request Timeout
 
 The default timeout for requests in BoxLang. The default is 0 = never expire. The value must be a string timespan using the syntax shown:
@@ -430,7 +432,7 @@ This is the global timezone to use in the runtime. By default, it will use the J
 
 ### Use High Precision Math
 
-By default BoxLang uses high-precision mathematics via `BigDecimal` operations. It analyses your operations and determines the precision accordingly. You can turn this off here for all applications and use Double based operations. If you disable this feature, then if you want high precision you will have to use the `precisionEvaluate( expression )` [BIF instead](../../boxlang-language/reference/built-in-functions/math/PrecisionEvaluate.md).
+By default BoxLang uses high-precision mathematics via `BigDecimal` operations. It analyses your operations and determines the precision accordingly. You can turn this off here for all applications and use Double based operations. If you disable this feature, then if you want high precision you will have to use the `precisionEvaluate( expression )` [BIF instead](../../boxlang-framework/modularity/evaluating-code/reference/built-in-functions/PrecisionEvaluate.md).
 
 ```json
 // By default BoxLang uses high-precision mathematics via BigDecimal operations

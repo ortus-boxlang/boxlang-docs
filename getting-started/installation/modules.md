@@ -35,6 +35,10 @@ install-bx-module bx-compat-cfml bx-esapi bx-orm
 
 BoxLang also supports the concept of local loading. Meaning, if you have a `boxlang_modules` folder in the root of where you run your CLI applications, then BoxLang will load those modules first and then fall back to the user's home directory for the operating system.
 
+{% hint style="info" %}
+A module can also ship modules of its own, in a `modules` folder inside it — loaded before the module itself. A `.jar` dropped into any modules folder is a module too. See [Module Inception](../../boxlang-framework/module-development/module-inception.md).
+{% endhint %}
+
 {% code title="myAppDirectory" %}
 ```bash
 # Install locally

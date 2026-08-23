@@ -74,6 +74,67 @@ Runtime settings are **deep-merged** on top of `configure()` defaults:
 | `debug: false` | `debug: true` | `true` (overridden) |
 | `endpoints.primary` | (not set) | `"https://api..."` (nested preserved) |
 
+## Settings Precedence
+
+A module nested inside another (see [Module Inception](module-inception.md)) has a third layer in the middle: its parent module. Effective settings are built in this order, each merged on top of the last:
+
+```mermaid
+graph LR
+    A["1 · Child configure()<br/>own defaults"] --> B["2 · Parent module<br/>this.modules overrides"]
+    B --> C["3 · boxlang.json<br/>global app config"]
+    C --> D[Effective settings]
+```
+
+The global app config is applied last and always wins, so a deployment can override anything a module author chose — including what a parent module decided for its own child.
+
+A parent declares its overrides with a `modules` struct that mirrors the `boxlang.json` shape:
+
+{% tabs %}
+{% tab title="ModuleConfig.bx" %}
+```js
+class {
+
+    this.version = "1.0.0"
+
+    /**
+     * Per-child overrides for the modules nested inside this one
+     */
+    this.modules = {
+        "childModule" : {
+            enabled  : true,
+            settings : {
+                timeout : 60
+            }
+        }
+    }
+
+}
+```
+{% endtab %}
+
+{% tab title="Java IModuleConfig" %}
+```java
+@Override
+public IStruct modules() {
+    IStruct childSettings = new Struct();
+    childSettings.put( Key.of( "timeout" ), 60 );
+
+    IStruct childOverrides = new Struct();
+    childOverrides.put( Key.enabled, true );
+    childOverrides.put( Key.settings, childSettings );
+
+    IStruct overrides = new Struct();
+    overrides.put( Key.of( "childModule" ), childOverrides );
+    return overrides;
+}
+```
+{% endtab %}
+{% endtabs %}
+
+{% hint style="info" %}
+The merge is additive. Settings the parent doesn't mention keep the child's own defaults — a parent overriding `timeout` doesn't wipe out the child's other settings.
+{% endhint %}
+
 ## Disabling Modules
 
 Modules can be disabled via runtime config:
@@ -89,6 +150,12 @@ Modules can be disabled via runtime config:
 ```
 
 The module is still discovered but skipped during registration — no BIFs, components, or services are loaded.
+
+`enabled` follows the same precedence as settings, so a parent module can switch one of its nested modules off with `this.modules`, and the global config can override that decision either way.
+
+{% hint style="warning" %}
+Disabling a module also skips every module nested inside it. A nested module's class loader chains to its parent's, so it cannot load without it.
+{% endhint %}
 
 ## Accessing Settings
 

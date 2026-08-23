@@ -33,6 +33,9 @@ my-module/
 │   └── MyService.bx
 ├── libs/                    # JAR dependencies (module-scoped)
 │   └── some-library.jar
+├── modules/                 # Optional: modules bundled inside this one (module inception)
+│   ├── child-module/        #   a full module folder, loaded before this module
+│   └── helper.jar           #   a module shipped as a single JAR
 ├── src/
 │   ├── main/
 │   │   ├── bx/              # BoxLang source (mirrored into module root)
@@ -239,6 +242,26 @@ Users configure module settings in their `boxlang.json`:
 ```
 
 Access settings in `ModuleConfig.bx` or BIFs via the `settings` struct.
+
+### Settings Precedence
+
+For a module nested inside another, settings are merged in this order, later winning:
+
+1. The child's own `configure()` defaults
+2. The parent module's per-child overrides, declared as `this.modules` in `ModuleConfig.bx` or the `IModuleConfig.modules()` method
+3. The global `boxlang.json` config above, which always wins
+
+```boxlang
+// In a parent module's ModuleConfig.bx — override a bundled module's settings
+this.modules = {
+    "child-module" : {
+        enabled  : true,
+        settings : { timeout : 60 }
+    }
+}
+```
+
+`enabled` follows the same order. Disabling a module also skips every module nested inside it, since their class loaders chain to its own.
 
 ## Accessing Settings From BIFs and Interceptors
 

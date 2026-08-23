@@ -19,20 +19,25 @@ graph TD
 
     B --> |interceptors registered| B1[PRE_MODULE_REGISTRATION]
     B --> |BIFs, components, services loaded| B2[POST_MODULE_REGISTRATION]
-    C --> |dependencies activated first| C1[PRE_MODULE_LOAD]
+    C --> |nested modules, then dependencies, activated first| C1[PRE_MODULE_LOAD]
     C --> |onLoad() called| C2[POST_MODULE_LOAD]
-    E --> |onUnload() called| E1[PRE_MODULE_UNLOAD]
-    E --> |cleanup complete| E2[POST_MODULE_UNLOAD]
+    E --> |nested modules unloaded first| E1[PRE_MODULE_UNLOAD]
+    E --> |onUnload() called, cleanup complete| E2[POST_MODULE_UNLOAD]
 ```
+
+{% hint style="info" %}
+A module carrying modules of its own runs this whole lifecycle for each child first. Children register and activate **before** their parent, and unload **after** it. See [Module Inception](module-inception.md).
+{% endhint %}
 
 ## Phase 1: Discovery
 
-When the runtime starts, the `ModuleService` scans configured paths for directories containing `ModuleConfig.bx` or `box.json`.
+When the runtime starts, the `ModuleService` scans configured paths for directories containing `ModuleConfig.bx` or `box.json`, and for `*.jar` files, which are modules in their own right.
 
 **What happens:**
 - Each discovered module becomes a `ModuleRecord` in the registry
 - Duplicates are resolved first-come-first-served
-- Module name is determined from `box.json` `boxlang.moduleName` or directory name
+- Module name is determined from `box.json` `boxlang.moduleName`, a JAR's `@BoxModule( name )`, or the directory / JAR base name
+- Each discovered module is then scanned for a `modules/` folder of its own, recursively — see [Module Inception](module-inception.md)
 
 **No events fire during discovery.**
 

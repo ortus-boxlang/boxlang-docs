@@ -10,6 +10,10 @@ BoxLang is a modular language. Each module can have a configuration structure fo
 * `enabled` : Boolean indicator to disable or eanble the module from loading. Defaults to \`true\`
 * `settings` : A structure of configuration settings each module exposes
 
+{% hint style="info" %}
+This config is applied **last** and always wins. A module sets its own defaults in `configure()`, a module that bundles others can override its children's settings, and this block overrides both. See [Module Inception](../../boxlang-framework/module-development/module-inception.md#overriding-a-childs-settings) for the full precedence chain.
+{% endhint %}
+
 {% code title="boxlang.json" %}
 ```json
 /**
