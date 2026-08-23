@@ -108,6 +108,35 @@ var child = moduleRecord.getNestedModule( createObject( "java", "ortus.boxlang.r
 log.info( "Child version: #child.version#" )
 ```
 
+### Inspecting the Whole Tree
+
+To see the hierarchy from outside any one module's own code — a script, an admin dashboard, a debug session — use the `getModuleTree()` BIF. It returns every top-level module as a struct, and every node carries a `children` struct of the modules nested inside it, recursively:
+
+```js
+tree = getModuleTree()
+
+for ( moduleName in tree ) {
+    node = tree[ moduleName ]
+    writeOutput( "#moduleName# (v#node.version#)" )
+    for ( childName in node.children ) {
+        writeOutput( "  ↳ #childName#" )
+    }
+}
+```
+
+Pass a module name to get the subtree rooted at that module instead of the whole forest:
+
+```js
+subtree = getModuleTree( "myModule" )
+// subtree.children holds myModule's direct nested modules, each with its own .children
+```
+
+An unregistered module name returns an empty struct rather than throwing. From Java (or a module's own `ModuleConfig.bx`), the same data is available via `ModuleService.getModuleTree()` and `ModuleService.getModuleTree( Key )`.
+
+{% hint style="info" %}
+Nested modules never appear at the top level of `getModuleTree()`'s result — find them under their parent's `children` entry. `getModuleList()` and `getModuleInfo()`, by contrast, still address every module by name in one flat collection, nested or not; `getModuleTree()` is the one that shows the shape.
+{% endhint %}
+
 ## Overriding a Child's Settings
 
 A parent can override the settings of the modules it bundles. Declare a `modules` struct mirroring the `boxlang.json` shape:
