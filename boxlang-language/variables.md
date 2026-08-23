@@ -704,14 +704,14 @@ b = a;
 
 ## Debugging Variables
 
-BoxLang offers one of the most used functions/tags ever: `<bx:dump>, writeDump()` and `<bx:abort>, abort;`. These are used to dump all the contents of a variable into the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `top` argument to limit dumping.
+BoxLang offers one of the most used functions/tags ever: `<bx:dump>, writeDump()` and `<bx:abort>, abort;`. These are used to dump all the contents of a variable into the browser, console, or even a file. You can then leverage the `abort` construct to abort the request and see the output of your dumped variables. This will work with both simple and complex variables. However, be very careful when using it with Nested ORM objects, as you can potentially dump your entire database and crash the server. Leverage the `depth` argument to limit how deep it recurses into nested objects, and `maxRows` to limit how many keys/rows/items are shown per level.
 
 ```javascript
 writeDump( complex );abort;
 
 <bx:dump var="#server#" abort=true>
 
-writeDump( var=arrayOfORM, top=5 );abort;
+writeDump( var=arrayOfORM, depth=5 );abort;
 ```
 
 ### Server Debugging Templates

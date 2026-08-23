@@ -823,7 +823,7 @@ structAppend( request.allData, form )
 ```javascript
 // Debugging scopes - dump entire scopes
 writeDump( var=variables, label="Variables Scope" )
-writeDump( var=session, label="Session Data", top=10 )
+writeDump( var=session, label="Session Data", depth=10 )
 writeDump( var=application, label="App Settings" )
 
 // Check scope contents

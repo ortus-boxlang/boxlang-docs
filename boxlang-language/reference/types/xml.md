@@ -7,7 +7,7 @@ This type represents an XML Object in BoxLang
 ## Xml Methods
 
 <details>
-<summary><code>bxDump(label=[string], top=[numeric], expand=[boolean], abort=[boolean], output=[string], format=[string], showUDFs=[boolean])</code></summary>
+<summary><code>bxDump(label=[string], depth=[numeric], maxRows=[numeric], top=[numeric], expand=[boolean], abort=[boolean], output=[string], format=[string], showUDFs=[boolean])</code></summary>
 
 Outputs the contents of a variable (simple or complex) of any type for debugging purposes to a specific output location.
 
@@ -27,6 +27,8 @@ Arguments:
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
 | `label` | `string` | `false` | `null` |
+| `depth` | `numeric` | `false` | `null` |
+| `maxRows` | `numeric` | `false` | `null` |
 | `top` | `numeric` | `false` | `null` |
 | `expand` | `boolean` | `false` | `true` |
 | `abort` | `boolean` | `false` | `false` |
