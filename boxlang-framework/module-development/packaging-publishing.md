@@ -30,8 +30,11 @@ build/module/
 │   └── my-module-all.jar    # Shadow JAR with all dependencies
 ├── bifs/
 │   └── *.bx                 # Any BoxLang BIFs
-└── components/
-    └── *.bx                 # Any BoxLang components
+├── components/
+│   └── *.bx                 # Any BoxLang components
+└── modules/                 # Optional: modules bundled inside this one
+    ├── child-module/        #   a full module folder
+    └── helper.jar           #   or a module shipped as a single JAR
 ```
 
 The shadow JAR bundles your Java code AND all dependencies into a single artifact.
@@ -53,11 +56,16 @@ my-module/
 ├── bifs/           # BoxLang BIFs
 ├── components/     # BoxLang components
 ├── interceptors/   # BoxLang interceptors
-├── libs/           # External JARs
+├── libs/           # External JARs (libraries on your classpath)
+├── modules/        # Optional: modules bundled inside this one
 └── public/         # Web assets
 ```
 
 Simply zip the directory for distribution.
+
+{% hint style="info" %}
+Anything in `modules/` ships as a module in its own right, loaded before yours — see [Module Inception](module-inception.md). Keep plain libraries in `libs/`; `modules/` is for things with their own lifecycle and settings.
+{% endhint %}
 
 {% endtab %}
 {% endtabs %}

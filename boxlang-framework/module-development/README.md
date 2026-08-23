@@ -94,6 +94,7 @@ Gradle-based with shadow JAR support. For complex logic and advanced integration
 | [Module Descriptor](module-descriptor.md) | Configure `box.json`, `ModuleConfig.bx`, and Java `IModuleConfig` |
 | [Lifecycle](lifecycle.md) | Registration → Activation → Running → Deactivation |
 | [Capabilities](capabilities/) | BIFs, components, interceptors, services, and more |
+| [Module Inception](module-inception.md) | Bundle modules inside your module, and ship modules as a single JAR |
 | [Mappings & Class Resolution](mappings.md) | Module mappings, `@moduleName` notation, and class loading |
 | [Configuration](configuration.md) | Settings, runtime overrides, dependency management |
 | [Advanced Collaboration](advanced-collaboration.md) | System settings providers, custom resolvers, inter-module communication |

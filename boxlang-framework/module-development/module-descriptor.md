@@ -198,13 +198,14 @@ class {
 | `this.webURL` | string | | Module website URL |
 | `this.enabled` | boolean | | If `false`, module is skipped entirely |
 | `this.dependencies` | string[] | | Module names that must activate first |
+| `this.modules` | struct | | Per-child overrides for modules nested inside this one. See [Module Inception](module-inception.md) |
 
 ### Lifecycle Methods
 
 | Method | When Called | Purpose |
 |--------|-------------|---------|
 | `configure()` | Registration | Define settings, interceptors, interception points |
-| `onLoad()` | Activation | Module startup — dependencies are already active |
+| `onLoad()` | Activation | Module startup — dependencies and nested modules are already active |
 | `onUnload()` | Deactivation | Cleanup resources, unregister providers |
 
 ## Java IModuleConfig
@@ -256,6 +257,7 @@ ortus.boxlang.modules.mymodule.MyModuleConfig
 
 | Field | Type | Description |
 |-------|------|-------------|
+| `name` | String | Module name. Only consulted for [JAR modules](module-inception.md#jar-modules), whose default is the JAR's base name |
 | `version` | String | Semver version |
 | `author` | String | Module author |
 | `description` | String | Module description |

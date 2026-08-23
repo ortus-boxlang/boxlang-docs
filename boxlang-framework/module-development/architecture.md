@@ -43,19 +43,17 @@ Java capabilities (BIFs, services, schedulers) are discovered via Java's standar
 
 ## Class Loader Isolation
 
-```
-Runtime ClassLoader (BoxLang core)
-    ├── Module A ClassLoader
-    │   ├── modules.moduleA.*  (compiled classes)
-    │   ├── libs/*.jar         (dependencies)
-    │   └── bifs/*.bx          (compiled at runtime)
-    │
-    ├── Module B ClassLoader
-    │   ├── modules.moduleB.*
-    │   ├── libs/*.jar
-    │   └── components/*.bx
-    │
-    └── (parent fallback for runtime classes)
+The class loader hierarchy mirrors the module hierarchy. Top-level modules hang off the runtime class loader; a module nested inside another (see [Module Inception](module-inception.md)) hangs off *its parent module's* loader, chaining upward until it reaches the runtime.
+
+```mermaid
+graph TD
+    R[Runtime ClassLoader<br/>BoxLang core]
+
+    R --> A["Module A ClassLoader<br/>modules.moduleA.* · libs/*.jar · bifs/*.bx"]
+    R --> B["Module B ClassLoader<br/>modules.moduleB.* · libs/*.jar · components/*.bx"]
+
+    A --> A1["Nested Child ClassLoader<br/>A/modules/child/"]
+    A1 --> A2["Nested Grandchild ClassLoader<br/>A/modules/child/modules/grandchild/"]
 ```
 
 Each module's class loader loads:
@@ -64,10 +62,14 @@ Each module's class loader loads:
 2. **JAR files** from the module's `libs/` directory
 3. **BoxLang files** from `bifs/` and `components/` (compiled at runtime)
 
-If a class isn't found, the loader falls back to the parent (runtime) class loader.
+If a class isn't found, the loader falls back to its parent — the module that contains it for a nested module, or the runtime class loader for a top-level one.
 
 {% hint style="info" %}
-This isolation means two modules can bundle different versions of the same library without conflict.
+This isolation means two modules can bundle different versions of the same library without conflict. A nested module is the deliberate exception: because its loader chains to its parent's, it can see what its parent bundles in `libs/`, while staying isolated from its siblings.
+{% endhint %}
+
+{% hint style="warning" %}
+Module class loaders create a genuine isolation boundary, so they pass `null` as the standard `ClassLoader` parent and track the real parent themselves. If you inspect the chain from Java, use `DynamicClassLoader.getDynamicParent()` — the standard `getParent()` returns `null` for a module loader.
 {% endhint %}
 
 ## Discovery Process
@@ -78,12 +80,17 @@ When the runtime starts, modules are discovered through a multi-step process:
 {% step %}
 ### Scan Module Paths
 
-The `ModuleService` walks configured module directories (from `boxlang.json` `modulesDirectory` setting) looking for folders containing `ModuleConfig.bx` or `box.json`.
+The `ModuleService` walks configured module directories (from `boxlang.json` `modulesDirectory` setting) looking for two kinds of module:
+
+- **Module folders** — directories containing `ModuleConfig.bx` or `box.json`
+- **Module JARs** — a `*.jar` file sitting directly in the modules folder is a module in its own right, its descriptor found via ServiceLoader on its own class loader
 
 **Default paths:**
 - `./modules/`
 - `{runtime-home}/modules/`
 - Any paths added via `addModulePath()`
+
+Every discovered module is then scanned for a `modules/` folder of its own, recursively and to any depth. See [Module Inception](module-inception.md).
 
 {% endstep %}
 
@@ -94,7 +101,10 @@ Each discovered module becomes a `ModuleRecord` in the registry. Duplicates are 
 
 The module name is determined by:
 1. `box.json` → `boxlang.moduleName`
-2. Falls back to the directory name
+2. For a JAR module, `@BoxModule( name = "..." )` if declared
+3. Falls back to the directory name, or the JAR's base name
+
+Nested modules land in the same flat registry as everything else, so they stay globally addressable. Their parent/child relationship is recorded on the records themselves: a parent exposes `nestedModules`, a child knows its `parentModule`.
 
 {% endstep %}
 

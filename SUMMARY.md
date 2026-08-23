@@ -1505,6 +1505,7 @@
     * [Schedulers](boxlang-framework/module-development/capabilities/schedulers.md)
     * [Cache Providers](boxlang-framework/module-development/capabilities/cache-providers.md)
     * [JDBC Drivers](boxlang-framework/module-development/capabilities/jdbc-drivers.md)
+  * [Module Inception](boxlang-framework/module-development/module-inception.md)
   * [Mappings & Class Resolution](boxlang-framework/module-development/mappings.md)
   * [Configuration](boxlang-framework/module-development/configuration.md)
   * [Advanced Collaboration](boxlang-framework/module-development/advanced-collaboration.md)

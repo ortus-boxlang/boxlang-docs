@@ -365,6 +365,8 @@ BoxLang will search your home for a `modules` folder and register the modules fo
 ],
 ```
 
+Each modules folder can hold module directories and module JARs alike, and every module found is scanned for a `modules` folder of its own, recursively. See [Module Inception](../../boxlang-framework/module-development/module-inception.md).
+
 ### Request Timeout
 
 The default timeout for requests in BoxLang. The default is 0 = never expire. The value must be a string timespan using the syntax shown:
