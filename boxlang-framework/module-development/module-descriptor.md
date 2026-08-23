@@ -22,7 +22,9 @@ The `box.json` file is the standard CommandBox package descriptor with BoxLang-s
   "keywords": ["boxlang", "module"],
   "boxlang": {
     "minimumVersion": "1.14.0",
-    "moduleName": "myModule"
+    "moduleName": "myModule",
+    "executable": "my-module",
+    "completions": "completions/my-module.bash"
   },
   "dependencies": {
     "bx-plus": "*"
@@ -49,9 +51,82 @@ The `box.json` file is the standard CommandBox package descriptor with BoxLang-s
 | `slug` | ✅ | Unique identifier (used by ForgeBox) |
 | `boxlang.moduleName` | ⚠️ | Runtime registration name. Falls back to directory name |
 | `boxlang.minimumVersion` | ⚠️ | Minimum BoxLang version required |
+| `boxlang.executable` | | Name of a CLI wrapper script the OS installer generates for this module. See [CLI Executables and Completions](#cli-executables-and-completions) |
+| `boxlang.executables` | | Map of `name` → script content for multiple CLI wrapper scripts. See [CLI Executables and Completions](#cli-executables-and-completions) |
+| `boxlang.completions` | | Path (relative to the module root) to a bash completion script the OS installer installs. See [CLI Executables and Completions](#cli-executables-and-completions) |
 | `dependencies` | | Runtime dependencies (other modules) |
 | `ignore` | | Files to exclude from distribution |
 | `type` | | Set to `"boxlang-modules"` for BoxLang modules |
+
+## CLI Executables and Completions
+
+{% hint style="info" %}
+These `boxlang.*` fields are only processed by the **operating system installer** (`install-bx-module`, part of the [BoxLang Quick Installer](../../getting-started/installation/boxlang-quick-installer.md) / [BVM](../../getting-started/installation/boxlang-version-manager-bvm.md)). They have no effect when a module is installed via CommandBox's `box install`.
+{% endhint %}
+
+A module installed with `install-bx-module` can ship its own CLI wrapper script(s) and a bash completion script. The installer wires them up automatically — no extra steps for the end user.
+
+### `boxlang.executable` — Single CLI Wrapper
+
+Declare a single executable name, and the installer generates a wrapper script that calls your module through `boxlang module:<moduleName>`:
+
+```json
+{
+  "boxlang": {
+    "moduleName": "myModule",
+    "executable": "my-module"
+  }
+}
+```
+
+Installing this module creates an executable named `my-module` (equivalent to `boxlang module:myModule "$@"`) on the `PATH` — at `~/.boxlang/bin/my-module` for a global install, or `./boxlang_modules/.bin/my-module` with `install-bx-module --local`.
+
+### `boxlang.executables` — Multiple CLI Wrappers
+
+For more than one entry point, or a wrapper that needs custom logic, declare a map of executable name to the wrapper script's full content:
+
+```json
+{
+  "boxlang": {
+    "moduleName": "myModule",
+    "executables": {
+      "my-module": "#!/bin/sh\nboxlang module:myModule \"$@\"\n",
+      "my-module-admin": "#!/bin/sh\nboxlang module:myModule admin \"$@\"\n"
+    }
+  }
+}
+```
+
+Each key becomes an executable file in the same bin directory as `boxlang.executable`, written verbatim from its value and marked executable.
+
+{% hint style="warning" %}
+`boxlang.executable` and `boxlang.executables` can be combined — both are processed independently.
+{% endhint %}
+
+### `boxlang.completions` — Bash Completions
+
+Ship a bash completion script inside your module and point `boxlang.completions` at its path, relative to the module root:
+
+```json
+{
+  "boxlang": {
+    "completions": "completions/my-module.bash"
+  }
+}
+```
+
+The script itself is a normal, self-registering bash completion function:
+
+```bash
+#!/usr/bin/env bash
+_my_module_complete() {
+    local current_word="${COMP_WORDS[COMP_CWORD]}"
+    COMPREPLY=($(compgen -W "migrate seed generate" -- "$current_word"))
+}
+complete -F _my_module_complete my-module
+```
+
+On install, the script is copied to `~/.boxlang/completions/<module-name>.sh` (or `./boxlang_modules/.completions/<module-name>.sh` with `--local`), and removed again when the module is removed. Every script in that directory is auto-sourced by `bvm-init.sh` in new Bash/Zsh sessions — nothing further is required in the user's shell profile as long as [BVM's shell initialization](../../getting-started/installation/boxlang-version-manager-bvm.md) is installed.
 
 ## ModuleConfig.bx — BoxLang Descriptor
 
