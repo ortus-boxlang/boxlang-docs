@@ -50,7 +50,7 @@ icon: table
 #### Install via CommandBox
 
 ```bash
-box install bx-compat-ui
+box install bx-ui-compat
 ```
 
 The module will automatically register and be available in your BoxLang applications with the following components:
@@ -244,8 +244,8 @@ Imports JavaScript and CSS files required for BoxLang AJAX tags and features
 | Attribute   | Type   | Default             | Description                                                                    |
 | ----------- | ------ | ------------------- | ------------------------------------------------------------------------------ |
 | `tags`      | string | ""                  | Comma-delimited list of BoxLang AJAX tags for which to import supporting files |
-| `cssSrc`    | string | "/bx-compat-ui/css" | URL of the directory containing CSS files                                      |
-| `scriptSrc` | string | "/bx-compat-ui/js"  | URL of the directory containing JavaScript files                               |
+| `cssSrc`    | string | "/bx-ui-compat/css" | URL of the directory containing CSS files                                      |
+| `scriptSrc` | string | "/bx-ui-compat/js"  | URL of the directory containing JavaScript files                               |
 | `params`    | string | ""                  | Parameters to pass, such as API keys                                           |
 
 #### UI Components
@@ -927,7 +927,7 @@ Layouts automatically adapt to different screen sizes:
 
 **Solutions:**
 
-* ✅ Ensure the module is installed: `box install bx-compat-ui`
+* ✅ Ensure the module is installed: `box install bx-ui-compat`
 * ✅ Verify BoxLang web support is enabled
 * ✅ Check that component tags use the correct `bx:` prefix
 * ✅ Ensure required attributes are provided (e.g., `type` for layouts, `name` for grids)
