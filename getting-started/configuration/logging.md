@@ -110,6 +110,22 @@ Please also note that in BoxLang, you can log data as **text** or as **JSON**.
 			// Additive logging: true means that this logger will inherit the appenders from the root logger
 			// If false, it will only use the appenders defined in this logger
 			"additive": true
+		},
+		// All bx:http request lifecycle logging (start/completion, status code, elapsed time)
+		"http": {
+			// Valid values are in order of severity: ERROR, WARN, INFO, DEBUG, TRACE, OFF
+			// Raise to DEBUG to log every request's start and completion
+			"level": "INFO",
+			// Valid values are: "file", "console",
+			// Please note that we only use Rolling File Appenders
+			"appender": "file",
+			// Use the defaults from the runtime
+			"appenderArguments": {},
+			// The available options are "text" and "json"
+			"encoder": "text",
+			// Additive logging: true means that this logger will inherit the appenders from the root logger
+			// If false, it will only use the appenders defined in this logger
+			"additive": true
 		}
 	}
 },
@@ -193,6 +209,7 @@ However, you can also retrieve named loggers via the `LoggingService.` By defaul
 * `modules` - For all modular information, activation, etc
 * `application` - Application-specific logs
 * `scheduler` - All tasks and schedulers can log here
+* `http` - `bx:http` request lifecycle; raise to `DEBUG` to log every request's start/completion, status code, and elapsed time
 
 ### Logger Properties
 

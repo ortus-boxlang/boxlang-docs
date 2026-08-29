@@ -78,7 +78,7 @@ include template="path/to/template.bxm" externalOnly=true
 
 | Attribute | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
-| **`template`** | string | ✅ Yes | - | Path to template file (relative, absolute, or mapping) |
+| **`template`** | string | ✅ Yes | - | Path to template file (relative or mapping — as of 1.17.0, an absolute-looking path is forced relative rather than read from the OS filesystem) |
 | **`externalOnly`** | boolean | ❌ No | `false` | If true, prevents including templates from within classes |
 
 ### Syntax Examples
@@ -86,9 +86,6 @@ include template="path/to/template.bxm" externalOnly=true
 ```js
 // Simple relative path
 include "includes/header.bxm"
-
-// Absolute path
-include "/var/www/shared/utilities.bxm"
 
 // BoxLang mapping
 include "/app/includes/functions.bxm"
@@ -296,9 +293,13 @@ BoxLang resolves template paths using multiple strategies:
 | Path Type | Example | Resolution |
 |-----------|---------|------------|
 | **Relative** | `"includes/header.bxm"` | Relative to current template directory |
-| **Absolute** | `"/var/www/app/shared.bxm"` | Absolute filesystem path |
+| **Absolute-looking** | `"/var/www/app/shared.bxm"` | As of 1.17.0, **forced relative** — resolved against configured mappings/webroot, not the OS filesystem |
 | **Mapping** | `"/app/includes/util.bxm"` | BoxLang mapping (starts with `/mapping/`) |
 | **Dot-Notation** | `"../shared/functions.bxm"` | Parent directory traversal |
+
+{% hint style="warning" %}
+**Security hardening (1.17.0)**: `include` no longer resolves an absolute-looking path (`/etc/passwd`, `C:\secrets.txt`) directly against the OS filesystem. It is always coerced to resolve relative to your application's mappings/webroot instead — closing a local-file-inclusion class of bug where a dynamically built include path could reach outside the application. See [What's New in 1.17.0](../readme/release-history/1.17.0.md).
+{% endhint %}
 
 ### Path Resolution Examples
 
@@ -312,12 +313,13 @@ include "partials/nav.bxm"
 include "../shared/utilities.bxm"
 include "../../global/config.bxm"
 
-// Absolute path
-include "/var/www/myapp/shared/functions.bxm"
-
 // BoxLang mapping (configured in Application.bx or boxlang.json)
 include "/app/includes/header.bxm"
 include "/shared/utilities.bxm"
+
+// An absolute-looking path is forced relative — it resolves against
+// your mappings/webroot instead of the OS filesystem
+include "/var/www/myapp/shared/functions.bxm"
 ```
 
 ### Dynamic Path Resolution
@@ -346,12 +348,9 @@ for ( module in modules ) {
 graph TD
     A[Include Path] --> B{Starts with /mapping/?}
     B -->|Yes| C[Resolve via BoxLang Mappings]
-    B -->|No| D{Absolute Path?}
-    D -->|Yes| E[Use Absolute Filesystem Path]
-    D -->|No| F[Resolve Relative to Current Template]
+    B -->|No| F["Resolve Relative to Current Template<br/>(forced relative, even if the path looks absolute)"]
 
     C --> G[Load Template]
-    E --> G
     F --> G
     G --> H{Valid Extension?}
     H -->|Yes| I[Execute Template]
@@ -360,6 +359,10 @@ graph TD
     style I fill:#ccffcc
     style J fill:#ffcccc
 ```
+
+{% hint style="info" %}
+Before 1.17.0, a path that looked like an OS-absolute path (`/etc/passwd`, `C:\...`) had its own branch here and was read directly off the filesystem. That branch no longer exists — every non-mapping path, absolute-looking or not, resolves relative to the current template.
+{% endhint %}
 
 ## ⚙️ Configuration
 
@@ -667,6 +670,10 @@ if ( allowedTemplates.contains( url.template ) ) {
     include "views/#url.template#.bxm"
 }
 ```
+
+{% hint style="success" %}
+As of 1.17.0, BoxLang enforces `include` paths to always resolve relative to your mappings/webroot, even if user input smuggles in something that looks like an absolute path (`/etc/passwd`, `../../../etc/passwd` resolved through a mapping, etc.) — this closes the most severe version of the risk shown above. Still whitelist user-influenced template names: enforcing relative resolution stops filesystem escape, but an attacker-chosen path can still reach an unintended template *within* your own application.
+{% endhint %}
 
 ## ⚠️ A Stern Warning
 

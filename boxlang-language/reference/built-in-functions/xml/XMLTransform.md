@@ -19,6 +19,10 @@ XMLTransform(XML=[any], XSL=[String], parameters=[Struct])
 | `XSL` | `String` | `true` | The XSL to use for the transformation |  |
 | `parameters` | `Struct` | `false` | The parameters to pass to the xsl transformation | `{}` |
 
+{% hint style="info" %}
+As of 1.17.0, when `XML` is passed as a raw XML string (rather than an already-parsed XML object), `xmlTransform()` automatically applies your application's [XML Security Settings](../../../../getting-started/configuration/directives.md#xml-security-settings) — the same XXE-hardening defaults used by [`xmlParse()`](./XMLParse.md).
+{% endhint %}
+
 ## Examples
 
 ### Transform XML using an XSLT stylesheet

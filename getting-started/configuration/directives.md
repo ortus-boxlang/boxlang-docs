@@ -171,6 +171,16 @@ This is a powerful setting. It puts the runtime into debug mode, where more verb
 "debugMode": false,
 ```
 
+### Global Error Template
+
+_New in 1.17.0._ Path to a `.bxm` template rendered for unhandled errors, as a runtime-wide fallback. Leave it empty (the default) to keep BoxLang's built-in error page. This is distinct from a per-application [`onError()`](../../boxlang-framework/applicationbx.md) listener, which still takes precedence when defined.
+
+```json
+// This is for adding a path (.bxm) to render a custom global error template for unhandled errors
+// If empty, default boxlang error page is rendered
+"globalErrorTemplate": "",
+```
+
 
 
 ### Default Datasource
@@ -461,4 +471,21 @@ This is an array of all the extensions that will be processed as BoxLang templat
 // Extensions BoxLang will process as templates.
 // This is used by the RunnableLoader
 "validTemplateExtensions": [],
+```
+
+### XML Security Settings
+
+_New in 1.17.0._ Application-wide defaults that guard against XXE (XML External Entity) attacks when parsing untrusted XML via [`xmlParse()`](../../boxlang-language/reference/built-in-functions/xml/XMLParse.md) or `xmlTransform()`. A call to `xmlParse()` can override these per-call by passing a struct as its `validator` argument.
+
+```json
+"xml": {
+	// Enables the JAXP secure-processing feature
+	"secureProcessing": true,
+	// Rejects any XML document that declares a DOCTYPE
+	"disallowDoctypeDeclaration": true,
+	// Whether external general entities are resolved (leave false to block XXE)
+	"allowExternalEntities": false,
+	// Whether parsing tolerates minor malformed XML
+	"lenientProcessing": false
+},
 ```

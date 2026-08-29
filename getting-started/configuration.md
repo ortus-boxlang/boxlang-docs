@@ -83,6 +83,10 @@ This convention allows  you to make granular changes to sub-segments of the conf
 
 BoxLang supports environment variable substitution using the syntax `${env.environment_variable_name:default}`. For example, using `${env.MYSQL_HOST:localhost}` will result in the value of the `MYSQL_HOST` environment variable, if found, or fall back to the `localhost` value if the environment variable is not defined.
 
+{% hint style="info" %}
+As of 1.17.0, a bare variable name also resolves without the `env.` prefix — `${MYSQL_HOST:localhost}` works the same as `${env.MYSQL_HOST:localhost}`. When both an environment variable and a JVM system property share that bare name, the system property wins.
+{% endhint %}
+
 Inside your `boxlang.json` configuration file, you can use this to populate datasource credential secrets:
 
 ```json
@@ -101,6 +105,10 @@ Inside your `boxlang.json` configuration file, you can use this to populate data
 
 }
 ```
+
+{% hint style="success" %}
+For secrets you don't want sitting in plain text at all — even behind an environment variable — see [Encrypted Configuration Secrets](configuration/security.md#encrypted-configuration-secrets-bxsecret) (`bxsecret:`), added in 1.17.0. It composes with the placeholder syntax above, so `${env.DB_PASSWORD:bxsecret:...}` is valid.
+{% endhint %}
 
 ## Configuration Segments
 
