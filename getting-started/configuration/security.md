@@ -28,7 +28,9 @@ This segment is where you can configure the security elements of BoxLang under t
 	// An explicit whitelist of file extensions that are allowed to be uploaded - overrides any values in the disallowedWriteExtensions
 	"allowedFileOperationExtensions": [],
 	// The list of file extensions that are not allowed to be uploaded. Also enforced by file relocation operations ( e.g. copy/move )
-	"disallowedFileOperationExtensions": []
+	"disallowedFileOperationExtensions": [],
+	// The algorithm used to decrypt "bxsecret:" encrypted configuration values
+	"secretAlgorithm": "AES"
 },
 ```
 {% endcode %}
@@ -170,3 +172,53 @@ This is a boolean flag that, if enabled, will populate the `server.system` scope
 ```json
 "populateServerSystemScope" : false
 ```
+
+## Encrypted Configuration Secrets — `bxsecret:`
+
+_New in 1.17.0._ Any string value anywhere in your config tree — `boxlang.json` or `Application.bx` settings — can be encrypted instead of stored as plain text. BoxLang decrypts it automatically, in place, the moment the config is loaded.
+
+Generate an encrypted value with the `generatesecret` CLI action, using the runtime's active secret seed:
+
+```bash
+boxlang generatesecret "s3cr3tPassw0rd"
+# => bxsecret:AbCdEf123...==
+```
+
+Then use the resulting `bxsecret:...` value anywhere a config value is read — most commonly a datasource password:
+
+```json
+{
+	"datasources": {
+		"myDS": {
+			"driver": "mysql",
+			"properties": { "host": "localhost", "database": "myapp" },
+			"username": "app_user",
+			"password": "bxsecret:AbCdEf123...=="
+		}
+	}
+}
+```
+
+A `bxsecret:` value can also live inside a `${...}` [placeholder](../configuration.md#environment-variable-substitution), so you can combine encryption with environment-driven overrides in the same config tree:
+
+```json
+"password": "${env.DB_PASSWORD:bxsecret:AbCdEf123...==}"
+```
+
+### The Secret Seed
+
+Decryption uses a symmetric key (the "seed") that is auto-generated and persisted per-install the first time it's needed. For reproducible deployments — or to share the same seed across a cluster of servers — pin it explicitly via an environment variable or JVM system property:
+
+```bash
+export BOXLANG_SECURITY_SECRETSEED=my-shared-seed-value
+```
+
+```bash
+-Dboxlang.security.secretSeed=my-shared-seed-value
+```
+
+{% hint style="danger" %}
+Anyone who has the seed can decrypt every `bxsecret:` value in your config. Treat it with the same care as the secrets it protects — keep it out of source control and manage it the same way you'd manage any other production credential.
+{% endhint %}
+
+The algorithm used for encryption/decryption is controlled by `security.secretAlgorithm` (default `AES`, shown above).

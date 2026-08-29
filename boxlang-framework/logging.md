@@ -186,6 +186,7 @@ BoxLang registers several named loggers automatically at startup. Each one write
 | `cache` | inherits root | Cache provider activity and evictions |
 | `datasource` | inherits root | Datasource creation, query logging, connection pool |
 | `scheduler` | `INFO` | Scheduled task runs and outcomes |
+| `http` | `INFO` | `bx:http` request lifecycle — raise to `DEBUG` to log each request's start/completion, status code, and elapsed time |
 
 You can target any of these by name:
 
