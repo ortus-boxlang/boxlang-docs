@@ -596,6 +596,30 @@ This check happens while the application classloader is initialized; `reloadOnCh
 
 See [Application.bx](applicationbx.md) for the full reference.
 
+#### No More Locked JARs — `jarTempFileCaching`
+
+_New in 1.17.0._ Prior to 1.17.0, a JAR loaded via `this.javaSettings.loadPaths` (or bundled with a module) stayed locked by the JVM for as long as its classloader was alive. On Windows in particular, this meant you couldn't rebuild, replace, or delete that JAR — including as part of `reloadOnChange` — without restarting the runtime first, defeating the purpose of hot-reload.
+
+As of 1.17.0, BoxLang copies each JAR to a temp file **before** loading it, so the original file is never held open:
+
+```
+{java.io.tmpdir}/boxlang-jars/{originalFilename}-{hashOfPath}-{lastModified}.jar
+```
+
+Each copy is paired with a `.origin` sidecar file that records the source path, so BoxLang can validate the cached copy and avoid collisions between JARs that happen to share a filename. Stale copies are cleaned up automatically in three places: when a classloader closes (orphaned temp files from outdated sources are removed), on runtime startup (a one-pass sweep verifies every cached JAR against its original source), and when a stale classloader is garbage collected (its associated temp copies are deleted).
+
+This is enabled by default and is what makes `reloadOnChange` actually usable on Windows. Disable it only if you have a specific reason to load JARs directly from their original path:
+
+```json
+// boxlang.json
+"jarTempFileCaching": false
+```
+
+```bash
+# Or via environment variable
+export BOXLANG_JARTEMPFILECACHING=false
+```
+
 ### 3. Per-Call Class Loading
 
 Pass a path (string) or array of paths as the third argument to `createObject` for isolated, one-off class loading:

@@ -256,6 +256,14 @@ BoxLang allows you to register an array of locations or array of jars or classes
 
 By default, we look into the `lib` folder in your BoxLang home.
 
+### JAR Temp File Caching
+
+_New in 1.17.0._ When enabled (the default), JARs loaded via `this.javaSettings.loadPaths` or bundled with a module are copied to a temp file before loading, so the original JAR is never locked by the JVM — this is what makes `reloadOnChange` usable on Windows. See [Java Integration → No More Locked JARs](../../boxlang-framework/java-integration.md#no-more-locked-jars-jartempfilecaching) for the full details.
+
+```json
+"jarTempFileCaching": true
+```
+
 ### Locale
 
 This is the default locale for the runtime. By default, we use the JVM locale. This value must be an IETF BCP language tag: [https://www.oracle.com/java/technologies/javase/jdk21-suported-locales.html](https://www.oracle.com/java/technologies/javase/jdk21-suported-locales.html)
