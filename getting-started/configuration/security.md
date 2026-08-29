@@ -175,7 +175,13 @@ This is a boolean flag that, if enabled, will populate the `server.system` scope
 
 ## Encrypted Configuration Secrets — `bxsecret:`
 
-_New in 1.17.0._ Any string value anywhere in your config tree — `boxlang.json` or `Application.bx` settings — can be encrypted instead of stored as plain text. BoxLang decrypts it automatically, in place, the moment the config is loaded.
+_New in 1.17.0._ Any string value prefixed with `bxsecret:` is automatically decrypted at runtime, wherever it appears — plaintext values elsewhere continue to work completely unchanged, so this is opt-in per value, not an all-or-nothing switch. Supported locations include:
+
+* `boxlang.json` settings, anywhere in the tree
+* `Application.bx` datasource definitions and other `this.*` settings
+* Environment variable overrides and JSON environment variable placeholders
+* Application component attributes (e.g. `<bx:application>`)
+* Nested application settings, such as caches and mappings
 
 Generate an encrypted value with the `generatesecret` CLI action, using the runtime's active secret seed:
 
@@ -199,6 +205,16 @@ Then use the resulting `bxsecret:...` value anywhere a config value is read — 
 }
 ```
 
+It isn't limited to datasources — any config value can be encrypted, for example a third-party API key:
+
+```json
+{
+	"api": {
+		"key": "bxsecret:wfYldsN1NOxSAC6k6H4RKg=="
+	}
+}
+```
+
 A `bxsecret:` value can also live inside a `${...}` [placeholder](../configuration.md#environment-variable-substitution), so you can combine encryption with environment-driven overrides in the same config tree:
 
 ```json
@@ -207,7 +223,21 @@ A `bxsecret:` value can also live inside a `${...}` [placeholder](../configurati
 
 ### The Secret Seed
 
-Decryption uses a symmetric key (the "seed") that is auto-generated and persisted per-install the first time it's needed. For reproducible deployments — or to share the same seed across a cluster of servers — pin it explicitly via an environment variable or JVM system property:
+Decryption uses a symmetric key (the "seed"). BoxLang automatically generates a unique seed per install and persists it at:
+
+```
+{boxlang-home}/config/.seed
+```
+
+{% hint style="danger" %}
+This file must be retained and protected. Losing it makes every `bxsecret:` value in your config permanently undecryptable; anyone who obtains it can decrypt them. Treat it with the same care as the secrets it protects — keep it out of source control and back it up the same way you'd manage any other production credential.
+{% endhint %}
+
+Because the seed is generated per install, the same plaintext encrypted on two different runtimes produces two different `bxsecret:` values, and a value encrypted with one seed cannot be decrypted with another. For a cluster of servers — or any deployment where you need the same encrypted values to work across multiple runtimes — share one seed across them using one of:
+
+* Copying the same `.seed` file to each runtime
+* The `BOXLANG_SECURITY_SECRETSEED` environment variable
+* The `security.secretSeed` setting in `boxlang.json` (**discouraged** — this setting itself is stored in plain text, which undermines the point of encrypting the rest of your config)
 
 ```bash
 export BOXLANG_SECURITY_SECRETSEED=my-shared-seed-value
@@ -217,8 +247,4 @@ export BOXLANG_SECURITY_SECRETSEED=my-shared-seed-value
 -Dboxlang.security.secretSeed=my-shared-seed-value
 ```
 
-{% hint style="danger" %}
-Anyone who has the seed can decrypt every `bxsecret:` value in your config. Treat it with the same care as the secrets it protects — keep it out of source control and manage it the same way you'd manage any other production credential.
-{% endhint %}
-
-The algorithm used for encryption/decryption is controlled by `security.secretAlgorithm` (default `AES`, shown above).
+The algorithm used for encryption/decryption is controlled by `security.secretAlgorithm` (default `AES`, shown above) — note that this setting itself is always read as plain text.

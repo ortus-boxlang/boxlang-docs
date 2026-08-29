@@ -40,10 +40,25 @@ If enabled, it will activate the AST capture interceptor and on parse it will cr
 
 ### Clear Parser Cache
 
-_New in 1.17.0._ ANTLR (the parser generator BoxLang's compiler is built on) caches per-parser DFA (Deterministic Finite Automaton) state to speed up repeated parses. In a long-running server process that parses many different templates, this cache can grow unbounded and bloat memory over time.
+_New in 1.17.0._ ANTLR (the parser generator BoxLang's compiler is built on) caches per-parser DFA (Deterministic Finite Automaton) state to speed up repeated parses. Those structures persist indefinitely in heap memory until the JVM restarts, and in a large, long-running application can accumulate **400MB to 1GB** of cached data that serves no ongoing purpose — creating unnecessary GC pressure and, on constrained systems, a real risk of out-of-memory failures.
 
-When enabled (the default), a background watchdog periodically evicts the cache once it has been idle for a few minutes, or once it has grown large and enough time has passed since the last clear. This requires no tuning in the common case — disable it only if you have a specific reason to keep the cache warm indefinitely.
+When enabled (the default), a background watchdog evicts the cache automatically using three independent triggers — whichever fires first:
+
+| Trigger | Condition |
+| --- | --- |
+| **Heap-pressure** | The DFA cache's estimated size exceeds ⅓ of the JVM's maximum heap |
+| **Idle** | No parsing activity for 3 minutes |
+| **Max-age** | The cache exceeds 100MB **and** 10 minutes have passed since the last clear, even under continuous parsing load |
+
+This requires no tuning in the common case. The watchdog is lazy — it consumes no resources in precompiled deployments that never parse — and each eviction is logged at `TRACE` level for diagnostics. Clearing the cache doesn't change application behavior; it just means the next parse of a given template rebuilds its DFA state instead of reusing a cached one.
 
 ```json
 "clearParserCache": true
 ```
+
+```bash
+# Or via environment variable
+export BOXLANG_EXPERIMENTAL_CLEARPARSERCACHE=false
+```
+
+Disable it only if you have a specific reason to keep the cache warm indefinitely (for example, a short-lived CLI process where the eviction watchdog itself is pure overhead).
