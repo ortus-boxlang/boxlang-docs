@@ -19,16 +19,16 @@ Please also note that in BoxLang, you can log data as **text** or as **JSON**.
 "logging": {
 	// The location of the log files the runtime will produce
 	"logsDirectory": "${boxlang-home}/logs",
-	// The maximum number of days to keep log files before rotation
+	// The number of days to keep rotated archive log files before they are deleted
+	// Log files rotate when they reach maxFileSize, or when the day changes, whichever comes first
 	// Default is 90 days or 3 months
-	// Set to 0 to never rotate
 	"maxLogDays": 90,
 	// The maximum file size for a single log file before rotation
-	// You can use the following suffixes: KB, MB, GB
+	// You can use the following suffixes: KB, MB, GB, or a bare number for bytes
 	// Default is 100MB
 	"maxFileSize": "100MB",
-	// The total cap size of all log files before rotation
-	// You can use the following suffixes: KB, MB, GB
+	// The total cap size of all log files combined before the oldest archives are deleted
+	// You can use the following suffixes: KB, MB, GB, or a bare number for bytes
 	// Default is 5GB
 	"totalCapSize": "5GB",
 	// The root logger level
@@ -145,7 +145,9 @@ This is the folder where BoxLang will store its log files.  By default we use th
 
 ### Max Log Days
 
-The maximum number of days to keep log files before rotations.  The default is 90 days or 3 months.  If you put a `0` then rotation will never happen and you will log forever!
+The number of days to keep rotated archive log files before they are deleted. The default is 90 days or 3 months.
+
+Log files rotate when they reach `maxFileSize`, or when the day changes, whichever comes first. `maxLogDays` does **not** trigger rotation — it only controls how long already-rotated archives are retained.
 
 ```json
 "maxLogDays": 90,
@@ -161,7 +163,7 @@ The maximum filesize for a **single** log file before rotation occurs.  The defa
 
 ### Total Cap Size
 
-The total cap size of ALL log files before rotation and compression begins.  The default is 5 Gigabytes.  You can use a number or the following suffixes: KB, MB, GB.
+The total combined size cap of ALL archive log files. When the total size of the archives exceeds this value, the oldest archives are deleted to stay under the cap. The default is 5 Gigabytes. You can use a number or the following suffixes: KB, MB, GB.
 
 ```json
 "totalCapSize": "5GB",
@@ -243,7 +245,7 @@ Each logger will have the following configuration items:
 | **appenderArguments** | --- | `object` | Name-value pairs that configure the appender. Each appender can have different arguments. |
 | **categories** | `[]` | `array` | A list of Java package or class names whose log output will be routed to this logger. Whitespace is trimmed from each entry. Loggers with `level: OFF` skip appender creation entirely. |
 | **encoder** | `logging > defaultEncoder` | `text` or `json` | The encoder to use for logging. By default it leverages what was defined in the `logging.defaultEncoder` configuration. |
-| **level** | `TRACE` | `logLevel` | The log level is to be assigned to the appender. By default, each appender is wide open to the maximum level of `TRACE`. |
+| **level** | Inherits from `logging > rootLevel` | `logLevel` | The log level assigned to the logger. If omitted, the logger inherits the level from `logging > rootLevel` (e.g. `WARN`). |
 
 ### Logger Categories
 
