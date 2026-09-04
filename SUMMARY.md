@@ -101,6 +101,7 @@
   * [BoxLang IntelliJ](getting-started/ide-tooling/boxlang-intellij.md)
   * [BoxLang Compiler](getting-started/ide-tooling/boxlang-compiler.md)
   * [BoxLang Syntax Check](getting-started/ide-tooling/boxlang-syntax-check.md)
+  * [BoxLang Generate Secret](getting-started/ide-tooling/boxlang-generatesecret.md)
   * [BoxLang Formatter](getting-started/ide-tooling/boxlang-formatter.md)
   * [BoxLang AST](getting-started/ide-tooling/boxlang-ast.md)
   * [BoxLang Debugger](getting-started/ide-tooling/boxlang-debugger/README.md)
