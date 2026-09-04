@@ -7,21 +7,6 @@ icon: layer-group
 
 Almost every programming language allows you to represent different types of collections. In BoxLang, we have three types of collections: arrays, [structures](structures.md), and [queries](queries.md).
 
-## 📋 Table of Contents
-
-* [The Story of One](arrays.md#the-story-of-one)
-* [Arrays in Code](arrays.md#arrays-in-code)
-* [Array Built-In Functions (BIFs)](arrays.md#array-built-in-functions-bifs)
-* [Member Functions](arrays.md#member-functions)
-* [Multi-Dimensional Arrays](arrays.md#multi-dimensional-arrays)
-* [Array Destructuring](arrays.md#-array-destructuring)
-* [Looping Over Arrays](arrays.md#looping-over-arrays)
-* [Spread Operator](arrays.md#-spread-operator)
-* [Rest Operator](arrays.md#-rest-operator)
-* [Functional Programming](arrays.md#functional-programming)
-* [Parallel Programming](arrays.md#parallel-programming)
-* [Array Reduction](arrays.md#array-reduction)
-
 An array is a number-indexed list. Imagine you had a blank piece of paper and drew a set of three small boxes in a line:
 
 ```

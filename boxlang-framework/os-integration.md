@@ -7,21 +7,6 @@ icon: terminal
 
 BoxLang provides two layers of OS interaction. The **built-in layer** covers process execution, environment variables, system properties, file metadata, timing, and console output — all available with no dependencies. The **extended layer** adds deep hardware and OS introspection via the optional `bx-oshi` module, and direct Java interop unlocks the full power of `ProcessBuilder` for advanced process pipelines.
 
-## 📋 Table of Contents
-
-- [The `server` Scope — OS Quick Reference](#the-server-scope--os-quick-reference)
-- [Process Execution](#process-execution)
-- [Environment Variables & System Properties](#environment-variables--system-properties)
-- [Console Output](#console-output)
-- [Timing & Performance](#timing--performance)
-- [System & Runtime Information](#system--runtime-information)
-- [File & Disk Information](#file--disk-information)
-- [Temp Files & Directories](#temp-files--directories)
-- [Deep OS Introspection — `bx-oshi`](#deep-os-introspection--bx-oshi)
-- [Advanced: Java `ProcessBuilder` Interop](#advanced-java-processbuilder-interop)
-- [Security Considerations](#security-considerations)
-- [Related Documentation](#related-documentation)
-
 ---
 
 ## 🖥️ The `server` Scope — OS Quick Reference

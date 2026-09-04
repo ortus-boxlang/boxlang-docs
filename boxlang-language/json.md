@@ -13,17 +13,6 @@ BoxLang provides comprehensive JSON (JavaScript Object Notation) support with au
 **Built on Jackson Jr**: BoxLang uses the high-performance Jackson Jr library with custom serializers and deserializers for BoxLang types. This ensures fast, reliable JSON processing with full control over the serialization format.
 {% endhint %}
 
-## 📋 Table of Contents
-
-* [JSON in Code](json.md#json-in-code)
-* [JSON Built-In Functions (BIFs)](json.md#json-built-in-functions-bifs)
-* [JSON Serialization](json.md#json-serialization-jsonserialize--tojson)
-* [Class Serialization](json.md#class-serialization-the-magic)
-* [JSON Deserialization](json.md#json-deserialization-jsondeserialize--fromjson)
-* [Advanced Features](json.md#advanced-features)
-* [Best Practices](json.md#best-practices)
-* [Common Patterns](json.md#common-patterns)
-
 ## 💻 JSON in Code
 
 Let's explore JSON operations with practical examples:

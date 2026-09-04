@@ -78,15 +78,6 @@ Step 3: Check /projects/myapp/Application.bx              ✅ Found!
 
 #### Nested Applications Example
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Complete Example](#complete-example)
-- [Configuration Settings](#configuration-settings)
-- [Lifecycle Events](#lifecycle-events)
-- [Virtual Applications - A Critical Feature](#virtual-applications---a-critical-feature)
-- [Additional Resources](#additional-resources)
-
 ```
 📁 /projects/myapp/
    📄 Application.bx          ← Found! Used for entire app

@@ -11,20 +11,6 @@ BoxLang provides powerful conditional expressions and control flow statements to
 **Modern Operators**: BoxLang supports modern conditional operators including ternary (`? :`), elvis (`?:`), and safe navigation (`?.`) for concise, expressive code. These operators help avoid verbose null checks and make code more readable.
 {% endhint %}
 
-## 📋 Table of Contents
-
-- [Conditionals in Code](#conditionals-in-code)
-- [Comparison Operators](#comparison-operators)
-- [If, Else If, & Else](#if-else-if--else)
-- [Ternary Operator](#ternary-operator)
-- [Elvis Operator](#elvis-operator)
-- [Safe Navigation Operator](#safe-navigation-operator)
-- [Switch, Case, & Default](#switch-case--default)
-- [While Loops](#while-loops)
-- [Common Mistakes](#common-mistakes)
-- [Best Practices Summary](#best-practices-summary)
-- [Related Documentation](#related-documentation)
-
 ## 💻 Conditionals in Code
 
 Let's explore conditional operations with practical examples:

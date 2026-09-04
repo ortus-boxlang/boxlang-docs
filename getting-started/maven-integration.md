@@ -21,16 +21,6 @@ The Maven integration in BoxLang works through a simple but powerful mechanism:
 * **Runtime Integration**: BoxLang automatically loads all JARs from the `lib/` folder
 * **Simple Workflow**: Add dependencies, run `mvn install`, and start using Java libraries immediately
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Installing Maven](#installing-maven)
-- [Setting Up Maven Integration](#setting-up-maven-integration)
-- [Working with Dependencies](#working-with-dependencies)
-- [Common Use Cases](#common-use-cases)
-- [Troubleshooting](#troubleshooting)
-- [Best Practices](#best-practices)
-
 ## Installing Maven
 
 Before you can use Maven integration, you need to have Maven installed on your system.

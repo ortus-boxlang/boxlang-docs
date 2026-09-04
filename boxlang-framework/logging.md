@@ -11,21 +11,6 @@ BoxLang ships with a production-ready logging system built on top of [Logback](h
 BoxLang logging is powered by **Logback** under the hood, which means all of its rolling-file, encoder, and appender semantics apply directly. You do not need to configure Logback yourself — BoxLang wraps it cleanly — but knowledge of Logback concepts (loggers, appenders, encoders, additivity) will help you understand the more advanced options.
 {% endhint %}
 
-## 📋 Table of Contents
-
-- [Quick Start](#quick-start)
-- [Log Levels](#log-levels)
-- [writeLog() BIF](#writelog-bif)
-- [bx:log Component](#bxlog-component)
-- [Built-In Named Loggers](#built-in-named-loggers)
-- [Configuration Reference](#configuration-reference)
-- [Custom Named Loggers](#custom-named-loggers)
-- [Logger Categories](#logger-categories)
-- [JSON Structured Logging](#json-structured-logging)
-- [LoggingService API](#loggingservice-api)
-- [Logging Interceptors](#logging-interceptors)
-- [Best Practices](#best-practices)
-
 ---
 
 ## Quick Start

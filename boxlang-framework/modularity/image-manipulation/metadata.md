@@ -8,15 +8,6 @@ icon: circle-info
 
 Learn how to read and extract EXIF and IPTC metadata from images.
 
-## Table of Contents
-
-- [What is Metadata?](#what-is-metadata)
-- [Reading EXIF Metadata](#reading-exif-metadata)
-- [Reading IPTC Metadata](#reading-iptc-metadata)
-- [Common EXIF Tags](#common-exif-tags)
-- [Common IPTC Tags](#common-iptc-tags)
-- [Practical Examples](#practical-examples)
-
 ## What is Metadata?
 
 Image metadata is embedded information about the image and how it was created:

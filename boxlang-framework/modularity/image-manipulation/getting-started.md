@@ -8,15 +8,6 @@ icon: lightbulb
 
 This guide will help you get up and running with image manipulation in BoxLang.
 
-## Table of Contents
-
-- [Creating Images](#creating-images)
-- [Reading Images](#reading-images)
-- [Basic Operations](#basic-operations)
-- [Method Chaining](#method-chaining)
-- [Saving Images](#saving-images)
-- [Working with BoxImage](#working-with-boximage)
-
 ## Creating Images
 
 There are several ways to create or load images in BoxLang:

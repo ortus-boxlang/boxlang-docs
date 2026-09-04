@@ -9,18 +9,6 @@ icon: rotate-reverse
 
 Learn how to resize, rotate, crop, flip, and transform images in BoxLang.
 
-## Table of Contents
-
-- [Resizing Images](#resizing-images)
-- [Scaling Images](#scaling-images)
-- [Rotating Images](#rotating-images)
-- [Cropping Images](#cropping-images)
-- [Flipping & Transposing](#flipping--transposing)
-- [Shearing](#shearing)
-- [Image Splitting](#image-splitting)
-- [Translation](#translation)
-- [Drawing Axis Transformations](#drawing-axis-transformations)
-
 ## Resizing Images
 
 ### Resize to Exact Dimensions

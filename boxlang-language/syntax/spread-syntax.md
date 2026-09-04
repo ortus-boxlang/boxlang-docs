@@ -13,16 +13,6 @@ Spread syntax uses `...` to expand arrays and structs into **function calls** an
 
 BoxLang also supports **struct shorthand keys**, which pair naturally with spread-heavy code.
 
-## 📋 Table of Contents
-
-* [Function call spread](spread-syntax.md#-function-call-spread)
-* [Array literal spread](spread-syntax.md#-array-literal-spread)
-* [Struct literal spread](spread-syntax.md#-struct-literal-spread)
-* [Struct shorthand keys](spread-syntax.md#-struct-shorthand-keys)
-* [Spread-only bracket literals](spread-syntax.md#-spread-only-bracket-literals)
-* [Merge precedence](spread-syntax.md#-merge-precedence)
-* [Common errors](spread-syntax.md#-common-errors)
-
 ## 🚀 Function call spread
 
 Use spread in a function call to expand an array as positional arguments or a struct as named arguments.

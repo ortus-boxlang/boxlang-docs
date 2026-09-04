@@ -13,19 +13,6 @@ icon: flask-vial
 Want to learn these testing ideas hands-on? [BoxLings](https://github.com/ortus-boxlang/boxlings) teaches BoxLang with visible TestBox specs so you can practice BDD/TDD while learning the language.
 {% endhint %}
 
-### Table of Contents
-
-1. [Why Testing Matters](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#why-testing-matters)
-2. [Introduction to TestBox](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#introduction-to-testbox)
-3. [Installation and Setup](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#installation-and-setup)
-4. [BDD (Behavior Driven Development)](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#bdd-behavior-driven-development)
-5. [TDD (Test Driven Development)](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#tdd-test-driven-development)
-6. [Assertions and Expectations](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#assertions-and-expectations)
-7. [Mocking and Stubbing](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#mocking-and-stubbing)
-8. [Running Tests](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#running-tests)
-9. [Advanced Testing Patterns](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#advanced-testing-patterns)
-10. [Best Practices](https://claude.ai/chat/8804f97a-54e8-4212-8dbc-53377a26d039#best-practices)
-
 ### Why Testing Matters
 
 Testing is not just a good practice—it's **imperative** for building reliable, maintainable BoxLang applications. Here's why:

@@ -9,15 +9,6 @@ icon: screwdriver-wrench
 
 Image properties, format support, validation functions, and color reference.
 
-## Table of Contents
-
-* [Image Properties](utilities.md#image-properties)
-* [Format Support](utilities.md#format-support)
-* [Validation Functions](utilities.md#validation-functions)
-* [Color Reference](utilities.md#color-reference)
-* [Image Information](utilities.md#image-information)
-* [Binary Operations](utilities.md#binary-operations)
-
 ## Image Properties
 
 ### Get Image Dimensions

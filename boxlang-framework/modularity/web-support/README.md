@@ -8,29 +8,6 @@ icon: globe-pointer
 
 Mock web server for testing BoxLang web applications in CLI runtime. Simulates HTTP requests/responses without needing an actual web server.
 
-## 📋 Table of Contents
-
-- [📋 Table of Contents](#-table-of-contents)
-- [⚠️ Warning](#️-warning)
-- [📦 Installation](#-installation)
-- [⚙️ Configuration](#️-configuration)
-- [🚀 Quick Start](#-quick-start)
-- [🔧 BIF Reference](#-bif-reference)
-  - [mockServerGet()](#mockserverget)
-  - [mockRequestNew()](#mockrequestnew)
-  - [mockRequestRun()](#mockrequestrun)
-- [💡 Examples](#-examples)
-  - [Basic GET Request](#basic-get-request)
-  - [POST with JSON](#post-with-json)
-  - [Request with Authentication](#request-with-authentication)
-  - [Form Submission](#form-submission)
-- [🔗 Fluent API](#-fluent-api)
-- [🧪 Testing Patterns](#-testing-patterns)
-  - [Test Isolation](#test-isolation)
-  - [Multiple Requests](#multiple-requests)
-  - [Response Inspection](#response-inspection)
-- [📚 Resources](#-resources)
-
 ## ⚠️ Warning
 
 **DO NOT install this module into a BoxLang web-runtime!** This module is for CLI runtime testing or mocking only and will cause JAR conflicts in web server environments. Not needed for CommandBox or MiniServer.

@@ -8,17 +8,6 @@ icon: distribute-spacing-vertical
 
 Template includes are BoxLang's server-side inclusion mechanism that **embeds one template into another** at runtime. When you include a template, it becomes part of the current execution context with **complete access to all scopes** in the including template.
 
-## 📋 Table of Contents
-
-- [What Are Includes?](#what-are-includes)
-- [Include Syntax](#include-syntax)
-- [Scope Absorption](#scope-absorption)
-- [Template Path Resolution](#template-path-resolution)
-- [Configuration](#configuration)
-- [Use Cases](#use-cases)
-- [Best Practices](#best-practices)
-- [Includes vs Other Patterns](#includes-vs-other-patterns)
-
 ## 🎯 What Are Includes?
 
 An **include** is a file that is **embedded** (or **included**) within another file, making it part of the current execution. The included template has **complete access** to the including template's scopes.

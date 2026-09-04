@@ -11,17 +11,6 @@ In BoxLang, variables are just pointers to a piece of data. They can hold **any*
 Practice these concepts interactively in [BoxLings](https://github.com/ortus-boxlang/boxlings), especially the variables-focused exercises and test-driven prompts.
 {% endhint %}
 
-## 📋 Table of Contents
-
-* [Variable Types](variables.md#variable-types)
-* [Variable Declaration](variables.md#variable-declaration)
-* [Variable Naming Rules](variables.md#variable-naming-rules)
-* [Variable Scoping](variables.md#variable-scoping)
-* [Type Checking](variables.md#type-checking)
-* [Variable Assignment](variables.md#variable-assignment)
-* [Complex Variables](variables.md#complex-variables)
-* [Best Practices](variables.md#best-practices)
-
 ```javascript
 a = "string" // string
 b = now() // datetime

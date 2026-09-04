@@ -28,22 +28,6 @@ database.port=5432
 * **Memory Efficient:** Lazy loading and caching for optimal performance
 * **Cross-Platform:** Works consistently across different operating systems
 
-## 📋 Table of Contents
-
-- [What are Property Files?](#what-are-property-files)
-- [Getting Started](#getting-started)
-- [Reading Properties](#reading-properties)
-- [Writing Properties](#writing-properties)
-- [Saving Property Files](#saving-property-files)
-- [Formatting and Comments](#formatting-and-comments)
-- [Advanced Operations](#advanced-operations)
-- [Common Usage Patterns](#common-usage-patterns)
-- [Data Export and Conversion](#data-export-and-conversion)
-- [Error Handling](#error-handling)
-- [Best Practices](#best-practices)
-- [Performance Tips](#performance-tips)
-- [Integration Examples](#integration-examples)
-
 ## 🚀 Getting Started
 
 ### Creating a PropertyFile Object

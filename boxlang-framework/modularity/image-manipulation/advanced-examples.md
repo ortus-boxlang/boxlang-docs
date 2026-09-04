@@ -7,18 +7,6 @@ icon: user-ninja
 
 Real-world examples demonstrating practical image manipulation techniques.
 
-## Table of Contents
-
-- [Watermarking Images](#watermarking-images)
-- [Thumbnail Generation](#thumbnail-generation)
-- [Image Compositing](#image-compositing)
-- [Dynamic Graphics](#dynamic-graphics)
-- [Photo Processing Pipelines](#photo-processing-pipelines)
-- [CAPTCHA Generation](#captcha-generation)
-- [Grid Splitting](#grid-splitting)
-- [Batch Processing](#batch-processing)
-- [Image Optimization](#image-optimization)
-
 ## Watermarking Images
 
 ### Text Watermark

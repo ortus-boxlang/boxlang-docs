@@ -7,21 +7,6 @@ icon: arrows-turn-to-dots
 
 BoxLang provides **native threading constructs** for simple asynchronous execution, allowing you to execute code in separate threads. Threads are independent streams of execution that can run simultaneously and asynchronously within a single request.
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [When to Use Threading vs Async Programming](#when-to-use-threading-vs-async-programming)
-- [Thread Syntax](#thread-syntax)
-- [Thread Actions](#thread-actions)
-- [Thread Scopes](#thread-scopes)
-- [Thread Debugging](#thread-debugging)
-- [Built-In Functions (BIFs)](#built-in-functions-bifs)
-- [Virtual Threads (Java 21+)](#virtual-threads-java-21)
-- [Thread Metadata](#thread-metadata)
-- [`threadCurrent()`](#threadcurrent) — Get current JVM Thread
-- [Best Practices](#best-practices)
-- [Common Pitfalls](#common-pitfalls)
-
 ## 🎯 Overview
 
 BoxLang threading allows you to:

@@ -7,16 +7,6 @@ icon: paintbrush
 
 Learn how to draw shapes, lines, curves, and text on images in BoxLang.
 
-## Table of Contents
-
-- [Setup & Configuration](#setup--configuration)
-- [Drawing Shapes](#drawing-shapes)
-- [Drawing Lines](#drawing-lines)
-- [Drawing Curves](#drawing-curves)
-- [Drawing Text](#drawing-text)
-- [Advanced Drawing](#advanced-drawing)
-- [Drawing Axis Transformations](#drawing-axis-transformations)
-
 ## Setup & Configuration
 
 Before drawing, configure colors, strokes, and rendering options:

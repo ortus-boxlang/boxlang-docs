@@ -18,22 +18,6 @@ result = new Person().getName();
 // Result: "Brad"
 ```
 
-## 📋 Table of Contents
-
-* [Defining Template Classes](template-classes.md#defining-template-classes)
-* [Instantiating](template-classes.md#instantiating)
-* [Hoisting](template-classes.md#hoisting)
-* [Multiple Classes](template-classes.md#multiple-classes)
-* [Properties and Constructors](template-classes.md#properties-and-constructors)
-* [Static Members](template-classes.md#static-members)
-* [Inheritance](template-classes.md#inheritance)
-* [Final and Abstract](template-classes.md#final-and-abstract)
-* [Java Interoperability](template-classes.md#java-interoperability)
-* [Imports](template-classes.md#imports)
-* [Metadata](template-classes.md#metadata)
-* [Templates](template-classes.md#templates)
-* [Naming Restrictions](template-classes.md#naming-restrictions)
-
 ## 📥 Defining Template Classes
 
 A template class is declared using the `class` keyword with a **name**, inline in a `.bxs` script or `.bxm` template:

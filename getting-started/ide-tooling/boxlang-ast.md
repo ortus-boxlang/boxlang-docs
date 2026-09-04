@@ -17,16 +17,6 @@ For example, the code `x = 1 + 2;` would be represented as an AST with:
 * A binary operation node for addition
 * Literal nodes for values `1` and `2`
 
-## 📋 Table of Contents
-
-- [What is an AST?](#what-is-an-ast)
-- [BoxAST() BIF](#boxast-bif)
-- [Output Formats](#output-formats)
-- [Node Types](#node-types)
-- [Common Use Cases](#common-use-cases)
-- [AST Analysis Examples](#ast-analysis-examples)
-- [Best Practices](#best-practices)
-
 ## 📋 BoxAST() BIF
 
 The `BoxAST()` function parses BoxLang or CFML source code and returns its AST representation.

@@ -37,17 +37,6 @@ Chromebooks provide excellent development capabilities through their built-in Li
 **Pro Tip**: The Linux environment runs in a secure container that's isolated from Chrome OS, providing a safe development space while maintaining system security.
 {% endhint %}
 
-## 📋 Table of Contents
-
-- [Requirements](#requirements)
-- [Accessing the Linux Terminal](#accessing-the-linux-terminal)
-- [Installing Java](#installing-java)
-- [Installing BoxLang](#installing-boxlang)
-- [Installing VS Code](#installing-vs-code)
-- [Creating Your First App](#creating-your-first-app)
-- [Troubleshooting](#troubleshooting)
-- [Best Practices](#best-practices)
-
 ## Accessing the Linux Terminal
 
 You'll interact with the Linux development environment through the **Terminal** application, which provides full command-line access to your Debian container.

@@ -8,18 +8,6 @@ icon: shield-cross
 
 Locking is essential for multi-threaded applications where multiple requests or threads access shared resources. BoxLang's locking system uses Java's **ReentrantReadWriteLock** internally, providing robust, high-performance synchronization with support for both exclusive (write) and readonly (read) locks.
 
-## 📋 Table of Contents
-
-- [Lock Basics](#lock-basics)
-- [Lock Types](#lock-types)
-- [Named Locking](#named-locking)
-- [Scope Locking](#scope-locking)
-- [Lock Attributes](#lock-attributes)
-- [Double-Check Locking Pattern](#double-check-locking-pattern)
-- [Deadlock Prevention](#deadlock-prevention)
-- [Advanced: Java Interop Locking](#advanced-java-interop-locking)
-- [Best Practices](#best-practices)
-
 ## 🎯 Lock Basics
 
 BoxLang provides the `lock` component/construct for thread-safe synchronization:

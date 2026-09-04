@@ -9,16 +9,6 @@ icon: person-walking-arrow-right
 
 Guide for migrating from Adobe ColdFusion or Lucee image functions to BoxLang Image Module.
 
-## Table of Contents
-
-* [Compatibility Overview](migration-guide.md#compatibility-overview)
-* [Syntax Differences](migration-guide.md#syntax-differences)
-* [Function Mapping](migration-guide.md#function-mapping)
-* [Component Differences](migration-guide.md#component-differences)
-* [Known Limitations](migration-guide.md#known-limitations)
-* [Migration Checklist](migration-guide.md#migration-checklist)
-* [Common Migration Patterns](migration-guide.md#common-migration-patterns)
-
 ## Compatibility Overview
 
 We have full compatibility with Adobe ColdFusion and Lucee image functions in BoxLang. The core API, function signatures, and behavior remain consistent across platforms.

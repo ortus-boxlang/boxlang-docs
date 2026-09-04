@@ -28,22 +28,6 @@ result = new Outer().getInner().getValue();
 // Result: "inner"
 ```
 
-## 📋 Table of Contents
-
-* [Defining Inner Classes](inner-classes.md#defining-inner-classes)
-* [Instantiating Inner Classes](inner-classes.md#instantiating-inner-classes)
-* [Multiple Inner Classes](inner-classes.md#multiple-inner-classes)
-* [Nested Inner Classes](inner-classes.md#nested-inner-classes)
-* [Inheritance](inner-classes.md#inheritance)
-* [Static Members](inner-classes.md#static-members)
-* [Accessing Outer Class Statics](inner-classes.md#accessing-outer-class-statics)
-* [Hoisting](inner-classes.md#hoisting)
-* [External Access](inner-classes.md#external-access)
-* [Importing Inner Classes](inner-classes.md#importing-inner-classes)
-* [Metadata](inner-classes.md#metadata)
-* [Java Interoperability](inner-classes.md#java-interoperability)
-* [Naming Restrictions](inner-classes.md#naming-restrictions)
-
 ## 📥 Defining Inner Classes
 
 An inner class is declared using the `class` keyword with a **name**, inside the body of an outer class:

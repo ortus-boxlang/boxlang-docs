@@ -15,17 +15,6 @@ Destructuring lets you unpack values from **structs** and **arrays** into variab
 
 It works in declarations like `var` and in assignments.
 
-## 📋 Table of Contents
-
-* [Struct destructuring](destructuring.md#-struct-destructuring)
-* [Array destructuring](destructuring.md#-array-destructuring)
-* [Declarations vs assignments](destructuring.md#-declarations-vs-assignments)
-* [Defaults](destructuring.md#-defaults)
-* [Nested patterns](destructuring.md#-nested-patterns)
-* [Rest bindings](destructuring.md#-rest-bindings)
-* [Scoped targets](destructuring.md#-scoped-targets)
-* [Common errors](destructuring.md#-common-errors)
-
 ## 🧩 Struct destructuring
 
 Struct destructuring binds keys by name.

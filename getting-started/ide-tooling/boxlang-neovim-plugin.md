@@ -10,33 +10,6 @@ icon: terminal
 
 Vim syntax highlighting for BoxLang - a dynamic JVM language and runtime.
 
-## 📑 Table of Contents
-
-* [📑 Table of Contents](boxlang-neovim-plugin.md#-table-of-contents)
-* [📖 Overview](boxlang-neovim-plugin.md#-overview)
-* [✨ Features](boxlang-neovim-plugin.md#-features)
-  * [BoxLang Script Syntax (`.bx`, `.bxs`)](boxlang-neovim-plugin.md#boxlang-script-syntax-bx-bxs)
-  * [BoxLang Template Syntax (`.bxm`)](boxlang-neovim-plugin.md#boxlang-template-syntax-bxm)
-* [⚡ Installation](boxlang-neovim-plugin.md#-installation)
-  * [Using lazy.nvim (Lua)](boxlang-neovim-plugin.md#using-lazynvim-lua)
-  * [Using vim-plug](boxlang-neovim-plugin.md#using-vim-plug)
-  * [Using Vundle](boxlang-neovim-plugin.md#using-vundle)
-  * [Using Pathogen](boxlang-neovim-plugin.md#using-pathogen)
-  * [Manual Installation](boxlang-neovim-plugin.md#manual-installation)
-  * [NeoVim](boxlang-neovim-plugin.md#neovim)
-* [📄 File Extensions](boxlang-neovim-plugin.md#-file-extensions)
-* [⚙️ Manual Filetype Setting](boxlang-neovim-plugin.md#️-manual-filetype-setting)
-* [🎨 Syntax Highlighting Examples](boxlang-neovim-plugin.md#-syntax-highlighting-examples)
-  * [Script Example (`.bx`, `.bxs`)](boxlang-neovim-plugin.md#script-example-bx-bxs)
-  * [Template Example (`.bxm`)](boxlang-neovim-plugin.md#template-example-bxm)
-* [🚀 BoxLang-Specific Features](boxlang-neovim-plugin.md#-boxlang-specific-features)
-* [🎨 Customization](boxlang-neovim-plugin.md#-customization)
-* [📁 Code Folding](boxlang-neovim-plugin.md#-code-folding)
-* [🔧 Troubleshooting](boxlang-neovim-plugin.md#-troubleshooting)
-  * [Syntax highlighting not working](boxlang-neovim-plugin.md#syntax-highlighting-not-working)
-  * [Colors look wrong](boxlang-neovim-plugin.md#colors-look-wrong)
-* [🤝 Contributing](boxlang-neovim-plugin.md#-contributing)
-
 ## 📖 Overview
 
 ![BoxLang Syntax Highlighting Example](../../.gitbook/assets/vim-boxlang-class.png)

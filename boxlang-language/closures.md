@@ -8,19 +8,6 @@ icon: square-arrow-right
 
 Closures are one of BoxLang's most powerful features for functional programming. They are anonymous functions that **capture and retain access to variables from their surrounding scope** - even after the outer function has finished executing.
 
-## 📋 Table of Contents
-
-- [What Makes Closures Special?](#what-makes-closures-special)
-- [Closure Syntax](#closure-syntax)
-- [Assigned Closures](#assigned-closures)
-- [Returned Closures (Higher-Order Functions)](#returned-closures-higher-order-functions)
-- [Passed Closures (Callbacks)](#passed-closures-callbacks)
-- [Delayed Execution](#delayed-execution)
-- [Closures & Variable Scoping](#closures--variable-scoping)
-- [Memory Considerations](#memory-considerations)
-- [Common Patterns](#common-patterns)
-- [Best Practices](#best-practices)
-
 ## 🎭 What Makes Closures Special?
 
 **Functions (UDFs)**, **closures**, and **lambdas** are all objects in BoxLang, but there are crucial differences:

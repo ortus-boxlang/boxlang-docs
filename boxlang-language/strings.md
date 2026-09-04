@@ -7,18 +7,6 @@ icon: spell-check
 
 In BoxLang, strings are a type of variable that is used to store collections of letters and numbers. Usually defined within single or double quotes ( `'` or `"` ). Some simple strings would be `"hello"` or `"This sentence is a string!"`. Strings can be anything from `""`, the empty string, to long sets of text.
 
-## 📋 Table of Contents
-
-- [Java String Interoperability](#java-string-interoperability)
-- [Character Extractions](#character-extractions)
-- [String Literals](#string-literals)
-- [String Concatenation](#string-concatenation)
-- [String Interpolation](#string-interpolation)
-- [String Member Functions](#string-member-functions)
-- [String Case Methods](#string-case-methods)
-- [Common String Operations](#common-string-operations)
-- [StringBuilder (Fast Concatenation)](string-builder.md)
-
 ## 🔤 Java String Interoperability
 
 The underlying type for a string in BoxLang is the native Java [String](https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html), which is **immutable**, meaning it can never change. Thus, a new string object is always created when concatenating strings together.

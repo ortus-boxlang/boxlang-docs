@@ -5,19 +5,6 @@ icon: code
 
 # 🔖 XML
 
-## 📋 Table of Contents
-
-- [What is XML in BoxLang?](#what-is-xml-in-boxlang)
-- [Creating XML Objects](#creating-xml-objects)
-- [Accessing XML Data](#accessing-xml-data)
-- [Modifying XML](#modifying-xml)
-- [XML Attributes](#xml-attributes)
-- [XML Namespaces](#xml-namespaces)
-- [XPath Queries](#xpath-queries)
-- [XML Validation](#xml-validation)
-- [XSLT Transformations](#xslt-transformations)
-- [Best Practices](#best-practices)
-
 ## 🙋 What is XML in BoxLang?
 
 XML (eXtensible Markup Language) is a markup language that defines rules for encoding documents in a format that is both human-readable and machine-readable. BoxLang provides a comprehensive XML type that implements the `IStruct` interface, allowing you to work with XML documents using familiar struct-like syntax while maintaining full DOM (Document Object Model) functionality.

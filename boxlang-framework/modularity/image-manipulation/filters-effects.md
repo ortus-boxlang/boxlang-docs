@@ -7,14 +7,6 @@ icon: sparkles
 
 Apply visual effects like blur, sharpen, grayscale, and color adjustments to your images.
 
-## Table of Contents
-
-- [Color Adjustments](#color-adjustments)
-- [Blur Effects](#blur-effects)
-- [Sharpen Effects](#sharpen-effects)
-- [Image Compositing](#image-compositing)
-- [Combining Effects](#combining-effects)
-
 ## Color Adjustments
 
 ### Grayscale Conversion

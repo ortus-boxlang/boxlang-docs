@@ -21,28 +21,6 @@ Everything the starter gives you out of the box:
 - SQLite datasource pre-configured via `Application.bx`
 - Full packaging flow for macOS, Windows, and Linux
 
-## 📋 Table of Contents
-
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
-- [Project Structure](#project-structure)
-- [Configuration](#configuration)
-- [BoxLang Web Layer](#boxlang-web-layer)
-- [Frontend Layer](#frontend-layer)
-- [Desktop Layer](#desktop-layer)
-- [Development Workflow](#development-workflow)
-- [Coding Your Application](#coding-your-application)
-- [Electron Forge](#electron-forge)
-- [Building and Distributing](#building-and-distributing)
-- [Code Signing](#code-signing)
-- [Auto Updates](#auto-updates)
-- [Debugging](#debugging)
-- [Publishers](#publishers)
-- [Cross-Platform Considerations](#cross-platform-considerations)
-- [Troubleshooting](#troubleshooting)
-- [Resources](#resources)
-
 ## 🏗️ Architecture
 
 The architecture separates three concerns that each own their layer:

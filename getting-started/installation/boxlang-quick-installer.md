@@ -102,22 +102,6 @@ apk add --no-cache bash curl unzip jq openjdk21
 # Java 21 automatically installed with --with-jre option
 ```
 
-## 📋 Table of Contents
-
-* [Quick Start](boxlang-quick-installer.md#quick-start)
-* [Prerequisites](boxlang-quick-installer.md#prerequisites)
-* [Installation Options](boxlang-quick-installer.md#installation-options)
-* [Command Options](boxlang-quick-installer.md#command-options)
-* [What Gets Installed](boxlang-quick-installer.md#what-gets-installed)
-* [Help Command](boxlang-quick-installer.md#help-command)
-* [Detailed Usage](boxlang-quick-installer.md#detailed-usage)
-* [Running Applications](boxlang-quick-installer.md#running-applications)
-* [Configuration](boxlang-quick-installer.md#configuration)
-* [Troubleshooting](boxlang-quick-installer.md#troubleshooting)
-* [Resources](boxlang-quick-installer.md#resources)
-* [License](boxlang-quick-installer.md#license)
-* [Support](boxlang-quick-installer.md#support)
-
 ## 📦 Installation Options
 
 ### Option 1: Single-Version Installer (Recommended for Most Users)

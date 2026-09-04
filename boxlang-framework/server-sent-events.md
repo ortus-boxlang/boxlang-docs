@@ -24,21 +24,6 @@ Server-Sent Events is a standard web technology that allows servers to push data
 
 ---
 
-## 📋 Table of Contents
-
-- [What are Server-Sent Events?](#what-are-server-sent-events)
-- [SSE Creation vs Consumption](#sse-creation-vs-consumption)
-- [SSE() BIF - Creating Streams](#sse-bif---creating-streams)
-- [Usage Examples](#usage-examples)
-- [Client-Side JavaScript](#client-side-javascript)
-- [Implementation Features](#implementation-features)
-- [Best Practices](#best-practices)
-- [Security Considerations](#security-considerations)
-- [Related Resources](#related-resources)
-- [Additional Examples](#additional-examples)
-- [SSE Consumption - Connecting to Remote Streams](#sse-consumption---connecting-to-remote-streams)
-- [Summary](#summary)
-
 ## 🔄 SSE Creation vs Consumption
 
 BoxLang provides both sides of the SSE equation:
