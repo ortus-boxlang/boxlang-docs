@@ -63,7 +63,7 @@ result=[string] />
 | `endTime` | `string` | `false` |  |  |
 | `repeat` | `integer` | `false` |  |  |
 | `exclude` | `string` | `false` |  |  |
-| `port` | `integer` | `false` |  | `80` |
+| `port` | `integer` | `false` | Optional HTTP port override for the URL. When omitted, the URL's own scheme determines the default port (e.g. `443` for `https`, `80` for `http`) |  |
 | `username` | `string` | `false` |  |  |
 | `password` | `string` | `false` |  |  |
 | `proxyServer` | `string` | `false` |  |  |
