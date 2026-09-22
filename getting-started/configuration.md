@@ -13,6 +13,10 @@ BoxLang has an installation-level configuration file that allows developers to a
 All runtimes allow for configuration overrides.
 {% endhint %}
 
+{% hint style="success" %}
+**New in 1.18.0+:** The OS CLI runner (`boxlang`) also auto-discovers a `.boxlang.json` file in the **current working directory** — the same convention already used by the MiniServer. It only applies when no config file was already supplied via `BOXLANG_CONFIG` or `--bx-config`, so an explicit override always wins. See [CLI Scripting](running-boxlang/cli-scripting.md#configuration-file-discovery) for details.
+{% endhint %}
+
 ## boxlang.json
 
 Once you startup a runtime, the runtime will find the `BOXLANG_HOME`and create the `config/boxlang.json`file with the defaults that it ships with.  You may also change the granular config settings at runtime using the environment or Java properties by prefixing any configuration item with `BOXLANG_`or `boxlang.`  See below.

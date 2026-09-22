@@ -297,6 +297,38 @@ The `.env` format is `KEY=VALUE`, one per line. Lines starting with `#` are comm
 Never commit `~/.box.env` or a project `.env` containing real secrets to version control. Add `.env` to your `.gitignore`.
 {% endhint %}
 
+### Configuration File Discovery
+
+{% hint style="success" %}
+**New in 1.18.0+**
+{% endhint %}
+
+In addition to `.env` files, the CLI runner also auto-discovers a `.boxlang.json` configuration file in the **current working directory** — the directory you run `boxlang` from. This is the same cwd convention already used by the MiniServer, so a project can carry one `.boxlang.json` that both the CLI and MiniServer pick up automatically.
+
+This only applies when no config file was already supplied via `BOXLANG_CONFIG` or `--bx-config` — an explicit override always wins over the cwd convention.
+
+Resulting precedence (highest wins):
+
+1. `--bx-config <path>` / `BOXLANG_CONFIG` env var
+2. `.boxlang.json` in the current working directory
+3. `${BOXLANG_HOME}/config/boxlang.json` (defaults to `~/.boxlang/config/boxlang.json`)
+4. Built-in runtime defaults
+
+```bash
+# Drop a .boxlang.json next to your scripts...
+cd myproject/
+ls
+# .boxlang.json  task.bx
+
+# ...and it's picked up automatically, no flag needed
+boxlang task.bx
+
+# An explicit --bx-config still overrides the cwd convention file
+boxlang --bx-config ./other-config.json task.bx
+```
+
+For the full configuration file reference, see [Runtime Configuration](../configuration.md).
+
 ### Examples of CLI Options
 
 ```bash
