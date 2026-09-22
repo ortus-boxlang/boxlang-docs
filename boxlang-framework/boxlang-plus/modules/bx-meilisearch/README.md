@@ -6,7 +6,7 @@ icon: magnifying-glass
 # Meilisearch +
 
 {% hint style="danger" %}
-This module is only available to [+/++ subscribers only](https://ww.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/) with a limited trial.
+This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/) with a limited trial.
 {% endhint %}
 
 The BoxLang Meilisearch module adds native access to the fast, lightweight [Meilisearch](https://www.meilisearch.com/) search engine. It provides a fluent, BoxLang-native wrapper around the Meilisearch HTTP API so you can create indexes, manage documents, run searches, and monitor async tasks from your BoxLang code.
