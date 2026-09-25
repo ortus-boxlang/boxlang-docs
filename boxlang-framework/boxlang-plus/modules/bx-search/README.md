@@ -5,12 +5,7 @@ icon: magnifying-glass
 
 # Search +
 
-The BoxLang+ Licensed edition of the **bx-search** module equips your BoxLang+
-applications with full-text search capabilities — ideal for product catalogs,
-document repositories, knowledge bases, and log search workflows.
-
-This module provides comprehensive full-text search functionality for BoxLang,
-including:
+The BoxLang+ Licensed edition of the **bx-search** module provides comprehensive full-text search functionality for BoxLang, including:
 
 - **CFML-compatible components** — `<bx:collection>`, `<bx:index>`, and `<bx:search>` with corresponding `cfcollection` / `cfindex` / `cfsearch` components in CFML files for compatibility
 - **Fluent `SearchNew()` BIF** — a chainable `SearchBuilder` API for building and executing searches using a fluent syntax
@@ -18,9 +13,10 @@ including:
 - **Attachment indexing** — index PDF, Word, and other binary files via the Elasticsearch/OpenSearch ingest-attachment pipeline or Apache Tika (Solr)
 - **CFML `QUERY` result format** — `<bx:search>` returns a standard BoxLang `Query` with all expected columns (`KEY`, `TITLE`, `SUMMARY`, `URL`, `SCORE`, `RANK`, `CUSTOM1`–`CUSTOM4`, etc.)
 
-> ⚠️ **This module is for BoxLang+ subscribers.** It can be evaluated with a
-> limited trial alongside the [bx-plus module](https://boxlang.io/plans). Learn
-> more at [https://boxlang.io/plans](https://boxlang.io/plans).
+
+{% hint style="danger" %}
+This module is only available to [+/++ subscribers only](https://www.boxlang.io/plans) but can be installed in conjunction with the [`bx-plus` Module](../bx-plus/) with a limited trial.
+{% endhint %}
 
 ---
 
