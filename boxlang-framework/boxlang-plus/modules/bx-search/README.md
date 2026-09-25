@@ -1,7 +1,5 @@
 ---
-description: >-
-  Equips BoxLang+ applications with full-text search capabilities — ideal for product catalogs,
-  document repositories, knowledge bases, and log search workflows
+description: Equips BoxLang+ applications with full-text search capabilities — ideal for product catalogs, document repositories, knowledge bases, and log search workflows
 icon: icon: magnifying-glass
 ---
 
