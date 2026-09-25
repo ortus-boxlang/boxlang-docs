@@ -1,6 +1,6 @@
 ---
 description: Equips BoxLang+ applications with full-text search capabilities — ideal for product catalogs, document repositories, knowledge bases, and log search workflows
-icon: icon: magnifying-glass
+icon: magnifying-glass
 ---
 
 # Search +
