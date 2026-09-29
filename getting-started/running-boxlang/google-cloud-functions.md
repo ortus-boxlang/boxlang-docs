@@ -44,12 +44,16 @@ HTTP Request
     -> Google Cloud Functions Gen 2 (java21)
     -> FunctionRunner (HttpFunction)
     -> RequestMapper (HttpRequest -> event struct)
-    -> Route resolution (first URI segment -> PascalCase -> .bx file)
+    -> Route resolution (URI path -> routing table built at cold start -> .bx file)
     -> Handler compilation/load (cached on warm invocations)
     -> Method resolution (x-bx-function header or run)
     -> BoxLang handler method execution
     -> ResponseMapper (response struct -> HttpResponse)
 ```
+
+{% hint style="danger" %}
+**Security note**: Only files under a `handlers/` directory (or listed in a build-time `manifest.json`) are ever eligible routing targets. Earlier versions of this runtime (before 1.18.0) routed to *any* `.bx` file at the function root, including `Application.bx` and `Lambda.bx` themselves, which allowed an unauthenticated request to reach lifecycle callbacks and any other public method via the `x-bx-function` header. If you're on an older runtime, upgrade to 1.18.0+ and move your routed handlers into `handlers/`.
+{% endhint %}
 
 ## ⚡ Cold Start, Warm Start, and Debug Mode
 
@@ -83,6 +87,12 @@ Run tests once to verify your environment:
 
 ```bash
 ./gradlew clean test
+```
+
+Regenerate `manifest.json` from `src/main/bx/handlers/` any time (also runs automatically before `test`, `runFunction`, and `buildLambdaZip`):
+
+```bash
+./gradlew generateManifest
 ```
 
 ## 🧪 Launch Locally
@@ -242,39 +252,48 @@ class {
 
 ## 🛣️ Convention-Based Routing
 
-The runtime supports multi-routing by resolving the first URI path segment into a PascalCase `.bx` handler file.
+The runtime supports multi-routing by resolving the URI path against a routing table built once at cold start, from files under `src/main/bx/handlers/`.
 
-Routing algorithm:
+Routing algorithm (built once, at cold start - never per request):
 
-1. Read the first path segment from the request URI.
-1. Convert it to PascalCase.
-1. Look for `<Segment>.bx` under `BOXLANG_GCP_ROOT`.
-1. Fall back to `Lambda.bx` if no file is found.
+1. If `manifest.json` exists at the function root and is valid, use it as the routing table directly. No filesystem scanning happens.
+1. Otherwise, if `handlers/` exists, scan it once (recursively - nested folders are supported) and log a `WARNING` listing every handler registered.
+1. Otherwise, scan the function root itself once, for backward compatibility with deployments that predate the `handlers/` convention - always excluding `Application.bx` and the default handler class, regardless of what's on disk - and log the same `WARNING`.
+
+At request time, the resolved table is matched against the full URI path, longest-prefix first, so `/products/categories/electronics` still falls through to a flat `products` route when no more specific route is registered. A request to a route that isn't registered anywhere just runs `Lambda.bx`, same as if routing had never happened.
 
 ### URI to Handler Mapping
 
 | Request URI | Resolved Handler |
 | --- | --- |
 | `/` | `Lambda.bx` |
-| `/customers` | `Customers.bx` |
-| `/customers/123` | `Customers.bx` |
-| `/products` | `Products.bx` |
-| `/user-profiles` | `UserProfiles.bx` |
-| `/api_endpoints` | `ApiEndpoints.bx` |
+| `/customers` | `handlers/Customers.bx` |
+| `/customers/123` | `handlers/Customers.bx` |
+| `/products` | `handlers/Products.bx` |
+| `/user-profiles` | `handlers/UserProfiles.bx` |
+| `/api/test` | `handlers/api/Test.bx` (nested) |
 | `/unknown` | `Lambda.bx` |
 
 ### Multi-Handler Layout
 
 ```text
 src/main/bx/
-  Application.bx
-  Lambda.bx        # fallback and root route
-  Customers.bx     # handles /customers/**
-  Products.bx      # handles /products/**
-  UserProfiles.bx  # handles /user-profiles/**
+  Application.bx     # never a routing target
+  Lambda.bx           # fallback and root route
+  manifest.json        # generated, see below
+  handlers/
+    Customers.bx      # handles /customers/**
+    Products.bx       # handles /products/**
+    UserProfiles.bx   # handles /user-profiles/**
+    api/
+      Test.bx          # handles /api/test (nested)
 ```
 
-The first segment selects the class. Remaining URI segments are still available via `event.path` for your own parsing.
+The resolved segment(s) select the class; only the leaf `.bx` filename needs to be PascalCase, folder names under `handlers/` can be any case and are matched case-insensitively. Remaining URI segments are still available via `event.path` for your own parsing.
+
+### `manifest.json` and cold start
+
+The starter's `generateManifest` Gradle task scans `handlers/` and writes `manifest.json` next to `Lambda.bx`, wired automatically into `test`, `runFunction`, and `buildLambdaZip` so it can never silently drift out of date. It's gitignored - fully regenerated, never edited by hand or committed. If it's ever missing or invalid at cold start, the runtime falls back to scanning `handlers/` (or the function root) directly, and logs a `WARNING` in your function logs listing every handler it discovered - check your logs if routing looks off after a deploy that skipped `generateManifest`.
 
 ### Multi-Routing Handler Example
 
@@ -325,6 +344,10 @@ This gives you two dispatch layers:
 
 - URI path selects the handler class
 - `x-bx-function` selects the method in that class
+
+{% hint style="info" %}
+`x-bx-function` can only ever reach a `public` (or `remote`) method - BoxLang's own scope rules mean a `private` method is never even visible to the runtime's dispatch mechanism, the same rule that governs any other BoxLang class. Don't mark a method public if you don't want it externally callable this way.
+{% endhint %}
 
 ## ⚙️ Runtime Environment Variables
 
@@ -429,5 +452,6 @@ Run only the shipped integration test:
 ## 📝 Notes
 
 - The starter currently keeps handlers in `src/main/bx`, not `src/main/resources`.
+- Routed handlers live under `src/main/bx/handlers/`; `Lambda.bx` and `Application.bx` stay at the project root and are never routing targets.
 - Local launch uses `-PtestPort` and `-PdebugMode` flags.
 - For this starter, deployment source is the generated ZIP in `build/distributions`.
