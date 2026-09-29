@@ -74,6 +74,7 @@
   * [Modules](getting-started/installation/modules.md)
 * [Running BoxLang](getting-started/running-boxlang/README.md)
   * [AWS Lambda](getting-started/running-boxlang/aws-lambda.md)
+  * [Azure Functions](getting-started/running-boxlang/azure-functions.md)
   * [CommandBox](getting-started/running-boxlang/commandbox.md)
   * [Chromebooks](getting-started/running-boxlang/chromebooks.md)
   * [CLI Scripting](getting-started/running-boxlang/cli-scripting.md)
