@@ -45,7 +45,7 @@ The BoxLang Azure runtime provides a pre-built Java entry point already configur
 {% endhint %}
 
 {% hint style="info" %}
-You can see the code for the handler here: [https://github.com/ortus-boxlang/boxlang-azure-functions/blob/development/src/main/java/ortus/boxlang/runtime/azure/AzureFunctionRunner.java](https://github.com/ortus-boxlang/boxlang-azure-functions/blob/development/src/main/java/ortus/boxlang/runtime/azure/AzureFunctionRunner.java)
+You can see the code for the handler here: [https://github.com/ortus-boxlang/boxlang-azure-functions](https://github.com/ortus-boxlang/boxlang-azure-functions)
 {% endhint %}
 
 The handler will look for a `Lambda.bx` in your package and execute the `run()` method by convention - the same default handler filename used across all three BoxLang serverless runtimes.
