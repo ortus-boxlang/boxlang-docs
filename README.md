@@ -7,7 +7,7 @@ icon: house-window
 
 <figure><img src=".gitbook/assets/logo-gradient-dark.png" alt=""><figcaption></figcaption></figure>
 
-**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, AWS Lambda, Google Cloud Functions, DigitalOcean, iOS, Android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern, functional and expressive syntax.
+**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes: operating system (Windows/Mac/\*nix/Embedded), web server, AWS Lambda, Google Cloud Functions, Azure Functions, DigitalOcean, iOS, Android, web assembly, and more. BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern, functional and expressive syntax.
 
 <figure><img src=".gitbook/assets/bl-runtime-bg.png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
 

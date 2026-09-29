@@ -17,7 +17,7 @@ The currently available and in-development runtimes are the following:
 | :--- | :--- | :--- |
 | **Android** | Ability to run BoxLang in Android Devices | *In Planning* |
 | [**AWS Lambda**](../running-boxlang/aws-lambda.md) | Ability to run BoxLang with AWS Lambda | **Available** |
-| **Azure Functions** | Ability to run BoxLang with Microsoft Functions | *In Progress* |
+| [**Azure Functions**](../running-boxlang/azure-functions.md) | Ability to run BoxLang with Microsoft Azure Functions | **Available** |
 | [**CommandBox**](../running-boxlang/commandbox.md) | A BoxLang engine for CommandBox | **Available** |
 | [**Docker**](../running-boxlang/docker.md) | BoxLang CLI, MiniServer and CommandBox images | **Available** |
 | **Desktop** | BoxLang native Desktop Applications | **Available** |

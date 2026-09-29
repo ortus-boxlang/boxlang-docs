@@ -9,6 +9,10 @@ Run BoxLang handlers on Google Cloud Functions Gen 2 using the Java 21 runtime a
 
 This page matches the current starter project and runtime behavior.
 
+{% hint style="success" %}
+BoxLang serverless functions are portable across providers. The same handler code written for Google Cloud Functions also runs unmodified on [AWS Lambda](aws-lambda.md) and [Azure Functions](azure-functions.md), giving you a single codebase you can deploy anywhere.
+{% endhint %}
+
 ## 🚀 What You Get
 
 - BoxLang handler files in `src/main/bx`

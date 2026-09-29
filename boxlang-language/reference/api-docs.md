@@ -20,6 +20,10 @@ https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-aws-lambda/latest.ht
 
 https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-google-functions/latest.html
 
+### Azure Functions
+
+https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-azure-functions/latest.html
+
 ### Web Core Support
 
 [https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-web-support/latest.html](https://apidocs.ortussolutions.com/boxlang-runtimes/boxlang-web-support/latest.html)

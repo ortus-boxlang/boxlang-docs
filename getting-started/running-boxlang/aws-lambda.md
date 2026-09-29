@@ -7,6 +7,10 @@ icon: aws
 
 <figure><img src="../../.gitbook/assets/lambda.png" alt=""><figcaption></figcaption></figure>
 
+{% hint style="success" %}
+BoxLang serverless functions are portable across providers. The same handler code written for AWS Lambda also runs unmodified on [Google Cloud Functions](google-cloud-functions.md) and [Azure Functions](azure-functions.md), giving you a single codebase you can deploy anywhere.
+{% endhint %}
+
 ## What is AWS Lambda?
 
 <figure><img src="../../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
