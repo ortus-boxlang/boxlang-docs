@@ -9,6 +9,8 @@ icon: list-check
 
 Use this checklist to get a BoxLang project ready for an AI agent, then use the recipes to put it to work.
 
+Want a working example instead of building this from scratch? [cbGenesis](https://cbgenesis.coldbox.org) is a ColdBox starter that already checks every box below.
+
 ## ✅ Project Checklist
 
 * [ ] `AGENTS.md` describes the project, commands, and code standards. See [AI Setup](ai-setup.md).

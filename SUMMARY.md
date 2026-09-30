@@ -93,6 +93,7 @@
   * [Google Cloud Functions](getting-started/running-boxlang/google-cloud-functions.md)
   * [JSR-223 Scripting](getting-started/running-boxlang/jsr-223-scripting.md)
   * [MiniServer](getting-started/running-boxlang/miniserver.md)
+  * [Web Applications](getting-started/running-boxlang/web-applications.md)
   * [Spring Boot](getting-started/running-boxlang/spring-boot.md)
   * [Try BoxLang!](getting-started/running-boxlang/try-boxlang.md)
   * [MatchBox](getting-started/running-boxlang/matchbox.md)
