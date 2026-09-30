@@ -329,6 +329,32 @@ You'll rarely need to run this by hand - it's wired as a dependency of `test`, `
 
 If it's ever missing or invalid at cold start, the runtime falls back to scanning `handlers/` (or the function root, gated behind `BOXLANG_ENABLE_ROOT_SCAN`) directly, and logs a `WARNING` in your function logs listing every handler it discovered - check your logs if routing looks off after a deploy that skipped `generateManifest`.
 
+### 🔧 Application Lifecycle
+
+Your project's root `Application.bx` fires for **every** invocation - no matter which handler ends up serving it, the default `Lambda.bx` or any routed class under `handlers/`. There's a single `Application.bx` per deployment; you don't need (and can't have) a separate one per handler.
+
+```js
+class {
+
+    this.name = "My-Google-Cloud-Function"
+
+    function onApplicationStart(){
+        // Runs once, on cold start - initialize datasources, caches, etc.
+        return true
+    }
+
+    function onRequestStart( targetPage ){
+        // Runs before every invocation, regardless of which handler is resolved
+        return true
+    }
+
+}
+```
+
+{% hint style="info" %}
+This means a datasource, cache region, or interceptor registered in `onApplicationStart()` is available to every handler in `handlers/`, not just `Lambda.bx`. If your handler is missing configuration you expected `Application.bx` to provide, confirm it lives at the function root (`src/main/bx/Application.bx`) alongside `Lambda.bx`, not nested under `handlers/`.
+{% endhint %}
+
 ### Multi-Routing Handler Example
 
 ```js
@@ -395,6 +421,7 @@ This gives you two dispatch layers:
 | `K_SERVICE` | Function name (set by GCF) |
 | `K_REVISION` | Function revision (set by GCF) |
 | `GOOGLE_CLOUD_PROJECT` | Project ID (set by GCF) |
+| `GCLOUD_PROJECT` | Fallback project ID, used only when `GOOGLE_CLOUD_PROJECT` is unset (set by some GCF generations/emulators) |
 
 ## 🏗️ Build Deployable Artifacts
 
