@@ -39,10 +39,15 @@ AI agents are most productive on platforms that are predictable, well documented
 
 * **One runtime, few moving parts.** Files, HTTP, databases, async, caching, scheduling, logging and AI ship with the platform, so agents do not have to choose and wire up dozens of libraries.
 * **Conventions agents can follow.** Consistent project layouts, `Application.bx` lifecycle, modules and configuration.
-* **Skills and guidelines.** Installable `SKILL.md` playbooks teach your agent how to do specific BoxLang tasks the idiomatic way.
+* **Skills and guidelines.** Installable `SKILL.md` playbooks teach your agent how to do specific BoxLang tasks the idiomatic way. Browse them at [skills.boxlang.io](https://skills.boxlang.io) and install the BoxLang developer set with `npx skills add ortus-boxlang/skills/boxlang-developer`.
+* **Fast validation.** `boxlang check` validates syntax without running code, so agents can verify every edit.
 * **Docs over MCP.** The BoxLang documentation is available as an MCP server at `https://boxlang.ortusbooks.com/~gitbook/mcp`, so agents read current docs instead of guessing.
 * **Live runtime introspection.** With BoxLang+, the `bx-mcp` module lets an agent inspect a running server through MCP, with access control built in.
 * **Java under the hood.** 100% Java interoperability gives agents the entire JVM ecosystem when they need it.
+
+{% content-ref url="getting-started/agentic-development/" %}
+[agentic-development](getting-started/agentic-development/)
+{% endcontent-ref %}
 
 ```mermaid
 flowchart LR
@@ -106,6 +111,7 @@ See the [installation guide](getting-started/installation/) for Windows, Homebre
 
 ## 🧭 Where to Go Next
 
+* 🤖 [Agentic Development](getting-started/agentic-development/) - set up your project, skills, MCP servers and IDE for AI agents.
 * 📘 [Overview](getting-started/overview/) - what BoxLang is and how it is put together.
 * 🛠️ [Installation](getting-started/installation/) and [Running BoxLang](getting-started/running-boxlang/) - every runtime and deployment target.
 * 🔁 [Running CFML Apps](getting-started/overview/running-coldfusion-cfml-apps/) - modernize Adobe ColdFusion and Lucee applications.
