@@ -13,6 +13,10 @@ icon: medal
 
 The open-source edition is powerful and will remain free. **BoxLang+ simply adds capabilities that help you deploy at scale with confidence.**
 
+{% hint style="success" %}
+**Try every BoxLang+ module free for 60 days.** There is nothing to sign up for. The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed, so you can test whether your idea, update or migration works with no friction. When you are ready for enterprise support and the full productivity stack, [join us](https://www.boxlang.io/plans).
+{% endhint %}
+
 ## 🎯 Why BoxLang+
 
 BoxLang+ focuses on pragmatic value for engineering teams:
@@ -63,7 +67,7 @@ BoxLang+ encourages modern deployment patterns:
 
 ## 🏁 Getting Started
 
-1. Evaluate open source features in a sandbox or dev environment.
+1. Evaluate open source features and try the BoxLang+ modules free for 60 days in a sandbox or dev environment.
 2. Identify premium modules or SLAs your team will benefit from.
 3. Acquire a BoxLang+ subscription via official channels.
 4. Install modules using CommandBox or the BoxLang CLI ( see the individual module docs for installation instructions )
