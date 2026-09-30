@@ -9,9 +9,17 @@ icon: crosshairs-simple
 
 <figure><img src="../../.gitbook/assets/image (10).png" alt=""><figcaption><p>BoxLang</p></figcaption></figure>
 
-**BoxLang** is a modern dynamic JVM language that can be deployed on multiple runtimes, including all operating systems, web servers, Java application servers, AWS Lambda, Google Cloud Functions, Azure Functions, iOS, Android, web assembly, and more.
+**BoxLang is the software productivity platform for building, modernizing and running applications, with developers and AI agents working together.**
+
+At its core is a modern dynamic JVM language that deploys on multiple runtimes, including all operating systems, web servers, Java application servers, AWS Lambda, Google Cloud Functions, Azure Functions, iOS, Android, web assembly, and more. Around that language sits a batteries-included runtime and framework for files, HTTP, databases, async, caching, scheduling, templating, and AI.
 
 BoxLang combines many features from different programming languages, including Java, CFML, Python, Ruby, Go, and PHP, to provide developers with a modern, fluent, and expressive syntax. It has been designed to be a highly modular and dynamic language that takes advantage of all the modern features of the JVM.
+
+It is **built for developers**, **built for AI**, and **built to ship**: predictable conventions that AI agents can follow, professional open source you can start with for free, and enterprise support and premium modules when you need them.
+
+{% hint style="success" %}
+**Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Learn more on the [BoxLang+ page](../../boxlang-framework/boxlang-plus/README.md) or the [plans page](https://www.boxlang.io/plans).
+{% endhint %}
 
 ### Goals <a href="#goals-3" id="goals-3"></a>
 
