@@ -44,6 +44,10 @@ AI agents are most productive on platforms that are predictable, well documented
 * **Live runtime introspection.** With BoxLang+, the `bx-mcp` module lets an agent inspect a running server through MCP, with access control built in.
 * **Java under the hood.** 100% Java interoperability gives agents the entire JVM ecosystem when they need it.
 
+{% content-ref url="getting-started/agentic-development/" %}
+[agentic-development](getting-started/agentic-development/)
+{% endcontent-ref %}
+
 ```mermaid
 flowchart LR
     Dev[Developer] --> Agent[AI Agent]
@@ -106,6 +110,7 @@ See the [installation guide](getting-started/installation/) for Windows, Homebre
 
 ## 🧭 Where to Go Next
 
+* 🤖 [Agentic Development](getting-started/agentic-development/) - set up your project, skills, MCP servers and IDE for AI agents.
 * 📘 [Overview](getting-started/overview/) - what BoxLang is and how it is put together.
 * 🛠️ [Installation](getting-started/installation/) and [Running BoxLang](getting-started/running-boxlang/) - every runtime and deployment target.
 * 🔁 [Running CFML Apps](getting-started/overview/running-coldfusion-cfml-apps/) - modernize Adobe ColdFusion and Lucee applications.

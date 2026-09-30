@@ -1,0 +1,72 @@
+---
+description: >-
+  BoxLang is built for AI agents and developers working together. Learn how to
+  set up your project, skills, MCP servers, and IDE for agentic development.
+icon: robot
+---
+
+# Agentic Development
+
+BoxLang is a software productivity platform built for developers **and** the AI agents working beside them. Agents build better software on platforms that are predictable, well documented, and complete. This section shows how to set up a BoxLang project so your agent is productive from the first prompt.
+
+## 🎯 Why BoxLang Works Well for Agents
+
+| Trait | What it means for an agent |
+| --- | --- |
+| **Batteries included** | Files, HTTP, JDBC, async, caching, scheduling, templating, logging, and AI ship with the platform. The agent wires up fewer libraries and makes fewer choices. |
+| **Conventions** | `Application.bx` lifecycle, module layouts, configuration in `boxlang.json`, and consistent BIF naming give agents patterns to follow. |
+| **Skills** | Installable `SKILL.md` playbooks teach the agent how to perform specific BoxLang tasks the idiomatic way. |
+| **Docs over MCP** | The documentation is available to agents as MCP servers, so they read current docs instead of guessing. |
+| **Live introspection** | With BoxLang+, the `bx-mcp` module lets an agent inspect a running server through MCP, with access control. |
+| **Java underneath** | 100% Java interoperability gives the agent the whole JVM ecosystem when it needs it. |
+| **One runtime, many targets** | The same code runs on the CLI, web servers, containers, and serverless platforms. |
+
+## 🧰 The Agentic Toolkit
+
+```mermaid
+flowchart LR
+    Dev[Developer] --> Agent[AI Agent]
+    Agent --> Guide[AGENTS.md]
+    Agent --> Skills[Skills]
+    Agent --> DocsMCP[Docs MCP Servers]
+    Agent --> Code[BoxLang Code]
+    Code --> Runtime[BoxLang Runtime]
+    Runtime --> BxMcp[bx-mcp Live Introspection]
+    BxMcp --> Agent
+```
+
+{% content-ref url="ai-setup.md" %}
+[ai-setup.md](ai-setup.md)
+{% endcontent-ref %}
+
+{% content-ref url="skills-and-guidelines.md" %}
+[skills-and-guidelines.md](skills-and-guidelines.md)
+{% endcontent-ref %}
+
+{% content-ref url="boxlang-mcp.md" %}
+[boxlang-mcp.md](boxlang-mcp.md)
+{% endcontent-ref %}
+
+{% content-ref url="boxlang-ide.md" %}
+[boxlang-ide.md](boxlang-ide.md)
+{% endcontent-ref %}
+
+{% content-ref url="agent-ready-checklist.md" %}
+[agent-ready-checklist.md](agent-ready-checklist.md)
+{% endcontent-ref %}
+
+## 🚀 Fastest Path
+
+1. Install [BoxLang](../installation/README.md).
+2. Add a project `AGENTS.md` and install skills. See [AI Setup](ai-setup.md).
+3. Connect the docs MCP servers. See [AI Setup](ai-setup.md#docs-mcp-servers).
+4. Building a web application? Use [ColdBox](https://coldbox.ortusbooks.com/getting-started/agentic-development) and its `coldbox ai install` wizard.
+5. Want your agent to see a running server? Try [BoxLang MCP](boxlang-mcp.md).
+
+{% hint style="success" %}
+**Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Enterprise support and premium modules are available when you [join us](https://www.boxlang.io/plans).
+{% endhint %}
+
+## 🤖 Building AI Features, Not Just With AI
+
+Agentic development is about using agents to write your application. BoxLang also lets you build AI into your application with chat, agents, tools, memory, RAG, and MCP through the [BoxLang AI](https://ai.ortusbooks.com) module.
