@@ -71,6 +71,10 @@ flowchart LR
 6. Want your agent to see a running server? Try [BoxLang MCP](boxlang-mcp.md).
 
 {% hint style="success" %}
+**Building a BoxLang web app? Start from [cbGenesis](https://cbgenesis.coldbox.org).** It's a production-ready ColdBox starter with `AGENTS.md`, 90+ framework skills, and six project-specific skills already wired in - the fastest way to build a BoxLang web application with an AI agent at hand. In one measured run, an agent using cbGenesis's skills needed 42% fewer tool calls and 34% less time than one exploring the same codebase from scratch. `coldbox create app skeleton=cbgenesis`
+{% endhint %}
+
+{% hint style="success" %}
 **Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Enterprise support and premium modules are available when you [join us](https://www.boxlang.io/plans).
 {% endhint %}
 
