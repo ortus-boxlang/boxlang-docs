@@ -133,4 +133,4 @@ AI in production needs more than a model call. BoxLang AI includes middleware fo
 * [Quick Start Guide](https://ai.ortusbooks.com/getting-started/quickstart)
 * [Installation](https://ai.ortusbooks.com/getting-started/installation)
 * [Built-In Function Reference](https://ai.ortusbooks.com/advanced/reference/built-in-functions)
-* [BoxLang AI MCP server for your agent](https://ai.ortusbooks.com/~gitbook/mcp)
+* Docs MCP server for your agent: `https://ai.ortusbooks.com/~gitbook/mcp`

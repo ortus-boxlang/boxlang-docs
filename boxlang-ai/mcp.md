@@ -100,7 +100,7 @@ ColdBox routes can expose agents and MCP servers directly with `toAi()` and `toM
 
 ## 🔍 Go Deeper
 
-* [MCP Servers](https://ai.ortusbooks.com/mcp/server)
-* [Getting Started with MCP Servers](https://ai.ortusbooks.com/mcp/server/getting-started)
-* [Transports (HTTP and STDIO)](https://ai.ortusbooks.com/mcp/server/transports)
-* [MCP Clients](https://ai.ortusbooks.com/mcp/client)
+* [MCP Servers](https://ai.ortusbooks.com/model-context-protocol-mcp/server)
+* [Getting Started with MCP Servers](https://ai.ortusbooks.com/model-context-protocol-mcp/server/getting-started)
+* [Transports (HTTP and STDIO)](https://ai.ortusbooks.com/model-context-protocol-mcp/server/transports)
+* [MCP Clients](https://ai.ortusbooks.com/model-context-protocol-mcp/client)
