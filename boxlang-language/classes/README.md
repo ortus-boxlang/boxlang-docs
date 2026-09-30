@@ -138,7 +138,7 @@ The `createObject()` function is still valid and useful for dynamic, legacy, or 
 user = createObject( "class", "User" ).init( name="luis" )
 ```
 
-In later chapters we will investigate the concept of [dependency injection](../../extra-credit/dependency-injection.md). Please also note that the `createObject()` function can also be used to create different types of objects in BoxLang like:
+In later chapters we will investigate the concept of [dependency injection](https://wirebox.ortusbooks.com). Please also note that the `createObject()` function can also be used to create different types of objects in BoxLang like:
 
 * BoxLang Classes
 * Java Objects

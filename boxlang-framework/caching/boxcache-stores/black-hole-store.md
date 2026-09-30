@@ -195,7 +195,7 @@ This makes it perfect for high-iteration tests where actual cache storage would 
 
 * [BoxCache Overview](../README.md)
 * [Cache Configuration](../../../getting-started/configuration/caches.md)
-* [Testing Guide](../../../extra-credit/testing.md)
+* [Testing Guide](../../testing.md)
 * [ConcurrentStore](concurrent-store.md) - For real in-memory caching
 * [FileSystemStore](file-system-store.md) - For persistent caching
 * [JDBCStore](jdbc-store.md) - For distributed caching

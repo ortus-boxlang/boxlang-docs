@@ -67,7 +67,7 @@ flowchart LR
 2. Install the BoxLang developer skills: `npx skills add ortus-boxlang/skills/boxlang-developer`. See [Skills & Guidelines](skills-and-guidelines.md).
 3. Add a project `AGENTS.md` and connect the docs MCP servers. See [AI Setup](ai-setup.md).
 4. Have your agent validate every edit with `boxlang check`. See [Validate Your Code](validate-your-code.md).
-5. Building a web application? Use [ColdBox](https://coldbox.ortusbooks.com/getting-started/agentic-development) and its `coldbox ai install` wizard.
+5. Building a web application? Use [ColdBox](../../boxlang-framework/mvc.md) and its `coldbox ai install` wizard.
 6. Want your agent to see a running server? Try [BoxLang MCP](boxlang-mcp.md).
 
 {% hint style="success" %}

@@ -1545,9 +1545,5 @@
   * [Troubleshooting](boxlang-framework/module-development/troubleshooting.md)
 * [SOAP Web Services](boxlang-framework/soap.md)
 * [Server-Sent Events (SSE)](boxlang-framework/server-sent-events.md)
-
-## Extra Credit
-
-* [Testing](extra-credit/testing.md)
-* [MVC](extra-credit/mvc.md)
-* [Dependency Injection](extra-credit/dependency-injection.md)
+* [Agentic MVC with ColdBox](boxlang-framework/mvc.md)
+* [Agentic Testing with TestBox](boxlang-framework/testing.md)

@@ -11,7 +11,7 @@ This repository contains the comprehensive documentation for **BoxLang** - a mod
 - **`boxlang-language/`** - Core language documentation (syntax, BIFs, components)
 - **`boxlang-framework/`** - Framework features (async programming, caching, modularity)
 - **`getting-started/`** - Installation, configuration, IDE tooling
-- **`extra-credit/`** - Advanced topics (DI, MVC, testing)
+- **`boxlang-ai/`** - BoxLang AI section (chat, agents, tools, memory, RAG, MCP, governance)
 - **`readme/`** - Project meta information, contributing guidelines
 
 ### Documentation Types
