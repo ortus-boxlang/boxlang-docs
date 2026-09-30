@@ -73,6 +73,7 @@ The following are all the environment variables the Azure Functions runtime can 
 | `BOXLANG_AZURE_CLASS` | Absolute path to the default handler to execute. The default is `Lambda.bx` at the function root. |
 | `BOXLANG_AZURE_DEBUGMODE` | Turn runtime debug mode on or off. When enabled, disables handler-class caching so `.bx` changes are picked up immediately, and enables verbose logging. |
 | `BOXLANG_AZURE_CONFIG` | Absolute path to a custom `boxlang.json` configuration for the runtime. Defaults to `boxlang.json` in the function root. |
+| `BOXLANG_ENABLE_ROOT_SCAN` | Opts out of the legacy root-directory scan used only when neither `manifest.json` nor `handlers/` is present. Defaults to `true`. Set to `false` to restrict that fallback scenario to the default handler only. Shared across every BoxLang serverless runtime (AWS/GCP/Azure). |
 
 You can also leverage ANY environment variable to configure the BoxLang runtime using our runtime [environment conventions](../configuration.md).
 
@@ -256,6 +257,8 @@ The runtime supports automatic routing using a **`handlers/` directory conventio
 
 {% hint style="danger" %}
 **Security note**: Only files under a `handlers/` directory (or listed in a build-time `manifest.json`) are ever eligible routing targets. `Application.bx` and the default `Lambda.bx` are never routable, no matter what's on disk.
+
+If neither `manifest.json` nor `handlers/` exists, the runtime falls back to scanning the function root for backward compatibility with pre-`handlers/` deployments - this can expose internal `.bx` classes that were never meant to be URI-routable. Set `BOXLANG_ENABLE_ROOT_SCAN=false` to disable that fallback entirely; only the default handler will then be reachable in that scenario.
 {% endhint %}
 
 When your function is exposed as a URL, the runtime automatically routes to different BoxLang classes under `src/main/bx/handlers/` based on the URI path:
@@ -340,7 +343,9 @@ Hyphens are converted to PascalCase for the **leaf filename only**. Subdirectori
 
 You'll rarely need to run this by hand - it's wired as a dependency of `test`, `azureFunctionsRun`, `azureFunctionsPackage`, and `azureFunctionsDeploy`, so it's always regenerated before you test, run, package, or deploy. `manifest.json` is gitignored; never edit it by hand or commit it, since any change you make is overwritten on the next build.
 
-If it's ever missing or invalid at cold start (for example, a deployment package built without running `generateManifest`), the runtime falls back to scanning `handlers/` directly, and if that directory doesn't exist either, to scanning the function root for backward compatibility with pre-`handlers/` deployments - always excluding `Application.bx` and `Lambda.bx` from that last, legacy tier. Either fallback logs a `WARNING` in your function logs listing every handler it discovered and registered, so a stale or missing manifest is never a silent surprise - check Application Insights / the Azure portal's log stream if routing looks off after a deploy.
+**`reserved` and `defaultHandler` are enforced, not just documentation**: the runtime actively rejects any `handlers` entry whose target file matches a name in `reserved` (merged with the built-in `Application.bx` and default-handler names), so a manifest can never route to a reserved file no matter what it lists. `defaultHandler.file`/`method` is honored as the handler for unmatched routes - falling back to `Lambda.bx`/`run()` when absent, invalid, or pointing at a file that doesn't exist. Every `handlers` entry's `file` is also checked for existence at cold start; a listed file that isn't actually there is skipped with a warning rather than silently registered.
+
+If it's ever missing or invalid at cold start (for example, a deployment package built without running `generateManifest`), the runtime falls back to scanning `handlers/` directly, and if that directory doesn't exist either, to scanning the function root for backward compatibility with pre-`handlers/` deployments - gated behind `BOXLANG_ENABLE_ROOT_SCAN` (default `true`) and always excluding `Application.bx` and `Lambda.bx` from that last, legacy tier. Either fallback logs a `WARNING` in your function logs listing every handler it discovered and registered, so a stale or missing manifest is never a silent surprise - check Application Insights / the Azure portal's log stream if routing looks off after a deploy.
 
 ## Multiple Functions Header
 
