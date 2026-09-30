@@ -3,6 +3,12 @@
   "ignorePatterns": [
     {
       "pattern": "^https://claude.ai"
+    },
+    {
+      "pattern": "^https://boxteam.ortussolutions.com"
+    },
+    {
+      "pattern": "^https://patreon.com/ortussolutions"
     }
   ],
   "replacementPatterns": [
