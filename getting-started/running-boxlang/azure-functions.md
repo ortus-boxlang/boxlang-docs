@@ -74,6 +74,7 @@ The following are all the environment variables the Azure Functions runtime can 
 | `BOXLANG_AZURE_DEBUGMODE` | Turn runtime debug mode on or off. When enabled, disables handler-class caching so `.bx` changes are picked up immediately, and enables verbose logging. |
 | `BOXLANG_AZURE_CONFIG` | Absolute path to a custom `boxlang.json` configuration for the runtime. Defaults to `boxlang.json` in the function root. |
 | `BOXLANG_ENABLE_ROOT_SCAN` | Opts out of the legacy root-directory scan used only when neither `manifest.json` nor `handlers/` is present. Defaults to `true`. Set to `false` to restrict that fallback scenario to the default handler only. Shared across every BoxLang serverless runtime (AWS/GCP/Azure). |
+| `AzureWebJobsScriptRoot` | Function app root directory, set automatically by the Azure Functions host. Used as the fallback for `BOXLANG_AZURE_ROOT` when that isn't set. |
 
 You can also leverage ANY environment variable to configure the BoxLang runtime using our runtime [environment conventions](../configuration.md).
 

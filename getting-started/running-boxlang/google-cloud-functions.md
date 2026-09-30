@@ -421,6 +421,7 @@ This gives you two dispatch layers:
 | `K_SERVICE` | Function name (set by GCF) |
 | `K_REVISION` | Function revision (set by GCF) |
 | `GOOGLE_CLOUD_PROJECT` | Project ID (set by GCF) |
+| `GCLOUD_PROJECT` | Fallback project ID, used only when `GOOGLE_CLOUD_PROJECT` is unset (set by some GCF generations/emulators) |
 
 ## 🏗️ Build Deployable Artifacts
 
