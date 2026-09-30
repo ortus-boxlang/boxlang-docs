@@ -904,6 +904,18 @@
       * [Zip](boxlang-language/reference/components/zip/Zip.md)
   * [Exceptions](boxlang-language/reference/Exceptions.md)
 
+## BoxLang AI
+
+* [Overview](boxlang-ai/README.md)
+  * [Chat & Structured Output](boxlang-ai/chat-and-structured-output.md)
+  * [Agents](boxlang-ai/agents.md)
+  * [Tools & Skills](boxlang-ai/tools-and-skills.md)
+  * [Memory & RAG](boxlang-ai/memory-and-rag.md)
+  * [MCP](boxlang-ai/mcp.md)
+  * [Governance & Security](boxlang-ai/governance-and-security.md)
+  * [Multimodal](boxlang-ai/multimodal.md)
+  * [Providers & Gateways](boxlang-ai/providers-and-gateways.md)
+
 ## BoxLang +/++
 
 * [BoxLang+](boxlang-framework/boxlang-plus/README.md)
