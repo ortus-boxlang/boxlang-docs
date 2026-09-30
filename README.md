@@ -31,7 +31,7 @@ icon: house-window
 | 🔐 **Security** | Configurable [runtime security](getting-started/configuration/security.md), and modules for JWT, ESAPI, CSRF, LDAP and cloud secrets managers. |
 | 🏛️ **Governance** | Control what runs and who can call it. Access-controlled MCP tooling for your runtime, and AI guardrails, human approval and audit trails for agents. |
 | 📦 **Deployment** | Run it on the OS, CommandBox, MiniServer, Docker, AWS Lambda, Azure Functions, Google Cloud Functions, Spring Boot, WebAssembly and more. Compile to bytecode. |
-| 🤖 **AI** | Chat, agents, tools, memory, RAG and MCP through one fluent API, across many providers including OpenAI, Claude, Gemini, Bedrock and local models. |
+| 🤖 **AI** | [BoxLang AI](boxlang-ai/): chat, agents, tools, memory, RAG and MCP through one fluent API, across many providers including OpenAI, Claude, Gemini, Bedrock and local models. |
 
 ## 🤖 The Easiest Platform for Agents to Build On
 
@@ -115,6 +115,7 @@ See the [installation guide](getting-started/installation/) for Windows, Homebre
 * 📘 [Overview](getting-started/overview/) - what BoxLang is and how it is put together.
 * 🛠️ [Installation](getting-started/installation/) and [Running BoxLang](getting-started/running-boxlang/) - every runtime and deployment target.
 * 🔁 [Running CFML Apps](getting-started/overview/running-coldfusion-cfml-apps/) - modernize Adobe ColdFusion and Lucee applications.
+* 🧠 [BoxLang AI](boxlang-ai/) - chat, agents, tools, memory, RAG, MCP and enterprise governance.
 * 🧩 [Modules](boxlang-framework/modularity/) - the extension ecosystem.
 * 🎓 [BoxLings](https://github.com/ortus-boxlang/boxlings) - learn BoxLang hands-on with an interactive CLI and test-driven exercises.
 

@@ -76,4 +76,4 @@ flowchart LR
 
 ## 🤖 Building AI Features, Not Just With AI
 
-Agentic development is about using agents to write your application. BoxLang also lets you build AI into your application with chat, agents, tools, memory, RAG, and MCP through the [BoxLang AI](https://ai.ortusbooks.com) module.
+Agentic development is about using agents to write your application. BoxLang also lets you build AI into your application with chat, agents, tools, memory, RAG, and MCP through the [BoxLang AI](../../boxlang-ai/README.md) module.
