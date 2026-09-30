@@ -347,6 +347,32 @@ You'll rarely need to run this by hand - it's wired as a dependency of `test`, `
 
 If it's ever missing or invalid at cold start (for example, a deployment package built without running `generateManifest`), the runtime falls back to scanning `handlers/` directly, and if that directory doesn't exist either, to scanning the function root for backward compatibility with pre-`handlers/` deployments - gated behind `BOXLANG_ENABLE_ROOT_SCAN` (default `true`) and always excluding `Application.bx` and `Lambda.bx` from that last, legacy tier. Either fallback logs a `WARNING` in your function logs listing every handler it discovered and registered, so a stale or missing manifest is never a silent surprise - check Application Insights / the Azure portal's log stream if routing looks off after a deploy.
 
+## Application Lifecycle
+
+Your project's root `Application.bx` fires for **every** invocation - no matter which handler ends up serving it, the default `Lambda.bx` or any routed class under `handlers/`. There's a single `Application.bx` per deployment; you don't need (and can't have) a separate one per handler.
+
+```java
+class {
+
+    this.name = "My-Azure-Function"
+
+    function onApplicationStart(){
+        // Runs once, on cold start - initialize datasources, caches, etc.
+        return true
+    }
+
+    function onRequestStart( targetPage ){
+        // Runs before every invocation, regardless of which handler is resolved
+        return true
+    }
+
+}
+```
+
+{% hint style="info" %}
+This means a datasource, cache region, or interceptor registered in `onApplicationStart()` is available to every handler in `handlers/`, not just `Lambda.bx`. If your handler is missing configuration you expected `Application.bx` to provide, confirm it lives at the function root (`src/main/bx/Application.bx`) alongside `Lambda.bx`, not nested under `handlers/`.
+{% endhint %}
+
 ## Multiple Functions Header
 
 The runtime also allows you to create other functions inside of your `Lambda.bx` (or any `handlers/` class) that can be targeted when your Azure Function is exposed as a URL, by using the following header when executing your function:
