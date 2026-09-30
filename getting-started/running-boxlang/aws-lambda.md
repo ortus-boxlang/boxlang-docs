@@ -88,6 +88,7 @@ The following are all the environment variables the Lambda runtime can read and 
 | `BOXLANG_LAMBDA_DEBUGMODE` | Turn runtime debug mode on or off. When enabled, provides performance metrics and detailed logging. |
 | `BOXLANG_LAMBDA_CONFIG` | Absolute path to a custom `boxlang.json` configuration for the runtime. Defaults to `/var/task/boxlang.json` |
 | `BOXLANG_LAMBDA_CONNECTION_POOL_SIZE` | **NEW**: Configure the connection pool size for database operations. Default is 2 connections. |
+| `BOXLANG_ENABLE_ROOT_SCAN` | Opts a deployment out of the legacy root-directory scan used only when neither `manifest.json` nor `handlers/` is present (see "Understanding `manifest.json`" below). Defaults to `true`. Set to `false` to restrict that fallback scenario to the default handler only. Shared across every BoxLang serverless runtime (AWS/GCP/Azure). |
 | `LAMBDA_TASK_ROOT` | Lambda deployment root directory. Defaults to `/var/task` |
 
 You can also leverage ANY environment variable to configure the BoxLang runtime using our runtime [environment conventions](../configuration.md).
@@ -346,6 +347,8 @@ The runtime supports automatic routing using **PascalCase conventions**, allowin
 
 {% hint style="danger" %}
 **Security note**: Only files under a `handlers/` directory (or listed in a build-time `manifest.json`) are ever eligible routing targets. Earlier versions of this runtime (before 1.18.0) routed to *any* `.bx` file at the project root, including `Application.bx` and `Lambda.bx` themselves, which allowed an unauthenticated request to reach lifecycle callbacks and any other public method via the `x-bx-function` header. If you're on an older runtime, upgrade to 1.18.0+ and move your routed handlers into `handlers/`.
+
+If neither `manifest.json` nor `handlers/` exists, the runtime falls back to scanning the project root for backward compatibility with pre-`handlers/` deployments — this can expose internal `.bx` classes that were never meant to be URI-routable. Set `BOXLANG_ENABLE_ROOT_SCAN=false` to disable that fallback entirely; only the default handler will then be reachable in that scenario. See the Environment Variables table above.
 {% endhint %}
 
 When your Lambda is exposed as a URL, the runtime can automatically route to different BoxLang classes under `src/main/bx/handlers/` based on the URI path:
@@ -431,7 +434,9 @@ Hyphens and underscores are converted to PascalCase for the **leaf filename only
 
 You'll rarely need to run this by hand — it's wired as a dependency of `test`, `runLocal`, `runLocalApi`, `runLocalLegacy`, and `buildLambdaZip`, so it's always regenerated before you test, run, or package. `manifest.json` is gitignored; never edit it by hand or commit it, since any change you make is overwritten on the next build.
 
-If it's ever missing or invalid at cold start (for example, a deployment package built without running `generateManifest`), the runtime falls back to scanning `handlers/` directly, and if that directory doesn't exist either, to scanning the project root for backward compatibility with pre-`handlers/` deployments — always excluding `Application.bx` and `Lambda.bx` from that last, legacy tier. Either fallback logs a `WARNING` in your Lambda logs listing every handler it discovered and registered, so a stale or missing manifest is never a silent surprise — check CloudWatch if routing looks off after a deploy.
+**`reserved` and `defaultHandler` are enforced, not just documentation**: the runtime actively rejects any `handlers` entry whose target file matches a name in `reserved` (merged with the built-in `Application.bx` and default-handler names), so a manifest can never route to a reserved file no matter what it lists. `defaultHandler.file`/`method` is honored as the handler for unmatched routes — falling back to `Lambda.bx`/`run()` when absent, invalid, or pointing at a file that doesn't exist. Every `handlers` entry's `file` is also checked for existence at cold start; a listed file that isn't actually there is skipped with a warning rather than silently registered.
+
+If `manifest.json` is ever missing or invalid at cold start (for example, a deployment package built without running `generateManifest`), the runtime falls back to scanning `handlers/` directly, and if that directory doesn't exist either, to scanning the project root for backward compatibility with pre-`handlers/` deployments — gated behind `BOXLANG_ENABLE_ROOT_SCAN` (default `true`) and always excluding `Application.bx` and `Lambda.bx` from that last, legacy tier. Either fallback logs a `WARNING` in your Lambda logs listing every handler it discovered and registered, so a stale or missing manifest is never a silent surprise — check CloudWatch if routing looks off after a deploy.
 
 ## Multiple Functions Header
 

@@ -57,6 +57,8 @@ HTTP Request
 
 {% hint style="danger" %}
 **Security note**: Only files under a `handlers/` directory (or listed in a build-time `manifest.json`) are ever eligible routing targets. Earlier versions of this runtime (before 1.18.0) routed to *any* `.bx` file at the function root, including `Application.bx` and `Lambda.bx` themselves, which allowed an unauthenticated request to reach lifecycle callbacks and any other public method via the `x-bx-function` header. If you're on an older runtime, upgrade to 1.18.0+ and move your routed handlers into `handlers/`.
+
+If neither `manifest.json` nor `handlers/` exists, the runtime falls back to scanning the function root for backward compatibility with pre-`handlers/` deployments - this can expose internal `.bx` classes that were never meant to be URI-routable. Set `BOXLANG_ENABLE_ROOT_SCAN=false` to disable that fallback entirely; only the default handler will then be reachable in that scenario.
 {% endhint %}
 
 ## ⚡ Cold Start, Warm Start, and Debug Mode
@@ -323,7 +325,9 @@ The resolved segment(s) select the class; only the leaf `.bx` filename needs to 
 
 You'll rarely need to run this by hand - it's wired as a dependency of `test`, `runFunction`, and `buildLambdaZip`, so it's always regenerated before you test, run, or package. It's gitignored; never edit it by hand or commit it, since any change you make is overwritten on the next build.
 
-If it's ever missing or invalid at cold start, the runtime falls back to scanning `handlers/` (or the function root) directly, and logs a `WARNING` in your function logs listing every handler it discovered - check your logs if routing looks off after a deploy that skipped `generateManifest`.
+**`reserved` and `defaultHandler` are enforced, not just documentation**: the runtime actively rejects any `handlers` entry whose target file matches a name in `reserved` (merged with the built-in `Application.bx` and default-handler names), so a manifest can never route to a reserved file no matter what it lists. `defaultHandler.file`/`method` is honored as the handler for unmatched routes - falling back to `Lambda.bx`/`run()` when absent, invalid, or pointing at a file that doesn't exist. Every `handlers` entry's `file` is also checked for existence at cold start; a listed file that isn't actually there is skipped with a warning rather than silently registered.
+
+If it's ever missing or invalid at cold start, the runtime falls back to scanning `handlers/` (or the function root, gated behind `BOXLANG_ENABLE_ROOT_SCAN`) directly, and logs a `WARNING` in your function logs listing every handler it discovered - check your logs if routing looks off after a deploy that skipped `generateManifest`.
 
 ### Multi-Routing Handler Example
 
@@ -387,6 +391,7 @@ This gives you two dispatch layers:
 | `BOXLANG_GCP_CLASS` | Override default handler path |
 | `BOXLANG_GCP_DEBUGMODE` | Enable verbose logging and disable class caching |
 | `BOXLANG_GCP_CONFIG` | Custom `boxlang.json` path |
+| `BOXLANG_ENABLE_ROOT_SCAN` | Opts out of the legacy root-directory scan used only when neither `manifest.json` nor `handlers/` is present. Defaults to `true`. Set to `false` to restrict that fallback scenario to the default handler only. Shared across every BoxLang serverless runtime (AWS/GCP/Azure). |
 | `K_SERVICE` | Function name (set by GCF) |
 | `K_REVISION` | Function revision (set by GCF) |
 | `GOOGLE_CLOUD_PROJECT` | Project ID (set by GCF) |
