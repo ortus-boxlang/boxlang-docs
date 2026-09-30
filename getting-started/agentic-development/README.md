@@ -35,6 +35,8 @@ flowchart LR
     Code --> Runtime[BoxLang Runtime]
     Runtime --> BxMcp[bx-mcp Live Introspection]
     BxMcp --> Agent
+    Agent --> Browser[bx-playwright Browser]
+    Browser --> Runtime
 ```
 
 {% content-ref url="ai-setup.md" %}
@@ -53,6 +55,10 @@ flowchart LR
 [boxlang-mcp.md](boxlang-mcp.md)
 {% endcontent-ref %}
 
+{% content-ref url="end-to-end-with-playwright.md" %}
+[end-to-end-with-playwright.md](end-to-end-with-playwright.md)
+{% endcontent-ref %}
+
 {% content-ref url="boxlang-ide.md" %}
 [boxlang-ide.md](boxlang-ide.md)
 {% endcontent-ref %}
@@ -69,6 +75,7 @@ flowchart LR
 4. Have your agent validate every edit with `boxlang check`. See [Validate Your Code](validate-your-code.md).
 5. Building a web application? Use [ColdBox](https://coldbox.ortusbooks.com/getting-started/agentic-development) and its `coldbox ai install` wizard.
 6. Want your agent to see a running server? Try [BoxLang MCP](boxlang-mcp.md).
+7. Want your agent to use the app it builds, in a real browser? See [Build an App End to End](end-to-end-with-playwright.md) with bx-playwright.
 
 {% hint style="success" %}
 **Building a BoxLang web app? Start from [cbGenesis](https://cbgenesis.coldbox.org).** It's a production-ready ColdBox starter with `AGENTS.md`, 90+ framework skills, and six project-specific skills already wired in - the fastest way to build a BoxLang web application with an AI agent at hand. In one measured run, an agent using cbGenesis's skills needed 42% fewer tool calls and 34% less time than one exploring the same codebase from scratch. `coldbox create app skeleton=cbgenesis`

@@ -71,6 +71,7 @@
   * [AI Setup](getting-started/agentic-development/ai-setup.md)
   * [Skills & Guidelines](getting-started/agentic-development/skills-and-guidelines.md)
   * [Validate Your Code](getting-started/agentic-development/validate-your-code.md)
+  * [Build an App End to End](getting-started/agentic-development/end-to-end-with-playwright.md)
   * [BoxLang MCP](getting-started/agentic-development/boxlang-mcp.md)
   * [BoxLang IDE](getting-started/agentic-development/boxlang-ide.md)
   * [Agent-Ready Checklist](getting-started/agentic-development/agent-ready-checklist.md)
@@ -915,6 +916,7 @@
   * [MCP](boxlang-ai/mcp.md)
   * [Governance & Security](boxlang-ai/governance-and-security.md)
   * [Multimodal](boxlang-ai/multimodal.md)
+  * [Browser Agents](boxlang-ai/browser-agents.md)
   * [Providers & Gateways](boxlang-ai/providers-and-gateways.md)
 
 ## BoxLang +/++
@@ -1458,6 +1460,7 @@
           * [VerifyBCryptHash](boxlang-framework/modularity/password-encryption/reference/built-in-functions/encrypt/verifybcrypthash.md)
           * [VerifySCryptHash](boxlang-framework/modularity/password-encryption/reference/built-in-functions/encrypt/verifyscrypthash.md)
   * [PDF](boxlang-framework/modularity/pdf/README.md)
+  * [Playwright](boxlang-framework/modularity/playwright.md)
   * [RSS](boxlang-framework/modularity/rss/README.md)
     * [Reference](boxlang-framework/modularity/rss/reference/README.md)
       * [Built-in Functions](boxlang-framework/modularity/rss/reference/built-in-functions/README.md)
