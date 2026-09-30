@@ -295,9 +295,35 @@ src/main/bx/
 
 The resolved segment(s) select the class; only the leaf `.bx` filename needs to be PascalCase, folder names under `handlers/` can be any case and are matched case-insensitively. Remaining URI segments are still available via `event.path` for your own parsing.
 
-### `manifest.json` and cold start
+### Understanding `manifest.json`
 
-The starter's `generateManifest` Gradle task scans `handlers/` and writes `manifest.json` next to `Lambda.bx`, wired automatically into `test`, `runFunction`, and `buildLambdaZip` so it can never silently drift out of date. It's gitignored - fully regenerated, never edited by hand or committed. If it's ever missing or invalid at cold start, the runtime falls back to scanning `handlers/` (or the function root) directly, and logs a `WARNING` in your function logs listing every handler it discovered - check your logs if routing looks off after a deploy that skipped `generateManifest`.
+`manifest.json` is the routing table behind the convention-based routing above. It's a plain JSON file listing every handler under `handlers/`, mapped from its route key to its relative file path, plus the default handler and the filenames that can never be routed to. The runtime reads it **once, at cold start** - it never walks the filesystem on a live request.
+
+**Example** - generated from a `handlers/Products.bx` and a nested `handlers/api/Test.bx`:
+
+```json
+{
+	"manifestVersion": 1,
+	"generatedAt": "2026-01-15T10:32:01Z",
+	"generator": "boxlang-starter-google-functions-gradle",
+	"defaultHandler": { "file": "Lambda.bx", "method": "run" },
+	"handlers": {
+		"products": { "file": "handlers/Products.bx" },
+		"api/test": { "file": "handlers/api/Test.bx" }
+	},
+	"reserved": ["Application.bx", "Lambda.bx"]
+}
+```
+
+**Creating or recreating it**: run the `generateManifest` Gradle task. It scans `handlers/` and rewrites `manifest.json` next to `Lambda.bx`:
+
+```bash
+./gradlew generateManifest
+```
+
+You'll rarely need to run this by hand - it's wired as a dependency of `test`, `runFunction`, and `buildLambdaZip`, so it's always regenerated before you test, run, or package. It's gitignored; never edit it by hand or commit it, since any change you make is overwritten on the next build.
+
+If it's ever missing or invalid at cold start, the runtime falls back to scanning `handlers/` (or the function root) directly, and logs a `WARNING` in your function logs listing every handler it discovered - check your logs if routing looks off after a deploy that skipped `generateManifest`.
 
 ### Multi-Routing Handler Example
 

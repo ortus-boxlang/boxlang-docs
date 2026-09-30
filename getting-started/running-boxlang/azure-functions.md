@@ -312,11 +312,35 @@ The routing follows these conventions:
 
 Hyphens are converted to PascalCase for the **leaf filename only**. Subdirectories under `handlers/` can use any case you like and are matched literally (lowercased), so `handlers/Api/Test.bx` and `handlers/api/Test.bx` both register as `/api/test`. Matching is case-insensitive, and the longest matching prefix wins, so a request like `/products/categories/electronics` still falls through to the flat `products` route when no more specific nested route exists - a request to a route that isn't registered anywhere just runs `Lambda.bx`, same as if routing had never happened.
 
-### `manifest.json` and cold start
+### Understanding `manifest.json`
 
-Every time you build, test, run, package, or deploy the project, a `generateManifest` Gradle task scans `handlers/` and writes `manifest.json` next to `Lambda.bx`. This is the routing table the runtime reads once at cold start - it never scans the filesystem at request time. `manifest.json` is gitignored; do not edit it by hand or commit it, it's fully regenerated from `handlers/` on every relevant build task (`test`, `azureFunctionsRun`, `azureFunctionsPackage`, `azureFunctionsDeploy`).
+`manifest.json` is the routing table behind Convention-Based URI Routing. It's a plain JSON file listing every handler under `handlers/`, mapped from its route key to its relative file path, plus the default handler and the filenames that can never be routed to. The runtime reads it **once, at cold start** - it never scans the filesystem at request time.
 
-If `manifest.json` is ever missing or invalid at cold start (for example, a deployment package built without running `generateManifest`), the runtime falls back to scanning `handlers/` directly, and if that directory doesn't exist either, to scanning the function root for backward compatibility with pre-`handlers/` deployments - always excluding `Application.bx` and `Lambda.bx` from that last, legacy tier. Either fallback logs a `WARNING` in your function logs listing every handler it discovered and registered, so a stale or missing manifest is never a silent surprise - check Application Insights / the Azure portal's log stream if routing looks off after a deploy.
+**Example** - generated from a `handlers/Products.bx` and a nested `handlers/api/Test.bx`:
+
+```json
+{
+	"manifestVersion": 1,
+	"generatedAt": "2026-01-15T10:32:01Z",
+	"generator": "boxlang-starter-azure-functions-gradle",
+	"defaultHandler": { "file": "Lambda.bx", "method": "run" },
+	"handlers": {
+		"products": { "file": "handlers/Products.bx" },
+		"api/test": { "file": "handlers/api/Test.bx" }
+	},
+	"reserved": ["Application.bx", "Lambda.bx"]
+}
+```
+
+**Creating or recreating it**: run the `generateManifest` Gradle task. It scans `handlers/` and rewrites `manifest.json` next to `Lambda.bx`:
+
+```bash
+./gradlew generateManifest
+```
+
+You'll rarely need to run this by hand - it's wired as a dependency of `test`, `azureFunctionsRun`, `azureFunctionsPackage`, and `azureFunctionsDeploy`, so it's always regenerated before you test, run, package, or deploy. `manifest.json` is gitignored; never edit it by hand or commit it, since any change you make is overwritten on the next build.
+
+If it's ever missing or invalid at cold start (for example, a deployment package built without running `generateManifest`), the runtime falls back to scanning `handlers/` directly, and if that directory doesn't exist either, to scanning the function root for backward compatibility with pre-`handlers/` deployments - always excluding `Application.bx` and `Lambda.bx` from that last, legacy tier. Either fallback logs a `WARNING` in your function logs listing every handler it discovered and registered, so a stale or missing manifest is never a silent surprise - check Application Insights / the Azure portal's log stream if routing looks off after a deploy.
 
 ## Multiple Functions Header
 
