@@ -169,6 +169,7 @@ class {
 | **CLI**                    | Scripts, automation, tools  | Application scope, no web-specific features     |
 | **AWS Lambda**             | Serverless functions        | Application scope, cold start optimization      |
 | **Google Cloud Functions** | Serverless functions        | Application scope, cold start optimization      |
+| **Azure Functions**        | Serverless functions        | Application scope, cold start optimization      |
 | **Desktop**                | Electron, JavaFX apps       | Application scope, local persistence            |
 
 {% hint style="warning" %}

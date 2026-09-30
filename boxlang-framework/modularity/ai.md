@@ -68,7 +68,7 @@ Install the BoxLang AI module via CommandBox:
 # Install at the OS level
 install-bx-module bx-ai
 
-# Use CommandBox for OS, AWS Lambda, Google Cloud Functions, and Web Runtimes
+# Use CommandBox for OS, AWS Lambda, Google Cloud Functions, Azure Functions, and Web Runtimes
 box install bx-ai
 ```
 
