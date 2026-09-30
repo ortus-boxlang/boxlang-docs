@@ -12,7 +12,8 @@ Use this checklist to get a BoxLang project ready for an AI agent, then use the 
 ## ✅ Project Checklist
 
 * [ ] `AGENTS.md` describes the project, commands, and code standards. See [AI Setup](ai-setup.md).
-* [ ] Skills are installed in `.agents/skills/` and `AGENTS.md` says when to read them. See [Skills & Guidelines](skills-and-guidelines.md).
+* [ ] BoxLang developer skills are installed (`npx skills add ortus-boxlang/skills/boxlang-developer`) and `AGENTS.md` says when to read them. See [Skills & Guidelines](skills-and-guidelines.md).
+* [ ] `boxlang check` runs after every edit. See [Validate Your Code](validate-your-code.md).
 * [ ] Documentation MCP servers are configured in your agent. See [AI Setup](ai-setup.md#docs-mcp-servers).
 * [ ] Tests run from one command and the command is in `AGENTS.md`.
 * [ ] Configuration lives in `boxlang.json` and secrets come from environment variables, not source files.
@@ -26,8 +27,9 @@ Replace the bracketed parts with your own details.
 **Build a feature**
 
 ```text
-Read AGENTS.md and the boxlang-best-practices skill. Add [feature] to this project.
-Write the tests first, then the implementation, then run the tests.
+Read AGENTS.md and the BoxLang best practices skill. Add [feature] to this project.
+Write the tests first, then the implementation. Run `boxlang check` after each edit,
+then run the tests.
 ```
 
 **Understand unfamiliar code**
@@ -40,7 +42,7 @@ any built-in functions or components you are not sure about.
 **Modernize CFML**
 
 ```text
-Read the boxlang-cfml-migration skill. Audit [directory] for CFML features that
+Read the CFML migration skill. Audit [directory] for CFML features that
 need changes to run on BoxLang, list them, then propose a migration plan
 before changing any code.
 ```

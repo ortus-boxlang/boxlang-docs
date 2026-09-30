@@ -70,6 +70,7 @@
 * [Agentic Development](getting-started/agentic-development/README.md)
   * [AI Setup](getting-started/agentic-development/ai-setup.md)
   * [Skills & Guidelines](getting-started/agentic-development/skills-and-guidelines.md)
+  * [Validate Your Code](getting-started/agentic-development/validate-your-code.md)
   * [BoxLang MCP](getting-started/agentic-development/boxlang-mcp.md)
   * [BoxLang IDE](getting-started/agentic-development/boxlang-ide.md)
   * [Agent-Ready Checklist](getting-started/agentic-development/agent-ready-checklist.md)

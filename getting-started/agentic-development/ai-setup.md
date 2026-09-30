@@ -32,6 +32,7 @@ An orders API built on BoxLang and ColdBox.
 ## Commands
 
 - Start the server: `box server start`
+- Validate syntax: `boxlang check --source ./src`
 - Run tests: `./testbox/run --directory=tests/specs`
 
 ## Code Standards
@@ -54,7 +55,13 @@ cd .claude/skills
 ln -s ../../.agents/skills/<skill-name> <skill-name>
 ```
 
-See [Skills & Guidelines](skills-and-guidelines.md) for how to install them.
+Browse [skills.boxlang.io](https://skills.boxlang.io) and install the BoxLang developer set with:
+
+```bash
+npx skills add ortus-boxlang/skills/boxlang-developer
+```
+
+See [Skills & Guidelines](skills-and-guidelines.md) for categories and individual skills.
 
 ## 📚 Docs MCP Servers
 

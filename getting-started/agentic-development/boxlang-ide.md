@@ -28,7 +28,7 @@ The developer pack includes the language support, the BoxLang theme, TestBox sup
 
 Agents can also validate their work from the terminal:
 
-* [Syntax Check](../ide-tooling/boxlang-syntax-check.md) to confirm code parses
+* [Syntax Check](validate-your-code.md) (`boxlang check`) to confirm code parses
 * [Formatter](../ide-tooling/boxlang-formatter.md) to apply consistent style
 * [AST](../ide-tooling/boxlang-ast.md) to inspect how code is parsed
 * [CFML Feature Audit](../ide-tooling/cfml-feature-audit.md) and [CFML Transpiler](../ide-tooling/cfml-to-boxlang-transpiler.md) for modernization work

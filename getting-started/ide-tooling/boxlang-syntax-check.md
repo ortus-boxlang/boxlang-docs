@@ -15,6 +15,10 @@ This makes it a great fit for:
 
 Like the other BoxLang CLI tools, syntax checking is based on our BL AST (BoxLang Abstract Syntax Tree) and the actual BL ANTLR parsers, so results are accurate for both BoxLang and CFML source.
 
+{% hint style="success" %}
+Using an AI agent? Install the `boxlang-syntax-check` skill and see [Validate Your Code](../agentic-development/validate-your-code.md) for the agent workflow.
+{% endhint %}
+
 ## Usage
 
 Make sure you have installed the OS version of [BoxLang](../installation/) so you get all the tools installed as well. Please note that the action command funnels through the `boxlang` binary, so you can use all the [CLI arguments](../running-boxlang/#other-command-line-args-10) for the `boxlang` runner.
