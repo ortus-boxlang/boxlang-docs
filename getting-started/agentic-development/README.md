@@ -35,6 +35,8 @@ flowchart LR
     Code --> Runtime[BoxLang Runtime]
     Runtime --> BxMcp[bx-mcp Live Introspection]
     BxMcp --> Agent
+    Agent --> Browser[bx-playwright Browser]
+    Browser --> Runtime
 ```
 
 {% content-ref url="ai-setup.md" %}
@@ -53,6 +55,10 @@ flowchart LR
 [boxlang-mcp.md](boxlang-mcp.md)
 {% endcontent-ref %}
 
+{% content-ref url="end-to-end-with-playwright.md" %}
+[end-to-end-with-playwright.md](end-to-end-with-playwright.md)
+{% endcontent-ref %}
+
 {% content-ref url="boxlang-ide.md" %}
 [boxlang-ide.md](boxlang-ide.md)
 {% endcontent-ref %}
@@ -69,6 +75,7 @@ flowchart LR
 4. Have your agent validate every edit with `boxlang check`. See [Validate Your Code](validate-your-code.md).
 5. Building a web application? Use [ColdBox](https://coldbox.ortusbooks.com/getting-started/agentic-development) and its `coldbox ai install` wizard.
 6. Want your agent to see a running server? Try [BoxLang MCP](boxlang-mcp.md).
+7. Want your agent to use the app it builds, in a real browser? See [Build an App End to End](end-to-end-with-playwright.md) with bx-playwright.
 
 {% hint style="success" %}
 **Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Enterprise support and premium modules are available when you [join us](https://www.boxlang.io/plans).

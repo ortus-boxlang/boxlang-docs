@@ -42,6 +42,7 @@ flowchart LR
 * **MCP** clients and servers
 * **Governance** with guardrails, prompt-injection defense, human approval, and audit trails
 * **Multimodal** audio, image generation, and web search
+* **Browser agents** that visit pages, fill forms, and click through web applications with [bx-playwright](browser-agents.md)
 
 ## ⚡ Quick Start
 

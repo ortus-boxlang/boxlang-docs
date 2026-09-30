@@ -13,6 +13,7 @@ Use this checklist to get a BoxLang project ready for an AI agent, then use the 
 
 * [ ] `AGENTS.md` describes the project, commands, and code standards. See [AI Setup](ai-setup.md).
 * [ ] BoxLang developer skills are installed (`npx skills add ortus-boxlang/skills/boxlang-developer`) and `AGENTS.md` says when to read them. See [Skills & Guidelines](skills-and-guidelines.md).
+* [ ] Web apps: `bx-playwright` is installed and `AGENTS.md` tells the agent to verify UI changes in a real browser and keep them as browser tests. See [Build an App End to End](end-to-end-with-playwright.md).
 * [ ] `boxlang check` runs after every edit. See [Validate Your Code](validate-your-code.md).
 * [ ] Documentation MCP servers are configured in your agent. See [AI Setup](ai-setup.md#docs-mcp-servers).
 * [ ] Tests run from one command and the command is in `AGENTS.md`.
