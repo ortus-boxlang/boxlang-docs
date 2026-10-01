@@ -502,7 +502,7 @@ return { statusCode: 201, body: serializeJSON( { id: 1 } ) }
 
 ## Wrapping Responses and Handling Errors
 
-`run()`, `onRequestEnd` and `onError` all receive the same `response` struct as their last argument. The value your handler returns is stored in `response.body` before `onRequestEnd` runs, so a hook can wrap or replace it. This lets you put every result in a standard ok or error object in one place:
+`run()` and every request lifecycle hook (`onRequestStart`, `onRequestEnd`, `onError`, `onAbort`) receive the same `response` struct as their last argument. The value your handler returns is stored in `response.body` before `onRequestEnd` runs, so a hook can wrap or replace it. This lets you put every result in a standard ok or error object in one place:
 
 ```js
 class {
@@ -527,6 +527,17 @@ What the caller receives for a handler that returns `{ id: 1, name: "Luis" }`, o
 | Unhandled error (no `onError`) | The invocation fails (API Gateway returns a 502) | The invocation fails |
 
 In `raw` mode `response` starts as a struct holding only a `null` body, so reading `response.body` in a hook is always safe.
+
+The request lifecycle hooks and their arguments:
+
+| Hook | Arguments |
+| --- | --- |
+| `onRequestStart` | `target`, `event`, `context`, `response` |
+| `onRequestEnd` | `target`, `event`, `context`, `response` |
+| `onError` | `exception`, `eventName`, `event`, `context`, `response` |
+| `onAbort` | `target`, `event`, `context`, `response` |
+
+`onApplicationStart` and the session hooks are fired by BoxLang itself, not per request, and receive no request data.
 
 A few rules to know:
 
