@@ -77,4 +77,3 @@ Result: 1
   * [SetNew](./SetNew.md)
   * [StructKeySet](./StructKeySet.md)
   * [StructValueSet](./StructValueSet.md)
-  * [ToSet](./ToSet.md)

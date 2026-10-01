@@ -75,7 +75,6 @@ writeDump( rand( "SHA1PRNG" ) >= 0 && rand() <= 1 );
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
-  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)

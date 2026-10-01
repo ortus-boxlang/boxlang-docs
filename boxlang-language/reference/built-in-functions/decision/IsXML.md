@@ -4,6 +4,9 @@
 
 Determines whether a string is well-formed XML text.
 
+Note, this will return true if the XML contiains things like
+ XEE (XML External Entity) or doctype definitions, which are prohibited by your XML Settings.
+
 ## Method Signature
 
 ```

@@ -989,7 +989,7 @@ Arguments:
 
 | Argument | Type | Required | Default |
 |----------|------|----------|---------|
-| `type` | `string` | `false` | `default` |
+| `type` | `string` | `false` | `null` |
 | `delimiter` | `string` | `false` | `,` |
 
 </details>

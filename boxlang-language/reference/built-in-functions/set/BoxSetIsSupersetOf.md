@@ -81,4 +81,3 @@ Result: false
   * [SetOf](./SetOf.md)
   * [StructKeySet](./StructKeySet.md)
   * [StructValueSet](./StructValueSet.md)
-  * [ToSet](./ToSet.md)

@@ -61,7 +61,6 @@ Result: 0.4913616938350069271914042463676003
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
-  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
   * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)

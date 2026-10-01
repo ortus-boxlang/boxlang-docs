@@ -70,6 +70,7 @@ Result: true
   * [GetFunctionList](./GetFunctionList.md)
   * [GetModuleInfo](./GetModuleInfo.md)
   * [GetModuleList](./GetModuleList.md)
+  * [GetModuleTree](./GetModuleTree.md)
   * [GetSemver](./GetSemver.md)
   * [GetSystemSetting](./GetSystemSetting.md)
   * [GetTempDirectory](./GetTempDirectory.md)

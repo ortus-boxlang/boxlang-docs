@@ -7,15 +7,11 @@ Compress the source file or folder to the destination file or folder using
 
 <p>
  - zip
- - gzip (It will all files separately to the destination folder)
- - bzip
- - bzip2
+ - gzip
  - tar
- - tar.bz
- - tbz
- - tbz2
- - tgz
- - tar.gz
+ - tgz/tar.gz (gzip-compressed tar)
+ - bzip/bzip2 (raw bzip2 stream)
+ - tbz/tbz2/tar.bz (bzip2-compressed tar)
  <p>
  The {@code includeBaseFolder} argument is used to include the base folder as the root
  of the compressed file. The default is {@code true}.
@@ -39,7 +35,7 @@ Compress(format=[string], source=[string], destination=[string], includeBaseFold
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `format` | `string` | `true` | The format to use for the compression: zip, gzip, bzip, bzip2, tar, tar.bz, tbz, tbz2, tgz, or tar.gz. Default is zip. | `zip` |
+| `format` | `string` | `false` | The format to use for the compression. If omitted, it is detected from the destination extension. |  |
 | `source` | `string` | `true` | The absolute path to the source file or folder to compress. |  |
 | `destination` | `string` | `true` | The absolute path with a file name to save as the compressed file. Extension is optional. |  |
 | `includeBaseFolder` | `boolean` | `false` | Whether to include the base folder as the root of the compressed file. Default is true. | `true` |
@@ -57,11 +53,7 @@ Compress the file "example.txt" to a zip-file.
 
 
 ```java
-compress(
-  source = "example.txt",
-  destination = "output.zip",
-  format = "zip"
-)
+compress( "zip", "example.txt", "output.zip" );
 
 ```
 
@@ -72,26 +64,23 @@ Compress the "example-directory" to a zip-file.
 
 
 ```java
-compress(
-  source = "example-directory",
-  destination = "output.zip",
-  format = "zip"
-)
+compress( "zip", "example-directory", "output.zip" );
 
 ```
 
 
 ### Additional Examples
 
-Compress a directory into a tar.gz archive:
+### Compress a TAR or TGZ archive
+
+Use `tar` for a raw TAR archive and `tgz` for a gzip-compressed TAR archive.
 
 ```java
-compress(
-  source = "/tmp/project",
-  destination = "/tmp/project.tar.gz",
-  format = "tar.gz"
-)
+compress( format="tar", source="example-directory", destination="output.tar" );
+compress( format="tgz", source="example-directory", destination="output.tgz" );
 ```
+
+When `format` is omitted, it is detected from the destination extension. An unrecognized extension requires an explicit `format`.
 
 
 ## Related

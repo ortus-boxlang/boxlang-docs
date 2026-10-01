@@ -65,6 +65,7 @@ Result: true
   * [GetFunctionCalledName](./GetFunctionCalledName.md)
   * [GetFunctionList](./GetFunctionList.md)
   * [GetModuleInfo](./GetModuleInfo.md)
+  * [GetModuleTree](./GetModuleTree.md)
   * [GetRequestClassLoader](./GetRequestClassLoader.md)
   * [GetSemver](./GetSemver.md)
   * [GetSystemSetting](./GetSystemSetting.md)

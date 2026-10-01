@@ -84,7 +84,6 @@ Result: 3.1415926535897932385
   * [Log10](./Log10.md)
   * [Max](./Max.md)
   * [Min](./Min.md)
-  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
   * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)

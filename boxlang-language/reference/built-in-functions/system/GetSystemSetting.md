@@ -87,6 +87,7 @@ Result: default-value
   * [GetFunctionList](./GetFunctionList.md)
   * [GetModuleInfo](./GetModuleInfo.md)
   * [GetModuleList](./GetModuleList.md)
+  * [GetModuleTree](./GetModuleTree.md)
   * [GetRequestClassLoader](./GetRequestClassLoader.md)
   * [GetSemver](./GetSemver.md)
   * [GetTempDirectory](./GetTempDirectory.md)

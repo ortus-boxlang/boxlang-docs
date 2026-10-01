@@ -4,6 +4,9 @@
 
 Converts a JSON (JavaScript Object Notation) string data representation into data, such as a structure or array.
 
+JSON deserialization in BoxLang will always use ordered structs for objects which will preserve the key order of the original JSON string.
+ This is handy when reading a JSON file, modifying it, and writing it back out.
+
 ## Method Signature
 
 ```

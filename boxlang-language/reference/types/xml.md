@@ -88,7 +88,7 @@ Arguments:
 
 </details>
 <details>
-<summary><code>transform(XSL=[String], parameters=[Struct])</code></summary>
+<summary><code>transform(XSL=[String], parameters=[Struct], XMLSettings=[struct])</code></summary>
 
 Get XML values according to given xPath query
 
@@ -98,6 +98,7 @@ Arguments:
 |----------|------|----------|---------|
 | `XSL` | `String` | `true` | `null` |
 | `parameters` | `Struct` | `false` | `{}` |
+| `XMLSettings` | `struct` | `false` | `null` |
 
 </details>
 

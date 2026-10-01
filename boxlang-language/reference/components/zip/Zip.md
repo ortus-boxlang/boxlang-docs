@@ -1,7 +1,7 @@
 
 # Component: `Zip`
 
-The BoxLang Zip component creates and manages ZIP archives. See the [Compression and Archives](../../../../boxlang-framework/file-handling/compression.md) guide for an overview of all available actions and practical workflows.
+The BoxLang Zip component is a powerful component that allows you to interact with zip/gzip files.
 
 ## Component Signature
 
@@ -74,3 +74,5 @@ Uses `action="list"` in the bx:zip tag to list the zip contents.
 bx:zip action="list" file="zipFileName" name="zipList";
 
 ```
+
+

@@ -76,6 +76,7 @@ writeDump( getBaseTemplatePath() );
   * [GetFunctionList](./GetFunctionList.md)
   * [GetModuleInfo](./GetModuleInfo.md)
   * [GetModuleList](./GetModuleList.md)
+  * [GetModuleTree](./GetModuleTree.md)
   * [GetRequestClassLoader](./GetRequestClassLoader.md)
   * [GetSemver](./GetSemver.md)
   * [GetSystemSetting](./GetSystemSetting.md)

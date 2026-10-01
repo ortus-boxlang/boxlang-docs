@@ -25,9 +25,9 @@ showUDFs=[boolean] />
 |----------|------|----------|-------------|---------|
 | `var` | `any` | `false` | The variable to dump, can be any type |  |
 | `label` | `string` | `false` | A custom label to display above the dump (Only in HTML output) |  |
-| `depth` | `numeric` | `false` | The recursion depth to display when dumping nested collections. 1-based: -1 (default) is unlimited, 0 shows nothing, 1 shows the top level with no recursion, 2 recurses once, etc. (Only in HTML output) |  |
-| `maxRows` | `numeric` | `false` | The maximum number of keys/rows/items to display per level of a collection, array, or query. 1-based: -1 (default) is unlimited, 0 shows nothing, 1 shows a single row, etc. (Only in HTML output) |  |
-| `top` | `numeric` | `false` | Deprecated: use maxRows instead. When maxRows is not also passed, top's value is used as maxRows. Kept for backwards compatibility with existing BoxLang code. (Only in HTML output) |  |
+| `depth` | `numeric` | `false` | The recursion depth to display when dumping nested collections. 1-based: -1 (default) is unlimited, 0 shows nothing,<br>                   1 shows the top level with no recursion, 2 recurses once, etc. (Only in HTML output) |  |
+| `maxRows` | `numeric` | `false` | The maximum number of keys/rows/items to display per level of a collection, array, or query. 1-based: -1 (default)<br>                     is unlimited, 0 shows nothing, 1 shows a single row, etc. (Only in HTML output) |  |
+| `top` | `numeric` | `false` | Deprecated: use maxRows instead. When maxRows is not also passed, top's value is used as maxRows.<br>                 Kept for backwards compatibility with existing BoxLang code. (Only in HTML output) |  |
 | `expand` | `boolean` | `false` | Whether to expand the dump. Be default, we try to expand as much as possible. (Only in HTML output) |  |
 | `abort` | `any` | `false` | Whether to do a hard abort the request after dumping. Default is false | `false` |
 | `output` | `string` | `false` | The output format which can be "buffer", "console", or "{absolute file path}". The default is "buffer". |  |

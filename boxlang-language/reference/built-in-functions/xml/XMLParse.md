@@ -15,28 +15,10 @@ XMLParse(XML=[string], caseSensitive=[boolean], validator=[any], lenient=[boolea
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `XML` | `string` | `false` | The XML string (or a file/URL containing XML) to parse |  |
-| `caseSensitive` | `boolean` | `false` | Whether element/attribute name matching is case-sensitive | `true` |
-| `validator` | `any` | `false` | Either a path/URL to an XSD schema to validate against, **or** (as of 1.17.0) a struct of XML security settings — see below |  |
-| `lenient` | `boolean` | `false` | As of 1.17.0: overrides `lenientProcessing` in the effective XML security settings when explicitly passed |  |
-
-## XML Security (1.17.0+)
-
-By default, `xmlParse()` uses your application's `xml` config settings (see [XML Security Settings](../../../../getting-started/configuration/directives.md#xml-security-settings)) to guard against XXE (XML External Entity) attacks when parsing untrusted XML. Pass a struct as `validator` to override those defaults for a single call:
-
-```java
-xmlDoc = xmlParse(
-	xml = untrustedXmlString,
-	validator = {
-		secureProcessing            : true,
-		disallowDoctypeDeclaration  : true,
-		allowExternalEntities       : false,
-		lenientProcessing           : false
-	}
-)
-```
-
-`validator` still accepts the original XSD path/URL string for schema validation — passing a struct instead switches it to security-settings mode; the two uses are mutually exclusive per call.
+| `XML` | `string` | `false` | The XML string to parse. |  |
+| `caseSensitive` | `boolean` | `false` | Whether the XML parsing should be case-sensitive. | `true` |
+| `validator` | `any` | `false` | An optional validator to apply to the parsed XML. This can be a string containing a path or URL to an XSD schema file, or a struct of XML security settings |  |
+| `lenient` | `boolean` | `false` | Whether the XML parsing should be lenient. |  |
 
 ## Examples
 

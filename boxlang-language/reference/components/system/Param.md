@@ -8,7 +8,7 @@ Tests for a parameter's existence, tests its data type, and, if a default value 
 ```
 <bx:Param name=[string]
 type=[string]
-default=[any]
+default=[function]
 max=[numeric]
 min=[numeric]
 pattern=[string] />
@@ -21,7 +21,7 @@ pattern=[string] />
 |----------|------|----------|-------------|---------|
 | `name` | `string` | `true` | The name of the parameter |  |
 | `type` | `string` | `false` | The data type of the parameter |  |
-| `default` | `any` | `false` | The default value of the parameter |  |
+| `default` | `function` | `false` | The default value of the parameter. Compiled expressions are deferred until the variable is missing. |  |
 | `max` | `numeric` | `false` | The maximum value of the parameter |  |
 | `min` | `numeric` | `false` | The minimum value of the parameter |  |
 | `pattern` | `string` | `false` | The pattern of the parameter |  |

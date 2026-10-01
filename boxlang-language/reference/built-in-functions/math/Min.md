@@ -64,7 +64,6 @@ echo( min( 1, 5 ) );
   * [Log10](./Log10.md)
   * [Max](./Max.md)
   * [Pi](./Pi.md)
-  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
   * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)

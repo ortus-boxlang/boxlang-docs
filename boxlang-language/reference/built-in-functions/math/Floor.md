@@ -106,7 +106,6 @@ dump( floor( -5.7 ) );
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
-  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
   * [Randomize](./Randomize.md)
   * [RandRange](./RandRange.md)

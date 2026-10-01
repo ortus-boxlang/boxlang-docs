@@ -14,7 +14,7 @@ Reads the contents of a file and returns it as a string or binary object.
 ## Method Signature
 
 ```
-FileReadBinary(filepath=[any], charsetOrBufferSize=[string], charset=[string], buffersize=[string])
+FileReadBinary(filepath=[any], charsetOrBufferSize=[string], buffersize=[integer])
 ```
 
 ### Arguments
@@ -23,9 +23,8 @@ FileReadBinary(filepath=[any], charsetOrBufferSize=[string], charset=[string], b
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `filepath` | `any` | `true` | A file path (string, Path, File, or HTTP URL) to read entirely, or an open BoxFile object to read remaining content from. |  |
-| `charsetOrBufferSize` | `string` | `false` | Either the charset to use when reading the file, or the buffer size. Only applies to path-based reads. |  |
-| `charset` | `string` | `false` | The explicit charset to use when reading the file. Only applies to path-based reads. |  |
-| `buffersize` | `string` | `false` | The explicit buffer size to use when reading the file. Only applies to path-based reads. |  |
+| `charsetOrBufferSize` | `string` | `false` | Either the charset to use when reading string files, or the buffer size. |  |
+| `buffersize` | `integer` | `false` | Number of bytes or chars to read. Only applies to a BoxFile object. |  |
 
 ## Examples
 

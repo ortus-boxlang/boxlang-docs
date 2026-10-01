@@ -21,7 +21,7 @@ ObjectToSet(value=[any], type=[string], delimiter=[string])
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
 | `value` | `any` | `true` | The value to convert. Accepts Array, Set, list-delimited String, QueryColumn, XML, Range, etc. |  |
-| `type` | `string` | `false` | The backing variant: "default" / "hash" (HashSet), "linked" / "ordered" (LinkedHashSet),<br>                or "sorted" / "tree" (TreeSet). Defaults to "default". | `default` |
+| `type` | `string` | `false` | The backing variant: "default" / "hash" (HashSet), "linked" / "ordered" (LinkedHashSet),<br>                or "sorted" / "tree" (TreeSet). When omitted, the caster defaults to LINKED for ordered<br>                collections like Arrays. |  |
 | `delimiter` | `string` | `false` | When {@code value} is a String, the list delimiter to split on. Defaults to {@code ","}. | `,` |
 
 ## Examples
@@ -152,4 +152,3 @@ Result: 2
   * [SetOf](./SetOf.md)
   * [StructKeySet](./StructKeySet.md)
   * [StructValueSet](./StructValueSet.md)
-  * [ToSet](./ToSet.md)

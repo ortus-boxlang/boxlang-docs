@@ -70,7 +70,6 @@ bx:loop index="i" from="1" to="3" {
   * [Max](./Max.md)
   * [Min](./Min.md)
   * [Pi](./Pi.md)
-  * [PrecisionEvaluate](./PrecisionEvaluate.md)
   * [Rand](./Rand.md)
   * [RandRange](./RandRange.md)
   * [Round](./Round.md)

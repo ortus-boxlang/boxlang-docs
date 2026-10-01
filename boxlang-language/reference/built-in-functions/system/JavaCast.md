@@ -86,6 +86,7 @@ writeDump( createObject( "java", "java.lang.Math" ).toRadians( javacast( "double
   * [GetFunctionList](./GetFunctionList.md)
   * [GetModuleInfo](./GetModuleInfo.md)
   * [GetModuleList](./GetModuleList.md)
+  * [GetModuleTree](./GetModuleTree.md)
   * [GetRequestClassLoader](./GetRequestClassLoader.md)
   * [GetSemver](./GetSemver.md)
   * [GetSystemSetting](./GetSystemSetting.md)

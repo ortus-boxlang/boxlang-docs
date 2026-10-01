@@ -421,6 +421,96 @@ Arguments:
 
 </details>
 <details>
+<summary><code>setDay(value=[integer])</code></summary>
+
+Sets a single date/time unit on a date object, mutating it in place and returning it.
+
+Out-of-range values roll over (e.g. ,{@code setDay( 50 )}, advances into following months) while
+ zero/negative values clamp to the first valid unit (e.g. ,{@code setDay( 0 )}, becomes day 1).
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `value` | `integer` | `true` | `null` |
+
+</details>
+<details>
+<summary><code>setHour(value=[integer])</code></summary>
+
+Sets a single date/time unit on a date object, mutating it in place and returning it.
+
+Out-of-range values roll over (e.g. ,{@code setDay( 50 )}, advances into following months) while
+ zero/negative values clamp to the first valid unit (e.g. ,{@code setDay( 0 )}, becomes day 1).
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `value` | `integer` | `true` | `null` |
+
+</details>
+<details>
+<summary><code>setMinute(value=[integer])</code></summary>
+
+Sets a single date/time unit on a date object, mutating it in place and returning it.
+
+Out-of-range values roll over (e.g. ,{@code setDay( 50 )}, advances into following months) while
+ zero/negative values clamp to the first valid unit (e.g. ,{@code setDay( 0 )}, becomes day 1).
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `value` | `integer` | `true` | `null` |
+
+</details>
+<details>
+<summary><code>setMonth(value=[integer])</code></summary>
+
+Sets a single date/time unit on a date object, mutating it in place and returning it.
+
+Out-of-range values roll over (e.g. ,{@code setDay( 50 )}, advances into following months) while
+ zero/negative values clamp to the first valid unit (e.g. ,{@code setDay( 0 )}, becomes day 1).
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `value` | `integer` | `true` | `null` |
+
+</details>
+<details>
+<summary><code>setSecond(value=[integer])</code></summary>
+
+Sets a single date/time unit on a date object, mutating it in place and returning it.
+
+Out-of-range values roll over (e.g. ,{@code setDay( 50 )}, advances into following months) while
+ zero/negative values clamp to the first valid unit (e.g. ,{@code setDay( 0 )}, becomes day 1).
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `value` | `integer` | `true` | `null` |
+
+</details>
+<details>
+<summary><code>setYear(value=[integer])</code></summary>
+
+Sets a single date/time unit on a date object, mutating it in place and returning it.
+
+Out-of-range values roll over (e.g. ,{@code setDay( 50 )}, advances into following months) while
+ zero/negative values clamp to the first valid unit (e.g. ,{@code setDay( 0 )}, becomes day 1).
+
+Arguments:
+
+| Argument | Type | Required | Default |
+|----------|------|----------|---------|
+| `value` | `integer` | `true` | `null` |
+
+</details>
+<details>
 <summary><code>timeFormat(mask=[string], timezone=[string], locale=[string])</code></summary>
 
 Formats a datetime, date or time

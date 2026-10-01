@@ -70,6 +70,7 @@ Result: // We don't expect anything to happen after the application has been sto
   * [GetFunctionList](./GetFunctionList.md)
   * [GetModuleInfo](./GetModuleInfo.md)
   * [GetModuleList](./GetModuleList.md)
+  * [GetModuleTree](./GetModuleTree.md)
   * [GetRequestClassLoader](./GetRequestClassLoader.md)
   * [GetSemver](./GetSemver.md)
   * [GetSystemSetting](./GetSystemSetting.md)

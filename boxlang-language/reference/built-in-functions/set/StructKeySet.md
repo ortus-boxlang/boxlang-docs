@@ -95,4 +95,3 @@ Result: true,2
   * [SetNew](./SetNew.md)
   * [SetOf](./SetOf.md)
   * [StructValueSet](./StructValueSet.md)
-  * [ToSet](./ToSet.md)
