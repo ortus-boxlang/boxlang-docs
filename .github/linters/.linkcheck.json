@@ -9,6 +9,9 @@
     },
     {
       "pattern": "^https://patreon.com/ortussolutions"
+    },
+    {
+      "pattern": "/~gitbook/mcp$"
     }
   ],
   "replacementPatterns": [

@@ -1254,7 +1254,7 @@ if ( errors.len() > 0 ) {
 ## 🔗 Related Documentation
 
 - [Exception Types Reference](reference/Exceptions.md) - Complete list of native BoxLang exceptions
-- [Validation](../extra-credit/testing.md) - Testing exception handling
+- [Validation](../boxlang-framework/testing.md) - Testing exception handling
 - [Logging](../boxlang-framework/logging.md) - Logging exceptions
 - [Java Integration](../boxlang-framework/java-integration.md) - Working with Java exceptions
 
