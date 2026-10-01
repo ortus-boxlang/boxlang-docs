@@ -89,6 +89,7 @@ The following are all the environment variables the Lambda runtime can read and 
 | `BOXLANG_LAMBDA_CONFIG` | Absolute path to a custom `boxlang.json` configuration for the runtime. Defaults to `/var/task/boxlang.json` |
 | `BOXLANG_LAMBDA_CONNECTION_POOL_SIZE` | **NEW**: Configure the connection pool size for database operations. Default is 2 connections. |
 | `BOXLANG_ENABLE_ROOT_SCAN` | Opts a deployment out of the legacy root-directory scan used only when neither `manifest.json` nor `handlers/` is present (see "Understanding `manifest.json`" below). Defaults to `true`. Set to `false` to restrict that fallback scenario to the default handler only. Shared across every BoxLang serverless runtime (AWS/GCP/Azure). |
+| `BOXLANG_RESPONSE_MODE` | Controls what the Lambda returns. `http` (default) returns the `statusCode`/`headers`/`body`/`cookies` envelope. `raw` predefines nothing and returns only `response.body`, unwrapped, for direct invocation or an API Gateway REST API without a proxy integration. Any other value aborts cold start. See [Response Modes](#response-modes). |
 | `LAMBDA_TASK_ROOT` | Lambda deployment root directory. Defaults to `/var/task` |
 
 You can also leverage ANY environment variable to configure the BoxLang runtime using our runtime [environment conventions](../configuration.md).
@@ -245,7 +246,7 @@ This is an Amazon Java class that provides extensive information about the reque
 
 #### Response
 
-The `response` argument is our convention to help you build a nice return structure.  However, it is completely optional.  You can easily return a simple or complex object from your lambda, and we will convert it to JSON.
+The `response` argument is our convention to help you build a nice return structure. By default (the `http` response mode) it is pre-seeded with `statusCode`, `headers`, `body` and `cookies`. See [Response Modes](#response-modes) to return exactly what you produce instead.  However, it is completely optional.  You can easily return a simple or complex object from your lambda, and we will convert it to JSON.
 
 ```json
 response : {
@@ -463,6 +464,76 @@ class {
 {% hint style="info" %}
 This means a datasource, cache region, or interceptor registered in `onApplicationStart()` is available to every handler in `handlers/`, not just `Lambda.bx`. If your handler is missing configuration you expected `Application.bx` to provide, confirm it lives at the project root (`src/main/bx/Application.bx`) alongside `Lambda.bx`, not nested under `handlers/`.
 {% endhint %}
+
+## Response Modes
+
+The runtime can return your result in two shapes, selected with the `BOXLANG_RESPONSE_MODE` environment variable.
+
+| Mode | What the Lambda returns | Use it for |
+| --- | --- | --- |
+| `http` (default) | The whole `response` struct, pre-seeded with `statusCode` (200), `headers`, `body` and `cookies` | API Gateway HTTP API, Lambda Function URLs |
+| `raw` | Only `response.body`, unwrapped. Nothing is predefined | Direct invocation, Step Functions, SQS, API Gateway REST API without a proxy integration |
+
+Given a handler that does `return { id: 1 }`, `http` mode returns the envelope:
+
+```json
+{ "statusCode": 200, "headers": { "Content-Type": "application/json", "Access-Control-Allow-Origin": "*" }, "body": { "id": 1 }, "cookies": [] }
+```
+
+and `raw` mode returns exactly what your code produced:
+
+```json
+{ "id": 1 }
+```
+
+In `raw` mode there is no status code or headers unless you add them. Behind an API Gateway proxy integration your code must build the envelope itself, and the runtime passes it through untouched:
+
+```js
+return { statusCode: 201, body: serializeJSON( { id: 1 } ) }
+```
+
+{% hint style="info" %}
+`raw` mode can return any JSON value: a struct, an array, a string or a number.
+{% endhint %}
+
+{% hint style="warning" %}
+`BOXLANG_RESPONSE_MODE` must be `http` or `raw`. Any other value aborts cold start with an error, so a typo can never silently return the wrong shape.
+{% endhint %}
+
+## Wrapping Responses and Handling Errors
+
+`run()`, `onRequestEnd` and `onError` all receive the same `response` struct as their last argument. The value your handler returns is stored in `response.body` before `onRequestEnd` runs, so a hook can wrap or replace it. This lets you put every result in a standard ok or error object in one place:
+
+```js
+class {
+
+    function onRequestEnd( target, event, context, response ) {
+        response.body = { ok: true, data: response.body }
+    }
+
+    function onError( exception, eventName, event, context, response ) {
+        response.body = { ok: false, error: exception.message }
+    }
+
+}
+```
+
+What the caller receives for a handler that returns `{ id: 1, name: "Luis" }`, or throws `boom`:
+
+| Case | `http` mode | `raw` mode |
+| --- | --- | --- |
+| Success | `{ "statusCode": 200, "body": { "ok": true, "data": { "id": 1, "name": "Luis" } }, ... }` | `{ "ok": true, "data": { "id": 1, "name": "Luis" } }` |
+| Handled error | `{ "statusCode": 500, "body": { "ok": false, "error": "boom" }, ... }` | `{ "ok": false, "error": "boom" }` |
+| Unhandled error (no `onError`) | The invocation fails (API Gateway returns a 502) | The invocation fails |
+
+In `raw` mode `response` starts as a struct holding only a `null` body, so reading `response.body` in a hook is always safe.
+
+A few rules to know:
+
+* `onRequestEnd` runs before `onError`. On a failed request `onRequestEnd` wraps the empty body first, then `onError` overwrites it, so `onError` always has the last word.
+* A handled error defaults the status to `500`. Set `response.statusCode` in `onError` to change it, for example `404` for a not found exception.
+* If `Application.bx` defines `onError`, the error counts as handled whatever the hook returns. To fail the invocation instead, rethrow from `onError` or do not define it.
+* Hooks that do not declare the extra `response` argument keep working unchanged.
 
 ## Multiple Functions Header
 

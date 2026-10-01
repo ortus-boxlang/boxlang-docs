@@ -374,6 +374,39 @@ class {
 This means a datasource, cache region, or interceptor registered in `onApplicationStart()` is available to every handler in `handlers/`, not just `Lambda.bx`. If your handler is missing configuration you expected `Application.bx` to provide, confirm it lives at the function root (`src/main/bx/Application.bx`) alongside `Lambda.bx`, not nested under `handlers/`.
 {% endhint %}
 
+## Wrapping Responses and Handling Errors
+
+`run()`, `onRequestEnd` and `onError` all receive the same `response` struct as their last argument. The value your handler returns is stored in `response.body` before `onRequestEnd` runs, so a hook can wrap or replace it. This lets you put every result in a standard ok or error object in one place:
+
+```js
+class {
+
+    function onRequestEnd( target, event, context, response ) {
+        response.body = { ok: true, data: response.body }
+    }
+
+    function onError( exception, eventName, event, context, response ) {
+        response.body = { ok: false, error: exception.message }
+    }
+
+}
+```
+
+What the caller receives for a handler that returns `{ id: 1, name: "Luis" }`, or throws `boom`:
+
+| Case | Response |
+| --- | --- |
+| Success | `200` with `{ "ok": true, "data": { "id": 1, "name": "Luis" } }` |
+| Handled error | `500` with `{ "ok": false, "error": "boom" }` |
+| Unhandled error (no `onError`) | The invocation fails |
+
+A few rules to know:
+
+* `onRequestEnd` runs before `onError`. On a failed request `onRequestEnd` wraps the empty body first, then `onError` overwrites it, so `onError` always has the last word.
+* A handled error defaults the status to `500`. Set `response.statusCode` in `onError` to change it, for example `404` for a not found exception.
+* If `Application.bx` defines `onError`, the error counts as handled whatever the hook returns. To fail the invocation instead, rethrow from `onError` or do not define it.
+* Hooks that do not declare the extra `response` argument keep working unchanged.
+
 ## Multiple Functions Header
 
 The runtime also allows you to create other functions inside of your `Lambda.bx` (or any `handlers/` class) that can be targeted when your Azure Function is exposed as a URL, by using the following header when executing your function:
