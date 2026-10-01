@@ -140,11 +140,24 @@ BoxLang provides a comprehensive set of query BIFs organized by functionality. A
 
 ### 🔧 Utility Functions
 
-| Function                  | Purpose                   | Example                                            |
-| ------------------------- | ------------------------- | -------------------------------------------------- |
-| `valueList()`             | Column values as list     | `valueList(qry, "name")` → `"John,Jane,Bob"`       |
-| `quotedValueList()`       | Quoted column values      | `quotedValueList(qry, "name")` → `"'John','Jane'"` |
-| `queryRegisterFunction()` | Register function for QoQ | `queryRegisterFunction("myFunc", myUDF)`           |
+| Function                  | Purpose                   | Example                                             |
+| ------------------------- | ------------------------- | --------------------------------------------------- |
+| `queryColumnData()`       | Get column values         | `queryColumnData(qry, "name")` → `["John", "Jane"]` |
+| `queryRegisterFunction()` | Register function for QoQ | `queryRegisterFunction("myFunc", myUDF)`            |
+
+{% hint style="info" %}
+**CFML Compatibility**: `valueList()` and `quotedValueList()` are **not** native BoxLang BIFs. They only exist in CFML code, where the transpiler converts them to `queryColumnData()` calls. Calling them from BoxLang code will throw a `Function 'valueList' not found` error. Use `queryColumnData()` directly instead:
+
+```js
+// CFML: valueList( qry, "name" )
+queryColumnData( qry, "name" ).toList()
+// => "John,Jane,Bob"
+
+// CFML: quotedValueList( qry, "name" )
+queryColumnData( qry, "name" ).map( ( value ) -> "'#value#'" ).toList()
+// => "'John','Jane','Bob'"
+```
+{% endhint %}
 
 ## 🎯 Core Java Methods
 
