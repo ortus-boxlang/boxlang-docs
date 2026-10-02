@@ -442,6 +442,9 @@ results = futureNew().allApply(
     (item) => item * 2
 );
 
+// Static form, no context and no error handler required (1.18+)
+results = BoxFuture::allApply( [ 1, 2, 3 ], (item) => item * 2 );
+
 // With error handler
 results = futureNew().allApply(
     context,

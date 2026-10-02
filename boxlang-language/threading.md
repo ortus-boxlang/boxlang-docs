@@ -927,6 +927,10 @@ Each thread automatically tracks metadata accessible via the thread scope:
 | `error` | struct | Exception details if thread failed |
 | `output` | string | Buffered output from thread |
 
+{% hint style="info" %}
+As of BoxLang 1.18, `status`, `elapsedTime` and the stack trace are computed when you read them rather than tracked continuously while the thread runs. Once a thread completes, its final values are stored. Reading them is the only time the cost is paid.
+{% endhint %}
+
 ### Accessing Metadata
 
 ```js

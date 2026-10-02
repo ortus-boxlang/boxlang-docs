@@ -378,7 +378,7 @@ Ok, let's go over the frequency methods:
 | `everyWeek()`                          | Run the task every Sunday at midnight                                        |
 | `everyWeekOn( day, time )`             | Run the task weekly on the given day of the week and time                    |
 | `everyMonth()`                         | Run the task on the first day of every month at midnight                     |
-| `everyMonthOn( day, time )`            | Run the task every month on a specific day and time                          |
+| `everyMonthOn( day, time )`            | Run the task every month on a specific day and time. If `day` is past the end of a shorter month (for example `31` in February), it runs on that month's last day (1.18+) |
 | `onFirstBusinessDayOfTheMonth( time )` | Run the task on the first Monday of every month                              |
 | `onLastBusinessDayOfTheMonth( time )`  | Run the task on the last business day of the month                           |
 | `everyYear()`                          | Run the task on the first day of the year at midnight                        |

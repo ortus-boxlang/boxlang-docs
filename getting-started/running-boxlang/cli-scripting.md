@@ -238,7 +238,7 @@ BoxLang provides a comprehensive set of CLI options and flags for various develo
 | `-h, --help` | Show help message and exit |
 | `--version` | Show version information and exit |
 | `--bx-debug` | Enable debug mode with timing information |
-| `--bx-config <PATH>` | Use custom BoxLang configuration file |
+| `--bx-config <PATH>` | Use custom BoxLang configuration file. When omitted, a `.boxlang.json` in the current working directory is loaded automatically (1.18+) |
 | `--bx-home <PATH>` | Set BoxLang runtime home directory |
 | `--bx-code <CODE>` | Execute inline BoxLang code directly |
 | `--bx-printAST` | Print Abstract Syntax Tree (JSON) for a file, inline code (`--bx-code`), or stdin |
@@ -251,7 +251,7 @@ You can also control BoxLang behavior using environment variables:
 | Environment Variable | Description |
 |---------------------|-------------|
 | `BOXLANG_DEBUG=true` | Enable debug mode |
-| `BOXLANG_CONFIG=/path/config.json` | Override configuration file path |
+| `BOXLANG_CONFIG=/path/config.json` | Override configuration file path. Takes precedence over a `.boxlang.json` in the working directory |
 | `BOXLANG_HOME=/path/to/home` | Set runtime home directory |
 | `BOXLANG_TRANSPILE=true` | Enable transpile mode |
 | `BOXLANG_PRINTAST=true` | Enable AST printing |
@@ -436,6 +436,15 @@ You can run BoxLang scheduler files using the `schedule` action command. The fil
 
 ```bash
 boxlang schedule ./schedulers/MainScheduler.bx
+```
+
+### Scheduler Report
+
+Run `schedule` with no arguments (1.18+) to print a report of how scheduling is configured in `boxlang.json`, which schedulers are loaded and running with their tasks and live stats, which tasks are persisted in `tasks.json`, and how to run a scheduler file. Add `--json` for the same report as a single JSON document that you can pipe into tools like `jq` or hand to an AI agent. Credentials are stripped from the output.
+
+```bash
+boxlang schedule
+boxlang schedule --json | jq '.tasks'
 ```
 
 {% hint style="info" %}
