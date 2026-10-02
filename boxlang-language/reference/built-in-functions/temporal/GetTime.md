@@ -2,7 +2,7 @@
 
 # Function: `GetTime`
 
-Returns the numeric date in milliseconds from epoch of a date object
+Returns the numeric date in milliseconds from epoch of a date object.  If a string is provided as the argument, an attempt will be made to parse it as a date. If parsing fails, an error will be thrown.
 
 ## Method Signature
 
@@ -15,7 +15,7 @@ GetTime(date=[any], timezone=[string], locale=[string])
 
 | Argument | Type | Required | Description | Default |
 |----------|------|----------|-------------|---------|
-| `date` | `any` | `false` | The date object to be evaluated. If not provided the current date and time is used |  |
+| `date` | `any` | `false` | The date object or date string to be evaluated. |  |
 | `timezone` | `string` | `false` | An optional timezone which to convert the date object to |  |
 | `locale` | `string` | `false` | An optional ISO locale string which will return the specified time unit with a locale-specific result ( e.g. month name, or starting day of week as Monday vs Sunda ) |  |
 

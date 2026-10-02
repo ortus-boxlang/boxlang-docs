@@ -1,4 +1,3 @@
-[comment]: # (Note: This documentation is generated dynamically in the build process.  To modify the contents, change the javadoc on the type class, itself)
 
 # Type: `File`
 
@@ -7,120 +6,216 @@
 ## File Methods
 
 <details>
+<summary><code>bxDump(label=[string], depth=[numeric], maxRows=[numeric], top=[numeric], expand=[boolean], abort=[boolean], output=[string], format=[string], showUDFs=[boolean])</code></summary>
+
+Outputs the contents of a variable (simple or complex) of any type for debugging purposes to a specific output location.
+
+<p>
+ The available <code>output</code> locations are:
+ - <strong>buffer</strong>: The output is written to the buffer, which is the default location. If running on a web server, the output is written to the browser.
+ - <strong>console</strong>: The output is printed to the System console.
+ - <strong>Absolute File Path</strong> The output is written to a file with the specified absolute file path.
+ </p>
+ 
+ The output `format` can be either HTML or plain text.
+ 
+ The default format is HTML if the output location is the buffer or a web server or a file, otherwise it is plain text for the console.
+
+### Method Signature
+
+```
+bxDump(label=[string], depth=[numeric], maxRows=[numeric], top=[numeric], expand=[boolean], abort=[boolean], output=[string], format=[string], showUDFs=[boolean])
+```
+
+### Arguments
+
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `label` | `string` | `false` | A custom label to display above the dump (Only in HTML output) |  |
+| `depth` | `numeric` | `false` | The recursion depth to display when dumping nested collections. 1-based: -1 (default) is unlimited, 0 shows nothing,<br>                 1 shows the top level with no recursion, 2 recurses once, etc. (Only in HTML output) |  |
+| `maxRows` | `numeric` | `false` | The maximum number of keys/rows/items to display per level of a collection, array, or query. 1-based: -1 (default)<br>                   is unlimited, 0 shows nothing, 1 shows a single row, etc. (Only in HTML output) |  |
+| `top` | `numeric` | `false` | Deprecated: use maxRows instead. When maxRows is not also passed, top's value is used as maxRows.<br>               Kept for backwards compatibility with existing BoxLang code. (Only in HTML output) |  |
+| `expand` | `boolean` | `false` | Whether to expand the dump. Be default, we try to expand as much as possible. (Only in HTML output) | `true` |
+| `abort` | `boolean` | `false` | Whether to do a hard abort the request after dumping. Default is false | `false` |
+| `output` | `string` | `false` | The output format which can be "buffer", "console", or "{absolute file path}". The default is "buffer". |  |
+| `format` | `string` | `false` | The format of the output to a <strong>filename</strong>. Can be "html" or "text". The default is according to the output location. |  |
+| `showUDFs` | `boolean` | `false` | Show UDFs or not. Default is true. (Only in HTML output) | `true` |
+</details>
+<details>
+<summary><code>close()</code></summary>
+
+Closes either the read or write stream
+
+### Method Signature
+
+```
+close()
+```
+
+### Arguments
+
+This function does not accept any arguments
+</details>
+<details>
+<summary><code>getLastModifedTime()</code></summary>
+
+Retrieves the last modified time of a file
+
+### Method Signature
+
+```
+getLastModifedTime()
+```
+
+### Arguments
+
+This function does not accept any arguments
+</details>
+<details>
 <summary><code>info()</code></summary>
 
 Returns a struct of file information.
 
 Different values are returned for FileInfo and GetFileInfo
-</details>
-<details>
-<summary><code>writeLine(data=[string])</code></summary>
 
-Writes a line of data to a file
+### Method Signature
 
-Arguments:
+```
+info()
+```
 
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `data` | `string` | `true` | `null` |
+### Arguments
 
+This function does not accept any arguments
 </details>
 <details>
 <summary><code>readLine()</code></summary>
 
 Returns the next line from the file object stream
-</details>
-<details>
-<summary><code>setAccessMode(mode=[string])</code></summary>
 
-Sets the Posix permissions on a file
+### Method Signature
 
-Arguments:
+```
+readLine()
+```
 
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `mode` | `string` | `true` | `null` |
+### Arguments
 
+This function does not accept any arguments
 </details>
 <details>
 <summary><code>seek(position=[integer])</code></summary>
 
 Moves the buffer cursor position forward the number of characters specified by the position argument
 
-Arguments:
+### Method Signature
 
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `position` | `integer` | `true` | `null` |
+```
+seek(position=[integer])
+```
 
+### Arguments
+
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `position` | `integer` | `true` | The cursor position to move forward in the file |  |
 </details>
 <details>
-<summary><code>skipBytes(position=[integer])</code></summary>
+<summary><code>setAccessMode(mode=[string])</code></summary>
 
-Moves the buffer cursor position forward the number of characters specified by the position argument
+Sets the Posix permissions on a file
 
-Arguments:
+### Method Signature
 
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `position` | `integer` | `true` | `null` |
+```
+setAccessMode(mode=[string])
+```
 
-</details>
-<details>
-<summary><code>setLastModified(date=[any])</code></summary>
+### Arguments
 
-Sets the last modified time of a file
 
-Arguments:
-
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `date` | `any` | `true` | `null` |
-
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `mode` | `string` | `true` | The three-digit permission designations for the file or directory |  |
 </details>
 <details>
 <summary><code>setAttribute(attribute=[string])</code></summary>
 
 Sets a file access attribute
 
-Arguments:
+### Method Signature
 
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `attribute` | `string` | `true` | `null` |
+```
+setAttribute(attribute=[string])
+```
 
+### Arguments
+
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `attribute` | `string` | `true` | The attribute to set true |  |
 </details>
 <details>
-<summary><code>bxDump(label=[string], depth=[numeric], maxRows=[numeric], top=[numeric], expand=[boolean], abort=[boolean], output=[string], format=[string], showUDFs=[boolean])</code></summary>
+<summary><code>setLastModified(date=[any])</code></summary>
 
-Outputs the contents of a variable (simple or complex) of any type for debugging purposes to a specific output location.
+Sets the last modified time of a file
 
-<p>,
- The available ,<code>,output,</code>, locations are:
- - ,<strong>,buffer,</strong>,: The output is written to the buffer, which is the default location. If running on a web server, the output is written to the browser.
- - ,<strong>,console,</strong>,: The output is printed to the System console.
- - ,<strong>,Absolute File Path,</strong>, The output is written to a file with the specified absolute file path.
- ,</p>,
- 
- The output `format` can be either HTML or plain text.
- 
- The default format is HTML if the output location is the buffer or a web server or a file, otherwise it is plain text for the console.
+### Method Signature
 
-Arguments:
+```
+setLastModified(date=[any])
+```
 
-| Argument | Type | Required | Default |
-|----------|------|----------|---------|
-| `label` | `string` | `false` | `null` |
-| `depth` | `numeric` | `false` | `null` |
-| `maxRows` | `numeric` | `false` | `null` |
-| `top` | `numeric` | `false` | `null` |
-| `expand` | `boolean` | `false` | `true` |
-| `abort` | `boolean` | `false` | `false` |
-| `output` | `string` | `false` | `null` |
-| `format` | `string` | `false` | `null` |
-| `showUDFs` | `boolean` | `false` | `true` |
+### Arguments
 
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `date` | `any` | `true` | A date time object or string |  |
 </details>
+<details>
+<summary><code>skipBytes(position=[integer])</code></summary>
+
+Moves the buffer cursor position forward the number of characters specified by the position argument
+
+### Method Signature
+
+```
+skipBytes(position=[integer])
+```
+
+### Arguments
+
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `position` | `integer` | `true` | The cursor position to move forward in the file |  |
+</details>
+<details>
+<summary><code>writeLine(data=[string])</code></summary>
+
+Writes a line of data to a file
+
+### Method Signature
+
+```
+writeLine(data=[string])
+```
+
+### Arguments
+
+
+| Argument | Type | Required | Description | Default |
+|----------|------|----------|-------------|---------|
+| `data` | `string` | `true` | The line of data to be written |  |
+</details>
+
+
 
 
 ## Examples
+
+
