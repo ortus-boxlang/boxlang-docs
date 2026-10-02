@@ -297,6 +297,82 @@ The `.env` format is `KEY=VALUE`, one per line. Lines starting with `#` are comm
 Never commit `~/.box.env` or a project `.env` containing real secrets to version control. Add `.env` to your `.gitignore`.
 {% endhint %}
 
+### Customizing `boxlang.json` <a href="#customizing-boxlang-json" id="customizing-boxlang-json"></a>
+
+The CLI is configured by a `boxlang.json` file. You do not have to edit the one that ships with BoxLang. Instead you layer small override files that only contain the settings you want to change. This works the same way as the `.env` files above: a project-level file next to the command you run, and a user-level file that follows you everywhere.
+
+#### Where BoxLang looks
+
+BoxLang builds its configuration in layers. Each layer overrides the one before it:
+
+| Order | Source | Scope |
+|-------|--------|-------|
+| 1 | The defaults that ship inside BoxLang | Always loaded |
+| 2 | `~/.boxlang/config/boxlang.json` | **User-level.** Applies to every CLI run for your account. Created for you with the defaults on first run. The location follows `BOXLANG_HOME` or `--bx-home` if you set one: `{home}/config/boxlang.json` |
+| 3 | `.boxlang.json` in the directory where you run `boxlang` (1.18+), **or** the file named by `--bx-config` / `BOXLANG_CONFIG` | **Project-level.** Applies to this project only |
+| 4 | `BOXLANG_*` environment variables and `boxlang.*` Java system properties | Highest priority. See [Configuration](../configuration.md) |
+
+{% hint style="info" %}
+The project file and the explicit file are alternatives, not layers. If you pass `--bx-config` or set `BOXLANG_CONFIG`, BoxLang uses that file and does **not** look for a `.boxlang.json` in the working directory. An explicit file always wins over the convention.
+{% endhint %}
+
+#### Per project: `.boxlang.json`
+
+Drop a `.boxlang.json` next to the scripts you run and BoxLang picks it up automatically whenever you run `boxlang` from that directory. It only needs the settings you want to change:
+
+```json
+{
+    "debugMode": true,
+    "datasources": {
+        "app": {
+            "driver": "mysql",
+            "host": "${DB_HOST:localhost}",
+            "database": "myapp",
+            "username": "${DB_USER}",
+            "password": "${DB_PASS}"
+        }
+    }
+}
+```
+
+```bash
+cd ~/projects/myapp
+boxlang report.bxs          # uses ~/projects/myapp/.boxlang.json
+```
+
+Commit `.boxlang.json` to version control so the whole team shares the same project settings, and keep secrets out of it with `${env.NAME}` placeholders or [encrypted configuration secrets](../configuration/security.md#encrypted-configuration-secrets-bxsecret).
+
+#### Per user: `~/.boxlang/config/boxlang.json`
+
+Put personal defaults that should apply to every project here, such as your preferred logging level or a local development datasource. The project file is applied after it, so project settings win.
+
+{% hint style="warning" %}
+Override files are merged by top-level setting. If your project `.boxlang.json` defines `datasources`, that value is used as a whole for `datasources`, rather than being combined entry by entry with the one in your home file. Repeat anything you still need.
+{% endhint %}
+
+#### Pointing at a specific file
+
+Use a different file for a single run, a CI job, or a deployment:
+
+```bash
+boxlang --bx-config ./config/ci.json myapp.bxs
+
+# or with an environment variable
+BOXLANG_CONFIG=./config/ci.json boxlang myapp.bxs
+```
+
+#### How this compares to `.env` files
+
+| | Project-level | User-level |
+|---|---------------|-----------|
+| **Settings** | `.boxlang.json` in the working directory | `~/.boxlang/config/boxlang.json` |
+| **Environment variables** | `.env` in the working directory | `~/.box.env` |
+| **Wins when both exist** | Project | |
+
+Use `boxlang.json` for BoxLang runtime settings such as datasources, caches, mappings and logging. Use `.env` for values and secrets that you read in your code with `getSystemSetting()`.
+
+For the complete list of settings, see [Configuration](../configuration.md).
+
 ### Examples of CLI Options
 
 ```bash

@@ -14,7 +14,7 @@ All runtimes allow for configuration overrides.
 {% endhint %}
 
 {% hint style="success" %}
-**CLI project config (1.18+):** when you run `boxlang` and no config was supplied through `BOXLANG_CONFIG` or `--bx-config`, the CLI loads a `.boxlang.json` from the current working directory, the same convention the MiniServer uses. An explicit environment variable or flag always wins.
+**CLI project config (1.18+):** when you run `boxlang` and no config was supplied through `BOXLANG_CONFIG` or `--bx-config`, the CLI loads a `.boxlang.json` from the current working directory, the same convention the MiniServer uses. An explicit environment variable or flag always wins. See [Customizing boxlang.json](running-boxlang/cli-scripting.md#customizing-boxlang-json) for the full lookup order.
 {% endhint %}
 
 ## boxlang.json
