@@ -901,7 +901,6 @@ valueSet(type=[string])
 
 
 
-## Examples
 
 ### Creating structs using the function `structNew`
 

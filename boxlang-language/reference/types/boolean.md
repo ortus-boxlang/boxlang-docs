@@ -285,6 +285,5 @@ Returns a <code>Boolean</code> instance representing the specified
 </details>
 
 
-## Examples
 
 

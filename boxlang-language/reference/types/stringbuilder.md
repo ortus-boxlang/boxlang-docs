@@ -506,6 +506,5 @@ Returns a string representing the data in this sequence.
 </details>
 
 
-## Examples
 
 

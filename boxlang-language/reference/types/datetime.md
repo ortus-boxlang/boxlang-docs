@@ -944,6 +944,5 @@ year(timezone=[string], locale=[string])
 
 
 
-## Examples
 
 

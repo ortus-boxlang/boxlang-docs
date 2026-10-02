@@ -889,7 +889,6 @@ union(otherSet=[any])
 
 
 
-## Examples
 
 ### Creating sets using the function `setNew`
 

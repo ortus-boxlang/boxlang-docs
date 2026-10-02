@@ -49,6 +49,5 @@ bxDump(label=[string], depth=[numeric], maxRows=[numeric], top=[numeric], expand
 
 
 
-## Examples
 
 

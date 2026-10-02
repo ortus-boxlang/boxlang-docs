@@ -22,4 +22,3 @@ Arguments:
 </details>
 
 
-## Examples

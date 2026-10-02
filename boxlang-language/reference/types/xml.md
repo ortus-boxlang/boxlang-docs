@@ -154,6 +154,5 @@ transform(XSL=[String], parameters=[Struct], XMLSettings=[struct])
 
 
 
-## Examples
 
 

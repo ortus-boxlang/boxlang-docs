@@ -216,6 +216,5 @@ writeLine(data=[string])
 
 
 
-## Examples
 
 

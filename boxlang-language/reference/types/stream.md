@@ -1167,6 +1167,5 @@ Accumulates the elements of this stream into a <code>List</code>. The elements i
 </details>
 
 
-## Examples
 
 

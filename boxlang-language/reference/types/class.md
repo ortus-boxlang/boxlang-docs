@@ -53,6 +53,5 @@ toJSON(queryFormat=[string], useSecureJSONPrefix=[string], useCustomSerializer=[
 
 
 
-## Examples
 
 

@@ -12,5 +12,3 @@
 Returns the absolute value of a number
 </details>
 
-
-## Examples

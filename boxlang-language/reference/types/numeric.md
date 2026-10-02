@@ -521,6 +521,5 @@ Returns the value of the specified number as a <code>short</code>.
 </details>
 
 
-## Examples
 
 

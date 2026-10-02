@@ -1495,6 +1495,5 @@ zip(array2=[array], callback=[function], parallel=[boolean], maxThreads=[any], v
 
 
 
-## Examples
 
 
