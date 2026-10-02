@@ -1184,6 +1184,7 @@
     * [Cache Service Events](boxlang-framework/interceptors/core-interception-points/cache-service-events.md)
     * [Cache Provider Events](boxlang-framework/interceptors/core-interception-points/cache-provider-events.md)
     * [Cache Object Store Events](boxlang-framework/interceptors/core-interception-points/cache-object-store-events.md)
+    * [Class Instance Events](boxlang-framework/interceptors/core-interception-points/class-instance-events.md)
     * [Datasource Service Events](boxlang-framework/interceptors/core-interception-points/datasource-service-events.md)
     * [Dump Events](boxlang-framework/interceptors/core-interception-points/dump-events.md)
     * [Dynamic Object Events](boxlang-framework/interceptors/core-interception-points/dynamic-object-events.md)

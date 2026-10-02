@@ -378,7 +378,7 @@ Ok, let's go over the frequency methods:
 | `everyWeek()`                          | Run the task every Sunday at midnight                                        |
 | `everyWeekOn( day, time )`             | Run the task weekly on the given day of the week and time                    |
 | `everyMonth()`                         | Run the task on the first day of every month at midnight                     |
-| `everyMonthOn( day, time )`            | Run the task every month on a specific day and time                          |
+| `everyMonthOn( day, time )`            | Run the task every month on a specific day and time. If `day` is past the end of a shorter month (for example `31` in February), it runs on that month's last day (1.18+) |
 | `onFirstBusinessDayOfTheMonth( time )` | Run the task on the first Monday of every month                              |
 | `onLastBusinessDayOfTheMonth( time )`  | Run the task on the last business day of the month                           |
 | `everyYear()`                          | Run the task on the first day of the year at midnight                        |
@@ -469,8 +469,8 @@ Spaced delays are a feature of the Scheduled Executors. There is even a `spacedD
 
 ### 🔒 Server Fixation (Clustering)
 
-{% hint style="warning" %}
-Server fixation is still in development and has not shipped in a released version of BoxLang as of this writing. The method name and behavior documented below reflect the in-progress design (ported from ColdBox's own server fixation feature) and may change before release. Verify `.onOneServer()` against the changelog of the BoxLang version you're running before relying on it in production.
+{% hint style="info" %}
+Server fixation is available starting in BoxLang **1.18.0**.
 {% endhint %}
 
 If you deploy the same codebase — and therefore the same `Scheduler.bx`, with the same tasks — to every node of a clustered/multi-server environment, every node will, by default, register and run those tasks **independently**. A task scheduled with `everyDayAt( "02:00" )` doesn't run once for the cluster; it runs once **per node**, at the same time, which is rarely what you want for things like nightly cleanup jobs, report generation, or cache warm-ups.
