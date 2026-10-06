@@ -11,7 +11,7 @@ This makes it a great fit for:
 
 * Pre-commit and git hooks
 * CI pipelines, as a fast fail-early step before running the full test suite
-* Editor/IDE tooling integrations (via `--format json`)
+* Editor/IDE tooling integrations (via `--format json`), such as the [BoxLang Sublime Text package](boxlang-sublime-text.md), which runs it on save and shows errors inline
 
 Like the other BoxLang CLI tools, syntax checking is based on our BL AST (BoxLang Abstract Syntax Tree) and the actual BL ANTLR parsers, so results are accurate for both BoxLang and CFML source.
 
