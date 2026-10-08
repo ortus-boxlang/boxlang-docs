@@ -241,6 +241,24 @@ The **Source** line says how BoxLang was installed: BVM, Homebrew, the Quick Ins
 * **DI Property Injection** — `Shift+Alt+D` inserts a dependency injection property template (configurable via `boxlang_di_property` setting).
 * **Controller/View Toggle** — `Ctrl+F1` toggles between controller and view files based on configured folder names.
 
+### 🔧 Optional CFML Fallback
+
+The package leaves `.cfc`, `.cfm`, and `.cfs` files to the dedicated CFML package by default. To enable BoxLang syntax and completions for those extensions, set `boxlang_enable_cfml_fallback` to `true` in **Preferences: BoxLang Settings**. The setup wizard disables this option if it detects the CFML package, avoiding conflicts.
+
+### 🖼️ Screenshots
+
+<figure><img src="../../.gitbook/assets/sublime-introspection.png" alt="BoxLang function completions in Sublime Text" width="800"><figcaption><p>Context-aware completions</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/sublime-insights.png" alt="Inline BoxLang function documentation in Sublime Text" width="800"><figcaption><p>Inline documentation</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/sublime-build.png" alt="BoxLang build variants in the Sublime Text command palette" width="800"><figcaption><p>Build variants</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/sublime-syntax-issues.png" alt="BoxLang syntax errors shown inline and in the error panel" width="800"><figcaption><p>Syntax diagnostics</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/sublime-testbox-runner.png" alt="TestBox test results in Sublime Text" width="800"><figcaption><p>TestBox results</p></figcaption></figure>
+
+<figure><img src="../../.gitbook/assets/sublime-testbox-navigator.png" alt="Navigating TestBox specs from Sublime Text" width="800"><figcaption><p>TestBox spec navigation</p></figcaption></figure>
+
 ***
 
 ## ⌨️ Key Bindings
