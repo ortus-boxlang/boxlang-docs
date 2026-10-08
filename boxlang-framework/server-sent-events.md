@@ -706,6 +706,34 @@ The `onChunk` callback receives five parameters:
 | `httpClient` | object | BoxHttpClient instance |
 | `response` | object | Raw Java HttpResponse |
 
+### Stopping a Stream, Idle Timeout and Errors
+
+_New in 1.19.0._
+
+- **Stop early:** return an explicit `false` from `onChunk` to stop the stream. The connection is closed immediately, so the server stops generating. Any other return value keeps streaming. `result.streamCompleted` is `false` when you stop early.
+- **Idle timeout:** `timeout` is the longest wait for the response headers or between received bytes. It does not limit the total duration, so a long stream that keeps sending events, or keep-alive comments, is never cut off. A stalled stream is aborted with a `408` status and reported through `onError`.
+- **Errors:** a response with a non 2xx status never reaches `onChunk`. The body is reported as `HTTP <status>: <body>` through `onError`.
+- **Content-Encoding:** `gzip` and `deflate` encoded event streams are decoded.
+
+```js
+http( "https://api.example.com/events" )
+    .sse( true )
+    .timeout( 30 )
+    .onChunk( ( event ) => {
+        if ( event.data == "[DONE]" ) {
+            // Stop and close the connection
+            return false
+        }
+        println( event.data )
+    } )
+    .onError( ( error, httpResult ) => {
+        println( "Stream failed: " & error.message )
+    } )
+    .send()
+```
+
+For raw binary streams such as audio, see the `onBinaryChunk` callback in [HTTP/S Calls](http-calls.md).
+
 ### Real-World SSE Consumption Examples
 
 #### OpenAI Streaming Chat

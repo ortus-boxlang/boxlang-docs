@@ -117,7 +117,7 @@ println( repoData.name );
 
 ## 🎯 HTTP Request Callbacks Overview
 
-BoxLang provides **four powerful callbacks** for monitoring and processing HTTP requests in real-time. These callbacks work with both the `http()` BIF and the `bx:http` component, enabling you to:
+BoxLang provides **five powerful callbacks** for monitoring and processing HTTP requests in real-time. These callbacks work with both the `http()` BIF and the `bx:http` component, enabling you to:
 
 - 📊 Track request lifecycle events
 - 🌊 Stream and process response data incrementally
@@ -131,6 +131,7 @@ BoxLang provides **four powerful callbacks** for monitoring and processing HTTP 
 |----------|------------------|-------------------|------------|
 | **`onRequestStart`** | Before the HTTP request begins | Logging, request ID generation, pre-request validation | `httpResult`, `httpClient` |
 | **`onChunk`** | For each chunk of data received | Streaming responses, SSE consumption, progress tracking | `chunk`, `lastEventId`, `httpResult`, `httpClient`, `response` |
+| **`onBinaryChunk`** **New in 1.19.0** | For each raw block of bytes received | Streaming audio and other binary bodies, restreaming to a client | `bytes`, `info` |
 | **`onComplete`** | After successful request completion | Cleanup, final logging, success notifications | `httpResult` |
 | **`onError`** | When an error occurs | Error handling, retry logic, alerting | `error`, `httpResult` |
 
@@ -213,6 +214,72 @@ http( "https://api.example.com/events" )
         println( "Last Event ID: " & lastEventId );
     } )
     .send();
+```
+
+#### `onBinaryChunk( bytes, info )`
+
+_New in 1.19.0._ Called for each block of raw bytes read from the network. Use it for binary streaming responses such as audio (mp3, pcm, mulaw), where `onChunk` cannot be used: `onChunk` decodes the body as text and splits it on newlines, which corrupts binary data.
+
+**Parameters:**
+
+- `bytes` (binary) - The bytes exactly as they were read. No text decoding and no line splitting is applied.
+- `info` (struct) - Details about the chunk:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `chunkNumber` | numeric | 1-based chunk counter |
+| `totalBytes` | numeric | Total bytes received so far, including this chunk |
+| `headers` | struct | The response headers. **Only present on the first chunk.** |
+| `result` | struct | The result structure (partially populated during streaming) |
+| `httpClient` | object | The client instance |
+
+**Behavior:**
+
+- **Stop early:** return an explicit `false` to stop streaming. The connection is closed immediately, so the server stops generating. Any other return value, including no return value, keeps streaming. Stopping is not an error: `result.streamCompleted` is `false` and the status code is unchanged.
+- **Idle timeout:** when `onBinaryChunk` is used, `timeout` is an **idle timeout**: the longest wait for the response headers or between received bytes. It is not a cap on the total duration, so a long stream that keeps delivering data is never cut off. A stalled stream is aborted and reported as a `408` timeout through `onError`.
+- **Errors:** a response with a non 2xx status never reaches the callback. The body is read and reported as `HTTP <status>: <body>` through `onError`, and `result.statusCode` and `result.fileContent` hold the status and body.
+- **Result:** the body is not accumulated. `result.fileContent` is empty and `result.chunkCount` and `result.totalBytes` report what was received. `file` and `path` are not applied.
+- **Precedence:** when both `onBinaryChunk` and `onChunk` are set, `onBinaryChunk` is used.
+
+**Example (restream audio and stop when the client leaves):**
+
+```js
+clientConnected = true
+
+result = http( "https://api.example.com/v1/speech" )
+    .post()
+    .header( "Authorization", "Bearer " & apiKey )
+    .jsonBody( '{"text":"Hello from BoxLang","format":"mp3"}' )
+    .timeout( 30 )
+    .onBinaryChunk( ( bytes, info ) => {
+        if ( info.chunkNumber == 1 ) {
+            println( "Status: " & info.result.statusCode )
+        }
+
+        clientConnected = sendToClient( bytes )
+
+        // false closes the connection and stops the provider generating
+        return clientConnected
+    } )
+    .onError( ( error, httpResult ) => {
+        // "HTTP 401: {...}" for a bad status, or a 408 timeout when the stream stalls
+        logger.error( "Audio stream failed: #error.message#" )
+    } )
+    .send()
+
+println( "Received #result.totalBytes# bytes in #result.chunkCount# chunks" )
+```
+
+**Example (save a stream to disk):**
+
+```js
+out = createObject( "java", "java.io.ByteArrayOutputStream" ).init()
+
+http( "https://example.com/big.bin" )
+    .onBinaryChunk( ( bytes ) => out.writeBytes( bytes ) )
+    .send()
+
+fileWrite( "/tmp/big.bin", out.toByteArray() )
 ```
 
 #### `onComplete( httpResult )`
@@ -544,7 +611,7 @@ The HTTP component accepts many attributes to control request behavior. Below ar
 | `resolveUrl` | boolean | false | If `true`, resolves relative URLs in the response body to absolute URLs. |
 | `throwOnError` | boolean | true | If `true`, throws an error when the HTTP response status code is 400 or greater. |
 | `redirect` | boolean | true | If `true`, follows HTTP redirects (301, 302, etc.). |
-| `timeout` | numeric | unlimited | The request timeout in seconds. No timeout if not specified. |
+| `timeout` | numeric | unlimited | The request timeout in seconds. No timeout if not specified. When streaming with `onBinaryChunk` or Server-Sent Events, it is an idle timeout (see the Timeouts and Error Handling section below). |
 | `getAsBinary` | string | auto | Controls binary response handling: `true`/`yes` (force binary), `false`/`no` (force text), `auto` (detect based on MIME type), `never` (throw error if binary). |
 | `result` | string | bxhttp | The name of the variable to store the result structure. If not specified, BoxLang creates a `bxHTTP` variable in the variables scope. **Best practice: Always specify this attribute explicitly.** |
 | `file` | string | | The filename for saving the response. If `path` is not provided, this can be a full file path. |
@@ -859,6 +926,10 @@ bx:http
 ## ⏱️ Timeouts and Error Handling
 
 ### 🔹 Setting Timeouts
+
+{% hint style="info" %}
+**Streaming requests (New in 1.19.0):** when you use `onBinaryChunk` or consume Server-Sent Events, `timeout` is an **idle timeout**. It is the longest wait for the response headers or between received bytes, not a limit on the total duration, so long streams keep working as long as data keeps arriving. A stalled stream is aborted with a `408` status and reported through `onError`.
+{% endhint %}
 
 ```js
 // Timeout after 30 seconds
