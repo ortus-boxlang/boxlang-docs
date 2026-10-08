@@ -732,7 +732,7 @@ http( "https://api.example.com/events" )
     .send()
 ```
 
-For raw binary streams such as audio, see [`onBinaryChunk`](http-calls.md#onbinarychunk-bytes-info).
+For raw binary streams such as audio, see the `onBinaryChunk` callback in [HTTP/S Calls](http-calls.md).
 
 ### Real-World SSE Consumption Examples
 

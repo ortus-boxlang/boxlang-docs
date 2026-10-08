@@ -611,7 +611,7 @@ The HTTP component accepts many attributes to control request behavior. Below ar
 | `resolveUrl` | boolean | false | If `true`, resolves relative URLs in the response body to absolute URLs. |
 | `throwOnError` | boolean | true | If `true`, throws an error when the HTTP response status code is 400 or greater. |
 | `redirect` | boolean | true | If `true`, follows HTTP redirects (301, 302, etc.). |
-| `timeout` | numeric | unlimited | The request timeout in seconds. No timeout if not specified. When streaming with `onBinaryChunk` or Server-Sent Events, it is an idle timeout (see [Timeouts](#timeouts-and-error-handling)). |
+| `timeout` | numeric | unlimited | The request timeout in seconds. No timeout if not specified. When streaming with `onBinaryChunk` or Server-Sent Events, it is an idle timeout (see the Timeouts and Error Handling section below). |
 | `getAsBinary` | string | auto | Controls binary response handling: `true`/`yes` (force binary), `false`/`no` (force text), `auto` (detect based on MIME type), `never` (throw error if binary). |
 | `result` | string | bxhttp | The name of the variable to store the result structure. If not specified, BoxLang creates a `bxHTTP` variable in the variables scope. **Best practice: Always specify this attribute explicitly.** |
 | `file` | string | | The filename for saving the response. If `path` is not provided, this can be a full file path. |
