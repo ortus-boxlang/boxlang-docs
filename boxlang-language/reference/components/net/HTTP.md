@@ -33,6 +33,7 @@ clientCertPassword=[string]
 sse=[boolean]
 onRequestStart=[function]
 onChunk=[function]
+onBinaryChunk=[function]
 onMessage=[function]
 onError=[function]
 onComplete=[function]
@@ -82,6 +83,7 @@ workstation=[string] />
 | `sse` | `boolean` | `false` |  | `false` |
 | `onRequestStart` | `function` | `false` | A callback function called before the HTTP request is sent. Receives a struct with: request (HTTPRequest builder object), url (target URL), method (HTTP method), headers (struct of headers). Useful for logging, modifying<br>                           request, or performing pre-flight checks. Optional. |  |
 | `onChunk` | `function` | `false` | A callback function for streaming/chunked response processing. Receives a struct with: chunk (data), chunkNumber (1-based), totalReceived (bytes), headers (first chunk only), result (HTTPResult struct). Optional. |  |
+| `onBinaryChunk` | `function` | `false` | **New in 1.19.0.** A callback function for raw binary response streaming. Receives `(bytes, info)`: `bytes` is the byte array read from the network with no text decoding or line splitting, and `info` is a struct with `chunkNumber` (1-based), `totalBytes`, `headers` (first chunk only), `result` and `httpClient`. Return an explicit `false` to stop and close the connection. When set, `timeout` is an idle timeout (longest wait for headers or between received bytes) and a non 2xx status is reported through `onError` as `HTTP <status>: <body>` instead of invoking the callback. Takes precedence over `onChunk`. Optional. |  |
 | `onMessage` | `function` | `false` |  |  |
 | `onError` | `function` | `false` | A callback function to handle errors during the HTTP request. Receives a struct with: error (exception), message (error message), result (HTTPResult struct with partial data). Called for both streaming and non-streaming<br>                    requests. Optional. |  |
 | `onComplete` | `function` | `false` | A callback function called when the HTTP request completes successfully. Receives a struct with: result (HTTPResult struct), statusCode, success (boolean). Called after all chunks in streaming mode. Optional. |  |
