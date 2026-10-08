@@ -178,7 +178,27 @@ Run [TestBox](https://testbox.ortusbooks.com) specs from the Command Palette:
 | **BoxLang: TestBox Run All Tests**        | Everything in `directory` (default `tests.specs`)                                              |
 | **BoxLang: TestBox Run Last**             | Repeats the previous run                                                                       |
 
-By default tests run through TestBox's **BoxLang runner** (`testbox/system/runners/BoxLangRunner.bx`, TestBox 7+). It is found automatically in your project. Results appear in an output panel with clickable `file:line` failures, and failing lines in open files get a squiggle, gutter icon, and inline message.
+By default tests run through TestBox's **BoxLang runner** (`BoxLangRunner.bx`, TestBox 7+). The package searches the project and parent folders for these common layouts:
+
+* `testbox/system/runners/BoxLangRunner.bx` — installed at the project root
+* `lib/testbox/system/runners/BoxLangRunner.bx` — installed under `lib`
+* `system/runners/BoxLangRunner.bx` — the TestBox source checkout
+
+Results appear in an output panel with clickable `file:line` failures, and failing lines in open files get a squiggle, gutter icon, and inline message.
+
+If the runner is not found, choose **Set a local BoxLangRunner.bx path** or **Use an HTTP runner**. The selected value is saved in the open project's `.sublime-project` file under `settings.boxlang_testbox`, and the test run is retried. A saved Sublime project is required for this setup flow.
+
+You can also configure the CLI runner path directly. Use an absolute path or a path relative to the project root:
+
+```json
+{
+  "settings": {
+    "boxlang_testbox": {
+      "runner_path": "lib/testbox/system/runners/BoxLangRunner.bx"
+    }
+  }
+}
+```
 
 #### Using a web runner
 
@@ -300,6 +320,9 @@ Open the Command Palette and type `BoxLang`:
 | **BoxLang: Go to Definition**            | Jump to the definition of the class or function under the cursor          |
 | **BoxLang: Format Code**                 | Format the current file with `boxlang format`                             |
 | **BoxLang: Show Documentation**          | Show the inline documentation popup                                       |
+| **BoxLang: Open Documentation Website**  | Open [BoxLang documentation](https://boxlang.ortusbooks.com)               |
+| **BoxLang: Get Support**                 | Open [BoxLang support plans](https://www.boxlang.io/plans)                 |
+| **TestBox: Open Documentation Website**  | Open [TestBox documentation](https://testbox.ortusbooks.com)               |
 | **BoxLang: Toggle Controller/View**      | Switch between a controller and its view                                  |
 | **BoxLang: Inject Property**             | Insert a dependency injection property                                    |
 | **BoxLang: Index Active Project**        | Re-index the project for component completions                            |
@@ -460,7 +483,7 @@ This is a JVM warning, not a package error. The Java running BoxLang does not ma
 
 ### TestBox says the runner was not found
 
-Install TestBox 7+ in your project (`box install testbox`) or set `runner_path` in the `boxlang_testbox` setting. To use a web runner instead, set `http_runner_url` in your project settings.
+The package checks `./testbox`, `./lib/testbox`, and the TestBox source-checkout layout `./system/runners/BoxLangRunner.bx`. If your runner is elsewhere, choose **Set a local BoxLangRunner.bx path** when prompted or add `runner_path` under `settings.boxlang_testbox` in your `.sublime-project`. To use a web runner, choose **Use an HTTP runner** or configure `http_runner_url` in the same project setting. The prompt saves the value and retries the run.
 
 ### Verify an install from the command line
 
