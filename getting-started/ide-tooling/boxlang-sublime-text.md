@@ -508,22 +508,44 @@ python3 scripts/local_smoke_test.py --testbox /path/to/testbox
 
 ## 🤝 Contributing
 
-Contributions are welcome! The package includes a comprehensive test suite with **360+ tests** using pytest and TestBox-style assertions.
+Contributions are welcome. See the [contributing guidelines](https://github.com/ortus-boxlang/sublimetext-boxlang/blob/main/CONTRIBUTING.md) for the full workflow and conventions.
+
+### Run the test suite
+
+The package uses pytest with TestBox-style expectations. From the repository root:
 
 ```bash
-# Clone the repository
-git clone https://github.com/ortus-boxlang/sublimetext-boxlang.git
-
-# Run the full test suite
-python -m pytest tests/
-
-# Or use make shortcuts
-make test          # All tests
-make test-unit     # Unit tests only
-make test-coverage # With coverage report
+python3 -m pytest tests/
+make test
+make test-unit
+make test-integration
+make test-coverage
+make test-report
+make test-watch
 ```
 
-Please review the [Contributing Guidelines](https://github.com/ortus-boxlang/sublimetext-boxlang/blob/main/CONTRIBUTING.md) before submitting a pull request.
+### Package architecture
+
+The package uses the BoxLang AST for `.bx` and `.bxs` files and a flexible tag tokenizer for `.bxm` templates. Completions and documentation come from plugins for built-ins and tags, BoxLang documentation, indexed components, dot paths, inferred types, `Application.bx` lifecycle methods, and symbols in the current file. Type inference is intentionally medium-depth: it uses literals, `new` and `createObject()` expressions, known BIF return types, assignments, dot chains, and indexed component metadata.
+
+### Refresh completion data
+
+Completion data is generated from the [BoxLang documentation repository](https://github.com/ortus-boxlang/boxlang-docs) with `scripts/generate_completions.py`. It produces the BIF, tag, member-function, and function-parameter JSON used by completions and inline documentation. Coverage includes core BoxLang and modules such as compat-cfml, image-manipulation, web-support, bx-csv, bx-jwt, bx-redis, bx-spreadsheet, and other BoxLang modules.
+
+```bash
+# First run: clone boxlang-docs and generate the data
+python3 scripts/generate_completions.py --clone
+
+# After documentation or BoxLang updates
+python3 scripts/generate_completions.py --update
+
+# Use a docs checkout at a custom location
+python3 scripts/generate_completions.py --update --docs-path /path/to/boxlang-docs
+```
+
+The generator requires Python 3.11+ and uses only the standard library. Review `[warn]` output, then commit all four generated JSON files together from `src/plugins_/basecompletions/json/`.
+
+For parser and plugin changes, preserve AST-only parsing for `.bx`/`.bxs`, derive self-closing tags from BoxLang `@BoxComponent` annotations, extend the `BoxlangPlugin` base class, and keep type inference medium-depth. Parsing, formatting, and compilation should continue to delegate to the BoxLang CLI.
 
 ***
 
