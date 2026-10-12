@@ -37,8 +37,8 @@ Install the module, the browser, and the skills that teach the agent how to use 
 
 ```bash
 install-bx-module bx-playwright
-bxPlaywright install chromium
-bxPlaywright doctor
+bxplaywright install chromium
+bxplaywright doctor
 
 npx skills add ortus-boxlang/skills/boxlang-developer
 npx skills add ortus-boxlang/skills/boxlang-modules/bx-playwright
@@ -90,7 +90,7 @@ Everything the agent needs to recover is in the output:
 * **Accessibility snapshots** are compact and token efficient, with refs (`[ref=e12]`) the agent can act on directly: `page.click( "ref=e12" )`.
 * **Errors are typed and explain the fix**: `Playwright.Timeout`, `Playwright.AssertionFailed` and `Playwright.ActionFailed` carry Playwright's call log and a `detail` with what to try next.
 * **Screenshots** let a multimodal agent look at the result, not just the DOM.
-* **`help()`** on any object (`page.help( "fill" )`) and `bxPlaywright help --json` describe the API, so the agent does not have to guess.
+* **`help()`** on any object (`page.help( "fill" )`) and `bxplaywright help --json` describe the API, so the agent does not have to guess.
 
 ## ✅ What the Agent Leaves Behind
 
@@ -124,7 +124,7 @@ add a browser test for the happy path and for a duplicate email.
 
 ## 🔗 Going Further
 
-* **Record instead of write**: `bxPlaywright codegen http://localhost:8080 --output=flow.bxs` records your clicks as bx-playwright code the agent can build on.
-* **No shell access?** `bxPlaywright mcp` starts Playwright's MCP server, so MCP-only agents can still drive the browser.
+* **Record instead of write**: `bxplaywright codegen http://localhost:8080 --output=flow.bxs` records your clicks as bx-playwright code the agent can build on.
+* **No shell access?** `bxplaywright mcp` starts Playwright's MCP server, so MCP-only agents can still drive the browser.
 * **AI features inside your app**: give a BoxLang AI agent a browser with [Browser Agents](../../boxlang-ai/browser-agents.md).
 * **Full documentation** for agents and humans: [bxplaywright.boxlang.io](https://bxplaywright.boxlang.io), also as [llms.txt](https://bxplaywright.boxlang.io/llms.txt).
