@@ -92,6 +92,32 @@ Array assignments do not need the extra parentheses.
 Use parentheses for struct assignments unless you are declaring with `var`, `final`, or `static`.
 {% endhint %}
 
+### `static` array destructuring vs static scope access
+
+`static[ expr ]` is bracket access into the `static` scope, just like `variables[ expr ]`. It works for plain and compound assignments.
+
+```js
+static function setDyn( name, value ) {
+    static[ name ] = value
+    static[ name ] += 1
+    return static[ name ]
+}
+```
+
+`static [ ... ] = value` is an array destructuring declaration only when the brackets clearly hold a pattern: two or more bindings, a trailing comma, a rest binding, a default value, or a nested pattern. A single plain binding is static scope access, with or without a space after `static`.
+
+```js
+static [ first, second ] = values   // destructuring declaration
+static [ head, ...tail ] = values   // destructuring declaration
+static [ size = 10 ] = values       // destructuring declaration
+static [ only, ] = values           // destructuring declaration (trailing comma)
+static [ name ] = value             // static scope access, same as static[ name ] = value
+```
+
+{% hint style="info" %}
+To destructure a single value into the `static` scope, add a trailing comma: `static [ only, ] = values`.
+{% endhint %}
+
 ## 🎯 Defaults
 
 Defaults let you provide a fallback when a value is not available.
