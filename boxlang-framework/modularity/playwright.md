@@ -71,7 +71,7 @@ playwright( [ "android", "dark" ] ).browse( ( page ) => {
 } )
 ```
 
-Run `bxplaywright profiles` to list them. Add your own under `modules.playwright.settings.profiles` in `boxlang.json`, or override settings with `BX_PLAYWRIGHT_*` environment variables.
+Run `bxplaywright profiles` to list them. Add your own under `modules.bxplaywright.settings.profiles` in `boxlang.json`, or override settings with `BX_PLAYWRIGHT_*` environment variables.
 
 ## 🖨️ Rendering
 
