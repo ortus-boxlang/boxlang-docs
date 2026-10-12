@@ -32,7 +32,7 @@ flowchart LR
 
 ```bash
 install-bx-module bx-ai bx-playwright
-bxPlaywright install chromium
+bxplaywright install chromium
 ```
 
 ```js
@@ -79,7 +79,7 @@ tools = playwright( [ "android", "dark" ], { baseURL : "https://staging.example.
 ## 🔌 Other Frameworks and MCP
 
 * `playwright().aiToolDefinitions()` returns the same tools in a neutral format, `[ { name, description, arguments, handler } ]`, for any agent framework.
-* `bxPlaywright mcp` starts Playwright's MCP server for MCP clients such as Claude, Cursor and VS Code.
+* `bxplaywright mcp` starts Playwright's MCP server for MCP clients such as Claude, Cursor and VS Code.
 
 {% hint style="warning" %}
 A browser agent acts with whatever access its browser session has. Point it at test or staging environments, give it test accounts, and use [governance controls](governance-and-security.md) such as human approval for anything that changes real data.

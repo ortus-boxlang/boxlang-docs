@@ -24,7 +24,7 @@ This page is a summary. The complete documentation lives at **[bxplaywright.boxl
 * **Quality checks**: visual regression with diff images, console errors, smoke tests, and axe-core accessibility checks
 * **Page objects, components and macros** to keep tests readable
 * **Built for AI agents**: accessibility snapshots with element refs, browser tools for [BoxLang AI](../../boxlang-ai/browser-agents.md) agents, and `help()` on every object
-* **`bxPlaywright` CLI** with bash completions: install browsers, `doctor`, `codegen` that records BoxLang code, screenshots, PDFs and Playwright MCP
+* **`bxplaywright` CLI** with bash completions: install browsers, `doctor`, `codegen` that records BoxLang code, screenshots, PDFs and Playwright MCP
 
 ## 📦 Installation
 
@@ -32,7 +32,7 @@ Two distributions are published to ForgeBox:
 
 | Module | Size | Node.js |
 | --- | --- | --- |
-| `bx-playwright` | Small (about 4 MB) | Uses a system Node.js 20+, or downloads one with `bxPlaywright install` |
+| `bx-playwright` | Small (about 4 MB) | Uses a system Node.js 20+, or downloads one with `bxplaywright install` |
 | `bx-playwright-full` | Large (about 200 MB) | Bundled for every platform, works offline |
 
 ```bash
@@ -42,8 +42,8 @@ install-bx-module bx-playwright
 box install bx-playwright
 
 # Download the browser (and Node.js when needed), then check the setup
-bxPlaywright install chromium
-bxPlaywright doctor
+bxplaywright install chromium
+bxplaywright doctor
 ```
 
 ## ⚡ Quick Start
@@ -71,7 +71,7 @@ playwright( [ "android", "dark" ] ).browse( ( page ) => {
 } )
 ```
 
-Run `bxPlaywright profiles` to list them. Add your own under `modules.playwright.settings.profiles` in `boxlang.json`, or override settings with `BX_PLAYWRIGHT_*` environment variables.
+Run `bxplaywright profiles` to list them. Add your own under `modules.playwright.settings.profiles` in `boxlang.json`, or override settings with `BX_PLAYWRIGHT_*` environment variables.
 
 ## 🖨️ Rendering
 
