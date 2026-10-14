@@ -17,6 +17,7 @@ The BoxLang Image Module provides comprehensive image manipulation functionality
 - 📐 **Transformations** - Resize, rotate, crop, flip, shear, scale
 - 📊 **Metadata Support** - Read/write EXIF and IPTC metadata
 - 🔗 **Fluent API** - Method chaining with the `BoxImage` builder
+- 🔳 **QR Codes** - Generate and read QR codes with custom colors and an optional logo
 - 🏷️ **Component** - Tag-based syntax for templates
 - 🎯 **Member Functions** - All BIFs available as member functions
 
@@ -177,6 +178,8 @@ base.overlay(overlay, "normal", 0.8)
 | `ImageNew()` | - | Creation | Creates new image or reads from source |
 | `ImageOverlay()` | `image.overlay()` | Filter | Overlays one image on another |
 | `ImagePaste()` / `ImageDrawImage()` | `image.paste()` | Drawing | Pastes/draws one image onto another |
+| `ImageQRCodeGenerate()` | `"text".toQRCode()` | Creation | Generates a QR code image from text |
+| `ImageQRCodeRead()` | `image.readQRCode()` | Output | Reads the text from a QR code in an image |
 | `ImageRead()` | - | Creation | Reads image from file path or URL |
 | `ImageReadBase64()` | - | Creation | Creates image from Base64 string |
 | `ImageResize()` | `image.resize()` | Transform | Resizes image to exact dimensions |
@@ -298,7 +301,7 @@ for (var file in files) {
 
 ## Additional Resources
 
-- **[BoxLang Documentation](https://boxlang.io/docs)** - Core BoxLang features
+- **[BoxLang Documentation](https://boxlang.ortusbooks.com)** - Core BoxLang features
 - **[CFDocs](https://cfdocs.org/)** - CFML function reference
 - **[GitHub Repository](https://github.com/ortus-boxlang/bx-image)** - Source code and issues
 - **[Ortus Solutions](https://www.ortussolutions.com)** - Commercial support

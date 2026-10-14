@@ -171,6 +171,19 @@ img.addBorder(3, "navy");
 
 **Colors:** Accepts color names ("red", "blue", "black") or hex codes ("#FF0000")
 
+## QR Codes
+
+### readQRCode([tryHarder])
+
+Read the QR code in this image. Returns the decoded text, or an empty string if there is none.
+
+```boxlang
+text = img.readQRCode()
+text = img.readQRCode( false )  // fastest scan
+```
+
+Generate one with [`ImageQRCodeGenerate()`](../built-in-functions/imageqrcodegenerate.md) or `"text".toQRCode()`.
+
 ## Compositing
 
 ### overlay(imageToOverlay, overlayRule, transparency)
@@ -576,6 +589,6 @@ result = base
 
 ## Related Documentation
 
-* [Built-In Functions](../../../../../docs/reference/built-in-functions/) - Individual BIF documentation
-* [Image Component](../../../../../docs/reference/components/image.md) - Tag-based approach
+* [Built-In Functions](../built-in-functions/README.md) - Individual BIF documentation
+* [Image Component](../components/image.md) - Tag-based approach
 * [readme.md](../../../../../) - Module overview and quick start
