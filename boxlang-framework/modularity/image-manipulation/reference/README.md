@@ -132,6 +132,7 @@ Image("photo.jpg")
 ### ⚡ Utilities (BIF only)
 
 - `ImageGenerateCaptcha()` - Generate CAPTCHA images with configurable difficulty
+- `ImageQRCodeGenerate()` / `ImageQRCodeRead()` - Generate QR codes and read them back
 - `ImageWriteToBrowser()` - Stream image to HTTP response
 - `GetReadableImageFormats()` / `GetWriteableImageFormats()` - List supported formats (includes WebP, GIF, BMP, TIFF)
 
@@ -197,6 +198,8 @@ ImageNew("products/large-photo.jpg")
 | `ImageNew()` | Creation | N/A | Create new image |
 | `ImageOverlay()` | Compositing | `img.overlay()` | Blend two images |
 | `ImagePaste()` | Compositing | `img.paste()` | Paste image at position |
+| `ImageQRCodeGenerate()` | Creation | `"text".toQRCode()` | Generate QR code image |
+| `ImageQRCodeRead()` | Output | `img.readQRCode()` | Read the text from a QR code |
 | `ImageRead()` | Creation | N/A | Read image from file |
 | `ImageReadBase64()` | Creation | N/A | Read image from Base64 |
 | `ImageResize()` | Transformations | `img.resize()` | Resize to dimensions |

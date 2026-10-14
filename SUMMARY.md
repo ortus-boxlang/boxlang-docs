@@ -1392,6 +1392,8 @@
         * [ImageNew](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imagenew.md)
         * [ImageOverlay](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imageoverlay.md)
         * [ImagePaste](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imagepaste.md)
+        * [ImageQRCodeGenerate](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imageqrcodegenerate.md)
+        * [ImageQRCodeRead](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imageqrcoderead.md)
         * [ImageRead](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imageread.md)
         * [ImageResize](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imageresize.md)
         * [ImageReadBase64](boxlang-framework/modularity/image-manipulation/reference/built-in-functions/imagereadbase64.md)

@@ -12,7 +12,7 @@ The `<bx:image>` component provides tag-based image manipulation in BoxLang.
 
 | Name          | Type    | Required | Default | Description                                                                                                 |
 | ------------- | ------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------- |
-| action        | string  | Yes      |         | The action to perform. One of: `border`, `captcha`, `convert`, `info`, `read`, `resize`, `rotate`, `write`, `writeToBrowser`. |
+| action        | string  | Yes      |         | The action to perform. One of: `border`, `captcha`, `convert`, `info`, `qrcode`, `qrread`, `read`, `resize`, `rotate`, `write`, `writeToBrowser`. |
 | angle         | numeric | No       |         | The angle for rotation in degrees (used with `rotate` action).                                               |
 | color         | string  | No       |         | The color for border. Accepts color names ("red", "blue") or hex codes ("#FF0000").                         |
 | destination   | string  | No       |         | The file path to write the image to (used with `write` action).                                             |
@@ -29,6 +29,14 @@ The `<bx:image>` component provides tag-based image manipulation in BoxLang.
 | source        | any     | No       |         | The source of the image: file path, URL, BoxImage object, or base64 string.                                 |
 | structName    | string  | No       |         | The name of the struct to assign image info to (used with `info` action).                                   |
 | text          | string  | No       |         | Text string for captcha generation.                                                                         |
+| size          | numeric | No       | 125     | Edge length in pixels of the QR code, 16 to 4096 (used with `qrcode`).                                      |
+| errorCorrection | string | No      | M       | QR error correction: `L`, `M`, `Q` or `H`. Always `H` with a logo (used with `qrcode`).                     |
+| quietZone     | numeric | No       | 4       | Light margin around the QR code in modules, 0 to 32 (used with `qrcode`).                                   |
+| foreground    | string  | No       | black   | Color of the dark QR modules. Color name or hex code (used with `qrcode`).                                  |
+| background    | string  | No       | white   | Color of the light QR modules. Color name or hex code (used with `qrcode`).                                 |
+| logo          | any     | No       |         | Image, path or URL drawn in the center of the QR code (used with `qrcode`).                                 |
+| logoScale     | numeric | No       | 0.2     | Fraction of the QR code's edge the logo covers, up to 0.3 (used with `qrcode`).                             |
+| tryHarder     | boolean | No       | true    | Spend more effort finding the QR code and read light-on-dark codes (used with `qrread`).                    |
 | thickness     | numeric | No       | 1       | Border thickness in pixels.                                                                                 |
 | width         | numeric | No       |         | Width in pixels for resizing or creating images.                                                            |
 | writeType     | string  | No       | url     | How to write to browser: "url" (cached, returns URL) or "base64" (inline Base64 data URI).                  |
@@ -137,6 +145,36 @@ Generates a CAPTCHA image with the specified text. When neither `name` nor `dest
 
 **Required Attributes:** `text`
 **Optional Attributes:** `name`, `destination`, `width`, `height`, `fontSize`, `difficulty` ("low"/"medium"/"high"), `fonts`, `overwrite`
+
+### qrcode
+
+Generates a QR code image from `text`. Like `captcha`, when neither `name` nor `destination` is specified, the image is automatically streamed to the browser.
+
+```boxlang
+<bx:image action="qrcode" text="https://example.com" size="250" name="qr" />
+<bx:image action="qrcode" text="https://example.com" errorCorrection="H" foreground="##1a237e" logo="images/logo.png" destination="output/qr.png" overwrite="true" />
+
+<!-- Auto-streams to browser (no name or destination) -->
+<bx:image action="qrcode" text="https://example.com" />
+```
+
+**Required Attributes:** `text`
+**Optional Attributes:** `name`, `destination`, `overwrite`, `size`, `format`, `errorCorrection`, `quietZone`, `foreground`, `background`, `logo`, `logoScale`
+
+{% hint style="info" %}
+In a template a `#` starts an expression, so write hex colors as `##1a237e`.
+{% endhint %}
+
+### qrread
+
+Reads the QR code in `source` and stores the decoded text in the variable named by `name`. The text is an empty string when no QR code is found.
+
+```boxlang
+<bx:image action="qrread" source="images/qr.png" name="decoded" />
+```
+
+**Required Attributes:** `source`, `name`
+**Optional Attributes:** `tryHarder`
 
 ### writeToBrowser
 
