@@ -50,6 +50,62 @@ qr = ImageQRCodeGenerate( text="https://example.com", size=400, foreground="#1a2
 qr = "https://example.com".toQRCode( 250 )
 ```
 
+## Example Output
+
+Each of these was generated with `ImageQRCodeGenerate` and read back with `ImageQRCodeRead`, which returned the exact input text.
+
+### Default
+
+```boxlang
+qr = ImageQRCodeGenerate( "https://boxlang.io", 250 )
+```
+
+![Default QR code](../../../../../.gitbook/assets/bx-image-qrcode-default.png)
+
+### Custom colors with high error correction
+
+```boxlang
+qr = ImageQRCodeGenerate( text="https://boxlang.io", size=250, errorCorrection="H", foreground="#1a237e", background="#ffeb3b" )
+```
+
+![Navy on yellow QR code](../../../../../.gitbook/assets/bx-image-qrcode-colors.png)
+
+### Light on dark
+
+Readers need `tryHarder` (the default for `ImageQRCodeRead`) to scan a code that is lighter than its background.
+
+```boxlang
+qr = ImageQRCodeGenerate( text="https://boxlang.io", size=250, foreground="white", background="black" )
+```
+
+![White on black QR code](../../../../../.gitbook/assets/bx-image-qrcode-inverted.png)
+
+### With a logo
+
+```boxlang
+qr = ImageQRCodeGenerate( text="https://example.com/with-logo", size=400, logo="/path/to/logo.png" )
+```
+
+![QR code with a logo in the center](../../../../../.gitbook/assets/bx-image-qrcode-logo.png)
+
+### UTF-8 text
+
+```boxlang
+qr = ImageQRCodeGenerate( "héllo ✓ 日本語", 250 )
+```
+
+![QR code encoding UTF-8 text](../../../../../.gitbook/assets/bx-image-qrcode-unicode.png)
+
+### No quiet zone
+
+The QR specification calls for a 4 module margin. Without it some scanners will struggle to find the code.
+
+```boxlang
+qr = ImageQRCodeGenerate( text="https://boxlang.io", size=250, quietZone=0 )
+```
+
+![QR code with no margin](../../../../../.gitbook/assets/bx-image-qrcode-no-quiet-zone.png)
+
 ## Related
 
 * [ImageQRCodeRead](imageqrcoderead.md)
