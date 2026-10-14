@@ -589,6 +589,6 @@ result = base
 
 ## Related Documentation
 
-* [Built-In Functions](../../../../../docs/reference/built-in-functions/) - Individual BIF documentation
-* [Image Component](../../../../../docs/reference/components/image.md) - Tag-based approach
+* [Built-In Functions](../built-in-functions/README.md) - Individual BIF documentation
+* [Image Component](../components/image.md) - Tag-based approach
 * [readme.md](../../../../../) - Module overview and quick start

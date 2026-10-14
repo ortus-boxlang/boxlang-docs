@@ -301,7 +301,7 @@ for (var file in files) {
 
 ## Additional Resources
 
-- **[BoxLang Documentation](https://boxlang.io/docs)** - Core BoxLang features
+- **[BoxLang Documentation](https://boxlang.ortusbooks.com)** - Core BoxLang features
 - **[CFDocs](https://cfdocs.org/)** - CFML function reference
 - **[GitHub Repository](https://github.com/ortus-boxlang/bx-image)** - Source code and issues
 - **[Ortus Solutions](https://www.ortussolutions.com)** - Commercial support
