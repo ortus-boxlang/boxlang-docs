@@ -18,9 +18,14 @@ Before drawing, configure colors, strokes, and rendering options:
 img = ImageNew(400, 300, "rgb", "white");
 img.setDrawingColor("red");
 
-// Hex color
-img.setDrawingColor("#FF0000");
+// Hex colors: #RGB, #RRGGBB or #RRGGBBAA (alpha last), with or without the leading #
+img.setDrawingColor("##FF0000");
+img.setDrawingColor("##f00");
+img.setDrawingColor("##FF000080");  // 50% transparent red
+img.setDrawingColor("0b161b");
 ```
+
+> In a BoxLang string literal a `#` starts an interpolation, so write `##FF0000` (or omit the `#`). A value that is neither a known name nor a valid hex code throws an error instead of drawing black. The same formats are accepted by `setBackgroundColor`, the `color` argument of `ImageNew` and `ImageAddBorder`, and the `color` attribute of `<bx:image action="border">`.
 
 **Supported Colors:** `black`, `blue`, `cyan`, `darkgray`, `gray`, `green`, `lightgray`, `magenta`, `orange`, `pink`, `red`, `white`, `yellow`
 
@@ -28,8 +33,29 @@ img.setDrawingColor("#FF0000");
 
 ```js
 img.setBackgroundColor("white");
-img.setBackgroundColor("#F0F0F0");
+img.setBackgroundColor("##F0F0F0");
 ```
+
+### Gradients
+
+Paint with a linear gradient instead of a solid color. It applies to fills, strokes (rings), lines and text until you call `setDrawingColor`.
+
+```js
+img = ImageNew("", 400, 200, "rgb", "black");
+
+// start x/y, end x/y, colors, optional fractions (0 to 1)
+img.setDrawingGradient(0, 0, 400, 0, ["red", "blue"]);
+img.drawRect(0, 0, 400, 40, true);
+
+img.setDrawingGradient(0, 0, 0, 200, ["white", "gray", "black"], [0, 0.3, 1]);
+img.setDrawingStroke({ width: 6 });
+img.drawOval(150, 50, 100, 100, false);
+
+// Back to a solid color
+img.setDrawingColor("white");
+```
+
+Fewer than two colors, an invalid color, identical start and end points, or bad fractions throw an error.
 
 ### Configure Stroke (Line Style)
 
@@ -232,11 +258,42 @@ img.drawText("Styled Text", 50, 150, {
 
 **Font Configuration:**
 
+- **file** - Path to a `.ttf` or `.otf` file, used instead of `font` (see [Custom Fonts](#custom-fonts))
 - **font** - Font family name (e.g., "Arial", "Times New Roman")
 - **size** - Font size in points
 - **style** - "plain", "bold", "italic", "bolditalic"
 - **underline** - true/false
 - **strikeThrough** - true/false
+
+### Custom Fonts
+
+Use a bundled font file directly with the `file` key, or register it once and use the family name it returns.
+
+```js
+// One-off
+img.drawText("Brand", 50, 100, { file: "/app/fonts/Brand-Bold.ttf", size: 48 });
+
+// Register once, reuse the family name
+family = ImageRegisterFont("/app/fonts/Brand-Bold.ttf");
+img.drawText("Brand", 50, 100, { font: family, size: 48 });
+```
+
+A missing file, a directory or a file that is not a valid TrueType/OpenType font throws an error. See [ImageRegisterFont](reference/built-in-functions/imageregisterfont.md).
+
+### Measuring Text
+
+`measureText` returns the rendered size for the same font struct `drawText` takes, so you can center, word wrap or shrink text to fit.
+
+```js
+attrs = { font: "Arial", size: 48, style: "bold" };
+m = img.measureText("Hello World", attrs);
+// m.width, m.height (ascent + descent), m.ascent, m.descent, m.leading
+
+// Center on a 400px wide image; y is the baseline
+img.drawText("Hello World", (400 - m.width) / 2, 100, attrs);
+```
+
+Word wrapping is left to your code; see [ImageMeasureText](reference/built-in-functions/imagemeasuretext.md) for a short wrap-and-shrink recipe.
 
 ### Text Examples
 
@@ -407,7 +464,7 @@ img = ImageNew(200, 60, "rgb", "white");
 img.setAntiAliasing("on");
 
 // Gradient effect (simplified)
-img.setDrawingColor("#4CAF50");
+img.setDrawingColor("##4CAF50");
 img.drawRoundRect(0, 0, 200, 60, 10, 10, true);
 
 // Highlight

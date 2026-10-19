@@ -165,11 +165,11 @@ Add a solid border around the image.
 
 ```js
 img.addBorder(5, "black");
-img.addBorder(10, "#FF0000");
+img.addBorder(10, "##FF0000");
 img.addBorder(3, "navy");
 ```
 
-**Colors:** Accepts color names ("red", "blue", "black") or hex codes ("#FF0000")
+**Colors:** Accepts color names ("red", "blue", "black") or hex codes ("##FF0000")
 
 ## QR Codes
 
@@ -215,7 +215,10 @@ Before drawing, configure colors, stroke, and transparency:
 ```js
 // Set drawing color for shapes and lines
 img.setDrawingColor("red");
-img.setDrawingColor("#0000FF");
+img.setDrawingColor("##0000FF");
+
+// Linear gradient for fills, strokes and text (setDrawingColor returns to solid)
+img.setDrawingGradient(0, 0, 400, 0, ["red", "blue"]);
 
 // Set background color
 img.setBackgroundColor("white");
@@ -573,7 +576,7 @@ result = base
 
 ### Color Format
 
-* Colors accept both names ("red", "blue", "navy") and hex codes ("#FF0000", "#0000FF")
+* Colors accept both names ("red", "blue", "navy") and hex codes ("##FF0000", "##0000FF")
 * See `BoxImage.COLORS` map for supported color names
 
 ### Method Chaining

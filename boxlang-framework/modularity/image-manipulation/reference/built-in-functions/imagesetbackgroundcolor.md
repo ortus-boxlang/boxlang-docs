@@ -17,7 +17,7 @@ someImage.setBackgroundColor( color )
 | Name  | Type   | Required | Description                                                                          |
 | ----- | ------ | -------- | ------------------------------------------------------------------------------------ |
 | name  | any    | Yes      | The image to set the background color for. Can be a `BoxImage` object or image name. |
-| color | String | Yes      | The background color to set (e.g., "white", "#FF0000").                              |
+| color | String | Yes      | The background color to set (e.g., "white", "##FF0000").                              |
 
 ## Returns
 
@@ -34,7 +34,7 @@ Sets the background color of the specified image. Useful for preparing images fo
 result = ImageSetBackgroundColor( myImage, "white" );
 
 // Set background color using hex value
-result = ImageSetBackgroundColor( myImage, "#00FF00" );
+result = ImageSetBackgroundColor( myImage, "##00FF00" );
 
 // As a member function
 myImage.setBackgroundColor( "black" );
@@ -52,3 +52,5 @@ myImage.setBackgroundColor( "black" );
 * The operation modifies the image in place when used as a member function.
 * Returns the modified image object for chaining or further processing.
 * The `color` argument accepts named colors or hex color codes.
+* Hex colors may be `#RGB`, `#RRGGBB` or `#RRGGBBAA` (alpha last), with or without the leading `#`. In a BoxLang string write `##` for a literal `#`.
+* A color that is neither a known name nor valid hex throws an error.

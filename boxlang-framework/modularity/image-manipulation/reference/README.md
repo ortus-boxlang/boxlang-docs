@@ -194,6 +194,7 @@ ImageNew("products/large-photo.jpg")
 | `ImageGetWidth()` | Properties | `img.getWidth()` | Get image width |
 | `ImageGrayScale()` | Filters | `img.grayScale()` | Convert to grayscale |
 | `ImageInfo()` | Properties | `img.info()` | Get comprehensive image info |
+| `ImageMeasureText()` | Drawing | `img.measureText()` | Measure rendered text size |
 | `ImageNegative()` | Filters | `img.negative()` | Invert colors |
 | `ImageNew()` | Creation | N/A | Create new image |
 | `ImageOverlay()` | Compositing | `img.overlay()` | Blend two images |
@@ -202,6 +203,7 @@ ImageNew("products/large-photo.jpg")
 | `ImageQRCodeRead()` | Output | `img.readQRCode()` | Read the text from a QR code |
 | `ImageRead()` | Creation | N/A | Read image from file |
 | `ImageReadBase64()` | Creation | N/A | Read image from Base64 |
+| `ImageRegisterFont()` | Configuration | N/A | Register a TTF/OTF font file, returns the family |
 | `ImageResize()` | Transformations | `img.resize()` | Resize to dimensions |
 | `ImageRotate()` | Transformations | `img.rotate()` | Rotate by angle |
 | `ImageGenerateCaptcha()` | Creation | N/A | Generate CAPTCHA image |
@@ -211,6 +213,7 @@ ImageNew("products/large-photo.jpg")
 | `ImageSetAntiAliasing()` | Configuration | `img.setAntialiasing()` | Enable/disable antialiasing |
 | `ImageSetBackgroundColor()` | Configuration | `img.setBackgroundColor()` | Set background color |
 | `ImageSetDrawingColor()` | Configuration | `img.setDrawingColor()` | Set drawing color |
+| `ImageSetDrawingGradient()` | Configuration | `img.setDrawingGradient()` | Linear gradient paint |
 | `ImageSetDrawingStroke()` | Configuration | `img.setDrawingStroke()` | Set stroke properties |
 | `ImageSetDrawingTransparency()` | Configuration | `img.setDrawingTransparency()` | Set transparency level |
 | `ImageSharpen()` | Filters | `img.sharpen()` | Sharpen image |

@@ -362,7 +362,7 @@ function generateCertificate(name, course, date, outputPath) {
     img.addBorder(20, "gold", "constant");
 
     // Draw ornamental corners
-    img.setDrawingColor("#FFD700")  // Gold
+    img.setDrawingColor("##FFD700")  // Gold
        .setDrawingStroke({ width: 5 });
 
     // Top-left corner
@@ -399,7 +399,7 @@ function generateCertificate(name, course, date, outputPath) {
     });
 
     // Name (larger)
-    img.setDrawingColor("#0066CC");
+    img.setDrawingColor("##0066CC");
     img.drawText(name, 400, 350, {
         font: "Serif",
         size: 56,
@@ -562,7 +562,7 @@ function applyVintageFilter(sourcePath, outputPath) {
 
     // Add warmth by overlaying amber color
     overlay = ImageNew(img.getWidth(), img.getHeight(), "argb", "transparent");
-    overlay.setDrawingColor("#FFA500")  // Orange/amber
+    overlay.setDrawingColor("##FFA500")  // Orange/amber
            .setDrawingTransparency(60);
     overlay.drawRect(0, 0, img.getWidth(), img.getHeight(), true);
 
