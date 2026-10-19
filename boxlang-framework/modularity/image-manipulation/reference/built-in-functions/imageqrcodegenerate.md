@@ -44,7 +44,7 @@ ImageWrite( qr, "/path/to/qr.png" )
 qr = ImageQRCodeGenerate( "ME:12345678", 250, "gif", "H" )
 
 // Colors and a logo
-qr = ImageQRCodeGenerate( text="https://example.com", size=400, foreground="#1a237e", background="white", logo="/logo.png" )
+qr = ImageQRCodeGenerate( text="https://example.com", size=400, foreground="##1a237e", background="white", logo="/logo.png" )
 
 // Member function on a string
 qr = "https://example.com".toQRCode( 250 )
@@ -65,7 +65,7 @@ qr = ImageQRCodeGenerate( "https://boxlang.io", 250 )
 ### Custom colors with high error correction
 
 ```boxlang
-qr = ImageQRCodeGenerate( text="https://boxlang.io", size=250, errorCorrection="H", foreground="#1a237e", background="#ffeb3b" )
+qr = ImageQRCodeGenerate( text="https://boxlang.io", size=250, errorCorrection="H", foreground="##1a237e", background="##ffeb3b" )
 ```
 
 ![Navy on yellow QR code](../../../../../.gitbook/assets/bx-image-qrcode-colors.png)

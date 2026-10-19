@@ -58,6 +58,8 @@ imgCopy = ImageNew( img );
 * The `imageType` should match supported types (e.g., "RGB", "ARGB").
 * If loading from a file or URL fails, an error is thrown.
 * The default color for blank images is black unless specified.
+* Hex colors may be `#RGB`, `#RRGGBB` or `#RRGGBBAA` (alpha last), with or without the leading `#`. In a BoxLang string write `##` for a literal `#`.
+* A color that is neither a known name nor valid hex throws an error.
 * **File handles are properly managed** - no file locking issues on Windows.
 * Files can be deleted immediately after loading with `ImageNew()`.
 * Images are fully loaded into memory upon creation - no lazy loading issues.

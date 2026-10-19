@@ -216,13 +216,13 @@ img.setDrawingColor("green");
 
 ```js
 // Use hex color codes
-img.setDrawingColor("#FF0000");  // Red
-img.setDrawingColor("#00FF00");  // Green
-img.setDrawingColor("#0000FF");  // Blue
+img.setDrawingColor("##FF0000");  // Red
+img.setDrawingColor("##00FF00");  // Green
+img.setDrawingColor("##0000FF");  // Blue
 
 // With alpha (8-digit hex)
-img.setDrawingColor("#FF0000FF");  // Opaque red
-img.setDrawingColor("#FF000080");  // Semi-transparent red
+img.setDrawingColor("##FF0000FF");  // Opaque red
+img.setDrawingColor("##FF000080");  // Semi-transparent red
 ```
 
 ### Color Format Examples
@@ -232,13 +232,13 @@ img = ImageNew(400, 300, "rgb", "white");
 
 // All these are equivalent (red)
 img.setDrawingColor("red");
-img.setDrawingColor("#FF0000");
-img.setDrawingColor("#ff0000");  // Case insensitive
+img.setDrawingColor("##FF0000");
+img.setDrawingColor("##ff0000");  // Case insensitive
 
 // Create custom colors
-img.setDrawingColor("#FF6B6B");  // Light red
-img.setDrawingColor("#4ECDC4");  // Turquoise
-img.setDrawingColor("#95E1D3");  // Mint
+img.setDrawingColor("##FF6B6B");  // Light red
+img.setDrawingColor("##4ECDC4");  // Turquoise
+img.setDrawingColor("##95E1D3");  // Mint
 ```
 
 ## Image Information

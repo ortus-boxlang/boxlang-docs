@@ -17,7 +17,7 @@ someImage.setDrawingColor( color )
 | Name  | Type   | Required | Description                                                                       |
 | ----- | ------ | -------- | --------------------------------------------------------------------------------- |
 | name  | any    | Yes      | The image to set the drawing color for. Can be a `BoxImage` object or image name. |
-| color | String | Yes      | The drawing color to set (e.g., "red", "#0000FF").                                |
+| color | String | Yes      | The drawing color to set (e.g., "red", "##0000FF").                                |
 
 ## Returns
 
@@ -34,7 +34,7 @@ Sets the drawing color for the specified image. This color will be used for subs
 result = ImageSetDrawingColor( myImage, "blue" );
 
 // Set drawing color using hex value
-result = ImageSetDrawingColor( myImage, "#FF00FF" );
+result = ImageSetDrawingColor( myImage, "##FF00FF" );
 
 // As a member function
 myImage.setDrawingColor( "green" );
@@ -52,3 +52,5 @@ myImage.setDrawingColor( "green" );
 * The operation modifies the image in place when used as a member function.
 * Returns the modified image object for chaining or further processing.
 * The `color` argument accepts named colors or hex color codes.
+* Hex colors may be `#RGB`, `#RRGGBB` or `#RRGGBBAA` (alpha last), with or without the leading `#`. In a BoxLang string write `##` for a literal `#`.
+* A color that is neither a known name nor valid hex throws an error.

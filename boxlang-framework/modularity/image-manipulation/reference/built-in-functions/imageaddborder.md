@@ -14,7 +14,7 @@ ImageAddBorder(name, thickness [, color] [, borderType])
 | ---------- | ------- | -------- | ------- | ----------------------------------------------------------------------- |
 | name       | any     | Yes      |         | The image or the name of a variable referencing an image to operate on. |
 | thickness  | numeric | Yes      |         | Border thickness (in pixels).                                           |
-| color      | string  | No       | "black" | Border color: hex value or constant color name.                         |
+| color      | string  | No       | "black" | Border color: color name or hex (`##RGB`, `##RRGGBB`, `##RRGGBBAA`).                         |
 | borderType | string  | No       |         | Border type: one of `zero`, `constant`, `copy`, `reflect`, or `wrap`.   |
 
 ## Returns

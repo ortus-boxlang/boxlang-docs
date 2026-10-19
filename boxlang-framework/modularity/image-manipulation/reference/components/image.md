@@ -14,7 +14,7 @@ The `<bx:image>` component provides tag-based image manipulation in BoxLang.
 | ------------- | ------- | -------- | ------- | ----------------------------------------------------------------------------------------------------------- |
 | action        | string  | Yes      |         | The action to perform. One of: `border`, `captcha`, `convert`, `info`, `qrcode`, `qrread`, `read`, `resize`, `rotate`, `write`, `writeToBrowser`. |
 | angle         | numeric | No       |         | The angle for rotation in degrees (used with `rotate` action).                                               |
-| color         | string  | No       |         | The color for border. Accepts color names ("red", "blue") or hex codes ("#FF0000").                         |
+| color         | string  | No       |         | The color for border. Accepts color names ("red", "blue") or hex codes ("##FF0000").                         |
 | destination   | string  | No       |         | The file path to write the image to (used with `write` action).                                             |
 | difficulty    | string  | No       |         | Difficulty level for captcha generation: "low", "medium", "high".                                            |
 | fontSize      | numeric | No       |         | Font size for text/captcha in points.                                                                       |
@@ -89,7 +89,7 @@ Adds a solid border around the image.
 
 ```boxlang
 <bx:image action="border" source="#myImage#" color="black" thickness="5" />
-<bx:image action="border" source="#myImage#" color="#FF0000" thickness="10" />
+<bx:image action="border" source="#myImage#" color="##FF0000" thickness="10" />
 ```
 
 **Required Attributes:** `source`, `color`, `thickness`

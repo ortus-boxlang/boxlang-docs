@@ -29,6 +29,7 @@ ImageDrawText(name, str, x, y [, attributeCollection])
 The `attributeCollection` struct supports the following keys:
 
 * `font` (string): Font family name (e.g., "Arial", "Helvetica")
+* `file` (string): Path to a `.ttf` or `.otf` font file to use instead of `font`. See ImageRegisterFont
 * `size` (numeric): Font size in points (default: 12)
 * `style` (string): Font style - "plain", "bold", "italic", or "bolditalic" (default: "plain")
 * `underline` (boolean): Whether to underline the text (default: false)
@@ -57,6 +58,8 @@ img.setDrawingColor("blue")
 
 ## See Also
 
+* ImageRegisterFont (use a font file)
+* ImageMeasureText (measure the rendered size before drawing)
 * ImageDrawRect
 * ImageDrawPoint
 
