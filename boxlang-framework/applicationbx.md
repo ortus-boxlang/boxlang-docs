@@ -549,6 +549,25 @@ See [Directory + File Watchers](asynchronous-programming/directory-file-watchers
 
 See [security configuration](../getting-started/configuration/security/) for full details.
 
+### Runtime Settings
+
+Your own named values of any type. `this.runtimeSettings` is **deep merged** over the global `runtimeSettings` in `boxlang.json`, and the application wins by key. `${env.VAR:default}` placeholders and `bxsecret:` values are resolved on every request when the descriptor is read.
+
+```js
+class {
+
+    this.name = "myApp"
+
+    this.runtimeSettings = {
+        apiUrl   : "${env.MYAPP_API_URL:https://api.myapp.com}",
+        features : { beta : true }
+    }
+
+}
+```
+
+Read them anywhere with `getRuntimeSetting( "features.beta" )`. The values are read-only. See [Runtime Settings](../getting-started/configuration/runtime-settings.md).
+
 ### Advanced Settings
 
 | Setting                     | Type  | Description                        |
