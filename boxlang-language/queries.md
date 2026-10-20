@@ -291,7 +291,7 @@ this.datasources[ "myDB" ] = {
 | **H2**                   | `jdbc:h2:mem:mydb`                                  |
 | **HyperSQL**             | `jdbc:hsqldb:mem:mydb`                              |
 
-### Connection Pool Options (HikariCP)
+### Connection Pool Options
 
 ```js
 this.datasources[ "myDB" ] = {
@@ -301,15 +301,19 @@ this.datasources[ "myDB" ] = {
     database            : "myapp",
     username            : "dbuser",
     password            : "dbpass",
-    // Connection pool settings
-    maximumPoolSize     : 10,
-    minimumIdle         : 2,
-    connectionTimeout   : 30000,
-    idleTimeout         : 600000,
-    maxLifetime         : 1800000,
-    validationTimeout   : 5000
+    // Connection pool settings ( timeouts are in SECONDS )
+    maxConnections      : 10,
+    minConnections      : 2,
+    connectionTimeout   : 30,
+    idleTimeout         : 300,
+    maxLifetime         : 1800,
+    keepaliveTime       : 600
 };
 ```
+
+{% hint style="info" %}
+BoxLang exposes HikariCP pool settings through its own aliases, such as `maxConnections` (`maximumPoolSize`) and `minConnections` (`minimumIdle`). Timeouts are always in **seconds**, not the milliseconds used by raw HikariCP. See [Datasource Configuration](datasources.md#datasource-configuration) for the full list of properties and their defaults.
+{% endhint %}
 
 ### Default Datasource
 
