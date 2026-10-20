@@ -2,7 +2,7 @@
 
 # Function: `GetRuntimeSetting`
 
-**New in BoxLang 1.20.0**
+**New in BoxLang 1.19.0**
 
 Retrieve a user-defined runtime setting. Settings are defined in the `runtimeSettings` struct of `boxlang.json` and can be overridden (deep merged) by `this.runtimeSettings` in the Application descriptor. Values support `${env.X}` placeholders and `bxsecret:` values. The returned values are read-only.
 
