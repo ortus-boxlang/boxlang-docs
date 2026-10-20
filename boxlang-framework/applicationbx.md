@@ -401,7 +401,7 @@ this.datasources = {
 };
 ```
 
-See [datasource configuration](../boxlang-language/syntax/datasources/#datasource-configuration) for full configuration details.
+See [datasource configuration](../getting-started/configuration/datasources.md) for full configuration details.
 
 ### Caching
 
@@ -547,7 +547,7 @@ See [Directory + File Watchers](asynchronous-programming/directory-file-watchers
 | `this.allowedFileOperationExtensions`    | array   | _Runtime_ | File extensions allowed for file operations    |
 | `this.disallowedFileOperationExtensions` | array   | _Runtime_ | File extensions disallowed for file operations |
 
-See [security configuration](../getting-started/configuration/security/) for full details.
+See [security configuration](../getting-started/configuration/security.md) for full details.
 
 ### Runtime Settings
 
