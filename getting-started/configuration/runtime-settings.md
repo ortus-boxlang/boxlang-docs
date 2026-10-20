@@ -8,7 +8,7 @@ icon: sliders
 The `runtimeSettings` struct in `boxlang.json` is yours. Store any named values your applications need: API URLs, feature flags, limits, lists, nested structures. BoxLang does not interpret them, it only loads, resolves and serves them.
 
 {% hint style="info" %}
-Requires a BoxLang version that includes `runtimeSettings` (BL-2762).
+**New in BoxLang 1.20.0**: the `runtimeSettings` configuration, the `this.runtimeSettings` Application.bx override and the `getRuntimeSetting()` BIF.
 {% endhint %}
 
 ## 📝 Defining Settings

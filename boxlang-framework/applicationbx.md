@@ -551,7 +551,7 @@ See [security configuration](../getting-started/configuration/security.md) for f
 
 ### Runtime Settings
 
-Your own named values of any type. `this.runtimeSettings` is **deep merged** over the global `runtimeSettings` in `boxlang.json`, and the application wins by key. `${env.VAR:default}` placeholders and `bxsecret:` values are resolved on every request when the descriptor is read.
+**New in BoxLang 1.20.0**. Your own named values of any type. `this.runtimeSettings` is **deep merged** over the global `runtimeSettings` in `boxlang.json`, and the application wins by key. `${env.VAR:default}` placeholders and `bxsecret:` values are resolved on every request when the descriptor is read.
 
 ```js
 class {
