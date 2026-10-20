@@ -401,7 +401,7 @@ this.datasources = {
 };
 ```
 
-See [datasource configuration](../boxlang-language/syntax/datasources/#datasource-configuration) for full configuration details.
+See [datasource configuration](../getting-started/configuration/datasources.md) for full configuration details.
 
 ### Caching
 
@@ -547,7 +547,26 @@ See [Directory + File Watchers](asynchronous-programming/directory-file-watchers
 | `this.allowedFileOperationExtensions`    | array   | _Runtime_ | File extensions allowed for file operations    |
 | `this.disallowedFileOperationExtensions` | array   | _Runtime_ | File extensions disallowed for file operations |
 
-See [security configuration](../getting-started/configuration/security/) for full details.
+See [security configuration](../getting-started/configuration/security.md) for full details.
+
+### Runtime Settings
+
+**New in BoxLang 1.19.0**. Your own named values of any type. `this.runtimeSettings` is **deep merged** over the global `runtimeSettings` in `boxlang.json`, and the application wins by key. `${env.VAR:default}` placeholders and `bxsecret:` values are resolved on every request when the descriptor is read.
+
+```js
+class {
+
+    this.name = "myApp"
+
+    this.runtimeSettings = {
+        apiUrl   : "${env.MYAPP_API_URL:https://api.myapp.com}",
+        features : { beta : true }
+    }
+
+}
+```
+
+Read them anywhere with `getRuntimeSetting( "features.beta" )`. The values are read-only. See [Runtime Settings](../getting-started/configuration/runtime-settings.md).
 
 ### Advanced Settings
 

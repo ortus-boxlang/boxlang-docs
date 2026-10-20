@@ -150,6 +150,10 @@ Here, you will find each segment and its configuration details.
 [queries.md](configuration/queries.md)
 {% endcontent-ref %}
 
+{% content-ref url="configuration/runtime-settings.md" %}
+[runtime-settings.md](configuration/runtime-settings.md)
+{% endcontent-ref %}
+
 {% content-ref url="configuration/scheduler.md" %}
 [scheduler.md](configuration/scheduler.md)
 {% endcontent-ref %}
