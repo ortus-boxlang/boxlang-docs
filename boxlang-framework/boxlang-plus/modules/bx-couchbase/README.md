@@ -25,7 +25,7 @@ Couchbase is a distributed NoSQL document database with built-in caching, full-t
 
 ```bash
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-couchbase
+bx-module install bx-couchbase
 
 # Using CommandBox to install for web servers.
 box install bx-couchbase

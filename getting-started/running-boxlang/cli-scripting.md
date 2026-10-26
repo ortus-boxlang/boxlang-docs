@@ -777,10 +777,10 @@ For more on modules and conventions, see the [BoxLang Modules documentation](../
 
 BoxLang also allows you to **embed modules inside your CLI application** for distribution and local usage. This is different from creating a CLI app that executes a module's `main()` method. Embedding modules means your CLI app can include and use additional BoxLang modules as dependencies, making your CLI tool more powerful and modular.
 
-To embed modules, use the `boxlang_modules` folder convention in your CLI app directory. You can install modules locally into this folder using the `install-bx-module` installer script with the `--local` flag:
+To embed modules, use the `boxlang_modules` folder convention in your CLI app directory. You can install modules locally into this folder using the `bx-module` command with the `--local` flag:
 
 ```bash
-install-bx-module bx-pdf bx-image --local
+bx-module install bx-pdf bx-image --local
 ```
 
 When your CLI app runs, BoxLang will check the `boxlang_modules` folder first for available modules, then fall back to the OS home modules. This allows you to package all required modules with your CLI app for easy distribution and predictable behavior.

@@ -9,7 +9,7 @@ This module allows you to execute python in BoxLang via Jython. This is a very p
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-jython
+bx-module install bx-jython
 
 # Using CommandBox to install for web servers.
 box install bx-jython

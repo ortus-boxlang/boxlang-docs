@@ -26,7 +26,7 @@ The `bx-search` module is installed as part of the **bx-plus** boxlang module bu
 
 ```bash
 # Using CommandBox — install the bx-plus bundle
-install-bx-module bx-plus,bx-search
+bx-module install bx-plus,bx-search
 ```
 
 Or install directly via CommandBox:

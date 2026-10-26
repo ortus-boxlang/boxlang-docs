@@ -12,7 +12,7 @@ TOML (Tom's Obvious Minimal Language) is a human-friendly configuration format. 
 ## Installation
 
 ```bash
-install-bx-module bx-toml
+bx-module install bx-toml
 ```
 
 For CommandBox-based applications:

@@ -31,7 +31,7 @@ flowchart LR
 ## ⚡ Quick Start
 
 ```bash
-install-bx-module bx-ai bx-playwright
+bx-module install bx-ai bx-playwright
 bxplaywright install chromium
 ```
 

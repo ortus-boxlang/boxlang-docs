@@ -29,7 +29,7 @@ If there are any issues, please report them to the [BoxLang JIRA](https://ortuss
 
 ```bash
 # For Operating Systems using the Quick Installer
-install-bx-module bx-compat-cfml
+bx-module install bx-compat-cfml
 
 # Using CommandBox for web servers
 box install bx-compat-cfml
@@ -419,7 +419,7 @@ When client management is enabled, the module provides a `ClientBoxContext` and 
 
 ### Zero-Code Migration Path
 
-1. **Install the module**: `install-bx-module bx-compat-cfml`
+1. **Install the module**: `bx-module install bx-compat-cfml`
 2. **Configure engine**: Set `engine = "adobe"` or `engine = "lucee"` in `boxlang.json`
 3. **Enable features**: Configure client management, null handling, and other compatibility flags
 4. **Test thoroughly**: Run your application test suite to verify compatibility

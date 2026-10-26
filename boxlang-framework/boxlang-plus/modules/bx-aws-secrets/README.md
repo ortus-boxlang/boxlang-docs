@@ -39,7 +39,7 @@ box install bx-plus,bx-aws-secrets
 ### Via BoxLang OS Binary
 
 ```bash
-install-bx-module bx-plus bx-aws-secrets
+bx-module install bx-plus bx-aws-secrets
 ```
 
 ## ⚡ Quick Start

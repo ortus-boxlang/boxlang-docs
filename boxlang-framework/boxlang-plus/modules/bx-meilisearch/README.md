@@ -104,7 +104,7 @@ Install the module using the standard BoxLang module workflow:
 
 ```bash
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-meilisearch
+bx-module install bx-meilisearch
 
 # Using CommandBox to install for web servers.
 box install bx-meilisearch

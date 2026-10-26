@@ -41,7 +41,7 @@ box install bx-plus
 ### Via BoxLang
 
 ```bash
-install-bx-module bx-plus
+bx-module install bx-plus
 ```
 
 For a complete list of features and benefits, visit the [BoxLang Plans](https://boxlang.io/plans) page.

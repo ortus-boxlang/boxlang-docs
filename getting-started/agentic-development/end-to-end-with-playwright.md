@@ -36,7 +36,7 @@ flowchart LR
 Install the module, the browser, and the skills that teach the agent how to use them:
 
 ```bash
-install-bx-module bx-playwright
+bx-module install bx-playwright
 bxplaywright install chromium
 bxplaywright doctor
 

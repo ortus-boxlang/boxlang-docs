@@ -6,7 +6,7 @@ It includes encoding, decoding, and sanitization functions to help protect your 
 
 ```bash
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-esapi
+bx-module install bx-esapi
 
 # Using CommandBox to install for web servers.
 box install bx-esapi

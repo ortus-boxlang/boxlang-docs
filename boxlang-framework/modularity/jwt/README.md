@@ -35,7 +35,7 @@ The `bx-jwt` module is a production-ready BoxLang library for creating, signing,
 
 ```bash
 # Operating Systems using the Quick Installer
-install-bx-module bx-jwt
+bx-module install bx-jwt
 
 # Using CommandBox for web servers
 box install bx-jwt

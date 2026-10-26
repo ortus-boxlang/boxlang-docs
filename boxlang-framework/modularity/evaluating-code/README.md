@@ -9,7 +9,7 @@ This module implements the `evaluate()` and `precisionEvaluate()` functions for 
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-unsafe-evaluate
+bx-module install bx-unsafe-evaluate
 
 # Using CommandBox to install for web servers.
 box install bx-unsafe-evaluate

@@ -176,7 +176,8 @@ Here are the available options for the install command.
 
 ### Helper Scripts
 
-* **install-bx-module** - Install modules from ForgeBox.
+* **bx-module** - BoxLang module manager: install, remove, list, outdated, and update modules from ForgeBox.
+* **install-bx-module** - **Deprecated** legacy alias for `bx-module`. It prints a deprecation notice and forwards to `bx-module`.
 * **install-boxlang** - Single-version BoxLang installer, so you can reinstall, install specific versions, uninstall and more.
 
 ### Directory Structure
@@ -287,22 +288,66 @@ install-boxlang --help
 
 ### Module Management
 
+`bx-module` takes a command (`install`, `remove`, `list`, `outdated`, `update`, `help`) followed by its arguments and options.
+
 ```bash
 # Install a module globally
-install-bx-module bx-orm
+bx-module install bx-orm
 
 # Install multiple modules
-install-bx-module bx-orm,bx-mail,bx-db
+bx-module install bx-orm,bx-mail,bx-db
 
-# Install to specific directory
-install-bx-module bx-orm --directory ./modules
+# Install to the local boxlang_modules directory
+bx-module install bx-orm --local
 
 # Install specific version
-install-bx-module bx-orm@1.0.0
+bx-module install bx-orm@1.0.0
 
-# Get help
-install-bx-module --help
+# Remove a module (add --force to skip the confirmation)
+bx-module remove bx-orm
+
+# List installed modules, including nested dependencies
+bx-module list
+
+# Check for outdated modules
+bx-module outdated
+
+# Update all outdated modules, or only specific ones
+bx-module update
+bx-module update bx-sites bx-orm
+
+# Update without confirmation
+bx-module update --force
+
+# Install a project's dependencies (reads ./box.json, like `npm install`)
+bx-module install
+
+# Get help, or help for one command
+bx-module help
+bx-module help update
 ```
+
+{% hint style="warning" %}
+**`install-bx-module` is deprecated** (since installer `1.37.0`). It remains as a legacy alias that translates its old flags (`--list`, `--outdated`, `--update`, `--remove`, `--help`), prints a deprecation notice, and forwards to `bx-module`, so existing scripts keep working. Please migrate to `bx-module`.
+{% endhint %}
+
+| Previous (deprecated) | Now |
+| --- | --- |
+| `install-bx-module bx-orm --local` | `bx-module install bx-orm --local` |
+| `install-bx-module` (reads `./box.json`) | `bx-module install` |
+| `install-bx-module --list` | `bx-module list` |
+| `install-bx-module --outdated` | `bx-module outdated` |
+| `install-bx-module --update [--force]` | `bx-module update [--force]` |
+| `install-bx-module --remove bx-orm [--force]` | `bx-module remove bx-orm [--force]` |
+| `install-bx-module --help` | `bx-module help` |
+
+`bx-module` does not accept the old flag style: `bx-module --list` fails with a hint to use `bx-module list`.
+
+Module dependencies are installed as nested modules, and modules can ship CLI executables and bash completions. See the full reference:
+
+{% content-ref url="modules.md" %}
+[modules.md](modules.md)
+{% endcontent-ref %}
 
 ## 🌐 Running Applications
 
@@ -415,8 +460,8 @@ curl -I https://forgebox.io
 # Clear module cache
 rm -rf ~/.boxlang/modules/.cache
 
-# Install with verbose output
-install-bx-module bx-orm --verbose
+# Re-run the install and review the output
+bx-module install bx-orm
 ```
 
 ### Getting Help
@@ -424,15 +469,11 @@ install-bx-module bx-orm --verbose
 ```bash
 # Command-specific help
 install-boxlang --help
-install-bx-module --help
+bx-module help
 bvm help
 
 # Health check (BVM only)
 bvm doctor
-
-# Verbose output for debugging
-install-boxlang --verbose
-install-bx-module --verbose
 ```
 
 ## 📚 Resources

@@ -10,7 +10,7 @@ This module provides a YAML parser and emitter for BoxLang. It is based on the [
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-yaml
+bx-module install bx-yaml
 
 # Using CommandBox to install for web servers.
 box install boxlang-yaml
