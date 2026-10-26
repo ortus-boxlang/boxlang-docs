@@ -16,7 +16,7 @@ Mock web server for testing BoxLang web applications in CLI runtime. Simulates H
 
 ```bash
 # OS Quick Installer
-install-bx-module bx-web-support
+bx-module install bx-web-support
 
 # CommandBox
 box install bx-web-support

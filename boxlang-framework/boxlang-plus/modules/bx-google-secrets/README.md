@@ -40,7 +40,7 @@ box install bx-plus,bx-google-secrets
 ### Via BoxLang OS Binary
 
 ```bash
-install-bx-module bx-plus bx-google-secrets
+bx-module install bx-plus bx-google-secrets
 ```
 
 ## ⚡ Quick Start

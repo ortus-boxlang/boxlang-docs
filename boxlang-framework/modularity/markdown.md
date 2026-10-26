@@ -9,7 +9,7 @@ Welcome to the BoxLang Markdown module. This provides native support for Markdow
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-markdown
+bx-module install bx-markdown
 
 # Using CommandBox to install for web servers.
 box install bx-markdown

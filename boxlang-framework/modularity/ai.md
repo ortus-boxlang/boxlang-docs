@@ -20,7 +20,7 @@ The `bx-ai` module provides a unified, fluent API for chat, streaming, structure
 ## 📦 Installation
 
 ```bash
-install-bx-module bx-ai
+bx-module install bx-ai
 ```
 
 With CommandBox:

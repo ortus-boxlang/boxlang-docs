@@ -208,7 +208,8 @@ The quick installer will install the latest stable **BoxLang** **OS** binary and
 * `boxlang` - Our BoxLang binary runner, [learn more](../running-boxlang/)
 * `boxlang-miniserver` - Our BoxLang MiniServer binary runner, [learn more](../running-boxlang/miniserver.md)
 * `install-boxlang` - The quick installer so you can reuse it to upgrade your installations or install the `snapshot` version of BoxLang. Run `install-boxlang --help` for more commands.
-* `install-bx-module` - A module installer. Just pass in the slug of the module, an optional version or a list of modules. Run `install-bx-module` for more commands.
+* `bx-module` - The BoxLang module manager. Use `bx-module install`, `remove`, `list`, `outdated`, and `update` to manage modules from FORGEBOX. Run `bx-module help` for more commands.
+* `install-bx-module` - **Deprecated** legacy alias for `bx-module`. It prints a deprecation notice and forwards to `bx-module`.
 
 ```bash
 # Test BoxLang works:
@@ -224,36 +225,36 @@ install-boxlang
 install-boxlang --uninstall
 
 # Install a single module
-install-bx-module bx-compat-cfml
+bx-module install bx-compat-cfml
 
 # Install a specific version of a module
-install-bx-module bx-compat-cfml@1.11.0
+bx-module install bx-compat-cfml@1.11.0
 
-# Install multiple async modules
-install-bx-module bx-compat-cfml bx-esapi bx-pdf
+# Install multiple modules
+bx-module install bx-compat-cfml bx-esapi bx-pdf
 
 # Remove a module
-install-bx-module --remove bx-esapi
+bx-module remove bx-esapi
 
 # List your modules
-install-bx-module --list
+bx-module list
 
 # Check for outdated modules
-install-bx-module --outdated
+bx-module outdated
 
 # Update outdated modules
-install-bx-module --update
+bx-module update
 
 # Update modules without confirmation
-install-bx-module --update --force
+bx-module update --force
 
 # Get all the help
-install-bx-module --help
+bx-module help
 ```
 
 ### Module Dependency Management
 
-The Quick Installer now tracks installed modules in a `box.json` dependencies manifest. Global modules use:
+`bx-module` tracks installed modules in a `box.json` dependencies manifest. Global modules use:
 
 ```text
 ~/.boxlang/modules/box.json
@@ -265,30 +266,33 @@ For project-specific modules, use the `--local` flag. Local modules are managed 
 ./boxlang_modules/box.json
 ```
 
-Installing or removing a module updates its dependency entry. The `--list` command reads from this manifest and can generate one automatically when modules were installed before manifest tracking was added.
+Installing or removing a module updates its dependency entry. `bx-module list` reads from this manifest and can generate one automatically when modules were installed before manifest tracking was added.
 
-Use `--outdated` to compare the installed versions with the latest versions available from ForgeBox:
+Use `bx-module outdated` to compare the installed versions with the latest versions available from ForgeBox:
 
 ```bash
-install-bx-module --outdated
-install-bx-module --outdated --local
+bx-module outdated
+bx-module outdated --local
 ```
 
-Use `--update` to update outdated modules. The command asks for confirmation before making changes; add `--force` for unattended workflows:
+Use `bx-module update` to update outdated modules, or pass module names to update only those. The command asks for confirmation before making changes; add `--force` for unattended workflows:
 
 ```bash
-install-bx-module --update
-install-bx-module --update --force
-install-bx-module --update --force --local
+bx-module update
+bx-module update bx-sites bx-orm
+bx-module update --force
+bx-module update --force --local
 ```
 
 Explicit module versions continue to be supported, including versions resolved during updates:
 
 ```bash
-install-bx-module bx-compat-cfml@1.11.0
+bx-module install bx-compat-cfml@1.11.0
 ```
 
-The installer uses the correct ForgeBox version endpoint for pinned installs and falls back to the direct module artifact when ForgeBox does not provide a download URL.
+{% hint style="info" %}
+Module dependencies declared in a module's `box.json` are installed automatically as nested modules inside the parent module's `modules/` folder. See [Module Dependencies and Nested Modules](modules.md#module-dependencies-and-nested-modules).
+{% endhint %}
 
 ### Upgrading Your Install
 
@@ -311,7 +315,11 @@ You can get the version of the current BoxLang Runtime by running `boxlang --ver
 
 ### Installing Modules
 
-You can use the `install-bx-module` binary to install modules into your boxlang home. Just pass in the name of the slug you want. You can use the `install bx-modules`to install multiple modules at once as well.
+Use the `bx-module` command to install modules into your BoxLang home. Pass the slug of the module you want, or several slugs at once.
+
+{% hint style="warning" %}
+**`install-bx-module` is deprecated** (since installer `1.37.0`). It still works and forwards to `bx-module`, but prints a deprecation notice. Update your scripts using the [migration table](modules.md#migrating-from-install-bx-module).
+{% endhint %}
 
 {% hint style="info" %}
 All our modules are available in the cloud software directory [FORGEBOX](https://forgebox.io/type/boxlang-modules). You can also register and collaborate with modules of your own :person\_raising\_hand:.
@@ -321,25 +329,32 @@ All our modules are available in the cloud software directory [FORGEBOX](https:/
 
 ```bash
 # install individual modules
-install-bx-module bx-compat-cfml
-install-bx-module bx-esapi
+bx-module install bx-compat-cfml
+bx-module install bx-esapi
 
 # install multiple modules
-install-bx-module bx-compat-cfml bx-esapi
+bx-module install bx-compat-cfml bx-esapi
+
+# install the dependencies of ./box.json
+bx-module install
 ```
 
 #### Install Locally
 
-You can also install modules to the running application (CLI, web) by using the `--local`option in the command. This will create a `boxlang_modules`folder from which you ran the command and install the modules locally.
+You can also install modules to the running application (CLI, web) by using the `--local` option in the command. This will create a `boxlang_modules` folder where you ran the command and install the modules there.
 
 ```bash
 # install individual modules
-install-bx-module bx-compat-cfml --local
-install-bx-module bx-esapi --local
+bx-module install bx-compat-cfml --local
+bx-module install bx-esapi --local
 
 # install multiple modules
-install-bx-module bx-compat-cfml bx-esapi --local
+bx-module install bx-compat-cfml bx-esapi --local
 ```
+
+{% content-ref url="modules.md" %}
+[modules.md](modules.md)
+{% endcontent-ref %}
 
 ## BoxLang Version Manager (BVM)
 

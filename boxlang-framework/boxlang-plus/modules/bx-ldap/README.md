@@ -47,7 +47,7 @@ box install bx-ldap@ortus
 If you are using the BoxLang OS Binary, simply run:
 
 ```bash
-install-bx-module bx-ldap@ortus
+bx-module install bx-ldap@ortus
 ```
 
 The module will automatically register and be available as `bxldap` in your BoxLang applications.

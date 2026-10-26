@@ -44,9 +44,9 @@ box install <module-name>
 
 ```bash
 # Install bx-plus module first to enable license management
-install-bx-module bx-plus
+bx-module install bx-plus
 # Then install other modules
-install-bx-module <module-name>
+bx-module install <module-name>
 ```
 
 After installation, modules register themselves automatically or provide a simple activation step described in their documentation.

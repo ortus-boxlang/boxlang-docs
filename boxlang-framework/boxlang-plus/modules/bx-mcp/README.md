@@ -43,7 +43,7 @@ box install bx-plus,bx-ai,bx-mcp
 ### Via BoxLang OS Binary
 
 ```bash
-install-bx-module bx-plus bx-ai bx-mcp
+bx-module install bx-plus bx-ai bx-mcp
 ```
 
 ---

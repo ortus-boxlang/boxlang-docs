@@ -61,10 +61,10 @@ The `box.json` file is the standard CommandBox package descriptor with BoxLang-s
 ## CLI Executables and Completions
 
 {% hint style="info" %}
-These `boxlang.*` fields are only processed by the **operating system installer** (`install-bx-module`, part of the [BoxLang Quick Installer](../../getting-started/installation/boxlang-quick-installer.md) / [BVM](../../getting-started/installation/boxlang-version-manager-bvm.md)). They have no effect when a module is installed via CommandBox's `box install`.
+These `boxlang.*` fields are only processed by the **operating system installer** (`bx-module`, part of the [BoxLang Quick Installer](../../getting-started/installation/boxlang-quick-installer.md) / [BVM](../../getting-started/installation/boxlang-version-manager-bvm.md)). They have no effect when a module is installed via CommandBox's `box install`.
 {% endhint %}
 
-A module installed with `install-bx-module` can ship its own CLI wrapper script(s) and a bash completion script. The installer wires them up automatically — no extra steps for the end user.
+A module installed with `bx-module` can ship its own CLI wrapper script(s) and a bash completion script. The installer wires them up automatically — no extra steps for the end user.
 
 ### `boxlang.executable` — Single CLI Wrapper
 
@@ -79,7 +79,7 @@ Declare a single executable name, and the installer generates a wrapper script t
 }
 ```
 
-Installing this module creates an executable named `my-module` (equivalent to `boxlang module:myModule "$@"`) on the `PATH` — at `~/.boxlang/bin/my-module` for a global install, or `./boxlang_modules/.bin/my-module` with `install-bx-module --local`.
+Installing this module creates an executable named `my-module` (equivalent to `boxlang module:myModule "$@"`) on the `PATH` — at `~/.boxlang/bin/my-module` for a global install, or `./boxlang_modules/.bin/my-module` with `bx-module install --local`.
 
 ### `boxlang.executables` — Multiple CLI Wrappers
 

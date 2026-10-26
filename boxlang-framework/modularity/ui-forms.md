@@ -10,7 +10,7 @@ icon: html5
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-ui-forms
+bx-module install bx-ui-forms
 
 # Using CommandBox to install for web servers.
 box install bx-ui-forms

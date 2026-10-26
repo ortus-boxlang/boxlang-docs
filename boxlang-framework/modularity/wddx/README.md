@@ -11,7 +11,7 @@ It provides the `wddx` component along with its actions of `bx2wddx`, `wddx2bx`,
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-wddx
+bx-module install bx-wddx
 
 # Using CommandBox to install for web servers.
 box install bx-wddx

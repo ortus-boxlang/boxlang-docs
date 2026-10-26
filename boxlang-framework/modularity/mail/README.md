@@ -7,7 +7,7 @@ icon: envelope-open
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-mail
+bx-module install bx-mail
 
 # Using CommandBox to install for web servers.
 box install bx-mail

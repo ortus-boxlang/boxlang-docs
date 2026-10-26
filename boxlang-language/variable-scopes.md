@@ -1798,7 +1798,7 @@ The `client` scope is not supported in core BoxLang.  This is a CFML legacy scop
 
 ```bash
 # Using OS CLI
-install-bx-module bx-compat-cfml
+bx-module install bx-compat-cfml
 
 # Using CommandBox
 box bx-compat-cfml

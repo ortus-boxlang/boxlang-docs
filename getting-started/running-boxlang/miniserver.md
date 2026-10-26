@@ -1220,7 +1220,7 @@ java -cp boxlang-miniserver-1.0.0.jar;/path/to/my.jar;/path/to/another.jar ortus
 
 ### Modules
 
-The MiniServer can use any module you install into the OS home via the `install-bx-module` binary. However, if you choose your own server home using the `server-home` argument or the environment variable. Then, place the modules inside a `modules` directory inside the server's home.
+The MiniServer can use any module you install into the OS home via the `bx-module` binary. However, if you choose your own server home using the `server-home` argument or the environment variable. Then, place the modules inside a `modules` directory inside the server's home.
 
 ### JVM Options
 

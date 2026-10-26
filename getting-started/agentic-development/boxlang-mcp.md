@@ -26,7 +26,7 @@ The module ships 154 tools across 17 runtime domains. Examples:
 ## 📦 Install
 
 ```bash
-install-bx-module bx-plus bx-ai bx-mcp
+bx-module install bx-plus bx-ai bx-mcp
 ```
 
 With CommandBox:

@@ -104,7 +104,7 @@ boxlang-miniserver --port 8080
 Add modules, including BoxLang+ modules that start their 60-day trial automatically:
 
 ```bash
-install-bx-module bx-plus bx-ai bx-mcp
+bx-module install bx-plus bx-ai bx-mcp
 ```
 
 See the [installation guide](getting-started/installation/) for Windows, Homebrew, BVM and other options.

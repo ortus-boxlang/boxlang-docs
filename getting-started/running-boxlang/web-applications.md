@@ -40,7 +40,7 @@ You *can* start a ColdBox app from a bare skeleton. The fastest way, though - es
 * A real TestBox suite and a Docker Compose stack for local dev
 
 ```bash
-install-bx-module bx-cli
+bx-module install bx-cli
 
 coldbox create app skeleton=cbgenesis
 box install

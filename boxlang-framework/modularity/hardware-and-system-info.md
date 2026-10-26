@@ -17,7 +17,7 @@ This module is based on the great work of the [`oshi` library](https://github.co
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-oshi
+bx-module install bx-oshi
 
 # Using CommandBox to install for web servers.
 box install bx-oshi

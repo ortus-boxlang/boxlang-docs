@@ -37,7 +37,7 @@ Install DocBox as a BoxLang module for CLI access.  You can find the full docume
 
 ```bash
 # BoxLang OS runtime
-install-bx-module bx-docbox
+bx-module install bx-docbox
 ```
 
 Generate documentation from the command line:

@@ -9,7 +9,7 @@ icon: database
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-orm
+bx-module install bx-orm
 
 # Using CommandBox to install for web servers.
 box install bx-orm

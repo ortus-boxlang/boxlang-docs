@@ -32,7 +32,7 @@ BVM is an advanced version manager for BoxLang, similar to `jenv` or `nvm`. It a
 **Both installers provide identical functionality:**
 
 * ✅ Same BoxLang runtime and MiniServer
-* ✅ Same helper scripts (`install-bx-module`, `install-bx-site`, etc.)
+* ✅ Same helper scripts (`bx-module`, `install-bx-site`, etc.)
 * ✅ Same command-line tools (`boxlang`, `bx`, `boxlang-miniserver`, etc.)
 * ✅ Same installation quality and reliability
 
@@ -208,7 +208,8 @@ When you install a BoxLang version with BVM, it downloads and sets up:
 
 ### Helper Scripts
 
-* **install-bx-module** - BoxLang module installer (available in PATH after installation)
+* **bx-module** - BoxLang module manager: `install`, `remove`, `list`, `outdated`, `update` (available in PATH after installation; `bx-module.bat` on Windows)
+* **install-bx-module** - **Deprecated** legacy alias for `bx-module`. It prints a deprecation notice and forwards to `bx-module`
 * **install-bvm** - BVM installer script (available in PATH after installation)
 * **Other utility scripts** - Various helper tools
 
@@ -287,7 +288,11 @@ bvm miniserver
 boxlang-miniserver --port 8080
 
 # Install a BoxLang module (using helper script)
-install-bx-module bx-orm
+bx-module install bx-orm
+
+# List and update modules
+bx-module list
+bx-module update
 
 # Install a BoxLang site template (using helper script)
 install-bx-site mysite

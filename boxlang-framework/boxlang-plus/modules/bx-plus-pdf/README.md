@@ -24,7 +24,7 @@ This module provides comprehensive PDF manipulation and generation functionality
 
 ```bash
 # For Operating Systems using our Quick Installer
-install-bx-module bx-plus,bx-pdf
+bx-module install bx-plus,bx-pdf
 
 # Using CommandBox to install for web servers
 box install bx-plus,bx-pdf

@@ -7,7 +7,7 @@ icon: sliders-up
 
 ```
 # For Operating Systems using our Quick Installer.
-install-bx-module bx-ini
+bx-module install bx-ini
 
 # Using CommandBox to install for web servers.
 box install bx-ini

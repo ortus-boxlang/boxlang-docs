@@ -516,7 +516,7 @@ The [bx-oshi module](../boxlang-framework/modularity/hardware-and-system-info.md
 
 ```bash
 # BoxLang CLI quick install
-install-bx-module bx-oshi
+bx-module install bx-oshi
 
 # CommandBox / web server
 box install bx-oshi

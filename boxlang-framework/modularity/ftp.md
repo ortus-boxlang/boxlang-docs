@@ -42,10 +42,10 @@ box install bx-ftp
 
 ### Install via BoxLang Binary
 
-If you want to install it globally for the BoxLang OS binary, use the `install-bx-module` command:
+If you want to install it globally for the BoxLang OS binary, use the `bx-module` command:
 
 ```bash
-install-bx-module bx-ftp
+bx-module install bx-ftp
 ```
 
 The module will automatically register and be available as `bx:ftp` or `<bx:ftp>` in your BoxLang script and template applications.

@@ -37,7 +37,7 @@ Two distributions are published to ForgeBox:
 
 ```bash
 # BoxLang Installer Script
-install-bx-module bx-playwright
+bx-module install bx-playwright
 # CommandBox
 box install bx-playwright
 

@@ -13,7 +13,7 @@ This module provides secure password encryption and hashing functionality for Bo
 
 ```bash
 # For Operating Systems using our Quick Installer
-install-bx-module bx-password-encrypt
+bx-module install bx-password-encrypt
 
 # Using CommandBox to install for web servers
 box install bx-password-encrypt

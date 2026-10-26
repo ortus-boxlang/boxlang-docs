@@ -24,7 +24,7 @@ This module can be installed using CommandBox or the BoxLang Installer Scripts
 
 ```bash
 # BoxLang Installer Script
-install-bx-module bx-jsoup
+bx-module install bx-jsoup
 # commandbox
 box install bx-jsoup
 ```

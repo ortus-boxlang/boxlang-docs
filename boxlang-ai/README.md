@@ -49,7 +49,7 @@ flowchart LR
 Install the module:
 
 ```bash
-install-bx-module bx-ai
+bx-module install bx-ai
 ```
 
 With CommandBox:

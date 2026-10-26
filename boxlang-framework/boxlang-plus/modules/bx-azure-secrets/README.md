@@ -39,7 +39,7 @@ box install bx-plus,bx-azure-secrets
 ### Via BoxLang OS Binary
 
 ```bash
-install-bx-module bx-plus bx-azure-secrets
+bx-module install bx-plus bx-azure-secrets
 ```
 
 ## ⚡ Quick Start
