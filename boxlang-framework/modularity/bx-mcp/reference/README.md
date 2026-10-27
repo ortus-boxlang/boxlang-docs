@@ -8,7 +8,7 @@ This section provides comprehensive reference documentation for the `bx-mcp` mod
 
 ### [MCP Tools](tools/README.md)
 
-Complete catalog of all 154 MCP introspection tools organized by domain — runtime, JVM, caches, datasources, SQL, HTTP, requests, routes, performance, executors, schedulers, modules, interceptors, applications, logging, watchers, and the web server.
+Complete catalog of all 153 MCP introspection tools organized by domain — runtime, JVM, caches, datasources, SQL, HTTP, requests, routes, performance, executors, schedulers, modules, interceptors, applications, logging, watchers, and the web server.
 
 ### [MCP Prompts](prompts/README.md)
 

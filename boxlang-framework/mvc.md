@@ -214,8 +214,10 @@ the ColdBox module conventions in the guidelines.
 ColdBox tests extend `BaseModelTest` for unit tests and `BaseIntegrationTest` for full request tests. See [Agentic Testing with TestBox](testing.md).
 
 {% hint style="success" %}
-**Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Pair ColdBox with [MCP +](boxlang-plus/modules/bx-mcp/README.md) to give agents live runtime insight, and get enterprise support when you [join us](https://www.boxlang.io/plans).
+**Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Get enterprise support when you [join us](https://www.boxlang.io/plans).
 {% endhint %}
+
+For free-to-use proprietary live runtime introspection, pair ColdBox with the [bx-mcp module](modularity/bx-mcp/README.md), which requires `bx-ai`.
 
 ## 📚 Resources
 

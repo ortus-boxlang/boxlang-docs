@@ -59,8 +59,8 @@ By default, modules are installed into BoxLang HOME and are available to every B
 # Install os-wide modules
 bx-module install bx-compat-cfml
 
-# Install BoxLang+ MCP stack (requires subscription)
-bx-module install bx-plus bx-ai bx-mcp
+# Install the free-to-use proprietary BoxLang MCP module and its dependency
+bx-module install bx-ai bx-mcp
 
 # Install os-wide modules with a specific version
 bx-module install bx-compat-cfml@1.0.0
@@ -183,13 +183,13 @@ Eventually, CommandBox will be the de-facto standard of installation once it's m
 ```bash
 box install bx-compat-cfml,bx-esapi
 
-# Install BoxLang+ MCP stack (requires subscription)
-box install bx-plus,bx-ai,bx-mcp
+# Install the free-to-use proprietary BoxLang MCP module and its dependency
+box install bx-ai,bx-mcp
 ```
 {% endcode %}
 
 {% hint style="info" %}
-The `bx-mcp` module is a premium BoxLang+/++ module and requires both `bx-plus` and `bx-ai`.
+The `bx-mcp` module is free to use but proprietary. It requires `bx-ai`; no `bx-plus` subscription is needed. See the [bx-mcp module guide](../../boxlang-framework/modularity/bx-mcp/README.md).
 {% endhint %}
 
 ### Configuration

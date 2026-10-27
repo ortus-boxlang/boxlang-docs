@@ -1,11 +1,11 @@
 ---
 icon: tools
-description: Complete catalog of all 154 MCP tools organized by domain for BoxLang runtime diagnostics and management.
+description: Complete catalog of all 153 MCP tools organized by domain for BoxLang runtime diagnostics and management.
 ---
 
 # 🧰 MCP Tools
 
-The `bx-mcp` module exposes **154 MCP tools** across **17 runtime domains**. Each tool is an `@mcpTool` annotated method discovered automatically via classpath scanning.
+The `bx-mcp` module exposes **153 MCP tools** across **17 runtime domains**. Each tool is an `@mcpTool` annotated method discovered automatically via classpath scanning.
 
 Tools are organized into the following domain pages:
 

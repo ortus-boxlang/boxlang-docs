@@ -1,21 +1,21 @@
 ---
 description: >-
   Let AI agents inspect and operate a live BoxLang runtime over MCP with the
-  BoxLang+ bx-mcp module.
+  free-to-use proprietary bx-mcp module.
 icon: plug
 ---
 
 # BoxLang MCP
 
 {% hint style="success" %}
-`bx-mcp` is a BoxLang+ module. **Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. See [BoxLang+](../../boxlang-framework/boxlang-plus/README.md).
+`bx-mcp` is free to use but proprietary, and requires `bx-ai`. No BoxLang+ subscription is required.
 {% endhint %}
 
 Documentation MCP servers tell an agent what BoxLang **should** do. The `bx-mcp` module lets an agent see what your BoxLang server is **actually** doing. It exposes a Model Context Protocol server from a running runtime, so an agent can inspect and diagnose it directly.
 
 ## ✨ What an Agent Can Do
 
-The module ships 154 tools across 17 runtime domains. Examples:
+The module ships 153 tools across 17 runtime domains. Examples:
 
 * **Runtime and JVM:** version, configuration, memory, threads, GC, deadlock detection
 * **Data layer:** cache health, datasource pool metrics, slow SQL
@@ -26,13 +26,13 @@ The module ships 154 tools across 17 runtime domains. Examples:
 ## 📦 Install
 
 ```bash
-bx-module install bx-plus bx-ai bx-mcp
+bx-module install bx-ai bx-mcp
 ```
 
 With CommandBox:
 
 ```bash
-box install bx-plus,bx-ai,bx-mcp
+box install bx-ai,bx-mcp
 ```
 
 Once installed, the server is available at `/~bxmcp/boxlang.bxm`, for example `http://localhost:8080/~bxmcp/boxlang.bxm`.
@@ -54,7 +54,7 @@ VS Code, in `.vscode/mcp.json`:
 }
 ```
 
-See [Client Configuration](../../boxlang-framework/boxlang-plus/modules/bx-mcp/client-configuration.md) for Claude Desktop, Cursor, and curl examples.
+See [Client Configuration](../../boxlang-framework/modularity/bx-mcp/client-configuration.md) for Claude Desktop, Cursor, and curl examples.
 
 ## 🔐 Governance and Access Control
 
@@ -89,12 +89,12 @@ Always set an `authToken` for any deployment reachable beyond localhost.
 
 ## 📚 Learn More
 
-{% content-ref url="../../boxlang-framework/boxlang-plus/modules/bx-mcp/README.md" %}
-[README.md](../../boxlang-framework/boxlang-plus/modules/bx-mcp/README.md)
+{% content-ref url="../../boxlang-framework/modularity/bx-mcp/README.md" %}
+[README.md](../../boxlang-framework/modularity/bx-mcp/README.md)
 {% endcontent-ref %}
 
-{% content-ref url="../../boxlang-framework/boxlang-plus/modules/bx-mcp/security-and-access-control.md" %}
-[security-and-access-control.md](../../boxlang-framework/boxlang-plus/modules/bx-mcp/security-and-access-control.md)
+{% content-ref url="../../boxlang-framework/modularity/bx-mcp/security-and-access-control.md" %}
+[security-and-access-control.md](../../boxlang-framework/modularity/bx-mcp/security-and-access-control.md)
 {% endcontent-ref %}
 
 ## 🧱 ColdBox Applications

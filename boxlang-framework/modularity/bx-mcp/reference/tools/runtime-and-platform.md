@@ -13,8 +13,7 @@ This page covers tools for BoxLang runtime introspection (`BoxLangTools`) and JV
 
 | Tool | Description |
 | --- | --- |
-| `runtime_get_info` | BoxLang version, JVM environment, OS details, start time, uptime, and license status |
-| `runtime_get_license_status` | Current license status: trial mode, validity, expiration, product info (no sensitive tokens) |
+| `runtime_get_info` | BoxLang version, JVM environment, OS details, start time, and uptime |
 | `runtime_get_config` | Full runtime configuration: datasources, caches, executors, logging, security, schedulers |
 | `runtime_get_config_value` | Get a specific config value by dotted path (e.g. `caches.default.provider`) |
 | `runtime_config_diff` | Diff live BoxRuntime configuration against `boxlang.json` on disk |

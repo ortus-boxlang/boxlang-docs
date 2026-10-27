@@ -17,7 +17,7 @@ BoxLang is a software productivity platform built for developers **and** the AI 
 | **Conventions** | `Application.bx` lifecycle, module layouts, configuration in `boxlang.json`, and consistent BIF naming give agents patterns to follow. |
 | **Skills** | Installable `SKILL.md` playbooks from [skills.boxlang.io](https://skills.boxlang.io) teach the agent how to perform specific BoxLang tasks the idiomatic way. |
 | **Docs over MCP** | The documentation is available to agents as MCP servers, so they read current docs instead of guessing. |
-| **Live introspection** | With BoxLang+, the `bx-mcp` module lets an agent inspect a running server through MCP, with access control. |
+| **Live introspection** | The free-to-use proprietary [`bx-mcp` module](boxlang-mcp.md) lets an agent inspect a running server through MCP, with access control. It requires `bx-ai`. |
 | **Java underneath** | 100% Java interoperability gives the agent the whole JVM ecosystem when it needs it. |
 | **Fast validation** | `boxlang check` validates syntax without running code, so agents can verify every edit. |
 | **One runtime, many targets** | The same code runs on the CLI, web servers, containers, and serverless platforms. |

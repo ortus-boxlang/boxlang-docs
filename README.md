@@ -42,7 +42,7 @@ AI agents are most productive on platforms that are predictable, well documented
 * **Skills and guidelines.** Installable `SKILL.md` playbooks teach your agent how to do specific BoxLang tasks the idiomatic way. Browse them at [skills.boxlang.io](https://skills.boxlang.io) and install the BoxLang developer set with `npx skills add ortus-boxlang/skills/boxlang-developer`.
 * **Fast validation.** `boxlang check` validates syntax without running code, so agents can verify every edit.
 * **Docs over MCP.** The BoxLang documentation is available as an MCP server at `https://boxlang.ortusbooks.com/~gitbook/mcp`, so agents read current docs instead of guessing.
-* **Live runtime introspection.** With BoxLang+, the `bx-mcp` module lets an agent inspect a running server through MCP, with access control built in.
+* **Live runtime introspection.** The free-to-use proprietary [`bx-mcp` module](boxlang-framework/modularity/bx-mcp/README.md) lets an agent inspect a running server through MCP, with access control built in. It requires `bx-ai`.
 * **Java under the hood.** 100% Java interoperability gives agents the entire JVM ecosystem when they need it.
 
 {% content-ref url="getting-started/agentic-development/" %}
@@ -66,7 +66,7 @@ flowchart LR
 BoxLang is professional open source, built and supported by [Ortus Solutions](https://www.ortussolutions.com). Start free, then add support and productivity as you grow:
 
 * **Professional support** with SLAs, plus dedicated engineer options.
-* **Premium modules** for spreadsheets, CSV, Redis, Couchbase, cloud secrets, LDAP, MCP and more.
+* **Premium modules** for spreadsheets, CSV, Redis, Couchbase, cloud secrets, LDAP and more.
 * **Modernization path.** Run existing Adobe ColdFusion and Lucee CFML applications on BoxLang with the `bx-compat-cfml` module, with no code changes, then modernize at your own pace.
 * **Predictable roadmap** and enhanced or custom builds.
 
@@ -104,7 +104,7 @@ boxlang-miniserver --port 8080
 Add modules, including BoxLang+ modules that start their 60-day trial automatically:
 
 ```bash
-bx-module install bx-plus bx-ai bx-mcp
+bx-module install bx-ai bx-mcp
 ```
 
 See the [installation guide](getting-started/installation/) for Windows, Homebrew, BVM and other options.

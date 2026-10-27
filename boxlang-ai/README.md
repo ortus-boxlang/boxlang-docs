@@ -125,8 +125,10 @@ Prefer to run models locally with no API costs? Use the `ollama` provider. See [
 AI in production needs more than a model call. BoxLang AI includes middleware for guardrails, retries and logging, human approval for sensitive actions, prompt-injection defense, multi-tenant memory isolation, and a flight recorder for audit trails. See [Governance & Security](governance-and-security.md).
 
 {% hint style="success" %}
-**Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Pair BoxLang AI with premium modules such as [MCP +](../boxlang-framework/boxlang-plus/modules/bx-mcp/README.md) for live runtime introspection, and [Couchbase +](../boxlang-framework/boxlang-plus/modules/bx-couchbase/aimemory.md) for vector memory. Enterprise support is available when you [join us](https://www.boxlang.io/plans).
+**Try every BoxLang+ module free for 60 days.** The trial starts automatically the first time you start a BoxLang server or CLI with a BoxLang+ module installed. No sign-up and no key. Pair BoxLang AI with [Couchbase +](../boxlang-framework/boxlang-plus/modules/bx-couchbase/aimemory.md) for vector memory. Enterprise support is available when you [join us](https://www.boxlang.io/plans).
 {% endhint %}
+
+For live runtime introspection, use the free-to-use proprietary [bx-mcp module](../boxlang-framework/modularity/bx-mcp/README.md), which requires `bx-ai`.
 
 ## 📚 Full Documentation
 

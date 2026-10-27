@@ -77,6 +77,8 @@ agent = aiAgent(
 )
 ```
 
+To give an agent access to a live BoxLang runtime, install the free-to-use proprietary [`bx-mcp` module](../boxlang-framework/modularity/bx-mcp/README.md). It exposes runtime diagnostics through MCP and requires `bx-ai`.
+
 ## 🧠 Agents That Remember
 
 Give an agent memory and it keeps context across turns. See [Memory & RAG](memory-and-rag.md).

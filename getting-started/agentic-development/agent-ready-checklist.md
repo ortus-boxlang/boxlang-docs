@@ -21,7 +21,7 @@ Want a working example instead of building this from scratch? [cbGenesis](https:
 * [ ] Tests run from one command and the command is in `AGENTS.md`.
 * [ ] Configuration lives in `boxlang.json` and secrets come from environment variables, not source files.
 * [ ] The [BoxLang IDE](boxlang-ide.md) is installed for language intelligence and debugging.
-* [ ] For running servers, `bx-mcp` is installed with a read-only security profile. See [BoxLang MCP](boxlang-mcp.md).
+* [ ] For running servers, the free-to-use proprietary `bx-mcp` module is installed with a read-only security profile. It requires `bx-ai`. See [BoxLang MCP](boxlang-mcp.md).
 
 ## 💬 Prompt Recipes
 
@@ -50,7 +50,7 @@ need changes to run on BoxLang, list them, then propose a migration plan
 before changing any code.
 ```
 
-**Diagnose a slow server** (requires BoxLang+ `bx-mcp`)
+**Diagnose a slow server** (requires `bx-mcp` and `bx-ai`)
 
 ```text
 Use the BoxLang MCP server with the read-only profile. Check cache health,

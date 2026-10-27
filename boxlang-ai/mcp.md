@@ -86,13 +86,12 @@ curl -X POST "http://localhost/~bxai/mcp.bxm?server=myApp" \
 
 Servers can also register resources and prompts, discover tools from annotations, run over HTTP or STDIO, and be built as classes.
 
-## 🔍 Live Runtime Introspection With MCP +
+## 🔍 Live BoxLang Runtime Introspection With bx-mcp
 
-The BoxLang+ **[MCP +](../boxlang-framework/boxlang-plus/modules/bx-mcp/README.md)** module is a ready-made MCP server for a **running BoxLang runtime**. Agents and monitoring tools can inspect JVM health, caches, datasources, HTTP traffic, schedulers, and modules, with bearer tokens, security profiles, and IP allowlists for governance.
+The free-to-use, proprietary **[bx-mcp module](../boxlang-framework/modularity/bx-mcp/README.md)** is a ready-made MCP server for a **running BoxLang runtime**. It requires `bx-ai`. Agents and monitoring tools can inspect JVM health, caches, datasources, HTTP traffic, schedulers, and modules, with bearer tokens, security profiles, and IP allowlists for governance.
 
 {% hint style="success" %}
-**Try every BoxLang+ module free for 60 days.** The trial starts automatically with no sign-up and no key. See [BoxLang MCP](../getting-started/agentic-development/boxlang-mcp.md).
-{% endhint %}
+See the [BoxLang MCP setup guide](../getting-started/agentic-development/boxlang-mcp.md) for installation and agent configuration.
 
 ## 🧱 ColdBox
 
