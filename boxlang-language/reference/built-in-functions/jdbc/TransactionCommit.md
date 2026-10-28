@@ -61,5 +61,6 @@ bx:transaction {
   * [IsWithinTransaction](./IsWithinTransaction.md)
   * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [QueryExecute](./QueryExecute.md)
+  * [TransactionReleaseSavepoint](./TransactionReleaseSavepoint.md)
   * [TransactionRollback](./TransactionRollback.md)
   * [TransactionSetSavepoint](./TransactionSetSavepoint.md)

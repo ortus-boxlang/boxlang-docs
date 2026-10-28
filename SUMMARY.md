@@ -443,6 +443,7 @@
       * [PreserveSingleQuotes](boxlang-language/reference/built-in-functions/jdbc/PreserveSingleQuotes.md)
       * [QueryExecute](boxlang-language/reference/built-in-functions/jdbc/QueryExecute.md)
       * [TransactionCommit](boxlang-language/reference/built-in-functions/jdbc/TransactionCommit.md)
+      * [TransactionReleaseSavepoint](boxlang-language/reference/built-in-functions/jdbc/TransactionReleaseSavepoint.md)
       * [TransactionRollback](boxlang-language/reference/built-in-functions/jdbc/TransactionRollback.md)
       * [TransactionSetSavepoint](boxlang-language/reference/built-in-functions/jdbc/TransactionSetSavepoint.md)
     * [list](boxlang-language/reference/built-in-functions/list/README.md)

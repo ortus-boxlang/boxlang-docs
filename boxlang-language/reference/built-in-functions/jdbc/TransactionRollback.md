@@ -83,4 +83,5 @@ bx:transaction {
   * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [QueryExecute](./QueryExecute.md)
   * [TransactionCommit](./TransactionCommit.md)
+  * [TransactionReleaseSavepoint](./TransactionReleaseSavepoint.md)
   * [TransactionSetSavepoint](./TransactionSetSavepoint.md)
