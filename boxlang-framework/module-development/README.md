@@ -155,7 +155,7 @@ Learn from production-ready modules in our ecosystem:
 | Module | Purpose | Type |
 |--------|---------|------|
 | [bx-orm](https://github.com/ortus-boxlang/bx-orm) | Hibernate/JPA ORM | Java |
-| [bx-lens](https://github.com/ortus-boxlang/bx-lens) | Observability/monitoring | Java |
+| [bx-lens](../boxlang-plus/modules/bx-lens/README.md) | Observability/monitoring (freeware, not open source) | Java |
 | [bx-ui-compat](https://github.com/ortus-boxlang/bx-ui-compat) | UI compatibility | JavaScript |
 
 {% endtab %}

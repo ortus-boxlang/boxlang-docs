@@ -149,6 +149,10 @@ Once connected, use commands like `tools`, `prompts`, `run <tool>`, and `watch <
 
 ## 🔗 Related Documentation
 
-- [BoxLang AI Module](../../../modularity/ai.md)
-- [Module Installation Guide](../../../../getting-started/installation/modules.md)
-- [Module Configuration](../../../../getting-started/configuration/modules.md)
+- [BoxLang AI Module](../ai.md)
+- [Module Installation Guide](../../../getting-started/installation/modules.md)
+- [Module Configuration](../../../getting-started/configuration/modules.md)
+
+## 🔭 Related
+
+BxMCP is one of the BoxLang observability tools. See [Observability](../../observability/README.md) for how it fits with BxLens, and [AI and MCP observability](../../observability/ai-and-mcp.md) for watching AI agents and for letting AI agents watch the runtime.
