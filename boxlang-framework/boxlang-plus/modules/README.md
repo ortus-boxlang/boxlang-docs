@@ -60,8 +60,8 @@ After installation, modules register themselves automatically or provide a simpl
 
 ## 📁 Module Docs
 
-{% content-ref url="bx-csv.md" %}
-[bx-csv.md](bx-csv.md)
+{% content-ref url="bx-csv/" %}
+[bx-csv](bx-csv/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-azure-secrets/" %}
@@ -93,8 +93,8 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-plus](bx-plus/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus-pdf.md" %}
-[bx-plus-pdf.md](bx-plus-pdf.md)
+{% content-ref url="bx-plus-pdf/" %}
+[bx-plus-pdf](bx-plus-pdf/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-redis/" %}

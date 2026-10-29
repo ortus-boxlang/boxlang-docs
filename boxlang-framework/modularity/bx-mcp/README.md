@@ -149,9 +149,9 @@ Once connected, use commands like `tools`, `prompts`, `run <tool>`, and `watch <
 
 ## 🔗 Related Documentation
 
-- [BoxLang AI Module](../../../modularity/ai.md)
-- [Module Installation Guide](../../../../getting-started/installation/modules.md)
-- [Module Configuration](../../../../getting-started/configuration/modules.md)
+- [BoxLang AI Module](../ai.md)
+- [Module Installation Guide](../../../getting-started/installation/modules.md)
+- [Module Configuration](../../../getting-started/configuration/modules.md)
 
 ## 🔭 Related
 
