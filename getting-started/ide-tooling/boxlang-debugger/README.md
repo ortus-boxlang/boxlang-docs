@@ -118,3 +118,7 @@ You can also debug your web applications easily by running the BoxLang debugger 
 ## Conclusion
 
 I hope you will agree that the BoxLang Debugger is a powerful addition to the set of tools we at Ortus have built to help you develop BoxLang applications.  Now code some Box!
+
+## 🔭 Related
+
+The debugger steps through code. To see what a running application and server are doing, see [Observability](../../../boxlang-framework/observability/README.md).
