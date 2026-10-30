@@ -41,6 +41,12 @@ transaction {
 
 In this example, the UPDATE will be rolled back while the INSERT statement will remain. Remember that in `transactionRollback()`, the savepoint is not the name of a single savepoint to roll back, but the name of the savepoint to rollback TO.
 
+### Savepoint lifetime and release
+
+Savepoint names are case-insensitive. A name cannot be set again while it is still registered. A rollback to a named savepoint retains that target and invalidates later savepoints; committing, fully rolling back, or ending the outer transaction clears all savepoints.
+
+Starting in BoxLang 1.19.0 (currently unreleased), use [`transactionReleaseSavepoint()`](TransactionReleaseSavepoint.md) for optional cleanup after success or recovery. Release invalidates its target and later savepoints without committing or rolling back changes, allowing the name to be reused.
+
 ### Roll back to a specified savepoint
 
 This example runs multiple queries with a savepoint for each, and rolls back to the 'useradded' savepoint if the last query fails.
@@ -70,4 +76,5 @@ bx:transaction {
   * [PreserveSingleQuotes](./PreserveSingleQuotes.md)
   * [QueryExecute](./QueryExecute.md)
   * [TransactionCommit](./TransactionCommit.md)
+  * [TransactionReleaseSavepoint](./TransactionReleaseSavepoint.md)
   * [TransactionRollback](./TransactionRollback.md)

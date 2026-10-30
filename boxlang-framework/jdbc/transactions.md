@@ -65,9 +65,9 @@ transaction isolation="repeatable_read" {
 
 | Attribute    | Values                                                                  | Description                                             |
 | ------------ | ----------------------------------------------------------------------- | ------------------------------------------------------- |
-| `action`     | `begin`, `commit`, `rollback`, `setsavepoint`                           | Action to perform on the transaction                    |
+| `action`     | `begin`, `commit`, `rollback`, `setsavepoint`, `releasesavepoint`                           | Action to perform on the transaction                    |
 | `isolation`  | `read_uncommitted`, `read_committed`, `repeatable_read`, `serializable` | Transaction isolation level                             |
-| `savepoint`  | String                                                                  | Name of the savepoint to create or rollback to          |
+| `savepoint`  | String                                                                  | Name of the savepoint to create, roll back to, or release          |
 | `datasource` | String                                                                  | Specific datasource name for the transaction            |
 
 ### 🔒 Isolation Levels Explained
@@ -114,7 +114,7 @@ transaction{
 }
 ```
 
-This transaction is a no-op. It begins, tries to set a savepoint, then roll back to the savepoint, then commit... **but never ran any JDBC queries**. Hence, every transactional BIF called above does exactly nothing (besides [emit events](../interceptors/core-interception-points/transaction-events.md)).
+This block never acquires a JDBC connection. Savepoints requested before the first query are recorded as pending and materialized on the transaction connection before that query runs. Rollback and release of pending savepoints update the registry without opening a connection; commit, full rollback, and transaction end clear the registry. The operations still [emit transaction events](../interceptors/core-interception-points/transaction-events.md).
 
 ### 📢Events
 
@@ -125,6 +125,7 @@ BoxLang emits events during the lifecycle of a JDBC transaction which can be use
 * [`onTransactionCommit`](../interceptors/core-interception-points/transaction-events.md#ontransactioncommit)
 * [`onTransactionRollback`](../interceptors/core-interception-points/transaction-events.md#ontransactionrollback)
 * [`onTransactionSetSavepoint`](../interceptors/core-interception-points/transaction-events.md#ontransactionsetsavepoint)
+* [`onTransactionReleaseSavepoint`](../interceptors/core-interception-points/transaction-events.md#ontransactionreleasesavepoint)
 * [`onTransactionAcquire`](../interceptors/core-interception-points/transaction-events.md#ontransactionacquire)
 * [`onTransactionRelease`](../interceptors/core-interception-points/transaction-events.md#ontransactionrelease)
 
@@ -189,6 +190,64 @@ transaction {
     // Order remains even if items failed
 }
 ```
+
+### Savepoint lifetime
+
+Savepoint names are case-insensitive and must be non-blank. A name cannot be created again while it is still registered. For the outer transaction:
+
+| Operation | Savepoints retained |
+| --- | --- |
+| `transactionRollback( name )` | The named savepoint and all earlier savepoints. Later savepoints are invalidated. |
+| `transactionReleaseSavepoint( name )` | Only earlier savepoints. The named savepoint and all later savepoints are invalidated. |
+| `transactionCommit()`, `transactionRollback()`, or transaction end | None. |
+
+### Release savepoints after use
+
+{% hint style="info" %}
+`transactionReleaseSavepoint()` and the `releasesavepoint` component action are added in BoxLang 1.19.0 (currently unreleased).
+{% endhint %}
+
+[Release a savepoint](../../boxlang-language/reference/built-in-functions/jdbc/TransactionReleaseSavepoint.md) once its recovery boundary is no longer needed. Release is optional cleanup; transaction atomicity and partial rollback do not require it. It does not commit or roll back changes.
+
+In a batch import, release each item's savepoint after success or recovery so that completed boundaries do not accumulate until the outer transaction ends. This example assumes a configured default datasource and an existing `products` table:
+
+```js
+updates = [ { id: 42, price: 19.99 }, { id: 43, price: 24.99 } ]
+
+transaction {
+	for ( item in updates ) {
+		transactionSetSavepoint( "item" )
+		try {
+			queryExecute(
+				"UPDATE products SET price = ? WHERE id = ?",
+				[ { value: item.price, sqltype: "decimal", scale: 2 }, item.id ]
+			)
+		} catch ( any error ) {
+			transactionRollback( "item" )
+			writeLog( text = error.message, type = "error" )
+		}
+		transactionReleaseSavepoint( "item" )
+	}
+}
+```
+
+A rollback keeps its target savepoint available, allowing the following release to discard it. The next iteration can reuse the same name. If a JDBC rollback or release fails, the error propagates out of the block and the outer transaction rolls back.
+
+You can also release with the component action:
+
+```js
+transaction {
+	bx:transaction action="setsavepoint" savepoint="beforeUpdate";
+	queryExecute( "UPDATE products SET price = ? WHERE id = ?", [ { value: 19.99, sqltype: "decimal", scale: 2 }, 42 ] )
+	bx:transaction action="releasesavepoint" savepoint="beforeUpdate";
+}
+```
+
+The statement-only component actions above require their terminating semicolons.
+
+Once a connection exists, explicit release requires JDBC driver support. An unsupported or failed release raises a `DatabaseException` and leaves the registered handles available for recovery. Releasing a pending savepoint needs no connection. The BIF requires an active transaction; the component action is silently ignored when no transaction is active.
+
+When nested transactions are enabled, child savepoints have their own namespaced ownership. Releasing a child savepoint cannot release the parent's savepoint with the same user-facing name. Automatic child completion does not require JDBC savepoint-release support.
 
 ## 🚨 Exception Handling
 
@@ -267,11 +326,13 @@ transaction {
 
 ## 🔄 Transaction Events
 
-See [transaction events](interceptors/core-interception-points/transaction-events.md) for a list of events that are triggered during transaction lifecycles such as begin, commit, rollback, and savepoint operations.
+See [transaction events](../interceptors/core-interception-points/transaction-events.md) for a list of events that are triggered during transaction lifecycles such as begin, commit, rollback, and savepoint operations.
 
 ## 🏗️ Nested Transactions
 
-BoxLang does not support true nested transactions. If you call `transaction{}` blocks within another `transaction{}` block, they will share the same transaction context. This means that if an inner block rolls back, it will roll back the entire transaction, including any operations performed in the outer block.
+By default, `enableNestedTransactions` is `false`, so inner `transaction{}` blocks share the outer transaction context. A full rollback inside an inner block rolls back the outer transaction as well.
+
+When `enableNestedTransactions` is enabled, BoxLang uses child savepoints to implement nested blocks on the same JDBC connection. These are not independent database transactions: an outer rollback can still undo child work. Child savepoint names are isolated, and explicit release cannot release a parent savepoint. The following example shows the default behavior with nested transactions disabled.
 
 ```js
 transaction {
@@ -293,6 +354,7 @@ See our list of transactional BIFs:
 * [`transactionCommit()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionCommit) - Commit the current transaction
 * [`transactionRollback()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionRollback) - Roll back the current transaction
 * [`transactionSetSavepoint()`](https://boxlang.ortusbooks.com/boxlang-language/reference/built-in-functions/jdbc/transactionSetSavepoint) - Create a savepoint for partial rollbacks
+* [`transactionReleaseSavepoint()`](../../boxlang-language/reference/built-in-functions/jdbc/TransactionReleaseSavepoint.md) - Release a recovery boundary without committing or rolling back
 
 ## 🎨 Common Patterns
 

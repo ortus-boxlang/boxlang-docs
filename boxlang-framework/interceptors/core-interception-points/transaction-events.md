@@ -1,4 +1,9 @@
-## Transactional Events
+---
+description: Observe JDBC transaction lifecycle events and savepoint operations.
+icon: database
+---
+
+# Transaction Events
 
 BoxLang emits events during the lifecycle of a JDBC transaction which can be used to react to various transaction points in your app:
 
@@ -7,22 +12,25 @@ BoxLang emits events during the lifecycle of a JDBC transaction which can be use
 * [`onTransactionCommit`](#ontransactioncommit)
 * [`onTransactionRollback`](#ontransactionrollback)
 * [`onTransactionSetSavepoint`](#ontransactionsetsavepoint)
-* [`onTransactionAcquire`](#ontransactionacquire)\*
-* [`onTransactionRelease`](#ontransactionrelease)\*
+* [`onTransactionReleaseSavepoint`](#ontransactionreleasesavepoint)
+* [`onTransactionAcquire`](#ontransactionacquire)
+* [`onTransactionRelease`](#ontransactionrelease)
 
-Note that all these events (with the exception of `onTransactionAcquire` and `onTransactionRelease`) have the potential to be acting upon a no-op transaction, with a null `connection` parameter since no connection was ever obtained. ( Read more in [Transaction Behavior](/boxlang-framework/jdbc/transactions.md#transaction-behavior) for a description of how transactions work. )
+Transaction events are announced first to the application listener's interceptor pool when a request context exists, then to the runtime interceptor pool. Both pools receive the transaction's originating execution context explicitly. For BoxLang class interceptors, that context is available as the second handler argument and as `data.context`; it may be more specific than the request or runtime context. Payload structs are produced on demand for listening pools.
+
+`onTransactionAcquire` has a connection because acquisition has succeeded. `onTransactionBegin` has no `connection` key. Every other event may have a null `connection` if no query has acquired one yet, including `onTransactionRelease`, which is announced during transaction cleanup even for a transaction that never queried the database. See [Transaction Behavior](../../jdbc/transactions.md#transaction-behavior).
 
 With this in mind, you'll want to do null checks against the `connection` parameter in case no connection has yet been acquired:
 
 ```js
-function onTransactionSetSavepoint( struct data ){
-    if( data.keyExists( "connection" ) && data.connection != null ){
-        // we can be sure this transaction is "doing work".
-    }
+function onTransactionSetSavepoint( struct data, context ) {
+	if ( data.keyExists( "connection" ) && data.connection != null ) {
+		// The transaction has acquired a connection.
+	}
 }
 ```
 
-The two exceptions, as mentioned above, are `onTransactionAcquire` and `onTransactionRelease`, which _only_ emit once a connection has been acquired, and is being released, respectively. Most of the time you'll want to listen for these events instead of their `onTransactionBegin`/`onTransactionEnd` counterparts.
+`onTransactionAcquire` is useful for work that requires an acquired connection. In cleanup handlers, including `onTransactionRelease`, check for a null connection before accessing it.
 
 ## onTransactionBegin
 
@@ -33,28 +41,30 @@ Note that in BoxLang transactions, _no connection is acquired until the first JD
 | Data Key    | Type           | Description                        |
 | ----------- | -------------- | ---------------------------------- |
 | transaction | Java class     | Instance of the Transaction object |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
 
 ### Example
 
 ```js
-function onTransactionBegin( struct data ){}
+function onTransactionBegin( struct data, context ){}
 ```
 
 ## onTransactionEnd
 
 This event fires when the transaction block is closed after the body has finished processing.
 
-Consider using [`onTransactionRelease`](#ontransactionrelease) as an alternative to `onTransactionEnd` if you only want to listen for transactions that have done work.
+`onTransactionEnd` and [`onTransactionRelease`](#ontransactionrelease) are both announced during cleanup. Neither guarantees that the transaction acquired a connection.
 
 | Data Key    | Type           | Description                                                                                                                                            |
 | ----------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | transaction | Java class     | Instance of the Transaction object                                                                                                                     |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon. May be `null` if no JDBC queries have executed inside this transaction. |
 
 ### Example
 
 ```js
-function onTransactionEnd( struct data ){}
+function onTransactionEnd( struct data, context ){}
 ```
 
 ## onTransactionAcquire
@@ -64,27 +74,29 @@ This event fires when the transaction first acquires a connection due to a JDBC 
 | Data Key    | Type           | Description                                                                   |
 | ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
 | connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
 
 ### Example
 
 ```js
-function onTransactionAcquire( struct data ){}
+function onTransactionAcquire( struct data, context ){}
 ```
 
 ## onTransactionRelease
 
-This event fires when the transaction releases its connection. You should prefer this over `onTransactionEnd`.
+This event fires during transaction cleanup, before connection properties are reset and the connection is closed. The `connection` may be `null` when the transaction executed no queries.
 
 | Data Key    | Type           | Description                                                                   |
 | ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
-| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
+| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon. May be `null` before a connection is acquired. |
 
 ### Example
 
 ```js
-function onTransactionRelease( struct data ){}
+function onTransactionRelease( struct data, context ){}
 ```
 
 ## onTransactionCommit
@@ -94,12 +106,13 @@ This event fires when a transaction commit action occurs. Can occur multiple tim
 | Data Key    | Type           | Description                                                                   |
 | ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
-| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
+| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon. May be `null` before a connection is acquired. |
 
 ### Example
 
 ```js
-function onTransactionCommit( struct data ){}
+function onTransactionCommit( struct data, context ){}
 ```
 
 ## onTransactionRollback
@@ -109,13 +122,14 @@ This event fires when a transaction rollback action occurs. Can occur multiple t
 | Data Key    | Type           | Description                                                                   |
 | ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
-| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
+| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon. May be `null` before a connection is acquired. |
 | savepoint   | String         | Savepoint name to roll back to. May be `null`.                                |
 
 ### Example
 
 ```js
-function onTransactionRollback( struct data ){}
+function onTransactionRollback( struct data, context ){}
 ```
 
 ## onTransactionSetSavepoint
@@ -125,11 +139,39 @@ This event fires when a transaction savepoint is set.
 | Data Key    | Type           | Description                                                                   |
 | ----------- | -------------- | ----------------------------------------------------------------------------- |
 | transaction | Java class     | Instance of the Transaction object                                            |
-| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
+| connection  | Java class     | Instance of the java.sql.Connection object this transaction is operating upon. May be `null` before a connection is acquired. |
 | savepoint   | String         | Savepoint name to set.                                                        |
 
 ### Example
 
 ```js
-function onTransactionSetSavepoint( struct data ){}
+function onTransactionSetSavepoint( struct data, context ){}
 ```
+
+## onTransactionReleaseSavepoint
+
+{% hint style="info" %}
+Added in BoxLang 1.19.0 (currently unreleased).
+{% endhint %}
+
+This event fires for an explicit savepoint-release attempt after the name has been validated and found in the transaction registry, but before JDBC release and registry invalidation. It does not confirm successful release: the driver can still reject the operation. Invalid or missing names fail before this event is announced.
+
+Release is optional cleanup; it does not commit or roll back changes. Pending savepoints can be released before the first query, so `connection` may be `null`. This event is distinct from `onTransactionRelease`, which concerns transaction connection cleanup.
+
+| Data Key | Type | Description |
+| --- | --- | --- |
+| transaction | Java class | Instance of the transaction object announcing the operation. |
+| context | IBoxContext | Originating transaction execution context, also passed as the second argument to BoxLang class handlers. |
+| connection | Java class | Transaction's JDBC connection, or `null` if none has been acquired. |
+| savepoint | String | Name of the savepoint to release. Nested transaction names include the child's internal prefix. |
+
+### Example
+
+```js
+function onTransactionReleaseSavepoint( struct data, context ) {
+	writeLog( text = "Releasing transaction savepoint: " & data.savepoint )
+}
+```
+
+See [`transactionReleaseSavepoint()`](../../../boxlang-language/reference/built-in-functions/jdbc/TransactionReleaseSavepoint.md) for the API, failure behavior, and savepoint lifetime rules.
