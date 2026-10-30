@@ -66,7 +66,7 @@ Observability answers one question: **what is my application doing right now, an
 
 ```bash
 # BoxLang binary
-install-bx-module bx-lens
+bx-module install bx-lens
 
 # CommandBox
 box install bx-lens

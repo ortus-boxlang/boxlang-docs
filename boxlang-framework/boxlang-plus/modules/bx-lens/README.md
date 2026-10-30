@@ -24,7 +24,7 @@ Both surfaces are off until you turn them on. An assistant named **Lensy** answe
 
 ```bash
 # BoxLang binary
-install-bx-module bx-lens
+bx-module install bx-lens
 
 # CommandBox
 box install bx-lens

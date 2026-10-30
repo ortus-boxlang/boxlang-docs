@@ -53,12 +53,6 @@ Use the [quick installer](../installation/boxlang-quick-installer.md), [BVM](../
 ### Install the module
 
 ```bash
-install-bx-module bx-cli
-```
-
-Or with the module manager:
-
-```bash
 bx-module install bx-cli
 ```
 {% endstep %}
