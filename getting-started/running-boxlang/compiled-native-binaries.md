@@ -5,6 +5,10 @@ icon: display
 
 # Compiled Native Binaries
 
+{% hint style="info" %}
+The full **MatchBox** docs now live at [matchbox.boxlang.io](https://matchbox.boxlang.io). Try the [online playground](https://matchbox.boxlang.io/playground/), take the [online course](https://matchbox.boxlang.io/course/), or see the [MatchBox overview](matchbox.md).
+{% endhint %}
+
 ## Native Builds
 
 MatchBox can compile your BoxLang application into a **single, self-contained native binary** for your operating system. The resulting executable requires no JVM, no MatchBox installation, and no runtime dependencies of any kind.

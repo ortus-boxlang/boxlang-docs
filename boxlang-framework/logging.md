@@ -629,3 +629,7 @@ Smaller caps prevent runaway disk usage, especially at `DEBUG` or `TRACE` levels
 - [Interceptors](./interceptors/README.md) — Intercept and extend BoxLang events
 - [Logging Interception Points](./interceptors/core-interception-points/logging-events.md)
 - [Application.bx](./applicationbx.md) — Application lifecycle and configuration
+
+## 🔭 Related
+
+Logging tells you what happened. For a live view of requests, errors, queries and servers, see [Observability](observability/README.md).

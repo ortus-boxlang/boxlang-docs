@@ -19,6 +19,7 @@ BoxLang+/Starter includes a curated set of modules that extend the platform with
 | [`bx-couchbase`](bx-couchbase/) | Distributed caching and NoSQL document storage via Couchbase. |
 | [`bx-csv`](bx-csv/) | Streaming CSV parsing and generation for large datasets. |
 | [`bx-ldap`](bx-ldap/) | Full-featured LDAP directory access for BoxLang applications. |
+| [`bx-lens`](bx-lens/) | Debug bar and ops console: requests, errors, queries, servers and AI observability. Free for one server, with more in BoxLang+. |
 | [`bx-meilisearch`](bx-meilisearch/) | [Meilisearch](https://www.meilisearch.com/) integration for fast full-text search in BoxLang applications. |
 | [`bx-pdf`](bx-plus-pdf/) | PDF generation and manipulation for documents, reports, and forms, including [licensed functionality](bx-plus-pdf/). |
 | [`bx-plus`](bx-plus/) | Subscription bootstrap, entitlement validation, and shared utilities. |
@@ -59,8 +60,8 @@ After installation, modules register themselves automatically or provide a simpl
 
 ## 📁 Module Docs
 
-{% content-ref url="bx-csv.md" %}
-[bx-csv.md](bx-csv.md)
+{% content-ref url="bx-csv/" %}
+[bx-csv](bx-csv/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-azure-secrets/" %}
@@ -83,13 +84,17 @@ After installation, modules register themselves automatically or provide a simpl
 [bx-ldap](bx-ldap/)
 {% endcontent-ref %}
 
+{% content-ref url="bx-lens/" %}
+[bx-lens](bx-lens/)
+{% endcontent-ref %}
+
 
 {% content-ref url="bx-plus/" %}
 [bx-plus](bx-plus/)
 {% endcontent-ref %}
 
-{% content-ref url="bx-plus-pdf.md" %}
-[bx-plus-pdf.md](bx-plus-pdf.md)
+{% content-ref url="bx-plus-pdf/" %}
+[bx-plus-pdf](bx-plus-pdf/)
 {% endcontent-ref %}
 
 {% content-ref url="bx-redis/" %}

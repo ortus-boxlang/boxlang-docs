@@ -283,6 +283,18 @@ cache().clear( key -> key.getName().startsWith( "temp_" ) )
 
 The equivalent direct service operations would require implementing `ICacheKeyFilter` or using the built-in filter classes.
 
+**Prefix Clearing Operations**
+
+Clearing by prefix is the preferred method for bulk eviction on caches with high object counts ( e.g. production distributed caches), as it avoids the overhead of evaluating the entire key set against the filter.
+
+```javascript
+// BoxLang BIF approach for prefix clearing
+cache().clearByPrefix( "user:*" );
+
+// Equivalent direct service call
+cacheService().getCache( "userSessions" ).clearByPrefix( "user:*" )
+```
+
 **BoxLang Application Integration**
 
 ```javascript
