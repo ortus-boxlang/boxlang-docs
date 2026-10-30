@@ -4,6 +4,10 @@ icon: not-equal
 
 # Differences From BoxLang JVM
 
+{% hint style="info" %}
+The full MatchBox docs live at [matchbox.boxlang.io](https://matchbox.boxlang.io). Try the [online playground](https://matchbox.boxlang.io/playground/) or take the [online course](https://matchbox.boxlang.io/course/).
+{% endhint %}
+
 ## Differences from BoxLang (JVM)
 
 MatchBox implements a **strict subset** of the BoxLang language. Code written for MatchBox will generally run unmodified on the main BoxLang JVM runtime. The reverse is not always true — JVM BoxLang has a much larger standard library, full Java interop, and additional language constructs that are not yet implemented in MatchBox.

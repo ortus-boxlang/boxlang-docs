@@ -11,6 +11,14 @@ icon: square-code
 
 CommandBox seamlessly integrates to work with any of [Ortus Solutions](http://www.ortussolutions.com/products) \*Box products, but it is also open to extensibility for any BoxLang or CFML project. We have created a specialized servlet runtime for CommandBox that makes it the premier choice for deploying enterprise BoxLang applications with high-traffic and mission-critical requirements.
 
+{% hint style="info" %}
+**CommandBox 7 on BoxLang (bx-cli) is in release candidate.** CommandBox now runs in pure BoxLang as the `bx-cli` module, and it is planned to ship bundled with BoxLang, targeting 1.20 this November. See [CommandBox CLI](../overview/commandbox-cli.md) for how to install and use it.
+{% endhint %}
+
+{% hint style="warning" %}
+**The Lucee-based CommandBox 6.x is supported for security patches only.** New features land in the BoxLang-based CommandBox 7. Plan your move to `bx-cli`.
+{% endhint %}
+
 ## 🚀 Enterprise Features & BoxLang Subscriptions
 
 CommandBox becomes even more powerful with [CommandBox PRO](https://www.ortussolutions.com/products/commandbox-pro), which is included with [BoxLang+ and BoxLang++ subscriptions](https://boxlang.io/plans). When you have a **BoxLang +/++ subscription**, you automatically get access to all CommandBox PRO enterprise features:
@@ -50,6 +58,24 @@ For standalone CommandBox Pro: [https://www.ortussolutions.com/products/commandb
 
 You can find out more about getting started with CommandBox or CommandBox Pro in our [CommandBox documentation](https://commandbox.ortusbooks.com/getting-started-guide).
 
+## 🧪 CommandBox 7 on BoxLang (bx-cli) Release Candidate
+
+CommandBox 7 is CommandBox rebuilt on BoxLang. It is still the same `box` command, and it replaces the Lucee engine that powers CommandBox 6.x.
+
+```bash
+bx-module install bx-cli
+box version
+```
+
+Key points:
+
+* **No separate engine:** bx-cli runs on your BoxLang install, which must be version `1.17.0` or newer.
+* **Your CommandBox home is reused:** modules, servers, server JREs, artifacts, configuration and history are all preserved. You can share one home between CommandBox 6.x and bx-cli.
+* **Bundled soon:** it is planned to ship with BoxLang (targeting 1.20), and then no manual install will be needed.
+* **Known limits:** anything that relies on Lucee-specific code, such as the CFLint module or Lucee-specific task runners, will not work.
+
+Because it is a release candidate, please report issues in the [CommandBox repository](https://github.com/Ortus-Solutions/commandbox). Full details are on the [CommandBox CLI](../overview/commandbox-cli.md) page.
+
 ## 📦 Installation & Setup
 
 ### Install the BoxLang Module
@@ -63,7 +89,7 @@ install commandbox-boxlang
 This will add the right file types and handlers to CommandBox for BoxLang.
 
 {% hint style="danger" %}
-This will no longer be needed on CommandBox 6.1+
+This is no longer needed on CommandBox 6.1+, and it is not needed with CommandBox 7 (`bx-cli`).
 {% endhint %}
 
 ## 🚀 Start up a Server
