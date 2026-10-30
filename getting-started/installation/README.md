@@ -443,10 +443,8 @@ Here, you can find the installers and binaries for all Operating Systems:
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-installer.exe](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-installer.exe)
 * Zip (All OSs):\
   [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest.zip](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest.zip)
-* Jar:\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest-all.jar](https://downloads.ortussolutions.com/ortussolutions/boxlang/boxlang-latest-all.jar)
 * Quick Installer (Mac/\*nix)\
-  [https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh](https://downloads.ortussolutions.com/ortussolutions/boxlang/install-boxlang.sh)
+  [https://install.boxlang.io](https://install.boxlang.io)
 
 ### MiniServer Binaries
 
@@ -558,7 +556,7 @@ Our [BoxLang+, and ++](https://boxlang.io/plans) subscribers not only get profes
 | [`bx-azure-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-azure-secrets/) | Azure Key Vault integration for `getSystemSetting()` using the `azure.` namespace. | Done |
 | [`bx-aws-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-aws-secrets/) | AWS Secrets Manager integration for `getSystemSetting()` using the `aws.` namespace. | Done |
 | [`bx-google-secrets`](../../boxlang-framework/boxlang-plus/modules/bx-google-secrets/) | Google Secret Manager integration for `getSystemSetting()` using the `google.` namespace. | Done |
-| [`bx-csv`](../../boxlang-framework/boxlang-plus/modules/bx-csv.md) | Streaming CSV parsing & generation for large datasets | Done |
+| [`bx-csv`](../../boxlang-framework/boxlang-plus/modules/bx-csv/README.md) | Streaming CSV parsing & generation for large datasets | Done |
 | [`bx-couchbase`](../../boxlang-framework/boxlang-plus/modules/bx-couchbase/) | Native Couchbase integration for caching, NoSQL, session distribution and advanced Couchbase usage. | Done |
 | [`bx-ldap`](../../boxlang-framework/boxlang-plus/modules/bx-ldap/) | A comprehensive LDAP module for BoxLang that brings full-featured LDAP directory access to your applications. | Done |
 | [`bx-plus`](../../boxlang-framework/boxlang-plus/modules/bx-plus/) | Subscription bootstrap, entitlement validation, shared utilities | Done |

@@ -864,7 +864,6 @@
       * [IsZipFile](boxlang-language/reference/built-in-functions/zip/IsZipFile.md)
   * [Components](boxlang-language/reference/components/README.md)
     * [async](boxlang-language/reference/components/async/README.md)
-      * [Schedule](boxlang-language/reference/components/async/Schedule.md)
       * [Thread](boxlang-language/reference/components/async/Thread.md)
     * [cache](boxlang-language/reference/components/cache/README.md)
       * [Cache](boxlang-language/reference/components/cache/Cache.md)
