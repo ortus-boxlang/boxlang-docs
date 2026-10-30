@@ -248,3 +248,59 @@ export BOXLANG_SECURITY_SECRETSEED=my-shared-seed-value
 ```
 
 The algorithm used for encryption/decryption is controlled by `security.secretAlgorithm` (default `AES`, shown above) — note that this setting itself is always read as plain text.
+
+## Software Bill of Materials (SBOM)
+
+Every BoxLang release build publishes a [CycloneDX](https://cyclonedx.org/) Software Bill of Materials (SBOM) next to its binaries. An SBOM lists the third-party libraries an artifact depends on, with their names and versions, so you can check them against vulnerability databases and answer supply-chain and compliance questions without unpacking the jars.
+
+The SBOM is generated from the resolved dependency graph of each project, not from the shaded jar. Shading removes the `META-INF/maven` metadata that scanners rely on, so scanning a shaded jar directly misses the libraries bundled inside it.
+
+### Where to Find Them
+
+Each project publishes its own SBOM and a SHA-256 checksum in the same download folder as its other artifacts. Replace `<version>` with the release version.
+
+| Project | Download folder |
+| --- | --- |
+| BoxLang | `https://downloads.ortussolutions.com/ortussolutions/boxlang/<version>/` |
+| MiniServer | `https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-miniserver/<version>/` |
+| Servlet | `https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-servlet/<version>/` |
+| Web Support | `https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-web-support/<version>/` |
+| AWS Lambda | `https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-aws-lambda/<version>/` |
+| Azure Functions | `https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-azure-functions/<version>/` |
+| Google Cloud Functions | `https://downloads.ortussolutions.com/ortussolutions/boxlang-runtimes/boxlang-google-functions/<version>/` |
+
+In each folder the files are named after the project:
+
+* `<artifact>-<version>.cdx.json` is the SBOM
+* `<artifact>-<version>.cdx.json.sha256` is its checksum
+
+For example, the BoxLang SBOM for version `1.19.0` is `boxlang-1.19.0.cdx.json`. Both files are also attached to the matching GitHub release.
+
+{% hint style="info" %}
+SBOMs are published for releases built after this feature was added. Older versions do not have one.
+{% endhint %}
+
+### Verify the Checksum
+
+Download the SBOM and its checksum into the same folder, then verify:
+
+```bash
+sha256sum -c boxlang-<version>.cdx.json.sha256
+```
+
+On macOS you can use `shasum -a 256 -c` instead of `sha256sum -c`.
+
+### Scan an SBOM
+
+Any tool that reads CycloneDX can consume the file. For example, with [Grype](https://github.com/anchore/grype):
+
+```bash
+grype sbom:boxlang-<version>.cdx.json
+```
+
+### What an SBOM Covers
+
+* **Runtime dependencies only.** Test dependencies are excluded.
+* **One SBOM per project.** BoxLang and each runtime publish their own.
+* **Runtimes do not list BoxLang itself.** The runtimes (MiniServer, Servlet, AWS Lambda, Azure Functions and Google Cloud Functions) bundle the BoxLang jar, but it is not listed in their SBOM. To audit a runtime, also use the BoxLang SBOM for the matching release.
+* **Snapshot builds** produce files named `<artifact>-<version>-snapshot.cdx.json`.
