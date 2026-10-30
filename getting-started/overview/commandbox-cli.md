@@ -20,7 +20,7 @@ description: CommandBox is the package manager, CLI and enterprise servlet serve
 It is still CommandBox and still the same `box` command you already know, now powered by BoxLang instead of Lucee.
 
 {% hint style="info" %}
-**Coming soon to BoxLang itself.** This November, bx-cli will ship as part of BoxLang. Until then, install it as a module as shown below. The module is at version 7 release candidate stage, so report any issues you find in the [CommandBox repository](https://github.com/Ortus-Solutions/commandbox).
+**Coming soon to BoxLang itself.** CommandBox (bx-cli) is planned to ship as part of BoxLang, targeting BoxLang 1.20 this November. Once it is bundled, you will not need to install it manually: install BoxLang and `box` is ready to use. Until then, install it as a module as shown below. The module is at version 7 release candidate stage, so report any issues you find in the [CommandBox repository](https://github.com/Ortus-Solutions/commandbox).
 {% endhint %}
 
 ## Features
@@ -41,6 +41,10 @@ It is still CommandBox and still the same `box` command you already know, now po
 * 256MB+ RAM and 250MB+ free disk space
 
 ## Install
+
+{% hint style="info" %}
+This manual install is temporary. Once CommandBox is bundled with BoxLang (targeting 1.20), you can skip it.
+{% endhint %}
 
 {% stepper %}
 {% step %}

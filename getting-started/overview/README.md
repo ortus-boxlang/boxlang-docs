@@ -183,7 +183,7 @@ Try the [MatchBox playground](https://matchbox.boxlang.io/playground/) or follow
 {% tab title="Ecosystem" %}
 * **Java and CFML libraries:** almost any project on [Maven Central](https://central.sonatype.com/) and [ForgeBox](https://www.forgebox.io) works with the JVM runtime.
 * **Tooling:** a VS Code extension with syntax highlighting, a debugger, code insight, formatting and LSP. BoxLang+ adds enhanced debuggers and CFML transformers.
-* **Package manager:** [CommandBox](commandbox-cli.md) is our package manager, CLI and servlet server, now available in pure BoxLang as the `bx-cli` module, with ForgeBox integration.
+* **Package manager:** [CommandBox](commandbox-cli.md) is our package manager, CLI and servlet server, now available in pure BoxLang as the `bx-cli` module, with ForgeBox integration. It is planned to ship bundled with BoxLang (targeting 1.20), so no manual install will be needed.
 * **Learning:** [BoxLings](https://github.com/ortus-boxlang/boxlings) for the JVM runtime, the [MatchBox course](https://matchbox.boxlang.io/course/) and [playground](https://matchbox.boxlang.io/playground/).
 * **Professional open source:** Apache 2 licensed, with BoxLang+ for support and premium modules.
 {% endtab %}
