@@ -4,6 +4,10 @@ icon: merge
 
 # Native Fusion Builds
 
+{% hint style="info" %}
+The full MatchBox docs live at [matchbox.boxlang.io](https://matchbox.boxlang.io). Try the [online playground](https://matchbox.boxlang.io/playground/) or take the [online course](https://matchbox.boxlang.io/course/).
+{% endhint %}
+
 ## Native Fusion — Rust Interop Reference
 
 **Native Fusion** is the mechanism that lets you write Rust functions and classes and expose them as first-class BoxLang Built-In Functions (BIFs) and native objects. Everything is statically linked into your final binary — no shared libraries, no FFI boilerplate at the BoxLang call site.

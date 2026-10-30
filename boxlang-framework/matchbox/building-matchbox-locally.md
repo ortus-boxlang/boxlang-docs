@@ -4,6 +4,10 @@ icon: map-location-dot
 
 # Building MatchBox Locally
 
+{% hint style="info" %}
+The full MatchBox docs live at [matchbox.boxlang.io](https://matchbox.boxlang.io). Try the [online playground](https://matchbox.boxlang.io/playground/) or take the [online course](https://matchbox.boxlang.io/course/).
+{% endhint %}
+
 ## Building MatchBox from Source
 
 This guide covers how to clone, configure, and build custom versions of MatchBox. MatchBox is designed to be highly modular, allowing you to include or exclude features based on your deployment needs.
