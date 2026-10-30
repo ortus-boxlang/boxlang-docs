@@ -5,6 +5,10 @@ icon: microchip
 
 # ESP32
 
+{% hint style="info" %}
+The full **MatchBox** docs now live at [matchbox.boxlang.io](https://matchbox.boxlang.io). Try the [online playground](https://matchbox.boxlang.io/playground/), take the [online course](https://matchbox.boxlang.io/course/), or see the [MatchBox overview](matchbox.md).
+{% endhint %}
+
 ## Building for ESP32
 
 MatchBox supports building and flashing BoxLang scripts directly to ESP32 microcontrollers. This is achieved by cross-compiling a specialized MatchBox runner for the Xtensa or RISC-V architectures and deploying your compiled bytecode to a dedicated flash partition.

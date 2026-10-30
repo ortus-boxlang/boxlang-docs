@@ -1,4 +1,5 @@
 ---
+description: MatchBox is the Rust runtime for BoxLang, shipping to native binaries, the browser, WASI, AWS Lambda and ESP32
 icon: fire
 ---
 
@@ -6,66 +7,116 @@ icon: fire
 
 ## What is MatchBox?
 
-MatchBox is a **native Rust implementation** of the [BoxLang](https://github.com/ortus-boxlang/BoxLang) programming language. It lets you write BoxLang scripts (`.bxs`) and run them as blazing-fast, standalone applications — with no JVM, no Java installation, and no runtime overhead.
+MatchBox is a **Rust implementation of the BoxLang runtime**. It sits alongside the JVM runtime as its Rust counterpart. BoxLang compiles to bytecode, and a Rust VM runs it. Core and native builds need no JVM.
 
-[https://github.com/ortus-boxlang/matchbox](https://github.com/ortus-boxlang/matchbox)
+{% hint style="success" %}
+**All MatchBox documentation now lives at [matchbox.boxlang.io](https://matchbox.boxlang.io).** This page is a short introduction. Use the links below for guides, the CLI reference, examples, and the interactive tools.
+{% endhint %}
 
-### The Problem it Solves
+{% columns %}
+{% column %}
+### 🎮 Playground
 
-The main BoxLang runtime runs on the JVM, which brings excellent ecosystem access and dynamic power, but also brings weight: a JVM on the host machine, startup latency, and memory overhead. MatchBox is designed for scenarios where none of that is acceptable:
+Write and run BoxLang in your browser. MatchBox is compiled to WebAssembly, and your code never leaves your device.
 
-* **Edge deployments** where cold-start time and binary size are critical.
-* **CLI tools** that need to ship as a single, zero-dependency binary.
-* **Browser apps** where you want to run BoxLang logic natively via WebAssembly.
-* **Embedded systems or containers** with minimal compute resources.
+[Open the playground →](https://matchbox.boxlang.io/playground/)
+{% endcolumn %}
 
-### Quick Install
+{% column %}
+### 🎓 Online Course
 
-These scripts will prompt you to choose between the **Latest Release** or **Snapshot** version and will install the full **Fat CLI** (which includes runner stubs for all deployment targets).
+Ten lessons, from your first script to building and shipping a standalone binary.
 
-**Linux / macOS:**
+[Start the course →](https://matchbox.boxlang.io/course/)
+{% endcolumn %}
+{% endcolumns %}
+
+| Resource | Link |
+| :--- | :--- |
+| Documentation | [matchbox.boxlang.io/getting-started](https://matchbox.boxlang.io/getting-started/) |
+| CLI reference | [matchbox.boxlang.io/reference/cli](https://matchbox.boxlang.io/reference/cli/) |
+| Examples | [matchbox.boxlang.io/examples](https://matchbox.boxlang.io/examples/) |
+| Source code | [github.com/ortus-boxlang/matchbox](https://github.com/ortus-boxlang/matchbox) |
+| Docs source | [github.com/ortus-boxlang/matchbox-docs](https://github.com/ortus-boxlang/matchbox-docs) |
+
+## Why MatchBox?
+
+The JVM runtime brings the full Java ecosystem and broad module coverage. MatchBox targets the places a JVM does not fit.
+
+* **Single binaries:** ship a CLI tool or service as one file, with a VM core of about 4.7 MB.
+* **Browsers:** run BoxLang through WebAssembly and JavaScript, including Cloudflare Workers.
+* **WASI containers:** run WebAssembly workloads outside the browser.
+* **Serverless:** AWS Lambda support is in preview.
+* **Microcontrollers:** run on ESP32 devices.
+
+## Install
+
+[MatchBox Version Manager (MVM)](https://github.com/ortus-boxlang/matchbox-quick-installer) installs and switches MatchBox versions.
+
+{% tabs %}
+{% tab title="Linux and macOS" %}
+```bash
+curl -fsSL https://raw.githubusercontent.com/ortus-boxlang/matchbox-quick-installer/main/install/install.sh | bash
+```
+{% endtab %}
+
+{% tab title="Windows" %}
+Use the `install.ps1` script from the [matchbox-quick-installer](https://github.com/ortus-boxlang/matchbox-quick-installer) repository in PowerShell.
+{% endtab %}
+{% endtabs %}
+
+Then install and activate MatchBox:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ortus-boxlang/matchbox/master/install/install.sh | bash
+mvm install latest
+mvm use latest
+matchbox --version
 ```
 
-**Windows (PowerShell):**
+If `matchbox` is not found, run `mvm doctor`.
 
-```powershell
-iex (Invoke-RestMethod -Uri https://raw.githubusercontent.com/ortus-boxlang/matchbox/master/install/install.ps1)
+## Use
+
+Run a script:
+
+```bash
+matchbox hello.bxs
 ```
 
-### How it Works
+Build a standalone native executable:
 
-MatchBox is a complete, self-contained language toolchain:
+```bash
+matchbox --target native hello.bxs
+```
 
-1. **Parser** — A [Pest](https://pest.rs/) PEG grammar reads `.bxs` source files and produces an AST.
-2. **Compiler** — A multi-stage compiler lowers the AST into a compact bytecode format.
-3. **VM** — A stack-based Bytecode Virtual Machine executes the bytecode with a cooperative fiber scheduler for high-concurrency async operations.
-4. **Targets** — The same bytecode can be embedded in a native binary, run inside a WASM runtime, or executed directly by the MatchBox runner.
+The executable contains your bytecode appended to a runner stub. Use `--strip-source` to remove the source text.
 
-### The MatchBox Philosophy
+## Targets
 
-| Property                 | MatchBox           | BoxLang (JVM)  |
-| ------------------------ | ------------------ | -------------- |
-| Runtime dependency       | None               | JVM required   |
-| Startup time             | Milliseconds       | Seconds        |
-| Binary size              | \~500 KB           | Full JVM stack |
-| Java interop             | Experimental (JNI) | Full           |
-| WASM/browser support     | ✅                  | ❌              |
-| Strict subset of BoxLang | ✅                  | Full language  |
+| Target | Use it for |
+| :--- | :--- |
+| **Native** | CLI tools and local applications |
+| **Browser and JavaScript** | Client-side apps, libraries and Cloudflare Workers |
+| **WASI** | Experimental WebAssembly workloads in WASI hosts |
+| **AWS Lambda (preview)** | Serverless functions with small cold starts |
+| **ESP32** | Embedded devices |
 
-### One-Way Compatibility
+See the dedicated pages for [compiled native binaries](compiled-native-binaries.md), [WASM in the browser](wasm-in-the-browser.md), [WASM containers](wasm-container.md), and [ESP32](esp32.md).
 
-MatchBox implements a **strict subset** of the BoxLang language. Code written for MatchBox will generally run unmodified on the main BoxLang JVM runtime. Code written for the JVM runtime may use features not yet present in MatchBox.
+## How MatchBox Relates to BoxLang on the JVM
 
-Think of MatchBox as a "portable and deployable" profile of BoxLang — you target MatchBox when distribution, performance, or JVM-independence is a requirement.\
-\
-Compatibility is growing quickly so be sure to check back often or submit a request for feature parity.
+MatchBox complements the JVM runtime and does not replace it.
 
-### What You Can Build
+| | BoxLang on the JVM | MatchBox |
+| :--- | :--- | :--- |
+| Runtime | JVM | Rust bytecode VM with a tiered Cranelift JIT |
+| Java ecosystem and interop | Full | Experimental in native builds, needs a JDK |
+| Module coverage | Broad | Differs, check your target |
+| Single-file executable | No | Yes |
+| Browser and ESP32 | No | Yes |
 
-* **CLI tools** — compile to a single native binary and distribute without any installer.
-* **Serverless functions** — ultra-small cold start, ideal for AWS Lambda, Cloudflare Workers, or Fastly Compute.
-* **Browser applications** — run BoxLang logic directly in the browser via a WASM module.
-* **Native Fusion apps** — mix BoxLang with hand-written Rust for peak performance.
+Runtime APIs and module support differ between the two. Check compatibility for your target before you commit, and read [Differences from BoxLang](https://matchbox.boxlang.io/differences-from-boxlang/).
+
+## Native Fusion
+
+Native Fusion lets you call Rust from BoxLang, call BoxLang from Rust, and reach Java classes from native builds. Learn more in the [Native Fusion guide](https://matchbox.boxlang.io/building-and-deploying/native-fusion/).

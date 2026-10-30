@@ -15,6 +15,10 @@ The script for \*nix/Mac is `boxlang`
 The script for Windows is `boxlang.bat`
 {% endhint %}
 
+{% hint style="success" %}
+**Need a single binary, the browser, or a microcontroller?** Run BoxLang on [MatchBox](matchbox.md), the Rust runtime, with no JVM. Try the [online playground](https://matchbox.boxlang.io/playground/).
+{% endhint %}
+
 ### BoxLang Home <a href="#start-the-repl-8" id="start-the-repl-8"></a>
 
 By default, once you execute a `boxlang` binary it will look for a `BOXLANG_HOME` environment variable so it can be used as the home for the OS runtime. If you don't provide one, then by default, it will use the currently logged-in user's home folder + `.boxlang`

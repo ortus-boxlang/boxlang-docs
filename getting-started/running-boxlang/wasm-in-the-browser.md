@@ -5,6 +5,10 @@ icon: window
 
 # WASM in the Browser
 
+{% hint style="info" %}
+The full **MatchBox** docs now live at [matchbox.boxlang.io](https://matchbox.boxlang.io). Try the [online playground](https://matchbox.boxlang.io/playground/), take the [online course](https://matchbox.boxlang.io/course/), or see the [MatchBox overview](matchbox.md).
+{% endhint %}
+
 ## JavaScript + WebAssembly
 
 MatchBox can compile BoxLang for the browser and Node.js via WebAssembly. There are three distinct modes, chosen to match different use-cases.

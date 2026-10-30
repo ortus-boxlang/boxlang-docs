@@ -9,6 +9,17 @@ BoxLang can be deployed on multiple runtimes, and each runtime can be set up dif
 
 **You can choose to either install a single version of BoxLang (Quick Installer) or our BoxLang Version Manager (BVM), so you can manage multiple versions of BoxLang on your operating system.**
 
+## Installing MatchBox
+
+BoxLang also has a Rust runtime, **MatchBox**, for native binaries, the browser, WASI, AWS Lambda and ESP32. It installs separately with the MatchBox Version Manager, so no JVM is needed.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ortus-boxlang/matchbox-quick-installer/main/install/install.sh | bash
+mvm install latest && mvm use latest
+```
+
+See the [MatchBox page](../running-boxlang/matchbox.md), the [online playground](https://matchbox.boxlang.io/playground/) and the [online course](https://matchbox.boxlang.io/course/).
+
 ## Next Step: Learn with BoxLings
 
 {% hint style="success" %}
