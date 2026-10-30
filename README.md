@@ -15,7 +15,7 @@ icon: house-window
 
 * **Built for developers.** A modern, expressive, dynamic JVM language with a batteries-included runtime.
 * **Built for AI.** Predictable conventions, agent skills, live runtime introspection over MCP, and a first-class AI framework.
-* **Built to ship.** One runtime for the CLI, web servers, containers, serverless, desktop and more. Backed by professional support when you need it.
+* **Built to ship.** Two runtimes, the JVM and [MatchBox](https://matchbox.boxlang.io) on Rust, for the CLI, web servers, containers, serverless, desktop, native binaries, the browser and more. Backed by professional support when you need it.
 
 <figure><img src=".gitbook/assets/bl-runtime-bg.png" alt=""><figcaption><p>BoxLang Multi-Runtime</p></figcaption></figure>
 

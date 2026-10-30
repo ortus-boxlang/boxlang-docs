@@ -5,6 +5,10 @@ icon: docker
 
 # WASM Container
 
+{% hint style="info" %}
+The full **MatchBox** docs now live at [matchbox.boxlang.io](https://matchbox.boxlang.io). Try the [online playground](https://matchbox.boxlang.io/playground/), take the [online course](https://matchbox.boxlang.io/course/), or see the [MatchBox overview](matchbox.md).
+{% endhint %}
+
 ## WASM Container Deployment
 
 MatchBox WASM binaries can be run as standalone server-side workloads using WASM-native runtimes like [Wasmtime](https://wasmtime.dev/), [WasmEdge](https://wasmedge.org/), or inside minimal OCI containers using the WASM OCI image spec.

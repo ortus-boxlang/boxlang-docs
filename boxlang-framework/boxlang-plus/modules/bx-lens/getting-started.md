@@ -15,7 +15,7 @@ icon: rocket
 
 ```bash
 # BoxLang binary
-install-bx-module bx-lens
+bx-module install bx-lens
 
 # CommandBox
 box install bx-lens
