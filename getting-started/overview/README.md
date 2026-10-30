@@ -152,7 +152,7 @@ Try the [MatchBox playground](https://matchbox.boxlang.io/playground/) or follow
 
 ## Explore
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Multi-Runtime</strong></td><td>Every JVM and MatchBox deployment target</td><td><a href="multi-runtime.md">multi-runtime.md</a></td></tr><tr><td><strong>Quick Syntax Guide</strong></td><td>The language in ten minutes</td><td><a href="syntax-style-guide/README.md">README.md</a></td></tr><tr><td><strong>BoxLang CLI (bx-cli)</strong></td><td>Package manager, CLI and servlet server, in pure BoxLang</td><td><a href="commandbox-cli.md">commandbox-cli.md</a></td></tr><tr><td><strong>Agentic Development</strong></td><td>Build with AI agents using skills, MCP and checks</td><td><a href="../agentic-development/README.md">README.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Multi-Runtime</strong></td><td>Every JVM and MatchBox deployment target</td><td><a href="multi-runtime.md">multi-runtime.md</a></td></tr><tr><td><strong>Quick Syntax Guide</strong></td><td>The language in ten minutes</td><td><a href="syntax-style-guide/README.md">README.md</a></td></tr><tr><td><strong>CommandBox CLI</strong></td><td>The package manager, CLI and servlet server, now in pure BoxLang (bx-cli)</td><td><a href="commandbox-cli.md">commandbox-cli.md</a></td></tr><tr><td><strong>Agentic Development</strong></td><td>Build with AI agents using skills, MCP and checks</td><td><a href="../agentic-development/README.md">README.md</a></td></tr></tbody></table>
 
 ## Key Features
 
@@ -183,7 +183,7 @@ Try the [MatchBox playground](https://matchbox.boxlang.io/playground/) or follow
 {% tab title="Ecosystem" %}
 * **Java and CFML libraries:** almost any project on [Maven Central](https://central.sonatype.com/) and [ForgeBox](https://www.forgebox.io) works with the JVM runtime.
 * **Tooling:** a VS Code extension with syntax highlighting, a debugger, code insight, formatting and LSP. BoxLang+ adds enhanced debuggers and CFML transformers.
-* **Package manager:** [bx-cli](commandbox-cli.md) is pure BoxLang CommandBox, with ForgeBox and a servlet server.
+* **Package manager:** [CommandBox](commandbox-cli.md) is our package manager, CLI and servlet server, now available in pure BoxLang as the `bx-cli` module, with ForgeBox integration.
 * **Learning:** [BoxLings](https://github.com/ortus-boxlang/boxlings) for the JVM runtime, the [MatchBox course](https://matchbox.boxlang.io/course/) and [playground](https://matchbox.boxlang.io/playground/).
 * **Professional open source:** Apache 2 licensed, with BoxLang+ for support and premium modules.
 {% endtab %}

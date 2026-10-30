@@ -1,9 +1,9 @@
 ---
 icon: square-terminal
-description: bx-cli is CommandBox built in pure BoxLang, as a package manager, CLI and enterprise servlet server
+description: CommandBox is the package manager, CLI and enterprise servlet server for BoxLang, now available in pure BoxLang as the bx-cli module
 ---
 
-# BoxLang CLI (bx-cli)
+# CommandBox CLI
 
 <div align="center">
 
@@ -11,13 +11,13 @@ description: bx-cli is CommandBox built in pure BoxLang, as a package manager, C
 
 </div>
 
-**bx-cli** is the pure BoxLang version of [CommandBox](https://commandbox.ortusbooks.com). It is a BoxLang module that gives you:
+[**CommandBox**](https://commandbox.ortusbooks.com) is our package manager, CLI and enterprise servlet server. It is now available in pure BoxLang as the **`bx-cli`** module, so it runs on BoxLang itself. You get:
 
 * A **package manager** with [ForgeBox](https://www.forgebox.io) integration
 * A **CLI and REPL** to run commands, recipes, tasks and workflows
 * An **enterprise servlet server** with rewrites, SSL and more
 
-It keeps the same `box` command you already know, now powered by BoxLang instead of Lucee.
+It is still CommandBox and still the same `box` command you already know, now powered by BoxLang instead of Lucee.
 
 {% hint style="info" %}
 **Coming soon to BoxLang itself.** This November, bx-cli will ship as part of BoxLang. Until then, install it as a module as shown below. The module is at version 7 release candidate stage, so report any issues you find in the [CommandBox repository](https://github.com/Ortus-Solutions/commandbox).

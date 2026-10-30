@@ -63,7 +63,7 @@
 * [Overview](getting-started/overview/README.md)
   * [Multi-Runtime](getting-started/overview/multi-runtime.md)
   * [Instructions & Interpreters](getting-started/overview/instructions-and-interpreters.md)
-  * [BoxLang CLI (bx-cli)](getting-started/overview/commandbox-cli.md)
+  * [CommandBox CLI](getting-started/overview/commandbox-cli.md)
   * [Quick Syntax Guide](getting-started/overview/syntax-style-guide/README.md)
     * [Differences From CFML](getting-started/overview/syntax-style-guide/cfml.md)
   * [Running ColdFusion/CFML Apps](getting-started/overview/running-coldfusion-cfml-apps/README.md)
