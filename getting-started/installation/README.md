@@ -9,30 +9,6 @@ BoxLang can be deployed on multiple runtimes, and each runtime can be set up dif
 
 **You can choose to either install a single version of BoxLang (Quick Installer) or our BoxLang Version Manager (BVM), so you can manage multiple versions of BoxLang on your operating system.**
 
-## Installing MatchBox
-
-BoxLang also has a Rust runtime, **MatchBox**, for native binaries, the browser, WASI, AWS Lambda and ESP32. It installs separately with the MatchBox Version Manager, so no JVM is needed.
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/ortus-boxlang/matchbox-quick-installer/main/install/install.sh | bash
-mvm install latest && mvm use latest
-```
-
-See the [MatchBox page](../running-boxlang/matchbox.md), the [online playground](https://matchbox.boxlang.io/playground/) and the [online course](https://matchbox.boxlang.io/course/).
-
-## Next Step: Learn with BoxLings
-
-{% hint style="success" %}
-Once BoxLang is installed, jump into [BoxLings](https://github.com/ortus-boxlang/boxlings), our interactive CLI learning tool.
-
-```bash
-git clone https://github.com/ortus-boxlang/boxlings.git
-cd boxlings
-boxlang BoxLings.bx init
-boxlang BoxLings.bx
-```
-{% endhint %}
-
 ## Requirements <a href="#requirements-7" id="requirements-7"></a>
 
 BoxLang is a JVM language, so we need a JVM. You should be able to grab the Java 21 JRE for your OS and CPU arch here: [Download Java 21 JRE](https://adoptium.net/temurin/releases/?package=jre\&version=21). Alternatively, see the tabs below for instructions on automating it.
@@ -419,7 +395,18 @@ Coming Soon
 {% endtab %}
 {% endtabs %}
 
+## Next Step: Learn with BoxLings
 
+{% hint style="success" %}
+Once BoxLang is installed, jump into [BoxLings](https://github.com/ortus-boxlang/boxlings), our interactive CLI learning tool.
+
+```bash
+git clone https://github.com/ortus-boxlang/boxlings.git
+cd boxlings
+boxlang BoxLings.bx init
+boxlang BoxLings.bx
+```
+{% endhint %}
 
 ## R.E.P.L.
 
@@ -510,6 +497,17 @@ The BoxLang Spring Boot Starter allows you to use BoxLang as a view engine and r
 ### Docker
 
 We have a full [Docker guide you can follow here.](../running-boxlang/docker.md)
+
+## MatchBox
+
+BoxLang also has a Rust runtime, **MatchBox**, for native binaries, the browser, WASI, AWS Lambda and ESP32. It installs separately with the MatchBox Version Manager, so no JVM is needed.
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/ortus-boxlang/matchbox-quick-installer/main/install/install.sh | bash
+mvm install latest && mvm use latest
+```
+
+See the [MatchBox page](../running-boxlang/matchbox.md), the [online playground](https://matchbox.boxlang.io/playground/) and the [online course](https://matchbox.boxlang.io/course/).
 
 ## BoxLang IDE & Tools
 
