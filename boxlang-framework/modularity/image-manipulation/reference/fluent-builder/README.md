@@ -38,6 +38,10 @@ Resize the image to specific dimensions.
 img.resize(800, 600);
 img.resize(400, 300, "bicubic");
 img.resize(1200, 800, "bicubic", 1);
+
+// Blank or 0 keeps the aspect ratio from the other side
+img.resize(800, "");
+img.resize(0, 300);
 ```
 
 **Interpolation methods:** `nearest`, `bilinear`, `bicubic` (any other value falls back to `bicubic`)
@@ -483,6 +487,15 @@ Get comprehensive image information.
 ```js
 info = img.info();
 // Returns struct with: width, height, colormodel, source, transparency, EXIF, IPTC
+```
+
+### getPixels(\[mode])
+
+Get every pixel as an array of rows: brightness values (`luma`, the default) or `[r, g, b, a]` arrays (`rgba`).
+
+```js
+rows = img.getPixels();          // rows[ 1 ][ 1 ] is 0 (black) to 255 (white)
+colors = img.getPixels("rgba");  // colors[ 1 ][ 1 ] is [ r, g, b, a ]
 ```
 
 ### getExifMetadata() / getIPTCMetadata()

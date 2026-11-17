@@ -63,7 +63,7 @@ focalLength = img.getExifTag("FocalLength");
 
 writeOutput("ISO: #iso#<br>");
 writeOutput("Aperture: f/#aperture#<br>");
-writeOutput("Shutter Speed: #shutterSpeed#s<br>");
+writeOutput("Shutter Speed: #shutterSpeed#<br>");
 writeOutput("Focal Length: #focalLength#mm");
 ```
 
@@ -107,6 +107,7 @@ if (len(copyright)) {
 - EXIF metadata is only available for images that contain it (primarily JPEG files from digital cameras)
 - Not all images will have all EXIF tags
 - Tag names are case-sensitive
+- `Exposure Time` is reported as a fraction with its unit, such as `1/100 sec` (since bx-image 1.15.0; earlier versions returned `0.01 sec`)
 - Returns an empty string if the tag is not found
 - EXIF data is extracted automatically when the image is loaded
 - For a complete list of available tags, use `ImageGetExifMetadata()` to see all metadata

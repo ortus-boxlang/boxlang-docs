@@ -105,6 +105,7 @@ if (canProcessFormat("PNG")) {
 | **TIFF** | ✅    | ✅     | High quality, suitable for archival/printing          |
 | **WebP** | ✅    | ✅     | Modern format, lossy & lossless, smaller than PNG/JPEG |
 | **WBMP** | ✅    |        | Wireless bitmap, monochrome (read-only)               |
+| **SVG**  | ✅    |        | Vector graphics, rendered to an image when read (read-only) |
 
 **Notes:**
 
@@ -114,6 +115,21 @@ if (canProcessFormat("PNG")) {
 * **GIF** - Best for simple animations, limited color palette
 * **TIFF** - Best for archival, printing, high-quality master files
 * **BMP** - Uncompressed, large files, simple format
+* **SVG** - Rendered with the bundled JSVG library. Read it at the size you need with `ImageRead( path, width, height )` so it stays sharp. External resources in the SVG are never loaded. A rendered SVG is written as PNG unless you name another format.
+
+## Pixel Access
+
+`ImageGetPixels()` returns every pixel as an array of rows, as brightness values (`luma`, the default) or `[r, g, b, a]` arrays (`rgba`):
+
+```js
+rows = ImageRead( "photo.jpg" ).resize( 80, "" ).getPixels()
+brightness = rows[ 1 ][ 1 ]  // 0 (black) to 255 (white)
+
+colors = ImageRead( "photo.jpg" ).getPixels( "rgba" )
+pixel = colors[ 1 ][ 1 ]     // [ r, g, b, a ]
+```
+
+See [ImageGetPixels](reference/built-in-functions/imagegetpixels.md) for details.
 
 ## Validation Functions
 

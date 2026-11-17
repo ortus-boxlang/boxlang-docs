@@ -17,8 +17,8 @@ someImage.resize( width, height [, interpolation] [, blurFactor] )
 | Name          | Type    | Required | Default  | Description                                                    |
 | ------------- | ------- | -------- | -------- | -------------------------------------------------------------- |
 | name          | any     | Yes      |          | The image to resize. Can be a `BoxImage` object or image name. |
-| width         | numeric | Yes      |          | The target width for the resized image.                        |
-| height        | numeric | Yes      |          | The target height for the resized image.                       |
+| width         | numeric | Yes      |          | The target width. Blank or `0` keeps the aspect ratio from `height`. |
+| height        | numeric | Yes      |          | The target height. Blank or `0` keeps the aspect ratio from `width`. |
 | interpolation | String  | No       | bilinear | The interpolation method (e.g., "bilinear", "nearest").        |
 | blurFactor    | numeric | No       | 1        | The blur factor to apply during resizing.                      |
 
@@ -38,7 +38,9 @@ Resizes an image to the specified width and height using the chosen interpolatio
 
 Any other value falls back to `bicubic`.
 
-For proportional scaling that maintains aspect ratio, see `ImageScaleToFit`.
+**Keeping the aspect ratio:** pass a blank string or `0` for one dimension, and it is computed from the other one so the image is not distorted. At least one of `width` or `height` must be given.
+
+For proportional scaling that fits within a box, see `ImageScaleToFit`.
 
 ## Example
 
@@ -51,6 +53,12 @@ result = ImageResize( myImage, 400, 300, "nearest", 2 );
 
 // As a member function
 myImage.resize( 800, 600, "bilinear", 1 );
+
+// 800 pixels wide, height keeps the aspect ratio
+myImage.resize( 800, "" )
+
+// 300 pixels high, width keeps the aspect ratio
+ImageResize( myImage, 0, 300 )
 ```
 
 ## Related BIFs
@@ -65,5 +73,7 @@ myImage.resize( 800, 600, "bilinear", 1 );
 * Supported interpolation methods: nearest, bilinear, bicubic
 * The operation modifies the image in place when used as a member function.
 * Returns the modified image object for chaining or further processing.
-* For proportional scaling, use `ImageScaleToFit` instead.
+* For proportional scaling within a box, use `ImageScaleToFit` instead.
+* Passing neither a width nor a height throws an error.
+* An image read from SVG is scaled as pixels. To get it sharp at a new size, read it at that size with `ImageRead( path, width, height )`.
 * The blur factor controls smoothing during resize (higher = more blur).

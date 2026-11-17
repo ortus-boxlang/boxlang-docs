@@ -25,6 +25,20 @@ ImageNew("photo.jpg")
     .write("resized-hq.jpg");
 ```
 
+### Resize Keeping the Aspect Ratio
+
+Pass a blank string or `0` for one dimension and it is computed from the other:
+
+```js
+// 800 pixels wide, height computed from the aspect ratio
+ImageNew( "photo.jpg" )
+    .resize( 800, "" )
+    .write( "resized.jpg" )
+
+// 300 pixels high, width computed from the aspect ratio
+ImageResize( img, 0, 300 )
+```
+
 **Interpolation Options:**
 
 - `nearest` - Fastest, lowest quality

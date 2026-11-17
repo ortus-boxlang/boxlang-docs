@@ -22,6 +22,22 @@ img = ImageRead("path/to/image.jpg");
 img = ImageNew("path/to/image.jpg");
 ```
 
+### From an SVG File
+
+SVG files are rendered to an image, so every other image function works on them:
+
+```js
+// Rendered at the SVG's own size
+logo = ImageRead( "images/logo.svg" )
+
+// Rendered straight at 400 pixels wide, so it stays sharp; the height keeps the aspect ratio
+logo = ImageRead( "images/logo.svg", 400 )
+```
+
+{% hint style="info" %}
+Reading an SVG at the size you need is better than resizing it afterwards: `ImageRead( path, width, height )` draws the vector shapes at that size, while `resize()` scales pixels. Raster formats given a size are decoded and then resized.
+{% endhint %}
+
 ### From a URL
 
 ```js
@@ -85,6 +101,28 @@ img = ImageNew(createObject("java", "java.net.URI").create("file:///path/to/imag
 // Blank canvas
 img = ImageNew(width=1024, height=768);
 ```
+
+### Module Settings
+
+The module checks images before decoding them, so a huge or malicious file cannot exhaust memory. Adjust the limits in the module settings of your `boxlang.json`:
+
+```json
+{
+    "modules": {
+        "image": {
+            "settings": {
+                "maxPixels": 50000000,
+                "maxBytes": 52428800
+            }
+        }
+    }
+}
+```
+
+| Setting     | Default      | Description                                                                                                  |
+| ----------- | ------------ | ------------------------------------------------------------------------------------------------------------ |
+| `maxPixels` | `50000000`   | Largest width x height an image may declare in its header, or an SVG may render at. `0` or less disables it. |
+| `maxBytes`  | `52428800`   | Largest source (file, URL or Base64 data) that is read into memory, in bytes (50 MB). `0` or less disables it. |
 
 ## Basic Operations
 
