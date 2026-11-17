@@ -142,7 +142,7 @@ software = img.getExifTag("Software");      // "Adobe Photoshop"
 // Exposure settings
 iso = img.getExifTag("ISO Speed Ratings");       // 400
 aperture = img.getExifTag("F-Number");           // 2.8
-shutterSpeed = img.getExifTag("Exposure Time");  // "1/500"
+shutterSpeed = img.getExifTag("Exposure Time");  // "1/500 sec"
 exposureProgram = img.getExifTag("Exposure Program"); // "Manual"
 
 // Lens information
@@ -190,7 +190,7 @@ yResolution = img.getExifTag("Y Resolution");    // 300
 | `Date/Time Original` | Original capture time | "2025:01:15 14:30:22" |
 | `ISO Speed Ratings` | ISO sensitivity | 400, 800, 1600 |
 | `F-Number` | Aperture value | 2.8, 5.6, 16 |
-| `Exposure Time` | Shutter speed | "1/500", "1/60" |
+| `Exposure Time` | Shutter speed | "1/500 sec", "1/60 sec" |
 | `Focal Length` | Lens focal length | "50mm", "24mm" |
 | `Flash` | Flash status | "Flash fired", "No flash" |
 | `GPS Latitude` | GPS latitude | [40, 44, 54.36] |
@@ -259,7 +259,7 @@ if (structCount(exif) > 0) {
         <p><strong>Camera:</strong> #exif['Make']# #exif['Model']#</p>
         <p><strong>Date:</strong> #exif['Date/Time Original']#</p>
         <p><strong>Settings:</strong> ISO #exif['ISO Speed Ratings']#,
-           f/#exif['F-Number']#, #exif['Exposure Time']#s</p>
+           #exif['F-Number']#, #exif['Exposure Time']#</p>
         <p><strong>Lens:</strong> #exif['Focal Length']#</p>
     ");
 }

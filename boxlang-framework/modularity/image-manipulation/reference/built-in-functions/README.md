@@ -4,6 +4,7 @@ Complete reference pages for the BoxLang Image module BIFs.
 
 ## Newly Added
 
+- [ImageGetPixels](imagegetpixels.md)
 - [ImageGenerateCaptcha](imagegeneratecaptcha.md)
 - [ImageSplitGrid](imagesplitgrid.md)
 

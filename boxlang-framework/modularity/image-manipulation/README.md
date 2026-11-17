@@ -11,13 +11,16 @@ The BoxLang Image Module provides comprehensive image manipulation functionality
 
 **Key Features:**
 
-- 🖼️ **53 Image BIFs** - Complete Adobe ColdFusion and Lucee compatibility
+- 🖼️ **61 Image BIFs** - Complete Adobe ColdFusion and Lucee compatibility
 - 🎨 **Drawing Operations** - Lines, shapes, curves, text with advanced styling
 - ✨ **Filters & Effects** - Blur, sharpen, grayscale, negative, overlay
 - 📐 **Transformations** - Resize, rotate, crop, flip, shear, scale
 - 📊 **Metadata Support** - Read/write EXIF and IPTC metadata
 - 🔗 **Fluent API** - Method chaining with the `BoxImage` builder
 - 🔳 **QR Codes** - Generate and read QR codes with custom colors and an optional logo
+- 🖋️ **SVG Support** - Read SVG files, rendered sharply at the size you ask for
+- 🔬 **Pixel Access** - Read every pixel as brightness values or RGBA arrays with `ImageGetPixels()`
+- ⚡ **Runs on MatchBox** - A native backend in the same module runs the core functions without a JVM
 - 🏷️ **Component** - Tag-based syntax for templates
 - 🎯 **Member Functions** - All BIFs available as member functions
 
@@ -75,8 +78,10 @@ box install bx-image
 
 ### Requirements
 
-- BoxLang 1.0.0 or higher
+- BoxLang 1.6.0 or higher
 - Java 21+
+
+To run on [MatchBox](matchbox.md) without a JVM, install the same module: it includes the native backend for Linux x86-64.
 
 ## Quick Start
 
@@ -134,14 +139,15 @@ base.overlay(overlay, "normal", 0.8)
 - **[Filters & Effects](filters-effects.md)** - Blur, sharpen, grayscale, negative, overlay
 - **[Drawing Operations](drawing.md)** - Shapes, lines, curves, text with styling
 - **[Metadata](metadata.md)** - EXIF, IPTC metadata reading and tag access
-- **[Utilities](utilities.md)** - Format support, validation, color reference
+- **[Utilities](utilities.md)** - Format support, pixel access, validation, color reference
+- **[MatchBox Native Backend](matchbox.md)** - Running bx-image code without a JVM
 - **[Advanced Examples](advanced-examples.md)** - Watermarking, thumbnails, batch processing
 - **[BIF Reference](reference/README.md)** - Complete alphabetical BIF listing
 - **[Migration Guide](migration-guide.md)** - Migrating from Adobe ColdFusion/Lucee
 
 ## BIF & Component Reference
 
-### All Available BIFs (53 Functions)
+### All Available BIFs (61 Functions)
 
 | BIF | Member Function | Category | Description |
 |-----|----------------|----------|-------------|
@@ -164,6 +170,7 @@ base.overlay(overlay, "normal", 0.8)
 | `ImageDrawRoundRect()` | `image.drawRoundRect()` | Drawing | Draws rounded rectangle |
 | `ImageDrawText()` | `image.drawText()` | Drawing | Draws text with font styling |
 | `ImageFlip()` | `image.flip()` | Transform | Flips image horizontally or vertically |
+| `ImageGenerateCaptcha()` | - | Creation | Generates a CAPTCHA image from text |
 | `ImageGetBlob()` | `image.getBlob()` | Utility | Returns image as byte array |
 | `ImageGetBufferedImage()` | `image.getBufferedImage()` | Utility | Returns Java BufferedImage object |
 | `ImageGetExifMetaData()` | `image.getExifMetaData()` | Metadata | Returns EXIF metadata struct |
@@ -171,29 +178,34 @@ base.overlay(overlay, "normal", 0.8)
 | `ImageGetHeight()` | `image.getHeight()` | Utility | Returns image height in pixels |
 | `ImageGetIPTCMetadata()` | `image.getIPTCMetadata()` | Metadata | Returns IPTC metadata struct |
 | `ImageGetIPTCTag()` | `image.getIPTCTag()` | Metadata | Returns specific IPTC tag value |
+| `ImageGetPixels()` | `image.getPixels()` | Utility | Returns every pixel as luma values or RGBA arrays |
 | `ImageGetWidth()` | `image.getWidth()` | Utility | Returns image width in pixels |
 | `ImageGrayScale()` / `ImageGreyScale()` | `image.grayScale()` | Filter | Converts image to grayscale |
 | `ImageInfo()` | `image.info()` | Utility | Returns comprehensive image information |
+| `ImageMeasureText()` | `image.measureText()` | Drawing | Measures the rendered size of a line of text |
 | `ImageNegative()` | `image.negative()` | Filter | Inverts image colors (negative) |
 | `ImageNew()` | - | Creation | Creates new image or reads from source |
 | `ImageOverlay()` | `image.overlay()` | Filter | Overlays one image on another |
 | `ImagePaste()` / `ImageDrawImage()` | `image.paste()` | Drawing | Pastes/draws one image onto another |
 | `ImageQRCodeGenerate()` | `"text".toQRCode()` | Creation | Generates a QR code image from text |
 | `ImageQRCodeRead()` | `image.readQRCode()` | Output | Reads the text from a QR code in an image |
-| `ImageRead()` | - | Creation | Reads image from file path or URL |
+| `ImageRead()` | - | Creation | Reads image from file path or URL, optionally at a given size |
 | `ImageReadBase64()` | - | Creation | Creates image from Base64 string |
-| `ImageResize()` | `image.resize()` | Transform | Resizes image to exact dimensions |
+| `ImageRegisterFont()` | - | Drawing | Registers a `.ttf` or `.otf` font file for drawing text |
+| `ImageResize()` | `image.resize()` | Transform | Resizes image; a blank or 0 side keeps the aspect ratio |
 | `ImageRotate()` | `image.rotate()` | Transform | Rotates image by specified angle |
 | `ImageRotateDrawingAxis()` | `image.rotateDrawingAxis()` | Drawing | Rotates coordinate system for drawing |
 | `ImageScaleToFit()` | `image.scaleToFit()` | Transform | Scales image proportionally to fit dimensions |
 | `ImageSetAntiAliasing()` | `image.setAntiAliasing()` | Drawing | Enables/disables anti-aliasing |
 | `ImageSetBackgroundColor()` | `image.setBackgroundColor()` | Drawing | Sets background color |
 | `ImageSetDrawingColor()` | `image.setDrawingColor()` | Drawing | Sets color for drawing operations |
+| `ImageSetDrawingGradient()` | `image.setDrawingGradient()` | Drawing | Sets a linear gradient as the drawing paint |
 | `ImageSetDrawingStroke()` | `image.setDrawingStroke()` | Drawing | Configures line stroke properties |
 | `ImageSetDrawingTransparency()` | `image.setDrawingTransparency()` | Drawing | Sets transparency for drawing |
 | `ImageSharpen()` | `image.sharpen()` | Filter | Sharpens image edges |
 | `ImageShear()` | `image.shear()` | Transform | Shears/skews image |
 | `ImageShearDrawingAxis()` | `image.shearDrawingAxis()` | Drawing | Shears coordinate system for drawing |
+| `ImageSplitGrid()` | `image.splitGrid()` | Transform | Splits an image into a grid of tiles |
 | `ImageTranslate()` | `image.translate()` | Transform | Translates/moves image |
 | `ImageTranslateDrawingAxis()` | `image.translateDrawingAxis()` | Drawing | Translates origin for drawing |
 | `ImageWrite()` | `image.write()` | Output | Writes image to file |
@@ -225,9 +237,11 @@ The `<bx:image>` component provides tag-based syntax for image operations:
 
 ## Supported Image Formats
 
-**Reading:** BMP, GIF, JPEG, PNG, TIFF, WBMP
+**Reading:** BMP, GIF, JPEG, PNG, SVG, TIFF, WBMP, WebP
 
-**Writing:** PNG, JPEG, BMP, GIF, TIFF, WBMP
+**Writing:** PNG, JPEG, BMP, GIF, TIFF, WBMP, WebP
+
+SVG files are rendered to an image when read. Read them at the size you need, `ImageRead( "logo.svg", 400 )`, so they stay sharp.
 
 Use `GetReadableImageFormats()` and `GetWriteableImageFormats()` to get the current list.
 

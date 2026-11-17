@@ -38,6 +38,7 @@ Here's how common BIF patterns translate to the modern Fluent API:
 | `ImageWrite(img, "output.jpg")` | `img.write("output.jpg")` |
 | `ImageWriteBase64(img)` | `img.toBase64String()` |
 | `ImageGetWidth(img)` | `img.getWidth()` |
+| `ImageGetPixels(img)` | `img.getPixels()` |
 | `ImageGetHeight(img)` | `img.getHeight()` |
 
 ### Chaining Example
@@ -159,7 +160,6 @@ ImageNew("products/large-photo.jpg")
     })
     .write("products/thumbnails/photo-thumb.jpg");
 ```
-```
 
 ## BIF Quick Reference Table
 
@@ -191,6 +191,7 @@ ImageNew("products/large-photo.jpg")
 | `ImageGetHeight()` | Properties | `img.getHeight()` | Get image height |
 | `ImageGetIPTCMetadata()` | Metadata | `img.getIPTCMetadata()` | Get all IPTC metadata |
 | `ImageGetIPTCTag()` | Metadata | `img.getIPTCTag()` | Get specific IPTC tag |
+| `ImageGetPixels()` | Properties | `img.getPixels()` | Get every pixel as luma values or `[r, g, b, a]` arrays |
 | `ImageGetWidth()` | Properties | `img.getWidth()` | Get image width |
 | `ImageGrayScale()` | Filters | `img.grayScale()` | Convert to grayscale |
 | `ImageInfo()` | Properties | `img.info()` | Get comprehensive image info |

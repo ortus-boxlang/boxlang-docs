@@ -20,6 +20,8 @@ ImageReadBase64( string )
 
 Decodes a base64-encoded string into an image and returns it as a `BoxImage` object. This BIF is useful for importing images that are stored or transmitted as base64 strings, such as those embedded in data URIs or received from APIs.
 
+Base64-encoded SVG documents are supported too: they are rendered to an image at the SVG's own size.
+
 ## Example
 
 ```boxlang

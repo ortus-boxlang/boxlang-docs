@@ -24,7 +24,7 @@ ImageNew( source [, width] [, height] [, imageType] [, color] )
 
 Creates a new image from a variety of sources:
 
-* If `source` is a file path or URL, loads the image from that location.
+* If `source` is a file path or URL, loads the image from that location. SVG files are rendered to an image, as with `ImageRead`.
 * If `source` is a `BufferedImage`, wraps it in a `BoxImage`.
 * If `source` is a `BoxImage`, returns a copy of it.
 * If `source` is an empty string, creates a blank image using the provided `width`, `height`, `imageType`, and `color` arguments.
@@ -37,6 +37,9 @@ img = ImageNew( "images/photo.png" );
 
 // Create from URL
 img = ImageNew( "https://example.com/image.jpg" );
+
+// Create from an SVG file
+icon = ImageNew( "images/icon.svg" )
 
 // Create blank image
 img = ImageNew( "", 400, 300, "RGB", "white" );
@@ -56,7 +59,8 @@ imgCopy = ImageNew( img );
 
 * If creating a blank image, `width` and `height` are required.
 * The `imageType` should match supported types (e.g., "RGB", "ARGB").
-* If loading from a file or URL fails, an error is thrown.
+* If loading from a file or URL fails, an error is thrown. Its message starts with `Unable to load image:` and names the source.
+* To read an SVG at a specific size, use `ImageRead( path, width, height )`.
 * The default color for blank images is black unless specified.
 * Hex colors may be `#RGB`, `#RRGGBB` or `#RRGGBBAA` (alpha last), with or without the leading `#`. In a BoxLang string write `##` for a literal `#`.
 * A color that is neither a known name nor valid hex throws an error.

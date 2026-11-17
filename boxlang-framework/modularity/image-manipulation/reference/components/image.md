@@ -55,6 +55,7 @@ Loads an image from a file, URL, or base64 string and assigns it to a variable.
 <bx:image action="read" source="images/photo.png" name="myImage" />
 <bx:image action="read" source="https://example.com/image.jpg" name="remoteImage" />
 <bx:image action="read" source="#base64String#" isBase64="true" name="decodedImage" />
+<bx:image action="read" source="images/logo.svg" name="logo" />
 ```
 
 **Required Attributes:** `source`, `name`
