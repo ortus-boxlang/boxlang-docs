@@ -12,12 +12,16 @@ Returns a struct with the following keys:
  timeout : [ boolean value as to whether a timeout was reached ]
  terminated : [ boolean value as to whether the process was terminated ]
  pid : the PID of the process
+ exitCode : the exit code, when the process exited or was terminated
+ cancelled : [ boolean value as to whether isCancelled() ended the process ]
  }
+
+Pass `onLine` to receive each output line while the process runs, `isCancelled` to stop it on demand, and `mergeErrors` to fold stderr into stdout. See [Live Output and Cancellation](../../../../boxlang-framework/os-integration.md#live-output-and-cancellation). Added in 1.20.0.
 
 ## Method Signature
 
 ```
-SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout=[boolean], directory=[string], output=[string], error=[string], inheritEnvironment=[boolean], environment=[struct])
+SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout=[boolean], directory=[string], output=[string], error=[string], inheritEnvironment=[boolean], environment=[struct], onLine=[function], isCancelled=[function], mergeErrors=[boolean])
 ```
 
 ### Arguments
@@ -30,10 +34,13 @@ SystemExecute(name=[string], arguments=[any], timeout=[long], terminateOnTimeout
 | `timeout` | `long` | `false` | The timeout to wait for the command, in seconds ( default unlimited ) |  |
 | `terminateOnTimeout` | `boolean` | `false` | Whether to terminate the process/command if a timeout is reached | `false` |
 | `directory` | `string` | `false` | A working directory to execute the command from |  |
-| `output` | `string` | `false` |  |  |
+| `output` | `string` | `false` | An optional file path to write the command output to |  |
 | `error` | `string` | `false` | An optional file path to write errors to |  |
 | `inheritEnvironment` | `boolean` | `false` | Whether to inherit the parent process environment variables. Defaults to true. | `true` |
 | `environment` | `struct` | `false` | A struct of environment variables to pass to the process. Merged in after the inherit decision. | `{}` |
+| `onLine` | `function` | `false` | An optional function called as each output line arrives, before the process exits: `onLine( line, stream )`, where stream is `"stdout"` or `"stderr"`. It runs on the calling thread. Output is still captured in the result. A stream redirected to a file gets no callbacks. If the function throws, the process is killed and the error is rethrown. |  |
+| `isCancelled` | `function` | `false` | An optional function polled while the process runs. When it returns true the process tree is terminated and the output captured so far is returned with `cancelled = true` and `terminated = true`. A cancellation is not a timeout. Lines still queued when the process is killed are not delivered to `onLine`, but remain in the captured output. |  |
+| `mergeErrors` | `boolean` | `false` | When true, stderr is combined into stdout, so there is a single stream and every line is reported as `"stdout"`. When false the streams stay separate. Cannot be combined with the `error` argument. | `false` |
 
 ## Examples
 
@@ -52,6 +59,50 @@ Result: true
 ```java
 result = systemExecute( "pwd", getCanonicalPath( "." ) );
 writeOutput( isStruct( result ) );
+
+```
+
+Result: true
+
+### Stream output as it arrives
+
+```java
+lines = []
+result = systemExecute(
+    name = "sh",
+    arguments = [ "-c", "echo first; sleep 2; echo second" ],
+    onLine = ( line, stream ) => lines.append( line )
+)
+writeOutput( lines.len() )
+
+```
+
+Result: 2
+
+### Cancel a running process
+
+```java
+start = getTickCount()
+result = systemExecute(
+    name = "sleep",
+    arguments = "30",
+    isCancelled = () => getTickCount() - start > 500
+)
+writeOutput( result.cancelled )
+
+```
+
+Result: true
+
+### Merge stderr into stdout
+
+```java
+result = systemExecute(
+    name = "sh",
+    arguments = [ "-c", "echo out; echo err >&2" ],
+    mergeErrors = true
+)
+writeOutput( result.output.contains( "err" ) )
 
 ```
 

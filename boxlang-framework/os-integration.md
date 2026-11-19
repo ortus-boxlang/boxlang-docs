@@ -163,6 +163,9 @@ writeOutput( result.exitCode ) // 0
 | `error` | string | ❌ | `null` | File path to redirect stderr to |
 | `inheritEnvironment` | boolean | ❌ | `true` | Inherit parent process environment |
 | `environment` | struct | ❌ | `{}` | Additional/override environment variables (merged after inherit decision) |
+| `onLine` | function | ❌ | `null` | `onLine( line, stream )` called for each output line as it arrives. Added in 1.20.0 |
+| `isCancelled` | function | ❌ | `null` | Polled while the process runs. Return `true` to terminate it. Added in 1.20.0 |
+| `mergeErrors` | boolean | ❌ | `false` | Fold stderr into stdout. Added in 1.20.0 |
 
 **Return struct:**
 
@@ -173,7 +176,8 @@ writeOutput( result.exitCode ) // 0
 | `exitCode` | integer | Process exit code |
 | `pid` | long | Process ID |
 | `timeout` | boolean | Whether timeout was reached |
-| `terminated` | boolean | Whether process was force-killed |
+| `terminated` | boolean | Whether process was force-killed (by a timeout or a cancellation) |
+| `cancelled` | boolean | Whether `isCancelled()` ended the process. Added in 1.20.0 |
 
 **Examples:**
 
@@ -214,6 +218,122 @@ systemExecute(
     output = "/backups/mydb.dump",
     error  = "/logs/pgdump.err"
 )
+```
+
+### Live Output and Cancellation
+
+{% hint style="info" %}
+Added in BoxLang 1.20.0.
+{% endhint %}
+
+By default `systemExecute()` waits for the process to finish and hands you the whole output at the end. For interactive CLI jobs, such as a build that should stream to a log or a long task a user can stop, add `onLine` and `isCancelled`. `systemExecute()` is still synchronous. To keep a request free, run it inside a thread or a background job.
+
+#### `onLine( line, stream )`
+
+Called once per output line, while the process is still running.
+
+* `line` is the text without its line terminator. `\n`, `\r` and `\r\n` are all handled.
+* `stream` is `"stdout"` or `"stderr"`.
+* The callback runs on the **calling thread**, so it can safely use variables and the current request. Lines from both streams arrive in the order they were read.
+* Output is **still captured** in `result.output` and `result.error`.
+* A final line with no newline is delivered when the stream ends.
+* If the callback throws, the process (and its children) is killed and the error is rethrown.
+
+```js
+result = systemExecute(
+    name      = "npm",
+    arguments = [ "run", "build" ],
+    onLine    = ( line, stream ) => {
+        println( "[#stream#] #line#" )
+    }
+)
+```
+
+#### `isCancelled()`
+
+Polled about every 50 ms while the process is running, on the calling thread. When it returns `true`, BoxLang stops the process and everything it started (a polite stop first, then a forced kill after 2 seconds), closes the streams and returns what was captured so far.
+
+```js
+jobId = createUUID()
+application.jobs[ jobId ] = { cancelRequested : false }
+
+result = systemExecute(
+    name        = "ffmpeg",
+    arguments   = [ "-i", "input.mp4", "output.mp4" ],
+    isCancelled = () => application.jobs[ jobId ].cancelRequested
+)
+
+if ( result.cancelled ) {
+    println( "Stopped by the user after: #result.output#" )
+}
+```
+
+A cancellation is its own outcome. It is not a timeout and it is not a failed exit:
+
+| Outcome | `timeout` | `terminated` | `cancelled` | `output` / `error` |
+|---------|-----------|--------------|-------------|--------------------|
+| Exited normally (any exit code) | `false` | `false` | `false` | Full output |
+| Timed out, left running | `true` | `false` | `false` | Captured so far |
+| Timed out, `terminateOnTimeout=true` | `true` | `true` | `false` | `null` (as before) |
+| Cancelled | `false` | `true` | `true` | Captured so far |
+
+{% hint style="warning" %}
+`isCancelled` is only asked while the process is alive. A command that has already finished keeps its normal result even if your function would now return `true`. Lines still queued when a cancellation or terminated timeout kills the process are not sent to `onLine`, but they are still in the captured output.
+{% endhint %}
+
+Timeouts work the same with or without callbacks, including for a process that is silent, stalls mid-line, or never stops printing.
+
+#### `mergeErrors`
+
+| Value | Behavior |
+|-------|----------|
+| `false` (default) | stdout and stderr stay separate. Parse `result.output` as JSON without stderr noise in it. |
+| `true` | stderr is combined into stdout for a single, ordered log. Every line is reported as `"stdout"` and `result.error` is `""`. |
+
+```js
+// One live log for a build, errors interleaved in the order they happened
+result = systemExecute(
+    name        = "npm",
+    arguments   = [ "test" ],
+    mergeErrors = true,
+    onLine      = ( line ) => println( line )
+)
+
+// Keep stdout clean so it can be parsed
+result = systemExecute( name="kubectl", arguments=[ "get", "pods", "-o", "json" ] )
+pods   = jsonDeserialize( result.output )
+```
+
+#### Redirected streams
+
+* A stream sent to a file with `output` or `error` is not read by BoxLang, so it gets **no callbacks** and its result key is `null`.
+* `mergeErrors=true` together with `error` is a contradiction and throws a `BoxRuntimeException`.
+* `mergeErrors=true` together with `output` sends both streams to that file.
+
+#### Putting it together
+
+```js
+lines = []
+
+result = systemExecute(
+    name        = "./deploy.sh",
+    directory   = "/var/apps/myproject",
+    timeout     = 600,
+    terminateOnTimeout = true,
+    mergeErrors = true,
+    onLine      = ( line ) => lines.append( line ),
+    isCancelled = () => application.deploy.cancelRequested
+)
+
+if ( result.cancelled ) {
+    status = "cancelled"
+} else if ( result.timeout ) {
+    status = "timed out"
+} else if ( result.exitCode != 0 ) {
+    status = "failed"
+} else {
+    status = "ok"
+}
 ```
 
 {% hint style="info" %}
@@ -583,7 +703,7 @@ writeOutput( "Logical cores: #cpu.getLogicalProcessorCount()#" )
 
 ## 🔧 Advanced: Java `ProcessBuilder` Interop
 
-`systemExecute()` covers most use cases. When you need streaming output, process pipelines, or interactive I/O, use Java's `ProcessBuilder` directly via BoxLang's Java interop.
+`systemExecute()` covers most use cases, including [live output and cancellation](#live-output-and-cancellation). When you need process pipelines, writing to the child's stdin, or interactive I/O, use Java's `ProcessBuilder` directly via BoxLang's Java interop.
 
 ### Streaming Process Output
 
