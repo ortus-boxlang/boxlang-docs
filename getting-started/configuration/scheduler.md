@@ -16,6 +16,7 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
   "scheduler": {
     "executor": "scheduled-tasks",
     "clusterMode": "eager",
+    "clusterTasks": true,
     "taskOverlapPolicy": "skip",
     "shutdownGraceSeconds": 15,
     "shutdownInterruptGraceSeconds": 5,
@@ -41,6 +42,14 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 
 ```json
 "clusterMode": "balanced"
+```
+
+### clusterTasks
+
+**Type:** `boolean` **Default:** `true` **Description:** Whether tasks that state no `cluster` preference are clustered. A task that sets `cluster` explicitly always wins. It only applies on a node where [`cluster.enabled`](cluster.md#enabled) is `true`. Set it to `false` to keep every task local on a clustered node unless it opts in.
+
+```json
+"clusterTasks": false
 ```
 
 ### taskOverlapPolicy

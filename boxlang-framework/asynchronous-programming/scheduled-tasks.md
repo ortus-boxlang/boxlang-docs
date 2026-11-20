@@ -54,6 +54,8 @@ The BoxLang configuration file located at `{BoxLangHome}/config/boxlang.json` co
     "executor": "scheduled-tasks",
     // How clustered occurrences are shared out across nodes: "eager" or "balanced"
     "clusterMode": "eager",
+    // Whether tasks with no "cluster" flag are clustered by default (only on a clustered node)
+    "clusterTasks": true,
     // What a clustered task does when its previous occurrence is still running: "skip" or "run"
     "taskOverlapPolicy": "skip",
     // An array of BoxLang Schedulers to register upon startup
@@ -517,7 +519,7 @@ This requires clustering to be enabled on every node, with a cache they all shar
 * The winner heartbeats its claim while the job runs. If the node disappears, a peer records the run as `abandoned`.
 * An `abandoned` or `interrupted` occurrence is **never re-run**. The next occurrence runs normally.
 * Coordination is best effort, so clustered jobs should be idempotent.
-* `cluster` is a tri-state. Left unset, a task inherits `cluster.enabled`. Set `setCluster( false )` to make one task run on every node.
+* `cluster` is a tri-state. Left unset, a task inherits `scheduler.clusterTasks` (default `true`), and only on a node where `cluster.enabled` is `true`. Set `setCluster( false )` to make one task run on every node.
 
 {% hint style="danger" %}
 A task marked clustered on a node where `cluster.enabled` is `false` **refuses to start**. Before 1.20.0 it silently ran on every node.
@@ -736,7 +738,7 @@ We have created some useful methods that you can use when working with asynchron
 | `isScheduled()`            | Verifies if the task has been scheduled for execution                        |
 | `isNoOverlaps()`           | Verifies if the task has been configured to prevent overlapping executions   |
 | `isOnOneServer()`          | Verifies if the task has been configured as [clustered](#-clustering-run-once-across-the-fleet) |
-| `getCluster()` / `setCluster( flag )` | Gets or sets cluster participation: `true` clusters the task, `false` opts out, `null` inherits `cluster.enabled`. `getServerFixation()` and `setServerFixation()` are aliases |
+| `getCluster()` / `setCluster( flag )` | Gets or sets cluster participation: `true` clusters the task, `false` opts out, `null` inherits `scheduler.clusterTasks`. `getServerFixation()` and `setServerFixation()` are aliases |
 | `setOverlap( policy )`     | For clustered tasks, `skip` or `run`. Overrides `scheduler.taskOverlapPolicy` |
 | `start()`                  | This kicks off the task into the scheduled executor manually. This method is called for you by the scheduler upon application startup or module loading. |
 | `enable()`                 | Enable the task for execution (sets disabled flag to false)                  |

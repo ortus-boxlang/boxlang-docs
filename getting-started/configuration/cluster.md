@@ -69,7 +69,7 @@ The bundled `default` cache is local to each JVM. Nodes sharing it never see eac
 
 ## Related Scheduler Settings
 
-How occurrences are shared out is a scheduler policy, so it lives in the [`scheduler`](scheduler.md) section: `clusterMode`, `taskOverlapPolicy`, `shutdownGraceSeconds` and `shutdownInterruptGraceSeconds`.
+How occurrences are shared out is a scheduler policy, so it lives in the [`scheduler`](scheduler.md) section: `clusterMode`, `clusterTasks` (whether tasks cluster by default), `taskOverlapPolicy`, `shutdownGraceSeconds` and `shutdownInterruptGraceSeconds`.
 
 ## Related Configuration
 

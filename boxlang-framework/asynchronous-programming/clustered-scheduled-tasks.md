@@ -74,9 +74,9 @@ The bundled `default` cache is local to each JVM. Pointing the cluster at it wil
 }
 ```
 
-### 3. Opt tasks in
+### 3. Choose which tasks cluster
 
-Use `setCluster( true )` or the `onOneServer()` alias in a scheduler, or `cluster="true"` on `bx:schedule`. Every node registers the exact same scheduler unchanged.
+Tasks with no `cluster` flag follow `scheduler.clusterTasks`, which defaults to `true` on a clustered node. Be explicit with `setCluster( true )`, the `onOneServer()` alias, or `cluster="true"` on `bx:schedule`, and use `false` to run on every node. Every node registers the exact same scheduler unchanged.
 
 ```js
 class {
@@ -280,6 +280,7 @@ By default a clustered task does not start the next occurrence while the previou
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
 | `clusterMode` | `string` | `"eager"` | `eager` or `balanced`. See [Cluster Modes](#-cluster-modes). |
+| `clusterTasks` | `boolean` | `true` | The default for tasks that state no `cluster` preference, and it only applies on a node where `cluster.enabled` is `true`. Set it to `false` to keep every task local on a clustered node unless it opts in. |
 | `taskOverlapPolicy` | `string` | `"skip"` | `skip` or `run`. The default for tasks that do not set `overlap`. |
 | `shutdownGraceSeconds` | `integer` | `15` | See [Graceful shutdown](#graceful-shutdown). |
 | `shutdownInterruptGraceSeconds` | `integer` | `5` | See [Graceful shutdown](#graceful-shutdown). |
@@ -295,13 +296,40 @@ By default a clustered task does not start the next occurrence while the previou
 
 | Value | Result |
 |-------|--------|
-| not set | Inherits `cluster.enabled`. On a clustered deployment, every task is clustered unless it opts out. |
+| not set | Inherits `scheduler.clusterTasks` (default `true`), and only on a node where `cluster.enabled` is `true`. On any other node the task runs locally, as before. |
 | `true` | The task is clustered. |
 | `false` | Opts this one task out, so it runs on every node. |
+
+`cluster.enabled` says whether **this node is in a cluster**. `scheduler.clusterTasks` says whether **tasks cluster by default**. They are deliberately separate. An explicit `cluster` on a task always wins over `clusterTasks`.
 
 {% hint style="info" %}
 `getServerFixation()` and `setServerFixation()` remain available as aliases for `getCluster()` and `setCluster()`. Tasks already using `onOneServer()`, or persisted with `"cluster": true` in `tasks.json`, keep working.
 {% endhint %}
+
+## 🗝️ Cache Key Layout
+
+Everything lives under one root, `bxcluster:{cluster}:`, and each subsystem owns its own segment beneath it. The cluster name is the second segment of every key, so two clusters can share one physical cache and stay separate.
+
+| Key | Owner | TTL | Purpose |
+|-----|-------|-----|---------|
+| `bxcluster:{cluster}:nodes` | cluster service | 6 x `heartbeatSeconds` | Member list. |
+| `bxcluster:{cluster}:node:{nodeId}` | the node | 6 x `heartbeatSeconds` | Node record: heartbeat plus attributes. |
+| `bxcluster:{cluster}:bxtasks:...:task:{task}` | scheduler | 24 hours | Advisory pointer to the in-flight occurrence, used only for `overlap=skip`. |
+| `bxcluster:{cluster}:bxtasks:...:task:{task}:occurrence:{occurrence}` | scheduler | 24 hours | The claim record for one occurrence. |
+
+```text
+bxcluster:mycluster:nodes
+bxcluster:mycluster:node:web01
+bxcluster:mycluster:bxtasks:global:scheduler:ops:task:nightly-cleanup:occurrence:2026-11-17T01:00:00
+bxcluster:mycluster:bxtasks:application:myApp:scheduler:ops:task:nightly-cleanup:occurrence:2026-11-17T01:00:00
+```
+
+* **One key per occurrence.** Two occurrences never contend for the same entry, so an older occurrence can never destroy a newer one's claim.
+* **The 24 hour TTL is deliberate.** It keeps the last known state visible long enough for peers to read it, even for a monthly task. The run heartbeat refreshes it while a job runs.
+* **Scope is `global` or `application:{name}`.** Schedulers from `boxlang.json` and `bx:schedule` tasks are `global`. Only schedulers declared in `Application.bx` have an application.
+* **Names are case-insensitive**, and may contain `:`. Keep task and scheduler names short, since the JDBC store limits a key to 500 characters.
+* **Each claim has a `claimId`.** A node name is reused across restarts, so the `claimId` lets a restarted node tell its own run from a dead predecessor's.
+* **Node identity** defaults to `{hostname}-{pid}`. A configured `nodeId` is used exactly as given, so keep it unique per running process.
 
 ## 📊 Observing the Fleet
 
@@ -349,7 +377,7 @@ Clustered tasks replace the lock based server fixation introduced in 1.18.0.
 |---------|--------------|
 | Task refuses to start with a "clustering is not enabled" error | The task has `cluster=true` but `cluster.enabled` is `false` on this node. |
 | Task rejected at startup with a period error | The period is below the 4 second (`eager`) or 8 second (`balanced`) floor. Raise it, or set `cluster=false`. |
-| Every node still runs the task | The task has `cluster=false`, or `cluster.cacheName` points at a cache local to each JVM. |
+| Every node still runs the task | The task has `cluster=false`, `cluster.enabled` is `false` on that node, or `cluster.cacheName` points at a cache local to each JVM. |
 | Nodes never see each other | Different `cluster.name` values, or the cache is not backed by a shared store. |
 | A job ran twice | The narrow claim race described above. Make the job idempotent and check `scheduler.log` for the duplicate warning. |
 | A run shows `abandoned` | The owning node stopped heartbeating for three beats. Check that node for a crash or a network partition. |

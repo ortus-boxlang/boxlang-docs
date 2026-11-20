@@ -413,7 +413,7 @@ Below is a fully annotated example of a single task entry, followed by a field-b
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `cluster` | `boolean` | inherits `cluster.enabled` | When `true`, the task is [clustered](clustered-scheduled-tasks.md): each occurrence runs on one node of the fleet. `false` opts this task out so it runs on every node. Requires `cluster.enabled` in `boxlang.json`, otherwise the task refuses to start. |
+| `cluster` | `boolean` | inherits `scheduler.clusterTasks` | When `true`, the task is [clustered](clustered-scheduled-tasks.md): each occurrence runs on one node of the fleet. `false` opts this task out so it runs on every node. Requires `cluster.enabled` in `boxlang.json`, otherwise the task refuses to start. |
 | `overlap` | `string` | `"skip"` | For clustered tasks, `skip` drops the next occurrence while the previous one is still running, and `run` allows overlap. |
 
 ### Minimal Task Entry
