@@ -15,7 +15,11 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 {
   "scheduler": {
     "executor": "scheduled-tasks",
-    "cacheName": "default",
+    "clusterMode": "eager",
+    "clusterTasks": true,
+    "taskOverlapPolicy": "skip",
+    "shutdownGraceSeconds": 15,
+    "shutdownInterruptGraceSeconds": 5,
     "schedulers": [],
     "tasksFile": "${boxlang-home}/config/tasks.json"
   }
@@ -32,13 +36,39 @@ The scheduler configuration is located in the `scheduler` section of your `boxla
 "executor": "scheduled-tasks"
 ```
 
-### cacheName
+### clusterMode
 
-**Type:** `string` **Default:** `"default"` **Description:** The cache to leverage for server fixation or distribution. This is useful when running BoxLang in clustered environments to coordinate scheduled tasks across multiple instances.
+**Type:** `string` **Default:** `"eager"` **Description:** How clustered task occurrences are shared out across nodes. `eager` makes each node wait a short random delay (up to 1 second) before claiming. `balanced` ranks nodes by their published load, and the busiest waits longest (up to 5 seconds). Requires the [`cluster`](cluster.md) block to be enabled. See [Clustered Scheduled Tasks](../../boxlang-framework/asynchronous-programming/clustered-scheduled-tasks.md).
 
 ```json
-"cacheName": "default"
+"clusterMode": "balanced"
 ```
+
+### clusterTasks
+
+**Type:** `boolean` **Default:** `true` **Description:** Whether tasks that state no `cluster` preference are clustered. A task that sets `cluster` explicitly always wins. It only applies on a node where [`cluster.enabled`](cluster.md#enabled) is `true`. Set it to `false` to keep every task local on a clustered node unless it opts in.
+
+```json
+"clusterTasks": false
+```
+
+### taskOverlapPolicy
+
+**Type:** `string` **Default:** `"skip"` **Description:** What a clustered task does when its previous occurrence is still running. `skip` drops the next occurrence, matching single node behavior. `run` allows occurrences to overlap. Tasks can override it with their own `overlap` setting.
+
+### shutdownGraceSeconds
+
+**Type:** `integer` **Default:** `15` **Description:** How long a shutdown waits for in-flight runs to finish before interrupting them. `0` skips the graceful wait and interrupts immediately.
+
+### shutdownInterruptGraceSeconds
+
+**Type:** `integer` **Default:** `5` **Description:** How long to wait after interrupting before the executor is forced down. With both shutdown settings at `0`, shutdown stops runs immediately.
+
+### cacheName (deprecated)
+
+{% hint style="warning" %}
+`cacheName` is deprecated as of 1.20.0. Cluster coordination now uses [`cluster.cacheName`](cluster.md#cachename). The old value is still honored as an upgrade bridge, except the legacy `"default"` value, which is ignored so that upgrading does not switch clustering on.
+{% endhint %}
 
 ### schedulers
 
@@ -76,5 +106,6 @@ The configuration above provides the foundation and default settings for the sch
 ## Related Configuration
 
 * [Executors](executors.md) - Configure the thread pools used by the scheduler
+* [Cluster](cluster.md) - Configure cluster coordination for clustered tasks
 * [Caches](caches.md) - Configure caches used for task coordination
 * [Logging](logging.md) - Configure logging for scheduler operations

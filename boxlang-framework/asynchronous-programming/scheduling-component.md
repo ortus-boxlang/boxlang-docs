@@ -413,7 +413,8 @@ Below is a fully annotated example of a single task entry, followed by a field-b
 
 | Field | Type | Default | Description |
 |-------|------|---------|-------------|
-| `cluster` | `boolean` | `false` | When `true`, the `SchedulerService` uses the configured `cacheName` to ensure the task fires on only one node at a time in a cluster. |
+| `cluster` | `boolean` | inherits `scheduler.clusterTasks` | When `true`, the task is [clustered](clustered-scheduled-tasks.md): each occurrence runs on one node of the fleet. `false` opts this task out so it runs on every node. Requires `cluster.enabled` in `boxlang.json`, otherwise the task refuses to start. |
+| `overlap` | `string` | `"skip"` | For clustered tasks, `skip` drops the next occurrence while the previous one is still running, and `run` allows overlap. |
 
 ### Minimal Task Entry
 
@@ -437,6 +438,6 @@ All other fields default to `null` / `false` / `0` and are safe to omit.
 
 ## Related
 
-* [bx:schedule Component Reference](../../boxlang-language/reference/components/async/Schedule.md)
+* [bx:schedule Component Reference](../../boxlang-language/reference/components/async/README.md)
 * [Scheduled Tasks — Fluent DSL](./scheduled-tasks.md)
 * [Scheduler Configuration](../../getting-started/configuration/scheduler.md)
