@@ -438,6 +438,6 @@ All other fields default to `null` / `false` / `0` and are safe to omit.
 
 ## Related
 
-* [bx:schedule Component Reference](../../boxlang-language/reference/components/async/Schedule.md)
+* [bx:schedule Component Reference](../../boxlang-language/reference/components/async/README.md)
 * [Scheduled Tasks — Fluent DSL](./scheduled-tasks.md)
 * [Scheduler Configuration](../../getting-started/configuration/scheduler.md)

@@ -104,7 +104,7 @@ bx:schedule action="create"
     cronTime="0 2 * * *";
 ```
 
-See the full [Schedule Component Guide](./scheduling-component.md) and the [bx:schedule reference](../../boxlang-language/reference/components/async/Schedule.md) for all available attributes and actions.
+See the full [Schedule Component Guide](./scheduling-component.md) and the [bx:schedule reference](../../boxlang-language/reference/components/async/README.md) for all available attributes and actions.
 
 # ⏳ Schedulers
 
