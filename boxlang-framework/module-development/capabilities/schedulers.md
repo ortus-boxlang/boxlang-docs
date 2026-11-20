@@ -73,6 +73,17 @@ task( "cron-task" )
     .cron( "0 0 * * *" );
 ```
 
+### Clustered Tasks
+
+New in 1.20.0, tasks registered by a module scheduler can opt into [clustering](../../asynchronous-programming/clustered-scheduled-tasks.md) so each occurrence runs on one node of a fleet.
+
+```java
+task( "my-task" )
+    .call( () -> doWork() )
+    .everyMinute( 5 )
+    .setCluster( true );
+```
+
 ## Next Steps
 
 - [Services](services.md) — Global runtime services (Java only)

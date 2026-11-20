@@ -52,8 +52,10 @@ The BoxLang configuration file located at `{BoxLangHome}/config/boxlang.json` co
     // The default scheduler for all scheduled tasks
     // Each scheduler can have a different executor if needed
     "executor": "scheduled-tasks",
-    // The cache to leverage for server fixation or distribution
-    "cacheName": "default",
+    // How clustered occurrences are shared out across nodes: "eager" or "balanced"
+    "clusterMode": "eager",
+    // What a clustered task does when its previous occurrence is still running: "skip" or "run"
+    "taskOverlapPolicy": "skip",
     // An array of BoxLang Schedulers to register upon startup
     // Must be an absolute path to the scheduler file
     // You can use the ${user-dir} or ${boxlang-home} variables or any other environment variable
@@ -70,15 +72,15 @@ The BoxLang configuration file located at `{BoxLangHome}/config/boxlang.json` co
 
 The `executor` property defines the default executor to use for all scheduled tasks. This can be overridden on a per-scheduler basis. The default executor is `scheduled-tasks`, which is a `ScheduledExecutor` with a default of 20 threads, which can be found in the `executors` section.
 
-## Cache Name
+## Cluster Mode
 
-The `cacheName` property defines the cache that BoxLang's scheduler uses for **server fixation** — making sure a task that's registered identically on every node of a clustered/multi-server deployment only actually executes on **one** of those nodes per run, instead of firing redundantly on each one. The default cache is `default`, which is the default cache defined in the BoxLang configuration.  This can be found in the `caches` section of the configuration file and can be overridden on a per-scheduler basis.
-
-{% hint style="warning" %}
-`cacheName` only fixates tasks across a cluster if it points at a **real distributed cache** (Redis, etc.) that is actually shared by every server. The bundled `default` cache is an in-memory store local to each JVM — pointing `cacheName` at it will not throw an error, but it only fixates tasks **within that single JVM**, not across physically separate servers, which is rarely what you want in a cluster.
+{% hint style="success" %}
+New in 1.20.0. Cluster coordination now lives in the top level `cluster` block and uses `cluster.cacheName`. The old `scheduler.cacheName` is deprecated but still honored as an upgrade bridge.
 {% endhint %}
 
-See [🔒 Server Fixation (Clustering)](#-server-fixation-clustering) below for how to enable it on a task and how the underlying lock behaves.
+The `clusterMode` property decides how nodes share clustered task occurrences out. `eager` (the default) makes each node wait a short random delay before claiming. `balanced` ranks nodes by published load so idle nodes win. Clustering requires a shared cache that every node can see, configured in the [`cluster`](../../getting-started/configuration/cluster.md) block.
+
+See [Clustered Scheduled Tasks](clustered-scheduled-tasks.md) for the full guide.
 
 ## Schedulers
 
@@ -467,68 +469,66 @@ task( "test" )
 Spaced delays are a feature of the Scheduled Executors. There is even a `spacedDelay( delay, timeUnit )` method in the Task object.
 {% endhint %}
 
-### 🔒 Server Fixation (Clustering)
+### 🔒 Clustering (Run Once Across the Fleet)
 
-{% hint style="info" %}
-Server fixation is available starting in BoxLang **1.18.0**.
+{% hint style="success" %}
+Server fixation was introduced in 1.18.0. In **1.20.0** it was replaced by [clustered scheduled tasks](clustered-scheduled-tasks.md), built on the new cluster service. `onOneServer()` remains and now means `setCluster( true )`.
 {% endhint %}
 
-If you deploy the same codebase — and therefore the same `Scheduler.bx`, with the same tasks — to every node of a clustered/multi-server environment, every node will, by default, register and run those tasks **independently**. A task scheduled with `everyDayAt( "02:00" )` doesn't run once for the cluster; it runs once **per node**, at the same time, which is rarely what you want for things like nightly cleanup jobs, report generation, or cache warm-ups.
+If you deploy the same codebase, and therefore the same `Scheduler.bx`, to every node of a multi-server environment, every node runs those tasks **independently**. A task scheduled with `everyDayAt( "02:00" )` runs once **per node**, which is rarely what you want for nightly cleanup jobs, report generation or cache warm-ups.
 
-**Server fixation** solves this. Calling `.onOneServer()` on a task tells BoxLang to use the scheduler's [`cacheName`](#cache-name) cache as a distributed mutual-exclusion lock, so that no matter how many nodes have the task registered, only one node actually executes it on any given run.
+Mark the task as clustered and each occurrence runs on **one** node:
 
 ```javascript
 task( "nightly-cleanup" )
     .call( () => createObject( "MaintenanceService" ).cleanup() )
     .everyDayAt( "02:00" )
-    .onOneServer();
+    .setCluster( true )   // or .onOneServer()
 ```
 
-#### How the lock behaves
-
-* When the scheduled time arrives, every node that has the task registered races to write a lock key into the `cacheName` cache. Whichever node's write lands first **wins** that run; every other node sees the key already taken and skips its own execution for that cycle.
-* The lock is **not actively released** after a successful run — it's simply left to expire out of the cache on its own. This is deliberate: if the winning node crashed mid-run instead of completing normally, an actively-released-only lock would leave every other node permanently locked out with no run ever completing. Letting the lock expire naturally is what allows a surviving node to pick up the next scheduled run instead.
-* The lock's expiration is sized to the task's **real-world recurrence**, not to the short interval BoxLang's scheduler internally polls at to check whether a task is due to run.
-
-{% hint style="info" %}
-That last point is a subtle but important one. BoxLang's scheduler polls on a short internal interval (seconds) to ask "is it time to run yet?" for every task it manages, including monthly ones. If a monthly task's fixation lock were sized to that short internal poll interval instead of the task's actual ~30-day cadence, the lock would expire long before the next legitimate run was due, and a second node could acquire a "fresh" lock and re-run the task again the same day. This is exactly the kind of bug ColdBox's own server-fixation feature had to fix — a task scheduled with `everyMonthOn()`, `onFirstBusinessDayOfTheMonth()`, or `onLastBusinessDayOfTheMonth()` needs a lock timeout that spans its real cadence, not its internal poll interval.
-{% endhint %}
-
-#### Pointing at a real distributed cache
-
-`.onOneServer()` only fixates across physically separate servers if `cacheName` points at a cache backend those servers actually share — a Redis-backed cache (via the [`bx-redis`](../boxlang-plus/modules/bx-redis/README.md) module) is a common choice:
+This requires clustering to be enabled on every node, with a cache they all share:
 
 ```json
 // boxlang.json
 {
+    "cluster": {
+        "enabled": true,
+        "cacheName": "bxcluster"
+    },
     "scheduler": {
-        "cacheName": "clusterLocks"
+        "clusterMode": "balanced"
     },
     "caches": {
-        "clusterLocks": {
+        "bxcluster": {
             "provider": "Redis",
             "properties": {
                 "host": "redis.internal.example.com",
-                "port": "6379",
-                "database": "0",
-                "keyprefix": "boxlang-scheduler-locks"
+                "port": "6379"
             }
         }
     }
 }
 ```
 
-```javascript
-task( "monthly-billing-report" )
-    .call( () => createObject( "BillingService" ).generateMonthlyReport() )
-    .onFirstBusinessDayOfTheMonth( "06:00" )
-    .onOneServer();
-```
+#### How it behaves
 
-With this configuration, all of the cluster's nodes can register the exact same scheduler unchanged — the fixation lock in `clusterLocks` (Redis) is what guarantees only one of them actually runs `monthly-billing-report` on any given firing, while a node's crash mid-run still lets a surviving node take over once the lock expires.
+* Every node tries to **claim** each occurrence in the shared cache. One wins and runs it. The others back off and wait for the next occurrence.
+* Claims are **per occurrence**, so a late or busy node cannot disturb a run already in progress.
+* The winner heartbeats its claim while the job runs. If the node disappears, a peer records the run as `abandoned`.
+* An `abandoned` or `interrupted` occurrence is **never re-run**. The next occurrence runs normally.
+* Coordination is best effort, so clustered jobs should be idempotent.
+* `cluster` is a tri-state. Left unset, a task inherits `cluster.enabled`. Set `setCluster( false )` to make one task run on every node.
+
+{% hint style="danger" %}
+A task marked clustered on a node where `cluster.enabled` is `false` **refuses to start**. Before 1.20.0 it silently ran on every node.
+{% endhint %}
+
+{% content-ref url="clustered-scheduled-tasks.md" %}
+[clustered-scheduled-tasks.md](clustered-scheduled-tasks.md)
+{% endcontent-ref %}
 
 {% hint style="success" %}
-`getStats()` on a task includes `inetHost` and `localIp` — after a fixated run, these tell you which server actually won the lock and executed the task, which is handy for confirming fixation is working as expected.
+`getStats()` on a task includes `inetHost` and `localIp`. After a clustered run, these tell you which node claimed and executed the task.
 {% endhint %}
 
 ### ⏳ Delaying First Execution
@@ -735,7 +735,9 @@ We have created some useful methods that you can use when working with asynchron
 | `isConstrained()`          | Verifies if the task has been constrained to run by dayOfMonth, dayOfWeek, firstBusinessDay, lastBusinessDay, weekdays, weekends, startOnDateTime, endOnDateTime, startTime, endTime |
 | `isScheduled()`            | Verifies if the task has been scheduled for execution                        |
 | `isNoOverlaps()`           | Verifies if the task has been configured to prevent overlapping executions   |
-| `isOnOneServer()`          | Verifies if the task has been configured for [server fixation](#-server-fixation-clustering) |
+| `isOnOneServer()`          | Verifies if the task has been configured as [clustered](#-clustering-run-once-across-the-fleet) |
+| `getCluster()` / `setCluster( flag )` | Gets or sets cluster participation: `true` clusters the task, `false` opts out, `null` inherits `cluster.enabled`. `getServerFixation()` and `setServerFixation()` are aliases |
+| `setOverlap( policy )`     | For clustered tasks, `skip` or `run`. Overrides `scheduler.taskOverlapPolicy` |
 | `start()`                  | This kicks off the task into the scheduled executor manually. This method is called for you by the scheduler upon application startup or module loading. |
 | `enable()`                 | Enable the task for execution (sets disabled flag to false)                  |
 | `disable()`                | Disable the task from execution (sets disabled flag to true)                 |
