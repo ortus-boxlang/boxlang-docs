@@ -5,6 +5,10 @@ icon: clipboard-check
 
 # CFML Feature Audit
 
+{% hint style="info" %}
+The [BoxLang Migration Assistant](../overview/running-coldfusion-cfml-apps/migration-assistant.md) runs this tool for you across your whole app and turns the results into a migration plan.
+{% endhint %}
+
 The BoxLang CFML Feature audit tool is a CLI tool that will scan your source code and give you a compatibility report. This will allow you to see if your CFML code will run natively in BoxLang or if any BIFs or Components are required. Like the other tools, this is based on our BL AST (BoxLang Abstract Syntax Tree), so it should be accurate and not require anything like regex. It’s using the actual BL ANTLR parsers.
 
 ### Install the Compatibility Modules

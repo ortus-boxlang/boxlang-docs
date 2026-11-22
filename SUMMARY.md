@@ -68,6 +68,7 @@
   * [Quick Syntax Guide](getting-started/overview/syntax-style-guide/README.md)
     * [Differences From CFML](getting-started/overview/syntax-style-guide/cfml.md)
   * [Running ColdFusion/CFML Apps](getting-started/overview/running-coldfusion-cfml-apps/README.md)
+    * [BoxLang Migration Assistant](getting-started/overview/running-coldfusion-cfml-apps/migration-assistant.md)
 * [Agentic Development](getting-started/agentic-development/README.md)
   * [AI Setup](getting-started/agentic-development/ai-setup.md)
   * [Skills & Guidelines](getting-started/agentic-development/skills-and-guidelines.md)

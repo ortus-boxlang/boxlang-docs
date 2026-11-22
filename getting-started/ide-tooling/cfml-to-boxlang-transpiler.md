@@ -5,6 +5,10 @@ icon: swap-arrows
 
 # 🔄 CFML to BoxLang Transpiler
 
+{% hint style="info" %}
+The [BoxLang Migration Assistant](../overview/running-coldfusion-cfml-apps/migration-assistant.md) checks, audits and runs your whole CFML app on BoxLang without converting it, and builds your migration plan. Use the transpiler when you want to move code to BoxLang syntax.
+{% endhint %}
+
 This CLI tool will allow you to transpile your CFML code into BoxLang native code. This is a great way to move forward and leverage BoxLang for your future projects. It will also transpile your Tag-based CFCs into script.
 
 ## 🚀 Usage
