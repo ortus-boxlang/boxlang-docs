@@ -47,6 +47,12 @@ Schedule tasks execute in an executor of choice and will be most likely managed 
 
 Learn more in [Scheduled Tasks](scheduled-tasks.md).
 
+### 🌐 Clustered Scheduled Tasks
+
+New in 1.20: opt a task into clustering and each occurrence runs on one node of your fleet, with shared work, failover and a full run history.
+
+Learn more in [Clustered Scheduled Tasks](clustered-scheduled-tasks.md).
+
 ### 👀 Directory + File Watchers
 
 The watcher service monitors one or more directories and dispatches filesystem change events to BoxLang listeners. This allows you to react to file creations, updates, and deletions in near real time.

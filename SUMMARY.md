@@ -139,6 +139,7 @@
   * [Queries](getting-started/configuration/queries.md)
   * [Runtime Settings](getting-started/configuration/runtime-settings.md)
   * [Scheduler](getting-started/configuration/scheduler.md)
+  * [Cluster](getting-started/configuration/cluster.md)
   * [Watchers](getting-started/configuration/watcher.md)
   * [Security](getting-started/configuration/security.md)
 
@@ -1145,6 +1146,7 @@
   * [Parallel Computations](boxlang-framework/asynchronous-programming/parallel-computations.md)
   * [Directory + File Watchers](boxlang-framework/asynchronous-programming/directory-file-watchers.md)
   * [Scheduled Tasks](boxlang-framework/asynchronous-programming/scheduled-tasks.md)
+  * [Clustered Scheduled Tasks](boxlang-framework/asynchronous-programming/clustered-scheduled-tasks.md)
   * [Schedule Component](boxlang-framework/asynchronous-programming/scheduling-component.md)
 * [Components](boxlang-framework/components.md)
 * [Caching](boxlang-framework/caching/README.md)
