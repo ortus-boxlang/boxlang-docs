@@ -80,6 +80,16 @@ BoxLang is professional open source, built and supported by [Ortus Solutions](ht
 
 {% embed url="https://www.boxlang.io/plans" %}
 
+## 🔁 Coming From Adobe ColdFusion or Lucee?
+
+The free **BoxLang Migration Assistant** desktop app is the easy button. Point it at your CFML app: it checks that every file compiles, audits compatibility, writes the files to run on BoxLang, starts your app with CommandBox, and builds a migration plan with Jira and GitHub tickets.
+
+{% embed url="https://www.youtube.com/watch?v=TiwY0SmuKIA" %}
+
+{% content-ref url="getting-started/overview/running-coldfusion-cfml-apps/migration-assistant.md" %}
+[migration-assistant.md](getting-started/overview/running-coldfusion-cfml-apps/migration-assistant.md)
+{% endcontent-ref %}
+
 ## ⚡ Quick Start
 
 Install BoxLang on Mac or Linux:
@@ -115,6 +125,7 @@ See the [installation guide](getting-started/installation/) for Windows, Homebre
 * 📘 [Overview](getting-started/overview/) - what BoxLang is and how it is put together.
 * 🛠️ [Installation](getting-started/installation/) and [Running BoxLang](getting-started/running-boxlang/) - every runtime and deployment target.
 * 🔁 [Running CFML Apps](getting-started/overview/running-coldfusion-cfml-apps/) - modernize Adobe ColdFusion and Lucee applications.
+* 🪄 [BoxLang Migration Assistant](getting-started/overview/running-coldfusion-cfml-apps/migration-assistant.md) - the free desktop app that checks, audits and runs your CFML app on BoxLang.
 * 🧠 [BoxLang AI](boxlang-ai/) - chat, agents, tools, memory, RAG, MCP and enterprise governance.
 * 🧩 [Modules](boxlang-framework/modularity/) - the extension ecosystem.
 * 🎓 [BoxLings](https://github.com/ortus-boxlang/boxlings) - learn BoxLang hands-on with an interactive CLI and test-driven exercises.

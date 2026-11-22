@@ -152,7 +152,7 @@ Try the [MatchBox playground](https://matchbox.boxlang.io/playground/) or follow
 
 ## Explore
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Multi-Runtime</strong></td><td>Every JVM and MatchBox deployment target</td><td><a href="multi-runtime.md">multi-runtime.md</a></td></tr><tr><td><strong>Quick Syntax Guide</strong></td><td>The language in ten minutes</td><td><a href="syntax-style-guide/README.md">README.md</a></td></tr><tr><td><strong>CommandBox CLI</strong></td><td>The package manager, CLI and servlet server, now in pure BoxLang (bx-cli)</td><td><a href="commandbox-cli.md">commandbox-cli.md</a></td></tr><tr><td><strong>Agentic Development</strong></td><td>Build with AI agents using skills, MCP and checks</td><td><a href="../agentic-development/README.md">README.md</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td><strong>Multi-Runtime</strong></td><td>Every JVM and MatchBox deployment target</td><td><a href="multi-runtime.md">multi-runtime.md</a></td></tr><tr><td><strong>Quick Syntax Guide</strong></td><td>The language in ten minutes</td><td><a href="syntax-style-guide/README.md">README.md</a></td></tr><tr><td><strong>CommandBox CLI</strong></td><td>The package manager, CLI and servlet server, now in pure BoxLang (bx-cli)</td><td><a href="commandbox-cli.md">commandbox-cli.md</a></td></tr><tr><td><strong>Agentic Development</strong></td><td>Build with AI agents using skills, MCP and checks</td><td><a href="../agentic-development/README.md">README.md</a></td></tr><tr><td><strong>Migration Assistant</strong></td><td>Move an Adobe ColdFusion or Lucee app to BoxLang in minutes</td><td><a href="running-coldfusion-cfml-apps/migration-assistant.md">migration-assistant.md</a></td></tr></tbody></table>
 
 ## Key Features
 
@@ -205,6 +205,10 @@ Try the [MatchBox playground](https://matchbox.boxlang.io/playground/) or follow
 BoxLang has a multi-parser design, one for BoxLang and one for CFML. The CFML parser transpiles to BoxLang at runtime, or you can translate your code with our [CLI tools](../ide-tooling/README.md). We support as much CFML as we can, but BoxLang is a fresh start with different decisions. The [compatibility module](https://forgebox.io/view/bx-compat-cfml) keeps old-school CFML working as it is on the BoxLang runtime.
 
 You can stay on CFML-compatible code or move to the new vision of BoxLang. We will support both indefinitely.
+
+{% hint style="success" %}
+**Migrating an existing app?** The free [BoxLang Migration Assistant](running-coldfusion-cfml-apps/migration-assistant.md) checks, audits and runs your Adobe ColdFusion or Lucee app on BoxLang, then builds your migration plan.
+{% endhint %}
 
 {% hint style="info" %}
 Thanks to the multi-parser architecture, these parsers are being developed as modules for the BoxLang ecosystem:
