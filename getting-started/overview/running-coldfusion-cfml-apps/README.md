@@ -15,6 +15,14 @@ graph TD
 
 With its straightforward syntax and comprehensive toolset, BoxLang empowers developers to maintain and upgrade their applications with minimal hassle. Whether you're starting a new project or migrating an existing one, BoxLang serves as a reliable and efficient choice for modern web development needs.
 
+{% hint style="success" %}
+**The easy button: BoxLang Migration Assistant**
+
+Want it done for you? The free [BoxLang Migration Assistant](migration-assistant.md) desktop app runs every step on this page against your app, starts it on BoxLang, and builds your migration plan with Jira and GitHub tickets.
+
+{% embed url="https://www.youtube.com/watch?v=TiwY0SmuKIA" %}
+{% endhint %}
+
 {% hint style="danger" %}
 **Warning**
 
