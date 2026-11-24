@@ -7,7 +7,7 @@ Copies a directory from one location to another
 ## Method Signature
 
 ```
-DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[any], createPath=[boolean], overwrite=[boolean])
+DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[any], createPath=[boolean], overwrite=[boolean], followLinks=[boolean])
 ```
 
 ### Arguments
@@ -21,6 +21,7 @@ DirectoryCopy(source=[string], destination=[string], recurse=[boolean], filter=[
 | `filter` | `any` | `false` | A file or directory filter to pass | `*` |
 | `createPath` | `boolean` | `false` | whether to create any nested paths required to the new directory | `true` |
 | `overwrite` | `boolean` | `false` | whether to overwrite existing files at the destination | `false` |
+| `followLinks` | `boolean` | `false` | [default:false] whether to follow symbolic links. When false, a link inside the source is copied as a link. When true, the<br>                       content the link points to is copied instead. | `false` |
 
 ## Examples
 
@@ -45,7 +46,38 @@ directorycopy( "directorypath", "directorypath" );
 
 ```
 
+### Copy a folder that contains symbolic links
 
+By default a symbolic link is copied as a link that points to the same place.
+
+```java
+shared = getTempDirectory() & "linkDemoShared";
+build = getTempDirectory() & "linkDemoBuild";
+dest = getTempDirectory() & "linkDemoCopy";
+directoryCreate( shared );
+fileWrite( shared & "/keep.txt", "keep" );
+directoryCreate( build );
+fileCreateSymlink( build & "/lib", shared );
+
+directoryCopy( build, dest, true );
+writeOutput( fileIsSymlink( dest & "/lib" ) );
+
+```
+
+Result: true
+
+### Copy what the links point to
+
+Pass `followLinks=true` to copy the content of the linked folders instead of the link.
+
+```java
+directoryDelete( dest, true );
+directoryCopy( source=build, destination=dest, recurse=true, followLinks=true );
+writeOutput( fileIsSymlink( dest & "/lib" ) & " " & fileExists( dest & "/lib/keep.txt" ) );
+
+```
+
+Result: false true
 
 ## Related
 
@@ -62,16 +94,19 @@ directorycopy( "directorypath", "directorypath" );
   * [FileAppend](./FileAppend.md)
   * [FileClose](./FileClose.md)
   * [FileCopy](./FileCopy.md)
+  * [FileCreateSymlink](./FileCreateSymlink.md)
   * [FileDelete](./FileDelete.md)
   * [FileExists](./FileExists.md)
   * [FileGetMimeType](./FileGetMimeType.md)
   * [FileInfo](./FileInfo.md)
   * [FileIsEOF](./FileIsEOF.md)
+  * [FileIsSymlink](./FileIsSymlink.md)
   * [FileMove](./FileMove.md)
   * [FileOpen](./FileOpen.md)
   * [FileRead](./FileRead.md)
   * [FileReadBinary](./FileReadBinary.md)
   * [FileReadLine](./FileReadLine.md)
+  * [FileReadSymlink](./FileReadSymlink.md)
   * [FileSeek](./FileSeek.md)
   * [FileSetAccessMode](./FileSetAccessMode.md)
   * [FileSetAttribute](./FileSetAttribute.md)

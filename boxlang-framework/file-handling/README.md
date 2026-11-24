@@ -484,6 +484,103 @@ freeBytes = getFreeSpace( "/data/partition" )
 
 **Reference**: [`expandPath()`](../../boxlang-language/reference/built-in-functions/io/ExpandPath.md), [`getCanonicalPath()`](../../boxlang-language/reference/built-in-functions/io/GetCanonicalPath.md), [`contractPath()`](../../boxlang-language/reference/built-in-functions/io/ContractPath.md), [`getDirectoryFromPath()`](../../boxlang-language/reference/built-in-functions/io/GetDirectoryFromPath.md)
 
+## 🔗 Symbolic Links
+
+A symbolic link is a small file that points to another file or folder. BoxLang can create them, tell you whether a path is one, and read where one points. The directory functions never follow links unless you ask them to.
+
+### Creating and Inspecting Links
+
+```js
+base = getTempDirectory() & "linkDemo"
+directoryCreate( base & "/releases/v2" )
+
+// Point "current" at the v2 release
+fileCreateSymlink( base & "/current", base & "/releases/v2" )
+
+fileIsSymlink( base & "/current" )
+// Returns: true
+
+fileReadSymlink( base & "/current" )
+// Returns: the target exactly as it was stored
+```
+
+The target is stored exactly as you give it, so a relative target is relative to the folder that holds the link. Use `resolve=true` to get an absolute path back instead:
+
+```js
+fileCreateSymlink( base & "/rel", "releases/v2" )
+
+fileReadSymlink( base & "/rel" )
+// Returns: releases/v2
+
+fileReadSymlink( path=base & "/rel", resolve=true )
+// Returns: the absolute, normalized path of the target
+```
+
+Creating a link that already exists throws an exception unless you pass `overwrite=true`. A directory is never replaced. If the link cannot be created, for example because the operating system does not allow your user to create links, `fileCreateSymlink()` throws.
+
+{% hint style="info" %}
+`fileIsSymlink()` returns `true` for a link whose target does not exist (a dangling link), and `false` for regular files, folders and paths that do not exist.
+{% endhint %}
+
+{% hint style="warning" %}
+`fileCreateSymlink()` checks the link path against the `disallowedFileOperationExtensions` setting, like `fileCopy()` and `fileMove()`.
+{% endhint %}
+
+### Link Information
+
+`fileInfo()` and `getFileInfo()` return `isLink` and `linkTarget`. `linkTarget` is an empty string when the path is not a link. The other keys describe what the link points to.
+
+```js
+info = fileInfo( base & "/current" )
+writeOutput( info.isLink & " " & info.linkTarget )
+```
+
+The query returned by `directoryList()` with `listInfo="query"` has the same two columns:
+
+```js
+listing = directoryList( base, false, "query" )
+
+listing.each( ( row ) => {
+    println( row.name & " isLink=" & row.isLink & " target=" & row.linkTarget )
+} )
+```
+
+To list only the links, filter with `fileIsSymlink()`:
+
+```js
+links = directoryList( path=base, listInfo="name", filter=( path ) => fileIsSymlink( path ) )
+```
+
+### Directory Functions and Links
+
+`directoryList()`, `directoryCopy()` and `directoryDelete()` take a `followLinks` argument, which defaults to `false`.
+
+| Function | `followLinks=false` (default) | `followLinks=true` |
+|----------|-------------------------------|--------------------|
+| `directoryDelete()` | Links inside the folder are removed as links. The folders they point to are never touched. | The contents of the folders the links point to are deleted too. |
+| `directoryCopy()` | Links are copied as links that point to the same place. | The content a link points to is copied instead. |
+| `directoryList()` | A recursive listing includes the link but does not descend into it. | A recursive listing descends into links to folders. |
+
+A link given as the path itself is handled the same way whatever `followLinks` says: `directoryDelete()` removes only the link, and `directoryList()` lists what the link points to.
+
+```js
+// Safe: the link is removed, the shared folder is untouched
+directoryDelete( build, true )
+
+// Opt in: the shared folder is emptied too
+directoryDelete( build, true, true )
+```
+
+{% hint style="danger" %}
+**Breaking change**: `directoryDelete( path, true )` used to follow symbolic links and empty the folders they pointed to. It no longer does. Pass `followLinks=true` for the old behavior.
+
+Even with `followLinks=true`, a link inside the folder that leads back into the folder being deleted, or to a folder above it, is removed as a link so cycles cannot loop or delete the folder you are inside.
+{% endhint %}
+
+A shallow `directoryCopy()` (without `recurse`) copies files and symbolic links, including links to folders and dangling links, but not real sub folders.
+
+**Reference**: [`fileCreateSymlink()`](../../boxlang-language/reference/built-in-functions/io/FileCreateSymlink.md), [`fileIsSymlink()`](../../boxlang-language/reference/built-in-functions/io/FileIsSymlink.md), [`fileReadSymlink()`](../../boxlang-language/reference/built-in-functions/io/FileReadSymlink.md), [`directoryDelete()`](../../boxlang-language/reference/built-in-functions/io/DirectoryDelete.md), [`directoryCopy()`](../../boxlang-language/reference/built-in-functions/io/DirectoryCopy.md), [`directoryList()`](../../boxlang-language/reference/built-in-functions/io/DirectoryList.md)
+
 ## 🌊 Dealing With Large Files
 
 When working with large files, loading entire contents into memory can cause performance issues. BoxLang leverages Java NIO streams for efficient processing of large files. Through BoxLang's 100% Java interoperability, you can directly use Java's powerful Stream API for advanced file processing.
@@ -843,6 +940,9 @@ fileName = getFileFromPath( absolutePath )
 | `fileSetAccessMode()` | Set Unix file permissions |
 | `fileSetAttribute()` | Set file attributes |
 | `fileSetLastModified()` | Set modification time |
+| `fileCreateSymlink()` | Create a symbolic link |
+| `fileIsSymlink()` | Check if a path is a symbolic link |
+| `fileReadSymlink()` | Read the target of a symbolic link |
 | `fileUpload()` | Handle file upload |
 | `fileUploadAll()` | Handle multiple uploads |
 | `createTempFile()` | Create temporary file |
