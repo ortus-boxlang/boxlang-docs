@@ -17,7 +17,8 @@ destination=[string]
 recurse=[boolean]
 type=[string]
 listInfo=[string]
-createPath=[boolean] />
+createPath=[boolean]
+followLinks=[boolean] />
 ```
 
 ### Attributes
@@ -37,6 +38,7 @@ createPath=[boolean] />
 | `type` | `string` | `true` | Type of directory listing to return (dir, file, all). | `all` |
 | `listInfo` | `string` | `true` | Information to return in the listing (name, all). | `all` |
 | `createPath` | `boolean` | `false` | Whether to create all paths necessary to create the directory path. | `true` |
+| `followLinks` | `boolean` | `false` | Whether to follow symbolic links when listing, copying or deleting recursively. Defaults to false. | `false` |
 
 ## Examples
 
@@ -324,4 +326,20 @@ Directory List
 <bx:directory action="rename" directory="#expandPath( "./my_directory" )#" newdirectory="#expandPath( "./new_directory" )#">
 ```
 
+### List a Directory and Follow Symbolic Links (Tag Syntax)
+
+Symbolic links are not followed by default. Set `followLinks` to list, copy or recursively delete through them.
+
+```java
+<bx:directory action="list" directory="#expandPath( "./" )#" name="listing" recurse="true" followLinks="true">
+```
+
+
+### Delete a Directory Containing Symbolic Links (Tag Syntax)
+
+Links are removed as links and the folders they point to are left alone, unless `followLinks` is true.
+
+```java
+<bx:directory action="delete" directory="#expandPath( "./build" )#" recurse="true">
+```
 

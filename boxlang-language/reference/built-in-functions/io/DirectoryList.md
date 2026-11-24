@@ -15,6 +15,8 @@ Returns either an array, or a query depending on the {@code listInfo} argument.
  <li>{@code attributes} - The attributes of the item (R, W, X, H).</li>
  <li>{@code dateLastModified} - The date the item was last modified.</li>
  <li>{@code directory} - The directory containing the item.</li>
+ <li>{@code isLink} - True if the item is a symbolic link.</li>
+ <li>{@code linkTarget} - The target of the symbolic link, or an empty string if the item is not a link.</li>
  <li>{@code mode} - The mode of the item.</li>
  <li>{@code name} - The name of the item.</li>
  <li>{@code size} - The size of the item in bytes.</li>
@@ -41,7 +43,7 @@ Returns either an array, or a query depending on the {@code listInfo} argument.
 ## Method Signature
 
 ```
-DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[any], sort=[string], type=[string])
+DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[any], sort=[string], type=[string], followLinks=[boolean])
 ```
 
 ### Arguments
@@ -55,6 +57,7 @@ DirectoryList(path=[string], recurse=[boolean], listInfo=[string], filter=[any],
 | `filter` | `any` | `false` | A filter to apply to the listing. This can be a function that takes a single argument (the path of the item) and returns a boolean or a string that is a glob pattern. The default is no filter. |  |
 | `sort` | `string` | `false` | The sort order of the listing. Valid values are "name", "size", "date", and "type". The default is "name".You can also use <code>asc</code> or <code>desc</code> to specify the sort order. E.g. <code>sort: "name desc"</code>. | `name` |
 | `type` | `string` | `false` | The type of items to list. Valid values are "all", "file", and "dir". Default is "all". | `all` |
+| `followLinks` | `boolean` | `false` | Whether to descend into symbolic links to directories when recursing. The default is false. A symbolic link given as the path is always resolved. | `false` |
 
 ## Examples
 
@@ -122,6 +125,56 @@ directoryList( "/var/data", false, "path", ( Any path ) => {
 
 Result: []
 
+### Symbolic links in a recursive listing
+
+A recursive listing does not descend into symbolic links by default. Pass `followLinks=true` to list what the links point to. A link given as the `path` itself is always resolved.
+
+```java
+base = getTempDirectory() & "linkDemo";
+directoryCreate( base & "/releases/v2" );
+fileWrite( base & "/releases/v2/app.txt", "app" );
+fileCreateSymlink( base & "/current", base & "/releases/v2" );
+
+names = directoryList( path=base, recurse=true, listInfo="name" );
+writeOutput( names.len() & " " & names.toList() );
+
+```
+
+Result: 4 current,releases,v2,app.txt
+
+```java
+names = directoryList( path=base, recurse=true, listInfo="name", followLinks=true );
+writeOutput( names.len() & " " & names.toList() );
+
+```
+
+Result: 5 current,app.txt,releases,v2,app.txt
+
+### Find the links with the query columns
+
+The query returned by `listInfo="query"` has the `isLink` and `linkTarget` columns. `linkTarget` is an empty string for items that are not links.
+
+```java
+q = directoryList( base, false, "query" );
+for ( row in q ) {
+	writeOutput( row.name & " isLink=" & row.isLink & " target=" & row.linkTarget.listLast( "/" ) & "; " );
+}
+
+```
+
+Result: current isLink=true target=v2; releases isLink=false target=;
+
+### Filter to only the links
+
+`type` keeps its values of `all`, `file` and `dir`. To list only links, use a `filter` closure with `fileIsSymlink()`.
+
+```java
+links = directoryList( path=base, listInfo="name", filter=( path ) => fileIsSymlink( path ) );
+writeOutput( links.toList() );
+
+```
+
+Result: current
 
 ## Related
 
@@ -138,16 +191,19 @@ Result: []
   * [FileAppend](./FileAppend.md)
   * [FileClose](./FileClose.md)
   * [FileCopy](./FileCopy.md)
+  * [FileCreateSymlink](./FileCreateSymlink.md)
   * [FileDelete](./FileDelete.md)
   * [FileExists](./FileExists.md)
   * [FileGetMimeType](./FileGetMimeType.md)
   * [FileInfo](./FileInfo.md)
   * [FileIsEOF](./FileIsEOF.md)
+  * [FileIsSymlink](./FileIsSymlink.md)
   * [FileMove](./FileMove.md)
   * [FileOpen](./FileOpen.md)
   * [FileRead](./FileRead.md)
   * [FileReadBinary](./FileReadBinary.md)
   * [FileReadLine](./FileReadLine.md)
+  * [FileReadSymlink](./FileReadSymlink.md)
   * [FileSeek](./FileSeek.md)
   * [FileSetAccessMode](./FileSetAccessMode.md)
   * [FileSetAttribute](./FileSetAttribute.md)

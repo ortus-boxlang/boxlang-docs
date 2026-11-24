@@ -21,8 +21,6 @@ GetFileInfo(file=[boxfile])
 
 ## Examples
 
-
-
 ## Related
 
   * [ContractPath](./ContractPath.md)
@@ -39,16 +37,19 @@ GetFileInfo(file=[boxfile])
   * [FileAppend](./FileAppend.md)
   * [FileClose](./FileClose.md)
   * [FileCopy](./FileCopy.md)
+  * [FileCreateSymlink](./FileCreateSymlink.md)
   * [FileDelete](./FileDelete.md)
   * [FileExists](./FileExists.md)
   * [FileGetMimeType](./FileGetMimeType.md)
   * [FileInfo](./FileInfo.md)
   * [FileIsEOF](./FileIsEOF.md)
+  * [FileIsSymlink](./FileIsSymlink.md)
   * [FileMove](./FileMove.md)
   * [FileOpen](./FileOpen.md)
   * [FileRead](./FileRead.md)
   * [FileReadBinary](./FileReadBinary.md)
   * [FileReadLine](./FileReadLine.md)
+  * [FileReadSymlink](./FileReadSymlink.md)
   * [FileSeek](./FileSeek.md)
   * [FileSetAccessMode](./FileSetAccessMode.md)
   * [FileSetAttribute](./FileSetAttribute.md)
