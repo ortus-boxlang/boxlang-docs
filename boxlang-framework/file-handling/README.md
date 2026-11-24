@@ -240,7 +240,7 @@ results.each( function( uploadResult ){
 } )
 ```
 
-**Reference**: [`fileUpload()`](../../boxlang-language/reference/built-in-functions/io/FileUpload.md), [`fileUploadAll()`](../../boxlang-language/reference/built-in-functions/io/FileUploadAll.md)
+**Reference**: [`fileUpload()`](../../boxlang-language/reference/built-in-functions/web/FileUpload.md), [`fileUploadAll()`](../../boxlang-language/reference/built-in-functions/web/FileUploadAll.md)
 
 ### Temporary Files
 
@@ -260,7 +260,7 @@ fileWrite( tempFile, "temporary data" )
 fileDelete( tempFile )
 ```
 
-**Reference**: [`getTempDirectory()`](../../boxlang-language/reference/built-in-functions/io/GetTempDirectory.md), [`createTempFile()`](../../boxlang-language/reference/built-in-functions/io/CreateTempFile.md), [`createTempDirectory()`](../../boxlang-language/reference/built-in-functions/io/CreateTempDirectory.md)
+**Reference**: [`getTempDirectory()`](../../boxlang-language/reference/built-in-functions/system/GetTempDirectory.md), [`createTempFile()`](../../boxlang-language/reference/built-in-functions/io/CreateTempFile.md), [`createTempDirectory()`](../../boxlang-language/reference/built-in-functions/io/CreateTempDirectory.md)
 
 ## 📂 Directory Operations
 
