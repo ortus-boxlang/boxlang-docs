@@ -11,18 +11,27 @@ The BoxLang Image Module provides comprehensive image manipulation functionality
 
 **Key Features:**
 
-- 🖼️ **61 Image BIFs** - Complete Adobe ColdFusion and Lucee compatibility
+- 🖼️ **70 Image BIFs** - Image processing with familiar Adobe ColdFusion and Lucee APIs
 - 🎨 **Drawing Operations** - Lines, shapes, curves, text with advanced styling
 - ✨ **Filters & Effects** - Blur, sharpen, grayscale, negative, overlay
 - 📐 **Transformations** - Resize, rotate, crop, flip, shear, scale
-- 📊 **Metadata Support** - Read/write EXIF and IPTC metadata
+- 📊 **Metadata Support** - Read, write, and strip EXIF, IPTC, XMP, and ICC data; lossless file-level edits
 - 🔗 **Fluent API** - Method chaining with the `BoxImage` builder
 - 🔳 **QR Codes** - Generate and read QR codes with custom colors and an optional logo
 - 🖋️ **SVG Support** - Read SVG files, rendered sharply at the size you ask for
 - 🔬 **Pixel Access** - Read every pixel as brightness values or RGBA arrays with `ImageGetPixels()`
 - ⚡ **Runs on MatchBox** - A native backend in the same module runs the core functions without a JVM
 - 🏷️ **Component** - Tag-based syntax for templates
-- 🎯 **Member Functions** - All BIFs available as member functions
+- 🎯 **Member Functions** - Image operations available as convenient member functions
+
+## 🆕 New in 1.17.0
+
+- Edit metadata without decoding or re-encoding pixels with `ImageReadMetadata()` and `ImageStripMetadata()`.
+- Set EXIF/IPTC tags and XMP on files, metadata handles, or image objects; use a handle for ICC profiles.
+- Read embedded EXIF/IPTC from `ImageReadBase64()` results.
+- Use path-based metadata getters safely before in-place edits on Windows, including paths with spaces and `file:` URIs.
+
+See the [metadata guide](metadata.md) for persistence rules and format support. These additions require the JVM backend; [MatchBox's supported API](matchbox.md) is unchanged.
 
 ## Three Ways to Work with Images
 
@@ -56,7 +65,7 @@ ImageNew("photo.jpg")
 - ✅ IntelliSense/autocomplete support in IDEs
 - ✅ Reduced variable management
 - ✅ More concise code
-- ✅ All BIF functionality available as methods
+- ✅ Transformation, drawing, and image metadata setters available as methods
 
 ### 3. Component (Tag Syntax)
 
@@ -138,7 +147,7 @@ base.overlay(overlay, "normal", 0.8)
 - **[Transformations](transformations.md)** - Resize, rotate, crop, flip, shear operations
 - **[Filters & Effects](filters-effects.md)** - Blur, sharpen, grayscale, negative, overlay
 - **[Drawing Operations](drawing.md)** - Shapes, lines, curves, text with styling
-- **[Metadata](metadata.md)** - EXIF, IPTC metadata reading and tag access
+- **[Metadata](metadata.md)** - EXIF/IPTC/XMP/ICC reading, writing, and lossless stripping
 - **[Utilities](utilities.md)** - Format support, pixel access, validation, color reference
 - **[MatchBox Native Backend](matchbox.md)** - Running bx-image code without a JVM
 - **[Advanced Examples](advanced-examples.md)** - Watermarking, thumbnails, batch processing
@@ -147,7 +156,7 @@ base.overlay(overlay, "normal", 0.8)
 
 ## BIF & Component Reference
 
-### All Available BIFs (61 Functions)
+### All Available BIFs (70 Functions)
 
 | BIF | Member Function | Category | Description |
 |-----|----------------|----------|-------------|
@@ -210,6 +219,15 @@ base.overlay(overlay, "normal", 0.8)
 | `ImageTranslateDrawingAxis()` | `image.translateDrawingAxis()` | Drawing | Translates origin for drawing |
 | `ImageWrite()` | `image.write()` | Output | Writes image to file |
 | `ImageWriteBase64()` | `image.writeBase64()` | Output | Returns image as Base64 string |
+| [`ImageReadMetadata()`](reference/built-in-functions/imagereadmetadata.md) | - | Metadata | Read a metadata handle without decoding pixels |
+| [`ImageStripMetadata()`](reference/built-in-functions/imagestripmetadata.md) | - | Metadata | Strip file metadata without re-encoding |
+| [`ImageSetExifTag()`](reference/built-in-functions/imagesetexiftag.md) | `image.setExifTag()` | Metadata | Set one EXIF tag |
+| [`ImageSetExifMetaData()`](reference/built-in-functions/imagesetexifmetadata.md) | `image.setExifMetaData()` | Metadata | Set EXIF tags from a struct |
+| [`ImageSetIPTCTag()`](reference/built-in-functions/imagesetiptctag.md) | `image.setIPTCTag()` | Metadata | Set one IPTC tag |
+| [`ImageSetIPTCMetaData()`](reference/built-in-functions/imagesetiptcmetadata.md) | `image.setIPTCMetaData()` | Metadata | Set IPTC tags from a struct |
+| [`ImageSetXMP()`](reference/built-in-functions/imagesetxmp.md) | `image.setXMP()` | Metadata | Replace the XMP packet |
+| [`ImageGetXMP()`](reference/built-in-functions/imagegetxmp.md) | `image.getXMP()` | Metadata | Read the XMP packet |
+| [`ImageRemoveMetadata()`](reference/built-in-functions/imageremovemetadata.md) | `image.removeMetadata()` | Metadata | Remove metadata types |
 | `IsImage()` | - | Validation | Checks if variable is an image |
 | `IsImageFile()` | - | Validation | Checks if file is a valid image |
 
@@ -312,6 +330,10 @@ for (var file in files) {
 3. **Process dimensions wisely** - Resize before applying filters for better performance
 4. **Reuse BoxImage instances** - When processing multiple operations on the same image
 5. **Consider memory** - Very large images may require JVM memory tuning
+
+## 📦 Metadata Library and License
+
+The JVM module bundles [pixymeta 1.4.0](https://github.com/akitogo/pixymeta/tree/v1.4.0) unmodified for metadata writing. It is licensed under **EPL-1.0**; the distribution includes its license in `licenses/pixymeta-EPL-1.0.txt`. No separate library installation is needed.
 
 ## Additional Resources
 

@@ -1,3 +1,8 @@
+---
+description: Usage and arguments for ImageReadBase64 in the bx-image module.
+icon: code
+---
+
 # ImageReadBase64
 
 ## Syntax
@@ -22,9 +27,19 @@ Decodes a base64-encoded string into an image and returns it as a `BoxImage` obj
 
 Base64-encoded SVG documents are supported too: they are rendered to an image at the SVG's own size.
 
+Since bx-image **1.17.0**, embedded EXIF and IPTC are also extracted from decoded Base64 bytes, as with file-loaded images:
+
+```js
+img = ImageReadBase64( myBase64String )
+writeDump( img.getExifMetaData() )
+writeDump( img.getIPTCMetaData() )
+```
+
+This exposes metadata for reading; it does not automatically preserve it when the image is written. See the [metadata guide](../../metadata.md).
+
 ## Example
 
-```boxlang
+```js
 // Load an image from a base64 string
 img = ImageReadBase64( myBase64String );
 ```

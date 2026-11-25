@@ -129,6 +129,10 @@ Image("photo.jpg")
 - `info()` - Get comprehensive image info
 - `getExifMetadata()` / `getExifTag()` - Read EXIF metadata
 - `getIPTCMetadata()` / `getIPTCTag()` - Read IPTC metadata
+- `setExifTag()` / `setExifMetaData()` / `setIPTCTag()` / `setIPTCMetaData()` - Set metadata on encoded image output (1.17.0+)
+- `setXMP()` / `getXMP()` / `removeMetadata()` - Manage explicitly set image metadata (1.17.0+)
+
+For lossless file-level edits, use [ImageReadMetadata](built-in-functions/imagereadmetadata.md) or [ImageStripMetadata](built-in-functions/imagestripmetadata.md). See the [metadata guide](../metadata.md) for supported formats and persistence rules.
 
 ### ⚡ Utilities (BIF only)
 
@@ -224,5 +228,14 @@ ImageNew("products/large-photo.jpg")
 | `ImageTranslateDrawingAxis()` | Drawing | `img.translateDrawingAxis()` | Move coordinate system |
 | `ImageWrite()` | Output | `img.write()` | Write image to file |
 | `ImageWriteBase64()` | Output | `img.writeBase64()` | Convert to Base64 string |
+| [`ImageReadMetadata()`](built-in-functions/imagereadmetadata.md) | Metadata | N/A | Read a metadata handle without decoding pixels |
+| [`ImageStripMetadata()`](built-in-functions/imagestripmetadata.md) | Metadata | N/A | Strip file metadata without re-encoding |
+| [`ImageSetExifTag()`](built-in-functions/imagesetexiftag.md) | Metadata | `img.setExifTag()` | Set one EXIF tag |
+| [`ImageSetExifMetaData()`](built-in-functions/imagesetexifmetadata.md) | Metadata | `img.setExifMetaData()` | Set EXIF tags from a struct |
+| [`ImageSetIPTCTag()`](built-in-functions/imagesetiptctag.md) | Metadata | `img.setIPTCTag()` | Set one IPTC tag |
+| [`ImageSetIPTCMetaData()`](built-in-functions/imagesetiptcmetadata.md) | Metadata | `img.setIPTCMetaData()` | Set IPTC tags from a struct |
+| [`ImageSetXMP()`](built-in-functions/imagesetxmp.md) | Metadata | `img.setXMP()` | Replace the XMP packet |
+| [`ImageGetXMP()`](built-in-functions/imagegetxmp.md) | Metadata | `img.getXMP()` | Read the XMP packet |
+| [`ImageRemoveMetadata()`](built-in-functions/imageremovemetadata.md) | Metadata | `img.removeMetadata()` | Remove metadata types |
 | `IsImage()` | Validation | N/A | Check if variable is image |
 | `IsImageFile()` | Validation | N/A | Check if file is valid image |

@@ -1,6 +1,20 @@
+---
+description: Usage and arguments for ImageGetIPTCMetadata in the bx-image module.
+icon: code
+---
+
 # ImageGetIPTCMetadata
 
 Returns the IPTC metadata from an image. This BIF allows you to extract professional image metadata in BoxLang, such as copyright, author, headline, and more.
+
+{% hint style="info" %}
+Since bx-image 1.17.0, this BIF also accepts a metadata handle from [ImageReadMetadata()](imagereadmetadata.md). Handle getters reflect pending changes. File-path getters close streams before returning and support Windows paths, spaces, and `file:` URIs.
+{% endhint %}
+
+```js
+meta = ImageReadMetadata( "photo.jpg" )
+iptc = ImageGetIPTCMetadata( meta )
+```
 
 ## Syntax
 

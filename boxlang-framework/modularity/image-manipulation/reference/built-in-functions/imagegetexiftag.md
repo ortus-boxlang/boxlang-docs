@@ -1,11 +1,25 @@
+---
+description: Usage and arguments for ImageGetExifTag in the bx-image module.
+icon: code
+---
+
 # ImageGetExifTag
 
 Retrieves the value of a specific EXIF metadata tag from an image.
 
+{% hint style="info" %}
+Since bx-image 1.17.0, this BIF also accepts a metadata handle from [ImageReadMetadata()](imagereadmetadata.md). Handle getters reflect pending changes. File-path getters close streams before returning and support Windows paths, spaces, and `file:` URIs.
+{% endhint %}
+
+```js
+meta = ImageReadMetadata( "photo.jpg" )
+exif = ImageGetExifMetaData( meta )
+```
+
 ## Method Signature
 
 ```boxlang
-string ImageGetExifTag(image, tagName)
+any ImageGetExifTag(name, tagName)
 image.getExifTag(tagName)
 ```
 
@@ -13,12 +27,12 @@ image.getExifTag(tagName)
 
 | Argument | Type   | Required | Description                                  | Default |
 | -------- | ------ | -------- | -------------------------------------------- | ------- |
-| image    | any    | true     | The image object or variable name            |         |
+| name     | any    | true     | An image, metadata handle, variable name, or file path |         |
 | tagName  | string | true     | The name of the EXIF tag to retrieve         |         |
 
 ## Returns
 
-Returns the value of the specified EXIF tag as a string, or an empty string if the tag is not found.
+Returns the value of the specified EXIF tag, or `null` if the tag is not found.
 
 ## Description
 
