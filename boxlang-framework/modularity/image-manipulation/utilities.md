@@ -111,7 +111,7 @@ if (canProcessFormat("PNG")) {
 
 * **PNG** - Best for web graphics, supports full transparency
 * **JPEG** - Best for photos, smaller file size
-* **WebP** - Modern replacement for PNG/JPEG, excellent compression. Reading works cross-platform; writing requires native library (Linux/macOS Intel supported, Apple Silicon throws a clear error).
+* **WebP** - Modern replacement for PNG/JPEG, excellent compression. Reading uses a bundled pure-Java reader. Writing requires the bundled native library; Apple Silicon writing is supported since bx-image 1.10.0.
 * **GIF** - Best for simple animations, limited color palette
 * **TIFF** - Best for archival, printing, high-quality master files
 * **BMP** - Uncompressed, large files, simple format

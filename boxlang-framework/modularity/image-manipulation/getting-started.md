@@ -390,5 +390,5 @@ Now that you understand the basics, explore more advanced topics:
 - **[Transformations](transformations.md)** - Resize, rotate, crop, flip
 - **[Filters & Effects](filters-effects.md)** - Blur, sharpen, overlay
 - **[Drawing](drawing.md)** - Draw shapes, lines, and text
-- **[Metadata](metadata.md)** - Read EXIF and IPTC data
+- **[Metadata](metadata.md)** - Read, write, and strip metadata; edit files without re-encoding (1.17.0+)
 - **[Advanced Examples](advanced-examples.md)** - Real-world use cases

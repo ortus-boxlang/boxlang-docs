@@ -516,6 +516,20 @@ camera = img.getExifTag("Model");
 keywords = img.getIPTCTag("Keywords");
 ```
 
+### ✍️ Metadata Setters (1.17.0+)
+
+On the JVM backend, `setExifTag()`, `setExifMetaData()`, `setIPTCTag()`, `setIPTCMetaData()`, `setXMP()`, and `removeMetadata()` return the image for chaining. Metadata is applied when output is encoded, not saved immediately:
+
+```js
+ImageRead( "photo.jpg" )
+	.resize( 800, 600 )
+	.setExifTag( "Artist", "Jane Doe" )
+	.setIPTCTag( "Keywords", [ "portfolio", "landscape" ] )
+	.write( "thumbnail.jpg" )
+```
+
+`getXMP()` returns only the packet set on the image, not source XMP. For lossless edits retaining existing metadata, use the separate [ImageReadMetadata handle](../built-in-functions/imagereadmetadata.md), not an image pixel-processing pipeline. See [Metadata](../../metadata.md) for supported output formats and stripping APIs.
+
 ### getBlob()
 
 Get the image as a byte array.
@@ -599,9 +613,10 @@ result = base
 
 ### Metadata
 
-* EXIF and IPTC metadata extracted automatically when loading from files
-* Metadata is preserved when copying images
-* Use `info()` to access all metadata in a single struct
+* EXIF and IPTC are extracted from files and, since 1.17.0, from Base64 input
+* Source EXIF/IPTC remains available to getters, but source metadata is not automatically written to image output; explicitly set tags to retain them
+* Image metadata setters are applied by `write()`, `toByteArray()`, and `toBase64String()`; `removeMetadata()` clears pending metadata by type
+* Use `info()` to read EXIF/IPTC along with image properties, or `ImageReadMetadata()` for file-level XMP/ICC and lossless edits
 
 ## Related Documentation
 
